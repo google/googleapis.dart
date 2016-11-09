@@ -612,6 +612,8 @@ class User {
    * name, photo and permission_id will be omitted.
    */
   core.bool isDeleted;
+  /** Whether the user is the authenticated user. */
+  core.bool isMe;
   /** The displayable name of the user. */
   core.String name;
   /**
@@ -632,6 +634,9 @@ class User {
     if (_json.containsKey("isDeleted")) {
       isDeleted = _json["isDeleted"];
     }
+    if (_json.containsKey("isMe")) {
+      isMe = _json["isMe"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -647,6 +652,9 @@ class User {
     var _json = new core.Map();
     if (isDeleted != null) {
       _json["isDeleted"] = isDeleted;
+    }
+    if (isMe != null) {
+      _json["isMe"] = isMe;
     }
     if (name != null) {
       _json["name"] = name;

@@ -1,3 +1,18 @@
+## 0.31.0
+
+* [api-new] ml:v1beta1
+* [api-breaking] dataflow:v1b3: resource changes
+* [api-breaking] dns:v2beta1: renamed resource
+* [api-breaking] logging:v1beta1: added resources, method changes
+* [api] appengine:v1beta4: schema/method changes
+* [api] appengine:v1beta5: schema/method changes
+* [api] cloudreporting:v1beta1: schema changes
+* [api] cloudresourcemanager:v1beta1: schema/method changes
+* [api] dataproc:v1beta1: schema/method changes
+* [api] runtimeconfig:v1beta1: method changes
+* [api] sqladmin:v1beta3: schema changes
+* [api] sqladmin:v1beta4: schema changes
+
 ## 0.30.1
 
 * [api] datastore:v1beta3: schema changes

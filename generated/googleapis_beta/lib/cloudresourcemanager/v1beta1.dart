@@ -47,8 +47,8 @@ class OrganizationsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The resource name of the Organization to fetch. Its format is
-   * "organizations/[organization_id]". For example, "organizations/1234".
+   * [name] - The resource name of the Organization to fetch, e.g.
+   * "organizations/1234".
    * Value must have pattern "^organizations/[^/]*$".
    *
    * [organizationId] - The id of the Organization resource to fetch. This field
@@ -92,19 +92,15 @@ class OrganizationsResourceApi {
   /**
    * Gets the access control policy for an Organization resource. May be empty
    * if no such policy or resource exists. The `resource` field should be the
-   * organization's resource name, e.g. "organizations/123". For backward
-   * compatibility, the resource provided may also be the organization_id. This
-   * will not be supported in v1.
+   * organization's resource name, e.g. "organizations/123".
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * requested. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `getIamPolicy` documentation.
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    * Value must have pattern "^organizations/[^/]*$".
    *
    * Completes with a [Policy].
@@ -206,18 +202,15 @@ class OrganizationsResourceApi {
   /**
    * Sets the access control policy on an Organization resource. Replaces any
    * existing policy. The `resource` field should be the organization's resource
-   * name, e.g. "organizations/123". For backward compatibility, the resource
-   * provided may also be the organization_id. This will not be supported in v1.
+   * name, e.g. "organizations/123".
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * specified. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `setIamPolicy` documentation.
+   * specified. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    * Value must have pattern "^organizations/[^/]*$".
    *
    * Completes with a [Policy].
@@ -258,18 +251,15 @@ class OrganizationsResourceApi {
   /**
    * Returns permissions that a caller has on the specified Organization. The
    * `resource` field should be the organization's resource name, e.g.
-   * "organizations/123". For backward compatibility, the resource provided may
-   * also be the organization_id. This will not be supported in v1.
+   * "organizations/123".
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
-   * requested. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `testIamPermissions` documentation.
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    * Value must have pattern "^organizations/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -373,6 +363,9 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
+   * [useLegacyStack] - A safety hatch to opt out of the new reliable project
+   * creation process.
+   *
    * Completes with a [Project].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -381,7 +374,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Project> create(Project request) {
+  async.Future<Project> create(Project request, {core.bool useLegacyStack}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -391,6 +384,9 @@ class ProjectsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (useLegacyStack != null) {
+      _queryParams["useLegacyStack"] = ["${useLegacyStack}"];
     }
 
     _url = 'v1beta1/projects';
@@ -551,10 +547,8 @@ class ProjectsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * requested. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `getIamPolicy` documentation.
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    *
    * Completes with a [Policy].
    *
@@ -668,27 +662,25 @@ class ProjectsResourceApi {
    * + Invitations to grant the owner role cannot be sent using
    * `setIamPolicy()`; they must be sent only using the Cloud Platform Console.
    * + Membership changes that leave the project without any owners that have
-   * accepted the Terms of Service (ToS) will be rejected. + Members cannot be
-   * added to more than one role in the same policy. + There must be at least
-   * one owner who has accepted the Terms of Service (ToS) agreement in the
-   * policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
-   * from the policy will fail. This restriction also applies to legacy projects
-   * that no longer have owners who have accepted the ToS. Edits to IAM policies
-   * will be rejected until the lack of a ToS-accepting owner is rectified. +
-   * Calling this method requires enabling the App Engine Admin API. Note:
-   * Removing service accounts from policies or changing their roles can render
-   * services completely inoperable. It is important to understand how the
-   * service account is being used before removing or updating its roles.
+   * accepted the Terms of Service (ToS) will be rejected. + There must be at
+   * least one owner who has accepted the Terms of Service (ToS) agreement in
+   * the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted
+   * owner from the policy will fail. This restriction also applies to legacy
+   * projects that no longer have owners who have accepted the ToS. Edits to IAM
+   * policies will be rejected until the lack of a ToS-accepting owner is
+   * rectified. + Calling this method requires enabling the App Engine Admin
+   * API. Note: Removing service accounts from policies or changing their roles
+   * can render services completely inoperable. It is important to understand
+   * how the service account is being used before removing or updating its
+   * roles.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * specified. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `setIamPolicy` documentation.
+   * specified. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    *
    * Completes with a [Policy].
    *
@@ -733,10 +725,8 @@ class ProjectsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
-   * requested. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `testIamPermissions` documentation.
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -960,6 +950,98 @@ class Empty {
   }
 }
 
+/** Metadata describing a long running folder operation */
+class FolderOperation {
+  /**
+   * The resource name of the folder or organization we are either creating the
+   * folder under or moving the folder to.
+   */
+  core.String destinationParent;
+  /** The display name of the folder. */
+  core.String displayName;
+  /**
+   * The type of this operation.
+   * Possible string values are:
+   * - "OPERATION_TYPE_UNSPECIFIED" : A OPERATION_TYPE_UNSPECIFIED.
+   * - "CREATE" : A CREATE.
+   * - "MOVE" : A MOVE.
+   */
+  core.String operationType;
+  /**
+   * The resource name of the folder's parent. Only applicable when the
+   * operation_type is MOVE.
+   */
+  core.String sourceParent;
+
+  FolderOperation();
+
+  FolderOperation.fromJson(core.Map _json) {
+    if (_json.containsKey("destinationParent")) {
+      destinationParent = _json["destinationParent"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("sourceParent")) {
+      sourceParent = _json["sourceParent"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (destinationParent != null) {
+      _json["destinationParent"] = destinationParent;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (sourceParent != null) {
+      _json["sourceParent"] = sourceParent;
+    }
+    return _json;
+  }
+}
+
+/** A classification of the Folder Operation error. */
+class FolderOperationError {
+  /**
+   * The type of operation error experienced.
+   * Possible string values are:
+   * - "ERROR_TYPE_UNSPECIFIED" : A ERROR_TYPE_UNSPECIFIED.
+   * - "FOLDER_HEIGHT_VIOLATION" : A FOLDER_HEIGHT_VIOLATION.
+   * - "MAX_CHILD_FOLDERS_VIOLATION" : A MAX_CHILD_FOLDERS_VIOLATION.
+   * - "FOLDER_NAME_UNIQUENESS_VIOLATION" : A FOLDER_NAME_UNIQUENESS_VIOLATION.
+   * - "RESOURCE_DELETED" : A RESOURCE_DELETED.
+   * - "PARENT_DELETED" : A PARENT_DELETED.
+   * - "CYCLE_INTRODUCED_ERROR" : A CYCLE_INTRODUCED_ERROR.
+   * - "FOLDER_ALREADY_BEING_MOVED" : A FOLDER_ALREADY_BEING_MOVED.
+   * - "FOLDER_TO_DELETE_NON_EMPTY" : A FOLDER_TO_DELETE_NON_EMPTY.
+   */
+  core.String errorMessageId;
+
+  FolderOperationError();
+
+  FolderOperationError.fromJson(core.Map _json) {
+    if (_json.containsKey("errorMessageId")) {
+      errorMessageId = _json["errorMessageId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (errorMessageId != null) {
+      _json["errorMessageId"] = errorMessageId;
+    }
+    return _json;
+  }
+}
+
 /** The request sent to the GetAncestry method. */
 class GetAncestryRequest {
 
@@ -1108,8 +1190,9 @@ class Organization {
    */
   core.String creationTime;
   /**
-   * A friendly string to be used to refer to the Organization in the UI. This
-   * field is required.
+   * A friendly string to be used to refer to the Organization in the UI.
+   * Assigned by the server, set to the firm name of the Google For Work
+   * customer that owns this organization. @OutputOnly
    */
   core.String displayName;
   /**
@@ -1390,6 +1473,52 @@ class Project {
 }
 
 /**
+ * A status object which is used as the `metadata` field for the Operation
+ * returned by CreateProject. It provides insight for when significant phases of
+ * Project creation have completed.
+ */
+class ProjectCreationStatus {
+  /** Creation time of the project creation workflow. */
+  core.String createTime;
+  /**
+   * True if the project can be retrieved using GetProject. No other operations
+   * on the project are guaranteed to work until the project creation is
+   * complete.
+   */
+  core.bool gettable;
+  /** True if the project creation process is complete. */
+  core.bool ready;
+
+  ProjectCreationStatus();
+
+  ProjectCreationStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("gettable")) {
+      gettable = _json["gettable"];
+    }
+    if (_json.containsKey("ready")) {
+      ready = _json["ready"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (gettable != null) {
+      _json["gettable"] = gettable;
+    }
+    if (ready != null) {
+      _json["ready"] = ready;
+    }
+    return _json;
+  }
+}
+
+/**
  * A container to reference an id for any resource type. A `resource` in Google
  * Cloud Platform is a generic term for something you (a developer) may want to
  * interact with through one of our API's. Some examples are an AppEngine app, a
@@ -1461,7 +1590,8 @@ class TestIamPermissionsRequest {
   /**
    * The set of permissions to check for the `resource`. Permissions with
    * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see IAM Overview.
+   * information see [IAM
+   * Overview](https://cloud.google.com/iam/docs/overview#permissions).
    */
   core.List<core.String> permissions;
 

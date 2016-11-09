@@ -17,6 +17,9 @@ const core.String USER_AGENT = 'dart-api-client identitytoolkit/v3';
 
 /** Help the third party sites to implement federated login. */
 class IdentitytoolkitApi {
+  /** View and administer all your Firebase data and settings */
+  static const FirebaseScope = "https://www.googleapis.com/auth/firebase";
+
 
   final commons.ApiRequester _requester;
 
@@ -1036,6 +1039,13 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
    */
   core.String continueUri;
   /**
+   * The query parameter that client can customize by themselves in auth url.
+   * The following parameters are reserved for server so that they cannot be
+   * customized by clients: client_id, response_type, scope, redirect_uri,
+   * state, oauth_token.
+   */
+  core.Map<core.String, core.String> customParameter;
+  /**
    * The hosted domain to restrict sign-in to accounts at that domain for Google
    * Apps hosted accounts.
    */
@@ -1083,6 +1093,9 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     if (_json.containsKey("continueUri")) {
       continueUri = _json["continueUri"];
     }
+    if (_json.containsKey("customParameter")) {
+      customParameter = _json["customParameter"];
+    }
     if (_json.containsKey("hostedDomain")) {
       hostedDomain = _json["hostedDomain"];
     }
@@ -1125,6 +1138,9 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
     if (continueUri != null) {
       _json["continueUri"] = continueUri;
+    }
+    if (customParameter != null) {
+      _json["customParameter"] = customParameter;
     }
     if (hostedDomain != null) {
       _json["hostedDomain"] = hostedDomain;
@@ -1298,6 +1314,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   core.List<core.String> authorizedDomains;
   /** Change email template. */
   EmailTemplate changeEmailTemplate;
+  core.String dynamicLinksDomain;
   /** Whether anonymous user is enabled. */
   core.bool enableAnonymousUser;
   /** OAuth2 provider configuration. */
@@ -1327,6 +1344,9 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
     if (_json.containsKey("changeEmailTemplate")) {
       changeEmailTemplate = new EmailTemplate.fromJson(_json["changeEmailTemplate"]);
+    }
+    if (_json.containsKey("dynamicLinksDomain")) {
+      dynamicLinksDomain = _json["dynamicLinksDomain"];
     }
     if (_json.containsKey("enableAnonymousUser")) {
       enableAnonymousUser = _json["enableAnonymousUser"];
@@ -1364,6 +1384,9 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
     if (changeEmailTemplate != null) {
       _json["changeEmailTemplate"] = (changeEmailTemplate).toJson();
+    }
+    if (dynamicLinksDomain != null) {
+      _json["dynamicLinksDomain"] = dynamicLinksDomain;
     }
     if (enableAnonymousUser != null) {
       _json["enableAnonymousUser"] = enableAnonymousUser;
@@ -1845,16 +1868,24 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   core.String captchaChallenge;
   /** Response to the captcha. */
   core.String captchaResponse;
+  /** Whether to disable the user. Only can be used by service account. */
+  core.bool disabled;
   /** The name of the user. */
   core.String displayName;
   /** The email of the user. */
   core.String email;
+  /**
+   * Mark the email as verified or not. Only can be used by service account.
+   */
+  core.bool emailVerified;
   /** The GITKit token of the authenticated user. */
   core.String idToken;
   /** Instance id token of the app. */
   core.String instanceId;
   /** The new password of the user. */
   core.String password;
+  /** The photo url of the user. */
+  core.String photoUrl;
 
   IdentitytoolkitRelyingpartySignupNewUserRequest();
 
@@ -1865,11 +1896,17 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     if (_json.containsKey("captchaResponse")) {
       captchaResponse = _json["captchaResponse"];
     }
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("email")) {
       email = _json["email"];
+    }
+    if (_json.containsKey("emailVerified")) {
+      emailVerified = _json["emailVerified"];
     }
     if (_json.containsKey("idToken")) {
       idToken = _json["idToken"];
@@ -1879,6 +1916,9 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
     if (_json.containsKey("password")) {
       password = _json["password"];
+    }
+    if (_json.containsKey("photoUrl")) {
+      photoUrl = _json["photoUrl"];
     }
   }
 
@@ -1890,11 +1930,17 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     if (captchaResponse != null) {
       _json["captchaResponse"] = captchaResponse;
     }
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (emailVerified != null) {
+      _json["emailVerified"] = emailVerified;
     }
     if (idToken != null) {
       _json["idToken"] = idToken;
@@ -1905,12 +1951,17 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     if (password != null) {
       _json["password"] = password;
     }
+    if (photoUrl != null) {
+      _json["photoUrl"] = photoUrl;
+    }
     return _json;
   }
 }
 
 /** Request to upload user account in batch. */
 class IdentitytoolkitRelyingpartyUploadAccountRequest {
+  /** Whether allow overwrite existing account when user local_id exists. */
+  core.bool allowOverwrite;
   /**
    * GCP project number of the requesting delegated app. Currently only intended
    * for Firebase V1 migration.
@@ -1931,6 +1982,11 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   void set saltSeparatorAsBytes(core.List<core.int> _bytes) {
     saltSeparator = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
+  /**
+   * If true, backend will do sanity check(including duplicate email and
+   * federated id) when uploading account.
+   */
+  core.bool sanityCheck;
   /** The key for to hash the password. */
   core.String signerKey;
   core.List<core.int> get signerKeyAsBytes {
@@ -1940,12 +1996,20 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   void set signerKeyAsBytes(core.List<core.int> _bytes) {
     signerKey = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
+  /**
+   * Specify which project (field value is actually project id) to operate. Only
+   * used when provided credential.
+   */
+  core.String targetProjectId;
   /** The account info to be stored. */
   core.List<UserInfo> users;
 
   IdentitytoolkitRelyingpartyUploadAccountRequest();
 
   IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("allowOverwrite")) {
+      allowOverwrite = _json["allowOverwrite"];
+    }
     if (_json.containsKey("delegatedProjectNumber")) {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
     }
@@ -1961,8 +2025,14 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     if (_json.containsKey("saltSeparator")) {
       saltSeparator = _json["saltSeparator"];
     }
+    if (_json.containsKey("sanityCheck")) {
+      sanityCheck = _json["sanityCheck"];
+    }
     if (_json.containsKey("signerKey")) {
       signerKey = _json["signerKey"];
+    }
+    if (_json.containsKey("targetProjectId")) {
+      targetProjectId = _json["targetProjectId"];
     }
     if (_json.containsKey("users")) {
       users = _json["users"].map((value) => new UserInfo.fromJson(value)).toList();
@@ -1971,6 +2041,9 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (allowOverwrite != null) {
+      _json["allowOverwrite"] = allowOverwrite;
+    }
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -1986,8 +2059,14 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     if (saltSeparator != null) {
       _json["saltSeparator"] = saltSeparator;
     }
+    if (sanityCheck != null) {
+      _json["sanityCheck"] = sanityCheck;
+    }
     if (signerKey != null) {
       _json["signerKey"] = signerKey;
+    }
+    if (targetProjectId != null) {
+      _json["targetProjectId"] = targetProjectId;
     }
     if (users != null) {
       _json["users"] = users.map((value) => (value).toJson()).toList();
@@ -2393,10 +2472,17 @@ class Relyingparty {
 
 /** Response of resetting the password. */
 class ResetPasswordResponse {
-  /** The user's email. */
+  /**
+   * The user's email. If the out-of-band code is for email recovery, the user's
+   * original email.
+   */
   core.String email;
   /** The fixed string "identitytoolkit#ResetPasswordResponse". */
   core.String kind;
+  /** If the out-of-band code is for email recovery, the user's new email. */
+  core.String newEmail;
+  /** The request type. */
+  core.String requestType;
 
   ResetPasswordResponse();
 
@@ -2407,6 +2493,12 @@ class ResetPasswordResponse {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("newEmail")) {
+      newEmail = _json["newEmail"];
+    }
+    if (_json.containsKey("requestType")) {
+      requestType = _json["requestType"];
+    }
   }
 
   core.Map toJson() {
@@ -2416,6 +2508,12 @@ class ResetPasswordResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (newEmail != null) {
+      _json["newEmail"] = newEmail;
+    }
+    if (requestType != null) {
+      _json["requestType"] = requestType;
     }
     return _json;
   }
@@ -2734,9 +2832,7 @@ class UserInfoProviderUserInfo {
   core.String providerId;
   /** User's raw identifier directly returned from IDP. */
   core.String rawId;
-  /** Raw IDP-returned user info. */
-  core.String rawUserInfo;
-  /** User's screen name at Twitter. */
+  /** User's screen name at Twitter or login name at Github. */
   core.String screenName;
 
   UserInfoProviderUserInfo();
@@ -2759,9 +2855,6 @@ class UserInfoProviderUserInfo {
     }
     if (_json.containsKey("rawId")) {
       rawId = _json["rawId"];
-    }
-    if (_json.containsKey("rawUserInfo")) {
-      rawUserInfo = _json["rawUserInfo"];
     }
     if (_json.containsKey("screenName")) {
       screenName = _json["screenName"];
@@ -2788,9 +2881,6 @@ class UserInfoProviderUserInfo {
     if (rawId != null) {
       _json["rawId"] = rawId;
     }
-    if (rawUserInfo != null) {
-      _json["rawUserInfo"] = rawUserInfo;
-    }
     if (screenName != null) {
       _json["screenName"] = screenName;
     }
@@ -2802,6 +2892,8 @@ class UserInfoProviderUserInfo {
 class UserInfo {
   /** User creation timestamp. */
   core.String createdAt;
+  /** Whether the user is authenticated by the developer. */
+  core.bool customAuth;
   /** Whether the user is disabled. */
   core.bool disabled;
   /** The name of the user. */
@@ -2829,6 +2921,8 @@ class UserInfo {
   core.String photoUrl;
   /** The IDP of the user. */
   core.List<UserInfoProviderUserInfo> providerUserInfo;
+  /** The user's plain text password. */
+  core.String rawPassword;
   /** The user's password salt. */
   core.String salt;
   core.List<core.int> get saltAsBytes {
@@ -2838,7 +2932,7 @@ class UserInfo {
   void set saltAsBytes(core.List<core.int> _bytes) {
     salt = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** User's screen name at Twitter. */
+  /** User's screen name at Twitter or login name at Github. */
   core.String screenName;
   /** Timestamp in seconds for valid login token. */
   core.String validSince;
@@ -2850,6 +2944,9 @@ class UserInfo {
   UserInfo.fromJson(core.Map _json) {
     if (_json.containsKey("createdAt")) {
       createdAt = _json["createdAt"];
+    }
+    if (_json.containsKey("customAuth")) {
+      customAuth = _json["customAuth"];
     }
     if (_json.containsKey("disabled")) {
       disabled = _json["disabled"];
@@ -2881,6 +2978,9 @@ class UserInfo {
     if (_json.containsKey("providerUserInfo")) {
       providerUserInfo = _json["providerUserInfo"].map((value) => new UserInfoProviderUserInfo.fromJson(value)).toList();
     }
+    if (_json.containsKey("rawPassword")) {
+      rawPassword = _json["rawPassword"];
+    }
     if (_json.containsKey("salt")) {
       salt = _json["salt"];
     }
@@ -2899,6 +2999,9 @@ class UserInfo {
     var _json = new core.Map();
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
+    }
+    if (customAuth != null) {
+      _json["customAuth"] = customAuth;
     }
     if (disabled != null) {
       _json["disabled"] = disabled;
@@ -2929,6 +3032,9 @@ class UserInfo {
     }
     if (providerUserInfo != null) {
       _json["providerUserInfo"] = providerUserInfo.map((value) => (value).toJson()).toList();
+    }
+    if (rawPassword != null) {
+      _json["rawPassword"] = rawPassword;
     }
     if (salt != null) {
       _json["salt"] = salt;
@@ -3051,7 +3157,7 @@ class VerifyAssertionResponse {
   core.String rawUserInfo;
   /** If idToken is STS id token, then this field will be refresh token. */
   core.String refreshToken;
-  /** The screen_name of a Twitter user. */
+  /** The screen_name of a Twitter user or the login name at Github. */
   core.String screenName;
   /** The timezone of the user. */
   core.String timeZone;

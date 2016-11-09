@@ -430,7 +430,8 @@ class AccountUserProfilesResourceApi {
   }
 
   /**
-   * Retrieves a list of account user profiles, possibly filtered.
+   * Retrieves a list of account user profiles, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -675,7 +676,8 @@ class AccountsResourceApi {
   }
 
   /**
-   * Retrieves the list of accounts, possibly filtered.
+   * Retrieves the list of accounts, possibly filtered. This method supports
+   * paging.
    *
    * Request parameters:
    *
@@ -952,7 +954,7 @@ class AdsResourceApi {
   }
 
   /**
-   * Retrieves a list of ads, possibly filtered.
+   * Retrieves a list of ads, possibly filtered. This method supports paging.
    *
    * Request parameters:
    *
@@ -1397,7 +1399,8 @@ class AdvertiserGroupsResourceApi {
   }
 
   /**
-   * Retrieves a list of advertiser groups, possibly filtered.
+   * Retrieves a list of advertiser groups, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -1669,7 +1672,8 @@ class AdvertisersResourceApi {
   }
 
   /**
-   * Retrieves a list of advertisers, possibly filtered.
+   * Retrieves a list of advertisers, possibly filtered. This method supports
+   * paging.
    *
    * Request parameters:
    *
@@ -1990,6 +1994,7 @@ class CampaignCreativeAssociationsResourceApi {
 
   /**
    * Retrieves the list of creative IDs associated with the specified campaign.
+   * This method supports paging.
    *
    * Request parameters:
    *
@@ -2161,7 +2166,8 @@ class CampaignsResourceApi {
   }
 
   /**
-   * Retrieves a list of campaigns, possibly filtered.
+   * Retrieves a list of campaigns, possibly filtered. This method supports
+   * paging.
    *
    * Request parameters:
    *
@@ -2428,7 +2434,7 @@ class ChangeLogsResourceApi {
   }
 
   /**
-   * Retrieves a list of change logs.
+   * Retrieves a list of change logs. This method supports paging.
    *
    * Request parameters:
    *
@@ -2508,6 +2514,7 @@ class ChangeLogsResourceApi {
    * - "OBJECT_REMARKETING_LIST"
    * - "OBJECT_RICHMEDIA_CREATIVE"
    * - "OBJECT_SD_SITE"
+   * - "OBJECT_SEARCH_LIFT_STUDY"
    * - "OBJECT_SIZE"
    * - "OBJECT_SUBACCOUNT"
    * - "OBJECT_TARGETING_TEMPLATE"
@@ -2886,7 +2893,8 @@ class ContentCategoriesResourceApi {
   }
 
   /**
-   * Retrieves a list of content categories, possibly filtered.
+   * Retrieves a list of content categories, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -3435,7 +3443,8 @@ class CreativeFieldValuesResourceApi {
   }
 
   /**
-   * Retrieves a list of creative field values, possibly filtered.
+   * Retrieves a list of creative field values, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -3762,7 +3771,8 @@ class CreativeFieldsResourceApi {
   }
 
   /**
-   * Retrieves a list of creative fields, possibly filtered.
+   * Retrieves a list of creative fields, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -4041,7 +4051,8 @@ class CreativeGroupsResourceApi {
   }
 
   /**
-   * Retrieves a list of creative groups, possibly filtered.
+   * Retrieves a list of creative groups, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -4325,7 +4336,8 @@ class CreativesResourceApi {
   }
 
   /**
-   * Retrieves a list of creatives, possibly filtered.
+   * Retrieves a list of creatives, possibly filtered. This method supports
+   * paging.
    *
    * Request parameters:
    *
@@ -4671,7 +4683,8 @@ class DirectorySiteContactsResourceApi {
   }
 
   /**
-   * Retrieves a list of directory site contacts, possibly filtered.
+   * Retrieves a list of directory site contacts, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -4856,7 +4869,8 @@ class DirectorySitesResourceApi {
   }
 
   /**
-   * Retrieves a list of directory sites, possibly filtered.
+   * Retrieves a list of directory sites, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -5842,7 +5856,8 @@ class FloodlightActivitiesResourceApi {
   }
 
   /**
-   * Retrieves a list of floodlight activities, possibly filtered.
+   * Retrieves a list of floodlight activities, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -6165,7 +6180,8 @@ class FloodlightActivityGroupsResourceApi {
   }
 
   /**
-   * Retrieves a list of floodlight activity groups, possibly filtered.
+   * Retrieves a list of floodlight activity groups, possibly filtered. This
+   * method supports paging.
    *
    * Request parameters:
    *
@@ -6619,7 +6635,8 @@ class InventoryItemsResourceApi {
   }
 
   /**
-   * Retrieves a list of inventory items, possibly filtered.
+   * Retrieves a list of inventory items, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -7453,7 +7470,8 @@ class OrderDocumentsResourceApi {
   }
 
   /**
-   * Retrieves a list of order documents, possibly filtered.
+   * Retrieves a list of order documents, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -7614,7 +7632,7 @@ class OrdersResourceApi {
   }
 
   /**
-   * Retrieves a list of orders, possibly filtered.
+   * Retrieves a list of orders, possibly filtered. This method supports paging.
    *
    * Request parameters:
    *
@@ -7801,7 +7819,8 @@ class PlacementGroupsResourceApi {
   }
 
   /**
-   * Retrieves a list of placement groups, possibly filtered.
+   * Retrieves a list of placement groups, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -8206,7 +8225,8 @@ class PlacementStrategiesResourceApi {
   }
 
   /**
-   * Retrieves a list of placement strategies, possibly filtered.
+   * Retrieves a list of placement strategies, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -8535,7 +8555,8 @@ class PlacementsResourceApi {
   }
 
   /**
-   * Retrieves a list of placements, possibly filtered.
+   * Retrieves a list of placements, possibly filtered. This method supports
+   * paging.
    *
    * Request parameters:
    *
@@ -9047,7 +9068,8 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Retrieves a list of projects, possibly filtered.
+   * Retrieves a list of projects, possibly filtered. This method supports
+   * paging.
    *
    * Request parameters:
    *
@@ -9425,7 +9447,8 @@ class RemarketingListsResourceApi {
   }
 
   /**
-   * Retrieves a list of remarketing lists, possibly filtered.
+   * Retrieves a list of remarketing lists, possibly filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -10275,7 +10298,7 @@ class SitesResourceApi {
   }
 
   /**
-   * Retrieves a list of sites, possibly filtered.
+   * Retrieves a list of sites, possibly filtered. This method supports paging.
    *
    * Request parameters:
    *
@@ -10751,7 +10774,7 @@ class SubaccountsResourceApi {
   }
 
   /**
-   * Gets a list of subaccounts, possibly filtered.
+   * Gets a list of subaccounts, possibly filtered. This method supports paging.
    *
    * Request parameters:
    *
@@ -10979,7 +11002,8 @@ class TargetableRemarketingListsResourceApi {
   }
 
   /**
-   * Retrieves a list of targetable remarketing lists, possibly filtered.
+   * Retrieves a list of targetable remarketing lists, possibly filtered. This
+   * method supports paging.
    *
    * Request parameters:
    *
@@ -11165,7 +11189,8 @@ class TargetingTemplatesResourceApi {
   }
 
   /**
-   * Retrieves a list of targeting templates, optionally filtered.
+   * Retrieves a list of targeting templates, optionally filtered. This method
+   * supports paging.
    *
    * Request parameters:
    *
@@ -11758,7 +11783,8 @@ class UserRolesResourceApi {
   }
 
   /**
-   * Retrieves a list of user roles, possibly filtered.
+   * Retrieves a list of user roles, possibly filtered. This method supports
+   * paging.
    *
    * Request parameters:
    *
@@ -11968,6 +11994,7 @@ class Account {
    * - "ACTIVE_ADS_TIER_300K"
    * - "ACTIVE_ADS_TIER_40K"
    * - "ACTIVE_ADS_TIER_500K"
+   * - "ACTIVE_ADS_TIER_750K"
    * - "ACTIVE_ADS_TIER_75K"
    */
   core.String activeAdsLimitTier;
@@ -12225,6 +12252,7 @@ class AccountActiveAdSummary {
    * - "ACTIVE_ADS_TIER_300K"
    * - "ACTIVE_ADS_TIER_40K"
    * - "ACTIVE_ADS_TIER_500K"
+   * - "ACTIVE_ADS_TIER_750K"
    * - "ACTIVE_ADS_TIER_75K"
    */
   core.String activeAdsLimitTier;
@@ -12799,7 +12827,7 @@ class Ad {
    * Account ID of this ad. This is a read-only field that can be left blank.
    */
   core.String accountId;
-  /** Whether this ad is active. */
+  /** Whether this ad is active. When true, archived must be false. */
   core.bool active;
   /** Advertiser ID of this ad. This is a required field on insertion. */
   core.String advertiserId;
@@ -12808,7 +12836,7 @@ class Ad {
    * auto-generated field.
    */
   DimensionValue advertiserIdDimensionValue;
-  /** Whether this ad is archived. */
+  /** Whether this ad is archived. When true, active must be false. */
   core.bool archived;
   /**
    * Audience segment ID that is being targeted for this ad. Applicable when
@@ -15080,7 +15108,10 @@ class Conversion {
    * "dfareporting#conversion".
    */
   core.String kind;
-  /** Whether the user has Limit Ad Tracking set. */
+  /**
+   * Whether Limit Ad Tracking is enabled. When set to true, the conversion will
+   * be used for reporting but not targeting. This will prevent remarketing.
+   */
   core.bool limitAdTracking;
   /**
    * The mobile device ID. This field is mutually exclusive with encryptedUserId

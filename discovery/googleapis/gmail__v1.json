@@ -14,6 +14,9 @@
                 "https://www.googleapis.com/auth/gmail.labels": {
                     "description": "Manage mailbox labels"
                 },
+                "https://www.googleapis.com/auth/gmail.metadata": {
+                    "description": "View your email message metadata such as labels and headers, but not the email body"
+                },
                 "https://www.googleapis.com/auth/gmail.modify": {
                     "description": "View and modify but not delete your email"
                 },
@@ -38,7 +41,7 @@
     "description": "Access Gmail mailboxes including sending user email.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/c9szhoCXYrKaLKrzYGmZhJZBHUc\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/V8B0BNh6Gl7mnZWtADepvF4qGmI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -120,6 +123,7 @@
                     "scopes": [
                         "https://mail.google.com/",
                         "https://www.googleapis.com/auth/gmail.compose",
+                        "https://www.googleapis.com/auth/gmail.metadata",
                         "https://www.googleapis.com/auth/gmail.modify",
                         "https://www.googleapis.com/auth/gmail.readonly"
                     ]
@@ -143,6 +147,7 @@
                     "path": "{userId}/stop",
                     "scopes": [
                         "https://mail.google.com/",
+                        "https://www.googleapis.com/auth/gmail.metadata",
                         "https://www.googleapis.com/auth/gmail.modify",
                         "https://www.googleapis.com/auth/gmail.readonly"
                     ]
@@ -172,6 +177,7 @@
                     },
                     "scopes": [
                         "https://mail.google.com/",
+                        "https://www.googleapis.com/auth/gmail.metadata",
                         "https://www.googleapis.com/auth/gmail.modify",
                         "https://www.googleapis.com/auth/gmail.readonly"
                     ]
@@ -506,6 +512,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.metadata",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -603,6 +610,7 @@
                             "scopes": [
                                 "https://mail.google.com/",
                                 "https://www.googleapis.com/auth/gmail.labels",
+                                "https://www.googleapis.com/auth/gmail.metadata",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -630,6 +638,7 @@
                             "scopes": [
                                 "https://mail.google.com/",
                                 "https://www.googleapis.com/auth/gmail.labels",
+                                "https://www.googleapis.com/auth/gmail.metadata",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -815,6 +824,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.metadata",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -1014,6 +1024,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.metadata",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -1973,6 +1984,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.metadata",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -2028,6 +2040,7 @@
                             },
                             "scopes": [
                                 "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.metadata",
                                 "https://www.googleapis.com/auth/gmail.modify",
                                 "https://www.googleapis.com/auth/gmail.readonly"
                             ]
@@ -2136,7 +2149,7 @@
             }
         }
     },
-    "revision": "20160711",
+    "revision": "20161019",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AutoForwarding": {
@@ -2804,7 +2817,7 @@
                     "type": "string"
                 },
                 "data": {
-                    "description": "The body data of a MIME message part. May be empty for MIME container types that have no message body or when the body data is sent as a separate attachment. An attachment ID is present if the body data is contained in a separate attachment.",
+                    "description": "The body data of a MIME message part as a base64url encoded string. May be empty for MIME container types that have no message body or when the body data is sent as a separate attachment. An attachment ID is present if the body data is contained in a separate attachment.",
                     "format": "byte",
                     "type": "string"
                 },
@@ -2938,7 +2951,7 @@
             "type": "object"
         },
         "SendAs": {
-            "description": "Settings associated with a send-as alias, which can be either the primary login address associated with the account or a custom \"from\" address. Send-as aliases correspond to the \"Send Mail As\" feature in the web interface. See  for more details.",
+            "description": "Settings associated with a send-as alias, which can be either the primary login address associated with the account or a custom \"from\" address. Send-as aliases correspond to the \"Send Mail As\" feature in the web interface.",
             "id": "SendAs",
             "properties": {
                 "displayName": {
@@ -2970,7 +2983,7 @@
                     "description": "An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service. This setting only applies to custom \"from\" aliases."
                 },
                 "treatAsAlias": {
-                    "description": "Whether Gmail should treat this address as an alias for the user's primary email address. See  for more details. This setting only applies to custom \"from\" aliases.",
+                    "description": "Whether Gmail should  treat this address as an alias for the user's primary email address. This setting only applies to custom \"from\" aliases.",
                     "type": "boolean"
                 },
                 "verificationStatus": {
@@ -3058,7 +3071,7 @@
             "type": "object"
         },
         "VacationSettings": {
-            "description": "Vacation auto-reply settings for an account. These settings correspond to the \"Vacation responder\" feature in the web interface. See  for more details.",
+            "description": "Vacation auto-reply settings for an account. These settings correspond to the \"Vacation responder\" feature in the web interface.",
             "id": "VacationSettings",
             "properties": {
                 "enableAutoReply": {

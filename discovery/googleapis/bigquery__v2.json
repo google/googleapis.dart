@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Ib6OxmyUT7luxrAe5VQ1tJgZykA\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/38ec4LBichi45rs7Z88p5kE7xpM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -197,7 +197,7 @@
                             "type": "boolean"
                         },
                         "filter": {
-                            "description": "An expression for filtering the results of the request by label. The syntax is \"labels.[:]\". Multiple filters can be ANDed together by connecting with a space. Example: \"labels.department:receiving labels.active\". See https://cloud.google.com/bigquery/docs/labeling-datasets#filtering_datasets_using_labels for details.",
+                            "description": "An expression for filtering the results of the request by label. The syntax is \"labels.<name>[:<value>]\". Multiple filters can be ANDed together by connecting with a space. Example: \"labels.department:receiving labels.active\". See Filtering datasets using labels for details.",
                             "location": "query",
                             "type": "string"
                         },
@@ -323,7 +323,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "project/{projectId}/jobs/{jobId}/cancel",
+                    "path": "projects/{projectId}/jobs/{jobId}/cancel",
                     "response": {
                         "$ref": "JobCancelResponse"
                     },
@@ -936,7 +936,7 @@
             }
         }
     },
-    "revision": "20160822",
+    "revision": "20161029",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -1127,7 +1127,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "[Experimental] The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. Label keys and values can be no longer than 63 characters, can only contain letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and must be unique within a dataset. Both keys and values are additionally constrained to be <= 128 bytes in size.",
+                    "description": "[Experimental] The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Labeling Datasets for more information.",
                     "type": "object"
                 },
                 "lastModifiedTime": {
@@ -1531,6 +1531,13 @@
                     "$ref": "JobConfigurationExtract",
                     "description": "[Pick one] Configures an extract job."
                 },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "[Experimental] The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and must be unique within a dataset. Both keys and values are additionally constrained to be <= 128 bytes in size.",
+                    "type": "object"
+                },
                 "load": {
                     "$ref": "JobConfigurationLoad",
                     "description": "[Pick one] Configures a load job."
@@ -1727,14 +1734,14 @@
                     "type": "string"
                 },
                 "queryParameters": {
-                    "description": "[Experimental] Query parameters for Standard SQL queries.",
+                    "description": "Query parameters for standard SQL queries.",
                     "items": {
                         "$ref": "QueryParameter"
                     },
                     "type": "array"
                 },
                 "schemaUpdateOptions": {
-                    "description": "[Experimental] Allows the schema of the desitination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
+                    "description": "[Experimental] Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
                     "items": {
                         "type": "string"
                     },
@@ -1748,7 +1755,7 @@
                     "type": "object"
                 },
                 "useLegacySql": {
-                    "description": "[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and flattenResults is false.",
+                    "description": "Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and flattenResults is false.",
                     "type": "boolean"
                 },
                 "useQueryCache": {
@@ -2183,11 +2190,11 @@
                     "type": "array"
                 },
                 "structValues": {
-                    "description": "[Optional] The struct field values, in order of the struct type's declaration.",
-                    "items": {
+                    "additionalProperties": {
                         "$ref": "QueryParameterValue"
                     },
-                    "type": "array"
+                    "description": "[Optional] The struct field values, in order of the struct type's declaration.",
+                    "type": "object"
                 },
                 "value": {
                     "description": "[Optional] The value of this value, if a simple scalar type.",
@@ -2248,7 +2255,7 @@
                 },
                 "useLegacySql": {
                     "default": "true",
-                    "description": "[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and flattenResults is false.",
+                    "description": "Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and flattenResults is false.",
                     "type": "boolean"
                 },
                 "useQueryCache": {
@@ -2568,7 +2575,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field contains a nested schema).",
+                    "description": "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, FLOAT, BOOLEAN, TIMESTAMP, DATE, TIME, DATETIME, or RECORD (where RECORD indicates that the field contains a nested schema).",
                     "type": "string"
                 }
             },
@@ -2724,7 +2731,7 @@
                     "type": "string"
                 },
                 "useLegacySql": {
-                    "description": "[Experimental] Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.",
+                    "description": "Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.",
                     "type": "boolean"
                 },
                 "userDefinedFunctionResources": {

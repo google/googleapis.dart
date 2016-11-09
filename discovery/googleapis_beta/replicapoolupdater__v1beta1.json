@@ -20,10 +20,10 @@
     "basePath": "/replicapoolupdater/v1beta1/projects/",
     "baseUrl": "https://www.googleapis.com/replicapoolupdater/v1beta1/projects/",
     "batchPath": "batch",
-    "description": "Updates groups of Compute Engine instances.",
+    "description": "[Deprecated. Please use compute.instanceGroupManagers.update method. replicapoolupdater API will be disabled after December 30th, 2016] Updates groups of Compute Engine instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Qa39yJM3yH1r8biVjTDz07Q6Imo\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/P5_iUYh8_v_wVwon8OoBQjkpoLM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -527,7 +527,7 @@
             }
         }
     },
-    "revision": "20160229",
+    "revision": "20161003",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "InstanceUpdate": {

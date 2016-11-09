@@ -1,4 +1,13 @@
 {
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/firebase": {
+                    "description": "View and administer all your Firebase data and settings"
+                }
+            }
+        }
+    },
     "basePath": "/identitytoolkit/v3/relyingparty/",
     "baseUrl": "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
     "batchPath": "batch",
@@ -6,7 +15,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/hUSUQ1FCOLm-WaxWC_MbF3f27YE\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/RUOtwHGdsl6sx4SfIX3bJXLVQr0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -99,7 +108,10 @@
                     },
                     "response": {
                         "$ref": "DownloadAccountResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/firebase"
+                    ]
                 },
                 "getAccountInfo": {
                     "description": "Returns the account info.",
@@ -234,7 +246,10 @@
                     },
                     "response": {
                         "$ref": "UploadAccountResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/firebase"
+                    ]
                 },
                 "verifyAssertion": {
                     "description": "Verifies the assertion returned by the IdP.",
@@ -275,7 +290,7 @@
             }
         }
     },
-    "revision": "20160812",
+    "revision": "20161024",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -470,6 +485,14 @@
                     "description": "The URI to which the IDP redirects the user after the federated login flow.",
                     "type": "string"
                 },
+                "customParameter": {
+                    "additionalProperties": {
+                        "description": "The customized query parameter.",
+                        "type": "string"
+                    },
+                    "description": "The query parameter that client can customize by themselves in auth url. The following parameters are reserved for server so that they cannot be customized by clients: client_id, response_type, scope, redirect_uri, state, oauth_token.",
+                    "type": "object"
+                },
                 "hostedDomain": {
                     "description": "The hosted domain to restrict sign-in to accounts at that domain for Google Apps hosted accounts.",
                     "type": "string"
@@ -598,6 +621,9 @@
                 "changeEmailTemplate": {
                     "$ref": "EmailTemplate",
                     "description": "Change email template."
+                },
+                "dynamicLinksDomain": {
+                    "type": "string"
                 },
                 "enableAnonymousUser": {
                     "description": "Whether anonymous user is enabled.",
@@ -875,6 +901,10 @@
                     "description": "Response to the captcha.",
                     "type": "string"
                 },
+                "disabled": {
+                    "description": "Whether to disable the user. Only can be used by service account.",
+                    "type": "boolean"
+                },
                 "displayName": {
                     "description": "The name of the user.",
                     "type": "string"
@@ -882,6 +912,10 @@
                 "email": {
                     "description": "The email of the user.",
                     "type": "string"
+                },
+                "emailVerified": {
+                    "description": "Mark the email as verified or not. Only can be used by service account.",
+                    "type": "boolean"
                 },
                 "idToken": {
                     "description": "The GITKit token of the authenticated user.",
@@ -894,6 +928,10 @@
                 "password": {
                     "description": "The new password of the user.",
                     "type": "string"
+                },
+                "photoUrl": {
+                    "description": "The photo url of the user.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -902,6 +940,10 @@
             "description": "Request to upload user account in batch.",
             "id": "IdentitytoolkitRelyingpartyUploadAccountRequest",
             "properties": {
+                "allowOverwrite": {
+                    "description": "Whether allow overwrite existing account when user local_id exists.",
+                    "type": "boolean"
+                },
                 "delegatedProjectNumber": {
                     "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
                     "format": "int64",
@@ -926,9 +968,17 @@
                     "format": "byte",
                     "type": "string"
                 },
+                "sanityCheck": {
+                    "description": "If true, backend will do sanity check(including duplicate email and federated id) when uploading account.",
+                    "type": "boolean"
+                },
                 "signerKey": {
                     "description": "The key for to hash the password.",
                     "format": "byte",
+                    "type": "string"
+                },
+                "targetProjectId": {
+                    "description": "Specify which project (field value is actually project id) to operate. Only used when provided credential.",
                     "type": "string"
                 },
                 "users": {
@@ -1137,12 +1187,20 @@
             "id": "ResetPasswordResponse",
             "properties": {
                 "email": {
-                    "description": "The user's email.",
+                    "description": "The user's email. If the out-of-band code is for email recovery, the user's original email.",
                     "type": "string"
                 },
                 "kind": {
                     "default": "identitytoolkit#ResetPasswordResponse",
                     "description": "The fixed string \"identitytoolkit#ResetPasswordResponse\".",
+                    "type": "string"
+                },
+                "newEmail": {
+                    "description": "If the out-of-band code is for email recovery, the user's new email.",
+                    "type": "string"
+                },
+                "requestType": {
+                    "description": "The request type.",
                     "type": "string"
                 }
             },
@@ -1299,6 +1357,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "customAuth": {
+                    "description": "Whether the user is authenticated by the developer.",
+                    "type": "boolean"
+                },
                 "disabled": {
                     "description": "Whether the user is disabled.",
                     "type": "boolean"
@@ -1366,12 +1428,8 @@
                                 "description": "User's raw identifier directly returned from IDP.",
                                 "type": "string"
                             },
-                            "rawUserInfo": {
-                                "description": "Raw IDP-returned user info.",
-                                "type": "string"
-                            },
                             "screenName": {
-                                "description": "User's screen name at Twitter.",
+                                "description": "User's screen name at Twitter or login name at Github.",
                                 "type": "string"
                             }
                         },
@@ -1379,13 +1437,17 @@
                     },
                     "type": "array"
                 },
+                "rawPassword": {
+                    "description": "The user's plain text password.",
+                    "type": "string"
+                },
                 "salt": {
                     "description": "The user's password salt.",
                     "format": "byte",
                     "type": "string"
                 },
                 "screenName": {
-                    "description": "User's screen name at Twitter.",
+                    "description": "User's screen name at Twitter or login name at Github.",
                     "type": "string"
                 },
                 "validSince": {
@@ -1549,7 +1611,7 @@
                     "type": "string"
                 },
                 "screenName": {
-                    "description": "The screen_name of a Twitter user.",
+                    "description": "The screen_name of a Twitter user or the login name at Github.",
                     "type": "string"
                 },
                 "timeZone": {

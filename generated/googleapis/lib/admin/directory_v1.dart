@@ -324,6 +324,55 @@ class ChromeosdevicesResourceApi {
       _requester = client;
 
   /**
+   * Take action on Chrome OS Device
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customerId] - Immutable id of the Google Apps account
+   *
+   * [resourceId] - Immutable id of Chrome OS Device
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future action(ChromeOsDeviceAction request, core.String customerId, core.String resourceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if (resourceId == null) {
+      throw new core.ArgumentError("Parameter resourceId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/devices/chromeos/' + commons.Escaper.ecapeVariable('$resourceId') + '/action';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
    * Retrieve Chrome OS Device
    *
    * Request parameters:
@@ -5671,6 +5720,38 @@ class ChromeOsDevice {
 }
 
 /**
+ * JSON request template for firing actions on ChromeOs Device in Directory
+ * Devices API.
+ */
+class ChromeOsDeviceAction {
+  /** Action to be taken on the ChromeOs Device */
+  core.String action;
+  core.String deprovisionReason;
+
+  ChromeOsDeviceAction();
+
+  ChromeOsDeviceAction.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("deprovisionReason")) {
+      deprovisionReason = _json["deprovisionReason"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (deprovisionReason != null) {
+      _json["deprovisionReason"] = deprovisionReason;
+    }
+    return _json;
+  }
+}
+
+/**
  * JSON response template for List Chrome OS Devices operation in Directory API.
  */
 class ChromeOsDevices {
@@ -6443,6 +6524,10 @@ class MobileDevice {
   core.List<MobileDeviceApplications> applications;
   /** Mobile Device Baseband version (Read-only) */
   core.String basebandVersion;
+  /** Mobile Device Bootloader version (Read-only) */
+  core.String bootloaderVersion;
+  /** Mobile Device Brand (Read-only) */
+  core.String brand;
   /** Mobile Device Build number (Read-only) */
   core.String buildNumber;
   /** The default locale used on the Mobile Device (Read-only) */
@@ -6453,8 +6538,12 @@ class MobileDevice {
   core.String deviceCompromisedStatus;
   /** Mobile Device serial number (Read-only) */
   core.String deviceId;
+  /** DevicePasswordStatus (Read-only) */
+  core.String devicePasswordStatus;
   /** List of owner user's email addresses (Read-only) */
   core.List<core.String> email;
+  /** Mobile Device Encryption Status (Read-only) */
+  core.String encryptionStatus;
   /** ETag of the resource. */
   core.String etag;
   /**
@@ -6462,6 +6551,8 @@ class MobileDevice {
    * the Google Apps administrator control panel (Read-only)
    */
   core.DateTime firstSync;
+  /** Mobile Device Hardware (Read-only) */
+  core.String hardware;
   /** Mobile Device Hardware Id (Read-only) */
   core.String hardwareId;
   /** Mobile Device IMEI number (Read-only) */
@@ -6480,6 +6571,8 @@ class MobileDevice {
    * (Read-only)
    */
   core.bool managedAccountIsOnOwnerProfile;
+  /** Mobile Device manufacturer (Read-only) */
+  core.String manufacturer;
   /** Mobile Device MEID number (Read-only) */
   core.String meid;
   /** Name of the model of the device */
@@ -6492,8 +6585,14 @@ class MobileDevice {
   core.String os;
   /** List of accounts added on device (Read-only) */
   core.List<core.String> otherAccountsInfo;
+  /** DMAgentPermission (Read-only) */
+  core.String privilege;
+  /** Mobile Device release version version (Read-only) */
+  core.String releaseVersion;
   /** Unique identifier of Mobile Device (Read-only) */
   core.String resourceId;
+  /** Mobile Device Security patch level (Read-only) */
+  core.String securityPatchLevel;
   /** Mobile Device SSN or Serial Number (Read-only) */
   core.String serialNumber;
   /** Status of the device (Read-only) */
@@ -6521,6 +6620,12 @@ class MobileDevice {
     if (_json.containsKey("basebandVersion")) {
       basebandVersion = _json["basebandVersion"];
     }
+    if (_json.containsKey("bootloaderVersion")) {
+      bootloaderVersion = _json["bootloaderVersion"];
+    }
+    if (_json.containsKey("brand")) {
+      brand = _json["brand"];
+    }
     if (_json.containsKey("buildNumber")) {
       buildNumber = _json["buildNumber"];
     }
@@ -6536,14 +6641,23 @@ class MobileDevice {
     if (_json.containsKey("deviceId")) {
       deviceId = _json["deviceId"];
     }
+    if (_json.containsKey("devicePasswordStatus")) {
+      devicePasswordStatus = _json["devicePasswordStatus"];
+    }
     if (_json.containsKey("email")) {
       email = _json["email"];
+    }
+    if (_json.containsKey("encryptionStatus")) {
+      encryptionStatus = _json["encryptionStatus"];
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("firstSync")) {
       firstSync = core.DateTime.parse(_json["firstSync"]);
+    }
+    if (_json.containsKey("hardware")) {
+      hardware = _json["hardware"];
     }
     if (_json.containsKey("hardwareId")) {
       hardwareId = _json["hardwareId"];
@@ -6563,6 +6677,9 @@ class MobileDevice {
     if (_json.containsKey("managedAccountIsOnOwnerProfile")) {
       managedAccountIsOnOwnerProfile = _json["managedAccountIsOnOwnerProfile"];
     }
+    if (_json.containsKey("manufacturer")) {
+      manufacturer = _json["manufacturer"];
+    }
     if (_json.containsKey("meid")) {
       meid = _json["meid"];
     }
@@ -6581,8 +6698,17 @@ class MobileDevice {
     if (_json.containsKey("otherAccountsInfo")) {
       otherAccountsInfo = _json["otherAccountsInfo"];
     }
+    if (_json.containsKey("privilege")) {
+      privilege = _json["privilege"];
+    }
+    if (_json.containsKey("releaseVersion")) {
+      releaseVersion = _json["releaseVersion"];
+    }
     if (_json.containsKey("resourceId")) {
       resourceId = _json["resourceId"];
+    }
+    if (_json.containsKey("securityPatchLevel")) {
+      securityPatchLevel = _json["securityPatchLevel"];
     }
     if (_json.containsKey("serialNumber")) {
       serialNumber = _json["serialNumber"];
@@ -6618,6 +6744,12 @@ class MobileDevice {
     if (basebandVersion != null) {
       _json["basebandVersion"] = basebandVersion;
     }
+    if (bootloaderVersion != null) {
+      _json["bootloaderVersion"] = bootloaderVersion;
+    }
+    if (brand != null) {
+      _json["brand"] = brand;
+    }
     if (buildNumber != null) {
       _json["buildNumber"] = buildNumber;
     }
@@ -6633,14 +6765,23 @@ class MobileDevice {
     if (deviceId != null) {
       _json["deviceId"] = deviceId;
     }
+    if (devicePasswordStatus != null) {
+      _json["devicePasswordStatus"] = devicePasswordStatus;
+    }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (encryptionStatus != null) {
+      _json["encryptionStatus"] = encryptionStatus;
     }
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (firstSync != null) {
       _json["firstSync"] = (firstSync).toIso8601String();
+    }
+    if (hardware != null) {
+      _json["hardware"] = hardware;
     }
     if (hardwareId != null) {
       _json["hardwareId"] = hardwareId;
@@ -6660,6 +6801,9 @@ class MobileDevice {
     if (managedAccountIsOnOwnerProfile != null) {
       _json["managedAccountIsOnOwnerProfile"] = managedAccountIsOnOwnerProfile;
     }
+    if (manufacturer != null) {
+      _json["manufacturer"] = manufacturer;
+    }
     if (meid != null) {
       _json["meid"] = meid;
     }
@@ -6678,8 +6822,17 @@ class MobileDevice {
     if (otherAccountsInfo != null) {
       _json["otherAccountsInfo"] = otherAccountsInfo;
     }
+    if (privilege != null) {
+      _json["privilege"] = privilege;
+    }
+    if (releaseVersion != null) {
+      _json["releaseVersion"] = releaseVersion;
+    }
     if (resourceId != null) {
       _json["resourceId"] = resourceId;
+    }
+    if (securityPatchLevel != null) {
+      _json["securityPatchLevel"] = securityPatchLevel;
     }
     if (serialNumber != null) {
       _json["serialNumber"] = serialNumber;

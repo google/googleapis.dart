@@ -93,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/tVkq2fforoBT9yvJW6dzQX6ja6Q\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/iUklLG6kJseJVFl-uZaHVaj7V_o\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -259,6 +259,36 @@
         },
         "chromeosdevices": {
             "methods": {
+                "action": {
+                    "description": "Take action on Chrome OS Device",
+                    "httpMethod": "POST",
+                    "id": "directory.chromeosdevices.action",
+                    "parameterOrder": [
+                        "customerId",
+                        "resourceId"
+                    ],
+                    "parameters": {
+                        "customerId": {
+                            "description": "Immutable id of the Google Apps account",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "resourceId": {
+                            "description": "Immutable id of Chrome OS Device",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "customer/{customerId}/devices/chromeos/{resourceId}/action",
+                    "request": {
+                        "$ref": "ChromeOsDeviceAction"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/admin.directory.device.chromeos"
+                    ]
+                },
                 "get": {
                     "description": "Retrieve Chrome OS Device",
                     "httpMethod": "GET",
@@ -3393,7 +3423,7 @@
             }
         }
     },
-    "revision": "20160824",
+    "revision": "20161020",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -3769,6 +3799,25 @@
                 "willAutoRenew": {
                     "description": "Will Chromebook auto renew after support end date (Read-only)",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "ChromeOsDeviceAction": {
+            "description": "JSON request template for firing actions on ChromeOs Device in Directory Devices API.",
+            "id": "ChromeOsDeviceAction",
+            "properties": {
+                "action": {
+                    "annotations": {
+                        "required": [
+                            "directory.chromeosdevices.action"
+                        ]
+                    },
+                    "description": "Action to be taken on the ChromeOs Device",
+                    "type": "string"
+                },
+                "deprovisionReason": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4212,6 +4261,14 @@
                     "description": "Mobile Device Baseband version (Read-only)",
                     "type": "string"
                 },
+                "bootloaderVersion": {
+                    "description": "Mobile Device Bootloader version (Read-only)",
+                    "type": "string"
+                },
+                "brand": {
+                    "description": "Mobile Device Brand (Read-only)",
+                    "type": "string"
+                },
                 "buildNumber": {
                     "description": "Mobile Device Build number (Read-only)",
                     "type": "string"
@@ -4232,12 +4289,20 @@
                     "description": "Mobile Device serial number (Read-only)",
                     "type": "string"
                 },
+                "devicePasswordStatus": {
+                    "description": "DevicePasswordStatus (Read-only)",
+                    "type": "string"
+                },
                 "email": {
                     "description": "List of owner user's email addresses (Read-only)",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "encryptionStatus": {
+                    "description": "Mobile Device Encryption Status (Read-only)",
+                    "type": "string"
                 },
                 "etag": {
                     "description": "ETag of the resource.",
@@ -4246,6 +4311,10 @@
                 "firstSync": {
                     "description": "Date and time the device was first synchronized with the policy settings in the Google Apps administrator control panel (Read-only)",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "hardware": {
+                    "description": "Mobile Device Hardware (Read-only)",
                     "type": "string"
                 },
                 "hardwareId": {
@@ -4273,6 +4342,10 @@
                 "managedAccountIsOnOwnerProfile": {
                     "description": "Boolean indicating if this account is on owner/primary profile or not (Read-only)",
                     "type": "boolean"
+                },
+                "manufacturer": {
+                    "description": "Mobile Device manufacturer (Read-only)",
+                    "type": "string"
                 },
                 "meid": {
                     "description": "Mobile Device MEID number (Read-only)",
@@ -4304,8 +4377,21 @@
                     },
                     "type": "array"
                 },
+                "privilege": {
+                    "description": "DMAgentPermission (Read-only)",
+                    "type": "string"
+                },
+                "releaseVersion": {
+                    "description": "Mobile Device release version version (Read-only)",
+                    "type": "string"
+                },
                 "resourceId": {
                     "description": "Unique identifier of Mobile Device (Read-only)",
+                    "type": "string"
+                },
+                "securityPatchLevel": {
+                    "description": "Mobile Device Security patch level (Read-only)",
+                    "format": "int64",
                     "type": "string"
                 },
                 "serialNumber": {

@@ -17,7 +17,7 @@
     "description": "Manipulates events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/UbiGys_PyW9seTn5l9_u3r7To6Q\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/2U9ft_rzicle5SEtmrSYamT-3rc\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -1021,6 +1021,7 @@
                             "type": "integer"
                         },
                         "maxResults": {
+                            "default": "250",
                             "description": "Maximum number of events returned on one result page. By default the value is 250 events. The page size can never be larger than 2500 events. Optional.",
                             "format": "int32",
                             "location": "query",
@@ -1335,6 +1336,7 @@
                             "type": "integer"
                         },
                         "maxResults": {
+                            "default": "250",
                             "description": "Maximum number of events returned on one result page. By default the value is 250 events. The page size can never be larger than 2500 events. Optional.",
                             "format": "int32",
                             "location": "query",
@@ -1555,7 +1557,7 @@
             }
         }
     },
-    "revision": "20160816",
+    "revision": "20161030",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

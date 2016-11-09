@@ -18,7 +18,7 @@
     "description": "Accesses AdSense publishers' inventory and generates performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/management/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/gVlempXU-jveKW5zKVMJ2EZH5hs\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/l48lrYuaANUmsK7grrYWpT7szZA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1624,7 +1624,7 @@
             }
         }
     },
-    "revision": "20160824",
+    "revision": "20161105",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1789,7 +1789,7 @@
                     "type": "object"
                 },
                 "corners": {
-                    "description": "The style of the corners in the ad.",
+                    "description": "The style of the corners in the ad (deprecated: never populated, ignored).",
                     "type": "string"
                 },
                 "font": {

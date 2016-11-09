@@ -78,7 +78,7 @@ class ProjectsResourceApi {
    * [name] - Name of the project.
    *
    * Format: `projects/{project_id}`
-   * Value must have pattern "^projects/.*$".
+   * Value must have pattern "^projects/.+$".
    *
    * Completes with a [TestRulesetResponse].
    *
@@ -156,7 +156,7 @@ class ProjectsReleasesResourceApi {
    * [name] - Resource name for the project which owns this `Release`.
    *
    * Format: `projects/{project_id}`
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [Release].
    *
@@ -201,7 +201,7 @@ class ProjectsReleasesResourceApi {
    * [name] - Resource name for the `Release` to delete.
    *
    * Format: `projects/{project_id}/releases/{release_id}`
-   * Value must have pattern "^projects/[^/] * / releases/.*$".
+   * Value must have pattern "^projects/[^/]+/releases/.+$".
    *
    * Completes with a [Empty].
    *
@@ -244,7 +244,7 @@ class ProjectsReleasesResourceApi {
    *
    *
    * Format: `projects/{project_id}/releases/{release_id}`
-   * Value must have pattern "^projects/[^/] * / releases/.*$".
+   * Value must have pattern "^projects/[^/]+/releases/.+$".
    *
    * Completes with a [Release].
    *
@@ -287,7 +287,7 @@ class ProjectsReleasesResourceApi {
    * [name] - Resource name for the project.
    *
    * Format: `projects/{project_id}`
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
    * Note: `page_size` is just a hint and the service may choose to load less
@@ -399,7 +399,7 @@ class ProjectsReleasesResourceApi {
    * relationship between `Release` instances.
    *
    * Format: `projects/{project_id}/releases/{release_id}`
-   * Value must have pattern "^projects/[^/] * / releases/.*$".
+   * Value must have pattern "^projects/[^/]+/releases/.+$".
    *
    * Completes with a [Release].
    *
@@ -460,7 +460,7 @@ class ProjectsRulesetsResourceApi {
    * [name] - Resource name for Project which owns this `Ruleset`.
    *
    * Format: `projects/{project_id}`
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [Ruleset].
    *
@@ -507,7 +507,7 @@ class ProjectsRulesetsResourceApi {
    * [name] - Resource name for the ruleset to delete.
    *
    * Format: `projects/{project_id}/rulesets/{ruleset_id}`
-   * Value must have pattern "^projects/[^/] * / rulesets/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/rulesets/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -549,7 +549,7 @@ class ProjectsRulesetsResourceApi {
    * [name] - Resource name for the ruleset to get.
    *
    * Format: `projects/{project_id}/rulesets/{ruleset_id}`
-   * Value must have pattern "^projects/[^/] * / rulesets/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/rulesets/[^/]+$".
    *
    * Completes with a [Ruleset].
    *
@@ -595,7 +595,7 @@ class ProjectsRulesetsResourceApi {
    * [name] - Resource name for the project.
    *
    * Format: `projects/{project_id}`
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
    * Note: `page_size` is just a hint and the service may choose to load less

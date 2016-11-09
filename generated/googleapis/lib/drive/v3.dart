@@ -1892,6 +1892,12 @@ class RevisionsResourceApi {
    *
    * [fileId] - The ID of the file.
    *
+   * [pageSize] - The maximum number of revisions to return per page.
+   *
+   * [pageToken] - The token for continuing a previous list request on the next
+   * page. This should be set to the value of 'nextPageToken' from the previous
+   * response.
+   *
    * Completes with a [RevisionList].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1900,7 +1906,7 @@ class RevisionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RevisionList> list(core.String fileId) {
+  async.Future<RevisionList> list(core.String fileId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1910,6 +1916,12 @@ class RevisionsResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
@@ -2042,7 +2054,10 @@ class About {
    * A map of source MIME type to possible targets for all supported imports.
    */
   core.Map<core.String, core.List<core.String>> importFormats;
-  /** This is always drive#about. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#about".
+   */
   core.String kind;
   /** A map of maximum import sizes by MIME type, in bytes. */
   core.Map<core.String, core.String> maxImportSizes;
@@ -2129,7 +2144,10 @@ class Change {
   File file;
   /** The ID of the file which has changed. */
   core.String fileId;
-  /** This is always drive#change. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#change".
+   */
   core.String kind;
   /**
    * Whether the file has been removed from the view of the changes list, for
@@ -2184,7 +2202,10 @@ class Change {
 class ChangeList {
   /** The page of changes. */
   core.List<Change> changes;
-  /** This is always drive#changeList. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#changeList".
+   */
   core.String kind;
   /**
    * The starting page token for future changes. This will be present only if
@@ -2399,7 +2420,10 @@ class Comment {
   core.String htmlContent;
   /** The ID of the comment. */
   core.String id;
-  /** This is always drive#comment. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#comment".
+   */
   core.String kind;
   /**
    * The last time the comment or any of its replies was modified (RFC 3339
@@ -2504,7 +2528,10 @@ class Comment {
 class CommentList {
   /** The page of comments. */
   core.List<Comment> comments;
-  /** This is always drive#commentList. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#commentList".
+   */
   core.String kind;
   /**
    * The page token for the next page of comments. This will be absent if the
@@ -3002,7 +3029,10 @@ class File {
   FileImageMediaMetadata imageMediaMetadata;
   /** Whether the file was created or opened by the requesting app. */
   core.bool isAppAuthorized;
-  /** This is always drive#file. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#file".
+   */
   core.String kind;
   /** The last user to modify the file. */
   User lastModifyingUser;
@@ -3021,6 +3051,8 @@ class File {
    * About resource.
    */
   core.String mimeType;
+  /** Whether the file has been modified by this user. */
+  core.bool modifiedByMe;
   /** The last time the file was modified by the user (RFC 3339 date-time). */
   core.DateTime modifiedByMeTime;
   /**
@@ -3190,6 +3222,9 @@ class File {
     if (_json.containsKey("mimeType")) {
       mimeType = _json["mimeType"];
     }
+    if (_json.containsKey("modifiedByMe")) {
+      modifiedByMe = _json["modifiedByMe"];
+    }
     if (_json.containsKey("modifiedByMeTime")) {
       modifiedByMeTime = core.DateTime.parse(_json["modifiedByMeTime"]);
     }
@@ -3326,6 +3361,9 @@ class File {
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
     }
+    if (modifiedByMe != null) {
+      _json["modifiedByMe"] = modifiedByMe;
+    }
     if (modifiedByMeTime != null) {
       _json["modifiedByMeTime"] = (modifiedByMeTime).toIso8601String();
     }
@@ -3412,7 +3450,10 @@ class File {
 class FileList {
   /** The page of files. */
   core.List<File> files;
-  /** This is always drive#fileList. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#fileList".
+   */
   core.String kind;
   /**
    * The page token for the next page of files. This will be absent if the end
@@ -3453,7 +3494,10 @@ class FileList {
 class GeneratedIds {
   /** The IDs generated for the requesting user in the specified space. */
   core.List<core.String> ids;
-  /** This is always drive#generatedIds */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#generatedIds".
+   */
   core.String kind;
   /** The type of file that can be created with these IDs. */
   core.String space;
@@ -3512,7 +3556,10 @@ class Permission {
    * is published in User resources as permissionId.
    */
   core.String id;
-  /** This is always drive#permission. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#permission".
+   */
   core.String kind;
   /** A link to the user's profile photo, if available. */
   core.String photoLink;
@@ -3606,7 +3653,10 @@ class Permission {
 
 /** A list of permissions for a file. */
 class PermissionList {
-  /** This is always drive#permissionList. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#permissionList".
+   */
   core.String kind;
   /** The full list of permissions. */
   core.List<Permission> permissions;
@@ -3658,7 +3708,10 @@ class Reply {
   core.String htmlContent;
   /** The ID of the reply. */
   core.String id;
-  /** This is always drive#reply. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#reply".
+   */
   core.String kind;
   /** The last time the reply was modified (RFC 3339 date-time). */
   core.DateTime modifiedTime;
@@ -3730,7 +3783,10 @@ class Reply {
 
 /** A list of replies to a comment on a file. */
 class ReplyList {
-  /** This is always drive#replyList. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#replyList".
+   */
   core.String kind;
   /**
    * The page token for the next page of replies. This will be absent if the end
@@ -3781,7 +3837,10 @@ class Revision {
    * This field is only applicable to files with binary content in Drive.
    */
   core.bool keepForever;
-  /** This is always drive#revision. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#revision".
+   */
   core.String kind;
   /** The last user to modify this revision. */
   User lastModifyingUser;
@@ -3904,8 +3963,16 @@ class Revision {
 
 /** A list of revisions of a file. */
 class RevisionList {
-  /** This is always drive#revisionList. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#revisionList".
+   */
   core.String kind;
+  /**
+   * The page token for the next page of revisions. This will be absent if the
+   * end of the revisions list has been reached.
+   */
+  core.String nextPageToken;
   /** The full list of revisions. */
   core.List<Revision> revisions;
 
@@ -3914,6 +3981,9 @@ class RevisionList {
   RevisionList.fromJson(core.Map _json) {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("revisions")) {
       revisions = _json["revisions"].map((value) => new Revision.fromJson(value)).toList();
@@ -3925,6 +3995,9 @@ class RevisionList {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
     if (revisions != null) {
       _json["revisions"] = revisions.map((value) => (value).toJson()).toList();
     }
@@ -3933,7 +4006,10 @@ class RevisionList {
 }
 
 class StartPageToken {
-  /** This is always drive#startPageToken. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#startPageToken".
+   */
   core.String kind;
   /** The starting page token for listing changes. */
   core.String startPageToken;
@@ -3970,7 +4046,10 @@ class User {
    * if the user has not made their email address visible to the requester.
    */
   core.String emailAddress;
-  /** This is always drive#user. */
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#user".
+   */
   core.String kind;
   /** Whether this user is the requesting user. */
   core.bool me;

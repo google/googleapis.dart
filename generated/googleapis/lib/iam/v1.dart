@@ -27,6 +27,7 @@ class IamApi {
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  RolesResourceApi get roles => new RolesResourceApi(_requester);
 
   IamApi(http.Client client, {core.String rootUrl: "https://iam.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -52,14 +53,14 @@ class ProjectsServiceAccountsResourceApi {
       _requester = client;
 
   /**
-   * Creates a service account and returns it.
+   * Creates a ServiceAccount and returns it.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [name] - Required. The resource name of the project associated with the
-   * service accounts, such as "projects/123"
+   * service accounts, such as `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]*$".
    *
    * Completes with a [ServiceAccount].
@@ -98,14 +99,14 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Deletes a service acount.
+   * Deletes a ServiceAccount.
    *
    * Request parameters:
    *
-   * [name] - The resource name of the service account in the format
-   * "projects/{project}/serviceAccounts/{account}". Using '-' as a wildcard for
-   * the project, will infer the project from the account. The account value can
-   * be the email address or the unique_id of the service account.
+   * [name] - The resource name of the service account in the following format:
+   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
+   * the project will infer the project from the account. The `account` value
+   * can be the `email` address or the `unique_id` of the service account.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
    * Completes with a [Empty].
@@ -141,14 +142,14 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Gets a ServiceAccount
+   * Gets a ServiceAccount.
    *
    * Request parameters:
    *
-   * [name] - The resource name of the service account in the format
-   * "projects/{project}/serviceAccounts/{account}". Using '-' as a wildcard for
-   * the project, will infer the project from the account. The account value can
-   * be the email address or the unique_id of the service account.
+   * [name] - The resource name of the service account in the following format:
+   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
+   * the project will infer the project from the account. The `account` value
+   * can be the `email` address or the `unique_id` of the service account.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
    * Completes with a [ServiceAccount].
@@ -184,15 +185,13 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Returns the IAM access control policy for specified IAM resource.
+   * Returns the IAM access control policy for a ServiceAccount.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * requested. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `getIamPolicy` documentation.
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
    * Completes with a [Policy].
@@ -228,20 +227,20 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Lists service accounts for a project.
+   * Lists ServiceAccounts for a project.
    *
    * Request parameters:
    *
    * [name] - Required. The resource name of the project associated with the
-   * service accounts, such as "projects/123"
+   * service accounts, such as `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]*$".
    *
    * [pageSize] - Optional limit on the number of service accounts to include in
    * the response. Further accounts can subsequently be obtained by including
-   * the [ListServiceAccountsResponse.next_page_token] in a subsequent request.
+   * the ListServiceAccountsResponse.next_page_token in a subsequent request.
    *
    * [pageToken] - Optional pagination token returned in an earlier
-   * [ListServiceAccountsResponse.next_page_token].
+   * ListServiceAccountsResponse.next_page_token.
    *
    * Completes with a [ListServiceAccountsResponse].
    *
@@ -282,17 +281,15 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Sets the IAM access control policy for the specified IAM resource.
+   * Sets the IAM access control policy for a ServiceAccount.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * specified. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `setIamPolicy` documentation.
+   * specified. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
    * Completes with a [Policy].
@@ -331,16 +328,16 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Signs a blob using a service account.
+   * Signs a blob using a service account's system-managed private key.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [name] - The resource name of the service account in the format
-   * "projects/{project}/serviceAccounts/{account}". Using '-' as a wildcard for
-   * the project, will infer the project from the account. The account value can
-   * be the email address or the unique_id of the service account.
+   * [name] - The resource name of the service account in the following format:
+   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
+   * the project will infer the project from the account. The `account` value
+   * can be the `email` address or the `unique_id` of the service account.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
    * Completes with a [SignBlobResponse].
@@ -379,18 +376,16 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Tests the specified permissions against the IAM access control policy for
-   * the specified IAM resource.
+   * Tests the specified permissions against the IAM access control policy for a
+   * ServiceAccount.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
-   * requested. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `testIamPermissions` documentation.
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -429,19 +424,19 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Updates a service account. Currently, only the following fields are
-   * updatable: 'display_name' . The 'etag' is mandatory.
+   * Updates a ServiceAccount. Currently, only the following fields are
+   * updatable: `display_name` . The `etag` is mandatory.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [name] - The resource name of the service account in the format
-   * "projects/{project}/serviceAccounts/{account}". In requests using '-' as a
-   * wildcard for the project, will infer the project from the account and the
-   * account value can be the email address or the unique_id of the service
-   * account. In responses the resource name will always be in the format
-   * "projects/{project}/serviceAccounts/{email}".
+   * [name] - The resource name of the service account in the following format:
+   * `projects/{project}/serviceAccounts/{account}`. Requests using `-` as a
+   * wildcard for the project will infer the project from the `account` and the
+   * `account` value can be the `email` address or the `unique_id` of the
+   * service account. In responses the resource name will always be in the
+   * format `projects/{project}/serviceAccounts/{email}`.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
    * Completes with a [ServiceAccount].
@@ -489,16 +484,16 @@ class ProjectsServiceAccountsKeysResourceApi {
       _requester = client;
 
   /**
-   * Creates a service account key and returns it.
+   * Creates a ServiceAccountKey and returns it.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [name] - The resource name of the service account in the format
-   * "projects/{project}/serviceAccounts/{account}". Using '-' as a wildcard for
-   * the project, will infer the project from the account. The account value can
-   * be the email address or the unique_id of the service account.
+   * [name] - The resource name of the service account in the following format:
+   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
+   * the project will infer the project from the account. The `account` value
+   * can be the `email` address or the `unique_id` of the service account.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
    * Completes with a [ServiceAccountKey].
@@ -537,15 +532,15 @@ class ProjectsServiceAccountsKeysResourceApi {
   }
 
   /**
-   * Deletes a service account key.
+   * Deletes a ServiceAccountKey.
    *
    * Request parameters:
    *
-   * [name] - The resource name of the service account key in the format
-   * "projects/{project}/serviceAccounts/{account}/keys/{key}". Using '-' as a
-   * wildcard for the project will infer the project from the account. The
-   * account value can be the email address or the unique_id of the service
-   * account.
+   * [name] - The resource name of the service account key in the following
+   * format: `projects/{project}/serviceAccounts/{account}/keys/{key}`. Using
+   * `-` as a wildcard for the project will infer the project from the account.
+   * The `account` value can be the `email` address or the `unique_id` of the
+   * service account.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/] * /
    * keys/[^/]*$".
    *
@@ -586,13 +581,20 @@ class ProjectsServiceAccountsKeysResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The resource name of the service account key in the format
-   * "projects/{project}/serviceAccounts/{account}/keys/{key}". Using '-' as a
-   * wildcard for the project will infer the project from the account. The
-   * account value can be the email address or the unique_id of the service
-   * account.
+   * [name] - The resource name of the service account key in the following
+   * format: `projects/{project}/serviceAccounts/{account}/keys/{key}`. Using
+   * `-` as a wildcard for the project will infer the project from the account.
+   * The `account` value can be the `email` address or the `unique_id` of the
+   * service account.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/] * /
    * keys/[^/]*$".
+   *
+   * [publicKeyType] - The output format of the public key requested. X509_PEM
+   * is the default output format.
+   * Possible string values are:
+   * - "TYPE_NONE" : A TYPE_NONE.
+   * - "TYPE_X509_PEM_FILE" : A TYPE_X509_PEM_FILE.
+   * - "TYPE_RAW_PUBLIC_KEY" : A TYPE_RAW_PUBLIC_KEY.
    *
    * Completes with a [ServiceAccountKey].
    *
@@ -602,7 +604,7 @@ class ProjectsServiceAccountsKeysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ServiceAccountKey> get(core.String name) {
+  async.Future<ServiceAccountKey> get(core.String name, {core.String publicKeyType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -612,6 +614,9 @@ class ProjectsServiceAccountsKeysResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (publicKeyType != null) {
+      _queryParams["publicKeyType"] = [publicKeyType];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -627,18 +632,19 @@ class ProjectsServiceAccountsKeysResourceApi {
   }
 
   /**
-   * Lists service account keys
+   * Lists ServiceAccountKeys.
    *
    * Request parameters:
    *
-   * [name] - The resource name of the service account in the format
-   * "projects/{project}/serviceAccounts/{account}". Using '-' as a wildcard for
-   * the project, will infer the project from the account. The account value can
-   * be the email address or the unique_id of the service account.
+   * [name] - The resource name of the service account in the following format:
+   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
+   * the project, will infer the project from the account. The `account` value
+   * can be the `email` address or the `unique_id` of the service account.
    * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
    *
-   * [keyTypes] - The type of keys the user wants to list. If empty, all key
-   * types are included in the response. Duplicate key types are not allowed.
+   * [keyTypes] - Filters the types of keys the user wants to include in the
+   * list response. Duplicate key types are not allowed. If no key type is
+   * provided, all keys are returned.
    *
    * Completes with a [ListServiceAccountKeysResponse].
    *
@@ -678,6 +684,81 @@ class ProjectsServiceAccountsKeysResourceApi {
 }
 
 
+class RolesResourceApi {
+  final commons.ApiRequester _requester;
+
+  RolesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Queries roles that can be granted on a particular resource. A role is
+   * grantable if it can be used as the role in a binding for a policy for that
+   * resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [QueryGrantableRolesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<QueryGrantableRolesResponse> queryGrantableRoles(QueryGrantableRolesRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/roles:queryGrantableRoles';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new QueryGrantableRolesResponse.fromJson(data));
+  }
+
+}
+
+
+
+/**
+ * Audit log information specific to Cloud IAM. This message is serialized as an
+ * `Any` type in the `ServiceData` message of an `AuditLog` message.
+ */
+class AuditData {
+  /** Policy delta between the original policy and the newly set policy. */
+  PolicyDelta policyDelta;
+
+  AuditData();
+
+  AuditData.fromJson(core.Map _json) {
+    if (_json.containsKey("policyDelta")) {
+      policyDelta = new PolicyDelta.fromJson(_json["policyDelta"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (policyDelta != null) {
+      _json["policyDelta"] = (policyDelta).toJson();
+    }
+    return _json;
+  }
+}
 
 /** Associates `members` with a `role`. */
 class Binding {
@@ -726,131 +807,54 @@ class Binding {
   }
 }
 
-/** Write a Cloud Audit log */
-class CloudAuditOptions {
-
-  CloudAuditOptions();
-
-  CloudAuditOptions.fromJson(core.Map _json) {
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    return _json;
-  }
-}
-
-/** A condition to be met. */
-class Condition {
+/**
+ * One delta entry for Binding. Each individual change (only one member in each
+ * entry) to a binding will be a separate entry.
+ */
+class BindingDelta {
   /**
-   * Trusted attributes supplied by the IAM system.
+   * The action that was performed on a Binding. Required
    * Possible string values are:
-   * - "NO_ATTR" : A NO_ATTR.
-   * - "AUTHORITY" : A AUTHORITY.
-   * - "ATTRIBUTION" : A ATTRIBUTION.
+   * - "ACTION_UNSPECIFIED" : A ACTION_UNSPECIFIED.
+   * - "ADD" : A ADD.
+   * - "REMOVE" : A REMOVE.
    */
-  core.String iam;
+  core.String action;
   /**
-   * An operator to apply the subject with.
-   * Possible string values are:
-   * - "NO_OP" : A NO_OP.
-   * - "EQUALS" : A EQUALS.
-   * - "NOT_EQUALS" : A NOT_EQUALS.
-   * - "IN" : A IN.
-   * - "NOT_IN" : A NOT_IN.
-   * - "DISCHARGED" : A DISCHARGED.
+   * A single identity requesting access for a Cloud Platform resource. Follows
+   * the same format of Binding.members. Required
    */
-  core.String op;
-  /** Trusted attributes discharged by the service. */
-  core.String svc;
+  core.String member;
   /**
-   * Trusted attributes supplied by any service that owns resources and uses the
-   * IAM system for access control.
-   * Possible string values are:
-   * - "NO_ATTR" : A NO_ATTR.
-   * - "REGION" : A REGION.
-   * - "SERVICE" : A SERVICE.
-   * - "NAME" : A NAME.
-   * - "IP" : A IP.
+   * Role that is assigned to `members`. For example, `roles/viewer`,
+   * `roles/editor`, or `roles/owner`. Required
    */
-  core.String sys;
-  /** The object of the condition. Exactly one of these must be set. */
-  core.String value;
-  /** The objects of the condition. This is mutually exclusive with 'value'. */
-  core.List<core.String> values;
+  core.String role;
 
-  Condition();
+  BindingDelta();
 
-  Condition.fromJson(core.Map _json) {
-    if (_json.containsKey("iam")) {
-      iam = _json["iam"];
+  BindingDelta.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
     }
-    if (_json.containsKey("op")) {
-      op = _json["op"];
+    if (_json.containsKey("member")) {
+      member = _json["member"];
     }
-    if (_json.containsKey("svc")) {
-      svc = _json["svc"];
-    }
-    if (_json.containsKey("sys")) {
-      sys = _json["sys"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-    if (_json.containsKey("values")) {
-      values = _json["values"];
+    if (_json.containsKey("role")) {
+      role = _json["role"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (iam != null) {
-      _json["iam"] = iam;
+    if (action != null) {
+      _json["action"] = action;
     }
-    if (op != null) {
-      _json["op"] = op;
+    if (member != null) {
+      _json["member"] = member;
     }
-    if (svc != null) {
-      _json["svc"] = svc;
-    }
-    if (sys != null) {
-      _json["sys"] = sys;
-    }
-    if (value != null) {
-      _json["value"] = value;
-    }
-    if (values != null) {
-      _json["values"] = values;
-    }
-    return _json;
-  }
-}
-
-/** Options for counters */
-class CounterOptions {
-  /** The field value to attribute. */
-  core.String field;
-  /** The metric to update. */
-  core.String metric;
-
-  CounterOptions();
-
-  CounterOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = _json["field"];
-    }
-    if (_json.containsKey("metric")) {
-      metric = _json["metric"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (field != null) {
-      _json["field"] = field;
-    }
-    if (metric != null) {
-      _json["metric"] = metric;
+    if (role != null) {
+      _json["role"] = role;
     }
     return _json;
   }
@@ -859,7 +863,17 @@ class CounterOptions {
 /** The service account key create request. */
 class CreateServiceAccountKeyRequest {
   /**
-   * The type of the key requested. GOOGLE_CREDENTIALS is the default key type.
+   * Which type of key and algorithm to use for the key. The default is
+   * currently a 4K RSA key. However this may change in the future.
+   * Possible string values are:
+   * - "KEY_ALG_UNSPECIFIED" : A KEY_ALG_UNSPECIFIED.
+   * - "KEY_ALG_RSA_1024" : A KEY_ALG_RSA_1024.
+   * - "KEY_ALG_RSA_2048" : A KEY_ALG_RSA_2048.
+   */
+  core.String keyAlgorithm;
+  /**
+   * The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the
+   * default output format.
    * Possible string values are:
    * - "TYPE_UNSPECIFIED" : A TYPE_UNSPECIFIED.
    * - "TYPE_PKCS12_FILE" : A TYPE_PKCS12_FILE.
@@ -870,6 +884,9 @@ class CreateServiceAccountKeyRequest {
   CreateServiceAccountKeyRequest();
 
   CreateServiceAccountKeyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("keyAlgorithm")) {
+      keyAlgorithm = _json["keyAlgorithm"];
+    }
     if (_json.containsKey("privateKeyType")) {
       privateKeyType = _json["privateKeyType"];
     }
@@ -877,6 +894,9 @@ class CreateServiceAccountKeyRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (keyAlgorithm != null) {
+      _json["keyAlgorithm"] = keyAlgorithm;
+    }
     if (privateKeyType != null) {
       _json["privateKeyType"] = privateKeyType;
     }
@@ -888,14 +908,14 @@ class CreateServiceAccountKeyRequest {
 class CreateServiceAccountRequest {
   /**
    * Required. The account id that is used to generate the service account email
-   * address and a stable unique id. It is unique within a project, must be 1-63
-   * characters long, and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])
-   * to comply with RFC1035.
+   * address and a stable unique id. It is unique within a project, must be 6-30
+   * characters long, and match the regular expression
+   * `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
    */
   core.String accountId;
   /**
    * The ServiceAccount resource to create. Currently, only the following values
-   * are user assignable: display_name .
+   * are user assignable: `display_name` .
    */
   ServiceAccount serviceAccount;
 
@@ -918,20 +938,6 @@ class CreateServiceAccountRequest {
     if (serviceAccount != null) {
       _json["serviceAccount"] = (serviceAccount).toJson();
     }
-    return _json;
-  }
-}
-
-/** Write a Data Access (Gin) log */
-class DataAccessOptions {
-
-  DataAccessOptions();
-
-  DataAccessOptions.fromJson(core.Map _json) {
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
     return _json;
   }
 }
@@ -984,7 +990,7 @@ class ListServiceAccountsResponse {
   core.List<ServiceAccount> accounts;
   /**
    * To retrieve the next page of results, set
-   * [ListServiceAccountsRequest.page_token] to this value.
+   * ListServiceAccountsRequest.page_token to this value.
    */
   core.String nextPageToken;
 
@@ -1012,57 +1018,6 @@ class ListServiceAccountsResponse {
 }
 
 /**
- * Specifies what kind of log the caller must write Increment a streamz counter
- * with the specified metric and field names. Metric names should start with a
- * '/', generally be lowercase-only, and end in "_count". Field names should not
- * contain an initial slash. The actual exported metric names will have
- * "/iam/policy" prepended. Field names correspond to IAM request parameters and
- * field values are their respective values. At present only "iam_principal",
- * corresponding to IAMContext.principal, is supported. Examples: counter {
- * metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
- * /iam/policy/backend_debug_access_count {iam_principal=[value of
- * IAMContext.principal]} At this time we do not support: * multiple field names
- * (though this may be supported in the future) * decrementing the counter *
- * incrementing it by anything other than 1
- */
-class LogConfig {
-  /** Cloud audit options. */
-  CloudAuditOptions cloudAudit;
-  /** Counter options. */
-  CounterOptions counter;
-  /** Data access options. */
-  DataAccessOptions dataAccess;
-
-  LogConfig();
-
-  LogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudAudit")) {
-      cloudAudit = new CloudAuditOptions.fromJson(_json["cloudAudit"]);
-    }
-    if (_json.containsKey("counter")) {
-      counter = new CounterOptions.fromJson(_json["counter"]);
-    }
-    if (_json.containsKey("dataAccess")) {
-      dataAccess = new DataAccessOptions.fromJson(_json["dataAccess"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (cloudAudit != null) {
-      _json["cloudAudit"] = (cloudAudit).toJson();
-    }
-    if (counter != null) {
-      _json["counter"] = (counter).toJson();
-    }
-    if (dataAccess != null) {
-      _json["dataAccess"] = (dataAccess).toJson();
-    }
-    return _json;
-  }
-}
-
-/**
  * Defines an Identity and Access Management (IAM) policy. It is used to specify
  * access control policies for Cloud Platform resources. A `Policy` consists of
  * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
@@ -1070,7 +1025,7 @@ class LogConfig {
  * service accounts. A `role` is a named list of permissions defined by IAM.
  * **Example** { "bindings": [ { "role": "roles/owner", "members": [
  * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
- * "serviceAccount:my-other-app@appspot.gserviceaccount.com"] }, { "role":
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
  * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
  * of IAM and its features, see the [IAM developer's
  * guide](https://cloud.google.com/iam).
@@ -1101,7 +1056,6 @@ class Policy {
   void set etagAsBytes(core.List<core.int> _bytes) {
     etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  core.List<Rule> rules;
   /** Version of the `Policy`. The default version is 0. */
   core.int version;
 
@@ -1113,9 +1067,6 @@ class Policy {
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
-    }
-    if (_json.containsKey("rules")) {
-      rules = _json["rules"].map((value) => new Rule.fromJson(value)).toList();
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -1130,9 +1081,6 @@ class Policy {
     if (etag != null) {
       _json["etag"] = etag;
     }
-    if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
     if (version != null) {
       _json["version"] = version;
     }
@@ -1140,94 +1088,119 @@ class Policy {
   }
 }
 
-/** A rule to be applied in a Policy. */
-class Rule {
-  /**
-   * Required
-   * Possible string values are:
-   * - "NO_ACTION" : A NO_ACTION.
-   * - "ALLOW" : A ALLOW.
-   * - "ALLOW_WITH_LOG" : A ALLOW_WITH_LOG.
-   * - "DENY" : A DENY.
-   * - "DENY_WITH_LOG" : A DENY_WITH_LOG.
-   * - "LOG" : A LOG.
-   */
-  core.String action;
-  /** Additional restrictions that must be met */
-  core.List<Condition> conditions;
-  /** Human-readable description of the rule. */
-  core.String description;
-  /**
-   * The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of
-   * entries.
-   */
-  core.List<core.String> in_;
-  /**
-   * The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-   * that match the LOG action.
-   */
-  core.List<LogConfig> logConfig;
-  /**
-   * The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of
-   * entries. The format for in and not_in entries is the same as for members in
-   * a Binding (see google/iam/v1/policy.proto).
-   */
-  core.List<core.String> notIn;
-  /**
-   * A permission is a string of form '..' (e.g., 'storage.buckets.list'). A
-   * value of '*' matches all permissions, and a verb part of '*' (e.g.,
-   * 'storage.buckets.*') matches all verbs.
-   */
-  core.List<core.String> permissions;
+/** The difference delta between two policies. */
+class PolicyDelta {
+  /** The delta for Bindings between two policies. */
+  core.List<BindingDelta> bindingDeltas;
 
-  Rule();
+  PolicyDelta();
 
-  Rule.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
-    }
-    if (_json.containsKey("conditions")) {
-      conditions = _json["conditions"].map((value) => new Condition.fromJson(value)).toList();
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("in")) {
-      in_ = _json["in"];
-    }
-    if (_json.containsKey("logConfig")) {
-      logConfig = _json["logConfig"].map((value) => new LogConfig.fromJson(value)).toList();
-    }
-    if (_json.containsKey("notIn")) {
-      notIn = _json["notIn"];
-    }
-    if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
+  PolicyDelta.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingDeltas")) {
+      bindingDeltas = _json["bindingDeltas"].map((value) => new BindingDelta.fromJson(value)).toList();
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (action != null) {
-      _json["action"] = action;
+    if (bindingDeltas != null) {
+      _json["bindingDeltas"] = bindingDeltas.map((value) => (value).toJson()).toList();
     }
-    if (conditions != null) {
-      _json["conditions"] = conditions.map((value) => (value).toJson()).toList();
+    return _json;
+  }
+}
+
+/** The grantable role query request. */
+class QueryGrantableRolesRequest {
+  /**
+   * Required. The full resource name to query from the list of grantable roles.
+   * The name follows the Google Cloud Platform resource format. For example, a
+   * Cloud Platform project with id `my-project` will be named
+   * `//cloudresourcemanager.googleapis.com/projects/my-project`.
+   */
+  core.String fullResourceName;
+
+  QueryGrantableRolesRequest();
+
+  QueryGrantableRolesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fullResourceName")) {
+      fullResourceName = _json["fullResourceName"];
     }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fullResourceName != null) {
+      _json["fullResourceName"] = fullResourceName;
+    }
+    return _json;
+  }
+}
+
+/** The grantable role query response. */
+class QueryGrantableRolesResponse {
+  /** The list of matching roles. */
+  core.List<Role> roles;
+
+  QueryGrantableRolesResponse();
+
+  QueryGrantableRolesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("roles")) {
+      roles = _json["roles"].map((value) => new Role.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (roles != null) {
+      _json["roles"] = roles.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** A role in the Identity and Access Management API. */
+class Role {
+  /** Optional. A human-readable description for the role. */
+  core.String description;
+  /**
+   * The name of the role. When Role is used in CreateRole, the role name must
+   * not be set. When Role is used in output and other input such as UpdateRole,
+   * the role name is the complete path, e.g., roles/logging.viewer for curated
+   * roles and organizations/{organization-id}/roles/logging.viewer for custom
+   * roles.
+   */
+  core.String name;
+  /**
+   * Optional. A human-readable title for the role. Typically this is limited to
+   * 100 UTF-8 bytes.
+   */
+  core.String title;
+
+  Role();
+
+  Role.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
     if (description != null) {
       _json["description"] = description;
     }
-    if (in_ != null) {
-      _json["in"] = in_;
+    if (name != null) {
+      _json["name"] = name;
     }
-    if (logConfig != null) {
-      _json["logConfig"] = logConfig.map((value) => (value).toJson()).toList();
-    }
-    if (notIn != null) {
-      _json["notIn"] = notIn;
-    }
-    if (permissions != null) {
-      _json["permissions"] = permissions;
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }
@@ -1235,13 +1208,17 @@ class Rule {
 
 /**
  * A service account in the Identity and Access Management API. To create a
- * service account, you specify the project_id and account_id for the account.
- * The account_id is unique within the project, and used to generate the service
- * account email address and a stable unique id. All other methods can identify
- * accounts using the format "projects/{project}/serviceAccounts/{account}".
- * Using '-' as a wildcard for the project, will infer the project from the
- * account. The account value can be the email address or the unique_id of the
- * service account.
+ * service account, specify the `project_id` and the `account_id` for the
+ * account. The `account_id` is unique within the project, and is used to
+ * generate the service account email address and a stable `unique_id`. If the
+ * account already exists, the account's resource name is returned in
+ * util::Status's ResourceInfo.resource_name in the format of
+ * projects/{project}/serviceAccounts/{email}. The caller can use the name in
+ * other methods to access the account. All other methods can identify the
+ * service account using the format
+ * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
+ * the project will infer the project from the account. The `account` value can
+ * be the `email` address or the `unique_id` of the service account.
  */
 class ServiceAccount {
   /**
@@ -1249,7 +1226,7 @@ class ServiceAccount {
    * fewer than 100 UTF-8 bytes.
    */
   core.String displayName;
-  /** @OutputOnly Email address of the service account. */
+  /** @OutputOnly The email address of the service account. */
   core.String email;
   /** Used to perform a consistent read-modify-write. */
   core.String etag;
@@ -1261,12 +1238,12 @@ class ServiceAccount {
     etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
-   * The resource name of the service account in the format
-   * "projects/{project}/serviceAccounts/{account}". In requests using '-' as a
-   * wildcard for the project, will infer the project from the account and the
-   * account value can be the email address or the unique_id of the service
-   * account. In responses the resource name will always be in the format
-   * "projects/{project}/serviceAccounts/{email}".
+   * The resource name of the service account in the following format:
+   * `projects/{project}/serviceAccounts/{account}`. Requests using `-` as a
+   * wildcard for the project will infer the project from the `account` and the
+   * `account` value can be the `email` address or the `unique_id` of the
+   * service account. In responses the resource name will always be in the
+   * format `projects/{project}/serviceAccounts/{email}`.
    */
   core.String name;
   /**
@@ -1277,7 +1254,7 @@ class ServiceAccount {
   core.String oauth2ClientId;
   /** @OutputOnly The id of the project that owns the service account. */
   core.String projectId;
-  /** @OutputOnly unique and stable id of the service account. */
+  /** @OutputOnly The unique and stable id of the service account. */
   core.String uniqueId;
 
   ServiceAccount();
@@ -1334,17 +1311,33 @@ class ServiceAccount {
 }
 
 /**
- * Represents a service account key. A service account can have 0 or more key
- * pairs. The private keys for these are not stored by Google.
- * ServiceAccountKeys are immutable.
+ * Represents a service account key. A service account has two sets of
+ * key-pairs: user-managed, and system-managed. User-managed key-pairs can be
+ * created and deleted by users. Users are responsible for rotating these keys
+ * periodically to ensure security of their service accounts. Users retain the
+ * private key of these key-pairs, and Google retains ONLY the public key.
+ * System-managed key-pairs are managed automatically by Google, and rotated
+ * daily without user intervention. The private key never leaves Google's
+ * servers to maximize security. Public keys for all service accounts are also
+ * published at the OAuth2 Service Account API.
  */
 class ServiceAccountKey {
   /**
-   * The resource name of the service account key in the format
-   * "projects/{project}/serviceAccounts/{email}/keys/{key}".
+   * Specifies the algorithm (and possibly key size) for the key.
+   * Possible string values are:
+   * - "KEY_ALG_UNSPECIFIED" : A KEY_ALG_UNSPECIFIED.
+   * - "KEY_ALG_RSA_1024" : A KEY_ALG_RSA_1024.
+   * - "KEY_ALG_RSA_2048" : A KEY_ALG_RSA_2048.
+   */
+  core.String keyAlgorithm;
+  /**
+   * The resource name of the service account key in the following format
+   * `projects/{project}/serviceAccounts/{account}/keys/{key}`.
    */
   core.String name;
-  /** The key data. */
+  /**
+   * The private key data. Only provided in `CreateServiceAccountKey` responses.
+   */
   core.String privateKeyData;
   core.List<core.int> get privateKeyDataAsBytes {
     return convert.BASE64.decode(privateKeyData);
@@ -1354,13 +1347,27 @@ class ServiceAccountKey {
     privateKeyData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
-   * The type of the private key.
+   * The output format for the private key. Only provided in
+   * `CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or
+   * `ListServiceAccountKey` responses. Google never exposes system-managed
+   * private keys, and never retains user-managed private keys.
    * Possible string values are:
    * - "TYPE_UNSPECIFIED" : A TYPE_UNSPECIFIED.
    * - "TYPE_PKCS12_FILE" : A TYPE_PKCS12_FILE.
    * - "TYPE_GOOGLE_CREDENTIALS_FILE" : A TYPE_GOOGLE_CREDENTIALS_FILE.
    */
   core.String privateKeyType;
+  /**
+   * The public key data. Only provided in `GetServiceAccountKey` responses.
+   */
+  core.String publicKeyData;
+  core.List<core.int> get publicKeyDataAsBytes {
+    return convert.BASE64.decode(publicKeyData);
+  }
+
+  void set publicKeyDataAsBytes(core.List<core.int> _bytes) {
+    publicKeyData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
   /** The key can be used after this timestamp. */
   core.String validAfterTime;
   /** The key can be used before this timestamp. */
@@ -1369,6 +1376,9 @@ class ServiceAccountKey {
   ServiceAccountKey();
 
   ServiceAccountKey.fromJson(core.Map _json) {
+    if (_json.containsKey("keyAlgorithm")) {
+      keyAlgorithm = _json["keyAlgorithm"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1377,6 +1387,9 @@ class ServiceAccountKey {
     }
     if (_json.containsKey("privateKeyType")) {
       privateKeyType = _json["privateKeyType"];
+    }
+    if (_json.containsKey("publicKeyData")) {
+      publicKeyData = _json["publicKeyData"];
     }
     if (_json.containsKey("validAfterTime")) {
       validAfterTime = _json["validAfterTime"];
@@ -1388,6 +1401,9 @@ class ServiceAccountKey {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (keyAlgorithm != null) {
+      _json["keyAlgorithm"] = keyAlgorithm;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -1396,6 +1412,9 @@ class ServiceAccountKey {
     }
     if (privateKeyType != null) {
       _json["privateKeyType"] = privateKeyType;
+    }
+    if (publicKeyData != null) {
+      _json["publicKeyData"] = publicKeyData;
     }
     if (validAfterTime != null) {
       _json["validAfterTime"] = validAfterTime;
@@ -1435,7 +1454,7 @@ class SetIamPolicyRequest {
 
 /** The service account sign blob request. */
 class SignBlobRequest {
-  /** The bytes to sign */
+  /** The bytes to sign. */
   core.String bytesToSign;
   core.List<core.int> get bytesToSignAsBytes {
     return convert.BASE64.decode(bytesToSign);
@@ -1504,7 +1523,8 @@ class TestIamPermissionsRequest {
   /**
    * The set of permissions to check for the `resource`. Permissions with
    * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see IAM Overview.
+   * information see [IAM
+   * Overview](https://cloud.google.com/iam/docs/overview#permissions).
    */
   core.List<core.String> permissions;
 

@@ -32,7 +32,7 @@ class DnsApi {
   final commons.ApiRequester _requester;
 
   ChangesResourceApi get changes => new ChangesResourceApi(_requester);
-  DnskeysResourceApi get dnskeys => new DnskeysResourceApi(_requester);
+  DnsKeysResourceApi get dnsKeys => new DnsKeysResourceApi(_requester);
   ManagedZoneOperationsResourceApi get managedZoneOperations => new ManagedZoneOperationsResourceApi(_requester);
   ManagedZonesResourceApi get managedZones => new ManagedZonesResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
@@ -236,10 +236,10 @@ class ChangesResourceApi {
 }
 
 
-class DnskeysResourceApi {
+class DnsKeysResourceApi {
   final commons.ApiRequester _requester;
 
-  DnskeysResourceApi(commons.ApiRequester client) : 
+  DnsKeysResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**

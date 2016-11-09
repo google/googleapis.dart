@@ -30,6 +30,12 @@ class GmailApi {
   /** Manage mailbox labels */
   static const GmailLabelsScope = "https://www.googleapis.com/auth/gmail.labels";
 
+  /**
+   * View your email message metadata such as labels and headers, but not the
+   * email body
+   */
+  static const GmailMetadataScope = "https://www.googleapis.com/auth/gmail.metadata";
+
   /** View and modify but not delete your email */
   static const GmailModifyScope = "https://www.googleapis.com/auth/gmail.modify";
 
@@ -4081,10 +4087,10 @@ class MessagePartBody {
    */
   core.String attachmentId;
   /**
-   * The body data of a MIME message part. May be empty for MIME container types
-   * that have no message body or when the body data is sent as a separate
-   * attachment. An attachment ID is present if the body data is contained in a
-   * separate attachment.
+   * The body data of a MIME message part as a base64url encoded string. May be
+   * empty for MIME container types that have no message body or when the body
+   * data is sent as a separate attachment. An attachment ID is present if the
+   * body data is contained in a separate attachment.
    */
   core.String data;
   core.List<core.int> get dataAsBytes {
@@ -4311,8 +4317,7 @@ class Profile {
 /**
  * Settings associated with a send-as alias, which can be either the primary
  * login address associated with the account or a custom "from" address. Send-as
- * aliases correspond to the "Send Mail As" feature in the web interface. See
- * for more details.
+ * aliases correspond to the "Send Mail As" feature in the web interface.
  */
 class SendAs {
   /**
@@ -4361,9 +4366,8 @@ class SendAs {
    */
   SmtpMsa smtpMsa;
   /**
-   * Whether Gmail should treat this address as an alias for the user's primary
-   * email address. See  for more details. This setting only applies to custom
-   * "from" aliases.
+   * Whether Gmail should  treat this address as an alias for the user's primary
+   * email address. This setting only applies to custom "from" aliases.
    */
   core.bool treatAsAlias;
   /**
@@ -4559,7 +4563,7 @@ class Thread {
 
 /**
  * Vacation auto-reply settings for an account. These settings correspond to the
- * "Vacation responder" feature in the web interface. See  for more details.
+ * "Vacation responder" feature in the web interface.
  */
 class VacationSettings {
   /** Flag that controls whether Gmail automatically replies to messages. */

@@ -1794,8 +1794,7 @@ class AdStyle {
    */
   AdStyleColors colors;
   /**
-   * The style of the corners in the ad. Possible values are SQUARE,
-   * SLIGHTLY_ROUNDED and VERY_ROUNDED.
+   * The style of the corners in the ad (deprecated: never populated, ignored).
    */
   core.String corners;
   /** The font which is included in the style. */

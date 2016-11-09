@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Bw6HlPfCUqTIhF647hFuWCHD0c8\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/H86xtwTxBcxWtPGnqvHTnSt-xyM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -156,7 +156,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Creates a new backup run on demand.",
+                    "description": "Creates a new backup run on demand. This method is applicable only to Second Generation instances.",
                     "httpMethod": "POST",
                     "id": "sql.backupRuns.insert",
                     "parameterOrder": [
@@ -183,7 +183,11 @@
                     },
                     "response": {
                         "$ref": "Operation"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
                 },
                 "list": {
                     "description": "Lists all backup runs associated with a given instance and configuration in the reverse chronological order of the enqueued time.",
@@ -1440,7 +1444,7 @@
             }
         }
     },
-    "revision": "20160712",
+    "revision": "20161028",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -1693,6 +1697,10 @@
             "properties": {
                 "backendType": {
                     "description": "FIRST_GEN: Basic Cloud SQL instance that runs in a Google-managed container.\nSECOND_GEN: A newer Cloud SQL backend that runs in a Compute Engine VM.\nEXTERNAL: A MySQL server that is not managed by Google.",
+                    "type": "string"
+                },
+                "connectionName": {
+                    "description": "Connection name of the Cloud SQL instance used in connection strings.",
                     "type": "string"
                 },
                 "currentDiskSize": {

@@ -6214,6 +6214,13 @@ class Inventory {
    * Loyalty points that users receive after purchasing the item. Japan only.
    */
   LoyaltyPoints loyaltyPoints;
+  /**
+   * Store pickup information. Only supported for local inventory. Not setting
+   * pickup means "don't update" while setting it to the empty value ({} in
+   * JSON) means "delete". Otherwise, pickupMethod and pickupSla must be set
+   * together, unless pickupMethod is "not supported".
+   */
+  InventoryPickup pickup;
   /** The price of the product. */
   Price price;
   /**
@@ -6252,6 +6259,9 @@ class Inventory {
     if (_json.containsKey("loyaltyPoints")) {
       loyaltyPoints = new LoyaltyPoints.fromJson(_json["loyaltyPoints"]);
     }
+    if (_json.containsKey("pickup")) {
+      pickup = new InventoryPickup.fromJson(_json["pickup"]);
+    }
     if (_json.containsKey("price")) {
       price = new Price.fromJson(_json["price"]);
     }
@@ -6282,6 +6292,9 @@ class Inventory {
     }
     if (loyaltyPoints != null) {
       _json["loyaltyPoints"] = (loyaltyPoints).toJson();
+    }
+    if (pickup != null) {
+      _json["pickup"] = (pickup).toJson();
     }
     if (price != null) {
       _json["price"] = (price).toJson();
@@ -6453,6 +6466,44 @@ class InventoryCustomBatchResponseEntry {
   }
 }
 
+class InventoryPickup {
+  /**
+   * Whether store pickup is available for this offer and whether the pickup
+   * option should be shown as buy, reserve, or not supported. Only supported
+   * for local inventory. Unless the value is "not supported", must be submitted
+   * together with pickupSla.
+   */
+  core.String pickupMethod;
+  /**
+   * The expected date that an order will be ready for pickup, relative to when
+   * the order is placed. Only supported for local inventory. Must be submitted
+   * together with pickupMethod.
+   */
+  core.String pickupSla;
+
+  InventoryPickup();
+
+  InventoryPickup.fromJson(core.Map _json) {
+    if (_json.containsKey("pickupMethod")) {
+      pickupMethod = _json["pickupMethod"];
+    }
+    if (_json.containsKey("pickupSla")) {
+      pickupSla = _json["pickupSla"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (pickupMethod != null) {
+      _json["pickupMethod"] = pickupMethod;
+    }
+    if (pickupSla != null) {
+      _json["pickupSla"] = pickupSla;
+    }
+    return _json;
+  }
+}
+
 class InventorySetRequest {
   /** The availability of the product. */
   core.String availability;
@@ -6462,6 +6513,13 @@ class InventorySetRequest {
    * Loyalty points that users receive after purchasing the item. Japan only.
    */
   LoyaltyPoints loyaltyPoints;
+  /**
+   * Store pickup information. Only supported for local inventory. Not setting
+   * pickup means "don't update" while setting it to the empty value ({} in
+   * JSON) means "delete". Otherwise, pickupMethod and pickupSla must be set
+   * together, unless pickupMethod is "not supported".
+   */
+  InventoryPickup pickup;
   /** The price of the product. */
   Price price;
   /**
@@ -6497,6 +6555,9 @@ class InventorySetRequest {
     if (_json.containsKey("loyaltyPoints")) {
       loyaltyPoints = new LoyaltyPoints.fromJson(_json["loyaltyPoints"]);
     }
+    if (_json.containsKey("pickup")) {
+      pickup = new InventoryPickup.fromJson(_json["pickup"]);
+    }
     if (_json.containsKey("price")) {
       price = new Price.fromJson(_json["price"]);
     }
@@ -6524,6 +6585,9 @@ class InventorySetRequest {
     }
     if (loyaltyPoints != null) {
       _json["loyaltyPoints"] = (loyaltyPoints).toJson();
+    }
+    if (pickup != null) {
+      _json["pickup"] = (pickup).toJson();
     }
     if (price != null) {
       _json["price"] = (price).toJson();
@@ -6639,6 +6703,8 @@ class LoyaltyPoints {
 class Order {
   /** Whether the order was acknowledged. */
   core.bool acknowledged;
+  /** The channel type of the order: "purchaseOnGoogle" or "googleExpress". */
+  core.String channelType;
   /** The details of the customer who placed the order. */
   OrderCustomer customer;
   /** The details for the delivery. */
@@ -6690,6 +6756,9 @@ class Order {
   Order.fromJson(core.Map _json) {
     if (_json.containsKey("acknowledged")) {
       acknowledged = _json["acknowledged"];
+    }
+    if (_json.containsKey("channelType")) {
+      channelType = _json["channelType"];
     }
     if (_json.containsKey("customer")) {
       customer = new OrderCustomer.fromJson(_json["customer"]);
@@ -6751,6 +6820,9 @@ class Order {
     var _json = new core.Map();
     if (acknowledged != null) {
       _json["acknowledged"] = acknowledged;
+    }
+    if (channelType != null) {
+      _json["channelType"] = channelType;
     }
     if (customer != null) {
       _json["customer"] = (customer).toJson();

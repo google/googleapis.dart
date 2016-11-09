@@ -54,7 +54,7 @@ class ProjectsResourceApi {
    * [Google Cloud Platform project
    * ID](https://support.google.com/cloud/answer/6158840).
    * Example: `projects/my-project-123`.
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [DeleteEventsResponse].
    *
@@ -108,7 +108,7 @@ class ProjectsEventsResourceApi {
    * [Google Cloud Platform project
    * ID](https://support.google.com/cloud/answer/6158840).
    * Example: `projects/my-project-123`.
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * [timeRange_period] - Restricts the query to the specified time range.
    * Possible string values are:
@@ -204,7 +204,7 @@ class ProjectsEventsResourceApi {
    * [Google Cloud Platform project
    * ID](https://support.google.com/cloud/answer/6158840).
    * Example: `projects/my-project-123`.
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [ReportErrorEventResponse].
    *
@@ -262,7 +262,7 @@ class ProjectsGroupStatsResourceApi {
    * Platform project ID</a>.
    *
    * Example: <code>projects/my-project-123</code>.
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * [alignment] - [Optional] The alignment of the timed counts to be returned.
    * Default is `ALIGNMENT_EQUAL_AT_END`.
@@ -292,8 +292,6 @@ class ProjectsGroupStatsResourceApi {
    *
    * [groupId] - [Optional] List all <code>ErrorGroupStats</code> with these
    * IDs.
-   * If not specified, all error group stats with a non-zero error count
-   * for the given selection criteria are returned.
    *
    * [serviceFilter_service] - [Optional] The exact value to match against
    * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
@@ -402,7 +400,7 @@ class ProjectsGroupsResourceApi {
    * this project.
    *
    * Example: <code>projects/my-project-123/groups/my-group</code>
-   * Value must have pattern "^projects/[^/] * / groups/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/groups/[^/]+$".
    *
    * Completes with a [ErrorGroup].
    *
@@ -446,7 +444,7 @@ class ProjectsGroupsResourceApi {
    *
    * [name] - The group resource name.
    * Example: <code>projects/my-project-123/groups/my-groupid</code>
-   * Value must have pattern "^projects/[^/] * / groups/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/groups/[^/]+$".
    *
    * Completes with a [ErrorGroup].
    *
@@ -658,19 +656,19 @@ class ErrorGroup {
 }
 
 /**
- * Data extracted for a specific group based on certain selection criteria,
+ * Data extracted for a specific group based on certain filter criteria,
  * such as a given time period and/or service filter.
  */
 class ErrorGroupStats {
   /**
-   * Service contexts with a non-zero error count for the given selection
+   * Service contexts with a non-zero error count for the given filter
    * criteria. This list can be truncated if multiple services are affected.
    * Refer to `num_affected_services` for the total count.
    */
   core.List<ServiceContext> affectedServices;
   /**
    * Approximate number of affected users in the given group that
-   * match the selection criteria.
+   * match the filter criteria.
    * Users are distinguished by data in the `ErrorContext` of the
    * individual error events, such as their login name or their remote
    * IP address in case of HTTP requests.
@@ -685,24 +683,26 @@ class ErrorGroupStats {
   core.String affectedUsersCount;
   /**
    * Approximate total number of events in the given group that match
-   * the selection criteria.
+   * the filter criteria.
    */
   core.String count;
   /**
-   * Approximate first occurrence that was seen for this group and
-   * which matches the given selection criteria.
+   * Approximate first occurrence that was ever seen for this group
+   * and which matches the given filter criteria, ignoring the
+   * time_range that was specified in the request.
    */
   core.String firstSeenTime;
-  /** Group data that is independent of the selection criteria. */
+  /** Group data that is independent of the filter criteria. */
   ErrorGroup group;
   /**
-   * Approximate last occurrence that was seen for this group
-   * and which matches the given selection criteria.
+   * Approximate last occurrence that was ever seen for this group and
+   * which matches the given filter criteria, ignoring the time_range
+   * that was specified in the request.
    */
   core.String lastSeenTime;
   /**
    * The total number of services with a non-zero error count for the given
-   * selection criteria.
+   * filter criteria.
    */
   core.int numAffectedServices;
   /**
@@ -870,6 +870,10 @@ class ListEventsResponse {
    * request, to view the next page of results.
    */
   core.String nextPageToken;
+  /**
+   * The timestamp specifies the start time to which the request was restricted.
+   */
+  core.String timeRangeBegin;
 
   ListEventsResponse();
 
@@ -880,6 +884,9 @@ class ListEventsResponse {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
+    if (_json.containsKey("timeRangeBegin")) {
+      timeRangeBegin = _json["timeRangeBegin"];
+    }
   }
 
   core.Map toJson() {
@@ -889,6 +896,9 @@ class ListEventsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (timeRangeBegin != null) {
+      _json["timeRangeBegin"] = timeRangeBegin;
     }
     return _json;
   }
@@ -904,6 +914,13 @@ class ListGroupStatsResponse {
    * request, to view the next page of results.
    */
   core.String nextPageToken;
+  /**
+   * The timestamp specifies the start time to which the request was restricted.
+   * The start time is set based on the requested time range. It may be adjusted
+   * to a later time if a project has exceeded the storage quota and older data
+   * has been deleted.
+   */
+  core.String timeRangeBegin;
 
   ListGroupStatsResponse();
 
@@ -914,6 +931,9 @@ class ListGroupStatsResponse {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
+    if (_json.containsKey("timeRangeBegin")) {
+      timeRangeBegin = _json["timeRangeBegin"];
+    }
   }
 
   core.Map toJson() {
@@ -923,6 +943,9 @@ class ListGroupStatsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (timeRangeBegin != null) {
+      _json["timeRangeBegin"] = timeRangeBegin;
     }
     return _json;
   }

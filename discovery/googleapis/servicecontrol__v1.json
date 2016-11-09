@@ -120,7 +120,7 @@
         "services": {
             "methods": {
                 "check": {
-                    "description": "Checks an operation with Google Service Control to decide whether\nthe given operation should proceed. It should be called before the\noperation is executed.\n\nThis method requires the `servicemanagement.services.check` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
+                    "description": "Checks an operation with Google Service Control to decide whether\nthe given operation should proceed. It should be called before the\noperation is executed.\n\nIf feasible, the client should cache the check results and reuse them for\nup to 60s. In case of server errors, the client may rely on the cached\nresults for longer time.\n\nThis method requires the `servicemanagement.services.check` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
                     "httpMethod": "POST",
                     "id": "servicecontrol.services.check",
                     "parameterOrder": [
@@ -147,7 +147,7 @@
                     ]
                 },
                 "report": {
-                    "description": "Reports operations to Google Service Control. It should be called\nafter the operation is completed.\n\nThis method requires the `servicemanagement.services.report` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
+                    "description": "Reports operations to Google Service Control. It should be called\nafter the operation is completed.\n\nIf feasible, the client should aggregate reporting data for up to 5s to\nreduce API traffic. Limiting aggregation to 5s is to reduce data loss\nduring client crashes. Clients should carefully choose the aggregation\nwindow to avoid data loss risk more than 0.01% for business and\ncompliance reasons.\n\nThis method requires the `servicemanagement.services.report` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
                     "httpMethod": "POST",
                     "id": "servicecontrol.services.report",
                     "parameterOrder": [
@@ -176,7 +176,7 @@
             }
         }
     },
-    "revision": "20160815",
+    "revision": "20161031",
     "rootUrl": "https://servicecontrol.googleapis.com/",
     "schemas": {
         "CheckError": {
@@ -365,6 +365,10 @@
                 "operation": {
                     "$ref": "Operation",
                     "description": "The operation to be checked."
+                },
+                "serviceConfigId": {
+                    "description": "Specifies which version of service configuration should be used to process\nthe request.\n\nIf unspecified or no matching version can be found, the\nlatest one will be used.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -406,15 +410,15 @@
                         "EMERGENCY"
                     ],
                     "enumDescriptions": [
-                        "The log entry has no assigned severity level.",
-                        "Debug or trace information.",
-                        "Routine information, such as ongoing status or performance.",
-                        "Normal but significant events, such as start up, shut down, or\nconfiguration.",
-                        "Warning events might cause problems.",
-                        "Error events are likely to cause problems.",
-                        "Critical events cause more severe problems or brief outages.",
-                        "A person must take an action immediately.",
-                        "One or more systems are unusable."
+                        "(0) The log entry has no assigned severity level.",
+                        "(100) Debug or trace information.",
+                        "(200) Routine information, such as ongoing status or performance.",
+                        "(300) Normal but significant events, such as start up, shut down, or\na configuration change.",
+                        "(400) Warning events might cause problems.",
+                        "(500) Error events are likely to cause problems.",
+                        "(600) Critical events cause more severe problems or outages.",
+                        "(700) A person must take an action immediately.",
+                        "(800) One or more systems are unusable."
                     ],
                     "type": "string"
                 },
@@ -452,6 +456,10 @@
                         "$ref": "Operation"
                     },
                     "type": "array"
+                },
+                "serviceConfigId": {
+                    "description": "Specifies which version of service config should be used to process the\nrequest.\n\nIf unspecified or no matching version can be found, the\nlatest one will be used.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -523,7 +531,7 @@
             "id": "ReportResponse",
             "properties": {
                 "reportErrors": {
-                    "description": "Partial failures, one for each `Operation` in the request that failed\nprocessing. There are three possible combinations of the RPC status:\n\n1. The combination of a successful RPC status and an empty `report_errors`\n   list indicates a complete success where all `Operations` in the\n   request are processed successfully.\n2. The combination of a successful RPC status and a non-empty\n   `report_errors` list indicates a partial success where some\n   `Operations` in the request succeeded. Each\n   `Operation` that failed processing has a corresponding item\n   in this list.\n3. A failed RPC status indicates a complete failure where none of the\n   `Operations` in the request succeeded.",
+                    "description": "Partial failures, one for each `Operation` in the request that failed\nprocessing. There are three possible combinations of the RPC status:\n\n1. The combination of a successful RPC status and an empty `report_errors`\n   list indicates a complete success where all `Operations` in the\n   request are processed successfully.\n2. The combination of a successful RPC status and a non-empty\n   `report_errors` list indicates a partial success where some\n   `Operations` in the request succeeded. Each\n   `Operation` that failed processing has a corresponding item\n   in this list.\n3. A failed RPC status indicates a general non-deterministic failure.\n   When this happens, it's impossible to know which of the\n   'Operations' in the request succeeded or failed.",
                     "items": {
                         "$ref": "ReportError"
                     },

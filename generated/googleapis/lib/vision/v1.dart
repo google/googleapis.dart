@@ -958,7 +958,7 @@ class Image {
   }
 }
 
-/** Image context. */
+/** Image context and/or feature-specific parameters. */
 class ImageContext {
   /**
    * List of languages to use for TEXT_DETECTION. In most cases, an empty value

@@ -900,6 +900,53 @@ class EnterprisesResourceApi {
   }
 
   /**
+   * Returns a unique token to access an embeddable UI. To generate a web UI,
+   * pass the generated token into the Play for Work javascript API. Each token
+   * may only be used to start one UI session. See the javascript API
+   * documentation for further information.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [AdministratorWebToken].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AdministratorWebToken> createWebToken(AdministratorWebTokenSpec request, core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/createWebToken';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AdministratorWebToken.fromJson(data));
+  }
+
+  /**
    * Deletes the binding between the EMM and enterprise. This is now deprecated;
    * use this to unenroll customers that were previously enrolled with the
    * 'insert' call, then enroll them again with the 'enroll' call.
@@ -1268,8 +1315,8 @@ class EnterprisesResourceApi {
    * the service account authenticated for the request. The notification set may
    * be empty if no notification are pending.
    * A notification set returned needs to be acknowledged within 20 seconds by
-   * calling Enterprises.AcknowledgeNotificationSet, unless the notification set
-   * is empty.
+   * calling Enterprises​.AcknowledgeNotificationSet, unless the notification
+   * set is empty.
    * Notifications that are not acknowledged within the 20 seconds will
    * eventually be included again in the response to another PullNotificationSet
    * request, and those that are never acknowledged will ultimately be deleted
@@ -1277,13 +1324,20 @@ class EnterprisesResourceApi {
    * Multiple requests might be performed concurrently to retrieve
    * notifications, in which case the pending notifications (if any) will be
    * split among each caller, if any are pending.
+   * If no notifications are present, an empty notification list is returned.
+   * Subsequent requests may return more notifications once they become
+   * available.
    *
    * Request parameters:
    *
-   * [requestMode] - The request mode for pulling notifications. If omitted,
-   * defaults to WAIT_FOR_NOTIFCATIONS.
-   * If this is set to WAIT_FOR_NOTIFCATIONS, the request will eventually
-   * timeout, in which case it should be retried.
+   * [requestMode] - The request mode for pulling notifications.
+   * Specifying waitForNotifications will cause the request to block and wait
+   * until one or more notifications are present, or return an empty
+   * notification list if no notifications are present after some time.
+   * Speciying returnImmediately will cause the request to immediately return
+   * the pending notifications, or an empty list if no notifications are
+   * present.
+   * If omitted, defaults to waitForNotifications.
    * Possible string values are:
    * - "returnImmediately"
    * - "waitForNotifications"
@@ -1406,7 +1460,13 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Sets the store layout for the enterprise.
+   * Sets the store layout for the enterprise. By default, storeLayoutType is
+   * set to "basic" and the basic store layout is enabled. The basic layout only
+   * contains apps approved by the administrator, and that have been added to
+   * the available product set for a user (using the  setAvailableProductSet
+   * call). Apps on the page are sorted in order of their product ID value. If
+   * you create a custom store layout (by setting storeLayoutType = "custom"),
+   * the basic store layout is disabled.
    *
    * [request] - The metadata request object.
    *
@@ -4246,6 +4306,9 @@ class UsersResourceApi {
    *
    * The Users resource passed in the body of the request should include an
    * accountIdentifier and an accountType.
+   * If a corresponding user already exists with the same account identifier,
+   * the user will be updated with the resource. In this case only the
+   * displayName field can be changed.
    *
    * [request] - The metadata request object.
    *
@@ -4565,6 +4628,94 @@ class Administrator {
   }
 }
 
+/** A token authorizing an administrator to access an iframe. */
+class AdministratorWebToken {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#administratorWebToken".
+   */
+  core.String kind;
+  /**
+   * An opaque token to be passed to the Play front-end to generate an iframe.
+   */
+  core.String token;
+
+  AdministratorWebToken();
+
+  AdministratorWebToken.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("token")) {
+      token = _json["token"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (token != null) {
+      _json["token"] = token;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Specification for a token used to generate iframes. The token specifies what
+ * data the admin is allowed to modify and the URI the iframe is allowed to
+ * communiate with.
+ */
+class AdministratorWebTokenSpec {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#administratorWebTokenSpec".
+   */
+  core.String kind;
+  /**
+   * The URI of the parent frame hosting the iframe. To prevent XSS, the iframe
+   * may not be hosted at other URIs. This URI must be https.
+   */
+  core.String parent;
+  /**
+   * The list of permissions the admin is granted within the iframe. The admin
+   * will only be allowed to view an iframe if they have all of the permissions
+   * associated with it. The only valid value is "approveApps" that will allow
+   * the admin to access the iframe in "approve" mode.
+   */
+  core.List<core.String> permission;
+
+  AdministratorWebTokenSpec();
+
+  AdministratorWebTokenSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("parent")) {
+      parent = _json["parent"];
+    }
+    if (_json.containsKey("permission")) {
+      permission = _json["permission"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (parent != null) {
+      _json["parent"] = parent;
+    }
+    if (permission != null) {
+      _json["permission"] = permission;
+    }
+    return _json;
+  }
+}
+
 /**
  * Represents the list of app restrictions available to be pre-configured for
  * the product.
@@ -4635,7 +4786,10 @@ class AppRestrictionsSchemaChangeEvent {
  * configuration that may be pre-applied.
  */
 class AppRestrictionsSchemaRestriction {
-  /** The default value of the restriction. */
+  /**
+   * The default value of the restriction. bundle and bundleArray restrictions
+   * never have a default value.
+   */
   AppRestrictionsSchemaRestrictionRestrictionValue defaultValue;
   /**
    * A longer description of the restriction, giving more detail of what it
@@ -4649,7 +4803,9 @@ class AppRestrictionsSchemaRestriction {
   core.List<core.String> entry;
   /**
    * For choice or multiselect restrictions, the list of possible entries'
-   * machine-readable values.
+   * machine-readable values. These values should be used in the configuration,
+   * either as a single string value for a choice restriction or in a
+   * stringArray for a multiselect restriction.
    */
   core.List<core.String> entryValue;
   /**
@@ -4658,7 +4814,9 @@ class AppRestrictionsSchemaRestriction {
    */
   core.String key;
   /**
-   * For bundle or bundleArray restrictions, the list of nested restrictions.
+   * For bundle or bundleArray restrictions, the list of nested restrictions. A
+   * bundle restriction is always nested within a bundleArray restriction, and a
+   * bundleArray restriction is at most two levels deep.
    */
   core.List<AppRestrictionsSchemaRestriction> nestedRestriction;
   /** The type of the restriction. */
@@ -5099,17 +5257,19 @@ class Device {
   /**
    * Identifies the extent to which the device is controlled by an Android for
    * Work EMM in various deployment configurations.
+   *
    * Possible values include:
-   * - "managedDevice"—A device that has the EMM's device policy controller
-   * (DPC) as the device owner.
-   * - "managedProfile"—A device that has a work profile managed by the DPC (DPC
-   * is profile owner) in addition to a separate, personal profile that is
-   * unavailable to the DPC.
-   * - "containerApp"—A device running the Android for Work App. The Android for
-   * Work App is managed by the DPC.
-   * - "unmanagedProfile"—A device that has been allowed (by the domain's admin,
-   * using the Admin Console to enable the privilege) to use Android for Work
-   * apps or Google Apps for Work, but the profile is itself not owned by a DPC.
+   * - "managedDevice", a device that has the EMM's device policy controller
+   * (DPC) as the device owner,
+   * - "managedProfile", a device that has a work profile managed by the DPC
+   * (DPC is profile owner) in addition to a separate, personal profile that is
+   * unavailable to the DPC,
+   * - "containerApp", a device running the Android for Work App. The Android
+   * for Work App is managed by the DPC,
+   * - "unmanagedProfile", a device that has been allowed (by the domain's
+   * admin, using the Admin Console to enable the privilege) to use Android for
+   * Work apps or Google Apps for Work, but the profile is itself not owned by a
+   * DPC.
    */
   core.String managementType;
 
@@ -6704,6 +6864,14 @@ class ProductSet {
   core.String kind;
   /** The list of product IDs making up the set of products. */
   core.List<core.String> productId;
+  /**
+   * The interpretation of this product set. "unknown" should never be sent and
+   * ignored if received. "whitelist" means that this product set constitutes a
+   * whitelist. "includeAll" means that all products are accessible (the value
+   * of the productId field is therefore ignored). If a value is not supplied,
+   * it is interpreted to be "whitelist" for backwards compatibility.
+   */
+  core.String productSetBehavior;
 
   ProductSet();
 
@@ -6714,6 +6882,9 @@ class ProductSet {
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
     }
+    if (_json.containsKey("productSetBehavior")) {
+      productSetBehavior = _json["productSetBehavior"];
+    }
   }
 
   core.Map toJson() {
@@ -6723,6 +6894,9 @@ class ProductSet {
     }
     if (productId != null) {
       _json["productId"] = productId;
+    }
+    if (productSetBehavior != null) {
+      _json["productSetBehavior"] = productSetBehavior;
     }
     return _json;
   }
@@ -7110,6 +7284,16 @@ class StoreLayout {
    * "androidenterprise#storeLayout".
    */
   core.String kind;
+  /**
+   * Sets a store layout type. By default, this value is set to "basic". If set
+   * to "custom", "homepageId" must be specified. If set to "basic", the layout
+   * will consist of all approved apps accessible by the user, split in pages of
+   * 100 each; in this case, "homepageId" must not be specified. The "basic"
+   * setting takes precedence over any existing collections setup for this
+   * enterprise (if any). Should the enterprise use collectionViewers for
+   * controlling access rights, these will still be respected.
+   */
+  core.String storeLayoutType;
 
   StoreLayout();
 
@@ -7120,6 +7304,9 @@ class StoreLayout {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("storeLayoutType")) {
+      storeLayoutType = _json["storeLayoutType"];
+    }
   }
 
   core.Map toJson() {
@@ -7129,6 +7316,9 @@ class StoreLayout {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (storeLayoutType != null) {
+      _json["storeLayoutType"] = storeLayoutType;
     }
     return _json;
   }

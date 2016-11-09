@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/9PFxG5pI0f8l05oUQOjxB50d4vU\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/pwuIwH6if72qJQNYjyHHHlGz_Mo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -622,7 +622,7 @@
             }
         }
     },
-    "revision": "20160822",
+    "revision": "20161027",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Error": {
@@ -673,6 +673,10 @@
                 "acknowledged": {
                     "description": "Whether the order was acknowledged.",
                     "type": "boolean"
+                },
+                "channelType": {
+                    "description": "The channel type of the order: \"purchaseOnGoogle\" or \"googleExpress\".",
+                    "type": "string"
                 },
                 "customer": {
                     "$ref": "OrderCustomer",

@@ -273,7 +273,7 @@ Official API documentation: https://developers.google.com/custom-search/v1/using
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1
 
-Manages Hadoop-based clusters and jobs on Google Cloud Platform.
+An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
 
@@ -290,18 +290,6 @@ Declares, configures, and deploys complex solutions on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/deployment-manager/
 
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.2
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
-
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.3
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
-
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.4
 
 Manages your DoubleClick Campaign Manager ad campaigns and reports.
@@ -315,6 +303,12 @@ Manages your DoubleClick Campaign Manager ad campaigns and reports.
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.6
+
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/
+
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.7
 
 Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
@@ -356,24 +350,24 @@ Manages files in Drive including uploading, downloading, searching, detecting ch
 
 Official API documentation: https://developers.google.com/drive/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Dynamic Links API - firebasedynamiclinks v1
+
+Firebase Dynamic Links API enables third party developers to programmatically create and manage Dynamic Links.
+
+Official API documentation: https://firebase.google.com/docs/dynamic-links/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Rules API - firebaserules v1
 
 Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request.
 
 
-Official API documentation: https://firebase.google.com/docs/storage/security/start
+Official API documentation: https://firebase.google.com/docs/storage/security
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fitness - fitness v1
 
 Stores and accesses user data in the fitness store from apps on any platform.
 
 Official API documentation: https://developers.google.com/fit/rest/
-
-#### ![Logo](https://www.google.com/images/icons/product/freebase-16.png) Freebase Search - freebase v1
-
-Find Freebase entities using textual queries and other constraints.
-
-Official API documentation: https://developers.google.com/freebase/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fusion Tables API - fusiontables v1
 
@@ -429,7 +423,7 @@ Lets you manage permission levels and related settings of a group.
 
 Official API documentation: https://developers.google.com/google-apps/groups-settings/get_started
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Identity and Access Management API - iam v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Identity and Access Management (IAM) API - iam v1
 
 Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.
 
@@ -453,15 +447,27 @@ Licensing API to view and manage license for your domain.
 
 Official API documentation: https://developers.google.com/google-apps/licensing/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Logging API - logging v2
+
+Writes log entries and manages your Stackdriver Logging configuration.
+
+Official API documentation: https://cloud.google.com/logging/docs/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Manufacturer Center API - manufacturers v1
+
+Public API for managing Manufacturer Center related data.
+
+Official API documentation: https://developers.google.com/manufacturers/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Mirror API - mirror v1
 
 Interacts with Glass users via the timeline.
 
 Official API documentation: https://developers.google.com/glass
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Monitoring API - monitoring v3
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Monitoring API - monitoring v3
 
-Manages your Stackdriver monitoring data and configurations. Projects must be associated with a Stackdriver account, except for the following methods: [monitoredResourceDescriptors.list](v3/projects.monitoredResourceDescriptors/list), [monitoredResourceDescriptors.get](v3/projects.monitoredResourceDescriptors/get), [metricDescriptors.list](v3/projects.metricDescriptors/list), [metricDescriptors.get](v3/projects.metricDescriptors/get), and [timeSeries.list](v3/projects.timeSeries/list).
+Manages your Stackdriver Monitoring data and configurations. Most projects must be associated with a Stackdriver account, with a few exceptions as noted on the individual method pages.
 
 Official API documentation: https://cloud.google.com/monitoring/api/
 
@@ -537,6 +543,13 @@ Creates and manages your customers and their subscriptions.
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud RuntimeConfig API - runtimeconfig v1
+
+Provides capabilities for dynamic configuration and coordination for applications running on Google Cloud Platform.
+
+
+Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Safe Browsing APIs - safebrowsing v4
 
 Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.
@@ -584,6 +597,10 @@ Official API documentation: https://developers.google.com/storage/docs/json_api/
 Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.
 
 Official API documentation: https://cloud.google.com/storage/transfer
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Surveys API - surveys v2
+
+Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Tag Manager API - tagmanager v1
 

@@ -135,7 +135,7 @@
             }
         }
     },
-    "revision": "20160822",
+    "revision": "20161031",
     "rootUrl": "https://vision.googleapis.com/",
     "schemas": {
         "ImageSource": {
@@ -596,7 +596,7 @@
             "type": "object"
         },
         "ImageContext": {
-            "description": "Image context.",
+            "description": "Image context and/or feature-specific parameters.",
             "id": "ImageContext",
             "properties": {
                 "latLongRect": {

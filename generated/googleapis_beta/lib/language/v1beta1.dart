@@ -119,10 +119,8 @@ class DocumentsResourceApi {
   }
 
   /**
-   * Advanced API that analyzes the document and provides a full set of text
-   * annotations, including semantic, syntactic, and sentiment information. This
-   * API is intended for users who are familiar with machine learning and need
-   * in-depth text features to build upon.
+   * A convenience method that provides all the features that analyzeSentiment,
+   * analyzeEntities, and analyzeSyntax provide in one call.
    *
    * [request] - The metadata request object.
    *
@@ -219,6 +217,7 @@ class AnalyzeEntitiesResponse {
   /**
    * The language of the text, which will be the same as the language specified
    * in the request or, if not specified, the automatically-detected language.
+   * See Document.language field for more details.
    */
   core.String language;
 
@@ -304,8 +303,8 @@ class AnalyzeSentimentResponse {
 }
 
 /**
- * The request message for the advanced text annotation API, which performs all
- * the above plus syntactic analysis.
+ * The request message for the text annotation API, which can perform multiple
+ * analysis types (sentiment, entities, and syntax) in one call.
  */
 class AnnotateTextRequest {
   /** Input document. */
@@ -378,6 +377,7 @@ class AnnotateTextResponse {
   /**
    * The language of the text, which will be the same as the language specified
    * in the request or, if not specified, the automatically-detected language.
+   * See Document.language field for more details.
    */
   core.String language;
   /**
@@ -842,8 +842,9 @@ class Sentiment {
    */
   core.double magnitude;
   /**
-   * Polarity of the sentiment in the [-1.0, 1.0] range. Larger numbers
-   * represent more positive sentiments.
+   * DEPRECATED FIELD - This field is being deprecated in
+   * favor of score. Please refer to our documentation at
+   * https://cloud.google.com/natural-language/docs for more information.
    */
   core.double polarity;
 

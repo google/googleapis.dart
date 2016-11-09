@@ -16,13 +16,20 @@ const core.String USER_AGENT = 'dart-api-client appengine/v1';
 
 /** Provisions and manages App Engine applications. */
 class AppengineApi {
+  /** View and manage your applications deployed on Google App Engine */
+  static const AppengineAdminScope = "https://www.googleapis.com/auth/appengine.admin";
+
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
+  /** View your data across Google Cloud Platform services */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
 
   final commons.ApiRequester _requester;
 
   AppsResourceApi get apps => new AppsResourceApi(_requester);
+  ExperimentalResourceApi get experimental => new ExperimentalResourceApi(_requester);
 
   AppengineApi(http.Client client, {core.String rootUrl: "https://appengine.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -38,6 +45,49 @@ class AppsResourceApi {
 
   AppsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Creates an App Engine application for a Google Cloud Platform project. This
+   * requires a project that excludes an App Engine application. For details
+   * about creating a project without an application, see the [Google Cloud
+   * Resource Manager create project
+   * topic](https://cloud.google.com/resource-manager/docs/creating-project).
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> create(Application request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/apps';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 
   /**
    * Gets information about an application.
@@ -77,6 +127,56 @@ class AppsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Application.fromJson(data));
+  }
+
+  /**
+   * Updates application fields.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the application to update. Example:
+   * `apps/myapp`.
+   *
+   * [updateMask] - Standard field mask for the set of fields to be updated.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(Application request, core.String appsId, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
   /**
@@ -1123,6 +1223,138 @@ class AppsServicesVersionsInstancesResourceApi {
 }
 
 
+class ExperimentalResourceApi {
+  final commons.ApiRequester _requester;
+
+  ExperimentalAppsResourceApi get apps => new ExperimentalAppsResourceApi(_requester);
+
+  ExperimentalResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class ExperimentalAppsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ExperimentalAppsOperationsResourceApi get operations => new ExperimentalAppsOperationsResourceApi(_requester);
+
+  ExperimentalAppsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class ExperimentalAppsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ExperimentalAppsOperationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Gets the latest state of a long-running operation. Clients can use this
+   * method to poll the operation result at intervals as recommended by the API
+   * service.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. The name of the operation resource.
+   *
+   * [operationsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> get(core.String appsId, core.String operationsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (operationsId == null) {
+      throw new core.ArgumentError("Parameter operationsId is required.");
+    }
+
+    _url = 'experimental/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations/' + commons.Escaper.ecapeVariable('$operationsId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Lists operations that match the specified filter in the request. If the
+   * server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+   * `name` binding below allows API services to override the binding to use
+   * different resource name schemes, such as `users / * /operations`.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. The name of the operation collection.
+   *
+   * [filter] - The standard list filter.
+   *
+   * [pageSize] - The standard list page size.
+   *
+   * [pageToken] - The standard list page token.
+   *
+   * Completes with a [ListOperationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListOperationsResponse> list(core.String appsId, {core.String filter, core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'experimental/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+
+}
+
+
 
 /**
  * [Google Cloud
@@ -1582,14 +1814,28 @@ class CpuUtilization {
 
 /** Request message for `Instances.DebugInstance`. */
 class DebugInstanceRequest {
+  /**
+   * Public SSH key to add to the instance. Example: `[USERNAME]:ssh-rsa
+   * KEY_VALUE` or `[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh
+   * {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}` For more information,
+   * see [Adding and Removing SSH
+   * Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)
+   */
+  core.String sshKey;
 
   DebugInstanceRequest();
 
   DebugInstanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("sshKey")) {
+      sshKey = _json["sshKey"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (sshKey != null) {
+      _json["sshKey"] = sshKey;
+    }
     return _json;
   }
 }
@@ -1911,6 +2157,11 @@ class Instance {
    */
   core.String vmId;
   /**
+   * The IP address of this instance. Only applicable for instances in App
+   * Engine flexible environment. @OutputOnly
+   */
+  core.String vmIp;
+  /**
    * Name of the virtual machine where this instance lives. Only applicable for
    * instances in App Engine flexible environment. @OutputOnly
    */
@@ -1965,6 +2216,9 @@ class Instance {
     if (_json.containsKey("vmId")) {
       vmId = _json["vmId"];
     }
+    if (_json.containsKey("vmIp")) {
+      vmIp = _json["vmIp"];
+    }
     if (_json.containsKey("vmName")) {
       vmName = _json["vmName"];
     }
@@ -2013,6 +2267,9 @@ class Instance {
     }
     if (vmId != null) {
       _json["vmId"] = vmId;
+    }
+    if (vmIp != null) {
+      _json["vmIp"] = vmIp;
     }
     if (vmName != null) {
       _json["vmName"] = vmName;
@@ -2214,7 +2471,7 @@ class Location {
    * {"cloud.googleapis.com/region": "us-east1"}
    */
   core.Map<core.String, core.String> labels;
-  /** The cononical id for this location. For example: `"us-east1"`. */
+  /** The canonical id for this location. For example: `"us-east1"`. */
   core.String locationId;
   /**
    * Service-specific metadata. For example the available capacity at the given
@@ -2432,7 +2689,7 @@ class Operation {
    * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * Service-specific metadata associated with the operation. It typically
@@ -2565,6 +2822,67 @@ class OperationMetadata {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    if (user != null) {
+      _json["user"] = user;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for the given google.longrunning.Operation. */
+class OperationMetadataExperimental {
+  /** Time that this operation completed. @OutputOnly */
+  core.String endTime;
+  /** Time that this operation was created. @OutputOnly */
+  core.String insertTime;
+  /**
+   * API method that initiated this operation. Example:
+   * `google.appengine.experimental.CustomDomains.CreateCustomDomain`.
+   * @OutputOnly
+   */
+  core.String method;
+  /**
+   * Name of the resource that this operation is acting on. Example:
+   * `apps/myapp/customDomains/example.com`. @OutputOnly
+   */
+  core.String target;
+  /** User who requested this operation. @OutputOnly */
+  core.String user;
+
+  OperationMetadataExperimental();
+
+  OperationMetadataExperimental.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("insertTime")) {
+      insertTime = _json["insertTime"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+    if (_json.containsKey("user")) {
+      user = _json["user"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (insertTime != null) {
+      _json["insertTime"] = insertTime;
+    }
+    if (method != null) {
+      _json["method"] = method;
     }
     if (target != null) {
       _json["target"] = target;
@@ -3571,6 +3889,7 @@ class Version {
   }
 }
 
+/** The zip file information for a zip deployment. */
 class ZipInfo {
   /**
    * An estimate of the number of files in a zip for a zip deployment. If set,

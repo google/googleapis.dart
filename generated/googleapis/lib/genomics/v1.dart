@@ -932,7 +932,7 @@ class DatasetsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
    * Format is `datasets/`.
-   * Value must have pattern "^datasets/[^/]*$".
+   * Value must have pattern "^datasets/[^/]+$".
    *
    * Completes with a [Policy].
    *
@@ -976,7 +976,7 @@ class DatasetsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required. The project to list datasets for.
+   * [projectId] - Required. The Google Cloud project ID to list datasets for.
    *
    * [pageSize] - The maximum number of results to return in a single page. If
    * unspecified, defaults to 50. The maximum value is 1024.
@@ -1090,7 +1090,7 @@ class DatasetsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
    * Format is `datasets/`.
-   * Value must have pattern "^datasets/[^/]*$".
+   * Value must have pattern "^datasets/[^/]+$".
    *
    * Completes with a [Policy].
    *
@@ -1139,7 +1139,7 @@ class DatasetsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
    * Format is `datasets/`.
-   * Value must have pattern "^datasets/[^/]*$".
+   * Value must have pattern "^datasets/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -1245,7 +1245,7 @@ class OperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource to be cancelled.
-   * Value must have pattern "^operations/.*$".
+   * Value must have pattern "^operations/.+$".
    *
    * Completes with a [Empty].
    *
@@ -1290,7 +1290,7 @@ class OperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource.
-   * Value must have pattern "^operations/.*$".
+   * Value must have pattern "^operations/.+$".
    *
    * Completes with a [Operation].
    *
@@ -1337,7 +1337,9 @@ class OperationsResourceApi {
    * OperationMetadata.projectId. * createTime: The time this job was created,
    * in seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can
    * use `>=` and/or `= 1432140000` * `projectId = my-project AND createTime >=
-   * 1432140000 AND createTime <= 1432150000 AND status = RUNNING`
+   * 1432140000 AND createTime <= 1432150000 AND status = RUNNING` * `projectId
+   * = my-project AND labels.color = *` * `projectId = my-project AND
+   * labels.color = red`
    *
    * [pageSize] - The maximum number of results to return. If unspecified,
    * defaults to 256. The maximum value is 2048.
@@ -3515,7 +3517,7 @@ class Dataset {
   core.String id;
   /** The dataset name. */
   core.String name;
-  /** The Google Developers Console project ID that this dataset belongs to. */
+  /** The Google Cloud project ID that this dataset belongs to. */
   core.String projectId;
 
   Dataset();
@@ -3722,8 +3724,8 @@ class ExportReadGroupSetRequest {
    */
   core.String exportUri;
   /**
-   * Required. The Google Developers Console project ID that owns this export.
-   * The caller must have WRITE access to this project.
+   * Required. The Google Cloud project ID that owns this export. The caller
+   * must have WRITE access to this project.
    */
   core.String projectId;
   /**
@@ -4323,7 +4325,7 @@ class Operation {
    * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * An OperationMetadata object. This will always be returned with the
@@ -4434,8 +4436,8 @@ class OperationEvent {
 /** Metadata describing an Operation. */
 class OperationMetadata {
   /**
-   * Optionally provided by the caller when submitting the request that creates
-   * the operation.
+   * This field is deprecated. Use `labels` instead. Optionally provided by the
+   * caller when submitting the request that creates the operation.
    */
   core.String clientId;
   /** The time at which the job was submitted to the Genomics service. */
@@ -4448,6 +4450,11 @@ class OperationMetadata {
    * export.
    */
   core.List<OperationEvent> events;
+  /**
+   * Optionally provided by the caller when submitting the request that creates
+   * the operation.
+   */
+  core.Map<core.String, core.String> labels;
   /** The Google Cloud Project in which the job is scoped. */
   core.String projectId;
   /**
@@ -4484,6 +4491,9 @@ class OperationMetadata {
     if (_json.containsKey("events")) {
       events = _json["events"].map((value) => new OperationEvent.fromJson(value)).toList();
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
@@ -4511,6 +4521,9 @@ class OperationMetadata {
     }
     if (events != null) {
       _json["events"] = events.map((value) => (value).toJson()).toList();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -6566,8 +6579,8 @@ class StreamReadsRequest {
    */
   core.String end;
   /**
-   * The Google Developers Console project ID or number which will be billed for
-   * this access. The caller must have WRITE access to this project. Required.
+   * The Google Cloud project ID which will be billed for this access. The
+   * caller must have WRITE access to this project. Required.
    */
   core.String projectId;
   /** The ID of the read group set from which to stream reads. */
@@ -6691,8 +6704,8 @@ class StreamVariantsRequest {
    */
   core.String end;
   /**
-   * The Google Developers Console project ID or number which will be billed for
-   * this access. The caller must have WRITE access to this project. Required.
+   * The Google Cloud project ID which will be billed for this access. The
+   * caller must have WRITE access to this project. Required.
    */
   core.String projectId;
   /** Required. Only return variants in this reference sequence. */

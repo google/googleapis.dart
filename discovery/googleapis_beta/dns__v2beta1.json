@@ -23,7 +23,7 @@
     "description": "Configures and serves authoritative DNS records.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-dns",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/JQmieASg3Jazvi7OZK08WN9It0I\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/s4YQIiSKa459YRh67WgnNEPgxjs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -229,12 +229,12 @@
                 }
             }
         },
-        "dnskeys": {
+        "dnsKeys": {
             "methods": {
                 "get": {
                     "description": "Fetch the representation of an existing DnsKey.",
                     "httpMethod": "GET",
-                    "id": "dns.dnskeys.get",
+                    "id": "dns.dnsKeys.get",
                     "parameterOrder": [
                         "project",
                         "managedZone",
@@ -284,7 +284,7 @@
                 "list": {
                     "description": "Enumerate DnsKeys to a ResourceRecordSet collection.",
                     "httpMethod": "GET",
-                    "id": "dns.dnskeys.list",
+                    "id": "dns.dnsKeys.list",
                     "parameterOrder": [
                         "project",
                         "managedZone"
@@ -763,7 +763,7 @@
             }
         }
     },
-    "revision": "20160818",
+    "revision": "20161020",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Change": {

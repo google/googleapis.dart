@@ -278,6 +278,7 @@ buildSurvey() {
     o.description = "foo";
     o.owners = buildUnnamed25();
     o.questions = buildUnnamed26();
+    o.rejectionReason = buildSurveyRejection();
     o.state = "foo";
     o.surveyUrlId = "foo";
     o.title = "foo";
@@ -296,6 +297,7 @@ checkSurvey(api.Survey o) {
     unittest.expect(o.description, unittest.equals('foo'));
     checkUnnamed25(o.owners);
     checkUnnamed26(o.questions);
+    checkSurveyRejection(o.rejectionReason);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.surveyUrlId, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -512,6 +514,27 @@ checkSurveyQuestionImage(api.SurveyQuestionImage o) {
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterSurveyQuestionImage--;
+}
+
+core.int buildCounterSurveyRejection = 0;
+buildSurveyRejection() {
+  var o = new api.SurveyRejection();
+  buildCounterSurveyRejection++;
+  if (buildCounterSurveyRejection < 3) {
+    o.explanation = "foo";
+    o.type = "foo";
+  }
+  buildCounterSurveyRejection--;
+  return o;
+}
+
+checkSurveyRejection(api.SurveyRejection o) {
+  buildCounterSurveyRejection++;
+  if (buildCounterSurveyRejection < 3) {
+    unittest.expect(o.explanation, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterSurveyRejection--;
 }
 
 core.int buildCounterSurveyResults = 0;
@@ -771,6 +794,15 @@ main() {
       var o = buildSurveyQuestionImage();
       var od = new api.SurveyQuestionImage.fromJson(o.toJson());
       checkSurveyQuestionImage(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-SurveyRejection", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSurveyRejection();
+      var od = new api.SurveyRejection.fromJson(o.toJson());
+      checkSurveyRejection(od);
     });
   });
 

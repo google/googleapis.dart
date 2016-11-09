@@ -3285,15 +3285,16 @@ class ManagementRemarketingAudienceResourceApi {
       _requester = client;
 
   /**
-   * Gets remarketing audiences to which the user has access.
+   * Gets a remarketing audience to which the user has access.
    *
    * Request parameters:
    *
-   * [accountId] - Account ID for the remarketing audience to retrieve.
+   * [accountId] - The account ID of the remarketing audience to retrieve.
    *
-   * [webPropertyId] - Web property ID for the remarketing audience to retrieve.
+   * [webPropertyId] - The web property ID of the remarketing audience to
+   * retrieve.
    *
-   * [remarketingAudienceId] - The ID to retrieve the Remarketing Audience for.
+   * [remarketingAudienceId] - The ID of the remarketing audience to retrieve.
    *
    * Completes with a [RemarketingAudience].
    *
@@ -3334,15 +3335,16 @@ class ManagementRemarketingAudienceResourceApi {
   }
 
   /**
-   * Creates a new remarketing audiences.
+   * Creates a new remarketing audience.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [accountId] - Account ID to create the remarketing audience for.
+   * [accountId] - The account ID for which to create the remarketing audience.
    *
-   * [webPropertyId] - Web property ID to create the remarketing audience for.
+   * [webPropertyId] - Web property ID for which to create the remarketing
+   * audience.
    *
    * Completes with a [RemarketingAudience].
    *
@@ -3387,9 +3389,10 @@ class ManagementRemarketingAudienceResourceApi {
    *
    * Request parameters:
    *
-   * [accountId] - Account ID for the remarketing audience to retrieve.
+   * [accountId] - The account ID of the remarketing audiences to retrieve.
    *
-   * [webPropertyId] - Web property ID for the remarketing audience to retrieve.
+   * [webPropertyId] - The web property ID of the remarketing audiences to
+   * retrieve.
    *
    * [max_results] - The maximum number of remarketing audiences to include in
    * this response.
@@ -3444,19 +3447,19 @@ class ManagementRemarketingAudienceResourceApi {
   }
 
   /**
-   * Updates an existing remarketing audiences. This method supports patch
+   * Updates an existing remarketing audience. This method supports patch
    * semantics.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [accountId] - Account ID for the remarketing audience to update.
+   * [accountId] - The account ID of the remarketing audience to update.
    *
-   * [webPropertyId] - Web property ID for the remarketing audience to update.
+   * [webPropertyId] - The web property ID of the remarketing audience to
+   * update.
    *
-   * [remarketingAudienceId] - Remarketing audience ID of the remarketing
-   * audience to update.
+   * [remarketingAudienceId] - The ID of the remarketing audience to update.
    *
    * Completes with a [RemarketingAudience].
    *
@@ -3500,18 +3503,18 @@ class ManagementRemarketingAudienceResourceApi {
   }
 
   /**
-   * Updates an existing remarketing audiences.
+   * Updates an existing remarketing audience.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [accountId] - Account ID for the remarketing audience to update.
+   * [accountId] - The account ID of the remarketing audience to update.
    *
-   * [webPropertyId] - Web property ID for the remarketing audience to update.
+   * [webPropertyId] - The web property ID of the remarketing audience to
+   * update.
    *
-   * [remarketingAudienceId] - Remarketing audience ID of the remarketing
-   * audience to update.
+   * [remarketingAudienceId] - The ID of the remarketing audience to update.
    *
    * Completes with a [RemarketingAudience].
    *
@@ -8457,6 +8460,8 @@ class GaData {
   core.List<GaDataColumnHeaders> columnHeaders;
   /** Determines if Analytics data contains samples. */
   core.bool containsSampledData;
+  /** The last refreshed time in seconds for Analytics data. */
+  core.String dataLastRefreshed;
   GaDataDataTable dataTable;
   /** Unique ID for this data response. */
   core.String id;
@@ -8513,6 +8518,9 @@ class GaData {
     if (_json.containsKey("containsSampledData")) {
       containsSampledData = _json["containsSampledData"];
     }
+    if (_json.containsKey("dataLastRefreshed")) {
+      dataLastRefreshed = _json["dataLastRefreshed"];
+    }
     if (_json.containsKey("dataTable")) {
       dataTable = new GaDataDataTable.fromJson(_json["dataTable"]);
     }
@@ -8564,6 +8572,9 @@ class GaData {
     }
     if (containsSampledData != null) {
       _json["containsSampledData"] = containsSampledData;
+    }
+    if (dataLastRefreshed != null) {
+      _json["dataLastRefreshed"] = dataLastRefreshed;
     }
     if (dataTable != null) {
       _json["dataTable"] = (dataTable).toJson();
@@ -9173,11 +9184,7 @@ class IncludeConditions {
   core.bool isSmartList;
   /** Resource type for include conditions. */
   core.String kind;
-  /**
-   * Number of days a user remains in the audience. Use any integer from 1-540.
-   * In remarketing audiences for search ads, membership duration is truncated
-   * to 180 days.
-   */
+  /** Number of days (in the range 1 to 540) a user remains in the audience. */
   core.int membershipDurationDays;
   /**
    * The segment condition that will cause a user to be added to an audience.
@@ -9869,9 +9876,10 @@ class Profile {
   /**
    * The currency type associated with this view (profile), defaults to USD. The
    * supported values are:
-   * ARS, AUD, BGN, BRL, CAD, CHF, CNY, CZK, DKK, EUR, GBP, HKD, HUF, IDR, INR,
-   * JPY, KRW, LTL, MXN, NOK, NZD, PHP, PLN, RUB, SEK, THB, TRY, TWD, USD, VND,
-   * ZAR
+   * USD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD,
+   * HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL,
+   * ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD,
+   * SAR, SGD, VEF, LVL
    */
   core.String currency;
   /** Default page for this view (profile). */

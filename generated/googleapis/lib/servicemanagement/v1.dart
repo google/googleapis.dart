@@ -57,7 +57,7 @@ class OperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource.
-   * Value must have pattern "^operations/.*$".
+   * Value must have pattern "^operations/.+$".
    *
    * Completes with a [Operation].
    *
@@ -340,7 +340,8 @@ class ServicesResourceApi {
   }
 
   /**
-   * Gets a managed service.
+   * Gets a managed service. Authentication is required unless the service is
+   * public.
    *
    * Request parameters:
    *
@@ -389,7 +390,7 @@ class ServicesResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
-   * [configId] - null
+   * [configId] - The id of the service configuration resource.
    *
    * Completes with a [Service].
    *
@@ -439,7 +440,7 @@ class ServicesResourceApi {
    * requested.
    * `resource` is usually specified as a path. For example, a Project
    * resource is specified as `projects/{project}`.
-   * Value must have pattern "^services/[^/]*$".
+   * Value must have pattern "^services/[^/]+$".
    *
    * Completes with a [Policy].
    *
@@ -477,7 +478,10 @@ class ServicesResourceApi {
   }
 
   /**
-   * Lists all managed services.
+   * Lists all managed services. The result is limited to services that the
+   * caller has "servicemanagement.services.get" permission for. If the request
+   * is made without authentication, it returns only public services that are
+   * available to everyone.
    *
    * Request parameters:
    *
@@ -539,7 +543,7 @@ class ServicesResourceApi {
    * specified.
    * `resource` is usually specified as a path. For example, a Project
    * resource is specified as `projects/{project}`.
-   * Value must have pattern "^services/[^/]*$".
+   * Value must have pattern "^services/[^/]+$".
    *
    * Completes with a [Policy].
    *
@@ -587,7 +591,7 @@ class ServicesResourceApi {
    * requested.
    * `resource` is usually specified as a path. For example, a Project
    * resource is specified as `projects/{project}`.
-   * Value must have pattern "^services/[^/]*$".
+   * Value must have pattern "^services/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -737,7 +741,7 @@ class ServicesConfigsResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
-   * [configId] - null
+   * [configId] - The id of the service configuration resource.
    *
    * Completes with a [Service].
    *
@@ -1225,6 +1229,22 @@ class AuditConfig {
  */
 class AuthProvider {
   /**
+   * The list of JWT
+   * [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
+   * that are allowed to access. A JWT containing any of these audiences will
+   * be accepted. When this setting is absent, only JWTs with audience
+   * "https://Service_name/API_name"
+   * will be accepted. For example, if no audiences are in the setting,
+   * LibraryService API will only accept JWTs with the following audience
+   * "https://library-example.googleapis.com/google.example.library.v1.LibraryService".
+   *
+   * Example:
+   *
+   *     audiences: bookstore_android.apps.googleusercontent.com,
+   *                bookstore_web.apps.googleusercontent.com
+   */
+  core.String audiences;
+  /**
    * The unique identifier of the auth provider. It will be referred to by
    * `AuthRequirement.provider_id`.
    *
@@ -1259,6 +1279,9 @@ class AuthProvider {
   AuthProvider();
 
   AuthProvider.fromJson(core.Map _json) {
+    if (_json.containsKey("audiences")) {
+      audiences = _json["audiences"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -1272,6 +1295,9 @@ class AuthProvider {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (audiences != null) {
+      _json["audiences"] = audiences;
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -1292,6 +1318,9 @@ class AuthProvider {
  */
 class AuthRequirement {
   /**
+   * NOTE: This will be deprecated soon, once AuthProvider.audiences is
+   * implemented and accepted in all the runtime components.
+   *
    * The list of JWT
    * [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
    * that are allowed to access. A JWT containing any of these audiences will
@@ -1542,6 +1571,7 @@ class Binding {
    * * `user:{emailid}`: An email address that represents a specific Google
    *    account. For example, `alice@gmail.com` or `joe@example.com`.
    *
+   *
    * * `serviceAccount:{emailid}`: An email address that represents a service
    *    account. For example, `my-other-app@appspot.gserviceaccount.com`.
    *
@@ -1635,9 +1665,10 @@ class Condition {
    * Trusted attributes supplied by the IAM system.
    * Possible string values are:
    * - "NO_ATTR" : Default non-attribute.
-   * - "AUTHORITY" : Either principal or (if present) authority
-   * - "ATTRIBUTION" : selector
-   * Always the original principal, but making clear
+   * - "AUTHORITY" : Either principal or (if present) authority selector.
+   * - "ATTRIBUTION" : The principal (even if an authority selector is present),
+   * which
+   * must only be used for attribution, not authorization.
    */
   core.String iam;
   /**
@@ -2277,7 +2308,8 @@ class DisableServiceRequest {
    * applied to.
    *
    * The Google Service Management implementation accepts the following
-   * forms: "project:<project_id>", "project_number:<project_number>".
+   * forms:
+   * - "project:<project_id>"
    *
    * Note: this is made compatible with
    * google.api.servicecontrol.v1.Operation.consumer_id.
@@ -2490,7 +2522,8 @@ class EnableServiceRequest {
    * applied to.
    *
    * The Google Service Management implementation accepts the following
-   * forms: "project:<project_id>", "project_number:<project_number>".
+   * forms:
+   * - "project:<project_id>"
    *
    * Note: this is made compatible with
    * google.api.servicecontrol.v1.Operation.consumer_id.
@@ -3185,7 +3218,7 @@ class Http {
  *
  * The syntax `**` matches zero or more path segments. It follows the semantics
  * of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.3 Reserved
- * Expansion.
+ * Expansion. NOTE: it must be the last segment in the path except the Verb.
  *
  * The syntax `LITERAL` matches literal text in the URL path.
  *
@@ -3449,7 +3482,7 @@ class ListServicesResponse {
    * Token that can be passed to `ListServices` to resume a paginated query.
    */
   core.String nextPageToken;
-  /** The results of the query. */
+  /** The returned services will only have the name field set. */
   core.List<ManagedService> services;
 
   ListServicesResponse();
@@ -3611,11 +3644,9 @@ class LogDescriptor {
  * Logging configuration of the service.
  *
  * The following example shows how to configure logs to be sent to the
- * producer and consumer projects. In the example,
- * the `library.googleapis.com/activity_history` log is
- * sent to both the producer and consumer projects, whereas
- * the `library.googleapis.com/purchase_history` log is only sent to the
- * producer project:
+ * producer and consumer projects. In the example, the `activity_history`
+ * log is sent to both the producer and consumer projects, whereas the
+ * `purchase_history` log is only sent to the producer project.
  *
  *     monitored_resources:
  *     - type: library.googleapis.com/branch
@@ -3625,20 +3656,20 @@ class LogDescriptor {
  *       - key: /name
  *         description: The name of the branch.
  *     logs:
- *     - name: library.googleapis.com/activity_history
+ *     - name: activity_history
  *       labels:
  *       - key: /customer_id
- *     - name: library.googleapis.com/purchase_history
+ *     - name: purchase_history
  *     logging:
  *       producer_destinations:
  *       - monitored_resource: library.googleapis.com/branch
  *         logs:
- *         - library.googleapis.com/activity_history
- *         - library.googleapis.com/purchase_history
+ *         - activity_history
+ *         - purchase_history
  *       consumer_destinations:
  *       - monitored_resource: library.googleapis.com/branch
  *         logs:
- *         - library.googleapis.com/activity_history
+ *         - activity_history
  */
 class Logging {
   /**
@@ -3686,11 +3717,13 @@ class Logging {
 class LoggingDestination {
   /**
    * Names of the logs to be sent to this destination. Each name must
-   * be defined in the Service.logs section.
+   * be defined in the Service.logs section. If the log name is
+   * not a domain scoped name, it will be automatically prefixed with
+   * the service name followed by "/".
    */
   core.List<core.String> logs;
   /**
-   * The monitored resource type. The type must be defined in
+   * The monitored resource type. The type must be defined in the
    * Service.monitored_resources section.
    */
   core.String monitoredResource;
@@ -3881,7 +3914,11 @@ class Method {
   }
 }
 
-/** Defines a metric type and its schema. */
+/**
+ * Defines a metric type and its schema. Once a metric descriptor is created,
+ * deleting or altering it stops data collection and makes the metric type's
+ * existing data unusable.
+ */
 class MetricDescriptor {
   /**
    * A detailed description of the metric, which can be used in documentation.
@@ -3893,15 +3930,17 @@ class MetricDescriptor {
    */
   core.String displayName;
   /**
-   * The set of labels that can be used to describe a specific instance of this
-   * metric type. For example, the
-   * `compute.googleapis.com/instance/network/received_bytes_count` metric type
-   * has a label, `loadbalanced`, that specifies whether the traffic was
-   * received through a load balanced IP address.
+   * The set of labels that can be used to describe a specific
+   * instance of this metric type. For example, the
+   * `appengine.googleapis.com/http/server/response_latencies` metric
+   * type has a label for the HTTP response code, `response_code`, so
+   * you can look at latencies for successful responses or just
+   * for responses that failed.
    */
   core.List<LabelDescriptor> labels;
   /**
    * Whether the metric records instantaneous values, changes to a value, etc.
+   * Some combinations of `metric_kind` and `value_type` might not be supported.
    * Possible string values are:
    * - "METRIC_KIND_UNSPECIFIED" : Do not use this default value.
    * - "GAUGE" : An instantaneous measurement of a value.
@@ -3914,26 +3953,24 @@ class MetricDescriptor {
    */
   core.String metricKind;
   /**
-   * Resource name. The format of the name may vary between different
-   * implementations. For examples:
+   * The resource name of the metric descriptor. Depending on the
+   * implementation, the name typically includes: (1) the parent resource name
+   * that defines the scope of the metric type or of its data; and (2) the
+   * metric's URL-encoded type, which also appears in the `type` field of this
+   * descriptor. For example, following is the resource name of a custom
+   * metric within the GCP project 123456789:
    *
-   *     projects/{project_id}/metricDescriptors/{type=**}
-   *     metricDescriptors/{type=**}
+   * "projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
    */
   core.String name;
   /**
-   * The metric type including a DNS name prefix, for example
-   * `"compute.googleapis.com/instance/cpu/utilization"`. Metric types
-   * should use a natural hierarchical grouping such as the following:
+   * The metric type, including its DNS name prefix. The type is not
+   * URL-encoded.  All user-defined metric types have the DNS name
+   * `custom.googleapis.com`.  Metric types should use a natural hierarchical
+   * grouping. For example:
    *
-   *     compute.googleapis.com/instance/cpu/utilization
-   *     compute.googleapis.com/instance/disk/read_ops_count
-   *     compute.googleapis.com/instance/network/received_bytes_count
-   *
-   * Note that if the metric type changes, the monitoring data will be
-   * discontinued, and anything depends on it will break, such as monitoring
-   * dashboards, alerting rules and quota limits. Therefore, once a metric has
-   * been published, its type should be immutable.
+   *     "custom.googleapis.com/invoice/paid/amount"
+   *     "appengine.googleapis.com/http/server/response_latencies"
    */
   core.String type;
   /**
@@ -4005,6 +4042,7 @@ class MetricDescriptor {
   core.String unit;
   /**
    * Whether the measurement is an integer, a floating-point number, etc.
+   * Some combinations of `metric_kind` and `value_type` might not be supported.
    * Possible string values are:
    * - "VALUE_TYPE_UNSPECIFIED" : Do not use this default value.
    * - "BOOL" : The value is a boolean.
@@ -4452,7 +4490,7 @@ class Operation {
    * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * Service-specific metadata associated with the operation.  It typically
@@ -5010,22 +5048,23 @@ class Rule {
 }
 
 /**
- * `Service` is the root object of the configuration schema. It
- * describes basic information like the name of the service and the
- * exposed API interfaces, and delegates other aspects to configuration
- * sub-sections.
+ * `Service` is the root object of Google service configuration schema. It
+ * describes basic information about a service, such as the name and the
+ * title, and delegates other aspects to sub-sections. Each sub-section is
+ * either a proto message or a repeated proto message that configures a
+ * specific aspect, such as auth. See each proto message definition for details.
  *
  * Example:
  *
  *     type: google.api.Service
- *     config_version: 1
+ *     config_version: 3
  *     name: calendar.googleapis.com
  *     title: Google Calendar API
  *     apis:
- *     - name: google.calendar.Calendar
+ *     - name: google.calendar.v3.Calendar
  *     backend:
  *       rules:
- *       - selector: "*"
+ *       - selector: "google.calendar.v3.*"
  *         address: calendar.example.com
  */
 class Service {
@@ -5080,7 +5119,7 @@ class Service {
    * generate one instead.
    */
   core.String id;
-  /** Logging configuration of the service. */
+  /** Logging configuration. */
   Logging logging;
   /** Defines the logs used by this service. */
   core.List<LogDescriptor> logs;
@@ -5091,7 +5130,7 @@ class Service {
    * by the Service.monitoring and Service.logging configurations.
    */
   core.List<MonitoredResourceDescriptor> monitoredResources;
-  /** Monitoring configuration of the service. */
+  /** Monitoring configuration. */
   Monitoring monitoring;
   /**
    * The DNS address at which this service is available,
@@ -5104,7 +5143,7 @@ class Service {
    * manage consumption of the service, etc.
    */
   core.String producerProjectId;
-  /** Configuration for system parameters. */
+  /** System parameter configuration. */
   SystemParameters systemParameters;
   /**
    * A list of all proto message types included in this API service.
@@ -6052,8 +6091,8 @@ class Visibility {
  */
 class VisibilityRule {
   /**
-   * Lists the visibility labels for this rule. Any of the listed labels grants
-   * visibility to the element.
+   * A comma-separated list of visibility labels that apply to the `selector`.
+   * Any of the listed labels can be used to grant the visibility.
    *
    * If a rule has multiple labels, removing one of the labels but not all of
    * them can break clients.

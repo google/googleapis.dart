@@ -11,7 +11,6 @@
     "basePath": "",
     "baseUrl": "https://speech.googleapis.com/",
     "batchPath": "batch",
-    "canonicalName": "Cloud Speech API",
     "description": "Google Cloud Speech API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/speech/",
@@ -114,44 +113,6 @@
     },
     "protocol": "rest",
     "resources": {
-        "speech": {
-            "methods": {
-                "syncrecognize": {
-                    "description": "Perform synchronous speech-recognition: receive results after all audio\nhas been sent and processed.",
-                    "httpMethod": "POST",
-                    "id": "speech.speech.syncrecognize",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1beta1/speech:syncrecognize",
-                    "request": {
-                        "$ref": "SyncRecognizeRequest"
-                    },
-                    "response": {
-                        "$ref": "SyncRecognizeResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
-                "asyncrecognize": {
-                    "description": "Perform asynchronous speech-recognition: receive results via the\ngoogle.longrunning.Operations interface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
-                    "httpMethod": "POST",
-                    "id": "speech.speech.asyncrecognize",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1beta1/speech:asyncrecognize",
-                    "request": {
-                        "$ref": "AsyncRecognizeRequest"
-                    },
-                    "response": {
-                        "$ref": "Operation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                }
-            }
-        },
         "operations": {
             "methods": {
                 "get": {
@@ -165,7 +126,7 @@
                         "name": {
                             "description": "The name of the operation resource.",
                             "location": "path",
-                            "pattern": "^[^/]*$",
+                            "pattern": "^[^/]+$",
                             "required": true,
                             "type": "string"
                         }
@@ -214,8 +175,32 @@
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 },
+                "delete": {
+                    "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+                    "httpMethod": "DELETE",
+                    "id": "speech.operations.delete",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "The name of the operation resource to be deleted.",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/operations/{+name}",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
                 "cancel": {
-                    "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation.",
+                    "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
                     "httpMethod": "POST",
                     "id": "speech.operations.cancel",
                     "parameterOrder": [
@@ -225,7 +210,7 @@
                         "name": {
                             "description": "The name of the operation resource to be cancelled.",
                             "location": "path",
-                            "pattern": "^[^/]*$",
+                            "pattern": "^[^/]+$",
                             "required": true,
                             "type": "string"
                         }
@@ -240,26 +225,40 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
-                },
-                "delete": {
-                    "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
-                    "httpMethod": "DELETE",
-                    "id": "speech.operations.delete",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "name": {
-                            "description": "The name of the operation resource to be deleted.",
-                            "location": "path",
-                            "pattern": "^[^/]*$",
-                            "required": true,
-                            "type": "string"
-                        }
+                }
+            }
+        },
+        "speech": {
+            "methods": {
+                "syncrecognize": {
+                    "description": "Performs synchronous speech recognition: receive results after all audio\nhas been sent and processed.",
+                    "httpMethod": "POST",
+                    "id": "speech.speech.syncrecognize",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1beta1/speech:syncrecognize",
+                    "request": {
+                        "$ref": "SyncRecognizeRequest"
                     },
-                    "path": "v1beta1/operations/{+name}",
                     "response": {
-                        "$ref": "Empty"
+                        "$ref": "SyncRecognizeResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "asyncrecognize": {
+                    "description": "Performs asynchronous speech recognition: receive results via the\ngoogle.longrunning.Operations interface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
+                    "httpMethod": "POST",
+                    "id": "speech.speech.asyncrecognize",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1beta1/speech:asyncrecognize",
+                    "request": {
+                        "$ref": "AsyncRecognizeRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
@@ -268,7 +267,7 @@
             }
         }
     },
-    "revision": "20160824",
+    "revision": "20161031",
     "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
         "Status": {
@@ -320,7 +319,7 @@
             "properties": {
                 "error": {
                     "$ref": "Status",
-                    "description": "The error result of the operation in case of failure."
+                    "description": "The error result of the operation in case of failure or cancellation."
                 },
                 "done": {
                     "description": "If the value is `false`, it means the operation is still in progress.\nIf true, the operation is completed, and either `error` or `response` is\navailable.",
@@ -381,7 +380,7 @@
                     "type": "integer"
                 },
                 "languageCode": {
-                    "description": "[Optional] The language of the supplied audio as a BCP-47 language tag.\nExample: \"en-GB\"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt\nIf omitted, defaults to \"en-US\". See\n[Language Support](https://cloud.google.com/speech/docs/best-practices#language_support)\nfor a list of the currently supported language codes.",
+                    "description": "[Optional] The language of the supplied audio as a BCP-47 language tag.\nExample: \"en-GB\"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt\nIf omitted, defaults to \"en-US\". See\n[Language Support](https://cloud.google.com/speech/docs/languages)\nfor a list of the currently supported language codes.",
                     "type": "string"
                 },
                 "speechContext": {
@@ -400,8 +399,8 @@
                     ],
                     "enumDescriptions": [
                         "Not specified. Will return result google.rpc.Code.INVALID_ARGUMENT.",
-                        "Uncompressed 16-bit signed little-endian samples.\nThis is the only encoding that may be used by `AsyncRecognize`.",
-                        "This is the recommended encoding for `SyncRecognize` and\n`StreamingRecognize` because it uses lossless compression; therefore\nrecognition accuracy is not compromised by a lossy codec.\n\nThe stream FLAC (Free Lossless Audio Codec) encoding is specified at:\nhttp://flac.sourceforge.net/documentation.html.\nOnly 16-bit samples are supported.\nNot all fields in STREAMINFO are supported.",
+                        "Uncompressed 16-bit signed little-endian samples (Linear PCM).\nThis is the only encoding that may be used by `AsyncRecognize`.",
+                        "This is the recommended encoding for `SyncRecognize` and\n`StreamingRecognize` because it uses lossless compression; therefore\nrecognition accuracy is not compromised by a lossy codec.\n\nThe stream FLAC (Free Lossless Audio Codec) encoding is specified at:\nhttp://flac.sourceforge.net/documentation.html.\n16-bit and 24-bit samples are supported.\nNot all fields in STREAMINFO are supported.",
                         "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.",
                         "Adaptive Multi-Rate Narrowband codec. `sample_rate` must be 8000 Hz.",
                         "Adaptive Multi-Rate Wideband codec. `sample_rate` must be 16000 Hz."
@@ -467,6 +466,12 @@
             },
             "type": "object"
         },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
         "SyncRecognizeResponse": {
             "description": "`SyncRecognizeResponse` is the only message returned to the client by\n`SyncRecognize`. It contains the result as zero or more sequential\n`SpeechRecognitionResult` messages.",
             "id": "SyncRecognizeResponse",
@@ -479,12 +484,6 @@
                     "type": "array"
                 }
             },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
             "type": "object"
         },
         "SpeechContext": {

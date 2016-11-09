@@ -2,8 +2,14 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/appengine.admin": {
+                    "description": "View and manage your applications deployed on Google App Engine"
+                },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/cloud-platform.read-only": {
+                    "description": "View your data across Google Cloud Platform services"
                 }
             }
         }
@@ -14,7 +20,7 @@
     "description": "Provisions and manages App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/appengine/docs/admin-api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/WgHFQRJNa9ABhjOi9ooEWesv8kc\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/bxm0Hg_anT2iVOk8OuVymCOFgn0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -149,41 +155,42 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "patch": {
+                    "description": "Updates application fields.",
+                    "httpMethod": "PATCH",
+                    "id": "appengine.apps.patch",
+                    "parameterOrder": [
+                        "appsId"
+                    ],
+                    "parameters": {
+                        "appsId": {
+                            "description": "Part of `name`. Name of the application to update. Example: `apps/myapp`.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "mask": {
+                            "description": "Standard field mask for the set of fields to be updated.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta5/apps/{appsId}",
+                    "request": {
+                        "$ref": "Application"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             },
             "resources": {
                 "operations": {
                     "methods": {
-                        "get": {
-                            "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                            "httpMethod": "GET",
-                            "id": "appengine.apps.operations.get",
-                            "parameterOrder": [
-                                "appsId",
-                                "operationsId"
-                            ],
-                            "parameters": {
-                                "appsId": {
-                                    "description": "Part of `name`. The name of the operation resource.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "operationsId": {
-                                    "description": "Part of `name`. See documentation of `appsId`.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1beta5/apps/{appsId}/operations/{operationsId}",
-                            "response": {
-                                "$ref": "Operation"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
-                            ]
-                        },
                         "list": {
                             "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding below allows API services to override the binding to use different resource name schemes, such as `users/*/operations`.",
                             "httpMethod": "GET",
@@ -220,7 +227,41 @@
                                 "$ref": "ListOperationsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/appengine.admin",
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only"
+                            ]
+                        },
+                        "get": {
+                            "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                            "httpMethod": "GET",
+                            "id": "appengine.apps.operations.get",
+                            "parameterOrder": [
+                                "appsId",
+                                "operationsId"
+                            ],
+                            "parameters": {
+                                "appsId": {
+                                    "description": "Part of `name`. The name of the operation resource.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "operationsId": {
+                                    "description": "Part of `name`. See documentation of `appsId`.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta5/apps/{appsId}/operations/{operationsId}",
+                            "response": {
+                                "$ref": "Operation"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/appengine.admin",
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
                         }
                     }
@@ -284,7 +325,9 @@
                                 "$ref": "Service"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/appengine.admin",
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
                         },
                         "list": {
@@ -318,7 +361,9 @@
                                 "$ref": "ListServicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/appengine.admin",
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
                         },
                         "patch": {
@@ -481,7 +526,9 @@
                                         "$ref": "Version"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/appengine.admin",
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
                                 },
                                 "list": {
@@ -531,7 +578,9 @@
                                         "$ref": "ListVersionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/appengine.admin",
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                                     ]
                                 },
                                 "patch": {
@@ -668,7 +717,9 @@
                                                 "$ref": "Instance"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/appengine.admin",
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloud-platform.read-only"
                                             ]
                                         },
                                         "list": {
@@ -716,7 +767,9 @@
                                                 "$ref": "ListInstancesResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/appengine.admin",
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloud-platform.read-only"
                                             ]
                                         },
                                         "debug": {
@@ -810,7 +863,9 @@
                                 "$ref": "ListLocationsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/appengine.admin",
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
                         },
                         "get": {
@@ -840,7 +895,9 @@
                                 "$ref": "Location"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/appengine.admin",
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only"
                             ]
                         }
                     }
@@ -848,9 +905,27 @@
             }
         }
     },
-    "revision": "20160802",
+    "revision": "20161101",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
+        "ListOperationsResponse": {
+            "description": "The response message for Operations.ListOperations.",
+            "id": "ListOperationsResponse",
+            "properties": {
+                "operations": {
+                    "description": "A list of operations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Operation": {
             "description": "This resource represents a long-running operation that is the result of a network API call.",
             "id": "Operation",
@@ -873,7 +948,7 @@
                 },
                 "error": {
                     "$ref": "Status",
-                    "description": "The error result of the operation in case of failure."
+                    "description": "The error result of the operation in case of failure or cancellation."
                 },
                 "response": {
                     "additionalProperties": {
@@ -909,24 +984,6 @@
                         "type": "object"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ListOperationsResponse": {
-            "description": "The response message for Operations.ListOperations.",
-            "id": "ListOperationsResponse",
-            "properties": {
-                "operations": {
-                    "description": "A list of operations that matches the specified filter in the request.",
-                    "items": {
-                        "$ref": "Operation"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1846,6 +1903,10 @@
                 "vmUnlocked": {
                     "description": "Whether this instance is in debug mode. Only applicable for instances in App Engine flexible environment. @OutputOnly",
                     "type": "boolean"
+                },
+                "vmIp": {
+                    "description": "The IP address of this instance. Only applicable for instances in App Engine flexible environment. @OutputOnly",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1871,6 +1932,12 @@
         "DebugInstanceRequest": {
             "description": "Request message for `Instances.DebugInstance`.",
             "id": "DebugInstanceRequest",
+            "properties": {
+                "sshKey": {
+                    "description": "Public SSH key to add to the instance. Example: `[USERNAME]:ssh-rsa KEY_VALUE` or `[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh {\"userName\":\"[USERNAME]\",\"expireOn\":\"[EXPIRE_TIME]\"}` For more information, see [Adding and Removing SSH Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "ListLocationsResponse": {
@@ -1900,7 +1967,7 @@
                     "type": "string"
                 },
                 "locationId": {
-                    "description": "The cononical id for this location. For example: `\"us-east1\"`.",
+                    "description": "The canonical id for this location. For example: `\"us-east1\"`.",
                     "type": "string"
                 },
                 "labels": {
@@ -1917,6 +1984,33 @@
                     },
                     "description": "Service-specific metadata. For example the available capacity at the given location.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "OperationMetadataExperimental": {
+            "description": "Metadata for the given google.longrunning.Operation.",
+            "id": "OperationMetadataExperimental",
+            "properties": {
+                "method": {
+                    "description": "API method that initiated this operation. Example: `google.appengine.experimental.CustomDomains.CreateCustomDomain`. @OutputOnly",
+                    "type": "string"
+                },
+                "insertTime": {
+                    "description": "Time that this operation was created. @OutputOnly",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Time that this operation completed. @OutputOnly",
+                    "type": "string"
+                },
+                "user": {
+                    "description": "User who requested this operation. @OutputOnly",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Name of the resource that this operation is acting on. Example: `apps/myapp/customDomains/example.com`. @OutputOnly",
+                    "type": "string"
                 }
             },
             "type": "object"

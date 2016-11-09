@@ -66,7 +66,16 @@ class ProjectsConfigsResourceApi {
    * [parent] - The [project
    * ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
    * for this request, in the format `projects/[PROJECT_ID]`.
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
+   *
+   * [requestId] - An optional unique request_id. If server receives two Create
+   * requests with
+   * the same request_id then second request will be ignored and the resource
+   * stored in the backend will be returned. Empty request_id fields are
+   * ignored.
+   * It is responsibility of the client to ensure uniqueness of the request_id
+   * strings.
+   * The strings are limited to 64 characters.
    *
    * Completes with a [RuntimeConfig].
    *
@@ -76,7 +85,7 @@ class ProjectsConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RuntimeConfig> create(RuntimeConfig request, core.String parent) {
+  async.Future<RuntimeConfig> create(RuntimeConfig request, core.String parent, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -89,6 +98,9 @@ class ProjectsConfigsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/configs';
@@ -111,7 +123,7 @@ class ProjectsConfigsResourceApi {
    * [name] - The RuntimeConfig resource to delete, in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -153,7 +165,7 @@ class ProjectsConfigsResourceApi {
    * [name] - The name of the RuntimeConfig resource to retrieve, in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
    * Completes with a [RuntimeConfig].
    *
@@ -195,7 +207,7 @@ class ProjectsConfigsResourceApi {
    * [parent] - The [project
    * ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
    * for this request, in the format `projects/[PROJECT_ID]`.
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * [pageSize] - Specifies the number of results to return per page. If there
    * are fewer
@@ -253,7 +265,7 @@ class ProjectsConfigsResourceApi {
    * [name] - The name of the RuntimeConfig resource to update, in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
    * Completes with a [RuntimeConfig].
    *
@@ -307,8 +319,7 @@ class ProjectsConfigsOperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource.
-   * Value must have pattern "^projects/[^/] * / configs/[^/] * /
-   * operations/.*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+/operations/.+$".
    *
    * Completes with a [Operation].
    *
@@ -370,7 +381,16 @@ class ProjectsConfigsVariablesResourceApi {
    * The configuration must exist beforehand; the path must by in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+   *
+   * [requestId] - An optional unique request_id. If server receives two Create
+   * requests with
+   * the same request_id then second request will be ignored and the resource
+   * stored in the backend will be returned. Empty request_id fields are
+   * ignored.
+   * It is responsibility of the client to ensure uniqueness of the request_id
+   * strings.
+   * The strings are limited to 64 characters.
    *
    * Completes with a [Variable].
    *
@@ -380,7 +400,7 @@ class ProjectsConfigsVariablesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Variable> create(Variable request, core.String parent) {
+  async.Future<Variable> create(Variable request, core.String parent, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -393,6 +413,9 @@ class ProjectsConfigsVariablesResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/variables';
@@ -420,8 +443,7 @@ class ProjectsConfigsVariablesResourceApi {
    * [name] - The name of the variable to delete, in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/] * /
-   * variables/.*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.+$".
    *
    * [recursive] - Set to `true` to recursively delete multiple variables with
    * the same
@@ -470,8 +492,7 @@ class ProjectsConfigsVariablesResourceApi {
    * [name] - The name of the variable to return, in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/] * /
-   * variables/.*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.+$".
    *
    * Completes with a [Variable].
    *
@@ -517,7 +538,7 @@ class ProjectsConfigsVariablesResourceApi {
    * The configuration must exist beforehand; the path must by in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
    * [pageSize] - Specifies the number of results to return per page. If there
    * are fewer
@@ -582,8 +603,7 @@ class ProjectsConfigsVariablesResourceApi {
    * [name] - The name of the variable to update, in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/] * /
-   * variables/.*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.+$".
    *
    * Completes with a [Variable].
    *
@@ -645,8 +665,7 @@ class ProjectsConfigsVariablesResourceApi {
    * [name] - The name of the variable to watch, in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/] * /
-   * variables/.*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.+$".
    *
    * Completes with a [Variable].
    *
@@ -707,7 +726,16 @@ class ProjectsConfigsWaitersResourceApi {
    * The configuration must exist beforehand; the path must by in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.
-   * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+   *
+   * [requestId] - An optional unique request_id. If server receives two Create
+   * requests with
+   * the same request_id then second request will be ignored and information
+   * stored in the backend will be returned. Empty request_id fields are
+   * ignored.
+   * It is responsibility of the client to ensure uniqueness of the request_id
+   * strings.
+   * The strings are limited to 64 characters.
    *
    * Completes with a [Operation].
    *
@@ -717,7 +745,7 @@ class ProjectsConfigsWaitersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> create(Waiter request, core.String parent) {
+  async.Future<Operation> create(Waiter request, core.String parent, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -730,6 +758,9 @@ class ProjectsConfigsWaitersResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/waiters';
@@ -752,8 +783,7 @@ class ProjectsConfigsWaitersResourceApi {
    * [name] - The Waiter resource to delete, in the format:
    *
    *  `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/] * /
-   * waiters/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -797,8 +827,7 @@ class ProjectsConfigsWaitersResourceApi {
    * format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/] * /
-   * waiters/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$".
    *
    * Completes with a [Waiter].
    *
@@ -842,7 +871,7 @@ class ProjectsConfigsWaitersResourceApi {
    * The configuration must exist beforehand; the path must by in the format:
    *
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-   * Value must have pattern "^projects/[^/] * / configs/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
    * [pageSize] - Specifies the number of results to return per page. If there
    * are fewer
@@ -1119,7 +1148,7 @@ class Operation {
    * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * Service-specific metadata associated with the operation.  It typically

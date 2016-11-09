@@ -2731,6 +2731,13 @@ class VolumesResourceApi {
    * - "my-library" : Restrict to the user's library, any shelf.
    * - "no-restrict" : Do not restrict based on user's library.
    *
+   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+   * returned recommendations. Books with a higher maturity rating are filtered
+   * out.
+   * Possible string values are:
+   * - "mature" : Show books which are rated mature or lower.
+   * - "not-mature" : Show books which are rated not mature.
+   *
    * [maxResults] - Maximum number of results to return.
    * Value must be between "0" and "40".
    *
@@ -2767,7 +2774,7 @@ class VolumesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Volumes> list(core.String q, {core.String download, core.String filter, core.String langRestrict, core.String libraryRestrict, core.int maxResults, core.String orderBy, core.String partner, core.String printType, core.String projection, core.bool showPreorders, core.String source, core.int startIndex}) {
+  async.Future<Volumes> list(core.String q, {core.String download, core.String filter, core.String langRestrict, core.String libraryRestrict, core.String maxAllowedMaturityRating, core.int maxResults, core.String orderBy, core.String partner, core.String printType, core.String projection, core.bool showPreorders, core.String source, core.int startIndex}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2790,6 +2797,9 @@ class VolumesResourceApi {
     }
     if (libraryRestrict != null) {
       _queryParams["libraryRestrict"] = [libraryRestrict];
+    }
+    if (maxAllowedMaturityRating != null) {
+      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -6125,6 +6135,10 @@ class SeriesSeries {
 class Series {
   /** Resource type. */
   core.String kind;
+  /**
+   * Series info list. The client always expects this element in the JSON
+   * output, hence declared here as OutputAlways.
+   */
   core.List<SeriesSeries> series;
 
   Series();

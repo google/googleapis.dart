@@ -51,14 +51,33 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1301() {
+core.int buildCounterAuditData = 0;
+buildAuditData() {
+  var o = new api.AuditData();
+  buildCounterAuditData++;
+  if (buildCounterAuditData < 3) {
+    o.policyDelta = buildPolicyDelta();
+  }
+  buildCounterAuditData--;
+  return o;
+}
+
+checkAuditData(api.AuditData o) {
+  buildCounterAuditData++;
+  if (buildCounterAuditData < 3) {
+    checkPolicyDelta(o.policyDelta);
+  }
+  buildCounterAuditData--;
+}
+
+buildUnnamed1327() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1301(core.List<core.String> o) {
+checkUnnamed1327(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +88,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed1301();
+    o.members = buildUnnamed1327();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -79,90 +98,33 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed1301(o.members);
+    checkUnnamed1327(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
 
-core.int buildCounterCloudAuditOptions = 0;
-buildCloudAuditOptions() {
-  var o = new api.CloudAuditOptions();
-  buildCounterCloudAuditOptions++;
-  if (buildCounterCloudAuditOptions < 3) {
+core.int buildCounterBindingDelta = 0;
+buildBindingDelta() {
+  var o = new api.BindingDelta();
+  buildCounterBindingDelta++;
+  if (buildCounterBindingDelta < 3) {
+    o.action = "foo";
+    o.member = "foo";
+    o.role = "foo";
   }
-  buildCounterCloudAuditOptions--;
+  buildCounterBindingDelta--;
   return o;
 }
 
-checkCloudAuditOptions(api.CloudAuditOptions o) {
-  buildCounterCloudAuditOptions++;
-  if (buildCounterCloudAuditOptions < 3) {
+checkBindingDelta(api.BindingDelta o) {
+  buildCounterBindingDelta++;
+  if (buildCounterBindingDelta < 3) {
+    unittest.expect(o.action, unittest.equals('foo'));
+    unittest.expect(o.member, unittest.equals('foo'));
+    unittest.expect(o.role, unittest.equals('foo'));
   }
-  buildCounterCloudAuditOptions--;
-}
-
-buildUnnamed1302() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1302(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterCondition = 0;
-buildCondition() {
-  var o = new api.Condition();
-  buildCounterCondition++;
-  if (buildCounterCondition < 3) {
-    o.iam = "foo";
-    o.op = "foo";
-    o.svc = "foo";
-    o.sys = "foo";
-    o.value = "foo";
-    o.values = buildUnnamed1302();
-  }
-  buildCounterCondition--;
-  return o;
-}
-
-checkCondition(api.Condition o) {
-  buildCounterCondition++;
-  if (buildCounterCondition < 3) {
-    unittest.expect(o.iam, unittest.equals('foo'));
-    unittest.expect(o.op, unittest.equals('foo'));
-    unittest.expect(o.svc, unittest.equals('foo'));
-    unittest.expect(o.sys, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
-    checkUnnamed1302(o.values);
-  }
-  buildCounterCondition--;
-}
-
-core.int buildCounterCounterOptions = 0;
-buildCounterOptions() {
-  var o = new api.CounterOptions();
-  buildCounterCounterOptions++;
-  if (buildCounterCounterOptions < 3) {
-    o.field = "foo";
-    o.metric = "foo";
-  }
-  buildCounterCounterOptions--;
-  return o;
-}
-
-checkCounterOptions(api.CounterOptions o) {
-  buildCounterCounterOptions++;
-  if (buildCounterCounterOptions < 3) {
-    unittest.expect(o.field, unittest.equals('foo'));
-    unittest.expect(o.metric, unittest.equals('foo'));
-  }
-  buildCounterCounterOptions--;
+  buildCounterBindingDelta--;
 }
 
 core.int buildCounterCreateServiceAccountKeyRequest = 0;
@@ -170,6 +132,7 @@ buildCreateServiceAccountKeyRequest() {
   var o = new api.CreateServiceAccountKeyRequest();
   buildCounterCreateServiceAccountKeyRequest++;
   if (buildCounterCreateServiceAccountKeyRequest < 3) {
+    o.keyAlgorithm = "foo";
     o.privateKeyType = "foo";
   }
   buildCounterCreateServiceAccountKeyRequest--;
@@ -179,6 +142,7 @@ buildCreateServiceAccountKeyRequest() {
 checkCreateServiceAccountKeyRequest(api.CreateServiceAccountKeyRequest o) {
   buildCounterCreateServiceAccountKeyRequest++;
   if (buildCounterCreateServiceAccountKeyRequest < 3) {
+    unittest.expect(o.keyAlgorithm, unittest.equals('foo'));
     unittest.expect(o.privateKeyType, unittest.equals('foo'));
   }
   buildCounterCreateServiceAccountKeyRequest--;
@@ -205,23 +169,6 @@ checkCreateServiceAccountRequest(api.CreateServiceAccountRequest o) {
   buildCounterCreateServiceAccountRequest--;
 }
 
-core.int buildCounterDataAccessOptions = 0;
-buildDataAccessOptions() {
-  var o = new api.DataAccessOptions();
-  buildCounterDataAccessOptions++;
-  if (buildCounterDataAccessOptions < 3) {
-  }
-  buildCounterDataAccessOptions--;
-  return o;
-}
-
-checkDataAccessOptions(api.DataAccessOptions o) {
-  buildCounterDataAccessOptions++;
-  if (buildCounterDataAccessOptions < 3) {
-  }
-  buildCounterDataAccessOptions--;
-}
-
 core.int buildCounterEmpty = 0;
 buildEmpty() {
   var o = new api.Empty();
@@ -239,14 +186,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed1303() {
+buildUnnamed1328() {
   var o = new core.List<api.ServiceAccountKey>();
   o.add(buildServiceAccountKey());
   o.add(buildServiceAccountKey());
   return o;
 }
 
-checkUnnamed1303(core.List<api.ServiceAccountKey> o) {
+checkUnnamed1328(core.List<api.ServiceAccountKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccountKey(o[0]);
   checkServiceAccountKey(o[1]);
@@ -257,7 +204,7 @@ buildListServiceAccountKeysResponse() {
   var o = new api.ListServiceAccountKeysResponse();
   buildCounterListServiceAccountKeysResponse++;
   if (buildCounterListServiceAccountKeysResponse < 3) {
-    o.keys = buildUnnamed1303();
+    o.keys = buildUnnamed1328();
   }
   buildCounterListServiceAccountKeysResponse--;
   return o;
@@ -266,19 +213,19 @@ buildListServiceAccountKeysResponse() {
 checkListServiceAccountKeysResponse(api.ListServiceAccountKeysResponse o) {
   buildCounterListServiceAccountKeysResponse++;
   if (buildCounterListServiceAccountKeysResponse < 3) {
-    checkUnnamed1303(o.keys);
+    checkUnnamed1328(o.keys);
   }
   buildCounterListServiceAccountKeysResponse--;
 }
 
-buildUnnamed1304() {
+buildUnnamed1329() {
   var o = new core.List<api.ServiceAccount>();
   o.add(buildServiceAccount());
   o.add(buildServiceAccount());
   return o;
 }
 
-checkUnnamed1304(core.List<api.ServiceAccount> o) {
+checkUnnamed1329(core.List<api.ServiceAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccount(o[0]);
   checkServiceAccount(o[1]);
@@ -289,7 +236,7 @@ buildListServiceAccountsResponse() {
   var o = new api.ListServiceAccountsResponse();
   buildCounterListServiceAccountsResponse++;
   if (buildCounterListServiceAccountsResponse < 3) {
-    o.accounts = buildUnnamed1304();
+    o.accounts = buildUnnamed1329();
     o.nextPageToken = "foo";
   }
   buildCounterListServiceAccountsResponse--;
@@ -299,59 +246,23 @@ buildListServiceAccountsResponse() {
 checkListServiceAccountsResponse(api.ListServiceAccountsResponse o) {
   buildCounterListServiceAccountsResponse++;
   if (buildCounterListServiceAccountsResponse < 3) {
-    checkUnnamed1304(o.accounts);
+    checkUnnamed1329(o.accounts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListServiceAccountsResponse--;
 }
 
-core.int buildCounterLogConfig = 0;
-buildLogConfig() {
-  var o = new api.LogConfig();
-  buildCounterLogConfig++;
-  if (buildCounterLogConfig < 3) {
-    o.cloudAudit = buildCloudAuditOptions();
-    o.counter = buildCounterOptions();
-    o.dataAccess = buildDataAccessOptions();
-  }
-  buildCounterLogConfig--;
-  return o;
-}
-
-checkLogConfig(api.LogConfig o) {
-  buildCounterLogConfig++;
-  if (buildCounterLogConfig < 3) {
-    checkCloudAuditOptions(o.cloudAudit);
-    checkCounterOptions(o.counter);
-    checkDataAccessOptions(o.dataAccess);
-  }
-  buildCounterLogConfig--;
-}
-
-buildUnnamed1305() {
+buildUnnamed1330() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed1305(core.List<api.Binding> o) {
+checkUnnamed1330(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
-}
-
-buildUnnamed1306() {
-  var o = new core.List<api.Rule>();
-  o.add(buildRule());
-  o.add(buildRule());
-  return o;
-}
-
-checkUnnamed1306(core.List<api.Rule> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkRule(o[0]);
-  checkRule(o[1]);
 }
 
 core.int buildCounterPolicy = 0;
@@ -359,9 +270,8 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed1305();
+    o.bindings = buildUnnamed1330();
     o.etag = "foo";
-    o.rules = buildUnnamed1306();
     o.version = 42;
   }
   buildCounterPolicy--;
@@ -371,108 +281,117 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1305(o.bindings);
+    checkUnnamed1330(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1306(o.rules);
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed1307() {
-  var o = new core.List<api.Condition>();
-  o.add(buildCondition());
-  o.add(buildCondition());
+buildUnnamed1331() {
+  var o = new core.List<api.BindingDelta>();
+  o.add(buildBindingDelta());
+  o.add(buildBindingDelta());
   return o;
 }
 
-checkUnnamed1307(core.List<api.Condition> o) {
+checkUnnamed1331(core.List<api.BindingDelta> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
+  checkBindingDelta(o[0]);
+  checkBindingDelta(o[1]);
 }
 
-buildUnnamed1308() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+core.int buildCounterPolicyDelta = 0;
+buildPolicyDelta() {
+  var o = new api.PolicyDelta();
+  buildCounterPolicyDelta++;
+  if (buildCounterPolicyDelta < 3) {
+    o.bindingDeltas = buildUnnamed1331();
+  }
+  buildCounterPolicyDelta--;
   return o;
 }
 
-checkUnnamed1308(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+checkPolicyDelta(api.PolicyDelta o) {
+  buildCounterPolicyDelta++;
+  if (buildCounterPolicyDelta < 3) {
+    checkUnnamed1331(o.bindingDeltas);
+  }
+  buildCounterPolicyDelta--;
 }
 
-buildUnnamed1309() {
-  var o = new core.List<api.LogConfig>();
-  o.add(buildLogConfig());
-  o.add(buildLogConfig());
+core.int buildCounterQueryGrantableRolesRequest = 0;
+buildQueryGrantableRolesRequest() {
+  var o = new api.QueryGrantableRolesRequest();
+  buildCounterQueryGrantableRolesRequest++;
+  if (buildCounterQueryGrantableRolesRequest < 3) {
+    o.fullResourceName = "foo";
+  }
+  buildCounterQueryGrantableRolesRequest--;
   return o;
 }
 
-checkUnnamed1309(core.List<api.LogConfig> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkLogConfig(o[0]);
-  checkLogConfig(o[1]);
+checkQueryGrantableRolesRequest(api.QueryGrantableRolesRequest o) {
+  buildCounterQueryGrantableRolesRequest++;
+  if (buildCounterQueryGrantableRolesRequest < 3) {
+    unittest.expect(o.fullResourceName, unittest.equals('foo'));
+  }
+  buildCounterQueryGrantableRolesRequest--;
 }
 
-buildUnnamed1310() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+buildUnnamed1332() {
+  var o = new core.List<api.Role>();
+  o.add(buildRole());
+  o.add(buildRole());
   return o;
 }
 
-checkUnnamed1310(core.List<core.String> o) {
+checkUnnamed1332(core.List<api.Role> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  checkRole(o[0]);
+  checkRole(o[1]);
 }
 
-buildUnnamed1311() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
+core.int buildCounterQueryGrantableRolesResponse = 0;
+buildQueryGrantableRolesResponse() {
+  var o = new api.QueryGrantableRolesResponse();
+  buildCounterQueryGrantableRolesResponse++;
+  if (buildCounterQueryGrantableRolesResponse < 3) {
+    o.roles = buildUnnamed1332();
+  }
+  buildCounterQueryGrantableRolesResponse--;
   return o;
 }
 
-checkUnnamed1311(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+checkQueryGrantableRolesResponse(api.QueryGrantableRolesResponse o) {
+  buildCounterQueryGrantableRolesResponse++;
+  if (buildCounterQueryGrantableRolesResponse < 3) {
+    checkUnnamed1332(o.roles);
+  }
+  buildCounterQueryGrantableRolesResponse--;
 }
 
-core.int buildCounterRule = 0;
-buildRule() {
-  var o = new api.Rule();
-  buildCounterRule++;
-  if (buildCounterRule < 3) {
-    o.action = "foo";
-    o.conditions = buildUnnamed1307();
+core.int buildCounterRole = 0;
+buildRole() {
+  var o = new api.Role();
+  buildCounterRole++;
+  if (buildCounterRole < 3) {
     o.description = "foo";
-    o.in_ = buildUnnamed1308();
-    o.logConfig = buildUnnamed1309();
-    o.notIn = buildUnnamed1310();
-    o.permissions = buildUnnamed1311();
+    o.name = "foo";
+    o.title = "foo";
   }
-  buildCounterRule--;
+  buildCounterRole--;
   return o;
 }
 
-checkRule(api.Rule o) {
-  buildCounterRule++;
-  if (buildCounterRule < 3) {
-    unittest.expect(o.action, unittest.equals('foo'));
-    checkUnnamed1307(o.conditions);
+checkRole(api.Role o) {
+  buildCounterRole++;
+  if (buildCounterRole < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1308(o.in_);
-    checkUnnamed1309(o.logConfig);
-    checkUnnamed1310(o.notIn);
-    checkUnnamed1311(o.permissions);
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
   }
-  buildCounterRule--;
+  buildCounterRole--;
 }
 
 core.int buildCounterServiceAccount = 0;
@@ -511,9 +430,11 @@ buildServiceAccountKey() {
   var o = new api.ServiceAccountKey();
   buildCounterServiceAccountKey++;
   if (buildCounterServiceAccountKey < 3) {
+    o.keyAlgorithm = "foo";
     o.name = "foo";
     o.privateKeyData = "foo";
     o.privateKeyType = "foo";
+    o.publicKeyData = "foo";
     o.validAfterTime = "foo";
     o.validBeforeTime = "foo";
   }
@@ -524,9 +445,11 @@ buildServiceAccountKey() {
 checkServiceAccountKey(api.ServiceAccountKey o) {
   buildCounterServiceAccountKey++;
   if (buildCounterServiceAccountKey < 3) {
+    unittest.expect(o.keyAlgorithm, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.privateKeyData, unittest.equals('foo'));
     unittest.expect(o.privateKeyType, unittest.equals('foo'));
+    unittest.expect(o.publicKeyData, unittest.equals('foo'));
     unittest.expect(o.validAfterTime, unittest.equals('foo'));
     unittest.expect(o.validBeforeTime, unittest.equals('foo'));
   }
@@ -592,14 +515,14 @@ checkSignBlobResponse(api.SignBlobResponse o) {
   buildCounterSignBlobResponse--;
 }
 
-buildUnnamed1312() {
+buildUnnamed1333() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1312(core.List<core.String> o) {
+checkUnnamed1333(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -610,7 +533,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed1312();
+    o.permissions = buildUnnamed1333();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -619,19 +542,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed1312(o.permissions);
+    checkUnnamed1333(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed1313() {
+buildUnnamed1334() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1313(core.List<core.String> o) {
+checkUnnamed1334(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -642,7 +565,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed1313();
+    o.permissions = buildUnnamed1334();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -651,19 +574,19 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed1313(o.permissions);
+    checkUnnamed1334(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-buildUnnamed1314() {
+buildUnnamed1335() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1314(core.List<core.String> o) {
+checkUnnamed1335(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -671,6 +594,15 @@ checkUnnamed1314(core.List<core.String> o) {
 
 
 main() {
+  unittest.group("obj-schema-AuditData", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAuditData();
+      var od = new api.AuditData.fromJson(o.toJson());
+      checkAuditData(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Binding", () {
     unittest.test("to-json--from-json", () {
       var o = buildBinding();
@@ -680,29 +612,11 @@ main() {
   });
 
 
-  unittest.group("obj-schema-CloudAuditOptions", () {
+  unittest.group("obj-schema-BindingDelta", () {
     unittest.test("to-json--from-json", () {
-      var o = buildCloudAuditOptions();
-      var od = new api.CloudAuditOptions.fromJson(o.toJson());
-      checkCloudAuditOptions(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-Condition", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildCondition();
-      var od = new api.Condition.fromJson(o.toJson());
-      checkCondition(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-CounterOptions", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildCounterOptions();
-      var od = new api.CounterOptions.fromJson(o.toJson());
-      checkCounterOptions(od);
+      var o = buildBindingDelta();
+      var od = new api.BindingDelta.fromJson(o.toJson());
+      checkBindingDelta(od);
     });
   });
 
@@ -721,15 +635,6 @@ main() {
       var o = buildCreateServiceAccountRequest();
       var od = new api.CreateServiceAccountRequest.fromJson(o.toJson());
       checkCreateServiceAccountRequest(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-DataAccessOptions", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildDataAccessOptions();
-      var od = new api.DataAccessOptions.fromJson(o.toJson());
-      checkDataAccessOptions(od);
     });
   });
 
@@ -761,15 +666,6 @@ main() {
   });
 
 
-  unittest.group("obj-schema-LogConfig", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildLogConfig();
-      var od = new api.LogConfig.fromJson(o.toJson());
-      checkLogConfig(od);
-    });
-  });
-
-
   unittest.group("obj-schema-Policy", () {
     unittest.test("to-json--from-json", () {
       var o = buildPolicy();
@@ -779,11 +675,38 @@ main() {
   });
 
 
-  unittest.group("obj-schema-Rule", () {
+  unittest.group("obj-schema-PolicyDelta", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRule();
-      var od = new api.Rule.fromJson(o.toJson());
-      checkRule(od);
+      var o = buildPolicyDelta();
+      var od = new api.PolicyDelta.fromJson(o.toJson());
+      checkPolicyDelta(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-QueryGrantableRolesRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildQueryGrantableRolesRequest();
+      var od = new api.QueryGrantableRolesRequest.fromJson(o.toJson());
+      checkQueryGrantableRolesRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-QueryGrantableRolesResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildQueryGrantableRolesResponse();
+      var od = new api.QueryGrantableRolesResponse.fromJson(o.toJson());
+      checkQueryGrantableRolesResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Role", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildRole();
+      var od = new api.Role.fromJson(o.toJson());
+      checkRole(od);
     });
   });
 
@@ -1384,6 +1307,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsServiceAccountsKeysResourceApi res = new api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = "foo";
+      var arg_publicKeyType = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1411,6 +1335,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["publicKeyType"].first, unittest.equals(arg_publicKeyType));
 
 
         var h = {
@@ -1419,7 +1344,7 @@ main() {
         var resp = convert.JSON.encode(buildServiceAccountKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.ServiceAccountKey response) {
+      res.get(arg_name, publicKeyType: arg_publicKeyType).then(unittest.expectAsync(((api.ServiceAccountKey response) {
         checkServiceAccountKey(response);
       })));
     });
@@ -1429,7 +1354,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsServiceAccountsKeysResourceApi res = new api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = "foo";
-      var arg_keyTypes = buildUnnamed1314();
+      var arg_keyTypes = buildUnnamed1335();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1468,6 +1393,57 @@ main() {
       }), true);
       res.list(arg_name, keyTypes: arg_keyTypes).then(unittest.expectAsync(((api.ListServiceAccountKeysResponse response) {
         checkListServiceAccountKeysResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-RolesResourceApi", () {
+    unittest.test("method--queryGrantableRoles", () {
+
+      var mock = new HttpServerMock();
+      api.RolesResourceApi res = new api.IamApi(mock).roles;
+      var arg_request = buildQueryGrantableRolesRequest();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.QueryGrantableRolesRequest.fromJson(json);
+        checkQueryGrantableRolesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("v1/roles:queryGrantableRoles"));
+        pathOffset += 28;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildQueryGrantableRolesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.queryGrantableRoles(arg_request).then(unittest.expectAsync(((api.QueryGrantableRolesResponse response) {
+        checkQueryGrantableRolesResponse(response);
       })));
     });
 

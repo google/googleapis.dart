@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.31.0
+    version: 0.32.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -44,11 +44,10 @@ packages:
     - datastore:v1 # https://developers.google.com/datastore/
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - deploymentmanager:v2
-    - dfareporting:v2.2  # https://developers.google.com/doubleclick-advertisers/reporting/
-    - dfareporting:v2.3  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.4  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.5  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.6  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.7  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
@@ -56,8 +55,8 @@ packages:
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - drive:v3  # https://developers.google.com/drive/v3/reference/
     - firebaserules:v1  # https://firebase.google.com/docs/storage/security/start
+    - firebasedynamiclinks:v1  #
     - fitness:v1  # https://developers.google.com/fitness/
-    - freebase:v1  # https://developers.google.com/freebase/
     - fusiontables:v1  # https://developers.google.com/fusiontables/
     - fusiontables:v2  # https://developers.google.com/fusiontables/
     - gamesConfiguration:v1configuration  # https://developers.google.com/games/services/publishing/api/
@@ -71,6 +70,8 @@ packages:
     - iam:v1 # https://cloud.google.com/iam/
     - kgsearch:v1  # https://developers.google.com/knowledge-graph/
     - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
+    - logging:v2  #
+    - manufacturers:v1  #
     - mirror:v1  # https://developers.google.com/glass/develop/mirror/
     - monitoring:v3
     - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
@@ -85,10 +86,12 @@ packages:
     - pubsub:v1  # https://cloud.google.com/pubsub/
     - qpxExpress:v1  # https://developers.google.com/qpx-express/
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
+    - runtimeconfig:v1  # 
     - safebrowsing:v4  # https://developers.google.com/safe-browsing/
     - script:v1  # https://developers.google.com/apps-script/execution/rest/v1/run
     - servicecontrol:v1  # https://cloud.google.com/service-control/
     - servicemanagement:v1  # https://cloud.google.com/service-management/
+    - surveys:v2  # 
     - sheets:v4  # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1  # https://developers.google.com/site-verification/
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
@@ -105,7 +108,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.30.1
+    version: 0.31.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -128,6 +131,7 @@ packages:
     - genomics:v1beta2  # https://developers.google.com/genomics/
     - language:v1beta1  # https://cloud.google.com/natural-language/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
+    - ml:v1beta1  #
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapoolupdater:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/manager/
@@ -144,7 +148,6 @@ packages:
 skipped_apis:
 - adexchangebuyer:v1.2  # v1.3 included
 - adexchangeseller:v1  # v1.1 included
-- adsense:v1.2  # v1.4 included
 - adsense:v1.3  # v1.4 included
 - analytics:v2.4  # v3 included
 - androidpublisher:v1.1  # v2 included

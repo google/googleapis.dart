@@ -43,14 +43,17 @@ class OperationsResourceApi {
    * `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
    * Operations.GetOperation or
    * other methods to check whether the cancellation succeeded or whether the
-   * operation completed despite cancellation.
+   * operation completed despite cancellation. On successful cancellation,
+   * the operation is not deleted; instead, it becomes an operation with
+   * an Operation.error value with a google.rpc.Status.code of 1,
+   * corresponding to `Code.CANCELLED`.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [name] - The name of the operation resource to be cancelled.
-   * Value must have pattern "^[^/]*$".
+   * Value must have pattern "^[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -96,7 +99,7 @@ class OperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource to be deleted.
-   * Value must have pattern "^[^/]*$".
+   * Value must have pattern "^[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -138,7 +141,7 @@ class OperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource.
-   * Value must have pattern "^[^/]*$".
+   * Value must have pattern "^[^/]+$".
    *
    * Completes with a [Operation].
    *
@@ -240,7 +243,7 @@ class SpeechResourceApi {
       _requester = client;
 
   /**
-   * Perform asynchronous speech-recognition: receive results via the
+   * Performs asynchronous speech recognition: receive results via the
    * google.longrunning.Operations interface. Returns either an
    * `Operation.error` or an `Operation.response` which contains
    * an `AsyncRecognizeResponse` message.
@@ -282,7 +285,7 @@ class SpeechResourceApi {
   }
 
   /**
-   * Perform synchronous speech-recognition: receive results after all audio
+   * Performs synchronous speech recognition: receive results after all audio
    * has been sent and processed.
    *
    * [request] - The metadata request object.
@@ -440,7 +443,7 @@ class Operation {
    * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * Service-specific metadata associated with the operation.  It typically
@@ -577,7 +580,8 @@ class RecognitionConfig {
    * Possible string values are:
    * - "ENCODING_UNSPECIFIED" : Not specified. Will return result
    * google.rpc.Code.INVALID_ARGUMENT.
-   * - "LINEAR16" : Uncompressed 16-bit signed little-endian samples.
+   * - "LINEAR16" : Uncompressed 16-bit signed little-endian samples (Linear
+   * PCM).
    * This is the only encoding that may be used by `AsyncRecognize`.
    * - "FLAC" : This is the recommended encoding for `SyncRecognize` and
    * `StreamingRecognize` because it uses lossless compression; therefore
@@ -585,7 +589,7 @@ class RecognitionConfig {
    *
    * The stream FLAC (Free Lossless Audio Codec) encoding is specified at:
    * http://flac.sourceforge.net/documentation.html.
-   * Only 16-bit samples are supported.
+   * 16-bit and 24-bit samples are supported.
    * Not all fields in STREAMINFO are supported.
    * - "MULAW" : 8-bit samples that compand 14-bit audio samples using G.711
    * PCMU/mu-law.
@@ -599,8 +603,7 @@ class RecognitionConfig {
    * [Optional] The language of the supplied audio as a BCP-47 language tag.
    * Example: "en-GB"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt
    * If omitted, defaults to "en-US". See
-   * [Language
-   * Support](https://cloud.google.com/speech/docs/best-practices#language_support)
+   * [Language Support](https://cloud.google.com/speech/docs/languages)
    * for a list of the currently supported language codes.
    */
   core.String languageCode;

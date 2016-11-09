@@ -29,6 +29,7 @@ class CloudresourcemanagerApi {
   final commons.ApiRequester _requester;
 
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);
+  OrganizationsResourceApi get organizations => new OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   CloudresourcemanagerApi(http.Client client, {core.String rootUrl: "https://cloudresourcemanager.googleapis.com/", core.String servicePath: ""}) :
@@ -87,11 +88,295 @@ class OperationsResourceApi {
 }
 
 
+class OrganizationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Fetches an Organization resource identified by the specified resource name.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the Organization to fetch, e.g.
+   * "organizations/1234".
+   * Value must have pattern "^organizations/[^/]*$".
+   *
+   * Completes with a [Organization].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Organization> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Organization.fromJson(data));
+  }
+
+  /**
+   * Gets the access control policy for an Organization resource. May be empty
+   * if no such policy or resource exists. The `resource` field should be the
+   * organization's resource name, e.g. "organizations/123".
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
+   * Value must have pattern "^organizations/[^/]*$".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> getIamPolicy(GetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
+   * Searches Organization resources that are visible to the user and satisfy
+   * the specified filter. This method returns Organizations in an unspecified
+   * order. New Organizations do not necessarily appear at the end of the
+   * results.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [SearchOrganizationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SearchOrganizationsResponse> search(SearchOrganizationsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/organizations:search';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SearchOrganizationsResponse.fromJson(data));
+  }
+
+  /**
+   * Sets the access control policy on an Organization resource. Replaces any
+   * existing policy. The `resource` field should be the organization's resource
+   * name, e.g. "organizations/123".
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
+   * Value must have pattern "^organizations/[^/]*$".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> setIamPolicy(SetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
+   * Returns permissions that a caller has on the specified Organization. The
+   * `resource` field should be the organization's resource name, e.g.
+   * "organizations/123".
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
+   * Value must have pattern "^organizations/[^/]*$".
+   *
+   * Completes with a [TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+
+}
+
+
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Request that a new Project be created. The result is an Operation which can
+   * be used to track the creation process. It is automatically deleted after a
+   * few hours, so there is no need to call DeleteOperation. Our SLO permits
+   * Project creation to take up to 30 seconds at the 90th percentile. As of
+   * 2016-08-29, we are observing 6 seconds 50th percentile latency. 95th
+   * percentile latency is around 11 seconds. We recommend polling at the 5th
+   * second with an exponential backoff.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> create(Project request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/projects';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 
   /**
    * Marks the Project identified by the specified `project_id` (for example,
@@ -193,10 +478,8 @@ class ProjectsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * requested. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `getIamPolicy` documentation.
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    *
    * Completes with a [Policy].
    *
@@ -310,27 +593,25 @@ class ProjectsResourceApi {
    * + Invitations to grant the owner role cannot be sent using
    * `setIamPolicy()`; they must be sent only using the Cloud Platform Console.
    * + Membership changes that leave the project without any owners that have
-   * accepted the Terms of Service (ToS) will be rejected. + Members cannot be
-   * added to more than one role in the same policy. + There must be at least
-   * one owner who has accepted the Terms of Service (ToS) agreement in the
-   * policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
-   * from the policy will fail. This restriction also applies to legacy projects
-   * that no longer have owners who have accepted the ToS. Edits to IAM policies
-   * will be rejected until the lack of a ToS-accepting owner is rectified. +
-   * Calling this method requires enabling the App Engine Admin API. Note:
-   * Removing service accounts from policies or changing their roles can render
-   * services completely inoperable. It is important to understand how the
-   * service account is being used before removing or updating its roles.
+   * accepted the Terms of Service (ToS) will be rejected. + There must be at
+   * least one owner who has accepted the Terms of Service (ToS) agreement in
+   * the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted
+   * owner from the policy will fail. This restriction also applies to legacy
+   * projects that no longer have owners who have accepted the ToS. Edits to IAM
+   * policies will be rejected until the lack of a ToS-accepting owner is
+   * rectified. + Calling this method requires enabling the App Engine Admin
+   * API. Note: Removing service accounts from policies or changing their roles
+   * can render services completely inoperable. It is important to understand
+   * how the service account is being used before removing or updating its
+   * roles.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * specified. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `setIamPolicy` documentation.
+   * specified. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    *
    * Completes with a [Policy].
    *
@@ -375,10 +656,8 @@ class ProjectsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
-   * requested. `resource` is usually specified as a path, such as `projects / *
-   * project * / zones / * zone * / disks / * disk*`. The format for the path
-   * specified in this value is resource specific and is specified in the
-   * `testIamPermissions` documentation.
+   * requested. `resource` is usually specified as a path. For example, a
+   * Project resource is specified as `projects/{project}`.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -580,6 +859,98 @@ class Empty {
   }
 }
 
+/** Metadata describing a long running folder operation */
+class FolderOperation {
+  /**
+   * The resource name of the folder or organization we are either creating the
+   * folder under or moving the folder to.
+   */
+  core.String destinationParent;
+  /** The display name of the folder. */
+  core.String displayName;
+  /**
+   * The type of this operation.
+   * Possible string values are:
+   * - "OPERATION_TYPE_UNSPECIFIED" : A OPERATION_TYPE_UNSPECIFIED.
+   * - "CREATE" : A CREATE.
+   * - "MOVE" : A MOVE.
+   */
+  core.String operationType;
+  /**
+   * The resource name of the folder's parent. Only applicable when the
+   * operation_type is MOVE.
+   */
+  core.String sourceParent;
+
+  FolderOperation();
+
+  FolderOperation.fromJson(core.Map _json) {
+    if (_json.containsKey("destinationParent")) {
+      destinationParent = _json["destinationParent"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("sourceParent")) {
+      sourceParent = _json["sourceParent"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (destinationParent != null) {
+      _json["destinationParent"] = destinationParent;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (sourceParent != null) {
+      _json["sourceParent"] = sourceParent;
+    }
+    return _json;
+  }
+}
+
+/** A classification of the Folder Operation error. */
+class FolderOperationError {
+  /**
+   * The type of operation error experienced.
+   * Possible string values are:
+   * - "ERROR_TYPE_UNSPECIFIED" : A ERROR_TYPE_UNSPECIFIED.
+   * - "FOLDER_HEIGHT_VIOLATION" : A FOLDER_HEIGHT_VIOLATION.
+   * - "MAX_CHILD_FOLDERS_VIOLATION" : A MAX_CHILD_FOLDERS_VIOLATION.
+   * - "FOLDER_NAME_UNIQUENESS_VIOLATION" : A FOLDER_NAME_UNIQUENESS_VIOLATION.
+   * - "RESOURCE_DELETED" : A RESOURCE_DELETED.
+   * - "PARENT_DELETED" : A PARENT_DELETED.
+   * - "CYCLE_INTRODUCED_ERROR" : A CYCLE_INTRODUCED_ERROR.
+   * - "FOLDER_ALREADY_BEING_MOVED" : A FOLDER_ALREADY_BEING_MOVED.
+   * - "FOLDER_TO_DELETE_NON_EMPTY" : A FOLDER_TO_DELETE_NON_EMPTY.
+   */
+  core.String errorMessageId;
+
+  FolderOperationError();
+
+  FolderOperationError.fromJson(core.Map _json) {
+    if (_json.containsKey("errorMessageId")) {
+      errorMessageId = _json["errorMessageId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (errorMessageId != null) {
+      _json["errorMessageId"] = errorMessageId;
+    }
+    return _json;
+  }
+}
+
 /** Request message for `GetIamPolicy` method. */
 class GetIamPolicyRequest {
 
@@ -718,6 +1089,111 @@ class Operation {
     }
     if (response != null) {
       _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The root node in the resource hierarchy to which a particular entity's (e.g.,
+ * company) resources belong.
+ */
+class Organization {
+  /**
+   * Timestamp when the Organization was created. Assigned by the server.
+   * @OutputOnly
+   */
+  core.String creationTime;
+  /**
+   * A friendly string to be used to refer to the Organization in the UI.
+   * Assigned by the server, set to the firm name of the Google For Work
+   * customer that owns this organization. @OutputOnly
+   */
+  core.String displayName;
+  /**
+   * The organization's current lifecycle state. Assigned by the server.
+   * @OutputOnly
+   * Possible string values are:
+   * - "LIFECYCLE_STATE_UNSPECIFIED" : A LIFECYCLE_STATE_UNSPECIFIED.
+   * - "ACTIVE" : A ACTIVE.
+   * - "DELETE_REQUESTED" : A DELETE_REQUESTED.
+   */
+  core.String lifecycleState;
+  /**
+   * Output Only. The resource name of the organization. This is the
+   * organization's relative path in the API. Its format is
+   * "organizations/[organization_id]". For example, "organizations/1234".
+   */
+  core.String name;
+  /**
+   * The owner of this Organization. The owner should be specified on creation.
+   * Once set, it cannot be changed. This field is required.
+   */
+  OrganizationOwner owner;
+
+  Organization();
+
+  Organization.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("lifecycleState")) {
+      lifecycleState = _json["lifecycleState"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("owner")) {
+      owner = new OrganizationOwner.fromJson(_json["owner"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (lifecycleState != null) {
+      _json["lifecycleState"] = lifecycleState;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (owner != null) {
+      _json["owner"] = (owner).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * The entity that owns an Organization. The lifetime of the Organization and
+ * all of its descendants are bound to the `OrganizationOwner`. If the
+ * `OrganizationOwner` is deleted, the Organization and all its descendants will
+ * be deleted.
+ */
+class OrganizationOwner {
+  /** The Google for Work customer id used in the Directory API. */
+  core.String directoryCustomerId;
+
+  OrganizationOwner();
+
+  OrganizationOwner.fromJson(core.Map _json) {
+    if (_json.containsKey("directoryCustomerId")) {
+      directoryCustomerId = _json["directoryCustomerId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (directoryCustomerId != null) {
+      _json["directoryCustomerId"] = directoryCustomerId;
     }
     return _json;
   }
@@ -899,6 +1375,52 @@ class Project {
 }
 
 /**
+ * A status object which is used as the `metadata` field for the Operation
+ * returned by CreateProject. It provides insight for when significant phases of
+ * Project creation have completed.
+ */
+class ProjectCreationStatus {
+  /** Creation time of the project creation workflow. */
+  core.String createTime;
+  /**
+   * True if the project can be retrieved using GetProject. No other operations
+   * on the project are guaranteed to work until the project creation is
+   * complete.
+   */
+  core.bool gettable;
+  /** True if the project creation process is complete. */
+  core.bool ready;
+
+  ProjectCreationStatus();
+
+  ProjectCreationStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("gettable")) {
+      gettable = _json["gettable"];
+    }
+    if (_json.containsKey("ready")) {
+      ready = _json["ready"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (gettable != null) {
+      _json["gettable"] = gettable;
+    }
+    if (ready != null) {
+      _json["ready"] = ready;
+    }
+    return _json;
+  }
+}
+
+/**
  * A container to reference an id for any resource type. A `resource` in Google
  * Cloud Platform is a generic term for something you (a developer) may want to
  * interact with through one of our API's. Some examples are an AppEngine app, a
@@ -934,6 +1456,98 @@ class ResourceId {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/** The request sent to the `SearchOrganizations` method. */
+class SearchOrganizationsRequest {
+  /**
+   * An optional query string used to filter the Organizations to return in the
+   * response. Filter rules are case-insensitive. Organizations may be filtered
+   * by `owner.directoryCustomerId` or by `domain`, where the domain is a Google
+   * for Work domain, for example: |Filter|Description| |------|-----------|
+   * |owner.directorycustomerid:123456789|Organizations with
+   * `owner.directory_customer_id` equal to `123456789`.|
+   * |domain:google.com|Organizations corresponding to the domain `google.com`.|
+   * This field is optional.
+   */
+  core.String filter;
+  /**
+   * The maximum number of Organizations to return in the response. This field
+   * is optional.
+   */
+  core.int pageSize;
+  /**
+   * A pagination token returned from a previous call to `SearchOrganizations`
+   * that indicates from where listing should continue. This field is optional.
+   */
+  core.String pageToken;
+
+  SearchOrganizationsRequest();
+
+  SearchOrganizationsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("pageToken")) {
+      pageToken = _json["pageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (pageToken != null) {
+      _json["pageToken"] = pageToken;
+    }
+    return _json;
+  }
+}
+
+/** The response returned from the `SearchOrganizations` method. */
+class SearchOrganizationsResponse {
+  /**
+   * A pagination token to be used to retrieve the next page of results. If the
+   * result is too large to fit within the page size specified in the request,
+   * this field will be set with a token that can be used to fetch the next page
+   * of results. If this field is empty, it indicates that this response
+   * contains the last page of results.
+   */
+  core.String nextPageToken;
+  /**
+   * The list of Organizations that matched the search query, possibly
+   * paginated.
+   */
+  core.List<Organization> organizations;
+
+  SearchOrganizationsResponse();
+
+  SearchOrganizationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("organizations")) {
+      organizations = _json["organizations"].map((value) => new Organization.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (organizations != null) {
+      _json["organizations"] = organizations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1052,7 +1666,8 @@ class TestIamPermissionsRequest {
   /**
    * The set of permissions to check for the `resource`. Permissions with
    * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see IAM Overview.
+   * information see [IAM
+   * Overview](https://cloud.google.com/iam/docs/overview#permissions).
    */
   core.List<core.String> permissions;
 

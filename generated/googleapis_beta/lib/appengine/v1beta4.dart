@@ -16,8 +16,14 @@ const core.String USER_AGENT = 'dart-api-client appengine/v1beta4';
 
 /** Provisions and manages App Engine applications. */
 class AppengineApi {
+  /** View and manage your applications deployed on Google App Engine */
+  static const AppengineAdminScope = "https://www.googleapis.com/auth/appengine.admin";
+
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
+  /** View your data across Google Cloud Platform services */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
 
   final commons.ApiRequester _requester;
@@ -129,6 +135,56 @@ class AppsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Application.fromJson(data));
+  }
+
+  /**
+   * Updates application fields.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the application to update. For example:
+   * "apps/myapp".
+   *
+   * [mask] - Standard field mask for the set of fields to be updated.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(Application request, core.String appsId, {core.String mask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (mask != null) {
+      _queryParams["mask"] = [mask];
+    }
+
+    _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -1586,14 +1642,28 @@ class CpuUtilization {
 
 /** Request message for `Instances.DebugInstance`. */
 class DebugInstanceRequest {
+  /**
+   * Public SSH key to add to the instance. Example: `[USERNAME]:ssh-rsa
+   * KEY_VALUE` or `[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh
+   * {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}` For more information,
+   * see [Adding and Removing SSH
+   * Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)
+   */
+  core.String sshKey;
 
   DebugInstanceRequest();
 
   DebugInstanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("sshKey")) {
+      sshKey = _json["sshKey"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (sshKey != null) {
+      _json["sshKey"] = sshKey;
+    }
     return _json;
   }
 }
@@ -1914,6 +1984,11 @@ class Instance {
    */
   core.String vmId;
   /**
+   * The IP address of this instance. Only applicable for instances in App
+   * Engine flexible environment. @OutputOnly
+   */
+  core.String vmIp;
+  /**
    * Name of the virtual machine where this instance lives. Only applicable for
    * instances in App Engine flexible environment. @OutputOnly
    */
@@ -1970,6 +2045,9 @@ class Instance {
     if (_json.containsKey("vmId")) {
       vmId = _json["vmId"];
     }
+    if (_json.containsKey("vmIp")) {
+      vmIp = _json["vmIp"];
+    }
     if (_json.containsKey("vmName")) {
       vmName = _json["vmName"];
     }
@@ -2018,6 +2096,9 @@ class Instance {
     }
     if (vmId != null) {
       _json["vmId"] = vmId;
+    }
+    if (vmIp != null) {
+      _json["vmIp"] = vmIp;
     }
     if (vmName != null) {
       _json["vmName"] = vmName;
@@ -2222,7 +2303,7 @@ class Location {
    * {"cloud.googleapis.com/region": "us-east1"}
    */
   core.Map<core.String, core.String> labels;
-  /** The cononical id for this location. For example: `"us-east1"`. */
+  /** The canonical id for this location. For example: `"us-east1"`. */
   core.String locationId;
   /**
    * Service-specific metadata. For example the available capacity at the given
@@ -2494,7 +2575,7 @@ class Operation {
    * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * Service-specific metadata associated with the operation. It typically
@@ -2627,6 +2708,67 @@ class OperationMetadata {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    if (user != null) {
+      _json["user"] = user;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for the given google.longrunning.Operation. */
+class OperationMetadataExperimental {
+  /** Time that this operation completed. @OutputOnly */
+  core.String endTime;
+  /** Time that this operation was created. @OutputOnly */
+  core.String insertTime;
+  /**
+   * API method that initiated this operation. Example:
+   * `google.appengine.experimental.CustomDomains.CreateCustomDomain`.
+   * @OutputOnly
+   */
+  core.String method;
+  /**
+   * Name of the resource that this operation is acting on. Example:
+   * `apps/myapp/customDomains/example.com`. @OutputOnly
+   */
+  core.String target;
+  /** User who requested this operation. @OutputOnly */
+  core.String user;
+
+  OperationMetadataExperimental();
+
+  OperationMetadataExperimental.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("insertTime")) {
+      insertTime = _json["insertTime"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+    if (_json.containsKey("user")) {
+      user = _json["user"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (insertTime != null) {
+      _json["insertTime"] = insertTime;
+    }
+    if (method != null) {
+      _json["method"] = method;
     }
     if (target != null) {
       _json["target"] = target;

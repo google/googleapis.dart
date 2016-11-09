@@ -14,7 +14,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client dataproc/v1';
 
-/** Manages Hadoop-based clusters and jobs on Google Cloud Platform. */
+/**
+ * An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+ */
 class DataprocApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -278,9 +280,24 @@ class ProjectsRegionsClustersResourceApi {
    * [region] - [Required] The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [pageSize] - The standard List page size.
+   * [filter] - [Optional] A filter constraining the clusters to list. Filters
+   * are case-sensitive and have the following syntax: field:value [field:value]
+   * ... or field = value [AND [field = value]] ... where **field** is one of
+   * `status.state`, `clusterName`, or `labels.[KEY]`, and `[KEY]` is a label
+   * key. **value** can be `*` to match all values. `status.state` can be one of
+   * the following: `ACTIVE`, `INACTIVE`, `CREATING`, `RUNNING`, `ERROR`,
+   * `DELETING`, or `UPDATING`. `ACTIVE` contains the `CREATING`, `UPDATING`,
+   * and `RUNNING` states. `INACTIVE` contains the `DELETING` and `ERROR`
+   * states. `clusterName` is the name of the cluster provided at creation time.
+   * Only the logical `AND` operator is supported; space-separated items are
+   * treated as having an implicit `AND` operator. Example valid filters are:
+   * status.state:ACTIVE clusterName:mycluster labels.env:staging \
+   * labels.starred:* and status.state = ACTIVE AND clusterName = mycluster \
+   * AND labels.env = staging AND labels.starred = *
    *
-   * [pageToken] - The standard List page token.
+   * [pageSize] - [Optional] The standard List page size.
+   *
+   * [pageToken] - [Optional] The standard List page token.
    *
    * Completes with a [ListClustersResponse].
    *
@@ -290,7 +307,7 @@ class ProjectsRegionsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String filter, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -303,6 +320,9 @@ class ProjectsRegionsClustersResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -588,11 +608,21 @@ class ProjectsRegionsJobsResourceApi {
    * jobs that were submitted to the named cluster.
    *
    * [jobStateMatcher] - [Optional] Specifies enumerated categories of jobs to
-   * list.
+   * list (default = match ALL jobs).
    * Possible string values are:
    * - "ALL" : A ALL.
    * - "ACTIVE" : A ACTIVE.
    * - "NON_ACTIVE" : A NON_ACTIVE.
+   *
+   * [filter] - [Optional] A filter constraining the jobs to list. Filters are
+   * case-sensitive and have the following syntax: field:value] ... or [field =
+   * value] AND [field [= value]] ... where **field** is `status.state` or
+   * `labels.[KEY]`, and `[KEY]` is a label key. **value** can be `*` to match
+   * all values. `status.state` can be either `ACTIVE` or `INACTIVE`. Only the
+   * logical `AND` operator is supported; space-separated items are treated as
+   * having an implicit `AND` operator. Example valid filters are:
+   * status.state:ACTIVE labels.env:staging labels.starred:* and status.state =
+   * ACTIVE AND labels.env = staging AND labels.starred = *
    *
    * Completes with a [ListJobsResponse].
    *
@@ -602,7 +632,7 @@ class ProjectsRegionsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, core.String region, {core.int pageSize, core.String pageToken, core.String clusterName, core.String jobStateMatcher}) {
+  async.Future<ListJobsResponse> list(core.String projectId, core.String region, {core.int pageSize, core.String pageToken, core.String clusterName, core.String jobStateMatcher, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -627,6 +657,9 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (jobStateMatcher != null) {
       _queryParams["jobStateMatcher"] = [jobStateMatcher];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/jobs';
@@ -707,13 +740,15 @@ class ProjectsRegionsOperationsResourceApi {
    * If the server doesn't support this method, it returns
    * `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or
    * other methods to check whether the cancellation succeeded or whether the
-   * operation completed despite cancellation.
+   * operation completed despite cancellation. On successful cancellation, the
+   * operation is not deleted; instead, it becomes an operation with an
+   * Operation.error value with a google.rpc.Status.code of 1, corresponding to
+   * `Code.CANCELLED`.
    *
    * Request parameters:
    *
    * [name] - The name of the operation resource to be cancelled.
-   * Value must have pattern "^projects/[^/] * / regions/[^/] * /
-   * operations/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -756,8 +791,7 @@ class ProjectsRegionsOperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource to be deleted.
-   * Value must have pattern "^projects/[^/] * / regions/[^/] * /
-   * operations/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -799,8 +833,7 @@ class ProjectsRegionsOperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource.
-   * Value must have pattern "^projects/[^/] * / regions/[^/] * /
-   * operations/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
    *
    * Completes with a [Operation].
    *
@@ -843,7 +876,7 @@ class ProjectsRegionsOperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation collection.
-   * Value must have pattern "^projects/[^/] * / regions/[^/] * / operations$".
+   * Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
    *
    * [filter] - The standard list filter.
    *
@@ -931,6 +964,21 @@ class Cluster {
    */
   ClusterConfig config;
   /**
+   * [Optional] The labels to associate with this cluster. Label **keys** must
+   * contain 1 to 63 characters, and must conform to [RFC
+   * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty,
+   * but, if present, must contain 1 to 63 characters, and must conform to [RFC
+   * 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+   * associated with a cluster.
+   */
+  core.Map<core.String, core.String> labels;
+  /**
+   * Contains cluster daemon metrics such as HDFS and YARN stats. **Beta
+   * Feature**: This report is available for testing purposes only. It may be
+   * changed before final release.
+   */
+  ClusterMetrics metrics;
+  /**
    * [Required] The Google Cloud Platform project ID that the cluster belongs
    * to.
    */
@@ -951,6 +999,12 @@ class Cluster {
     }
     if (_json.containsKey("config")) {
       config = new ClusterConfig.fromJson(_json["config"]);
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = new ClusterMetrics.fromJson(_json["metrics"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -973,6 +1027,12 @@ class Cluster {
     }
     if (config != null) {
       _json["config"] = (config).toJson();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (metrics != null) {
+      _json["metrics"] = (metrics).toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -1007,9 +1067,11 @@ class ClusterConfig {
    * [Optional] Commands to execute on each node after config is completed. By
    * default, executables are run on master and all worker nodes. You can test a
    * node's role metadata to run an executable on a master or worker node, as
-   * shown below: ROLE=$(/usr/share/google/get_metadata_value attributes/role)
-   * if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else
-   * ... worker specific actions ... fi
+   * shown below using `curl` (you can also use `wget`): ROLE=$(curl -H
+   * Metadata-Flavor:Google
+   * http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[
+   * "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ...
+   * worker specific actions ... fi
    */
   core.List<NodeInitializationAction> initializationActions;
   /**
@@ -1083,14 +1145,50 @@ class ClusterConfig {
   }
 }
 
+/**
+ * Contains cluster daemon metrics, such as HDFS and YARN stats. **Beta
+ * Feature**: This report is available for testing purposes only. It may be
+ * changed before final release.
+ */
+class ClusterMetrics {
+  /** The HDFS metrics. */
+  core.Map<core.String, core.String> hdfsMetrics;
+  /** The YARN metrics. */
+  core.Map<core.String, core.String> yarnMetrics;
+
+  ClusterMetrics();
+
+  ClusterMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("hdfsMetrics")) {
+      hdfsMetrics = _json["hdfsMetrics"];
+    }
+    if (_json.containsKey("yarnMetrics")) {
+      yarnMetrics = _json["yarnMetrics"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (hdfsMetrics != null) {
+      _json["hdfsMetrics"] = hdfsMetrics;
+    }
+    if (yarnMetrics != null) {
+      _json["yarnMetrics"] = yarnMetrics;
+    }
+    return _json;
+  }
+}
+
 /** Metadata describing the operation. */
 class ClusterOperationMetadata {
-  /** Name of the cluster for the operation. */
+  /** [Output-only] Name of the cluster for the operation. */
   core.String clusterName;
-  /** Cluster UUId for the operation. */
+  /** [Output-only] Cluster UUID for the operation. */
   core.String clusterUuid;
   /** [Output-only] Short description of operation. */
   core.String description;
+  /** [Output-only] labels associated with the operation */
+  core.Map<core.String, core.String> labels;
   /** [Output-only] The operation type. */
   core.String operationType;
   /** [Output-only] Current operation status. */
@@ -1109,6 +1207,9 @@ class ClusterOperationMetadata {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
     }
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
@@ -1132,6 +1233,9 @@ class ClusterOperationMetadata {
     if (description != null) {
       _json["description"] = description;
     }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (operationType != null) {
       _json["operationType"] = operationType;
     }
@@ -1147,12 +1251,12 @@ class ClusterOperationMetadata {
 
 /** The status of the operation. */
 class ClusterOperationStatus {
-  /** A message containing any operation metadata details. */
+  /** [Output-only]A message containing any operation metadata details. */
   core.String details;
-  /** A message containing the detailed operation state. */
+  /** [Output-only] A message containing the detailed operation state. */
   core.String innerState;
   /**
-   * A message containing the operation state.
+   * [Output-only] A message containing the operation state.
    * Possible string values are:
    * - "UNKNOWN" : A UNKNOWN.
    * - "PENDING" : A PENDING.
@@ -1160,7 +1264,7 @@ class ClusterOperationStatus {
    * - "DONE" : A DONE.
    */
   core.String state;
-  /** The time this state was entered. */
+  /** [Output-only] The time this state was entered. */
   core.String stateStartTime;
 
   ClusterOperationStatus();
@@ -1200,10 +1304,10 @@ class ClusterOperationStatus {
 
 /** The status of a cluster and its instances. */
 class ClusterStatus {
-  /** Optional details of cluster's state. */
+  /** [Output-only] Optional details of cluster's state. */
   core.String detail;
   /**
-   * The cluster's state.
+   * [Output-only] The cluster's state.
    * Possible string values are:
    * - "UNKNOWN" : A UNKNOWN.
    * - "CREATING" : A CREATING.
@@ -1213,7 +1317,7 @@ class ClusterStatus {
    * - "UPDATING" : A UPDATING.
    */
   core.String state;
-  /** Time when this state was entered. */
+  /** [Output-only] Time when this state was entered. */
   core.String stateStartTime;
 
   ClusterStatus();
@@ -1287,8 +1391,8 @@ class DiagnoseClusterRequest {
 /** The location of diagnostic output. */
 class DiagnoseClusterResults {
   /**
-   * [Output-only] The Google Cloud Storage URI of the diagnostic output. This
-   * is a plain text file with a summary of collected diagnostics.
+   * [Output-only] The Google Cloud Storage URI of the diagnostic output. The
+   * output report is a plain text file with a summary of collected diagnostics.
    */
   core.String outputUri;
 
@@ -1315,7 +1419,8 @@ class DiskConfig {
   core.int bootDiskSizeGb;
   /**
    * [Optional] Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
-   * not attached, the boot disk is used to store runtime logs and HDFS data. If
+   * not attached, the boot disk is used to store runtime logs and
+   * [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
    * one or more SSDs are attached, this runtime bulk data is spread across
    * them, and the boot disk contains only basic config and installed binaries.
    */
@@ -1369,24 +1474,37 @@ class Empty {
  * instances, applicable to all instances in the cluster.
  */
 class GceClusterConfig {
-  /** The Google Compute Engine metadata entries to add to all instances. */
+  /**
+   * [Optional] If true, all instances in the cluster will only have internal IP
+   * addresses. By default, clusters are not restricted to internal IP
+   * addresses, and will have ephemeral external IP addresses assigned to each
+   * instance. This `internal_ip_only` restriction can only be enabled for
+   * subnetwork enabled networks, and all off-cluster dependencies must be
+   * configured to be accessible without external IP addresses.
+   */
+  core.bool internalIpOnly;
+  /**
+   * The Google Compute Engine metadata entries to add to all instances (see
+   * [Project and instance
+   * metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+   */
   core.Map<core.String, core.String> metadata;
   /**
-   * The Google Compute Engine network to be used for machine communications.
-   * Cannot be specified with subnetwork_uri. If neither network_uri nor
-   * subnetwork_uri is specified, the "default" network of the project is used,
-   * if it exists. Cannot be a "Custom Subnet Network" (see
-   * https://cloud.google.com/compute/docs/subnetworks for more information).
+   * [Optional] The Google Compute Engine network to be used for machine
+   * communications. Cannot be specified with subnetwork_uri. If neither
+   * `network_uri` nor `subnetwork_uri` is specified, the "default" network of
+   * the project is used, if it exists. Cannot be a "Custom Subnet Network" (see
+   * [Using Subnetworks](/compute/docs/subnetworks) for more information).
    * Example:
    * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default`.
    */
   core.String networkUri;
   /**
-   * The URIs of service account scopes to be included in Google Compute Engine
-   * instances. The following base set of scopes is always included: *
-   * https://www.googleapis.com/auth/cloud.useraccounts.readonly *
+   * [Optional] The URIs of service account scopes to be included in Google
+   * Compute Engine instances. The following base set of scopes is always
+   * included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly *
    * https://www.googleapis.com/auth/devstorage.read_write *
-   * https://www.googleapis.com/auth/logging.write If no scopes are specfied,
+   * https://www.googleapis.com/auth/logging.write If no scopes are specified,
    * the following defaults are also provided: *
    * https://www.googleapis.com/auth/bigquery *
    * https://www.googleapis.com/auth/bigtable.admin.table *
@@ -1395,12 +1513,15 @@ class GceClusterConfig {
    */
   core.List<core.String> serviceAccountScopes;
   /**
-   * The Google Compute Engine subnetwork to be used for machine communications.
-   * Cannot be specified with network_uri. Example:
+   * [Optional] The Google Compute Engine subnetwork to be used for machine
+   * communications. Cannot be specified with network_uri. Example:
    * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`.
    */
   core.String subnetworkUri;
-  /** The Google Compute Engine tags to add to all instances. */
+  /**
+   * The Google Compute Engine tags to add to all instances (see [Tagging
+   * instances](/compute/docs/label-or-tag-resources#tags)).
+   */
   core.List<core.String> tags;
   /**
    * [Required] The zone where the Google Compute Engine cluster will be
@@ -1412,6 +1533,9 @@ class GceClusterConfig {
   GceClusterConfig();
 
   GceClusterConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("internalIpOnly")) {
+      internalIpOnly = _json["internalIpOnly"];
+    }
     if (_json.containsKey("metadata")) {
       metadata = _json["metadata"];
     }
@@ -1434,6 +1558,9 @@ class GceClusterConfig {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (internalIpOnly != null) {
+      _json["internalIpOnly"] = internalIpOnly;
+    }
     if (metadata != null) {
       _json["metadata"] = metadata;
     }
@@ -1456,7 +1583,12 @@ class GceClusterConfig {
   }
 }
 
-/** A Cloud Dataproc job for running Hadoop MapReduce jobs on YARN. */
+/**
+ * A Cloud Dataproc job for running [Apache Hadoop
+ * MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
+ * jobs on [Apache Hadoop
+ * YARN](https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
+ */
 class HadoopJob {
   /**
    * [Optional] HCFS URIs of archives to be extracted in the working directory
@@ -1562,7 +1694,10 @@ class HadoopJob {
   }
 }
 
-/** A Cloud Dataproc job for running Hive queries on YARN. */
+/**
+ * A Cloud Dataproc job for running [Apache Hive](https://hive.apache.org/)
+ * queries on YARN.
+ */
 class HiveJob {
   /**
    * [Optional] Whether to continue executing queries if a query fails. The
@@ -1640,11 +1775,11 @@ class HiveJob {
 }
 
 /**
- * The config settings for Google Compute Engine resources in an instance group,
- * such as a master or worker group.
+ * [Optional] The config settings for Google Compute Engine resources in an
+ * instance group, such as a master or worker group.
  */
 class InstanceGroupConfig {
-  /** Disk option config settings. */
+  /** [Optional] Disk option config settings. */
   DiskConfig diskConfig;
   /**
    * [Output-only] The Google Compute Engine image resource used for cluster
@@ -1652,15 +1787,19 @@ class InstanceGroupConfig {
    */
   core.String imageUri;
   /**
-   * The list of instance names. Cloud Dataproc derives the names from
-   * `cluster_name`, `num_instances`, and the instance group if not set by user
-   * (recommended practice is to let Cloud Dataproc derive the name).
+   * [Optional] The list of instance names. Cloud Dataproc derives the names
+   * from `cluster_name`, `num_instances`, and the instance group if not set by
+   * user (recommended practice is to let Cloud Dataproc derive the name).
    */
   core.List<core.String> instanceNames;
-  /** Specifies that this instance group contains Preemptible Instances. */
+  /**
+   * [Optional] Specifies that this instance group contains preemptible
+   * instances.
+   */
   core.bool isPreemptible;
   /**
-   * The Google Compute Engine machine type used for cluster instances. Example:
+   * [Required] The Google Compute Engine machine type used for cluster
+   * instances. Example:
    * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2`.
    */
   core.String machineTypeUri;
@@ -1670,8 +1809,8 @@ class InstanceGroupConfig {
    */
   ManagedGroupConfig managedGroupConfig;
   /**
-   * The number of VM instances in the instance group. For master instance
-   * groups, must be set to 1.
+   * [Required] The number of VM instances in the instance group. For master
+   * instance groups, must be set to 1.
    */
   core.int numInstances;
 
@@ -1745,6 +1884,15 @@ class Job {
   HadoopJob hadoopJob;
   /** Job is a Hive job. */
   HiveJob hiveJob;
+  /**
+   * [Optional] The labels to associate with this job. Label **keys** must
+   * contain 1 to 63 characters, and must conform to [RFC
+   * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty,
+   * but, if present, must contain 1 to 63 characters, and must conform to [RFC
+   * 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+   * associated with a job.
+   */
+  core.Map<core.String, core.String> labels;
   /** Job is a Pig job. */
   PigJob pigJob;
   /**
@@ -1770,6 +1918,12 @@ class Job {
   JobStatus status;
   /** [Output-only] The previous job status. */
   core.List<JobStatus> statusHistory;
+  /**
+   * [Output-only] The collection of YARN applications spun up by this job.
+   * **Beta** Feature: This report is available for testing purposes only. It
+   * may be changed before final release.
+   */
+  core.List<YarnApplication> yarnApplications;
 
   Job();
 
@@ -1785,6 +1939,9 @@ class Job {
     }
     if (_json.containsKey("hiveJob")) {
       hiveJob = new HiveJob.fromJson(_json["hiveJob"]);
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
     }
     if (_json.containsKey("pigJob")) {
       pigJob = new PigJob.fromJson(_json["pigJob"]);
@@ -1810,6 +1967,9 @@ class Job {
     if (_json.containsKey("statusHistory")) {
       statusHistory = _json["statusHistory"].map((value) => new JobStatus.fromJson(value)).toList();
     }
+    if (_json.containsKey("yarnApplications")) {
+      yarnApplications = _json["yarnApplications"].map((value) => new YarnApplication.fromJson(value)).toList();
+    }
   }
 
   core.Map toJson() {
@@ -1825,6 +1985,9 @@ class Job {
     }
     if (hiveJob != null) {
       _json["hiveJob"] = (hiveJob).toJson();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (pigJob != null) {
       _json["pigJob"] = (pigJob).toJson();
@@ -1849,6 +2012,9 @@ class Job {
     }
     if (statusHistory != null) {
       _json["statusHistory"] = statusHistory.map((value) => (value).toJson()).toList();
+    }
+    if (yarnApplications != null) {
+      _json["yarnApplications"] = yarnApplications.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1890,7 +2056,7 @@ class JobPlacement {
 /** Encapsulates the full scoping used to reference a job. */
 class JobReference {
   /**
-   * [Required] The job ID, which must be unique within the project. The job ID
+   * [Optional] The job ID, which must be unique within the project. The job ID
    * is generated by the server upon job submission or provided by the user as a
    * means to perform retries without creating duplicate jobs. The ID must
    * contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens
@@ -1929,12 +2095,12 @@ class JobReference {
 /** Cloud Dataproc job status. */
 class JobStatus {
   /**
-   * [Optional] Job state details, such as an error description if the state is
-   * ERROR.
+   * [Output-only] Optional job state details, such as an error description if
+   * the state is ERROR.
    */
   core.String details;
   /**
-   * [Required] A state message specifying the overall job state.
+   * [Output-only] A state message specifying the overall job state.
    * Possible string values are:
    * - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
    * - "PENDING" : A PENDING.
@@ -1984,8 +2150,8 @@ class ListClustersResponse {
   /** [Output-only] The clusters in the project. */
   core.List<Cluster> clusters;
   /**
-   * [Optional] This token is included in the response if there are more results
-   * to fetch. To fetch additional results, provide this value as the
+   * [Output-only] This token is included in the response if there are more
+   * results to fetch. To fetch additional results, provide this value as the
    * `page_token` in a subsequent ListClustersRequest.
    */
   core.String nextPageToken;
@@ -2185,7 +2351,7 @@ class Operation {
    * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * Service-specific metadata associated with the operation. It typically
@@ -2428,7 +2594,10 @@ class OperationStatus {
   }
 }
 
-/** A Cloud Dataproc job for running Pig queries on YARN. */
+/**
+ * A Cloud Dataproc job for running [Apache Pig](https://pig.apache.org/)
+ * queries on YARN.
+ */
 class PigJob {
   /**
    * [Optional] Whether to continue executing queries if a query fails. The
@@ -2513,7 +2682,11 @@ class PigJob {
   }
 }
 
-/** A Cloud Dataproc job for running PySpark applications on YARN. */
+/**
+ * A Cloud Dataproc job for running [Apache
+ * PySpark](https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
+ * applications on YARN.
+ */
 class PySparkJob {
   /**
    * [Optional] HCFS URIs of archives to be extracted in the working directory
@@ -2684,7 +2857,10 @@ class SoftwareConfig {
   }
 }
 
-/** A Cloud Dataproc job for running Spark applications on YARN. */
+/**
+ * A Cloud Dataproc job for running [Apache Spark](http://spark.apache.org/)
+ * applications on YARN.
+ */
 class SparkJob {
   /**
    * [Optional] HCFS URIs of archives to be extracted in the working directory
@@ -2784,7 +2960,10 @@ class SparkJob {
   }
 }
 
-/** A Cloud Dataproc job for running Spark SQL queries. */
+/**
+ * A Cloud Dataproc job for running [Apache Spark
+ * SQL](http://spark.apache.org/sql/) queries.
+ */
 class SparkSqlJob {
   /** [Optional] HCFS URIs of jar files to be added to the Spark CLASSPATH. */
   core.List<core.String> jarFileUris;
@@ -2952,6 +3131,74 @@ class SubmitJobRequest {
     var _json = new core.Map();
     if (job != null) {
       _json["job"] = (job).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A YARN application created by a job. Application information is a subset of
+ * org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto. **Beta
+ * Feature**: This report is available for testing purposes only. It may be
+ * changed before final release.
+ */
+class YarnApplication {
+  /** [Required] The application name. */
+  core.String name;
+  /** [Required] The numerical progress of the application, from 1 to 100. */
+  core.double progress;
+  /**
+   * [Required] The application state.
+   * Possible string values are:
+   * - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
+   * - "NEW" : A NEW.
+   * - "NEW_SAVING" : A NEW_SAVING.
+   * - "SUBMITTED" : A SUBMITTED.
+   * - "ACCEPTED" : A ACCEPTED.
+   * - "RUNNING" : A RUNNING.
+   * - "FINISHED" : A FINISHED.
+   * - "FAILED" : A FAILED.
+   * - "KILLED" : A KILLED.
+   */
+  core.String state;
+  /**
+   * [Optional] The HTTP URL of the ApplicationMaster, HistoryServer, or
+   * TimelineServer that provides application-specific information. The URL uses
+   * the internal hostname, and requires a proxy server for resolution and,
+   * possibly, access.
+   */
+  core.String trackingUrl;
+
+  YarnApplication();
+
+  YarnApplication.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("progress")) {
+      progress = _json["progress"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("trackingUrl")) {
+      trackingUrl = _json["trackingUrl"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (progress != null) {
+      _json["progress"] = progress;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (trackingUrl != null) {
+      _json["trackingUrl"] = trackingUrl;
     }
     return _json;
   }

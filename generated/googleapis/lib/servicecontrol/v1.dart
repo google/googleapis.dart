@@ -46,6 +46,10 @@ class ServicesResourceApi {
    * the given operation should proceed. It should be called before the
    * operation is executed.
    *
+   * If feasible, the client should cache the check results and reuse them for
+   * up to 60s. In case of server errors, the client may rely on the cached
+   * results for longer time.
+   *
    * This method requires the `servicemanagement.services.check` permission
    * on the specified service. For more information, see
    * [Google Cloud IAM](https://cloud.google.com/iam).
@@ -98,6 +102,12 @@ class ServicesResourceApi {
   /**
    * Reports operations to Google Service Control. It should be called
    * after the operation is completed.
+   *
+   * If feasible, the client should aggregate reporting data for up to 5s to
+   * reduce API traffic. Limiting aggregation to 5s is to reduce data loss
+   * during client crashes. Clients should carefully choose the aggregation
+   * window to avoid data loss risk more than 0.01% for business and
+   * compliance reasons.
    *
    * This method requires the `servicemanagement.services.report` permission
    * on the specified service. For more information, see
@@ -226,6 +236,14 @@ class CheckError {
 class CheckRequest {
   /** The operation to be checked. */
   Operation operation;
+  /**
+   * Specifies which version of service configuration should be used to process
+   * the request.
+   *
+   * If unspecified or no matching version can be found, the
+   * latest one will be used.
+   */
+  core.String serviceConfigId;
 
   CheckRequest();
 
@@ -233,12 +251,18 @@ class CheckRequest {
     if (_json.containsKey("operation")) {
       operation = new Operation.fromJson(_json["operation"]);
     }
+    if (_json.containsKey("serviceConfigId")) {
+      serviceConfigId = _json["serviceConfigId"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (operation != null) {
       _json["operation"] = (operation).toJson();
+    }
+    if (serviceConfigId != null) {
+      _json["serviceConfigId"] = serviceConfigId;
     }
     return _json;
   }
@@ -577,16 +601,18 @@ class LogEntry {
    * The severity of the log entry. The default value is
    * `LogSeverity.DEFAULT`.
    * Possible string values are:
-   * - "DEFAULT" : The log entry has no assigned severity level.
-   * - "DEBUG" : Debug or trace information.
-   * - "INFO" : Routine information, such as ongoing status or performance.
-   * - "NOTICE" : Normal but significant events, such as start up, shut down, or
-   * configuration.
-   * - "WARNING" : Warning events might cause problems.
-   * - "ERROR" : Error events are likely to cause problems.
-   * - "CRITICAL" : Critical events cause more severe problems or brief outages.
-   * - "ALERT" : A person must take an action immediately.
-   * - "EMERGENCY" : One or more systems are unusable.
+   * - "DEFAULT" : (0) The log entry has no assigned severity level.
+   * - "DEBUG" : (100) Debug or trace information.
+   * - "INFO" : (200) Routine information, such as ongoing status or
+   * performance.
+   * - "NOTICE" : (300) Normal but significant events, such as start up, shut
+   * down, or
+   * a configuration change.
+   * - "WARNING" : (400) Warning events might cause problems.
+   * - "ERROR" : (500) Error events are likely to cause problems.
+   * - "CRITICAL" : (600) Critical events cause more severe problems or outages.
+   * - "ALERT" : (700) A person must take an action immediately.
+   * - "EMERGENCY" : (800) One or more systems are unusable.
    */
   core.String severity;
   /**
@@ -978,6 +1004,14 @@ class ReportRequest {
    * partial failure behavior.
    */
   core.List<Operation> operations;
+  /**
+   * Specifies which version of service config should be used to process the
+   * request.
+   *
+   * If unspecified or no matching version can be found, the
+   * latest one will be used.
+   */
+  core.String serviceConfigId;
 
   ReportRequest();
 
@@ -985,12 +1019,18 @@ class ReportRequest {
     if (_json.containsKey("operations")) {
       operations = _json["operations"].map((value) => new Operation.fromJson(value)).toList();
     }
+    if (_json.containsKey("serviceConfigId")) {
+      serviceConfigId = _json["serviceConfigId"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (operations != null) {
       _json["operations"] = operations.map((value) => (value).toJson()).toList();
+    }
+    if (serviceConfigId != null) {
+      _json["serviceConfigId"] = serviceConfigId;
     }
     return _json;
   }
@@ -1010,8 +1050,9 @@ class ReportResponse {
    *    `Operations` in the request succeeded. Each
    *    `Operation` that failed processing has a corresponding item
    *    in this list.
-   * 3. A failed RPC status indicates a complete failure where none of the
-   *    `Operations` in the request succeeded.
+   * 3. A failed RPC status indicates a general non-deterministic failure.
+   *    When this happens, it's impossible to know which of the
+   *    'Operations' in the request succeeded or failed.
    */
   core.List<ReportError> reportErrors;
   /** The actual config id used to process the request. */

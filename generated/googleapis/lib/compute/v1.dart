@@ -47,6 +47,7 @@ class ComputeApi {
   GlobalAddressesResourceApi get globalAddresses => new GlobalAddressesResourceApi(_requester);
   GlobalForwardingRulesResourceApi get globalForwardingRules => new GlobalForwardingRulesResourceApi(_requester);
   GlobalOperationsResourceApi get globalOperations => new GlobalOperationsResourceApi(_requester);
+  HealthChecksResourceApi get healthChecks => new HealthChecksResourceApi(_requester);
   HttpHealthChecksResourceApi get httpHealthChecks => new HttpHealthChecksResourceApi(_requester);
   HttpsHealthChecksResourceApi get httpsHealthChecks => new HttpsHealthChecksResourceApi(_requester);
   ImagesResourceApi get images => new ImagesResourceApi(_requester);
@@ -69,6 +70,7 @@ class ComputeApi {
   TargetHttpsProxiesResourceApi get targetHttpsProxies => new TargetHttpsProxiesResourceApi(_requester);
   TargetInstancesResourceApi get targetInstances => new TargetInstancesResourceApi(_requester);
   TargetPoolsResourceApi get targetPools => new TargetPoolsResourceApi(_requester);
+  TargetSslProxiesResourceApi get targetSslProxies => new TargetSslProxiesResourceApi(_requester);
   TargetVpnGatewaysResourceApi get targetVpnGateways => new TargetVpnGatewaysResourceApi(_requester);
   UrlMapsResourceApi get urlMaps => new UrlMapsResourceApi(_requester);
   VpnTunnelsResourceApi get vpnTunnels => new VpnTunnelsResourceApi(_requester);
@@ -126,6 +128,17 @@ class AddressesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -138,7 +151,7 @@ class AddressesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AddressAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<AddressAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +167,9 @@ class AddressesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -373,6 +389,17 @@ class AddressesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -385,7 +412,7 @@ class AddressesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AddressList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<AddressList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -404,6 +431,9 @@ class AddressesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -470,6 +500,17 @@ class AutoscalersResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -482,7 +523,7 @@ class AutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AutoscalerAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<AutoscalerAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -498,6 +539,9 @@ class AutoscalersResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -718,6 +762,17 @@ class AutoscalersResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -730,7 +785,7 @@ class AutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AutoscalerList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<AutoscalerList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -749,6 +804,9 @@ class AutoscalersResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1132,6 +1190,17 @@ class BackendServicesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -1144,7 +1213,7 @@ class BackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BackendServiceList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<BackendServiceList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1160,6 +1229,9 @@ class BackendServicesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1178,10 +1250,10 @@ class BackendServicesResourceApi {
   }
 
   /**
-   * Updates the entire content of the BackendService resource. There are
-   * several restrictions and guidelines to keep in mind when updating a backend
-   * service. Read  Restrictions and Guidelines for more information. This
-   * method supports patch semantics.
+   * Updates the specified BackendService resource with the data included in the
+   * request. There are several restrictions and guidelines to keep in mind when
+   * updating a backend service. Read  Restrictions and Guidelines for more
+   * information. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -1233,9 +1305,10 @@ class BackendServicesResourceApi {
   }
 
   /**
-   * Updates the entire content of the BackendService resource. There are
-   * several restrictions and guidelines to keep in mind when updating a backend
-   * service. Read  Restrictions and Guidelines for more information.
+   * Updates the specified BackendService resource with the data included in the
+   * request. There are several restrictions and guidelines to keep in mind when
+   * updating a backend service. Read  Restrictions and Guidelines for more
+   * information.
    *
    * [request] - The metadata request object.
    *
@@ -1335,6 +1408,17 @@ class DiskTypesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -1347,7 +1431,7 @@ class DiskTypesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DiskTypeAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<DiskTypeAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1363,6 +1447,9 @@ class DiskTypesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1477,6 +1564,17 @@ class DiskTypesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -1489,7 +1587,7 @@ class DiskTypesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DiskTypeList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<DiskTypeList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1508,6 +1606,9 @@ class DiskTypesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1574,6 +1675,17 @@ class DisksResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -1586,7 +1698,7 @@ class DisksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DiskAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<DiskAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1602,6 +1714,9 @@ class DisksResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1890,6 +2005,17 @@ class DisksResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -1902,7 +2028,7 @@ class DisksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DiskList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<DiskList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1921,6 +2047,9 @@ class DisksResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2186,6 +2315,17 @@ class FirewallsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -2198,7 +2338,7 @@ class FirewallsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FirewallList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<FirewallList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2214,6 +2354,9 @@ class FirewallsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2385,6 +2528,17 @@ class ForwardingRulesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -2397,7 +2551,7 @@ class ForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ForwardingRuleAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<ForwardingRuleAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2413,6 +2567,9 @@ class ForwardingRulesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2633,6 +2790,17 @@ class ForwardingRulesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -2645,7 +2813,7 @@ class ForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ForwardingRuleList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<ForwardingRuleList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2664,6 +2832,9 @@ class ForwardingRulesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2932,6 +3103,17 @@ class GlobalAddressesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -2944,7 +3126,7 @@ class GlobalAddressesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AddressList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<AddressList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2960,6 +3142,9 @@ class GlobalAddressesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -3169,6 +3354,17 @@ class GlobalForwardingRulesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -3181,7 +3377,7 @@ class GlobalForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ForwardingRuleList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<ForwardingRuleList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3197,6 +3393,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -3317,6 +3516,17 @@ class GlobalOperationsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -3329,7 +3539,7 @@ class GlobalOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<OperationAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<OperationAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3345,6 +3555,9 @@ class GlobalOperationsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -3498,6 +3711,17 @@ class GlobalOperationsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -3510,7 +3734,7 @@ class GlobalOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<OperationList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<OperationList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3527,6 +3751,9 @@ class GlobalOperationsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -3541,6 +3768,363 @@ class GlobalOperationsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new OperationList.fromJson(data));
+  }
+
+}
+
+
+class HealthChecksResourceApi {
+  final commons.ApiRequester _requester;
+
+  HealthChecksResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified HealthCheck resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [healthCheck] - Name of the HealthCheck resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String healthCheck) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (healthCheck == null) {
+      throw new core.ArgumentError("Parameter healthCheck is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks/' + commons.Escaper.ecapeVariable('$healthCheck');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified HealthCheck resource. Get a list of available health
+   * checks by making a list() request.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [healthCheck] - Name of the HealthCheck resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [HealthCheck].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<HealthCheck> get(core.String project, core.String healthCheck) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (healthCheck == null) {
+      throw new core.ArgumentError("Parameter healthCheck is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks/' + commons.Escaper.ecapeVariable('$healthCheck');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new HealthCheck.fromJson(data));
+  }
+
+  /**
+   * Creates a HealthCheck resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(HealthCheck request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of HealthCheck resources available to the specified
+   * project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [HealthCheckList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<HealthCheckList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new HealthCheckList.fromJson(data));
+  }
+
+  /**
+   * Updates a HealthCheck resource in the specified project using the data
+   * included in the request. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [healthCheck] - Name of the HealthCheck resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(HealthCheck request, core.String project, core.String healthCheck) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (healthCheck == null) {
+      throw new core.ArgumentError("Parameter healthCheck is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks/' + commons.Escaper.ecapeVariable('$healthCheck');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates a HealthCheck resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [healthCheck] - Name of the HealthCheck resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> update(HealthCheck request, core.String project, core.String healthCheck) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (healthCheck == null) {
+      throw new core.ArgumentError("Parameter healthCheck is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks/' + commons.Escaper.ecapeVariable('$healthCheck');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -3735,6 +4319,17 @@ class HttpHealthChecksResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -3747,7 +4342,7 @@ class HttpHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<HttpHealthCheckList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<HttpHealthCheckList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3763,6 +4358,9 @@ class HttpHealthChecksResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4078,6 +4676,17 @@ class HttpsHealthChecksResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -4090,7 +4699,7 @@ class HttpsHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<HttpsHealthCheckList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<HttpsHealthCheckList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4106,6 +4715,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4527,6 +5139,17 @@ class ImagesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -4539,7 +5162,7 @@ class ImagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ImageList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<ImageList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4555,6 +5178,9 @@ class ImagesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4684,6 +5310,17 @@ class InstanceGroupManagersResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -4696,7 +5333,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceGroupManagerAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceGroupManagerAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4712,6 +5349,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4996,6 +5636,17 @@ class InstanceGroupManagersResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -5008,7 +5659,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceGroupManagerList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceGroupManagerList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5027,6 +5678,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5061,6 +5715,13 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [filter] - null
+   *
+   * [maxResults] - null
+   * Value must be between "0" and "500".
+   *
+   * [pageToken] - null
+   *
    * Completes with a [InstanceGroupManagersListManagedInstancesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5069,7 +5730,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceGroupManagersListManagedInstancesResponse> listManagedInstances(core.String project, core.String zone, core.String instanceGroupManager) {
+  async.Future<InstanceGroupManagersListManagedInstancesResponse> listManagedInstances(core.String project, core.String zone, core.String instanceGroupManager, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5085,6 +5746,15 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/listManagedInstances';
@@ -5451,6 +6121,17 @@ class InstanceGroupsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -5463,7 +6144,7 @@ class InstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceGroupAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceGroupAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5479,6 +6160,9 @@ class InstanceGroupsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5696,6 +6380,17 @@ class InstanceGroupsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -5708,7 +6403,7 @@ class InstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceGroupList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceGroupList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5727,6 +6422,9 @@ class InstanceGroupsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5791,6 +6489,17 @@ class InstanceGroupsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -5803,7 +6512,7 @@ class InstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceGroupsListInstances> listInstances(InstanceGroupsListInstancesRequest request, core.String project, core.String zone, core.String instanceGroup, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceGroupsListInstances> listInstances(InstanceGroupsListInstancesRequest request, core.String project, core.String zone, core.String instanceGroup, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5828,6 +6537,9 @@ class InstanceGroupsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -6157,6 +6869,17 @@ class InstanceTemplatesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -6169,7 +6892,7 @@ class InstanceTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceTemplateList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceTemplateList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6185,6 +6908,9 @@ class InstanceTemplatesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -6316,6 +7042,17 @@ class InstancesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -6328,7 +7065,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6344,6 +7081,9 @@ class InstancesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -6806,6 +7546,17 @@ class InstancesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -6818,7 +7569,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6837,6 +7588,9 @@ class InstancesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -7485,6 +8239,17 @@ class MachineTypesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -7497,7 +8262,7 @@ class MachineTypesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<MachineTypeAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<MachineTypeAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7513,6 +8278,9 @@ class MachineTypesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -7627,6 +8395,17 @@ class MachineTypesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -7639,7 +8418,7 @@ class MachineTypesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<MachineTypeList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<MachineTypeList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7658,6 +8437,9 @@ class MachineTypesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -7866,6 +8648,17 @@ class NetworksResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -7878,7 +8671,7 @@ class NetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<NetworkList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<NetworkList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7895,6 +8688,9 @@ class NetworksResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -7909,6 +8705,53 @@ class NetworksResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new NetworkList.fromJson(data));
+  }
+
+  /**
+   * Switches the network mode from auto subnet mode to custom subnet mode.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [network] - Name of the network to be updated.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> switchToCustomMode(core.String project, core.String network) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (network == null) {
+      throw new core.ArgumentError("Parameter network is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network') + '/switchToCustomMode';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -8308,6 +9151,17 @@ class RegionOperationsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -8320,7 +9174,7 @@ class RegionOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<OperationList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<OperationList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8339,6 +9193,9 @@ class RegionOperationsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -8453,6 +9310,17 @@ class RegionsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -8465,7 +9333,7 @@ class RegionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RegionList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<RegionList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8481,6 +9349,9 @@ class RegionsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -8547,6 +9418,17 @@ class RoutersResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -8559,7 +9441,7 @@ class RoutersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RouterAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<RouterAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8575,6 +9457,9 @@ class RoutersResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -8848,6 +9733,17 @@ class RoutersResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -8860,7 +9756,7 @@ class RoutersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RouterList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<RouterList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8880,6 +9776,9 @@ class RoutersResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -8897,8 +9796,8 @@ class RoutersResourceApi {
   }
 
   /**
-   * Updates the entire content of the Router resource. This method supports
-   * patch semantics.
+   * Updates the specified Router resource with the data included in the
+   * request. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -9015,7 +9914,8 @@ class RoutersResourceApi {
   }
 
   /**
-   * Updates the entire content of the Router resource.
+   * Updates the specified Router resource with the data included in the
+   * request.
    *
    * [request] - The metadata request object.
    *
@@ -9263,6 +10163,17 @@ class RoutesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -9275,7 +10186,7 @@ class RoutesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RouteList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<RouteList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9291,6 +10202,9 @@ class RoutesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -9459,6 +10373,17 @@ class SnapshotsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -9471,7 +10396,7 @@ class SnapshotsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SnapshotList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<SnapshotList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9487,6 +10412,9 @@ class SnapshotsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -9696,6 +10624,17 @@ class SslCertificatesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -9708,7 +10647,7 @@ class SslCertificatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SslCertificateList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<SslCertificateList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9724,6 +10663,9 @@ class SslCertificatesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -9790,6 +10732,17 @@ class SubnetworksResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -9802,7 +10755,7 @@ class SubnetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SubnetworkAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<SubnetworkAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9818,6 +10771,9 @@ class SubnetworksResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -9880,6 +10836,64 @@ class SubnetworksResourceApi {
 
     var _response = _requester.request(_url,
                                        "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Expands the IP CIDR range of the subnetwork to a specified value.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [subnetwork] - Name of the Subnetwork resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> expandIpCidrRange(SubnetworksExpandIpCidrRangeRequest request, core.String project, core.String region, core.String subnetwork) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (subnetwork == null) {
+      throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks/' + commons.Escaper.ecapeVariable('$subnetwork') + '/expandIpCidrRange';
+
+    var _response = _requester.request(_url,
+                                       "POST",
                                        body: _body,
                                        queryParams: _queryParams,
                                        uploadOptions: _uploadOptions,
@@ -10038,6 +11052,17 @@ class SubnetworksResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -10050,7 +11075,7 @@ class SubnetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SubnetworkList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<SubnetworkList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10069,6 +11094,9 @@ class SubnetworksResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -10278,6 +11306,17 @@ class TargetHttpProxiesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -10290,7 +11329,7 @@ class TargetHttpProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TargetHttpProxyList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TargetHttpProxyList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10306,6 +11345,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -10567,6 +11609,17 @@ class TargetHttpsProxiesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -10579,7 +11632,7 @@ class TargetHttpsProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TargetHttpsProxyList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TargetHttpsProxyList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10595,6 +11648,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -10767,6 +11823,17 @@ class TargetInstancesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -10779,7 +11846,7 @@ class TargetInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TargetInstanceAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TargetInstanceAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10795,6 +11862,9 @@ class TargetInstancesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -11016,6 +12086,17 @@ class TargetInstancesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -11028,7 +12109,7 @@ class TargetInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TargetInstanceList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TargetInstanceList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11047,6 +12128,9 @@ class TargetInstancesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -11229,6 +12313,17 @@ class TargetPoolsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -11241,7 +12336,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TargetPoolAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TargetPoolAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11257,6 +12352,9 @@ class TargetPoolsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -11538,6 +12636,17 @@ class TargetPoolsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -11550,7 +12659,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TargetPoolList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TargetPoolList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11569,6 +12678,9 @@ class TargetPoolsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -11768,6 +12880,416 @@ class TargetPoolsResourceApi {
 }
 
 
+class TargetSslProxiesResourceApi {
+  final commons.ApiRequester _requester;
+
+  TargetSslProxiesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified TargetSslProxy resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetSslProxy] - Name of the TargetSslProxy resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String targetSslProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetSslProxy == null) {
+      throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified TargetSslProxy resource. Get a list of available
+   * target SSL proxies by making a list() request.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetSslProxy] - Name of the TargetSslProxy resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [TargetSslProxy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TargetSslProxy> get(core.String project, core.String targetSslProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetSslProxy == null) {
+      throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetSslProxy.fromJson(data));
+  }
+
+  /**
+   * Creates a TargetSslProxy resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(TargetSslProxy request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of TargetSslProxy resources available to the specified
+   * project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [TargetSslProxyList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TargetSslProxyList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetSslProxyList.fromJson(data));
+  }
+
+  /**
+   * Changes the BackendService for TargetSslProxy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetSslProxy] - Name of the TargetSslProxy resource whose BackendService
+   * resource is to be set.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setBackendService(TargetSslProxiesSetBackendServiceRequest request, core.String project, core.String targetSslProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetSslProxy == null) {
+      throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy') + '/setBackendService';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Changes the ProxyHeaderType for TargetSslProxy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetSslProxy] - Name of the TargetSslProxy resource whose ProxyHeader is
+   * to be set.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setProxyHeader(TargetSslProxiesSetProxyHeaderRequest request, core.String project, core.String targetSslProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetSslProxy == null) {
+      throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy') + '/setProxyHeader';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Changes SslCertificates for TargetSslProxy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetSslProxy] - Name of the TargetSslProxy resource whose SslCertificate
+   * resource is to be set.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setSslCertificates(TargetSslProxiesSetSslCertificatesRequest request, core.String project, core.String targetSslProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetSslProxy == null) {
+      throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy') + '/setSslCertificates';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
 class TargetVpnGatewaysResourceApi {
   final commons.ApiRequester _requester;
 
@@ -11814,6 +13336,17 @@ class TargetVpnGatewaysResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -11826,7 +13359,7 @@ class TargetVpnGatewaysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TargetVpnGatewayAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TargetVpnGatewayAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11842,6 +13375,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -12063,6 +13599,17 @@ class TargetVpnGatewaysResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -12075,7 +13622,7 @@ class TargetVpnGatewaysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TargetVpnGatewayList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TargetVpnGatewayList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12094,6 +13641,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -12355,6 +13905,17 @@ class UrlMapsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -12367,7 +13928,7 @@ class UrlMapsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<UrlMapList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<UrlMapList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12383,6 +13944,9 @@ class UrlMapsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -12401,8 +13965,8 @@ class UrlMapsResourceApi {
   }
 
   /**
-   * Updates the entire content of the UrlMap resource. This method supports
-   * patch semantics.
+   * Updates the specified UrlMap resource with the data included in the
+   * request. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -12454,7 +14018,8 @@ class UrlMapsResourceApi {
   }
 
   /**
-   * Updates the entire content of the UrlMap resource.
+   * Updates the specified UrlMap resource with the data included in the
+   * request.
    *
    * [request] - The metadata request object.
    *
@@ -12608,6 +14173,17 @@ class VpnTunnelsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -12620,7 +14196,7 @@ class VpnTunnelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<VpnTunnelAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<VpnTunnelAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12636,6 +14212,9 @@ class VpnTunnelsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -12857,6 +14436,17 @@ class VpnTunnelsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -12869,7 +14459,7 @@ class VpnTunnelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<VpnTunnelList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<VpnTunnelList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12888,6 +14478,9 @@ class VpnTunnelsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -13064,6 +14657,17 @@ class ZoneOperationsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -13076,7 +14680,7 @@ class ZoneOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<OperationList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<OperationList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13095,6 +14699,9 @@ class ZoneOperationsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -13209,6 +14816,17 @@ class ZonesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -13221,7 +14839,7 @@ class ZonesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ZoneList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<ZoneList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13237,6 +14855,9 @@ class ZonesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -13793,8 +15414,14 @@ class AttachedDisk {
   core.String mode;
   /**
    * Specifies a valid partial or full URL to an existing Persistent Disk
-   * resource. This field is only applicable for persistent disks. Note that for
-   * InstanceTemplate, it is just disk name, not URL for the disk.
+   * resource. When creating a new instance, one of initializeParams.sourceImage
+   * or disks.source is required.
+   *
+   * If desired, you can also attach existing non-root persistent disks using
+   * this property. This field is only applicable for persistent disks.
+   *
+   * Note that for InstanceTemplate, specify the disk name, not the URL for the
+   * disk.
    */
   core.String source;
   /**
@@ -13922,8 +15549,8 @@ class AttachedDiskInitializeParams {
    */
   core.String diskType;
   /**
-   * The source image used to create this disk. If the source image is deleted,
-   * this field will not be set.
+   * The source image to create this disk. When creating a new instance, one of
+   * initializeParams.sourceImage or disks.source is required.
    *
    * To create a disk with one of the public operating system images, specify
    * the image by its family name. For example, specify family/debian-8 to use
@@ -13945,6 +15572,8 @@ class AttachedDiskInitializeParams {
    * family/family-name:
    *
    * global/images/family/my-private-family
+   *
+   * If the source image is deleted later, this field will not be set.
    */
   core.String sourceImage;
   /**
@@ -14041,6 +15670,11 @@ class Autoscaler {
    * dash.
    */
   core.String name;
+  /**
+   * [Output Only] URL of the region where the instance group resides (for
+   * autoscalers living in regional scope).
+   */
+  core.String region;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /** URL of the managed instance group that this autoscaler will scale. */
@@ -14072,6 +15706,9 @@ class Autoscaler {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -14102,6 +15739,9 @@ class Autoscaler {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (region != null) {
+      _json["region"] = region;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -14501,7 +16141,7 @@ class AutoscalingPolicyCpuUtilization {
 /** Custom utilization metric policy. */
 class AutoscalingPolicyCustomMetricUtilization {
   /**
-   * The identifier of the Cloud Monitoring metric. The metric cannot have
+   * The identifier of the Stackdriver Monitoring metric. The metric cannot have
    * negative values and should be a utilization metric, which means that the
    * number of virtual machines handling requests should increase or decrease
    * proportionally to the metric. The metric must also have a label of
@@ -14510,8 +16150,6 @@ class AutoscalingPolicyCustomMetricUtilization {
    *
    * For example, the following is a valid metric:
    * compute.googleapis.com/instance/network/received_bytes_count
-   *
-   *
    * The following is not a valid metric because it does not increase or
    * decrease based on usage:
    * compute.googleapis.com/instance/cpu/reserved_cores
@@ -14523,9 +16161,9 @@ class AutoscalingPolicyCustomMetricUtilization {
    */
   core.double utilizationTarget;
   /**
-   * Defines how target utilization value is expressed for a Cloud Monitoring
-   * metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not
-   * specified, the default is GAUGE.
+   * Defines how target utilization value is expressed for a Stackdriver
+   * Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If
+   * not specified, the default is GAUGE.
    * Possible string values are:
    * - "DELTA_PER_MINUTE"
    * - "DELTA_PER_SECOND"
@@ -14591,22 +16229,23 @@ class AutoscalingPolicyLoadBalancingUtilization {
 /** Message containing information of one individual backend. */
 class Backend {
   /**
-   * Specifies the balancing mode for this backend. For global HTTP(S) load
-   * balancing, the default is UTILIZATION. Valid values are UTILIZATION and
-   * RATE.
+   * Specifies the balancing mode for this backend. For global HTTP(S) or
+   * TCP/SSL load balancing, the default is UTILIZATION. Valid values are
+   * UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
    *
    * This cannot be used for internal load balancing.
    * Possible string values are:
+   * - "CONNECTION"
    * - "RATE"
    * - "UTILIZATION"
    */
   core.String balancingMode;
   /**
-   * A multiplier applied to the group's maximum servicing capacity (either
-   * UTILIZATION or RATE). Default value is 1, which means the group will serve
-   * up to 100% of its configured CPU or RPS (depending on balancingMode). A
-   * setting of 0 means the group is completely drained, offering 0% of its
-   * available CPU or RPS. Valid range is [0.0,1.0].
+   * A multiplier applied to the group's maximum servicing capacity (based on
+   * UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group
+   * will serve up to 100% of its configured capacity (depending on
+   * balancingMode). A setting of 0 means the group is completely drained,
+   * offering 0% of its available Capacity. Valid range is [0.0,1.0].
    *
    * This cannot be used for internal load balancing.
    */
@@ -14630,6 +16269,23 @@ class Backend {
    * group must be in a zone within the same region as the BackendService.
    */
   core.String group;
+  /**
+   * The max number of simultaneous connections for the group. Can be used with
+   * either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode,
+   * either maxConnections or maxConnectionsPerInstance must be set.
+   *
+   * This cannot be used for internal load balancing.
+   */
+  core.int maxConnections;
+  /**
+   * The max number of simultaneous connections that a single backend instance
+   * can handle. This is used to calculate the capacity of the group. Can be
+   * used in either CONNECTION or UTILIZATION balancing modes. For CONNECTION
+   * mode, either maxConnections or maxConnectionsPerInstance must be set.
+   *
+   * This cannot be used for internal load balancing.
+   */
+  core.int maxConnectionsPerInstance;
   /**
    * The max requests per second (RPS) of the group. Can be used with either
    * RATE or UTILIZATION balancing modes, but required if RATE mode. For RATE
@@ -14671,6 +16327,12 @@ class Backend {
     if (_json.containsKey("group")) {
       group = _json["group"];
     }
+    if (_json.containsKey("maxConnections")) {
+      maxConnections = _json["maxConnections"];
+    }
+    if (_json.containsKey("maxConnectionsPerInstance")) {
+      maxConnectionsPerInstance = _json["maxConnectionsPerInstance"];
+    }
     if (_json.containsKey("maxRate")) {
       maxRate = _json["maxRate"];
     }
@@ -14695,6 +16357,12 @@ class Backend {
     }
     if (group != null) {
       _json["group"] = group;
+    }
+    if (maxConnections != null) {
+      _json["maxConnections"] = maxConnections;
+    }
+    if (maxConnectionsPerInstance != null) {
+      _json["maxConnectionsPerInstance"] = maxConnectionsPerInstance;
     }
     if (maxRate != null) {
       _json["maxRate"] = maxRate;
@@ -14725,6 +16393,7 @@ class BackendService {
   core.int affinityCookieTtlSec;
   /** The list of backends that serve this BackendService. */
   core.List<Backend> backends;
+  ConnectionDraining connectionDraining;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
@@ -14806,6 +16475,8 @@ class BackendService {
    * Possible string values are:
    * - "HTTP"
    * - "HTTPS"
+   * - "SSL"
+   * - "TCP"
    */
   core.String protocol;
   /**
@@ -14846,6 +16517,9 @@ class BackendService {
     }
     if (_json.containsKey("backends")) {
       backends = _json["backends"].map((value) => new Backend.fromJson(value)).toList();
+    }
+    if (_json.containsKey("connectionDraining")) {
+      connectionDraining = new ConnectionDraining.fromJson(_json["connectionDraining"]);
     }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
@@ -14901,6 +16575,9 @@ class BackendService {
     }
     if (backends != null) {
       _json["backends"] = backends.map((value) => (value).toJson()).toList();
+    }
+    if (connectionDraining != null) {
+      _json["connectionDraining"] = (connectionDraining).toJson();
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
@@ -15061,6 +16738,31 @@ class CacheInvalidationRule {
   }
 }
 
+/** Message containing connection draining configuration. */
+class ConnectionDraining {
+  /**
+   * Time for which instance will be drained (not accept new connections, but
+   * still work to finish started).
+   */
+  core.int drainingTimeoutSec;
+
+  ConnectionDraining();
+
+  ConnectionDraining.fromJson(core.Map _json) {
+    if (_json.containsKey("drainingTimeoutSec")) {
+      drainingTimeoutSec = _json["drainingTimeoutSec"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (drainingTimeoutSec != null) {
+      _json["drainingTimeoutSec"] = drainingTimeoutSec;
+    }
+    return _json;
+  }
+}
+
 /** Represents a customer-supplied encryption key */
 class CustomerEncryptionKey {
   /**
@@ -15135,18 +16837,21 @@ class CustomerEncryptionKeyProtectedDisk {
 /** Deprecation status for a public resource. */
 class DeprecationStatus {
   /**
-   * An optional RFC3339 timestamp on or after which the deprecation state of
-   * this resource will be changed to DELETED.
+   * An optional RFC3339 timestamp on or after which the state of this resource
+   * is intended to change to DELETED. This is only informational and the status
+   * will not change unless the client explicitly changes it.
    */
   core.String deleted;
   /**
-   * An optional RFC3339 timestamp on or after which the deprecation state of
-   * this resource will be changed to DEPRECATED.
+   * An optional RFC3339 timestamp on or after which the state of this resource
+   * is intended to change to DEPRECATED. This is only informational and the
+   * status will not change unless the client explicitly changes it.
    */
   core.String deprecated;
   /**
-   * An optional RFC3339 timestamp on or after which the deprecation state of
-   * this resource will be changed to OBSOLETE.
+   * An optional RFC3339 timestamp on or after which the state of this resource
+   * is intended to change to OBSOLETE. This is only informational and the
+   * status will not change unless the client explicitly changes it.
    */
   core.String obsolete;
   /**
@@ -15333,8 +17038,7 @@ class Disk {
    */
   core.String sourceSnapshotId;
   /**
-   * [Output Only] The status of disk creation. Applicable statuses includes:
-   * CREATING, FAILED, READY, RESTORING.
+   * [Output Only] The status of disk creation.
    * Possible string values are:
    * - "CREATING"
    * - "FAILED"
@@ -16876,6 +18580,460 @@ class ForwardingRulesScopedList {
   }
 }
 
+class HTTP2HealthCheck {
+  /**
+   * The value of the host header in the HTTP/2 health check request. If left
+   * empty (default value), the IP on behalf of which this health check is
+   * performed will be used.
+   */
+  core.String host;
+  /**
+   * The TCP port number for the health check request. The default value is 443.
+   */
+  core.int port;
+  /**
+   * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+   * port_name are defined, port takes precedence.
+   */
+  core.String portName;
+  /**
+   * Specifies the type of proxy header to append before sending data to the
+   * backend, either NONE or PROXY_V1. The default is NONE.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+  /**
+   * The request path of the HTTP/2 health check request. The default value is
+   * /.
+   */
+  core.String requestPath;
+
+  HTTP2HealthCheck();
+
+  HTTP2HealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+    if (_json.containsKey("requestPath")) {
+      requestPath = _json["requestPath"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    if (requestPath != null) {
+      _json["requestPath"] = requestPath;
+    }
+    return _json;
+  }
+}
+
+class HTTPHealthCheck {
+  /**
+   * The value of the host header in the HTTP health check request. If left
+   * empty (default value), the IP on behalf of which this health check is
+   * performed will be used.
+   */
+  core.String host;
+  /**
+   * The TCP port number for the health check request. The default value is 80.
+   */
+  core.int port;
+  /**
+   * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+   * port_name are defined, port takes precedence.
+   */
+  core.String portName;
+  /**
+   * Specifies the type of proxy header to append before sending data to the
+   * backend, either NONE or PROXY_V1. The default is NONE.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+  /**
+   * The request path of the HTTP health check request. The default value is /.
+   */
+  core.String requestPath;
+
+  HTTPHealthCheck();
+
+  HTTPHealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+    if (_json.containsKey("requestPath")) {
+      requestPath = _json["requestPath"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    if (requestPath != null) {
+      _json["requestPath"] = requestPath;
+    }
+    return _json;
+  }
+}
+
+class HTTPSHealthCheck {
+  /**
+   * The value of the host header in the HTTPS health check request. If left
+   * empty (default value), the IP on behalf of which this health check is
+   * performed will be used.
+   */
+  core.String host;
+  /**
+   * The TCP port number for the health check request. The default value is 443.
+   */
+  core.int port;
+  /**
+   * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+   * port_name are defined, port takes precedence.
+   */
+  core.String portName;
+  /**
+   * Specifies the type of proxy header to append before sending data to the
+   * backend, either NONE or PROXY_V1. The default is NONE.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+  /**
+   * The request path of the HTTPS health check request. The default value is /.
+   */
+  core.String requestPath;
+
+  HTTPSHealthCheck();
+
+  HTTPSHealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+    if (_json.containsKey("requestPath")) {
+      requestPath = _json["requestPath"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    if (requestPath != null) {
+      _json["requestPath"] = requestPath;
+    }
+    return _json;
+  }
+}
+
+/**
+ * An HealthCheck resource. This resource defines a template for how individual
+ * virtual machines should be checked for health, via one of the supported
+ * protocols.
+ */
+class HealthCheck {
+  /**
+   * How often (in seconds) to send a health check. The default value is 5
+   * seconds.
+   */
+  core.int checkIntervalSec;
+  /** [Output Only] Creation timestamp in 3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
+  core.String description;
+  /**
+   * A so-far unhealthy instance will be marked healthy after this many
+   * consecutive successes. The default value is 2.
+   */
+  core.int healthyThreshold;
+  HTTP2HealthCheck http2HealthCheck;
+  HTTPHealthCheck httpHealthCheck;
+  HTTPSHealthCheck httpsHealthCheck;
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** Type of the resource. */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+  SSLHealthCheck sslHealthCheck;
+  TCPHealthCheck tcpHealthCheck;
+  /**
+   * How long (in seconds) to wait before claiming failure. The default value is
+   * 5 seconds. It is invalid for timeoutSec to have greater value than
+   * checkIntervalSec.
+   */
+  core.int timeoutSec;
+  /**
+   * Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or
+   * HTTP2. If not specified, the default is TCP. Exactly one of the
+   * protocol-specific health check field must be specified, which must match
+   * type field.
+   * Possible string values are:
+   * - "HTTP"
+   * - "HTTP2"
+   * - "HTTPS"
+   * - "INVALID"
+   * - "SSL"
+   * - "TCP"
+   */
+  core.String type;
+  /**
+   * A so-far healthy instance will be marked unhealthy after this many
+   * consecutive failures. The default value is 2.
+   */
+  core.int unhealthyThreshold;
+
+  HealthCheck();
+
+  HealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("checkIntervalSec")) {
+      checkIntervalSec = _json["checkIntervalSec"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("healthyThreshold")) {
+      healthyThreshold = _json["healthyThreshold"];
+    }
+    if (_json.containsKey("http2HealthCheck")) {
+      http2HealthCheck = new HTTP2HealthCheck.fromJson(_json["http2HealthCheck"]);
+    }
+    if (_json.containsKey("httpHealthCheck")) {
+      httpHealthCheck = new HTTPHealthCheck.fromJson(_json["httpHealthCheck"]);
+    }
+    if (_json.containsKey("httpsHealthCheck")) {
+      httpsHealthCheck = new HTTPSHealthCheck.fromJson(_json["httpsHealthCheck"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("sslHealthCheck")) {
+      sslHealthCheck = new SSLHealthCheck.fromJson(_json["sslHealthCheck"]);
+    }
+    if (_json.containsKey("tcpHealthCheck")) {
+      tcpHealthCheck = new TCPHealthCheck.fromJson(_json["tcpHealthCheck"]);
+    }
+    if (_json.containsKey("timeoutSec")) {
+      timeoutSec = _json["timeoutSec"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("unhealthyThreshold")) {
+      unhealthyThreshold = _json["unhealthyThreshold"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (checkIntervalSec != null) {
+      _json["checkIntervalSec"] = checkIntervalSec;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (healthyThreshold != null) {
+      _json["healthyThreshold"] = healthyThreshold;
+    }
+    if (http2HealthCheck != null) {
+      _json["http2HealthCheck"] = (http2HealthCheck).toJson();
+    }
+    if (httpHealthCheck != null) {
+      _json["httpHealthCheck"] = (httpHealthCheck).toJson();
+    }
+    if (httpsHealthCheck != null) {
+      _json["httpsHealthCheck"] = (httpsHealthCheck).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (sslHealthCheck != null) {
+      _json["sslHealthCheck"] = (sslHealthCheck).toJson();
+    }
+    if (tcpHealthCheck != null) {
+      _json["tcpHealthCheck"] = (tcpHealthCheck).toJson();
+    }
+    if (timeoutSec != null) {
+      _json["timeoutSec"] = timeoutSec;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (unhealthyThreshold != null) {
+      _json["unhealthyThreshold"] = unhealthyThreshold;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of HealthCheck resources. */
+class HealthCheckList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A list of HealthCheck resources. */
+  core.List<HealthCheck> items;
+  /** Type of resource. */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  HealthCheckList();
+
+  HealthCheckList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new HealthCheck.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
 /**
  * A full or valid partial URL to a health check. For example, the following are
  * valid URLs:
@@ -17565,8 +19723,8 @@ class Image {
    * rawDisk.source property but not both to create an image. For example, the
    * following are valid values:
    * -
-   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/disk/disk
-   * - projects/project/zones/zone/disk/disk
+   * https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+   * - projects/project/zones/zone/disks/disk
    * - zones/zone/disks/disk
    */
   core.String sourceDisk;
@@ -17870,7 +20028,7 @@ class Instance {
   core.List<ServiceAccount> serviceAccounts;
   /**
    * [Output Only] The status of the instance. One of the following values:
-   * PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDED, SUSPENDING, and
+   * PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
    * TERMINATED.
    * Possible string values are:
    * - "PROVISIONING"
@@ -18104,8 +20262,8 @@ class InstanceGroup {
     fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
-   * [Output Only] A unique identifier for this resource type. The server
-   * generates this identifier.
+   * [Output Only] A unique identifier for this instance group, generated by the
+   * server.
    */
   core.String id;
   /**
@@ -18132,6 +20290,11 @@ class InstanceGroup {
    * The URL of the network to which all instances in the instance group belong.
    */
   core.String network;
+  /**
+   * The URL of the region where the instance group is located (for regional
+   * resources).
+   */
+  core.String region;
   /**
    * [Output Only] The URL for this instance group. The server generates this
    * URL.
@@ -18177,6 +20340,9 @@ class InstanceGroup {
     if (_json.containsKey("network")) {
       network = _json["network"];
     }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -18216,6 +20382,9 @@ class InstanceGroup {
     }
     if (network != null) {
       _json["network"] = network;
+    }
+    if (region != null) {
+      _json["region"] = region;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -18436,6 +20605,11 @@ class InstanceGroupManager {
    */
   core.List<NamedPort> namedPorts;
   /**
+   * [Output Only] The URL of the region where the managed instance group
+   * resides (for regional resources).
+   */
+  core.String region;
+  /**
    * [Output Only] The URL for this managed instance group. The server defines
    * this URL.
    */
@@ -18494,6 +20668,9 @@ class InstanceGroupManager {
     if (_json.containsKey("namedPorts")) {
       namedPorts = _json["namedPorts"].map((value) => new NamedPort.fromJson(value)).toList();
     }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -18543,6 +20720,9 @@ class InstanceGroupManager {
     if (namedPorts != null) {
       _json["namedPorts"] = namedPorts.map((value) => (value).toJson()).toList();
     }
+    if (region != null) {
+      _json["region"] = region;
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -18580,7 +20760,7 @@ class InstanceGroupManagerActionsSummary {
    * [Output Only] The number of instances that the managed instance group will
    * attempt to create. The group attempts to create each instance only once. If
    * the group fails to create any of these instances, it decreases the group's
-   * target_size value accordingly.
+   * targetSize value accordingly.
    */
   core.int creatingWithoutRetries;
   /**
@@ -18763,10 +20943,7 @@ class InstanceGroupManagerList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /**
-   * [Output Only] The URL for this resource type. The server generates this
-   * URL.
-   */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceGroupManagerList();
@@ -21135,7 +23312,7 @@ class NetworkList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for this resource . */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   NetworkList();
@@ -21438,7 +23615,11 @@ class Operation {
    * of the target resource.
    */
   core.String targetId;
-  /** [Output Only] The URL of the resource that the operation modifies. */
+  /**
+   * [Output Only] The URL of the resource that the operation modifies. For
+   * operations related to creating a snapshot, this points to the persistent
+   * disk that the snapshot was created from.
+   */
   core.String targetLink;
   /**
    * [Output Only] User who requested the operation, for example:
@@ -22114,6 +24295,9 @@ class Quota {
    * - "IN_USE_ADDRESSES"
    * - "LOCAL_SSD_TOTAL_GB"
    * - "NETWORKS"
+   * - "PREEMPTIBLE_CPUS"
+   * - "REGIONAL_AUTOSCALERS"
+   * - "REGIONAL_INSTANCE_GROUP_MANAGERS"
    * - "ROUTERS"
    * - "ROUTES"
    * - "SNAPSHOTS"
@@ -22336,7 +24520,7 @@ class RegionList {
 
 class ResourceGroupReference {
   /**
-   * A URI referencing one of the resource views listed in the backend service.
+   * A URI referencing one of the instance groups listed in the backend service.
    */
   core.String group;
 
@@ -22735,7 +24919,8 @@ class Router {
   core.String id;
   /**
    * Router interfaces. Each interface requires either one linked resource (e.g.
-   * linkedVpnTunnel) or IP address and IP address range (e.g. ipRange).
+   * linkedVpnTunnel), or IP address and IP address range (e.g. ipRange), or
+   * both.
    */
   core.List<RouterInterface> interfaces;
   /** [Output Only] Type of resource. Always compute#router for routers. */
@@ -23060,7 +25245,7 @@ class RouterList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for the resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   RouterList();
@@ -23425,6 +25610,79 @@ class RoutersScopedList {
   }
 }
 
+class SSLHealthCheck {
+  /**
+   * The TCP port number for the health check request. The default value is 443.
+   */
+  core.int port;
+  /**
+   * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+   * port_name are defined, port takes precedence.
+   */
+  core.String portName;
+  /**
+   * Specifies the type of proxy header to append before sending data to the
+   * backend, either NONE or PROXY_V1. The default is NONE.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+  /**
+   * The application data to send once the SSL connection has been established
+   * (default value is empty). If both request and response are empty, the
+   * connection establishment alone will indicate health. The request data can
+   * only be ASCII.
+   */
+  core.String request;
+  /**
+   * The bytes to match against the beginning of the response data. If left
+   * empty (the default value), any response will indicate health. The response
+   * data can only be ASCII.
+   */
+  core.String response;
+
+  SSLHealthCheck();
+
+  SSLHealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+    if (_json.containsKey("request")) {
+      request = _json["request"];
+    }
+    if (_json.containsKey("response")) {
+      response = _json["response"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    if (request != null) {
+      _json["request"] = request;
+    }
+    if (response != null) {
+      _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
 /** Sets the scheduling options for an Instance. */
 class Scheduling {
   /**
@@ -23485,7 +25743,7 @@ class SerialPortOutput {
    * serial port output.
    */
   core.String kind;
-  /** [Output Only] Server-defined URL for the resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   SerialPortOutput();
@@ -24228,6 +26486,32 @@ class SubnetworkList {
   }
 }
 
+class SubnetworksExpandIpCidrRangeRequest {
+  /**
+   * The IP (in CIDR format or netmask) of internal addresses that are legal on
+   * this Subnetwork. This range should be disjoint from other subnetworks
+   * within this network. This range can only be larger than (i.e. a superset
+   * of) the range previously defined before the update.
+   */
+  core.String ipCidrRange;
+
+  SubnetworksExpandIpCidrRangeRequest();
+
+  SubnetworksExpandIpCidrRangeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    return _json;
+  }
+}
+
 class SubnetworksScopedListWarningData {
   /**
    * [Output Only] A key that provides more detail on the warning being
@@ -24355,6 +26639,79 @@ class SubnetworksScopedList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class TCPHealthCheck {
+  /**
+   * The TCP port number for the health check request. The default value is 80.
+   */
+  core.int port;
+  /**
+   * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+   * port_name are defined, port takes precedence.
+   */
+  core.String portName;
+  /**
+   * Specifies the type of proxy header to append before sending data to the
+   * backend, either NONE or PROXY_V1. The default is NONE.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+  /**
+   * The application data to send once the TCP connection has been established
+   * (default value is empty). If both request and response are empty, the
+   * connection establishment alone will indicate health. The request data can
+   * only be ASCII.
+   */
+  core.String request;
+  /**
+   * The bytes to match against the beginning of the response data. If left
+   * empty (the default value), any response will indicate health. The response
+   * data can only be ASCII.
+   */
+  core.String response;
+
+  TCPHealthCheck();
+
+  TCPHealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+    if (_json.containsKey("request")) {
+      request = _json["request"];
+    }
+    if (_json.containsKey("response")) {
+      response = _json["response"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    if (request != null) {
+      _json["request"] = request;
+    }
+    if (response != null) {
+      _json["response"] = response;
     }
     return _json;
   }
@@ -25731,6 +28088,253 @@ class TargetReference {
   }
 }
 
+class TargetSslProxiesSetBackendServiceRequest {
+  /** The URL of the new BackendService resource for the targetSslProxy. */
+  core.String service;
+
+  TargetSslProxiesSetBackendServiceRequest();
+
+  TargetSslProxiesSetBackendServiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+class TargetSslProxiesSetProxyHeaderRequest {
+  /**
+   * The new type of proxy header to append before sending data to the backend.
+   * NONE or PROXY_V1 are allowed.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+
+  TargetSslProxiesSetProxyHeaderRequest();
+
+  TargetSslProxiesSetProxyHeaderRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    return _json;
+  }
+}
+
+class TargetSslProxiesSetSslCertificatesRequest {
+  /**
+   * New set of URLs to SslCertificate resources to associate with this
+   * TargetSslProxy. Currently exactly one ssl certificate must be specified.
+   */
+  core.List<core.String> sslCertificates;
+
+  TargetSslProxiesSetSslCertificatesRequest();
+
+  TargetSslProxiesSetSslCertificatesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("sslCertificates")) {
+      sslCertificates = _json["sslCertificates"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (sslCertificates != null) {
+      _json["sslCertificates"] = sslCertificates;
+    }
+    return _json;
+  }
+}
+
+/** A TargetSslProxy resource. This resource defines an SSL proxy. */
+class TargetSslProxy {
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
+  core.String description;
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /**
+   * [Output Only] Type of the resource. Always compute#targetSslProxy for
+   * target SSL proxies.
+   */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /**
+   * Specifies the type of proxy header to append before sending data to the
+   * backend, either NONE or PROXY_V1. The default is NONE.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+  /** URL to the BackendService resource. */
+  core.String service;
+  /**
+   * URLs to SslCertificate resources that are used to authenticate connections
+   * to Backends. Currently exactly one SSL certificate must be specified.
+   */
+  core.List<core.String> sslCertificates;
+
+  TargetSslProxy();
+
+  TargetSslProxy.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+    if (_json.containsKey("sslCertificates")) {
+      sslCertificates = _json["sslCertificates"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    if (sslCertificates != null) {
+      _json["sslCertificates"] = sslCertificates;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of TargetSslProxy resources. */
+class TargetSslProxyList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A list of TargetSslProxy resources. */
+  core.List<TargetSslProxy> items;
+  /** Type of resource. */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  TargetSslProxyList();
+
+  TargetSslProxyList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new TargetSslProxy.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
 /** Represents a Target VPN gateway resource. */
 class TargetVpnGateway {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
@@ -25888,7 +28492,7 @@ class TargetVpnGatewayAggregatedList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for the resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   TargetVpnGatewayAggregatedList();
@@ -25954,7 +28558,7 @@ class TargetVpnGatewayList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for the resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   TargetVpnGatewayList();
@@ -26855,7 +29459,7 @@ class VpnTunnelList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for the resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   VpnTunnelList();

@@ -3738,13 +3738,26 @@ class PlaylistItemsResourceApi {
    * playlist item that is being deleted. In a playlistItem resource, the id
    * property specifies the playlist item's ID.
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String id) {
+  async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3756,6 +3769,9 @@ class PlaylistItemsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
 
     _downloadOptions = null;
 
@@ -3958,6 +3974,19 @@ class PlaylistItemsResourceApi {
    * request body does not specify values, the existing start and end times will
    * be removed and replaced with the default settings.
    *
+   * [onBehalfOfContentOwner] - Note: This parameter is intended exclusively for
+   * YouTube content partners.
+   *
+   * The onBehalfOfContentOwner parameter indicates that the request's
+   * authorization credentials identify a YouTube CMS user who is acting on
+   * behalf of the content owner specified in the parameter value. This
+   * parameter is intended for YouTube content partners that own and manage many
+   * different YouTube channels. It allows content owners to authenticate once
+   * and get access to all their video and channel data, without having to
+   * provide authentication credentials for each individual channel. The CMS
+   * account that the user authenticates with must be linked to the specified
+   * YouTube content owner.
+   *
    * Completes with a [PlaylistItem].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3966,7 +3995,7 @@ class PlaylistItemsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PlaylistItem> update(PlaylistItem request, core.String part) {
+  async.Future<PlaylistItem> update(PlaylistItem request, core.String part, {core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3981,6 +4010,9 @@ class PlaylistItemsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = [part];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
 
     _url = 'playlistItems';
 
@@ -5544,6 +5576,11 @@ class VideosResourceApi {
    *
    * [locale] - DEPRECATED
    *
+   * [maxHeight] - The maxHeight parameter specifies a maximum height of the
+   * embedded player. If maxWidth is provided, maxHeight may not be reached in
+   * order to not violate the width request.
+   * Value must be between "72" and "8192".
+   *
    * [maxResults] - The maxResults parameter specifies the maximum number of
    * items that should be returned in the result set.
    *
@@ -5551,6 +5588,11 @@ class VideosResourceApi {
    * parameter, but it is not supported for use in conjunction with the id
    * parameter.
    * Value must be between "1" and "50".
+   *
+   * [maxWidth] - The maxWidth parameter specifies a maximum width of the
+   * embedded player. If maxHeight is provided, maxWidth may not be reached in
+   * order to not violate the height request.
+   * Value must be between "72" and "8192".
    *
    * [myRating] - Set this parameter's value to like or dislike to instruct the
    * API to only return videos liked or disliked by the authenticated user.
@@ -5597,7 +5639,7 @@ class VideosResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String hl, core.String id, core.String locale, core.int maxResults, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
+  async.Future<VideoListResponse> list(core.String part, {core.String chart, core.String hl, core.String id, core.String locale, core.int maxHeight, core.int maxResults, core.int maxWidth, core.String myRating, core.String onBehalfOfContentOwner, core.String pageToken, core.String regionCode, core.String videoCategoryId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5621,8 +5663,14 @@ class VideosResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
+    if (maxHeight != null) {
+      _queryParams["maxHeight"] = ["${maxHeight}"];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (maxWidth != null) {
+      _queryParams["maxWidth"] = ["${maxWidth}"];
     }
     if (myRating != null) {
       _queryParams["myRating"] = [myRating];
@@ -7628,19 +7676,11 @@ class ChannelContentDetailsRelatedPlaylists {
 
 /** Details about the content of a channel. */
 class ChannelContentDetails {
-  /**
-   * The googlePlusUserId object identifies the Google+ profile ID associated
-   * with this channel.
-   */
-  core.String googlePlusUserId;
   ChannelContentDetailsRelatedPlaylists relatedPlaylists;
 
   ChannelContentDetails();
 
   ChannelContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("googlePlusUserId")) {
-      googlePlusUserId = _json["googlePlusUserId"];
-    }
     if (_json.containsKey("relatedPlaylists")) {
       relatedPlaylists = new ChannelContentDetailsRelatedPlaylists.fromJson(_json["relatedPlaylists"]);
     }
@@ -7648,9 +7688,6 @@ class ChannelContentDetails {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (googlePlusUserId != null) {
-      _json["googlePlusUserId"] = googlePlusUserId;
-    }
     if (relatedPlaylists != null) {
       _json["relatedPlaylists"] = (relatedPlaylists).toJson();
     }
@@ -8769,8 +8806,6 @@ class CommentSnippet {
   core.String authorChannelUrl;
   /** The name of the user who posted the comment. */
   core.String authorDisplayName;
-  /** Link to the author's Google+ profile, if any. */
-  core.String authorGoogleplusProfileUrl;
   /** The URL for the avatar of the user who posted the comment. */
   core.String authorProfileImageUrl;
   /** Whether the current viewer can rate this comment. */
@@ -8844,9 +8879,6 @@ class CommentSnippet {
     if (_json.containsKey("authorDisplayName")) {
       authorDisplayName = _json["authorDisplayName"];
     }
-    if (_json.containsKey("authorGoogleplusProfileUrl")) {
-      authorGoogleplusProfileUrl = _json["authorGoogleplusProfileUrl"];
-    }
     if (_json.containsKey("authorProfileImageUrl")) {
       authorProfileImageUrl = _json["authorProfileImageUrl"];
     }
@@ -8895,9 +8927,6 @@ class CommentSnippet {
     }
     if (authorDisplayName != null) {
       _json["authorDisplayName"] = authorDisplayName;
-    }
-    if (authorGoogleplusProfileUrl != null) {
-      _json["authorGoogleplusProfileUrl"] = authorGoogleplusProfileUrl;
     }
     if (authorProfileImageUrl != null) {
       _json["authorProfileImageUrl"] = authorProfileImageUrl;
@@ -16583,6 +16612,11 @@ class VideoContentDetails {
    */
   core.String duration;
   /**
+   * Indicates whether the video uploader has provided a custom thumbnail image
+   * for the video. This property is only visible to the video uploader.
+   */
+  core.bool hasCustomThumbnail;
+  /**
    * The value of is_license_content indicates whether the video is licensed
    * content.
    */
@@ -16623,6 +16657,9 @@ class VideoContentDetails {
     if (_json.containsKey("duration")) {
       duration = _json["duration"];
     }
+    if (_json.containsKey("hasCustomThumbnail")) {
+      hasCustomThumbnail = _json["hasCustomThumbnail"];
+    }
     if (_json.containsKey("licensedContent")) {
       licensedContent = _json["licensedContent"];
     }
@@ -16653,6 +16690,9 @@ class VideoContentDetails {
     }
     if (duration != null) {
       _json["duration"] = duration;
+    }
+    if (hasCustomThumbnail != null) {
+      _json["hasCustomThumbnail"] = hasCustomThumbnail;
     }
     if (licensedContent != null) {
       _json["licensedContent"] = licensedContent;
@@ -16761,11 +16801,6 @@ class VideoFileDetails {
    */
   core.String fileType;
   /**
-   * Geographic coordinates that identify the place where the uploaded video was
-   * recorded. Coordinates are defined using WGS 84.
-   */
-  GeoPoint recordingLocation;
-  /**
    * A list of video streams contained in the uploaded video file. Each item in
    * the list contains detailed metadata about a video stream.
    */
@@ -16798,9 +16833,6 @@ class VideoFileDetails {
     if (_json.containsKey("fileType")) {
       fileType = _json["fileType"];
     }
-    if (_json.containsKey("recordingLocation")) {
-      recordingLocation = new GeoPoint.fromJson(_json["recordingLocation"]);
-    }
     if (_json.containsKey("videoStreams")) {
       videoStreams = _json["videoStreams"].map((value) => new VideoFileDetailsVideoStream.fromJson(value)).toList();
     }
@@ -16831,9 +16863,6 @@ class VideoFileDetails {
     }
     if (fileType != null) {
       _json["fileType"] = fileType;
-    }
-    if (recordingLocation != null) {
-      _json["recordingLocation"] = (recordingLocation).toJson();
     }
     if (videoStreams != null) {
       _json["videoStreams"] = videoStreams.map((value) => (value).toJson()).toList();
@@ -17283,21 +17312,36 @@ class VideoMonetizationDetails {
 
 /** Player to be used for a video playback. */
 class VideoPlayer {
+  core.String embedHeight;
   /** An <iframe> tag that embeds a player that will play the video. */
   core.String embedHtml;
+  /** The embed width */
+  core.String embedWidth;
 
   VideoPlayer();
 
   VideoPlayer.fromJson(core.Map _json) {
+    if (_json.containsKey("embedHeight")) {
+      embedHeight = _json["embedHeight"];
+    }
     if (_json.containsKey("embedHtml")) {
       embedHtml = _json["embedHtml"];
+    }
+    if (_json.containsKey("embedWidth")) {
+      embedWidth = _json["embedWidth"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (embedHeight != null) {
+      _json["embedHeight"] = embedHeight;
+    }
     if (embedHtml != null) {
       _json["embedHtml"] = embedHtml;
+    }
+    if (embedWidth != null) {
+      _json["embedWidth"] = embedWidth;
     }
     return _json;
   }

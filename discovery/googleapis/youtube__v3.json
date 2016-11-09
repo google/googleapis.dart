@@ -30,7 +30,7 @@
     "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/pZJ6FrWelp1JEEvc4KJivkB6dHw\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/A3ttvUq-FH-9G6uAbfXxwyLfegU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -2101,6 +2101,11 @@
                             "location": "query",
                             "required": true,
                             "type": "string"
+                        },
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
+                            "location": "query",
+                            "type": "string"
                         }
                     },
                     "path": "playlistItems",
@@ -2212,6 +2217,11 @@
                         "part"
                     ],
                     "parameters": {
+                        "onBehalfOfContentOwner": {
+                            "description": "Note: This parameter is intended exclusively for YouTube content partners.\n\nThe onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "part": {
                             "description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.\n\nNote that this method will override the existing values for all of the mutable properties that are contained in any parts that the parameter value specifies. For example, a playlist item can specify a start time and end time, which identify the times portion of the video that should play when users watch the video in the playlist. If your request is updating a playlist item that sets these values, and the request's part parameter value includes the contentDetails part, the playlist item's start and end times will be updated to whatever value the request body specifies. If the request body does not specify values, the existing start and end times will be removed and replaced with the default settings.",
                             "location": "query",
@@ -3224,6 +3234,14 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "maxHeight": {
+                            "description": "The maxHeight parameter specifies a maximum height of the embedded player. If maxWidth is provided, maxHeight may not be reached in order to not violate the width request.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "8192",
+                            "minimum": "72",
+                            "type": "integer"
+                        },
                         "maxResults": {
                             "default": "5",
                             "description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set.\n\nNote: This parameter is supported for use in conjunction with the myRating parameter, but it is not supported for use in conjunction with the id parameter.",
@@ -3231,6 +3249,14 @@
                             "location": "query",
                             "maximum": "50",
                             "minimum": "1",
+                            "type": "integer"
+                        },
+                        "maxWidth": {
+                            "description": "The maxWidth parameter specifies a maximum width of the embedded player. If maxHeight is provided, maxWidth may not be reached in order to not violate the height request.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "8192",
+                            "minimum": "72",
                             "type": "integer"
                         },
                         "myRating": {
@@ -3462,7 +3488,7 @@
             }
         }
     },
-    "revision": "20160805",
+    "revision": "20161017",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -4292,10 +4318,6 @@
             "description": "Details about the content of a channel.",
             "id": "ChannelContentDetails",
             "properties": {
-                "googlePlusUserId": {
-                    "description": "The googlePlusUserId object identifies the Google+ profile ID associated with this channel.",
-                    "type": "string"
-                },
                 "relatedPlaylists": {
                     "properties": {
                         "favorites": {
@@ -4942,10 +4964,6 @@
                 },
                 "authorDisplayName": {
                     "description": "The name of the user who posted the comment.",
-                    "type": "string"
-                },
-                "authorGoogleplusProfileUrl": {
-                    "description": "Link to the author's Google+ profile, if any.",
                     "type": "string"
                 },
                 "authorProfileImageUrl": {
@@ -9743,6 +9761,10 @@
                     "description": "The length of the video. The tag value is an ISO 8601 duration in the format PT#M#S, in which the letters PT indicate that the value specifies a period of time, and the letters M and S refer to length in minutes and seconds, respectively. The # characters preceding the M and S letters are both integers that specify the number of minutes (or seconds) of the video. For example, a value of PT15M51S indicates that the video is 15 minutes and 51 seconds long.",
                     "type": "string"
                 },
+                "hasCustomThumbnail": {
+                    "description": "Indicates whether the video uploader has provided a custom thumbnail image for the video. This property is only visible to the video uploader.",
+                    "type": "boolean"
+                },
                 "licensedContent": {
                     "description": "The value of is_license_content indicates whether the video is licensed content.",
                     "type": "boolean"
@@ -9846,10 +9868,6 @@
                         ""
                     ],
                     "type": "string"
-                },
-                "recordingLocation": {
-                    "$ref": "GeoPoint",
-                    "description": "Geographic coordinates that identify the place where the uploaded video was recorded. Coordinates are defined using WGS 84."
                 },
                 "videoStreams": {
                     "description": "A list of video streams contained in the uploaded video file. Each item in the list contains detailed metadata about a video stream.",
@@ -10084,8 +10102,17 @@
             "description": "Player to be used for a video playback.",
             "id": "VideoPlayer",
             "properties": {
+                "embedHeight": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "embedHtml": {
                     "description": "An <iframe> tag that embeds a player that will play the video.",
+                    "type": "string"
+                },
+                "embedWidth": {
+                    "description": "The embed width",
+                    "format": "int64",
                     "type": "string"
                 }
             },

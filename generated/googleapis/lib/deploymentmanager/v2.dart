@@ -203,6 +203,54 @@ class DeploymentsResourceApi {
   }
 
   /**
+   * Gets the access control policy for a resource. May be empty if no such
+   * policy or resource exists.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [resource] - Name of the resource for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> getIamPolicy(core.String project, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$resource') + '/getIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
    * Creates a deployment and all of the resources described by the deployment
    * manifest.
    *
@@ -301,6 +349,17 @@ class DeploymentsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -313,7 +372,7 @@ class DeploymentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DeploymentsListResponse> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<DeploymentsListResponse> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -329,6 +388,9 @@ class DeploymentsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -430,6 +492,59 @@ class DeploymentsResourceApi {
   }
 
   /**
+   * Sets the access control policy on the specified resource. Replaces any
+   * existing policy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [resource] - Name of the resource for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> setIamPolicy(Policy request, core.String project, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$resource') + '/setIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
    * Stops an ongoing operation. This does not roll back any work that has
    * already been completed, but prevents any new work from being started.
    *
@@ -480,6 +595,58 @@ class DeploymentsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns permissions that a caller has on the specified resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [resource] - Name of the resource for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [TestPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TestPermissionsResponse> testIamPermissions(TestPermissionsRequest request, core.String project, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$resource') + '/testIamPermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
   }
 
   /**
@@ -670,6 +837,17 @@ class ManifestsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -682,7 +860,7 @@ class ManifestsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ManifestsListResponse> list(core.String project, core.String deployment, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<ManifestsListResponse> list(core.String project, core.String deployment, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -701,6 +879,9 @@ class ManifestsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -813,6 +994,17 @@ class OperationsResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -825,7 +1017,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<OperationsListResponse> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<OperationsListResponse> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -841,6 +1033,9 @@ class OperationsResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -962,6 +1157,17 @@ class ResourcesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -974,7 +1180,7 @@ class ResourcesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ResourcesListResponse> list(core.String project, core.String deployment, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<ResourcesListResponse> list(core.String project, core.String deployment, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -993,6 +1199,9 @@ class ResourcesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1059,6 +1268,17 @@ class TypesResourceApi {
    * page of results in subsequent list requests.
    * Value must be between "0" and "500".
    *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
    * [pageToken] - Specifies a page token to use. Set pageToken to the
    * nextPageToken returned by a previous list request to get the next page of
    * results.
@@ -1071,7 +1291,7 @@ class TypesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TypesListResponse> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<TypesListResponse> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1087,6 +1307,9 @@ class TypesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1107,6 +1330,168 @@ class TypesResourceApi {
 }
 
 
+
+/**
+ * Enables "data access" audit logging for a service and specifies a list of
+ * members that are log-exempted.
+ */
+class AuditConfig {
+  /**
+   * Specifies the identities that are exempted from "data access" audit logging
+   * for the `service` specified above. Follows the same format of
+   * Binding.members.
+   */
+  core.List<core.String> exemptedMembers;
+  /**
+   * Specifies a service that will be enabled for "data access" audit logging.
+   * For example, `resourcemanager`, `storage`, `compute`. `allServices` is a
+   * special value that covers all services.
+   */
+  core.String service;
+
+  AuditConfig();
+
+  AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers = _json["exemptedMembers"];
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/** Associates `members` with a `role`. */
+class Binding {
+  /**
+   * Specifies the identities requesting access for a Cloud Platform resource.
+   * `members` can have the following values:
+   *
+   * * `allUsers`: A special identifier that represents anyone who is on the
+   * internet; with or without a Google account.
+   *
+   * * `allAuthenticatedUsers`: A special identifier that represents anyone who
+   * is authenticated with a Google account or a service account.
+   *
+   * * `user:{emailid}`: An email address that represents a specific Google
+   * account. For example, `alice@gmail.com` or `joe@example.com`.
+   *
+   *
+   *
+   * * `serviceAccount:{emailid}`: An email address that represents a service
+   * account. For example, `my-other-app@appspot.gserviceaccount.com`.
+   *
+   * * `group:{emailid}`: An email address that represents a Google group. For
+   * example, `admins@example.com`.
+   *
+   * * `domain:{domain}`: A Google Apps domain name that represents all the
+   * users of that domain. For example, `google.com` or `example.com`.
+   */
+  core.List<core.String> members;
+  /**
+   * Role that is assigned to `members`. For example, `roles/viewer`,
+   * `roles/editor`, or `roles/owner`.
+   */
+  core.String role;
+
+  Binding();
+
+  Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("members")) {
+      members = _json["members"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (members != null) {
+      _json["members"] = members;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    return _json;
+  }
+}
+
+/** A condition to be met. */
+class Condition {
+  /** Trusted attributes supplied by the IAM system. */
+  core.String iam;
+  /** An operator to apply the subject with. */
+  core.String op;
+  /** Trusted attributes discharged by the service. */
+  core.String svc;
+  /**
+   * Trusted attributes supplied by any service that owns resources and uses the
+   * IAM system for access control.
+   */
+  core.String sys;
+  /** DEPRECATED. Use 'values' instead. */
+  core.String value;
+  /** The objects of the condition. This is mutually exclusive with 'value'. */
+  core.List<core.String> values;
+
+  Condition();
+
+  Condition.fromJson(core.Map _json) {
+    if (_json.containsKey("iam")) {
+      iam = _json["iam"];
+    }
+    if (_json.containsKey("op")) {
+      op = _json["op"];
+    }
+    if (_json.containsKey("svc")) {
+      svc = _json["svc"];
+    }
+    if (_json.containsKey("sys")) {
+      sys = _json["sys"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+    if (_json.containsKey("values")) {
+      values = _json["values"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (iam != null) {
+      _json["iam"] = iam;
+    }
+    if (op != null) {
+      _json["op"] = op;
+    }
+    if (svc != null) {
+      _json["svc"] = svc;
+    }
+    if (sys != null) {
+      _json["sys"] = sys;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
 
 class ConfigFile {
   /** The contents of the file. */
@@ -1512,6 +1897,58 @@ class ImportFile {
   }
 }
 
+/** Specifies what kind of log the caller must write */
+class LogConfig {
+  /** Counter options. */
+  LogConfigCounterOptions counter;
+
+  LogConfig();
+
+  LogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("counter")) {
+      counter = new LogConfigCounterOptions.fromJson(_json["counter"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (counter != null) {
+      _json["counter"] = (counter).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Options for counters */
+class LogConfigCounterOptions {
+  /** The field value to attribute. */
+  core.String field;
+  /** The metric to update. */
+  core.String metric;
+
+  LogConfigCounterOptions();
+
+  LogConfigCounterOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = _json["field"];
+    }
+    if (_json.containsKey("metric")) {
+      metric = _json["metric"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (field != null) {
+      _json["field"] = field;
+    }
+    if (metric != null) {
+      _json["metric"] = metric;
+    }
+    return _json;
+  }
+}
+
 class Manifest {
   /** [Output Only] The YAML configuration for this manifest. */
   ConfigFile config;
@@ -1869,9 +2306,9 @@ class Operation {
    */
   core.String targetId;
   /**
-   * [Output Only] The URL of the resource that the operation modifies. If
-   * creating a persistent disk snapshot, this points to the persistent disk
-   * that the snapshot was created from.
+   * [Output Only] The URL of the resource that the operation modifies. For
+   * operations related to creating a snapshot, this points to the persistent
+   * disk that the snapshot was created from.
    */
   core.String targetLink;
   /**
@@ -2072,6 +2509,124 @@ class OperationsListResponse {
   }
 }
 
+/**
+ * Defines an Identity and Access Management (IAM) policy. It is used to specify
+ * access control policies for Cloud Platform resources.
+ *
+ *
+ *
+ * A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+ * `members` to a `role`, where the members can be user accounts, Google groups,
+ * Google domains, and service accounts. A `role` is a named list of permissions
+ * defined by IAM.
+ *
+ * **Example**
+ *
+ * { "bindings": [ { "role": "roles/owner", "members": [
+ * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+ * "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
+ * "roles/viewer", "members": ["user:sean@example.com"] } ] }
+ *
+ * For a description of IAM and its features, see the [IAM developer's
+ * guide](https://cloud.google.com/iam).
+ */
+class Policy {
+  /**
+   * Specifies audit logging configs for "data access". "data access": generally
+   * refers to data reads/writes and admin reads. "admin activity": generally
+   * refers to admin writes.
+   *
+   * Note: `AuditConfig` doesn't apply to "admin activity", which always enables
+   * audit logging.
+   */
+  core.List<AuditConfig> auditConfigs;
+  /**
+   * Associates a list of `members` to a `role`. Multiple `bindings` must not be
+   * specified for the same `role`. `bindings` with no members will result in an
+   * error.
+   */
+  core.List<Binding> bindings;
+  /**
+   * `etag` is used for optimistic concurrency control as a way to help prevent
+   * simultaneous updates of a policy from overwriting each other. It is
+   * strongly suggested that systems make use of the `etag` in the
+   * read-modify-write cycle to perform policy updates in order to avoid race
+   * conditions: An `etag` is returned in the response to `getIamPolicy`, and
+   * systems are expected to put that etag in the request to `setIamPolicy` to
+   * ensure that their change will be applied to the same version of the policy.
+   *
+   * If no `etag` is provided in the call to `setIamPolicy`, then the existing
+   * policy is overwritten blindly.
+   */
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.BASE64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  core.bool iamOwned;
+  /**
+   * If more than one rule is specified, the rules are applied in the following
+   * manner: - All matching LOG rules are always applied. - If any
+   * DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be
+   * applied if one or more matching rule requires logging. - Otherwise, if any
+   * ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be
+   * applied if one or more matching rule requires logging. - Otherwise, if no
+   * rule applies, permission is denied.
+   */
+  core.List<Rule> rules;
+  /** Version of the `Policy`. The default version is 0. */
+  core.int version;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("auditConfigs")) {
+      auditConfigs = _json["auditConfigs"].map((value) => new AuditConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("bindings")) {
+      bindings = _json["bindings"].map((value) => new Binding.fromJson(value)).toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("iamOwned")) {
+      iamOwned = _json["iamOwned"];
+    }
+    if (_json.containsKey("rules")) {
+      rules = _json["rules"].map((value) => new Rule.fromJson(value)).toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (auditConfigs != null) {
+      _json["auditConfigs"] = auditConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (iamOwned != null) {
+      _json["iamOwned"] = iamOwned;
+    }
+    if (rules != null) {
+      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
 class ResourceWarningsData {
   /**
    * [Output Only] A key that provides more detail on the warning being
@@ -2154,6 +2709,8 @@ class ResourceWarnings {
 }
 
 class Resource {
+  /** The Access Control Policy set on this resource. */
+  ResourceAccessControl accessControl;
   /**
    * [Output Only] The evaluated properties of the resource with references
    * expanded. Returned as serialized YAML.
@@ -2208,6 +2765,9 @@ class Resource {
   Resource();
 
   Resource.fromJson(core.Map _json) {
+    if (_json.containsKey("accessControl")) {
+      accessControl = new ResourceAccessControl.fromJson(_json["accessControl"]);
+    }
     if (_json.containsKey("finalProperties")) {
       finalProperties = _json["finalProperties"];
     }
@@ -2245,6 +2805,9 @@ class Resource {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (accessControl != null) {
+      _json["accessControl"] = (accessControl).toJson();
+    }
     if (finalProperties != null) {
       _json["finalProperties"] = finalProperties;
     }
@@ -2277,6 +2840,28 @@ class Resource {
     }
     if (warnings != null) {
       _json["warnings"] = warnings.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** The access controls set on the resource. */
+class ResourceAccessControl {
+  /** The GCP IAM Policy to set on the resource. */
+  core.String gcpIamPolicy;
+
+  ResourceAccessControl();
+
+  ResourceAccessControl.fromJson(core.Map _json) {
+    if (_json.containsKey("gcpIamPolicy")) {
+      gcpIamPolicy = _json["gcpIamPolicy"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (gcpIamPolicy != null) {
+      _json["gcpIamPolicy"] = gcpIamPolicy;
     }
     return _json;
   }
@@ -2433,6 +3018,11 @@ class ResourceUpdateWarnings {
 
 class ResourceUpdate {
   /**
+   * The Access Control Policy to set on this resource after updating the
+   * resource itself.
+   */
+  ResourceAccessControl accessControl;
+  /**
    * [Output Only] If errors are generated during update of the resource, this
    * field will be populated.
    */
@@ -2465,6 +3055,9 @@ class ResourceUpdate {
   ResourceUpdate();
 
   ResourceUpdate.fromJson(core.Map _json) {
+    if (_json.containsKey("accessControl")) {
+      accessControl = new ResourceAccessControl.fromJson(_json["accessControl"]);
+    }
     if (_json.containsKey("error")) {
       error = new ResourceUpdateError.fromJson(_json["error"]);
     }
@@ -2490,6 +3083,9 @@ class ResourceUpdate {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (accessControl != null) {
+      _json["accessControl"] = (accessControl).toJson();
+    }
     if (error != null) {
       _json["error"] = (error).toJson();
     }
@@ -2548,6 +3144,89 @@ class ResourcesListResponse {
   }
 }
 
+/** A rule to be applied in a Policy. */
+class Rule {
+  /** Required */
+  core.String action;
+  /** Additional restrictions that must be met */
+  core.List<Condition> conditions;
+  /** Human-readable description of the rule. */
+  core.String description;
+  /**
+   * If one or more 'in' clauses are specified, the rule matches if the
+   * PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+   */
+  core.List<core.String> ins;
+  /**
+   * The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
+   * that match the LOG action.
+   */
+  core.List<LogConfig> logConfigs;
+  /**
+   * If one or more 'not_in' clauses are specified, the rule matches if the
+   * PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+   */
+  core.List<core.String> notIns;
+  /**
+   * A permission is a string of form '..' (e.g., 'storage.buckets.list'). A
+   * value of '*' matches all permissions, and a verb part of '*' (e.g.,
+   * 'storage.buckets.*') matches all verbs.
+   */
+  core.List<core.String> permissions;
+
+  Rule();
+
+  Rule.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("conditions")) {
+      conditions = _json["conditions"].map((value) => new Condition.fromJson(value)).toList();
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("ins")) {
+      ins = _json["ins"];
+    }
+    if (_json.containsKey("logConfigs")) {
+      logConfigs = _json["logConfigs"].map((value) => new LogConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("notIns")) {
+      notIns = _json["notIns"];
+    }
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (conditions != null) {
+      _json["conditions"] = conditions.map((value) => (value).toJson()).toList();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (ins != null) {
+      _json["ins"] = ins;
+    }
+    if (logConfigs != null) {
+      _json["logConfigs"] = logConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (notIns != null) {
+      _json["notIns"] = notIns;
+    }
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
 class TargetConfiguration {
   /** The configuration to use for this deployment. */
   ConfigFile config;
@@ -2576,6 +3255,54 @@ class TargetConfiguration {
     }
     if (imports != null) {
       _json["imports"] = imports.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class TestPermissionsRequest {
+  /**
+   * The set of permissions to check for the 'resource'. Permissions with
+   * wildcards (such as '*' or 'storage.*') are not allowed.
+   */
+  core.List<core.String> permissions;
+
+  TestPermissionsRequest();
+
+  TestPermissionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+class TestPermissionsResponse {
+  /**
+   * A subset of `TestPermissionsRequest.permissions` that the caller is
+   * allowed.
+   */
+  core.List<core.String> permissions;
+
+  TestPermissionsResponse();
+
+  TestPermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
     }
     return _json;
   }

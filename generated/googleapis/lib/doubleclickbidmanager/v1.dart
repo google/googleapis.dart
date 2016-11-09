@@ -22,7 +22,7 @@ class DoubleclickbidmanagerApi {
   LineitemsResourceApi get lineitems => new LineitemsResourceApi(_requester);
   QueriesResourceApi get queries => new QueriesResourceApi(_requester);
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
-  RubiconResourceApi get rubicon => new RubiconResourceApi(_requester);
+  SdfResourceApi get sdf => new SdfResourceApi(_requester);
 
   DoubleclickbidmanagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "doubleclickbidmanager/v1/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -368,18 +368,20 @@ class ReportsResourceApi {
 }
 
 
-class RubiconResourceApi {
+class SdfResourceApi {
   final commons.ApiRequester _requester;
 
-  RubiconResourceApi(commons.ApiRequester client) : 
+  SdfResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Update proposal upon actions of Rubicon publisher.
+   * Retrieves entities in SDF format.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
+   *
+   * Completes with a [DownloadResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -387,7 +389,7 @@ class RubiconResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future notifyproposalchange(NotifyProposalChangeRequest request) {
+  async.Future<DownloadResponse> download(DownloadRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -399,9 +401,7 @@ class RubiconResourceApi {
       _body = convert.JSON.encode((request).toJson());
     }
 
-    _downloadOptions = null;
-
-    _url = 'rubicon/notifyproposalchange';
+    _url = 'sdf/download';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -410,7 +410,7 @@ class RubiconResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new DownloadResponse.fromJson(data));
   }
 
 }
@@ -507,6 +507,115 @@ class DownloadLineItemsResponse {
   }
 }
 
+/**
+ * Request to fetch stored insertion orders, line items, TrueView ad groups and
+ * ads.
+ */
+class DownloadRequest {
+  /** File types that will be returned. */
+  core.List<core.String> fileTypes;
+  /**
+   * The IDs of the specified filter type. This is used to filter entities to
+   * fetch. At least one ID must be specified. Only one ID is allowed for the
+   * ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter
+   * types all IDs must be from the same Advertiser.
+   */
+  core.List<core.String> filterIds;
+  /**
+   * Filter type used to filter line items to fetch.
+   * Possible string values are:
+   * - "ADVERTISER_ID"
+   * - "INSERTION_ORDER_ID"
+   * - "LINE_ITEM_ID"
+   */
+  core.String filterType;
+  /**
+   * SDF Version (column names, types, order) in which the entities will be
+   * returned. Default to 3.
+   */
+  core.String version;
+
+  DownloadRequest();
+
+  DownloadRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fileTypes")) {
+      fileTypes = _json["fileTypes"];
+    }
+    if (_json.containsKey("filterIds")) {
+      filterIds = _json["filterIds"];
+    }
+    if (_json.containsKey("filterType")) {
+      filterType = _json["filterType"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fileTypes != null) {
+      _json["fileTypes"] = fileTypes;
+    }
+    if (filterIds != null) {
+      _json["filterIds"] = filterIds;
+    }
+    if (filterType != null) {
+      _json["filterType"] = filterType;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/** Download response. */
+class DownloadResponse {
+  /** Retrieved ad groups in SDF format. */
+  core.String adGroups;
+  /** Retrieved ads in SDF format. */
+  core.String ads;
+  /** Retrieved insertion orders in SDF format. */
+  core.String insertionOrders;
+  /** Retrieved line items in SDF format. */
+  core.String lineItems;
+
+  DownloadResponse();
+
+  DownloadResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("adGroups")) {
+      adGroups = _json["adGroups"];
+    }
+    if (_json.containsKey("ads")) {
+      ads = _json["ads"];
+    }
+    if (_json.containsKey("insertionOrders")) {
+      insertionOrders = _json["insertionOrders"];
+    }
+    if (_json.containsKey("lineItems")) {
+      lineItems = _json["lineItems"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (adGroups != null) {
+      _json["adGroups"] = adGroups;
+    }
+    if (ads != null) {
+      _json["ads"] = ads;
+    }
+    if (insertionOrders != null) {
+      _json["insertionOrders"] = insertionOrders;
+    }
+    if (lineItems != null) {
+      _json["lineItems"] = lineItems;
+    }
+    return _json;
+  }
+}
+
 /** Filter used to match traffic data in your report. */
 class FilterPair {
   /**
@@ -549,6 +658,7 @@ class FilterPair {
    * - "FILTER_LINE_ITEM_DAILY_FREQUENCY"
    * - "FILTER_LINE_ITEM_LIFETIME_FREQUENCY"
    * - "FILTER_LINE_ITEM_TYPE"
+   * - "FILTER_MEDIA_PLAN"
    * - "FILTER_MOBILE_DEVICE_MAKE"
    * - "FILTER_MOBILE_DEVICE_MAKE_MODEL"
    * - "FILTER_MOBILE_DEVICE_TYPE"
@@ -559,6 +669,7 @@ class FilterPair {
    * - "FILTER_NIELSEN_COUNTRY_CODE"
    * - "FILTER_NIELSEN_DEVICE_ID"
    * - "FILTER_NIELSEN_GENDER"
+   * - "FILTER_NOT_SUPPORTED"
    * - "FILTER_ORDER_ID"
    * - "FILTER_OS"
    * - "FILTER_PAGE_CATEGORY"
@@ -594,6 +705,8 @@ class FilterPair {
    * - "FILTER_TRUEVIEW_IAR_REGION"
    * - "FILTER_TRUEVIEW_IAR_REMARKETING_LIST"
    * - "FILTER_TRUEVIEW_IAR_TIME_OF_DAY"
+   * - "FILTER_TRUEVIEW_IAR_YOUTUBE_CHANNEL"
+   * - "FILTER_TRUEVIEW_IAR_YOUTUBE_VIDEO"
    * - "FILTER_TRUEVIEW_IAR_ZIPCODE"
    * - "FILTER_TRUEVIEW_INTEREST"
    * - "FILTER_TRUEVIEW_KEYWORD"
@@ -712,114 +825,6 @@ class ListReportsResponse {
     }
     if (reports != null) {
       _json["reports"] = reports.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** Publisher comment from Rubicon. */
-class Note {
-  /** Note id. */
-  core.String id;
-  /** Message from publisher. */
-  core.String message;
-  /** Equals "publisher" for notification from Rubicon. */
-  core.String source;
-  /** Time when the note was added, e.g. "2015-12-16T17:25:35.000-08:00". */
-  core.String timestamp;
-  /** Publisher user name. */
-  core.String username;
-
-  Note();
-
-  Note.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
-    }
-    if (_json.containsKey("source")) {
-      source = _json["source"];
-    }
-    if (_json.containsKey("timestamp")) {
-      timestamp = _json["timestamp"];
-    }
-    if (_json.containsKey("username")) {
-      username = _json["username"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (message != null) {
-      _json["message"] = message;
-    }
-    if (source != null) {
-      _json["source"] = source;
-    }
-    if (timestamp != null) {
-      _json["timestamp"] = timestamp;
-    }
-    if (username != null) {
-      _json["username"] = username;
-    }
-    return _json;
-  }
-}
-
-/** NotifyProposalChange request. */
-class NotifyProposalChangeRequest {
-  /** Action taken by publisher. One of: Accept, Decline, Append */
-  core.String action;
-  /** URL to access proposal detail. */
-  core.String href;
-  /** Below are contents of notification from Rubicon. Proposal id. */
-  core.String id;
-  /** Notes from publisher */
-  core.List<Note> notes;
-  /** Deal token, available when proposal is accepted by publisher. */
-  core.String token;
-
-  NotifyProposalChangeRequest();
-
-  NotifyProposalChangeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
-    }
-    if (_json.containsKey("href")) {
-      href = _json["href"];
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("notes")) {
-      notes = _json["notes"].map((value) => new Note.fromJson(value)).toList();
-    }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (action != null) {
-      _json["action"] = action;
-    }
-    if (href != null) {
-      _json["href"] = href;
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (notes != null) {
-      _json["notes"] = notes.map((value) => (value).toJson()).toList();
-    }
-    if (token != null) {
-      _json["token"] = token;
     }
     return _json;
   }

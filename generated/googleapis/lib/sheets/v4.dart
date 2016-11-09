@@ -367,6 +367,53 @@ class SpreadsheetsValuesResourceApi {
   }
 
   /**
+   * Clears one or more ranges of values from a spreadsheet.
+   * The caller must specify the spreadsheet ID and one or more ranges.
+   * Only values are cleared -- all other properties of the cell (such as
+   * formatting, data validation, etc..) are kept.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [spreadsheetId] - The ID of the spreadsheet to update.
+   *
+   * Completes with a [BatchClearValuesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BatchClearValuesResponse> batchClear(BatchClearValuesRequest request, core.String spreadsheetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+
+    _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values:batchClear';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BatchClearValuesResponse.fromJson(data));
+  }
+
+  /**
    * Returns one or more ranges of values from a spreadsheet.
    * The caller must specify the spreadsheet ID and one or more ranges.
    *
@@ -491,6 +538,58 @@ class SpreadsheetsValuesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new BatchUpdateValuesResponse.fromJson(data));
+  }
+
+  /**
+   * Clears values from a spreadsheet.
+   * The caller must specify the spreadsheet ID and range.
+   * Only values are cleared -- all other properties of the cell (such as
+   * formatting, data validation, etc..) are kept.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [spreadsheetId] - The ID of the spreadsheet to update.
+   *
+   * [range] - The A1 notation of the values to clear.
+   *
+   * Completes with a [ClearValuesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ClearValuesResponse> clear(ClearValuesRequest request, core.String spreadsheetId, core.String range) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if (range == null) {
+      throw new core.ArgumentError("Parameter range is required.");
+    }
+
+    _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range') + ':clear';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ClearValuesResponse.fromJson(data));
   }
 
   /**
@@ -636,6 +735,54 @@ class SpreadsheetsValuesResourceApi {
 }
 
 
+
+/** Adds a new banded range to the spreadsheet. */
+class AddBandingRequest {
+  /**
+   * The banded range to add. The bandedRangeId
+   * field is optional; if one is not set, an id will be randomly generated. (It
+   * is an error to specify the ID of a range that already exists.)
+   */
+  BandedRange bandedRange;
+
+  AddBandingRequest();
+
+  AddBandingRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bandedRange")) {
+      bandedRange = new BandedRange.fromJson(_json["bandedRange"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bandedRange != null) {
+      _json["bandedRange"] = (bandedRange).toJson();
+    }
+    return _json;
+  }
+}
+
+/** The result of adding a banded range. */
+class AddBandingResponse {
+  /** The banded range that was added. */
+  BandedRange bandedRange;
+
+  AddBandingResponse();
+
+  AddBandingResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("bandedRange")) {
+      bandedRange = new BandedRange.fromJson(_json["bandedRange"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bandedRange != null) {
+      _json["bandedRange"] = (bandedRange).toJson();
+    }
+    return _json;
+  }
+}
 
 /** Adds a chart to a sheet in the spreadsheet. */
 class AddChartRequest {
@@ -1130,6 +1277,132 @@ class AutoResizeDimensionsRequest {
   }
 }
 
+/** A banded (alternating colors) range in a sheet. */
+class BandedRange {
+  /** The id of the banded range. */
+  core.int bandedRangeId;
+  /**
+   * Properties for column bands. These properties will be applied on a column-
+   * by-column basis throughout all the columns in the range. At least one of
+   * row_properties or column_properties must be specified.
+   */
+  BandingProperties columnProperties;
+  /** The range over which these properties are applied. */
+  GridRange range;
+  /**
+   * Properties for row bands. These properties will be applied on a row-by-row
+   * basis throughout all the rows in the range. At least one of
+   * row_properties or column_properties must be specified.
+   */
+  BandingProperties rowProperties;
+
+  BandedRange();
+
+  BandedRange.fromJson(core.Map _json) {
+    if (_json.containsKey("bandedRangeId")) {
+      bandedRangeId = _json["bandedRangeId"];
+    }
+    if (_json.containsKey("columnProperties")) {
+      columnProperties = new BandingProperties.fromJson(_json["columnProperties"]);
+    }
+    if (_json.containsKey("range")) {
+      range = new GridRange.fromJson(_json["range"]);
+    }
+    if (_json.containsKey("rowProperties")) {
+      rowProperties = new BandingProperties.fromJson(_json["rowProperties"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bandedRangeId != null) {
+      _json["bandedRangeId"] = bandedRangeId;
+    }
+    if (columnProperties != null) {
+      _json["columnProperties"] = (columnProperties).toJson();
+    }
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    if (rowProperties != null) {
+      _json["rowProperties"] = (rowProperties).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Properties referring a single dimension (either row or column). If both
+ * BandedRange.row_properties and BandedRange.column_properties are
+ * set, the fill colors are applied to cells according to the following rules:
+ *
+ * * header_color and footer_color take priority over band colors.
+ * * first_band_color takes priority over second_band_color.
+ * * row_properties takes priority over column_properties.
+ *
+ * For example, the first row color takes priority over the first column
+ * color, but the first column color takes priority over the second row color.
+ * Similarly, the row header takes priority over the column header in the
+ * top left cell, but the column header takes priority over the first row
+ * color if the row header is not set.
+ */
+class BandingProperties {
+  /** The first color that is alternating. (Required) */
+  Color firstBandColor;
+  /**
+   * The color of the last row or column. If this field is not set, the last
+   * row or column will be filled with either first_row_color or
+   * second_row_color, depending on the color of the previous row or
+   * column.
+   */
+  Color footerColor;
+  /**
+   * The color of the first row or column. If this field is set, the first
+   * row or column will be filled with this color and the colors will
+   * alternate between first_band_color and [second_band_color[] starting
+   * from the second row or column. Otherwise, the first row or column will be
+   * filled with first_band_color and the colors will proceed to alternate
+   * as they normally would.
+   */
+  Color headerColor;
+  /** The second color that is alternating. (Required) */
+  Color secondBandColor;
+
+  BandingProperties();
+
+  BandingProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("firstBandColor")) {
+      firstBandColor = new Color.fromJson(_json["firstBandColor"]);
+    }
+    if (_json.containsKey("footerColor")) {
+      footerColor = new Color.fromJson(_json["footerColor"]);
+    }
+    if (_json.containsKey("headerColor")) {
+      headerColor = new Color.fromJson(_json["headerColor"]);
+    }
+    if (_json.containsKey("secondBandColor")) {
+      secondBandColor = new Color.fromJson(_json["secondBandColor"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (firstBandColor != null) {
+      _json["firstBandColor"] = (firstBandColor).toJson();
+    }
+    if (footerColor != null) {
+      _json["footerColor"] = (footerColor).toJson();
+    }
+    if (headerColor != null) {
+      _json["headerColor"] = (headerColor).toJson();
+    }
+    if (secondBandColor != null) {
+      _json["secondBandColor"] = (secondBandColor).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * An axis of the chart.
  * A chart may not have more than one axis per
@@ -1446,6 +1719,63 @@ class BasicFilter {
   }
 }
 
+/** The request for clearing more than one range of values in a spreadsheet. */
+class BatchClearValuesRequest {
+  /** The ranges to clear, in A1 notation. */
+  core.List<core.String> ranges;
+
+  BatchClearValuesRequest();
+
+  BatchClearValuesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("ranges")) {
+      ranges = _json["ranges"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ranges != null) {
+      _json["ranges"] = ranges;
+    }
+    return _json;
+  }
+}
+
+/** The response when updating a range of values in a spreadsheet. */
+class BatchClearValuesResponse {
+  /**
+   * The ranges that were cleared, in A1 notation.
+   * (If the requests were for an unbounded range or a ranger larger
+   *  than the bounds of the sheet, this will be the actual ranges
+   *  that were cleared, bounded to the sheet's limits.)
+   */
+  core.List<core.String> clearedRanges;
+  /** The spreadsheet the updates were applied to. */
+  core.String spreadsheetId;
+
+  BatchClearValuesResponse();
+
+  BatchClearValuesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("clearedRanges")) {
+      clearedRanges = _json["clearedRanges"];
+    }
+    if (_json.containsKey("spreadsheetId")) {
+      spreadsheetId = _json["spreadsheetId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clearedRanges != null) {
+      _json["clearedRanges"] = clearedRanges;
+    }
+    if (spreadsheetId != null) {
+      _json["spreadsheetId"] = spreadsheetId;
+    }
+    return _json;
+  }
+}
+
 /**
  * The response when retrieving more than one range of values in a spreadsheet.
  */
@@ -1701,10 +2031,10 @@ class BooleanCondition {
    * Requires a single ConditionValue.
    * - "TEXT_STARTS_WITH" : The cell's value must start with the condition's
    * value.
-   * Supported by data validation, conditional formatting and filters.
+   * Supported by conditional formatting and filters.
    * Requires a single ConditionValue.
    * - "TEXT_ENDS_WITH" : The cell's value must end with the condition's value.
-   * Supported by data validation, conditional formatting and filters.
+   * Supported by conditional formatting and filters.
    * Requires a single ConditionValue.
    * - "TEXT_EQ" : The cell's value must be exactly the condition's value.
    * Supported by data validation, conditional formatting and filters.
@@ -1731,12 +2061,12 @@ class BooleanCondition {
    * that may be a relative date.
    * - "DATE_ON_OR_BEFORE" : The cell's value must be on or before the date of
    * the condition's value.
-   * Supported by data validation, conditional formatting and filters.
+   * Supported by data validation.
    * Requires a single ConditionValue
    * that may be a relative date.
    * - "DATE_ON_OR_AFTER" : The cell's value must be on or after the date of the
    * condition's value.
-   * Supported by data validation, conditional formatting and filters.
+   * Supported by data validation.
    * Requires a single ConditionValue
    * that may be a relative date.
    * - "DATE_BETWEEN" : The cell's value must be between the dates of the two
@@ -1761,10 +2091,10 @@ class BooleanCondition {
    * one per item in the list.
    * Formulas are not supported in the values.
    * - "BLANK" : The cell's value must be empty.
-   * Supported by data validation, conditional formatting and filters.
+   * Supported by conditional formatting and filters.
    * Requires no ConditionValues.
    * - "NOT_BLANK" : The cell's value must not be empty.
-   * Supported by data validation, conditional formatting and filters.
+   * Supported by conditional formatting and filters.
    * Requires no ConditionValues.
    * - "CUSTOM_FORMULA" : The condition's formula must evaluate to true.
    * Supported by data validation, conditional formatting and filters.
@@ -1852,7 +2182,9 @@ class Border {
    * - "STYLE_UNSPECIFIED" : The style is not specified. Do not use this.
    * - "DOTTED" : The border is dotted.
    * - "DASHED" : The border is dashed.
-   * - "SOLID" : The border is a solid line.
+   * - "SOLID" : The border is a thin solid line.
+   * - "SOLID_MEDIUM" : The border is a medium solid line.
+   * - "SOLID_THICK" : The border is a thick solid line.
    * - "NONE" : No border.
    * Used only when updating a border in order to erase it.
    * - "DOUBLE" : The border is two solid lines.
@@ -1860,7 +2192,7 @@ class Border {
   core.String style;
   /**
    * The width of the border, in pixels.
-   * Border widths must be between 0 and 3 pixels, inclusive.
+   * Deprecated; the width is determined by the "style" field.
    */
   core.int width;
 
@@ -2393,6 +2725,55 @@ class ClearBasicFilterRequest {
   }
 }
 
+/** The request for clearing a range of values in a spreadsheet. */
+class ClearValuesRequest {
+
+  ClearValuesRequest();
+
+  ClearValuesRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+/** The response when clearing a range of values in a spreadsheet. */
+class ClearValuesResponse {
+  /**
+   * The range (in A1 notation) that was cleared.
+   * (If the request was for an unbounded range or a ranger larger
+   *  than the bounds of the sheet, this will be the actual range
+   *  that was cleared, bounded to the sheet's limits.)
+   */
+  core.String clearedRange;
+  /** The spreadsheet the updates were applied to. */
+  core.String spreadsheetId;
+
+  ClearValuesResponse();
+
+  ClearValuesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("clearedRange")) {
+      clearedRange = _json["clearedRange"];
+    }
+    if (_json.containsKey("spreadsheetId")) {
+      spreadsheetId = _json["spreadsheetId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clearedRange != null) {
+      _json["clearedRange"] = clearedRange;
+    }
+    if (spreadsheetId != null) {
+      _json["spreadsheetId"] = spreadsheetId;
+    }
+    return _json;
+  }
+}
+
 /**
  * Represents a color in the RGBA color space. This representation is designed
  * for simplicity of conversion to/from color representations in various
@@ -2847,6 +3228,28 @@ class DataValidationRule {
     }
     if (strict != null) {
       _json["strict"] = strict;
+    }
+    return _json;
+  }
+}
+
+/** Removes the banded range with the given ID from the spreadsheet. */
+class DeleteBandingRequest {
+  /** The ID of the banded range to delete. */
+  core.int bandedRangeId;
+
+  DeleteBandingRequest();
+
+  DeleteBandingRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bandedRangeId")) {
+      bandedRangeId = _json["bandedRangeId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bandedRangeId != null) {
+      _json["bandedRangeId"] = bandedRangeId;
     }
     return _json;
   }
@@ -4284,6 +4687,8 @@ class NumberFormat {
   /**
    * Pattern string used for formatting.  If not set, a default pattern based on
    * the user's locale will be used if necessary for the given type.
+   * See the [Date and Number Formats guide](/sheets/guides/formats) for more
+   * information about the supported patterns.
    */
   core.String pattern;
   /**
@@ -5068,6 +5473,8 @@ class RepeatCellRequest {
 
 /** A single kind of update to apply to a spreadsheet. */
 class Request {
+  /** Adds a new banded range */
+  AddBandingRequest addBanding;
   /** Adds a chart. */
   AddChartRequest addChart;
   /** Adds a new conditional format rule. */
@@ -5097,6 +5504,8 @@ class Request {
   CopyPasteRequest copyPaste;
   /** Cuts data from one area and pastes it to another. */
   CutPasteRequest cutPaste;
+  /** Removes a banded range */
+  DeleteBandingRequest deleteBanding;
   /** Deletes an existing conditional format rule. */
   DeleteConditionalFormatRuleRequest deleteConditionalFormatRule;
   /** Deletes rows or columns in a sheet. */
@@ -5137,6 +5546,8 @@ class Request {
   TextToColumnsRequest textToColumns;
   /** Unmerges merged cells. */
   UnmergeCellsRequest unmergeCells;
+  /** Updates a banded range */
+  UpdateBandingRequest updateBanding;
   /** Updates the borders in a range of cells. */
   UpdateBordersRequest updateBorders;
   /** Updates many cells at once. */
@@ -5163,6 +5574,9 @@ class Request {
   Request();
 
   Request.fromJson(core.Map _json) {
+    if (_json.containsKey("addBanding")) {
+      addBanding = new AddBandingRequest.fromJson(_json["addBanding"]);
+    }
     if (_json.containsKey("addChart")) {
       addChart = new AddChartRequest.fromJson(_json["addChart"]);
     }
@@ -5201,6 +5615,9 @@ class Request {
     }
     if (_json.containsKey("cutPaste")) {
       cutPaste = new CutPasteRequest.fromJson(_json["cutPaste"]);
+    }
+    if (_json.containsKey("deleteBanding")) {
+      deleteBanding = new DeleteBandingRequest.fromJson(_json["deleteBanding"]);
     }
     if (_json.containsKey("deleteConditionalFormatRule")) {
       deleteConditionalFormatRule = new DeleteConditionalFormatRuleRequest.fromJson(_json["deleteConditionalFormatRule"]);
@@ -5262,6 +5679,9 @@ class Request {
     if (_json.containsKey("unmergeCells")) {
       unmergeCells = new UnmergeCellsRequest.fromJson(_json["unmergeCells"]);
     }
+    if (_json.containsKey("updateBanding")) {
+      updateBanding = new UpdateBandingRequest.fromJson(_json["updateBanding"]);
+    }
     if (_json.containsKey("updateBorders")) {
       updateBorders = new UpdateBordersRequest.fromJson(_json["updateBorders"]);
     }
@@ -5299,6 +5719,9 @@ class Request {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (addBanding != null) {
+      _json["addBanding"] = (addBanding).toJson();
+    }
     if (addChart != null) {
       _json["addChart"] = (addChart).toJson();
     }
@@ -5337,6 +5760,9 @@ class Request {
     }
     if (cutPaste != null) {
       _json["cutPaste"] = (cutPaste).toJson();
+    }
+    if (deleteBanding != null) {
+      _json["deleteBanding"] = (deleteBanding).toJson();
     }
     if (deleteConditionalFormatRule != null) {
       _json["deleteConditionalFormatRule"] = (deleteConditionalFormatRule).toJson();
@@ -5398,6 +5824,9 @@ class Request {
     if (unmergeCells != null) {
       _json["unmergeCells"] = (unmergeCells).toJson();
     }
+    if (updateBanding != null) {
+      _json["updateBanding"] = (updateBanding).toJson();
+    }
     if (updateBorders != null) {
       _json["updateBorders"] = (updateBorders).toJson();
     }
@@ -5437,6 +5866,8 @@ class Request {
 
 /** A single response from an update. */
 class Response {
+  /** A reply from adding a banded range. */
+  AddBandingResponse addBanding;
   /** A reply from adding a chart. */
   AddChartResponse addChart;
   /** A reply from adding a filter view. */
@@ -5463,6 +5894,9 @@ class Response {
   Response();
 
   Response.fromJson(core.Map _json) {
+    if (_json.containsKey("addBanding")) {
+      addBanding = new AddBandingResponse.fromJson(_json["addBanding"]);
+    }
     if (_json.containsKey("addChart")) {
       addChart = new AddChartResponse.fromJson(_json["addChart"]);
     }
@@ -5500,6 +5934,9 @@ class Response {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (addBanding != null) {
+      _json["addBanding"] = (addBanding).toJson();
+    }
     if (addChart != null) {
       _json["addChart"] = (addChart).toJson();
     }
@@ -5619,6 +6056,8 @@ class SetDataValidationRequest {
 
 /** A sheet in a spreadsheet. */
 class Sheet {
+  /** The banded (i.e. alternating colors) ranges on this sheet. */
+  core.List<BandedRange> bandedRanges;
   /** The filter on this sheet, if any. */
   BasicFilter basicFilter;
   /** The specifications of every chart on this sheet. */
@@ -5648,6 +6087,9 @@ class Sheet {
   Sheet();
 
   Sheet.fromJson(core.Map _json) {
+    if (_json.containsKey("bandedRanges")) {
+      bandedRanges = _json["bandedRanges"].map((value) => new BandedRange.fromJson(value)).toList();
+    }
     if (_json.containsKey("basicFilter")) {
       basicFilter = new BasicFilter.fromJson(_json["basicFilter"]);
     }
@@ -5676,6 +6118,9 @@ class Sheet {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (bandedRanges != null) {
+      _json["bandedRanges"] = bandedRanges.map((value) => (value).toJson()).toList();
+    }
     if (basicFilter != null) {
       _json["basicFilter"] = (basicFilter).toJson();
     }
@@ -6234,6 +6679,40 @@ class UnmergeCellsRequest {
     var _json = new core.Map();
     if (range != null) {
       _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Updates properties of the supplied banded range. */
+class UpdateBandingRequest {
+  /** The banded range to update with the new properties. */
+  BandedRange bandedRange;
+  /**
+   * The fields that should be updated.  At least one field must be specified.
+   * The root `bandedRange` is implied and should not be specified.
+   * A single `"*"` can be used as short-hand for listing every field.
+   */
+  core.String fields;
+
+  UpdateBandingRequest();
+
+  UpdateBandingRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bandedRange")) {
+      bandedRange = new BandedRange.fromJson(_json["bandedRange"]);
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bandedRange != null) {
+      _json["bandedRange"] = (bandedRange).toJson();
+    }
+    if (fields != null) {
+      _json["fields"] = fields;
     }
     return _json;
   }

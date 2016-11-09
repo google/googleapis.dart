@@ -6,7 +6,7 @@
     "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/civic-information",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/0RRptSlHJI7MXoKAqjNEurqVvHk\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/o3I9HhfXj9W3CUHRNSzja8F9LG4\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -77,6 +77,9 @@
                         }
                     },
                     "path": "divisions",
+                    "request": {
+                        "$ref": "DivisionSearchRequest"
+                    },
                     "response": {
                         "$ref": "DivisionSearchResponse"
                     }
@@ -90,6 +93,9 @@
                     "httpMethod": "GET",
                     "id": "civicinfo.elections.electionQuery",
                     "path": "elections",
+                    "request": {
+                        "$ref": "ElectionsQueryRequest"
+                    },
                     "response": {
                         "$ref": "ElectionsQueryResponse"
                     }
@@ -129,6 +135,9 @@
                         }
                     },
                     "path": "voterinfo",
+                    "request": {
+                        "$ref": "VoterInfoRequest"
+                    },
                     "response": {
                         "$ref": "VoterInfoResponse"
                     }
@@ -215,6 +224,9 @@
                         }
                     },
                     "path": "representatives",
+                    "request": {
+                        "$ref": "RepresentativeInfoRequest"
+                    },
                     "response": {
                         "$ref": "RepresentativeInfoResponse"
                     }
@@ -300,6 +312,9 @@
                         }
                     },
                     "path": "representatives/{ocdId}",
+                    "request": {
+                        "$ref": "DivisionRepresentativeInfoRequest"
+                    },
                     "response": {
                         "$ref": "RepresentativeInfoData"
                     }
@@ -307,7 +322,7 @@
             }
         }
     },
-    "revision": "20160823",
+    "revision": "20161102",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {
@@ -431,7 +446,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The candidate's name.",
+                    "description": "The candidate's name. If this is a joint ticket it will indicate the name of the candidate at the top of a ticket followed by a / and that name of candidate at the bottom of the ticket. e.g. \"Mitt Romney / Paul Ryan\"",
                     "type": "string"
                 },
                 "orderOnBallot": {
@@ -590,6 +605,35 @@
             },
             "type": "object"
         },
+        "ContextParams": {
+            "id": "ContextParams",
+            "properties": {
+                "clientProfile": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DivisionRepresentativeInfoRequest": {
+            "description": "A request to look up representative information for a single division.",
+            "id": "DivisionRepresentativeInfoRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
+                }
+            },
+            "type": "object"
+        },
+        "DivisionSearchRequest": {
+            "description": "A search request for political geographies.",
+            "id": "DivisionSearchRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
+                }
+            },
+            "type": "object"
+        },
         "DivisionSearchResponse": {
             "description": "The result of a division search query.",
             "id": "DivisionSearchResponse",
@@ -677,6 +721,15 @@
                 "title": {
                     "description": "The title of the election official.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ElectionsQueryRequest": {
+            "id": "ElectionsQueryRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
                 }
             },
             "type": "object"
@@ -892,6 +945,108 @@
             },
             "type": "object"
         },
+        "PostalAddress": {
+            "id": "PostalAddress",
+            "properties": {
+                "addressLines": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "administrativeAreaName": {
+                    "type": "string"
+                },
+                "countryName": {
+                    "type": "string"
+                },
+                "countryNameCode": {
+                    "type": "string"
+                },
+                "dependentLocalityName": {
+                    "type": "string"
+                },
+                "dependentThoroughfareLeadingType": {
+                    "type": "string"
+                },
+                "dependentThoroughfareName": {
+                    "type": "string"
+                },
+                "dependentThoroughfarePostDirection": {
+                    "type": "string"
+                },
+                "dependentThoroughfarePreDirection": {
+                    "type": "string"
+                },
+                "dependentThoroughfareTrailingType": {
+                    "type": "string"
+                },
+                "dependentThoroughfaresConnector": {
+                    "type": "string"
+                },
+                "dependentThoroughfaresIndicator": {
+                    "type": "string"
+                },
+                "dependentThoroughfaresType": {
+                    "type": "string"
+                },
+                "firmName": {
+                    "type": "string"
+                },
+                "isDisputed": {
+                    "type": "boolean"
+                },
+                "languageCode": {
+                    "type": "string"
+                },
+                "localityName": {
+                    "type": "string"
+                },
+                "postBoxNumber": {
+                    "type": "string"
+                },
+                "postalCodeNumber": {
+                    "type": "string"
+                },
+                "postalCodeNumberExtension": {
+                    "type": "string"
+                },
+                "premiseName": {
+                    "type": "string"
+                },
+                "recipientName": {
+                    "type": "string"
+                },
+                "sortingCode": {
+                    "type": "string"
+                },
+                "subAdministrativeAreaName": {
+                    "type": "string"
+                },
+                "subPremiseName": {
+                    "type": "string"
+                },
+                "thoroughfareLeadingType": {
+                    "type": "string"
+                },
+                "thoroughfareName": {
+                    "type": "string"
+                },
+                "thoroughfareNumber": {
+                    "type": "string"
+                },
+                "thoroughfarePostDirection": {
+                    "type": "string"
+                },
+                "thoroughfarePreDirection": {
+                    "type": "string"
+                },
+                "thoroughfareTrailingType": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RepresentativeInfoData": {
             "id": "RepresentativeInfoData",
             "properties": {
@@ -916,6 +1071,16 @@
                         "$ref": "Official"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RepresentativeInfoRequest": {
+            "description": "A request for political geography and representative information for an address.",
+            "id": "RepresentativeInfoRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
                 }
             },
             "type": "object"
@@ -1008,6 +1173,19 @@
             },
             "type": "object"
         },
+        "VoterInfoRequest": {
+            "description": "A request for information about a voter.",
+            "id": "VoterInfoRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
+                },
+                "voterInfoSegmentResult": {
+                    "$ref": "VoterInfoSegmentResult"
+                }
+            },
+            "type": "object"
+        },
         "VoterInfoResponse": {
             "description": "The result of a voter info lookup query.",
             "id": "VoterInfoResponse",
@@ -1073,6 +1251,25 @@
                         "$ref": "AdministrationRegion"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "VoterInfoSegmentResult": {
+            "id": "VoterInfoSegmentResult",
+            "properties": {
+                "generatedMillis": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "postalAddress": {
+                    "$ref": "PostalAddress"
+                },
+                "request": {
+                    "$ref": "VoterInfoRequest"
+                },
+                "response": {
+                    "$ref": "VoterInfoResponse"
                 }
             },
             "type": "object"

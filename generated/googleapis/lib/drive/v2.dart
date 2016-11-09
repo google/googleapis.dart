@@ -3413,6 +3413,12 @@ class RevisionsResourceApi {
    *
    * [fileId] - The ID of the file.
    *
+   * [maxResults] - Maximum number of revisions to return.
+   *
+   * [pageToken] - Page token for revisions. To get the next page of results,
+   * set this parameter to the value of "nextPageToken" from the previous
+   * response.
+   *
    * Completes with a [RevisionList].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3421,7 +3427,7 @@ class RevisionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RevisionList> list(core.String fileId) {
+  async.Future<RevisionList> list(core.String fileId, {core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3431,6 +3437,12 @@ class RevisionsResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
@@ -5312,6 +5324,8 @@ class FileIndexableText {
 class FileLabels {
   /** Deprecated. */
   core.bool hidden;
+  /** Whether the file has been modified by this user. */
+  core.bool modified;
   /**
    * Whether viewers and commenters are prevented from downloading, printing,
    * and copying this file.
@@ -5334,6 +5348,9 @@ class FileLabels {
     if (_json.containsKey("hidden")) {
       hidden = _json["hidden"];
     }
+    if (_json.containsKey("modified")) {
+      modified = _json["modified"];
+    }
     if (_json.containsKey("restricted")) {
       restricted = _json["restricted"];
     }
@@ -5352,6 +5369,9 @@ class FileLabels {
     var _json = new core.Map();
     if (hidden != null) {
       _json["hidden"] = hidden;
+    }
+    if (modified != null) {
+      _json["modified"] = modified;
     }
     if (restricted != null) {
       _json["restricted"] = restricted;
@@ -6772,6 +6792,13 @@ class RevisionList {
   core.List<Revision> items;
   /** This is always drive#revisionList. */
   core.String kind;
+  /**
+   * The page token for the next page of revisions. This field will be absent if
+   * the end of the revisions list has been reached. If the token is rejected
+   * for any reason, it should be discarded and pagination should be restarted
+   * from the first page of results.
+   */
+  core.String nextPageToken;
   /** A link back to this list. */
   core.String selfLink;
 
@@ -6786,6 +6813,9 @@ class RevisionList {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -6802,6 +6832,9 @@ class RevisionList {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;

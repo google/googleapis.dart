@@ -11,7 +11,7 @@
     "basePath": "",
     "baseUrl": "https://language.googleapis.com/",
     "batchPath": "batch",
-    "canonicalName": "Cloud Natural Language API",
+    "canonicalName": "Cloud Natural Language",
     "description": "Google Cloud Natural Language API provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, and text annotations.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/natural-language/",
@@ -134,7 +134,7 @@
                     ]
                 },
                 "annotateText": {
-                    "description": "Advanced API that analyzes the document and provides a full set of text\nannotations, including semantic, syntactic, and sentiment information. This\nAPI is intended for users who are familiar with machine learning and need\nin-depth text features to build upon.",
+                    "description": "A convenience method that provides all the features that analyzeSentiment,\nanalyzeEntities, and analyzeSyntax provide in one call.",
                     "httpMethod": "POST",
                     "id": "language.documents.annotateText",
                     "parameterOrder": [],
@@ -170,7 +170,7 @@
             }
         }
     },
-    "revision": "20160816",
+    "revision": "20161103",
     "rootUrl": "https://language.googleapis.com/",
     "schemas": {
         "Document": {
@@ -488,7 +488,7 @@
             "type": "object"
         },
         "AnnotateTextRequest": {
-            "description": "The request message for the advanced text annotation API, which performs all\nthe above plus syntactic analysis.",
+            "description": "The request message for the text annotation API, which can perform multiple\nanalysis types (sentiment, entities, and syntax) in one call.",
             "id": "AnnotateTextRequest",
             "properties": {
                 "document": {
@@ -607,7 +607,7 @@
                     "description": "The overall sentiment for the document. Populated if the user enables\nAnnotateTextRequest.Features.extract_document_sentiment."
                 },
                 "language": {
-                    "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.",
+                    "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details.",
                     "type": "string"
                 },
                 "tokens": {
@@ -686,7 +686,7 @@
             "id": "Sentiment",
             "properties": {
                 "polarity": {
-                    "description": "Polarity of the sentiment in the [-1.0, 1.0] range. Larger numbers\nrepresent more positive sentiments.",
+                    "description": "DEPRECATED FIELD - This field is being deprecated in\nfavor of score. Please refer to our documentation at\nhttps://cloud.google.com/natural-language/docs for more information.",
                     "format": "float",
                     "type": "number"
                 },
@@ -733,7 +733,7 @@
                     "type": "array"
                 },
                 "language": {
-                    "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.",
+                    "description": "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details.",
                     "type": "string"
                 }
             },

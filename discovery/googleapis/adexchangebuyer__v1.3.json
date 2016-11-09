@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-3JToWivdPEZiO6KUUlusE1pZEY\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/mo0qLr7wMmlAX-U4DWVexdxTH80\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20160721",
+    "revision": "20161020",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1168,7 +1168,7 @@
                     "type": "integer"
                 },
                 "videoURL": {
-                    "description": "The url to fetch a video ad. If set, HTMLSnippet should not be set.",
+                    "description": "The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not be set.",
                     "type": "string"
                 },
                 "width": {

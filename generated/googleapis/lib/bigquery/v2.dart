@@ -212,11 +212,9 @@ class DatasetsResourceApi {
    * [all] - Whether to list all datasets, including hidden ones
    *
    * [filter] - An expression for filtering the results of the request by label.
-   * The syntax is "labels.[:]". Multiple filters can be ANDed together by
-   * connecting with a space. Example: "labels.department:receiving
-   * labels.active". See
-   * https://cloud.google.com/bigquery/docs/labeling-datasets#filtering_datasets_using_labels
-   * for details.
+   * The syntax is "labels.<name>[:<value>]". Multiple filters can be ANDed
+   * together by connecting with a space. Example: "labels.department:receiving
+   * labels.active". See Filtering datasets using labels for details.
    *
    * [maxResults] - The maximum number of results to return
    *
@@ -413,7 +411,7 @@ class JobsResourceApi {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
 
-    _url = 'project/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/cancel';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/cancel';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1686,12 +1684,8 @@ class Dataset {
   /**
    * [Experimental] The labels associated with this dataset. You can use these
    * to organize and group your datasets. You can set this property when
-   * inserting or updating a dataset. Label keys and values can be no longer
-   * than 63 characters, can only contain letters, numeric characters,
-   * underscores and dashes. International characters are allowed. Label values
-   * are optional. Label keys must start with a letter and must be unique within
-   * a dataset. Both keys and values are additionally constrained to be <= 128
-   * bytes in size.
+   * inserting or updating a dataset. See Labeling Datasets for more
+   * information.
    */
   core.Map<core.String, core.String> labels;
   /**
@@ -2594,6 +2588,16 @@ class JobConfiguration {
   core.bool dryRun;
   /** [Pick one] Configures an extract job. */
   JobConfigurationExtract extract;
+  /**
+   * [Experimental] The labels associated with this job. You can use these to
+   * organize and group your jobs. Label keys and values can be no longer than
+   * 63 characters, can only contain letters, numeric characters, underscores
+   * and dashes. International characters are allowed. Label values are
+   * optional. Label keys must start with a letter and must be unique within a
+   * dataset. Both keys and values are additionally constrained to be <= 128
+   * bytes in size.
+   */
+  core.Map<core.String, core.String> labels;
   /** [Pick one] Configures a load job. */
   JobConfigurationLoad load;
   /** [Pick one] Configures a query job. */
@@ -2610,6 +2614,9 @@ class JobConfiguration {
     }
     if (_json.containsKey("extract")) {
       extract = new JobConfigurationExtract.fromJson(_json["extract"]);
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
     }
     if (_json.containsKey("load")) {
       load = new JobConfigurationLoad.fromJson(_json["load"]);
@@ -2629,6 +2636,9 @@ class JobConfiguration {
     }
     if (extract != null) {
       _json["extract"] = (extract).toJson();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (load != null) {
       _json["load"] = (load).toJson();
@@ -3052,10 +3062,10 @@ class JobConfigurationQuery {
   core.String priority;
   /** [Required] BigQuery SQL query to execute. */
   core.String query;
-  /** [Experimental] Query parameters for Standard SQL queries. */
+  /** Query parameters for standard SQL queries. */
   core.List<QueryParameter> queryParameters;
   /**
-   * [Experimental] Allows the schema of the desitination table to be updated as
+   * [Experimental] Allows the schema of the destination table to be updated as
    * a side effect of the query job. Schema update options are supported in two
    * cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
    * WRITE_TRUNCATE and the destination table is a partition of a table,
@@ -3074,10 +3084,10 @@ class JobConfigurationQuery {
    */
   core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
   /**
-   * [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
-   * this query. The default value is true. If set to false, the query will use
-   * BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
-   * When useLegacySql is set to false, the values of allowLargeResults and
+   * Specifies whether to use BigQuery's legacy SQL dialect for this query. The
+   * default value is true. If set to false, the query will use BigQuery's
+   * standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
+   * useLegacySql is set to false, the values of allowLargeResults and
    * flattenResults are ignored; query will be run as if allowLargeResults is
    * true and flattenResults is false.
    */
@@ -4057,7 +4067,7 @@ class QueryParameterValue {
    * [Optional] The struct field values, in order of the struct type's
    * declaration.
    */
-  core.List<QueryParameterValue> structValues;
+  core.Map<core.String, QueryParameterValue> structValues;
   /** [Optional] The value of this value, if a simple scalar type. */
   core.String value;
 
@@ -4068,7 +4078,7 @@ class QueryParameterValue {
       arrayValues = _json["arrayValues"].map((value) => new QueryParameterValue.fromJson(value)).toList();
     }
     if (_json.containsKey("structValues")) {
-      structValues = _json["structValues"].map((value) => new QueryParameterValue.fromJson(value)).toList();
+      structValues = commons.mapMap(_json["structValues"], (item) => new QueryParameterValue.fromJson(item));
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -4081,7 +4091,7 @@ class QueryParameterValue {
       _json["arrayValues"] = arrayValues.map((value) => (value).toJson()).toList();
     }
     if (structValues != null) {
-      _json["structValues"] = structValues.map((value) => (value).toJson()).toList();
+      _json["structValues"] = commons.mapMap(structValues, (item) => (item).toJson());
     }
     if (value != null) {
       _json["value"] = value;
@@ -4140,10 +4150,10 @@ class QueryRequest {
    */
   core.int timeoutMs;
   /**
-   * [Experimental] Specifies whether to use BigQuery's legacy SQL dialect for
-   * this query. The default value is true. If set to false, the query will use
-   * BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
-   * When useLegacySql is set to false, the values of allowLargeResults and
+   * Specifies whether to use BigQuery's legacy SQL dialect for this query. The
+   * default value is true. If set to false, the query will use BigQuery's
+   * standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
+   * useLegacySql is set to false, the values of allowLargeResults and
    * flattenResults are ignored; query will be run as if allowLargeResults is
    * true and flattenResults is false.
    */
@@ -4889,8 +4899,8 @@ class TableFieldSchema {
   core.String name;
   /**
    * [Required] The field data type. Possible values include STRING, BYTES,
-   * INTEGER, FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that
-   * the field contains a nested schema).
+   * INTEGER, FLOAT, BOOLEAN, TIMESTAMP, DATE, TIME, DATETIME, or RECORD (where
+   * RECORD indicates that the field contains a nested schema).
    */
   core.String type;
 
@@ -5202,10 +5212,10 @@ class ViewDefinition {
   /** [Required] A query that BigQuery executes when the view is referenced. */
   core.String query;
   /**
-   * [Experimental] Specifies whether to use BigQuery's legacy SQL for this
-   * view. The default value is true. If set to false, the view will use
-   * BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
-   * Queries and views that reference this view must use the same flag value.
+   * Specifies whether to use BigQuery's legacy SQL for this view. The default
+   * value is true. If set to false, the view will use BigQuery's standard SQL:
+   * https://cloud.google.com/bigquery/sql-reference/ Queries and views that
+   * reference this view must use the same flag value.
    */
   core.bool useLegacySql;
   /**

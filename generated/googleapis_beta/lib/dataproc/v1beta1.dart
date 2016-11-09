@@ -14,7 +14,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client dataproc/v1beta1';
 
-/** Manages Hadoop-based clusters and jobs on Google Cloud Platform. */
+/**
+ * An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+ */
 class DataprocApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -50,7 +52,7 @@ class OperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource to be cancelled.
-   * Value must have pattern "^operations/.*$".
+   * Value must have pattern "^operations/.+$".
    *
    * Completes with a [Empty].
    *
@@ -96,7 +98,7 @@ class OperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource to be deleted.
-   * Value must have pattern "^operations/.*$".
+   * Value must have pattern "^operations/.+$".
    *
    * Completes with a [Empty].
    *
@@ -138,7 +140,7 @@ class OperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource.
-   * Value must have pattern "^operations/.*$".
+   * Value must have pattern "^operations/.+$".
    *
    * Completes with a [Operation].
    *
@@ -444,6 +446,10 @@ class ProjectsClustersResourceApi {
    * [projectId] - [Required] The ID of the Google Cloud Platform project that
    * the cluster belongs to.
    *
+   * [filter] - [Optional] A filter constraining which clusters to list. Valid
+   * filters contain label terms such as: labels.key1 = val1 AND (-labels.k2 =
+   * val2 OR labels.k3 = val3)
+   *
    * [pageSize] - The standard List page size.
    *
    * [pageToken] - The standard List page token.
@@ -456,7 +462,7 @@ class ProjectsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListClustersResponse> list(core.String projectId, {core.String filter, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -466,6 +472,9 @@ class ProjectsClustersResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -729,6 +738,10 @@ class ProjectsJobsResourceApi {
    * - "ACTIVE" : A ACTIVE.
    * - "NON_ACTIVE" : A NON_ACTIVE.
    *
+   * [filter] - [Optional] A filter constraining which jobs to list. Valid
+   * filters contain job state and label terms such as: labels.key1 = val1 AND
+   * (labels.k2 = val2 OR labels.k3 = val3)
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -737,7 +750,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.int pageSize, core.String pageToken, core.String clusterName, core.String jobStateMatcher}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.int pageSize, core.String pageToken, core.String clusterName, core.String jobStateMatcher, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -759,6 +772,9 @@ class ProjectsJobsResourceApi {
     }
     if (jobStateMatcher != null) {
       _queryParams["jobStateMatcher"] = [jobStateMatcher];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -871,6 +887,17 @@ class Cluster {
    */
   ClusterConfiguration configuration;
   /**
+   * [Optional] The labels to associate with this cluster. Label keys must be
+   * between 1 and 63 characters long, and must conform to the following PCRE
+   * regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and
+   * 63 characters long, and must conform to the following PCRE regular
+   * expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be
+   * associated with a given cluster.
+   */
+  core.Map<core.String, core.String> labels;
+  /** Contains cluster daemon metrics such as HDFS and YARN stats. */
+  ClusterMetrics metrics;
+  /**
    * [Required] The Google Cloud Platform project ID that the cluster belongs
    * to.
    */
@@ -891,6 +918,12 @@ class Cluster {
     }
     if (_json.containsKey("configuration")) {
       configuration = new ClusterConfiguration.fromJson(_json["configuration"]);
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = new ClusterMetrics.fromJson(_json["metrics"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -913,6 +946,12 @@ class Cluster {
     }
     if (configuration != null) {
       _json["configuration"] = (configuration).toJson();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (metrics != null) {
+      _json["metrics"] = (metrics).toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -1023,14 +1062,46 @@ class ClusterConfiguration {
   }
 }
 
+/** Contains cluster daemon metrics, such as HDFS and YARN stats. */
+class ClusterMetrics {
+  /** The HDFS metrics. */
+  core.Map<core.String, core.String> hdfsMetrics;
+  /** The YARN metrics. */
+  core.Map<core.String, core.String> yarnMetrics;
+
+  ClusterMetrics();
+
+  ClusterMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("hdfsMetrics")) {
+      hdfsMetrics = _json["hdfsMetrics"];
+    }
+    if (_json.containsKey("yarnMetrics")) {
+      yarnMetrics = _json["yarnMetrics"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (hdfsMetrics != null) {
+      _json["hdfsMetrics"] = hdfsMetrics;
+    }
+    if (yarnMetrics != null) {
+      _json["yarnMetrics"] = yarnMetrics;
+    }
+    return _json;
+  }
+}
+
 /** Metadata describing the operation. */
 class ClusterOperationMetadata {
-  /** Name of the cluster for the operation. */
+  /** [Output-only] Name of the cluster for the operation. */
   core.String clusterName;
-  /** Cluster UUId for the operation. */
+  /** [Output-only] Cluster UUID for the operation. */
   core.String clusterUuid;
   /** [Output-only] Short description of operation. */
   core.String description;
+  /** [Output-only] labels associated with the operation */
+  core.Map<core.String, core.String> labels;
   /** [Output-only] The operation type. */
   core.String operationType;
   /** [Output-only] Current operation status. */
@@ -1049,6 +1120,9 @@ class ClusterOperationMetadata {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
     }
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
@@ -1072,6 +1146,9 @@ class ClusterOperationMetadata {
     if (description != null) {
       _json["description"] = description;
     }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (operationType != null) {
       _json["operationType"] = operationType;
     }
@@ -1087,12 +1164,12 @@ class ClusterOperationMetadata {
 
 /** The status of the operation. */
 class ClusterOperationStatus {
-  /** A message containing any operation metadata details. */
+  /** [Output-only]A message containing any operation metadata details. */
   core.String details;
-  /** A message containing the detailed operation state. */
+  /** [Output-only] A message containing the detailed operation state. */
   core.String innerState;
   /**
-   * A message containing the operation state.
+   * [Output-only] A message containing the operation state.
    * Possible string values are:
    * - "UNKNOWN" : A UNKNOWN.
    * - "PENDING" : A PENDING.
@@ -1100,7 +1177,7 @@ class ClusterOperationStatus {
    * - "DONE" : A DONE.
    */
   core.String state;
-  /** The time this state was entered. */
+  /** [Output-only] The time this state was entered. */
   core.String stateStartTime;
 
   ClusterOperationStatus();
@@ -1227,8 +1304,8 @@ class DiagnoseClusterRequest {
 /** The location of diagnostic output. */
 class DiagnoseClusterResults {
   /**
-   * [Output-only] The Google Cloud Storage URI of the diagnostic output. This
-   * is a plain text file with a summary of collected diagnostics.
+   * [Output-only] The Google Cloud Storage URI of the diagnostic output. The
+   * output report is a plain text file with a summary of collected diagnostics.
    */
   core.String outputUri;
 
@@ -1310,6 +1387,15 @@ class Empty {
  * instances, applicable to all instances in the cluster.
  */
 class GceClusterConfiguration {
+  /**
+   * If true, all instances in the cluser will only have internal IP addresses.
+   * By default, clusters are not restricted to internal IP addresses, and will
+   * have ephemeral external IP addresses assigned to each instance. This
+   * restriction can only be enabled for subnetwork enabled networks, and all
+   * off-cluster dependencies must be configured to be accessible without
+   * external IP addresses.
+   */
+  core.bool internalIpOnly;
   /** The Google Compute Engine metadata entries to add to all instances. */
   core.Map<core.String, core.String> metadata;
   /**
@@ -1353,6 +1439,9 @@ class GceClusterConfiguration {
   GceClusterConfiguration();
 
   GceClusterConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("internalIpOnly")) {
+      internalIpOnly = _json["internalIpOnly"];
+    }
     if (_json.containsKey("metadata")) {
       metadata = _json["metadata"];
     }
@@ -1375,6 +1464,9 @@ class GceClusterConfiguration {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (internalIpOnly != null) {
+      _json["internalIpOnly"] = internalIpOnly;
+    }
     if (metadata != null) {
       _json["metadata"] = metadata;
     }
@@ -1698,6 +1790,15 @@ class Job {
    * can be sent to the driver.
    */
   core.bool interactive;
+  /**
+   * [Optional] The labels to associate with this job. Label keys must be
+   * between 1 and 63 characters long, and must conform to the following regular
+   * expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63
+   * characters long, and must conform to the following regular expression:
+   * [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a
+   * given job.
+   */
+  core.Map<core.String, core.String> labels;
   /** Job is a Pig job. */
   PigJob pigJob;
   /**
@@ -1752,6 +1853,9 @@ class Job {
     if (_json.containsKey("interactive")) {
       interactive = _json["interactive"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("pigJob")) {
       pigJob = new PigJob.fromJson(_json["pigJob"]);
     }
@@ -1803,6 +1907,9 @@ class Job {
     }
     if (interactive != null) {
       _json["interactive"] = interactive;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (pigJob != null) {
       _json["pigJob"] = (pigJob).toJson();
@@ -2165,7 +2272,7 @@ class Operation {
    * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * Service-specific metadata associated with the operation. It typically

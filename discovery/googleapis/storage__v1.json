@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/gtcWNCypj7VTDxrk1rvvuniNHZo\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/VwfrBbrm1x1NC_RQejLBiqBNNFk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -495,7 +495,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a bucket. This method supports patch semantics.",
+                    "description": "Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "storage.buckets.patch",
                     "parameterOrder": [
@@ -587,7 +587,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a bucket.",
+                    "description": "Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate.",
                     "httpMethod": "PUT",
                     "id": "storage.buckets.update",
                     "parameterOrder": [
@@ -1210,11 +1210,6 @@
                             "format": "int64",
                             "location": "query",
                             "type": "string"
-                        },
-                        "kmsKeyName": {
-                            "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
-                            "location": "query",
-                            "type": "string"
                         }
                     },
                     "path": "b/{destinationBucket}/o/{destinationObject}/compose",
@@ -1564,11 +1559,6 @@
                             "location": "query",
                             "type": "string"
                         },
-                        "kmsKeyName": {
-                            "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "name": {
                             "description": "Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
                             "location": "query",
@@ -1805,11 +1795,6 @@
                             "description": "Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.",
                             "location": "path",
                             "required": true,
-                            "type": "string"
-                        },
-                        "destinationKmsKeyName": {
-                            "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
-                            "location": "query",
                             "type": "string"
                         },
                         "destinationObject": {
@@ -2117,7 +2102,7 @@
             }
         }
     },
-    "revision": "20160802",
+    "revision": "20161027",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2178,15 +2163,6 @@
                     },
                     "type": "array"
                 },
-                "encryption": {
-                    "description": "Encryption configuration used by default for newly inserted objects, when no encryption config is specified.",
-                    "properties": {
-                        "default_kms_key_name": {
-                            "type": "string"
-                        }
-                    },
-                    "type": "object"
-                },
                 "etag": {
                     "description": "HTTP 1.1 Entity tag for the bucket.",
                     "type": "string"
@@ -2210,8 +2186,12 @@
                                     "action": {
                                         "description": "The action to take.",
                                         "properties": {
+                                            "storageClass": {
+                                                "description": "Target storage class. Required iff the type of the action is SetStorageClass.",
+                                                "type": "string"
+                                            },
                                             "type": {
-                                                "description": "Type of the action. Currently, only Delete is supported.",
+                                                "description": "Type of the action. Currently, only Delete and SetStorageClass are supported.",
                                                 "type": "string"
                                             }
                                         },
@@ -2233,6 +2213,13 @@
                                             "isLive": {
                                                 "description": "Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.",
                                                 "type": "boolean"
+                                            },
+                                            "matchesStorageClass": {
+                                                "description": "Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.",
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "type": "array"
                                             },
                                             "numNewerVersions": {
                                                 "description": "Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.",
@@ -2306,7 +2293,7 @@
                     "type": "string"
                 },
                 "storageClass": {
-                    "description": "The bucket's storage class. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include STANDARD, NEARLINE and DURABLE_REDUCED_AVAILABILITY. Defaults to STANDARD. For more information, see storage classes.",
+                    "description": "The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.",
                     "type": "string"
                 },
                 "timeCreated": {
@@ -2649,10 +2636,6 @@
                     "description": "The kind of item this is. For objects, this is always storage#object.",
                     "type": "string"
                 },
-                "kmsKeyName": {
-                    "description": "Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key.",
-                    "type": "string"
-                },
                 "md5Hash": {
                     "description": "MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.",
                     "type": "string"
@@ -2740,6 +2723,12 @@
                     "type": "string"
                 },
                 "entity": {
+                    "annotations": {
+                        "required": [
+                            "storage.defaultObjectAccessControls.insert",
+                            "storage.objectAccessControls.insert"
+                        ]
+                    },
                     "description": "The entity holding the permission, in one of the following forms: \n- user-userId \n- user-email \n- group-groupId \n- group-email \n- domain-domain \n- project-team-projectId \n- allUsers \n- allAuthenticatedUsers Examples: \n- The user liz@example.com would be user-liz@example.com. \n- The group example@googlegroups.com would be group-example@googlegroups.com. \n- To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.",
                     "type": "string"
                 },
@@ -2752,7 +2741,7 @@
                     "type": "string"
                 },
                 "generation": {
-                    "description": "The content generation of the object.",
+                    "description": "The content generation of the object, if applied to an object.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -2766,7 +2755,7 @@
                     "type": "string"
                 },
                 "object": {
-                    "description": "The name of the object.",
+                    "description": "The name of the object, if applied to an object.",
                     "type": "string"
                 },
                 "projectTeam": {
@@ -2784,6 +2773,12 @@
                     "type": "object"
                 },
                 "role": {
+                    "annotations": {
+                        "required": [
+                            "storage.defaultObjectAccessControls.insert",
+                            "storage.objectAccessControls.insert"
+                        ]
+                    },
                     "description": "The access permission for the entity.",
                     "type": "string"
                 },
@@ -2801,7 +2796,7 @@
                 "items": {
                     "description": "The list of items.",
                     "items": {
-                        "type": "any"
+                        "$ref": "ObjectAccessControl"
                     },
                     "type": "array"
                 },

@@ -875,6 +875,8 @@ class Errors {
 class Order {
   /** Whether the order was acknowledged. */
   core.bool acknowledged;
+  /** The channel type of the order: "purchaseOnGoogle" or "googleExpress". */
+  core.String channelType;
   /** The details of the customer who placed the order. */
   OrderCustomer customer;
   /** The details for the delivery. */
@@ -926,6 +928,9 @@ class Order {
   Order.fromJson(core.Map _json) {
     if (_json.containsKey("acknowledged")) {
       acknowledged = _json["acknowledged"];
+    }
+    if (_json.containsKey("channelType")) {
+      channelType = _json["channelType"];
     }
     if (_json.containsKey("customer")) {
       customer = new OrderCustomer.fromJson(_json["customer"]);
@@ -987,6 +992,9 @@ class Order {
     var _json = new core.Map();
     if (acknowledged != null) {
       _json["acknowledged"] = acknowledged;
+    }
+    if (channelType != null) {
+      _json["channelType"] = channelType;
     }
     if (customer != null) {
       _json["customer"] = (customer).toJson();

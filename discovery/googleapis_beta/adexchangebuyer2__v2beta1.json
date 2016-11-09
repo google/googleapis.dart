@@ -12,7 +12,7 @@
     "baseUrl": "https://adexchangebuyer.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "AdExchangeBuyerII",
-    "description": "Accesses the latest features for managing Ad Exchange accounts and Real-Time Bidding configurations and auction metrics.",
+    "description": "Accesses the latest features for managing Ad Exchange accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/",
     "icons": {
@@ -504,7 +504,7 @@
             }
         }
     },
-    "revision": "20160824",
+    "revision": "20161103",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "ClientUser": {
@@ -545,7 +545,7 @@
             "type": "object"
         },
         "ClientUserInvitation": {
-            "description": "An invitation for a new client user to get access to the AdExchange Buyer UI.\n\nAll fields are required unless otherwise specified.",
+            "description": "An invitation for a new client user to get access to the Ad Exchange\nBuyer UI.\nAll fields are required unless otherwise specified.",
             "id": "ClientUserInvitation",
             "properties": {
                 "email": {
@@ -638,7 +638,7 @@
                     "type": "string"
                 },
                 "role": {
-                    "description": "The role which is assigned to the client buyer. Each role implies a set of\npermissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,\n`CLIENT_DEAL_NEGOTIATOR`, or `CLIENT_DEAL_APPROVER`.",
+                    "description": "The role which is assigned to the client buyer. Each role implies a set of\npermissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,\n`CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`.",
                     "enum": [
                         "CLIENT_ROLE_UNSPECIFIED",
                         "CLIENT_DEAL_VIEWER",

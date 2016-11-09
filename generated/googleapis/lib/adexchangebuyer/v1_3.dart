@@ -1794,7 +1794,10 @@ class Creative {
    * requests.
    */
   core.int version;
-  /** The url to fetch a video ad. If set, HTMLSnippet should not be set. */
+  /**
+   * The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should
+   * not be set.
+   */
   core.String videoURL;
   /** Ad width. */
   core.int width;

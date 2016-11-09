@@ -127,7 +127,7 @@
                         "projectName": {
                             "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
                             "location": "path",
-                            "pattern": "^projects/[^/]*$",
+                            "pattern": "^projects/[^/]+$",
                             "required": true,
                             "type": "string"
                         }
@@ -168,7 +168,7 @@
                                 "projectName": {
                                     "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*$",
+                                    "pattern": "^projects/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 },
@@ -218,7 +218,7 @@
                                 "projectName": {
                                     "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*$",
+                                    "pattern": "^projects/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -249,7 +249,7 @@
                                 "name": {
                                     "description": "The group resource name.\nExample: <code>projects/my-project-123/groups/my-groupid</code>",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*/groups/[^/]*$",
+                                    "pattern": "^projects/[^/]+/groups/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -276,7 +276,7 @@
                                 "groupName": {
                                     "description": "[Required] The group resource name. Written as\n<code>projects/<var>projectID</var>/groups/<var>group_name</var></code>.\nCall\n<a href=\"/error-reporting/reference/rest/v1beta1/projects.groupStats/list\">\n<code>groupStats.list</code></a> to return a list of groups belonging to\nthis project.\n\nExample: <code>projects/my-project-123/groups/my-group</code>",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*/groups/[^/]*$",
+                                    "pattern": "^projects/[^/]+/groups/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -327,7 +327,7 @@
                                 "projectName": {
                                     "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas <code>projects/</code> plus the\n<a href=\"https://support.google.com/cloud/answer/6158840\">Google Cloud\nPlatform project ID</a>.\n\nExample: <code>projects/my-project-123</code>.",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*$",
+                                    "pattern": "^projects/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 },
@@ -344,7 +344,7 @@
                                     "type": "string"
                                 },
                                 "groupId": {
-                                    "description": "[Optional] List all <code>ErrorGroupStats</code> with these IDs.\nIf not specified, all error group stats with a non-zero error count\nfor the given selection criteria are returned.",
+                                    "description": "[Optional] List all <code>ErrorGroupStats</code> with these IDs.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -396,7 +396,7 @@
             }
         }
     },
-    "revision": "20160720",
+    "revision": "20161012",
     "rootUrl": "https://clouderrorreporting.googleapis.com/",
     "schemas": {
         "ReportedErrorEvent": {
@@ -444,7 +444,7 @@
             "type": "object"
         },
         "ErrorGroupStats": {
-            "description": "Data extracted for a specific group based on certain selection criteria,\nsuch as a given time period and/or service filter.",
+            "description": "Data extracted for a specific group based on certain filter criteria,\nsuch as a given time period and/or service filter.",
             "id": "ErrorGroupStats",
             "properties": {
                 "representative": {
@@ -452,36 +452,36 @@
                     "description": "An arbitrary event that is chosen as representative for the whole group.\nThe representative event is intended to be used as a quick preview for\nthe whole group. Events in the group are usually sufficiently similar\nto each other such that showing an arbitrary representative provides\ninsight into the characteristics of the group as a whole."
                 },
                 "numAffectedServices": {
-                    "description": "The total number of services with a non-zero error count for the given\nselection criteria.",
+                    "description": "The total number of services with a non-zero error count for the given\nfilter criteria.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "affectedUsersCount": {
-                    "description": "Approximate number of affected users in the given group that\nmatch the selection criteria.\nUsers are distinguished by data in the `ErrorContext` of the\nindividual error events, such as their login name or their remote\nIP address in case of HTTP requests.\nThe number of affected users can be zero even if the number of\nerrors is non-zero if no data was provided from which the\naffected user could be deduced.\nUsers are counted based on data in the request\ncontext that was provided in the error report. If more users are\nimplicitly affected, such as due to a crash of the whole service,\nthis is not reflected here.",
+                    "description": "Approximate number of affected users in the given group that\nmatch the filter criteria.\nUsers are distinguished by data in the `ErrorContext` of the\nindividual error events, such as their login name or their remote\nIP address in case of HTTP requests.\nThe number of affected users can be zero even if the number of\nerrors is non-zero if no data was provided from which the\naffected user could be deduced.\nUsers are counted based on data in the request\ncontext that was provided in the error report. If more users are\nimplicitly affected, such as due to a crash of the whole service,\nthis is not reflected here.",
                     "format": "int64",
                     "type": "string"
                 },
                 "count": {
-                    "description": "Approximate total number of events in the given group that match\nthe selection criteria.",
+                    "description": "Approximate total number of events in the given group that match\nthe filter criteria.",
                     "format": "int64",
                     "type": "string"
                 },
                 "firstSeenTime": {
-                    "description": "Approximate first occurrence that was seen for this group and\nwhich matches the given selection criteria.",
+                    "description": "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request.",
                     "format": "google-datetime",
                     "type": "string"
                 },
                 "lastSeenTime": {
-                    "description": "Approximate last occurrence that was seen for this group\nand which matches the given selection criteria.",
+                    "description": "Approximate last occurrence that was ever seen for this group and\nwhich matches the given filter criteria, ignoring the time_range\nthat was specified in the request.",
                     "format": "google-datetime",
                     "type": "string"
                 },
                 "group": {
                     "$ref": "ErrorGroup",
-                    "description": "Group data that is independent of the selection criteria."
+                    "description": "Group data that is independent of the filter criteria."
                 },
                 "affectedServices": {
-                    "description": "Service contexts with a non-zero error count for the given selection\ncriteria. This list can be truncated if multiple services are affected.\nRefer to `num_affected_services` for the total count.",
+                    "description": "Service contexts with a non-zero error count for the given filter\ncriteria. This list can be truncated if multiple services are affected.\nRefer to `num_affected_services` for the total count.",
                     "items": {
                         "$ref": "ServiceContext"
                     },
@@ -608,6 +608,11 @@
                     "description": "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results.",
                     "type": "string"
                 },
+                "timeRangeBegin": {
+                    "description": "The timestamp specifies the start time to which the request was restricted.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "errorEvents": {
                     "description": "The error events which match the given request.",
                     "items": {
@@ -678,6 +683,11 @@
             "properties": {
                 "nextPageToken": {
                     "description": "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results.",
+                    "type": "string"
+                },
+                "timeRangeBegin": {
+                    "description": "The timestamp specifies the start time to which the request was restricted.\nThe start time is set based on the requested time range. It may be adjusted\nto a later time if a project has exceeded the storage quota and older data\nhas been deleted.",
+                    "format": "google-datetime",
                     "type": "string"
                 },
                 "errorGroupStats": {

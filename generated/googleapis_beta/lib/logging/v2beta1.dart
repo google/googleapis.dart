@@ -14,9 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client logging/v2beta1';
 
-/**
- * Writes log entries and manages your logs, log sinks, and logs-based metrics.
- */
+/** Writes log entries and manages your Stackdriver Logging configuration. */
 class LoggingApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -36,12 +34,75 @@ class LoggingApi {
 
   final commons.ApiRequester _requester;
 
+  BillingAccountsResourceApi get billingAccounts => new BillingAccountsResourceApi(_requester);
   EntriesResourceApi get entries => new EntriesResourceApi(_requester);
   MonitoredResourceDescriptorsResourceApi get monitoredResourceDescriptors => new MonitoredResourceDescriptorsResourceApi(_requester);
+  OrganizationsResourceApi get organizations => new OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   LoggingApi(http.Client client, {core.String rootUrl: "https://logging.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class BillingAccountsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLogsResourceApi get logs => new BillingAccountsLogsResourceApi(_requester);
+
+  BillingAccountsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class BillingAccountsLogsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLogsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a log and all its log entries.
+   * The log will reappear if it receives new entries.
+   *
+   * Request parameters:
+   *
+   * [logName] - Required. The resource name of the log to delete.  Example:
+   * `"projects/my-project/logs/syslog"`.
+   * Value must have pattern "^billingAccounts/[^/]+/logs/[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String logName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (logName == null) {
+      throw new core.ArgumentError("Parameter logName is required.");
+    }
+
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$logName');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
 }
 
 
@@ -52,9 +113,9 @@ class EntriesResourceApi {
       _requester = client;
 
   /**
-   * Lists log entries. Use this method to retrieve log entries from Cloud
-   * Logging. For ways to export log entries, see [Exporting
-   * Logs](/logging/docs/export).
+   * Lists log entries.  Use this method to retrieve log entries from Cloud
+   * Logging.  For ways to export log entries, see
+   * [Exporting Logs](/logging/docs/export).
    *
    * [request] - The metadata request object.
    *
@@ -93,7 +154,7 @@ class EntriesResourceApi {
   }
 
   /**
-   * Writes log entries to Cloud Logging. All log entries in Cloud Logging are
+   * Writes log entries to Stackdriver Logging.  All log entries are
    * written by this method.
    *
    * [request] - The metadata request object.
@@ -142,18 +203,20 @@ class MonitoredResourceDescriptorsResourceApi {
       _requester = client;
 
   /**
-   * Lists monitored resource descriptors that are used by Cloud Logging.
+   * Lists the monitored resource descriptors used by Stackdriver Logging.
    *
    * Request parameters:
    *
    * [pageSize] - Optional. The maximum number of results to return from this
-   * request. You must check for presence of `nextPageToken` to determine if
-   * additional results are available, which you can retrieve by passing the
-   * `nextPageToken` value as the `pageToken` parameter in the next request.
+   * request.
+   * Non-positive values are ignored.  The presence of `nextPageToken` in the
+   * response indicates that more results might be available.
    *
-   * [pageToken] - Optional. If the `pageToken` parameter is supplied, then the
-   * next page of results is retrieved. The `pageToken` parameter must be set to
-   * the value of the `nextPageToken` from the previous response.
+   * [pageToken] - Optional. If present, then retrieve the next batch of results
+   * from the
+   * preceding call to this method.  `pageToken` must be the value of
+   * `nextPageToken` from the previous response.  The values of other method
+   * parameters should be identical to those in the previous call.
    *
    * Completes with a [ListMonitoredResourceDescriptorsResponse].
    *
@@ -193,6 +256,67 @@ class MonitoredResourceDescriptorsResourceApi {
 }
 
 
+class OrganizationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLogsResourceApi get logs => new OrganizationsLogsResourceApi(_requester);
+
+  OrganizationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class OrganizationsLogsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLogsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes a log and all its log entries.
+   * The log will reappear if it receives new entries.
+   *
+   * Request parameters:
+   *
+   * [logName] - Required. The resource name of the log to delete.  Example:
+   * `"projects/my-project/logs/syslog"`.
+   * Value must have pattern "^organizations/[^/]+/logs/[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String logName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (logName == null) {
+      throw new core.ArgumentError("Parameter logName is required.");
+    }
+
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$logName');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+}
+
+
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -212,14 +336,14 @@ class ProjectsLogsResourceApi {
       _requester = client;
 
   /**
-   * Deletes a log and all its log entries. The log will reappear if it receives
-   * new entries.
+   * Deletes a log and all its log entries.
+   * The log will reappear if it receives new entries.
    *
    * Request parameters:
    *
-   * [logName] - Required. The resource name of the log to delete. Example:
+   * [logName] - Required. The resource name of the log to delete.  Example:
    * `"projects/my-project/logs/syslog"`.
-   * Value must have pattern "^projects/[^/] * / logs/[^/]*$".
+   * Value must have pattern "^projects/[^/]+/logs/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -269,10 +393,11 @@ class ProjectsMetricsResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - The resource name of the project in which to create the
-   * metric. Example: `"projects/my-project-id"`. The new metric must be
-   * provided in the request.
-   * Value must have pattern "^projects/[^/]*$".
+   * [parent] - The resource name of the project in which to create the metric.
+   * Example: `"projects/my-project-id"`.
+   *
+   * The new metric must be provided in the request.
+   * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [LogMetric].
    *
@@ -282,7 +407,7 @@ class ProjectsMetricsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LogMetric> create(LogMetric request, core.String projectName) {
+  async.Future<LogMetric> create(LogMetric request, core.String parent) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -293,11 +418,11 @@ class ProjectsMetricsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (projectName == null) {
-      throw new core.ArgumentError("Parameter projectName is required.");
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
     }
 
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/metrics';
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -314,9 +439,9 @@ class ProjectsMetricsResourceApi {
    *
    * Request parameters:
    *
-   * [metricName] - The resource name of the metric to delete. Example:
-   * `"projects/my-project-id/metrics/my-metric-id"`.
-   * Value must have pattern "^projects/[^/] * / metrics/[^/]*$".
+   * [metricName] - The resource name of the metric to delete.
+   * Example: `"projects/my-project-id/metrics/my-metric-id"`.
+   * Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -355,9 +480,9 @@ class ProjectsMetricsResourceApi {
    *
    * Request parameters:
    *
-   * [metricName] - The resource name of the desired metric. Example:
-   * `"projects/my-project-id/metrics/my-metric-id"`.
-   * Value must have pattern "^projects/[^/] * / metrics/[^/]*$".
+   * [metricName] - The resource name of the desired metric.
+   * Example: `"projects/my-project-id/metrics/my-metric-id"`.
+   * Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
    *
    * Completes with a [LogMetric].
    *
@@ -396,19 +521,20 @@ class ProjectsMetricsResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - Required. The resource name of the project containing the
-   * metrics. Example: `"projects/my-project-id"`.
-   * Value must have pattern "^projects/[^/]*$".
-   *
-   * [pageToken] - Optional. If the `pageToken` parameter is supplied, then the
-   * next page of results is retrieved. The `pageToken` parameter must be set to
-   * the value of the `nextPageToken` from the previous response. The value of
-   * `projectName` must be the same as in the previous request.
+   * [parent] - Required. The resource name containing the metrics.
+   * Example: `"projects/my-project-id"`.
+   * Value must have pattern "^projects/[^/]+$".
    *
    * [pageSize] - Optional. The maximum number of results to return from this
-   * request. You must check for presence of `nextPageToken` to determine if
-   * additional results are available, which you can retrieve by passing the
-   * `nextPageToken` value as the `pageToken` parameter in the next request.
+   * request.
+   * Non-positive values are ignored.  The presence of `nextPageToken` in the
+   * response indicates that more results might be available.
+   *
+   * [pageToken] - Optional. If present, then retrieve the next batch of results
+   * from the
+   * preceding call to this method.  `pageToken` must be the value of
+   * `nextPageToken` from the previous response.  The values of other method
+   * parameters should be identical to those in the previous call.
    *
    * Completes with a [ListLogMetricsResponse].
    *
@@ -418,7 +544,7 @@ class ProjectsMetricsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogMetricsResponse> list(core.String projectName, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListLogMetricsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -426,17 +552,17 @@ class ProjectsMetricsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (projectName == null) {
-      throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
 
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/metrics';
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -455,11 +581,13 @@ class ProjectsMetricsResourceApi {
    *
    * Request parameters:
    *
-   * [metricName] - The resource name of the metric to update. Example:
-   * `"projects/my-project-id/metrics/my-metric-id"`. The updated metric must be
-   * provided in the request and have the same identifier that is specified in
-   * `metricName`. If the metric does not exist, it is created.
-   * Value must have pattern "^projects/[^/] * / metrics/[^/]*$".
+   * [metricName] - The resource name of the metric to update.
+   * Example: `"projects/my-project-id/metrics/my-metric-id"`.
+   *
+   * The updated metric must be provided in the request and have the
+   * same identifier that is specified in `metricName`.
+   * If the metric does not exist, it is created.
+   * Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
    *
    * Completes with a [LogMetric].
    *
@@ -512,10 +640,17 @@ class ProjectsSinksResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - The resource name of the project in which to create the
-   * sink. Example: `"projects/my-project-id"`. The new sink must be provided in
-   * the request.
-   * Value must have pattern "^projects/[^/]*$".
+   * [parent] - Required. The resource in which to create the sink.
+   * Example: `"projects/my-project-id"`.
+   * The new sink must be provided in the request.
+   * Value must have pattern "^projects/[^/]+$".
+   *
+   * [uniqueWriterIdentity] - Optional. Whether the sink will have a dedicated
+   * service account returned
+   * in the sink's writer_identity. Set this field to be true to export
+   * logs from one project to a different project. This field is ignored for
+   * non-project sinks (e.g. organization sinks) because those sinks are
+   * required to have dedicated service accounts.
    *
    * Completes with a [LogSink].
    *
@@ -525,7 +660,7 @@ class ProjectsSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LogSink> create(LogSink request, core.String projectName) {
+  async.Future<LogSink> create(LogSink request, core.String parent, {core.bool uniqueWriterIdentity}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -536,11 +671,14 @@ class ProjectsSinksResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (projectName == null) {
-      throw new core.ArgumentError("Parameter projectName is required.");
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
     }
 
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/sinks';
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -557,9 +695,12 @@ class ProjectsSinksResourceApi {
    *
    * Request parameters:
    *
-   * [sinkName] - The resource name of the sink to delete. Example:
-   * `"projects/my-project-id/sinks/my-sink-id"`.
-   * Value must have pattern "^projects/[^/] * / sinks/[^/]*$".
+   * [sinkName] - Required. The resource name of the sink to delete, including
+   * the parent
+   * resource and the sink identifier.  Example:
+   * `"projects/my-project-id/sinks/my-sink-id"`.  It is an error if the sink
+   * does not exist.
+   * Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -598,9 +739,9 @@ class ProjectsSinksResourceApi {
    *
    * Request parameters:
    *
-   * [sinkName] - The resource name of the sink to return. Example:
-   * `"projects/my-project-id/sinks/my-sink-id"`.
-   * Value must have pattern "^projects/[^/] * / sinks/[^/]*$".
+   * [sinkName] - Required. The resource name of the sink to return.
+   * Example: `"projects/my-project-id/sinks/my-sink-id"`.
+   * Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
    *
    * Completes with a [LogSink].
    *
@@ -639,19 +780,20 @@ class ProjectsSinksResourceApi {
    *
    * Request parameters:
    *
-   * [projectName] - Required. The resource name of the project containing the
-   * sinks. Example: `"projects/my-logging-project"`.
-   * Value must have pattern "^projects/[^/]*$".
-   *
-   * [pageToken] - Optional. If the `pageToken` parameter is supplied, then the
-   * next page of results is retrieved. The `pageToken` parameter must be set to
-   * the value of the `nextPageToken` from the previous response. The value of
-   * `projectName` must be the same as in the previous request.
+   * [parent] - Required. The resource name where this sink was created.
+   * Example: `"projects/my-logging-project"`.
+   * Value must have pattern "^projects/[^/]+$".
    *
    * [pageSize] - Optional. The maximum number of results to return from this
-   * request. You must check for presence of `nextPageToken` to determine if
-   * additional results are available, which you can retrieve by passing the
-   * `nextPageToken` value as the `pageToken` parameter in the next request.
+   * request.
+   * Non-positive values are ignored.  The presence of `nextPageToken` in the
+   * response indicates that more results might be available.
+   *
+   * [pageToken] - Optional. If present, then retrieve the next batch of results
+   * from the
+   * preceding call to this method.  `pageToken` must be the value of
+   * `nextPageToken` from the previous response.  The values of other method
+   * parameters should be identical to those in the previous call.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -661,7 +803,7 @@ class ProjectsSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListSinksResponse> list(core.String projectName, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListSinksResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -669,17 +811,17 @@ class ProjectsSinksResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (projectName == null) {
-      throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
 
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/sinks';
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -692,17 +834,24 @@ class ProjectsSinksResourceApi {
   }
 
   /**
-   * Creates or updates a sink.
+   * Updates or creates a sink.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [sinkName] - The resource name of the sink to update. Example:
-   * `"projects/my-project-id/sinks/my-sink-id"`. The updated sink must be
-   * provided in the request and have the same name that is specified in
-   * `sinkName`. If the sink does not exist, it is created.
-   * Value must have pattern "^projects/[^/] * / sinks/[^/]*$".
+   * [sinkName] - Required. The resource name of the sink to update, including
+   * the parent
+   * resource and the sink identifier.  If the sink does not exist, this method
+   * creates the sink.  Example: `"projects/my-project-id/sinks/my-sink-id"`.
+   * Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
+   *
+   * [uniqueWriterIdentity] - Optional. Whether the sink will have a dedicated
+   * service account returned
+   * in the sink's writer_identity. Set this field to be true to export
+   * logs from one project to a different project. This field is ignored for
+   * non-project sinks (e.g. organization sinks) because those sinks are
+   * required to have dedicated service accounts.
    *
    * Completes with a [LogSink].
    *
@@ -712,7 +861,7 @@ class ProjectsSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LogSink> update(LogSink request, core.String sinkName) {
+  async.Future<LogSink> update(LogSink request, core.String sinkName, {core.bool uniqueWriterIdentity}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -725,6 +874,9 @@ class ProjectsSinksResourceApi {
     }
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -745,10 +897,14 @@ class ProjectsSinksResourceApi {
 
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request or
- * the response type of an API method. For instance: service Foo { rpc
- * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
- * representation for `Empty` is empty JSON object `{}`.
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
  */
 class Empty {
 
@@ -763,7 +919,11 @@ class Empty {
   }
 }
 
-/** A common proto for logging HTTP requests. */
+/**
+ * A common proto for logging HTTP requests. Only contains semantics
+ * defined by the HTTP specification. Product-specific logging
+ * information MUST be defined in a separate message.
+ */
 class HttpRequest {
   /**
    * The number of HTTP response bytes inserted into cache. Set only when a
@@ -771,8 +931,8 @@ class HttpRequest {
    */
   core.String cacheFillBytes;
   /**
-   * Whether or not an entity was served from cache (with or without
-   * validation).
+   * Whether or not an entity was served from cache
+   * (with or without validation).
    */
   core.bool cacheHit;
   /** Whether or not a cache lookup was attempted. */
@@ -784,13 +944,19 @@ class HttpRequest {
    */
   core.bool cacheValidatedWithOriginServer;
   /**
-   * The referer URL of the request, as defined in [HTTP/1.1 Header Field
+   * The request processing latency on the server, from the time the request was
+   * received until the response was sent.
+   */
+  core.String latency;
+  /**
+   * The referer URL of the request, as defined in
+   * [HTTP/1.1 Header Field
    * Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
    */
   core.String referer;
   /**
-   * The IP address (IPv4 or IPv6) of the client that issued the HTTP request.
-   * Examples: `"192.168.1.1"`, `"FE80::0202:B3FF:FE1E:8329"`.
+   * The IP address (IPv4 or IPv6) of the client that issued the HTTP
+   * request. Examples: `"192.168.1.1"`, `"FE80::0202:B3FF:FE1E:8329"`.
    */
   core.String remoteIp;
   /** The request method. Examples: `"GET"`, `"HEAD"`, `"PUT"`, `"POST"`. */
@@ -801,9 +967,9 @@ class HttpRequest {
    */
   core.String requestSize;
   /**
-   * The scheme (http, https), the host name, the path and the query portion of
-   * the URL that was requested. Example:
-   * `"http://example.com/some/info?color=red"`.
+   * The scheme (http, https), the host name, the path and the query
+   * portion of the URL that was requested.
+   * Example: `"http://example.com/some/info?color=red"`.
    */
   core.String requestUrl;
   /**
@@ -812,12 +978,19 @@ class HttpRequest {
    */
   core.String responseSize;
   /**
-   * The response code indicating the status of response. Examples: 200, 404.
+   * The IP address (IPv4 or IPv6) of the origin server that the request was
+   * sent to.
+   */
+  core.String serverIp;
+  /**
+   * The response code indicating the status of response.
+   * Examples: 200, 404.
    */
   core.int status;
   /**
-   * The user agent sent by the client. Example: `"Mozilla/4.0 (compatible; MSIE
-   * 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)"`.
+   * The user agent sent by the client. Example:
+   * `"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET CLR
+   * 1.0.3705)"`.
    */
   core.String userAgent;
 
@@ -836,6 +1009,9 @@ class HttpRequest {
     if (_json.containsKey("cacheValidatedWithOriginServer")) {
       cacheValidatedWithOriginServer = _json["cacheValidatedWithOriginServer"];
     }
+    if (_json.containsKey("latency")) {
+      latency = _json["latency"];
+    }
     if (_json.containsKey("referer")) {
       referer = _json["referer"];
     }
@@ -853,6 +1029,9 @@ class HttpRequest {
     }
     if (_json.containsKey("responseSize")) {
       responseSize = _json["responseSize"];
+    }
+    if (_json.containsKey("serverIp")) {
+      serverIp = _json["serverIp"];
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -876,6 +1055,9 @@ class HttpRequest {
     if (cacheValidatedWithOriginServer != null) {
       _json["cacheValidatedWithOriginServer"] = cacheValidatedWithOriginServer;
     }
+    if (latency != null) {
+      _json["latency"] = latency;
+    }
     if (referer != null) {
       _json["referer"] = referer;
     }
@@ -893,6 +1075,9 @@ class HttpRequest {
     }
     if (responseSize != null) {
       _json["responseSize"] = responseSize;
+    }
+    if (serverIp != null) {
+      _json["serverIp"] = serverIp;
     }
     if (status != null) {
       _json["status"] = status;
@@ -913,9 +1098,9 @@ class LabelDescriptor {
   /**
    * The type of data that can be assigned to the label.
    * Possible string values are:
-   * - "STRING" : A STRING.
-   * - "BOOL" : A BOOL.
-   * - "INT64" : A INT64.
+   * - "STRING" : A variable-length string. This is the default.
+   * - "BOOL" : Boolean; true or false.
+   * - "INT64" : A 64-bit signed integer.
    */
   core.String valueType;
 
@@ -951,46 +1136,47 @@ class LabelDescriptor {
 /** The parameters to `ListLogEntries`. */
 class ListLogEntriesRequest {
   /**
-   * Optional. An [advanced logs filter](/logging/docs/view/advanced_filters).
-   * The filter is compared against all log entries in the projects specified by
-   * `projectIds`. Only entries that match the filter are retrieved. An empty
-   * filter matches all log entries.
+   * Optional. A filter that chooses which log entries to return.  See [Advanced
+   * Logs Filters](/logging/docs/view/advanced_filters).  Only log entries that
+   * match the filter are returned.  An empty filter matches all log entries.
    */
   core.String filter;
   /**
-   * Optional. How the results should be sorted. Presently, the only permitted
+   * Optional. How the results should be sorted.  Presently, the only permitted
    * values are `"timestamp asc"` (default) and `"timestamp desc"`. The first
    * option returns entries in order of increasing values of
    * `LogEntry.timestamp` (oldest first), and the second option returns entries
-   * in order of decreasing timestamps (newest first). Entries with equal
+   * in order of decreasing timestamps (newest first).  Entries with equal
    * timestamps are returned in order of `LogEntry.insertId`.
    */
   core.String orderBy;
   /**
-   * Optional. The maximum number of results to return from this request. You
-   * must check for presence of `nextPageToken` to determine if additional
-   * results are available, which you can retrieve by passing the
-   * `nextPageToken` value as the `pageToken` parameter in the next request.
+   * Optional. The maximum number of results to return from this request.
+   * Non-positive values are ignored.  The presence of `nextPageToken` in the
+   * response indicates that more results might be available.
    */
   core.int pageSize;
   /**
-   * Optional. If the `pageToken` parameter is supplied, then the next page of
-   * results is retrieved. The `pageToken` parameter must be set to the value of
-   * the `nextPageToken` from the previous response. The values of `projectIds`,
-   * `filter`, and `orderBy` must be the same as in the previous request.
+   * Optional. If present, then retrieve the next batch of results from the
+   * preceding call to this method.  `pageToken` must be the value of
+   * `nextPageToken` from the previous response.  The values of other method
+   * parameters should be identical to those in the previous call.
    */
   core.String pageToken;
   /**
-   * Optional. If true, read access to all projects is not required and results
-   * will be returned for the subset of projects for which read access is
-   * permitted (empty subset is permitted).
-   */
-  core.bool partialSuccess;
-  /**
-   * Required. One or more project IDs or project numbers from which to retrieve
-   * log entries. Examples of a project ID: `"my-project-1A"`, `"1234567890"`.
+   * Deprecated. One or more project identifiers or project numbers from which
+   * to retrieve log entries.  Examples: `"my-project-1A"`, `"1234567890"`. If
+   * present, these project identifiers are converted to resource format and
+   * added to the list of resources in `resourceNames`. Callers should use
+   * `resourceNames` rather than this parameter.
    */
   core.List<core.String> projectIds;
+  /**
+   * Required. One or more cloud resources from which to retrieve log entries.
+   * Example: `"projects/my-project-1A"`, `"projects/1234567890"`.  Projects
+   * listed in `projectIds` are added to this list.
+   */
+  core.List<core.String> resourceNames;
 
   ListLogEntriesRequest();
 
@@ -1007,11 +1193,11 @@ class ListLogEntriesRequest {
     if (_json.containsKey("pageToken")) {
       pageToken = _json["pageToken"];
     }
-    if (_json.containsKey("partialSuccess")) {
-      partialSuccess = _json["partialSuccess"];
-    }
     if (_json.containsKey("projectIds")) {
       projectIds = _json["projectIds"];
+    }
+    if (_json.containsKey("resourceNames")) {
+      resourceNames = _json["resourceNames"];
     }
   }
 
@@ -1029,11 +1215,11 @@ class ListLogEntriesRequest {
     if (pageToken != null) {
       _json["pageToken"] = pageToken;
     }
-    if (partialSuccess != null) {
-      _json["partialSuccess"] = partialSuccess;
-    }
     if (projectIds != null) {
       _json["projectIds"] = projectIds;
+    }
+    if (resourceNames != null) {
+      _json["resourceNames"] = resourceNames;
     }
     return _json;
   }
@@ -1044,16 +1230,11 @@ class ListLogEntriesResponse {
   /** A list of log entries. */
   core.List<LogEntry> entries;
   /**
-   * If there are more results than were returned, then `nextPageToken` is
-   * included in the response. To get the next set of results, call this method
-   * again using the value of `nextPageToken` as `pageToken`.
+   * If there might be more results than appear in this response, then
+   * `nextPageToken` is included.  To get the next set of results, call this
+   * method again using the value of `nextPageToken` as `pageToken`.
    */
   core.String nextPageToken;
-  /**
-   * If partial_success is true, contains the project ids that had errors and
-   * the associated errors.
-   */
-  core.Map<core.String, Status> projectIdErrors;
 
   ListLogEntriesResponse();
 
@@ -1063,9 +1244,6 @@ class ListLogEntriesResponse {
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
-    }
-    if (_json.containsKey("projectIdErrors")) {
-      projectIdErrors = commons.mapMap(_json["projectIdErrors"], (item) => new Status.fromJson(item));
     }
   }
 
@@ -1077,9 +1255,6 @@ class ListLogEntriesResponse {
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
-    if (projectIdErrors != null) {
-      _json["projectIdErrors"] = commons.mapMap(projectIdErrors, (item) => (item).toJson());
-    }
     return _json;
   }
 }
@@ -1089,9 +1264,9 @@ class ListLogMetricsResponse {
   /** A list of logs-based metrics. */
   core.List<LogMetric> metrics;
   /**
-   * If there are more results than were returned, then `nextPageToken` is
-   * included in the response. To get the next set of results, call this method
-   * again using the value of `nextPageToken` as `pageToken`.
+   * If there might be more results than appear in this response, then
+   * `nextPageToken` is included.  To get the next set of results, call this
+   * method again using the value of `nextPageToken` as `pageToken`.
    */
   core.String nextPageToken;
 
@@ -1121,9 +1296,9 @@ class ListLogMetricsResponse {
 /** Result returned from ListMonitoredResourceDescriptors. */
 class ListMonitoredResourceDescriptorsResponse {
   /**
-   * If there are more results than were returned, then `nextPageToken` is
-   * included in the response. To get the next set of results, call this method
-   * again using the value of `nextPageToken` as `pageToken`.
+   * If there might be more results than appear in this response, then
+   * `nextPageToken` is included.  To get the next set of results, call this
+   * method again using the value of `nextPageToken` as `pageToken`.
    */
   core.String nextPageToken;
   /** A list of resource descriptors. */
@@ -1155,9 +1330,9 @@ class ListMonitoredResourceDescriptorsResponse {
 /** Result returned from `ListSinks`. */
 class ListSinksResponse {
   /**
-   * If there are more results than were returned, then `nextPageToken` is
-   * included in the response. To get the next set of results, call this method
-   * again using the value of `nextPageToken` as `pageToken`.
+   * If there might be more results than appear in this response, then
+   * `nextPageToken` is included.  To get the next set of results, call the same
+   * method again using the value of `nextPageToken` as `pageToken`.
    */
   core.String nextPageToken;
   /** A list of sinks. */
@@ -1189,20 +1364,21 @@ class ListSinksResponse {
 /** An individual entry in a log. */
 class LogEntry {
   /**
-   * Optional. Information about the HTTP request associated with this log
-   * entry, if applicable.
+   * Optional. Information about the HTTP request associated with this
+   * log entry, if applicable.
    */
   HttpRequest httpRequest;
   /**
-   * Optional. A unique ID for the log entry. If you provide this field, the
-   * logging service considers other log entries in the same log with the same
-   * ID as duplicates which can be removed. If omitted, Cloud Logging will
-   * generate a unique ID for this log entry.
+   * Optional. A unique ID for the log entry. If you provide this
+   * field, the logging service considers other log entries in the
+   * same project with the same ID as duplicates which can be removed.  If
+   * omitted, Stackdriver Logging will generate a unique ID for this
+   * log entry.
    */
   core.String insertId;
   /**
-   * The log entry payload, represented as a structure that is expressed as a
-   * JSON object.
+   * The log entry payload, represented as a structure that
+   * is expressed as a JSON object.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1214,15 +1390,17 @@ class LogEntry {
    */
   core.Map<core.String, core.String> labels;
   /**
-   * Required. The resource name of the log to which this log entry belongs. The
-   * format of the name is `"projects/
-   * /logs/"`. Examples: `"projects/my-projectid/logs/syslog"`,
-   * `"projects/1234567890/logs/library.googleapis.com%2Fbook_log"`. The log ID
-   * part of resource name must be less than 512 characters long and can only
-   * include the following characters: upper and lower case alphanumeric
-   * characters: [A-Za-z0-9]; and punctuation characters: forward-slash,
-   * underscore, hyphen, and period. Forward-slash (`/`) characters in the log
-   * ID must be URL-encoded.
+   * Required. The resource name of the log to which this log entry
+   * belongs. The format of the name is
+   * `"projects/<project-id>/logs/<log-id>"`.  Examples:
+   * `"projects/my-projectid/logs/syslog"`,
+   * `"projects/my-projectid/logs/library.googleapis.com%2Fbook_log"`.
+   *
+   * The log ID part of resource name must be less than 512 characters
+   * long and can only include the following characters: upper and
+   * lower case alphanumeric characters: [A-Za-z0-9]; and punctuation
+   * characters: forward-slash, underscore, hyphen, and period.
+   * Forward-slash (`/`) characters in the log ID must be URL-encoded.
    */
   core.String logName;
   /**
@@ -1231,40 +1409,44 @@ class LogEntry {
    */
   LogEntryOperation operation;
   /**
-   * The log entry payload, represented as a protocol buffer. You can only use
-   * `protoPayload` values that belong to a set of approved types.
+   * The log entry payload, represented as a protocol buffer.  Some
+   * Google Cloud Platform services use this field for their log
+   * entry payloads.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> protoPayload;
   /**
-   * Required. The monitored resource associated with this log entry. Example: a
-   * log entry that reports a database error would be associated with the
-   * monitored resource designating the particular database that reported the
-   * error.
+   * Required. The monitored resource associated with this log entry.
+   * Example: a log entry that reports a database error would be
+   * associated with the monitored resource designating the particular
+   * database that reported the error.
    */
   MonitoredResource resource;
   /**
    * Optional. The severity of the log entry. The default value is
    * `LogSeverity.DEFAULT`.
    * Possible string values are:
-   * - "DEFAULT" : A DEFAULT.
-   * - "DEBUG" : A DEBUG.
-   * - "INFO" : A INFO.
-   * - "NOTICE" : A NOTICE.
-   * - "WARNING" : A WARNING.
-   * - "ERROR" : A ERROR.
-   * - "CRITICAL" : A CRITICAL.
-   * - "ALERT" : A ALERT.
-   * - "EMERGENCY" : A EMERGENCY.
+   * - "DEFAULT" : (0) The log entry has no assigned severity level.
+   * - "DEBUG" : (100) Debug or trace information.
+   * - "INFO" : (200) Routine information, such as ongoing status or
+   * performance.
+   * - "NOTICE" : (300) Normal but significant events, such as start up, shut
+   * down, or
+   * a configuration change.
+   * - "WARNING" : (400) Warning events might cause problems.
+   * - "ERROR" : (500) Error events are likely to cause problems.
+   * - "CRITICAL" : (600) Critical events cause more severe problems or outages.
+   * - "ALERT" : (700) A person must take an action immediately.
+   * - "EMERGENCY" : (800) One or more systems are unusable.
    */
   core.String severity;
   /** The log entry payload, represented as a Unicode string (UTF-8). */
   core.String textPayload;
   /**
-   * Optional. The time the event described by the log entry occurred. If
-   * omitted, Cloud Logging will use the time the log entry is written.
+   * Optional. The time the event described by the log entry occurred.  If
+   * omitted, Stackdriver Logging will use the time the log entry is received.
    */
   core.String timestamp;
 
@@ -1355,8 +1537,8 @@ class LogEntryOperation {
    */
   core.bool first;
   /**
-   * Required. An arbitrary operation identifier. Log entries with the same
-   * identifier are assumed to be part of the same operation.
+   * Optional. An arbitrary operation identifier. Log entries with the
+   * same identifier are assumed to be part of the same operation.
    */
   core.String id;
   /**
@@ -1364,9 +1546,9 @@ class LogEntryOperation {
    */
   core.bool last;
   /**
-   * Required. An arbitrary producer identifier. The combination of `id` and
-   * `producer` must be globally unique. Examples for `producer`:
-   * `"MyDivision.MyBigCompany.com"`, "github.com/MyProject/MyApplication"`.
+   * Optional. An arbitrary producer identifier. The combination of
+   * `id` and `producer` must be globally unique.  Examples for `producer`:
+   * `"MyDivision.MyBigCompany.com"`, `"github.com/MyProject/MyApplication"`.
    */
   core.String producer;
 
@@ -1412,15 +1594,18 @@ class LogLine {
   /**
    * Severity of this log entry.
    * Possible string values are:
-   * - "DEFAULT" : A DEFAULT.
-   * - "DEBUG" : A DEBUG.
-   * - "INFO" : A INFO.
-   * - "NOTICE" : A NOTICE.
-   * - "WARNING" : A WARNING.
-   * - "ERROR" : A ERROR.
-   * - "CRITICAL" : A CRITICAL.
-   * - "ALERT" : A ALERT.
-   * - "EMERGENCY" : A EMERGENCY.
+   * - "DEFAULT" : (0) The log entry has no assigned severity level.
+   * - "DEBUG" : (100) Debug or trace information.
+   * - "INFO" : (200) Routine information, such as ongoing status or
+   * performance.
+   * - "NOTICE" : (300) Normal but significant events, such as start up, shut
+   * down, or
+   * a configuration change.
+   * - "WARNING" : (400) Warning events might cause problems.
+   * - "ERROR" : (500) Error events are likely to cause problems.
+   * - "CRITICAL" : (600) Critical events cause more severe problems or outages.
+   * - "ALERT" : (700) A person must take an action immediately.
+   * - "EMERGENCY" : (800) One or more systems are unusable.
    */
   core.String severity;
   /** Where in the source code this log message was written. */
@@ -1464,26 +1649,39 @@ class LogLine {
 }
 
 /**
- * Describes a logs-based metric. The value of the metric is the number of log
- * entries that match a logs filter.
+ * Describes a logs-based metric.  The value of the metric is the
+ * number of log entries that match a logs filter.
  */
 class LogMetric {
-  /** A description of this metric, which is used in documentation. */
+  /**
+   * Optional. A description of this metric, which is used in documentation.
+   */
   core.String description;
   /**
-   * An [advanced logs filter](/logging/docs/view/advanced_filters). Example:
-   * `"logName:syslog AND severity>=ERROR"`.
+   * Required. An [advanced logs filter](/logging/docs/view/advanced_filters).
+   * Example: `"resource.type=gae_app AND severity>=ERROR"`.
    */
   core.String filter;
   /**
    * Required. The client-assigned metric identifier. Example:
-   * `"severe_errors"`. Metric identifiers are limited to 1000 characters and
-   * can include only the following characters: `A-Z`, `a-z`, `0-9`, and the
-   * special characters `_-.,+!*',()%/\`. The forward-slash character (`/`)
-   * denotes a hierarchy of name pieces, and it cannot be the first character of
-   * the name.
+   * `"severe_errors"`.  Metric identifiers are limited to 100
+   * characters and can include only the following characters: `A-Z`,
+   * `a-z`, `0-9`, and the special characters `_-.,+!*',()%/`.  The
+   * forward-slash character (`/`) denotes a hierarchy of name pieces,
+   * and it cannot be the first character of the name.  The '%' character
+   * is used to URL encode unsafe and reserved characters and must be
+   * followed by two hexadecimal digits according to RFC 1738.
    */
   core.String name;
+  /**
+   * Output only. The API version that created or updated this metric.
+   * The version also dictates the syntax of the filter expression. When a value
+   * for this field is missing, the default value of V2 should be assumed.
+   * Possible string values are:
+   * - "V2" : Stackdriver Logging API v2.
+   * - "V1" : Stackdriver Logging API v1.
+   */
+  core.String version;
 
   LogMetric();
 
@@ -1496,6 +1694,9 @@ class LogMetric {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
     }
   }
 
@@ -1510,51 +1711,91 @@ class LogMetric {
     if (name != null) {
       _json["name"] = name;
     }
+    if (version != null) {
+      _json["version"] = version;
+    }
     return _json;
   }
 }
 
-/** Describes a sink used to export log entries outside Cloud Logging. */
+/**
+ * Describes a sink used to export log entries outside of Stackdriver Logging.
+ * A logs filter controls which log entries are exported.  Sinks can have a
+ * start time and an end time; these can be used to place log entries from an
+ * exact time range into a particular destination.  If both `start_time` and
+ * `end_time` are present, then `start_time` must be less than `end_time`.
+ */
 class LogSink {
   /**
-   * The export destination. See [Exporting Logs With
-   * Sinks](/logging/docs/api/tasks/exporting-logs). Examples:
-   * `"storage.googleapis.com/a-bucket"`,
-   * `"bigquery.googleapis.com/projects/a-project-id/datasets/a-dataset"`.
+   * Required. The export destination. See
+   * [Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).
+   * Examples:
+   *
+   *     "storage.googleapis.com/my-gcs-bucket"
+   *     "bigquery.googleapis.com/projects/my-project-id/datasets/my-dataset"
+   *     "pubsub.googleapis.com/projects/my-project/topics/my-topic"
    */
   core.String destination;
   /**
-   * An [advanced logs filter](/logging/docs/view/advanced_filters). Only log
-   * entries matching that filter are exported. The filter must be consistent
-   * with the log entry format specified by the `outputVersionFormat` parameter,
-   * regardless of the format of the log entry that was originally written to
-   * Cloud Logging. Example (V2 format):
-   * `"logName=projects/my-projectid/logs/syslog AND severity>=ERROR"`.
+   * Optional. Time at which this sink will stop exporting log entries.  If this
+   * value is present, then log entries are exported only if `entry.timestamp` <
+   * `end_time`.
+   */
+  core.String endTime;
+  /**
+   * Optional. An [advanced logs filter](/logging/docs/view/advanced_filters).
+   * Only log entries matching the filter are exported. The filter
+   * must be consistent with the log entry format specified by the
+   * `outputVersionFormat` parameter, regardless of the format of the
+   * log entry that was originally written to Stackdriver Logging.
+   * Example filter (V2 format):
+   *
+   *     logName=projects/my-projectid/logs/syslog AND severity>=ERROR
    */
   core.String filter;
   /**
-   * Required. The client-assigned sink identifier. Example:
-   * `"my-severe-errors-to-pubsub"`. Sink identifiers are limited to 1000
-   * characters and can include only the following characters: `A-Z`, `a-z`,
-   * `0-9`, and the special characters `_-.`.
+   * Required. The client-assigned sink identifier, unique within the
+   * project. Example: `"my-syslog-errors-to-pubsub"`.  Sink identifiers are
+   * limited to 1000 characters and can include only the following characters:
+   * `A-Z`, `a-z`, `0-9`, and the special characters `_-.`.  The maximum length
+   * of the name is 100 characters.
    */
   core.String name;
   /**
-   * The log entry version to use for this sink's exported log entries. This
-   * version does not have to correspond to the version of the log entry when it
-   * was written to Cloud Logging.
+   * Optional. The log entry version to use for this sink's exported log
+   * entries.  This version does not have to correspond to the version of the
+   * log entry that was written to Stackdriver Logging. If omitted, the
+   * v2 format is used.
    * Possible string values are:
-   * - "VERSION_FORMAT_UNSPECIFIED" : A VERSION_FORMAT_UNSPECIFIED.
-   * - "V2" : A V2.
-   * - "V1" : A V1.
+   * - "VERSION_FORMAT_UNSPECIFIED" : An unspecified version format will default
+   * to V2.
+   * - "V2" : `LogEntry` version 2 format.
+   * - "V1" : `LogEntry` version 1 format.
    */
   core.String outputVersionFormat;
+  /**
+   * Optional. The time at which this sink will begin exporting log entries.  If
+   * this value is present, then log entries are exported only if `start_time`
+   * <=`entry.timestamp`.
+   */
+  core.String startTime;
+  /**
+   * Output only. An IAM identity&mdash;a service account or group&mdash;that
+   * will write exported log entries to the destination on behalf of Stackdriver
+   * Logging. You must grant this identity write-access to the destination.
+   * Consult the destination service's documentation to determine the exact role
+   * that must be granted.
+   */
+  core.String writerIdentity;
 
   LogSink();
 
   LogSink.fromJson(core.Map _json) {
     if (_json.containsKey("destination")) {
       destination = _json["destination"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
     }
     if (_json.containsKey("filter")) {
       filter = _json["filter"];
@@ -1565,12 +1806,21 @@ class LogSink {
     if (_json.containsKey("outputVersionFormat")) {
       outputVersionFormat = _json["outputVersionFormat"];
     }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("writerIdentity")) {
+      writerIdentity = _json["writerIdentity"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (destination != null) {
       _json["destination"] = destination;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
     }
     if (filter != null) {
       _json["filter"] = filter;
@@ -1581,6 +1831,12 @@ class LogSink {
     if (outputVersionFormat != null) {
       _json["outputVersionFormat"] = outputVersionFormat;
     }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (writerIdentity != null) {
+      _json["writerIdentity"] = writerIdentity;
+    }
     return _json;
   }
 }
@@ -1589,13 +1845,16 @@ class LogSink {
  * An object representing a resource that can be used for monitoring, logging,
  * billing, or other purposes. Examples include virtual machine instances,
  * databases, and storage devices such as disks. The `type` field identifies a
- * MonitoredResourceDescriptor object that describes the resource's schema.
- * Information in the `labels` field identifies the actual resource and its
- * attributes according to the schema. For example, a particular Compute Engine
- * VM instance could be represented by the following object, because the
- * MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"`
- * and `"zone"`: { "type": "gce_instance", "labels": { "instance_id":
- * "my-instance", "zone": "us-central1-a" }}
+ * MonitoredResourceDescriptor object that describes the resource's
+ * schema. Information in the `labels` field identifies the actual resource and
+ * its attributes according to the schema. For example, a particular Compute
+ * Engine VM instance could be represented by the following object, because the
+ * MonitoredResourceDescriptor for `"gce_instance"` has labels
+ * `"instance_id"` and `"zone"`:
+ *
+ *     { "type": "gce_instance",
+ *       "labels": { "instance_id": "12345678901234",
+ *                   "zone": "us-central1-a" }}
  */
 class MonitoredResource {
   /**
@@ -1605,9 +1864,9 @@ class MonitoredResource {
    */
   core.Map<core.String, core.String> labels;
   /**
-   * Required. The monitored resource type. This field must match the `type`
-   * field of a MonitoredResourceDescriptor object. For example, the type of a
-   * Cloud SQL database is `"cloudsql_database"`.
+   * Required. The monitored resource type. This field must match
+   * the `type` field of a MonitoredResourceDescriptor object. For
+   * example, the type of a Cloud SQL database is `"cloudsql_database"`.
    */
   core.String type;
 
@@ -1636,12 +1895,14 @@ class MonitoredResource {
 
 /**
  * An object that describes the schema of a MonitoredResource object using a
- * type name and a set of labels. For example, the monitored resource descriptor
- * for Google Compute Engine VM instances has a type of `"gce_instance"` and
- * specifies the use of the labels `"instance_id"` and `"zone"` to identify
- * particular VM instances. Different APIs can support different monitored
- * resource types. APIs generally provide a `list` method that returns the
- * monitored resource descriptors used by the API.
+ * type name and a set of labels.  For example, the monitored resource
+ * descriptor for Google Compute Engine VM instances has a type of
+ * `"gce_instance"` and specifies the use of the labels `"instance_id"` and
+ * `"zone"` to identify particular VM instances.
+ *
+ * Different APIs can support different monitored resource types. APIs generally
+ * provide a `list` method that returns the monitored resource descriptors used
+ * by the API.
  */
 class MonitoredResourceDescriptor {
   /**
@@ -1651,7 +1912,9 @@ class MonitoredResourceDescriptor {
   core.String description;
   /**
    * Optional. A concise name for the monitored resource type that might be
-   * displayed in user interfaces. For example, `"Google Cloud SQL Database"`.
+   * displayed in user interfaces. It should be a Title Cased Noun Phrase,
+   * without any article or other determiners. For example,
+   * `"Google Cloud SQL Database"`.
    */
   core.String displayName;
   /**
@@ -1662,16 +1925,17 @@ class MonitoredResourceDescriptor {
   core.List<LabelDescriptor> labels;
   /**
    * Optional. The resource name of the monitored resource descriptor:
-   * `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type}
-   * is the value of the `type` field in this object and {project_id} is a
-   * project ID that provides API-specific context for accessing the type. APIs
-   * that do not use project information can use the resource name format
-   * `"monitoredResourceDescriptors/{type}"`.
+   * `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where
+   * {type} is the value of the `type` field in this object and
+   * {project_id} is a project ID that provides API-specific context for
+   * accessing the type.  APIs that do not use project information can use the
+   * resource name format `"monitoredResourceDescriptors/{type}"`.
    */
   core.String name;
   /**
    * Required. The monitored resource type. For example, the type
    * `"cloudsql_database"` represents databases in Google Cloud SQL.
+   * The maximum length of this value is 256 characters.
    */
   core.String type;
 
@@ -1732,7 +1996,7 @@ class RequestLog {
   /** Whether this request is finished or active. */
   core.bool finished;
   /**
-   * Whether this is the first RequestLog entry for this request. If an active
+   * Whether this is the first RequestLog entry for this request.  If an active
    * request has several RequestLog entries written to Cloud Logging, this field
    * will be set for one of them.
    */
@@ -1766,12 +2030,14 @@ class RequestLog {
   /** Module of the application that handled this request. */
   core.String moduleId;
   /**
-   * The logged-in user who made the request. Most likely, this is the part of
-   * the user's email before the `@` sign. The field value is the same for
-   * different requests from the same user, but different users can have similar
-   * names. This information is also available to the application via the App
-   * Engine Users API. This field will be populated starting with App Engine
-   * 1.9.21.
+   * The logged-in user who made the request.
+   *
+   * Most likely, this is the part of the user's email before the `@` sign.  The
+   * field value is the same for different requests from the same user, but
+   * different users can have similar names.  This information is also
+   * available to the application via the App Engine Users API.
+   *
+   * This field will be populated starting with App Engine 1.9.21.
    */
   core.String nickname;
   /** Time this request spent in the pending request queue. */
@@ -1780,14 +2046,14 @@ class RequestLog {
   core.String referrer;
   /**
    * Globally unique identifier for a request, which is based on the request
-   * start time. Request IDs for requests which started later will compare
+   * start time.  Request IDs for requests which started later will compare
    * greater as strings than those for requests which started earlier.
    */
   core.String requestId;
   /**
    * Contains the path and query portion of the URL that was requested. For
    * example, if the URL was "http://example.com/app?name=val", the resource
-   * would be "/app?name=val". The fragment identifier, which is identified by
+   * would be "/app?name=val".  The fragment identifier, which is identified by
    * the `#` character, is not included.
    */
   core.String resource;
@@ -2075,13 +2341,13 @@ class SourceLocation {
  */
 class SourceReference {
   /**
-   * Optional. A URI string identifying the repository. Example:
-   * "https://github.com/GoogleCloudPlatform/kubernetes.git"
+   * Optional. A URI string identifying the repository.
+   * Example: "https://github.com/GoogleCloudPlatform/kubernetes.git"
    */
   core.String repository;
   /**
-   * The canonical and persistent identifier of the deployed revision. Example
-   * (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b"
+   * The canonical and persistent identifier of the deployed revision.
+   * Example (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b"
    */
   core.String revisionId;
 
@@ -2108,119 +2374,51 @@ class SourceReference {
   }
 }
 
-/**
- * The `Status` type defines a logical error model that is suitable for
- * different programming environments, including REST APIs and RPC APIs. It is
- * used by [gRPC](https://github.com/grpc). The error model is designed to be: -
- * Simple to use and understand for most users - Flexible enough to meet
- * unexpected needs # Overview The `Status` message contains three pieces of
- * data: error code, error message, and error details. The error code should be
- * an enum value of google.rpc.Code, but it may accept additional error codes if
- * needed. The error message should be a developer-facing English message that
- * helps developers *understand* and *resolve* the error. If a localized
- * user-facing error message is needed, put the localized message in the error
- * details or localize it in the client. The optional error details may contain
- * arbitrary information about the error. There is a predefined set of error
- * detail types in the package `google.rpc` which can be used for common error
- * conditions. # Language mapping The `Status` message is the logical
- * representation of the error model, but it is not necessarily the actual wire
- * format. When the `Status` message is exposed in different client libraries
- * and different wire protocols, it can be mapped differently. For example, it
- * will likely be mapped to some exceptions in Java, but more likely mapped to
- * some error codes in C. # Other uses The error model and the `Status` message
- * can be used in a variety of environments, either with or without APIs, to
- * provide a consistent developer experience across different environments.
- * Example uses of this error model include: - Partial errors. If a service
- * needs to return partial errors to the client, it may embed the `Status` in
- * the normal response to indicate the partial errors. - Workflow errors. A
- * typical workflow has multiple steps. Each step may have a `Status` message
- * for error reporting purpose. - Batch operations. If a client uses batch
- * request and batch response, the `Status` message should be used directly
- * inside batch response, one for each error sub-response. - Asynchronous
- * operations. If an API call embeds asynchronous operation results in its
- * response, the status of those operations should be represented directly using
- * the `Status` message. - Logging. If some API errors are stored in logs, the
- * message `Status` could be used directly after any stripping needed for
- * security/privacy reasons.
- */
-class Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  core.int code;
-  /**
-   * A list of messages that carry the error details. There will be a common set
-   * of message types for APIs to use.
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
-  core.List<core.Map<core.String, core.Object>> details;
-  /**
-   * A developer-facing error message, which should be in English. Any
-   * user-facing error message should be localized and sent in the
-   * google.rpc.Status.details field, or localized by the client.
-   */
-  core.String message;
-
-  Status();
-
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
-    }
-    if (_json.containsKey("details")) {
-      details = _json["details"];
-    }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (code != null) {
-      _json["code"] = code;
-    }
-    if (details != null) {
-      _json["details"] = details;
-    }
-    if (message != null) {
-      _json["message"] = message;
-    }
-    return _json;
-  }
-}
-
 /** The parameters to WriteLogEntries. */
 class WriteLogEntriesRequest {
   /**
-   * Required. The log entries to write. The log entries must have values for
-   * all required fields.
+   * Required. The log entries to write. Values supplied for the fields
+   * `log_name`, `resource`, and `labels` in this `entries.write` request are
+   * added to those log entries that do not provide their own values for the
+   * fields.
+   *
+   * To improve throughput and to avoid exceeding the
+   * [quota limit](/logging/quota-policy) for calls to `entries.write`,
+   * you should write multiple log entries at once rather than
+   * calling this method for each individual log entry.
    */
   core.List<LogEntry> entries;
   /**
-   * Optional. User-defined `key:value` items that are added to the `labels`
-   * field of each log entry in `entries`, except when a log entry specifies its
-   * own `key:value` item with the same key. Example: `{ "size": "large",
-   * "color":"red" }`
+   * Optional. Default labels that are added to the `labels` field of all log
+   * entries in `entries`. If a log entry already has a label with the same key
+   * as a label in this parameter, then the log entry's label is not changed.
+   * See LogEntry.
    */
   core.Map<core.String, core.String> labels;
   /**
-   * Optional. A default log resource name for those log entries in `entries`
-   * that do not specify their own `logName`. Example:
-   * `"projects/my-project/logs/syslog"`. See LogEntry.
+   * Optional. A default log resource name that is assigned to all log entries
+   * in `entries` that do not specify a value for `log_name`.  Example:
+   * `"projects/my-project/logs/syslog"`.  See
+   * LogEntry.
    */
   core.String logName;
   /**
    * Optional. Whether valid entries should be written even if some other
    * entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any
-   * entry is not written, the response status will be the error associated with
-   * one of the failed entries and include error details in the form of
+   * entry is not written, the response status will be the error associated
+   * with one of the failed entries and include error details in the form of
    * WriteLogEntriesPartialErrors.
    */
   core.bool partialSuccess;
   /**
-   * Optional. A default monitored resource for those log entries in `entries`
-   * that do not specify their own `resource`.
+   * Optional. A default monitored resource object that is assigned to all log
+   * entries in `entries` that do not specify a value for `resource`. Example:
+   *
+   *     { "type": "gce_instance",
+   *       "labels": {
+   *         "zone": "us-central1-a", "instance_id": "00000000000000000000" }}
+   *
+   * See LogEntry.
    */
   MonitoredResource resource;
 
@@ -2265,7 +2463,10 @@ class WriteLogEntriesRequest {
   }
 }
 
-/** Result returned from WriteLogEntries. empty */
+/**
+ * Result returned from WriteLogEntries.
+ * empty
+ */
 class WriteLogEntriesResponse {
 
   WriteLogEntriesResponse();

@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2584() {
+buildUnnamed2378() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2584(core.List<core.String> o) {
+checkUnnamed2378(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildCreateAuthUriResponse() {
   var o = new api.CreateAuthUriResponse();
   buildCounterCreateAuthUriResponse++;
   if (buildCounterCreateAuthUriResponse < 3) {
-    o.allProviders = buildUnnamed2584();
+    o.allProviders = buildUnnamed2378();
     o.authUri = "foo";
     o.captchaRequired = true;
     o.forExistingProvider = true;
@@ -85,7 +85,7 @@ buildCreateAuthUriResponse() {
 checkCreateAuthUriResponse(api.CreateAuthUriResponse o) {
   buildCounterCreateAuthUriResponse++;
   if (buildCounterCreateAuthUriResponse < 3) {
-    checkUnnamed2584(o.allProviders);
+    checkUnnamed2378(o.allProviders);
     unittest.expect(o.authUri, unittest.equals('foo'));
     unittest.expect(o.captchaRequired, unittest.isTrue);
     unittest.expect(o.forExistingProvider, unittest.isTrue);
@@ -116,14 +116,14 @@ checkDeleteAccountResponse(api.DeleteAccountResponse o) {
   buildCounterDeleteAccountResponse--;
 }
 
-buildUnnamed2585() {
+buildUnnamed2379() {
   var o = new core.List<api.UserInfo>();
   o.add(buildUserInfo());
   o.add(buildUserInfo());
   return o;
 }
 
-checkUnnamed2585(core.List<api.UserInfo> o) {
+checkUnnamed2379(core.List<api.UserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserInfo(o[0]);
   checkUserInfo(o[1]);
@@ -136,7 +136,7 @@ buildDownloadAccountResponse() {
   if (buildCounterDownloadAccountResponse < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.users = buildUnnamed2585();
+    o.users = buildUnnamed2379();
   }
   buildCounterDownloadAccountResponse--;
   return o;
@@ -147,7 +147,7 @@ checkDownloadAccountResponse(api.DownloadAccountResponse o) {
   if (buildCounterDownloadAccountResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2585(o.users);
+    checkUnnamed2379(o.users);
   }
   buildCounterDownloadAccountResponse--;
 }
@@ -181,14 +181,14 @@ checkEmailTemplate(api.EmailTemplate o) {
   buildCounterEmailTemplate--;
 }
 
-buildUnnamed2586() {
+buildUnnamed2380() {
   var o = new core.List<api.UserInfo>();
   o.add(buildUserInfo());
   o.add(buildUserInfo());
   return o;
 }
 
-checkUnnamed2586(core.List<api.UserInfo> o) {
+checkUnnamed2380(core.List<api.UserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserInfo(o[0]);
   checkUserInfo(o[1]);
@@ -200,7 +200,7 @@ buildGetAccountInfoResponse() {
   buildCounterGetAccountInfoResponse++;
   if (buildCounterGetAccountInfoResponse < 3) {
     o.kind = "foo";
-    o.users = buildUnnamed2586();
+    o.users = buildUnnamed2380();
   }
   buildCounterGetAccountInfoResponse--;
   return o;
@@ -210,7 +210,7 @@ checkGetAccountInfoResponse(api.GetAccountInfoResponse o) {
   buildCounterGetAccountInfoResponse++;
   if (buildCounterGetAccountInfoResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2586(o.users);
+    checkUnnamed2380(o.users);
   }
   buildCounterGetAccountInfoResponse--;
 }
@@ -261,6 +261,19 @@ checkGetRecaptchaParamResponse(api.GetRecaptchaParamResponse o) {
   buildCounterGetRecaptchaParamResponse--;
 }
 
+buildUnnamed2381() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed2381(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
 core.int buildCounterIdentitytoolkitRelyingpartyCreateAuthUriRequest = 0;
 buildIdentitytoolkitRelyingpartyCreateAuthUriRequest() {
   var o = new api.IdentitytoolkitRelyingpartyCreateAuthUriRequest();
@@ -271,6 +284,7 @@ buildIdentitytoolkitRelyingpartyCreateAuthUriRequest() {
     o.clientId = "foo";
     o.context = "foo";
     o.continueUri = "foo";
+    o.customParameter = buildUnnamed2381();
     o.hostedDomain = "foo";
     o.identifier = "foo";
     o.oauthConsumerKey = "foo";
@@ -292,6 +306,7 @@ checkIdentitytoolkitRelyingpartyCreateAuthUriRequest(api.IdentitytoolkitRelyingp
     unittest.expect(o.clientId, unittest.equals('foo'));
     unittest.expect(o.context, unittest.equals('foo'));
     unittest.expect(o.continueUri, unittest.equals('foo'));
+    checkUnnamed2381(o.customParameter);
     unittest.expect(o.hostedDomain, unittest.equals('foo'));
     unittest.expect(o.identifier, unittest.equals('foo'));
     unittest.expect(o.oauthConsumerKey, unittest.equals('foo'));
@@ -350,27 +365,27 @@ checkIdentitytoolkitRelyingpartyDownloadAccountRequest(api.IdentitytoolkitRelyin
   buildCounterIdentitytoolkitRelyingpartyDownloadAccountRequest--;
 }
 
-buildUnnamed2587() {
+buildUnnamed2382() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2587(core.List<core.String> o) {
+checkUnnamed2382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2588() {
+buildUnnamed2383() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2588(core.List<core.String> o) {
+checkUnnamed2383(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -382,9 +397,9 @@ buildIdentitytoolkitRelyingpartyGetAccountInfoRequest() {
   buildCounterIdentitytoolkitRelyingpartyGetAccountInfoRequest++;
   if (buildCounterIdentitytoolkitRelyingpartyGetAccountInfoRequest < 3) {
     o.delegatedProjectNumber = "foo";
-    o.email = buildUnnamed2587();
+    o.email = buildUnnamed2382();
     o.idToken = "foo";
-    o.localId = buildUnnamed2588();
+    o.localId = buildUnnamed2383();
   }
   buildCounterIdentitytoolkitRelyingpartyGetAccountInfoRequest--;
   return o;
@@ -394,34 +409,34 @@ checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(api.IdentitytoolkitRelying
   buildCounterIdentitytoolkitRelyingpartyGetAccountInfoRequest++;
   if (buildCounterIdentitytoolkitRelyingpartyGetAccountInfoRequest < 3) {
     unittest.expect(o.delegatedProjectNumber, unittest.equals('foo'));
-    checkUnnamed2587(o.email);
+    checkUnnamed2382(o.email);
     unittest.expect(o.idToken, unittest.equals('foo'));
-    checkUnnamed2588(o.localId);
+    checkUnnamed2383(o.localId);
   }
   buildCounterIdentitytoolkitRelyingpartyGetAccountInfoRequest--;
 }
 
-buildUnnamed2589() {
+buildUnnamed2384() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2589(core.List<core.String> o) {
+checkUnnamed2384(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2590() {
+buildUnnamed2385() {
   var o = new core.List<api.IdpConfig>();
   o.add(buildIdpConfig());
   o.add(buildIdpConfig());
   return o;
 }
 
-checkUnnamed2590(core.List<api.IdpConfig> o) {
+checkUnnamed2385(core.List<api.IdpConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIdpConfig(o[0]);
   checkIdpConfig(o[1]);
@@ -434,10 +449,11 @@ buildIdentitytoolkitRelyingpartyGetProjectConfigResponse() {
   if (buildCounterIdentitytoolkitRelyingpartyGetProjectConfigResponse < 3) {
     o.allowPasswordUser = true;
     o.apiKey = "foo";
-    o.authorizedDomains = buildUnnamed2589();
+    o.authorizedDomains = buildUnnamed2384();
     o.changeEmailTemplate = buildEmailTemplate();
+    o.dynamicLinksDomain = "foo";
     o.enableAnonymousUser = true;
-    o.idpConfig = buildUnnamed2590();
+    o.idpConfig = buildUnnamed2385();
     o.legacyResetPasswordTemplate = buildEmailTemplate();
     o.projectId = "foo";
     o.resetPasswordTemplate = buildEmailTemplate();
@@ -453,10 +469,11 @@ checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(api.IdentitytoolkitRely
   if (buildCounterIdentitytoolkitRelyingpartyGetProjectConfigResponse < 3) {
     unittest.expect(o.allowPasswordUser, unittest.isTrue);
     unittest.expect(o.apiKey, unittest.equals('foo'));
-    checkUnnamed2589(o.authorizedDomains);
+    checkUnnamed2384(o.authorizedDomains);
     checkEmailTemplate(o.changeEmailTemplate);
+    unittest.expect(o.dynamicLinksDomain, unittest.equals('foo'));
     unittest.expect(o.enableAnonymousUser, unittest.isTrue);
-    checkUnnamed2590(o.idpConfig);
+    checkUnnamed2385(o.idpConfig);
     checkEmailTemplate(o.legacyResetPasswordTemplate);
     unittest.expect(o.projectId, unittest.equals('foo'));
     checkEmailTemplate(o.resetPasswordTemplate);
@@ -504,40 +521,40 @@ checkIdentitytoolkitRelyingpartyResetPasswordRequest(api.IdentitytoolkitRelyingp
   buildCounterIdentitytoolkitRelyingpartyResetPasswordRequest--;
 }
 
-buildUnnamed2591() {
+buildUnnamed2386() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2591(core.List<core.String> o) {
+checkUnnamed2386(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2592() {
+buildUnnamed2387() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2592(core.List<core.String> o) {
+checkUnnamed2387(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2593() {
+buildUnnamed2388() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2593(core.List<core.String> o) {
+checkUnnamed2388(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -552,8 +569,8 @@ buildIdentitytoolkitRelyingpartySetAccountInfoRequest() {
     o.captchaResponse = "foo";
     o.createdAt = "foo";
     o.delegatedProjectNumber = "foo";
-    o.deleteAttribute = buildUnnamed2591();
-    o.deleteProvider = buildUnnamed2592();
+    o.deleteAttribute = buildUnnamed2386();
+    o.deleteProvider = buildUnnamed2387();
     o.disableUser = true;
     o.displayName = "foo";
     o.email = "foo";
@@ -565,7 +582,7 @@ buildIdentitytoolkitRelyingpartySetAccountInfoRequest() {
     o.oobCode = "foo";
     o.password = "foo";
     o.photoUrl = "foo";
-    o.provider = buildUnnamed2593();
+    o.provider = buildUnnamed2388();
     o.returnSecureToken = true;
     o.upgradeToFederatedLogin = true;
     o.validSince = "foo";
@@ -581,8 +598,8 @@ checkIdentitytoolkitRelyingpartySetAccountInfoRequest(api.IdentitytoolkitRelying
     unittest.expect(o.captchaResponse, unittest.equals('foo'));
     unittest.expect(o.createdAt, unittest.equals('foo'));
     unittest.expect(o.delegatedProjectNumber, unittest.equals('foo'));
-    checkUnnamed2591(o.deleteAttribute);
-    checkUnnamed2592(o.deleteProvider);
+    checkUnnamed2386(o.deleteAttribute);
+    checkUnnamed2387(o.deleteProvider);
     unittest.expect(o.disableUser, unittest.isTrue);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.email, unittest.equals('foo'));
@@ -594,7 +611,7 @@ checkIdentitytoolkitRelyingpartySetAccountInfoRequest(api.IdentitytoolkitRelying
     unittest.expect(o.oobCode, unittest.equals('foo'));
     unittest.expect(o.password, unittest.equals('foo'));
     unittest.expect(o.photoUrl, unittest.equals('foo'));
-    checkUnnamed2593(o.provider);
+    checkUnnamed2388(o.provider);
     unittest.expect(o.returnSecureToken, unittest.isTrue);
     unittest.expect(o.upgradeToFederatedLogin, unittest.isTrue);
     unittest.expect(o.validSince, unittest.equals('foo'));
@@ -602,27 +619,27 @@ checkIdentitytoolkitRelyingpartySetAccountInfoRequest(api.IdentitytoolkitRelying
   buildCounterIdentitytoolkitRelyingpartySetAccountInfoRequest--;
 }
 
-buildUnnamed2594() {
+buildUnnamed2389() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2594(core.List<core.String> o) {
+checkUnnamed2389(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2595() {
+buildUnnamed2390() {
   var o = new core.List<api.IdpConfig>();
   o.add(buildIdpConfig());
   o.add(buildIdpConfig());
   return o;
 }
 
-checkUnnamed2595(core.List<api.IdpConfig> o) {
+checkUnnamed2390(core.List<api.IdpConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIdpConfig(o[0]);
   checkIdpConfig(o[1]);
@@ -635,11 +652,11 @@ buildIdentitytoolkitRelyingpartySetProjectConfigRequest() {
   if (buildCounterIdentitytoolkitRelyingpartySetProjectConfigRequest < 3) {
     o.allowPasswordUser = true;
     o.apiKey = "foo";
-    o.authorizedDomains = buildUnnamed2594();
+    o.authorizedDomains = buildUnnamed2389();
     o.changeEmailTemplate = buildEmailTemplate();
     o.delegatedProjectNumber = "foo";
     o.enableAnonymousUser = true;
-    o.idpConfig = buildUnnamed2595();
+    o.idpConfig = buildUnnamed2390();
     o.legacyResetPasswordTemplate = buildEmailTemplate();
     o.resetPasswordTemplate = buildEmailTemplate();
     o.useEmailSending = true;
@@ -654,11 +671,11 @@ checkIdentitytoolkitRelyingpartySetProjectConfigRequest(api.IdentitytoolkitRelyi
   if (buildCounterIdentitytoolkitRelyingpartySetProjectConfigRequest < 3) {
     unittest.expect(o.allowPasswordUser, unittest.isTrue);
     unittest.expect(o.apiKey, unittest.equals('foo'));
-    checkUnnamed2594(o.authorizedDomains);
+    checkUnnamed2389(o.authorizedDomains);
     checkEmailTemplate(o.changeEmailTemplate);
     unittest.expect(o.delegatedProjectNumber, unittest.equals('foo'));
     unittest.expect(o.enableAnonymousUser, unittest.isTrue);
-    checkUnnamed2595(o.idpConfig);
+    checkUnnamed2390(o.idpConfig);
     checkEmailTemplate(o.legacyResetPasswordTemplate);
     checkEmailTemplate(o.resetPasswordTemplate);
     unittest.expect(o.useEmailSending, unittest.isTrue);
@@ -733,11 +750,14 @@ buildIdentitytoolkitRelyingpartySignupNewUserRequest() {
   if (buildCounterIdentitytoolkitRelyingpartySignupNewUserRequest < 3) {
     o.captchaChallenge = "foo";
     o.captchaResponse = "foo";
+    o.disabled = true;
     o.displayName = "foo";
     o.email = "foo";
+    o.emailVerified = true;
     o.idToken = "foo";
     o.instanceId = "foo";
     o.password = "foo";
+    o.photoUrl = "foo";
   }
   buildCounterIdentitytoolkitRelyingpartySignupNewUserRequest--;
   return o;
@@ -748,23 +768,26 @@ checkIdentitytoolkitRelyingpartySignupNewUserRequest(api.IdentitytoolkitRelyingp
   if (buildCounterIdentitytoolkitRelyingpartySignupNewUserRequest < 3) {
     unittest.expect(o.captchaChallenge, unittest.equals('foo'));
     unittest.expect(o.captchaResponse, unittest.equals('foo'));
+    unittest.expect(o.disabled, unittest.isTrue);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.email, unittest.equals('foo'));
+    unittest.expect(o.emailVerified, unittest.isTrue);
     unittest.expect(o.idToken, unittest.equals('foo'));
     unittest.expect(o.instanceId, unittest.equals('foo'));
     unittest.expect(o.password, unittest.equals('foo'));
+    unittest.expect(o.photoUrl, unittest.equals('foo'));
   }
   buildCounterIdentitytoolkitRelyingpartySignupNewUserRequest--;
 }
 
-buildUnnamed2596() {
+buildUnnamed2391() {
   var o = new core.List<api.UserInfo>();
   o.add(buildUserInfo());
   o.add(buildUserInfo());
   return o;
 }
 
-checkUnnamed2596(core.List<api.UserInfo> o) {
+checkUnnamed2391(core.List<api.UserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserInfo(o[0]);
   checkUserInfo(o[1]);
@@ -775,13 +798,16 @@ buildIdentitytoolkitRelyingpartyUploadAccountRequest() {
   var o = new api.IdentitytoolkitRelyingpartyUploadAccountRequest();
   buildCounterIdentitytoolkitRelyingpartyUploadAccountRequest++;
   if (buildCounterIdentitytoolkitRelyingpartyUploadAccountRequest < 3) {
+    o.allowOverwrite = true;
     o.delegatedProjectNumber = "foo";
     o.hashAlgorithm = "foo";
     o.memoryCost = 42;
     o.rounds = 42;
     o.saltSeparator = "foo";
+    o.sanityCheck = true;
     o.signerKey = "foo";
-    o.users = buildUnnamed2596();
+    o.targetProjectId = "foo";
+    o.users = buildUnnamed2391();
   }
   buildCounterIdentitytoolkitRelyingpartyUploadAccountRequest--;
   return o;
@@ -790,13 +816,16 @@ buildIdentitytoolkitRelyingpartyUploadAccountRequest() {
 checkIdentitytoolkitRelyingpartyUploadAccountRequest(api.IdentitytoolkitRelyingpartyUploadAccountRequest o) {
   buildCounterIdentitytoolkitRelyingpartyUploadAccountRequest++;
   if (buildCounterIdentitytoolkitRelyingpartyUploadAccountRequest < 3) {
+    unittest.expect(o.allowOverwrite, unittest.isTrue);
     unittest.expect(o.delegatedProjectNumber, unittest.equals('foo'));
     unittest.expect(o.hashAlgorithm, unittest.equals('foo'));
     unittest.expect(o.memoryCost, unittest.equals(42));
     unittest.expect(o.rounds, unittest.equals(42));
     unittest.expect(o.saltSeparator, unittest.equals('foo'));
+    unittest.expect(o.sanityCheck, unittest.isTrue);
     unittest.expect(o.signerKey, unittest.equals('foo'));
-    checkUnnamed2596(o.users);
+    unittest.expect(o.targetProjectId, unittest.equals('foo'));
+    checkUnnamed2391(o.users);
   }
   buildCounterIdentitytoolkitRelyingpartyUploadAccountRequest--;
 }
@@ -898,14 +927,14 @@ checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(api.IdentitytoolkitRelying
   buildCounterIdentitytoolkitRelyingpartyVerifyPasswordRequest--;
 }
 
-buildUnnamed2597() {
+buildUnnamed2392() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2597(core.List<core.String> o) {
+checkUnnamed2392(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -921,7 +950,7 @@ buildIdpConfig() {
     o.experimentPercent = 42;
     o.provider = "foo";
     o.secret = "foo";
-    o.whitelistedAudiences = buildUnnamed2597();
+    o.whitelistedAudiences = buildUnnamed2392();
   }
   buildCounterIdpConfig--;
   return o;
@@ -935,7 +964,7 @@ checkIdpConfig(api.IdpConfig o) {
     unittest.expect(o.experimentPercent, unittest.equals(42));
     unittest.expect(o.provider, unittest.equals('foo'));
     unittest.expect(o.secret, unittest.equals('foo'));
-    checkUnnamed2597(o.whitelistedAudiences);
+    checkUnnamed2392(o.whitelistedAudiences);
   }
   buildCounterIdpConfig--;
 }
@@ -980,6 +1009,8 @@ buildResetPasswordResponse() {
   if (buildCounterResetPasswordResponse < 3) {
     o.email = "foo";
     o.kind = "foo";
+    o.newEmail = "foo";
+    o.requestType = "foo";
   }
   buildCounterResetPasswordResponse--;
   return o;
@@ -990,6 +1021,8 @@ checkResetPasswordResponse(api.ResetPasswordResponse o) {
   if (buildCounterResetPasswordResponse < 3) {
     unittest.expect(o.email, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.newEmail, unittest.equals('foo'));
+    unittest.expect(o.requestType, unittest.equals('foo'));
   }
   buildCounterResetPasswordResponse--;
 }
@@ -1019,14 +1052,14 @@ checkSetAccountInfoResponseProviderUserInfo(api.SetAccountInfoResponseProviderUs
   buildCounterSetAccountInfoResponseProviderUserInfo--;
 }
 
-buildUnnamed2598() {
+buildUnnamed2393() {
   var o = new core.List<api.SetAccountInfoResponseProviderUserInfo>();
   o.add(buildSetAccountInfoResponseProviderUserInfo());
   o.add(buildSetAccountInfoResponseProviderUserInfo());
   return o;
 }
 
-checkUnnamed2598(core.List<api.SetAccountInfoResponseProviderUserInfo> o) {
+checkUnnamed2393(core.List<api.SetAccountInfoResponseProviderUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetAccountInfoResponseProviderUserInfo(o[0]);
   checkSetAccountInfoResponseProviderUserInfo(o[1]);
@@ -1046,7 +1079,7 @@ buildSetAccountInfoResponse() {
     o.newEmail = "foo";
     o.passwordHash = "foo";
     o.photoUrl = "foo";
-    o.providerUserInfo = buildUnnamed2598();
+    o.providerUserInfo = buildUnnamed2393();
     o.refreshToken = "foo";
   }
   buildCounterSetAccountInfoResponse--;
@@ -1065,7 +1098,7 @@ checkSetAccountInfoResponse(api.SetAccountInfoResponse o) {
     unittest.expect(o.newEmail, unittest.equals('foo'));
     unittest.expect(o.passwordHash, unittest.equals('foo'));
     unittest.expect(o.photoUrl, unittest.equals('foo'));
-    checkUnnamed2598(o.providerUserInfo);
+    checkUnnamed2393(o.providerUserInfo);
     unittest.expect(o.refreshToken, unittest.equals('foo'));
   }
   buildCounterSetAccountInfoResponse--;
@@ -1123,14 +1156,14 @@ checkUploadAccountResponseError(api.UploadAccountResponseError o) {
   buildCounterUploadAccountResponseError--;
 }
 
-buildUnnamed2599() {
+buildUnnamed2394() {
   var o = new core.List<api.UploadAccountResponseError>();
   o.add(buildUploadAccountResponseError());
   o.add(buildUploadAccountResponseError());
   return o;
 }
 
-checkUnnamed2599(core.List<api.UploadAccountResponseError> o) {
+checkUnnamed2394(core.List<api.UploadAccountResponseError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUploadAccountResponseError(o[0]);
   checkUploadAccountResponseError(o[1]);
@@ -1141,7 +1174,7 @@ buildUploadAccountResponse() {
   var o = new api.UploadAccountResponse();
   buildCounterUploadAccountResponse++;
   if (buildCounterUploadAccountResponse < 3) {
-    o.error = buildUnnamed2599();
+    o.error = buildUnnamed2394();
     o.kind = "foo";
   }
   buildCounterUploadAccountResponse--;
@@ -1151,7 +1184,7 @@ buildUploadAccountResponse() {
 checkUploadAccountResponse(api.UploadAccountResponse o) {
   buildCounterUploadAccountResponse++;
   if (buildCounterUploadAccountResponse < 3) {
-    checkUnnamed2599(o.error);
+    checkUnnamed2394(o.error);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterUploadAccountResponse--;
@@ -1168,7 +1201,6 @@ buildUserInfoProviderUserInfo() {
     o.photoUrl = "foo";
     o.providerId = "foo";
     o.rawId = "foo";
-    o.rawUserInfo = "foo";
     o.screenName = "foo";
   }
   buildCounterUserInfoProviderUserInfo--;
@@ -1184,20 +1216,19 @@ checkUserInfoProviderUserInfo(api.UserInfoProviderUserInfo o) {
     unittest.expect(o.photoUrl, unittest.equals('foo'));
     unittest.expect(o.providerId, unittest.equals('foo'));
     unittest.expect(o.rawId, unittest.equals('foo'));
-    unittest.expect(o.rawUserInfo, unittest.equals('foo'));
     unittest.expect(o.screenName, unittest.equals('foo'));
   }
   buildCounterUserInfoProviderUserInfo--;
 }
 
-buildUnnamed2600() {
+buildUnnamed2395() {
   var o = new core.List<api.UserInfoProviderUserInfo>();
   o.add(buildUserInfoProviderUserInfo());
   o.add(buildUserInfoProviderUserInfo());
   return o;
 }
 
-checkUnnamed2600(core.List<api.UserInfoProviderUserInfo> o) {
+checkUnnamed2395(core.List<api.UserInfoProviderUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserInfoProviderUserInfo(o[0]);
   checkUserInfoProviderUserInfo(o[1]);
@@ -1209,6 +1240,7 @@ buildUserInfo() {
   buildCounterUserInfo++;
   if (buildCounterUserInfo < 3) {
     o.createdAt = "foo";
+    o.customAuth = true;
     o.disabled = true;
     o.displayName = "foo";
     o.email = "foo";
@@ -1218,7 +1250,8 @@ buildUserInfo() {
     o.passwordHash = "foo";
     o.passwordUpdatedAt = 42.0;
     o.photoUrl = "foo";
-    o.providerUserInfo = buildUnnamed2600();
+    o.providerUserInfo = buildUnnamed2395();
+    o.rawPassword = "foo";
     o.salt = "foo";
     o.screenName = "foo";
     o.validSince = "foo";
@@ -1232,6 +1265,7 @@ checkUserInfo(api.UserInfo o) {
   buildCounterUserInfo++;
   if (buildCounterUserInfo < 3) {
     unittest.expect(o.createdAt, unittest.equals('foo'));
+    unittest.expect(o.customAuth, unittest.isTrue);
     unittest.expect(o.disabled, unittest.isTrue);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.email, unittest.equals('foo'));
@@ -1241,7 +1275,8 @@ checkUserInfo(api.UserInfo o) {
     unittest.expect(o.passwordHash, unittest.equals('foo'));
     unittest.expect(o.passwordUpdatedAt, unittest.equals(42.0));
     unittest.expect(o.photoUrl, unittest.equals('foo'));
-    checkUnnamed2600(o.providerUserInfo);
+    checkUnnamed2395(o.providerUserInfo);
+    unittest.expect(o.rawPassword, unittest.equals('foo'));
     unittest.expect(o.salt, unittest.equals('foo'));
     unittest.expect(o.screenName, unittest.equals('foo'));
     unittest.expect(o.validSince, unittest.equals('foo'));
@@ -1250,14 +1285,14 @@ checkUserInfo(api.UserInfo o) {
   buildCounterUserInfo--;
 }
 
-buildUnnamed2601() {
+buildUnnamed2396() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2601(core.List<core.String> o) {
+checkUnnamed2396(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1305,7 +1340,7 @@ buildVerifyAssertionResponse() {
     o.refreshToken = "foo";
     o.screenName = "foo";
     o.timeZone = "foo";
-    o.verifiedProvider = buildUnnamed2601();
+    o.verifiedProvider = buildUnnamed2396();
   }
   buildCounterVerifyAssertionResponse--;
   return o;
@@ -1351,7 +1386,7 @@ checkVerifyAssertionResponse(api.VerifyAssertionResponse o) {
     unittest.expect(o.refreshToken, unittest.equals('foo'));
     unittest.expect(o.screenName, unittest.equals('foo'));
     unittest.expect(o.timeZone, unittest.equals('foo'));
-    checkUnnamed2601(o.verifiedProvider);
+    checkUnnamed2396(o.verifiedProvider);
   }
   buildCounterVerifyAssertionResponse--;
 }

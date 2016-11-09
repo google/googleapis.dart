@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/ddmconversions": {
+                    "description": "Manage DoubleClick Digital Marketing conversions"
+                },
                 "https://www.googleapis.com/auth/dfareporting": {
                     "description": "View and manage DoubleClick for Advertisers reports"
                 },
@@ -11,18 +14,18 @@
             }
         }
     },
-    "basePath": "/dfareporting/v2.3/",
-    "baseUrl": "https://www.googleapis.com/dfareporting/v2.3/",
+    "basePath": "/dfareporting/v2.7/",
+    "baseUrl": "https://www.googleapis.com/dfareporting/v2.7/",
     "batchPath": "batch",
     "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/doubleclick-advertisers/reporting/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/earHejg0RJ0FfMMYqH42qJC8MlQ\"",
+    "documentationLink": "https://developers.google.com/doubleclick-advertisers/",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/OBUnP-P7ni-fogNkVJMH8BP7EG8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
     },
-    "id": "dfareporting:v2.3",
+    "id": "dfareporting:v2.7",
     "kind": "discovery#restDescription",
     "name": "dfareporting",
     "ownerDomain": "google.com",
@@ -292,7 +295,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of account user profiles, possibly filtered.",
+                    "description": "Retrieves a list of account user profiles, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.accountUserProfiles.list",
                     "parameterOrder": [
@@ -480,7 +483,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of accounts, possibly filtered.",
+                    "description": "Retrieves the list of accounts, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.accounts.list",
                     "parameterOrder": [
@@ -683,7 +686,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of ads, possibly filtered.",
+                    "description": "Retrieves a list of ads, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.ads.list",
                     "parameterOrder": [
@@ -721,13 +724,13 @@
                             "type": "string"
                         },
                         "compatibility": {
-                            "description": "Select default ads with the specified compatibility. Applicable when type is AD_SERVING_DEFAULT_AD. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering an in-stream video ads developed with the VAST standard.",
+                            "description": "Select default ads with the specified compatibility. Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering an in-stream video ads developed with the VAST standard.",
                             "enum": [
                                 "APP",
                                 "APP_INTERSTITIAL",
-                                "IN_STREAM_VIDEO",
-                                "WEB",
-                                "WEB_INTERSTITIAL"
+                                "DISPLAY",
+                                "DISPLAY_INTERSTITIAL",
+                                "IN_STREAM_VIDEO"
                             ],
                             "enumDescriptions": [
                                 "",
@@ -751,63 +754,6 @@
                             "format": "int64",
                             "location": "query",
                             "repeated": true,
-                            "type": "string"
-                        },
-                        "creativeType": {
-                            "description": "Select only ads with the specified creativeType.",
-                            "enum": [
-                                "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
-                                "CUSTOM_INPAGE",
-                                "CUSTOM_INTERSTITIAL",
-                                "ENHANCED_BANNER",
-                                "ENHANCED_IMAGE",
-                                "FLASH_INPAGE",
-                                "HTML5_BANNER",
-                                "IMAGE",
-                                "INSTREAM_VIDEO",
-                                "INSTREAM_VIDEO_REDIRECT",
-                                "INTERNAL_REDIRECT",
-                                "INTERSTITIAL_INTERNAL_REDIRECT",
-                                "REDIRECT",
-                                "RICH_MEDIA_EXPANDING",
-                                "RICH_MEDIA_IM_EXPAND",
-                                "RICH_MEDIA_INPAGE",
-                                "RICH_MEDIA_INPAGE_FLOATING",
-                                "RICH_MEDIA_INTERSTITIAL_FLOAT",
-                                "RICH_MEDIA_MOBILE_IN_APP",
-                                "RICH_MEDIA_MULTI_FLOATING",
-                                "RICH_MEDIA_PEEL_DOWN",
-                                "TRACKING_TEXT",
-                                "VPAID_LINEAR",
-                                "VPAID_NON_LINEAR"
-                            ],
-                            "enumDescriptions": [
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                ""
-                            ],
-                            "location": "query",
                             "type": "string"
                         },
                         "dynamicClickTracker": {
@@ -1097,7 +1043,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of advertiser groups, possibly filtered.",
+                    "description": "Retrieves a list of advertiser groups, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.advertiserGroups.list",
                     "parameterOrder": [
@@ -1295,7 +1241,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of advertisers, possibly filtered.",
+                    "description": "Retrieves a list of advertisers, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.advertisers.list",
                     "parameterOrder": [
@@ -1540,7 +1486,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves the list of creative IDs associated with the specified campaign.",
+                    "description": "Retrieves the list of creative IDs associated with the specified campaign. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.campaignCreativeAssociations.list",
                     "parameterOrder": [
@@ -1673,7 +1619,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of campaigns, possibly filtered.",
+                    "description": "Retrieves a list of campaigns, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.campaigns.list",
                     "parameterOrder": [
@@ -1887,7 +1833,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of change logs.",
+                    "description": "Retrieves a list of change logs. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.changeLogs.list",
                     "parameterOrder": [
@@ -2002,6 +1948,7 @@
                                 "OBJECT_REMARKETING_LIST",
                                 "OBJECT_RICHMEDIA_CREATIVE",
                                 "OBJECT_SD_SITE",
+                                "OBJECT_SEARCH_LIFT_STUDY",
                                 "OBJECT_SIZE",
                                 "OBJECT_SUBACCOUNT",
                                 "OBJECT_TARGETING_TEMPLATE",
@@ -2010,6 +1957,7 @@
                                 "OBJECT_USER_ROLE"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -2292,7 +2240,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of content categories, possibly filtered.",
+                    "description": "Retrieves a list of content categories, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.contentCategories.list",
                     "parameterOrder": [
@@ -2428,6 +2376,37 @@
                 }
             }
         },
+        "conversions": {
+            "methods": {
+                "batchinsert": {
+                    "description": "Inserts conversions.",
+                    "httpMethod": "POST",
+                    "id": "dfareporting.conversions.batchinsert",
+                    "parameterOrder": [
+                        "profileId"
+                    ],
+                    "parameters": {
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/conversions/batchinsert",
+                    "request": {
+                        "$ref": "ConversionsBatchInsertRequest"
+                    },
+                    "response": {
+                        "$ref": "ConversionsBatchInsertResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/ddmconversions"
+                    ]
+                }
+            }
+        },
         "countries": {
             "methods": {
                 "get": {
@@ -2502,11 +2481,11 @@
                         "protocols": {
                             "resumable": {
                                 "multipart": true,
-                                "path": "/resumable/upload/dfareporting/v2.3/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
+                                "path": "/resumable/upload/dfareporting/v2.7/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
                             },
                             "simple": {
                                 "multipart": true,
-                                "path": "/upload/dfareporting/v2.3/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
+                                "path": "/upload/dfareporting/v2.7/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
                             }
                         }
                     },
@@ -2659,7 +2638,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of creative field values, possibly filtered.",
+                    "description": "Retrieves a list of creative field values, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeFieldValues.list",
                     "parameterOrder": [
@@ -2910,7 +2889,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of creative fields, possibly filtered.",
+                    "description": "Retrieves a list of creative fields, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeFields.list",
                     "parameterOrder": [
@@ -3115,7 +3094,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of creative groups, possibly filtered.",
+                    "description": "Retrieves a list of creative groups, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.creativeGroups.list",
                     "parameterOrder": [
@@ -3326,7 +3305,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of creatives, possibly filtered.",
+                    "description": "Retrieves a list of creatives, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.creatives.list",
                     "parameterOrder": [
@@ -3449,10 +3428,11 @@
                             "description": "Select only creatives with these creative types.",
                             "enum": [
                                 "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
-                                "CUSTOM_INPAGE",
-                                "CUSTOM_INTERSTITIAL",
-                                "ENHANCED_BANNER",
-                                "ENHANCED_IMAGE",
+                                "CUSTOM_DISPLAY",
+                                "CUSTOM_DISPLAY_INTERSTITIAL",
+                                "DISPLAY",
+                                "DISPLAY_IMAGE_GALLERY",
+                                "DISPLAY_REDIRECT",
                                 "FLASH_INPAGE",
                                 "HTML5_BANNER",
                                 "IMAGE",
@@ -3460,18 +3440,17 @@
                                 "INSTREAM_VIDEO_REDIRECT",
                                 "INTERNAL_REDIRECT",
                                 "INTERSTITIAL_INTERNAL_REDIRECT",
-                                "REDIRECT",
-                                "RICH_MEDIA_EXPANDING",
+                                "RICH_MEDIA_DISPLAY_BANNER",
+                                "RICH_MEDIA_DISPLAY_EXPANDING",
+                                "RICH_MEDIA_DISPLAY_INTERSTITIAL",
+                                "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL",
                                 "RICH_MEDIA_IM_EXPAND",
-                                "RICH_MEDIA_INPAGE",
                                 "RICH_MEDIA_INPAGE_FLOATING",
-                                "RICH_MEDIA_INTERSTITIAL_FLOAT",
                                 "RICH_MEDIA_MOBILE_IN_APP",
-                                "RICH_MEDIA_MULTI_FLOATING",
                                 "RICH_MEDIA_PEEL_DOWN",
                                 "TRACKING_TEXT",
-                                "VPAID_LINEAR",
-                                "VPAID_NON_LINEAR"
+                                "VPAID_LINEAR_VIDEO",
+                                "VPAID_NON_LINEAR_VIDEO"
                             ],
                             "enumDescriptions": [
                                 "",
@@ -3655,7 +3634,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of directory site contacts, possibly filtered.",
+                    "description": "Retrieves a list of directory site contacts, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.directorySiteContacts.list",
                     "parameterOrder": [
@@ -3798,7 +3777,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of directory sites, possibly filtered.",
+                    "description": "Retrieves a list of directory sites, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.directorySites.list",
                     "parameterOrder": [
@@ -3902,6 +3881,151 @@
                     "path": "userprofiles/{profileId}/directorySites",
                     "response": {
                         "$ref": "DirectorySitesListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                }
+            }
+        },
+        "dynamicTargetingKeys": {
+            "methods": {
+                "delete": {
+                    "description": "Deletes an existing dynamic targeting key.",
+                    "httpMethod": "DELETE",
+                    "id": "dfareporting.dynamicTargetingKeys.delete",
+                    "parameterOrder": [
+                        "profileId",
+                        "objectId",
+                        "name",
+                        "objectType"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase.",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "objectId": {
+                            "description": "ID of the object of this dynamic targeting key. This is a required field.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "objectType": {
+                            "description": "Type of the object of this dynamic targeting key. This is a required field.",
+                            "enum": [
+                                "OBJECT_AD",
+                                "OBJECT_ADVERTISER",
+                                "OBJECT_CREATIVE",
+                                "OBJECT_PLACEMENT"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/dynamicTargetingKeys/{objectId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                },
+                "insert": {
+                    "description": "Inserts a new dynamic targeting key. Keys must be created at the advertiser level before being assigned to the advertiser's ads, creatives, or placements. There is a maximum of 1000 keys per advertiser, out of which a maximum of 20 keys can be assigned per ad, creative, or placement.",
+                    "httpMethod": "POST",
+                    "id": "dfareporting.dynamicTargetingKeys.insert",
+                    "parameterOrder": [
+                        "profileId"
+                    ],
+                    "parameters": {
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/dynamicTargetingKeys",
+                    "request": {
+                        "$ref": "DynamicTargetingKey"
+                    },
+                    "response": {
+                        "$ref": "DynamicTargetingKey"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves a list of dynamic targeting keys.",
+                    "httpMethod": "GET",
+                    "id": "dfareporting.dynamicTargetingKeys.list",
+                    "parameterOrder": [
+                        "profileId"
+                    ],
+                    "parameters": {
+                        "advertiserId": {
+                            "description": "Select only dynamic targeting keys whose object has this advertiser ID.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "names": {
+                            "description": "Select only dynamic targeting keys exactly matching these names.",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "objectId": {
+                            "description": "Select only dynamic targeting keys with this object ID.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "objectType": {
+                            "description": "Select only dynamic targeting keys with this object type.",
+                            "enum": [
+                                "OBJECT_AD",
+                                "OBJECT_ADVERTISER",
+                                "OBJECT_CREATIVE",
+                                "OBJECT_PLACEMENT"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/dynamicTargetingKeys",
+                    "response": {
+                        "$ref": "DynamicTargetingKeysListResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/dfatrafficking"
@@ -4408,7 +4532,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of floodlight activities, possibly filtered.",
+                    "description": "Retrieves a list of floodlight activities, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.floodlightActivities.list",
                     "parameterOrder": [
@@ -4653,7 +4777,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of floodlight activity groups, possibly filtered.",
+                    "description": "Retrieves a list of floodlight activity groups, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.floodlightActivityGroups.list",
                     "parameterOrder": [
@@ -4986,7 +5110,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of inventory items, possibly filtered.",
+                    "description": "Retrieves a list of inventory items, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.inventoryItems.list",
                     "parameterOrder": [
@@ -5063,6 +5187,19 @@
                             "enum": [
                                 "ASCENDING",
                                 "DESCENDING"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Select only inventory items with this type.",
+                            "enum": [
+                                "PLANNING_PLACEMENT_TYPE_CREDIT",
+                                "PLANNING_PLACEMENT_TYPE_REGULAR"
                             ],
                             "enumDescriptions": [
                                 "",
@@ -5301,6 +5438,34 @@
                     },
                     "response": {
                         "$ref": "LandingPage"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                }
+            }
+        },
+        "languages": {
+            "methods": {
+                "list": {
+                    "description": "Retrieves a list of languages.",
+                    "httpMethod": "GET",
+                    "id": "dfareporting.languages.list",
+                    "parameterOrder": [
+                        "profileId"
+                    ],
+                    "parameters": {
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/languages",
+                    "response": {
+                        "$ref": "LanguagesListResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/dfatrafficking"
@@ -5559,7 +5724,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of order documents, possibly filtered.",
+                    "description": "Retrieves a list of order documents, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.orderDocuments.list",
                     "parameterOrder": [
@@ -5703,7 +5868,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of orders, possibly filtered.",
+                    "description": "Retrieves a list of orders, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.orders.list",
                     "parameterOrder": [
@@ -5854,7 +6019,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of placement groups, possibly filtered.",
+                    "description": "Retrieves a list of placement groups, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.placementGroups.list",
                     "parameterOrder": [
@@ -6183,7 +6348,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of placement strategies, possibly filtered.",
+                    "description": "Retrieves a list of placement strategies, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.placementStrategies.list",
                     "parameterOrder": [
@@ -6464,7 +6629,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of placements, possibly filtered.",
+                    "description": "Retrieves a list of placements, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.placements.list",
                     "parameterOrder": [
@@ -6491,13 +6656,13 @@
                             "type": "string"
                         },
                         "compatibilities": {
-                            "description": "Select only placements that are associated with these compatibilities. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard.",
+                            "description": "Select only placements that are associated with these compatibilities. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard.",
                             "enum": [
                                 "APP",
                                 "APP_INTERSTITIAL",
-                                "IN_STREAM_VIDEO",
-                                "WEB",
-                                "WEB_INTERSTITIAL"
+                                "DISPLAY",
+                                "DISPLAY_INTERSTITIAL",
+                                "IN_STREAM_VIDEO"
                             ],
                             "enumDescriptions": [
                                 "",
@@ -6890,7 +7055,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of projects, possibly filtered.",
+                    "description": "Retrieves a list of projects, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.projects.list",
                     "parameterOrder": [
@@ -7159,7 +7324,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of remarketing lists, possibly filtered.",
+                    "description": "Retrieves a list of remarketing lists, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.remarketingLists.list",
                     "parameterOrder": [
@@ -7800,7 +7965,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of sites, possibly filtered.",
+                    "description": "Retrieves a list of sites, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.sites.list",
                     "parameterOrder": [
@@ -8159,7 +8324,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Gets a list of subaccounts, possibly filtered.",
+                    "description": "Gets a list of subaccounts, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.subaccounts.list",
                     "parameterOrder": [
@@ -8330,7 +8495,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of targetable remarketing lists, possibly filtered.",
+                    "description": "Retrieves a list of targetable remarketing lists, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.targetableRemarketingLists.list",
                     "parameterOrder": [
@@ -8403,6 +8568,210 @@
                     "path": "userprofiles/{profileId}/targetableRemarketingLists",
                     "response": {
                         "$ref": "TargetableRemarketingListsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                }
+            }
+        },
+        "targetingTemplates": {
+            "methods": {
+                "get": {
+                    "description": "Gets one targeting template by ID.",
+                    "httpMethod": "GET",
+                    "id": "dfareporting.targetingTemplates.get",
+                    "parameterOrder": [
+                        "profileId",
+                        "id"
+                    ],
+                    "parameters": {
+                        "id": {
+                            "description": "Targeting template ID.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/targetingTemplates/{id}",
+                    "response": {
+                        "$ref": "TargetingTemplate"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                },
+                "insert": {
+                    "description": "Inserts a new targeting template.",
+                    "httpMethod": "POST",
+                    "id": "dfareporting.targetingTemplates.insert",
+                    "parameterOrder": [
+                        "profileId"
+                    ],
+                    "parameters": {
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/targetingTemplates",
+                    "request": {
+                        "$ref": "TargetingTemplate"
+                    },
+                    "response": {
+                        "$ref": "TargetingTemplate"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves a list of targeting templates, optionally filtered. This method supports paging.",
+                    "httpMethod": "GET",
+                    "id": "dfareporting.targetingTemplates.list",
+                    "parameterOrder": [
+                        "profileId"
+                    ],
+                    "parameters": {
+                        "advertiserId": {
+                            "description": "Select only targeting templates with this advertiser ID.",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "ids": {
+                            "description": "Select only targeting templates with these IDs.",
+                            "format": "int64",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "description": "Maximum number of results to return.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Value of the nextPageToken from the previous result page.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "searchString": {
+                            "description": "Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, \"template*2015\" will return objects with names like \"template June 2015\", \"template April 2015\", or simply \"template 2015\". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of \"template\" will match objects with name \"my template\", \"template 2015\", or simply \"template\".",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sortField": {
+                            "description": "Field by which to sort the list.",
+                            "enum": [
+                                "ID",
+                                "NAME"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sortOrder": {
+                            "description": "Order of sorted results, default is ASCENDING.",
+                            "enum": [
+                                "ASCENDING",
+                                "DESCENDING"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/targetingTemplates",
+                    "response": {
+                        "$ref": "TargetingTemplatesListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates an existing targeting template. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "dfareporting.targetingTemplates.patch",
+                    "parameterOrder": [
+                        "profileId",
+                        "id"
+                    ],
+                    "parameters": {
+                        "id": {
+                            "description": "Targeting template ID.",
+                            "format": "int64",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/targetingTemplates",
+                    "request": {
+                        "$ref": "TargetingTemplate"
+                    },
+                    "response": {
+                        "$ref": "TargetingTemplate"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                },
+                "update": {
+                    "description": "Updates an existing targeting template.",
+                    "httpMethod": "PUT",
+                    "id": "dfareporting.targetingTemplates.update",
+                    "parameterOrder": [
+                        "profileId"
+                    ],
+                    "parameters": {
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/targetingTemplates",
+                    "request": {
+                        "$ref": "TargetingTemplate"
+                    },
+                    "response": {
+                        "$ref": "TargetingTemplate"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/dfatrafficking"
@@ -8670,7 +9039,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of user roles, possibly filtered.",
+                    "description": "Retrieves a list of user roles, possibly filtered. This method supports paging.",
                     "httpMethod": "GET",
                     "id": "dfareporting.userRoles.list",
                     "parameterOrder": [
@@ -8816,9 +9185,69 @@
                     ]
                 }
             }
+        },
+        "videoFormats": {
+            "methods": {
+                "get": {
+                    "description": "Gets one video format by ID.",
+                    "httpMethod": "GET",
+                    "id": "dfareporting.videoFormats.get",
+                    "parameterOrder": [
+                        "profileId",
+                        "id"
+                    ],
+                    "parameters": {
+                        "id": {
+                            "description": "Video format ID.",
+                            "format": "int32",
+                            "location": "path",
+                            "required": true,
+                            "type": "integer"
+                        },
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/videoFormats/{id}",
+                    "response": {
+                        "$ref": "VideoFormat"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                },
+                "list": {
+                    "description": "Lists available video formats.",
+                    "httpMethod": "GET",
+                    "id": "dfareporting.videoFormats.list",
+                    "parameterOrder": [
+                        "profileId"
+                    ],
+                    "parameters": {
+                        "profileId": {
+                            "description": "User profile ID associated with this request.",
+                            "format": "int64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "userprofiles/{profileId}/videoFormats",
+                    "response": {
+                        "$ref": "VideoFormatsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/dfatrafficking"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20160803",
+    "revision": "20161027",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -8857,9 +9286,11 @@
                         "ACTIVE_ADS_TIER_300K",
                         "ACTIVE_ADS_TIER_40K",
                         "ACTIVE_ADS_TIER_500K",
+                        "ACTIVE_ADS_TIER_750K",
                         "ACTIVE_ADS_TIER_75K"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -8880,10 +9311,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "comscoreVceEnabled": {
-                    "description": "Whether campaigns created in this account will be enabled for comScore vCE by default.",
-                    "type": "boolean"
                 },
                 "countryId": {
                     "description": "ID of the country associated with this account.",
@@ -8935,6 +9362,10 @@
                     "$ref": "ReportsConfiguration",
                     "description": "Reporting configuration of this account."
                 },
+                "shareReportsWithTwitter": {
+                    "description": "Share Path to Conversion reports with Twitter.",
+                    "type": "boolean"
+                },
                 "teaserSizeLimit": {
                     "description": "File size limit in kilobytes of Rich Media teaser creatives. Must be between 1 and 10240.",
                     "format": "int64",
@@ -8965,9 +9396,11 @@
                         "ACTIVE_ADS_TIER_300K",
                         "ACTIVE_ADS_TIER_40K",
                         "ACTIVE_ADS_TIER_500K",
+                        "ACTIVE_ADS_TIER_750K",
                         "ACTIVE_ADS_TIER_75K"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -9282,7 +9715,7 @@
                     "type": "string"
                 },
                 "active": {
-                    "description": "Whether this ad is active.",
+                    "description": "Whether this ad is active. When true, archived must be false.",
                     "type": "boolean"
                 },
                 "advertiserId": {
@@ -9295,7 +9728,7 @@
                     "description": "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."
                 },
                 "archived": {
-                    "description": "Whether this ad is archived.",
+                    "description": "Whether this ad is archived. When true, active must be false.",
                     "type": "boolean"
                 },
                 "audienceSegmentId": {
@@ -9325,13 +9758,13 @@
                     "type": "string"
                 },
                 "compatibility": {
-                    "description": "Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering an in-stream video ads developed with the VAST standard.",
+                    "description": "Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and DISPLAY_INTERSTITIAL refer to either rendering on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are only used for existing default ads. New mobile placements must be assigned DISPLAY or DISPLAY_INTERSTITIAL and default ads created for those placements will be limited to those compatibility types. IN_STREAM_VIDEO refers to rendering in-stream video ads developed with the VAST standard.",
                     "enum": [
                         "APP",
                         "APP_INTERSTITIAL",
-                        "IN_STREAM_VIDEO",
-                        "WEB",
-                        "WEB_INTERSTITIAL"
+                        "DISPLAY",
+                        "DISPLAY_INTERSTITIAL",
+                        "IN_STREAM_VIDEO"
                     ],
                     "enumDescriptions": [
                         "",
@@ -9407,6 +9840,10 @@
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#ad\".",
                     "type": "string"
                 },
+                "languageTargeting": {
+                    "$ref": "LanguageTargeting",
+                    "description": "Language targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD."
+                },
                 "lastModifiedInfo": {
                     "$ref": "LastModifiedInfo",
                     "description": "Information about the most recent modification of this ad. This is a read-only field."
@@ -9448,6 +9885,11 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "targetingTemplateId": {
+                    "description": "Targeting template ID, used to apply preconfigured targeting information to this ad. This cannot be set while any of dayPartTargeting, geoTargeting, keyValueTargetingExpression, languageTargeting, remarketingListExpression, or technologyTargeting are set. Applicable when type is AD_SERVING_STANDARD_AD.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "technologyTargeting": {
                     "$ref": "TechnologyTargeting",
                     "description": "Technology platform targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD."
@@ -9480,13 +9922,13 @@
                     "type": "string"
                 },
                 "compatibility": {
-                    "description": "Ad slot compatibility. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard.",
+                    "description": "Ad slot compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop, mobile devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard.",
                     "enum": [
-                        "PLANNING_RENDERING_ENVIRONMENT_TYPE_APP",
-                        "PLANNING_RENDERING_ENVIRONMENT_TYPE_APP_INTERSTITIAL",
-                        "PLANNING_RENDERING_ENVIRONMENT_TYPE_IN_STREAM_VIDEO",
-                        "PLANNING_RENDERING_ENVIRONMENT_TYPE_WEB",
-                        "PLANNING_RENDERING_ENVIRONMENT_TYPE_WEB_INTERSTITIAL"
+                        "APP",
+                        "APP_INTERSTITIAL",
+                        "DISPLAY",
+                        "DISPLAY_INTERSTITIAL",
+                        "IN_STREAM_VIDEO"
                     ],
                     "enumDescriptions": [
                         "",
@@ -9863,10 +10305,6 @@
                     "description": "Arbitrary comments about this campaign. Must be less than 256 characters long.",
                     "type": "string"
                 },
-                "comscoreVceEnabled": {
-                    "description": "Whether comScore vCE reports are enabled for this campaign.",
-                    "type": "boolean"
-                },
                 "createInfo": {
                     "$ref": "LastModifiedInfo",
                     "description": "Information about the creation of this campaign. This is a read-only field."
@@ -10182,11 +10620,11 @@
             "id": "ClickTag",
             "properties": {
                 "eventName": {
-                    "description": "Advertiser event name associated with the click tag. This field is used by ENHANCED_IMAGE, and HTML5_BANNER creatives. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE",
+                    "description": "Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Parameter name for the specified click tag. For ENHANCED_IMAGE creative assets, this field must match the value of the creative asset's creativeAssetId.name field.",
+                    "description": "Parameter name for the specified click tag. For DISPLAY_IMAGE_GALLERY creative assets, this field must match the value of the creative asset's creativeAssetId.name field.",
                     "type": "string"
                 },
                 "value": {
@@ -10246,6 +10684,33 @@
                 "creativeId": {
                     "description": "ID of the creative for this companion click-through override.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CompanionSetting": {
+            "description": "Companion Settings",
+            "id": "CompanionSetting",
+            "properties": {
+                "companionsDisabled": {
+                    "description": "Whether companions are disabled for this placement.",
+                    "type": "boolean"
+                },
+                "enabledSizes": {
+                    "description": "Whitelist of companion sizes to be served to this placement. Set this list to null or empty to serve all companion sizes.",
+                    "items": {
+                        "$ref": "Size"
+                    },
+                    "type": "array"
+                },
+                "imageOnly": {
+                    "description": "Whether to serve only static images as companions.",
+                    "type": "boolean"
+                },
+                "kind": {
+                    "default": "dfareporting#companionSetting",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#companionSetting\".",
                     "type": "string"
                 }
             },
@@ -10368,6 +10833,178 @@
                 "name": {
                     "description": "Name of this content category. This is a required field and must be less than 256 characters long and unique among content categories of the same account.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Conversion": {
+            "description": "A Conversion represents when a user successfully performs a desired action after seeing an ad.",
+            "id": "Conversion",
+            "properties": {
+                "childDirectedTreatment": {
+                    "description": "Whether the conversion was directed toward children.",
+                    "type": "boolean"
+                },
+                "customVariables": {
+                    "description": "Custom floodlight variables.",
+                    "items": {
+                        "$ref": "CustomFloodlightVariable"
+                    },
+                    "type": "array"
+                },
+                "encryptedUserId": {
+                    "description": "The alphanumeric encrypted user ID. When set, encryptionInfo should also be specified. This field is mutually exclusive with encryptedUserIdCandidates[] and mobileDeviceId. This or encryptedUserIdCandidates[] or mobileDeviceId is a required field.",
+                    "type": "string"
+                },
+                "encryptedUserIdCandidates": {
+                    "description": "A list of the alphanumeric encrypted user IDs. Any user ID with exposure prior to the conversion timestamp will be used in the inserted conversion. If no such user ID is found then the conversion will be rejected with NO_COOKIE_MATCH_FOUND error. When set, encryptionInfo should also be specified. This field should only be used when calling conversions.batchinsert. This field is mutually exclusive with encryptedUserId and mobileDeviceId. This or encryptedUserId or mobileDeviceId is a required field.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "floodlightActivityId": {
+                    "description": "Floodlight Activity ID of this conversion. This is a required field.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "floodlightConfigurationId": {
+                    "description": "Floodlight Configuration ID of this conversion. This is a required field.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "dfareporting#conversion",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversion\".",
+                    "type": "string"
+                },
+                "limitAdTracking": {
+                    "description": "Whether Limit Ad Tracking is enabled. When set to true, the conversion will be used for reporting but not targeting. This will prevent remarketing.",
+                    "type": "boolean"
+                },
+                "mobileDeviceId": {
+                    "description": "The mobile device ID. This field is mutually exclusive with encryptedUserId and encryptedUserIdCandidates[]. This or encryptedUserId or encryptedUserIdCandidates[] is a required field.",
+                    "type": "string"
+                },
+                "ordinal": {
+                    "description": "The ordinal of the conversion. Use this field to control how conversions of the same user and day are de-duplicated. This is a required field.",
+                    "type": "string"
+                },
+                "quantity": {
+                    "description": "The quantity of the conversion.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "timestampMicros": {
+                    "description": "The timestamp of conversion, in Unix epoch micros. This is a required field.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the conversion.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "ConversionError": {
+            "description": "The error code and description for a conversion that failed to insert or update.",
+            "id": "ConversionError",
+            "properties": {
+                "code": {
+                    "description": "The error code.",
+                    "enum": [
+                        "INTERNAL",
+                        "INVALID_ARGUMENT",
+                        "NOT_FOUND",
+                        "PERMISSION_DENIED"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "dfareporting#conversionError",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionError\".",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "A description of the error.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConversionStatus": {
+            "description": "The original conversion that was inserted or updated and whether there were any errors.",
+            "id": "ConversionStatus",
+            "properties": {
+                "conversion": {
+                    "$ref": "Conversion",
+                    "description": "The original conversion that was inserted or updated."
+                },
+                "errors": {
+                    "description": "A list of errors related to this conversion.",
+                    "items": {
+                        "$ref": "ConversionError"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dfareporting#conversionStatus",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionStatus\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConversionsBatchInsertRequest": {
+            "description": "Insert Conversions Request.",
+            "id": "ConversionsBatchInsertRequest",
+            "properties": {
+                "conversions": {
+                    "description": "The set of conversions to insert.",
+                    "items": {
+                        "$ref": "Conversion"
+                    },
+                    "type": "array"
+                },
+                "encryptionInfo": {
+                    "$ref": "EncryptionInfo",
+                    "description": "Describes how encryptedUserId or encryptedUserIdCandidates[] is encrypted. This is a required field if encryptedUserId or encryptedUserIdCandidates[] is used."
+                },
+                "kind": {
+                    "default": "dfareporting#conversionsBatchInsertRequest",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionsBatchInsertRequest\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConversionsBatchInsertResponse": {
+            "description": "Insert Conversions Response.",
+            "id": "ConversionsBatchInsertResponse",
+            "properties": {
+                "hasFailures": {
+                    "description": "Indicates that some or all conversions failed to insert.",
+                    "type": "boolean"
+                },
+                "kind": {
+                    "default": "dfareporting#conversionsBatchInsertResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionsBatchInsertResponse\".",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "The status of each conversion's insertion status. The status is returned in the same order that conversions are inserted.",
+                    "items": {
+                        "$ref": "ConversionStatus"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -10500,7 +11137,7 @@
                     "type": "string"
                 },
                 "auto_advance_images": {
-                    "description": "Whether images are automatically advanced for enhanced image creatives. Applicable to the following creative types: ENHANCED_IMAGE.",
+                    "description": "Whether images are automatically advanced for image gallery creatives. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY.",
                     "type": "boolean"
                 },
                 "backgroundColor": {
@@ -10508,11 +11145,11 @@
                     "type": "string"
                 },
                 "backupImageClickThroughUrl": {
-                    "description": "Click-through URL for backup image. Applicable to the following creative types: FLASH_INPAGE, and HTML5_BANNER. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.",
+                    "description": "Click-through URL for backup image. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "type": "string"
                 },
                 "backupImageFeatures": {
-                    "description": "List of feature dependencies that will cause a backup image to be served if the browser that serves the ad does not support them. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative asset correctly. This field is initially auto-generated to contain all features detected by DCM for all the assets of this creative and can then be modified by the client. To reset this field, copy over all the creativeAssets' detected features. Applicable to the following creative types: HTML5_BANNER. Applicable to ENHANCED_BANNER when the primary asset is not HTML_IMAGE.",
+                    "description": "List of feature dependencies that will cause a backup image to be served if the browser that serves the ad does not support them. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative asset correctly. This field is initially auto-generated to contain all features detected by DCM for all the assets of this creative and can then be modified by the client. To reset this field, copy over all the creativeAssets' detected features. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "items": {
                         "enum": [
                             "APPLICATION_CACHE",
@@ -10655,15 +11292,15 @@
                     "type": "array"
                 },
                 "backupImageReportingLabel": {
-                    "description": "Reporting label used for HTML5 banner backup image. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.",
+                    "description": "Reporting label used for HTML5 banner backup image. Applicable to the following creative types: DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "type": "string"
                 },
                 "backupImageTargetWindow": {
                     "$ref": "TargetWindow",
-                    "description": "Target window for backup image. Applicable to the following creative types: FLASH_INPAGE, and HTML5_BANNER. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE."
+                    "description": "Target window for backup image. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."
                 },
                 "clickTags": {
-                    "description": "Click tags of the creative. For ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER creatives, this is a subset of detected click tags for the assets associated with this creative. After creating a flash asset, detected click tags will be returned in the creativeAssetMetadata. When inserting the creative, populate the creative clickTags field using the creativeAssetMetadata.clickTags field. For ENHANCED_IMAGE creatives, there should be exactly one entry in this list for each image creative asset. A click tag is matched with a corresponding creative asset by matching the clickTag.name field with the creativeAsset.assetIdentifier.name field. Applicable to the following creative types: ENHANCED_IMAGE, FLASH_INPAGE HTML5_BANNER. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.",
+                    "description": "Click tags of the creative. For DISPLAY, FLASH_INPAGE, and HTML5_BANNER creatives, this is a subset of detected click tags for the assets associated with this creative. After creating a flash asset, detected click tags will be returned in the creativeAssetMetadata. When inserting the creative, populate the creative clickTags field using the creativeAssetMetadata.clickTags field. For DISPLAY_IMAGE_GALLERY creatives, there should be exactly one entry in this list for each image creative asset. A click tag is matched with a corresponding creative asset by matching the clickTag.name field with the creativeAsset.assetIdentifier.name field. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "items": {
                         "$ref": "ClickTag"
                     },
@@ -10674,7 +11311,7 @@
                     "type": "string"
                 },
                 "companionCreatives": {
-                    "description": "List of companion creatives assigned to an in-Stream videocreative. Acceptable values include IDs of existing flash and image creatives. Applicable to the following creative types: all INSTREAM_VIDEO and all VPAID.",
+                    "description": "List of companion creatives assigned to an in-Stream videocreative. Acceptable values include IDs of existing flash and image creatives. Applicable to the following creative types: all VPAID and all INSTREAM_VIDEO with dynamicAssetSelection set to false.",
                     "items": {
                         "format": "int64",
                         "type": "string"
@@ -10682,14 +11319,14 @@
                     "type": "array"
                 },
                 "compatibility": {
-                    "description": "Compatibilities associated with this creative. This is a read-only field. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. Applicable to all creative types.\n\nAcceptable values are:\n- \"APP\"\n- \"APP_INTERSTITIAL\"\n- \"IN_STREAM_VIDEO\"\n- \"WEB\"\n- \"WEB_INTERSTITIAL\"",
+                    "description": "Compatibilities associated with this creative. This is a read-only field. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. Only pre-existing creatives may have these compatibilities since new creatives will either be assigned DISPLAY or DISPLAY_INTERSTITIAL instead. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. Applicable to all creative types.\n\nAcceptable values are:\n- \"APP\"\n- \"APP_INTERSTITIAL\"\n- \"IN_STREAM_VIDEO\"\n- \"DISPLAY\"\n- \"DISPLAY_INTERSTITIAL\"",
                     "items": {
                         "enum": [
                             "APP",
                             "APP_INTERSTITIAL",
-                            "IN_STREAM_VIDEO",
-                            "WEB",
-                            "WEB_INTERSTITIAL"
+                            "DISPLAY",
+                            "DISPLAY_INTERSTITIAL",
+                            "IN_STREAM_VIDEO"
                         ],
                         "enumDescriptions": [
                             "",
@@ -10703,15 +11340,19 @@
                     "type": "array"
                 },
                 "convertFlashToHtml5": {
-                    "description": "Whether Flash assets associated with the creative need to be automatically converted to HTML5. This flag is enabled by default and users can choose to disable it if they don't want the system to generate and use HTML5 asset for this creative. Applicable to the following creative type: FLASH_INPAGE. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.",
+                    "description": "Whether Flash assets associated with the creative need to be automatically converted to HTML5. This flag is enabled by default and users can choose to disable it if they don't want the system to generate and use HTML5 asset for this creative. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "type": "boolean"
                 },
                 "counterCustomEvents": {
-                    "description": "List of counter events configured for the creative. For ENHANCED_IMAGE creatives, these are read-only and auto-generated from clickTags. Applicable to the following creative types: ENHANCED_IMAGE, all RICH_MEDIA, and all VPAID.",
+                    "description": "List of counter events configured for the creative. For DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID.",
                     "items": {
                         "$ref": "CreativeCustomEvent"
                     },
                     "type": "array"
+                },
+                "creativeAssetSelection": {
+                    "$ref": "CreativeAssetSelection",
+                    "description": "Required if dynamicAssetSelection is true."
                 },
                 "creativeAssets": {
                     "description": "Assets associated with a creative. Applicable to all but the following creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT",
@@ -10734,8 +11375,12 @@
                     },
                     "type": "array"
                 },
+                "dynamicAssetSelection": {
+                    "description": "Set this to true to enable the use of rules to target individual assets in this creative. When set to true creativeAssetSelection must be set. This also controls asset-level companions. When this is true, companion creatives should be assigned to creative assets. Learn more. Applicable to INSTREAM_VIDEO creatives.",
+                    "type": "boolean"
+                },
                 "exitCustomEvents": {
-                    "description": "List of exit events configured for the creative. For ENHANCED_BANNER and ENHANCED_IMAGE creatives, these are read-only and auto-generated from clickTags, For ENHANCED_BANNER, an event is also created from the backupImageReportingLabel. Applicable to the following creative types: ENHANCED_IMAGE, all RICH_MEDIA, and all VPAID. Applicable to ENHANCED_BANNER when the primary asset is not HTML_IMAGE.",
+                    "description": "List of exit events configured for the creative. For DISPLAY and DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags, For DISPLAY, an event is also created from the backupImageReportingLabel. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "items": {
                         "$ref": "CreativeCustomEvent"
                     },
@@ -10784,8 +11429,12 @@
                     "description": "Override CSS value for rich media creatives. Applicable to the following creative types: all RICH_MEDIA.",
                     "type": "string"
                 },
+                "progressOffset": {
+                    "$ref": "VideoOffset",
+                    "description": "Amount of time to play the video before counting a view. Applicable to the following creative types: all INSTREAM_VIDEO."
+                },
                 "redirectUrl": {
-                    "description": "URL of hosted image or hosted video or another ad tag. For INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect URL. The standard for a VAST (Video Ad Serving Template) ad response allows for a redirect link to another VAST 2.0 or 3.0 call. This is a required field when applicable. Applicable to the following creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, REDIRECT, and INSTREAM_VIDEO_REDIRECT",
+                    "description": "URL of hosted image or hosted video or another ad tag. For INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect URL. The standard for a VAST (Video Ad Serving Template) ad response allows for a redirect link to another VAST 2.0 or 3.0 call. This is a required field when applicable. Applicable to the following creative types: DISPLAY_REDIRECT, INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO_REDIRECT",
                     "type": "string"
                 },
                 "renderingId": {
@@ -10802,13 +11451,17 @@
                     "type": "string"
                 },
                 "requiredFlashVersion": {
-                    "description": "The internal Flash version for this creative as calculated by DoubleClick Studio. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.",
+                    "description": "The internal Flash version for this creative as calculated by DoubleClick Studio. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "size": {
                     "$ref": "Size",
-                    "description": "Size associated with this creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. This is a required field when applicable; however for IMAGE and FLASH_INPAGE creatives, and for ENHANCED_BANNER creatives with a primary asset of type HTML_IMAGE, if left blank, this field will be automatically set using the actual size of the associated image assets. Applicable to the following creative types: ENHANCED_BANNER, ENHANCED_IMAGE, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA."
+                    "description": "Size associated with this creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. This is a required field when applicable; however for IMAGE, FLASH_INPAGE creatives, and for DISPLAY creatives with a primary asset of type HTML_IMAGE, if left blank, this field will be automatically set using the actual size of the associated image assets. Applicable to the following creative types: DISPLAY, DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA."
+                },
+                "skipOffset": {
+                    "$ref": "VideoOffset",
+                    "description": "Amount of time to play the video before the skip button appears. Applicable to the following creative types: all INSTREAM_VIDEO."
                 },
                 "skippable": {
                     "description": "Whether the user can choose to skip the creative. Applicable to the following creative types: all INSTREAM_VIDEO and all VPAID.",
@@ -10858,7 +11511,7 @@
                     "type": "array"
                 },
                 "timerCustomEvents": {
-                    "description": "List of timer events configured for the creative. For ENHANCED_IMAGE creatives, these are read-only and auto-generated from clickTags. Applicable to the following creative types: ENHANCED_IMAGE, all RICH_MEDIA, and all VPAID. Applicable to ENHANCED_BANNER when the primary asset is not HTML_IMAGE.",
+                    "description": "List of timer events configured for the creative. For DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset is not HTML_IMAGE.",
                     "items": {
                         "$ref": "CreativeCustomEvent"
                     },
@@ -10870,13 +11523,14 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Type of this creative.This is a required field. Applicable to all creative types.",
+                    "description": "Type of this creative. This is a required field. Applicable to all creative types.\n\nNote: FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use DISPLAY as a replacement for these types.",
                     "enum": [
                         "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
-                        "CUSTOM_INPAGE",
-                        "CUSTOM_INTERSTITIAL",
-                        "ENHANCED_BANNER",
-                        "ENHANCED_IMAGE",
+                        "CUSTOM_DISPLAY",
+                        "CUSTOM_DISPLAY_INTERSTITIAL",
+                        "DISPLAY",
+                        "DISPLAY_IMAGE_GALLERY",
+                        "DISPLAY_REDIRECT",
                         "FLASH_INPAGE",
                         "HTML5_BANNER",
                         "IMAGE",
@@ -10884,18 +11538,17 @@
                         "INSTREAM_VIDEO_REDIRECT",
                         "INTERNAL_REDIRECT",
                         "INTERSTITIAL_INTERNAL_REDIRECT",
-                        "REDIRECT",
-                        "RICH_MEDIA_EXPANDING",
+                        "RICH_MEDIA_DISPLAY_BANNER",
+                        "RICH_MEDIA_DISPLAY_EXPANDING",
+                        "RICH_MEDIA_DISPLAY_INTERSTITIAL",
+                        "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL",
                         "RICH_MEDIA_IM_EXPAND",
-                        "RICH_MEDIA_INPAGE",
                         "RICH_MEDIA_INPAGE_FLOATING",
-                        "RICH_MEDIA_INTERSTITIAL_FLOAT",
                         "RICH_MEDIA_MOBILE_IN_APP",
-                        "RICH_MEDIA_MULTI_FLOATING",
                         "RICH_MEDIA_PEEL_DOWN",
                         "TRACKING_TEXT",
-                        "VPAID_LINEAR",
-                        "VPAID_NON_LINEAR"
+                        "VPAID_LINEAR_VIDEO",
+                        "VPAID_NON_LINEAR_VIDEO"
                     ],
                     "enumDescriptions": [
                         "",
@@ -10947,15 +11600,15 @@
             "id": "CreativeAsset",
             "properties": {
                 "actionScript3": {
-                    "description": "Whether ActionScript3 is enabled for the flash asset. This is a read-only field. Applicable to the following creative type: FLASH_INPAGE. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.",
+                    "description": "Whether ActionScript3 is enabled for the flash asset. This is a read-only field. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "type": "boolean"
                 },
                 "active": {
-                    "description": "Whether the video asset is active. This is a read-only field for VPAID_NON_LINEAR assets. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.",
+                    "description": "Whether the video asset is active. This is a read-only field for VPAID_NON_LINEAR_VIDEO assets. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.",
                     "type": "boolean"
                 },
                 "alignment": {
-                    "description": "Possible alignments for an asset. This is a read-only field. Applicable to the following creative types: RICH_MEDIA_MULTI_FLOATING.",
+                    "description": "Possible alignments for an asset. This is a read-only field. Applicable to the following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL.",
                     "enum": [
                         "ALIGNMENT_BOTTOM",
                         "ALIGNMENT_LEFT",
@@ -11019,13 +11672,21 @@
                     "$ref": "Size",
                     "description": "Size of an asset when collapsed. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID. Additionally, applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN."
                 },
+                "companionCreativeIds": {
+                    "description": "List of companion creatives assigned to an in-stream video creative asset. Acceptable values include IDs of existing flash and image creatives. Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set to true.",
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "customStartTimeValue": {
                     "description": "Custom start time in seconds for making the asset visible. Applicable to the following creative types: all RICH_MEDIA.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "detectedFeatures": {
-                    "description": "List of feature dependencies for the creative asset that are detected by DCM. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: ENHANCED_BANNER and HTML5_BANNER.",
+                    "description": "List of feature dependencies for the creative asset that are detected by DCM. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "items": {
                         "enum": [
                             "APPLICATION_CACHE",
@@ -11196,7 +11857,7 @@
                     "type": "string"
                 },
                 "duration": {
-                    "description": "Duration in seconds for which an asset will be displayed. Applicable to the following creative types: INSTREAM_VIDEO and VPAID_LINEAR.",
+                    "description": "Duration in seconds for which an asset will be displayed. Applicable to the following creative types: INSTREAM_VIDEO and VPAID_LINEAR_VIDEO.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -11224,7 +11885,7 @@
                     "type": "string"
                 },
                 "flashVersion": {
-                    "description": "Flash version of the asset. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE.",
+                    "description": "Flash version of the asset. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -11244,6 +11905,10 @@
                     "description": "Numeric ID of this creative asset. This is a required field and should not be modified. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT.",
                     "format": "int64",
                     "type": "string"
+                },
+                "idDimensionValue": {
+                    "$ref": "DimensionValue",
+                    "description": "Dimension value for the ID of the asset. This is a read-only, auto-generated field."
                 },
                 "mimeType": {
                     "description": "Detected MIME type for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.",
@@ -11303,7 +11968,7 @@
                     "type": "number"
                 },
                 "role": {
-                    "description": "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field.\nPRIMARY applies to ENHANCED_BANNER, FLASH_INPAGE, HTML5_BANNER, IMAGE, IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives.\nBACKUP_IMAGE applies to ENHANCED_BANNER, FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives.\nADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.\nOTHER refers to assets from sources other than DCM, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.\nPARENT_VIDEO refers to videos uploaded by the user in DCM and is applicable to INSTREAM_VIDEO and VPAID_LINEAR creatives.\nTRANSCODED_VIDEO refers to videos transcoded by DCM from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR creatives.\nALTERNATE_VIDEO refers to the DCM representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within DCM.\nFor VPAID_LINEAR creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR creative.",
+                    "description": "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field.\nPRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives.\nBACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.\nADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.\nOTHER refers to assets from sources other than DCM, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.\nPARENT_VIDEO refers to videos uploaded by the user in DCM and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nTRANSCODED_VIDEO refers to videos transcoded by DCM from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nALTERNATE_VIDEO refers to the DCM representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within DCM.\nFor VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative.",
                     "enum": [
                         "ADDITIONAL_FLASH",
                         "ADDITIONAL_IMAGE",
@@ -11328,7 +11993,7 @@
                 },
                 "size": {
                     "$ref": "Size",
-                    "description": "Size associated with this creative asset. This is a required field when applicable; however for IMAGE and FLASH_INPAGE creatives, if left blank, this field will be automatically set using the actual size of the associated image asset. Applicable to the following creative types: ENHANCED_IMAGE, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to ENHANCED_BANNER when the primary asset type is not HTML_IMAGE."
+                    "description": "Size associated with this creative asset. This is a required field when applicable; however for IMAGE and FLASH_INPAGE, creatives if left blank, this field will be automatically set using the actual size of the associated image asset. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."
                 },
                 "sslCompliant": {
                     "description": "Whether the asset is SSL-compliant. This is a read-only field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT.",
@@ -11364,7 +12029,7 @@
                     "type": "number"
                 },
                 "windowMode": {
-                    "description": "Window mode options for flash assets. Applicable to the following creative types: FLASH_INPAGE, RICH_MEDIA_EXPANDING, RICH_MEDIA_IM_EXPAND, RICH_MEDIA_INPAGE, and RICH_MEDIA_INPAGE_FLOATING.",
+                    "description": "Window mode options for flash assets. Applicable to the following creative types: FLASH_INPAGE, RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND, RICH_MEDIA_DISPLAY_BANNER, and RICH_MEDIA_INPAGE_FLOATING.",
                     "enum": [
                         "OPAQUE",
                         "TRANSPARENT",
@@ -11402,7 +12067,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Type of asset to upload. This is a required field. IMAGE is solely used for IMAGE creatives. Other image assets should use HTML_IMAGE.",
+                    "description": "Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE.",
                     "enum": [
                         "FLASH",
                         "HTML",
@@ -11580,6 +12245,15 @@
                     },
                     "type": "array"
                 },
+                "id": {
+                    "description": "Numeric ID of the asset. This is a read-only, auto-generated field.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "idDimensionValue": {
+                    "$ref": "DimensionValue",
+                    "description": "Dimension value for the numeric ID of the asset. This is a read-only, auto-generated field."
+                },
                 "kind": {
                     "default": "dfareporting#creativeAssetMetadata",
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeAssetMetadata\".",
@@ -11641,6 +12315,25 @@
                             ""
                         ],
                         "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CreativeAssetSelection": {
+            "description": "Encapsulates the list of rules for asset selection and a default asset in case none of the rules match. Applicable to INSTREAM_VIDEO creatives.",
+            "id": "CreativeAssetSelection",
+            "properties": {
+                "defaultAssetId": {
+                    "description": "A creativeAssets[].id. This should refer to one of the parent assets in this creative, and will be served if none of the rules match. This is a required field.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "rules": {
+                    "description": "Rules determine which asset will be served to a viewer. Rules will be evaluated in the order in which they are stored in this list. This list must contain at least one rule. Applicable to INSTREAM_VIDEO creatives.",
+                    "items": {
+                        "$ref": "Rule"
                     },
                     "type": "array"
                 }
@@ -12183,6 +12876,230 @@
                         "$ref": "Metric"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CustomFloodlightVariable": {
+            "description": "A custom floodlight variable.",
+            "id": "CustomFloodlightVariable",
+            "properties": {
+                "kind": {
+                    "default": "dfareporting#customFloodlightVariable",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#customFloodlightVariable\".",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of custom floodlight variable to supply a value for. These map to the \"u[1-20]=\" in the tags.",
+                    "enum": [
+                        "U1",
+                        "U10",
+                        "U100",
+                        "U11",
+                        "U12",
+                        "U13",
+                        "U14",
+                        "U15",
+                        "U16",
+                        "U17",
+                        "U18",
+                        "U19",
+                        "U2",
+                        "U20",
+                        "U21",
+                        "U22",
+                        "U23",
+                        "U24",
+                        "U25",
+                        "U26",
+                        "U27",
+                        "U28",
+                        "U29",
+                        "U3",
+                        "U30",
+                        "U31",
+                        "U32",
+                        "U33",
+                        "U34",
+                        "U35",
+                        "U36",
+                        "U37",
+                        "U38",
+                        "U39",
+                        "U4",
+                        "U40",
+                        "U41",
+                        "U42",
+                        "U43",
+                        "U44",
+                        "U45",
+                        "U46",
+                        "U47",
+                        "U48",
+                        "U49",
+                        "U5",
+                        "U50",
+                        "U51",
+                        "U52",
+                        "U53",
+                        "U54",
+                        "U55",
+                        "U56",
+                        "U57",
+                        "U58",
+                        "U59",
+                        "U6",
+                        "U60",
+                        "U61",
+                        "U62",
+                        "U63",
+                        "U64",
+                        "U65",
+                        "U66",
+                        "U67",
+                        "U68",
+                        "U69",
+                        "U7",
+                        "U70",
+                        "U71",
+                        "U72",
+                        "U73",
+                        "U74",
+                        "U75",
+                        "U76",
+                        "U77",
+                        "U78",
+                        "U79",
+                        "U8",
+                        "U80",
+                        "U81",
+                        "U82",
+                        "U83",
+                        "U84",
+                        "U85",
+                        "U86",
+                        "U87",
+                        "U88",
+                        "U89",
+                        "U9",
+                        "U90",
+                        "U91",
+                        "U92",
+                        "U93",
+                        "U94",
+                        "U95",
+                        "U96",
+                        "U97",
+                        "U98",
+                        "U99"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the custom floodlight variable. The length of string must not exceed 50 characters.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -12838,6 +13755,113 @@
                 },
                 "nextPageToken": {
                     "description": "Pagination token to be used for the next list operation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DynamicTargetingKey": {
+            "description": "Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly labels, created at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used for targeting with DoubleClick Studio dynamic creatives. Use these labels instead of numeric DCM IDs (such as placement IDs) to save time and avoid errors in your dynamic feeds.",
+            "id": "DynamicTargetingKey",
+            "properties": {
+                "kind": {
+                    "default": "dfareporting#dynamicTargetingKey",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#dynamicTargetingKey\".",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase.",
+                    "type": "string"
+                },
+                "objectId": {
+                    "description": "ID of the object of this dynamic targeting key. This is a required field.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "objectType": {
+                    "description": "Type of the object of this dynamic targeting key. This is a required field.",
+                    "enum": [
+                        "OBJECT_AD",
+                        "OBJECT_ADVERTISER",
+                        "OBJECT_CREATIVE",
+                        "OBJECT_PLACEMENT"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DynamicTargetingKeysListResponse": {
+            "description": "Dynamic Targeting Key List Response",
+            "id": "DynamicTargetingKeysListResponse",
+            "properties": {
+                "dynamicTargetingKeys": {
+                    "description": "Dynamic targeting key collection.",
+                    "items": {
+                        "$ref": "DynamicTargetingKey"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dfareporting#dynamicTargetingKeysListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#dynamicTargetingKeysListResponse\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EncryptionInfo": {
+            "description": "A description of how user IDs are encrypted.",
+            "id": "EncryptionInfo",
+            "properties": {
+                "encryptionEntityId": {
+                    "description": "The encryption entity ID. This should match the encryption configuration for ad serving or Data Transfer.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "encryptionEntityType": {
+                    "description": "The encryption entity type. This should match the encryption configuration for ad serving or Data Transfer.",
+                    "enum": [
+                        "ADWORDS_CUSTOMER",
+                        "DBM_ADVERTISER",
+                        "DBM_PARTNER",
+                        "DCM_ACCOUNT",
+                        "DCM_ADVERTISER",
+                        "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "encryptionSource": {
+                    "description": "Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data Transfer.",
+                    "enum": [
+                        "AD_SERVING",
+                        "DATA_TRANSFER",
+                        "ENCRYPTION_SCOPE_UNKNOWN"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "dfareporting#encryptionInfo",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#encryptionInfo\".",
                     "type": "string"
                 }
             },
@@ -14069,6 +15093,18 @@
                     "description": "Subaccount ID of this inventory item.",
                     "format": "int64",
                     "type": "string"
+                },
+                "type": {
+                    "description": "Type of inventory item.",
+                    "enum": [
+                        "PLANNING_PLACEMENT_TYPE_CREDIT",
+                        "PLANNING_PLACEMENT_TYPE_REGULAR"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -14149,6 +15185,64 @@
                     "description": "Landing page collection",
                     "items": {
                         "$ref": "LandingPage"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Language": {
+            "description": "Contains information about a language that can be targeted by ads.",
+            "id": "Language",
+            "properties": {
+                "id": {
+                    "description": "Language ID of this language. This is the ID used for targeting and generating reports.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "dfareporting#language",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#language\".",
+                    "type": "string"
+                },
+                "languageCode": {
+                    "description": "Format of language code is an ISO 639 two-letter language code optionally followed by an underscore followed by an ISO 3166 code. Examples are \"en\" for English or \"zh_CN\" for Simplified Chinese.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of this language.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LanguageTargeting": {
+            "description": "Language Targeting.",
+            "id": "LanguageTargeting",
+            "properties": {
+                "languages": {
+                    "description": "Languages that this ad targets. For each language only languageId is required. The other fields are populated automatically when the ad is inserted or updated.",
+                    "items": {
+                        "$ref": "Language"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "LanguagesListResponse": {
+            "description": "Language List Response",
+            "id": "LanguagesListResponse",
+            "properties": {
+                "kind": {
+                    "default": "dfareporting#languagesListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#languagesListResponse\".",
+                    "type": "string"
+                },
+                "languages": {
+                    "description": "Language collection.",
+                    "items": {
+                        "$ref": "Language"
                     },
                     "type": "array"
                 }
@@ -14978,13 +16072,13 @@
                     "type": "string"
                 },
                 "compatibility": {
-                    "description": "Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. This field is required on insertion.",
+                    "description": "Placement compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering on desktop, on mobile devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are no longer allowed for new placement insertions. Instead, use DISPLAY or DISPLAY_INTERSTITIAL. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. This field is required on insertion.",
                     "enum": [
                         "APP",
                         "APP_INTERSTITIAL",
-                        "IN_STREAM_VIDEO",
-                        "WEB",
-                        "WEB_INTERSTITIAL"
+                        "DISPLAY",
+                        "DISPLAY_INTERSTITIAL",
+                        "IN_STREAM_VIDEO"
                     ],
                     "enumDescriptions": [
                         "",
@@ -15181,6 +16275,30 @@
                 "tagSetting": {
                     "$ref": "TagSetting",
                     "description": "Tag settings for this placement."
+                },
+                "videoActiveViewOptOut": {
+                    "description": "Whether Verification and ActiveView are disabled for in-stream video creatives for this placement. The same setting videoActiveViewOptOut exists on the site level -- the opt out occurs if either of these settings are true. These settings are distinct from DirectorySites.settings.activeViewOptOut or Sites.siteSettings.activeViewOptOut which only apply to display ads. However, Accounts.activeViewOptOut opts out both video traffic, as well as display ads, from Verification and ActiveView.",
+                    "type": "boolean"
+                },
+                "videoSettings": {
+                    "$ref": "VideoSettings",
+                    "description": "A collection of settings which affect video creatives served through this placement. Applicable to placements with IN_STREAM_VIDEO compatibility."
+                },
+                "vpaidAdapterChoice": {
+                    "description": "VPAID adapter setting for this placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to this placement.",
+                    "enum": [
+                        "BOTH",
+                        "DEFAULT",
+                        "FLASH",
+                        "HTML5"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -15911,6 +17029,11 @@
                 },
                 "targetCpcNanos": {
                     "description": "CPC that the advertiser is targeting.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "targetCpmActiveViewNanos": {
+                    "description": "vCPM from Active View that the advertiser is targeting.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -16873,18 +17996,39 @@
             "description": "Rich Media Exit Override.",
             "id": "RichMediaExitOverride",
             "properties": {
-                "customExitUrl": {
-                    "description": "Click-through URL to override the default exit URL. Applicable if the useCustomExitUrl field is set to true.",
-                    "type": "string"
+                "clickThroughUrl": {
+                    "$ref": "ClickThroughUrl",
+                    "description": "Click-through URL of this rich media exit override. Applicable if the enabled field is set to true."
+                },
+                "enabled": {
+                    "description": "Whether to use the clickThroughUrl. If false, the creative-level exit will be used.",
+                    "type": "boolean"
                 },
                 "exitId": {
                     "description": "ID for the override to refer to a specific exit in the creative.",
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Rule": {
+            "description": "A rule associates an asset with a targeting template for asset-level targeting. Applicable to INSTREAM_VIDEO creatives.",
+            "id": "Rule",
+            "properties": {
+                "assetId": {
+                    "description": "A creativeAssets[].id. This should refer to one of the parent assets in this creative. This is a required field.",
+                    "format": "int64",
+                    "type": "string"
                 },
-                "useCustomExitUrl": {
-                    "description": "Whether to use the custom exit URL.",
-                    "type": "boolean"
+                "name": {
+                    "description": "A user-friendly name for this rule. This is a required field.",
+                    "type": "string"
+                },
+                "targetingTemplateId": {
+                    "description": "A targeting template ID. The targeting from the targeting template will be used to determine whether this asset should be served. This is a required field.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -17028,9 +18172,25 @@
                     "$ref": "TagSetting",
                     "description": "Configuration settings for dynamic and image floodlight tags."
                 },
-                "videoActiveViewOptOut": {
-                    "description": "Whether Verification and ActiveView are disabled for in-stream video creatives on this site. The same setting videoActiveViewOptOut exists on the directory site level -- the opt out occurs if either of these settings are true. These settings are distinct from DirectorySites.settings.activeViewOptOut or Sites.siteSettings.activeViewOptOut which only apply to display ads. However, Accounts.activeViewOptOut opts out both video traffic, as well as display ads, from Verification and ActiveView.",
+                "videoActiveViewOptOutTemplate": {
+                    "description": "Whether Verification and ActiveView for in-stream video creatives are disabled by default for new placements created under this site. This value will be used to populate the placement.videoActiveViewOptOut field, when no value is specified for the new placement.",
                     "type": "boolean"
+                },
+                "vpaidAdapterChoiceTemplate": {
+                    "description": "Default VPAID adapter setting for new placements created under this site. This value will be used to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter, and Flash VPAID creatives use the Flash adapter).",
+                    "enum": [
+                        "BOTH",
+                        "DEFAULT",
+                        "FLASH",
+                        "HTML5"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -17104,6 +18264,30 @@
                         "$ref": "Size"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SkippableSetting": {
+            "description": "Skippable Settings",
+            "id": "SkippableSetting",
+            "properties": {
+                "kind": {
+                    "default": "dfareporting#skippableSetting",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#skippableSetting\".",
+                    "type": "string"
+                },
+                "progressOffset": {
+                    "$ref": "VideoOffset",
+                    "description": "Amount of time to play videos served to this placement before counting a view. Applicable when skippable is true."
+                },
+                "skipOffset": {
+                    "$ref": "VideoOffset",
+                    "description": "Amount of time to play videos served to this placement before the skip button should appear. Applicable when skippable is true."
+                },
+                "skippable": {
+                    "description": "Whether the user can skip creatives served to this placement.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -17446,6 +18630,93 @@
             },
             "type": "object"
         },
+        "TargetingTemplate": {
+            "description": "Contains properties of a targeting template. A targeting template encapsulates targeting information which can be reused across multiple ads.",
+            "id": "TargetingTemplate",
+            "properties": {
+                "accountId": {
+                    "description": "Account ID of this targeting template. This field, if left unset, will be auto-generated on insert and is read-only after insert.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "advertiserId": {
+                    "description": "Advertiser ID of this targeting template. This is a required field on insert and is read-only after insert.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "advertiserIdDimensionValue": {
+                    "$ref": "DimensionValue",
+                    "description": "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."
+                },
+                "dayPartTargeting": {
+                    "$ref": "DayPartTargeting",
+                    "description": "Time and day targeting criteria."
+                },
+                "geoTargeting": {
+                    "$ref": "GeoTargeting",
+                    "description": "Geographical targeting criteria."
+                },
+                "id": {
+                    "description": "ID of this targeting template. This is a read-only, auto-generated field.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "keyValueTargetingExpression": {
+                    "$ref": "KeyValueTargetingExpression",
+                    "description": "Key-value targeting criteria."
+                },
+                "kind": {
+                    "default": "dfareporting#targetingTemplate",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#targetingTemplate\".",
+                    "type": "string"
+                },
+                "languageTargeting": {
+                    "$ref": "LanguageTargeting",
+                    "description": "Language targeting criteria."
+                },
+                "listTargetingExpression": {
+                    "$ref": "ListTargetingExpression",
+                    "description": "Remarketing list targeting criteria."
+                },
+                "name": {
+                    "description": "Name of this targeting template. This field is required. It must be less than 256 characters long and unique within an advertiser.",
+                    "type": "string"
+                },
+                "subaccountId": {
+                    "description": "Subaccount ID of this targeting template. This field, if left unset, will be auto-generated on insert and is read-only after insert.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "technologyTargeting": {
+                    "$ref": "TechnologyTargeting",
+                    "description": "Technology platform targeting criteria."
+                }
+            },
+            "type": "object"
+        },
+        "TargetingTemplatesListResponse": {
+            "description": "Targeting Template List Response",
+            "id": "TargetingTemplatesListResponse",
+            "properties": {
+                "kind": {
+                    "default": "dfareporting#targetingTemplatesListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#targetingTemplatesListResponse\".",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "Pagination token to be used for the next list operation.",
+                    "type": "string"
+                },
+                "targetingTemplates": {
+                    "description": "Targeting template collection.",
+                    "items": {
+                        "$ref": "TargetingTemplate"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "TechnologyTargeting": {
             "description": "Technology Targeting.",
             "id": "TechnologyTargeting",
@@ -17562,6 +18833,26 @@
                 },
                 "url": {
                     "description": "URL for the specified third-party URL type.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TranscodeSetting": {
+            "description": "Transcode Settings",
+            "id": "TranscodeSetting",
+            "properties": {
+                "enabledVideoFormats": {
+                    "description": "Whitelist of video formats to be served to this placement. Set this list to null or empty to serve all video formats.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dfareporting#transcodeSetting",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#transcodeSetting\".",
                     "type": "string"
                 }
             },
@@ -18036,9 +19327,113 @@
                 }
             },
             "type": "object"
+        },
+        "VideoFormat": {
+            "description": "Contains information about supported video formats.",
+            "id": "VideoFormat",
+            "properties": {
+                "fileType": {
+                    "description": "File type of the video format.",
+                    "enum": [
+                        "FLV",
+                        "M3U8",
+                        "MP4",
+                        "THREEGPP",
+                        "WEBM"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID of the video format.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "kind": {
+                    "default": "dfareporting#videoFormat",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoFormat\".",
+                    "type": "string"
+                },
+                "resolution": {
+                    "$ref": "Size",
+                    "description": "The resolution of this video format."
+                },
+                "targetBitRate": {
+                    "description": "The target bit rate of this video format.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "VideoFormatsListResponse": {
+            "description": "Video Format List Response",
+            "id": "VideoFormatsListResponse",
+            "properties": {
+                "kind": {
+                    "default": "dfareporting#videoFormatsListResponse",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoFormatsListResponse\".",
+                    "type": "string"
+                },
+                "videoFormats": {
+                    "description": "Video format collection.",
+                    "items": {
+                        "$ref": "VideoFormat"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "VideoOffset": {
+            "description": "Video Offset",
+            "id": "VideoOffset",
+            "properties": {
+                "offsetPercentage": {
+                    "description": "Duration, as a percentage of video duration. Do not set when offsetSeconds is set.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "offsetSeconds": {
+                    "description": "Duration, in seconds. Do not set when offsetPercentage is set.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "VideoSettings": {
+            "description": "Video Settings",
+            "id": "VideoSettings",
+            "properties": {
+                "companionSettings": {
+                    "$ref": "CompanionSetting",
+                    "description": "Settings for the companion creatives of video creatives served to this placement."
+                },
+                "kind": {
+                    "default": "dfareporting#videoSettings",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoSettings\".",
+                    "type": "string"
+                },
+                "skippableSettings": {
+                    "$ref": "SkippableSetting",
+                    "description": "Settings for the skippability of video creatives served to this placement. If this object is provided, the creative-level skippable settings will be overridden."
+                },
+                "transcodeSettings": {
+                    "$ref": "TranscodeSetting",
+                    "description": "Settings for the transcodes of video creatives served to this placement. If this object is provided, the creative-level transcode settings will be overridden."
+                }
+            },
+            "type": "object"
         }
     },
-    "servicePath": "dfareporting/v2.3/",
+    "servicePath": "dfareporting/v2.7/",
     "title": "DCM/DFA Reporting And Trafficking API",
-    "version": "v2.3"
+    "version": "v2.7"
 }

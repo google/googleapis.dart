@@ -70,7 +70,7 @@ package.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Ad Exchange Buyer API II - adexchangebuyer2 v2beta1
 
-Accesses the latest features for managing Ad Exchange accounts and Real-Time Bidding configurations and auction metrics.
+Accesses the latest features for managing Ad Exchange accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.
 
 Official API documentation: https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
 
@@ -119,7 +119,7 @@ Official API documentation: https://cloud.google.com/dataflow
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1beta1
 
-Manages Hadoop-based clusters and jobs on Google Cloud Platform.
+An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
 
@@ -160,11 +160,17 @@ Google Cloud Natural Language API provides natural language understanding techno
 
 Official API documentation: https://cloud.google.com/natural-language/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Logging API - logging v2beta1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Logging API - logging v2beta1
 
-Writes log entries and manages your logs, log sinks, and logs-based metrics.
+Writes log entries and manages your Stackdriver Logging configuration.
 
 Official API documentation: https://cloud.google.com/logging/docs/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Machine Learning - ml v1beta1
+
+An API to enable creating and using machine learning models.
+
+Official API documentation: https://cloud.google.com/ml/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Proximity Beacon API - proximitybeacon v1beta1
 
@@ -186,7 +192,7 @@ Official API documentation: https://developers.google.com/compute/docs/instance-
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Updater API - replicapoolupdater v1beta1
 
-Updates groups of Compute Engine instances.
+[Deprecated. Please use compute.instanceGroupManagers.update method. replicapoolupdater API will be disabled after December 30th, 2016] Updates groups of Compute Engine instances.
 
 Official API documentation: https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service
 

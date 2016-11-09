@@ -15,7 +15,7 @@
     "description": "Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/host/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/FOHeCd6yGX46_uGM7U9xj1c5oh8\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/pQ58AfbbSY9IZUnfRS3i0fRYih4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1072,7 +1072,7 @@
             }
         }
     },
-    "revision": "20160824",
+    "revision": "20161105",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1218,7 +1218,7 @@
                     "type": "object"
                 },
                 "corners": {
-                    "description": "The style of the corners in the ad. Possible values are SQUARE, SLIGHTLY_ROUNDED and VERY_ROUNDED.",
+                    "description": "The style of the corners in the ad (deprecated: never populated, ignored).",
                     "type": "string"
                 },
                 "font": {

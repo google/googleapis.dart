@@ -1598,6 +1598,8 @@ class DatabaseFlags {
 
 /** A Cloud SQL instance resource. */
 class DatabaseInstance {
+  /** Connection name of the Cloud SQL instance used in connection strings. */
+  core.String connectionName;
   /** The current disk usage of the instance in bytes. */
   core.String currentDiskSize;
   /**
@@ -1662,6 +1664,9 @@ class DatabaseInstance {
   DatabaseInstance();
 
   DatabaseInstance.fromJson(core.Map _json) {
+    if (_json.containsKey("connectionName")) {
+      connectionName = _json["connectionName"];
+    }
     if (_json.containsKey("currentDiskSize")) {
       currentDiskSize = _json["currentDiskSize"];
     }
@@ -1717,6 +1722,9 @@ class DatabaseInstance {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (connectionName != null) {
+      _json["connectionName"] = connectionName;
+    }
     if (currentDiskSize != null) {
       _json["currentDiskSize"] = currentDiskSize;
     }

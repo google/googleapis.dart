@@ -2706,7 +2706,9 @@ class AdStyle {
    * leading hash.
    */
   AdStyleColors colors;
-  /** The style of the corners in the ad. */
+  /**
+   * The style of the corners in the ad (deprecated: never populated, ignored).
+   */
   core.String corners;
   /** The font which is included in the style. */
   AdStyleFont font;

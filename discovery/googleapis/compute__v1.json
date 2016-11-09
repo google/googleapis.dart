@@ -29,7 +29,7 @@
     "description": "Creates and runs virtual machines on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/IHPQejAPoHbj6rriHVm8lNKt_bg\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/gtTz81yT51uxJD5vEhz0nfPklxo\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -109,6 +109,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -275,6 +280,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -330,6 +340,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -495,6 +510,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -769,6 +789,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -793,7 +818,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates the entire content of the BackendService resource. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information. This method supports patch semantics.",
+                    "description": "Updates the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "compute.backendServices.patch",
                     "parameterOrder": [
@@ -829,7 +854,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates the entire content of the BackendService resource. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information.",
+                    "description": "Updates the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information.",
                     "httpMethod": "PUT",
                     "id": "compute.backendServices.update",
                     "parameterOrder": [
@@ -889,6 +914,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -978,6 +1008,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -1033,6 +1068,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -1247,6 +1287,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -1442,6 +1487,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -1562,6 +1612,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -1727,6 +1782,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -1923,6 +1983,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -2067,6 +2132,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -2151,6 +2221,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -2261,6 +2336,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -2282,6 +2362,227 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
+        },
+        "healthChecks": {
+            "methods": {
+                "delete": {
+                    "description": "Deletes the specified HealthCheck resource.",
+                    "httpMethod": "DELETE",
+                    "id": "compute.healthChecks.delete",
+                    "parameterOrder": [
+                        "project",
+                        "healthCheck"
+                    ],
+                    "parameters": {
+                        "healthCheck": {
+                            "description": "Name of the HealthCheck resource to delete.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/healthChecks/{healthCheck}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified HealthCheck resource. Get a list of available health checks by making a list() request.",
+                    "httpMethod": "GET",
+                    "id": "compute.healthChecks.get",
+                    "parameterOrder": [
+                        "project",
+                        "healthCheck"
+                    ],
+                    "parameters": {
+                        "healthCheck": {
+                            "description": "Name of the HealthCheck resource to return.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/healthChecks/{healthCheck}",
+                    "response": {
+                        "$ref": "HealthCheck"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates a HealthCheck resource in the specified project using the data included in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.healthChecks.insert",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/healthChecks",
+                    "request": {
+                        "$ref": "HealthCheck"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves the list of HealthCheck resources available to the specified project.",
+                    "httpMethod": "GET",
+                    "id": "compute.healthChecks.list",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/healthChecks",
+                    "response": {
+                        "$ref": "HealthCheckList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates a HealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "compute.healthChecks.patch",
+                    "parameterOrder": [
+                        "project",
+                        "healthCheck"
+                    ],
+                    "parameters": {
+                        "healthCheck": {
+                            "description": "Name of the HealthCheck resource to update.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/healthChecks/{healthCheck}",
+                    "request": {
+                        "$ref": "HealthCheck"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a HealthCheck resource in the specified project using the data included in the request.",
+                    "httpMethod": "PUT",
+                    "id": "compute.healthChecks.update",
+                    "parameterOrder": [
+                        "project",
+                        "healthCheck"
+                    ],
+                    "parameters": {
+                        "healthCheck": {
+                            "description": "Name of the HealthCheck resource to update.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/healthChecks/{healthCheck}",
+                    "request": {
+                        "$ref": "HealthCheck"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 }
             }
@@ -2404,6 +2705,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -2620,6 +2926,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -2910,6 +3221,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -3000,6 +3316,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -3203,6 +3524,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -3242,10 +3568,26 @@
                         "instanceGroupManager"
                     ],
                     "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
                         "instanceGroupManager": {
                             "description": "The name of the managed instance group.",
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
                             "type": "string"
                         },
                         "project": {
@@ -3513,6 +3855,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -3673,6 +4020,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -3731,6 +4083,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -3969,6 +4326,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -4068,6 +4430,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -4431,6 +4798,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -4925,6 +5297,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -5012,6 +5389,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -5164,6 +5546,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -5185,6 +5572,39 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "switchToCustomMode": {
+                    "description": "Switches the network mode from auto subnet mode to custom subnet mode.",
+                    "httpMethod": "POST",
+                    "id": "compute.networks.switchToCustomMode",
+                    "parameterOrder": [
+                        "project",
+                        "network"
+                    ],
+                    "parameters": {
+                        "network": {
+                            "description": "Name of the network to be updated.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/networks/{network}/switchToCustomMode",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 }
             }
@@ -5439,6 +5859,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -5529,6 +5954,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -5577,6 +6007,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -5785,6 +6220,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -5816,7 +6256,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates the entire content of the Router resource. This method supports patch semantics.",
+                    "description": "Updates the specified Router resource with the data included in the request. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "compute.routers.patch",
                     "parameterOrder": [
@@ -5905,7 +6345,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates the entire content of the Router resource.",
+                    "description": "Updates the specified Router resource with the data included in the request.",
                     "httpMethod": "PUT",
                     "id": "compute.routers.update",
                     "parameterOrder": [
@@ -6069,6 +6509,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -6184,6 +6629,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -6329,6 +6779,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -6377,6 +6832,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -6434,6 +6894,50 @@
                         }
                     },
                     "path": "{project}/regions/{region}/subnetworks/{subnetwork}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "expandIpCidrRange": {
+                    "description": "Expands the IP CIDR range of the subnetwork to a specified value.",
+                    "httpMethod": "POST",
+                    "id": "compute.subnetworks.expandIpCidrRange",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "subnetwork"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Name of the region scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "subnetwork": {
+                            "description": "Name of the Subnetwork resource to update.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange",
+                    "request": {
+                        "$ref": "SubnetworksExpandIpCidrRangeRequest"
+                    },
                     "response": {
                         "$ref": "Operation"
                     },
@@ -6542,6 +7046,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -6693,6 +7202,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -6874,6 +7388,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -6994,6 +7513,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -7160,6 +7684,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -7303,6 +7832,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -7514,6 +8048,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -7684,6 +8223,263 @@
                 }
             }
         },
+        "targetSslProxies": {
+            "methods": {
+                "delete": {
+                    "description": "Deletes the specified TargetSslProxy resource.",
+                    "httpMethod": "DELETE",
+                    "id": "compute.targetSslProxies.delete",
+                    "parameterOrder": [
+                        "project",
+                        "targetSslProxy"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "targetSslProxy": {
+                            "description": "Name of the TargetSslProxy resource to delete.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetSslProxies/{targetSslProxy}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified TargetSslProxy resource. Get a list of available target SSL proxies by making a list() request.",
+                    "httpMethod": "GET",
+                    "id": "compute.targetSslProxies.get",
+                    "parameterOrder": [
+                        "project",
+                        "targetSslProxy"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "targetSslProxy": {
+                            "description": "Name of the TargetSslProxy resource to return.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetSslProxies/{targetSslProxy}",
+                    "response": {
+                        "$ref": "TargetSslProxy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates a TargetSslProxy resource in the specified project using the data included in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.targetSslProxies.insert",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetSslProxies",
+                    "request": {
+                        "$ref": "TargetSslProxy"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves the list of TargetSslProxy resources available to the specified project.",
+                    "httpMethod": "GET",
+                    "id": "compute.targetSslProxies.list",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests.",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetSslProxies",
+                    "response": {
+                        "$ref": "TargetSslProxyList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "setBackendService": {
+                    "description": "Changes the BackendService for TargetSslProxy.",
+                    "httpMethod": "POST",
+                    "id": "compute.targetSslProxies.setBackendService",
+                    "parameterOrder": [
+                        "project",
+                        "targetSslProxy"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "targetSslProxy": {
+                            "description": "Name of the TargetSslProxy resource whose BackendService resource is to be set.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetSslProxies/{targetSslProxy}/setBackendService",
+                    "request": {
+                        "$ref": "TargetSslProxiesSetBackendServiceRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "setProxyHeader": {
+                    "description": "Changes the ProxyHeaderType for TargetSslProxy.",
+                    "httpMethod": "POST",
+                    "id": "compute.targetSslProxies.setProxyHeader",
+                    "parameterOrder": [
+                        "project",
+                        "targetSslProxy"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "targetSslProxy": {
+                            "description": "Name of the TargetSslProxy resource whose ProxyHeader is to be set.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetSslProxies/{targetSslProxy}/setProxyHeader",
+                    "request": {
+                        "$ref": "TargetSslProxiesSetProxyHeaderRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "setSslCertificates": {
+                    "description": "Changes SslCertificates for TargetSslProxy.",
+                    "httpMethod": "POST",
+                    "id": "compute.targetSslProxies.setSslCertificates",
+                    "parameterOrder": [
+                        "project",
+                        "targetSslProxy"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "targetSslProxy": {
+                            "description": "Name of the TargetSslProxy resource whose SslCertificate resource is to be set.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetSslProxies/{targetSslProxy}/setSslCertificates",
+                    "request": {
+                        "$ref": "TargetSslProxiesSetSslCertificatesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                }
+            }
+        },
         "targetVpnGateways": {
             "methods": {
                 "aggregatedList": {
@@ -7707,6 +8503,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -7872,6 +8673,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -8060,6 +8866,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -8084,7 +8895,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates the entire content of the UrlMap resource. This method supports patch semantics.",
+                    "description": "Updates the specified UrlMap resource with the data included in the request. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "compute.urlMaps.patch",
                     "parameterOrder": [
@@ -8120,7 +8931,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates the entire content of the UrlMap resource.",
+                    "description": "Updates the specified UrlMap resource with the data included in the request.",
                     "httpMethod": "PUT",
                     "id": "compute.urlMaps.update",
                     "parameterOrder": [
@@ -8216,6 +9027,11 @@
                             "maximum": "500",
                             "minimum": "0",
                             "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
@@ -8382,6 +9198,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -8519,6 +9340,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -8609,6 +9435,11 @@
                             "minimum": "0",
                             "type": "integer"
                         },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageToken": {
                             "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
                             "location": "query",
@@ -8635,7 +9466,7 @@
             }
         }
     },
-    "revision": "20160812",
+    "revision": "20161019",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -8943,7 +9774,7 @@
                     "type": "string"
                 },
                 "source": {
-                    "description": "Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks. Note that for InstanceTemplate, it is just disk name, not URL for the disk.",
+                    "description": "Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or disks.source is required.\n\nIf desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks.\n\nNote that for InstanceTemplate, specify the disk name, not the URL for the disk.",
                     "type": "string"
                 },
                 "type": {
@@ -8984,7 +9815,7 @@
                     "type": "string"
                 },
                 "sourceImage": {
-                    "description": "The source image used to create this disk. If the source image is deleted, this field will not be set.\n\nTo create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-8 to use the latest Debian 8 image:\n\nprojects/debian-cloud/global/images/family/debian-8 \n\nAlternatively, use a specific version of a public operating system image:\n\nprojects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD \n\nTo create a disk with a private image that you created, specify the image name in the following format:\n\nglobal/images/my-private-image \n\nYou can also specify a private image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:\n\nglobal/images/family/my-private-family",
+                    "description": "The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or disks.source is required.\n\nTo create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-8 to use the latest Debian 8 image:\n\nprojects/debian-cloud/global/images/family/debian-8 \n\nAlternatively, use a specific version of a public operating system image:\n\nprojects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD \n\nTo create a disk with a private image that you created, specify the image name in the following format:\n\nglobal/images/my-private-image \n\nYou can also specify a private image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:\n\nglobal/images/family/my-private-family \n\nIf the source image is deleted later, this field will not be set.",
                     "type": "string"
                 },
                 "sourceImageEncryptionKey": {
@@ -9028,6 +9859,10 @@
                     },
                     "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "region": {
+                    "description": "[Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).",
                     "type": "string"
                 },
                 "selfLink": {
@@ -9241,7 +10076,7 @@
             "id": "AutoscalingPolicyCustomMetricUtilization",
             "properties": {
                 "metric": {
-                    "description": "The identifier of the Cloud Monitoring metric. The metric cannot have negative values and should be a utilization metric, which means that the number of virtual machines handling requests should increase or decrease proportionally to the metric. The metric must also have a label of compute.googleapis.com/resource_id with the value of the instance's unique ID, although this alone does not guarantee that the metric is valid.\n\nFor example, the following is a valid metric:\ncompute.googleapis.com/instance/network/received_bytes_count\n\n\nThe following is not a valid metric because it does not increase or decrease based on usage:\ncompute.googleapis.com/instance/cpu/reserved_cores",
+                    "description": "The identifier of the Stackdriver Monitoring metric. The metric cannot have negative values and should be a utilization metric, which means that the number of virtual machines handling requests should increase or decrease proportionally to the metric. The metric must also have a label of compute.googleapis.com/resource_id with the value of the instance's unique ID, although this alone does not guarantee that the metric is valid.\n\nFor example, the following is a valid metric:\ncompute.googleapis.com/instance/network/received_bytes_count\nThe following is not a valid metric because it does not increase or decrease based on usage:\ncompute.googleapis.com/instance/cpu/reserved_cores",
                     "type": "string"
                 },
                 "utilizationTarget": {
@@ -9250,7 +10085,7 @@
                     "type": "number"
                 },
                 "utilizationTargetType": {
-                    "description": "Defines how target utilization value is expressed for a Cloud Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified, the default is GAUGE.",
+                    "description": "Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified, the default is GAUGE.",
                     "enum": [
                         "DELTA_PER_MINUTE",
                         "DELTA_PER_SECOND",
@@ -9283,19 +10118,21 @@
             "id": "Backend",
             "properties": {
                 "balancingMode": {
-                    "description": "Specifies the balancing mode for this backend. For global HTTP(S) load balancing, the default is UTILIZATION. Valid values are UTILIZATION and RATE.\n\nThis cannot be used for internal load balancing.",
+                    "description": "Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).\n\nThis cannot be used for internal load balancing.",
                     "enum": [
+                        "CONNECTION",
                         "RATE",
                         "UTILIZATION"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         ""
                     ],
                     "type": "string"
                 },
                 "capacityScaler": {
-                    "description": "A multiplier applied to the group's maximum servicing capacity (either UTILIZATION or RATE). Default value is 1, which means the group will serve up to 100% of its configured CPU or RPS (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available CPU or RPS. Valid range is [0.0,1.0].\n\nThis cannot be used for internal load balancing.",
+                    "description": "A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].\n\nThis cannot be used for internal load balancing.",
                     "format": "float",
                     "type": "number"
                 },
@@ -9306,6 +10143,16 @@
                 "group": {
                     "description": "The fully-qualified URL of a zonal Instance Group resource. This instance group defines the list of instances that serve traffic. Member virtual machine instances from each instance group must live in the same zone as the instance group itself. No two backends in a backend service are allowed to use same Instance Group resource.\n\nNote that you must specify an Instance Group resource using the fully-qualified URL, rather than a partial URL.\n\nWhen the BackendService has load balancing scheme INTERNAL, the instance group must be in a zone within the same region as the BackendService.",
                     "type": "string"
+                },
+                "maxConnections": {
+                    "description": "The max number of simultaneous connections for the group. Can be used with either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.\n\nThis cannot be used for internal load balancing.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "maxConnectionsPerInstance": {
+                    "description": "The max number of simultaneous connections that a single backend instance can handle. This is used to calculate the capacity of the group. Can be used in either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.\n\nThis cannot be used for internal load balancing.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "maxRate": {
                     "description": "The max requests per second (RPS) of the group. Can be used with either RATE or UTILIZATION balancing modes, but required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be set.\n\nThis cannot be used for internal load balancing.",
@@ -9340,6 +10187,9 @@
                         "$ref": "Backend"
                     },
                     "type": "array"
+                },
+                "connectionDraining": {
+                    "$ref": "ConnectionDraining"
                 },
                 "creationTimestamp": {
                     "description": "[Output Only] Creation timestamp in RFC3339 text format.",
@@ -9393,9 +10243,13 @@
                     "description": "The protocol this BackendService uses to communicate with backends.\n\nPossible values are HTTP, HTTPS, HTTP2, TCP and SSL. The default is HTTP.\n\nFor internal load balancing, the possible values are TCP and UDP, and the default is TCP.",
                     "enum": [
                         "HTTP",
-                        "HTTPS"
+                        "HTTPS",
+                        "SSL",
+                        "TCP"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         ""
                     ],
@@ -9490,6 +10344,18 @@
             },
             "type": "object"
         },
+        "ConnectionDraining": {
+            "description": "Message containing connection draining configuration.",
+            "id": "ConnectionDraining",
+            "properties": {
+                "drainingTimeoutSec": {
+                    "description": "Time for which instance will be drained (not accept new connections, but still work to finish started).",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "CustomerEncryptionKey": {
             "description": "Represents a customer-supplied encryption key",
             "id": "CustomerEncryptionKey",
@@ -9524,15 +10390,15 @@
             "id": "DeprecationStatus",
             "properties": {
                 "deleted": {
-                    "description": "An optional RFC3339 timestamp on or after which the deprecation state of this resource will be changed to DELETED.",
+                    "description": "An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED. This is only informational and the status will not change unless the client explicitly changes it.",
                     "type": "string"
                 },
                 "deprecated": {
-                    "description": "An optional RFC3339 timestamp on or after which the deprecation state of this resource will be changed to DEPRECATED.",
+                    "description": "An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED. This is only informational and the status will not change unless the client explicitly changes it.",
                     "type": "string"
                 },
                 "obsolete": {
-                    "description": "An optional RFC3339 timestamp on or after which the deprecation state of this resource will be changed to OBSOLETE.",
+                    "description": "An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE. This is only informational and the status will not change unless the client explicitly changes it.",
                     "type": "string"
                 },
                 "replacement": {
@@ -9645,7 +10511,7 @@
                     "type": "string"
                 },
                 "status": {
-                    "description": "[Output Only] The status of disk creation. Applicable statuses includes: CREATING, FAILED, READY, RESTORING.",
+                    "description": "[Output Only] The status of disk creation.",
                     "enum": [
                         "CREATING",
                         "FAILED",
@@ -10364,6 +11230,231 @@
             },
             "type": "object"
         },
+        "HTTP2HealthCheck": {
+            "id": "HTTP2HealthCheck",
+            "properties": {
+                "host": {
+                    "description": "The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.",
+                    "type": "string"
+                },
+                "port": {
+                    "description": "The TCP port number for the health check request. The default value is 443.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "portName": {
+                    "description": "Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.",
+                    "type": "string"
+                },
+                "proxyHeader": {
+                    "description": "Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.",
+                    "enum": [
+                        "NONE",
+                        "PROXY_V1"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "requestPath": {
+                    "description": "The request path of the HTTP/2 health check request. The default value is /.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HTTPHealthCheck": {
+            "id": "HTTPHealthCheck",
+            "properties": {
+                "host": {
+                    "description": "The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.",
+                    "type": "string"
+                },
+                "port": {
+                    "description": "The TCP port number for the health check request. The default value is 80.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "portName": {
+                    "description": "Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.",
+                    "type": "string"
+                },
+                "proxyHeader": {
+                    "description": "Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.",
+                    "enum": [
+                        "NONE",
+                        "PROXY_V1"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "requestPath": {
+                    "description": "The request path of the HTTP health check request. The default value is /.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HTTPSHealthCheck": {
+            "id": "HTTPSHealthCheck",
+            "properties": {
+                "host": {
+                    "description": "The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.",
+                    "type": "string"
+                },
+                "port": {
+                    "description": "The TCP port number for the health check request. The default value is 443.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "portName": {
+                    "description": "Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.",
+                    "type": "string"
+                },
+                "proxyHeader": {
+                    "description": "Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.",
+                    "enum": [
+                        "NONE",
+                        "PROXY_V1"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "requestPath": {
+                    "description": "The request path of the HTTPS health check request. The default value is /.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HealthCheck": {
+            "description": "An HealthCheck resource. This resource defines a template for how individual virtual machines should be checked for health, via one of the supported protocols.",
+            "id": "HealthCheck",
+            "properties": {
+                "checkIntervalSec": {
+                    "description": "How often (in seconds) to send a health check. The default value is 5 seconds.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in 3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional description of this resource. Provide this property when you create the resource.",
+                    "type": "string"
+                },
+                "healthyThreshold": {
+                    "description": "A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "http2HealthCheck": {
+                    "$ref": "HTTP2HealthCheck"
+                },
+                "httpHealthCheck": {
+                    "$ref": "HTTPHealthCheck"
+                },
+                "httpsHealthCheck": {
+                    "$ref": "HTTPSHealthCheck"
+                },
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#healthCheck",
+                    "description": "Type of the resource.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "type": "string"
+                },
+                "sslHealthCheck": {
+                    "$ref": "SSLHealthCheck"
+                },
+                "tcpHealthCheck": {
+                    "$ref": "TCPHealthCheck"
+                },
+                "timeoutSec": {
+                    "description": "How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "type": {
+                    "description": "Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.",
+                    "enum": [
+                        "HTTP",
+                        "HTTP2",
+                        "HTTPS",
+                        "INVALID",
+                        "SSL",
+                        "TCP"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "unhealthyThreshold": {
+                    "description": "A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "HealthCheckList": {
+            "description": "Contains a list of HealthCheck resources.",
+            "id": "HealthCheckList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A list of HealthCheck resources.",
+                    "items": {
+                        "$ref": "HealthCheck"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#healthCheckList",
+                    "description": "Type of resource.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "HealthCheckReference": {
             "description": "A full or valid partial URL to a health check. For example, the following are valid URLs:  \n- https://www.googleapis.com/compute/beta/projects/project-id/global/httpHealthChecks/health-check \n- projects/project-id/global/httpHealthChecks/health-check \n- global/httpHealthChecks/health-check",
             "id": "HealthCheckReference",
@@ -10719,7 +11810,7 @@
                     "type": "string"
                 },
                 "sourceDisk": {
-                    "description": "URL of the The source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  \n- https://www.googleapis.com/compute/v1/projects/project/zones/zone/disk/disk \n- projects/project/zones/zone/disk/disk \n- zones/zone/disks/disk",
+                    "description": "URL of the The source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  \n- https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk \n- projects/project/zones/zone/disks/disk \n- zones/zone/disks/disk",
                     "type": "string"
                 },
                 "sourceDiskEncryptionKey": {
@@ -10866,7 +11957,7 @@
                     "type": "array"
                 },
                 "status": {
-                    "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.",
+                    "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.",
                     "enum": [
                         "PROVISIONING",
                         "RUNNING",
@@ -10952,7 +12043,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "[Output Only] A unique identifier for this resource type. The server generates this identifier.",
+                    "description": "[Output Only] A unique identifier for this instance group, generated by the server.",
                     "format": "uint64",
                     "type": "string"
                 },
@@ -10980,6 +12071,10 @@
                 },
                 "network": {
                     "description": "The URL of the network to which all instances in the instance group belong.",
+                    "type": "string"
+                },
+                "region": {
+                    "description": "The URL of the region where the instance group is located (for regional resources).",
                     "type": "string"
                 },
                 "selfLink": {
@@ -11130,6 +12225,10 @@
                     },
                     "type": "array"
                 },
+                "region": {
+                    "description": "[Output Only] The URL of the region where the managed instance group resides (for regional resources).",
+                    "type": "string"
+                },
                 "selfLink": {
                     "description": "[Output Only] The URL for this managed instance group. The server defines this URL.",
                     "type": "string"
@@ -11172,7 +12271,7 @@
                     "type": "integer"
                 },
                 "creatingWithoutRetries": {
-                    "description": "[Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's target_size value accordingly.",
+                    "description": "[Output Only] The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -11260,7 +12359,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] The URL for this resource type. The server generates this URL.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -12468,7 +13567,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server-defined URL for this resource .",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -12593,7 +13692,7 @@
                     "type": "string"
                 },
                 "targetLink": {
-                    "description": "[Output Only] The URL of the resource that the operation modifies.",
+                    "description": "[Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.",
                     "type": "string"
                 },
                 "user": {
@@ -12949,6 +14048,9 @@
                         "IN_USE_ADDRESSES",
                         "LOCAL_SSD_TOTAL_GB",
                         "NETWORKS",
+                        "PREEMPTIBLE_CPUS",
+                        "REGIONAL_AUTOSCALERS",
+                        "REGIONAL_INSTANCE_GROUP_MANAGERS",
                         "ROUTERS",
                         "ROUTES",
                         "SNAPSHOTS",
@@ -12966,6 +14068,9 @@
                         "VPN_TUNNELS"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -13105,7 +14210,7 @@
             "id": "ResourceGroupReference",
             "properties": {
                 "group": {
-                    "description": "A URI referencing one of the resource views listed in the backend service.",
+                    "description": "A URI referencing one of the instance groups listed in the backend service.",
                     "type": "string"
                 }
             },
@@ -13340,7 +14445,7 @@
                     "type": "string"
                 },
                 "interfaces": {
-                    "description": "Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel) or IP address and IP address range (e.g. ipRange).",
+                    "description": "Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel), or IP address and IP address range (e.g. ipRange), or both.",
                     "items": {
                         "$ref": "RouterInterface"
                     },
@@ -13501,7 +14606,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -13694,6 +14799,41 @@
             },
             "type": "object"
         },
+        "SSLHealthCheck": {
+            "id": "SSLHealthCheck",
+            "properties": {
+                "port": {
+                    "description": "The TCP port number for the health check request. The default value is 443.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "portName": {
+                    "description": "Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.",
+                    "type": "string"
+                },
+                "proxyHeader": {
+                    "description": "Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.",
+                    "enum": [
+                        "NONE",
+                        "PROXY_V1"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "request": {
+                    "description": "The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.",
+                    "type": "string"
+                },
+                "response": {
+                    "description": "The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Scheduling": {
             "description": "Sets the scheduling options for an Instance.",
             "id": "Scheduling",
@@ -13735,7 +14875,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -14072,6 +15212,16 @@
             },
             "type": "object"
         },
+        "SubnetworksExpandIpCidrRangeRequest": {
+            "id": "SubnetworksExpandIpCidrRangeRequest",
+            "properties": {
+                "ipCidrRange": {
+                    "description": "The IP (in CIDR format or netmask) of internal addresses that are legal on this Subnetwork. This range should be disjoint from other subnetworks within this network. This range can only be larger than (i.e. a superset of) the range previously defined before the update.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SubnetworksScopedList": {
             "id": "SubnetworksScopedList",
             "properties": {
@@ -14148,6 +15298,41 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TCPHealthCheck": {
+            "id": "TCPHealthCheck",
+            "properties": {
+                "port": {
+                    "description": "The TCP port number for the health check request. The default value is 80.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "portName": {
+                    "description": "Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.",
+                    "type": "string"
+                },
+                "proxyHeader": {
+                    "description": "Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.",
+                    "enum": [
+                        "NONE",
+                        "PROXY_V1"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "request": {
+                    "description": "The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.",
+                    "type": "string"
+                },
+                "response": {
+                    "description": "The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -14820,6 +16005,135 @@
             },
             "type": "object"
         },
+        "TargetSslProxiesSetBackendServiceRequest": {
+            "id": "TargetSslProxiesSetBackendServiceRequest",
+            "properties": {
+                "service": {
+                    "description": "The URL of the new BackendService resource for the targetSslProxy.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TargetSslProxiesSetProxyHeaderRequest": {
+            "id": "TargetSslProxiesSetProxyHeaderRequest",
+            "properties": {
+                "proxyHeader": {
+                    "description": "The new type of proxy header to append before sending data to the backend. NONE or PROXY_V1 are allowed.",
+                    "enum": [
+                        "NONE",
+                        "PROXY_V1"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TargetSslProxiesSetSslCertificatesRequest": {
+            "id": "TargetSslProxiesSetSslCertificatesRequest",
+            "properties": {
+                "sslCertificates": {
+                    "description": "New set of URLs to SslCertificate resources to associate with this TargetSslProxy. Currently exactly one ssl certificate must be specified.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TargetSslProxy": {
+            "description": "A TargetSslProxy resource. This resource defines an SSL proxy.",
+            "id": "TargetSslProxy",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional description of this resource. Provide this property when you create the resource.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#targetSslProxy",
+                    "description": "[Output Only] Type of the resource. Always compute#targetSslProxy for target SSL proxies.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "proxyHeader": {
+                    "description": "Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.",
+                    "enum": [
+                        "NONE",
+                        "PROXY_V1"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "type": "string"
+                },
+                "service": {
+                    "description": "URL to the BackendService resource.",
+                    "type": "string"
+                },
+                "sslCertificates": {
+                    "description": "URLs to SslCertificate resources that are used to authenticate connections to Backends. Currently exactly one SSL certificate must be specified.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TargetSslProxyList": {
+            "description": "Contains a list of TargetSslProxy resources.",
+            "id": "TargetSslProxyList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A list of TargetSslProxy resources.",
+                    "items": {
+                        "$ref": "TargetSslProxy"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#targetSslProxyList",
+                    "description": "Type of resource.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "TargetVpnGateway": {
             "description": "Represents a Target VPN gateway resource.",
             "id": "TargetVpnGateway",
@@ -14927,7 +16241,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -14958,7 +16272,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },
@@ -15428,7 +16742,7 @@
                     "type": "string"
                 },
                 "selfLink": {
-                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "description": "[Output Only] Server-defined URL for this resource.",
                     "type": "string"
                 }
             },

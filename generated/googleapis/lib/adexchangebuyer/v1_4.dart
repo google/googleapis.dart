@@ -131,6 +131,9 @@ class AccountsResourceApi {
    *
    * [id] - The account id
    *
+   * [confirmUnsafeAccountChange] - Confirmation for erasing bidder and cookie
+   * matching urls.
+   *
    * Completes with a [Account].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -139,7 +142,7 @@ class AccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Account> patch(Account request, core.int id) {
+  async.Future<Account> patch(Account request, core.int id, {core.bool confirmUnsafeAccountChange}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -152,6 +155,9 @@ class AccountsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if (confirmUnsafeAccountChange != null) {
+      _queryParams["confirmUnsafeAccountChange"] = ["${confirmUnsafeAccountChange}"];
     }
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
@@ -175,6 +181,9 @@ class AccountsResourceApi {
    *
    * [id] - The account id
    *
+   * [confirmUnsafeAccountChange] - Confirmation for erasing bidder and cookie
+   * matching urls.
+   *
    * Completes with a [Account].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -183,7 +192,7 @@ class AccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Account> update(Account request, core.int id) {
+  async.Future<Account> update(Account request, core.int id, {core.bool confirmUnsafeAccountChange}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -196,6 +205,9 @@ class AccountsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if (confirmUnsafeAccountChange != null) {
+      _queryParams["confirmUnsafeAccountChange"] = ["${confirmUnsafeAccountChange}"];
     }
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
@@ -676,6 +688,50 @@ class CreativesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new CreativesList.fromJson(data));
+  }
+
+  /**
+   * Lists the external deal ids associated with the creative.
+   *
+   * Request parameters:
+   *
+   * [accountId] - The id for the account that will serve this creative.
+   *
+   * [buyerCreativeId] - The buyer-specific id for this creative.
+   *
+   * Completes with a [CreativeDealIds].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CreativeDealIds> listDeals(core.int accountId, core.String buyerCreativeId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (buyerCreativeId == null) {
+      throw new core.ArgumentError("Parameter buyerCreativeId is required.");
+    }
+
+    _url = 'creatives/' + commons.Escaper.ecapeVariable('$accountId') + '/' + commons.Escaper.ecapeVariable('$buyerCreativeId') + '/listDeals';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CreativeDealIds.fromJson(data));
   }
 
   /**
@@ -1610,11 +1666,13 @@ class ProposalsResourceApi {
    * thrown. The caller should then fetch the latest proposal at head revision
    * and retry the update at that revision.
    *
-   * [updateAction] - The proposed action to take on the proposal.
+   * [updateAction] - The proposed action to take on the proposal. This field is
+   * required and it must be set when updating a proposal.
    * Possible string values are:
    * - "accept"
    * - "cancel"
    * - "propose"
+   * - "proposeAndAccept"
    * - "unknownAction"
    * - "updateFinalized"
    *
@@ -1751,11 +1809,13 @@ class ProposalsResourceApi {
    * thrown. The caller should then fetch the latest proposal at head revision
    * and retry the update at that revision.
    *
-   * [updateAction] - The proposed action to take on the proposal.
+   * [updateAction] - The proposed action to take on the proposal. This field is
+   * required and it must be set when updating a proposal.
    * Possible string values are:
    * - "accept"
    * - "cancel"
    * - "propose"
+   * - "proposeAndAccept"
    * - "unknownAction"
    * - "updateFinalized"
    *
@@ -1857,10 +1917,11 @@ class AccountBidderLocation {
    * The protocol that the bidder endpoint is using. By default, OpenRTB
    * protocols use JSON, except PROTOCOL_OPENRTB_PROTOBUF.
    * PROTOCOL_OPENRTB_PROTOBUF uses protobuf encoding over the latest OpenRTB
-   * protocol version, which is 2.3 right now. Allowed values:
+   * protocol version, which is 2.4 right now. Allowed values:
    * - PROTOCOL_ADX
    * - PROTOCOL_OPENRTB_2_2
    * - PROTOCOL_OPENRTB_2_3
+   * - PROTOCOL_OPENRTB_2_4
    * - PROTOCOL_OPENRTB_PROTOBUF
    */
   core.String bidProtocol;
@@ -2665,7 +2726,10 @@ class CreativeNativeAdLogo {
   }
 }
 
-/** If nativeAd is set, HTMLSnippet and videoURL should not be set. */
+/**
+ * If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should
+ * not be set. (The videoURL inside nativeAd can be set.)
+ */
 class CreativeNativeAd {
   core.String advertiser;
   /** The app icon, for app download ads. */
@@ -2674,6 +2738,8 @@ class CreativeNativeAd {
   core.String body;
   /** A label for the button that the user is supposed to click. */
   core.String callToAction;
+  /** The URL that the browser/SDK will load when the user clicks the ad. */
+  core.String clickLinkUrl;
   /** The URL to use for click tracking. */
   core.String clickTrackingUrl;
   /** A short title for the ad. */
@@ -2690,6 +2756,11 @@ class CreativeNativeAd {
   core.double starRating;
   /** The URL to the app store to purchase/download the promoted app. */
   core.String store;
+  /**
+   * The URL of the XML VAST for a native ad. Note this is a separate field from
+   * resource.video_url.
+   */
+  core.String videoURL;
 
   CreativeNativeAd();
 
@@ -2705,6 +2776,9 @@ class CreativeNativeAd {
     }
     if (_json.containsKey("callToAction")) {
       callToAction = _json["callToAction"];
+    }
+    if (_json.containsKey("clickLinkUrl")) {
+      clickLinkUrl = _json["clickLinkUrl"];
     }
     if (_json.containsKey("clickTrackingUrl")) {
       clickTrackingUrl = _json["clickTrackingUrl"];
@@ -2730,6 +2804,9 @@ class CreativeNativeAd {
     if (_json.containsKey("store")) {
       store = _json["store"];
     }
+    if (_json.containsKey("videoURL")) {
+      videoURL = _json["videoURL"];
+    }
   }
 
   core.Map toJson() {
@@ -2745,6 +2822,9 @@ class CreativeNativeAd {
     }
     if (callToAction != null) {
       _json["callToAction"] = callToAction;
+    }
+    if (clickLinkUrl != null) {
+      _json["clickLinkUrl"] = clickLinkUrl;
     }
     if (clickTrackingUrl != null) {
       _json["clickTrackingUrl"] = clickTrackingUrl;
@@ -2769,6 +2849,9 @@ class CreativeNativeAd {
     }
     if (store != null) {
       _json["store"] = store;
+    }
+    if (videoURL != null) {
+      _json["videoURL"] = videoURL;
     }
     return _json;
   }
@@ -2973,7 +3056,10 @@ class Creative {
    * set in requests.
    */
   core.List<core.String> languages;
-  /** If nativeAd is set, HTMLSnippet and videoURL should not be set. */
+  /**
+   * If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should
+   * not be set. (The videoURL inside nativeAd can be set.)
+   */
   CreativeNativeAd nativeAd;
   /**
    * Top-level open auction status. Read-only. This field should not be set in
@@ -3011,7 +3097,11 @@ class Creative {
    * requests.
    */
   core.int version;
-  /** The url to fetch a video ad. If set, HTMLSnippet should not be set. */
+  /**
+   * The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should
+   * not be set. Note, this is different from resource.native_ad.video_url
+   * above.
+   */
   core.String videoURL;
   /** Ad width. */
   core.int width;
@@ -3195,6 +3285,73 @@ class Creative {
   }
 }
 
+class CreativeDealIdsDealStatuses {
+  /** ARC approval status. */
+  core.String arcStatus;
+  /** External deal ID. */
+  core.String dealId;
+  /** Publisher ID. */
+  core.int webPropertyId;
+
+  CreativeDealIdsDealStatuses();
+
+  CreativeDealIdsDealStatuses.fromJson(core.Map _json) {
+    if (_json.containsKey("arcStatus")) {
+      arcStatus = _json["arcStatus"];
+    }
+    if (_json.containsKey("dealId")) {
+      dealId = _json["dealId"];
+    }
+    if (_json.containsKey("webPropertyId")) {
+      webPropertyId = _json["webPropertyId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (arcStatus != null) {
+      _json["arcStatus"] = arcStatus;
+    }
+    if (dealId != null) {
+      _json["dealId"] = dealId;
+    }
+    if (webPropertyId != null) {
+      _json["webPropertyId"] = webPropertyId;
+    }
+    return _json;
+  }
+}
+
+/** The external deal ids associated with a creative. */
+class CreativeDealIds {
+  /** A list of external deal ids and ARC approval status. */
+  core.List<CreativeDealIdsDealStatuses> dealStatuses;
+  /** Resource type. */
+  core.String kind;
+
+  CreativeDealIds();
+
+  CreativeDealIds.fromJson(core.Map _json) {
+    if (_json.containsKey("dealStatuses")) {
+      dealStatuses = _json["dealStatuses"].map((value) => new CreativeDealIdsDealStatuses.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (dealStatuses != null) {
+      _json["dealStatuses"] = dealStatuses.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 /**
  * The creatives feed lists the active creatives for the Ad Exchange buyer
  * accounts that the user has access to. Each entry in the feed corresponds to a
@@ -3321,6 +3478,12 @@ class DealServingMetadataDealPauseStatus {
 class DealTerms {
   /** Visibilty of the URL in bid requests. */
   core.String brandingType;
+  /**
+   * Indicates that this ExternalDealId exists under at least two different
+   * AdxInventoryDeals. Currently, the only case that the same ExternalDealId
+   * will exist is programmatic cross sell case.
+   */
+  core.String crossListedExternalDealIdType;
   /** Description for the proposed terms of the deal. */
   core.String description;
   /**
@@ -3353,6 +3516,9 @@ class DealTerms {
     if (_json.containsKey("brandingType")) {
       brandingType = _json["brandingType"];
     }
+    if (_json.containsKey("crossListedExternalDealIdType")) {
+      crossListedExternalDealIdType = _json["crossListedExternalDealIdType"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -3383,6 +3549,9 @@ class DealTerms {
     var _json = new core.Map();
     if (brandingType != null) {
       _json["brandingType"] = brandingType;
+    }
+    if (crossListedExternalDealIdType != null) {
+      _json["crossListedExternalDealIdType"] = crossListedExternalDealIdType;
     }
     if (description != null) {
       _json["description"] = description;
@@ -4077,6 +4246,11 @@ class MarketplaceDeal {
   /** Description for the deal terms. (updatable) */
   core.String inventoryDescription;
   /**
+   * Indicates whether the current deal is a RFP template. RFP template is
+   * created by buyer and not based on seller created products.
+   */
+  core.bool isRfpTemplate;
+  /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "adexchangebuyer#marketplaceDeal".
    */
@@ -4154,6 +4328,9 @@ class MarketplaceDeal {
     if (_json.containsKey("inventoryDescription")) {
       inventoryDescription = _json["inventoryDescription"];
     }
+    if (_json.containsKey("isRfpTemplate")) {
+      isRfpTemplate = _json["isRfpTemplate"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -4226,6 +4403,9 @@ class MarketplaceDeal {
     }
     if (inventoryDescription != null) {
       _json["inventoryDescription"] = inventoryDescription;
+    }
+    if (isRfpTemplate != null) {
+      _json["isRfpTemplate"] = isRfpTemplate;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4915,6 +5095,13 @@ class PretargetingConfig {
    * section.
    */
   core.List<core.String> supportedCreativeAttributes;
+  /**
+   * Requests containing the specified type of user data will match. Possible
+   * values are HOSTED_MATCH_DATA, which means the request is cookie-targetable
+   * and has a match in the buyer's hosted match table, and COOKIE_OR_IDFA,
+   * which means the request has either a targetable cookie or an iOS IDFA.
+   */
+  core.List<core.String> userIdentifierDataRequired;
   /** Requests containing any of these user list ids will match. */
   core.List<core.String> userLists;
   /**
@@ -4992,6 +5179,9 @@ class PretargetingConfig {
     if (_json.containsKey("supportedCreativeAttributes")) {
       supportedCreativeAttributes = _json["supportedCreativeAttributes"];
     }
+    if (_json.containsKey("userIdentifierDataRequired")) {
+      userIdentifierDataRequired = _json["userIdentifierDataRequired"];
+    }
     if (_json.containsKey("userLists")) {
       userLists = _json["userLists"];
     }
@@ -5067,6 +5257,9 @@ class PretargetingConfig {
     }
     if (supportedCreativeAttributes != null) {
       _json["supportedCreativeAttributes"] = supportedCreativeAttributes;
+    }
+    if (userIdentifierDataRequired != null) {
+      _json["userIdentifierDataRequired"] = userIdentifierDataRequired;
     }
     if (userLists != null) {
       _json["userLists"] = userLists;
@@ -5509,6 +5702,8 @@ class Proposal {
   core.List<ContactInformation> buyerContacts;
   /** Private data for buyer. (hidden from seller). */
   PrivateData buyerPrivateData;
+  /** IDs of DBM advertisers permission to this proposal. */
+  core.List<core.String> dbmAdvertiserIds;
   /**
    * When an proposal is in an accepted state, indicates whether the buyer has
    * signed off. Once both sides have signed off on a deal, the proposal can be
@@ -5584,6 +5779,9 @@ class Proposal {
     if (_json.containsKey("buyerPrivateData")) {
       buyerPrivateData = new PrivateData.fromJson(_json["buyerPrivateData"]);
     }
+    if (_json.containsKey("dbmAdvertiserIds")) {
+      dbmAdvertiserIds = _json["dbmAdvertiserIds"];
+    }
     if (_json.containsKey("hasBuyerSignedOff")) {
       hasBuyerSignedOff = _json["hasBuyerSignedOff"];
     }
@@ -5653,6 +5851,9 @@ class Proposal {
     }
     if (buyerPrivateData != null) {
       _json["buyerPrivateData"] = (buyerPrivateData).toJson();
+    }
+    if (dbmAdvertiserIds != null) {
+      _json["dbmAdvertiserIds"] = dbmAdvertiserIds;
     }
     if (hasBuyerSignedOff != null) {
       _json["hasBuyerSignedOff"] = hasBuyerSignedOff;

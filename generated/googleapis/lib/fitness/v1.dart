@@ -953,6 +953,7 @@ class AggregateBy {
   }
 }
 
+/** Next id: 10 */
 class AggregateRequest {
   /**
    * The specification of data to be aggregated. At least one aggregateBy spec
@@ -1815,6 +1816,8 @@ class ListSessionsResponse {
    * endTime frame.
    */
   core.List<Session> deletedSession;
+  /** Flag to indicate server has more data to transfer */
+  core.bool hasMoreData;
   /**
    * The continuation token, which is used to page through large result sets.
    * Provide this value in a subsequent request to return the next page of
@@ -1833,6 +1836,9 @@ class ListSessionsResponse {
     if (_json.containsKey("deletedSession")) {
       deletedSession = _json["deletedSession"].map((value) => new Session.fromJson(value)).toList();
     }
+    if (_json.containsKey("hasMoreData")) {
+      hasMoreData = _json["hasMoreData"];
+    }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
@@ -1845,6 +1851,9 @@ class ListSessionsResponse {
     var _json = new core.Map();
     if (deletedSession != null) {
       _json["deletedSession"] = deletedSession.map((value) => (value).toJson()).toList();
+    }
+    if (hasMoreData != null) {
+      _json["hasMoreData"] = hasMoreData;
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;

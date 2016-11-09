@@ -241,6 +241,9 @@ class CoursesResourceApi {
    * numeric identifier for the user * the email address of the user * the
    * string literal `"me"`, indicating the requesting user
    *
+   * [courseStates] - Restricts returned courses to those in one of the
+   * specified states
+   *
    * [pageSize] - Maximum number of items to return. Zero or unspecified
    * indicates that the server may assign a maximum. The server may return fewer
    * than the specified number of results.
@@ -257,7 +260,7 @@ class CoursesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCoursesResponse> list({core.String studentId, core.String teacherId, core.int pageSize, core.String pageToken}) {
+  async.Future<ListCoursesResponse> list({core.String studentId, core.String teacherId, core.List<core.String> courseStates, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -270,6 +273,9 @@ class CoursesResourceApi {
     }
     if (teacherId != null) {
       _queryParams["teacherId"] = [teacherId];
+    }
+    if (courseStates != null) {
+      _queryParams["courseStates"] = courseStates;
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -2137,9 +2143,10 @@ class UserProfilesGuardianInvitationsResourceApi {
    * permitted to view, filtered by the parameters provided. This method returns
    * the following error codes: * `PERMISSION_DENIED` if a `student_id` is
    * specified, and the requesting user is not permitted to view guardian
-   * invitations for that student, if guardians are not enabled for the domain
-   * in question, or for other access errors. * `INVALID_ARGUMENT` if a
-   * `student_id` is specified, but its format cannot be recognized (it is not
+   * invitations for that student, if `"-"` is specified as the `student_id` and
+   * the user is not a domain administrator, if guardians are not enabled for
+   * the domain in question, or for other access errors. * `INVALID_ARGUMENT` if
+   * a `student_id` is specified, but its format cannot be recognized (it is not
    * an email address, nor a `student_id` from the API, nor the literal string
    * `me`). May also be returned if an invalid `page_token` or `state` is
    * provided. * `NOT_FOUND` if a `student_id` is specified, and its format can
@@ -2150,7 +2157,9 @@ class UserProfilesGuardianInvitationsResourceApi {
    * [studentId] - The ID of the student whose guardian invitations are to be
    * returned. The identifier can be one of the following: * the numeric
    * identifier for the user * the email address of the user * the string
-   * literal `"me"`, indicating the requesting user
+   * literal `"me"`, indicating the requesting user * the string literal `"-"`,
+   * indicating that results should be returned for all students that the
+   * requesting user is permitted to view guardian invitations.
    *
    * [invitedEmailAddress] - If specified, only results with the specified
    * `invited_email_address` will be returned.
@@ -2401,24 +2410,29 @@ class UserProfilesGuardiansResourceApi {
 
   /**
    * Returns a list of guardians that the requesting user is permitted to view,
-   * restricted to those that match the request. This method returns the
-   * following error codes: * `PERMISSION_DENIED` if a `student_id` is
-   * specified, and the requesting user is not permitted to view guardian
-   * information for that student, if guardians are not enabled for the domain
-   * in question, if the `invited_email_address` filter is set by a user who is
-   * not a domain administrator, or for other access errors. *
-   * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be
-   * recognized (it is not an email address, nor a `student_id` from the API,
-   * nor the literal string `me`). May also be returned if an invalid
-   * `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and
-   * its format can be recognized, but Classroom has no record of that student.
+   * restricted to those that match the request. To list guardians for any
+   * student that the requesting user may view guardians for, use the literal
+   * character `-` for the student ID. This method returns the following error
+   * codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the
+   * requesting user is not permitted to view guardian information for that
+   * student, if `"-"` is specified as the `student_id` and the user is not a
+   * domain administrator, if guardians are not enabled for the domain in
+   * question, if the `invited_email_address` filter is set by a user who is not
+   * a domain administrator, or for other access errors. * `INVALID_ARGUMENT` if
+   * a `student_id` is specified, but its format cannot be recognized (it is not
+   * an email address, nor a `student_id` from the API, nor the literal string
+   * `me`). May also be returned if an invalid `page_token` is provided. *
+   * `NOT_FOUND` if a `student_id` is specified, and its format can be
+   * recognized, but Classroom has no record of that student.
    *
    * Request parameters:
    *
    * [studentId] - Filter results by the student who the guardian is linked to.
    * The identifier can be one of the following: * the numeric identifier for
    * the user * the email address of the user * the string literal `"me"`,
-   * indicating the requesting user
+   * indicating the requesting user * the string literal `"-"`, indicating that
+   * results should be returned for all students that the requesting user has
+   * access to view.
    *
    * [invitedEmailAddress] - Filter results by the email address that the
    * original invitation was sent to, resulting in this guardian link. This
@@ -2629,6 +2643,11 @@ class Course {
    */
   core.String enrollmentCode;
   /**
+   * Whether or not guardian notifications are enabled for this course.
+   * Read-only.
+   */
+  core.bool guardiansEnabled;
+  /**
    * Identifier for this course assigned by Classroom. When creating a course,
    * you may optionally set this identifier to an alias string in the request to
    * create a corresponding alias. The `id` is still assigned by Classroom and
@@ -2705,6 +2724,9 @@ class Course {
     if (_json.containsKey("enrollmentCode")) {
       enrollmentCode = _json["enrollmentCode"];
     }
+    if (_json.containsKey("guardiansEnabled")) {
+      guardiansEnabled = _json["guardiansEnabled"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -2756,6 +2778,9 @@ class Course {
     }
     if (enrollmentCode != null) {
       _json["enrollmentCode"] = enrollmentCode;
+    }
+    if (guardiansEnabled != null) {
+      _json["guardiansEnabled"] = guardiansEnabled;
     }
     if (id != null) {
       _json["id"] = id;

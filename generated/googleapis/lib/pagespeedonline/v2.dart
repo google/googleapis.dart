@@ -43,7 +43,7 @@ class PagespeedapiResourceApi {
    * Request parameters:
    *
    * [url] - The URL to fetch and analyze
-   * Value must have pattern "http(s)?://.*".
+   * Value must have pattern "(?i)http(s)?://.*".
    *
    * [filterThirdPartyResources] - Indicates if third party resources should be
    * filtered out before PageSpeed analysis.

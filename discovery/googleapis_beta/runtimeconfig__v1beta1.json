@@ -132,7 +132,7 @@
                                 "name": {
                                     "description": "The name of the RuntimeConfig resource to update, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*/configs/[^/]*$",
+                                    "pattern": "^projects/[^/]+/configs/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -160,7 +160,7 @@
                                 "name": {
                                     "description": "The name of the RuntimeConfig resource to retrieve, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*/configs/[^/]*$",
+                                    "pattern": "^projects/[^/]+/configs/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -182,10 +182,15 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "requestId": {
+                                    "description": "An optional unique request_id. If server receives two Create requests with\nthe same request_id then second request will be ignored and the resource\nstored in the backend will be returned. Empty request_id fields are\nignored.\nIt is responsibility of the client to ensure uniqueness of the request_id\nstrings.\nThe strings are limited to 64 characters.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "parent": {
                                     "description": "The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)\nfor this request, in the format `projects/[PROJECT_ID]`.",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*$",
+                                    "pattern": "^projects/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -219,7 +224,7 @@
                                 "parent": {
                                     "description": "The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)\nfor this request, in the format `projects/[PROJECT_ID]`.",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*$",
+                                    "pattern": "^projects/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 },
@@ -249,7 +254,7 @@
                                 "name": {
                                     "description": "The RuntimeConfig resource to delete, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
                                     "location": "path",
-                                    "pattern": "^projects/[^/]*/configs/[^/]*$",
+                                    "pattern": "^projects/[^/]+/configs/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -278,7 +283,7 @@
                                         "name": {
                                             "description": "The name of the variable to watch, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*/variables/.*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/variables/.+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -317,7 +322,7 @@
                                         "parent": {
                                             "description": "The path to the RuntimeConfig resource for which you want to list variables.\nThe configuration must exist beforehand; the path must by in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         },
@@ -347,7 +352,7 @@
                                         "name": {
                                             "description": "The name of the variable to return, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*/variables/.*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/variables/.+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -369,10 +374,15 @@
                                         "parent"
                                     ],
                                     "parameters": {
+                                        "requestId": {
+                                            "description": "An optional unique request_id. If server receives two Create requests with\nthe same request_id then second request will be ignored and the resource\nstored in the backend will be returned. Empty request_id fields are\nignored.\nIt is responsibility of the client to ensure uniqueness of the request_id\nstrings.\nThe strings are limited to 64 characters.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "parent": {
                                             "description": "The path to the RutimeConfig resource that this variable should belong to.\nThe configuration must exist beforehand; the path must by in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -400,7 +410,7 @@
                                         "name": {
                                             "description": "The name of the variable to update, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*/variables/.*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/variables/.+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -433,7 +443,7 @@
                                         "name": {
                                             "description": "The name of the variable to delete, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*/variables/.*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/variables/.+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -462,7 +472,7 @@
                                         "name": {
                                             "description": "The fully-qualified name of the Waiter resource object to retrieve, in the\nformat:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*/waiters/[^/]*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -484,10 +494,15 @@
                                         "parent"
                                     ],
                                     "parameters": {
+                                        "requestId": {
+                                            "description": "An optional unique request_id. If server receives two Create requests with\nthe same request_id then second request will be ignored and information\nstored in the backend will be returned. Empty request_id fields are\nignored.\nIt is responsibility of the client to ensure uniqueness of the request_id\nstrings.\nThe strings are limited to 64 characters.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "parent": {
                                             "description": "The path to the configuration that will own the waiter.\nThe configuration must exist beforehand; the path must by in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -521,7 +536,7 @@
                                         "parent": {
                                             "description": "The path to the configuration for which you want to get a list of waiters.\nThe configuration must exist beforehand; the path must by in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         },
@@ -551,7 +566,7 @@
                                         "name": {
                                             "description": "The Waiter resource to delete, in the format:\n\n `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*/waiters/[^/]*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -580,7 +595,7 @@
                                         "name": {
                                             "description": "The name of the operation resource.",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]*/configs/[^/]*/operations/.*$",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/operations/.+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -601,7 +616,7 @@
             }
         }
     },
-    "revision": "20160823",
+    "revision": "20161102",
     "rootUrl": "https://runtimeconfig.googleapis.com/",
     "schemas": {
         "Status": {
@@ -694,7 +709,7 @@
             "properties": {
                 "error": {
                     "$ref": "Status",
-                    "description": "The error result of the operation in case of failure."
+                    "description": "The error result of the operation in case of failure or cancellation."
                 },
                 "done": {
                     "description": "If the value is `false`, it means the operation is still in progress.\nIf true, the operation is completed, and either `error` or `response` is\navailable.",

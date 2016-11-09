@@ -39,6 +39,7 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsJobsResourceApi get jobs => new ProjectsJobsResourceApi(_requester);
+  ProjectsLocationsResourceApi get locations => new ProjectsLocationsResourceApi(_requester);
   ProjectsTemplatesResourceApi get templates => new ProjectsTemplatesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : 
@@ -118,6 +119,8 @@ class ProjectsJobsResourceApi {
    *
    * [replaceJobId] - DEPRECATED. This field is now on the Job message.
    *
+   * [location] - The location which contains this job.
+   *
    * Completes with a [Job].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -126,7 +129,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> create(Job request, core.String projectId, {core.String view, core.String replaceJobId}) {
+  async.Future<Job> create(Job request, core.String projectId, {core.String view, core.String replaceJobId, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -145,6 +148,9 @@ class ProjectsJobsResourceApi {
     }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -174,6 +180,8 @@ class ProjectsJobsResourceApi {
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    *
+   * [location] - The location which contains this job.
+   *
    * Completes with a [Job].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -182,7 +190,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> get(core.String projectId, core.String jobId, {core.String view}) {
+  async.Future<Job> get(core.String projectId, core.String jobId, {core.String view, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -198,6 +206,9 @@ class ProjectsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
@@ -224,6 +235,8 @@ class ProjectsJobsResourceApi {
    * [startTime] - Return only metric data that has changed since this time.
    * Default is to return all information about all metrics for the job.
    *
+   * [location] - The location which contains the job specified by job_id.
+   *
    * Completes with a [JobMetrics].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -232,7 +245,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId, {core.String startTime}) {
+  async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId, {core.String startTime, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -248,6 +261,9 @@ class ProjectsJobsResourceApi {
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/metrics';
@@ -289,6 +305,8 @@ class ProjectsJobsResourceApi {
    * [pageToken] - Set this to the 'next_page_token' field of a previous
    * response to request additional results in a long list.
    *
+   * [location] - The location which contains this job.
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -297,7 +315,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.String filter, core.String view, core.int pageSize, core.String pageToken}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String filter, core.String view, core.int pageSize, core.String pageToken, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -319,6 +337,9 @@ class ProjectsJobsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -344,6 +365,8 @@ class ProjectsJobsResourceApi {
    *
    * [jobId] - Identifies a single job.
    *
+   * [location] - The location which contains this job.
+   *
    * Completes with a [Job].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -352,7 +375,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> update(Job request, core.String projectId, core.String jobId) {
+  async.Future<Job> update(Job request, core.String projectId, core.String jobId, {core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -368,6 +391,9 @@ class ProjectsJobsResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
@@ -531,6 +557,8 @@ class ProjectsJobsMessagesResourceApi {
    * [endTime] - Return only messages with timestamps < end_time. The default is
    * now (i.e. return up to the latest messages available).
    *
+   * [location] - The location which contains the job specified by job_id.
+   *
    * Completes with a [ListJobMessagesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -539,7 +567,7 @@ class ProjectsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String minimumImportance, core.int pageSize, core.String pageToken, core.String startTime, core.String endTime}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String minimumImportance, core.int pageSize, core.String pageToken, core.String startTime, core.String endTime, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -567,6 +595,9 @@ class ProjectsJobsMessagesResourceApi {
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
@@ -677,6 +708,548 @@ class ProjectsJobsWorkItemsResourceApi {
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/workItems:reportStatus';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReportWorkItemStatusResponse.fromJson(data));
+  }
+
+}
+
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsResourceApi get jobs => new ProjectsLocationsJobsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class ProjectsLocationsJobsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsMessagesResourceApi get messages => new ProjectsLocationsJobsMessagesResourceApi(_requester);
+  ProjectsLocationsJobsWorkItemsResourceApi get workItems => new ProjectsLocationsJobsWorkItemsResourceApi(_requester);
+
+  ProjectsLocationsJobsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a dataflow job.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project which owns the job.
+   *
+   * [location] - The location which contains this job.
+   *
+   * [view] - Level of information requested in response.
+   * Possible string values are:
+   * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
+   * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
+   * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+   *
+   * [replaceJobId] - DEPRECATED. This field is now on the Job message.
+   *
+   * Completes with a [Job].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Job> create(Job request, core.String projectId, core.String location, {core.String view, core.String replaceJobId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (replaceJobId != null) {
+      _queryParams["replaceJobId"] = [replaceJobId];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Job.fromJson(data));
+  }
+
+  /**
+   * Gets the state of the specified dataflow job.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project which owns the job.
+   *
+   * [location] - The location which contains this job.
+   *
+   * [jobId] - Identifies a single job.
+   *
+   * [view] - Level of information requested in response.
+   * Possible string values are:
+   * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
+   * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
+   * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+   *
+   * Completes with a [Job].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Job> get(core.String projectId, core.String location, core.String jobId, {core.String view}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Job.fromJson(data));
+  }
+
+  /**
+   * Request the job status.
+   *
+   * Request parameters:
+   *
+   * [projectId] - A project id.
+   *
+   * [location] - The location which contains the job specified by job_id.
+   *
+   * [jobId] - The job to get messages for.
+   *
+   * [startTime] - Return only metric data that has changed since this time.
+   * Default is to return all information about all metrics for the job.
+   *
+   * Completes with a [JobMetrics].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<JobMetrics> getMetrics(core.String projectId, core.String location, core.String jobId, {core.String startTime}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/metrics';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new JobMetrics.fromJson(data));
+  }
+
+  /**
+   * List the jobs of a project
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project which owns the jobs.
+   *
+   * [location] - The location which contains this job.
+   *
+   * [filter] - The kind of filter to use.
+   * Possible string values are:
+   * - "UNKNOWN" : A UNKNOWN.
+   * - "ALL" : A ALL.
+   * - "TERMINATED" : A TERMINATED.
+   * - "ACTIVE" : A ACTIVE.
+   *
+   * [view] - Level of information requested in response. Default is SUMMARY.
+   * Possible string values are:
+   * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
+   * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
+   * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+   *
+   * [pageSize] - If there are many jobs, limit response to at most this many.
+   * The actual number of jobs returned will be the lesser of max_responses and
+   * an unspecified server-defined limit.
+   *
+   * [pageToken] - Set this to the 'next_page_token' field of a previous
+   * response to request additional results in a long list.
+   *
+   * Completes with a [ListJobsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListJobsResponse> list(core.String projectId, core.String location, {core.String filter, core.String view, core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListJobsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the state of an existing dataflow job.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project which owns the job.
+   *
+   * [location] - The location which contains this job.
+   *
+   * [jobId] - Identifies a single job.
+   *
+   * Completes with a [Job].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Job> update(Job request, core.String projectId, core.String location, core.String jobId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Job.fromJson(data));
+  }
+
+}
+
+
+class ProjectsLocationsJobsMessagesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsMessagesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Request the job status.
+   *
+   * Request parameters:
+   *
+   * [projectId] - A project id.
+   *
+   * [location] - The location which contains the job specified by job_id.
+   *
+   * [jobId] - The job to get messages about.
+   *
+   * [minimumImportance] - Filter to only get messages with importance >= level
+   * Possible string values are:
+   * - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
+   * - "JOB_MESSAGE_DEBUG" : A JOB_MESSAGE_DEBUG.
+   * - "JOB_MESSAGE_DETAILED" : A JOB_MESSAGE_DETAILED.
+   * - "JOB_MESSAGE_BASIC" : A JOB_MESSAGE_BASIC.
+   * - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
+   * - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
+   *
+   * [pageSize] - If specified, determines the maximum number of messages to
+   * return. If unspecified, the service may choose an appropriate default, or
+   * may return an arbitrarily large number of results.
+   *
+   * [pageToken] - If supplied, this should be the value of next_page_token
+   * returned by an earlier call. This will cause the next page of results to be
+   * returned.
+   *
+   * [startTime] - If specified, return only messages with timestamps >=
+   * start_time. The default is the job creation time (i.e. beginning of
+   * messages).
+   *
+   * [endTime] - Return only messages with timestamps < end_time. The default is
+   * now (i.e. return up to the latest messages available).
+   *
+   * Completes with a [ListJobMessagesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String location, core.String jobId, {core.String minimumImportance, core.int pageSize, core.String pageToken, core.String startTime, core.String endTime}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if (minimumImportance != null) {
+      _queryParams["minimumImportance"] = [minimumImportance];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListJobMessagesResponse.fromJson(data));
+  }
+
+}
+
+
+class ProjectsLocationsJobsWorkItemsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsWorkItemsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Leases a dataflow WorkItem to run.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Identifies the project this worker belongs to.
+   *
+   * [location] - The location which contains the WorkItem's job.
+   *
+   * [jobId] - Identifies the workflow job this worker belongs to.
+   *
+   * Completes with a [LeaseWorkItemResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LeaseWorkItemResponse> lease(LeaseWorkItemRequest request, core.String projectId, core.String location, core.String jobId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/workItems:lease';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LeaseWorkItemResponse.fromJson(data));
+  }
+
+  /**
+   * Reports the status of dataflow WorkItems leased by a worker.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project which owns the WorkItem's job.
+   *
+   * [location] - The location which contains the WorkItem's job.
+   *
+   * [jobId] - The job which the WorkItem is part of.
+   *
+   * Completes with a [ReportWorkItemStatusResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ReportWorkItemStatusResponse> reportStatus(ReportWorkItemStatusRequest request, core.String projectId, core.String location, core.String jobId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/workItems:reportStatus';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1630,6 +2203,8 @@ class Environment {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> sdkPipelineOptions;
+  /** Identity to run virtual machines as. Defaults to the default account. */
+  core.String serviceAccountEmail;
   /**
    * The prefix of the resources the system should use for temporary storage.
    * The system will append the suffix "/temp-{JOBNAME} to this resource prefix,
@@ -1680,6 +2255,9 @@ class Environment {
     if (_json.containsKey("sdkPipelineOptions")) {
       sdkPipelineOptions = _json["sdkPipelineOptions"];
     }
+    if (_json.containsKey("serviceAccountEmail")) {
+      serviceAccountEmail = _json["serviceAccountEmail"];
+    }
     if (_json.containsKey("tempStoragePrefix")) {
       tempStoragePrefix = _json["tempStoragePrefix"];
     }
@@ -1711,6 +2289,9 @@ class Environment {
     if (sdkPipelineOptions != null) {
       _json["sdkPipelineOptions"] = sdkPipelineOptions;
     }
+    if (serviceAccountEmail != null) {
+      _json["serviceAccountEmail"] = serviceAccountEmail;
+    }
     if (tempStoragePrefix != null) {
       _json["tempStoragePrefix"] = tempStoragePrefix;
     }
@@ -1722,6 +2303,31 @@ class Environment {
     }
     if (workerPools != null) {
       _json["workerPools"] = workerPools.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * FailedLocation indicates which location failed to respond to a request for
+ * data.
+ */
+class FailedLocation {
+  /** The name of the failed location. */
+  core.String name;
+
+  FailedLocation();
+
+  FailedLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -2074,6 +2680,8 @@ class Job {
    * values are additionally constrained to be <= 128 bytes in size.
    */
   core.Map<core.String, core.String> labels;
+  /** The location which contains this job. */
+  core.String location;
   /**
    * The user-specified Dataflow job name. Only one Job with a given name may
    * exist in a project at any given time. If a caller attempts to create a Job
@@ -2165,6 +2773,9 @@ class Job {
     if (_json.containsKey("labels")) {
       labels = _json["labels"];
     }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2219,6 +2830,9 @@ class Job {
     }
     if (labels != null) {
       _json["labels"] = labels;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (name != null) {
       _json["name"] = name;
@@ -2518,6 +3132,8 @@ class KeyRangeLocation {
 class LeaseWorkItemRequest {
   /** The current timestamp at the worker. */
   core.String currentWorkerTime;
+  /** The location which contains the WorkItem's job. */
+  core.String location;
   /** The initial lease period. */
   core.String requestedLeaseDuration;
   /** Filter for WorkItem type. */
@@ -2539,6 +3155,9 @@ class LeaseWorkItemRequest {
     if (_json.containsKey("currentWorkerTime")) {
       currentWorkerTime = _json["currentWorkerTime"];
     }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
     if (_json.containsKey("requestedLeaseDuration")) {
       requestedLeaseDuration = _json["requestedLeaseDuration"];
     }
@@ -2557,6 +3176,9 @@ class LeaseWorkItemRequest {
     var _json = new core.Map();
     if (currentWorkerTime != null) {
       _json["currentWorkerTime"] = currentWorkerTime;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (requestedLeaseDuration != null) {
       _json["requestedLeaseDuration"] = requestedLeaseDuration;
@@ -2631,6 +3253,8 @@ class ListJobMessagesResponse {
  * depending on the page size in the ListJobsRequest.
  */
 class ListJobsResponse {
+  /** Zero or more messages describing locations that failed to respond. */
+  core.List<FailedLocation> failedLocation;
   /** A subset of the requested job information. */
   core.List<Job> jobs;
   /** Set if there may be more results than fit in this response. */
@@ -2639,6 +3263,9 @@ class ListJobsResponse {
   ListJobsResponse();
 
   ListJobsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("failedLocation")) {
+      failedLocation = _json["failedLocation"].map((value) => new FailedLocation.fromJson(value)).toList();
+    }
     if (_json.containsKey("jobs")) {
       jobs = _json["jobs"].map((value) => new Job.fromJson(value)).toList();
     }
@@ -2649,6 +3276,9 @@ class ListJobsResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (failedLocation != null) {
+      _json["failedLocation"] = failedLocation.map((value) => (value).toJson()).toList();
+    }
     if (jobs != null) {
       _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
     }
@@ -3465,6 +4095,8 @@ class ReadInstruction {
 class ReportWorkItemStatusRequest {
   /** The current timestamp at the worker. */
   core.String currentWorkerTime;
+  /** The location which contains the WorkItem's job. */
+  core.String location;
   /**
    * The order is unimportant, except that the order of the WorkItemServiceState
    * messages in the ReportWorkItemStatusResponse corresponds to the order of
@@ -3484,6 +4116,9 @@ class ReportWorkItemStatusRequest {
     if (_json.containsKey("currentWorkerTime")) {
       currentWorkerTime = _json["currentWorkerTime"];
     }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
     if (_json.containsKey("workItemStatuses")) {
       workItemStatuses = _json["workItemStatuses"].map((value) => new WorkItemStatus.fromJson(value)).toList();
     }
@@ -3496,6 +4131,9 @@ class ReportWorkItemStatusRequest {
     var _json = new core.Map();
     if (currentWorkerTime != null) {
       _json["currentWorkerTime"] = currentWorkerTime;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (workItemStatuses != null) {
       _json["workItemStatuses"] = workItemStatuses.map((value) => (value).toJson()).toList();

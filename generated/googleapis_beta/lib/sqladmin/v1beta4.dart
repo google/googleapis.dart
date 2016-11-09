@@ -148,7 +148,8 @@ class BackupRunsResourceApi {
   }
 
   /**
-   * Creates a new backup run on demand.
+   * Creates a new backup run on demand. This method is applicable only to
+   * Second Generation instances.
    *
    * [request] - The metadata request object.
    *
@@ -2551,6 +2552,8 @@ class DatabaseInstance {
    * EXTERNAL: A MySQL server that is not managed by Google.
    */
   core.String backendType;
+  /** Connection name of the Cloud SQL instance used in connection strings. */
+  core.String connectionName;
   /**
    * The current disk usage of the instance in bytes. This property has been
    * deprecated. Users should use the
@@ -2653,6 +2656,9 @@ class DatabaseInstance {
     if (_json.containsKey("backendType")) {
       backendType = _json["backendType"];
     }
+    if (_json.containsKey("connectionName")) {
+      connectionName = _json["connectionName"];
+    }
     if (_json.containsKey("currentDiskSize")) {
       currentDiskSize = _json["currentDiskSize"];
     }
@@ -2725,6 +2731,9 @@ class DatabaseInstance {
     var _json = new core.Map();
     if (backendType != null) {
       _json["backendType"] = backendType;
+    }
+    if (connectionName != null) {
+      _json["connectionName"] = connectionName;
     }
     if (currentDiskSize != null) {
       _json["currentDiskSize"] = currentDiskSize;

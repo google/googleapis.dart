@@ -14,7 +14,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client replicapoolupdater/v1beta1';
 
-/** Updates groups of Compute Engine instances. */
+/**
+ * [Deprecated. Please use compute.instanceGroupManagers.update method.
+ * replicapoolupdater API will be disabled after December 30th, 2016] Updates
+ * groups of Compute Engine instances.
+ */
 class ReplicapoolupdaterApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

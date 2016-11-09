@@ -1,3 +1,48 @@
+## 0.32.0
+
+* [api-new] dfareporting:v2_7
+* [api-new] firebasedynamicclicks:v1
+* [api-new] logging:v2
+* [api-new] manufactures:v1
+* [api-new] runtimeconfig:v1
+* [api-new] surveys:v2
+* [api-breaking] bigquery:v2: method changes
+* [api-breaking] civicinfo:v2: method changes
+* [api-breaking] doubleclickmanager:v1: resource changes
+* [api-breaking] identitytoolkit:v3: schema changes
+* [api-breaking] storage:v1: schema/method changes
+* [api-breaking] youtube:v3: schema/method changes
+* [api-removal] dfareporting:v2_2
+* [api-removal] dfareporting:v2_3
+* [api-removal] freebase:v1
+* [api] adexchangebuyer:v1_4: method/schema changes
+* [api] admin:directory_v1: schema changes
+* [api] analytics:v3: schema changes
+* [api] androidenterprise:v1: method/schema changes
+* [api] androidpublisher:v2: added resource
+* [api] appengine:v1: schema changes
+* [api] appsactivity:v1: schema changes
+* [api] books:v1: schema changes
+* [api] classroom:v1: method/schema changes
+* [api] cloudbuild:v1: method/schema changes
+* [api] cloudresourcemanager:v1: added resource
+* [api] compute:v1: added resources, method changes
+* [api] consumersurveys:v2: schema changes
+* [api] content:v2sandbox: schema changes
+* [api] content:v2: schema changes
+* [api] dataproc:v1: schema changes
+* [api] deploymentmanager:v2: schema changes
+* [api] drive:v2: schema changes
+* [api] drive:v3: schema changes
+* [api] fitness:v1: schema changes
+* [api] freebase:v1
+* [api] genomics:v1: schema changes
+* [api] iam:v1: added resource
+* [api] pubsub:v1: added resource
+* [api] servicecontrol:v1: schema changes
+* [api] servicemanagement:v1: schema changes
+* [api] sheets:v4: schema/method changes
+
 ## 0.31.0
 
 * [api-new] datastore:v1

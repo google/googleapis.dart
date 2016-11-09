@@ -26,7 +26,7 @@
     "description": "Stores, processes, explores and shares genomic data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/genomics/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-uskoNWve9HRJ6Bj84XG9zPKo3o\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/jo14IJ9oMjJmju16_ICU62ty30c\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -377,7 +377,7 @@
                     "id": "genomics.datasets.list",
                     "parameters": {
                         "projectId": {
-                            "description": "Required. The project to list datasets for.",
+                            "description": "Required. The Google Cloud project ID to list datasets for.",
                             "location": "query",
                             "type": "string"
                         },
@@ -538,7 +538,7 @@
                         "resource": {
                             "description": "REQUIRED: The resource for which policy is being specified. Format is `datasets/`.",
                             "location": "path",
-                            "pattern": "^datasets/[^/]*$",
+                            "pattern": "^datasets/[^/]+$",
                             "required": true,
                             "type": "string"
                         }
@@ -566,7 +566,7 @@
                         "resource": {
                             "description": "REQUIRED: The resource for which policy is being specified. Format is `datasets/`.",
                             "location": "path",
-                            "pattern": "^datasets/[^/]*$",
+                            "pattern": "^datasets/[^/]+$",
                             "required": true,
                             "type": "string"
                         }
@@ -594,7 +594,7 @@
                         "resource": {
                             "description": "REQUIRED: The resource for which policy is being specified. Format is `datasets/`.",
                             "location": "path",
-                            "pattern": "^datasets/[^/]*$",
+                            "pattern": "^datasets/[^/]+$",
                             "required": true,
                             "type": "string"
                         }
@@ -615,31 +615,6 @@
         },
         "operations": {
             "methods": {
-                "get": {
-                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                    "httpMethod": "GET",
-                    "id": "genomics.operations.get",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "name": {
-                            "description": "The name of the operation resource.",
-                            "location": "path",
-                            "pattern": "^operations/.*$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/{+name}",
-                    "response": {
-                        "$ref": "Operation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/genomics"
-                    ]
-                },
                 "list": {
                     "description": "Lists operations that match the specified filter in the request.",
                     "httpMethod": "GET",
@@ -656,7 +631,7 @@
                             "type": "string"
                         },
                         "filter": {
-                            "description": "A string for filtering Operations. The following filter fields are supported: * projectId: Required. Corresponds to OperationMetadata.projectId. * createTime: The time this job was created, in seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `= 1432140000` * `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING`",
+                            "description": "A string for filtering Operations. The following filter fields are supported: * projectId: Required. Corresponds to OperationMetadata.projectId. * createTime: The time this job was created, in seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `= 1432140000` * `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING` * `projectId = my-project AND labels.color = *` * `projectId = my-project AND labels.color = red`",
                             "location": "query",
                             "type": "string"
                         },
@@ -681,6 +656,31 @@
                         "https://www.googleapis.com/auth/genomics"
                     ]
                 },
+                "get": {
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "httpMethod": "GET",
+                    "id": "genomics.operations.get",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "The name of the operation resource.",
+                            "location": "path",
+                            "pattern": "^operations/.+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/genomics"
+                    ]
+                },
                 "cancel": {
                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite cancellation.",
                     "httpMethod": "POST",
@@ -692,7 +692,7 @@
                         "name": {
                             "description": "The name of the operation resource to be cancelled.",
                             "location": "path",
-                            "pattern": "^operations/.*$",
+                            "pattern": "^operations/.+$",
                             "required": true,
                             "type": "string"
                         }
@@ -1538,7 +1538,7 @@
             }
         }
     },
-    "revision": "20160824",
+    "revision": "20160928",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "AnnotationSet": {
@@ -2065,7 +2065,7 @@
                     "type": "string"
                 },
                 "projectId": {
-                    "description": "The Google Developers Console project ID that this dataset belongs to.",
+                    "description": "The Google Cloud project ID that this dataset belongs to.",
                     "type": "string"
                 },
                 "name": {
@@ -2169,6 +2169,24 @@
             },
             "type": "object"
         },
+        "ListOperationsResponse": {
+            "description": "The response message for Operations.ListOperations.",
+            "id": "ListOperationsResponse",
+            "properties": {
+                "operations": {
+                    "description": "A list of operations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Operation": {
             "description": "This resource represents a long-running operation that is the result of a network API call.",
             "id": "Operation",
@@ -2191,7 +2209,7 @@
                 },
                 "error": {
                     "$ref": "Status",
-                    "description": "The error result of the operation in case of failure."
+                    "description": "The error result of the operation in case of failure or cancellation."
                 },
                 "response": {
                     "additionalProperties": {
@@ -2200,24 +2218,6 @@
                     },
                     "description": "If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If importing Variants, an ImportVariantsResponse is returned. For exports, an empty response is returned.",
                     "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "ListOperationsResponse": {
-            "description": "The response message for Operations.ListOperations.",
-            "id": "ListOperationsResponse",
-            "properties": {
-                "operations": {
-                    "description": "A list of operations that matches the specified filter in the request.",
-                    "items": {
-                        "$ref": "Operation"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2263,7 +2263,7 @@
             "id": "ExportReadGroupSetRequest",
             "properties": {
                 "projectId": {
-                    "description": "Required. The Google Developers Console project ID that owns this export. The caller must have WRITE access to this project.",
+                    "description": "Required. The Google Cloud project ID that owns this export. The caller must have WRITE access to this project.",
                     "type": "string"
                 },
                 "exportUri": {
@@ -2762,7 +2762,7 @@
             "id": "StreamReadsRequest",
             "properties": {
                 "projectId": {
-                    "description": "The Google Developers Console project ID or number which will be billed for this access. The caller must have WRITE access to this project. Required.",
+                    "description": "The Google Cloud project ID which will be billed for this access. The caller must have WRITE access to this project. Required.",
                     "type": "string"
                 },
                 "readGroupSetId": {
@@ -3554,7 +3554,7 @@
             "id": "StreamVariantsRequest",
             "properties": {
                 "projectId": {
-                    "description": "The Google Developers Console project ID or number which will be billed for this access. The caller must have WRITE access to this project. Required.",
+                    "description": "The Google Cloud project ID which will be billed for this access. The caller must have WRITE access to this project. Required.",
                     "type": "string"
                 },
                 "variantSetId": {
@@ -3661,7 +3661,7 @@
                     "type": "array"
                 },
                 "clientId": {
-                    "description": "Optionally provided by the caller when submitting the request that creates the operation.",
+                    "description": "This field is deprecated. Use `labels` instead. Optionally provided by the caller when submitting the request that creates the operation.",
                     "type": "string"
                 },
                 "runtimeMetadata": {
@@ -3670,6 +3670,13 @@
                         "type": "any"
                     },
                     "description": "Runtime metadata on this Operation.",
+                    "type": "object"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optionally provided by the caller when submitting the request that creates the operation.",
                     "type": "object"
                 }
             },

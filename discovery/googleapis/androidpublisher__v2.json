@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/UDk0LqlPPxkx5NU81sNZcbwgkD4\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/lK1rSeSt4REctli37J8Co4N4a5s\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -584,6 +584,77 @@
                             "path": "{packageName}/edits/{editId}/apks",
                             "response": {
                                 "$ref": "Apk"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ],
+                            "supportsMediaUpload": true
+                        }
+                    }
+                },
+                "deobfuscationfiles": {
+                    "methods": {
+                        "upload": {
+                            "description": "Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it will be replaced.",
+                            "httpMethod": "POST",
+                            "id": "androidpublisher.edits.deobfuscationfiles.upload",
+                            "mediaUpload": {
+                                "accept": [
+                                    "application/octet-stream"
+                                ],
+                                "maxSize": "300MB",
+                                "protocols": {
+                                    "resumable": {
+                                        "multipart": true,
+                                        "path": "/resumable/upload/androidpublisher/v2/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}"
+                                    },
+                                    "simple": {
+                                        "multipart": true,
+                                        "path": "/upload/androidpublisher/v2/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}"
+                                    }
+                                }
+                            },
+                            "parameterOrder": [
+                                "packageName",
+                                "editId",
+                                "apkVersionCode",
+                                "deobfuscationFileType"
+                            ],
+                            "parameters": {
+                                "apkVersionCode": {
+                                    "description": "The version code of the APK whose deobfuscation file is being uploaded.",
+                                    "format": "int32",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "integer"
+                                },
+                                "deobfuscationFileType": {
+                                    "enum": [
+                                        "proguard"
+                                    ],
+                                    "enumDescriptions": [
+                                        ""
+                                    ],
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "editId": {
+                                    "description": "Unique identifier for this edit.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "packageName": {
+                                    "description": "Unique identifier of the Android app for which the deobfuscatiuon files are being uploaded; for example, \"com.spiffygame\".",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
+                            "response": {
+                                "$ref": "DeobfuscationFilesUploadResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/androidpublisher"
@@ -2356,7 +2427,7 @@
             }
         }
     },
-    "revision": "20160817",
+    "revision": "20161017",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2500,6 +2571,26 @@
                 "userComment": {
                     "$ref": "UserComment",
                     "description": "A comment from a user."
+                }
+            },
+            "type": "object"
+        },
+        "DeobfuscationFile": {
+            "description": "Represents a deobfuscation file.",
+            "id": "DeobfuscationFile",
+            "properties": {
+                "symbolType": {
+                    "description": "The type of the deobfuscation file.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeobfuscationFilesUploadResponse": {
+            "id": "DeobfuscationFilesUploadResponse",
+            "properties": {
+                "deobfuscationFile": {
+                    "$ref": "DeobfuscationFile"
                 }
             },
             "type": "object"

@@ -40,6 +40,7 @@ class EditsResourceApi {
 
   EditsApklistingsResourceApi get apklistings => new EditsApklistingsResourceApi(_requester);
   EditsApksResourceApi get apks => new EditsApksResourceApi(_requester);
+  EditsDeobfuscationfilesResourceApi get deobfuscationfiles => new EditsDeobfuscationfilesResourceApi(_requester);
   EditsDetailsResourceApi get details => new EditsDetailsResourceApi(_requester);
   EditsExpansionfilesResourceApi get expansionfiles => new EditsExpansionfilesResourceApi(_requester);
   EditsImagesResourceApi get images => new EditsImagesResourceApi(_requester);
@@ -797,6 +798,89 @@ class EditsApksResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Apk.fromJson(data));
+  }
+
+}
+
+
+class EditsDeobfuscationfilesResourceApi {
+  final commons.ApiRequester _requester;
+
+  EditsDeobfuscationfilesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Uploads the deobfuscation file of the specified APK. If a deobfuscation
+   * file already exists, it will be replaced.
+   *
+   * Request parameters:
+   *
+   * [packageName] - Unique identifier of the Android app for which the
+   * deobfuscatiuon files are being uploaded; for example, "com.spiffygame".
+   *
+   * [editId] - Unique identifier for this edit.
+   *
+   * [apkVersionCode] - The version code of the APK whose deobfuscation file is
+   * being uploaded.
+   *
+   * [deobfuscationFileType] - null
+   * Possible string values are:
+   * - "proguard"
+   *
+   * [uploadMedia] - The media to upload.
+   *
+   * [uploadOptions] - Options for the media upload. Streaming Media without the
+   * length being known ahead of time is only supported via resumable uploads.
+   *
+   * Completes with a [DeobfuscationFilesUploadResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<DeobfuscationFilesUploadResponse> upload(core.String packageName, core.String editId, core.int apkVersionCode, core.String deobfuscationFileType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (editId == null) {
+      throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if (apkVersionCode == null) {
+      throw new core.ArgumentError("Parameter apkVersionCode is required.");
+    }
+    if (deobfuscationFileType == null) {
+      throw new core.ArgumentError("Parameter deobfuscationFileType is required.");
+    }
+
+    _uploadMedia =  uploadMedia;
+    _uploadOptions =  uploadOptions;
+
+    if (_uploadMedia == null) {
+      _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/deobfuscationFiles/' + commons.Escaper.ecapeVariable('$deobfuscationFileType');
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/deobfuscationFiles/' + commons.Escaper.ecapeVariable('$deobfuscationFileType');
+    } else {
+      _url = '/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/deobfuscationFiles/' + commons.Escaper.ecapeVariable('$deobfuscationFileType');
+    }
+
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DeobfuscationFilesUploadResponse.fromJson(data));
   }
 
 }
@@ -3492,6 +3576,48 @@ class Comment {
     }
     if (userComment != null) {
       _json["userComment"] = (userComment).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Represents a deobfuscation file. */
+class DeobfuscationFile {
+  /** The type of the deobfuscation file. */
+  core.String symbolType;
+
+  DeobfuscationFile();
+
+  DeobfuscationFile.fromJson(core.Map _json) {
+    if (_json.containsKey("symbolType")) {
+      symbolType = _json["symbolType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (symbolType != null) {
+      _json["symbolType"] = symbolType;
+    }
+    return _json;
+  }
+}
+
+class DeobfuscationFilesUploadResponse {
+  DeobfuscationFile deobfuscationFile;
+
+  DeobfuscationFilesUploadResponse();
+
+  DeobfuscationFilesUploadResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("deobfuscationFile")) {
+      deobfuscationFile = new DeobfuscationFile.fromJson(_json["deobfuscationFile"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (deobfuscationFile != null) {
+      _json["deobfuscationFile"] = (deobfuscationFile).toJson();
     }
     return _json;
   }

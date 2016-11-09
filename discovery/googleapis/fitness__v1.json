@@ -35,7 +35,7 @@
     "description": "Stores and accesses user data in the fitness store from apps on any platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fit/rest/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/C_efOoRNuMwDVzh1-1r-3k_wkJo\"",
+    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/YYTaKGUD7QZsoB7peT0bkV-gPP8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -630,7 +630,7 @@
             }
         }
     },
-    "revision": "20160801",
+    "revision": "20160907",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AggregateBucket": {
@@ -699,6 +699,7 @@
             "type": "object"
         },
         "AggregateRequest": {
+            "description": "Next id: 10",
             "id": "AggregateRequest",
             "properties": {
                 "aggregateBy": {
@@ -1290,6 +1291,10 @@
                         "$ref": "Session"
                     },
                     "type": "array"
+                },
+                "hasMoreData": {
+                    "description": "Flag to indicate server has more data to transfer",
+                    "type": "boolean"
                 },
                 "nextPageToken": {
                     "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results.",

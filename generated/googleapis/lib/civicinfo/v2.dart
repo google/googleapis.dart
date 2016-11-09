@@ -40,6 +40,8 @@ class DivisionsResourceApi {
   /**
    * Searches for political divisions by their natural name or OCD ID.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [query] - The search query. Queries can cover any parts of a OCD ID or a
@@ -56,7 +58,7 @@ class DivisionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DivisionSearchResponse> search({core.String query}) {
+  async.Future<DivisionSearchResponse> search(DivisionSearchRequest request, {core.String query}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -64,6 +66,9 @@ class DivisionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (query != null) {
       _queryParams["query"] = [query];
     }
@@ -92,6 +97,8 @@ class ElectionsResourceApi {
   /**
    * List of available elections to query.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * Completes with a [ElectionsQueryResponse].
@@ -102,7 +109,7 @@ class ElectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ElectionsQueryResponse> electionQuery() {
+  async.Future<ElectionsQueryResponse> electionQuery(ElectionsQueryRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -110,6 +117,9 @@ class ElectionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
 
     _url = 'elections';
 
@@ -126,6 +136,8 @@ class ElectionsResourceApi {
   /**
    * Looks up information relevant to a voter based on the voter's registered
    * address.
+   *
+   * [request] - The metadata request object.
    *
    * Request parameters:
    *
@@ -151,7 +163,7 @@ class ElectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<VoterInfoResponse> voterInfoQuery(core.String address, {core.String electionId, core.bool officialOnly, core.bool returnAllAvailableData}) {
+  async.Future<VoterInfoResponse> voterInfoQuery(VoterInfoRequest request, core.String address, {core.String electionId, core.bool officialOnly, core.bool returnAllAvailableData}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -159,6 +171,9 @@ class ElectionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
     }
@@ -198,6 +213,8 @@ class RepresentativesResourceApi {
    * Looks up political geography and representative information for a single
    * address.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [address] - The address to look up. May only be specified if the field
@@ -223,7 +240,7 @@ class RepresentativesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RepresentativeInfoResponse> representativeInfoByAddress({core.String address, core.bool includeOffices, core.List<core.String> levels, core.List<core.String> roles}) {
+  async.Future<RepresentativeInfoResponse> representativeInfoByAddress(RepresentativeInfoRequest request, {core.String address, core.bool includeOffices, core.List<core.String> levels, core.List<core.String> roles}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -231,6 +248,9 @@ class RepresentativesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (address != null) {
       _queryParams["address"] = [address];
     }
@@ -259,6 +279,8 @@ class RepresentativesResourceApi {
   /**
    * Looks up representative information for a single geographic division.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [ocdId] - The Open Civic Data division identifier of the division to look
@@ -285,7 +307,7 @@ class RepresentativesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RepresentativeInfoData> representativeInfoByDivision(core.String ocdId, {core.List<core.String> levels, core.bool recursive, core.List<core.String> roles}) {
+  async.Future<RepresentativeInfoData> representativeInfoByDivision(DivisionRepresentativeInfoRequest request, core.String ocdId, {core.List<core.String> levels, core.bool recursive, core.List<core.String> roles}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -293,6 +315,9 @@ class RepresentativesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (ocdId == null) {
       throw new core.ArgumentError("Parameter ocdId is required.");
     }
@@ -542,7 +567,11 @@ class Candidate {
   core.List<Channel> channels;
   /** The email address for the candidate's campaign. */
   core.String email;
-  /** The candidate's name. */
+  /**
+   * The candidate's name. If this is a joint ticket it will indicate the name
+   * of the candidate at the top of a ticket followed by a / and that name of
+   * candidate at the bottom of the ticket. e.g. "Mitt Romney / Paul Ryan"
+   */
   core.String name;
   /** The order the candidate appears on the ballot for this contest. */
   core.String orderOnBallot;
@@ -915,6 +944,68 @@ class Contest {
   }
 }
 
+class ContextParams {
+  core.String clientProfile;
+
+  ContextParams();
+
+  ContextParams.fromJson(core.Map _json) {
+    if (_json.containsKey("clientProfile")) {
+      clientProfile = _json["clientProfile"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (clientProfile != null) {
+      _json["clientProfile"] = clientProfile;
+    }
+    return _json;
+  }
+}
+
+/** A request to look up representative information for a single division. */
+class DivisionRepresentativeInfoRequest {
+  ContextParams contextParams;
+
+  DivisionRepresentativeInfoRequest();
+
+  DivisionRepresentativeInfoRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contextParams")) {
+      contextParams = new ContextParams.fromJson(_json["contextParams"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contextParams != null) {
+      _json["contextParams"] = (contextParams).toJson();
+    }
+    return _json;
+  }
+}
+
+/** A search request for political geographies. */
+class DivisionSearchRequest {
+  ContextParams contextParams;
+
+  DivisionSearchRequest();
+
+  DivisionSearchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contextParams")) {
+      contextParams = new ContextParams.fromJson(_json["contextParams"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contextParams != null) {
+      _json["contextParams"] = (contextParams).toJson();
+    }
+    return _json;
+  }
+}
+
 /** The result of a division search query. */
 class DivisionSearchResponse {
   /**
@@ -1095,6 +1186,26 @@ class ElectionOfficial {
     }
     if (title != null) {
       _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+class ElectionsQueryRequest {
+  ContextParams contextParams;
+
+  ElectionsQueryRequest();
+
+  ElectionsQueryRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contextParams")) {
+      contextParams = new ContextParams.fromJson(_json["contextParams"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contextParams != null) {
+      _json["contextParams"] = (contextParams).toJson();
     }
     return _json;
   }
@@ -1508,6 +1619,236 @@ class PollingLocation {
   }
 }
 
+class PostalAddress {
+  core.List<core.String> addressLines;
+  core.String administrativeAreaName;
+  core.String countryName;
+  core.String countryNameCode;
+  core.String dependentLocalityName;
+  core.String dependentThoroughfareLeadingType;
+  core.String dependentThoroughfareName;
+  core.String dependentThoroughfarePostDirection;
+  core.String dependentThoroughfarePreDirection;
+  core.String dependentThoroughfareTrailingType;
+  core.String dependentThoroughfaresConnector;
+  core.String dependentThoroughfaresIndicator;
+  core.String dependentThoroughfaresType;
+  core.String firmName;
+  core.bool isDisputed;
+  core.String languageCode;
+  core.String localityName;
+  core.String postBoxNumber;
+  core.String postalCodeNumber;
+  core.String postalCodeNumberExtension;
+  core.String premiseName;
+  core.String recipientName;
+  core.String sortingCode;
+  core.String subAdministrativeAreaName;
+  core.String subPremiseName;
+  core.String thoroughfareLeadingType;
+  core.String thoroughfareName;
+  core.String thoroughfareNumber;
+  core.String thoroughfarePostDirection;
+  core.String thoroughfarePreDirection;
+  core.String thoroughfareTrailingType;
+
+  PostalAddress();
+
+  PostalAddress.fromJson(core.Map _json) {
+    if (_json.containsKey("addressLines")) {
+      addressLines = _json["addressLines"];
+    }
+    if (_json.containsKey("administrativeAreaName")) {
+      administrativeAreaName = _json["administrativeAreaName"];
+    }
+    if (_json.containsKey("countryName")) {
+      countryName = _json["countryName"];
+    }
+    if (_json.containsKey("countryNameCode")) {
+      countryNameCode = _json["countryNameCode"];
+    }
+    if (_json.containsKey("dependentLocalityName")) {
+      dependentLocalityName = _json["dependentLocalityName"];
+    }
+    if (_json.containsKey("dependentThoroughfareLeadingType")) {
+      dependentThoroughfareLeadingType = _json["dependentThoroughfareLeadingType"];
+    }
+    if (_json.containsKey("dependentThoroughfareName")) {
+      dependentThoroughfareName = _json["dependentThoroughfareName"];
+    }
+    if (_json.containsKey("dependentThoroughfarePostDirection")) {
+      dependentThoroughfarePostDirection = _json["dependentThoroughfarePostDirection"];
+    }
+    if (_json.containsKey("dependentThoroughfarePreDirection")) {
+      dependentThoroughfarePreDirection = _json["dependentThoroughfarePreDirection"];
+    }
+    if (_json.containsKey("dependentThoroughfareTrailingType")) {
+      dependentThoroughfareTrailingType = _json["dependentThoroughfareTrailingType"];
+    }
+    if (_json.containsKey("dependentThoroughfaresConnector")) {
+      dependentThoroughfaresConnector = _json["dependentThoroughfaresConnector"];
+    }
+    if (_json.containsKey("dependentThoroughfaresIndicator")) {
+      dependentThoroughfaresIndicator = _json["dependentThoroughfaresIndicator"];
+    }
+    if (_json.containsKey("dependentThoroughfaresType")) {
+      dependentThoroughfaresType = _json["dependentThoroughfaresType"];
+    }
+    if (_json.containsKey("firmName")) {
+      firmName = _json["firmName"];
+    }
+    if (_json.containsKey("isDisputed")) {
+      isDisputed = _json["isDisputed"];
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("localityName")) {
+      localityName = _json["localityName"];
+    }
+    if (_json.containsKey("postBoxNumber")) {
+      postBoxNumber = _json["postBoxNumber"];
+    }
+    if (_json.containsKey("postalCodeNumber")) {
+      postalCodeNumber = _json["postalCodeNumber"];
+    }
+    if (_json.containsKey("postalCodeNumberExtension")) {
+      postalCodeNumberExtension = _json["postalCodeNumberExtension"];
+    }
+    if (_json.containsKey("premiseName")) {
+      premiseName = _json["premiseName"];
+    }
+    if (_json.containsKey("recipientName")) {
+      recipientName = _json["recipientName"];
+    }
+    if (_json.containsKey("sortingCode")) {
+      sortingCode = _json["sortingCode"];
+    }
+    if (_json.containsKey("subAdministrativeAreaName")) {
+      subAdministrativeAreaName = _json["subAdministrativeAreaName"];
+    }
+    if (_json.containsKey("subPremiseName")) {
+      subPremiseName = _json["subPremiseName"];
+    }
+    if (_json.containsKey("thoroughfareLeadingType")) {
+      thoroughfareLeadingType = _json["thoroughfareLeadingType"];
+    }
+    if (_json.containsKey("thoroughfareName")) {
+      thoroughfareName = _json["thoroughfareName"];
+    }
+    if (_json.containsKey("thoroughfareNumber")) {
+      thoroughfareNumber = _json["thoroughfareNumber"];
+    }
+    if (_json.containsKey("thoroughfarePostDirection")) {
+      thoroughfarePostDirection = _json["thoroughfarePostDirection"];
+    }
+    if (_json.containsKey("thoroughfarePreDirection")) {
+      thoroughfarePreDirection = _json["thoroughfarePreDirection"];
+    }
+    if (_json.containsKey("thoroughfareTrailingType")) {
+      thoroughfareTrailingType = _json["thoroughfareTrailingType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (addressLines != null) {
+      _json["addressLines"] = addressLines;
+    }
+    if (administrativeAreaName != null) {
+      _json["administrativeAreaName"] = administrativeAreaName;
+    }
+    if (countryName != null) {
+      _json["countryName"] = countryName;
+    }
+    if (countryNameCode != null) {
+      _json["countryNameCode"] = countryNameCode;
+    }
+    if (dependentLocalityName != null) {
+      _json["dependentLocalityName"] = dependentLocalityName;
+    }
+    if (dependentThoroughfareLeadingType != null) {
+      _json["dependentThoroughfareLeadingType"] = dependentThoroughfareLeadingType;
+    }
+    if (dependentThoroughfareName != null) {
+      _json["dependentThoroughfareName"] = dependentThoroughfareName;
+    }
+    if (dependentThoroughfarePostDirection != null) {
+      _json["dependentThoroughfarePostDirection"] = dependentThoroughfarePostDirection;
+    }
+    if (dependentThoroughfarePreDirection != null) {
+      _json["dependentThoroughfarePreDirection"] = dependentThoroughfarePreDirection;
+    }
+    if (dependentThoroughfareTrailingType != null) {
+      _json["dependentThoroughfareTrailingType"] = dependentThoroughfareTrailingType;
+    }
+    if (dependentThoroughfaresConnector != null) {
+      _json["dependentThoroughfaresConnector"] = dependentThoroughfaresConnector;
+    }
+    if (dependentThoroughfaresIndicator != null) {
+      _json["dependentThoroughfaresIndicator"] = dependentThoroughfaresIndicator;
+    }
+    if (dependentThoroughfaresType != null) {
+      _json["dependentThoroughfaresType"] = dependentThoroughfaresType;
+    }
+    if (firmName != null) {
+      _json["firmName"] = firmName;
+    }
+    if (isDisputed != null) {
+      _json["isDisputed"] = isDisputed;
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    if (localityName != null) {
+      _json["localityName"] = localityName;
+    }
+    if (postBoxNumber != null) {
+      _json["postBoxNumber"] = postBoxNumber;
+    }
+    if (postalCodeNumber != null) {
+      _json["postalCodeNumber"] = postalCodeNumber;
+    }
+    if (postalCodeNumberExtension != null) {
+      _json["postalCodeNumberExtension"] = postalCodeNumberExtension;
+    }
+    if (premiseName != null) {
+      _json["premiseName"] = premiseName;
+    }
+    if (recipientName != null) {
+      _json["recipientName"] = recipientName;
+    }
+    if (sortingCode != null) {
+      _json["sortingCode"] = sortingCode;
+    }
+    if (subAdministrativeAreaName != null) {
+      _json["subAdministrativeAreaName"] = subAdministrativeAreaName;
+    }
+    if (subPremiseName != null) {
+      _json["subPremiseName"] = subPremiseName;
+    }
+    if (thoroughfareLeadingType != null) {
+      _json["thoroughfareLeadingType"] = thoroughfareLeadingType;
+    }
+    if (thoroughfareName != null) {
+      _json["thoroughfareName"] = thoroughfareName;
+    }
+    if (thoroughfareNumber != null) {
+      _json["thoroughfareNumber"] = thoroughfareNumber;
+    }
+    if (thoroughfarePostDirection != null) {
+      _json["thoroughfarePostDirection"] = thoroughfarePostDirection;
+    }
+    if (thoroughfarePreDirection != null) {
+      _json["thoroughfarePreDirection"] = thoroughfarePreDirection;
+    }
+    if (thoroughfareTrailingType != null) {
+      _json["thoroughfareTrailingType"] = thoroughfareTrailingType;
+    }
+    return _json;
+  }
+}
+
 class RepresentativeInfoData {
   /** Political geographic divisions that contain the requested address. */
   core.Map<core.String, GeographicDivision> divisions;
@@ -1546,6 +1887,30 @@ class RepresentativeInfoData {
     }
     if (officials != null) {
       _json["officials"] = officials.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A request for political geography and representative information for an
+ * address.
+ */
+class RepresentativeInfoRequest {
+  ContextParams contextParams;
+
+  RepresentativeInfoRequest();
+
+  RepresentativeInfoRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contextParams")) {
+      contextParams = new ContextParams.fromJson(_json["contextParams"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contextParams != null) {
+      _json["contextParams"] = (contextParams).toJson();
     }
     return _json;
   }
@@ -1716,6 +2081,34 @@ class Source {
   }
 }
 
+/** A request for information about a voter. */
+class VoterInfoRequest {
+  ContextParams contextParams;
+  VoterInfoSegmentResult voterInfoSegmentResult;
+
+  VoterInfoRequest();
+
+  VoterInfoRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contextParams")) {
+      contextParams = new ContextParams.fromJson(_json["contextParams"]);
+    }
+    if (_json.containsKey("voterInfoSegmentResult")) {
+      voterInfoSegmentResult = new VoterInfoSegmentResult.fromJson(_json["voterInfoSegmentResult"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contextParams != null) {
+      _json["contextParams"] = (contextParams).toJson();
+    }
+    if (voterInfoSegmentResult != null) {
+      _json["voterInfoSegmentResult"] = (voterInfoSegmentResult).toJson();
+    }
+    return _json;
+  }
+}
+
 /** The result of a voter info lookup query. */
 class VoterInfoResponse {
   /** Contests that will appear on the voter's ballot. */
@@ -1833,6 +2226,47 @@ class VoterInfoResponse {
     }
     if (state != null) {
       _json["state"] = state.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class VoterInfoSegmentResult {
+  core.String generatedMillis;
+  PostalAddress postalAddress;
+  VoterInfoRequest request;
+  VoterInfoResponse response;
+
+  VoterInfoSegmentResult();
+
+  VoterInfoSegmentResult.fromJson(core.Map _json) {
+    if (_json.containsKey("generatedMillis")) {
+      generatedMillis = _json["generatedMillis"];
+    }
+    if (_json.containsKey("postalAddress")) {
+      postalAddress = new PostalAddress.fromJson(_json["postalAddress"]);
+    }
+    if (_json.containsKey("request")) {
+      request = new VoterInfoRequest.fromJson(_json["request"]);
+    }
+    if (_json.containsKey("response")) {
+      response = new VoterInfoResponse.fromJson(_json["response"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (generatedMillis != null) {
+      _json["generatedMillis"] = generatedMillis;
+    }
+    if (postalAddress != null) {
+      _json["postalAddress"] = (postalAddress).toJson();
+    }
+    if (request != null) {
+      _json["request"] = (request).toJson();
+    }
+    if (response != null) {
+      _json["response"] = (response).toJson();
     }
     return _json;
   }
