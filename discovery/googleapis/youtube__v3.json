@@ -30,7 +30,7 @@
     "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/A3ttvUq-FH-9G6uAbfXxwyLfegU\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/4auVy5GLotTS3CICB9zLFhVaxUM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -3244,7 +3244,7 @@
                         },
                         "maxResults": {
                             "default": "5",
-                            "description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set.\n\nNote: This parameter is supported for use in conjunction with the myRating parameter, but it is not supported for use in conjunction with the id parameter.",
+                            "description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set.\n\nNote: This parameter is supported for use in conjunction with the myRating and chart parameters, but it is not supported for use in conjunction with the id parameter.",
                             "format": "uint32",
                             "location": "query",
                             "maximum": "50",
@@ -3278,7 +3278,7 @@
                             "type": "string"
                         },
                         "pageToken": {
-                            "description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.\n\nNote: This parameter is supported for use in conjunction with the myRating parameter, but it is not supported for use in conjunction with the id parameter.",
+                            "description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.\n\nNote: This parameter is supported for use in conjunction with the myRating and chart parameters, but it is not supported for use in conjunction with the id parameter.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3488,7 +3488,7 @@
             }
         }
     },
-    "revision": "20161017",
+    "revision": "20161202",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -4159,12 +4159,14 @@
                     "enum": [
                         "1080p",
                         "1440p",
+                        "2160p",
                         "240p",
                         "360p",
                         "480p",
                         "720p"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -5159,7 +5161,7 @@
             "type": "object"
         },
         "ContentRating": {
-            "description": "Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 68",
+            "description": "Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 69",
             "id": "ContentRating",
             "properties": {
                 "acbRating": {
@@ -6096,6 +6098,30 @@
                         "mccypUnrated"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "mcstRating": {
+                    "description": "The video's rating system for Vietnam - MCST",
+                    "enum": [
+                        "mcst0",
+                        "mcst16plus",
+                        "mcstC13",
+                        "mcstC16",
+                        "mcstC18",
+                        "mcstGPg",
+                        "mcstP",
+                        "mcstUnrated"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -8585,6 +8611,11 @@
                 "videoId": {
                     "description": "The ID that YouTube uses to uniquely identify a video. To retrieve the video resource, set the id query parameter to this value in your API request.",
                     "type": "string"
+                },
+                "videoPublishedAt": {
+                    "description": "The date and time that the video was published to YouTube. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
+                    "format": "date-time",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -10525,9 +10556,13 @@
                     "items": {
                         "enum": [
                             "nonStreamableMov",
+                            "procsesingHintSpatialAudio",
+                            "procsesingHintSphericalVideo",
                             "sendBestQualityVideo"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
                             "",
                             ""
                         ],

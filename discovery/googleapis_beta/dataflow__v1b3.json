@@ -17,7 +17,7 @@
     "description": "Develops and executes data processing patterns like ETL, batch computation, and continuous computation.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/xAS9HNORjhocTytPtpE1KQr-LHM\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/2ldmPeHEvQ6NGgRE1Cb3tnvrYr8\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -1047,7 +1047,7 @@
             }
         }
     },
-    "revision": "20160928",
+    "revision": "20161004",
     "rootUrl": "https://dataflow.googleapis.com/",
     "schemas": {
         "GetDebugConfigRequest": {
@@ -1807,6 +1807,10 @@
             "description": "Request to create a Dataflow job.",
             "id": "CreateJobFromTemplateRequest",
             "properties": {
+                "jobName": {
+                    "description": "The job name to use for the created job..",
+                    "type": "string"
+                },
                 "gcsPath": {
                     "description": "A path to the serialized JSON representation of the job.",
                     "type": "string"
@@ -1817,6 +1821,30 @@
                     },
                     "description": "Dynamic parameterization of the job's runtime environment.",
                     "type": "object"
+                },
+                "environment": {
+                    "$ref": "RuntimeEnvironment",
+                    "description": "Runtime environment for the job."
+                }
+            },
+            "type": "object"
+        },
+        "RuntimeEnvironment": {
+            "description": "Environment values to set at runtime.",
+            "id": "RuntimeEnvironment",
+            "properties": {
+                "maxWorkers": {
+                    "description": "The maximum number of workers to start for the job.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "zone": {
+                    "description": "The zone to start the workers in.",
+                    "type": "string"
+                },
+                "serviceAccountEmail": {
+                    "description": "The service account to run the job as.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3320,6 +3348,10 @@
                 "trackingSubscription": {
                     "description": "If set, specifies the pubsub subscription that will be used for tracking custom time timestamps for watermark estimation.",
                     "type": "string"
+                },
+                "withAttributes": {
+                    "description": "If true, then the client has requested to get pubsub attributes.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

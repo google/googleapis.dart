@@ -41,7 +41,7 @@
     "description": "Access Gmail mailboxes including sending user email.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/V8B0BNh6Gl7mnZWtADepvF4qGmI\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/p_Ki8ZAiDCpzN2N5osErTV2szew\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -743,6 +743,31 @@
                                 "https://mail.google.com/"
                             ]
                         },
+                        "batchModify": {
+                            "description": "Modifies the labels on the specified messages.",
+                            "httpMethod": "POST",
+                            "id": "gmail.users.messages.batchModify",
+                            "parameterOrder": [
+                                "userId"
+                            ],
+                            "parameters": {
+                                "userId": {
+                                    "default": "me",
+                                    "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "{userId}/messages/batchModify",
+                            "request": {
+                                "$ref": "BatchModifyMessagesRequest"
+                            },
+                            "scopes": [
+                                "https://mail.google.com/",
+                                "https://www.googleapis.com/auth/gmail.modify"
+                            ]
+                        },
                         "delete": {
                             "description": "Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer messages.trash instead.",
                             "httpMethod": "DELETE",
@@ -1006,7 +1031,7 @@
                                     "type": "string"
                                 },
                                 "q": {
-                                    "description": "Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\".",
+                                    "description": "Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\". Parameter cannot be used when accessing the api using the gmail.metadata scope.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2022,7 +2047,7 @@
                                     "type": "string"
                                 },
                                 "q": {
-                                    "description": "Only return threads matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\".",
+                                    "description": "Only return threads matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\". Parameter cannot be used when accessing the api using the gmail.metadata scope.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2149,7 +2174,7 @@
             }
         }
     },
-    "revision": "20161019",
+    "revision": "20161206",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AutoForwarding": {
@@ -2190,6 +2215,33 @@
             "properties": {
                 "ids": {
                     "description": "The IDs of the messages to delete.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchModifyMessagesRequest": {
+            "id": "BatchModifyMessagesRequest",
+            "properties": {
+                "addLabelIds": {
+                    "description": "A list of label IDs to add to messages.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "ids": {
+                    "description": "The IDs of the messages to modify. There is a limit of 1000 ids per request.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "removeLabelIds": {
+                    "description": "A list of label IDs to remove from messages.",
                     "items": {
                         "type": "string"
                     },
@@ -2822,7 +2874,7 @@
                     "type": "string"
                 },
                 "size": {
-                    "description": "Total number of bytes in the body of the message part.",
+                    "description": "Number of bytes for the message part data (encoding notwithstanding).",
                     "format": "int32",
                     "type": "integer"
                 }

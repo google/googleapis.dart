@@ -77,7 +77,7 @@ class ProjectsCollectdTimeSeriesResourceApi {
    * Request parameters:
    *
    * [name] - The project in which to create the time series. The format is
-   * &quot;projects/PROJECT_ID_OR_NUMBER&quot;.
+   * "projects/PROJECT_ID_OR_NUMBER".
    * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [Empty].
@@ -134,7 +134,7 @@ class ProjectsGroupsResourceApi {
    * Request parameters:
    *
    * [name] - The project in which to create the group. The format is
-   * &quot;projects/{project_id_or_number}&quot;.
+   * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
    * [validateOnly] - If true, validate this request but do not create the
@@ -184,7 +184,7 @@ class ProjectsGroupsResourceApi {
    * Request parameters:
    *
    * [name] - The group to delete. The format is
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;.
+   * "projects/{project_id_or_number}/groups/{group_id}".
    * Value must have pattern "^projects/[^/]+/groups/[^/]+$".
    *
    * Completes with a [Empty].
@@ -225,7 +225,7 @@ class ProjectsGroupsResourceApi {
    * Request parameters:
    *
    * [name] - The group to retrieve. The format is
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;.
+   * "projects/{project_id_or_number}/groups/{group_id}".
    * Value must have pattern "^projects/[^/]+/groups/[^/]+$".
    *
    * Completes with a [Group].
@@ -266,11 +266,11 @@ class ProjectsGroupsResourceApi {
    * Request parameters:
    *
    * [name] - The project whose groups are to be listed. The format is
-   * &quot;projects/{project_id_or_number}&quot;.
+   * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
    * [descendantsOfGroup] - A group name:
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns the
+   * "projects/{project_id_or_number}/groups/{group_id}". Returns the
    * descendants of the specified group. This is a superset of the results
    * returned by the childrenOfGroup filter, and includes children-of-children,
    * and so forth.
@@ -279,16 +279,16 @@ class ProjectsGroupsResourceApi {
    * return.
    *
    * [childrenOfGroup] - A group name:
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns
-   * groups whose parentName field contains the group name. If no groups have
-   * this parent, the results are empty.
+   * "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+   * parentName field contains the group name. If no groups have this parent,
+   * the results are empty.
    *
    * [ancestorsOfGroup] - A group name:
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. Returns
-   * groups that are ancestors of the specified group. The groups are returned
-   * in order, starting with the immediate parent and ending with the most
-   * distant ancestor. If the specified group has no immediate parent, the
-   * results are empty.
+   * "projects/{project_id_or_number}/groups/{group_id}". Returns groups that
+   * are ancestors of the specified group. The groups are returned in order,
+   * starting with the immediate parent and ending with the most distant
+   * ancestor. If the specified group has no immediate parent, the results are
+   * empty.
    *
    * [pageToken] - If this field is not empty then it must contain the
    * nextPageToken value returned by a previous call to this method. Using this
@@ -350,10 +350,10 @@ class ProjectsGroupsResourceApi {
    * Request parameters:
    *
    * [name] - Output only. The name of this group. The format is
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. When
-   * creating a group, this field is ignored and a new name is created
-   * consisting of the project specified in the call to CreateGroup and a unique
-   * {group_id} that is generated automatically.
+   * "projects/{project_id_or_number}/groups/{group_id}". When creating a group,
+   * this field is ignored and a new name is created consisting of the project
+   * specified in the call to CreateGroup and a unique {group_id} that is
+   * generated automatically.
    * Value must have pattern "^projects/[^/]+/groups/[^/]+$".
    *
    * [validateOnly] - If true, validate this request but do not update the
@@ -412,15 +412,14 @@ class ProjectsGroupsMembersResourceApi {
    * Request parameters:
    *
    * [name] - The group whose members are listed. The format is
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;.
+   * "projects/{project_id_or_number}/groups/{group_id}".
    * Value must have pattern "^projects/[^/]+/groups/[^/]+$".
    *
-   * [filter] - An optional list filter (/monitoring/api/learn_more#filtering)
-   * describing the members to be returned. The filter may reference the type,
-   * labels, and metadata of monitored resources that comprise the group. For
-   * example, to return only resources representing Compute Engine VM instances,
-   * use this filter:
-   * resource.type = &quot;gce_instance&quot;
+   * [filter] - An optional list filter describing the members to be returned.
+   * The filter may reference the type, labels, and metadata of monitored
+   * resources that comprise the group. For example, to return only resources
+   * representing Compute Engine VM instances, use this filter:
+   * resource.type = "gce_instance"
    *
    * [interval_endTime] - Required. The end of the time interval.
    *
@@ -494,14 +493,14 @@ class ProjectsMetricDescriptorsResourceApi {
 
   /**
    * Creates a new metric descriptor. User-created metric descriptors define
-   * custom metrics (/monitoring/custom-metrics).
+   * custom metrics.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [name] - The project on which to execute the request. The format is
-   * &quot;projects/{project_id_or_number}&quot;.
+   * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [MetricDescriptor].
@@ -540,16 +539,14 @@ class ProjectsMetricDescriptorsResourceApi {
   }
 
   /**
-   * Deletes a metric descriptor. Only user-created custom metrics
-   * (/monitoring/custom-metrics) can be deleted.
+   * Deletes a metric descriptor. Only user-created custom metrics can be
+   * deleted.
    *
    * Request parameters:
    *
    * [name] - The metric descriptor on which to execute the request. The format
-   * is
-   * &quot;projects/{project_id_or_number}/metricDescriptors/{metric_id}&quot;.
-   * An example of {metric_id} is:
-   * &quot;custom.googleapis.com/my_test_metric&quot;.
+   * is "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An
+   * example of {metric_id} is: "custom.googleapis.com/my_test_metric".
    * Value must have pattern "^projects/[^/]+/metricDescriptors/.+$".
    *
    * Completes with a [Empty].
@@ -591,10 +588,9 @@ class ProjectsMetricDescriptorsResourceApi {
    * Request parameters:
    *
    * [name] - The metric descriptor on which to execute the request. The format
-   * is
-   * &quot;projects/{project_id_or_number}/metricDescriptors/{metric_id}&quot;.
-   * An example value of {metric_id} is
-   * &quot;compute.googleapis.com/instance/disk/read_bytes_count&quot;.
+   * is "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An
+   * example value of {metric_id} is
+   * "compute.googleapis.com/instance/disk/read_bytes_count".
    * Value must have pattern "^projects/[^/]+/metricDescriptors/.+$".
    *
    * Completes with a [MetricDescriptor].
@@ -636,18 +632,17 @@ class ProjectsMetricDescriptorsResourceApi {
    * Request parameters:
    *
    * [name] - The project on which to execute the request. The format is
-   * &quot;projects/{project_id_or_number}&quot;.
+   * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
    * [pageSize] - A positive number that is the maximum number of results to
    * return.
    *
    * [filter] - If this field is empty, all custom and system-defined metric
-   * descriptors are returned. Otherwise, the filter
-   * (/monitoring/api/v3/filters) specifies which metric descriptors are to be
-   * returned. For example, the following filter matches all custom metrics
-   * (/monitoring/custom-metrics):
-   * metric.type = starts_with(&quot;custom.googleapis.com/&quot;)
+   * descriptors are returned. Otherwise, the filter specifies which metric
+   * descriptors are to be returned. For example, the following filter matches
+   * all custom metrics:
+   * metric.type = starts_with("custom.googleapis.com/")
    *
    * [pageToken] - If this field is not empty then it must contain the
    * nextPageToken value returned by a previous call to this method. Using this
@@ -711,7 +706,7 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
    * Request parameters:
    *
    * [name] - The monitored resource descriptor to get. The format is
-   * &quot;projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}&quot;.
+   * "projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}".
    * The {resource_type} is a predefined type, such as cloudsql_database.
    * Value must have pattern
    * "^projects/[^/]+/monitoredResourceDescriptors/[^/]+$".
@@ -755,17 +750,17 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
    * Request parameters:
    *
    * [name] - The project on which to execute the request. The format is
-   * &quot;projects/{project_id_or_number}&quot;.
+   * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
    * [pageSize] - A positive number that is the maximum number of results to
    * return.
    *
-   * [filter] - An optional filter (/monitoring/api/v3/filters) describing the
-   * descriptors to be returned. The filter can reference the descriptor's type
-   * and labels. For example, the following filter returns only Google Compute
-   * Engine descriptors that have an id label:
-   * resource.type = starts_with(&quot;gce_&quot;) AND resource.label:id
+   * [filter] - An optional filter describing the descriptors to be returned.
+   * The filter can reference the descriptor's type and labels. For example, the
+   * following filter returns only Google Compute Engine descriptors that have
+   * an id label:
+   * resource.type = starts_with("gce_") AND resource.label:id
    *
    * [pageToken] - If this field is not empty then it must contain the
    * nextPageToken value returned by a previous call to this method. Using this
@@ -833,7 +828,7 @@ class ProjectsTimeSeriesResourceApi {
    * Request parameters:
    *
    * [name] - The project on which to execute the request. The format is
-   * &quot;projects/{project_id_or_number}&quot;.
+   * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [Empty].
@@ -881,13 +876,11 @@ class ProjectsTimeSeriesResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - A monitoring filter (/monitoring/api/v3/filters) that specifies
-   * which time series should be returned. The filter must specify a single
-   * metric type, and can additionally specify metric labels and other
-   * information. For example:
-   * metric.type = &quot;compute.googleapis.com/instance/cpu/usage_time&quot;
-   * AND
-   *     metric.label.instance_name = &quot;my-instance-name&quot;
+   * [filter] - A monitoring filter that specifies which time series should be
+   * returned. The filter must specify a single metric type, and can
+   * additionally specify metric labels and other information. For example:
+   * metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+   *     metric.label.instance_name = "my-instance-name"
    *
    * [aggregation_groupByFields] - The set of fields to preserve when
    * crossSeriesReducer is specified. The groupByFields determine how the time
@@ -895,10 +888,12 @@ class ProjectsTimeSeriesResourceApi {
    * function. Each subset contains time series that have the same value for
    * each of the grouping fields. Each individual time series is a member of
    * exactly one subset. The crossSeriesReducer is applied to each subset of
-   * time series. Fields not specified in groupByFields are aggregated away. If
-   * groupByFields is not specified, the time series are aggregated into a
-   * single output time series. If crossSeriesReducer is not defined, this field
-   * is ignored.
+   * time series. It is not possible to reduce across different resource types,
+   * so this field implicitly contains resource.type. Fields not specified in
+   * groupByFields are aggregated away. If groupByFields is not specified and
+   * all the time series have the same resource type, then the time series are
+   * aggregated into a single output time series. If crossSeriesReducer is not
+   * defined, this field is ignored.
    *
    * [aggregation_crossSeriesReducer] - The approach to be used to combine time
    * series. Not all reducer functions may be applied to all time series,
@@ -1062,14 +1057,14 @@ class ProjectsTimeSeriesResourceApi {
  * bound.The sequence of N buckets for a Distribution consists of an underflow
  * bucket (number 0), zero or more finite buckets (number 1 through N - 2) and
  * an overflow bucket (number N - 1). The buckets are contiguous: the lower
- * bound of bucket i (i &gt; 0) is the same as the upper bound of bucket i - 1.
- * The buckets span the whole range of finite values: lower bound of the
- * underflow bucket is -infinity and the upper bound of the overflow bucket is
- * +infinity. The finite buckets are so-called because both bounds are
- * finite.BucketOptions describes bucket boundaries in one of three ways. Two
- * describe the boundaries by giving parameters for a formula to generate
- * boundaries and one gives the bucket boundaries explicitly.If bucket_options
- * is not given, then no bucket_counts may be given.
+ * bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The
+ * buckets span the whole range of finite values: lower bound of the underflow
+ * bucket is -infinity and the upper bound of the overflow bucket is +infinity.
+ * The finite buckets are so-called because both bounds are finite.BucketOptions
+ * describes bucket boundaries in one of three ways. Two describe the boundaries
+ * by giving parameters for a formula to generate boundaries and one gives the
+ * bucket boundaries explicitly.If bucket_options is not given, then no
+ * bucket_counts may be given.
  */
 class BucketOptions {
   /** The explicit buckets. */
@@ -1115,17 +1110,17 @@ class BucketOptions {
 class CollectdPayload {
   /** The end time of the interval. */
   core.String endTime;
-  /** The measurement metadata. Example: &quot;process_id&quot; -&gt; 12345 */
+  /** The measurement metadata. Example: "process_id" -> 12345 */
   core.Map<core.String, TypedValue> metadata;
-  /** The name of the plugin. Example: &quot;disk&quot;. */
+  /** The name of the plugin. Example: "disk". */
   core.String plugin;
-  /** The instance name of the plugin Example: &quot;hdcl&quot;. */
+  /** The instance name of the plugin Example: "hdcl". */
   core.String pluginInstance;
   /** The start time of the interval. */
   core.String startTime;
-  /** The measurement type. Example: &quot;memory&quot;. */
+  /** The measurement type. Example: "memory". */
   core.String type;
-  /** The measurement type instance. Example: &quot;used&quot;. */
+  /** The measurement type instance. Example: "used". */
   core.String typeInstance;
   /**
    * The measured values during this time interval. Each value must have a
@@ -1196,7 +1191,7 @@ class CollectdPayload {
 class CollectdValue {
   /**
    * The data source for the collectd value. For example there are two data
-   * sources for network measurements: &quot;rx&quot; and &quot;tx&quot;.
+   * sources for network measurements: "rx" and "tx".
    */
   core.String dataSourceName;
   /**
@@ -1256,8 +1251,7 @@ class CreateCollectdTimeSeriesRequest {
    */
   core.List<CollectdPayload> collectdPayloads;
   /**
-   * The version of collectd that collected the data. Example:
-   * &quot;5.3.0-192.el6&quot;.
+   * The version of collectd that collected the data. Example: "5.3.0-192.el6".
    */
   core.String collectdVersion;
   /** The monitored resource associated with the time series. */
@@ -1442,11 +1436,10 @@ class Empty {
 
 /**
  * A set of buckets with arbitrary widths.Defines size(bounds) + 1 (= N) buckets
- * with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): boundsi
- * Lower bound (1 &lt;= i &lt; N); boundsi - 1There must be at least one element
- * in bounds. If bounds has only one element, there are no finite buckets, and
- * that single element is the common boundary of the overflow and underflow
- * buckets.
+ * with these boundaries for bucket i:Upper bound (0 <= i < N-1): boundsi  Lower
+ * bound (1 <= i < N); boundsi - 1There must be at least one element in bounds.
+ * If bounds has only one element, there are no finite buckets, and that single
+ * element is the common boundary of the overflow and underflow buckets.
  */
 class Explicit {
   /** The values must be monotonically increasing. */
@@ -1473,8 +1466,8 @@ class Explicit {
  * Specify a sequence of buckets that have a width that is proportional to the
  * value of the lower bound. Each bucket represents a constant relative
  * uncertainty on a specific value in the bucket.Defines num_finite_buckets + 2
- * (= N) buckets with these boundaries for bucket i:Upper bound (0 &lt;= i &lt;
- * N-1): scale * (growth_factor ^ i).  Lower bound (1 &lt;= i &lt; N): scale *
+ * (= N) buckets with these boundaries for bucket i:Upper bound (0 <= i < N-1):
+ * scale * (growth_factor ^ i).  Lower bound (1 <= i < N): scale *
  * (growth_factor ^ (i - 1)).
  */
 class Exponential {
@@ -1570,7 +1563,7 @@ class Field {
   core.bool packed;
   /**
    * The field type URL, without the scheme, for message or enumeration types.
-   * Example: &quot;type.googleapis.com/google.protobuf.Timestamp&quot;.
+   * Example: "type.googleapis.com/google.protobuf.Timestamp".
    */
   core.String typeUrl;
 
@@ -1658,11 +1651,10 @@ class Field {
  * words, a group contains the monitored resources that match its filter and the
  * filters of all the group's ancestors. A group without a parent can contain
  * any monitored resource.For example, consider an infrastructure running a set
- * of instances with two user-defined tags: &quot;environment&quot; and
- * &quot;role&quot;. A parent group has a filter,
- * environment=&quot;production&quot;. A child of that parent group has a
- * filter, role=&quot;transcoder&quot;. The parent group contains all instances
- * in the production environment, regardless of their roles. The child group
+ * of instances with two user-defined tags: "environment" and "role". A parent
+ * group has a filter, environment="production". A child of that parent group
+ * has a filter, role="transcoder". The parent group contains all instances in
+ * the production environment, regardless of their roles. The child group
  * contains instances that have the transcoder role and are in the production
  * environment.The monitored resources contained in a group can change at any
  * moment, depending on what resources exist and what filters are associated
@@ -1683,16 +1675,16 @@ class Group {
   core.bool isCluster;
   /**
    * Output only. The name of this group. The format is
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. When
-   * creating a group, this field is ignored and a new name is created
-   * consisting of the project specified in the call to CreateGroup and a unique
-   * {group_id} that is generated automatically.
+   * "projects/{project_id_or_number}/groups/{group_id}". When creating a group,
+   * this field is ignored and a new name is created consisting of the project
+   * specified in the call to CreateGroup and a unique {group_id} that is
+   * generated automatically.
    */
   core.String name;
   /**
    * The name of the group's parent, if it has one. The format is
-   * &quot;projects/{project_id_or_number}/groups/{group_id}&quot;. For groups
-   * with no parent, parentName is the empty string, &quot;&quot;.
+   * "projects/{project_id_or_number}/groups/{group_id}". For groups with no
+   * parent, parentName is the empty string, "".
    */
   core.String parentName;
 
@@ -1785,8 +1777,8 @@ class LabelDescriptor {
  * Specify a sequence of buckets that all have the same width (except overflow
  * and underflow). Each bucket represents a constant absolute uncertainty on the
  * specific value in the bucket.Defines num_finite_buckets + 2 (= N) buckets
- * with these boundaries for bucket i:Upper bound (0 &lt;= i &lt; N-1): offset +
- * (width * i).  Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).
+ * with these boundaries for bucket i:Upper bound (0 <= i < N-1): offset +
+ * (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1)).
  */
 class Linear {
   /** Must be greater than 0. */
@@ -2091,7 +2083,7 @@ class MetricDescriptor {
    * metric's URL-encoded type, which also appears in the type field of this
    * descriptor. For example, following is the resource name of a custom metric
    * within the GCP project 123456789:
-   * &quot;projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount&quot;
+   * "projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
    */
   core.String name;
   /**
@@ -2099,8 +2091,8 @@ class MetricDescriptor {
    * URL-encoded. All user-defined metric types have the DNS name
    * custom.googleapis.com. Metric types should use a natural hierarchical
    * grouping. For example:
-   * &quot;custom.googleapis.com/invoice/paid/amount&quot;
-   * &quot;appengine.googleapis.com/http/server/response_latencies&quot;
+   * "custom.googleapis.com/invoice/paid/amount"
+   * "appengine.googleapis.com/http/server/response_latencies"
    */
   core.String type;
   /**
@@ -2138,15 +2130,14 @@ class MetricDescriptor {
    * / division (as an infix operator, e.g. 1/s).
    * . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit
    * is as follows:
-   * Expression = Component { &quot;.&quot; Component } { &quot;/&quot;
-   * Component } ;
+   * Expression = Component { "." Component } { "/" Component } ;
    *
    * Component = [ PREFIX ] UNIT [ Annotation ]
    *           | Annotation
-   *           | &quot;1&quot;
+   *           | "1"
    *           ;
    *
-   * Annotation = &quot;{&quot; NAME &quot;}&quot; ;
+   * Annotation = "{" NAME "}" ;
    * Notes:
    * Annotation is just a comment if it follows a UNIT and is  equivalent to 1
    * if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s
@@ -2238,23 +2229,23 @@ class MetricDescriptor {
  * Information in the labels field identifies the actual resource and its
  * attributes according to the schema. For example, a particular Compute Engine
  * VM instance could be represented by the following object, because the
- * MonitoredResourceDescriptor for &quot;gce_instance&quot; has labels
- * &quot;instance_id&quot; and &quot;zone&quot;:
- * { &quot;type&quot;: &quot;gce_instance&quot;,
- *   &quot;labels&quot;: { &quot;instance_id&quot;: &quot;12345678901234&quot;,
- *               &quot;zone&quot;: &quot;us-central1-a&quot; }}
+ * MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and
+ * "zone":
+ * { "type": "gce_instance",
+ *   "labels": { "instance_id": "12345678901234",
+ *               "zone": "us-central1-a" }}
  */
 class MonitoredResource {
   /**
    * Required. Values for all of the labels listed in the associated monitored
    * resource descriptor. For example, Cloud SQL databases use the labels
-   * &quot;database_id&quot; and &quot;zone&quot;.
+   * "database_id" and "zone".
    */
   core.Map<core.String, core.String> labels;
   /**
    * Required. The monitored resource type. This field must match the type field
    * of a MonitoredResourceDescriptor object. For example, the type of a Cloud
-   * SQL database is &quot;cloudsql_database&quot;.
+   * SQL database is "cloudsql_database".
    */
   core.String type;
 
@@ -2284,11 +2275,11 @@ class MonitoredResource {
 /**
  * An object that describes the schema of a MonitoredResource object using a
  * type name and a set of labels. For example, the monitored resource descriptor
- * for Google Compute Engine VM instances has a type of &quot;gce_instance&quot;
- * and specifies the use of the labels &quot;instance_id&quot; and
- * &quot;zone&quot; to identify particular VM instances.Different APIs can
- * support different monitored resource types. APIs generally provide a list
- * method that returns the monitored resource descriptors used by the API.
+ * for Google Compute Engine VM instances has a type of "gce_instance" and
+ * specifies the use of the labels "instance_id" and "zone" to identify
+ * particular VM instances.Different APIs can support different monitored
+ * resource types. APIs generally provide a list method that returns the
+ * monitored resource descriptors used by the API.
  */
 class MonitoredResourceDescriptor {
   /**
@@ -2299,30 +2290,29 @@ class MonitoredResourceDescriptor {
   /**
    * Optional. A concise name for the monitored resource type that might be
    * displayed in user interfaces. It should be a Title Cased Noun Phrase,
-   * without any article or other determiners. For example, &quot;Google Cloud
-   * SQL Database&quot;.
+   * without any article or other determiners. For example, "Google Cloud SQL
+   * Database".
    */
   core.String displayName;
   /**
    * Required. A set of labels used to describe instances of this monitored
    * resource type. For example, an individual Google Cloud SQL database is
-   * identified by values for the labels &quot;database_id&quot; and
-   * &quot;zone&quot;.
+   * identified by values for the labels "database_id" and "zone".
    */
   core.List<LabelDescriptor> labels;
   /**
    * Optional. The resource name of the monitored resource descriptor:
-   * &quot;projects/{project_id}/monitoredResourceDescriptors/{type}&quot; where
-   * {type} is the value of the type field in this object and {project_id} is a
-   * project ID that provides API-specific context for accessing the type. APIs
-   * that do not use project information can use the resource name format
-   * &quot;monitoredResourceDescriptors/{type}&quot;.
+   * "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is
+   * the value of the type field in this object and {project_id} is a project ID
+   * that provides API-specific context for accessing the type. APIs that do not
+   * use project information can use the resource name format
+   * "monitoredResourceDescriptors/{type}".
    */
   core.String name;
   /**
    * Required. The monitored resource type. For example, the type
-   * &quot;cloudsql_database&quot; represents databases in Google Cloud SQL. The
-   * maximum length of this value is 256 characters.
+   * "cloudsql_database" represents databases in Google Cloud SQL. The maximum
+   * length of this value is 256 characters.
    */
   core.String type;
 
@@ -2372,10 +2362,18 @@ class MonitoredResourceDescriptor {
  * enumeration, etc.
  */
 class Option {
-  /** The option's name. For example, &quot;java_package&quot;. */
+  /**
+   * The option's name. For protobuf built-in options (options defined in
+   * descriptor.proto), this is the short name. For example, "map_entry". For
+   * custom options, it should be the fully-qualified name. For example,
+   * "google.api.http".
+   */
   core.String name;
   /**
-   * The option's value. For example, &quot;com.google.protobuf&quot;.
+   * The option's value packed in an Any message. If the value is a primitive,
+   * the corresponding wrapper type defined in google/protobuf/wrappers.proto
+   * should be used. If the value is an enum, it should be stored as an int32
+   * value using the google.protobuf.Int32Value type.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2481,8 +2479,7 @@ class Range {
 class SourceContext {
   /**
    * The path-qualified name of the .proto file that contained the associated
-   * protobuf element. For example:
-   * &quot;google/protobuf/source_context.proto&quot;.
+   * protobuf element. For example: "google/protobuf/source_context.proto".
    */
   core.String fileName;
 

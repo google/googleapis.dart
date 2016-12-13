@@ -15,7 +15,7 @@
     "description": "Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/iam/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/bQX0iw41CX8vYvVm7WSKLdyxMvI\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/bQX0iw41CX8vYvVm7WSKLdyxMvI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

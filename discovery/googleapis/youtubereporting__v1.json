@@ -18,7 +18,7 @@
     "description": "Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/reporting/v1/reports/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/ym0RISeffUziZ77agVd4GWAEUYI\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/ym0RISeffUziZ77agVd4GWAEUYI\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

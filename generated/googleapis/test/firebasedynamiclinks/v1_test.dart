@@ -120,14 +120,14 @@ checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-buildUnnamed2171() {
+buildUnnamed1942() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed2171(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed1942(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -140,7 +140,7 @@ buildCreateShortDynamicLinkResponse() {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     o.previewLink = "foo";
     o.shortLink = "foo";
-    o.warning = buildUnnamed2171();
+    o.warning = buildUnnamed1942();
   }
   buildCounterCreateShortDynamicLinkResponse--;
   return o;
@@ -151,7 +151,7 @@ checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     unittest.expect(o.previewLink, unittest.equals('foo'));
     unittest.expect(o.shortLink, unittest.equals('foo'));
-    checkUnnamed2171(o.warning);
+    checkUnnamed1942(o.warning);
   }
   buildCounterCreateShortDynamicLinkResponse--;
 }
@@ -165,7 +165,6 @@ buildDynamicLinkInfo() {
     o.androidInfo = buildAndroidInfo();
     o.dynamicLinkDomain = "foo";
     o.iosInfo = buildIosInfo();
-    o.isAd = true;
     o.link = "foo";
     o.socialMetaTagInfo = buildSocialMetaTagInfo();
   }
@@ -180,7 +179,6 @@ checkDynamicLinkInfo(api.DynamicLinkInfo o) {
     checkAndroidInfo(o.androidInfo);
     unittest.expect(o.dynamicLinkDomain, unittest.equals('foo'));
     checkIosInfo(o.iosInfo);
-    unittest.expect(o.isAd, unittest.isTrue);
     unittest.expect(o.link, unittest.equals('foo'));
     checkSocialMetaTagInfo(o.socialMetaTagInfo);
   }

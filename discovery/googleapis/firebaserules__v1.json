@@ -429,7 +429,7 @@
             }
         }
     },
-    "revision": "20161021",
+    "revision": "20161205",
     "rootUrl": "https://firebaserules.googleapis.com/",
     "schemas": {
         "Release": {

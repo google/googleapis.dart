@@ -1197,6 +1197,11 @@ class Report {
 /** The data part of the report. */
 class ReportData {
   /**
+   * The last time the data in the report was refreshed. All the hits received
+   * before this timestamp are included in the calculation of the report.
+   */
+  core.String dataLastRefreshed;
+  /**
    * Indicates if response to this request is golden or not. Data is
    * golden when the exact same request will not produce any new results if
    * asked at a later point in time.
@@ -1252,6 +1257,9 @@ class ReportData {
   ReportData();
 
   ReportData.fromJson(core.Map _json) {
+    if (_json.containsKey("dataLastRefreshed")) {
+      dataLastRefreshed = _json["dataLastRefreshed"];
+    }
     if (_json.containsKey("isDataGolden")) {
       isDataGolden = _json["isDataGolden"];
     }
@@ -1280,6 +1288,9 @@ class ReportData {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (dataLastRefreshed != null) {
+      _json["dataLastRefreshed"] = dataLastRefreshed;
+    }
     if (isDataGolden != null) {
       _json["isDataGolden"] = isDataGolden;
     }

@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/VwfrBbrm1x1NC_RQejLBiqBNNFk\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/ZBb2iLoDHuz7Rvww5u_HoO9Br24\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -2102,7 +2102,7 @@
             }
         }
     },
-    "revision": "20161027",
+    "revision": "20161123",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2695,6 +2695,11 @@
                 },
                 "timeDeleted": {
                     "description": "The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "timeStorageClassUpdated": {
+                    "description": "The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.",
                     "format": "date-time",
                     "type": "string"
                 },

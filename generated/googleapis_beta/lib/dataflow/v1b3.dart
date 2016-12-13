@@ -1943,16 +1943,26 @@ class CounterUpdate {
 
 /** Request to create a Dataflow job. */
 class CreateJobFromTemplateRequest {
+  /** Runtime environment for the job. */
+  RuntimeEnvironment environment;
   /** A path to the serialized JSON representation of the job. */
   core.String gcsPath;
+  /** The job name to use for the created job.. */
+  core.String jobName;
   /** Dynamic parameterization of the job's runtime environment. */
   core.Map<core.String, core.String> parameters;
 
   CreateJobFromTemplateRequest();
 
   CreateJobFromTemplateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("environment")) {
+      environment = new RuntimeEnvironment.fromJson(_json["environment"]);
+    }
     if (_json.containsKey("gcsPath")) {
       gcsPath = _json["gcsPath"];
+    }
+    if (_json.containsKey("jobName")) {
+      jobName = _json["jobName"];
     }
     if (_json.containsKey("parameters")) {
       parameters = _json["parameters"];
@@ -1961,8 +1971,14 @@ class CreateJobFromTemplateRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (environment != null) {
+      _json["environment"] = (environment).toJson();
+    }
     if (gcsPath != null) {
       _json["gcsPath"] = gcsPath;
+    }
+    if (jobName != null) {
+      _json["jobName"] = jobName;
     }
     if (parameters != null) {
       _json["parameters"] = parameters;
@@ -4021,6 +4037,8 @@ class PubsubLocation {
    * custom time timestamps for watermark estimation.
    */
   core.String trackingSubscription;
+  /** If true, then the client has requested to get pubsub attributes. */
+  core.bool withAttributes;
 
   PubsubLocation();
 
@@ -4043,6 +4061,9 @@ class PubsubLocation {
     if (_json.containsKey("trackingSubscription")) {
       trackingSubscription = _json["trackingSubscription"];
     }
+    if (_json.containsKey("withAttributes")) {
+      withAttributes = _json["withAttributes"];
+    }
   }
 
   core.Map toJson() {
@@ -4064,6 +4085,9 @@ class PubsubLocation {
     }
     if (trackingSubscription != null) {
       _json["trackingSubscription"] = trackingSubscription;
+    }
+    if (withAttributes != null) {
+      _json["withAttributes"] = withAttributes;
     }
     return _json;
   }
@@ -4205,6 +4229,44 @@ class ReportedParallelism {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/** Environment values to set at runtime. */
+class RuntimeEnvironment {
+  /** The maximum number of workers to start for the job. */
+  core.int maxWorkers;
+  /** The service account to run the job as. */
+  core.String serviceAccountEmail;
+  /** The zone to start the workers in. */
+  core.String zone;
+
+  RuntimeEnvironment();
+
+  RuntimeEnvironment.fromJson(core.Map _json) {
+    if (_json.containsKey("maxWorkers")) {
+      maxWorkers = _json["maxWorkers"];
+    }
+    if (_json.containsKey("serviceAccountEmail")) {
+      serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (maxWorkers != null) {
+      _json["maxWorkers"] = maxWorkers;
+    }
+    if (serviceAccountEmail != null) {
+      _json["serviceAccountEmail"] = serviceAccountEmail;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
     }
     return _json;
   }

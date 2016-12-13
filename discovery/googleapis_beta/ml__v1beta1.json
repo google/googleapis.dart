@@ -667,7 +667,7 @@
             }
         }
     },
-    "revision": "20161103",
+    "revision": "20161212",
     "rootUrl": "https://ml.googleapis.com/",
     "schemas": {
         "GoogleCloudMlV1beta1__HyperparameterOutput": {
@@ -919,6 +919,11 @@
             "description": "Represents results of a training job.",
             "id": "GoogleCloudMlV1beta1__TrainingOutput",
             "properties": {
+                "consumedMlUnits": {
+                    "description": "The amount of ML units consumed by the job.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "completedTrialCount": {
                     "description": "The number of hyperparameter tuning trials that completed successfully.",
                     "format": "int64",

@@ -5589,6 +5589,7 @@ class Notification {
   core.String iconUrl;
   /** Resource type. */
   core.String kind;
+  core.String notificationGroup;
   core.String notificationType;
   core.String pcampaignId;
   core.String reason;
@@ -5619,6 +5620,9 @@ class Notification {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("notificationGroup")) {
+      notificationGroup = _json["notificationGroup"];
     }
     if (_json.containsKey("notification_type")) {
       notificationType = _json["notification_type"];
@@ -5662,6 +5666,9 @@ class Notification {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (notificationGroup != null) {
+      _json["notificationGroup"] = notificationGroup;
     }
     if (notificationType != null) {
       _json["notification_type"] = notificationType;
@@ -6135,10 +6142,6 @@ class SeriesSeries {
 class Series {
   /** Resource type. */
   core.String kind;
-  /**
-   * Series info list. The client always expects this element in the JSON
-   * output, hence declared here as OutputAlways.
-   */
   core.List<SeriesSeries> series;
 
   Series();

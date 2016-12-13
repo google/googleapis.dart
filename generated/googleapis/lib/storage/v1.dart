@@ -3790,6 +3790,11 @@ class Object {
    * only if this version of the object has been deleted.
    */
   core.DateTime timeDeleted;
+  /**
+   * The time at which the object's storage class was last changed. When the
+   * object is initially created, it will be set to timeCreated.
+   */
+  core.DateTime timeStorageClassUpdated;
   /** The modification time of the object metadata in RFC 3339 format. */
   core.DateTime updated;
 
@@ -3870,6 +3875,9 @@ class Object {
     }
     if (_json.containsKey("timeDeleted")) {
       timeDeleted = core.DateTime.parse(_json["timeDeleted"]);
+    }
+    if (_json.containsKey("timeStorageClassUpdated")) {
+      timeStorageClassUpdated = core.DateTime.parse(_json["timeStorageClassUpdated"]);
     }
     if (_json.containsKey("updated")) {
       updated = core.DateTime.parse(_json["updated"]);
@@ -3952,6 +3960,9 @@ class Object {
     }
     if (timeDeleted != null) {
       _json["timeDeleted"] = (timeDeleted).toIso8601String();
+    }
+    if (timeStorageClassUpdated != null) {
+      _json["timeStorageClassUpdated"] = (timeStorageClassUpdated).toIso8601String();
     }
     if (updated != null) {
       _json["updated"] = (updated).toIso8601String();

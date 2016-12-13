@@ -18,10 +18,10 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/1UPxGg9gzYawzzZ7NxtSl3TlsMI\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/RAb67elzYK1YWeK8T8dw5Yx6T4g\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "sqladmin:v1beta3",
     "kind": "discovery#restDescription",
@@ -910,7 +910,7 @@
             }
         }
     },
-    "revision": "20161028",
+    "revision": "20161209",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BackupConfiguration": {
@@ -1931,7 +1931,7 @@
                     "type": "string"
                 },
                 "region": {
-                    "description": "The applicable regions for this tier. Can be us-east1, europe-west1, or asia-east1.",
+                    "description": "The applicable regions for this tier.",
                     "items": {
                         "type": "string"
                     },

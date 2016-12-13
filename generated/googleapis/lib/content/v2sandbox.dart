@@ -39,7 +39,8 @@ class OrdersResourceApi {
       _requester = client;
 
   /**
-   * Marks an order as acknowledged.
+   * Marks an order as acknowledged. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -89,7 +90,8 @@ class OrdersResourceApi {
 
   /**
    * Sandbox only. Moves a test order from state "inProgress" to state
-   * "pendingShipment".
+   * "pendingShipment". This method can only be called for non-multi-client
+   * accounts.
    *
    * Request parameters:
    *
@@ -133,7 +135,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Cancels all line items in an order.
+   * Cancels all line items in an order. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -182,7 +185,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Cancels a line item.
+   * Cancels a line item. This method can only be called for non-multi-client
+   * accounts.
    *
    * [request] - The metadata request object.
    *
@@ -231,7 +235,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Sandbox only. Creates a test order.
+   * Sandbox only. Creates a test order. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -275,7 +280,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Retrieves or modifies multiple orders in a single request.
+   * Retrieves or modifies multiple orders in a single request. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -314,7 +320,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Retrieves an order from your Merchant Center account.
+   * Retrieves an order from your Merchant Center account. This method can only
+   * be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -358,7 +365,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Retrieves an order using merchant order id.
+   * Retrieves an order using merchant order id. This method can only be called
+   * for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -403,7 +411,8 @@ class OrdersResourceApi {
 
   /**
    * Sandbox only. Retrieves an order template that can be used to quickly
-   * create a new order in sandbox.
+   * create a new order in sandbox. This method can only be called for
+   * non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -452,7 +461,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Lists the orders in your Merchant Center account.
+   * Lists the orders in your Merchant Center account. This method can only be
+   * called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -548,7 +558,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Refund a portion of the order, up to the full amount paid.
+   * Refund a portion of the order, up to the full amount paid. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -597,7 +608,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Returns a line item.
+   * Returns a line item. This method can only be called for non-multi-client
+   * accounts.
    *
    * [request] - The metadata request object.
    *
@@ -646,7 +658,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Marks line item(s) as shipped.
+   * Marks line item(s) as shipped. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -695,7 +708,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Updates the merchant order ID for a given order.
+   * Updates the merchant order ID for a given order. This method can only be
+   * called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -744,7 +758,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Updates a shipment's status, carrier, and/or tracking ID.
+   * Updates a shipment's status, carrier, and/or tracking ID. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1205,8 +1220,7 @@ class OrderCustomer {
    * If set, this indicates the user explicitly chose to opt in or out of
    * providing marketing rights to the merchant. If unset, this indicates the
    * user has already made this choice in a previous purchase, and was thus not
-   * shown the marketing right opt in/out checkbox during the Purchases on
-   * Google checkout flow.
+   * shown the marketing right opt in/out checkbox during the checkout flow.
    */
   core.bool explicitMarketingPreference;
   /** Full name of the customer. */
@@ -3541,8 +3555,8 @@ class TestOrderCustomer {
    * If set, this indicates the user explicitly chose to opt in or out of
    * providing marketing rights to the merchant. If unset, this indicates the
    * user has already made this choice in a previous purchase, and was thus not
-   * shown the marketing right opt in/out checkbox during the Purchases on
-   * Google checkout flow. Optional.
+   * shown the marketing right opt in/out checkbox during the checkout flow.
+   * Optional.
    */
   core.bool explicitMarketingPreference;
   /** Full name of the customer. */

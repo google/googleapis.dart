@@ -121,86 +121,25 @@
             "resources": {
                 "configs": {
                     "methods": {
-                        "update": {
-                            "description": "Updates a RuntimeConfig resource. The configuration must exist beforehand.",
-                            "httpMethod": "PUT",
-                            "id": "runtimeconfig.projects.configs.update",
-                            "parameterOrder": [
-                                "name"
-                            ],
-                            "parameters": {
-                                "name": {
-                                    "description": "The name of the RuntimeConfig resource to update, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/configs/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1beta1/{+name}",
-                            "request": {
-                                "$ref": "RuntimeConfig"
-                            },
-                            "response": {
-                                "$ref": "RuntimeConfig"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/cloudruntimeconfig"
-                            ]
-                        },
-                        "get": {
-                            "description": "Gets information about a RuntimeConfig resource.",
+                        "getIamPolicy": {
+                            "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
                             "httpMethod": "GET",
-                            "id": "runtimeconfig.projects.configs.get",
+                            "id": "runtimeconfig.projects.configs.getIamPolicy",
                             "parameterOrder": [
-                                "name"
+                                "resource"
                             ],
                             "parameters": {
-                                "name": {
-                                    "description": "The name of the RuntimeConfig resource to retrieve, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
+                                "resource": {
+                                    "description": "REQUIRED: The resource for which the policy is being requested.\n`resource` is usually specified as a path. For example, a Project\nresource is specified as `projects/{project}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/configs/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta1/{+name}",
+                            "path": "v1beta1/{+resource}:getIamPolicy",
                             "response": {
-                                "$ref": "RuntimeConfig"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/cloudruntimeconfig"
-                            ]
-                        },
-                        "create": {
-                            "description": "Creates a new RuntimeConfig resource. The configuration name must be\nunique within project.",
-                            "httpMethod": "POST",
-                            "id": "runtimeconfig.projects.configs.create",
-                            "parameterOrder": [
-                                "parent"
-                            ],
-                            "parameters": {
-                                "requestId": {
-                                    "description": "An optional unique request_id. If server receives two Create requests with\nthe same request_id then second request will be ignored and the resource\nstored in the backend will be returned. Empty request_id fields are\nignored.\nIt is responsibility of the client to ensure uniqueness of the request_id\nstrings.\nThe strings are limited to 64 characters.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "parent": {
-                                    "description": "The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)\nfor this request, in the format `projects/[PROJECT_ID]`.",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1beta1/{+parent}/configs",
-                            "request": {
-                                "$ref": "RuntimeConfig"
-                            },
-                            "response": {
-                                "$ref": "RuntimeConfig"
+                                "$ref": "Policy"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
@@ -243,6 +182,120 @@
                                 "https://www.googleapis.com/auth/cloudruntimeconfig"
                             ]
                         },
+                        "get": {
+                            "description": "Gets information about a RuntimeConfig resource.",
+                            "httpMethod": "GET",
+                            "id": "runtimeconfig.projects.configs.get",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "The name of the RuntimeConfig resource to retrieve, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/configs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+name}",
+                            "response": {
+                                "$ref": "RuntimeConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloudruntimeconfig"
+                            ]
+                        },
+                        "create": {
+                            "description": "Creates a new RuntimeConfig resource. The configuration name must be\nunique within project.",
+                            "httpMethod": "POST",
+                            "id": "runtimeconfig.projects.configs.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "requestId": {
+                                    "description": "An optional but recommended unique <code>request_id</code>. If the server\nreceives two <code>create()</code> requests  with the same\n<code>request_id</code>, then the second request will be ignored and the\nfirst resource created and stored in the backend is returned.\nEmpty <code>request_id</code> fields are ignored.\n\nIt is responsibility of the client to ensure uniqueness of the\n<code>request_id</code> strings.\n\n<code>request_id</code> strings are limited to 64 characters.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)\nfor this request, in the format `projects/[PROJECT_ID]`.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+parent}/configs",
+                            "request": {
+                                "$ref": "RuntimeConfig"
+                            },
+                            "response": {
+                                "$ref": "RuntimeConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloudruntimeconfig"
+                            ]
+                        },
+                        "update": {
+                            "description": "Updates a RuntimeConfig resource. The configuration must exist beforehand.",
+                            "httpMethod": "PUT",
+                            "id": "runtimeconfig.projects.configs.update",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "The name of the RuntimeConfig resource to update, in the format:\n\n`projects/[PROJECT_ID]/configs/[CONFIG_NAME]`",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/configs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+name}",
+                            "request": {
+                                "$ref": "RuntimeConfig"
+                            },
+                            "response": {
+                                "$ref": "RuntimeConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloudruntimeconfig"
+                            ]
+                        },
+                        "setIamPolicy": {
+                            "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
+                            "httpMethod": "POST",
+                            "id": "runtimeconfig.projects.configs.setIamPolicy",
+                            "parameterOrder": [
+                                "resource"
+                            ],
+                            "parameters": {
+                                "resource": {
+                                    "description": "REQUIRED: The resource for which the policy is being specified.\n`resource` is usually specified as a path. For example, a Project\nresource is specified as `projects/{project}`.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/configs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+resource}:setIamPolicy",
+                            "request": {
+                                "$ref": "SetIamPolicyRequest"
+                            },
+                            "response": {
+                                "$ref": "Policy"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloudruntimeconfig"
+                            ]
+                        },
                         "delete": {
                             "description": "Deletes a RuntimeConfig resource.",
                             "httpMethod": "DELETE",
@@ -262,6 +315,34 @@
                             "path": "v1beta1/{+name}",
                             "response": {
                                 "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloudruntimeconfig"
+                            ]
+                        },
+                        "testIamPermissions": {
+                            "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
+                            "httpMethod": "POST",
+                            "id": "runtimeconfig.projects.configs.testIamPermissions",
+                            "parameterOrder": [
+                                "resource"
+                            ],
+                            "parameters": {
+                                "resource": {
+                                    "description": "REQUIRED: The resource for which the policy detail is being requested.\n`resource` is usually specified as a path. For example, a Project\nresource is specified as `projects/{project}`.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/configs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+resource}:testIamPermissions",
+                            "request": {
+                                "$ref": "TestIamPermissionsRequest"
+                            },
+                            "response": {
+                                "$ref": "TestIamPermissionsResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
@@ -375,7 +456,7 @@
                                     ],
                                     "parameters": {
                                         "requestId": {
-                                            "description": "An optional unique request_id. If server receives two Create requests with\nthe same request_id then second request will be ignored and the resource\nstored in the backend will be returned. Empty request_id fields are\nignored.\nIt is responsibility of the client to ensure uniqueness of the request_id\nstrings.\nThe strings are limited to 64 characters.",
+                                            "description": "An optional but recommended unique <code>request_id</code>. If the server\nreceives two <code>create()</code> requests  with the same\n<code>request_id</code>, then the second request will be ignored and the\nfirst resource created and stored in the backend is returned.\nEmpty <code>request_id</code> fields are ignored.\n\nIt is responsibility of the client to ensure uniqueness of the\n<code>request_id</code> strings.\n\n<code>request_id</code> strings are limited to 64 characters.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -456,6 +537,37 @@
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloudruntimeconfig"
                                     ]
+                                },
+                                "testIamPermissions": {
+                                    "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
+                                    "httpMethod": "GET",
+                                    "id": "runtimeconfig.projects.configs.variables.testIamPermissions",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "permissions": {
+                                            "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+                                            "location": "query",
+                                            "repeated": true,
+                                            "type": "string"
+                                        },
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy detail is being requested.\n`resource` is usually specified as a path. For example, a Project\nresource is specified as `projects/{project}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/variables/.+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+resource}:testIamPermissions",
+                                    "response": {
+                                        "$ref": "TestIamPermissionsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudruntimeconfig"
+                                    ]
                                 }
                             }
                         },
@@ -495,7 +607,7 @@
                                     ],
                                     "parameters": {
                                         "requestId": {
-                                            "description": "An optional unique request_id. If server receives two Create requests with\nthe same request_id then second request will be ignored and information\nstored in the backend will be returned. Empty request_id fields are\nignored.\nIt is responsibility of the client to ensure uniqueness of the request_id\nstrings.\nThe strings are limited to 64 characters.",
+                                            "description": "An optional but recommended unique <code>request_id</code>. If the server\nreceives two <code>create()</code> requests  with the same\n<code>request_id</code>, then the second request will be ignored and the\nfirst resource created and stored in the backend is returned.\nEmpty <code>request_id</code> fields are ignored.\n\nIt is responsibility of the client to ensure uniqueness of the\n<code>request_id</code> strings.\n\n<code>request_id</code> strings are limited to 64 characters.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -513,6 +625,37 @@
                                     },
                                     "response": {
                                         "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudruntimeconfig"
+                                    ]
+                                },
+                                "testIamPermissions": {
+                                    "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
+                                    "httpMethod": "GET",
+                                    "id": "runtimeconfig.projects.configs.waiters.testIamPermissions",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "permissions": {
+                                            "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+                                            "location": "query",
+                                            "repeated": true,
+                                            "type": "string"
+                                        },
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy detail is being requested.\n`resource` is usually specified as a path. For example, a Project\nresource is specified as `projects/{project}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+resource}:testIamPermissions",
+                                    "response": {
+                                        "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
@@ -608,6 +751,37 @@
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloudruntimeconfig"
                                     ]
+                                },
+                                "testIamPermissions": {
+                                    "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
+                                    "httpMethod": "GET",
+                                    "id": "runtimeconfig.projects.configs.operations.testIamPermissions",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "permissions": {
+                                            "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+                                            "location": "query",
+                                            "repeated": true,
+                                            "type": "string"
+                                        },
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy detail is being requested.\n`resource` is usually specified as a path. For example, a Project\nresource is specified as `projects/{project}`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/configs/[^/]+/operations/.+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+resource}:testIamPermissions",
+                                    "response": {
+                                        "$ref": "TestIamPermissionsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloudruntimeconfig"
+                                    ]
                                 }
                             }
                         }
@@ -616,7 +790,7 @@
             }
         }
     },
-    "revision": "20161102",
+    "revision": "20161211",
     "rootUrl": "https://runtimeconfig.googleapis.com/",
     "schemas": {
         "Status": {
@@ -646,35 +820,17 @@
             },
             "type": "object"
         },
-        "ListConfigsResponse": {
-            "description": "`ListConfigs()` returns the following response. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
-            "id": "ListConfigsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results",
-                    "type": "string"
-                },
-                "configs": {
-                    "description": "A list of the configurations in the project. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
-                    "items": {
-                        "$ref": "RuntimeConfig"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "Variable": {
             "description": "Describes a single variable within a RuntimeConfig resource.\nThe name denotes the hierarchical variable name. For example,\n`ports/serving_port` is a valid variable name. The variable value is an\nopaque string and only leaf variables can have values (that is, variables\nthat do not have any child variables).",
             "id": "Variable",
             "properties": {
                 "value": {
-                    "description": "The binary value of the variable. The length of the value must be less\nthan 4096 bytes. Empty values are also accepted. The value must be\nBase64 encoded.\nNB: Only one of value and string_value can be set at the same time.",
+                    "description": "The binary value of the variable. The length of the value must be less\nthan 4096 bytes. Empty values are also accepted. The value must be\nbase64 encoded. Only one of `value` or `text` can be set.",
                     "format": "byte",
                     "type": "string"
                 },
                 "text": {
-                    "description": "The textual value of the variable. The length of the value must be less\nthan 4096 bytes. Empty values are also accepted.\nNB: Only one of value and string_value can be set at the same time.",
+                    "description": "The string value of the variable. The length of the value must be less\nthan 4096 bytes. Empty values are also accepted. For example,\n<code>text: \"my text value\"</code>.",
                     "type": "string"
                 },
                 "updateTime": {
@@ -699,6 +855,24 @@
                 "name": {
                     "description": "The name of the variable resource, in the format:\n\n    projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]\n\nThe `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a\nvalid RuntimeConfig reource and `[VARIABLE_NAME]` follows Unix file system\nfile path naming.\n\nThe `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and\ndashes. Slashes are used as path element separators and are not part of the\n`[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least one\nnon-slash character. Multiple slashes are coalesced into single slash\ncharacter. Each path segment should follow RFC 1035 segment specification.\nThe length of a `[VARIABLE_NAME]` must be less than 256 bytes.\n\nOnce you create a variable, you cannot change the variable name.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListConfigsResponse": {
+            "description": "`ListConfigs()` returns the following response. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
+            "id": "ListConfigsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results",
+                    "type": "string"
+                },
+                "configs": {
+                    "description": "A list of the configurations in the project. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
+                    "items": {
+                        "$ref": "RuntimeConfig"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -734,6 +908,31 @@
                 "name": {
                     "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SetIamPolicyRequest": {
+            "description": "Request message for `SetIamPolicy` method.",
+            "id": "SetIamPolicyRequest",
+            "properties": {
+                "policy": {
+                    "$ref": "Policy",
+                    "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+                }
+            },
+            "type": "object"
+        },
+        "TestIamPermissionsResponse": {
+            "description": "Response message for `TestIamPermissions` method.",
+            "id": "TestIamPermissionsResponse",
+            "properties": {
+                "permissions": {
+                    "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -775,17 +974,55 @@
             },
             "type": "object"
         },
+        "Policy": {
+            "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `Binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\",\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam).",
+            "id": "Policy",
+            "properties": {
+                "bindings": {
+                    "description": "Associates a list of `members` to a `role`.\nMultiple `bindings` must not be specified for the same `role`.\n`bindings` with no members will result in an error.",
+                    "items": {
+                        "$ref": "Binding"
+                    },
+                    "type": "array"
+                },
+                "etag": {
+                    "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "Version of the `Policy`. The default version is 0.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "RuntimeConfig": {
             "description": "A RuntimeConfig resource is the primary resource in the Cloud RuntimeConfig\nservice. A RuntimeConfig resource consists of metadata and a hierarchy of\nvariables.",
             "id": "RuntimeConfig",
             "properties": {
                 "description": {
-                    "description": "An optional description of the RuntimeConfig object.\nThe length of the description must be less than 256 bytes.",
+                    "description": "An optional description of the RuntimeConfig object.",
                     "type": "string"
                 },
                 "name": {
                     "description": "The resource name of a runtime config. The name must have the format:\n\n    projects/[PROJECT_ID]/configs/[CONFIG_NAME]\n\nThe `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an\narbitrary name that matches RFC 1035 segment specification. The length of\n`[CONFIG_NAME]` must be less than 64 bytes.\n\nYou pick the RuntimeConfig resource name, but the server will validate that\nthe name adheres to this format. After you create the resource, you cannot\nchange the resource's name.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TestIamPermissionsRequest": {
+            "description": "Request message for `TestIamPermissions` method.",
+            "id": "TestIamPermissionsRequest",
+            "properties": {
+                "permissions": {
+                    "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -848,6 +1085,24 @@
                 "newerThan": {
                     "description": "If specified, checks the current timestamp of the variable and if the\ncurrent timestamp is newer than `newerThan` timestamp, the method returns\nimmediately.\n\nIf not specified or the variable has an older timestamp, the watcher waits\nfor a the value to change before returning.",
                     "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Binding": {
+            "description": "Associates `members` with a `role`.",
+            "id": "Binding",
+            "properties": {
+                "members": {
+                    "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` or `joe@example.com`.\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `domain:{domain}`: A Google Apps domain name that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "role": {
+                    "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.\nRequired",
                     "type": "string"
                 }
             },

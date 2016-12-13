@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/firebase": {
                     "description": "View and administer all your Firebase data and settings"
                 }
@@ -15,10 +18,10 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/RUOtwHGdsl6sx4SfIX3bJXLVQr0\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/9lrbPxfnfcTzLSOgIxD2Vj83GmI\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "identitytoolkit:v3",
     "kind": "discovery#restDescription",
@@ -84,7 +87,10 @@
                     },
                     "response": {
                         "$ref": "CreateAuthUriResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "deleteAccount": {
                     "description": "Delete user account.",
@@ -96,7 +102,10 @@
                     },
                     "response": {
                         "$ref": "DeleteAccountResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "downloadAccount": {
                     "description": "Batch download user accounts.",
@@ -110,6 +119,7 @@
                         "$ref": "DownloadAccountResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/firebase"
                     ]
                 },
@@ -123,7 +133,10 @@
                     },
                     "response": {
                         "$ref": "GetAccountInfoResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "getOobConfirmationCode": {
                     "description": "Get a code for user action confirmation.",
@@ -135,7 +148,10 @@
                     },
                     "response": {
                         "$ref": "GetOobConfirmationCodeResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "getProjectConfig": {
                     "description": "Get project configuration.",
@@ -156,7 +172,10 @@
                     "path": "getProjectConfig",
                     "response": {
                         "$ref": "IdentitytoolkitRelyingpartyGetProjectConfigResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "getPublicKeys": {
                     "description": "Get token signing public key.",
@@ -165,7 +184,10 @@
                     "path": "publicKeys",
                     "response": {
                         "$ref": "IdentitytoolkitRelyingpartyGetPublicKeysResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "getRecaptchaParam": {
                     "description": "Get recaptcha secure param.",
@@ -174,7 +196,10 @@
                     "path": "getRecaptchaParam",
                     "response": {
                         "$ref": "GetRecaptchaParamResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "resetPassword": {
                     "description": "Reset password for a user.",
@@ -186,7 +211,10 @@
                     },
                     "response": {
                         "$ref": "ResetPasswordResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "setAccountInfo": {
                     "description": "Set account info for a user.",
@@ -198,7 +226,10 @@
                     },
                     "response": {
                         "$ref": "SetAccountInfoResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "setProjectConfig": {
                     "description": "Set project configuration.",
@@ -210,7 +241,10 @@
                     },
                     "response": {
                         "$ref": "IdentitytoolkitRelyingpartySetProjectConfigResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "signOutUser": {
                     "description": "Sign out user.",
@@ -222,7 +256,10 @@
                     },
                     "response": {
                         "$ref": "IdentitytoolkitRelyingpartySignOutUserResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "signupNewUser": {
                     "description": "Signup new user.",
@@ -234,7 +271,10 @@
                     },
                     "response": {
                         "$ref": "SignupNewUserResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "uploadAccount": {
                     "description": "Batch upload existing user accounts.",
@@ -248,6 +288,7 @@
                         "$ref": "UploadAccountResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/firebase"
                     ]
                 },
@@ -261,7 +302,10 @@
                     },
                     "response": {
                         "$ref": "VerifyAssertionResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "verifyCustomToken": {
                     "description": "Verifies the developer asserted ID token.",
@@ -273,7 +317,10 @@
                     },
                     "response": {
                         "$ref": "VerifyCustomTokenResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 },
                 "verifyPassword": {
                     "description": "Verifies the user entered password.",
@@ -285,12 +332,15 @@
                     },
                     "response": {
                         "$ref": "VerifyPasswordResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         }
     },
-    "revision": "20161024",
+    "revision": "20161206",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -564,6 +614,10 @@
                 },
                 "nextPageToken": {
                     "description": "The token for the next page. This should be taken from the previous response.",
+                    "type": "string"
+                },
+                "targetProjectId": {
+                    "description": "Specify which project (field value is actually project id) to operate. Only used when provided credential.",
                     "type": "string"
                 }
             },

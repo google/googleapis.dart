@@ -17,6 +17,9 @@ const core.String USER_AGENT = 'dart-api-client identitytoolkit/v3';
 
 /** Help the third party sites to implement federated login. */
 class IdentitytoolkitApi {
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
   /** View and administer all your Firebase data and settings */
   static const FirebaseScope = "https://www.googleapis.com/auth/firebase";
 
@@ -1225,6 +1228,11 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
    * response.
    */
   core.String nextPageToken;
+  /**
+   * Specify which project (field value is actually project id) to operate. Only
+   * used when provided credential.
+   */
+  core.String targetProjectId;
 
   IdentitytoolkitRelyingpartyDownloadAccountRequest();
 
@@ -1238,6 +1246,9 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
+    if (_json.containsKey("targetProjectId")) {
+      targetProjectId = _json["targetProjectId"];
+    }
   }
 
   core.Map toJson() {
@@ -1250,6 +1261,9 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (targetProjectId != null) {
+      _json["targetProjectId"] = targetProjectId;
     }
     return _json;
   }

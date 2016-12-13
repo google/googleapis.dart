@@ -14,7 +14,7 @@
     "description": "Searches for books and manages your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/qBcgfnv8LaBwEppyThW1YG_JvBU\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/jiS-k8EAx6v4TcA5Qg2LzgfBvoI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -2400,7 +2400,7 @@
             }
         }
     },
-    "revision": "20161005",
+    "revision": "20161206",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -3492,6 +3492,9 @@
                     "description": "Resource type.",
                     "type": "string"
                 },
+                "notificationGroup": {
+                    "type": "string"
+                },
                 "notification_type": {
                     "type": "string"
                 },
@@ -3699,7 +3702,6 @@
                     "type": "string"
                 },
                 "series": {
-                    "description": "Series info list. The client always expects this element in the JSON output, hence declared here as OutputAlways.",
                     "items": {
                         "properties": {
                             "bannerImageUrl": {

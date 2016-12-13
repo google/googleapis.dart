@@ -146,7 +146,7 @@ class ServicesResourceApi {
   }
 
   /**
-   * Deletes a managed service. This method will change the serivce in the
+   * Deletes a managed service. This method will change the service to the
    * `Soft-Delete` state for 30 days. Within this period, service producers may
    * call UndeleteService to restore the service.
    * After 30 days, the service will be permanently deleted.
@@ -493,6 +493,12 @@ class ServicesResourceApi {
    * previous list
    * call.
    *
+   * [consumerId] - Include services consumed by the specified consumer.
+   *
+   * The Google Service Management implementation accepts the following
+   * forms:
+   * - project:<project_id>
+   *
    * Completes with a [ListServicesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -501,7 +507,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list({core.int pageSize, core.String producerProjectId, core.String pageToken}) {
+  async.Future<ListServicesResponse> list({core.int pageSize, core.String producerProjectId, core.String pageToken, core.String consumerId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -517,6 +523,9 @@ class ServicesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (consumerId != null) {
+      _queryParams["consumerId"] = [consumerId];
     }
 
     _url = 'v1/services';
@@ -582,6 +591,8 @@ class ServicesResourceApi {
 
   /**
    * Returns permissions that a caller has on the specified resource.
+   * If the resource does not exist, this will return an empty set of
+   * permissions, not a NOT_FOUND error.
    *
    * [request] - The metadata request object.
    *
@@ -1181,10 +1192,15 @@ class Api {
 }
 
 /**
- * Enables "data access" audit logging for a service and specifies a list
- * of members that are log-exempted.
+ * Provides the configuration for non-admin_activity logging for a service.
+ * Controls exemptions and specific log sub-types.
  */
 class AuditConfig {
+  /**
+   * The configuration for each type of logging
+   * Next ID: 4
+   */
+  core.List<AuditLogConfig> auditLogConfigs;
   /**
    * Specifies the identities that are exempted from "data access" audit
    * logging for the `service` specified above.
@@ -1192,8 +1208,7 @@ class AuditConfig {
    */
   core.List<core.String> exemptedMembers;
   /**
-   * Specifies a service that will be enabled for "data access" audit
-   * logging.
+   * Specifies a service that will be enabled for audit logging.
    * For example, `resourcemanager`, `storage`, `compute`.
    * `allServices` is a special value that covers all services.
    */
@@ -1202,6 +1217,9 @@ class AuditConfig {
   AuditConfig();
 
   AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = _json["auditLogConfigs"].map((value) => new AuditLogConfig.fromJson(value)).toList();
+    }
     if (_json.containsKey("exemptedMembers")) {
       exemptedMembers = _json["exemptedMembers"];
     }
@@ -1212,11 +1230,54 @@ class AuditConfig {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] = auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
     if (service != null) {
       _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/** Provides the configuration for a sub-type of logging. */
+class AuditLogConfig {
+  /**
+   * Specifies the identities that are exempted from this type of logging
+   * Follows the same format of Binding.members.
+   */
+  core.List<core.String> exemptedMembers;
+  /**
+   * The log type that this config enables.
+   * Possible string values are:
+   * - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+   * - "ADMIN_READ" : Log admin reads
+   * - "DATA_WRITE" : Log data writes
+   * - "DATA_READ" : Log data reads
+   */
+  core.String logType;
+
+  AuditLogConfig();
+
+  AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers = _json["exemptedMembers"];
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
     }
     return _json;
   }
@@ -1375,14 +1436,14 @@ class AuthRequirement {
  *
  *     name: calendar.googleapis.com
  *     authentication:
+ *       providers:
+ *       - id: google_calendar_auth
+ *         jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+ *         issuer: https://securetoken.google.com
  *       rules:
  *       - selector: "*"
- *         oauth:
- *           canonical_scopes: https://www.googleapis.com/auth/calendar
- *
- *       - selector: google.calendar.Delegate
- *         oauth:
- *           canonical_scopes: https://www.googleapis.com/auth/calendar.read
+ *         requirements:
+ *           provider_id: google_calendar_auth
  */
 class Authentication {
   /** Defines a set of authentication providers that a service supports. */
@@ -2563,29 +2624,7 @@ class EnableServiceRequest {
  *       # it to decide whether the subsequent cross-origin request is
  *       # allowed to proceed.
  *     - name: library-example.googleapis.com
- *       apis: google.example.library.v1.Library
  *       allow_cors: true
- *       # Below entry makes 'google.example.library.v1.Library'
- *       # API be served from endpoint address
- *       # google.example.library-example.v1.LibraryManager.
- *     - name: library-manager.googleapis.com
- *       apis: google.example.library.v1.LibraryManager
- *       # BNS address for a borg job. Can specify a task by appending
- *       # "/taskId" (e.g. "/0") to the job spec.
- *
- * Example OpenAPI extension for endpoint with allow_cors set to true:
- *
- *     {
- *       "swagger": "2.0",
- *       "info": {
- *         "description": "A simple..."
- *       },
- *       "host": "MY_PROJECT_ID.appspot.com",
- *       "x-google-endpoints": [{
- *         "name": "MY_PROJECT_ID.appspot.com",
- *         "allow_cors": "true"
- *       }]
- *     }
  */
 class Endpoint {
   /**
@@ -3039,23 +3078,30 @@ class Http {
  * message, as in the example below which describes a REST GET
  * operation on a resource collection of messages:
  *
- * ```proto
- * service Messaging {
- *   rpc GetMessage(GetMessageRequest) returns (Message) {
+ *
+ *     service Messaging {
+ *       rpc GetMessage(GetMessageRequest) returns (Message) {
  * option (google.api.http).get = "/v1/messages/{message_id}/{sub.subfield}";
- *   }
- * }
- * message GetMessageRequest {
- *   message SubMessage {
- *     string subfield = 1;
- *   }
- *   string message_id = 1; // mapped to the URL
- *   SubMessage sub = 2;    // `sub.subfield` is url-mapped
- * }
- * message Message {
- *   string text = 1; // content of the resource
- * }
- * ```
+ *       }
+ *     }
+ *     message GetMessageRequest {
+ *       message SubMessage {
+ *         string subfield = 1;
+ *       }
+ *       string message_id = 1; // mapped to the URL
+ *       SubMessage sub = 2;    // `sub.subfield` is url-mapped
+ *     }
+ *     message Message {
+ *       string text = 1; // content of the resource
+ *     }
+ *
+ * The same http annotation can alternatively be expressed inside the
+ * `GRPC API Configuration` YAML file.
+ *
+ *     http:
+ *       rules:
+ *         - selector: <proto_package_name>.Messaging.GetMessage
+ *           get: /v1/messages/{message_id}/{sub.subfield}
  *
  * This definition enables an automatic, bidrectional mapping of HTTP
  * JSON to RPC. Example:
@@ -3073,16 +3119,16 @@ class Http {
  * pattern automatically become (optional) HTTP query
  * parameters. Assume the following definition of the request message:
  *
- * ```proto
- * message GetMessageRequest {
- *   message SubMessage {
- *     string subfield = 1;
- *   }
- *   string message_id = 1; // mapped to the URL
- *   int64 revision = 2;    // becomes a parameter
- *   SubMessage sub = 3;    // `sub.subfield` becomes a parameter
- * }
- * ```
+ *
+ *     message GetMessageRequest {
+ *       message SubMessage {
+ *         string subfield = 1;
+ *       }
+ *       string message_id = 1; // mapped to the URL
+ *       int64 revision = 2;    // becomes a parameter
+ *       SubMessage sub = 3;    // `sub.subfield` becomes a parameter
+ *     }
+ *
  *
  * This enables a HTTP JSON to RPC mapping as below:
  *
@@ -3101,20 +3147,20 @@ class Http {
  * specifies the mapping. Consider a REST update method on the
  * message resource collection:
  *
- * ```proto
- * service Messaging {
- *   rpc UpdateMessage(UpdateMessageRequest) returns (Message) {
- *     option (google.api.http) = {
- *       put: "/v1/messages/{message_id}"
- *       body: "message"
- *     };
- *   }
- * }
- * message UpdateMessageRequest {
- *   string message_id = 1; // mapped to the URL
- *   Message message = 2;   // mapped to the body
- * }
- * ```
+ *
+ *     service Messaging {
+ *       rpc UpdateMessage(UpdateMessageRequest) returns (Message) {
+ *         option (google.api.http) = {
+ *           put: "/v1/messages/{message_id}"
+ *           body: "message"
+ *         };
+ *       }
+ *     }
+ *     message UpdateMessageRequest {
+ *       string message_id = 1; // mapped to the URL
+ *       Message message = 2;   // mapped to the body
+ *     }
+ *
  *
  * The following HTTP JSON to RPC mapping is enabled, where the
  * representation of the JSON in the request body is determined by
@@ -3130,20 +3176,19 @@ class Http {
  * request body.  This enables the following alternative definition of
  * the update method:
  *
- * ```proto
- * service Messaging {
- *   rpc UpdateMessage(Message) returns (Message) {
- *     option (google.api.http) = {
- *       put: "/v1/messages/{message_id}"
- *       body: "*"
- *     };
- *   }
- * }
- * message Message {
- *   string message_id = 1;
- *   string text = 2;
- * }
- * ```
+ *     service Messaging {
+ *       rpc UpdateMessage(Message) returns (Message) {
+ *         option (google.api.http) = {
+ *           put: "/v1/messages/{message_id}"
+ *           body: "*"
+ *         };
+ *       }
+ *     }
+ *     message Message {
+ *       string message_id = 1;
+ *       string text = 2;
+ *     }
+ *
  *
  * The following HTTP JSON to RPC mapping is enabled:
  *
@@ -3161,22 +3206,21 @@ class Http {
  * It is possible to define multiple HTTP methods for one RPC by using
  * the `additional_bindings` option. Example:
  *
- * ```proto
- * service Messaging {
- *   rpc GetMessage(GetMessageRequest) returns (Message) {
- *     option (google.api.http) = {
- *       get: "/v1/messages/{message_id}"
- *       additional_bindings {
- *         get: "/v1/users/{user_id}/messages/{message_id}"
+ *     service Messaging {
+ *       rpc GetMessage(GetMessageRequest) returns (Message) {
+ *         option (google.api.http) = {
+ *           get: "/v1/messages/{message_id}"
+ *           additional_bindings {
+ *             get: "/v1/users/{user_id}/messages/{message_id}"
+ *           }
+ *         };
  *       }
- *     };
- *   }
- * }
- * message GetMessageRequest {
- *   string message_id = 1;
- *   string user_id = 2;
- * }
- * ```
+ *     }
+ *     message GetMessageRequest {
+ *       string message_id = 1;
+ *       string user_id = 2;
+ *     }
+ *
  *
  * This enables the following two alternative HTTP JSON to RPC
  * mappings:
@@ -3247,7 +3291,7 @@ class HttpRule {
    * The name of the request field whose value is mapped to the HTTP body, or
    * `*` for mapping all fields not captured by the path pattern to the HTTP
    * body. NOTE: the referred field must not be a repeated field and must be
-   * present at the top-level of response message type.
+   * present at the top-level of request message type.
    */
   core.String body;
   /** Custom pattern is used for defining custom verbs. */
@@ -4618,10 +4662,18 @@ class OperationMetadata {
  * enumeration, etc.
  */
 class Option {
-  /** The option's name. For example, `"java_package"`. */
+  /**
+   * The option's name. For protobuf built-in options (options defined in
+   * descriptor.proto), this is the short name. For example, `"map_entry"`.
+   * For custom options, it should be the fully-qualified name. For example,
+   * `"google.api.http"`.
+   */
   core.String name;
   /**
-   * The option's value. For example, `"com.google.protobuf"`.
+   * The option's value packed in an Any message. If the value is a primitive,
+   * the corresponding wrapper type defined in google/protobuf/wrappers.proto
+   * should be used. If the value is an enum, it should be stored as an int32
+   * value using the google.protobuf.Int32Value type.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5062,10 +5114,15 @@ class Rule {
  *     title: Google Calendar API
  *     apis:
  *     - name: google.calendar.v3.Calendar
- *     backend:
+ *     authentication:
+ *       providers:
+ *       - id: google_calendar_auth
+ *         jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+ *         issuer: https://securetoken.google.com
  *       rules:
- *       - selector: "google.calendar.v3.*"
- *         address: calendar.example.com
+ *       - selector: "*"
+ *         requirements:
+ *           provider_id: google_calendar_auth
  */
 class Service {
   /**
@@ -5597,8 +5654,7 @@ class SystemParameter {
    */
   core.String httpHeader;
   /**
-   * Define the name of the parameter, such as "api_key", "alt", "callback",
-   * and etc. It is case sensitive.
+   * Define the name of the parameter, such as "api_key" . It is case sensitive.
    */
   core.String name;
   /**
@@ -5697,27 +5753,26 @@ class SystemParameters {
    * config, default system parameters will be used. Default system parameters
    * and names is implementation-dependent.
    *
-   * Example: define api key and alt name for all methods
+   * Example: define api key for all methods
    *
-   * system_parameters
-   *   rules:
-   *     - selector: "*"
-   *       parameters:
-   *         - name: api_key
-   *           url_query_parameter: api_key
-   *         - name: alt
-   *           http_header: Response-Content-Type
+   *     system_parameters
+   *       rules:
+   *         - selector: "*"
+   *           parameters:
+   *             - name: api_key
+   *               url_query_parameter: api_key
+   *
    *
    * Example: define 2 api key names for a specific method.
    *
-   * system_parameters
-   *   rules:
-   *     - selector: "/ListShelves"
-   *       parameters:
-   *         - name: api_key
-   *           http_header: Api-Key1
-   *         - name: api_key
-   *           http_header: Api-Key2
+   *     system_parameters
+   *       rules:
+   *         - selector: "/ListShelves"
+   *           parameters:
+   *             - name: api_key
+   *               http_header: Api-Key1
+   *             - name: api_key
+   *               http_header: Api-Key2
    *
    * **NOTE:** All service configuration rules follow "last one wins" order.
    */
@@ -5940,6 +5995,17 @@ class UndeleteServiceResponse {
 /** Configuration controlling usage of a service. */
 class Usage {
   /**
+   * The full resource name of a channel used for sending notifications to the
+   * service producer.
+   *
+   * Google Service Management currently only supports
+   * [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification
+   * channel. To use Google Cloud Pub/Sub as the channel, this must be the name
+   * of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format
+   * documented in https://cloud.google.com/pubsub/docs/overview.
+   */
+  core.String producerNotificationChannel;
+  /**
    * Requirements that must be satisfied before a consumer project can use the
    * service. Each requirement is of the form <service.name>/<requirement-id>;
    * for example 'serviceusage.googleapis.com/billing-enabled'.
@@ -5955,6 +6021,9 @@ class Usage {
   Usage();
 
   Usage.fromJson(core.Map _json) {
+    if (_json.containsKey("producerNotificationChannel")) {
+      producerNotificationChannel = _json["producerNotificationChannel"];
+    }
     if (_json.containsKey("requirements")) {
       requirements = _json["requirements"];
     }
@@ -5965,6 +6034,9 @@ class Usage {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (producerNotificationChannel != null) {
+      _json["producerNotificationChannel"] = producerNotificationChannel;
+    }
     if (requirements != null) {
       _json["requirements"] = requirements;
     }

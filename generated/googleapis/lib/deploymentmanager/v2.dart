@@ -120,6 +120,11 @@ class DeploymentsResourceApi {
    * [deployment] - The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [deletePolicy] - Sets the policy to use for deleting resources.
+   * Possible string values are:
+   * - "ABANDON"
+   * - "DELETE"
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -128,7 +133,7 @@ class DeploymentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String deployment) {
+  async.Future<Operation> delete(core.String project, core.String deployment, {core.String deletePolicy}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -141,6 +146,9 @@ class DeploymentsResourceApi {
     }
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
+    }
+    if (deletePolicy != null) {
+      _queryParams["deletePolicy"] = [deletePolicy];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments/' + commons.Escaper.ecapeVariable('$deployment');
@@ -1332,10 +1340,12 @@ class TypesResourceApi {
 
 
 /**
- * Enables "data access" audit logging for a service and specifies a list of
- * members that are log-exempted.
+ * Provides the configuration for non-admin_activity logging for a service.
+ * Controls exemptions and specific log sub-types.
  */
 class AuditConfig {
+  /** The configuration for each type of logging */
+  core.List<AuditLogConfig> auditLogConfigs;
   /**
    * Specifies the identities that are exempted from "data access" audit logging
    * for the `service` specified above. Follows the same format of
@@ -1343,15 +1353,18 @@ class AuditConfig {
    */
   core.List<core.String> exemptedMembers;
   /**
-   * Specifies a service that will be enabled for "data access" audit logging.
-   * For example, `resourcemanager`, `storage`, `compute`. `allServices` is a
-   * special value that covers all services.
+   * Specifies a service that will be enabled for audit logging. For example,
+   * `resourcemanager`, `storage`, `compute`. `allServices` is a special value
+   * that covers all services.
    */
   core.String service;
 
   AuditConfig();
 
   AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = _json["auditLogConfigs"].map((value) => new AuditLogConfig.fromJson(value)).toList();
+    }
     if (_json.containsKey("exemptedMembers")) {
       exemptedMembers = _json["exemptedMembers"];
     }
@@ -1362,11 +1375,47 @@ class AuditConfig {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] = auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
     if (service != null) {
       _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/** Provides the configuration for a sub-type of logging. */
+class AuditLogConfig {
+  /**
+   * Specifies the identities that are exempted from this type of logging
+   * Follows the same format of Binding.members.
+   */
+  core.List<core.String> exemptedMembers;
+  /** The log type that this config enables. */
+  core.String logType;
+
+  AuditLogConfig();
+
+  AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers = _json["exemptedMembers"];
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
     }
     return _json;
   }

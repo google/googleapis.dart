@@ -504,7 +504,7 @@
             }
         }
     },
-    "revision": "20161103",
+    "revision": "20161208",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "ClientUser": {

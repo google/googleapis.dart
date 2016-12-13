@@ -1,3 +1,28 @@
+## 0.33.0
+
+* [api-new] language:v1
+* [api-new] slides:v1
+* [api-breaking] appengine:v1: resource removal
+* [api-breaking] firebasedynamiclinks:v1: schema changes
+* [api-breaking] youtube-analytics:v1: removal of resources
+* [api-removal] dfareporting:v2_4
+* [api] analyticsreporting:v4: schema changes
+* [api] androidenterprise:v1: schema changes
+* [api] books:v1: schema changes
+* [api] cloudbuild:v1: schema/method changes
+* [api] cloudresourcemanager:v1: schema/method changes
+* [api] compute:v1: new resources
+* [api] deploymentmanager:v2: schema changes
+* [api] drive:v2: schema changes
+* [api] drive:v3: schema changes
+* [api] gmail:v1: schema changes
+* [api] identitytoolkit:v3: schema changes
+* [api] logging:v2: new resource
+* [api] servicemanagement:v1: schema changes
+* [api] sheets:v4: schema changes
+* [api] storage:v1: schema changes
+* [api] youtube:v3: schema changes
+
 ## 0.32.0
 
 * [api-new] dfareporting:v2_7

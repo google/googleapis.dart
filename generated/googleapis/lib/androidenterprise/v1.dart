@@ -6867,9 +6867,11 @@ class ProductSet {
   /**
    * The interpretation of this product set. "unknown" should never be sent and
    * ignored if received. "whitelist" means that this product set constitutes a
-   * whitelist. "includeAll" means that all products are accessible (the value
-   * of the productId field is therefore ignored). If a value is not supplied,
-   * it is interpreted to be "whitelist" for backwards compatibility.
+   * whitelist. "includeAll" means that all products are accessible, including
+   * products that are approved, not approved, and even products where approval
+   * has been revoked. If the value is "includeAll", the value of the productId
+   * field is therefore ignored. If a value is not supplied, it is interpreted
+   * to be "whitelist" for backwards compatibility.
    */
   core.String productSetBehavior;
 
@@ -7076,6 +7078,13 @@ class ServiceAccountKey {
    * "androidenterprise#serviceAccountKey".
    */
   core.String kind;
+  /**
+   * Public key data for the credentials file. This is an X.509 cert. If you are
+   * using the googleCredentials key type, this is identical to the cert that
+   * can be retrieved by using the X.509 cert url inside of the credentials
+   * file.
+   */
+  core.String publicData;
   /** The file format of the generated key data. */
   core.String type;
 
@@ -7090,6 +7099,9 @@ class ServiceAccountKey {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("publicData")) {
+      publicData = _json["publicData"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -7106,6 +7118,9 @@ class ServiceAccountKey {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (publicData != null) {
+      _json["publicData"] = publicData;
     }
     if (type != null) {
       _json["type"] = type;
@@ -7285,8 +7300,8 @@ class StoreLayout {
    */
   core.String kind;
   /**
-   * Sets a store layout type. By default, this value is set to "basic". If set
-   * to "custom", "homepageId" must be specified. If set to "basic", the layout
+   * The store layout type. By default, this value is set to "basic". If set to
+   * "custom", "homepageId" must be specified. If set to "basic", the layout
    * will consist of all approved apps accessible by the user, split in pages of
    * 100 each; in this case, "homepageId" must not be specified. The "basic"
    * setting takes precedence over any existing collections setup for this

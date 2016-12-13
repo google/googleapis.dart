@@ -15,10 +15,10 @@
     "description": "Reads and publishes results from Cloud Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-test-lab/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/pSdE1_LwX1l0SyqAbAolozvHAaw\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/QYAVHgu7XLuKcUj9CeBFJN8ho9M\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "toolresults:v1beta3",
     "kind": "discovery#restDescription",
@@ -699,7 +699,7 @@
             }
         }
     },
-    "revision": "20161105",
+    "revision": "20161212",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Any": {

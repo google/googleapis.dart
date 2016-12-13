@@ -3414,6 +3414,7 @@ class RevisionsResourceApi {
    * [fileId] - The ID of the file.
    *
    * [maxResults] - Maximum number of revisions to return.
+   * Value must be between "1" and "1000".
    *
    * [pageToken] - Page token for revisions. To get the next page of results,
    * set this parameter to the value of "nextPageToken" from the previous
@@ -5390,8 +5391,8 @@ class FileLabels {
 }
 
 /**
- * Thumbnail for the file. Only accepted on upload and for files that are not
- * already thumbnailed by Google.
+ * A thumbnail for the file. This will only be used if Drive cannot generate a
+ * standard thumbnail.
  */
 class FileThumbnail {
   /**
@@ -5537,6 +5538,8 @@ class File {
    * files.
    */
   core.String fullFileExtension;
+  /** Whether this file has a thumbnail. */
+  core.bool hasThumbnail;
   /**
    * The ID of the file's head revision. This field is only populated for files
    * with content stored in Drive; it is not populated for Google Docs or
@@ -5644,15 +5647,21 @@ class File {
    */
   core.List<core.String> spaces;
   /**
-   * Thumbnail for the file. Only accepted on upload and for files that are not
-   * already thumbnailed by Google.
+   * A thumbnail for the file. This will only be used if Drive cannot generate a
+   * standard thumbnail.
    */
   FileThumbnail thumbnail;
   /**
    * A short-lived link to the file's thumbnail. Typically lasts on the order of
-   * hours.
+   * hours. Only populated when the requesting app can access the file's
+   * content.
    */
   core.String thumbnailLink;
+  /**
+   * The thumbnail version for use in client-contructable thumbnail URLs or
+   * thumbnail cache invalidation.
+   */
+  core.String thumbnailVersion;
   /** The title of this file. */
   core.String title;
   /** The permissions for the authenticated user on this file. */
@@ -5735,6 +5744,9 @@ class File {
     }
     if (_json.containsKey("fullFileExtension")) {
       fullFileExtension = _json["fullFileExtension"];
+    }
+    if (_json.containsKey("hasThumbnail")) {
+      hasThumbnail = _json["hasThumbnail"];
     }
     if (_json.containsKey("headRevisionId")) {
       headRevisionId = _json["headRevisionId"];
@@ -5835,6 +5847,9 @@ class File {
     if (_json.containsKey("thumbnailLink")) {
       thumbnailLink = _json["thumbnailLink"];
     }
+    if (_json.containsKey("thumbnailVersion")) {
+      thumbnailVersion = _json["thumbnailVersion"];
+    }
     if (_json.containsKey("title")) {
       title = _json["title"];
     }
@@ -5913,6 +5928,9 @@ class File {
     }
     if (fullFileExtension != null) {
       _json["fullFileExtension"] = fullFileExtension;
+    }
+    if (hasThumbnail != null) {
+      _json["hasThumbnail"] = hasThumbnail;
     }
     if (headRevisionId != null) {
       _json["headRevisionId"] = headRevisionId;
@@ -6012,6 +6030,9 @@ class File {
     }
     if (thumbnailLink != null) {
       _json["thumbnailLink"] = thumbnailLink;
+    }
+    if (thumbnailVersion != null) {
+      _json["thumbnailVersion"] = thumbnailVersion;
     }
     if (title != null) {
       _json["title"] = title;
@@ -6264,8 +6285,8 @@ class Permission {
    * The ID of the user this permission refers to, and identical to the
    * permissionId in the About and Files resources. When making a
    * drive.permissions.insert request, exactly one of the id or value fields
-   * must be specified unless the permission type anyone, in which case both id
-   * and value are ignored.
+   * must be specified unless the permission type is anyone, in which case both
+   * id and value are ignored.
    */
   core.String id;
   /** This is always drive#permission. */
@@ -6295,8 +6316,8 @@ class Permission {
    * The email address or domain name for the entity. This is used during
    * inserts and is not populated in responses. When making a
    * drive.permissions.insert request, exactly one of the id or value fields
-   * must be specified unless the permission type anyone, in which case both id
-   * and value are ignored.
+   * must be specified unless the permission type is anyone, in which case both
+   * id and value are ignored.
    */
   core.String value;
   /** Whether the link is required for this permission. */

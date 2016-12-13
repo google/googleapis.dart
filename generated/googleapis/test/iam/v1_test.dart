@@ -70,14 +70,14 @@ checkAuditData(api.AuditData o) {
   buildCounterAuditData--;
 }
 
-buildUnnamed1327() {
+buildUnnamed1080() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1327(core.List<core.String> o) {
+checkUnnamed1080(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -88,7 +88,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed1327();
+    o.members = buildUnnamed1080();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -98,7 +98,7 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed1327(o.members);
+    checkUnnamed1080(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -186,14 +186,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed1328() {
+buildUnnamed1081() {
   var o = new core.List<api.ServiceAccountKey>();
   o.add(buildServiceAccountKey());
   o.add(buildServiceAccountKey());
   return o;
 }
 
-checkUnnamed1328(core.List<api.ServiceAccountKey> o) {
+checkUnnamed1081(core.List<api.ServiceAccountKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccountKey(o[0]);
   checkServiceAccountKey(o[1]);
@@ -204,7 +204,7 @@ buildListServiceAccountKeysResponse() {
   var o = new api.ListServiceAccountKeysResponse();
   buildCounterListServiceAccountKeysResponse++;
   if (buildCounterListServiceAccountKeysResponse < 3) {
-    o.keys = buildUnnamed1328();
+    o.keys = buildUnnamed1081();
   }
   buildCounterListServiceAccountKeysResponse--;
   return o;
@@ -213,19 +213,19 @@ buildListServiceAccountKeysResponse() {
 checkListServiceAccountKeysResponse(api.ListServiceAccountKeysResponse o) {
   buildCounterListServiceAccountKeysResponse++;
   if (buildCounterListServiceAccountKeysResponse < 3) {
-    checkUnnamed1328(o.keys);
+    checkUnnamed1081(o.keys);
   }
   buildCounterListServiceAccountKeysResponse--;
 }
 
-buildUnnamed1329() {
+buildUnnamed1082() {
   var o = new core.List<api.ServiceAccount>();
   o.add(buildServiceAccount());
   o.add(buildServiceAccount());
   return o;
 }
 
-checkUnnamed1329(core.List<api.ServiceAccount> o) {
+checkUnnamed1082(core.List<api.ServiceAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccount(o[0]);
   checkServiceAccount(o[1]);
@@ -236,7 +236,7 @@ buildListServiceAccountsResponse() {
   var o = new api.ListServiceAccountsResponse();
   buildCounterListServiceAccountsResponse++;
   if (buildCounterListServiceAccountsResponse < 3) {
-    o.accounts = buildUnnamed1329();
+    o.accounts = buildUnnamed1082();
     o.nextPageToken = "foo";
   }
   buildCounterListServiceAccountsResponse--;
@@ -246,20 +246,20 @@ buildListServiceAccountsResponse() {
 checkListServiceAccountsResponse(api.ListServiceAccountsResponse o) {
   buildCounterListServiceAccountsResponse++;
   if (buildCounterListServiceAccountsResponse < 3) {
-    checkUnnamed1329(o.accounts);
+    checkUnnamed1082(o.accounts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListServiceAccountsResponse--;
 }
 
-buildUnnamed1330() {
+buildUnnamed1083() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed1330(core.List<api.Binding> o) {
+checkUnnamed1083(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -270,7 +270,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed1330();
+    o.bindings = buildUnnamed1083();
     o.etag = "foo";
     o.version = 42;
   }
@@ -281,21 +281,21 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1330(o.bindings);
+    checkUnnamed1083(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed1331() {
+buildUnnamed1084() {
   var o = new core.List<api.BindingDelta>();
   o.add(buildBindingDelta());
   o.add(buildBindingDelta());
   return o;
 }
 
-checkUnnamed1331(core.List<api.BindingDelta> o) {
+checkUnnamed1084(core.List<api.BindingDelta> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBindingDelta(o[0]);
   checkBindingDelta(o[1]);
@@ -306,7 +306,7 @@ buildPolicyDelta() {
   var o = new api.PolicyDelta();
   buildCounterPolicyDelta++;
   if (buildCounterPolicyDelta < 3) {
-    o.bindingDeltas = buildUnnamed1331();
+    o.bindingDeltas = buildUnnamed1084();
   }
   buildCounterPolicyDelta--;
   return o;
@@ -315,7 +315,7 @@ buildPolicyDelta() {
 checkPolicyDelta(api.PolicyDelta o) {
   buildCounterPolicyDelta++;
   if (buildCounterPolicyDelta < 3) {
-    checkUnnamed1331(o.bindingDeltas);
+    checkUnnamed1084(o.bindingDeltas);
   }
   buildCounterPolicyDelta--;
 }
@@ -339,14 +339,14 @@ checkQueryGrantableRolesRequest(api.QueryGrantableRolesRequest o) {
   buildCounterQueryGrantableRolesRequest--;
 }
 
-buildUnnamed1332() {
+buildUnnamed1085() {
   var o = new core.List<api.Role>();
   o.add(buildRole());
   o.add(buildRole());
   return o;
 }
 
-checkUnnamed1332(core.List<api.Role> o) {
+checkUnnamed1085(core.List<api.Role> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRole(o[0]);
   checkRole(o[1]);
@@ -357,7 +357,7 @@ buildQueryGrantableRolesResponse() {
   var o = new api.QueryGrantableRolesResponse();
   buildCounterQueryGrantableRolesResponse++;
   if (buildCounterQueryGrantableRolesResponse < 3) {
-    o.roles = buildUnnamed1332();
+    o.roles = buildUnnamed1085();
   }
   buildCounterQueryGrantableRolesResponse--;
   return o;
@@ -366,7 +366,7 @@ buildQueryGrantableRolesResponse() {
 checkQueryGrantableRolesResponse(api.QueryGrantableRolesResponse o) {
   buildCounterQueryGrantableRolesResponse++;
   if (buildCounterQueryGrantableRolesResponse < 3) {
-    checkUnnamed1332(o.roles);
+    checkUnnamed1085(o.roles);
   }
   buildCounterQueryGrantableRolesResponse--;
 }
@@ -515,14 +515,14 @@ checkSignBlobResponse(api.SignBlobResponse o) {
   buildCounterSignBlobResponse--;
 }
 
-buildUnnamed1333() {
+buildUnnamed1086() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1333(core.List<core.String> o) {
+checkUnnamed1086(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -533,7 +533,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed1333();
+    o.permissions = buildUnnamed1086();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -542,19 +542,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed1333(o.permissions);
+    checkUnnamed1086(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed1334() {
+buildUnnamed1087() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1334(core.List<core.String> o) {
+checkUnnamed1087(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -565,7 +565,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed1334();
+    o.permissions = buildUnnamed1087();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -574,19 +574,19 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed1334(o.permissions);
+    checkUnnamed1087(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-buildUnnamed1335() {
+buildUnnamed1088() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1335(core.List<core.String> o) {
+checkUnnamed1088(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1354,7 +1354,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsServiceAccountsKeysResourceApi res = new api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = "foo";
-      var arg_keyTypes = buildUnnamed1335();
+      var arg_keyTypes = buildUnnamed1088();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;

@@ -41,7 +41,7 @@
     "description": "Builds on top of the Google+ platform for Google Apps Domains.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/domains/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/S2fVPW66CCx9b-tHHiWFeOGB8yw\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/obGdEM4vm47OGdn-XPMrfMw41w0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/gplus-16.png",
         "x32": "http://www.google.com/images/icons/product/gplus-32.png"
@@ -852,7 +852,7 @@
             }
         }
     },
-    "revision": "20161102",
+    "revision": "20161207",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

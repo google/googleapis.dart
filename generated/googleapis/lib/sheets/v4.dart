@@ -311,11 +311,33 @@ class SpreadsheetsValuesResourceApi {
    * [range] - The A1 notation of a range to search for a logical table of data.
    * Values will be appended after the last row of the table.
    *
+   * [responseValueRenderOption] - Determines how values in the response should
+   * be rendered.
+   * The default render option is ValueRenderOption.FORMATTED_VALUE.
+   * Possible string values are:
+   * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+   * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+   * - "FORMULA" : A FORMULA.
+   *
    * [valueInputOption] - How the input data should be interpreted.
    * Possible string values are:
    * - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
    * - "RAW" : A RAW.
    * - "USER_ENTERED" : A USER_ENTERED.
+   *
+   * [responseDateTimeRenderOption] - Determines how dates, times, and durations
+   * in the response should be
+   * rendered. This is ignored if response_value_render_option is
+   * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+   * Possible string values are:
+   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+   * - "FORMATTED_STRING" : A FORMATTED_STRING.
+   *
+   * [includeValuesInResponse] - Determines if the update response should
+   * include the values
+   * of the cells that were appended. By default, responses
+   * do not include the updated values.
    *
    * [insertDataOption] - How the input data should be inserted.
    * Possible string values are:
@@ -330,7 +352,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String valueInputOption, core.String insertDataOption}) {
+  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseValueRenderOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse, core.String insertDataOption}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -347,8 +369,17 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
+    }
+    if (responseDateTimeRenderOption != null) {
+      _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
     if (insertDataOption != null) {
       _queryParams["insertDataOption"] = [insertDataOption];
@@ -424,6 +455,7 @@ class SpreadsheetsValuesResourceApi {
    * [ranges] - The A1 notation of the values to retrieve.
    *
    * [valueRenderOption] - How values should be represented in the output.
+   * The default render option is ValueRenderOption.FORMATTED_VALUE.
    * Possible string values are:
    * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
    * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
@@ -433,6 +465,7 @@ class SpreadsheetsValuesResourceApi {
    * represented in the output.
    * This is ignored if value_render_option is
    * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
    * Possible string values are:
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
    * - "FORMATTED_STRING" : A FORMATTED_STRING.
@@ -603,6 +636,7 @@ class SpreadsheetsValuesResourceApi {
    * [range] - The A1 notation of the values to retrieve.
    *
    * [valueRenderOption] - How values should be represented in the output.
+   * The default render option is ValueRenderOption.FORMATTED_VALUE.
    * Possible string values are:
    * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
    * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
@@ -612,6 +646,7 @@ class SpreadsheetsValuesResourceApi {
    * represented in the output.
    * This is ignored if value_render_option is
    * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
    * Possible string values are:
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
    * - "FORMATTED_STRING" : A FORMATTED_STRING.
@@ -685,11 +720,36 @@ class SpreadsheetsValuesResourceApi {
    *
    * [range] - The A1 notation of the values to update.
    *
+   * [responseValueRenderOption] - Determines how values in the response should
+   * be rendered.
+   * The default render option is ValueRenderOption.FORMATTED_VALUE.
+   * Possible string values are:
+   * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+   * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+   * - "FORMULA" : A FORMULA.
+   *
    * [valueInputOption] - How the input data should be interpreted.
    * Possible string values are:
    * - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
    * - "RAW" : A RAW.
    * - "USER_ENTERED" : A USER_ENTERED.
+   *
+   * [responseDateTimeRenderOption] - Determines how dates, times, and durations
+   * in the response should be
+   * rendered. This is ignored if response_value_render_option is
+   * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+   * Possible string values are:
+   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+   * - "FORMATTED_STRING" : A FORMATTED_STRING.
+   *
+   * [includeValuesInResponse] - Determines if the update response should
+   * include the values
+   * of the cells that were updated. By default, responses
+   * do not include the updated values.
+   * If the range to write was larger than than the range actually written,
+   * the response will include all values in the requested range (excluding
+   * trailing empty rows and columns).
    *
    * Completes with a [UpdateValuesResponse].
    *
@@ -699,7 +759,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<UpdateValuesResponse> update(ValueRange request, core.String spreadsheetId, core.String range, {core.String valueInputOption}) {
+  async.Future<UpdateValuesResponse> update(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseValueRenderOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -716,8 +776,17 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
+    }
+    if (responseDateTimeRenderOption != null) {
+      _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range');
@@ -1813,21 +1882,55 @@ class BatchGetValuesResponse {
 
 /** The request for updating any aspect of a spreadsheet. */
 class BatchUpdateSpreadsheetRequest {
+  /**
+   * Determines if the update response should include the spreadsheet
+   * resource.
+   */
+  core.bool includeSpreadsheetInResponse;
   /** A list of updates to apply to the spreadsheet. */
   core.List<Request> requests;
+  /**
+   * True if grid data should be returned. Meaningful only if
+   * if include_spreadsheet_response is 'true'.
+   * This parameter is ignored if a field mask was set in the request.
+   */
+  core.bool responseIncludeGridData;
+  /**
+   * Limits the ranges included in the response spreadsheet.
+   * Meaningful only if include_spreadsheet_response is 'true'.
+   */
+  core.List<core.String> responseRanges;
 
   BatchUpdateSpreadsheetRequest();
 
   BatchUpdateSpreadsheetRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("includeSpreadsheetInResponse")) {
+      includeSpreadsheetInResponse = _json["includeSpreadsheetInResponse"];
+    }
     if (_json.containsKey("requests")) {
       requests = _json["requests"].map((value) => new Request.fromJson(value)).toList();
+    }
+    if (_json.containsKey("responseIncludeGridData")) {
+      responseIncludeGridData = _json["responseIncludeGridData"];
+    }
+    if (_json.containsKey("responseRanges")) {
+      responseRanges = _json["responseRanges"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (includeSpreadsheetInResponse != null) {
+      _json["includeSpreadsheetInResponse"] = includeSpreadsheetInResponse;
+    }
     if (requests != null) {
       _json["requests"] = requests.map((value) => (value).toJson()).toList();
+    }
+    if (responseIncludeGridData != null) {
+      _json["responseIncludeGridData"] = responseIncludeGridData;
+    }
+    if (responseRanges != null) {
+      _json["responseRanges"] = responseRanges;
     }
     return _json;
   }
@@ -1842,6 +1945,11 @@ class BatchUpdateSpreadsheetResponse {
   core.List<Response> replies;
   /** The spreadsheet the updates were applied to. */
   core.String spreadsheetId;
+  /**
+   * The spreadsheet after updates were applied. This is only set if
+   * [BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response] is `true`.
+   */
+  Spreadsheet updatedSpreadsheet;
 
   BatchUpdateSpreadsheetResponse();
 
@@ -1851,6 +1959,9 @@ class BatchUpdateSpreadsheetResponse {
     }
     if (_json.containsKey("spreadsheetId")) {
       spreadsheetId = _json["spreadsheetId"];
+    }
+    if (_json.containsKey("updatedSpreadsheet")) {
+      updatedSpreadsheet = new Spreadsheet.fromJson(_json["updatedSpreadsheet"]);
     }
   }
 
@@ -1862,6 +1973,9 @@ class BatchUpdateSpreadsheetResponse {
     if (spreadsheetId != null) {
       _json["spreadsheetId"] = spreadsheetId;
     }
+    if (updatedSpreadsheet != null) {
+      _json["updatedSpreadsheet"] = (updatedSpreadsheet).toJson();
+    }
     return _json;
   }
 }
@@ -1870,6 +1984,56 @@ class BatchUpdateSpreadsheetResponse {
 class BatchUpdateValuesRequest {
   /** The new values to apply to the spreadsheet. */
   core.List<ValueRange> data;
+  /**
+   * Determines if the update response should include the values
+   * of the cells that were updated. By default, responses
+   * do not include the updated values. The `updatedData` field within
+   * each of the BatchUpdateValuesResponse.responses will contain
+   * the updated values. If the range to write was larger than than the range
+   * actually written, the response will include all values in the requested
+   * range (excluding trailing empty rows and columns).
+   */
+  core.bool includeValuesInResponse;
+  /**
+   * Determines how dates, times, and durations in the response should be
+   * rendered. This is ignored if response_value_render_option is
+   * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+   * Possible string values are:
+   * - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
+   * be output
+   * as doubles in "serial number" format, as popularized by Lotus 1-2-3.
+   * Days are counted from December 31st 1899 and are incremented by 1,
+   * and times are fractions of a day.  For example, January 1st 1900 at noon
+   * would be 1.5, 1 because it's 1 day offset from December 31st 1899,
+   * and .5 because noon is half a day.  February 1st 1900 at 3pm would
+   * be 32.625. This correctly treats the year 1900 as not a leap year.
+   * - "FORMATTED_STRING" : Instructs date, time, datetime, and duration fields
+   * to be output
+   * as strings in their given number format (which is dependent
+   * on the spreadsheet locale).
+   */
+  core.String responseDateTimeRenderOption;
+  /**
+   * Determines how values in the response should be rendered.
+   * The default render option is ValueRenderOption.FORMATTED_VALUE.
+   * Possible string values are:
+   * - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
+   * according to the
+   * cell's formatting.  Formatting is based on the spreadsheet's locale,
+   * not the requesting user's locale.
+   * For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,
+   * then `A2` would return `"$1.23"`.
+   * - "UNFORMATTED_VALUE" : Values will be calculated, but not formatted in the
+   * reply.
+   * For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,
+   * then `A2` would return the number `1.23`.
+   * - "FORMULA" : Values will not be calculated.  The reply will include the
+   * formulas.
+   * For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,
+   * then A2 would return `"=A1"`.
+   */
+  core.String responseValueRenderOption;
   /**
    * How the input data should be interpreted.
    * Possible string values are:
@@ -1892,6 +2056,15 @@ class BatchUpdateValuesRequest {
     if (_json.containsKey("data")) {
       data = _json["data"].map((value) => new ValueRange.fromJson(value)).toList();
     }
+    if (_json.containsKey("includeValuesInResponse")) {
+      includeValuesInResponse = _json["includeValuesInResponse"];
+    }
+    if (_json.containsKey("responseDateTimeRenderOption")) {
+      responseDateTimeRenderOption = _json["responseDateTimeRenderOption"];
+    }
+    if (_json.containsKey("responseValueRenderOption")) {
+      responseValueRenderOption = _json["responseValueRenderOption"];
+    }
     if (_json.containsKey("valueInputOption")) {
       valueInputOption = _json["valueInputOption"];
     }
@@ -1901,6 +2074,15 @@ class BatchUpdateValuesRequest {
     var _json = new core.Map();
     if (data != null) {
       _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (includeValuesInResponse != null) {
+      _json["includeValuesInResponse"] = includeValuesInResponse;
+    }
+    if (responseDateTimeRenderOption != null) {
+      _json["responseDateTimeRenderOption"] = responseDateTimeRenderOption;
+    }
+    if (responseValueRenderOption != null) {
+      _json["responseValueRenderOption"] = responseValueRenderOption;
     }
     if (valueInputOption != null) {
       _json["valueInputOption"] = valueInputOption;
@@ -6164,7 +6346,13 @@ class SheetProperties {
    * The index of the sheet within the spreadsheet.
    * When adding or updating sheet properties, if this field
    * is excluded then the sheet will be added or moved to the end
-   * of the sheet list.
+   * of the sheet list. When updating sheet indices or inserting
+   * sheets, movement is considered in "before the move" indexes.
+   * For example, if there were 3 sheets (S1, S2, S3) in order to
+   * move S1 ahead of S2 the index would have to be set to 2. A sheet
+   * index update request will be ignored if the requested index is
+   * identical to the sheets current index or if the requested new
+   * index is equal to the current sheet index + 1.
    */
   core.int index;
   /** True if the sheet is an RTL sheet instead of an LTR sheet. */
@@ -6379,6 +6567,11 @@ class Spreadsheet {
    * This field is read-only.
    */
   core.String spreadsheetId;
+  /**
+   * The url of the spreadsheet.
+   * This field is read-only.
+   */
+  core.String spreadsheetUrl;
 
   Spreadsheet();
 
@@ -6395,6 +6588,9 @@ class Spreadsheet {
     if (_json.containsKey("spreadsheetId")) {
       spreadsheetId = _json["spreadsheetId"];
     }
+    if (_json.containsKey("spreadsheetUrl")) {
+      spreadsheetUrl = _json["spreadsheetUrl"];
+    }
   }
 
   core.Map toJson() {
@@ -6410,6 +6606,9 @@ class Spreadsheet {
     }
     if (spreadsheetId != null) {
       _json["spreadsheetId"] = spreadsheetId;
+    }
+    if (spreadsheetUrl != null) {
+      _json["spreadsheetUrl"] = spreadsheetUrl;
     }
     return _json;
   }
@@ -7309,6 +7508,12 @@ class UpdateValuesResponse {
    * The number of columns where at least one cell in the column was updated.
    */
   core.int updatedColumns;
+  /**
+   * The values of the cells after updates were applied.
+   * This is only included if the request's `includeValuesInResponse` field
+   * was `true`.
+   */
+  ValueRange updatedData;
   /** The range (in A1 notation) that updates were applied to. */
   core.String updatedRange;
   /** The number of rows where at least one cell in the row was updated. */
@@ -7325,6 +7530,9 @@ class UpdateValuesResponse {
     }
     if (_json.containsKey("updatedColumns")) {
       updatedColumns = _json["updatedColumns"];
+    }
+    if (_json.containsKey("updatedData")) {
+      updatedData = new ValueRange.fromJson(_json["updatedData"]);
     }
     if (_json.containsKey("updatedRange")) {
       updatedRange = _json["updatedRange"];
@@ -7344,6 +7552,9 @@ class UpdateValuesResponse {
     }
     if (updatedColumns != null) {
       _json["updatedColumns"] = updatedColumns;
+    }
+    if (updatedData != null) {
+      _json["updatedData"] = (updatedData).toJson();
     }
     if (updatedRange != null) {
       _json["updatedRange"] = updatedRange;

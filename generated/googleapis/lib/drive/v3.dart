@@ -1893,6 +1893,7 @@ class RevisionsResourceApi {
    * [fileId] - The ID of the file.
    *
    * [pageSize] - The maximum number of revisions to return per page.
+   * Value must be between "1" and "1000".
    *
    * [pageToken] - The token for continuing a previous list request on the next
    * page. This should be set to the value of 'nextPageToken' from the previous
@@ -3016,6 +3017,8 @@ class File {
    * not cleared if the new name does not contain a valid extension.
    */
   core.String fullFileExtension;
+  /** Whether this file has a thumbnail. */
+  core.bool hasThumbnail;
   /**
    * The ID of the file's head revision. This is currently only available for
    * files with binary content in Drive.
@@ -3121,9 +3124,15 @@ class File {
   core.bool starred;
   /**
    * A short-lived link to the file's thumbnail, if available. Typically lasts
-   * on the order of hours.
+   * on the order of hours. Only populated when the requesting app can access
+   * the file's content.
    */
   core.String thumbnailLink;
+  /**
+   * The thumbnail version for use in client-contructable thumbnail URLs or
+   * thumbnail cache invalidation.
+   */
+  core.String thumbnailVersion;
   /**
    * Whether the file has been trashed, either explicitly or from a trashed
    * parent folder. Only the owner may trash a file, and other users cannot see
@@ -3194,6 +3203,9 @@ class File {
     }
     if (_json.containsKey("fullFileExtension")) {
       fullFileExtension = _json["fullFileExtension"];
+    }
+    if (_json.containsKey("hasThumbnail")) {
+      hasThumbnail = _json["hasThumbnail"];
     }
     if (_json.containsKey("headRevisionId")) {
       headRevisionId = _json["headRevisionId"];
@@ -3276,6 +3288,9 @@ class File {
     if (_json.containsKey("thumbnailLink")) {
       thumbnailLink = _json["thumbnailLink"];
     }
+    if (_json.containsKey("thumbnailVersion")) {
+      thumbnailVersion = _json["thumbnailVersion"];
+    }
     if (_json.containsKey("trashed")) {
       trashed = _json["trashed"];
     }
@@ -3333,6 +3348,9 @@ class File {
     }
     if (fullFileExtension != null) {
       _json["fullFileExtension"] = fullFileExtension;
+    }
+    if (hasThumbnail != null) {
+      _json["hasThumbnail"] = hasThumbnail;
     }
     if (headRevisionId != null) {
       _json["headRevisionId"] = headRevisionId;
@@ -3414,6 +3432,9 @@ class File {
     }
     if (thumbnailLink != null) {
       _json["thumbnailLink"] = thumbnailLink;
+    }
+    if (thumbnailVersion != null) {
+      _json["thumbnailVersion"] = thumbnailVersion;
     }
     if (trashed != null) {
       _json["trashed"] = trashed;

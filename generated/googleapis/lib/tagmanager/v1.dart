@@ -19,22 +19,27 @@ class TagmanagerApi {
   /** Delete your Google Tag Manager containers */
   static const TagmanagerDeleteContainersScope = "https://www.googleapis.com/auth/tagmanager.delete.containers";
 
-  /** Manage your Google Tag Manager containers */
+  /**
+   * Manage your Google Tag Manager container and its subcomponents, excluding
+   * versioning and publishing
+   */
   static const TagmanagerEditContainersScope = "https://www.googleapis.com/auth/tagmanager.edit.containers";
 
   /** Manage your Google Tag Manager container versions */
   static const TagmanagerEditContainerversionsScope = "https://www.googleapis.com/auth/tagmanager.edit.containerversions";
 
-  /** Manage your Google Tag Manager accounts */
+  /** View and manage your Google Tag Manager accounts */
   static const TagmanagerManageAccountsScope = "https://www.googleapis.com/auth/tagmanager.manage.accounts";
 
-  /** Manage user permissions of your Google Tag Manager data */
+  /**
+   * Manage user permissions of your Google Tag Manager account and container
+   */
   static const TagmanagerManageUsersScope = "https://www.googleapis.com/auth/tagmanager.manage.users";
 
-  /** Publish your Google Tag Manager containers */
+  /** Publish your Google Tag Manager container versions */
   static const TagmanagerPublishScope = "https://www.googleapis.com/auth/tagmanager.publish";
 
-  /** View your Google Tag Manager containers */
+  /** View your Google Tag Manager container and its subcomponents */
   static const TagmanagerReadonlyScope = "https://www.googleapis.com/auth/tagmanager.readonly";
 
 

@@ -59,6 +59,10 @@ class ComputeApi {
   MachineTypesResourceApi get machineTypes => new MachineTypesResourceApi(_requester);
   NetworksResourceApi get networks => new NetworksResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  RegionAutoscalersResourceApi get regionAutoscalers => new RegionAutoscalersResourceApi(_requester);
+  RegionBackendServicesResourceApi get regionBackendServices => new RegionBackendServicesResourceApi(_requester);
+  RegionInstanceGroupManagersResourceApi get regionInstanceGroupManagers => new RegionInstanceGroupManagersResourceApi(_requester);
+  RegionInstanceGroupsResourceApi get regionInstanceGroups => new RegionInstanceGroupsResourceApi(_requester);
   RegionOperationsResourceApi get regionOperations => new RegionOperationsResourceApi(_requester);
   RegionsResourceApi get regions => new RegionsResourceApi(_requester);
   RoutersResourceApi get routers => new RoutersResourceApi(_requester);
@@ -951,6 +955,106 @@ class BackendServicesResourceApi {
 
   BackendServicesResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Retrieves the list of all BackendService resources, regional and global,
+   * available to the specified project.
+   *
+   * Request parameters:
+   *
+   * [project] - Name of the project scoping this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [BackendServiceAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BackendServiceAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/backendServices';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BackendServiceAggregatedList.fromJson(data));
+  }
 
   /**
    * Deletes the specified BackendService resource.
@@ -5715,13 +5819,6 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
-   * [filter] - null
-   *
-   * [maxResults] - null
-   * Value must be between "0" and "500".
-   *
-   * [pageToken] - null
-   *
    * Completes with a [InstanceGroupManagersListManagedInstancesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5730,7 +5827,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceGroupManagersListManagedInstancesResponse> listManagedInstances(core.String project, core.String zone, core.String instanceGroupManager, {core.String filter, core.int maxResults, core.String pageToken}) {
+  async.Future<InstanceGroupManagersListManagedInstancesResponse> listManagedInstances(core.String project, core.String zone, core.String instanceGroupManager) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5746,15 +5843,6 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/listManagedInstances';
@@ -7409,6 +7497,10 @@ class InstancesResourceApi {
    * [port] - Specifies which COM or serial port to retrieve data from.
    * Value must be between "1" and "4".
    *
+   * [start_1] - For the initial request, leave this field unspecified. For
+   * subsequent calls, this field should be set to the next value that was
+   * returned in the previous call.
+   *
    * Completes with a [SerialPortOutput].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7417,7 +7509,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SerialPortOutput> getSerialPortOutput(core.String project, core.String zone, core.String instance, {core.int port}) {
+  async.Future<SerialPortOutput> getSerialPortOutput(core.String project, core.String zone, core.String instance, {core.int port, core.String start_1}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7436,6 +7528,9 @@ class InstancesResourceApi {
     }
     if (port != null) {
       _queryParams["port"] = ["${port}"];
+    }
+    if (start_1 != null) {
+      _queryParams["start"] = [start_1];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/serialPort';
@@ -8981,6 +9076,1884 @@ class ProjectsResourceApi {
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/setUsageExportBucket';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class RegionAutoscalersResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionAutoscalersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified autoscaler.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [autoscaler] - Name of the autoscaler to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String autoscaler) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (autoscaler == null) {
+      throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified autoscaler.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [autoscaler] - Name of the autoscaler to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Autoscaler].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Autoscaler> get(core.String project, core.String region, core.String autoscaler) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (autoscaler == null) {
+      throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Autoscaler.fromJson(data));
+  }
+
+  /**
+   * Creates an autoscaler in the specified project using the data included in
+   * the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(Autoscaler request, core.String project, core.String region) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of autoscalers contained within the specified region.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [RegionAutoscalerList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RegionAutoscalerList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RegionAutoscalerList.fromJson(data));
+  }
+
+  /**
+   * Updates an autoscaler in the specified project using the data included in
+   * the request. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [autoscaler] - Name of the autoscaler to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(Autoscaler request, core.String project, core.String region, core.String autoscaler) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (autoscaler == null) {
+      throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+    _queryParams["autoscaler"] = [autoscaler];
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates an autoscaler in the specified project using the data included in
+   * the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [autoscaler] - Name of the autoscaler to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> update(Autoscaler request, core.String project, core.String region, {core.String autoscaler}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (autoscaler != null) {
+      _queryParams["autoscaler"] = [autoscaler];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class RegionBackendServicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionBackendServicesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified regional BackendService resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [backendService] - Name of the BackendService resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String backendService) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (backendService == null) {
+      throw new core.ArgumentError("Parameter backendService is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified regional BackendService resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [backendService] - Name of the BackendService resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [BackendService].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BackendService> get(core.String project, core.String region, core.String backendService) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (backendService == null) {
+      throw new core.ArgumentError("Parameter backendService is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BackendService.fromJson(data));
+  }
+
+  /**
+   * Gets the most recent health check results for this regional BackendService.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - null
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [backendService] - Name of the BackendService resource to which the queried
+   * instance belongs.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [BackendServiceGroupHealth].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BackendServiceGroupHealth> getHealth(ResourceGroupReference request, core.String project, core.String region, core.String backendService) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (backendService == null) {
+      throw new core.ArgumentError("Parameter backendService is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices/' + commons.Escaper.ecapeVariable('$backendService') + '/getHealth';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BackendServiceGroupHealth.fromJson(data));
+  }
+
+  /**
+   * Creates a regional BackendService resource in the specified project using
+   * the data included in the request. There are several restrictions and
+   * guidelines to keep in mind when creating a regional backend service. Read
+   * Restrictions and Guidelines for more information.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(BackendService request, core.String project, core.String region) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of regional BackendService resources available to the
+   * specified project in the given region.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [BackendServiceList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BackendServiceList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BackendServiceList.fromJson(data));
+  }
+
+  /**
+   * Updates the specified regional BackendService resource with the data
+   * included in the request. There are several restrictions and guidelines to
+   * keep in mind when updating a backend service. Read  Restrictions and
+   * Guidelines for more information. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [backendService] - Name of the BackendService resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(BackendService request, core.String project, core.String region, core.String backendService) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (backendService == null) {
+      throw new core.ArgumentError("Parameter backendService is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates the specified regional BackendService resource with the data
+   * included in the request. There are several restrictions and guidelines to
+   * keep in mind when updating a backend service. Read  Restrictions and
+   * Guidelines for more information.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [backendService] - Name of the BackendService resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> update(BackendService request, core.String project, core.String region, core.String backendService) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (backendService == null) {
+      throw new core.ArgumentError("Parameter backendService is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class RegionInstanceGroupManagersResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionInstanceGroupManagersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Schedules a group action to remove the specified instances from the managed
+   * instance group. Abandoning an instance does not delete the instance, but it
+   * does remove the instance from any target pools that are applied by the
+   * managed instance group. This method reduces the targetSize of the managed
+   * instance group by the number of instances that you abandon. This operation
+   * is marked as DONE when the action is scheduled even if the instances have
+   * not yet been removed from the group. You must separately verify the status
+   * of the abandoning action with the listmanagedinstances method.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - Name of the managed instance group.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> abandonInstances(RegionInstanceGroupManagersAbandonInstancesRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/abandonInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified managed instance group and all of the instances in
+   * that group.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - Name of the managed instance group to delete.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Schedules a group action to delete the specified instances in the managed
+   * instance group. The instances are also removed from any target pools of
+   * which they were a member. This method reduces the targetSize of the managed
+   * instance group by the number of instances that you delete. This operation
+   * is marked as DONE when the action is scheduled even if the instances are
+   * still being deleted. You must separately verify the status of the deleting
+   * action with the listmanagedinstances method.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - Name of the managed instance group.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> deleteInstances(RegionInstanceGroupManagersDeleteInstancesRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/deleteInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns all of the details about the specified managed instance group.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - Name of the managed instance group to return.
+   *
+   * Completes with a [InstanceGroupManager].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroupManager> get(core.String project, core.String region, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroupManager.fromJson(data));
+  }
+
+  /**
+   * Creates a managed instance group using the information that you specify in
+   * the request. After the group is created, it schedules an action to create
+   * instances in the group using the specified instance template. This
+   * operation is marked as DONE when the group is created even if the instances
+   * in the group have not yet been created. You must separately verify the
+   * status of the individual instances with the listmanagedinstances method.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(InstanceGroupManager request, core.String project, core.String region) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of managed instance groups that are contained within the
+   * specified region.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [RegionInstanceGroupManagerList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RegionInstanceGroupManagerList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RegionInstanceGroupManagerList.fromJson(data));
+  }
+
+  /**
+   * Lists the instances in the managed instance group and instances that are
+   * scheduled to be created. The list includes any current actions that the
+   * group has scheduled for its instances.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - The name of the managed instance group.
+   *
+   * Completes with a [RegionInstanceGroupManagersListInstancesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RegionInstanceGroupManagersListInstancesResponse> listManagedInstances(core.String project, core.String region, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/listManagedInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RegionInstanceGroupManagersListInstancesResponse.fromJson(data));
+  }
+
+  /**
+   * Schedules a group action to recreate the specified instances in the managed
+   * instance group. The instances are deleted and recreated using the current
+   * instance template for the managed instance group. This operation is marked
+   * as DONE when the action is scheduled even if the instances have not yet
+   * been recreated. You must separately verify the status of the recreating
+   * action with the listmanagedinstances method.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - Name of the managed instance group.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> recreateInstances(RegionInstanceGroupManagersRecreateRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/recreateInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Changes the intended size for the managed instance group. If you increase
+   * the size, the group schedules actions to create new instances using the
+   * current instance template. If you decrease the size, the group schedules
+   * delete actions on one or more instances. The resize operation is marked
+   * DONE when the resize actions are scheduled even if the group has not yet
+   * added or deleted any instances. You must separately verify the status of
+   * the creating or deleting actions with the listmanagedinstances method.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - Name of the managed instance group.
+   *
+   * [size] - Number of instances that should exist in this instance group
+   * manager.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> resize(core.String project, core.String region, core.String instanceGroupManager, core.int size) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (size == null) {
+      throw new core.ArgumentError("Parameter size is required.");
+    }
+    _queryParams["size"] = ["${size}"];
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/resize';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets the instance template to use when creating new instances or recreating
+   * instances in this group. Existing instances are not affected.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - The name of the managed instance group.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setInstanceTemplate(RegionInstanceGroupManagersSetTemplateRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setInstanceTemplate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Modifies the target pools to which all new instances in this group are
+   * assigned. Existing instances in the group are not affected.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroupManager] - Name of the managed instance group.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setTargetPools(RegionInstanceGroupManagersSetTargetPoolsRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setTargetPools';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class RegionInstanceGroupsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionInstanceGroupsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns the specified instance group resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroup] - Name of the instance group resource to return.
+   *
+   * Completes with a [InstanceGroup].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<InstanceGroup> get(core.String project, core.String region, core.String instanceGroup) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceGroup.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of instance group resources contained within the
+   * specified region.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [RegionInstanceGroupList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RegionInstanceGroupList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RegionInstanceGroupList.fromJson(data));
+  }
+
+  /**
+   * Lists the instances in the specified instance group and displays
+   * information about the named ports. Depending on the specified options, this
+   * method can list all instances or only the instances that are running.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroup] - Name of the regional instance group for which we want to
+   * list the instances.
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests.
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [RegionInstanceGroupsListInstances].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<RegionInstanceGroupsListInstances> listInstances(RegionInstanceGroupsListInstancesRequest request, core.String project, core.String region, core.String instanceGroup, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/listInstances';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new RegionInstanceGroupsListInstances.fromJson(data));
+  }
+
+  /**
+   * Sets the named ports for the specified regional instance group.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [instanceGroup] - The name of the regional instance group where the named
+   * ports are updated.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setNamedPorts(RegionInstanceGroupsSetNamedPortsRequest request, core.String project, core.String region, core.String instanceGroup) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroup == null) {
+      throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/setNamedPorts';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -16441,6 +18414,14 @@ class BackendService {
    */
   core.String kind;
   /**
+   *
+   * Possible string values are:
+   * - "EXTERNAL"
+   * - "INTERNAL"
+   * - "INVALID_LOAD_BALANCING_SCHEME"
+   */
+  core.String loadBalancingScheme;
+  /**
    * Name of the resource. Provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
@@ -16477,6 +18458,7 @@ class BackendService {
    * - "HTTPS"
    * - "SSL"
    * - "TCP"
+   * - "UDP"
    */
   core.String protocol;
   /**
@@ -16498,6 +18480,7 @@ class BackendService {
    * When the protocol is UDP, this field is not used.
    * Possible string values are:
    * - "CLIENT_IP"
+   * - "CLIENT_IP_PORT_PROTO"
    * - "CLIENT_IP_PROTO"
    * - "GENERATED_COOKIE"
    * - "NONE"
@@ -16541,6 +18524,9 @@ class BackendService {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("loadBalancingScheme")) {
+      loadBalancingScheme = _json["loadBalancingScheme"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -16600,6 +18586,9 @@ class BackendService {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (loadBalancingScheme != null) {
+      _json["loadBalancingScheme"] = loadBalancingScheme;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -16623,6 +18612,62 @@ class BackendService {
     }
     if (timeoutSec != null) {
       _json["timeoutSec"] = timeoutSec;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of BackendServicesScopedList. */
+class BackendServiceAggregatedList {
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /** A map of scoped BackendService lists. */
+  core.Map<core.String, BackendServicesScopedList> items;
+  /** Type of resource. */
+  core.String kind;
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  BackendServiceAggregatedList();
+
+  BackendServiceAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap(_json["items"], (item) => new BackendServicesScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     return _json;
   }
@@ -16713,6 +18758,140 @@ class BackendServiceList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class BackendServicesScopedListWarningData {
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
+   */
+  core.String key;
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+  BackendServicesScopedListWarningData();
+
+  BackendServicesScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Informational warning which replaces the list of backend services when the
+ * list is empty.
+ */
+class BackendServicesScopedListWarning {
+  /**
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
+   * Possible string values are:
+   * - "CLEANUP_FAILED"
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
+  core.List<BackendServicesScopedListWarningData> data;
+  /** [Output Only] A human-readable description of the warning code. */
+  core.String message;
+
+  BackendServicesScopedListWarning();
+
+  BackendServicesScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new BackendServicesScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class BackendServicesScopedList {
+  /** List of BackendServices contained in this scope. */
+  core.List<BackendService> backendServices;
+  /**
+   * Informational warning which replaces the list of backend services when the
+   * list is empty.
+   */
+  BackendServicesScopedListWarning warning;
+
+  BackendServicesScopedList();
+
+  BackendServicesScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("backendServices")) {
+      backendServices = _json["backendServices"].map((value) => new BackendService.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new BackendServicesScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (backendServices != null) {
+      _json["backendServices"] = backendServices.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -18189,6 +20368,13 @@ class ForwardingRule {
    * - "UDP"
    */
   core.String IPProtocol;
+  /**
+   * This field is not used for external load balancing.
+   *
+   * For internal load balancing, this field identifies the BackendService
+   * resource to receive the matched traffic.
+   */
+  core.String backendService;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
@@ -18207,6 +20393,18 @@ class ForwardingRule {
    */
   core.String kind;
   /**
+   * This signifies what the ForwardingRule will be used for and can only take
+   * the following values: INTERNAL EXTERNAL The value of INTERNAL means that
+   * this will be used for Internal Network Load Balancing (TCP, UDP). The value
+   * of EXTERNAL means that this will be used for External Load Balancing
+   * (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
+   * Possible string values are:
+   * - "EXTERNAL"
+   * - "INTERNAL"
+   * - "INVALID"
+   */
+  core.String loadBalancingScheme;
+  /**
    * Name of the resource; provided by the client when the resource is created.
    * The name must be 1-63 characters long, and comply with RFC1035.
    * Specifically, the name must be 1-63 characters long and match the regular
@@ -18217,6 +20415,14 @@ class ForwardingRule {
    */
   core.String name;
   /**
+   * This field is not used for external load balancing.
+   *
+   * For internal load balancing, this field identifies the network that the
+   * load balanced IP should belong to for this Forwarding Rule. If this field
+   * is not specified, the default network will be used.
+   */
+  core.String network;
+  /**
    * Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
    * addressed to ports in the specified range will be forwarded to target.
    * Forwarding rules with the same [IPAddress, IPProtocol] pair must have
@@ -18226,12 +20432,35 @@ class ForwardingRule {
    */
   core.String portRange;
   /**
+   * This field is not used for external load balancing.
+   *
+   * When the load balancing scheme is INTERNAL, a single port or a comma
+   * separated list of ports can be configured. Only packets addressed to these
+   * ports will be forwarded to the backends configured with this forwarding
+   * rule. If the port list is not provided then all ports are allowed to pass
+   * through.
+   *
+   * You may specify a maximum of up to 5 ports.
+   */
+  core.List<core.String> ports;
+  /**
    * [Output Only] URL of the region where the regional forwarding rule resides.
    * This field is not applicable to global forwarding rules.
    */
   core.String region;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
+  /**
+   * This field is not used for external load balancing.
+   *
+   * For internal load balancing, this field identifies the subnetwork that the
+   * load balanced IP should belong to for this Forwarding Rule.
+   *
+   * If the network specified is in auto subnet mode, this field is optional.
+   * However, if the network is in custom subnet mode, a subnetwork must be
+   * specified.
+   */
+  core.String subnetwork;
   /**
    * The URL of the target resource to receive the matched traffic. For regional
    * forwarding rules, this target must live in the same region as the
@@ -18253,6 +20482,9 @@ class ForwardingRule {
     if (_json.containsKey("IPProtocol")) {
       IPProtocol = _json["IPProtocol"];
     }
+    if (_json.containsKey("backendService")) {
+      backendService = _json["backendService"];
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -18265,17 +20497,29 @@ class ForwardingRule {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("loadBalancingScheme")) {
+      loadBalancingScheme = _json["loadBalancingScheme"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
     if (_json.containsKey("portRange")) {
       portRange = _json["portRange"];
+    }
+    if (_json.containsKey("ports")) {
+      ports = _json["ports"];
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
     }
     if (_json.containsKey("target")) {
       target = _json["target"];
@@ -18290,6 +20534,9 @@ class ForwardingRule {
     if (IPProtocol != null) {
       _json["IPProtocol"] = IPProtocol;
     }
+    if (backendService != null) {
+      _json["backendService"] = backendService;
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -18302,17 +20549,29 @@ class ForwardingRule {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (loadBalancingScheme != null) {
+      _json["loadBalancingScheme"] = loadBalancingScheme;
+    }
     if (name != null) {
       _json["name"] = name;
     }
+    if (network != null) {
+      _json["network"] = network;
+    }
     if (portRange != null) {
       _json["portRange"] = portRange;
+    }
+    if (ports != null) {
+      _json["ports"] = ports;
     }
     if (region != null) {
       _json["region"] = region;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
     }
     if (target != null) {
       _json["target"] = target;
@@ -18580,72 +20839,33 @@ class ForwardingRulesScopedList {
   }
 }
 
-class HTTP2HealthCheck {
+/** Guest OS features. */
+class GuestOsFeature {
   /**
-   * The value of the host header in the HTTP/2 health check request. If left
-   * empty (default value), the IP on behalf of which this health check is
-   * performed will be used.
-   */
-  core.String host;
-  /**
-   * The TCP port number for the health check request. The default value is 443.
-   */
-  core.int port;
-  /**
-   * Port name as defined in InstanceGroup#NamedPort#name. If both port and
-   * port_name are defined, port takes precedence.
-   */
-  core.String portName;
-  /**
-   * Specifies the type of proxy header to append before sending data to the
-   * backend, either NONE or PROXY_V1. The default is NONE.
+   * The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is
+   * supported. For newer Windows images, the server might also populate this
+   * property with the value WINDOWS to indicate that this is a Windows image.
+   * This value is purely informational and does not enable or disable any
+   * features.
    * Possible string values are:
-   * - "NONE"
-   * - "PROXY_V1"
+   * - "FEATURE_TYPE_UNSPECIFIED"
+   * - "VIRTIO_SCSI_MULTIQUEUE"
+   * - "WINDOWS"
    */
-  core.String proxyHeader;
-  /**
-   * The request path of the HTTP/2 health check request. The default value is
-   * /.
-   */
-  core.String requestPath;
+  core.String type;
 
-  HTTP2HealthCheck();
+  GuestOsFeature();
 
-  HTTP2HealthCheck.fromJson(core.Map _json) {
-    if (_json.containsKey("host")) {
-      host = _json["host"];
-    }
-    if (_json.containsKey("port")) {
-      port = _json["port"];
-    }
-    if (_json.containsKey("portName")) {
-      portName = _json["portName"];
-    }
-    if (_json.containsKey("proxyHeader")) {
-      proxyHeader = _json["proxyHeader"];
-    }
-    if (_json.containsKey("requestPath")) {
-      requestPath = _json["requestPath"];
+  GuestOsFeature.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (host != null) {
-      _json["host"] = host;
-    }
-    if (port != null) {
-      _json["port"] = port;
-    }
-    if (portName != null) {
-      _json["portName"] = portName;
-    }
-    if (proxyHeader != null) {
-      _json["proxyHeader"] = proxyHeader;
-    }
-    if (requestPath != null) {
-      _json["requestPath"] = requestPath;
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -18814,7 +21034,6 @@ class HealthCheck {
    * consecutive successes. The default value is 2.
    */
   core.int healthyThreshold;
-  HTTP2HealthCheck http2HealthCheck;
   HTTPHealthCheck httpHealthCheck;
   HTTPSHealthCheck httpsHealthCheck;
   /**
@@ -18845,13 +21064,11 @@ class HealthCheck {
    */
   core.int timeoutSec;
   /**
-   * Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or
-   * HTTP2. If not specified, the default is TCP. Exactly one of the
-   * protocol-specific health check field must be specified, which must match
-   * type field.
+   * Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If
+   * not specified, the default is TCP. Exactly one of the protocol-specific
+   * health check field must be specified, which must match type field.
    * Possible string values are:
    * - "HTTP"
-   * - "HTTP2"
    * - "HTTPS"
    * - "INVALID"
    * - "SSL"
@@ -18878,9 +21095,6 @@ class HealthCheck {
     }
     if (_json.containsKey("healthyThreshold")) {
       healthyThreshold = _json["healthyThreshold"];
-    }
-    if (_json.containsKey("http2HealthCheck")) {
-      http2HealthCheck = new HTTP2HealthCheck.fromJson(_json["http2HealthCheck"]);
     }
     if (_json.containsKey("httpHealthCheck")) {
       httpHealthCheck = new HTTPHealthCheck.fromJson(_json["httpHealthCheck"]);
@@ -18930,9 +21144,6 @@ class HealthCheck {
     }
     if (healthyThreshold != null) {
       _json["healthyThreshold"] = healthyThreshold;
-    }
-    if (http2HealthCheck != null) {
-      _json["http2HealthCheck"] = (http2HealthCheck).toJson();
     }
     if (httpHealthCheck != null) {
       _json["httpHealthCheck"] = (httpHealthCheck).toJson();
@@ -19680,6 +21891,19 @@ class Image {
    */
   core.String family;
   /**
+   * A list of features to enable on the guest OS. Applicable for bootable
+   * images only. Currently, only one feature can be enabled,
+   * VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own
+   * queue. For Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on
+   * images with driver version 1.2.0.1621 or higher. Linux images with kernel
+   * versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.
+   *
+   * For new Windows images, the server might also populate this field with the
+   * value WINDOWS, to indicate that this is a Windows image. This value is
+   * purely informational and does not enable or disable any features.
+   */
+  core.List<GuestOsFeature> guestOsFeatures;
+  /**
    * [Output Only] The unique identifier for the resource. This identifier is
    * defined by the server.
    */
@@ -19718,7 +21942,7 @@ class Image {
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
-   * URL of the The source disk used to create this image. This can be a full or
+   * URL of the source disk used to create this image. This can be a full or
    * valid partial URL. You must provide either this property or the
    * rawDisk.source property but not both to create an image. For example, the
    * following are valid values:
@@ -19779,6 +22003,9 @@ class Image {
     if (_json.containsKey("family")) {
       family = _json["family"];
     }
+    if (_json.containsKey("guestOsFeatures")) {
+      guestOsFeatures = _json["guestOsFeatures"].map((value) => new GuestOsFeature.fromJson(value)).toList();
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -19836,6 +22063,9 @@ class Image {
     }
     if (family != null) {
       _json["family"] = family;
+    }
+    if (guestOsFeatures != null) {
+      _json["guestOsFeatures"] = guestOsFeatures.map((value) => (value).toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -24311,6 +26541,7 @@ class Quota {
    * - "TARGET_POOLS"
    * - "TARGET_SSL_PROXIES"
    * - "TARGET_VPN_GATEWAYS"
+   * - "TOTAL_CPUS"
    * - "URL_MAPS"
    * - "VPN_TUNNELS"
    */
@@ -24447,6 +26678,491 @@ class Region {
     }
     if (zones != null) {
       _json["zones"] = zones;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of autoscalers. */
+class RegionAutoscalerList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A list of autoscalers. */
+  core.List<Autoscaler> items;
+  /** Type of resource. */
+  core.String kind;
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  RegionAutoscalerList();
+
+  RegionAutoscalerList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Autoscaler.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of InstanceGroup resources. */
+class RegionInstanceGroupList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A list of InstanceGroup resources. */
+  core.List<InstanceGroup> items;
+  /** The resource type. */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /**
+   * [Output Only] The URL for this resource type. The server generates this
+   * URL.
+   */
+  core.String selfLink;
+
+  RegionInstanceGroupList();
+
+  RegionInstanceGroupList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new InstanceGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of managed instance groups. */
+class RegionInstanceGroupManagerList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A list of managed instance groups. */
+  core.List<InstanceGroupManager> items;
+  /**
+   * [Output Only] The resource type, which is always
+   * compute#instanceGroupManagerList for a list of managed instance groups that
+   * exist in th regional scope.
+   */
+  core.String kind;
+  /** [Output only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+  /**
+   * [Output only] The URL for this resource type. The server generates this
+   * URL.
+   */
+  core.String selfLink;
+
+  RegionInstanceGroupManagerList();
+
+  RegionInstanceGroupManagerList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new InstanceGroupManager.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagersAbandonInstancesRequest {
+  /** The names of one or more instances to abandon. */
+  core.List<core.String> instances;
+
+  RegionInstanceGroupManagersAbandonInstancesRequest();
+
+  RegionInstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagersDeleteInstancesRequest {
+  /** The names of one or more instances to delete. */
+  core.List<core.String> instances;
+
+  RegionInstanceGroupManagersDeleteInstancesRequest();
+
+  RegionInstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagersListInstancesResponse {
+  /** List of managed instances. */
+  core.List<ManagedInstance> managedInstances;
+
+  RegionInstanceGroupManagersListInstancesResponse();
+
+  RegionInstanceGroupManagersListInstancesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("managedInstances")) {
+      managedInstances = _json["managedInstances"].map((value) => new ManagedInstance.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (managedInstances != null) {
+      _json["managedInstances"] = managedInstances.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagersRecreateRequest {
+  /** The URL for one or more instances to recreate. */
+  core.List<core.String> instances;
+
+  RegionInstanceGroupManagersRecreateRequest();
+
+  RegionInstanceGroupManagersRecreateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instances")) {
+      instances = _json["instances"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instances != null) {
+      _json["instances"] = instances;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagersSetTargetPoolsRequest {
+  /**
+   * Fingerprint of the target pools information, which is a hash of the
+   * contents. This field is used for optimistic locking when you update the
+   * target pool entries. This field is optional.
+   */
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.BASE64.decode(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
+   * The URL of all TargetPool resources to which instances in the instanceGroup
+   * field are added. The target pools automatically apply to all of the
+   * instances in the managed instance group.
+   */
+  core.List<core.String> targetPools;
+
+  RegionInstanceGroupManagersSetTargetPoolsRequest();
+
+  RegionInstanceGroupManagersSetTargetPoolsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("targetPools")) {
+      targetPools = _json["targetPools"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (targetPools != null) {
+      _json["targetPools"] = targetPools;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagersSetTemplateRequest {
+  /**
+   * URL of the InstanceTemplate resource from which all new instances will be
+   * created.
+   */
+  core.String instanceTemplate;
+
+  RegionInstanceGroupManagersSetTemplateRequest();
+
+  RegionInstanceGroupManagersSetTemplateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceTemplate")) {
+      instanceTemplate = _json["instanceTemplate"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instanceTemplate != null) {
+      _json["instanceTemplate"] = instanceTemplate;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupsListInstances {
+  /**
+   * [Output Only] Unique identifier for the resource. Defined by the server.
+   */
+  core.String id;
+  /**
+   * A list of instances and any named ports that are assigned to those
+   * instances.
+   */
+  core.List<InstanceWithNamedPorts> items;
+  /** The resource type. */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+  RegionInstanceGroupsListInstances();
+
+  RegionInstanceGroupsListInstances.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new InstanceWithNamedPorts.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupsListInstancesRequest {
+  /**
+   * Instances in which state should be returned. Valid options are: 'ALL',
+   * 'RUNNING'. By default, it lists all instances.
+   * Possible string values are:
+   * - "ALL"
+   * - "RUNNING"
+   */
+  core.String instanceState;
+  /**
+   * Name of port user is interested in. It is optional. If it is set, only
+   * information about this ports will be returned. If it is not set, all the
+   * named ports will be returned. Always lists all instances.
+   */
+  core.String portName;
+
+  RegionInstanceGroupsListInstancesRequest();
+
+  RegionInstanceGroupsListInstancesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceState")) {
+      instanceState = _json["instanceState"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (instanceState != null) {
+      _json["instanceState"] = instanceState;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupsSetNamedPortsRequest {
+  /**
+   * The fingerprint of the named ports information for this instance group. Use
+   * this optional property to prevent conflicts when multiple users change the
+   * named ports settings concurrently. Obtain the fingerprint with the
+   * instanceGroups.get method. Then, include the fingerprint in your request to
+   * ensure that you do not overwrite changes that were applied from another
+   * concurrent request.
+   */
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.BASE64.decode(fingerprint);
+  }
+
+  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /** The list of named ports to set for this instance group. */
+  core.List<NamedPort> namedPorts;
+
+  RegionInstanceGroupsSetNamedPortsRequest();
+
+  RegionInstanceGroupsSetNamedPortsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("namedPorts")) {
+      namedPorts = _json["namedPorts"].map((value) => new NamedPort.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (namedPorts != null) {
+      _json["namedPorts"] = namedPorts.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -25743,8 +28459,20 @@ class SerialPortOutput {
    * serial port output.
    */
   core.String kind;
+  /**
+   * [Output Only] The position of the next byte of content from the serial
+   * console output. Use this value in the next request as the start parameter.
+   */
+  core.String next;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
+  /**
+   * [Output Only] The starting byte position of the output that was returned.
+   * This should match the start parameter sent with the request. If the serial
+   * console output exceeds the size of the buffer, older output will be
+   * overwritten by newer content and the start values will be mismatched.
+   */
+  core.String start;
 
   SerialPortOutput();
 
@@ -25755,8 +28483,14 @@ class SerialPortOutput {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("next")) {
+      next = _json["next"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
     }
   }
 
@@ -25768,8 +28502,14 @@ class SerialPortOutput {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (next != null) {
+      _json["next"] = next;
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (start != null) {
+      _json["start"] = start;
     }
     return _json;
   }
@@ -26105,8 +28845,8 @@ class SslCertificate {
    */
   core.String name;
   /**
-   * A write-only private key in PEM format. Only insert RPCs will include this
-   * field.
+   * A write-only private key in PEM format. Only insert requests will include
+   * this field.
    */
   core.String privateKey;
   /** [Output only] Server-defined URL for the resource. */
@@ -27587,6 +30327,7 @@ class TargetPool {
    * remains healthy.
    * Possible string values are:
    * - "CLIENT_IP"
+   * - "CLIENT_IP_PORT_PROTO"
    * - "CLIENT_IP_PROTO"
    * - "GENERATED_COOKIE"
    * - "NONE"

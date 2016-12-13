@@ -3427,6 +3427,12 @@ class IpMapping {
    * scheduled to be retired.
    */
   core.DateTime timeToRetire;
+  /**
+   * The type of this IP address. A PRIMARY address is an address that can
+   * accept incoming connections. An OUTGOING address is the source address of
+   * connections originating from the instance, if supported.
+   */
+  core.String type;
 
   IpMapping();
 
@@ -3437,6 +3443,9 @@ class IpMapping {
     if (_json.containsKey("timeToRetire")) {
       timeToRetire = core.DateTime.parse(_json["timeToRetire"]);
     }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
   }
 
   core.Map toJson() {
@@ -3446,6 +3455,9 @@ class IpMapping {
     }
     if (timeToRetire != null) {
       _json["timeToRetire"] = (timeToRetire).toIso8601String();
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -4528,10 +4540,7 @@ class Tier {
   core.String RAM;
   /** This is always sql#tier. */
   core.String kind;
-  /**
-   * The applicable regions for this tier. Can be us-east1, europe-west1 or
-   * asia-east1.
-   */
+  /** The applicable regions for this tier. */
   core.List<core.String> region;
   /**
    * An identifier for the service tier, for example D1, D2 etc. For related

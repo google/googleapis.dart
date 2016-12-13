@@ -37,6 +37,60 @@ class OperationsResourceApi {
       _requester = client;
 
   /**
+   * Starts asynchronous cancellation on a long-running operation.  The server
+   * makes a best effort to cancel the operation, but success is not
+   * guaranteed.  If the server doesn't support this method, it returns
+   * `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+   * Operations.GetOperation or
+   * other methods to check whether the cancellation succeeded or whether the
+   * operation completed despite cancellation. On successful cancellation,
+   * the operation is not deleted; instead, it becomes an operation with
+   * an Operation.error value with a google.rpc.Status.code of 1,
+   * corresponding to `Code.CANCELLED`.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The name of the operation resource to be cancelled.
+   * Value must have pattern "^operations/.+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
    * Gets the latest state of a long-running operation.  Clients can use this
    * method to poll the operation result at intervals as recommended by the API
    * service.
@@ -627,12 +681,15 @@ class Build {
    */
   core.String buildTriggerId;
   /**
-   * Time at which the build was created.
+   * Time at which the request to create the build was received.
    * @OutputOnly
    */
   core.String createTime;
   /**
    * Time at which execution of the build was finished.
+   *
+   * The difference between finish_time and start_time is the duration of the
+   * build's execution.
    * @OutputOnly
    */
   core.String finishTime;
@@ -645,8 +702,7 @@ class Build {
    * A list of images to be pushed upon the successful completion of all build
    * steps.
    *
-   * The images will be pushed using the builder
-   * service account's credentials.
+   * The images will be pushed using the builder service account's credentials.
    *
    * The digests of the pushed images will be stored in the Build resource's
    * results field.
@@ -695,7 +751,6 @@ class Build {
    * @OutputOnly
    * Possible string values are:
    * - "STATUS_UNKNOWN" : Status of the build is unknown.
-   * - "QUEUING" : Build has been received and is being queued.
    * - "QUEUED" : Build is queued; work has not yet begun.
    * - "WORKING" : Build is being executed.
    * - "SUCCESS" : Build finished successfully.
@@ -922,10 +977,9 @@ class BuildStep {
   /**
    * The name of the container image that will run this particular build step.
    *
-   * If the image is already available in the host's
-   * Docker daemon's cache, it will be run directly. If not, the host will
-   * attempt to pull the image first, using the builder service account's
-   * credentials if necessary.
+   * If the image is already available in the host's Docker daemon's cache, it
+   * will be run directly. If not, the host will attempt to pull the image
+   * first, using the builder service account's credentials if necessary.
    *
    * The Docker daemon's cache will already have the latest versions of all of
    * the officially supported build steps
@@ -1124,6 +1178,20 @@ class CancelBuildRequest {
   CancelBuildRequest();
 
   CancelBuildRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+/** The request message for Operations.CancelOperation. */
+class CancelOperationRequest {
+
+  CancelOperationRequest();
+
+  CancelOperationRequest.fromJson(core.Map _json) {
   }
 
   core.Map toJson() {

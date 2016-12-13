@@ -5585,8 +5585,8 @@ class VideosResourceApi {
    * items that should be returned in the result set.
    *
    * Note: This parameter is supported for use in conjunction with the myRating
-   * parameter, but it is not supported for use in conjunction with the id
-   * parameter.
+   * and chart parameters, but it is not supported for use in conjunction with
+   * the id parameter.
    * Value must be between "1" and "50".
    *
    * [maxWidth] - The maxWidth parameter specifies a maximum width of the
@@ -5618,8 +5618,8 @@ class VideosResourceApi {
    * and prevPageToken properties identify other pages that could be retrieved.
    *
    * Note: This parameter is supported for use in conjunction with the myRating
-   * parameter, but it is not supported for use in conjunction with the id
-   * parameter.
+   * and chart parameters, but it is not supported for use in conjunction with
+   * the id parameter.
    *
    * [regionCode] - The regionCode parameter instructs the API to select a video
    * chart available in the specified region. This parameter can only be used in
@@ -7253,6 +7253,7 @@ class CdnSettings {
    * Possible string values are:
    * - "1080p"
    * - "1440p"
+   * - "2160p"
    * - "240p"
    * - "360p"
    * - "480p"
@@ -9219,7 +9220,7 @@ class CommentThreadSnippet {
 
 /**
  * Ratings schemes. The country-specific ratings are mostly for movies and
- * shows. NEXT_ID: 68
+ * shows. NEXT_ID: 69
  */
 class ContentRating {
   /**
@@ -9731,6 +9732,19 @@ class ContentRating {
    */
   core.String mccypRating;
   /**
+   * The video's rating system for Vietnam - MCST
+   * Possible string values are:
+   * - "mcst0"
+   * - "mcst16plus"
+   * - "mcstC13"
+   * - "mcstC16"
+   * - "mcstC18"
+   * - "mcstGPg"
+   * - "mcstP"
+   * - "mcstUnrated"
+   */
+  core.String mcstRating;
+  /**
    * The video's rating from Singapore's Media Development Authority (MDA) and,
    * specifically, it's Board of Film Censors (BFC).
    * Possible string values are:
@@ -10156,6 +10170,9 @@ class ContentRating {
     if (_json.containsKey("mccypRating")) {
       mccypRating = _json["mccypRating"];
     }
+    if (_json.containsKey("mcstRating")) {
+      mcstRating = _json["mcstRating"];
+    }
     if (_json.containsKey("mdaRating")) {
       mdaRating = _json["mdaRating"];
     }
@@ -10360,6 +10377,9 @@ class ContentRating {
     }
     if (mccypRating != null) {
       _json["mccypRating"] = mccypRating;
+    }
+    if (mcstRating != null) {
+      _json["mcstRating"] = mcstRating;
     }
     if (mdaRating != null) {
       _json["mdaRating"] = mdaRating;
@@ -14200,6 +14220,11 @@ class PlaylistItemContentDetails {
    * request.
    */
   core.String videoId;
+  /**
+   * The date and time that the video was published to YouTube. The value is
+   * specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime videoPublishedAt;
 
   PlaylistItemContentDetails();
 
@@ -14216,6 +14241,9 @@ class PlaylistItemContentDetails {
     if (_json.containsKey("videoId")) {
       videoId = _json["videoId"];
     }
+    if (_json.containsKey("videoPublishedAt")) {
+      videoPublishedAt = core.DateTime.parse(_json["videoPublishedAt"]);
+    }
   }
 
   core.Map toJson() {
@@ -14231,6 +14259,9 @@ class PlaylistItemContentDetails {
     }
     if (videoId != null) {
       _json["videoId"] = videoId;
+    }
+    if (videoPublishedAt != null) {
+      _json["videoPublishedAt"] = (videoPublishedAt).toIso8601String();
     }
     return _json;
   }

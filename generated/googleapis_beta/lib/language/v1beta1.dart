@@ -119,6 +119,47 @@ class DocumentsResourceApi {
   }
 
   /**
+   * Analyzes the syntax of the text and provides sentence boundaries and
+   * tokenization along with part of speech tags, dependency trees, and other
+   * properties.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [AnalyzeSyntaxResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AnalyzeSyntaxResponse> analyzeSyntax(AnalyzeSyntaxRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1beta1/documents:analyzeSyntax';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AnalyzeSyntaxResponse.fromJson(data));
+  }
+
+  /**
    * A convenience method that provides all the features that analyzeSentiment,
    * analyzeEntities, and analyzeSyntax provide in one call.
    *
@@ -251,6 +292,27 @@ class AnalyzeSentimentRequest {
    * (Document.language="EN").
    */
   Document document;
+  /**
+   * The encoding type used by the API to calculate sentence offsets for the
+   * sentence sentiment.
+   * Possible string values are:
+   * - "NONE" : If `EncodingType` is not specified, encoding-dependent
+   * information (such as
+   * `begin_offset`) will be set at `-1`.
+   * - "UTF8" : Encoding-dependent information (such as `begin_offset`) is
+   * calculated based
+   * on the UTF-8 encoding of the input. C++ and Go are examples of languages
+   * that use this encoding natively.
+   * - "UTF16" : Encoding-dependent information (such as `begin_offset`) is
+   * calculated based
+   * on the UTF-16 encoding of the input. Java and Javascript are examples of
+   * languages that use this encoding natively.
+   * - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
+   * calculated based
+   * on the UTF-32 encoding of the input. Python is an example of a language
+   * that uses this encoding natively.
+   */
+  core.String encodingType;
 
   AnalyzeSentimentRequest();
 
@@ -258,12 +320,18 @@ class AnalyzeSentimentRequest {
     if (_json.containsKey("document")) {
       document = new Document.fromJson(_json["document"]);
     }
+    if (_json.containsKey("encodingType")) {
+      encodingType = _json["encodingType"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (document != null) {
       _json["document"] = (document).toJson();
+    }
+    if (encodingType != null) {
+      _json["encodingType"] = encodingType;
     }
     return _json;
   }
@@ -278,6 +346,8 @@ class AnalyzeSentimentResponse {
    * in the request or, if not specified, the automatically-detected language.
    */
   core.String language;
+  /** The sentiment for all the sentences in the document. */
+  core.List<Sentence> sentences;
 
   AnalyzeSentimentResponse();
 
@@ -288,6 +358,9 @@ class AnalyzeSentimentResponse {
     if (_json.containsKey("language")) {
       language = _json["language"];
     }
+    if (_json.containsKey("sentences")) {
+      sentences = _json["sentences"].map((value) => new Sentence.fromJson(value)).toList();
+    }
   }
 
   core.Map toJson() {
@@ -297,6 +370,99 @@ class AnalyzeSentimentResponse {
     }
     if (language != null) {
       _json["language"] = language;
+    }
+    if (sentences != null) {
+      _json["sentences"] = sentences.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** The syntax analysis request message. */
+class AnalyzeSyntaxRequest {
+  /** Input document. */
+  Document document;
+  /**
+   * The encoding type used by the API to calculate offsets.
+   * Possible string values are:
+   * - "NONE" : If `EncodingType` is not specified, encoding-dependent
+   * information (such as
+   * `begin_offset`) will be set at `-1`.
+   * - "UTF8" : Encoding-dependent information (such as `begin_offset`) is
+   * calculated based
+   * on the UTF-8 encoding of the input. C++ and Go are examples of languages
+   * that use this encoding natively.
+   * - "UTF16" : Encoding-dependent information (such as `begin_offset`) is
+   * calculated based
+   * on the UTF-16 encoding of the input. Java and Javascript are examples of
+   * languages that use this encoding natively.
+   * - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
+   * calculated based
+   * on the UTF-32 encoding of the input. Python is an example of a language
+   * that uses this encoding natively.
+   */
+  core.String encodingType;
+
+  AnalyzeSyntaxRequest();
+
+  AnalyzeSyntaxRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("document")) {
+      document = new Document.fromJson(_json["document"]);
+    }
+    if (_json.containsKey("encodingType")) {
+      encodingType = _json["encodingType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (document != null) {
+      _json["document"] = (document).toJson();
+    }
+    if (encodingType != null) {
+      _json["encodingType"] = encodingType;
+    }
+    return _json;
+  }
+}
+
+/** The syntax analysis response message. */
+class AnalyzeSyntaxResponse {
+  /**
+   * The language of the text, which will be the same as the language specified
+   * in the request or, if not specified, the automatically-detected language.
+   * See Document.language field for more details.
+   */
+  core.String language;
+  /** Sentences in the input document. */
+  core.List<Sentence> sentences;
+  /** Tokens, along with their syntactic information, in the input document. */
+  core.List<Token> tokens;
+
+  AnalyzeSyntaxResponse();
+
+  AnalyzeSyntaxResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("sentences")) {
+      sentences = _json["sentences"].map((value) => new Sentence.fromJson(value)).toList();
+    }
+    if (_json.containsKey("tokens")) {
+      tokens = _json["tokens"].map((value) => new Token.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (sentences != null) {
+      _json["sentences"] = sentences.map((value) => (value).toJson()).toList();
+    }
+    if (tokens != null) {
+      _json["tokens"] = tokens.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -558,7 +724,12 @@ class DependencyEdge {
 class Document {
   /** The content of the input in string format. */
   core.String content;
-  /** The Google Cloud Storage URI where the file content is located. */
+  /**
+   * The Google Cloud Storage URI where the file content is located.
+   * This URI must be of the form: gs://bucket_name/object_name. For more
+   * details, see https://cloud.google.com/storage/docs/reference-uris.
+   * NOTE: Cloud Storage object versioning is not supported.
+   */
   core.String gcsContentUri;
   /**
    * The language of the document (if not specified, the language is
@@ -566,9 +737,7 @@ class Document {
    * accepted.<br>
    * **Current Language Restrictions:**
    *
-   *  * Only English, Spanish, and Japanese textual content
-   *    are supported, with the following additional restriction:
-   *    * `analyzeSentiment` only supports English text.
+   *  * Only English, Spanish, and Japanese textual content are supported.
    * If the language (either specified by the caller or automatically detected)
    * is not supported by the called API method, an `INVALID_ARGUMENT` error
    * is returned.
@@ -633,8 +802,8 @@ class Entity {
   /**
    * Metadata associated with the entity.
    *
-   * Currently, only Wikipedia URLs are provided, if available.
-   * The associated key is "wikipedia_url".
+   * Currently, Wikipedia URLs and Knowledge Graph MIDs are provided, if
+   * available. The associated keys are "wikipedia_url" and "mid", respectively.
    */
   core.Map<core.String, core.String> metadata;
   /** The representative name for the entity. */
@@ -710,6 +879,14 @@ class Entity {
 class EntityMention {
   /** The mention text. */
   TextSpan text;
+  /**
+   * The type of the entity mention.
+   * Possible string values are:
+   * - "TYPE_UNKNOWN" : Unknown
+   * - "PROPER" : Proper name
+   * - "COMMON" : Common noun (or noun compound)
+   */
+  core.String type;
 
   EntityMention();
 
@@ -717,12 +894,18 @@ class EntityMention {
     if (_json.containsKey("text")) {
       text = new TextSpan.fromJson(_json["text"]);
     }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (text != null) {
       _json["text"] = (text).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -772,6 +955,118 @@ class Features {
 /** Represents part of speech information for a token. */
 class PartOfSpeech {
   /**
+   * The grammatical aspect.
+   * Possible string values are:
+   * - "ASPECT_UNKNOWN" : Aspect is not applicable in the analyzed language or
+   * is not predicted.
+   * - "PERFECTIVE" : Perfective
+   * - "IMPERFECTIVE" : Imperfective
+   * - "PROGRESSIVE" : Progressive
+   */
+  core.String aspect;
+  /**
+   * The grammatical case.
+   * Possible string values are:
+   * - "CASE_UNKNOWN" : Case is not applicable in the analyzed language or is
+   * not predicted.
+   * - "ACCUSATIVE" : Accusative
+   * - "ADVERBIAL" : Adverbial
+   * - "COMPLEMENTIVE" : Complementive
+   * - "DATIVE" : Dative
+   * - "GENITIVE" : Genitive
+   * - "INSTRUMENTAL" : Instrumental
+   * - "LOCATIVE" : Locative
+   * - "NOMINATIVE" : Nominative
+   * - "OBLIQUE" : Oblique
+   * - "PARTITIVE" : Partitive
+   * - "PREPOSITIONAL" : Prepositional
+   * - "REFLEXIVE_CASE" : Reflexive
+   * - "RELATIVE_CASE" : Relative
+   * - "VOCATIVE" : Vocative
+   */
+  core.String case_;
+  /**
+   * The grammatical form.
+   * Possible string values are:
+   * - "FORM_UNKNOWN" : Form is not applicable in the analyzed language or is
+   * not predicted.
+   * - "ADNOMIAL" : Adnomial
+   * - "AUXILIARY" : Auxiliary
+   * - "COMPLEMENTIZER" : Complementizer
+   * - "FINAL_ENDING" : Final ending
+   * - "GERUND" : Gerund
+   * - "REALIS" : Realis
+   * - "IRREALIS" : Irrealis
+   * - "SHORT" : Short form
+   * - "LONG" : Long form
+   * - "ORDER" : Order form
+   * - "SPECIFIC" : Specific form
+   */
+  core.String form;
+  /**
+   * The grammatical gender.
+   * Possible string values are:
+   * - "GENDER_UNKNOWN" : Gender is not applicable in the analyzed language or
+   * is not predicted.
+   * - "FEMININE" : Feminine
+   * - "MASCULINE" : Masculine
+   * - "NEUTER" : Neuter
+   */
+  core.String gender;
+  /**
+   * The grammatical mood.
+   * Possible string values are:
+   * - "MOOD_UNKNOWN" : Mood is not applicable in the analyzed language or is
+   * not predicted.
+   * - "CONDITIONAL_MOOD" : Conditional
+   * - "IMPERATIVE" : Imperative
+   * - "INDICATIVE" : Indicative
+   * - "INTERROGATIVE" : Interrogative
+   * - "JUSSIVE" : Jussive
+   * - "SUBJUNCTIVE" : Subjunctive
+   */
+  core.String mood;
+  /**
+   * The grammatical number.
+   * Possible string values are:
+   * - "NUMBER_UNKNOWN" : Number is not applicable in the analyzed language or
+   * is not predicted.
+   * - "SINGULAR" : Singular
+   * - "PLURAL" : Plural
+   * - "DUAL" : Dual
+   */
+  core.String number;
+  /**
+   * The grammatical person.
+   * Possible string values are:
+   * - "PERSON_UNKNOWN" : Person is not applicable in the analyzed language or
+   * is not predicted.
+   * - "FIRST" : First
+   * - "SECOND" : Second
+   * - "THIRD" : Third
+   * - "REFLEXIVE_PERSON" : Reflexive
+   */
+  core.String person;
+  /**
+   * The grammatical properness.
+   * Possible string values are:
+   * - "PROPER_UNKNOWN" : Proper is not applicable in the analyzed language or
+   * is not predicted.
+   * - "PROPER" : Proper
+   * - "NOT_PROPER" : Not proper
+   */
+  core.String proper;
+  /**
+   * The grammatical reciprocity.
+   * Possible string values are:
+   * - "RECIPROCITY_UNKNOWN" : Reciprocity is not applicable in the analyzed
+   * language or is not
+   * predicted.
+   * - "RECIPROCAL" : Reciprocal
+   * - "NON_RECIPROCAL" : Non-reciprocal
+   */
+  core.String reciprocity;
+  /**
    * The part of speech tag.
    * Possible string values are:
    * - "UNKNOWN" : Unknown
@@ -790,19 +1085,108 @@ class PartOfSpeech {
    * - "AFFIX" : Affix
    */
   core.String tag;
+  /**
+   * The grammatical tense.
+   * Possible string values are:
+   * - "TENSE_UNKNOWN" : Tense is not applicable in the analyzed language or is
+   * not predicted.
+   * - "CONDITIONAL_TENSE" : Conditional
+   * - "FUTURE" : Future
+   * - "PAST" : Past
+   * - "PRESENT" : Present
+   * - "IMPERFECT" : Imperfect
+   * - "PLUPERFECT" : Pluperfect
+   */
+  core.String tense;
+  /**
+   * The grammatical voice.
+   * Possible string values are:
+   * - "VOICE_UNKNOWN" : Voice is not applicable in the analyzed language or is
+   * not predicted.
+   * - "ACTIVE" : Active
+   * - "CAUSATIVE" : Causative
+   * - "PASSIVE" : Passive
+   */
+  core.String voice;
 
   PartOfSpeech();
 
   PartOfSpeech.fromJson(core.Map _json) {
+    if (_json.containsKey("aspect")) {
+      aspect = _json["aspect"];
+    }
+    if (_json.containsKey("case")) {
+      case_ = _json["case"];
+    }
+    if (_json.containsKey("form")) {
+      form = _json["form"];
+    }
+    if (_json.containsKey("gender")) {
+      gender = _json["gender"];
+    }
+    if (_json.containsKey("mood")) {
+      mood = _json["mood"];
+    }
+    if (_json.containsKey("number")) {
+      number = _json["number"];
+    }
+    if (_json.containsKey("person")) {
+      person = _json["person"];
+    }
+    if (_json.containsKey("proper")) {
+      proper = _json["proper"];
+    }
+    if (_json.containsKey("reciprocity")) {
+      reciprocity = _json["reciprocity"];
+    }
     if (_json.containsKey("tag")) {
       tag = _json["tag"];
+    }
+    if (_json.containsKey("tense")) {
+      tense = _json["tense"];
+    }
+    if (_json.containsKey("voice")) {
+      voice = _json["voice"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (aspect != null) {
+      _json["aspect"] = aspect;
+    }
+    if (case_ != null) {
+      _json["case"] = case_;
+    }
+    if (form != null) {
+      _json["form"] = form;
+    }
+    if (gender != null) {
+      _json["gender"] = gender;
+    }
+    if (mood != null) {
+      _json["mood"] = mood;
+    }
+    if (number != null) {
+      _json["number"] = number;
+    }
+    if (person != null) {
+      _json["person"] = person;
+    }
+    if (proper != null) {
+      _json["proper"] = proper;
+    }
+    if (reciprocity != null) {
+      _json["reciprocity"] = reciprocity;
+    }
     if (tag != null) {
       _json["tag"] = tag;
+    }
+    if (tense != null) {
+      _json["tense"] = tense;
+    }
+    if (voice != null) {
+      _json["voice"] = voice;
     }
     return _json;
   }
@@ -810,12 +1194,21 @@ class PartOfSpeech {
 
 /** Represents a sentence in the input document. */
 class Sentence {
+  /**
+   * For calls to AnalyzeSentiment or if
+   * AnnotateTextRequest.Features.extract_document_sentiment is set to
+   * true, this field will contain the sentiment for the sentence.
+   */
+  Sentiment sentiment;
   /** The sentence text. */
   TextSpan text;
 
   Sentence();
 
   Sentence.fromJson(core.Map _json) {
+    if (_json.containsKey("sentiment")) {
+      sentiment = new Sentiment.fromJson(_json["sentiment"]);
+    }
     if (_json.containsKey("text")) {
       text = new TextSpan.fromJson(_json["text"]);
     }
@@ -823,6 +1216,9 @@ class Sentence {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (sentiment != null) {
+      _json["sentiment"] = (sentiment).toJson();
+    }
     if (text != null) {
       _json["text"] = (text).toJson();
     }
@@ -837,7 +1233,7 @@ class Sentence {
 class Sentiment {
   /**
    * A non-negative number in the [0, +inf) range, which represents
-   * the absolute magnitude of sentiment regardless of polarity (positive or
+   * the absolute magnitude of sentiment regardless of score (positive or
    * negative).
    */
   core.double magnitude;
@@ -847,6 +1243,11 @@ class Sentiment {
    * https://cloud.google.com/natural-language/docs for more information.
    */
   core.double polarity;
+  /**
+   * Sentiment score between -1.0 (negative sentiment) and 1.0
+   * (positive sentiment).
+   */
+  core.double score;
 
   Sentiment();
 
@@ -857,6 +1258,9 @@ class Sentiment {
     if (_json.containsKey("polarity")) {
       polarity = _json["polarity"];
     }
+    if (_json.containsKey("score")) {
+      score = _json["score"];
+    }
   }
 
   core.Map toJson() {
@@ -866,6 +1270,9 @@ class Sentiment {
     }
     if (polarity != null) {
       _json["polarity"] = polarity;
+    }
+    if (score != null) {
+      _json["score"] = score;
     }
     return _json;
   }
@@ -1012,8 +1419,7 @@ class Token {
   /** Dependency tree parse for this token. */
   DependencyEdge dependencyEdge;
   /**
-   * [Lemma](https://en.wikipedia.org/wiki/Lemma_(morphology))
-   * of the token.
+   * [Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.
    */
   core.String lemma;
   /** Parts of speech tag for this token. */

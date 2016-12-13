@@ -140,7 +140,7 @@
             }
         }
     },
-    "revision": "20161011",
+    "revision": "20161129",
     "rootUrl": "https://analyticsreporting.googleapis.com/",
     "schemas": {
         "PivotHeader": {
@@ -645,6 +645,11 @@
                         "$ref": "ReportRow"
                     },
                     "type": "array"
+                },
+                "dataLastRefreshed": {
+                    "description": "The last time the data in the report was refreshed. All the hits received\nbefore this timestamp are included in the calculation of the report.",
+                    "format": "google-datetime",
+                    "type": "string"
                 },
                 "totals": {
                     "description": "For each requested date range, for the set of all rows that match\nthe query, every requested value format gets a total. The total\nfor a value format is computed by first totaling the metrics\nmentioned in the value format and then evaluating the value\nformat as a scalar expression.  E.g., The \"totals\" for\n`3 / (ga:sessions + 2)` we compute\n`3 / ((sum of all relevant ga:sessions) + 2)`.\nTotals are computed before pagination.",

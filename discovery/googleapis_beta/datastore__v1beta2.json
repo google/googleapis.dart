@@ -20,10 +20,10 @@
     "description": "Stores and queries data in Google Cloud Datastore.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/datastore/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/xlRfXybj491s9T9Q90yjlG-attA\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/KnvSOTZ1D3HuWYBmolpDipcu9hU\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "datastore:v1beta2",
     "kind": "discovery#restDescription",

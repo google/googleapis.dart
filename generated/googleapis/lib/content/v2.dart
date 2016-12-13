@@ -128,7 +128,8 @@ class AccountsResourceApi {
   }
 
   /**
-   * Deletes a Merchant Center sub-account.
+   * Deletes a Merchant Center sub-account. This method can only be called for
+   * multi-client accounts.
    *
    * Request parameters:
    *
@@ -177,7 +178,10 @@ class AccountsResourceApi {
   }
 
   /**
-   * Retrieves a Merchant Center account.
+   * Retrieves a Merchant Center account. This method can only be called for
+   * accounts to which the managing account has access: either the managing
+   * account itself or sub-accounts if the managing account is a multi-client
+   * account.
    *
    * Request parameters:
    *
@@ -221,7 +225,8 @@ class AccountsResourceApi {
   }
 
   /**
-   * Creates a Merchant Center sub-account.
+   * Creates a Merchant Center sub-account. This method can only be called for
+   * multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -270,7 +275,8 @@ class AccountsResourceApi {
   }
 
   /**
-   * Lists the sub-accounts in your Merchant Center account.
+   * Lists the sub-accounts in your Merchant Center account. This method can
+   * only be called for multi-client accounts.
    *
    * Request parameters:
    *
@@ -320,7 +326,8 @@ class AccountsResourceApi {
   }
 
   /**
-   * Updates a Merchant Center account. This method supports patch semantics.
+   * Updates a Merchant Center account. This method can only be called for
+   * multi-client accounts. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -374,7 +381,8 @@ class AccountsResourceApi {
   }
 
   /**
-   * Updates a Merchant Center account.
+   * Updates a Merchant Center account. This method can only be called for
+   * multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -482,7 +490,10 @@ class AccountshippingResourceApi {
   }
 
   /**
-   * Retrieves the shipping settings of the account.
+   * Retrieves the shipping settings of the account. This method can only be
+   * called for accounts to which the managing account has access: either the
+   * managing account itself or sub-accounts if the managing account is a
+   * multi-client account.
    *
    * Request parameters:
    *
@@ -528,7 +539,7 @@ class AccountshippingResourceApi {
 
   /**
    * Lists the shipping settings of the sub-accounts in your Merchant Center
-   * account.
+   * account. This method can only be called for multi-client accounts.
    *
    * Request parameters:
    *
@@ -578,8 +589,10 @@ class AccountshippingResourceApi {
   }
 
   /**
-   * Updates the shipping settings of the account. This method supports patch
-   * semantics.
+   * Updates the shipping settings of the account. This method can only be
+   * called for accounts to which the managing account has access: either the
+   * managing account itself or sub-accounts if the managing account is a
+   * multi-client account. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -634,7 +647,10 @@ class AccountshippingResourceApi {
   }
 
   /**
-   * Updates the shipping settings of the account.
+   * Updates the shipping settings of the account. This method can only be
+   * called for accounts to which the managing account has access: either the
+   * managing account itself or sub-accounts if the managing account is a
+   * multi-client account.
    *
    * [request] - The metadata request object.
    *
@@ -735,7 +751,10 @@ class AccountstatusesResourceApi {
   }
 
   /**
-   * Retrieves the status of a Merchant Center account.
+   * Retrieves the status of a Merchant Center account. This method can only be
+   * called for accounts to which the managing account has access: either the
+   * managing account itself or sub-accounts if the managing account is a
+   * multi-client account.
    *
    * Request parameters:
    *
@@ -780,6 +799,7 @@ class AccountstatusesResourceApi {
 
   /**
    * Lists the statuses of the sub-accounts in your Merchant Center account.
+   * This method can only be called for multi-client accounts.
    *
    * Request parameters:
    *
@@ -883,7 +903,10 @@ class AccounttaxResourceApi {
   }
 
   /**
-   * Retrieves the tax settings of the account.
+   * Retrieves the tax settings of the account. This method can only be called
+   * for accounts to which the managing account has access: either the managing
+   * account itself or sub-accounts if the managing account is a multi-client
+   * account.
    *
    * Request parameters:
    *
@@ -929,6 +952,7 @@ class AccounttaxResourceApi {
 
   /**
    * Lists the tax settings of the sub-accounts in your Merchant Center account.
+   * This method can only be called for multi-client accounts.
    *
    * Request parameters:
    *
@@ -978,8 +1002,10 @@ class AccounttaxResourceApi {
   }
 
   /**
-   * Updates the tax settings of the account. This method supports patch
-   * semantics.
+   * Updates the tax settings of the account. This method can only be called for
+   * accounts to which the managing account has access: either the managing
+   * account itself or sub-accounts if the managing account is a multi-client
+   * account. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -1034,7 +1060,10 @@ class AccounttaxResourceApi {
   }
 
   /**
-   * Updates the tax settings of the account.
+   * Updates the tax settings of the account. This method can only be called for
+   * accounts to which the managing account has access: either the managing
+   * account itself or sub-accounts if the managing account is a multi-client
+   * account.
    *
    * [request] - The metadata request object.
    *
@@ -1140,7 +1169,8 @@ class DatafeedsResourceApi {
   }
 
   /**
-   * Deletes a datafeed from your Merchant Center account.
+   * Deletes a datafeed from your Merchant Center account. This method can only
+   * be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -1189,7 +1219,8 @@ class DatafeedsResourceApi {
   }
 
   /**
-   * Retrieves a datafeed from your Merchant Center account.
+   * Retrieves a datafeed from your Merchant Center account. This method can
+   * only be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -1233,7 +1264,8 @@ class DatafeedsResourceApi {
   }
 
   /**
-   * Registers a datafeed with your Merchant Center account.
+   * Registers a datafeed with your Merchant Center account. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1282,7 +1314,8 @@ class DatafeedsResourceApi {
   }
 
   /**
-   * Lists the datafeeds in your Merchant Center account.
+   * Lists the datafeeds in your Merchant Center account. This method can only
+   * be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -1332,8 +1365,8 @@ class DatafeedsResourceApi {
   }
 
   /**
-   * Updates a datafeed of your Merchant Center account. This method supports
-   * patch semantics.
+   * Updates a datafeed of your Merchant Center account. This method can only be
+   * called for non-multi-client accounts. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -1387,7 +1420,8 @@ class DatafeedsResourceApi {
   }
 
   /**
-   * Updates a datafeed of your Merchant Center account.
+   * Updates a datafeed of your Merchant Center account. This method can only be
+   * called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1487,7 +1521,8 @@ class DatafeedstatusesResourceApi {
   }
 
   /**
-   * Retrieves the status of a datafeed from your Merchant Center account.
+   * Retrieves the status of a datafeed from your Merchant Center account. This
+   * method can only be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -1531,7 +1566,8 @@ class DatafeedstatusesResourceApi {
   }
 
   /**
-   * Lists the statuses of the datafeeds in your Merchant Center account.
+   * Lists the statuses of the datafeeds in your Merchant Center account. This
+   * method can only be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -1592,7 +1628,7 @@ class InventoryResourceApi {
   /**
    * Updates price and availability for multiple products or stores in a single
    * request. This operation does not update the expiration date of the
-   * products.
+   * products. This method can only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1638,6 +1674,7 @@ class InventoryResourceApi {
   /**
    * Updates price and availability of a product in your Merchant Center
    * account. This operation does not update the expiration date of the product.
+   * This method can only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1708,7 +1745,8 @@ class OrdersResourceApi {
       _requester = client;
 
   /**
-   * Marks an order as acknowledged.
+   * Marks an order as acknowledged. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1758,7 +1796,8 @@ class OrdersResourceApi {
 
   /**
    * Sandbox only. Moves a test order from state "inProgress" to state
-   * "pendingShipment".
+   * "pendingShipment". This method can only be called for non-multi-client
+   * accounts.
    *
    * Request parameters:
    *
@@ -1802,7 +1841,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Cancels all line items in an order.
+   * Cancels all line items in an order. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1851,7 +1891,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Cancels a line item.
+   * Cancels a line item. This method can only be called for non-multi-client
+   * accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1900,7 +1941,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Sandbox only. Creates a test order.
+   * Sandbox only. Creates a test order. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1944,7 +1986,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Retrieves or modifies multiple orders in a single request.
+   * Retrieves or modifies multiple orders in a single request. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -1983,7 +2026,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Retrieves an order from your Merchant Center account.
+   * Retrieves an order from your Merchant Center account. This method can only
+   * be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2027,7 +2071,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Retrieves an order using merchant order id.
+   * Retrieves an order using merchant order id. This method can only be called
+   * for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2072,7 +2117,8 @@ class OrdersResourceApi {
 
   /**
    * Sandbox only. Retrieves an order template that can be used to quickly
-   * create a new order in sandbox.
+   * create a new order in sandbox. This method can only be called for
+   * non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2121,7 +2167,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Lists the orders in your Merchant Center account.
+   * Lists the orders in your Merchant Center account. This method can only be
+   * called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2217,7 +2264,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Refund a portion of the order, up to the full amount paid.
+   * Refund a portion of the order, up to the full amount paid. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -2266,7 +2314,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Returns a line item.
+   * Returns a line item. This method can only be called for non-multi-client
+   * accounts.
    *
    * [request] - The metadata request object.
    *
@@ -2315,7 +2364,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Marks line item(s) as shipped.
+   * Marks line item(s) as shipped. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -2364,7 +2414,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Updates the merchant order ID for a given order.
+   * Updates the merchant order ID for a given order. This method can only be
+   * called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -2413,7 +2464,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Updates a shipment's status, carrier, and/or tracking ID.
+   * Updates a shipment's status, carrier, and/or tracking ID. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -2471,7 +2523,8 @@ class ProductsResourceApi {
       _requester = client;
 
   /**
-   * Retrieves, inserts, and deletes multiple products in a single request.
+   * Retrieves, inserts, and deletes multiple products in a single request. This
+   * method can only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -2515,7 +2568,8 @@ class ProductsResourceApi {
   }
 
   /**
-   * Deletes a product from your Merchant Center account.
+   * Deletes a product from your Merchant Center account. This method can only
+   * be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2564,7 +2618,8 @@ class ProductsResourceApi {
   }
 
   /**
-   * Retrieves a product from your Merchant Center account.
+   * Retrieves a product from your Merchant Center account. This method can only
+   * be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2608,7 +2663,10 @@ class ProductsResourceApi {
   }
 
   /**
-   * Uploads a product to your Merchant Center account.
+   * Uploads a product to your Merchant Center account. If an item with the same
+   * channel, contentLanguage, offerId, and targetCountry already exists, this
+   * method updates that entry. This method can only be called for
+   * non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -2657,7 +2715,8 @@ class ProductsResourceApi {
   }
 
   /**
-   * Lists the products in your Merchant Center account.
+   * Lists the products in your Merchant Center account. This method can only be
+   * called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2723,7 +2782,8 @@ class ProductstatusesResourceApi {
       _requester = client;
 
   /**
-   * Gets the statuses of multiple products in a single request.
+   * Gets the statuses of multiple products in a single request. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -2762,7 +2822,8 @@ class ProductstatusesResourceApi {
   }
 
   /**
-   * Gets the status of a product from your Merchant Center account.
+   * Gets the status of a product from your Merchant Center account. This method
+   * can only be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2806,7 +2867,8 @@ class ProductstatusesResourceApi {
   }
 
   /**
-   * Lists the statuses of the products in your Merchant Center account.
+   * Lists the statuses of the products in your Merchant Center account. This
+   * method can only be called for non-multi-client accounts.
    *
    * Request parameters:
    *
@@ -2917,7 +2979,10 @@ class ShippingsettingsResourceApi {
   }
 
   /**
-   * Retrieves the shipping settings of the account.
+   * Retrieves the shipping settings of the account. This method can only be
+   * called for accounts to which the managing account has access: either the
+   * managing account itself or sub-accounts if the managing account is a
+   * multi-client account.
    *
    * Request parameters:
    *
@@ -3003,7 +3068,7 @@ class ShippingsettingsResourceApi {
 
   /**
    * Lists the shipping settings of the sub-accounts in your Merchant Center
-   * account.
+   * account. This method can only be called for multi-client accounts.
    *
    * Request parameters:
    *
@@ -3053,8 +3118,10 @@ class ShippingsettingsResourceApi {
   }
 
   /**
-   * Updates the shipping settings of the account. This method supports patch
-   * semantics.
+   * Updates the shipping settings of the account. This method can only be
+   * called for accounts to which the managing account has access: either the
+   * managing account itself or sub-accounts if the managing account is a
+   * multi-client account. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -3109,7 +3176,10 @@ class ShippingsettingsResourceApi {
   }
 
   /**
-   * Updates the shipping settings of the account.
+   * Updates the shipping settings of the account. This method can only be
+   * called for accounts to which the managing account has access: either the
+   * managing account itself or sub-accounts if the managing account is a
+   * multi-client account.
    *
    * [request] - The metadata request object.
    *
@@ -7033,8 +7103,7 @@ class OrderCustomer {
    * If set, this indicates the user explicitly chose to opt in or out of
    * providing marketing rights to the merchant. If unset, this indicates the
    * user has already made this choice in a previous purchase, and was thus not
-   * shown the marketing right opt in/out checkbox during the Purchases on
-   * Google checkout flow.
+   * shown the marketing right opt in/out checkbox during the checkout flow.
    */
   core.bool explicitMarketingPreference;
   /** Full name of the customer. */
@@ -11614,8 +11683,8 @@ class TestOrderCustomer {
    * If set, this indicates the user explicitly chose to opt in or out of
    * providing marketing rights to the merchant. If unset, this indicates the
    * user has already made this choice in a previous purchase, and was thus not
-   * shown the marketing right opt in/out checkbox during the Purchases on
-   * Google checkout flow. Optional.
+   * shown the marketing right opt in/out checkbox during the checkout flow.
+   * Optional.
    */
   core.bool explicitMarketingPreference;
   /** Full name of the customer. */

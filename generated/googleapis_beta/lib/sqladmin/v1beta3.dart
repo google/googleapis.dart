@@ -3265,10 +3265,7 @@ class Tier {
   core.String RAM;
   /** This is always sql#tier. */
   core.String kind;
-  /**
-   * The applicable regions for this tier. Can be us-east1, europe-west1, or
-   * asia-east1.
-   */
+  /** The applicable regions for this tier. */
   core.List<core.String> region;
   /**
    * An identifier for the service tier, for example D1, D2 etc. For related

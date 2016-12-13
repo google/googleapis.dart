@@ -21,7 +21,7 @@
     "description": "Send and retrieve trace data from Google Cloud Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Cloud Trace for display, reporting, and analysis.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/tools/cloud-trace",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/avS4leRd3oaImhwLi14P2pt74p0\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/avS4leRd3oaImhwLi14P2pt74p0\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

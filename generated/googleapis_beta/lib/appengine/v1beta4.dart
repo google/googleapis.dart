@@ -48,9 +48,9 @@ class AppsResourceApi {
   /**
    * Creates an App Engine application for a Google Cloud Platform project. This
    * requires a project that excludes an App Engine application. For details
-   * about creating a project without an application, see the [Google Cloud
-   * Resource Manager create project
-   * topic](https://cloud.google.com/resource-manager/docs/creating-project).
+   * about creating a project without an application, see the Google Cloud
+   * Resource Manager create project topic
+   * (https://cloud.google.com/resource-manager/docs/creating-project).
    *
    * [request] - The metadata request object.
    *
@@ -94,13 +94,13 @@ class AppsResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the application to get. Example:
-   * `apps/myapp`.
+   * apps/myapp.
    *
    * [ensureResourcesExist] - Certain resources associated with an application
    * are created on-demand. Controls whether these resources should be created
-   * when performing the `GET` operation. If specified and any resources could
-   * not be created, the request will fail with an error code. Additionally,
-   * this parameter can cause the request to take longer to complete.
+   * when performing the GET operation. If specified and any resources could not
+   * be created, the request will fail with an error code. Additionally, this
+   * parameter can cause the request to take longer to complete.
    *
    * Completes with a [Application].
    *
@@ -138,14 +138,18 @@ class AppsResourceApi {
   }
 
   /**
-   * Updates application fields.
+   * Updates the specified Application resource. You can update the following
+   * fields: auth_domain
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps#Application.FIELDS.auth_domain)
+   * default_cookie_expiration
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps#Application.FIELDS.default_cookie_expiration)
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. Name of the application to update. For example:
-   * "apps/myapp".
+   * [appsId] - Part of `name`. Name of the Application resource to update.
+   * Example: apps/myapp.
    *
    * [mask] - Standard field mask for the set of fields to be updated.
    *
@@ -312,7 +316,7 @@ class AppsModulesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default`.
+   * apps/myapp/modules/default.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -357,7 +361,7 @@ class AppsModulesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default`.
+   * apps/myapp/modules/default.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -402,7 +406,7 @@ class AppsModulesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp`.
+   * apps/myapp.
    *
    * [pageSize] - Maximum results to return per page.
    *
@@ -454,25 +458,25 @@ class AppsModulesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource to update. Example:
-   * `apps/myapp/modules/default`.
+   * apps/myapp/modules/default.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
    * [mask] - Standard field mask for the set of fields to be updated.
    *
-   * [migrateTraffic] - Set to `true` to gradually shift traffic from one
-   * version to another single version. By default, traffic is shifted
-   * immediately. For gradual traffic migration, the target version must be
-   * located within instances that are configured for both [warmup
-   * requests](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#inboundservicetype)
-   * and [automatic
-   * scaling](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#automaticscaling).
-   * You must specify the
-   * [`shardBy`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules#shardby)
+   * [migrateTraffic] - Set to true to gradually shift traffic from one version
+   * to another single version. By default, traffic is shifted immediately. For
+   * gradual traffic migration, the target version must be located within
+   * instances that are configured for both warmup requests
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#inboundservicetype)
+   * and automatic scaling
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#automaticscaling).
+   * You must specify the shardBy
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules#shardby)
    * field in the Module resource. Gradual traffic migration is not supported in
-   * the App Engine flexible environment. For examples, see [Migrating and
-   * Splitting
-   * Traffic](https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
+   * the App Engine flexible environment. For examples, see Migrating and
+   * Splitting Traffic
+   * (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
    *
    * Completes with a [Operation].
    *
@@ -537,7 +541,7 @@ class AppsModulesVersionsResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource to update. Example:
-   * `apps/myapp/modules/default`.
+   * apps/myapp/modules/default.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -585,7 +589,7 @@ class AppsModulesVersionsResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default/versions/v1`.
+   * apps/myapp/modules/default/versions/v1.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -630,19 +634,19 @@ class AppsModulesVersionsResourceApi {
   }
 
   /**
-   * Gets the specified Version resource. By default, only a `BASIC_VIEW` will
-   * be returned. Specify the `FULL_VIEW` parameter to get the full resource.
+   * Gets the specified Version resource. By default, only a BASIC_VIEW will be
+   * returned. Specify the FULL_VIEW parameter to get the full resource.
    *
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default/versions/v1`.
+   * apps/myapp/modules/default/versions/v1.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
    * [versionsId] - Part of `name`. See documentation of `appsId`.
    *
-   * [view] - Controls the set of fields returned in the `Get` response.
+   * [view] - Controls the set of fields returned in the Get response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
@@ -694,11 +698,11 @@ class AppsModulesVersionsResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default`.
+   * apps/myapp/modules/default.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
-   * [view] - Controls the set of fields returned in the `List` response.
+   * [view] - Controls the set of fields returned in the List response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
@@ -754,16 +758,17 @@ class AppsModulesVersionsResourceApi {
   /**
    * Updates the specified Version resource. You can specify the following
    * fields depending on the App Engine environment and type of scaling that the
-   * version resource uses: *
-   * [`serving_status`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#Version.FIELDS.serving_status):
+   * version resource uses: serving_status
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#Version.FIELDS.serving_status):
    * For Version resources that use basic scaling, manual scaling, or run in the
-   * App Engine flexible environment. *
-   * [`instance_class`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#Version.FIELDS.instance_class):
-   * For Version resources that run in the App Engine standard environment. *
-   * [`automatic_scaling.min_idle_instances`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#Version.FIELDS.automatic_scaling):
+   * App Engine flexible environment. instance_class
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#Version.FIELDS.instance_class):
+   * For Version resources that run in the App Engine standard environment.
+   * automatic_scaling.min_idle_instances
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#Version.FIELDS.automatic_scaling):
    * For Version resources that use automatic scaling and run in the App Engine
-   * standard environment. *
-   * [`automatic_scaling.max_idle_instances`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#Version.FIELDS.automatic_scaling):
+   * standard environment. automatic_scaling.max_idle_instances
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#Version.FIELDS.automatic_scaling):
    * For Version resources that use automatic scaling and run in the App Engine
    * standard environment.
    *
@@ -772,7 +777,7 @@ class AppsModulesVersionsResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource to update. Example:
-   * `apps/myapp/modules/default/versions/1`.
+   * apps/myapp/modules/default/versions/1.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -838,7 +843,7 @@ class AppsModulesVersionsInstancesResourceApi {
    * to connect to the virtual machine where the instance lives. While in "debug
    * mode", the instance continues to serve live traffic. You should delete the
    * instance when you are done debugging and then allow the system to take over
-   * and determine if another instance should be started. Only applicable for
+   * and determine if another instance should be started.Only applicable for
    * instances in App Engine flexible environment.
    *
    * [request] - The metadata request object.
@@ -846,7 +851,7 @@ class AppsModulesVersionsInstancesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default/versions/v1/instances/instance-1`.
+   * apps/myapp/modules/default/versions/v1/instances/instance-1.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -904,7 +909,7 @@ class AppsModulesVersionsInstancesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default/versions/v1/instances/instance-1`.
+   * apps/myapp/modules/default/versions/v1/instances/instance-1.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -959,7 +964,7 @@ class AppsModulesVersionsInstancesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default/versions/v1/instances/instance-1`.
+   * apps/myapp/modules/default/versions/v1/instances/instance-1.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -1014,7 +1019,7 @@ class AppsModulesVersionsInstancesResourceApi {
    * Request parameters:
    *
    * [appsId] - Part of `name`. Name of the resource requested. Example:
-   * `apps/myapp/modules/default/versions/v1`.
+   * apps/myapp/modules/default/versions/v1.
    *
    * [modulesId] - Part of `name`. See documentation of `appsId`.
    *
@@ -1125,9 +1130,9 @@ class AppsOperationsResourceApi {
 
   /**
    * Lists operations that match the specified filter in the request. If the
-   * server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-   * `name` binding below allows API services to override the binding to use
-   * different resource name schemes, such as `users / * /operations`.
+   * server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
+   * binding below allows API services to override the binding to use different
+   * resource name schemes, such as users / * /operations.
    *
    * Request parameters:
    *
@@ -1185,14 +1190,14 @@ class AppsOperationsResourceApi {
 
 
 /**
- * [Google Cloud
- * Endpoints](https://cloud.google.com/appengine/docs/python/endpoints/)
- * configuration for API handlers.
+ * Google Cloud Endpoints
+ * (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for
+ * API handlers.
  */
 class ApiConfigHandler {
   /**
    * Action to take when users access resources that require authentication.
-   * Defaults to `redirect`.
+   * Defaults to redirect.
    * Possible string values are:
    * - "AUTH_FAIL_ACTION_UNSPECIFIED" : A AUTH_FAIL_ACTION_UNSPECIFIED.
    * - "AUTH_FAIL_ACTION_REDIRECT" : A AUTH_FAIL_ACTION_REDIRECT.
@@ -1200,7 +1205,7 @@ class ApiConfigHandler {
    */
   core.String authFailAction;
   /**
-   * Level of login required to access this resource. Defaults to `optional`.
+   * Level of login required to access this resource. Defaults to optional.
    * Possible string values are:
    * - "LOGIN_UNSPECIFIED" : A LOGIN_UNSPECIFIED.
    * - "LOGIN_OPTIONAL" : A LOGIN_OPTIONAL.
@@ -1293,50 +1298,50 @@ class ApiEndpointHandler {
 class Application {
   /**
    * Google Apps authentication domain that controls which users can access this
-   * application. Defaults to open access for any Google Account.
+   * application.Defaults to open access for any Google Account.
    */
   core.String authDomain;
   /**
    * Google Cloud Storage bucket that can be used for storing files associated
    * with this application. This bucket is associated with the application and
-   * can be used by the gcloud deployment commands. @OutputOnly
+   * can be used by the gcloud deployment commands.@OutputOnly
    */
   core.String codeBucket;
   /**
    * Google Cloud Storage bucket that can be used by this application to store
-   * content. @OutputOnly
+   * content.@OutputOnly
    */
   core.String defaultBucket;
-  /** Cookie expiration policy for this application. @OutputOnly */
+  /** Cookie expiration policy for this application. */
   core.String defaultCookieExpiration;
   /**
-   * Hostname used to reach the application, as resolved by App Engine.
-   * @OutputOnly
+   * Hostname used to reach the application, as resolved by App
+   * Engine.@OutputOnly
    */
   core.String defaultHostname;
   /**
    * HTTP path dispatch rules for requests to the application that do not
-   * explicitly target a module or version. Rules are order-dependent.
-   * @OutputOnly
+   * explicitly target a module or version. Rules are
+   * order-dependent.@OutputOnly
    */
   core.List<UrlDispatchRule> dispatchRules;
   /**
    * Identifier of the Application resource. This identifier is equivalent to
    * the project ID of the Google Cloud Platform project where you want to
-   * deploy your application. Example: `myapp`.
+   * deploy your application. Example: myapp.
    */
   core.String id;
   /**
    * Location from which this application will be run. Application instances
    * will run out of data centers in the chosen location, which is also where
-   * all of the application's end user content is stored. Defaults to
-   * `us-central`. Options are: `us-central` - Central US `europe-west` -
-   * Western Europe `us-east1` - Eastern US
+   * all of the application's end user content is stored.Defaults to
+   * us-central.Options are:us-central - Central USeurope-west - Western
+   * Europeus-east1 - Eastern US
    */
   core.String location;
   /**
-   * Full path to the Application resource in the API. Example: `apps/myapp`.
-   * @OutputOnly
+   * Full path to the Application resource in the API. Example:
+   * apps/myapp.@OutputOnly
    */
   core.String name;
 
@@ -1411,10 +1416,9 @@ class Application {
  */
 class AutomaticScaling {
   /**
-   * Amount of time that the
-   * [Autoscaler](https://cloud.google.com/compute/docs/autoscaler/) should wait
-   * between changes to the number of virtual machines. Only applicable for VM
-   * runtimes.
+   * Amount of time that the Autoscaler
+   * (https://cloud.google.com/compute/docs/autoscaler/) should wait between
+   * changes to the number of virtual machines. Only applicable for VM runtimes.
    */
   core.String coolDownPeriod;
   /** Target scaling by CPU usage. */
@@ -1423,7 +1427,7 @@ class AutomaticScaling {
   DiskUtilization diskUtilization;
   /**
    * Number of concurrent requests an automatic scaling instance can accept
-   * before the scheduler spawns a new instance. Defaults to a runtime-specific
+   * before the scheduler spawns a new instance.Defaults to a runtime-specific
    * value.
    */
   core.int maxConcurrentRequests;
@@ -1640,14 +1644,14 @@ class CpuUtilization {
   }
 }
 
-/** Request message for `Instances.DebugInstance`. */
+/** Request message for Instances.DebugInstance. */
 class DebugInstanceRequest {
   /**
-   * Public SSH key to add to the instance. Example: `[USERNAME]:ssh-rsa
-   * KEY_VALUE` or `[USERNAME]:ssh-rsa [KEY_VALUE] google-ssh
-   * {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}` For more information,
-   * see [Adding and Removing SSH
-   * Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)
+   * Public SSH key to add to the instance. Examples: [USERNAME]:ssh-rsa
+   * [KEY_VALUE] [USERNAME] [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh
+   * {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}For more information,
+   * see Adding and Removing SSH Keys
+   * (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
    */
   core.String sshKey;
 
@@ -1775,7 +1779,7 @@ class ErrorHandler {
    * - "ERROR_CODE_TIMEOUT" : A ERROR_CODE_TIMEOUT.
    */
   core.String errorCode;
-  /** MIME type of file. Defaults to `text/html`. */
+  /** MIME type of file. Defaults to text/html. */
   core.String mimeType;
   /** Static file content to be served for this error. */
   core.String staticFile;
@@ -1815,14 +1819,14 @@ class ErrorHandler {
  */
 class FileInfo {
   /**
-   * The MIME type of the file. Defaults to the value from Google Cloud Storage.
+   * The MIME type of the file.Defaults to the value from Google Cloud Storage.
    */
   core.String mimeType;
   /** The SHA1 hash of the file, in hex. */
   core.String sha1Sum;
   /**
    * URL source to use to fetch this file. Must be a URL to a resource in Google
-   * Cloud Storage in the form 'http(s)://storage.googleapis.com/\/\'.
+   * Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
    */
   core.String sourceUrl;
 
@@ -1946,66 +1950,66 @@ class HealthCheck {
  * automatically scale an application.
  */
 class Instance {
-  /** App Engine release this instance is running on. @OutputOnly */
+  /** App Engine release this instance is running on.@OutputOnly */
   core.String appEngineRelease;
   /**
-   * Availability of the instance. @OutputOnly
+   * Availability of the instance.@OutputOnly
    * Possible string values are:
    * - "UNSPECIFIED" : A UNSPECIFIED.
    * - "RESIDENT" : A RESIDENT.
    * - "DYNAMIC" : A DYNAMIC.
    */
   core.String availability;
-  /** Average latency (ms) over the last minute. @OutputOnly */
+  /** Average latency (ms) over the last minute.@OutputOnly */
   core.int averageLatency;
-  /** Number of errors since this instance was started. @OutputOnly */
+  /** Number of errors since this instance was started.@OutputOnly */
   core.int errors;
   /**
-   * Relative name of the instance within the version. Example: `instance-1`.
-   * @OutputOnly
+   * Relative name of the instance within the version. Example:
+   * instance-1.@OutputOnly
    */
   core.String id;
-  /** Total memory in use (bytes). @OutputOnly */
+  /** Total memory in use (bytes).@OutputOnly */
   core.String memoryUsage;
   /**
    * Full path to the Instance resource in the API. Example:
-   * `apps/myapp/modules/default/versions/v1/instances/instance-1`. @OutputOnly
+   * apps/myapp/modules/default/versions/v1/instances/instance-1.@OutputOnly
    */
   core.String name;
-  /** Average queries per second (QPS) over the last minute. @OutputOnly */
+  /** Average queries per second (QPS) over the last minute.@OutputOnly */
   core.double qps;
-  /** Number of requests since this instance was started. @OutputOnly */
+  /** Number of requests since this instance was started.@OutputOnly */
   core.int requests;
-  /** Time that this instance was started. @OutputOnly */
+  /** Time that this instance was started.@OutputOnly */
   core.String startTimestamp;
   /**
    * Virtual machine ID of this instance. Only applicable for instances in App
-   * Engine flexible environment. @OutputOnly
+   * Engine flexible environment.@OutputOnly
    */
   core.String vmId;
   /**
    * The IP address of this instance. Only applicable for instances in App
-   * Engine flexible environment. @OutputOnly
+   * Engine flexible environment.@OutputOnly
    */
   core.String vmIp;
   /**
    * Name of the virtual machine where this instance lives. Only applicable for
-   * instances in App Engine flexible environment. @OutputOnly
+   * instances in App Engine flexible environment.@OutputOnly
    */
   core.String vmName;
   /**
    * Status of the virtual machine where this instance lives. Only applicable
-   * for instances in App Engine flexible environment. @OutputOnly
+   * for instances in App Engine flexible environment.@OutputOnly
    */
   core.String vmStatus;
   /**
    * Whether this instance is in debug mode. Only applicable for instances in
-   * App Engine flexible environment. @OutputOnly
+   * App Engine flexible environment.@OutputOnly
    */
   core.bool vmUnlocked;
   /**
    * Zone where the virtual machine is located. Only applicable for instances in
-   * App Engine flexible environment. @OutputOnly
+   * App Engine flexible environment.@OutputOnly
    */
   core.String vmZoneName;
 
@@ -2146,7 +2150,7 @@ class Library {
   }
 }
 
-/** Response message for `Instances.ListInstances`. */
+/** Response message for Instances.ListInstances. */
 class ListInstancesResponse {
   /** The instances belonging to the requested version. */
   core.List<Instance> instances;
@@ -2206,7 +2210,7 @@ class ListLocationsResponse {
   }
 }
 
-/** Response message for `Modules.ListModules`. */
+/** Response message for Modules.ListModules. */
 class ListModulesResponse {
   /** The modules belonging to the requested application. */
   core.List<Module> modules;
@@ -2266,7 +2270,7 @@ class ListOperationsResponse {
   }
 }
 
-/** Response message for `Versions.ListVersions`. */
+/** Response message for Versions.ListVersions. */
 class ListVersionsResponse {
   /** Continuation token for fetching the next page of results. */
   core.String nextPageToken;
@@ -2303,7 +2307,7 @@ class Location {
    * {"cloud.googleapis.com/region": "us-east1"}
    */
   core.Map<core.String, core.String> labels;
-  /** The canonical id for this location. For example: `"us-east1"`. */
+  /** The canonical id for this location. For example: "us-east1". */
   core.String locationId;
   /**
    * Service-specific metadata. For example the available capacity at the given
@@ -2315,7 +2319,7 @@ class Location {
   core.Map<core.String, core.Object> metadata;
   /**
    * Resource name for the location, which may vary between implementations. For
-   * example: `"projects/example-project/locations/us-east1"`
+   * example: "projects/example-project/locations/us-east1"
    */
   core.String name;
 
@@ -2357,13 +2361,13 @@ class Location {
 /** Metadata for the given google.cloud.location.Location. */
 class LocationMetadata {
   /**
-   * App Engine Flexible Environment is available in the given location.
-   * @OutputOnly
+   * App Engine Flexible Environment is available in the given
+   * location.@OutputOnly
    */
   core.bool flexibleEnvironmentAvailable;
   /**
-   * App Engine Standard Environment is available in the given location.
-   * @OutputOnly
+   * App Engine Standard Environment is available in the given
+   * location.@OutputOnly
    */
   core.bool standardEnvironmentAvailable;
 
@@ -2397,9 +2401,9 @@ class LocationMetadata {
 class ManualScaling {
   /**
    * Number of instances to assign to the module at the start. This number can
-   * later be altered by using the [Modules
-   * API](https://cloud.google.com/appengine/docs/python/modules/functions)
-   * `set_num_instances()` function.
+   * later be altered by using the Modules API
+   * (https://cloud.google.com/appengine/docs/python/modules/functions)
+   * set_num_instances() function.
    */
   core.int instances;
 
@@ -2430,13 +2434,13 @@ class ManualScaling {
  */
 class Module {
   /**
-   * Relative name of the module within the application. Example: `default`.
-   * @OutputOnly
+   * Relative name of the module within the application. Example:
+   * default.@OutputOnly
    */
   core.String id;
   /**
    * Full path to the Module resource in the API. Example:
-   * `apps/myapp/modules/default`. @OutputOnly
+   * apps/myapp/modules/default.@OutputOnly
    */
   core.String name;
   /**
@@ -2485,7 +2489,7 @@ class Network {
   core.String instanceTag;
   /**
    * Google Cloud Platform network where the virtual machines are created.
-   * Specify the short name, not the resource path. Defaults to `default`.
+   * Specify the short name, not the resource path.Defaults to default.
    */
   core.String name;
 
@@ -2570,8 +2574,8 @@ class NetworkUtilization {
  */
 class Operation {
   /**
-   * If the value is `false`, it means the operation is still in progress. If
-   * true, the operation is completed, and either `error` or `response` is
+   * If the value is false, it means the operation is still in progress. If
+   * true, the operation is completed, and either error or response is
    * available.
    */
   core.bool done;
@@ -2589,18 +2593,18 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
   /**
    * The server-assigned name, which is only unique within the same service that
-   * originally returns it. If you use the default HTTP mapping, the `name`
-   * should have the format of `operations/some/unique/name`.
+   * originally returns it. If you use the default HTTP mapping, the name should
+   * have the format of operations/some/unique/name.
    */
   core.String name;
   /**
    * The normal response of the operation in case of success. If the original
-   * method returns no data on success, such as `Delete`, the response is
-   * `google.protobuf.Empty`. If the original method is standard
-   * `Get`/`Create`/`Update`, the response should be the resource. For other
-   * methods, the response should have the type `XxxResponse`, where `Xxx` is
-   * the original method name. For example, if the original method name is
-   * `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+   * method returns no data on success, such as Delete, the response is
+   * google.protobuf.Empty. If the original method is standard
+   * Get/Create/Update, the response should be the resource. For other methods,
+   * the response should have the type XxxResponse, where Xxx is the original
+   * method name. For example, if the original method name is TakeSnapshot(),
+   * the inferred response type is TakeSnapshotResponse.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2650,26 +2654,26 @@ class Operation {
 
 /** Metadata for the given google.longrunning.Operation. */
 class OperationMetadata {
-  /** Timestamp that this operation completed. @OutputOnly */
+  /** Timestamp that this operation completed.@OutputOnly */
   core.String endTime;
-  /** Timestamp that this operation was created. @OutputOnly */
+  /** Timestamp that this operation was created.@OutputOnly */
   core.String insertTime;
   /**
    * API method that initiated this operation. Example:
-   * `google.appengine.v1beta4.Version.CreateVersion`. @OutputOnly
+   * google.appengine.v1beta4.Version.CreateVersion.@OutputOnly
    */
   core.String method;
   /**
    * Type of this operation. Deprecated, use method field instead. Example:
-   * "create_version". @OutputOnly
+   * "create_version".@OutputOnly
    */
   core.String operationType;
   /**
    * Name of the resource that this operation is acting on. Example:
-   * `apps/myapp/modules/default`. @OutputOnly
+   * apps/myapp/modules/default.@OutputOnly
    */
   core.String target;
-  /** User who requested this operation. @OutputOnly */
+  /** User who requested this operation.@OutputOnly */
   core.String user;
 
   OperationMetadata();
@@ -2721,22 +2725,21 @@ class OperationMetadata {
 
 /** Metadata for the given google.longrunning.Operation. */
 class OperationMetadataExperimental {
-  /** Time that this operation completed. @OutputOnly */
+  /** Time that this operation completed.@OutputOnly */
   core.String endTime;
-  /** Time that this operation was created. @OutputOnly */
+  /** Time that this operation was created.@OutputOnly */
   core.String insertTime;
   /**
    * API method that initiated this operation. Example:
-   * `google.appengine.experimental.CustomDomains.CreateCustomDomain`.
-   * @OutputOnly
+   * google.appengine.experimental.CustomDomains.CreateCustomDomain.@OutputOnly
    */
   core.String method;
   /**
    * Name of the resource that this operation is acting on. Example:
-   * `apps/myapp/customDomains/example.com`. @OutputOnly
+   * apps/myapp/customDomains/example.com.@OutputOnly
    */
   core.String target;
-  /** User who requested this operation. @OutputOnly */
+  /** User who requested this operation.@OutputOnly */
   core.String user;
 
   OperationMetadataExperimental();
@@ -2782,28 +2785,38 @@ class OperationMetadataExperimental {
 
 /** Metadata for the given google.longrunning.Operation. */
 class OperationMetadataV1 {
-  /** Time that this operation completed. @OutputOnly */
+  /** Time that this operation completed.@OutputOnly */
   core.String endTime;
-  /** Time that this operation was created. @OutputOnly */
+  /**
+   * Ephemeral message that may change every time the operation is polled.
+   * @OutputOnly
+   */
+  core.String ephemeralMessage;
+  /** Time that this operation was created.@OutputOnly */
   core.String insertTime;
   /**
    * API method that initiated this operation. Example:
-   * `google.appengine.v1.Versions.CreateVersion`. @OutputOnly
+   * google.appengine.v1.Versions.CreateVersion.@OutputOnly
    */
   core.String method;
   /**
    * Name of the resource that this operation is acting on. Example:
-   * `apps/myapp/services/default`. @OutputOnly
+   * apps/myapp/services/default.@OutputOnly
    */
   core.String target;
-  /** User who requested this operation. @OutputOnly */
+  /** User who requested this operation.@OutputOnly */
   core.String user;
+  /** Durable messages that persist on every operation poll. @OutputOnly */
+  core.List<core.String> warning;
 
   OperationMetadataV1();
 
   OperationMetadataV1.fromJson(core.Map _json) {
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
+    }
+    if (_json.containsKey("ephemeralMessage")) {
+      ephemeralMessage = _json["ephemeralMessage"];
     }
     if (_json.containsKey("insertTime")) {
       insertTime = _json["insertTime"];
@@ -2817,12 +2830,18 @@ class OperationMetadataV1 {
     if (_json.containsKey("user")) {
       user = _json["user"];
     }
+    if (_json.containsKey("warning")) {
+      warning = _json["warning"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (endTime != null) {
       _json["endTime"] = endTime;
+    }
+    if (ephemeralMessage != null) {
+      _json["ephemeralMessage"] = ephemeralMessage;
     }
     if (insertTime != null) {
       _json["insertTime"] = insertTime;
@@ -2836,27 +2855,30 @@ class OperationMetadataV1 {
     if (user != null) {
       _json["user"] = user;
     }
+    if (warning != null) {
+      _json["warning"] = warning;
+    }
     return _json;
   }
 }
 
 /** Metadata for the given google.longrunning.Operation. */
 class OperationMetadataV1Beta5 {
-  /** Timestamp that this operation completed. @OutputOnly */
+  /** Timestamp that this operation completed.@OutputOnly */
   core.String endTime;
-  /** Timestamp that this operation was created. @OutputOnly */
+  /** Timestamp that this operation was created.@OutputOnly */
   core.String insertTime;
   /**
    * API method name that initiated this operation. Example:
-   * `google.appengine.v1beta5.Version.CreateVersion`. @OutputOnly
+   * google.appengine.v1beta5.Version.CreateVersion.@OutputOnly
    */
   core.String method;
   /**
    * Name of the resource that this operation is acting on. Example:
-   * `apps/myapp/services/default`. @OutputOnly
+   * apps/myapp/services/default.@OutputOnly
    */
   core.String target;
-  /** User who requested this operation. @OutputOnly */
+  /** User who requested this operation.@OutputOnly */
   core.String user;
 
   OperationMetadataV1Beta5();
@@ -2938,6 +2960,8 @@ class Resources {
   core.double diskGb;
   /** Memory (GB) needed. */
   core.double memoryGb;
+  /** User specified volumes. */
+  core.List<Volume> volumes;
 
   Resources();
 
@@ -2951,6 +2975,9 @@ class Resources {
     if (_json.containsKey("memoryGb")) {
       memoryGb = _json["memoryGb"];
     }
+    if (_json.containsKey("volumes")) {
+      volumes = _json["volumes"].map((value) => new Volume.fromJson(value)).toList();
+    }
   }
 
   core.Map toJson() {
@@ -2963,6 +2990,9 @@ class Resources {
     }
     if (memoryGb != null) {
       _json["memoryGb"] = memoryGb;
+    }
+    if (volumes != null) {
+      _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3047,7 +3077,7 @@ class StaticDirectoryHandler {
   /**
    * Path to the directory containing the static files from the application root
    * directory. Everything after the end of the matched URL pattern is appended
-   * to `static_dir` to form the full path to the requested file.
+   * to static_dir to form the full path to the requested file.
    */
   core.String directory;
   /** Time a static file served by this handler should be cached. */
@@ -3209,39 +3239,38 @@ class StaticFilesHandler {
 }
 
 /**
- * The `Status` type defines a logical error model that is suitable for
- * different programming environments, including REST APIs and RPC APIs. It is
- * used by [gRPC](https://github.com/grpc). The error model is designed to be: -
- * Simple to use and understand for most users - Flexible enough to meet
- * unexpected needs # Overview The `Status` message contains three pieces of
- * data: error code, error message, and error details. The error code should be
- * an enum value of google.rpc.Code, but it may accept additional error codes if
- * needed. The error message should be a developer-facing English message that
- * helps developers *understand* and *resolve* the error. If a localized
- * user-facing error message is needed, put the localized message in the error
- * details or localize it in the client. The optional error details may contain
- * arbitrary information about the error. There is a predefined set of error
- * detail types in the package `google.rpc` which can be used for common error
- * conditions. # Language mapping The `Status` message is the logical
- * representation of the error model, but it is not necessarily the actual wire
- * format. When the `Status` message is exposed in different client libraries
- * and different wire protocols, it can be mapped differently. For example, it
- * will likely be mapped to some exceptions in Java, but more likely mapped to
- * some error codes in C. # Other uses The error model and the `Status` message
- * can be used in a variety of environments, either with or without APIs, to
- * provide a consistent developer experience across different environments.
- * Example uses of this error model include: - Partial errors. If a service
- * needs to return partial errors to the client, it may embed the `Status` in
- * the normal response to indicate the partial errors. - Workflow errors. A
- * typical workflow has multiple steps. Each step may have a `Status` message
- * for error reporting purpose. - Batch operations. If a client uses batch
- * request and batch response, the `Status` message should be used directly
- * inside batch response, one for each error sub-response. - Asynchronous
- * operations. If an API call embeds asynchronous operation results in its
- * response, the status of those operations should be represented directly using
- * the `Status` message. - Logging. If some API errors are stored in logs, the
- * message `Status` could be used directly after any stripping needed for
- * security/privacy reasons.
+ * The Status type defines a logical error model that is suitable for different
+ * programming environments, including REST APIs and RPC APIs. It is used by
+ * gRPC (https://github.com/grpc). The error model is designed to be: Simple to
+ * use and understand for most users Flexible enough to meet unexpected
+ * needsOverviewThe Status message contains three pieces of data: error code,
+ * error message, and error details. The error code should be an enum value of
+ * google.rpc.Code, but it may accept additional error codes if needed. The
+ * error message should be a developer-facing English message that helps
+ * developers understand and resolve the error. If a localized user-facing error
+ * message is needed, put the localized message in the error details or localize
+ * it in the client. The optional error details may contain arbitrary
+ * information about the error. There is a predefined set of error detail types
+ * in the package google.rpc which can be used for common error
+ * conditions.Language mappingThe Status message is the logical representation
+ * of the error model, but it is not necessarily the actual wire format. When
+ * the Status message is exposed in different client libraries and different
+ * wire protocols, it can be mapped differently. For example, it will likely be
+ * mapped to some exceptions in Java, but more likely mapped to some error codes
+ * in C.Other usesThe error model and the Status message can be used in a
+ * variety of environments, either with or without APIs, to provide a consistent
+ * developer experience across different environments.Example uses of this error
+ * model include: Partial errors. If a service needs to return partial errors to
+ * the client, it may embed the Status in the normal response to indicate the
+ * partial errors. Workflow errors. A typical workflow has multiple steps. Each
+ * step may have a Status message for error reporting purpose. Batch operations.
+ * If a client uses batch request and batch response, the Status message should
+ * be used directly inside batch response, one for each error sub-response.
+ * Asynchronous operations. If an API call embeds asynchronous operation results
+ * in its response, the status of those operations should be represented
+ * directly using the Status message. Logging. If some API errors are stored in
+ * logs, the message Status could be used directly after any stripping needed
+ * for security/privacy reasons.
  */
 class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -3342,17 +3371,17 @@ class TrafficSplit {
 /** Rules to match an HTTP request and dispatch that request to a module. */
 class UrlDispatchRule {
   /**
-   * Domain name to match against. The wildcard "`*`" is supported if specified
-   * before a period: "`*.`". Defaults to matching all domains: "`*`".
+   * Domain name to match against. The wildcard "*" is supported if specified
+   * before a period: "*.".Defaults to matching all domains: "*".
    */
   core.String domain;
   /**
    * Resource ID of a module in this application that should serve the matched
-   * request. The module must already exist. Example: `default`.
+   * request. The module must already exist. Example: default.
    */
   core.String module;
   /**
-   * Pathname within the host. Must start with a "`/`". A single "`*`" can be
+   * Pathname within the host. Must start with a "/". A single "*" can be
    * included at the end of the path. The sum of the lengths of the domain and
    * path may not exceed 100 characters.
    */
@@ -3397,7 +3426,7 @@ class UrlMap {
   ApiEndpointHandler apiEndpoint;
   /**
    * Action to take when users access resources that require authentication.
-   * Defaults to `redirect`.
+   * Defaults to redirect.
    * Possible string values are:
    * - "AUTH_FAIL_ACTION_UNSPECIFIED" : A AUTH_FAIL_ACTION_UNSPECIFIED.
    * - "AUTH_FAIL_ACTION_REDIRECT" : A AUTH_FAIL_ACTION_REDIRECT.
@@ -3414,8 +3443,8 @@ class UrlMap {
    */
   core.String login;
   /**
-   * `30x` code to use when performing redirects for the `secure` field.
-   * Defaults to `302`.
+   * 30x code to use when performing redirects for the secure field. Defaults to
+   * 302.
    * Possible string values are:
    * - "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED" : A
    * REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED.
@@ -3438,9 +3467,9 @@ class UrlMap {
    */
   core.String securityLevel;
   /**
-   * Serves the entire contents of a directory as static files. This attribute
-   * is deprecated. You can mimic the behavior of static directories using
-   * static files.
+   * Serves the entire contents of a directory as static files.This attribute is
+   * deprecated. You can mimic the behavior of static directories using static
+   * files.
    */
   StaticDirectoryHandler staticDirectory;
   /** Returns the contents of a file, such as an image, as the response. */
@@ -3524,9 +3553,9 @@ class UrlMap {
  */
 class Version {
   /**
-   * Serving configuration for [Google Cloud
-   * Endpoints](https://cloud.google.com/appengine/docs/python/endpoints/). Only
-   * returned in `GET` requests if `view=FULL` is set.
+   * Serving configuration for Google Cloud Endpoints
+   * (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned
+   * in GET requests if view=FULL is set.
    */
   ApiConfigHandler apiConfig;
   /**
@@ -3546,54 +3575,54 @@ class Version {
    * features.
    */
   core.Map<core.String, core.String> betaSettings;
-  /** Time that this version was created. @OutputOnly */
+  /** Time that this version was created.@OutputOnly */
   core.String creationTime;
   /**
    * Duration that static files should be cached by web proxies and browsers.
-   * Only applicable if the corresponding
-   * [StaticFilesHandler](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#staticfileshandler)
-   * does not specify its own expiration time. Only returned in `GET` requests
-   * if `view=FULL` is set.
+   * Only applicable if the corresponding StaticFilesHandler
+   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#staticfileshandler)
+   * does not specify its own expiration time.Only returned in GET requests if
+   * view=FULL is set.
    */
   core.String defaultExpiration;
-  /** Email address of the user who created this version. @OutputOnly */
+  /** Email address of the user who created this version.@OutputOnly */
   core.String deployer;
   /**
-   * Code and application artifacts that make up this version. Only returned in
-   * `GET` requests if `view=FULL` is set.
+   * Code and application artifacts that make up this version.Only returned in
+   * GET requests if view=FULL is set.
    */
   Deployment deployment;
   /**
-   * App Engine execution environment to use for this version. Defaults to `1`.
+   * App Engine execution environment to use for this version.Defaults to 1.
    */
   core.String env;
   /**
-   * Environment variables made available to the application. Only returned in
-   * `GET` requests if `view=FULL` is set.
+   * Environment variables made available to the application.Only returned in
+   * GET requests if view=FULL is set.
    */
   core.Map<core.String, core.String> envVariables;
   /**
-   * Custom static error pages. Limited to 10KB per page. Only returned in `GET`
-   * requests if `view=FULL` is set.
+   * Custom static error pages. Limited to 10KB per page.Only returned in GET
+   * requests if view=FULL is set.
    */
   core.List<ErrorHandler> errorHandlers;
   /**
    * An ordered list of URL-matching patterns that should be applied to incoming
    * requests. The first matching URL handles the request and other request
-   * handlers are not attempted. Only returned in `GET` requests if `view=FULL`
-   * is set.
+   * handlers are not attempted.Only returned in GET requests if view=FULL is
+   * set.
    */
   core.List<UrlMap> handlers;
   /**
    * Configures health checking for VM instances. Unhealthy instances are
-   * stopped and replaced with new instances. Only applicable for VM runtimes.
-   * Only returned in `GET` requests if `view=FULL` is set.
+   * stopped and replaced with new instances. Only applicable for VM
+   * runtimes.Only returned in GET requests if view=FULL is set.
    */
   HealthCheck healthCheck;
   /**
-   * Relative name of the version within the module. Example: `v1`. Version
-   * names can contain only lowercase letters, numbers, or hyphens. Reserved
-   * names: "default", "latest", and any name with the prefix "ah-".
+   * Relative name of the version within the module. Example: v1. Version names
+   * can contain only lowercase letters, numbers, or hyphens. Reserved names:
+   * "default", "latest", and any name with the prefix "ah-".
    */
   core.String id;
   /**
@@ -3602,15 +3631,15 @@ class Version {
    */
   core.List<core.String> inboundServices;
   /**
-   * Instance class that is used to run this version. Valid values are: *
-   * AutomaticScaling: `F1`, `F2`, `F4`, `F4_1G` * ManualScaling or
-   * BasicScaling: `B1`, `B2`, `B4`, `B8`, `B4_1G` Defaults to `F1` for
-   * AutomaticScaling and `B1` for ManualScaling or BasicScaling.
+   * Instance class that is used to run this version. Valid values are:
+   * AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2,
+   * B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling
+   * or BasicScaling.
    */
   core.String instanceClass;
   /**
    * Configuration for third-party Python runtime libraries required by the
-   * application. Only returned in `GET` requests if `view=FULL` is set.
+   * application.Only returned in GET requests if view=FULL is set.
    */
   core.List<Library> libraries;
   /**
@@ -3620,25 +3649,25 @@ class Version {
   ManualScaling manualScaling;
   /**
    * Full path to the Version resource in the API. Example:
-   * `apps/myapp/modules/default/versions/v1`. @OutputOnly
+   * apps/myapp/modules/default/versions/v1.@OutputOnly
    */
   core.String name;
   /** Extra network settings. Only applicable for VM runtimes. */
   Network network;
   /**
    * Files that match this pattern will not be built into this version. Only
-   * applicable for Go runtimes. Only returned in `GET` requests if `view=FULL`
-   * is set.
+   * applicable for Go runtimes.Only returned in GET requests if view=FULL is
+   * set.
    */
   core.String nobuildFilesRegex;
   /** Machine resources for this version. Only applicable for VM runtimes. */
   Resources resources;
-  /** Desired runtime. Example: `python27`. */
+  /** Desired runtime. Example: python27. */
   core.String runtime;
   /**
-   * Current serving status of this version. Only the versions with a `SERVING`
-   * status create instances and can be billed. `SERVING_STATUS_UNSPECIFIED` is
-   * an invalid value. Defaults to `SERVING`.
+   * Current serving status of this version. Only the versions with a SERVING
+   * status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
+   * invalid value. Defaults to SERVING.
    * Possible string values are:
    * - "SERVING_STATUS_UNSPECIFIED" : A SERVING_STATUS_UNSPECIFIED.
    * - "SERVING" : A SERVING.
@@ -3812,6 +3841,46 @@ class Version {
     }
     if (vm != null) {
       _json["vm"] = vm;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Volumes mounted within the app container. Only applicable for VM runtimes.
+ */
+class Volume {
+  /** Unique name for the volume. */
+  core.String name;
+  /** Volume size in gigabytes. */
+  core.double sizeGb;
+  /** Underlying volume type, e.g. 'tmpfs'. */
+  core.String volumeType;
+
+  Volume();
+
+  Volume.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("sizeGb")) {
+      sizeGb = _json["sizeGb"];
+    }
+    if (_json.containsKey("volumeType")) {
+      volumeType = _json["volumeType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (sizeGb != null) {
+      _json["sizeGb"] = sizeGb;
+    }
+    if (volumeType != null) {
+      _json["volumeType"] = volumeType;
     }
     return _json;
   }

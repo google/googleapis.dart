@@ -127,23 +127,23 @@ class AnnotateImageRequest {
 class AnnotateImageResponse {
   /**
    * If set, represents the error message for the operation.
-   * Note that filled-in mage annotations are guaranteed to be
-   * correct, even when <code>error</code> is non-empty.
+   * Note that filled-in image annotations are guaranteed to be
+   * correct, even when `error` is set.
    */
   Status error;
-  /** If present, face detection completed successfully. */
+  /** If present, face detection has completed successfully. */
   core.List<FaceAnnotation> faceAnnotations;
   /** If present, image properties were extracted successfully. */
   ImageProperties imagePropertiesAnnotation;
-  /** If present, label detection completed successfully. */
+  /** If present, label detection has completed successfully. */
   core.List<EntityAnnotation> labelAnnotations;
-  /** If present, landmark detection completed successfully. */
+  /** If present, landmark detection has completed successfully. */
   core.List<EntityAnnotation> landmarkAnnotations;
-  /** If present, logo detection completed successfully. */
+  /** If present, logo detection has completed successfully. */
   core.List<EntityAnnotation> logoAnnotations;
-  /** If present, safe-search annotation completed successfully. */
+  /** If present, safe-search annotation has completed successfully. */
   SafeSearchAnnotation safeSearchAnnotation;
-  /** If present, text (OCR) detection completed successfully. */
+  /** If present, text (OCR) detection has completed successfully. */
   core.List<EntityAnnotation> textAnnotations;
 
   AnnotateImageResponse();
@@ -447,14 +447,14 @@ class Color {
 }
 
 /**
- * Color information consists of RGB channels, score and fraction of
- * image the color occupies in the image.
+ * Color information consists of RGB channels, score, and the fraction of
+ * the image that the color occupies in the image.
  */
 class ColorInfo {
   /** RGB components of the color. */
   Color color;
   /**
-   * Stores the fraction of pixels the color occupies in the image.
+   * The fraction of pixels the color occupies in the image.
    * Value in range [0, 1].
    */
   core.double pixelFraction;
@@ -492,7 +492,7 @@ class ColorInfo {
 
 /** Set of dominant colors and their corresponding scores. */
 class DominantColorsAnnotation {
-  /** RGB color values, with their score and pixel fraction. */
+  /** RGB color values with their score and pixel fraction. */
   core.List<ColorInfo> colors;
 
   DominantColorsAnnotation();
@@ -515,7 +515,7 @@ class DominantColorsAnnotation {
 /** Set of detected entity features. */
 class EntityAnnotation {
   /**
-   * Image region to which this entity belongs. Not filled currently
+   * Image region to which this entity belongs. Currently not produced
    * for `LABEL_DETECTION` features. For `TEXT_DETECTION` (OCR), `boundingPoly`s
    * are produced for the entire text detected in an image region, followed by
    * `boundingPoly`s for each word within the detected text.
@@ -523,46 +523,45 @@ class EntityAnnotation {
   BoundingPoly boundingPoly;
   /**
    * The accuracy of the entity detection in an image.
-   * For example, for an image containing 'Eiffel Tower,' this field represents
-   * the confidence that there is a tower in the query image. Range [0, 1].
+   * For example, for an image in which the "Eiffel Tower" entity is detected,
+   * this field represents the confidence that there is a tower in the query
+   * image. Range [0, 1].
    */
   core.double confidence;
-  /**
-   * Entity textual description, expressed in its <code>locale</code> language.
-   */
+  /** Entity textual description, expressed in its `locale` language. */
   core.String description;
   /**
    * The language code for the locale in which the entity textual
-   * <code>description</code> (next field) is expressed.
+   * `description` is expressed.
    */
   core.String locale;
   /**
    * The location information for the detected entity. Multiple
-   * <code>LocationInfo</code> elements can be present since one location may
-   * indicate the location of the scene in the query image, and another the
-   * location of the place where the query image was taken. Location information
-   * is usually present for landmarks.
+   * `LocationInfo` elements can be present because one location may
+   * indicate the location of the scene in the image, and another location
+   * may indicate the location of the place where the image was taken.
+   * Location information is usually present for landmarks.
    */
   core.List<LocationInfo> locations;
   /**
-   * Opaque entity ID. Some IDs might be available in Knowledge Graph(KG).
-   * For more details on KG please see:
-   * https://developers.google.com/knowledge-graph/
+   * Opaque entity ID. Some IDs may be available in
+   * [Google Knowledge Graph Search
+   * API](https://developers.google.com/knowledge-graph/).
    */
   core.String mid;
   /**
-   * Some entities can have additional optional <code>Property</code> fields.
-   * For example a different kind of score or string that qualifies the entity.
+   * Some entities may have optional user-supplied `Property` (name/value)
+   * fields, such a score or string that qualifies the entity.
    */
   core.List<Property> properties;
   /** Overall score of the result. Range [0, 1]. */
   core.double score;
   /**
    * The relevancy of the ICA (Image Content Annotation) label to the
-   * image. For example, the relevancy of 'tower' to an image containing
-   * 'Eiffel Tower' is likely higher than an image containing a distant towering
-   * building, though the confidence that there is a tower may be the same.
-   * Range [0, 1].
+   * image. For example, the relevancy of "tower" is likely higher to an image
+   * containing the detected "Eiffel Tower" than to an image containing a
+   * detected distant towering building, even though the confidence that
+   * there is a tower in each image may be the same. Range [0, 1].
    */
   core.double topicality;
 
@@ -637,44 +636,48 @@ class FaceAnnotation {
    * Anger likelihood.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String angerLikelihood;
   /**
    * Blurred likelihood.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String blurredLikelihood;
   /**
    * The bounding polygon around the face. The coordinates of the bounding box
-   * are in the original image's scale, as returned in ImageParams.
+   * are in the original image's scale, as returned in `ImageParams`.
    * The bounding box is computed to "frame" the face in accordance with human
    * expectations. It is based on the landmarker results.
    * Note that one or more x and/or y coordinates may not be generated in the
-   * BoundingPoly (the polygon will be unbounded) if only a partial face appears
-   * in
-   * the image to be annotated.
+   * `BoundingPoly` (the polygon will be unbounded) if only a partial face
+   * appears in the image to be annotated.
    */
   BoundingPoly boundingPoly;
   /** Detection confidence. Range [0, 1]. */
   core.double detectionConfidence;
   /**
-   * This bounding polygon is tighter than the previous
-   * <code>boundingPoly</code>, and
-   * encloses only the skin part of the face. Typically, it is used to
-   * eliminate the face from any image analysis that detects the
+   * The `fd_bounding_poly` bounding polygon is tighter than the
+   * `boundingPoly`, and encloses only the skin part of the face. Typically, it
+   * is used to eliminate the face from any image analysis that detects the
    * "amount of skin" visible in an image. It is not based on the
    * landmarker results, only on the initial face detection, hence
    * the <code>fd</code> (face detection) prefix.
@@ -684,24 +687,30 @@ class FaceAnnotation {
    * Headwear likelihood.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String headwearLikelihood;
   /**
    * Joy likelihood.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String joyLikelihood;
   /** Face landmarking confidence. Range [0, 1]. */
@@ -709,58 +718,65 @@ class FaceAnnotation {
   /** Detected face landmarks. */
   core.List<Landmark> landmarks;
   /**
-   * Yaw angle. Indicates the leftward/rightward angle that the face is
-   * pointing, relative to the vertical plane perpendicular to the image. Range
+   * Yaw angle, which indicates the leftward/rightward angle that the face is
+   * pointing relative to the vertical plane perpendicular to the image. Range
    * [-180,180].
    */
   core.double panAngle;
   /**
-   * Roll angle. Indicates the amount of clockwise/anti-clockwise rotation of
-   * the
-   * face relative to the image vertical, about the axis perpendicular to the
-   * face. Range [-180,180].
+   * Roll angle, which indicates the amount of clockwise/anti-clockwise rotation
+   * of the face relative to the image vertical about the axis perpendicular to
+   * the face. Range [-180,180].
    */
   core.double rollAngle;
   /**
    * Sorrow likelihood.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String sorrowLikelihood;
   /**
    * Surprise likelihood.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String surpriseLikelihood;
   /**
-   * Pitch angle. Indicates the upwards/downwards angle that the face is
-   * pointing
-   * relative to the image's horizontal plane. Range [-180,180].
+   * Pitch angle, which indicates the upwards/downwards angle that the face is
+   * pointing relative to the image's horizontal plane. Range [-180,180].
    */
   core.double tiltAngle;
   /**
    * Under-exposed likelihood.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String underExposedLikelihood;
 
@@ -866,9 +882,9 @@ class FaceAnnotation {
 }
 
 /**
- * The <em>Feature</em> indicates what type of image detection task to perform.
  * Users describe the type of Google Cloud Vision API tasks to perform over
- * images by using <em>Feature</em>s. Features encode the Cloud Vision API
+ * images by using *Feature*s. Each Feature indicates a type of image
+ * detection task to perform. Features encode the Cloud Vision API
  * vertical to operate on and the number of top-scoring results to return.
  */
 class Feature {
@@ -883,10 +899,10 @@ class Feature {
    * - "LOGO_DETECTION" : Run logo detection.
    * - "LABEL_DETECTION" : Run label detection.
    * - "TEXT_DETECTION" : Run OCR.
-   * - "SAFE_SEARCH_DETECTION" : Run various computer vision models to compute
-   * image safe-search properties.
-   * - "IMAGE_PROPERTIES" : Compute a set of properties about the image (such as
-   * the image's dominant colors).
+   * - "SAFE_SEARCH_DETECTION" : Run computer vision models to compute image
+   * safe-search properties.
+   * - "IMAGE_PROPERTIES" : Compute a set of image properties, such as the
+   * image's dominant colors.
    */
   core.String type;
 
@@ -929,9 +945,9 @@ class Image {
     content = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
-   * Google Cloud Storage image location. If both 'content' and 'source'
-   * are filled for an image, 'content' takes precedence and it will be
-   * used for performing the image annotation request.
+   * Google Cloud Storage image location. If both `content` and `source`
+   * are provided for an image, `content` takes precedence and is
+   * used to perform the image annotation request.
    */
   ImageSource source;
 
@@ -968,11 +984,10 @@ class ImageContext {
    * setting a hint will help get better results (although it will be a
    * significant hindrance if the hint is wrong). Text detection returns an
    * error if one or more of the specified languages is not one of the
-   * [supported
-   * languages](/translate/v2/translate-reference#supported_languages).
+   * [supported languages](/vision/docs/languages).
    */
   core.List<core.String> languageHints;
-  /** Lat/long rectangle that specifies the location of the image. */
+  /** lat/long rectangle that specifies the location of the image. */
   LatLongRect latLongRect;
 
   ImageContext();
@@ -998,7 +1013,7 @@ class ImageContext {
   }
 }
 
-/** Stores image properties (e.g. dominant colors). */
+/** Stores image properties, such as dominant colors. */
 class ImageProperties {
   /** If present, dominant colors completed successfully. */
   DominantColorsAnnotation dominantColors;
@@ -1023,10 +1038,11 @@ class ImageProperties {
 /** External image source (Google Cloud Storage image location). */
 class ImageSource {
   /**
-   * Google Cloud Storage image URI. It must be in the following form:
-   * `gs://bucket_name/object_name`. For more
-   * details, please see: https://cloud.google.com/storage/docs/reference-uris.
-   * NOTE: Cloud Storage object versioning is not supported!
+   * Google Cloud Storage image URI, which must be in the following form:
+   * `gs://bucket_name/object_name` (for details, see
+   * [Google Cloud Storage Request
+   * URIs](https://cloud.google.com/storage/docs/reference-uris)).
+   * NOTE: Cloud Storage object versioning is not supported.
    */
   core.String gcsImageUri;
 
@@ -1050,8 +1066,9 @@ class ImageSource {
 /**
  * A face-specific landmark (for example, a face feature).
  * Landmark positions may fall outside the bounds of the image
- * when the face is near one or more edges of the image.
- * Therefore it is NOT guaranteed that 0 <= x < width or 0 <= y < height.
+ * if the face is near one or more edges of the image.
+ * Therefore it is NOT guaranteed that `0 <= x < width` or
+ * `0 <= y < height`.
  */
 class Landmark {
   /** Face landmark position. */
@@ -1191,7 +1208,7 @@ class LatLng {
   }
 }
 
-/** Rectangle determined by min and max LatLng pairs. */
+/** Rectangle determined by min and max `LatLng` pairs. */
 class LatLongRect {
   /** Max lat/long pair. */
   LatLng maxLatLng;
@@ -1223,7 +1240,7 @@ class LatLongRect {
 
 /** Detected entity location information. */
 class LocationInfo {
-  /** Lat - long location coordinates. */
+  /** lat/long location coordinates. */
   LatLng latLng;
 
   LocationInfo();
@@ -1285,7 +1302,7 @@ class Position {
   }
 }
 
-/** Arbitrary name/value pair. */
+/** A `Property` consists of a user-supplied name/value pair. */
 class Property {
   /** Name of the property. */
   core.String name;
@@ -1315,60 +1332,67 @@ class Property {
   }
 }
 
-/**
- * Set of features pertaining to the image, computed by various computer vision
- * methods over safe-search verticals (for example, adult, spoof, medical,
- * violence).
- */
 class SafeSearchAnnotation {
   /**
-   * Represents the adult contents likelihood for the image.
+   * Represents the adult content likelihood for the image.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String adult;
   /**
-   * Likelihood this is a medical image.
+   * Likelihood that this is a medical image.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String medical;
   /**
-   * Spoof likelihood. The likelihood that an obvious modification
+   * Spoof likelihood. The likelihood that an modification
    * was made to the image's canonical version to make it appear
    * funny or offensive.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String spoof;
   /**
    * Violence likelihood.
    * Possible string values are:
    * - "UNKNOWN" : Unknown likelihood.
-   * - "VERY_UNLIKELY" : The image very unlikely belongs to the vertical
-   * specified.
-   * - "UNLIKELY" : The image unlikely belongs to the vertical specified.
-   * - "POSSIBLE" : The image possibly belongs to the vertical specified.
-   * - "LIKELY" : The image likely belongs to the vertical specified.
-   * - "VERY_LIKELY" : The image very likely belongs to the vertical specified.
+   * - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
+   * specified vertical.
+   * - "UNLIKELY" : It is unlikely that the image belongs to the specified
+   * vertical.
+   * - "POSSIBLE" : It is possible that the image belongs to the specified
+   * vertical.
+   * - "LIKELY" : It is likely that the image belongs to the specified vertical.
+   * - "VERY_LIKELY" : It is very likely that the image belongs to the specified
+   * vertical.
    */
   core.String violence;
 

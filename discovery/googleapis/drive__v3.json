@@ -35,7 +35,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/N2fY6s5zrwZA-4JC2uCCHKSs7Ys\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/7Z-iy05XjjWpb2qvzxznsUwRNAo\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1360,9 +1360,11 @@
                             "type": "string"
                         },
                         "pageSize": {
+                            "default": "200",
                             "description": "The maximum number of revisions to return per page.",
                             "format": "int32",
                             "location": "query",
+                            "maximum": "1000",
                             "minimum": "1",
                             "type": "integer"
                         },
@@ -1424,7 +1426,7 @@
             }
         }
     },
-    "revision": "20161027",
+    "revision": "20161201",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -1809,6 +1811,10 @@
                     "description": "The full file extension extracted from the name field. May contain multiple concatenated extensions, such as \"tar.gz\". This is only available for files with binary content in Drive.\nThis is automatically updated when the name field changes, however it is not cleared if the new name does not contain a valid extension.",
                     "type": "string"
                 },
+                "hasThumbnail": {
+                    "description": "Whether this file has a thumbnail.",
+                    "type": "boolean"
+                },
                 "headRevisionId": {
                     "description": "The ID of the file's head revision. This is currently only available for files with binary content in Drive.",
                     "type": "string"
@@ -2048,7 +2054,12 @@
                     "type": "boolean"
                 },
                 "thumbnailLink": {
-                    "description": "A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours.",
+                    "description": "A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours. Only populated when the requesting app can access the file's content.",
+                    "type": "string"
+                },
+                "thumbnailVersion": {
+                    "description": "The thumbnail version for use in client-contructable thumbnail URLs or thumbnail cache invalidation.",
+                    "format": "int64",
                     "type": "string"
                 },
                 "trashed": {

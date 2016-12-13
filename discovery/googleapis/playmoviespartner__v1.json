@@ -15,7 +15,7 @@
     "description": "Gets the delivery status of titles for Google Play Movies Partners.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/playmoviespartner/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/nOdrkDPVE_ecVVN74uINxtcznYM\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/nOdrkDPVE_ecVVN74uINxtcznYM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

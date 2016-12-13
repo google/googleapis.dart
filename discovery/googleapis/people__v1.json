@@ -38,7 +38,7 @@
     "description": "The Google People API service gives access to information about profiles and contacts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/people/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/tzwJjoO4XDFgwNQjmiM8lPsFMzA\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/tzwJjoO4XDFgwNQjmiM8lPsFMzA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

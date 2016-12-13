@@ -15,10 +15,10 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/pwuIwH6if72qJQNYjyHHHlGz_Mo\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/W1AQ-5FwbPweFAs-GFJ9Ju07xes\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "content:v2sandbox",
     "kind": "discovery#restDescription",
@@ -75,7 +75,7 @@
         "orders": {
             "methods": {
                 "acknowledge": {
-                    "description": "Marks an order as acknowledged.",
+                    "description": "Marks an order as acknowledged. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.acknowledge",
                     "parameterOrder": [
@@ -109,7 +109,7 @@
                     ]
                 },
                 "advancetestorder": {
-                    "description": "Sandbox only. Moves a test order from state \"inProgress\" to state \"pendingShipment\".",
+                    "description": "Sandbox only. Moves a test order from state \"inProgress\" to state \"pendingShipment\". This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.advancetestorder",
                     "parameterOrder": [
@@ -140,7 +140,7 @@
                     ]
                 },
                 "cancel": {
-                    "description": "Cancels all line items in an order.",
+                    "description": "Cancels all line items in an order. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.cancel",
                     "parameterOrder": [
@@ -174,7 +174,7 @@
                     ]
                 },
                 "cancellineitem": {
-                    "description": "Cancels a line item.",
+                    "description": "Cancels a line item. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.cancellineitem",
                     "parameterOrder": [
@@ -208,7 +208,7 @@
                     ]
                 },
                 "createtestorder": {
-                    "description": "Sandbox only. Creates a test order.",
+                    "description": "Sandbox only. Creates a test order. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.createtestorder",
                     "parameterOrder": [
@@ -235,7 +235,7 @@
                     ]
                 },
                 "custombatch": {
-                    "description": "Retrieves or modifies multiple orders in a single request.",
+                    "description": "Retrieves or modifies multiple orders in a single request. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.custombatch",
                     "path": "orders/batch",
@@ -250,7 +250,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieves an order from your Merchant Center account.",
+                    "description": "Retrieves an order from your Merchant Center account. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "GET",
                     "id": "content.orders.get",
                     "parameterOrder": [
@@ -281,7 +281,7 @@
                     ]
                 },
                 "getbymerchantorderid": {
-                    "description": "Retrieves an order using merchant order id.",
+                    "description": "Retrieves an order using merchant order id. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "GET",
                     "id": "content.orders.getbymerchantorderid",
                     "parameterOrder": [
@@ -312,7 +312,7 @@
                     ]
                 },
                 "gettestordertemplate": {
-                    "description": "Sandbox only. Retrieves an order template that can be used to quickly create a new order in sandbox.",
+                    "description": "Sandbox only. Retrieves an order template that can be used to quickly create a new order in sandbox. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "GET",
                     "id": "content.orders.gettestordertemplate",
                     "parameterOrder": [
@@ -355,7 +355,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists the orders in your Merchant Center account.",
+                    "description": "Lists the orders in your Merchant Center account. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "GET",
                     "id": "content.orders.list",
                     "parameterOrder": [
@@ -450,7 +450,7 @@
                     ]
                 },
                 "refund": {
-                    "description": "Refund a portion of the order, up to the full amount paid.",
+                    "description": "Refund a portion of the order, up to the full amount paid. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.refund",
                     "parameterOrder": [
@@ -484,7 +484,7 @@
                     ]
                 },
                 "returnlineitem": {
-                    "description": "Returns a line item.",
+                    "description": "Returns a line item. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.returnlineitem",
                     "parameterOrder": [
@@ -518,7 +518,7 @@
                     ]
                 },
                 "shiplineitems": {
-                    "description": "Marks line item(s) as shipped.",
+                    "description": "Marks line item(s) as shipped. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.shiplineitems",
                     "parameterOrder": [
@@ -552,7 +552,7 @@
                     ]
                 },
                 "updatemerchantorderid": {
-                    "description": "Updates the merchant order ID for a given order.",
+                    "description": "Updates the merchant order ID for a given order. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.updatemerchantorderid",
                     "parameterOrder": [
@@ -586,7 +586,7 @@
                     ]
                 },
                 "updateshipment": {
-                    "description": "Updates a shipment's status, carrier, and/or tracking ID.",
+                    "description": "Updates a shipment's status, carrier, and/or tracking ID. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.updateshipment",
                     "parameterOrder": [
@@ -622,7 +622,7 @@
             }
         }
     },
-    "revision": "20161027",
+    "revision": "20161205",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Error": {
@@ -845,7 +845,7 @@
                     "type": "string"
                 },
                 "explicitMarketingPreference": {
-                    "description": "If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow.",
+                    "description": "If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was thus not shown the marketing right opt in/out checkbox during the checkout flow.",
                     "type": "boolean"
                 },
                 "fullName": {
@@ -2072,7 +2072,7 @@
                     "type": "string"
                 },
                 "explicitMarketingPreference": {
-                    "description": "If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow. Optional.",
+                    "description": "If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was thus not shown the marketing right opt in/out checkbox during the checkout flow. Optional.",
                     "type": "boolean"
                 },
                 "fullName": {

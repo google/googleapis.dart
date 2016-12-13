@@ -23,10 +23,10 @@
     "description": "[Deprecated. Please use compute.instanceGroupManagers.update method. replicapoolupdater API will be disabled after December 30th, 2016] Updates groups of Compute Engine instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/P5_iUYh8_v_wVwon8OoBQjkpoLM\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/UEKDxDt-gBRW5wBq_kkcVGVpuQc\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "replicapoolupdater:v1beta1",
     "kind": "discovery#restDescription",

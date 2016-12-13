@@ -1599,6 +1599,7 @@ class QueryResultBatch {
    * In a single transaction, subsequent query result batches for the same query
    * can have a greater snapshot version number. Each batch's snapshot version
    * is valid for all preceding batches.
+   * The value will be zero for eventually consistent queries.
    */
   core.String snapshotVersion;
 

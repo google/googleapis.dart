@@ -281,12 +281,6 @@ class DynamicLinkInfo {
    */
   IosInfo iosInfo;
   /**
-   * Declares that the Dynamic Link is used in an advertisement.
-   * See the 'ad' parameter in the
-   * [documentation](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-programmatically).
-   */
-  core.bool isAd;
-  /**
    * The link your app will open, You can specify any URL your app can handle.
    * This link must be a well-formatted URL, be properly URL-encoded, and use
    * the HTTP or HTTPS scheme. See 'link' parameters in the
@@ -316,9 +310,6 @@ class DynamicLinkInfo {
     if (_json.containsKey("iosInfo")) {
       iosInfo = new IosInfo.fromJson(_json["iosInfo"]);
     }
-    if (_json.containsKey("isAd")) {
-      isAd = _json["isAd"];
-    }
     if (_json.containsKey("link")) {
       link = _json["link"];
     }
@@ -340,9 +331,6 @@ class DynamicLinkInfo {
     }
     if (iosInfo != null) {
       _json["iosInfo"] = (iosInfo).toJson();
-    }
-    if (isAd != null) {
-      _json["isAd"] = isAd;
     }
     if (link != null) {
       _json["link"] = link;

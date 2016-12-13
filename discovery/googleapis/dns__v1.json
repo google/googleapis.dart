@@ -23,10 +23,10 @@
     "description": "Configures and serves authoritative DNS records.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-dns",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/P0aKDo_5VBe9CMpIopb0PHxbpC8\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/kZhVBEml6IgIs86-wixFuVP5H9c\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "dns:v1",
     "kind": "discovery#restDescription",
@@ -442,7 +442,7 @@
             }
         }
     },
-    "revision": "20161020",
+    "revision": "20161130",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Change": {

@@ -24,11 +24,29 @@ class FitnessApi {
   /** View and store your activity information in Google Fit */
   static const FitnessActivityWriteScope = "https://www.googleapis.com/auth/fitness.activity.write";
 
+  /** View blood glucose data in Google Fit */
+  static const FitnessBloodGlucoseReadScope = "https://www.googleapis.com/auth/fitness.blood_glucose.read";
+
+  /** View and store blood glucose data in Google Fit */
+  static const FitnessBloodGlucoseWriteScope = "https://www.googleapis.com/auth/fitness.blood_glucose.write";
+
+  /** View blood pressure data in Google Fit */
+  static const FitnessBloodPressureReadScope = "https://www.googleapis.com/auth/fitness.blood_pressure.read";
+
+  /** View and store blood pressure data in Google Fit */
+  static const FitnessBloodPressureWriteScope = "https://www.googleapis.com/auth/fitness.blood_pressure.write";
+
   /** View body sensor information in Google Fit */
   static const FitnessBodyReadScope = "https://www.googleapis.com/auth/fitness.body.read";
 
   /** View and store body sensor data in Google Fit */
   static const FitnessBodyWriteScope = "https://www.googleapis.com/auth/fitness.body.write";
+
+  /** View body temperature data in Google Fit */
+  static const FitnessBodyTemperatureReadScope = "https://www.googleapis.com/auth/fitness.body_temperature.read";
+
+  /** View and store body temperature data in Google Fit */
+  static const FitnessBodyTemperatureWriteScope = "https://www.googleapis.com/auth/fitness.body_temperature.write";
 
   /** View your stored location data in Google Fit */
   static const FitnessLocationReadScope = "https://www.googleapis.com/auth/fitness.location.read";
@@ -41,6 +59,18 @@ class FitnessApi {
 
   /** View and store nutrition information in Google Fit */
   static const FitnessNutritionWriteScope = "https://www.googleapis.com/auth/fitness.nutrition.write";
+
+  /** View oxygen saturation data in Google Fit */
+  static const FitnessOxygenSaturationReadScope = "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
+
+  /** View and store oxygen saturation data in Google Fit */
+  static const FitnessOxygenSaturationWriteScope = "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
+
+  /** View reproductive health data in Google Fit */
+  static const FitnessReproductiveHealthReadScope = "https://www.googleapis.com/auth/fitness.reproductive_health.read";
+
+  /** View and store reproductive health data in Google Fit */
+  static const FitnessReproductiveHealthWriteScope = "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
 
   final commons.ApiRequester _requester;
@@ -1993,7 +2023,7 @@ class Session {
  * Holder object for the value of a single field in a data point.
  *
  * A field value has a particular format and is only ever set to one of an
- * integer or a floating point value.
+ * integer or a floating point value. LINT.IfChange
  */
 class Value {
   /** Floating point value. When this is set, other values must not be set. */

@@ -114,14 +114,14 @@ checkIssue(api.Issue o) {
   buildCounterIssue--;
 }
 
-buildUnnamed3268() {
+buildUnnamed3058() {
   var o = new core.List<api.Release>();
   o.add(buildRelease());
   o.add(buildRelease());
   return o;
 }
 
-checkUnnamed3268(core.List<api.Release> o) {
+checkUnnamed3058(core.List<api.Release> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRelease(o[0]);
   checkRelease(o[1]);
@@ -133,7 +133,7 @@ buildListReleasesResponse() {
   buildCounterListReleasesResponse++;
   if (buildCounterListReleasesResponse < 3) {
     o.nextPageToken = "foo";
-    o.releases = buildUnnamed3268();
+    o.releases = buildUnnamed3058();
   }
   buildCounterListReleasesResponse--;
   return o;
@@ -143,19 +143,19 @@ checkListReleasesResponse(api.ListReleasesResponse o) {
   buildCounterListReleasesResponse++;
   if (buildCounterListReleasesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3268(o.releases);
+    checkUnnamed3058(o.releases);
   }
   buildCounterListReleasesResponse--;
 }
 
-buildUnnamed3269() {
+buildUnnamed3059() {
   var o = new core.List<api.Ruleset>();
   o.add(buildRuleset());
   o.add(buildRuleset());
   return o;
 }
 
-checkUnnamed3269(core.List<api.Ruleset> o) {
+checkUnnamed3059(core.List<api.Ruleset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRuleset(o[0]);
   checkRuleset(o[1]);
@@ -167,7 +167,7 @@ buildListRulesetsResponse() {
   buildCounterListRulesetsResponse++;
   if (buildCounterListRulesetsResponse < 3) {
     o.nextPageToken = "foo";
-    o.rulesets = buildUnnamed3269();
+    o.rulesets = buildUnnamed3059();
   }
   buildCounterListRulesetsResponse--;
   return o;
@@ -177,7 +177,7 @@ checkListRulesetsResponse(api.ListRulesetsResponse o) {
   buildCounterListRulesetsResponse++;
   if (buildCounterListRulesetsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3269(o.rulesets);
+    checkUnnamed3059(o.rulesets);
   }
   buildCounterListRulesetsResponse--;
 }
@@ -230,14 +230,14 @@ checkRuleset(api.Ruleset o) {
   buildCounterRuleset--;
 }
 
-buildUnnamed3270() {
+buildUnnamed3060() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed3270(core.List<api.File> o) {
+checkUnnamed3060(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -248,7 +248,7 @@ buildSource() {
   var o = new api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    o.files = buildUnnamed3270();
+    o.files = buildUnnamed3060();
   }
   buildCounterSource--;
   return o;
@@ -257,7 +257,7 @@ buildSource() {
 checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    checkUnnamed3270(o.files);
+    checkUnnamed3060(o.files);
   }
   buildCounterSource--;
 }
@@ -304,14 +304,14 @@ checkTestRulesetRequest(api.TestRulesetRequest o) {
   buildCounterTestRulesetRequest--;
 }
 
-buildUnnamed3271() {
+buildUnnamed3061() {
   var o = new core.List<api.Issue>();
   o.add(buildIssue());
   o.add(buildIssue());
   return o;
 }
 
-checkUnnamed3271(core.List<api.Issue> o) {
+checkUnnamed3061(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssue(o[0]);
   checkIssue(o[1]);
@@ -322,7 +322,7 @@ buildTestRulesetResponse() {
   var o = new api.TestRulesetResponse();
   buildCounterTestRulesetResponse++;
   if (buildCounterTestRulesetResponse < 3) {
-    o.issues = buildUnnamed3271();
+    o.issues = buildUnnamed3061();
   }
   buildCounterTestRulesetResponse--;
   return o;
@@ -331,7 +331,7 @@ buildTestRulesetResponse() {
 checkTestRulesetResponse(api.TestRulesetResponse o) {
   buildCounterTestRulesetResponse++;
   if (buildCounterTestRulesetResponse < 3) {
-    checkUnnamed3271(o.issues);
+    checkUnnamed3061(o.issues);
   }
   buildCounterTestRulesetResponse--;
 }

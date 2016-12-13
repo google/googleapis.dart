@@ -248,7 +248,7 @@
                     ]
                 },
                 "asyncrecognize": {
-                    "description": "Performs asynchronous speech recognition: receive results via the\ngoogle.longrunning.Operations interface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
+                    "description": "Performs asynchronous speech recognition: receive results via the\n[google.longrunning.Operations]\n(/speech/reference/rest/v1beta1/operations#Operation)\ninterface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
                     "httpMethod": "POST",
                     "id": "speech.speech.asyncrecognize",
                     "parameterOrder": [],
@@ -267,7 +267,7 @@
             }
         }
     },
-    "revision": "20161031",
+    "revision": "20161206",
     "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
         "Status": {

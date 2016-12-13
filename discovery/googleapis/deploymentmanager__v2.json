@@ -24,10 +24,10 @@
     "description": "Declares, configures, and deploys complex solutions on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/deployment-manager/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/_DzPZRLHYQ4WaafnjMP1PAVCOok\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/OCYmftvQxj4AeJHkXNi3Nl_Kgng\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "deploymentmanager:v2",
     "kind": "discovery#restDescription",
@@ -128,6 +128,20 @@
                         "deployment"
                     ],
                     "parameters": {
+                        "deletePolicy": {
+                            "default": "DELETE",
+                            "description": "Sets the policy to use for deleting resources.",
+                            "enum": [
+                                "ABANDON",
+                                "DELETE"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
                         "deployment": {
                             "description": "The name of the deployment for this request.",
                             "location": "path",
@@ -910,13 +924,20 @@
             }
         }
     },
-    "revision": "20161013",
+    "revision": "20161209",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AuditConfig": {
-            "description": "Enables \"data access\" audit logging for a service and specifies a list of members that are log-exempted.",
+            "description": "Provides the configuration for non-admin_activity logging for a service. Controls exemptions and specific log sub-types.",
             "id": "AuditConfig",
             "properties": {
+                "auditLogConfigs": {
+                    "description": "The configuration for each type of logging",
+                    "items": {
+                        "$ref": "AuditLogConfig"
+                    },
+                    "type": "array"
+                },
                 "exemptedMembers": {
                     "description": "Specifies the identities that are exempted from \"data access\" audit logging for the `service` specified above. Follows the same format of Binding.members.",
                     "items": {
@@ -925,7 +946,25 @@
                     "type": "array"
                 },
                 "service": {
-                    "description": "Specifies a service that will be enabled for \"data access\" audit logging. For example, `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all services.",
+                    "description": "Specifies a service that will be enabled for audit logging. For example, `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all services.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuditLogConfig": {
+            "description": "Provides the configuration for a sub-type of logging.",
+            "id": "AuditLogConfig",
+            "properties": {
+                "exemptedMembers": {
+                    "description": "Specifies the identities that are exempted from this type of logging Follows the same format of Binding.members.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "logType": {
+                    "description": "The log type that this config enables.",
                     "type": "string"
                 }
             },

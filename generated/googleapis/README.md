@@ -99,19 +99,19 @@ Accesses the inventory of Ad Exchange seller users and generates reports.
 
 Official API documentation: https://developers.google.com/ad-exchange/seller-rest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Data Transfer API - admin datatransfer_v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Admin Data Transfer API - admin datatransfer_v1
 
 Transfers user data from one user to another.
 
 Official API documentation: https://developers.google.com/admin-sdk/data-transfer/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Directory API - admin directory_v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Admin Directory API - admin directory_v1
 
 The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.
 
 Official API documentation: https://developers.google.com/admin-sdk/directory/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Admin Reports API - admin reports_v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Admin Reports API - admin reports_v1
 
 Fetches reports for the administrators of Google Apps customers about the usage, collaboration, security, and risk for their users.
 
@@ -159,13 +159,13 @@ Provisions and manages App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Activity API - appsactivity v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Apps Activity API - appsactivity v1
 
 Provides a historical view of activity.
 
 Official API documentation: https://developers.google.com/google-apps/activity/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App State API - appstate v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google App State API - appstate v1
 
 The Google App State API.
 
@@ -195,7 +195,7 @@ Manipulates events and other calendar data.
 
 Official API documentation: https://developers.google.com/google-apps/calendar/firstapp
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Civic Information API - civicinfo v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Civic Information API - civicinfo v2
 
 Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.
 
@@ -243,7 +243,7 @@ Creates and runs virtual machines on Google Cloud Platform.
 
 Official API documentation: https://developers.google.com/compute/docs/reference/latest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Consumer Surveys API - consumersurveys v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Consumer Surveys API - consumersurveys v2
 
 Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.
 
@@ -253,19 +253,19 @@ Builds and manages clusters that run container-based applications, powered by op
 
 Official API documentation: https://cloud.google.com/container-engine/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Content API for Shopping - content v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Content API for Shopping - content v2
 
 Manages product items, inventory, and Merchant Center accounts for Google Shopping.
 
 Official API documentation: https://developers.google.com/shopping-content
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Content API for Shopping - content v2sandbox
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Content API for Shopping - content v2sandbox
 
 Manages product items, inventory, and Merchant Center accounts for Google Shopping.
 
 Official API documentation: https://developers.google.com/shopping-content
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) CustomSearch API - customsearch v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) CustomSearch API - customsearch v1
 
 Lets you search over a website or collection of websites
 
@@ -284,17 +284,11 @@ Accesses the schemaless NoSQL database to provide fully managed, robust, scalabl
 
 Official API documentation: https://cloud.google.com/datastore/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Deployment Manager API - deploymentmanager v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud Deployment Manager API - deploymentmanager v2
 
 Declares, configures, and deploys complex solutions on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/deployment-manager/
-
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.4
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.5
 
@@ -320,19 +314,19 @@ Provides information about other Google APIs, such as what APIs are available, t
 
 Official API documentation: https://developers.google.com/discovery/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud DNS API - dns v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud DNS API - dns v1
 
 Configures and serves authoritative DNS records.
 
 Official API documentation: https://developers.google.com/cloud-dns
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DoubleClick Bid Manager API - doubleclickbidmanager v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) DoubleClick Bid Manager API - doubleclickbidmanager v1
 
 API for viewing and managing your reports in DoubleClick Bid Manager.
 
 Official API documentation: https://developers.google.com/bid-manager/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DoubleClick Search API - doubleclicksearch v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) DoubleClick Search API - doubleclicksearch v2
 
 Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).
 
@@ -363,37 +357,37 @@ Creates and manages rules that determine when a Firebase Rules-enabled service s
 
 Official API documentation: https://firebase.google.com/docs/storage/security
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fitness - fitness v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Fitness - fitness v1
 
 Stores and accesses user data in the fitness store from apps on any platform.
 
 Official API documentation: https://developers.google.com/fit/rest/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fusion Tables API - fusiontables v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Fusion Tables API - fusiontables v1
 
 API for working with Fusion Tables data.
 
 Official API documentation: https://developers.google.com/fusiontables
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Fusion Tables API - fusiontables v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Fusion Tables API - fusiontables v2
 
 API for working with Fusion Tables data.
 
 Official API documentation: https://developers.google.com/fusiontables
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Game Services API - games v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Play Game Services API - games v1
 
 The API for Google Play Game Services.
 
 Official API documentation: https://developers.google.com/games/services/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Game Services Publishing API - gamesConfiguration v1configuration
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Play Game Services Publishing API - gamesConfiguration v1configuration
 
 The Publishing API for Google Play Game Services.
 
 Official API documentation: https://developers.google.com/games/services
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Game Services Management API - gamesManagement v1management
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Play Game Services Management API - gamesManagement v1management
 
 The Management API for Google Play Game Services.
 
@@ -417,7 +411,7 @@ Groups Migration Api.
 
 Official API documentation: https://developers.google.com/google-apps/groups-migration/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Groups Settings API - groupssettings v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Groups Settings API - groupssettings v1
 
 Lets you manage permission levels and related settings of a group.
 
@@ -429,7 +423,7 @@ Manages identity and access control for Google Cloud Platform resources, includi
 
 Official API documentation: https://cloud.google.com/iam/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Identity Toolkit API - identitytoolkit v3
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Identity Toolkit API - identitytoolkit v3
 
 Help the third party sites to implement federated login.
 
@@ -441,7 +435,13 @@ Knowledge Graph Search API allows developers to search the Google Knowledge Grap
 
 Official API documentation: https://developers.google.com/knowledge-graph/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Enterprise License Manager API - licensing v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Natural Language API - language v1
+
+Google Cloud Natural Language API provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, and text annotations.
+
+Official API documentation: https://cloud.google.com/natural-language/
+
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Enterprise License Manager API - licensing v1
 
 Licensing API to view and manage license for your domain.
 
@@ -459,7 +459,7 @@ Public API for managing Manufacturer Center related data.
 
 Official API documentation: https://developers.google.com/manufacturers/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Mirror API - mirror v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Mirror API - mirror v1
 
 Interacts with Glass users via the timeline.
 
@@ -471,7 +471,7 @@ Manages your Stackdriver Monitoring data and configurations. Most projects must 
 
 Official API documentation: https://cloud.google.com/monitoring/api/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google OAuth2 API - oauth2 v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google OAuth2 API - oauth2 v2
 
 Obtains end-user authorization grants for use with other Google APIs.
 
@@ -531,13 +531,13 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 
 Official API documentation: https://cloud.google.com/pubsub/docs
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) QPX Express API - qpxExpress v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) QPX Express API - qpxExpress v1
 
 Finds the least expensive flights between an origin and a destination.
 
 Official API documentation: http://developers.google.com/qpx-express
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Enterprise Apps Reseller API - reseller v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Enterprise Apps Reseller API - reseller v1
 
 Creates and manages your customers and their subscriptions.
 
@@ -580,11 +580,17 @@ Reads and writes Google Sheets.
 
 Official API documentation: https://developers.google.com/sheets/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Site Verification API - siteVerification v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Site Verification API - siteVerification v1
 
 Verifies ownership of websites or domains with Google.
 
 Official API documentation: https://developers.google.com/site-verification/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Slides API - slides v1
+
+An API for creating and editing Google Slides presentations.
+
+Official API documentation: https://developers.google.com/slides/
 
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - storage v1
 
@@ -598,11 +604,11 @@ Transfers data from external data sources to a Google Cloud Storage bucket or be
 
 Official API documentation: https://cloud.google.com/storage/transfer
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Surveys API - surveys v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Surveys API - surveys v2
 
 Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Tag Manager API - tagmanager v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Tag Manager API - tagmanager v1
 
 Accesses Tag Manager accounts and containers.
 
@@ -620,7 +626,7 @@ Translates text from one language to another.
 
 Official API documentation: https://developers.google.com/translate/v2/using_rest
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) URL Shortener API - urlshortener v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) URL Shortener API - urlshortener v1
 
 Lets you create, inspect, and manage goo.gl short URLs
 

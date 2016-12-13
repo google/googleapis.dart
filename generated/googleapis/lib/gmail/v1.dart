@@ -984,6 +984,51 @@ class UsersMessagesResourceApi {
   }
 
   /**
+   * Modifies the labels on the specified messages.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future batchModify(BatchModifyMessagesRequest request, core.String userId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/messages/batchModify';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
    * Immediately and permanently deletes the specified message. This operation
    * cannot be undone. Prefer messages.trash instead.
    *
@@ -1276,7 +1321,8 @@ class UsersMessagesResourceApi {
    *
    * [q] - Only return messages matching the specified query. Supports the same
    * query format as the Gmail search box. For example,
-   * "from:someuser@example.com rfc822msgid: is:unread".
+   * "from:someuser@example.com rfc822msgid: is:unread". Parameter cannot be
+   * used when accessing the api using the gmail.metadata scope.
    *
    * Completes with a [ListMessagesResponse].
    *
@@ -2789,7 +2835,8 @@ class UsersThreadsResourceApi {
    *
    * [q] - Only return threads matching the specified query. Supports the same
    * query format as the Gmail search box. For example,
-   * "from:someuser@example.com rfc822msgid: is:unread".
+   * "from:someuser@example.com rfc822msgid: is:unread". Parameter cannot be
+   * used when accessing the api using the gmail.metadata scope.
    *
    * Completes with a [ListThreadsResponse].
    *
@@ -3050,6 +3097,46 @@ class BatchDeleteMessagesRequest {
     var _json = new core.Map();
     if (ids != null) {
       _json["ids"] = ids;
+    }
+    return _json;
+  }
+}
+
+class BatchModifyMessagesRequest {
+  /** A list of label IDs to add to messages. */
+  core.List<core.String> addLabelIds;
+  /**
+   * The IDs of the messages to modify. There is a limit of 1000 ids per
+   * request.
+   */
+  core.List<core.String> ids;
+  /** A list of label IDs to remove from messages. */
+  core.List<core.String> removeLabelIds;
+
+  BatchModifyMessagesRequest();
+
+  BatchModifyMessagesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("addLabelIds")) {
+      addLabelIds = _json["addLabelIds"];
+    }
+    if (_json.containsKey("ids")) {
+      ids = _json["ids"];
+    }
+    if (_json.containsKey("removeLabelIds")) {
+      removeLabelIds = _json["removeLabelIds"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (addLabelIds != null) {
+      _json["addLabelIds"] = addLabelIds;
+    }
+    if (ids != null) {
+      _json["ids"] = ids;
+    }
+    if (removeLabelIds != null) {
+      _json["removeLabelIds"] = removeLabelIds;
     }
     return _json;
   }
@@ -4100,7 +4187,7 @@ class MessagePartBody {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** Total number of bytes in the body of the message part. */
+  /** Number of bytes for the message part data (encoding notwithstanding). */
   core.int size;
 
   MessagePartBody();

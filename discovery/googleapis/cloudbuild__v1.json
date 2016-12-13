@@ -461,11 +461,38 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "cancel": {
+                    "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+                    "httpMethod": "POST",
+                    "id": "cloudbuild.operations.cancel",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "The name of the operation resource to be cancelled.",
+                            "location": "path",
+                            "pattern": "^operations/.+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}:cancel",
+                    "request": {
+                        "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         }
     },
-    "revision": "20161107",
+    "revision": "20161212",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "schemas": {
         "Status": {
@@ -653,6 +680,12 @@
             },
             "type": "object"
         },
+        "CancelOperationRequest": {
+            "description": "The request message for Operations.CancelOperation.",
+            "id": "CancelOperationRequest",
+            "properties": {},
+            "type": "object"
+        },
         "StorageSource": {
             "description": "StorageSource describes the location of the source in an archive file in\nGoogle Cloud Storage.",
             "id": "StorageSource",
@@ -714,7 +747,6 @@
                     "description": "Status of the build.\n@OutputOnly",
                     "enum": [
                         "STATUS_UNKNOWN",
-                        "QUEUING",
                         "QUEUED",
                         "WORKING",
                         "SUCCESS",
@@ -725,7 +757,6 @@
                     ],
                     "enumDescriptions": [
                         "Status of the build is unknown.",
-                        "Build has been received and is being queued.",
                         "Build is queued; work has not yet begun.",
                         "Build is being executed.",
                         "Build finished successfully.",
@@ -741,7 +772,7 @@
                     "description": "Special options for this build."
                 },
                 "finishTime": {
-                    "description": "Time at which execution of the build was finished.\n@OutputOnly",
+                    "description": "Time at which execution of the build was finished.\n\nThe difference between finish_time and start_time is the duration of the\nbuild's execution.\n@OutputOnly",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -762,7 +793,7 @@
                     "description": "Describes where to find the source files to build."
                 },
                 "createTime": {
-                    "description": "Time at which the build was created.\n@OutputOnly",
+                    "description": "Time at which the request to create the build was received.\n@OutputOnly",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -775,7 +806,7 @@
                     "type": "string"
                 },
                 "images": {
-                    "description": "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images will be pushed using the builder\nservice account's credentials.\n\nThe digests of the pushed images will be stored in the Build resource's\nresults field.\n\nIf any of the images fail to be pushed, the build is marked FAILURE.",
+                    "description": "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images will be pushed using the builder service account's credentials.\n\nThe digests of the pushed images will be stored in the Build resource's\nresults field.\n\nIf any of the images fail to be pushed, the build is marked FAILURE.",
                     "items": {
                         "type": "string"
                     },
@@ -821,20 +852,6 @@
             "properties": {},
             "type": "object"
         },
-        "FileHashes": {
-            "description": "Container message for hashes of byte content of files, used in\nSourceProvenance messages to verify integrity of source input to the build.",
-            "id": "FileHashes",
-            "properties": {
-                "fileHash": {
-                    "description": "Collection of file hashes.",
-                    "items": {
-                        "$ref": "Hash"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "ListOperationsResponse": {
             "description": "The response message for Operations.ListOperations.",
             "id": "ListOperationsResponse",
@@ -847,6 +864,20 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "FileHashes": {
+            "description": "Container message for hashes of byte content of files, used in\nSourceProvenance messages to verify integrity of source input to the build.",
+            "id": "FileHashes",
+            "properties": {
+                "fileHash": {
+                    "description": "Collection of file hashes.",
+                    "items": {
+                        "$ref": "Hash"
                     },
                     "type": "array"
                 }
@@ -910,7 +941,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "The name of the container image that will run this particular build step.\n\nIf the image is already available in the host's\nDocker daemon's cache, it will be run directly. If not, the host will\nattempt to pull the image first, using the builder service account's\ncredentials if necessary.\n\nThe Docker daemon's cache will already have the latest versions of all of\nthe officially supported build steps\n(https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon\nwill also have cached many of the layers for some popular images, like\n\"ubuntu\", \"debian\", but they will be refreshed at the time you attempt to\nuse them.\n\nIf you built an image in a previous build step, it will be stored in the\nhost's Docker daemon's cache and is available to use as the name for a\nlater build step.",
+                    "description": "The name of the container image that will run this particular build step.\n\nIf the image is already available in the host's Docker daemon's cache, it\nwill be run directly. If not, the host will attempt to pull the image\nfirst, using the builder service account's credentials if necessary.\n\nThe Docker daemon's cache will already have the latest versions of all of\nthe officially supported build steps\n(https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon\nwill also have cached many of the layers for some popular images, like\n\"ubuntu\", \"debian\", but they will be refreshed at the time you attempt to\nuse them.\n\nIf you built an image in a previous build step, it will be stored in the\nhost's Docker daemon's cache and is available to use as the name for a\nlater build step.",
                     "type": "string"
                 },
                 "dir": {

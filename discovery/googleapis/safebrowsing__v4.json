@@ -5,7 +5,7 @@
     "description": "Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/safe-browsing/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Yoew02BLq1-_QyzwsVjtSdddocY\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Yoew02BLq1-_QyzwsVjtSdddocY\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

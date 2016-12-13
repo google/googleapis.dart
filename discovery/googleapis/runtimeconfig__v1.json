@@ -216,7 +216,7 @@
             }
         }
     },
-    "revision": "20161102",
+    "revision": "20161211",
     "rootUrl": "https://runtimeconfig.googleapis.com/",
     "schemas": {
         "ListOperationsResponse": {

@@ -14,7 +14,7 @@
     "description": "An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataproc/",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/UWIx0i13luZLKjW6gmDu2evUqDA\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/UWIx0i13luZLKjW6gmDu2evUqDA\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.32.0
+    version: 0.33.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -44,7 +44,6 @@ packages:
     - datastore:v1 # https://developers.google.com/datastore/
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - deploymentmanager:v2
-    - dfareporting:v2.4  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.5  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.6  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.7  # https://developers.google.com/doubleclick-advertisers/reporting/
@@ -69,6 +68,7 @@ packages:
     - identitytoolkit:v3  # https://developers.google.com/identity-toolkit/
     - iam:v1 # https://cloud.google.com/iam/
     - kgsearch:v1  # https://developers.google.com/knowledge-graph/
+    - language:v1 # https://cloud.google.com/natural-language/
     - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
     - logging:v2  #
     - manufacturers:v1  #
@@ -91,6 +91,7 @@ packages:
     - script:v1  # https://developers.google.com/apps-script/execution/rest/v1/run
     - servicecontrol:v1  # https://cloud.google.com/service-control/
     - servicemanagement:v1  # https://cloud.google.com/service-management/
+    - slides:v1  # https://developers.google.com/slides/
     - surveys:v2  # 
     - sheets:v4  # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1  # https://developers.google.com/site-verification/
@@ -108,7 +109,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.31.0
+    version: 0.32.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -128,7 +129,6 @@ packages:
     - dataproc:v1beta1 # https://cloud.google.com/dataproc/
     - dfareporting:v2.5beta1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
-    - genomics:v1beta2  # https://developers.google.com/genomics/
     - language:v1beta1  # https://cloud.google.com/natural-language/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
     - ml:v1beta1  #

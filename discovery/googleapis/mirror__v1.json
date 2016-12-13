@@ -17,10 +17,10 @@
     "description": "Interacts with Glass users via the timeline.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/glass",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/OwaGZAsygqh-DVZUGXJhzHuvoBQ\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/nxDdKsGKU-CGQ0rCYbUZuIhDXnY\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/search-16.gif",
-        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
     },
     "id": "mirror:v1",
     "kind": "discovery#restDescription",

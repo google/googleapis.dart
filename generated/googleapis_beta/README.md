@@ -93,7 +93,7 @@ Stackdriver Error Reporting groups and counts similar errors from cloud services
 
 Official API documentation: https://cloud.google.com/error-reporting/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Monitoring API - cloudmonitoring v2beta2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Monitoring API - cloudmonitoring v2beta2
 
 Accesses Google Cloud Monitoring data.
 
@@ -123,7 +123,7 @@ An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud Datastore API - datastore v1beta2
 
 Stores and queries data in Google Cloud Datastore.
 
@@ -142,17 +142,11 @@ Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud DNS API - dns v2beta1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud DNS API - dns v2beta1
 
 Configures and serves authoritative DNS records.
 
 Official API documentation: https://developers.google.com/cloud-dns
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1beta2
-
-Provides access to Genomics data.
-
-Official API documentation: https://developers.google.com/genomics/v1beta2/reference
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Natural Language API - language v1beta1
 
@@ -184,25 +178,25 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 
 Official API documentation: https://cloud.google.com/pubsub/docs
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Manager API - replicapool v1beta2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Compute Engine Instance Group Manager API - replicapool v1beta2
 
 [Deprecated. Please use Instance Group Manager in Compute API] Provides groups of homogenous Compute Engine instances.
 
 Official API documentation: https://developers.google.com/compute/docs/instance-groups/manager/v1beta2
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Group Updater API - replicapoolupdater v1beta1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Compute Engine Instance Group Updater API - replicapoolupdater v1beta1
 
 [Deprecated. Please use compute.instanceGroupManagers.update method. replicapoolupdater API will be disabled after December 30th, 2016] Updates groups of Compute Engine instances.
 
 Official API documentation: https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Resource Views API - resourceviews v1beta1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Resource Views API - resourceviews v1beta1
 
 The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.
 
 Official API documentation: https://developers.google.com/compute/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Compute Engine Instance Groups API - resourceviews v1beta2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Compute Engine Instance Groups API - resourceviews v1beta2
 
 The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.
 
@@ -221,13 +215,13 @@ Google Cloud Speech API.
 
 Official API documentation: https://cloud.google.com/speech/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta3
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Administration API - sqladmin v1beta3
 
 Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.
 
 Official API documentation: https://cloud.google.com/sql/docs/reference/latest
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud SQL Administration API - sqladmin v1beta4
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Administration API - sqladmin v1beta4
 
 Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.
 
@@ -239,7 +233,7 @@ Accesses a Google App Engine Pull Task Queue over REST.
 
 Official API documentation: https://developers.google.com/appengine/docs/python/taskqueue/rest
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Tool Results API - toolresults v1beta3
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results API - toolresults v1beta3
 
 Reads and publishes results from Cloud Test Lab.
 

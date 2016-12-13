@@ -18,7 +18,7 @@
     "description": "Examines the call stack and variables of a running application without stopping or slowing it down.",
     "discoveryVersion": "v1",
     "documentationLink": "http://cloud.google.com/debugger",
-    "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/QjifI48X3fgI9mRgli3ziT84a8U\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/QjifI48X3fgI9mRgli3ziT84a8U\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

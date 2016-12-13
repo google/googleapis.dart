@@ -2303,6 +2303,8 @@ class GoogleCloudMlV1beta1TrainingOutput {
    * The number of hyperparameter tuning trials that completed successfully.
    */
   core.String completedTrialCount;
+  /** The amount of ML units consumed by the job. */
+  core.double consumedMlUnits;
   /** Results for individual Hyperparameter trials. */
   core.List<GoogleCloudMlV1beta1HyperparameterOutput> trials;
 
@@ -2311,6 +2313,9 @@ class GoogleCloudMlV1beta1TrainingOutput {
   GoogleCloudMlV1beta1TrainingOutput.fromJson(core.Map _json) {
     if (_json.containsKey("completedTrialCount")) {
       completedTrialCount = _json["completedTrialCount"];
+    }
+    if (_json.containsKey("consumedMlUnits")) {
+      consumedMlUnits = _json["consumedMlUnits"];
     }
     if (_json.containsKey("trials")) {
       trials = _json["trials"].map((value) => new GoogleCloudMlV1beta1HyperparameterOutput.fromJson(value)).toList();
@@ -2321,6 +2326,9 @@ class GoogleCloudMlV1beta1TrainingOutput {
     var _json = new core.Map();
     if (completedTrialCount != null) {
       _json["completedTrialCount"] = completedTrialCount;
+    }
+    if (consumedMlUnits != null) {
+      _json["consumedMlUnits"] = consumedMlUnits;
     }
     if (trials != null) {
       _json["trials"] = trials.map((value) => (value).toJson()).toList();

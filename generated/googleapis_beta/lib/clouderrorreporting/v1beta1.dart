@@ -119,6 +119,9 @@ class ProjectsEventsResourceApi {
    * - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
    * - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
    *
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   *
    * [serviceFilter_service] - [Optional] The exact value to match against
    * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
    *
@@ -141,7 +144,7 @@ class ProjectsEventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListEventsResponse> list(core.String projectName, {core.String timeRange_period, core.String serviceFilter_service, core.String groupId, core.String serviceFilter_version, core.int pageSize, core.String pageToken}) {
+  async.Future<ListEventsResponse> list(core.String projectName, {core.String timeRange_period, core.String serviceFilter_resourceType, core.String serviceFilter_service, core.String groupId, core.String serviceFilter_version, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +157,9 @@ class ProjectsEventsResourceApi {
     }
     if (timeRange_period != null) {
       _queryParams["timeRange.period"] = [timeRange_period];
+    }
+    if (serviceFilter_resourceType != null) {
+      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
     if (serviceFilter_service != null) {
       _queryParams["serviceFilter.service"] = [serviceFilter_service];
@@ -281,6 +287,9 @@ class ProjectsGroupStatsResourceApi {
    * - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
    * - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
    *
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   *
    * [order] - [Optional] The sort order in which the results are returned.
    * Default is `COUNT_DESC`.
    * Possible string values are:
@@ -324,7 +333,7 @@ class ProjectsGroupStatsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String alignment, core.String timeRange_period, core.String order, core.List<core.String> groupId, core.String serviceFilter_service, core.String alignmentTime, core.String serviceFilter_version, core.int pageSize, core.String timedCountDuration, core.String pageToken}) {
+  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String alignment, core.String timeRange_period, core.String serviceFilter_resourceType, core.String order, core.List<core.String> groupId, core.String serviceFilter_service, core.String alignmentTime, core.String serviceFilter_version, core.int pageSize, core.String timedCountDuration, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -340,6 +349,9 @@ class ProjectsGroupStatsResourceApi {
     }
     if (timeRange_period != null) {
       _queryParams["timeRange.period"] = [timeRange_period];
+    }
+    if (serviceFilter_resourceType != null) {
+      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
     if (order != null) {
       _queryParams["order"] = [order];
@@ -1029,6 +1041,14 @@ class ReportedErrorEvent {
  */
 class ServiceContext {
   /**
+   * Type of the MonitoredResource. List of possible values:
+   * https://cloud.google.com/monitoring/api/resources
+   *
+   * Value is set automatically for incoming errors and must not be set when
+   * reporting errors.
+   */
+  core.String resourceType;
+  /**
    * An identifier of the service, such as the name of the
    * executable, job, or Google App Engine service name. This field is expected
    * to have a low number of values that are relatively stable over time, as
@@ -1047,6 +1067,9 @@ class ServiceContext {
   ServiceContext();
 
   ServiceContext.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceType")) {
+      resourceType = _json["resourceType"];
+    }
     if (_json.containsKey("service")) {
       service = _json["service"];
     }
@@ -1057,6 +1080,9 @@ class ServiceContext {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (resourceType != null) {
+      _json["resourceType"] = resourceType;
+    }
     if (service != null) {
       _json["service"] = service;
     }
