@@ -1799,6 +1799,8 @@ buildUser() {
     o.ipWhitelisted = true;
     o.isAdmin = true;
     o.isDelegatedAdmin = true;
+    o.isEnforcedIn2Sv = true;
+    o.isEnrolledIn2Sv = true;
     o.isMailboxSetup = true;
     o.kind = "foo";
     o.lastLoginTime = core.DateTime.parse("2002-02-27T14:01:02");
@@ -1842,6 +1844,8 @@ checkUser(api.User o) {
     unittest.expect(o.ipWhitelisted, unittest.isTrue);
     unittest.expect(o.isAdmin, unittest.isTrue);
     unittest.expect(o.isDelegatedAdmin, unittest.isTrue);
+    unittest.expect(o.isEnforcedIn2Sv, unittest.isTrue);
+    unittest.expect(o.isEnrolledIn2Sv, unittest.isTrue);
     unittest.expect(o.isMailboxSetup, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lastLoginTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));

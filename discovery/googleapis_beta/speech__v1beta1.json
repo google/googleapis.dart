@@ -267,7 +267,7 @@
             }
         }
     },
-    "revision": "20161206",
+    "revision": "20170118",
     "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
         "Status": {

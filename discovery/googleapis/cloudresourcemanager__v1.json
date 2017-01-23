@@ -536,7 +536,7 @@
             }
         }
     },
-    "revision": "20161207",
+    "revision": "20170118",
     "rootUrl": "https://cloudresourcemanager.googleapis.com/",
     "schemas": {
         "FolderOperationError": {
@@ -932,13 +932,13 @@
             "properties": {
                 "parent": {
                     "$ref": "ResourceId",
-                    "description": "An optional reference to a parent Resource.\n\nThe only supported parent type is \"organization\". Once set, the parent\ncannot be modified.\n\nRead-write."
+                    "description": "An optional reference to a parent Resource.\n\nThe only supported parent type is \"organization\". Once set, the parent\ncannot be modified. The `parent` can be set on creation or using the\n`UpdateProject` method; the end user must have the\n`resourcemanager.projects.create` permission on the parent.\n\nRead-write."
                 },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The labels associated with this Project.\n\nLabel keys must be between 1 and 63 characters long and must conform\nto the following regular expression: \\[a-z\\](\\[-a-z0-9\\]*\\[a-z0-9\\])?.\n\nLabel values must be between 0 and 63 characters long and must conform\nto the regular expression (\\[a-z\\](\\[-a-z0-9\\]*\\[a-z0-9\\])?)?.\n\nNo more than 256 labels can be associated with a given resource.\n\nClients should store labels in a representation such as JSON that does not\ndepend on specific characters being disallowed.\n\nExample: <code>\"environment\" : \"dev\"</code>\n\nRead-write.",
+                    "description": "The labels associated with this Project.\n\nLabel keys must be between 1 and 63 characters long and must conform\nto the following regular expression: \\[a-z\\](\\[-a-z0-9\\]*\\[a-z0-9\\])?.\n\nLabel values must be between 0 and 63 characters long and must conform\nto the regular expression (\\[a-z\\](\\[-a-z0-9\\]*\\[a-z0-9\\])?)?.\n\nNo more than 256 labels can be associated with a given resource.\n\nClients should store labels in a representation such as JSON that does not\ndepend on specific characters being disallowed.\n\nExample: <code>\"environment\" : \"dev\"</code>\nRead-write.",
                     "type": "object"
                 },
                 "lifecycleState": {
@@ -963,16 +963,16 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The user-assigned display name of the Project.\nIt must be 4 to 30 characters.\nAllowed characters are: lowercase and uppercase letters, numbers,\nhyphen, single-quote, double-quote, space, and exclamation point.\n\nExample: <code>My Project</code>\n\nRead-write.",
+                    "description": "The user-assigned display name of the Project.\nIt must be 4 to 30 characters.\nAllowed characters are: lowercase and uppercase letters, numbers,\nhyphen, single-quote, double-quote, space, and exclamation point.\n\nExample: <code>My Project</code>\nRead-write.",
                     "type": "string"
                 },
                 "projectNumber": {
-                    "description": "The number uniquely identifying the project.\n\nExample: <code>415104041262</code>\n\nRead-only.",
+                    "description": "The number uniquely identifying the project.\n\nExample: <code>415104041262</code>\nRead-only.",
                     "format": "int64",
                     "type": "string"
                 },
                 "projectId": {
-                    "description": "The unique, user-assigned ID of the Project.\nIt must be 6 to 30 lowercase letters, digits, or hyphens.\nIt must start with a letter.\nTrailing hyphens are prohibited.\n\nExample: <code>tokyo-rain-123</code>\n\nRead-only after creation.",
+                    "description": "The unique, user-assigned ID of the Project.\nIt must be 6 to 30 lowercase letters, digits, or hyphens.\nIt must start with a letter.\nTrailing hyphens are prohibited.\n\nExample: <code>tokyo-rain-123</code>\nRead-only after creation.",
                     "type": "string"
                 }
             },

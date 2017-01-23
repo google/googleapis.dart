@@ -2560,6 +2560,7 @@ buildSetIamPolicyRequest() {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     o.policy = buildPolicy();
+    o.updateMask = "foo";
   }
   buildCounterSetIamPolicyRequest--;
   return o;
@@ -2569,6 +2570,7 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     checkPolicy(o.policy);
+    unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
 }
@@ -4318,10 +4320,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.ServicesResourceApi res = new api.ServicemanagementApi(mock).services;
+      var arg_consumerId = "foo";
+      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_producerProjectId = "foo";
-      var arg_pageToken = "foo";
-      var arg_consumerId = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4348,10 +4350,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["consumerId"].first, unittest.equals(arg_consumerId));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["producerProjectId"].first, unittest.equals(arg_producerProjectId));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["consumerId"].first, unittest.equals(arg_consumerId));
 
 
         var h = {
@@ -4360,7 +4362,7 @@ main() {
         var resp = convert.JSON.encode(buildListServicesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageSize: arg_pageSize, producerProjectId: arg_producerProjectId, pageToken: arg_pageToken, consumerId: arg_consumerId).then(unittest.expectAsync(((api.ListServicesResponse response) {
+      res.list(consumerId: arg_consumerId, pageToken: arg_pageToken, pageSize: arg_pageSize, producerProjectId: arg_producerProjectId).then(unittest.expectAsync(((api.ListServicesResponse response) {
         checkListServicesResponse(response);
       })));
     });
@@ -4633,8 +4635,8 @@ main() {
       var mock = new HttpServerMock();
       api.ServicesConfigsResourceApi res = new api.ServicemanagementApi(mock).services.configs;
       var arg_serviceName = "foo";
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4668,8 +4670,8 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
@@ -4678,7 +4680,7 @@ main() {
         var resp = convert.JSON.encode(buildListServiceConfigsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_serviceName, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListServiceConfigsResponse response) {
+      res.list(arg_serviceName, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListServiceConfigsResponse response) {
         checkListServiceConfigsResponse(response);
       })));
     });
@@ -4857,8 +4859,8 @@ main() {
       var mock = new HttpServerMock();
       api.ServicesRolloutsResourceApi res = new api.ServicemanagementApi(mock).services.rollouts;
       var arg_serviceName = "foo";
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4892,8 +4894,8 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
@@ -4902,7 +4904,7 @@ main() {
         var resp = convert.JSON.encode(buildListServiceRolloutsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_serviceName, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListServiceRolloutsResponse response) {
+      res.list(arg_serviceName, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListServiceRolloutsResponse response) {
         checkListServiceRolloutsResponse(response);
       })));
     });

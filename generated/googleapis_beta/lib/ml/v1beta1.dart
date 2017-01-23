@@ -1596,6 +1596,12 @@ class GoogleCloudMlV1beta1Model {
    * The model name must be unique within the project it is created in.
    */
   core.String name;
+  /**
+   * Optional. The list of regions where the model is going to be deployed.
+   * Currently only one region per model is supported.
+   * Defaults to 'us-central1' if nothing is set.
+   */
+  core.List<core.String> regions;
 
   GoogleCloudMlV1beta1Model();
 
@@ -1609,6 +1615,9 @@ class GoogleCloudMlV1beta1Model {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("regions")) {
+      regions = _json["regions"];
+    }
   }
 
   core.Map toJson() {
@@ -1621,6 +1630,9 @@ class GoogleCloudMlV1beta1Model {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (regions != null) {
+      _json["regions"] = regions;
     }
     return _json;
   }
@@ -1976,6 +1988,11 @@ class GoogleCloudMlV1beta1PredictionInput {
    */
   core.String region;
   /**
+   * Optional. The Google Cloud ML runtime version to use for this batch
+   * prediction. If not set, Google Cloud ML will choose a version.
+   */
+  core.String runtimeVersion;
+  /**
    * Use this field if you want to specify a version of the model to use. The
    * string is formatted the same way as `model_version`, with the addition
    * of the version information:
@@ -2005,6 +2022,9 @@ class GoogleCloudMlV1beta1PredictionInput {
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
+    if (_json.containsKey("runtimeVersion")) {
+      runtimeVersion = _json["runtimeVersion"];
+    }
     if (_json.containsKey("versionName")) {
       versionName = _json["versionName"];
     }
@@ -2030,6 +2050,9 @@ class GoogleCloudMlV1beta1PredictionInput {
     if (region != null) {
       _json["region"] = region;
     }
+    if (runtimeVersion != null) {
+      _json["runtimeVersion"] = runtimeVersion;
+    }
     if (versionName != null) {
       _json["versionName"] = versionName;
     }
@@ -2041,6 +2064,8 @@ class GoogleCloudMlV1beta1PredictionInput {
 class GoogleCloudMlV1beta1PredictionOutput {
   /** The number of data instances which resulted in errors. */
   core.String errorCount;
+  /** Node hours used by the batch prediction job. */
+  core.double nodeHours;
   /**
    * The output Google Cloud Storage location provided at the job creation time.
    */
@@ -2054,6 +2079,9 @@ class GoogleCloudMlV1beta1PredictionOutput {
     if (_json.containsKey("errorCount")) {
       errorCount = _json["errorCount"];
     }
+    if (_json.containsKey("nodeHours")) {
+      nodeHours = _json["nodeHours"];
+    }
     if (_json.containsKey("outputPath")) {
       outputPath = _json["outputPath"];
     }
@@ -2066,6 +2094,9 @@ class GoogleCloudMlV1beta1PredictionOutput {
     var _json = new core.Map();
     if (errorCount != null) {
       _json["errorCount"] = errorCount;
+    }
+    if (nodeHours != null) {
+      _json["nodeHours"] = nodeHours;
     }
     if (outputPath != null) {
       _json["outputPath"] = outputPath;
@@ -2166,6 +2197,11 @@ class GoogleCloudMlV1beta1TrainingInput {
   /** Required. The Google Compute Engine region to run the training job in. */
   core.String region;
   /**
+   * Optional. The Google Cloud ML runtime version to use for training.  If not
+   * set, Google Cloud ML will choose the latest stable version.
+   */
+  core.String runtimeVersion;
+  /**
    * Required. Specifies the machine types, the number of replicas for workers
    * and parameter servers.
    * Possible string values are:
@@ -2247,6 +2283,9 @@ class GoogleCloudMlV1beta1TrainingInput {
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
+    if (_json.containsKey("runtimeVersion")) {
+      runtimeVersion = _json["runtimeVersion"];
+    }
     if (_json.containsKey("scaleTier")) {
       scaleTier = _json["scaleTier"];
     }
@@ -2284,6 +2323,9 @@ class GoogleCloudMlV1beta1TrainingInput {
     if (region != null) {
       _json["region"] = region;
     }
+    if (runtimeVersion != null) {
+      _json["runtimeVersion"] = runtimeVersion;
+    }
     if (scaleTier != null) {
       _json["scaleTier"] = scaleTier;
     }
@@ -2297,15 +2339,21 @@ class GoogleCloudMlV1beta1TrainingInput {
   }
 }
 
-/** Represents results of a training job. */
+/** Represents results of a training job. Output only. */
 class GoogleCloudMlV1beta1TrainingOutput {
   /**
    * The number of hyperparameter tuning trials that completed successfully.
+   * Only set for hyperparameter tuning jobs.
    */
   core.String completedTrialCount;
   /** The amount of ML units consumed by the job. */
-  core.double consumedMlUnits;
-  /** Results for individual Hyperparameter trials. */
+  core.double consumedMLUnits;
+  /** Whether this job is a hyperparameter tuning job. */
+  core.bool isHyperparameterTuningJob;
+  /**
+   * Results for individual Hyperparameter trials.
+   * Only set for hyperparameter tuning jobs.
+   */
   core.List<GoogleCloudMlV1beta1HyperparameterOutput> trials;
 
   GoogleCloudMlV1beta1TrainingOutput();
@@ -2314,8 +2362,11 @@ class GoogleCloudMlV1beta1TrainingOutput {
     if (_json.containsKey("completedTrialCount")) {
       completedTrialCount = _json["completedTrialCount"];
     }
-    if (_json.containsKey("consumedMlUnits")) {
-      consumedMlUnits = _json["consumedMlUnits"];
+    if (_json.containsKey("consumedMLUnits")) {
+      consumedMLUnits = _json["consumedMLUnits"];
+    }
+    if (_json.containsKey("isHyperparameterTuningJob")) {
+      isHyperparameterTuningJob = _json["isHyperparameterTuningJob"];
     }
     if (_json.containsKey("trials")) {
       trials = _json["trials"].map((value) => new GoogleCloudMlV1beta1HyperparameterOutput.fromJson(value)).toList();
@@ -2327,8 +2378,11 @@ class GoogleCloudMlV1beta1TrainingOutput {
     if (completedTrialCount != null) {
       _json["completedTrialCount"] = completedTrialCount;
     }
-    if (consumedMlUnits != null) {
-      _json["consumedMlUnits"] = consumedMlUnits;
+    if (consumedMLUnits != null) {
+      _json["consumedMLUnits"] = consumedMLUnits;
+    }
+    if (isHyperparameterTuningJob != null) {
+      _json["isHyperparameterTuningJob"] = isHyperparameterTuningJob;
     }
     if (trials != null) {
       _json["trials"] = trials.map((value) => (value).toJson()).toList();
@@ -2381,6 +2435,16 @@ class GoogleCloudMlV1beta1Version {
    * The version name must be unique within the model it is created in.
    */
   core.String name;
+  /**
+   * Optional. If true, enables StackDriver Logging for online prediction.
+   * Default is false.
+   */
+  core.bool onlinePredictionLogging;
+  /**
+   * Optional. The Google Cloud ML runtime version to use for this deployment.
+   * If not set, Google Cloud ML will choose a version.
+   */
+  core.String runtimeVersion;
 
   GoogleCloudMlV1beta1Version();
 
@@ -2403,6 +2467,12 @@ class GoogleCloudMlV1beta1Version {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("onlinePredictionLogging")) {
+      onlinePredictionLogging = _json["onlinePredictionLogging"];
+    }
+    if (_json.containsKey("runtimeVersion")) {
+      runtimeVersion = _json["runtimeVersion"];
+    }
   }
 
   core.Map toJson() {
@@ -2424,6 +2494,12 @@ class GoogleCloudMlV1beta1Version {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (onlinePredictionLogging != null) {
+      _json["onlinePredictionLogging"] = onlinePredictionLogging;
+    }
+    if (runtimeVersion != null) {
+      _json["runtimeVersion"] = runtimeVersion;
     }
     return _json;
   }

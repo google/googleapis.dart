@@ -223,6 +223,7 @@ Official API documentation: https://cloud.google.com/container-builder/docs/
 
 Examines the call stack and variables of a running application without stopping or slowing it down.
 
+
 Official API documentation: http://cloud.google.com/debugger
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1
@@ -431,7 +432,7 @@ Official API documentation: https://developers.google.com/identity-toolkit/v3/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Knowledge Graph Search API - kgsearch v1
 
-Knowledge Graph Search API allows developers to search the Google Knowledge Graph for entities.
+Searches the Google Knowledge Graph for entities.
 
 Official API documentation: https://developers.google.com/knowledge-graph/
 
@@ -528,6 +529,7 @@ Official API documentation: https://developers.google.com/prediction/docs/develo
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1
 
 Provides reliable, many-to-many, asynchronous messaging between applications.
+
 
 Official API documentation: https://cloud.google.com/pubsub/docs
 

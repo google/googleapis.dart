@@ -1,3 +1,11 @@
+## 0.32.1
+
+* [api-new] cloudkms:v1beta1
+* [api] dataflow:v1b3: schema changes
+* [api] ml:v1beta1: schema changes
+* [api] sqladmin:v1beta4: new methods
+* [api] toolresults:v1beta3: new resources
+
 ## 0.32.0
 
 * [api-removal] genomics:v1beta2

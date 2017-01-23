@@ -120,7 +120,7 @@
         "services": {
             "methods": {
                 "check": {
-                    "description": "Checks an operation with Google Service Control to decide whether\nthe given operation should proceed. It should be called before the\noperation is executed.\n\nIf feasible, the client should cache the check results and reuse them for\n60 seconds. In case of server errors, the client can rely on the cached\nresults for longer time.\n\nNOTE: the `CheckRequest` has the size limit of 1MB.\n\nThis method requires the `servicemanagement.services.check` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
+                    "description": "Checks an operation with Google Service Control to decide whether\nthe given operation should proceed. It should be called before the\noperation is executed.\n\nIf feasible, the client should cache the check results and reuse them for\n60 seconds. In case of server errors, the client can rely on the cached\nresults for longer time.\n\nNOTE: the `CheckRequest` has the size limit of 64KB.\n\nThis method requires the `servicemanagement.services.check` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
                     "httpMethod": "POST",
                     "id": "servicecontrol.services.check",
                     "parameterOrder": [
@@ -176,7 +176,7 @@
             }
         }
     },
-    "revision": "20161205",
+    "revision": "20170117",
     "rootUrl": "https://servicecontrol.googleapis.com/",
     "schemas": {
         "CheckError": {
@@ -197,6 +197,7 @@
                         "IP_ADDRESS_BLOCKED",
                         "REFERER_BLOCKED",
                         "CLIENT_APP_BLOCKED",
+                        "API_TARGET_BLOCKED",
                         "API_KEY_INVALID",
                         "API_KEY_EXPIRED",
                         "API_KEY_NOT_FOUND",
@@ -216,6 +217,7 @@
                         "The IP address of the consumer is invalid for the specific consumer\nproject.",
                         "The referer address of the consumer request is invalid for the specific\nconsumer project.",
                         "The client application of the consumer request is invalid for the\nspecific consumer project.",
+                        "The API targeted by this request is invalid for the specified consumer\nproject.",
                         "The consumer's API key is invalid.",
                         "The consumer's API Key has expired.",
                         "The consumer's API Key was not found in config record.",

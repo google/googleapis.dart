@@ -478,26 +478,31 @@ class ServicesResourceApi {
   }
 
   /**
-   * Lists all managed services. The result is limited to services that the
-   * caller has "servicemanagement.services.get" permission for. If the request
-   * is made without authentication, it returns only public services that are
-   * available to everyone.
+   * Lists managed services.
+   *
+   * If called without any authentication, it returns only the public services.
+   * If called with authentication, it returns all services that the caller has
+   * "servicemanagement.services.get" permission for.
+   *
+   * **BETA:** If the caller specifies the `consumer_id`, it returns only the
+   * services enabled on the consumer. The `consumer_id` must have the format
+   * of "project:{PROJECT-ID}".
    *
    * Request parameters:
-   *
-   * [pageSize] - Requested size of the next page of data.
-   *
-   * [producerProjectId] - Include services produced by the specified project.
-   *
-   * [pageToken] - Token identifying which result to start with; returned by a
-   * previous list
-   * call.
    *
    * [consumerId] - Include services consumed by the specified consumer.
    *
    * The Google Service Management implementation accepts the following
    * forms:
    * - project:<project_id>
+   *
+   * [pageToken] - Token identifying which result to start with; returned by a
+   * previous list
+   * call.
+   *
+   * [pageSize] - Requested size of the next page of data.
+   *
+   * [producerProjectId] - Include services produced by the specified project.
    *
    * Completes with a [ListServicesResponse].
    *
@@ -507,7 +512,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list({core.int pageSize, core.String producerProjectId, core.String pageToken, core.String consumerId}) {
+  async.Future<ListServicesResponse> list({core.String consumerId, core.String pageToken, core.int pageSize, core.String producerProjectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -515,17 +520,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (consumerId != null) {
+      _queryParams["consumerId"] = [consumerId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (producerProjectId != null) {
       _queryParams["producerProjectId"] = [producerProjectId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (consumerId != null) {
-      _queryParams["consumerId"] = [consumerId];
     }
 
     _url = 'v1/services';
@@ -799,9 +804,9 @@ class ServicesConfigsResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
-   * [pageSize] - The max number of items to include in the response list.
-   *
    * [pageToken] - The token of the page to retrieve.
+   *
+   * [pageSize] - The max number of items to include in the response list.
    *
    * Completes with a [ListServiceConfigsResponse].
    *
@@ -811,7 +816,7 @@ class ServicesConfigsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServiceConfigsResponse> list(core.String serviceName, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListServiceConfigsResponse> list(core.String serviceName, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -822,11 +827,11 @@ class ServicesConfigsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/configs';
@@ -1015,9 +1020,9 @@ class ServicesRolloutsResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
-   * [pageSize] - The max number of items to include in the response list.
-   *
    * [pageToken] - The token of the page to retrieve.
+   *
+   * [pageSize] - The max number of items to include in the response list.
    *
    * Completes with a [ListServiceRolloutsResponse].
    *
@@ -1027,7 +1032,7 @@ class ServicesRolloutsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServiceRolloutsResponse> list(core.String serviceName, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListServiceRolloutsResponse> list(core.String serviceName, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1038,11 +1043,11 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/rollouts';
@@ -1192,12 +1197,14 @@ class Api {
 }
 
 /**
- * Provides the configuration for non-admin_activity logging for a service.
- * Controls exemptions and specific log sub-types.
+ * Specifies the audit configuration for a service.
+ * It consists of which permission types are logged, and what identities, if
+ * any, are exempted from logging.
+ * An AuditConifg must have one or more AuditLogConfigs.
  */
 class AuditConfig {
   /**
-   * The configuration for each type of logging
+   * The configuration for logging of each type of permission.
    * Next ID: 4
    */
   core.List<AuditLogConfig> auditLogConfigs;
@@ -1205,6 +1212,7 @@ class AuditConfig {
    * Specifies the identities that are exempted from "data access" audit
    * logging for the `service` specified above.
    * Follows the same format of Binding.members.
+   * This field is deprecated in favor of per-permission-type exemptions.
    */
   core.List<core.String> exemptedMembers;
   /**
@@ -1243,10 +1251,31 @@ class AuditConfig {
   }
 }
 
-/** Provides the configuration for a sub-type of logging. */
+/**
+ * Provides the configuration for logging a type of permissions.
+ * Example:
+ *
+ *     {
+ *       "audit_log_configs": [
+ *         {
+ *           "log_type": "DATA_READ",
+ *           "exempted_members": [
+ *             "user:foo@gmail.com"
+ *           ]
+ *         },
+ *         {
+ *           "log_type": "DATA_WRITE",
+ *         }
+ *       ]
+ *     }
+ *
+ * This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+ * foo@gmail.com from DATA_READ logging.
+ */
 class AuditLogConfig {
   /**
-   * Specifies the identities that are exempted from this type of logging
+   * Specifies the identities that do not cause logging for this type of
+   * permission.
    * Follows the same format of Binding.members.
    */
   core.List<core.String> exemptedMembers;
@@ -1254,9 +1283,9 @@ class AuditLogConfig {
    * The log type that this config enables.
    * Possible string values are:
    * - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-   * - "ADMIN_READ" : Log admin reads
-   * - "DATA_WRITE" : Log data writes
-   * - "DATA_READ" : Log data reads
+   * - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+   * - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+   * - "DATA_READ" : Data reads. Example: CloudSQL Users list
    */
   core.String logType;
 
@@ -4002,14 +4031,14 @@ class MetricDescriptor {
    * that defines the scope of the metric type or of its data; and (2) the
    * metric's URL-encoded type, which also appears in the `type` field of this
    * descriptor. For example, following is the resource name of a custom
-   * metric within the GCP project 123456789:
+   * metric within the GCP project `my-project-id`:
    *
-   * "projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
+   * "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
    */
   core.String name;
   /**
    * The metric type, including its DNS name prefix. The type is not
-   * URL-encoded.  All user-defined metric types have the DNS name
+   * URL-encoded.  All user-defined custom metric types have the DNS name
    * `custom.googleapis.com`.  Metric types should use a natural hierarchical
    * grouping. For example:
    *
@@ -4800,14 +4829,7 @@ class Page {
  * [IAM developer's guide](https://cloud.google.com/iam).
  */
 class Policy {
-  /**
-   * Specifies audit logging configs for "data access".
-   * "data access": generally refers to data reads/writes and admin reads.
-   * "admin activity": generally refers to admin writes.
-   *
-   * Note: `AuditConfig` doesn't apply to "admin activity", which always
-   * enables audit logging.
-   */
+  /** Specifies cloud audit logging configuration for this policy. */
   core.List<AuditConfig> auditConfigs;
   /**
    * Associates a list of `members` to a `role`.
@@ -5398,6 +5420,14 @@ class SetIamPolicyRequest {
    * might reject them.
    */
   Policy policy;
+  /**
+   * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+   * the fields in the mask will be modified. If no mask is provided, a default
+   * mask is used:
+   * paths: "bindings, etag"
+   * This field is only used by Cloud IAM.
+   */
+  core.String updateMask;
 
   SetIamPolicyRequest();
 
@@ -5405,12 +5435,18 @@ class SetIamPolicyRequest {
     if (_json.containsKey("policy")) {
       policy = new Policy.fromJson(_json["policy"]);
     }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
     }
     return _json;
   }

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.33.0
+    version: 0.34.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -109,7 +109,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.32.0
+    version: 0.32.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -123,6 +123,7 @@ packages:
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
+    - cloudkms:v1beta1 # https://cloud.google.com/kms/docs/ 
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - datastore:v1beta3  # https://developers.google.com/datastore/

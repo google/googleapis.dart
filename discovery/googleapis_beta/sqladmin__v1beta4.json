@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/_SgIKPOObAEfzfmWstkaHktsaJo\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/t9edOSlewaa7VyZ4dauqNzzg4MU\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -960,6 +960,40 @@
                         "https://www.googleapis.com/auth/sqlservice.admin"
                     ]
                 },
+                "truncateLog": {
+                    "description": "Truncate MySQL general and slow query log tables",
+                    "httpMethod": "POST",
+                    "id": "sql.instances.truncateLog",
+                    "parameterOrder": [
+                        "project",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Cloud SQL instance ID. This does not include the project ID.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID of the Cloud SQL project.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "projects/{project}/instances/{instance}/truncateLog",
+                    "request": {
+                        "$ref": "InstancesTruncateLogRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
                 "update": {
                     "description": "Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to retain. For partial updates, use patch.",
                     "etagRequired": true,
@@ -1444,7 +1478,7 @@
             }
         }
     },
-    "revision": "20161209",
+    "revision": "20161220",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2103,6 +2137,17 @@
             },
             "type": "object"
         },
+        "InstancesTruncateLogRequest": {
+            "description": "Instance truncate log request.",
+            "id": "InstancesTruncateLogRequest",
+            "properties": {
+                "truncateLogContext": {
+                    "$ref": "TruncateLogContext",
+                    "description": "Contains details about the truncate log operation."
+                }
+            },
+            "type": "object"
+        },
         "IpConfiguration": {
             "description": "IP Management configuration.",
             "id": "IpConfiguration",
@@ -2707,6 +2752,22 @@
                 "kind": {
                     "default": "sql#tiersList",
                     "description": "This is always sql#tiersList.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TruncateLogContext": {
+            "description": "Database Instance truncate log context.",
+            "id": "TruncateLogContext",
+            "properties": {
+                "kind": {
+                    "default": "sql#truncateLogContext",
+                    "description": "This is always sql#truncateLogContext.",
+                    "type": "string"
+                },
+                "logType": {
+                    "description": "The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE.",
                     "type": "string"
                 }
             },

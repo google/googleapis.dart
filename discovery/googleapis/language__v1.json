@@ -187,7 +187,7 @@
             }
         }
     },
-    "revision": "20161205",
+    "revision": "20170103",
     "rootUrl": "https://language.googleapis.com/",
     "schemas": {
         "Document": {

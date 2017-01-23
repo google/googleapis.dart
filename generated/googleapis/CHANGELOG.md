@@ -1,3 +1,19 @@
+## 0.34.0
+
+* [api] adexchangebuyer:v1_4: schema changes
+* [api] directory:v1: schema ehanges
+* [api] directory:v1: schema changes
+* [api] androidpublisher:v2: new resource, schema changes
+* [api] bigquery:v2: schema changes
+* [api] classroom:v1: new methods
+* [api] cloudbuild:v1: schema changes
+* [api] compute:v1: schema changes
+* [api] servicemanagement:v1: schema changes
+* [api] sheets:v1: schema changes
+* [api-breaking] androidenterprise:v1: resource removal
+* [api-breaking] kgsearch:v1: schema changes
+* [api-breaking] playmoviespartner:v1: resource removal
+
 ## 0.33.0
 
 * [api-new] language:v1

@@ -15,7 +15,7 @@
     "description": "The Publishing API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/xMP3-t2S3m8oLMTQw_TGyMQw30Y\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Y51_sSgRxep6h8xnvx3Q8dLJYSQ\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -454,7 +454,7 @@
             }
         }
     },
-    "revision": "20161207",
+    "revision": "20170111",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementConfiguration": {

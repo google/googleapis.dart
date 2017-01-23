@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/W1AQ-5FwbPweFAs-GFJ9Ju07xes\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/blb001vizhf1mKyLBTvfHWwu40Q\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -622,7 +622,7 @@
             }
         }
     },
-    "revision": "20161205",
+    "revision": "20170111",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Error": {

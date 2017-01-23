@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/lK1rSeSt4REctli37J8Co4N4a5s\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/wBOBQg7Gs1S9CwApK0nCAqVzk_Y\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2321,6 +2321,59 @@
                             ]
                         }
                     }
+                },
+                "voidedpurchases": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists the purchases that were cancelled, refunded or charged-back.",
+                            "httpMethod": "GET",
+                            "id": "androidpublisher.purchases.voidedpurchases.list",
+                            "parameterOrder": [
+                                "packageName"
+                            ],
+                            "parameters": {
+                                "endTime": {
+                                    "description": "The time, in milliseconds since the Epoch, of the newest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "maxResults": {
+                                    "format": "uint32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "packageName": {
+                                    "description": "The package name of the application for which voided purchases need to be returned (for example, 'com.some.thing').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "startIndex": {
+                                    "format": "uint32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "startTime": {
+                                    "description": "The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days.",
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "{packageName}/purchases/voidedpurchases",
+                            "response": {
+                                "$ref": "VoidedPurchasesListResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        }
+                    }
                 }
             }
         },
@@ -2344,6 +2397,10 @@
                         "reviewId": {
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "translationLanguage": {
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -2380,6 +2437,10 @@
                             "type": "integer"
                         },
                         "token": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "translationLanguage": {
                             "location": "query",
                             "type": "string"
                         }
@@ -2427,7 +2488,7 @@
             }
         }
     },
-    "revision": "20161017",
+    "revision": "20170105",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2605,6 +2666,61 @@
                 "text": {
                     "description": "The content of the comment, i.e. reply body.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceMetadata": {
+            "id": "DeviceMetadata",
+            "properties": {
+                "cpuMake": {
+                    "description": "Device CPU make e.g. \"Qualcomm\"",
+                    "type": "string"
+                },
+                "cpuModel": {
+                    "description": "Device CPU model e.g. \"MSM8974\"",
+                    "type": "string"
+                },
+                "deviceClass": {
+                    "description": "Device class (e.g. tablet)",
+                    "type": "string"
+                },
+                "glEsVersion": {
+                    "description": "OpenGL version",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "manufacturer": {
+                    "description": "Device manufacturer (e.g. Motorola)",
+                    "type": "string"
+                },
+                "nativePlatform": {
+                    "description": "Comma separated list of native platforms (e.g. \"arm\", \"arm7\")",
+                    "type": "string"
+                },
+                "productName": {
+                    "description": "Device model name (e.g. Droid)",
+                    "type": "string"
+                },
+                "ramMb": {
+                    "description": "Device RAM in Megabytes e.g. \"2048\"",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "screenDensityDpi": {
+                    "description": "Screen density in DPI",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "screenHeightPx": {
+                    "description": "Screen height in pixels",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "screenWidthPx": {
+                    "description": "Screen width in pixels",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3440,9 +3556,17 @@
                     "description": "Codename for the reviewer's device, e.g. klte, flounder. May be absent.",
                     "type": "string"
                 },
+                "deviceMetadata": {
+                    "$ref": "DeviceMetadata",
+                    "description": "Some information about the characteristics of the user's device"
+                },
                 "lastModified": {
                     "$ref": "Timestamp",
                     "description": "The last time at which this comment was updated."
+                },
+                "originalText": {
+                    "description": "Untranslated text of the review, in the case where the review has been translated. If the review has not been translated this is left blank.",
+                    "type": "string"
                 },
                 "reviewerLanguage": {
                     "description": "Language code for the reviewer. This is taken from the device settings so is not guaranteed to match the language the review is written in. May be absent.",
@@ -3456,6 +3580,60 @@
                 "text": {
                     "description": "The content of the comment, i.e. review body. In some cases users have been able to write a review with separate title and body; in those cases the title and body are concatenated and separated by a tab character.",
                     "type": "string"
+                },
+                "thumbsDownCount": {
+                    "description": "Number of users who have given this review a thumbs down",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "thumbsUpCount": {
+                    "description": "Number of users who have given this review a thumbs up",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "VoidedPurchase": {
+            "description": "A VoidedPurchase resource indicates a purchase that was either cancelled/refunded/charged-back.",
+            "id": "VoidedPurchase",
+            "properties": {
+                "kind": {
+                    "default": "androidpublisher#voidedPurchase",
+                    "description": "This kind represents a voided purchase object in the androidpublisher service.",
+                    "type": "string"
+                },
+                "purchaseTimeMillis": {
+                    "description": "The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "purchaseToken": {
+                    "description": "The token that was generated when a purchase was made. This uniquely identifies a purchase.",
+                    "type": "string"
+                },
+                "voidedTimeMillis": {
+                    "description": "The time at which the purchase was cancelled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970).",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VoidedPurchasesListResponse": {
+            "id": "VoidedPurchasesListResponse",
+            "properties": {
+                "pageInfo": {
+                    "$ref": "PageInfo"
+                },
+                "tokenPagination": {
+                    "$ref": "TokenPagination"
+                },
+                "voidedPurchases": {
+                    "items": {
+                        "$ref": "VoidedPurchase"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

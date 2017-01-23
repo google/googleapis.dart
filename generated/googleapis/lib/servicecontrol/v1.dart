@@ -50,7 +50,7 @@ class ServicesResourceApi {
    * 60 seconds. In case of server errors, the client can rely on the cached
    * results for longer time.
    *
-   * NOTE: the `CheckRequest` has the size limit of 1MB.
+   * NOTE: the `CheckRequest` has the size limit of 64KB.
    *
    * This method requires the `servicemanagement.services.check` permission
    * on the specified service. For more information, see
@@ -198,6 +198,9 @@ class CheckError {
    * - "CLIENT_APP_BLOCKED" : The client application of the consumer request is
    * invalid for the
    * specific consumer project.
+   * - "API_TARGET_BLOCKED" : The API targeted by this request is invalid for
+   * the specified consumer
+   * project.
    * - "API_KEY_INVALID" : The consumer's API key is invalid.
    * - "API_KEY_EXPIRED" : The consumer's API Key has expired.
    * - "API_KEY_NOT_FOUND" : The consumer's API Key was not found in config

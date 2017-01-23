@@ -69,9 +69,9 @@ buildSearchResponse() {
   var o = new api.SearchResponse();
   buildCounterSearchResponse++;
   if (buildCounterSearchResponse < 3) {
-    o.context = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+    o.P_context = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+    o.P_type = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
     o.itemListElement = buildUnnamed861();
-    o.type = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   }
   buildCounterSearchResponse--;
   return o;
@@ -80,9 +80,9 @@ buildSearchResponse() {
 checkSearchResponse(api.SearchResponse o) {
   buildCounterSearchResponse++;
   if (buildCounterSearchResponse < 3) {
-    var casted3 = (o.context) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
+    var casted3 = (o.P_context) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
+    var casted4 = (o.P_type) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
     checkUnnamed861(o.itemListElement);
-    var casted4 = (o.type) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
   }
   buildCounterSearchResponse--;
 }
@@ -142,13 +142,13 @@ main() {
 
       var mock = new HttpServerMock();
       api.EntitiesResourceApi res = new api.KgsearchApi(mock).entities;
-      var arg_query = "foo";
-      var arg_ids = buildUnnamed862();
-      var arg_languages = buildUnnamed863();
-      var arg_types = buildUnnamed864();
-      var arg_indent = true;
-      var arg_prefix = true;
       var arg_limit = 42;
+      var arg_ids = buildUnnamed862();
+      var arg_prefix = true;
+      var arg_query = "foo";
+      var arg_indent = true;
+      var arg_types = buildUnnamed863();
+      var arg_languages = buildUnnamed864();
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -175,13 +175,13 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(queryMap["languages"], unittest.equals(arg_languages));
-        unittest.expect(queryMap["types"], unittest.equals(arg_types));
-        unittest.expect(queryMap["indent"].first, unittest.equals("$arg_indent"));
-        unittest.expect(queryMap["prefix"].first, unittest.equals("$arg_prefix"));
         unittest.expect(core.int.parse(queryMap["limit"].first), unittest.equals(arg_limit));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(queryMap["prefix"].first, unittest.equals("$arg_prefix"));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(queryMap["indent"].first, unittest.equals("$arg_indent"));
+        unittest.expect(queryMap["types"], unittest.equals(arg_types));
+        unittest.expect(queryMap["languages"], unittest.equals(arg_languages));
 
 
         var h = {
@@ -190,7 +190,7 @@ main() {
         var resp = convert.JSON.encode(buildSearchResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.search(query: arg_query, ids: arg_ids, languages: arg_languages, types: arg_types, indent: arg_indent, prefix: arg_prefix, limit: arg_limit).then(unittest.expectAsync(((api.SearchResponse response) {
+      res.search(limit: arg_limit, ids: arg_ids, prefix: arg_prefix, query: arg_query, indent: arg_indent, types: arg_types, languages: arg_languages).then(unittest.expectAsync(((api.SearchResponse response) {
         checkSearchResponse(response);
       })));
     });

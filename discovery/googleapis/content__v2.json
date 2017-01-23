@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/VEEyLOh5uQoE1GRmT6bPbJj1uoA\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/MJiuoRsHT46yY3IV3KcnT4EHa4c\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -242,7 +242,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a Merchant Center account. This method can only be called for multi-client accounts. This method supports patch semantics.",
+                    "description": "Updates a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "content.accounts.patch",
                     "parameterOrder": [
@@ -282,7 +282,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a Merchant Center account. This method can only be called for multi-client accounts.",
+                    "description": "Updates a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
                     "httpMethod": "PUT",
                     "id": "content.accounts.update",
                     "parameterOrder": [
@@ -2137,7 +2137,7 @@
             }
         }
     },
-    "revision": "20161205",
+    "revision": "20170111",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2149,7 +2149,7 @@
                     "type": "boolean"
                 },
                 "adwordsLinks": {
-                    "description": "List of linked AdWords accounts, active or pending approval. To create a new link request, add a new link with status active to the list. It will remain is state pending until approved or rejected in the AdWords interface. To delete an active link or to cancel a link request, remove it from the list.",
+                    "description": "List of linked AdWords accounts that are active or pending approval. To create a new link request, add a new link with status active to the list. It will remain in a pending state until approved or rejected either in the AdWords interface or through the  AdWords API. To delete an active link, or to cancel a link request, remove it from the list.",
                     "items": {
                         "$ref": "AccountAdwordsLink"
                     },

@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Cloud Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-test-lab/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/QYAVHgu7XLuKcUj9CeBFJN8ho9M\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/H7oYqmL4r5lYmxx0hYA5ZlF4dzg\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -482,6 +482,47 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
+                                        "getPerfMetricsSummary": {
+                                            "description": "Retrieves a PerfMetricsSummary.\n\nMay return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary does not exist",
+                                            "httpMethod": "GET",
+                                            "id": "toolresults.projects.histories.executions.steps.getPerfMetricsSummary",
+                                            "parameterOrder": [
+                                                "projectId",
+                                                "historyId",
+                                                "executionId",
+                                                "stepId"
+                                            ],
+                                            "parameters": {
+                                                "executionId": {
+                                                    "description": "A tool results execution ID.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "historyId": {
+                                                    "description": "A tool results history ID.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "projectId": {
+                                                    "description": "The cloud project",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "stepId": {
+                                                    "description": "A tool results step ID.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
+                                            "response": {
+                                                "$ref": "PerfMetricsSummary"
+                                            }
+                                        },
                                         "list": {
                                             "description": "Lists Steps for a given Execution.\n\nThe steps are sorted by creation_time in descending order. The step_id key will be used to order the steps with the same creation_time.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if the containing Execution does not exist",
                                             "httpMethod": "GET",
@@ -631,6 +672,325 @@
                                         }
                                     },
                                     "resources": {
+                                        "perfMetricsSummary": {
+                                            "methods": {
+                                                "create": {
+                                                    "description": "Creates a PerfMetricsSummary resource.\n\nMay return any of the following error code(s): - ALREADY_EXISTS - A PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist",
+                                                    "httpMethod": "POST",
+                                                    "id": "toolresults.projects.histories.executions.steps.perfMetricsSummary.create",
+                                                    "parameterOrder": [
+                                                        "projectId",
+                                                        "historyId",
+                                                        "executionId",
+                                                        "stepId"
+                                                    ],
+                                                    "parameters": {
+                                                        "executionId": {
+                                                            "description": "A tool results execution ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "historyId": {
+                                                            "description": "A tool results history ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "projectId": {
+                                                            "description": "The cloud project",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "stepId": {
+                                                            "description": "A tool results step ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
+                                                    "request": {
+                                                        "$ref": "PerfMetricsSummary"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "PerfMetricsSummary"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "perfSampleSeries": {
+                                            "methods": {
+                                                "create": {
+                                                    "description": "Creates a PerfSampleSeries.\n\nMay return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist",
+                                                    "httpMethod": "POST",
+                                                    "id": "toolresults.projects.histories.executions.steps.perfSampleSeries.create",
+                                                    "parameterOrder": [
+                                                        "projectId",
+                                                        "historyId",
+                                                        "executionId",
+                                                        "stepId"
+                                                    ],
+                                                    "parameters": {
+                                                        "executionId": {
+                                                            "description": "A tool results execution ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "historyId": {
+                                                            "description": "A tool results history ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "projectId": {
+                                                            "description": "The cloud project",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "stepId": {
+                                                            "description": "A tool results step ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
+                                                    "request": {
+                                                        "$ref": "PerfSampleSeries"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "PerfSampleSeries"
+                                                    }
+                                                },
+                                                "get": {
+                                                    "description": "Gets a PerfSampleSeries.\n\nMay return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist",
+                                                    "httpMethod": "GET",
+                                                    "id": "toolresults.projects.histories.executions.steps.perfSampleSeries.get",
+                                                    "parameterOrder": [
+                                                        "projectId",
+                                                        "historyId",
+                                                        "executionId",
+                                                        "stepId",
+                                                        "sampleSeriesId"
+                                                    ],
+                                                    "parameters": {
+                                                        "executionId": {
+                                                            "description": "A tool results execution ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "historyId": {
+                                                            "description": "A tool results history ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "projectId": {
+                                                            "description": "The cloud project",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "sampleSeriesId": {
+                                                            "description": "A sample series id",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "stepId": {
+                                                            "description": "A tool results step ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}",
+                                                    "response": {
+                                                        "$ref": "PerfSampleSeries"
+                                                    }
+                                                },
+                                                "list": {
+                                                    "description": "Lists PerfSampleSeries for a given Step.\n\nThe request provides an optional filter which specifies one or more PerfMetricsType to include in the result; if none returns all. The resulting PerfSampleSeries are sorted by ids.\n\nMay return any of the following canonical error codes: - NOT_FOUND - The containing Step does not exist",
+                                                    "httpMethod": "GET",
+                                                    "id": "toolresults.projects.histories.executions.steps.perfSampleSeries.list",
+                                                    "parameterOrder": [
+                                                        "projectId",
+                                                        "historyId",
+                                                        "executionId",
+                                                        "stepId"
+                                                    ],
+                                                    "parameters": {
+                                                        "executionId": {
+                                                            "description": "A tool results execution ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "filter": {
+                                                            "description": "Specify one or more PerfMetricType values such as CPU to filter the result",
+                                                            "enum": [
+                                                                "cpu",
+                                                                "memory",
+                                                                "network",
+                                                                "perfMetricTypeUnspecified"
+                                                            ],
+                                                            "enumDescriptions": [
+                                                                "",
+                                                                "",
+                                                                "",
+                                                                ""
+                                                            ],
+                                                            "location": "query",
+                                                            "repeated": true,
+                                                            "type": "string"
+                                                        },
+                                                        "historyId": {
+                                                            "description": "A tool results history ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "projectId": {
+                                                            "description": "The cloud project",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "stepId": {
+                                                            "description": "A tool results step ID.",
+                                                            "location": "path",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
+                                                    "response": {
+                                                        "$ref": "ListPerfSampleSeriesResponse"
+                                                    }
+                                                }
+                                            },
+                                            "resources": {
+                                                "samples": {
+                                                    "methods": {
+                                                        "batchCreate": {
+                                                            "description": "Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through repeated calls to this method in order to split up a large request payload - duplicates and existing timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements successfully inserted is returned in the response (omits items which already existed in the database).\n\nMay return any of the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does not exist",
+                                                            "httpMethod": "POST",
+                                                            "id": "toolresults.projects.histories.executions.steps.perfSampleSeries.samples.batchCreate",
+                                                            "parameterOrder": [
+                                                                "projectId",
+                                                                "historyId",
+                                                                "executionId",
+                                                                "stepId",
+                                                                "sampleSeriesId"
+                                                            ],
+                                                            "parameters": {
+                                                                "executionId": {
+                                                                    "description": "A tool results execution ID.",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "historyId": {
+                                                                    "description": "A tool results history ID.",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "projectId": {
+                                                                    "description": "The cloud project",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "sampleSeriesId": {
+                                                                    "description": "A sample series id",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "stepId": {
+                                                                    "description": "A tool results step ID.",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate",
+                                                            "request": {
+                                                                "$ref": "BatchCreatePerfSamplesRequest"
+                                                            },
+                                                            "response": {
+                                                                "$ref": "BatchCreatePerfSamplesResponse"
+                                                            }
+                                                        },
+                                                        "list": {
+                                                            "description": "Lists the Performance Samples of a given Sample Series - The list results are sorted by timestamps ascending - The default page size is 500 samples; and maximum size allowed 5000 - The response token indicates the last returned PerfSample timestamp - When the results size exceeds the page size, submit a subsequent request including the page token to return the rest of the samples up to the page limit\n\nMay return any of the following canonical error codes: - OUT_OF_RANGE - The specified request page_token is out of valid range - NOT_FOUND - The containing PerfSampleSeries does not exist",
+                                                            "httpMethod": "GET",
+                                                            "id": "toolresults.projects.histories.executions.steps.perfSampleSeries.samples.list",
+                                                            "parameterOrder": [
+                                                                "projectId",
+                                                                "historyId",
+                                                                "executionId",
+                                                                "stepId",
+                                                                "sampleSeriesId"
+                                                            ],
+                                                            "parameters": {
+                                                                "executionId": {
+                                                                    "description": "A tool results execution ID.",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "historyId": {
+                                                                    "description": "A tool results history ID.",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "pageSize": {
+                                                                    "description": "The default page size is 500 samples, and the maximum size is 5000. If the page_size is greater than 5000, the effective page size will be 5000",
+                                                                    "format": "int32",
+                                                                    "location": "query",
+                                                                    "type": "integer"
+                                                                },
+                                                                "pageToken": {
+                                                                    "description": "Optional, the next_page_token returned in the previous response",
+                                                                    "location": "query",
+                                                                    "type": "string"
+                                                                },
+                                                                "projectId": {
+                                                                    "description": "The cloud project",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "sampleSeriesId": {
+                                                                    "description": "A sample series id",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                },
+                                                                "stepId": {
+                                                                    "description": "A tool results step ID.",
+                                                                    "location": "path",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples",
+                                                            "response": {
+                                                                "$ref": "ListPerfSamplesResponse"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
                                         "thumbnails": {
                                             "methods": {
                                                 "list": {
@@ -699,7 +1059,7 @@
             }
         }
     },
-    "revision": "20161212",
+    "revision": "20170120",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Any": {
@@ -718,8 +1078,114 @@
             },
             "type": "object"
         },
+        "BasicPerfSampleSeries": {
+            "description": "Encapsulates the metadata for basic sample series represented by a line chart",
+            "id": "BasicPerfSampleSeries",
+            "properties": {
+                "perfMetricType": {
+                    "enum": [
+                        "cpu",
+                        "memory",
+                        "network",
+                        "perfMetricTypeUnspecified"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "perfUnit": {
+                    "enum": [
+                        "kibibyte",
+                        "percent",
+                        "perfUnitUnspecified"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "sampleSeriesLabel": {
+                    "enum": [
+                        "cpuKernel",
+                        "cpuTotal",
+                        "cpuUser",
+                        "memoryRssPrivate",
+                        "memoryRssShared",
+                        "memoryRssTotal",
+                        "ntBytesReceived",
+                        "ntBytesTransferred",
+                        "sampleSeriesTypeUnspecified"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchCreatePerfSamplesRequest": {
+            "description": "The request must provide up to a maximum of 5000 samples to be created; a larger sample size will cause an INVALID_ARGUMENT error",
+            "id": "BatchCreatePerfSamplesRequest",
+            "properties": {
+                "perfSamples": {
+                    "description": "The set of PerfSamples to create should not include existing timestamps",
+                    "items": {
+                        "$ref": "PerfSample"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchCreatePerfSamplesResponse": {
+            "id": "BatchCreatePerfSamplesResponse",
+            "properties": {
+                "perfSamples": {
+                    "items": {
+                        "$ref": "PerfSample"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CPUInfo": {
+            "id": "CPUInfo",
+            "properties": {
+                "cpuProcessor": {
+                    "description": "description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'",
+                    "type": "string"
+                },
+                "cpuSpeedInGhz": {
+                    "description": "the CPU clock speed in GHz",
+                    "format": "float",
+                    "type": "number"
+                },
+                "numberOfCores": {
+                    "description": "the number of CPU cores",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "Duration": {
-            "description": "A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like \"day\" or \"month\". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.\n\nExample 1: Compute Duration from two Timestamps in pseudo code.\n\nTimestamp start = ...; Timestamp end = ...; Duration duration = ...;\n\nduration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos;\n\nif (duration.seconds  0) { duration.seconds += 1; duration.nanos -= 1000000000; } else if (durations.seconds > 0 && duration.nanos < 0) { duration.seconds -= 1; duration.nanos += 1000000000; }\n\nExample 2: Compute Timestamp from Timestamp + Duration in pseudo code.\n\nTimestamp start = ...; Duration duration = ...; Timestamp end = ...;\n\nend.seconds = start.seconds + duration.seconds; end.nanos = start.nanos + duration.nanos;\n\nif (end.nanos = 1000000000) { end.seconds += 1; end.nanos -= 1000000000; }\n\nExample 3: Compute Duration from datetime.timedelta in Python.\n\ntd = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td)",
+            "description": "A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like \"day\" or \"month\". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.\n\n# Examples\n\nExample 1: Compute Duration from two Timestamps in pseudo code.\n\nTimestamp start = ...; Timestamp end = ...; Duration duration = ...;\n\nduration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos;\n\nif (duration.seconds  0) { duration.seconds += 1; duration.nanos -= 1000000000; } else if (durations.seconds > 0 && duration.nanos < 0) { duration.seconds -= 1; duration.nanos += 1000000000; }\n\nExample 2: Compute Timestamp from Timestamp + Duration in pseudo code.\n\nTimestamp start = ...; Duration duration = ...; Timestamp end = ...;\n\nend.seconds = start.seconds + duration.seconds; end.nanos = start.nanos + duration.nanos;\n\nif (end.nanos = 1000000000) { end.seconds += 1; end.nanos -= 1000000000; }\n\nExample 3: Compute Duration from datetime.timedelta in Python.\n\ntd = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td)\n\n# JSON Mapping\n\nIn JSON format, the Duration type is encoded as a string rather than an object, where the string ends in the suffix \"s\" (indicating seconds) and is preceded by the number of seconds, with nanoseconds expressed as fractional seconds. For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should be expressed in JSON format as \"3.000000001s\", and 3 seconds and 1 microsecond should be expressed in JSON format as \"3.000001s\".",
             "id": "Duration",
             "properties": {
                 "nanos": {
@@ -906,6 +1372,35 @@
             },
             "type": "object"
         },
+        "ListPerfSampleSeriesResponse": {
+            "id": "ListPerfSampleSeriesResponse",
+            "properties": {
+                "perfSampleSeries": {
+                    "description": "The resulting PerfSampleSeries sorted by id",
+                    "items": {
+                        "$ref": "PerfSampleSeries"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListPerfSamplesResponse": {
+            "id": "ListPerfSamplesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "Optional, returned if result size exceeds the page size specified in the request (or the default page size, 500, if unspecified). It indicates the last sample timestamp to be used as page_token in subsequent request",
+                    "type": "string"
+                },
+                "perfSamples": {
+                    "items": {
+                        "$ref": "PerfSample"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ListStepThumbnailsResponse": {
             "description": "A response containing the thumbnails in a step.",
             "id": "ListStepThumbnailsResponse",
@@ -938,6 +1433,22 @@
                         "$ref": "Step"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MemoryInfo": {
+            "id": "MemoryInfo",
+            "properties": {
+                "memoryCapInKibibyte": {
+                    "description": "Maximum memory that can be allocated to the process in KiB",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "memoryTotalInKibibyte": {
+                    "description": "Total memory available on the device in KiB",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -978,6 +1489,114 @@
                         "",
                         ""
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PerfEnvironment": {
+            "description": "Encapsulates performance environment info",
+            "id": "PerfEnvironment",
+            "properties": {
+                "cpuInfo": {
+                    "$ref": "CPUInfo",
+                    "description": "CPU related environment info"
+                },
+                "memoryInfo": {
+                    "$ref": "MemoryInfo",
+                    "description": "Memory related environment info"
+                }
+            },
+            "type": "object"
+        },
+        "PerfMetricsSummary": {
+            "description": "A summary of perf metrics collected and performance environment info",
+            "id": "PerfMetricsSummary",
+            "properties": {
+                "executionId": {
+                    "description": "A tool results execution ID.",
+                    "type": "string"
+                },
+                "historyId": {
+                    "description": "A tool results history ID.",
+                    "type": "string"
+                },
+                "perfEnvironment": {
+                    "$ref": "PerfEnvironment",
+                    "description": "Describes the environment in which the performance metrics were collected"
+                },
+                "perfMetrics": {
+                    "description": "Set of resource collected",
+                    "items": {
+                        "enum": [
+                            "cpu",
+                            "memory",
+                            "network",
+                            "perfMetricTypeUnspecified"
+                        ],
+                        "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "projectId": {
+                    "description": "The cloud project",
+                    "type": "string"
+                },
+                "stepId": {
+                    "description": "A tool results step ID.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PerfSample": {
+            "description": "Resource representing a single performance measure or data point",
+            "id": "PerfSample",
+            "properties": {
+                "sampleTime": {
+                    "$ref": "Timestamp",
+                    "description": "Timestamp of collection"
+                },
+                "value": {
+                    "description": "Value observed",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "PerfSampleSeries": {
+            "description": "Resource representing a collection of performance samples (or data points)",
+            "id": "PerfSampleSeries",
+            "properties": {
+                "basicPerfSampleSeries": {
+                    "$ref": "BasicPerfSampleSeries",
+                    "description": "Basic series represented by a line chart"
+                },
+                "executionId": {
+                    "description": "A tool results execution ID.",
+                    "type": "string"
+                },
+                "historyId": {
+                    "description": "A tool results history ID.",
+                    "type": "string"
+                },
+                "projectId": {
+                    "description": "The cloud project",
+                    "type": "string"
+                },
+                "sampleSeriesId": {
+                    "description": "A sample series id",
+                    "type": "string"
+                },
+                "stepId": {
+                    "description": "A tool results step ID.",
                     "type": "string"
                 }
             },

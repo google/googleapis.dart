@@ -7996,6 +7996,10 @@ class User {
   core.bool isAdmin;
   /** Boolean indicating if the user is delegated admin (Read-only) */
   core.bool isDelegatedAdmin;
+  /** Is 2-step verification enforced (Read-only) */
+  core.bool isEnforcedIn2Sv;
+  /** Is enrolled in 2-step verification (Read-only) */
+  core.bool isEnrolledIn2Sv;
   /** Is mailbox setup (Read-only) */
   core.bool isMailboxSetup;
   /** Kind of resource this is. */
@@ -8113,6 +8117,12 @@ class User {
     if (_json.containsKey("isDelegatedAdmin")) {
       isDelegatedAdmin = _json["isDelegatedAdmin"];
     }
+    if (_json.containsKey("isEnforcedIn2Sv")) {
+      isEnforcedIn2Sv = _json["isEnforcedIn2Sv"];
+    }
+    if (_json.containsKey("isEnrolledIn2Sv")) {
+      isEnrolledIn2Sv = _json["isEnrolledIn2Sv"];
+    }
     if (_json.containsKey("isMailboxSetup")) {
       isMailboxSetup = _json["isMailboxSetup"];
     }
@@ -8221,6 +8231,12 @@ class User {
     }
     if (isDelegatedAdmin != null) {
       _json["isDelegatedAdmin"] = isDelegatedAdmin;
+    }
+    if (isEnforcedIn2Sv != null) {
+      _json["isEnforcedIn2Sv"] = isEnforcedIn2Sv;
+    }
+    if (isEnrolledIn2Sv != null) {
+      _json["isEnrolledIn2Sv"] = isEnrolledIn2Sv;
     }
     if (isMailboxSetup != null) {
       _json["isMailboxSetup"] = isMailboxSetup;

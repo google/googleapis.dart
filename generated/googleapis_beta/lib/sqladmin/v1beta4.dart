@@ -1332,6 +1332,55 @@ class InstancesResourceApi {
   }
 
   /**
+   * Truncate MySQL general and slow query log tables
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID of the Cloud SQL project.
+   *
+   * [instance] - Cloud SQL instance ID. This does not include the project ID.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> truncateLog(InstancesTruncateLogRequest request, core.String project, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/truncateLog';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Updates settings of a Cloud SQL instance. Caution: This is not a partial
    * update, so you must include values for all the settings that you want to
    * retain. For partial updates, use patch.
@@ -3372,6 +3421,28 @@ class InstancesRestoreBackupRequest {
   }
 }
 
+/** Instance truncate log request. */
+class InstancesTruncateLogRequest {
+  /** Contains details about the truncate log operation. */
+  TruncateLogContext truncateLogContext;
+
+  InstancesTruncateLogRequest();
+
+  InstancesTruncateLogRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("truncateLogContext")) {
+      truncateLogContext = new TruncateLogContext.fromJson(_json["truncateLogContext"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (truncateLogContext != null) {
+      _json["truncateLogContext"] = (truncateLogContext).toJson();
+    }
+    return _json;
+  }
+}
+
 /** IP Management configuration. */
 class IpConfiguration {
   /**
@@ -4614,6 +4685,39 @@ class TiersListResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** Database Instance truncate log context. */
+class TruncateLogContext {
+  /** This is always sql#truncateLogContext. */
+  core.String kind;
+  /**
+   * The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and
+   * MYSQL_SLOW_TABLE.
+   */
+  core.String logType;
+
+  TruncateLogContext();
+
+  TruncateLogContext.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
     }
     return _json;
   }

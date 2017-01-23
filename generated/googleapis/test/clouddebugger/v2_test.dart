@@ -1184,8 +1184,8 @@ main() {
       var mock = new HttpServerMock();
       api.ControllerDebuggeesBreakpointsResourceApi res = new api.ClouddebuggerApi(mock).controller.debuggees.breakpoints;
       var arg_debuggeeId = "foo";
-      var arg_waitToken = "foo";
       var arg_successOnTimeout = true;
+      var arg_waitToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1219,8 +1219,8 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["waitToken"].first, unittest.equals(arg_waitToken));
         unittest.expect(queryMap["successOnTimeout"].first, unittest.equals("$arg_successOnTimeout"));
+        unittest.expect(queryMap["waitToken"].first, unittest.equals(arg_waitToken));
 
 
         var h = {
@@ -1229,7 +1229,7 @@ main() {
         var resp = convert.JSON.encode(buildListActiveBreakpointsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_debuggeeId, waitToken: arg_waitToken, successOnTimeout: arg_successOnTimeout).then(unittest.expectAsync(((api.ListActiveBreakpointsResponse response) {
+      res.list(arg_debuggeeId, successOnTimeout: arg_successOnTimeout, waitToken: arg_waitToken).then(unittest.expectAsync(((api.ListActiveBreakpointsResponse response) {
         checkListActiveBreakpointsResponse(response);
       })));
     });
@@ -1301,8 +1301,8 @@ main() {
 
       var mock = new HttpServerMock();
       api.DebuggerDebuggeesResourceApi res = new api.ClouddebuggerApi(mock).debugger.debuggees;
-      var arg_project = "foo";
       var arg_includeInactive = true;
+      var arg_project = "foo";
       var arg_clientVersion = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1330,8 +1330,8 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["project"].first, unittest.equals(arg_project));
         unittest.expect(queryMap["includeInactive"].first, unittest.equals("$arg_includeInactive"));
+        unittest.expect(queryMap["project"].first, unittest.equals(arg_project));
         unittest.expect(queryMap["clientVersion"].first, unittest.equals(arg_clientVersion));
 
 
@@ -1341,7 +1341,7 @@ main() {
         var resp = convert.JSON.encode(buildListDebuggeesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(project: arg_project, includeInactive: arg_includeInactive, clientVersion: arg_clientVersion).then(unittest.expectAsync(((api.ListDebuggeesResponse response) {
+      res.list(includeInactive: arg_includeInactive, project: arg_project, clientVersion: arg_clientVersion).then(unittest.expectAsync(((api.ListDebuggeesResponse response) {
         checkListDebuggeesResponse(response);
       })));
     });
@@ -1469,12 +1469,12 @@ main() {
       var mock = new HttpServerMock();
       api.DebuggerDebuggeesBreakpointsResourceApi res = new api.ClouddebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_debuggeeId = "foo";
-      var arg_includeAllUsers = true;
-      var arg_includeInactive = true;
-      var arg_action_value = "foo";
-      var arg_stripResults = true;
-      var arg_waitToken = "foo";
       var arg_clientVersion = "foo";
+      var arg_includeAllUsers = true;
+      var arg_stripResults = true;
+      var arg_action_value = "foo";
+      var arg_includeInactive = true;
+      var arg_waitToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1508,12 +1508,12 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["includeAllUsers"].first, unittest.equals("$arg_includeAllUsers"));
-        unittest.expect(queryMap["includeInactive"].first, unittest.equals("$arg_includeInactive"));
-        unittest.expect(queryMap["action.value"].first, unittest.equals(arg_action_value));
-        unittest.expect(queryMap["stripResults"].first, unittest.equals("$arg_stripResults"));
-        unittest.expect(queryMap["waitToken"].first, unittest.equals(arg_waitToken));
         unittest.expect(queryMap["clientVersion"].first, unittest.equals(arg_clientVersion));
+        unittest.expect(queryMap["includeAllUsers"].first, unittest.equals("$arg_includeAllUsers"));
+        unittest.expect(queryMap["stripResults"].first, unittest.equals("$arg_stripResults"));
+        unittest.expect(queryMap["action.value"].first, unittest.equals(arg_action_value));
+        unittest.expect(queryMap["includeInactive"].first, unittest.equals("$arg_includeInactive"));
+        unittest.expect(queryMap["waitToken"].first, unittest.equals(arg_waitToken));
 
 
         var h = {
@@ -1522,7 +1522,7 @@ main() {
         var resp = convert.JSON.encode(buildListBreakpointsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_debuggeeId, includeAllUsers: arg_includeAllUsers, includeInactive: arg_includeInactive, action_value: arg_action_value, stripResults: arg_stripResults, waitToken: arg_waitToken, clientVersion: arg_clientVersion).then(unittest.expectAsync(((api.ListBreakpointsResponse response) {
+      res.list(arg_debuggeeId, clientVersion: arg_clientVersion, includeAllUsers: arg_includeAllUsers, stripResults: arg_stripResults, action_value: arg_action_value, includeInactive: arg_includeInactive, waitToken: arg_waitToken).then(unittest.expectAsync(((api.ListBreakpointsResponse response) {
         checkListBreakpointsResponse(response);
       })));
     });

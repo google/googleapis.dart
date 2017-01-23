@@ -2012,6 +2012,8 @@ class ExplainQueryStage {
   core.String recordsRead;
   /** Number of records written by the stage. */
   core.String recordsWritten;
+  /** Current status for the stage. */
+  core.String status;
   /**
    * List of operations within the stage in dependency order (approximately
    * chronological).
@@ -2057,6 +2059,9 @@ class ExplainQueryStage {
     if (_json.containsKey("recordsWritten")) {
       recordsWritten = _json["recordsWritten"];
     }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
     if (_json.containsKey("steps")) {
       steps = _json["steps"].map((value) => new ExplainQueryStep.fromJson(value)).toList();
     }
@@ -2099,6 +2104,9 @@ class ExplainQueryStage {
     }
     if (recordsWritten != null) {
       _json["recordsWritten"] = recordsWritten;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     if (steps != null) {
       _json["steps"] = steps.map((value) => (value).toJson()).toList();
@@ -2804,6 +2812,15 @@ class JobConfigurationLoad {
    */
   core.int maxBadRecords;
   /**
+   * [Optional] Specifies a string that represents a null value in a CSV file.
+   * For example, if you specify "\N", BigQuery interprets "\N" as a null value
+   * when loading a CSV file. The default value is the empty string. If you set
+   * this property to a custom value, BigQuery still interprets the empty string
+   * as a null value for all data types except for STRING and BYTE. For STRING
+   * and BYTE columns, BigQuery interprets the empty string as an empty value.
+   */
+  core.String nullMarker;
+  /**
    * [Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates
    * which entity properties to load into BigQuery from a Cloud Datastore
    * backup. Property names are case sensitive and must be top-level properties.
@@ -2910,6 +2927,9 @@ class JobConfigurationLoad {
     if (_json.containsKey("maxBadRecords")) {
       maxBadRecords = _json["maxBadRecords"];
     }
+    if (_json.containsKey("nullMarker")) {
+      nullMarker = _json["nullMarker"];
+    }
     if (_json.containsKey("projectionFields")) {
       projectionFields = _json["projectionFields"];
     }
@@ -2970,6 +2990,9 @@ class JobConfigurationLoad {
     }
     if (maxBadRecords != null) {
       _json["maxBadRecords"] = maxBadRecords;
+    }
+    if (nullMarker != null) {
+      _json["nullMarker"] = nullMarker;
     }
     if (projectionFields != null) {
       _json["projectionFields"] = projectionFields;
@@ -3049,8 +3072,9 @@ class JobConfigurationQuery {
    */
   core.String maximumBytesBilled;
   /**
-   * [Experimental] Standard SQL only. Whether to use positional (?) or named
-   * (@myparam) query parameters in this query.
+   * [Experimental] Standard SQL only. Set to POSITIONAL to use positional (?)
+   * query parameters or to NAMED to use named (@myparam) query parameters in
+   * this query.
    */
   core.String parameterMode;
   /** [Deprecated] This property is deprecated. */
@@ -3581,6 +3605,8 @@ class JobStatistics2 {
    * successful dry run of non-legacy SQL queries.
    */
   TableSchema schema;
+  /** [Output-only, Experimental] The type of query statement, if valid. */
+  core.String statementType;
   /** [Output-only] Total bytes billed for the job. */
   core.String totalBytesBilled;
   /** [Output-only] Total bytes processed for the job. */
@@ -3612,6 +3638,9 @@ class JobStatistics2 {
     if (_json.containsKey("schema")) {
       schema = new TableSchema.fromJson(_json["schema"]);
     }
+    if (_json.containsKey("statementType")) {
+      statementType = _json["statementType"];
+    }
     if (_json.containsKey("totalBytesBilled")) {
       totalBytesBilled = _json["totalBytesBilled"];
     }
@@ -3642,6 +3671,9 @@ class JobStatistics2 {
     }
     if (schema != null) {
       _json["schema"] = (schema).toJson();
+    }
+    if (statementType != null) {
+      _json["statementType"] = statementType;
     }
     if (totalBytesBilled != null) {
       _json["totalBytesBilled"] = totalBytesBilled;
@@ -4125,8 +4157,9 @@ class QueryRequest {
    */
   core.int maxResults;
   /**
-   * [Experimental] Standard SQL only. Whether to use positional (?) or named
-   * (@myparam) query parameters in this query.
+   * [Experimental] Standard SQL only. Set to POSITIONAL to use positional (?)
+   * query parameters or to NAMED to use named (@myparam) query parameters in
+   * this query.
    */
   core.String parameterMode;
   /** [Deprecated] This property is deprecated. */
@@ -4450,6 +4483,16 @@ class Table {
   /** [Output-only] The type of the resource. */
   core.String kind;
   /**
+   * [Experimental] The labels associated with this table. You can use these to
+   * organize and group your tables. Label keys and values can be no longer than
+   * 63 characters, can only contain letters, numeric characters, underscores
+   * and dashes. International characters are allowed. Label values are
+   * optional. Label keys must start with a letter and must be unique within a
+   * dataset. Both keys and values are additionally constrained to be <= 128
+   * bytes in size.
+   */
+  core.Map<core.String, core.String> labels;
+  /**
    * [Output-only] The time when this table was last modified, in milliseconds
    * since the epoch.
    */
@@ -4528,6 +4571,9 @@ class Table {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("lastModifiedTime")) {
       lastModifiedTime = _json["lastModifiedTime"];
     }
@@ -4591,6 +4637,9 @@ class Table {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (lastModifiedTime != null) {
       _json["lastModifiedTime"] = lastModifiedTime;
@@ -4899,8 +4948,10 @@ class TableFieldSchema {
   core.String name;
   /**
    * [Required] The field data type. Possible values include STRING, BYTES,
-   * INTEGER, FLOAT, BOOLEAN, TIMESTAMP, DATE, TIME, DATETIME, or RECORD (where
-   * RECORD indicates that the field contains a nested schema).
+   * INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN,
+   * BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where
+   * RECORD indicates that the field contains a nested schema) or STRUCT (same
+   * as RECORD).
    */
   core.String type;
 
@@ -4952,6 +5003,11 @@ class TableListTables {
   core.String id;
   /** The resource type. */
   core.String kind;
+  /**
+   * [Experimental] The labels associated with this table. You can use these to
+   * organize and group your tables.
+   */
+  core.Map<core.String, core.String> labels;
   /** A reference uniquely identifying the table. */
   TableReference tableReference;
   /** The type of table. Possible values are: TABLE, VIEW. */
@@ -4968,6 +5024,9 @@ class TableListTables {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
     }
     if (_json.containsKey("tableReference")) {
       tableReference = new TableReference.fromJson(_json["tableReference"]);
@@ -4987,6 +5046,9 @@ class TableListTables {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (tableReference != null) {
       _json["tableReference"] = (tableReference).toJson();

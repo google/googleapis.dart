@@ -2201,7 +2201,10 @@ class Change {
 
 /** A list of changes for a user. */
 class ChangeList {
-  /** The page of changes. */
+  /**
+   * The list of changes. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<Change> changes;
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -2215,7 +2218,9 @@ class ChangeList {
   core.String newStartPageToken;
   /**
    * The page token for the next page of changes. This will be absent if the end
-   * of the current changes list has been reached.
+   * of the changes list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
    */
   core.String nextPageToken;
 
@@ -2527,7 +2532,10 @@ class Comment {
 
 /** A list of comments on a file. */
 class CommentList {
-  /** The page of comments. */
+  /**
+   * The list of comments. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<Comment> comments;
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -2536,7 +2544,9 @@ class CommentList {
   core.String kind;
   /**
    * The page token for the next page of comments. This will be absent if the
-   * end of the comments list has been reached.
+   * end of the comments list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
    */
   core.String nextPageToken;
 
@@ -3128,10 +3138,7 @@ class File {
    * the file's content.
    */
   core.String thumbnailLink;
-  /**
-   * The thumbnail version for use in client-contructable thumbnail URLs or
-   * thumbnail cache invalidation.
-   */
+  /** The thumbnail version for use in thumbnail cache invalidation. */
   core.String thumbnailVersion;
   /**
    * Whether the file has been trashed, either explicitly or from a trashed
@@ -3469,7 +3476,10 @@ class File {
 
 /** A list of files. */
 class FileList {
-  /** The page of files. */
+  /**
+   * The list of files. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<File> files;
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -3478,7 +3488,9 @@ class FileList {
   core.String kind;
   /**
    * The page token for the next page of files. This will be absent if the end
-   * of the files list has been reached.
+   * of the files list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
    */
   core.String nextPageToken;
 
@@ -3679,7 +3691,7 @@ class PermissionList {
    * "drive#permissionList".
    */
   core.String kind;
-  /** The full list of permissions. */
+  /** The list of permissions. */
   core.List<Permission> permissions;
 
   PermissionList();
@@ -3811,10 +3823,15 @@ class ReplyList {
   core.String kind;
   /**
    * The page token for the next page of replies. This will be absent if the end
-   * of the replies list has been reached.
+   * of the replies list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
    */
   core.String nextPageToken;
-  /** The page of replies. */
+  /**
+   * The list of replies. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<Reply> replies;
 
   ReplyList();
@@ -3991,10 +4008,15 @@ class RevisionList {
   core.String kind;
   /**
    * The page token for the next page of revisions. This will be absent if the
-   * end of the revisions list has been reached.
+   * end of the revisions list has been reached. If the token is rejected for
+   * any reason, it should be discarded, and pagination should be restarted from
+   * the first page of results.
    */
   core.String nextPageToken;
-  /** The full list of revisions. */
+  /**
+   * The list of revisions. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<Revision> revisions;
 
   RevisionList();

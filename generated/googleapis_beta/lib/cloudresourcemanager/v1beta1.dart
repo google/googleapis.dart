@@ -1530,7 +1530,6 @@ class Project {
    * depend on specific characters being disallowed.
    *
    * Example: <code>"environment" : "dev"</code>
-   *
    * Read-write.
    */
   core.Map<core.String, core.String> labels;
@@ -1558,7 +1557,6 @@ class Project {
    * hyphen, single-quote, double-quote, space, and exclamation point.
    *
    * Example: <code>My Project</code>
-   *
    * Read-write.
    */
   core.String name;
@@ -1566,7 +1564,9 @@ class Project {
    * An optional reference to a parent Resource.
    *
    * The only supported parent type is "organization". Once set, the parent
-   * cannot be modified.
+   * cannot be modified. The `parent` can be set on creation or using the
+   * `UpdateProject` method; the end user must have the
+   * `resourcemanager.projects.create` permission on the parent.
    *
    * Read-write.
    */
@@ -1578,7 +1578,6 @@ class Project {
    * Trailing hyphens are prohibited.
    *
    * Example: <code>tokyo-rain-123</code>
-   *
    * Read-only after creation.
    */
   core.String projectId;
@@ -1586,7 +1585,6 @@ class Project {
    * The number uniquely identifying the project.
    *
    * Example: <code>415104041262</code>
-   *
    * Read-only.
    */
   core.String projectNumber;

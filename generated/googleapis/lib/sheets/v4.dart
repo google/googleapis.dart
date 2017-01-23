@@ -1420,15 +1420,15 @@ class BandingProperties {
   Color firstBandColor;
   /**
    * The color of the last row or column. If this field is not set, the last
-   * row or column will be filled with either first_row_color or
-   * second_row_color, depending on the color of the previous row or
+   * row or column will be filled with either first_band_color or
+   * second_band_color, depending on the color of the previous row or
    * column.
    */
   Color footerColor;
   /**
    * The color of the first row or column. If this field is set, the first
    * row or column will be filled with this color and the colors will
-   * alternate between first_band_color and [second_band_color[] starting
+   * alternate between first_band_color and second_band_color starting
    * from the second row or column. Otherwise, the first row or column will be
    * filled with first_band_color and the colors will proceed to alternate
    * as they normally would.
@@ -3602,6 +3602,45 @@ class DeleteProtectedRangeRequest {
   }
 }
 
+/** Deletes a range of cells, shifting other cells into the deleted area. */
+class DeleteRangeRequest {
+  /** The range of cells to delete. */
+  GridRange range;
+  /**
+   * The dimension from which deleted cells will be replaced with.
+   * If ROWS, existing cells will be shifted upward to
+   * replace the deleted cells. If COLUMNS, existing cells
+   * will be shifted left to replace the deleted cells.
+   * Possible string values are:
+   * - "DIMENSION_UNSPECIFIED" : The default value, do not use.
+   * - "ROWS" : Operates on the rows of a sheet.
+   * - "COLUMNS" : Operates on the columns of a sheet.
+   */
+  core.String shiftDimension;
+
+  DeleteRangeRequest();
+
+  DeleteRangeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("range")) {
+      range = new GridRange.fromJson(_json["range"]);
+    }
+    if (_json.containsKey("shiftDimension")) {
+      shiftDimension = _json["shiftDimension"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    if (shiftDimension != null) {
+      _json["shiftDimension"] = shiftDimension;
+    }
+    return _json;
+  }
+}
+
 /** Deletes the requested sheet. */
 class DeleteSheetRequest {
   /** The ID of the sheet to delete. */
@@ -4680,6 +4719,44 @@ class InsertDimensionRequest {
   }
 }
 
+/** Inserts cells into a range, shifting the existing cells over or down. */
+class InsertRangeRequest {
+  /** The range to insert new cells into. */
+  GridRange range;
+  /**
+   * The dimension which will be shifted when inserting cells.
+   * If ROWS, existing cells will be shifted down.
+   * If COLUMNS, existing cells will be shifted right.
+   * Possible string values are:
+   * - "DIMENSION_UNSPECIFIED" : The default value, do not use.
+   * - "ROWS" : Operates on the rows of a sheet.
+   * - "COLUMNS" : Operates on the columns of a sheet.
+   */
+  core.String shiftDimension;
+
+  InsertRangeRequest();
+
+  InsertRangeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("range")) {
+      range = new GridRange.fromJson(_json["range"]);
+    }
+    if (_json.containsKey("shiftDimension")) {
+      shiftDimension = _json["shiftDimension"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    if (shiftDimension != null) {
+      _json["shiftDimension"] = shiftDimension;
+    }
+    return _json;
+  }
+}
+
 /**
  * A single interpolation point on a gradient conditional format.
  * These pin the gradient color scale according to the color,
@@ -5700,6 +5777,8 @@ class Request {
   DeleteNamedRangeRequest deleteNamedRange;
   /** Deletes a protected range. */
   DeleteProtectedRangeRequest deleteProtectedRange;
+  /** Deletes a range of cells from a sheet, shifting the remaining cells. */
+  DeleteRangeRequest deleteRange;
   /** Deletes a sheet. */
   DeleteSheetRequest deleteSheet;
   /** Duplicates a filter view. */
@@ -5710,6 +5789,8 @@ class Request {
   FindReplaceRequest findReplace;
   /** Inserts new rows or columns in a sheet. */
   InsertDimensionRequest insertDimension;
+  /** Inserts new cells in a sheet, shifting the existing cells. */
+  InsertRangeRequest insertRange;
   /** Merges cells together. */
   MergeCellsRequest mergeCells;
   /** Moves rows or columns to another location in a sheet. */
@@ -5819,6 +5900,9 @@ class Request {
     if (_json.containsKey("deleteProtectedRange")) {
       deleteProtectedRange = new DeleteProtectedRangeRequest.fromJson(_json["deleteProtectedRange"]);
     }
+    if (_json.containsKey("deleteRange")) {
+      deleteRange = new DeleteRangeRequest.fromJson(_json["deleteRange"]);
+    }
     if (_json.containsKey("deleteSheet")) {
       deleteSheet = new DeleteSheetRequest.fromJson(_json["deleteSheet"]);
     }
@@ -5833,6 +5917,9 @@ class Request {
     }
     if (_json.containsKey("insertDimension")) {
       insertDimension = new InsertDimensionRequest.fromJson(_json["insertDimension"]);
+    }
+    if (_json.containsKey("insertRange")) {
+      insertRange = new InsertRangeRequest.fromJson(_json["insertRange"]);
     }
     if (_json.containsKey("mergeCells")) {
       mergeCells = new MergeCellsRequest.fromJson(_json["mergeCells"]);
@@ -5964,6 +6051,9 @@ class Request {
     if (deleteProtectedRange != null) {
       _json["deleteProtectedRange"] = (deleteProtectedRange).toJson();
     }
+    if (deleteRange != null) {
+      _json["deleteRange"] = (deleteRange).toJson();
+    }
     if (deleteSheet != null) {
       _json["deleteSheet"] = (deleteSheet).toJson();
     }
@@ -5978,6 +6068,9 @@ class Request {
     }
     if (insertDimension != null) {
       _json["insertDimension"] = (insertDimension).toJson();
+    }
+    if (insertRange != null) {
+      _json["insertRange"] = (insertRange).toJson();
     }
     if (mergeCells != null) {
       _json["mergeCells"] = (mergeCells).toJson();

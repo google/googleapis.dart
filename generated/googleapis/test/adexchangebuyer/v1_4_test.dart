@@ -2596,6 +2596,7 @@ buildPretargetingConfig() {
     o.isActive = true;
     o.kind = "foo";
     o.languages = buildUnnamed1875();
+    o.minimumViewabilityDecile = 42;
     o.mobileCarriers = buildUnnamed1876();
     o.mobileDevices = buildUnnamed1877();
     o.mobileOperatingSystemVersions = buildUnnamed1878();
@@ -2629,6 +2630,7 @@ checkPretargetingConfig(api.PretargetingConfig o) {
     unittest.expect(o.isActive, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed1875(o.languages);
+    unittest.expect(o.minimumViewabilityDecile, unittest.equals(42));
     checkUnnamed1876(o.mobileCarriers);
     checkUnnamed1877(o.mobileDevices);
     checkUnnamed1878(o.mobileOperatingSystemVersions);
@@ -2802,6 +2804,7 @@ buildProduct() {
     o.labels = buildUnnamed1889();
     o.lastUpdateTimeMs = "foo";
     o.legacyOfferId = "foo";
+    o.marketplacePublisherProfileId = "foo";
     o.name = "foo";
     o.privateAuctionId = "foo";
     o.productId = "foo";
@@ -2833,6 +2836,7 @@ checkProduct(api.Product o) {
     checkUnnamed1889(o.labels);
     unittest.expect(o.lastUpdateTimeMs, unittest.equals('foo'));
     unittest.expect(o.legacyOfferId, unittest.equals('foo'));
+    unittest.expect(o.marketplacePublisherProfileId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.privateAuctionId, unittest.equals('foo'));
     unittest.expect(o.productId, unittest.equals('foo'));

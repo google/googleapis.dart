@@ -587,9 +587,11 @@ class CoursesCourseWorkResourceApi {
    * submissions must be made with an OAuth client ID from the associated
    * Developer Console project. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to access the
-   * requested course, create course work in the requested course, or for access
-   * errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
-   * the requested course does not exist.
+   * requested course, create course work in the requested course, share a Drive
+   * attachment, or for access errors. * `INVALID_ARGUMENT` if the request is
+   * malformed. * `NOT_FOUND` if the requested course does not exist. *
+   * `FAILED_PRECONDITION` for the following request error: *
+   * AttachmentNotVisible
    *
    * [request] - The metadata request object.
    *
@@ -631,6 +633,60 @@ class CoursesCourseWorkResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new CourseWork.fromJson(data));
+  }
+
+  /**
+   * Deletes a course work. This request must be made by the Developer Console
+   * project of the [OAuth client
+   * ID](https://support.google.com/cloud/answer/6158849) used to create the
+   * corresponding course work item. This method returns the following error
+   * codes: * `PERMISSION_DENIED` if the requesting developer project did not
+   * create the corresponding course work, if the requesting user is not
+   * permitted to delete the requested course or for access errors. *
+   * `FAILED_PRECONDITION` if the requested course work has already been
+   * deleted. * `NOT_FOUND` if no course exists with the requested ID.
+   *
+   * Request parameters:
+   *
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an alias.
+   *
+   * [id] - Identifier of the course work to delete. This identifier is a
+   * Classroom-assigned identifier.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String courseId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/courseWork/' + commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
   /**
@@ -756,6 +812,80 @@ class CoursesCourseWorkResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListCourseWorkResponse.fromJson(data));
+  }
+
+  /**
+   * Updates one or more fields of a course work. See
+   * google.classroom.v1.CourseWork for details of which fields may be updated
+   * and who may change them. This request must be made by the Developer Console
+   * project of the [OAuth client
+   * ID](https://support.google.com/cloud/answer/6158849) used to create the
+   * corresponding course work item. This method returns the following error
+   * codes: * `PERMISSION_DENIED` if the requesting developer project did not
+   * create the corresponding course work, if the user is not permitted to make
+   * the requested modification to the student submission, or for access errors.
+   * * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION`
+   * if the requested course work has already been deleted. * `NOT_FOUND` if the
+   * requested course, course work, or student submission does not exist.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [courseId] - Identifier of the course. This identifier can be either the
+   * Classroom-assigned identifier or an alias.
+   *
+   * [id] - Identifier of the course work.
+   *
+   * [updateMask] - Mask that identifies which fields on the course work to
+   * update. This field is required to do an update. The update fails if invalid
+   * fields are specified. If a field supports empty values, it can be cleared
+   * by specifying it in the update mask and not in the CourseWork object. If a
+   * field that does not support empty values is included in the update mask and
+   * not set in the CourseWork object, an `INVALID_ARGUMENT` error will be
+   * returned. The following fields may be specified by teachers: * `title` *
+   * `description` * `state` * `due_date` * `due_time` * `max_points` *
+   * `submission_modification_mode`
+   *
+   * Completes with a [CourseWork].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CourseWork> patch(CourseWork request, core.String courseId, core.String id, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/courseWork/' + commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CourseWork.fromJson(data));
   }
 
 }
@@ -918,15 +1048,16 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
 
   /**
    * Modifies attachments of student submission. Attachments may only be added
-   * to student submissions whose type is `ASSIGNMENT`. This request must be
-   * made by the Developer Console project of the [OAuth client
-   * ID](https://support.google.com/cloud/answer/6158849) used to create the
-   * corresponding course work item. This method returns the following error
-   * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * access the requested course or course work, if the user is not permitted to
-   * modify attachments on the requested student submission, or for access
-   * errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
-   * the requested course, course work, or student submission does not exist.
+   * to student submissions belonging to course work objects with a `workType`
+   * of `ASSIGNMENT`. This request must be made by the Developer Console project
+   * of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
+   * used to create the corresponding course work item. This method returns the
+   * following error codes: * `PERMISSION_DENIED` if the requesting user is not
+   * permitted to access the requested course or course work, if the user is not
+   * permitted to modify attachments on the requested student submission, or for
+   * access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+   * `NOT_FOUND` if the requested course, course work, or student submission
+   * does not exist.
    *
    * [request] - The metadata request object.
    *
@@ -1056,7 +1187,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /**
    * Reclaims a student submission on behalf of the student that owns it.
    * Reclaiming a student submission transfers ownership of attached Drive files
-   * to the student and update the submission state. Only the student that ownes
+   * to the student and update the submission state. Only the student that owns
    * the requested student submission may call this method, and only for a
    * student submission that has been turned in. This request must be made by
    * the Developer Console project of the [OAuth client
@@ -1967,7 +2098,7 @@ class UserProfilesResourceApi {
   /**
    * Returns a user profile. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to access this
-   * user profile or if no profile exists with the requested ID or for access
+   * user profile, if no profile exists with the requested ID, or for access
    * errors.
    *
    * Request parameters:
@@ -2302,14 +2433,16 @@ class UserProfilesGuardiansResourceApi {
   /**
    * Deletes a guardian. The guardian will no longer receive guardian
    * notifications and the guardian will no longer be accessible via the API.
-   * This method returns the following error codes: * `PERMISSION_DENIED` if the
-   * requesting user is not permitted to manage guardians for the student
-   * identified by the `student_id`, if guardians are not enabled for the domain
-   * in question, or for other access errors. * `INVALID_ARGUMENT` if a
-   * `student_id` is specified, but its format cannot be recognized (it is not
-   * an email address, nor a `student_id` from the API). * `NOT_FOUND` if
-   * Classroom cannot find any record of the given `student_id` or
-   * `guardian_id`, or if the guardian has already been disabled.
+   * This method returns the following error codes: * `PERMISSION_DENIED` if no
+   * user that matches the provided `student_id` is visible to the requesting
+   * user, if the requesting user is not permitted to manage guardians for the
+   * student identified by the `student_id`, if guardians are not enabled for
+   * the domain in question, or for other access errors. * `INVALID_ARGUMENT` if
+   * a `student_id` is specified, but its format cannot be recognized (it is not
+   * an email address, nor a `student_id` from the API). * `NOT_FOUND` if the
+   * requesting user is permitted to modify guardians for the requested
+   * `student_id`, but no `Guardian` record exists for that student with the
+   * provided `guardian_id`.
    *
    * Request parameters:
    *
@@ -2356,14 +2489,16 @@ class UserProfilesGuardiansResourceApi {
 
   /**
    * Returns a specific guardian. This method returns the following error codes:
-   * * `PERMISSION_DENIED` if the requesting user is not permitted to view
-   * guardian information for the student identified by the `student_id`, if
-   * guardians are not enabled for the domain in question, or for other access
-   * errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format
-   * cannot be recognized (it is not an email address, nor a `student_id` from
-   * the API, nor the literal string `me`). * `NOT_FOUND` if Classroom cannot
-   * find any record of the given student or `guardian_id`, or if the guardian
-   * has been disabled.
+   * * `PERMISSION_DENIED` if no user that matches the provided `student_id` is
+   * visible to the requesting user, if the requesting user is not permitted to
+   * view guardian information for the student identified by the `student_id`,
+   * if guardians are not enabled for the domain in question, or for other
+   * access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its
+   * format cannot be recognized (it is not an email address, nor a `student_id`
+   * from the API, nor the literal string `me`). * `NOT_FOUND` if the requesting
+   * user is permitted to view guardians for the requested `student_id`, but no
+   * `Guardian` record exists for that student that matches the provided
+   * `guardian_id`.
    *
    * Request parameters:
    *
@@ -2520,11 +2655,11 @@ class Assignment {
 class AssignmentSubmission {
   /**
    * Attachments added by the student. Drive files that correspond to materials
-   * with a share mode of SUBMISSION_COPY may not exist yet if the student has
-   * not accessed the assignment in Classroom. Some attachment metadata is only
+   * with a share mode of STUDENT_COPY may not exist yet if the student has not
+   * accessed the assignment in Classroom. Some attachment metadata is only
    * populated if the requesting user has permission to access it. Identifier
-   * and alternate_link fields are available, but others (e.g. title) may not
-   * be.
+   * and alternate_link fields are always available, but others (e.g. title) may
+   * not be.
    */
   core.List<Attachment> attachments;
 
@@ -2546,8 +2681,8 @@ class AssignmentSubmission {
 }
 
 /**
- * Attachment added to student assignment work. When creating attachments, only
- * the Link field may be specified.
+ * Attachment added to student assignment work. When creating attachments,
+ * setting the `form` field is not supported.
  */
 class Attachment {
   /** Google Drive file attachment. */
@@ -2938,7 +3073,7 @@ class CourseWork {
   core.String alternateLink;
   /**
    * Assignment details. This is populated only when `work_type` is
-   * `ASSIGNMENT`.
+   * `ASSIGNMENT`. Read-only.
    */
   Assignment assignment;
   /**
@@ -2981,8 +3116,11 @@ class CourseWork {
    */
   core.double maxPoints;
   /**
-   * Multiple choice question details. This is populated only when `work_type`
-   * is `MULTIPLE_CHOICE_QUESTION`.
+   * Multiple choice question details. For read operations, this field is
+   * populated only when `work_type` is `MULTIPLE_CHOICE_QUESTION`. For write
+   * operations, this field must be specified when creating course work with a
+   * `work_type` of `MULTIPLE_CHOICE_QUESTION`, and it must not be set
+   * otherwise.
    */
   MultipleChoiceQuestion multipleChoiceQuestion;
   /**
@@ -3013,8 +3151,7 @@ class CourseWork {
   core.String updateTime;
   /**
    * Type of this course work. The type is set when the course work is created
-   * and cannot be changed. When creating course work, this must be
-   * `ASSIGNMENT`.
+   * and cannot be changed.
    * Possible string values are:
    * - "COURSE_WORK_TYPE_UNSPECIFIED" : A COURSE_WORK_TYPE_UNSPECIFIED.
    * - "ASSIGNMENT" : A ASSIGNMENT.
@@ -3887,15 +4024,18 @@ class ListTeachersResponse {
 }
 
 /**
- * Material attached to course work. When creating attachments, only the Link
- * field may be specified.
+ * Material attached to course work. When creating attachments, setting the
+ * `form` field is not supported.
  */
 class Material {
   /** Google Drive file material. */
   SharedDriveFile driveFile;
   /** Google Forms material. */
   Form form;
-  /** Link material. */
+  /**
+   * Link material. On creation, will be upgraded to a more appropriate type if
+   * possible, and this will be reflected in the response.
+   */
   Link link;
   /** YouTube video material. */
   YouTubeVideo youtubeVideo;
@@ -3939,7 +4079,7 @@ class Material {
 class ModifyAttachmentsRequest {
   /**
    * Attachments to add. A student submission may not have more than 20
-   * attachments. This may only contain link attachments.
+   * attachments. Form attachments are not supported.
    */
   core.List<Attachment> addAttachments;
 

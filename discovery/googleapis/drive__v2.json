@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/y_a-CqNzWjAnaHC0v3451Z9D_8M\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/aTsDjhJX4jyEgcQh1bdOjEtV2EI\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -2658,7 +2658,7 @@
             }
         }
     },
-    "revision": "20161201",
+    "revision": "20170113",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -3027,7 +3027,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The actual list of apps.",
+                    "description": "The list of apps.",
                     "items": {
                         "$ref": "App"
                     },
@@ -3092,7 +3092,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The actual list of changes.",
+                    "description": "The list of changes. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "Change"
                     },
@@ -3113,7 +3113,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "The page token for the next page of changes.",
+                    "description": "The page token for the next page of changes. This will be absent if the end of the changes list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -3185,7 +3185,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The actual list of children.",
+                    "description": "The list of children. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "ChildReference"
                     },
@@ -3201,7 +3201,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "The page token for the next page of children.",
+                    "description": "The page token for the next page of children. This will be absent if the end of the children list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -3334,7 +3334,7 @@
             "id": "CommentList",
             "properties": {
                 "items": {
-                    "description": "List of comments.",
+                    "description": "The list of comments. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "Comment"
                     },
@@ -3350,7 +3350,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "The token to use to request the next page of results.",
+                    "description": "The page token for the next page of comments. This will be absent if the end of the comments list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -3416,7 +3416,7 @@
             "id": "CommentReplyList",
             "properties": {
                 "items": {
-                    "description": "List of reply.",
+                    "description": "The list of replies. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "CommentReply"
                     },
@@ -3432,7 +3432,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "The token to use to request the next page of results.",
+                    "description": "The page token for the next page of replies. This will be absent if the end of the replies list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -3844,7 +3844,7 @@
                     "type": "string"
                 },
                 "thumbnailVersion": {
-                    "description": "The thumbnail version for use in client-contructable thumbnail URLs or thumbnail cache invalidation.",
+                    "description": "The thumbnail version for use in thumbnail cache invalidation.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -3906,7 +3906,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The actual list of files.",
+                    "description": "The list of files. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "File"
                     },
@@ -3922,7 +3922,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "The page token for the next page of files.",
+                    "description": "The page token for the next page of files. This will be absent if the end of the files list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -3964,7 +3964,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The actual list of parents.",
+                    "description": "The list of parents.",
                     "items": {
                         "$ref": "ParentReference"
                     },
@@ -4122,7 +4122,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The actual list of permissions.",
+                    "description": "The list of permissions.",
                     "items": {
                         "$ref": "Permission"
                     },
@@ -4294,7 +4294,7 @@
                     "type": "string"
                 },
                 "items": {
-                    "description": "The actual list of revisions.",
+                    "description": "The list of revisions. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "Revision"
                     },

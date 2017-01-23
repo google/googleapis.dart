@@ -327,7 +327,9 @@ class AccountsResourceApi {
 
   /**
    * Updates a Merchant Center account. This method can only be called for
-   * multi-client accounts. This method supports patch semantics.
+   * accounts to which the managing account has access: either the managing
+   * account itself or sub-accounts if the managing account is a multi-client
+   * account. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -382,7 +384,9 @@ class AccountsResourceApi {
 
   /**
    * Updates a Merchant Center account. This method can only be called for
-   * multi-client accounts.
+   * accounts to which the managing account has access: either the managing
+   * account itself or sub-accounts if the managing account is a multi-client
+   * account.
    *
    * [request] - The metadata request object.
    *
@@ -3242,11 +3246,11 @@ class Account {
   /** Indicates whether the merchant sells adult content. */
   core.bool adultContent;
   /**
-   * List of linked AdWords accounts, active or pending approval. To create a
-   * new link request, add a new link with status active to the list. It will
-   * remain is state pending until approved or rejected in the AdWords
-   * interface. To delete an active link or to cancel a link request, remove it
-   * from the list.
+   * List of linked AdWords accounts that are active or pending approval. To
+   * create a new link request, add a new link with status active to the list.
+   * It will remain in a pending state until approved or rejected either in the
+   * AdWords interface or through the  AdWords API. To delete an active link, or
+   * to cancel a link request, remove it from the list.
    */
   core.List<AccountAdwordsLink> adwordsLinks;
   /** Merchant Center account ID. */

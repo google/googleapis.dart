@@ -125,7 +125,7 @@
                     ],
                     "parameters": {
                         "projectName": {
-                            "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
+                            "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project\nID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
                             "location": "path",
                             "pattern": "^projects/[^/]+$",
                             "required": true,
@@ -171,7 +171,7 @@
                                     "type": "string"
                                 },
                                 "projectName": {
-                                    "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
+                                    "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project\nID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -406,7 +406,7 @@
             }
         }
     },
-    "revision": "20161114",
+    "revision": "20161122",
     "rootUrl": "https://clouderrorreporting.googleapis.com/",
     "schemas": {
         "ReportedErrorEvent": {

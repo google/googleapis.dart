@@ -227,6 +227,7 @@ buildBuildStep() {
   if (buildCounterBuildStep < 3) {
     o.args = buildUnnamed1178();
     o.dir = "foo";
+    o.entrypoint = "foo";
     o.env = buildUnnamed1179();
     o.id = "foo";
     o.name = "foo";
@@ -241,6 +242,7 @@ checkBuildStep(api.BuildStep o) {
   if (buildCounterBuildStep < 3) {
     checkUnnamed1178(o.args);
     unittest.expect(o.dir, unittest.equals('foo'));
+    unittest.expect(o.entrypoint, unittest.equals('foo'));
     checkUnnamed1179(o.env);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));

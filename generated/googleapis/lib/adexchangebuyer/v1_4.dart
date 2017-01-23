@@ -1674,7 +1674,7 @@ class ProposalsResourceApi {
    * - "propose"
    * - "proposeAndAccept"
    * - "unknownAction"
-   * - "updateFinalized"
+   * - "updateNonTerms"
    *
    * Completes with a [Proposal].
    *
@@ -1817,7 +1817,7 @@ class ProposalsResourceApi {
    * - "propose"
    * - "proposeAndAccept"
    * - "unknownAction"
-   * - "updateFinalized"
+   * - "updateNonTerms"
    *
    * Completes with a [Proposal].
    *
@@ -1914,15 +1914,15 @@ class PubprofilesResourceApi {
 
 class AccountBidderLocation {
   /**
-   * The protocol that the bidder endpoint is using. By default, OpenRTB
-   * protocols use JSON, except PROTOCOL_OPENRTB_PROTOBUF.
-   * PROTOCOL_OPENRTB_PROTOBUF uses protobuf encoding over the latest OpenRTB
-   * protocol version, which is 2.4 right now. Allowed values:
+   * The protocol that the bidder endpoint is using. OpenRTB protocols with
+   * prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.
+   * Allowed values:
    * - PROTOCOL_ADX
    * - PROTOCOL_OPENRTB_2_2
    * - PROTOCOL_OPENRTB_2_3
    * - PROTOCOL_OPENRTB_2_4
-   * - PROTOCOL_OPENRTB_PROTOBUF
+   * - PROTOCOL_OPENRTB_PROTOBUF_2_3
+   * - PROTOCOL_OPENRTB_PROTOBUF_2_4
    */
   core.String bidProtocol;
   /** The maximum queries per second the Ad Exchange will send. */
@@ -4243,7 +4243,7 @@ class MarketplaceDeal {
    * be stored in a granularity of a second. (updatable)
    */
   core.String flightStartTimeMs;
-  /** Description for the deal terms. (updatable) */
+  /** Description for the deal terms. (buyer-readonly) */
   core.String inventoryDescription;
   /**
    * Indicates whether the current deal is a RFP template. RFP template is
@@ -5066,6 +5066,13 @@ class PretargetingConfig {
   /** Request containing any of these language codes will match. */
   core.List<core.String> languages;
   /**
+   * Requests where the predicted viewability is below the specified decile will
+   * not match. E.g. if the buyer sets this value to 5, requests from slots
+   * where the predicted viewability is below 50% will not match. If the
+   * predicted viewability is unknown this field will be ignored.
+   */
+  core.int minimumViewabilityDecile;
+  /**
    * Requests containing any of these mobile carrier ids will match. Values are
    * from mobile-carriers.csv in the downloadable files section.
    */
@@ -5161,6 +5168,9 @@ class PretargetingConfig {
     if (_json.containsKey("languages")) {
       languages = _json["languages"];
     }
+    if (_json.containsKey("minimumViewabilityDecile")) {
+      minimumViewabilityDecile = _json["minimumViewabilityDecile"];
+    }
     if (_json.containsKey("mobileCarriers")) {
       mobileCarriers = _json["mobileCarriers"];
     }
@@ -5239,6 +5249,9 @@ class PretargetingConfig {
     }
     if (languages != null) {
       _json["languages"] = languages;
+    }
+    if (minimumViewabilityDecile != null) {
+      _json["minimumViewabilityDecile"] = minimumViewabilityDecile;
     }
     if (mobileCarriers != null) {
       _json["mobileCarriers"] = mobileCarriers;
@@ -5489,6 +5502,13 @@ class Product {
   core.String lastUpdateTimeMs;
   /** Optional legacy offer id if this offer is a preferred deal offer. */
   core.String legacyOfferId;
+  /**
+   * Marketplace publisher profile Id. This Id differs from the regular
+   * publisher_profile_id in that 1. This is a new id, the old Id will be
+   * deprecated in 2017. 2. This id uniquely identifies a publisher profile by
+   * itself.
+   */
+  core.String marketplacePublisherProfileId;
   /** The name for this product as set by the seller. (buyer-readonly) */
   core.String name;
   /** Optional private auction id if this offer is a private auction offer. */
@@ -5568,6 +5588,9 @@ class Product {
     if (_json.containsKey("legacyOfferId")) {
       legacyOfferId = _json["legacyOfferId"];
     }
+    if (_json.containsKey("marketplacePublisherProfileId")) {
+      marketplacePublisherProfileId = _json["marketplacePublisherProfileId"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -5640,6 +5663,9 @@ class Product {
     }
     if (legacyOfferId != null) {
       _json["legacyOfferId"] = legacyOfferId;
+    }
+    if (marketplacePublisherProfileId != null) {
+      _json["marketplacePublisherProfileId"] = marketplacePublisherProfileId;
     }
     if (name != null) {
       _json["name"] = name;

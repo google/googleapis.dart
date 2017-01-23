@@ -93,6 +93,12 @@ Stackdriver Error Reporting groups and counts similar errors from cloud services
 
 Official API documentation: https://cloud.google.com/error-reporting/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud KMS API - cloudkms v1beta1
+
+
+
+Official API documentation: https://cloud.google.com/kms/
+
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Monitoring API - cloudmonitoring v2beta2
 
 Accesses Google Cloud Monitoring data.
@@ -113,7 +119,7 @@ Official API documentation: https://cloud.google.com/compute/docs/access/user-ac
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Dataflow API - dataflow v1b3
 
-Develops and executes data processing patterns like ETL, batch computation, and continuous computation.
+Manages Google Cloud Dataflow projects on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataflow
 
@@ -175,6 +181,7 @@ Official API documentation: https://developers.google.com/beacons/proximity/
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Pub/Sub API - pubsub v1beta2
 
 Provides reliable, many-to-many, asynchronous messaging between applications.
+
 
 Official API documentation: https://cloud.google.com/pubsub/docs
 

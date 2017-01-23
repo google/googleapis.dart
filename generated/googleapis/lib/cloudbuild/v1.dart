@@ -963,6 +963,11 @@ class BuildStep {
    */
   core.String dir;
   /**
+   * Optional entrypoint to be used instead of the build step image's default
+   * If unset, the image's default will be used.
+   */
+  core.String entrypoint;
+  /**
    * A list of environment variable definitions to be used when running a step.
    *
    * The elements are of the form "KEY=VALUE" for the environment variable "KEY"
@@ -1011,6 +1016,9 @@ class BuildStep {
     if (_json.containsKey("dir")) {
       dir = _json["dir"];
     }
+    if (_json.containsKey("entrypoint")) {
+      entrypoint = _json["entrypoint"];
+    }
     if (_json.containsKey("env")) {
       env = _json["env"];
     }
@@ -1032,6 +1040,9 @@ class BuildStep {
     }
     if (dir != null) {
       _json["dir"] = dir;
+    }
+    if (entrypoint != null) {
+      _json["entrypoint"] = entrypoint;
     }
     if (env != null) {
       _json["env"] = env;

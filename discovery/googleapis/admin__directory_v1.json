@@ -93,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/MJXmm78_R4W8L6tex9cqkPyvKmM\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/5JjoP3Vg5udAY4zd2Hcsn9dKASM\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -3423,7 +3423,7 @@
             }
         }
     },
-    "revision": "20161124",
+    "revision": "20161214",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -5119,6 +5119,16 @@
                 },
                 "isDelegatedAdmin": {
                     "description": "Boolean indicating if the user is delegated admin (Read-only)",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "isEnforcedIn2Sv": {
+                    "description": "Is 2-step verification enforced (Read-only)",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "isEnrolledIn2Sv": {
+                    "description": "Is enrolled in 2-step verification (Read-only)",
                     "readOnly": true,
                     "type": "boolean"
                 },

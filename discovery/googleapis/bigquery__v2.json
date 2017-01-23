@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/38ec4LBichi45rs7Z88p5kE7xpM\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/8QZR0WZ1-NVsTgfIYMT8jh3XhtQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -936,7 +936,7 @@
             }
         }
     },
-    "revision": "20161029",
+    "revision": "20170114",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -1286,6 +1286,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "status": {
+                    "description": "Current status for the stage.",
+                    "type": "string"
+                },
                 "steps": {
                     "description": "List of operations within the stage in dependency order (approximately chronological).",
                     "items": {
@@ -1627,6 +1631,10 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "nullMarker": {
+                    "description": "[Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify \"\\N\", BigQuery interprets \"\\N\" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery still interprets the empty string as a null value for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.",
+                    "type": "string"
+                },
                 "projectionFields": {
                     "description": "[Experimental] If sourceFormat is set to \"DATASTORE_BACKUP\", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.",
                     "items": {
@@ -1718,7 +1726,7 @@
                     "type": "string"
                 },
                 "parameterMode": {
-                    "description": "[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query parameters in this query.",
+                    "description": "[Experimental] Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.",
                     "type": "string"
                 },
                 "preserveNulls": {
@@ -1967,6 +1975,10 @@
                 "schema": {
                     "$ref": "TableSchema",
                     "description": "[Output-only, Experimental] The schema of the results. Present only for successful dry run of non-legacy SQL queries."
+                },
+                "statementType": {
+                    "description": "[Output-only, Experimental] The type of query statement, if valid.",
+                    "type": "string"
                 },
                 "totalBytesBilled": {
                     "description": "[Output-only] Total bytes billed for the job.",
@@ -2225,7 +2237,7 @@
                     "type": "integer"
                 },
                 "parameterMode": {
-                    "description": "[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query parameters in this query.",
+                    "description": "[Experimental] Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.",
                     "type": "string"
                 },
                 "preserveNulls": {
@@ -2384,6 +2396,13 @@
                     "default": "bigquery#table",
                     "description": "[Output-only] The type of the resource.",
                     "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "[Experimental] The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and must be unique within a dataset. Both keys and values are additionally constrained to be <= 128 bytes in size.",
+                    "type": "object"
                 },
                 "lastModifiedTime": {
                     "description": "[Output-only] The time when this table was last modified, in milliseconds since the epoch.",
@@ -2575,7 +2594,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, FLOAT, BOOLEAN, TIMESTAMP, DATE, TIME, DATETIME, or RECORD (where RECORD indicates that the field contains a nested schema).",
+                    "description": "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).",
                     "type": "string"
                 }
             },
@@ -2613,6 +2632,13 @@
                                 "default": "bigquery#table",
                                 "description": "The resource type.",
                                 "type": "string"
+                            },
+                            "labels": {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "description": "[Experimental] The labels associated with this table. You can use these to organize and group your tables.",
+                                "type": "object"
                             },
                             "tableReference": {
                                 "$ref": "TableReference",

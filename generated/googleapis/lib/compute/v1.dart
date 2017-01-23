@@ -5819,6 +5819,15 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [filter] - null
+   *
+   * [maxResults] - null
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - null
+   *
+   * [pageToken] - null
+   *
    * Completes with a [InstanceGroupManagersListManagedInstancesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5827,7 +5836,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstanceGroupManagersListManagedInstancesResponse> listManagedInstances(core.String project, core.String zone, core.String instanceGroupManager) {
+  async.Future<InstanceGroupManagersListManagedInstancesResponse> listManagedInstances(core.String project, core.String zone, core.String instanceGroupManager, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5843,6 +5852,18 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["order_by"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/listManagedInstances';
@@ -7988,6 +8009,64 @@ class InstancesResourceApi {
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setScheduling';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets the service account on the instance.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [instance] - Name of the instance resource to start.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setServiceAccount(InstancesSetServiceAccountRequest request, core.String project, core.String zone, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setServiceAccount';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -10349,6 +10428,15 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [filter] - null
+   *
+   * [maxResults] - null
+   * Value must be between "0" and "500".
+   *
+   * [orderBy] - null
+   *
+   * [pageToken] - null
+   *
    * Completes with a [RegionInstanceGroupManagersListInstancesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10357,7 +10445,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RegionInstanceGroupManagersListInstancesResponse> listManagedInstances(core.String project, core.String region, core.String instanceGroupManager) {
+  async.Future<RegionInstanceGroupManagersListInstancesResponse> listManagedInstances(core.String project, core.String region, core.String instanceGroupManager, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10373,6 +10461,18 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["order_by"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/listManagedInstances';
@@ -16916,7 +17016,10 @@ class AccessConfig {
 
 /** A reserved address resource. */
 class Address {
-  /** The static external IP address represented by this resource. */
+  /**
+   * The static external IP address represented by this resource. Only IPv4 is
+   * supported.
+   */
   core.String address;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
@@ -18898,11 +19001,19 @@ class BackendServicesScopedList {
 }
 
 class CacheInvalidationRule {
+  /**
+   * If set, this invalidation rule will only apply to requests with a Host
+   * header matching host.
+   */
+  core.String host;
   core.String path;
 
   CacheInvalidationRule();
 
   CacheInvalidationRule.fromJson(core.Map _json) {
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
     if (_json.containsKey("path")) {
       path = _json["path"];
     }
@@ -18910,6 +19021,9 @@ class CacheInvalidationRule {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (host != null) {
+      _json["host"] = host;
+    }
     if (path != null) {
       _json["path"] = path;
     }
@@ -20167,7 +20281,7 @@ class Firewall {
    * both properties are set, the firewall will apply to traffic that has source
    * IP address within sourceRanges OR the source IP that belongs to a tag
    * listed in the sourceTags property. The connection does not need to match
-   * both properties for the firewall to apply.
+   * both properties for the firewall to apply. Only IPv4 is supported.
    */
   core.List<core.String> sourceRanges;
   /**
@@ -20351,7 +20465,8 @@ class ForwardingRule {
    * address belonging to the network/subnetwork configured for the forwarding
    * rule. A reserved address cannot be used. If the field is empty, the IP
    * address will be automatically allocated from the internal IP range of the
-   * subnetwork or network configured for this forwarding rule.
+   * subnetwork or network configured for this forwarding rule. Only IPv4 is
+   * supported.
    */
   core.String IPAddress;
   /**
@@ -24452,6 +24567,35 @@ class InstancesSetMachineTypeRequest {
   }
 }
 
+class InstancesSetServiceAccountRequest {
+  /** Email address of the service account. */
+  core.String email;
+  /** The list of scopes to be made available for this service account. */
+  core.List<core.String> scopes;
+
+  InstancesSetServiceAccountRequest();
+
+  InstancesSetServiceAccountRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("scopes")) {
+      scopes = _json["scopes"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (scopes != null) {
+      _json["scopes"] = scopes;
+    }
+    return _json;
+  }
+}
+
 class InstancesStartWithEncryptionKeyRequest {
   /**
    * Array of disks associated with this instance that are protected with a
@@ -25441,6 +25585,11 @@ class NetworkInterface {
    */
   core.List<AccessConfig> accessConfigs;
   /**
+   * [Output Only] Type of the resource. Always compute#networkInterface for
+   * network interfaces.
+   */
+  core.String kind;
+  /**
    * [Output Only] The name of the network interface, generated by the server.
    * For network devices, these are eth0, eth1, etc.
    */
@@ -25485,6 +25634,9 @@ class NetworkInterface {
     if (_json.containsKey("accessConfigs")) {
       accessConfigs = _json["accessConfigs"].map((value) => new AccessConfig.fromJson(value)).toList();
     }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -25503,6 +25655,9 @@ class NetworkInterface {
     var _json = new core.Map();
     if (accessConfigs != null) {
       _json["accessConfigs"] = accessConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     if (name != null) {
       _json["name"] = name;
@@ -27381,7 +27536,10 @@ class Route {
    * create the resource.
    */
   core.String description;
-  /** The destination range of outgoing packets that this route applies to. */
+  /**
+   * The destination range of outgoing packets that this route applies to. Only
+   * IPv4 is supported.
+   */
   core.String destRange;
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
@@ -27419,6 +27577,7 @@ class Route {
   core.String nextHopInstance;
   /**
    * The network IP address of an instance that should handle matching packets.
+   * Only IPv4 is supported.
    */
   core.String nextHopIp;
   /** The URL of the local network if it should handle matching packets. */
@@ -27832,7 +27991,10 @@ class RouterBgpPeer {
   core.int advertisedRoutePriority;
   /** Name of the interface the BGP peer is associated with. */
   core.String interfaceName;
-  /** IP address of the interface inside Google Cloud Platform. */
+  /**
+   * IP address of the interface inside Google Cloud Platform. Only IPv4 is
+   * supported.
+   */
   core.String ipAddress;
   /**
    * Name of this BGP peer. The name must be 1-63 characters long and comply
@@ -27844,7 +28006,10 @@ class RouterBgpPeer {
    * be different for every tunnel.
    */
   core.int peerAsn;
-  /** IP address of the BGP interface outside Google cloud. */
+  /**
+   * IP address of the BGP interface outside Google cloud. Only IPv4 is
+   * supported.
+   */
   core.String peerIpAddress;
 
   RouterBgpPeer();
@@ -28996,6 +29161,7 @@ class Subnetwork {
    * The range of internal addresses that are owned by this subnetwork. Provide
    * this property when you create the subnetwork. For example, 10.0.0.0/8 or
    * 192.168.0.0/16. Ranges must be unique and non-overlapping within a network.
+   * Only IPv4 is supported.
    */
   core.String ipCidrRange;
   /**
@@ -31945,7 +32111,7 @@ class VpnTunnel {
   /**
    * Local traffic selector to use when establishing the VPN tunnel with peer
    * VPN gateway. The value should be a CIDR formatted string, for example:
-   * 192.168.0.0/16. The ranges should be disjoint.
+   * 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
    */
   core.List<core.String> localTrafficSelector;
   /**
@@ -31958,14 +32124,14 @@ class VpnTunnel {
    * dash.
    */
   core.String name;
-  /** IP address of the peer VPN gateway. */
+  /** IP address of the peer VPN gateway. Only IPv4 is supported. */
   core.String peerIp;
   /** [Output Only] URL of the region where the VPN tunnel resides. */
   core.String region;
   /**
    * Remote traffic selectors to use when establishing the VPN tunnel with peer
    * VPN gateway. The value should be a CIDR formatted string, for example:
-   * 192.168.0.0/16. The ranges should be disjoint.
+   * 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
    */
   core.List<core.String> remoteTrafficSelector;
   /** URL of router resource to be used for dynamic routing. */

@@ -4275,7 +4275,7 @@ class AppList {
   core.List<core.String> defaultAppIds;
   /** The ETag of the list. */
   core.String etag;
-  /** The actual list of apps. */
+  /** The list of apps. */
   core.List<App> items;
   /** This is always drive#appList. */
   core.String kind;
@@ -4399,7 +4399,10 @@ class Change {
 class ChangeList {
   /** The ETag of the list. */
   core.String etag;
-  /** The actual list of changes. */
+  /**
+   * The list of changes. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<Change> items;
   /** This is always drive#changeList. */
   core.String kind;
@@ -4407,7 +4410,12 @@ class ChangeList {
   core.String largestChangeId;
   /** A link to the next page of changes. */
   core.String nextLink;
-  /** The page token for the next page of changes. */
+  /**
+   * The page token for the next page of changes. This will be absent if the end
+   * of the changes list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
+   */
   core.String nextPageToken;
   /** A link back to this list. */
   core.String selfLink;
@@ -4575,13 +4583,21 @@ class Channel {
 class ChildList {
   /** The ETag of the list. */
   core.String etag;
-  /** The actual list of children. */
+  /**
+   * The list of children. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<ChildReference> items;
   /** This is always drive#childList. */
   core.String kind;
   /** A link to the next page of children. */
   core.String nextLink;
-  /** The page token for the next page of children. */
+  /**
+   * The page token for the next page of children. This will be absent if the
+   * end of the children list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
+   */
   core.String nextPageToken;
   /** A link back to this list. */
   core.String selfLink;
@@ -4865,13 +4881,21 @@ class Comment {
 
 /** A list of comments on a file in Google Drive. */
 class CommentList {
-  /** List of comments. */
+  /**
+   * The list of comments. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<Comment> items;
   /** This is always drive#commentList. */
   core.String kind;
   /** A link to the next page of comments. */
   core.String nextLink;
-  /** The token to use to request the next page of results. */
+  /**
+   * The page token for the next page of comments. This will be absent if the
+   * end of the comments list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
+   */
   core.String nextPageToken;
   /** A link back to this list. */
   core.String selfLink;
@@ -5019,13 +5043,21 @@ class CommentReply {
 
 /** A list of replies to a comment on a file in Google Drive. */
 class CommentReplyList {
-  /** List of reply. */
+  /**
+   * The list of replies. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<CommentReply> items;
   /** This is always drive#commentReplyList. */
   core.String kind;
   /** A link to the next page of replies. */
   core.String nextLink;
-  /** The token to use to request the next page of results. */
+  /**
+   * The page token for the next page of replies. This will be absent if the end
+   * of the replies list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
+   */
   core.String nextPageToken;
   /** A link back to this list. */
   core.String selfLink;
@@ -5657,10 +5689,7 @@ class File {
    * content.
    */
   core.String thumbnailLink;
-  /**
-   * The thumbnail version for use in client-contructable thumbnail URLs or
-   * thumbnail cache invalidation.
-   */
+  /** The thumbnail version for use in thumbnail cache invalidation. */
   core.String thumbnailVersion;
   /** The title of this file. */
   core.String title;
@@ -6063,13 +6092,21 @@ class File {
 class FileList {
   /** The ETag of the list. */
   core.String etag;
-  /** The actual list of files. */
+  /**
+   * The list of files. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<File> items;
   /** This is always drive#fileList. */
   core.String kind;
   /** A link to the next page of files. */
   core.String nextLink;
-  /** The page token for the next page of files. */
+  /**
+   * The page token for the next page of files. This will be absent if the end
+   * of the files list has been reached. If the token is rejected for any
+   * reason, it should be discarded, and pagination should be restarted from the
+   * first page of results.
+   */
   core.String nextPageToken;
   /** A link back to this list. */
   core.String selfLink;
@@ -6163,7 +6200,7 @@ class GeneratedIds {
 class ParentList {
   /** The ETag of the list. */
   core.String etag;
-  /** The actual list of parents. */
+  /** The list of parents. */
   core.List<ParentReference> items;
   /** This is always drive#parentList. */
   core.String kind;
@@ -6458,7 +6495,7 @@ class PermissionId {
 class PermissionList {
   /** The ETag of the list. */
   core.String etag;
-  /** The actual list of permissions. */
+  /** The list of permissions. */
   core.List<Permission> items;
   /** This is always drive#permissionList. */
   core.String kind;
@@ -6809,7 +6846,10 @@ class Revision {
 class RevisionList {
   /** The ETag of the list. */
   core.String etag;
-  /** The actual list of revisions. */
+  /**
+   * The list of revisions. If nextPageToken is populated, then this list may be
+   * incomplete and an additional page of results should be fetched.
+   */
   core.List<Revision> items;
   /** This is always drive#revisionList. */
   core.String kind;

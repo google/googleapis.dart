@@ -1226,7 +1226,7 @@ class CreateShapeResponse {
 /**
  * Creates an embedded Google Sheets chart.
  *
- * NOTE: Chart creation requires  at least one of the spreadsheets.readonly,
+ * NOTE: Chart creation requires at least one of the spreadsheets.readonly,
  * spreadsheets, drive.readonly, or drive OAuth scopes.
  */
 class CreateSheetsChartRequest {
@@ -4148,8 +4148,8 @@ class Response {
   /** The result of duplicating an object. */
   DuplicateObjectResponse duplicateObject;
   /**
-   * The result of replacing all shapes containing the specified text with
-   * an image.
+   * The result of replacing all shapes matching some criteria with an
+   * image.
    */
   ReplaceAllShapesWithImageResponse replaceAllShapesWithImage;
   /** The result of replacing text. */

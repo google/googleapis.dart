@@ -248,7 +248,7 @@
             }
         }
     },
-    "revision": "20161202",
+    "revision": "20170111",
     "rootUrl": "https://slides.googleapis.com/",
     "schemas": {
         "StretchedPictureFill": {
@@ -873,7 +873,7 @@
                 },
                 "replaceAllShapesWithImage": {
                     "$ref": "ReplaceAllShapesWithImageResponse",
-                    "description": "The result of replacing all shapes containing the specified text with\nan image."
+                    "description": "The result of replacing all shapes matching some criteria with an\nimage."
                 },
                 "createVideo": {
                     "$ref": "CreateVideoResponse",
@@ -1295,7 +1295,7 @@
             "type": "object"
         },
         "CreateSheetsChartRequest": {
-            "description": "Creates an embedded Google Sheets chart.\n\nNOTE: Chart creation requires  at least one of the spreadsheets.readonly,\nspreadsheets, drive.readonly, or drive OAuth scopes.",
+            "description": "Creates an embedded Google Sheets chart.\n\nNOTE: Chart creation requires at least one of the spreadsheets.readonly,\nspreadsheets, drive.readonly, or drive OAuth scopes.",
             "id": "CreateSheetsChartRequest",
             "properties": {
                 "chartId": {

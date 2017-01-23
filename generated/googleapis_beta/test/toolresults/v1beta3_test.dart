@@ -72,6 +72,116 @@ checkAny(api.Any o) {
   buildCounterAny--;
 }
 
+core.int buildCounterBasicPerfSampleSeries = 0;
+buildBasicPerfSampleSeries() {
+  var o = new api.BasicPerfSampleSeries();
+  buildCounterBasicPerfSampleSeries++;
+  if (buildCounterBasicPerfSampleSeries < 3) {
+    o.perfMetricType = "foo";
+    o.perfUnit = "foo";
+    o.sampleSeriesLabel = "foo";
+  }
+  buildCounterBasicPerfSampleSeries--;
+  return o;
+}
+
+checkBasicPerfSampleSeries(api.BasicPerfSampleSeries o) {
+  buildCounterBasicPerfSampleSeries++;
+  if (buildCounterBasicPerfSampleSeries < 3) {
+    unittest.expect(o.perfMetricType, unittest.equals('foo'));
+    unittest.expect(o.perfUnit, unittest.equals('foo'));
+    unittest.expect(o.sampleSeriesLabel, unittest.equals('foo'));
+  }
+  buildCounterBasicPerfSampleSeries--;
+}
+
+buildUnnamed3230() {
+  var o = new core.List<api.PerfSample>();
+  o.add(buildPerfSample());
+  o.add(buildPerfSample());
+  return o;
+}
+
+checkUnnamed3230(core.List<api.PerfSample> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPerfSample(o[0]);
+  checkPerfSample(o[1]);
+}
+
+core.int buildCounterBatchCreatePerfSamplesRequest = 0;
+buildBatchCreatePerfSamplesRequest() {
+  var o = new api.BatchCreatePerfSamplesRequest();
+  buildCounterBatchCreatePerfSamplesRequest++;
+  if (buildCounterBatchCreatePerfSamplesRequest < 3) {
+    o.perfSamples = buildUnnamed3230();
+  }
+  buildCounterBatchCreatePerfSamplesRequest--;
+  return o;
+}
+
+checkBatchCreatePerfSamplesRequest(api.BatchCreatePerfSamplesRequest o) {
+  buildCounterBatchCreatePerfSamplesRequest++;
+  if (buildCounterBatchCreatePerfSamplesRequest < 3) {
+    checkUnnamed3230(o.perfSamples);
+  }
+  buildCounterBatchCreatePerfSamplesRequest--;
+}
+
+buildUnnamed3231() {
+  var o = new core.List<api.PerfSample>();
+  o.add(buildPerfSample());
+  o.add(buildPerfSample());
+  return o;
+}
+
+checkUnnamed3231(core.List<api.PerfSample> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPerfSample(o[0]);
+  checkPerfSample(o[1]);
+}
+
+core.int buildCounterBatchCreatePerfSamplesResponse = 0;
+buildBatchCreatePerfSamplesResponse() {
+  var o = new api.BatchCreatePerfSamplesResponse();
+  buildCounterBatchCreatePerfSamplesResponse++;
+  if (buildCounterBatchCreatePerfSamplesResponse < 3) {
+    o.perfSamples = buildUnnamed3231();
+  }
+  buildCounterBatchCreatePerfSamplesResponse--;
+  return o;
+}
+
+checkBatchCreatePerfSamplesResponse(api.BatchCreatePerfSamplesResponse o) {
+  buildCounterBatchCreatePerfSamplesResponse++;
+  if (buildCounterBatchCreatePerfSamplesResponse < 3) {
+    checkUnnamed3231(o.perfSamples);
+  }
+  buildCounterBatchCreatePerfSamplesResponse--;
+}
+
+core.int buildCounterCPUInfo = 0;
+buildCPUInfo() {
+  var o = new api.CPUInfo();
+  buildCounterCPUInfo++;
+  if (buildCounterCPUInfo < 3) {
+    o.cpuProcessor = "foo";
+    o.cpuSpeedInGhz = 42.0;
+    o.numberOfCores = 42;
+  }
+  buildCounterCPUInfo--;
+  return o;
+}
+
+checkCPUInfo(api.CPUInfo o) {
+  buildCounterCPUInfo++;
+  if (buildCounterCPUInfo < 3) {
+    unittest.expect(o.cpuProcessor, unittest.equals('foo'));
+    unittest.expect(o.cpuSpeedInGhz, unittest.equals(42.0));
+    unittest.expect(o.numberOfCores, unittest.equals(42));
+  }
+  buildCounterCPUInfo--;
+}
+
 core.int buildCounterDuration = 0;
 buildDuration() {
   var o = new api.Duration();
@@ -237,14 +347,14 @@ checkInconclusiveDetail(api.InconclusiveDetail o) {
   buildCounterInconclusiveDetail--;
 }
 
-buildUnnamed3242() {
+buildUnnamed3232() {
   var o = new core.List<api.Execution>();
   o.add(buildExecution());
   o.add(buildExecution());
   return o;
 }
 
-checkUnnamed3242(core.List<api.Execution> o) {
+checkUnnamed3232(core.List<api.Execution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExecution(o[0]);
   checkExecution(o[1]);
@@ -255,7 +365,7 @@ buildListExecutionsResponse() {
   var o = new api.ListExecutionsResponse();
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    o.executions = buildUnnamed3242();
+    o.executions = buildUnnamed3232();
     o.nextPageToken = "foo";
   }
   buildCounterListExecutionsResponse--;
@@ -265,20 +375,20 @@ buildListExecutionsResponse() {
 checkListExecutionsResponse(api.ListExecutionsResponse o) {
   buildCounterListExecutionsResponse++;
   if (buildCounterListExecutionsResponse < 3) {
-    checkUnnamed3242(o.executions);
+    checkUnnamed3232(o.executions);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListExecutionsResponse--;
 }
 
-buildUnnamed3243() {
+buildUnnamed3233() {
   var o = new core.List<api.History>();
   o.add(buildHistory());
   o.add(buildHistory());
   return o;
 }
 
-checkUnnamed3243(core.List<api.History> o) {
+checkUnnamed3233(core.List<api.History> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistory(o[0]);
   checkHistory(o[1]);
@@ -289,7 +399,7 @@ buildListHistoriesResponse() {
   var o = new api.ListHistoriesResponse();
   buildCounterListHistoriesResponse++;
   if (buildCounterListHistoriesResponse < 3) {
-    o.histories = buildUnnamed3243();
+    o.histories = buildUnnamed3233();
     o.nextPageToken = "foo";
   }
   buildCounterListHistoriesResponse--;
@@ -299,20 +409,86 @@ buildListHistoriesResponse() {
 checkListHistoriesResponse(api.ListHistoriesResponse o) {
   buildCounterListHistoriesResponse++;
   if (buildCounterListHistoriesResponse < 3) {
-    checkUnnamed3243(o.histories);
+    checkUnnamed3233(o.histories);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListHistoriesResponse--;
 }
 
-buildUnnamed3244() {
+buildUnnamed3234() {
+  var o = new core.List<api.PerfSampleSeries>();
+  o.add(buildPerfSampleSeries());
+  o.add(buildPerfSampleSeries());
+  return o;
+}
+
+checkUnnamed3234(core.List<api.PerfSampleSeries> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPerfSampleSeries(o[0]);
+  checkPerfSampleSeries(o[1]);
+}
+
+core.int buildCounterListPerfSampleSeriesResponse = 0;
+buildListPerfSampleSeriesResponse() {
+  var o = new api.ListPerfSampleSeriesResponse();
+  buildCounterListPerfSampleSeriesResponse++;
+  if (buildCounterListPerfSampleSeriesResponse < 3) {
+    o.perfSampleSeries = buildUnnamed3234();
+  }
+  buildCounterListPerfSampleSeriesResponse--;
+  return o;
+}
+
+checkListPerfSampleSeriesResponse(api.ListPerfSampleSeriesResponse o) {
+  buildCounterListPerfSampleSeriesResponse++;
+  if (buildCounterListPerfSampleSeriesResponse < 3) {
+    checkUnnamed3234(o.perfSampleSeries);
+  }
+  buildCounterListPerfSampleSeriesResponse--;
+}
+
+buildUnnamed3235() {
+  var o = new core.List<api.PerfSample>();
+  o.add(buildPerfSample());
+  o.add(buildPerfSample());
+  return o;
+}
+
+checkUnnamed3235(core.List<api.PerfSample> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPerfSample(o[0]);
+  checkPerfSample(o[1]);
+}
+
+core.int buildCounterListPerfSamplesResponse = 0;
+buildListPerfSamplesResponse() {
+  var o = new api.ListPerfSamplesResponse();
+  buildCounterListPerfSamplesResponse++;
+  if (buildCounterListPerfSamplesResponse < 3) {
+    o.nextPageToken = "foo";
+    o.perfSamples = buildUnnamed3235();
+  }
+  buildCounterListPerfSamplesResponse--;
+  return o;
+}
+
+checkListPerfSamplesResponse(api.ListPerfSamplesResponse o) {
+  buildCounterListPerfSamplesResponse++;
+  if (buildCounterListPerfSamplesResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed3235(o.perfSamples);
+  }
+  buildCounterListPerfSamplesResponse--;
+}
+
+buildUnnamed3236() {
   var o = new core.List<api.Image>();
   o.add(buildImage());
   o.add(buildImage());
   return o;
 }
 
-checkUnnamed3244(core.List<api.Image> o) {
+checkUnnamed3236(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0]);
   checkImage(o[1]);
@@ -324,7 +500,7 @@ buildListStepThumbnailsResponse() {
   buildCounterListStepThumbnailsResponse++;
   if (buildCounterListStepThumbnailsResponse < 3) {
     o.nextPageToken = "foo";
-    o.thumbnails = buildUnnamed3244();
+    o.thumbnails = buildUnnamed3236();
   }
   buildCounterListStepThumbnailsResponse--;
   return o;
@@ -334,19 +510,19 @@ checkListStepThumbnailsResponse(api.ListStepThumbnailsResponse o) {
   buildCounterListStepThumbnailsResponse++;
   if (buildCounterListStepThumbnailsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3244(o.thumbnails);
+    checkUnnamed3236(o.thumbnails);
   }
   buildCounterListStepThumbnailsResponse--;
 }
 
-buildUnnamed3245() {
+buildUnnamed3237() {
   var o = new core.List<api.Step>();
   o.add(buildStep());
   o.add(buildStep());
   return o;
 }
 
-checkUnnamed3245(core.List<api.Step> o) {
+checkUnnamed3237(core.List<api.Step> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStep(o[0]);
   checkStep(o[1]);
@@ -358,7 +534,7 @@ buildListStepsResponse() {
   buildCounterListStepsResponse++;
   if (buildCounterListStepsResponse < 3) {
     o.nextPageToken = "foo";
-    o.steps = buildUnnamed3245();
+    o.steps = buildUnnamed3237();
   }
   buildCounterListStepsResponse--;
   return o;
@@ -368,9 +544,30 @@ checkListStepsResponse(api.ListStepsResponse o) {
   buildCounterListStepsResponse++;
   if (buildCounterListStepsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3245(o.steps);
+    checkUnnamed3237(o.steps);
   }
   buildCounterListStepsResponse--;
+}
+
+core.int buildCounterMemoryInfo = 0;
+buildMemoryInfo() {
+  var o = new api.MemoryInfo();
+  buildCounterMemoryInfo++;
+  if (buildCounterMemoryInfo < 3) {
+    o.memoryCapInKibibyte = "foo";
+    o.memoryTotalInKibibyte = "foo";
+  }
+  buildCounterMemoryInfo--;
+  return o;
+}
+
+checkMemoryInfo(api.MemoryInfo o) {
+  buildCounterMemoryInfo++;
+  if (buildCounterMemoryInfo < 3) {
+    unittest.expect(o.memoryCapInKibibyte, unittest.equals('foo'));
+    unittest.expect(o.memoryTotalInKibibyte, unittest.equals('foo'));
+  }
+  buildCounterMemoryInfo--;
 }
 
 core.int buildCounterOutcome = 0;
@@ -400,6 +597,119 @@ checkOutcome(api.Outcome o) {
   buildCounterOutcome--;
 }
 
+core.int buildCounterPerfEnvironment = 0;
+buildPerfEnvironment() {
+  var o = new api.PerfEnvironment();
+  buildCounterPerfEnvironment++;
+  if (buildCounterPerfEnvironment < 3) {
+    o.cpuInfo = buildCPUInfo();
+    o.memoryInfo = buildMemoryInfo();
+  }
+  buildCounterPerfEnvironment--;
+  return o;
+}
+
+checkPerfEnvironment(api.PerfEnvironment o) {
+  buildCounterPerfEnvironment++;
+  if (buildCounterPerfEnvironment < 3) {
+    checkCPUInfo(o.cpuInfo);
+    checkMemoryInfo(o.memoryInfo);
+  }
+  buildCounterPerfEnvironment--;
+}
+
+buildUnnamed3238() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3238(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterPerfMetricsSummary = 0;
+buildPerfMetricsSummary() {
+  var o = new api.PerfMetricsSummary();
+  buildCounterPerfMetricsSummary++;
+  if (buildCounterPerfMetricsSummary < 3) {
+    o.executionId = "foo";
+    o.historyId = "foo";
+    o.perfEnvironment = buildPerfEnvironment();
+    o.perfMetrics = buildUnnamed3238();
+    o.projectId = "foo";
+    o.stepId = "foo";
+  }
+  buildCounterPerfMetricsSummary--;
+  return o;
+}
+
+checkPerfMetricsSummary(api.PerfMetricsSummary o) {
+  buildCounterPerfMetricsSummary++;
+  if (buildCounterPerfMetricsSummary < 3) {
+    unittest.expect(o.executionId, unittest.equals('foo'));
+    unittest.expect(o.historyId, unittest.equals('foo'));
+    checkPerfEnvironment(o.perfEnvironment);
+    checkUnnamed3238(o.perfMetrics);
+    unittest.expect(o.projectId, unittest.equals('foo'));
+    unittest.expect(o.stepId, unittest.equals('foo'));
+  }
+  buildCounterPerfMetricsSummary--;
+}
+
+core.int buildCounterPerfSample = 0;
+buildPerfSample() {
+  var o = new api.PerfSample();
+  buildCounterPerfSample++;
+  if (buildCounterPerfSample < 3) {
+    o.sampleTime = buildTimestamp();
+    o.value = 42.0;
+  }
+  buildCounterPerfSample--;
+  return o;
+}
+
+checkPerfSample(api.PerfSample o) {
+  buildCounterPerfSample++;
+  if (buildCounterPerfSample < 3) {
+    checkTimestamp(o.sampleTime);
+    unittest.expect(o.value, unittest.equals(42.0));
+  }
+  buildCounterPerfSample--;
+}
+
+core.int buildCounterPerfSampleSeries = 0;
+buildPerfSampleSeries() {
+  var o = new api.PerfSampleSeries();
+  buildCounterPerfSampleSeries++;
+  if (buildCounterPerfSampleSeries < 3) {
+    o.basicPerfSampleSeries = buildBasicPerfSampleSeries();
+    o.executionId = "foo";
+    o.historyId = "foo";
+    o.projectId = "foo";
+    o.sampleSeriesId = "foo";
+    o.stepId = "foo";
+  }
+  buildCounterPerfSampleSeries--;
+  return o;
+}
+
+checkPerfSampleSeries(api.PerfSampleSeries o) {
+  buildCounterPerfSampleSeries++;
+  if (buildCounterPerfSampleSeries < 3) {
+    checkBasicPerfSampleSeries(o.basicPerfSampleSeries);
+    unittest.expect(o.executionId, unittest.equals('foo'));
+    unittest.expect(o.historyId, unittest.equals('foo'));
+    unittest.expect(o.projectId, unittest.equals('foo'));
+    unittest.expect(o.sampleSeriesId, unittest.equals('foo'));
+    unittest.expect(o.stepId, unittest.equals('foo'));
+  }
+  buildCounterPerfSampleSeries--;
+}
+
 core.int buildCounterProjectSettings = 0;
 buildProjectSettings() {
   var o = new api.ProjectSettings();
@@ -421,14 +731,14 @@ checkProjectSettings(api.ProjectSettings o) {
   buildCounterProjectSettings--;
 }
 
-buildUnnamed3246() {
+buildUnnamed3239() {
   var o = new core.List<api.FileReference>();
   o.add(buildFileReference());
   o.add(buildFileReference());
   return o;
 }
 
-checkUnnamed3246(core.List<api.FileReference> o) {
+checkUnnamed3239(core.List<api.FileReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFileReference(o[0]);
   checkFileReference(o[1]);
@@ -439,7 +749,7 @@ buildPublishXunitXmlFilesRequest() {
   var o = new api.PublishXunitXmlFilesRequest();
   buildCounterPublishXunitXmlFilesRequest++;
   if (buildCounterPublishXunitXmlFilesRequest < 3) {
-    o.xunitXmlFiles = buildUnnamed3246();
+    o.xunitXmlFiles = buildUnnamed3239();
   }
   buildCounterPublishXunitXmlFilesRequest--;
   return o;
@@ -448,7 +758,7 @@ buildPublishXunitXmlFilesRequest() {
 checkPublishXunitXmlFilesRequest(api.PublishXunitXmlFilesRequest o) {
   buildCounterPublishXunitXmlFilesRequest++;
   if (buildCounterPublishXunitXmlFilesRequest < 3) {
-    checkUnnamed3246(o.xunitXmlFiles);
+    checkUnnamed3239(o.xunitXmlFiles);
   }
   buildCounterPublishXunitXmlFilesRequest--;
 }
@@ -495,14 +805,14 @@ checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace--;
 }
 
-buildUnnamed3247() {
+buildUnnamed3240() {
   var o = new core.List<api.Any>();
   o.add(buildAny());
   o.add(buildAny());
   return o;
 }
 
-checkUnnamed3247(core.List<api.Any> o) {
+checkUnnamed3240(core.List<api.Any> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAny(o[0]);
   checkAny(o[1]);
@@ -514,7 +824,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3247();
+    o.details = buildUnnamed3240();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -525,33 +835,33 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3247(o.details);
+    checkUnnamed3240(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-buildUnnamed3248() {
+buildUnnamed3241() {
   var o = new core.List<api.StepDimensionValueEntry>();
   o.add(buildStepDimensionValueEntry());
   o.add(buildStepDimensionValueEntry());
   return o;
 }
 
-checkUnnamed3248(core.List<api.StepDimensionValueEntry> o) {
+checkUnnamed3241(core.List<api.StepDimensionValueEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStepDimensionValueEntry(o[0]);
   checkStepDimensionValueEntry(o[1]);
 }
 
-buildUnnamed3249() {
+buildUnnamed3242() {
   var o = new core.List<api.StepLabelsEntry>();
   o.add(buildStepLabelsEntry());
   o.add(buildStepLabelsEntry());
   return o;
 }
 
-checkUnnamed3249(core.List<api.StepLabelsEntry> o) {
+checkUnnamed3242(core.List<api.StepLabelsEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStepLabelsEntry(o[0]);
   checkStepLabelsEntry(o[1]);
@@ -566,9 +876,9 @@ buildStep() {
     o.creationTime = buildTimestamp();
     o.description = "foo";
     o.deviceUsageDuration = buildDuration();
-    o.dimensionValue = buildUnnamed3248();
+    o.dimensionValue = buildUnnamed3241();
     o.hasImages = true;
-    o.labels = buildUnnamed3249();
+    o.labels = buildUnnamed3242();
     o.name = "foo";
     o.outcome = buildOutcome();
     o.runDuration = buildDuration();
@@ -588,9 +898,9 @@ checkStep(api.Step o) {
     checkTimestamp(o.creationTime);
     unittest.expect(o.description, unittest.equals('foo'));
     checkDuration(o.deviceUsageDuration);
-    checkUnnamed3248(o.dimensionValue);
+    checkUnnamed3241(o.dimensionValue);
     unittest.expect(o.hasImages, unittest.isTrue);
-    checkUnnamed3249(o.labels);
+    checkUnnamed3242(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     checkOutcome(o.outcome);
     checkDuration(o.runDuration);
@@ -686,27 +996,27 @@ checkTestCaseReference(api.TestCaseReference o) {
   buildCounterTestCaseReference--;
 }
 
-buildUnnamed3250() {
+buildUnnamed3243() {
   var o = new core.List<api.TestIssue>();
   o.add(buildTestIssue());
   o.add(buildTestIssue());
   return o;
 }
 
-checkUnnamed3250(core.List<api.TestIssue> o) {
+checkUnnamed3243(core.List<api.TestIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTestIssue(o[0]);
   checkTestIssue(o[1]);
 }
 
-buildUnnamed3251() {
+buildUnnamed3244() {
   var o = new core.List<api.TestSuiteOverview>();
   o.add(buildTestSuiteOverview());
   o.add(buildTestSuiteOverview());
   return o;
 }
 
-checkUnnamed3251(core.List<api.TestSuiteOverview> o) {
+checkUnnamed3244(core.List<api.TestSuiteOverview> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTestSuiteOverview(o[0]);
   checkTestSuiteOverview(o[1]);
@@ -717,8 +1027,8 @@ buildTestExecutionStep() {
   var o = new api.TestExecutionStep();
   buildCounterTestExecutionStep++;
   if (buildCounterTestExecutionStep < 3) {
-    o.testIssues = buildUnnamed3250();
-    o.testSuiteOverviews = buildUnnamed3251();
+    o.testIssues = buildUnnamed3243();
+    o.testSuiteOverviews = buildUnnamed3244();
     o.testTiming = buildTestTiming();
     o.toolExecution = buildToolExecution();
   }
@@ -729,8 +1039,8 @@ buildTestExecutionStep() {
 checkTestExecutionStep(api.TestExecutionStep o) {
   buildCounterTestExecutionStep++;
   if (buildCounterTestExecutionStep < 3) {
-    checkUnnamed3250(o.testIssues);
-    checkUnnamed3251(o.testSuiteOverviews);
+    checkUnnamed3243(o.testIssues);
+    checkUnnamed3244(o.testSuiteOverviews);
     checkTestTiming(o.testTiming);
     checkToolExecution(o.toolExecution);
   }
@@ -852,40 +1162,40 @@ checkTimestamp(api.Timestamp o) {
   buildCounterTimestamp--;
 }
 
-buildUnnamed3252() {
+buildUnnamed3245() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3252(core.List<core.String> o) {
+checkUnnamed3245(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3253() {
+buildUnnamed3246() {
   var o = new core.List<api.FileReference>();
   o.add(buildFileReference());
   o.add(buildFileReference());
   return o;
 }
 
-checkUnnamed3253(core.List<api.FileReference> o) {
+checkUnnamed3246(core.List<api.FileReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFileReference(o[0]);
   checkFileReference(o[1]);
 }
 
-buildUnnamed3254() {
+buildUnnamed3247() {
   var o = new core.List<api.ToolOutputReference>();
   o.add(buildToolOutputReference());
   o.add(buildToolOutputReference());
   return o;
 }
 
-checkUnnamed3254(core.List<api.ToolOutputReference> o) {
+checkUnnamed3247(core.List<api.ToolOutputReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToolOutputReference(o[0]);
   checkToolOutputReference(o[1]);
@@ -896,10 +1206,10 @@ buildToolExecution() {
   var o = new api.ToolExecution();
   buildCounterToolExecution++;
   if (buildCounterToolExecution < 3) {
-    o.commandLineArguments = buildUnnamed3252();
+    o.commandLineArguments = buildUnnamed3245();
     o.exitCode = buildToolExitCode();
-    o.toolLogs = buildUnnamed3253();
-    o.toolOutputs = buildUnnamed3254();
+    o.toolLogs = buildUnnamed3246();
+    o.toolOutputs = buildUnnamed3247();
   }
   buildCounterToolExecution--;
   return o;
@@ -908,10 +1218,10 @@ buildToolExecution() {
 checkToolExecution(api.ToolExecution o) {
   buildCounterToolExecution++;
   if (buildCounterToolExecution < 3) {
-    checkUnnamed3252(o.commandLineArguments);
+    checkUnnamed3245(o.commandLineArguments);
     checkToolExitCode(o.exitCode);
-    checkUnnamed3253(o.toolLogs);
-    checkUnnamed3254(o.toolOutputs);
+    checkUnnamed3246(o.toolLogs);
+    checkUnnamed3247(o.toolOutputs);
   }
   buildCounterToolExecution--;
 }
@@ -977,6 +1287,19 @@ checkToolOutputReference(api.ToolOutputReference o) {
   buildCounterToolOutputReference--;
 }
 
+buildUnnamed3248() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3248(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 
 main() {
   unittest.group("obj-schema-Any", () {
@@ -984,6 +1307,42 @@ main() {
       var o = buildAny();
       var od = new api.Any.fromJson(o.toJson());
       checkAny(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BasicPerfSampleSeries", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBasicPerfSampleSeries();
+      var od = new api.BasicPerfSampleSeries.fromJson(o.toJson());
+      checkBasicPerfSampleSeries(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BatchCreatePerfSamplesRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBatchCreatePerfSamplesRequest();
+      var od = new api.BatchCreatePerfSamplesRequest.fromJson(o.toJson());
+      checkBatchCreatePerfSamplesRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BatchCreatePerfSamplesResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBatchCreatePerfSamplesResponse();
+      var od = new api.BatchCreatePerfSamplesResponse.fromJson(o.toJson());
+      checkBatchCreatePerfSamplesResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-CPUInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCPUInfo();
+      var od = new api.CPUInfo.fromJson(o.toJson());
+      checkCPUInfo(od);
     });
   });
 
@@ -1069,6 +1428,24 @@ main() {
   });
 
 
+  unittest.group("obj-schema-ListPerfSampleSeriesResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListPerfSampleSeriesResponse();
+      var od = new api.ListPerfSampleSeriesResponse.fromJson(o.toJson());
+      checkListPerfSampleSeriesResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListPerfSamplesResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListPerfSamplesResponse();
+      var od = new api.ListPerfSamplesResponse.fromJson(o.toJson());
+      checkListPerfSamplesResponse(od);
+    });
+  });
+
+
   unittest.group("obj-schema-ListStepThumbnailsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListStepThumbnailsResponse();
@@ -1087,11 +1464,56 @@ main() {
   });
 
 
+  unittest.group("obj-schema-MemoryInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildMemoryInfo();
+      var od = new api.MemoryInfo.fromJson(o.toJson());
+      checkMemoryInfo(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Outcome", () {
     unittest.test("to-json--from-json", () {
       var o = buildOutcome();
       var od = new api.Outcome.fromJson(o.toJson());
       checkOutcome(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PerfEnvironment", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPerfEnvironment();
+      var od = new api.PerfEnvironment.fromJson(o.toJson());
+      checkPerfEnvironment(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PerfMetricsSummary", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPerfMetricsSummary();
+      var od = new api.PerfMetricsSummary.fromJson(o.toJson());
+      checkPerfMetricsSummary(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PerfSample", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPerfSample();
+      var od = new api.PerfSample.fromJson(o.toJson());
+      checkPerfSample(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-PerfSampleSeries", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPerfSampleSeries();
+      var od = new api.PerfSampleSeries.fromJson(o.toJson());
+      checkPerfSampleSeries(od);
     });
   });
 
@@ -1797,6 +2219,51 @@ main() {
       })));
     });
 
+    unittest.test("method--getPerfMetricsSummary", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsHistoriesExecutionsStepsResourceApi res = new api.ToolresultsApi(mock).projects.histories.executions.steps;
+      var arg_projectId = "foo";
+      var arg_historyId = "foo";
+      var arg_executionId = "foo";
+      var arg_stepId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPerfMetricsSummary());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getPerfMetricsSummary(arg_projectId, arg_historyId, arg_executionId, arg_stepId).then(unittest.expectAsync(((api.PerfMetricsSummary response) {
+        checkPerfMetricsSummary(response);
+      })));
+    });
+
     unittest.test("method--list", () {
 
       var mock = new HttpServerMock();
@@ -1942,6 +2409,309 @@ main() {
       }), true);
       res.publishXunitXmlFiles(arg_request, arg_projectId, arg_historyId, arg_executionId, arg_stepId).then(unittest.expectAsync(((api.Step response) {
         checkStep(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi res = new api.ToolresultsApi(mock).projects.histories.executions.steps.perfMetricsSummary;
+      var arg_request = buildPerfMetricsSummary();
+      var arg_projectId = "foo";
+      var arg_historyId = "foo";
+      var arg_executionId = "foo";
+      var arg_stepId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PerfMetricsSummary.fromJson(json);
+        checkPerfMetricsSummary(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPerfMetricsSummary());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_projectId, arg_historyId, arg_executionId, arg_stepId).then(unittest.expectAsync(((api.PerfMetricsSummary response) {
+        checkPerfMetricsSummary(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi res = new api.ToolresultsApi(mock).projects.histories.executions.steps.perfSampleSeries;
+      var arg_request = buildPerfSampleSeries();
+      var arg_projectId = "foo";
+      var arg_historyId = "foo";
+      var arg_executionId = "foo";
+      var arg_stepId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.PerfSampleSeries.fromJson(json);
+        checkPerfSampleSeries(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPerfSampleSeries());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_projectId, arg_historyId, arg_executionId, arg_stepId).then(unittest.expectAsync(((api.PerfSampleSeries response) {
+        checkPerfSampleSeries(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi res = new api.ToolresultsApi(mock).projects.histories.executions.steps.perfSampleSeries;
+      var arg_projectId = "foo";
+      var arg_historyId = "foo";
+      var arg_executionId = "foo";
+      var arg_stepId = "foo";
+      var arg_sampleSeriesId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildPerfSampleSeries());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.get(arg_projectId, arg_historyId, arg_executionId, arg_stepId, arg_sampleSeriesId).then(unittest.expectAsync(((api.PerfSampleSeries response) {
+        checkPerfSampleSeries(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi res = new api.ToolresultsApi(mock).projects.histories.executions.steps.perfSampleSeries;
+      var arg_projectId = "foo";
+      var arg_historyId = "foo";
+      var arg_executionId = "foo";
+      var arg_stepId = "foo";
+      var arg_filter = buildUnnamed3248();
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["filter"], unittest.equals(arg_filter));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListPerfSampleSeriesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_projectId, arg_historyId, arg_executionId, arg_stepId, filter: arg_filter).then(unittest.expectAsync(((api.ListPerfSampleSeriesResponse response) {
+        checkListPerfSampleSeriesResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi", () {
+    unittest.test("method--batchCreate", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi res = new api.ToolresultsApi(mock).projects.histories.executions.steps.perfSampleSeries.samples;
+      var arg_request = buildBatchCreatePerfSamplesRequest();
+      var arg_projectId = "foo";
+      var arg_historyId = "foo";
+      var arg_executionId = "foo";
+      var arg_stepId = "foo";
+      var arg_sampleSeriesId = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.BatchCreatePerfSamplesRequest.fromJson(json);
+        checkBatchCreatePerfSamplesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildBatchCreatePerfSamplesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.batchCreate(arg_request, arg_projectId, arg_historyId, arg_executionId, arg_stepId, arg_sampleSeriesId).then(unittest.expectAsync(((api.BatchCreatePerfSamplesResponse response) {
+        checkBatchCreatePerfSamplesResponse(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi res = new api.ToolresultsApi(mock).projects.histories.executions.steps.perfSampleSeries.samples;
+      var arg_projectId = "foo";
+      var arg_historyId = "foo";
+      var arg_executionId = "foo";
+      var arg_stepId = "foo";
+      var arg_sampleSeriesId = "foo";
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListPerfSamplesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.list(arg_projectId, arg_historyId, arg_executionId, arg_stepId, arg_sampleSeriesId, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListPerfSamplesResponse response) {
+        checkListPerfSamplesResponse(response);
       })));
     });
 

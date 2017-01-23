@@ -500,10 +500,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.YoutubereportingApi(mock).jobs;
-      var arg_onBehalfOfContentOwner = "foo";
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
       var arg_includeSystemManaged = true;
+      var arg_onBehalfOfContentOwner = "foo";
+      var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -530,10 +530,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["includeSystemManaged"].first, unittest.equals("$arg_includeSystemManaged"));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
         var h = {
@@ -542,7 +542,7 @@ main() {
         var resp = convert.JSON.encode(buildListJobsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(onBehalfOfContentOwner: arg_onBehalfOfContentOwner, pageSize: arg_pageSize, pageToken: arg_pageToken, includeSystemManaged: arg_includeSystemManaged).then(unittest.expectAsync(((api.ListJobsResponse response) {
+      res.list(pageSize: arg_pageSize, includeSystemManaged: arg_includeSystemManaged, onBehalfOfContentOwner: arg_onBehalfOfContentOwner, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListJobsResponse response) {
         checkListJobsResponse(response);
       })));
     });
@@ -614,11 +614,11 @@ main() {
       api.JobsReportsResourceApi res = new api.YoutubereportingApi(mock).jobs.reports;
       var arg_jobId = "foo";
       var arg_onBehalfOfContentOwner = "foo";
-      var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_createdAfter = "foo";
       var arg_startTimeAtOrAfter = "foo";
       var arg_startTimeBefore = "foo";
+      var arg_pageSize = 42;
+      var arg_createdAfter = "foo";
+      var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -653,11 +653,11 @@ main() {
           }
         }
         unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
         unittest.expect(queryMap["startTimeAtOrAfter"].first, unittest.equals(arg_startTimeAtOrAfter));
         unittest.expect(queryMap["startTimeBefore"].first, unittest.equals(arg_startTimeBefore));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
         var h = {
@@ -666,7 +666,7 @@ main() {
         var resp = convert.JSON.encode(buildListReportsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_jobId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner, pageSize: arg_pageSize, pageToken: arg_pageToken, createdAfter: arg_createdAfter, startTimeAtOrAfter: arg_startTimeAtOrAfter, startTimeBefore: arg_startTimeBefore).then(unittest.expectAsync(((api.ListReportsResponse response) {
+      res.list(arg_jobId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner, startTimeAtOrAfter: arg_startTimeAtOrAfter, startTimeBefore: arg_startTimeBefore, pageSize: arg_pageSize, createdAfter: arg_createdAfter, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListReportsResponse response) {
         checkListReportsResponse(response);
       })));
     });
@@ -730,10 +730,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.ReportTypesResourceApi res = new api.YoutubereportingApi(mock).reportTypes;
-      var arg_onBehalfOfContentOwner = "foo";
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
       var arg_includeSystemManaged = true;
+      var arg_onBehalfOfContentOwner = "foo";
+      var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -760,10 +760,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["includeSystemManaged"].first, unittest.equals("$arg_includeSystemManaged"));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
         var h = {
@@ -772,7 +772,7 @@ main() {
         var resp = convert.JSON.encode(buildListReportTypesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(onBehalfOfContentOwner: arg_onBehalfOfContentOwner, pageSize: arg_pageSize, pageToken: arg_pageToken, includeSystemManaged: arg_includeSystemManaged).then(unittest.expectAsync(((api.ListReportTypesResponse response) {
+      res.list(pageSize: arg_pageSize, includeSystemManaged: arg_includeSystemManaged, onBehalfOfContentOwner: arg_onBehalfOfContentOwner, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListReportTypesResponse response) {
         checkListReportTypesResponse(response);
       })));
     });

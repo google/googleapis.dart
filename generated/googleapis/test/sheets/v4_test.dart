@@ -1576,6 +1576,27 @@ checkDeleteProtectedRangeRequest(api.DeleteProtectedRangeRequest o) {
   buildCounterDeleteProtectedRangeRequest--;
 }
 
+core.int buildCounterDeleteRangeRequest = 0;
+buildDeleteRangeRequest() {
+  var o = new api.DeleteRangeRequest();
+  buildCounterDeleteRangeRequest++;
+  if (buildCounterDeleteRangeRequest < 3) {
+    o.range = buildGridRange();
+    o.shiftDimension = "foo";
+  }
+  buildCounterDeleteRangeRequest--;
+  return o;
+}
+
+checkDeleteRangeRequest(api.DeleteRangeRequest o) {
+  buildCounterDeleteRangeRequest++;
+  if (buildCounterDeleteRangeRequest < 3) {
+    checkGridRange(o.range);
+    unittest.expect(o.shiftDimension, unittest.equals('foo'));
+  }
+  buildCounterDeleteRangeRequest--;
+}
+
 core.int buildCounterDeleteSheetRequest = 0;
 buildDeleteSheetRequest() {
   var o = new api.DeleteSheetRequest();
@@ -2206,6 +2227,27 @@ checkInsertDimensionRequest(api.InsertDimensionRequest o) {
   buildCounterInsertDimensionRequest--;
 }
 
+core.int buildCounterInsertRangeRequest = 0;
+buildInsertRangeRequest() {
+  var o = new api.InsertRangeRequest();
+  buildCounterInsertRangeRequest++;
+  if (buildCounterInsertRangeRequest < 3) {
+    o.range = buildGridRange();
+    o.shiftDimension = "foo";
+  }
+  buildCounterInsertRangeRequest--;
+  return o;
+}
+
+checkInsertRangeRequest(api.InsertRangeRequest o) {
+  buildCounterInsertRangeRequest++;
+  if (buildCounterInsertRangeRequest < 3) {
+    checkGridRange(o.range);
+    unittest.expect(o.shiftDimension, unittest.equals('foo'));
+  }
+  buildCounterInsertRangeRequest--;
+}
+
 core.int buildCounterInterpolationPoint = 0;
 buildInterpolationPoint() {
   var o = new api.InterpolationPoint();
@@ -2749,11 +2791,13 @@ buildRequest() {
     o.deleteFilterView = buildDeleteFilterViewRequest();
     o.deleteNamedRange = buildDeleteNamedRangeRequest();
     o.deleteProtectedRange = buildDeleteProtectedRangeRequest();
+    o.deleteRange = buildDeleteRangeRequest();
     o.deleteSheet = buildDeleteSheetRequest();
     o.duplicateFilterView = buildDuplicateFilterViewRequest();
     o.duplicateSheet = buildDuplicateSheetRequest();
     o.findReplace = buildFindReplaceRequest();
     o.insertDimension = buildInsertDimensionRequest();
+    o.insertRange = buildInsertRangeRequest();
     o.mergeCells = buildMergeCellsRequest();
     o.moveDimension = buildMoveDimensionRequest();
     o.pasteData = buildPasteDataRequest();
@@ -2804,11 +2848,13 @@ checkRequest(api.Request o) {
     checkDeleteFilterViewRequest(o.deleteFilterView);
     checkDeleteNamedRangeRequest(o.deleteNamedRange);
     checkDeleteProtectedRangeRequest(o.deleteProtectedRange);
+    checkDeleteRangeRequest(o.deleteRange);
     checkDeleteSheetRequest(o.deleteSheet);
     checkDuplicateFilterViewRequest(o.duplicateFilterView);
     checkDuplicateSheetRequest(o.duplicateSheet);
     checkFindReplaceRequest(o.findReplace);
     checkInsertDimensionRequest(o.insertDimension);
+    checkInsertRangeRequest(o.insertRange);
     checkMergeCellsRequest(o.mergeCells);
     checkMoveDimensionRequest(o.moveDimension);
     checkPasteDataRequest(o.pasteData);
@@ -4326,6 +4372,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-DeleteRangeRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDeleteRangeRequest();
+      var od = new api.DeleteRangeRequest.fromJson(o.toJson());
+      checkDeleteRangeRequest(od);
+    });
+  });
+
+
   unittest.group("obj-schema-DeleteSheetRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeleteSheetRequest();
@@ -4520,6 +4575,15 @@ main() {
       var o = buildInsertDimensionRequest();
       var od = new api.InsertDimensionRequest.fromJson(o.toJson());
       checkInsertDimensionRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-InsertRangeRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInsertRangeRequest();
+      var od = new api.InsertRangeRequest.fromJson(o.toJson());
+      checkInsertRangeRequest(od);
     });
   });
 

@@ -2779,6 +2779,7 @@ class PurchasesResourceApi {
 
   PurchasesProductsResourceApi get products => new PurchasesProductsResourceApi(_requester);
   PurchasesSubscriptionsResourceApi get subscriptions => new PurchasesSubscriptionsResourceApi(_requester);
+  PurchasesVoidedpurchasesResourceApi get voidedpurchases => new PurchasesVoidedpurchasesResourceApi(_requester);
 
   PurchasesResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -3124,6 +3125,86 @@ class PurchasesSubscriptionsResourceApi {
 }
 
 
+class PurchasesVoidedpurchasesResourceApi {
+  final commons.ApiRequester _requester;
+
+  PurchasesVoidedpurchasesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists the purchases that were cancelled, refunded or charged-back.
+   *
+   * Request parameters:
+   *
+   * [packageName] - The package name of the application for which voided
+   * purchases need to be returned (for example, 'com.some.thing').
+   *
+   * [endTime] - The time, in milliseconds since the Epoch, of the newest voided
+   * in-app product purchase that you want to see in the response. The value of
+   * this parameter cannot be greater than the current time and is ignored if a
+   * pagination token is set. Default value is current time.
+   *
+   * [maxResults] - null
+   *
+   * [startIndex] - null
+   *
+   * [startTime] - The time, in milliseconds since the Epoch, of the oldest
+   * voided in-app product purchase that you want to see in the response. The
+   * value of this parameter cannot be older than 30 days and is ignored if a
+   * pagination token is set. Default value is current time minus 30 days.
+   *
+   * [token] - null
+   *
+   * Completes with a [VoidedPurchasesListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<VoidedPurchasesListResponse> list(core.String packageName, {core.String endTime, core.int maxResults, core.int startIndex, core.String startTime, core.String token}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+    if (token != null) {
+      _queryParams["token"] = [token];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/voidedpurchases';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new VoidedPurchasesListResponse.fromJson(data));
+  }
+
+}
+
+
 class ReviewsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -3140,6 +3221,8 @@ class ReviewsResourceApi {
    *
    * [reviewId] - null
    *
+   * [translationLanguage] - null
+   *
    * Completes with a [Review].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3148,7 +3231,7 @@ class ReviewsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Review> get(core.String packageName, core.String reviewId) {
+  async.Future<Review> get(core.String packageName, core.String reviewId, {core.String translationLanguage}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3161,6 +3244,9 @@ class ReviewsResourceApi {
     }
     if (reviewId == null) {
       throw new core.ArgumentError("Parameter reviewId is required.");
+    }
+    if (translationLanguage != null) {
+      _queryParams["translationLanguage"] = [translationLanguage];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews/' + commons.Escaper.ecapeVariable('$reviewId');
@@ -3189,6 +3275,8 @@ class ReviewsResourceApi {
    *
    * [token] - null
    *
+   * [translationLanguage] - null
+   *
    * Completes with a [ReviewsListResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3197,7 +3285,7 @@ class ReviewsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ReviewsListResponse> list(core.String packageName, {core.int maxResults, core.int startIndex, core.String token}) {
+  async.Future<ReviewsListResponse> list(core.String packageName, {core.int maxResults, core.int startIndex, core.String token, core.String translationLanguage}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3216,6 +3304,9 @@ class ReviewsResourceApi {
     }
     if (token != null) {
       _queryParams["token"] = [token];
+    }
+    if (translationLanguage != null) {
+      _queryParams["translationLanguage"] = [translationLanguage];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews';
@@ -3647,6 +3738,107 @@ class DeveloperComment {
     }
     if (text != null) {
       _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+class DeviceMetadata {
+  /** Device CPU make e.g. "Qualcomm" */
+  core.String cpuMake;
+  /** Device CPU model e.g. "MSM8974" */
+  core.String cpuModel;
+  /** Device class (e.g. tablet) */
+  core.String deviceClass;
+  /** OpenGL version */
+  core.int glEsVersion;
+  /** Device manufacturer (e.g. Motorola) */
+  core.String manufacturer;
+  /** Comma separated list of native platforms (e.g. "arm", "arm7") */
+  core.String nativePlatform;
+  /** Device model name (e.g. Droid) */
+  core.String productName;
+  /** Device RAM in Megabytes e.g. "2048" */
+  core.int ramMb;
+  /** Screen density in DPI */
+  core.int screenDensityDpi;
+  /** Screen height in pixels */
+  core.int screenHeightPx;
+  /** Screen width in pixels */
+  core.int screenWidthPx;
+
+  DeviceMetadata();
+
+  DeviceMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuMake")) {
+      cpuMake = _json["cpuMake"];
+    }
+    if (_json.containsKey("cpuModel")) {
+      cpuModel = _json["cpuModel"];
+    }
+    if (_json.containsKey("deviceClass")) {
+      deviceClass = _json["deviceClass"];
+    }
+    if (_json.containsKey("glEsVersion")) {
+      glEsVersion = _json["glEsVersion"];
+    }
+    if (_json.containsKey("manufacturer")) {
+      manufacturer = _json["manufacturer"];
+    }
+    if (_json.containsKey("nativePlatform")) {
+      nativePlatform = _json["nativePlatform"];
+    }
+    if (_json.containsKey("productName")) {
+      productName = _json["productName"];
+    }
+    if (_json.containsKey("ramMb")) {
+      ramMb = _json["ramMb"];
+    }
+    if (_json.containsKey("screenDensityDpi")) {
+      screenDensityDpi = _json["screenDensityDpi"];
+    }
+    if (_json.containsKey("screenHeightPx")) {
+      screenHeightPx = _json["screenHeightPx"];
+    }
+    if (_json.containsKey("screenWidthPx")) {
+      screenWidthPx = _json["screenWidthPx"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cpuMake != null) {
+      _json["cpuMake"] = cpuMake;
+    }
+    if (cpuModel != null) {
+      _json["cpuModel"] = cpuModel;
+    }
+    if (deviceClass != null) {
+      _json["deviceClass"] = deviceClass;
+    }
+    if (glEsVersion != null) {
+      _json["glEsVersion"] = glEsVersion;
+    }
+    if (manufacturer != null) {
+      _json["manufacturer"] = manufacturer;
+    }
+    if (nativePlatform != null) {
+      _json["nativePlatform"] = nativePlatform;
+    }
+    if (productName != null) {
+      _json["productName"] = productName;
+    }
+    if (ramMb != null) {
+      _json["ramMb"] = ramMb;
+    }
+    if (screenDensityDpi != null) {
+      _json["screenDensityDpi"] = screenDensityDpi;
+    }
+    if (screenHeightPx != null) {
+      _json["screenHeightPx"] = screenHeightPx;
+    }
+    if (screenWidthPx != null) {
+      _json["screenWidthPx"] = screenWidthPx;
     }
     return _json;
   }
@@ -5340,8 +5532,15 @@ class UserComment {
    * Codename for the reviewer's device, e.g. klte, flounder. May be absent.
    */
   core.String device;
+  /** Some information about the characteristics of the user's device */
+  DeviceMetadata deviceMetadata;
   /** The last time at which this comment was updated. */
   Timestamp lastModified;
+  /**
+   * Untranslated text of the review, in the case where the review has been
+   * translated. If the review has not been translated this is left blank.
+   */
+  core.String originalText;
   /**
    * Language code for the reviewer. This is taken from the device settings so
    * is not guaranteed to match the language the review is written in. May be
@@ -5356,6 +5555,10 @@ class UserComment {
    * title and body are concatenated and separated by a tab character.
    */
   core.String text;
+  /** Number of users who have given this review a thumbs down */
+  core.int thumbsDownCount;
+  /** Number of users who have given this review a thumbs up */
+  core.int thumbsUpCount;
 
   UserComment();
 
@@ -5372,8 +5575,14 @@ class UserComment {
     if (_json.containsKey("device")) {
       device = _json["device"];
     }
+    if (_json.containsKey("deviceMetadata")) {
+      deviceMetadata = new DeviceMetadata.fromJson(_json["deviceMetadata"]);
+    }
     if (_json.containsKey("lastModified")) {
       lastModified = new Timestamp.fromJson(_json["lastModified"]);
+    }
+    if (_json.containsKey("originalText")) {
+      originalText = _json["originalText"];
     }
     if (_json.containsKey("reviewerLanguage")) {
       reviewerLanguage = _json["reviewerLanguage"];
@@ -5383,6 +5592,12 @@ class UserComment {
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
+    }
+    if (_json.containsKey("thumbsDownCount")) {
+      thumbsDownCount = _json["thumbsDownCount"];
+    }
+    if (_json.containsKey("thumbsUpCount")) {
+      thumbsUpCount = _json["thumbsUpCount"];
     }
   }
 
@@ -5400,8 +5615,14 @@ class UserComment {
     if (device != null) {
       _json["device"] = device;
     }
+    if (deviceMetadata != null) {
+      _json["deviceMetadata"] = (deviceMetadata).toJson();
+    }
     if (lastModified != null) {
       _json["lastModified"] = (lastModified).toJson();
+    }
+    if (originalText != null) {
+      _json["originalText"] = originalText;
     }
     if (reviewerLanguage != null) {
       _json["reviewerLanguage"] = reviewerLanguage;
@@ -5411,6 +5632,107 @@ class UserComment {
     }
     if (text != null) {
       _json["text"] = text;
+    }
+    if (thumbsDownCount != null) {
+      _json["thumbsDownCount"] = thumbsDownCount;
+    }
+    if (thumbsUpCount != null) {
+      _json["thumbsUpCount"] = thumbsUpCount;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A VoidedPurchase resource indicates a purchase that was either
+ * cancelled/refunded/charged-back.
+ */
+class VoidedPurchase {
+  /**
+   * This kind represents a voided purchase object in the androidpublisher
+   * service.
+   */
+  core.String kind;
+  /**
+   * The time at which the purchase was made, in milliseconds since the epoch
+   * (Jan 1, 1970).
+   */
+  core.String purchaseTimeMillis;
+  /**
+   * The token that was generated when a purchase was made. This uniquely
+   * identifies a purchase.
+   */
+  core.String purchaseToken;
+  /**
+   * The time at which the purchase was cancelled/refunded/charged-back, in
+   * milliseconds since the epoch (Jan 1, 1970).
+   */
+  core.String voidedTimeMillis;
+
+  VoidedPurchase();
+
+  VoidedPurchase.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("purchaseTimeMillis")) {
+      purchaseTimeMillis = _json["purchaseTimeMillis"];
+    }
+    if (_json.containsKey("purchaseToken")) {
+      purchaseToken = _json["purchaseToken"];
+    }
+    if (_json.containsKey("voidedTimeMillis")) {
+      voidedTimeMillis = _json["voidedTimeMillis"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (purchaseTimeMillis != null) {
+      _json["purchaseTimeMillis"] = purchaseTimeMillis;
+    }
+    if (purchaseToken != null) {
+      _json["purchaseToken"] = purchaseToken;
+    }
+    if (voidedTimeMillis != null) {
+      _json["voidedTimeMillis"] = voidedTimeMillis;
+    }
+    return _json;
+  }
+}
+
+class VoidedPurchasesListResponse {
+  PageInfo pageInfo;
+  TokenPagination tokenPagination;
+  core.List<VoidedPurchase> voidedPurchases;
+
+  VoidedPurchasesListResponse();
+
+  VoidedPurchasesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("voidedPurchases")) {
+      voidedPurchases = _json["voidedPurchases"].map((value) => new VoidedPurchase.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (voidedPurchases != null) {
+      _json["voidedPurchases"] = voidedPurchases.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

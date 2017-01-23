@@ -14,10 +14,10 @@
     "basePath": "",
     "baseUrl": "https://dataflow.googleapis.com/",
     "batchPath": "batch",
-    "description": "Develops and executes data processing patterns like ETL, batch computation, and continuous computation.",
+    "description": "Manages Google Cloud Dataflow projects on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/dataflow",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/2ldmPeHEvQ6NGgRE1Cb3tnvrYr8\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/8IKdD_GkxmHITZPPBvAy8YZADEQ\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -142,7 +142,7 @@
                 "jobs": {
                     "methods": {
                         "create": {
-                            "description": "Creates a dataflow job.",
+                            "description": "Creates a Cloud Dataflow job.",
                             "httpMethod": "POST",
                             "id": "dataflow.projects.jobs.create",
                             "parameterOrder": [
@@ -150,13 +150,13 @@
                             ],
                             "parameters": {
                                 "projectId": {
-                                    "description": "The project which owns the job.",
+                                    "description": "The ID of the Cloud Platform project that the job belongs to.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "view": {
-                                    "description": "Level of information requested in response.",
+                                    "description": "The level of information requested in response.",
                                     "enum": [
                                         "JOB_VIEW_UNKNOWN",
                                         "JOB_VIEW_SUMMARY",
@@ -166,12 +166,12 @@
                                     "type": "string"
                                 },
                                 "replaceJobId": {
-                                    "description": "DEPRECATED. This field is now on the Job message.",
+                                    "description": "Deprecated. This field is now in the Job message.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "location": {
-                                    "description": "The location which contains this job.",
+                                    "description": "The location that contains this job.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -189,7 +189,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Gets the state of the specified dataflow job.",
+                            "description": "Gets the state of the specified Cloud Dataflow job.",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.jobs.get",
                             "parameterOrder": [
@@ -198,19 +198,19 @@
                             ],
                             "parameters": {
                                 "projectId": {
-                                    "description": "The project which owns the job.",
+                                    "description": "The ID of the Cloud Platform project that the job belongs to.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "jobId": {
-                                    "description": "Identifies a single job.",
+                                    "description": "The job ID.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "view": {
-                                    "description": "Level of information requested in response.",
+                                    "description": "The level of information requested in response.",
                                     "enum": [
                                         "JOB_VIEW_UNKNOWN",
                                         "JOB_VIEW_SUMMARY",
@@ -220,7 +220,7 @@
                                     "type": "string"
                                 },
                                 "location": {
-                                    "description": "The location which contains this job.",
+                                    "description": "The location that contains this job.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -235,7 +235,7 @@
                             ]
                         },
                         "update": {
-                            "description": "Updates the state of an existing dataflow job.",
+                            "description": "Updates the state of an existing Cloud Dataflow job.",
                             "httpMethod": "PUT",
                             "id": "dataflow.projects.jobs.update",
                             "parameterOrder": [
@@ -244,19 +244,19 @@
                             ],
                             "parameters": {
                                 "projectId": {
-                                    "description": "The project which owns the job.",
+                                    "description": "The ID of the Cloud Platform project that the job belongs to.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "jobId": {
-                                    "description": "Identifies a single job.",
+                                    "description": "The job ID.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "location": {
-                                    "description": "The location which contains this job.",
+                                    "description": "The location that contains this job.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -274,7 +274,7 @@
                             ]
                         },
                         "list": {
-                            "description": "List the jobs of a project",
+                            "description": "List the jobs of a project.",
                             "httpMethod": "GET",
                             "id": "dataflow.projects.jobs.list",
                             "parameterOrder": [
@@ -299,7 +299,7 @@
                                     "type": "string"
                                 },
                                 "view": {
-                                    "description": "Level of information requested in response. Default is SUMMARY.",
+                                    "description": "Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.",
                                     "enum": [
                                         "JOB_VIEW_UNKNOWN",
                                         "JOB_VIEW_SUMMARY",
@@ -320,7 +320,7 @@
                                     "type": "string"
                                 },
                                 "location": {
-                                    "description": "The location which contains this job.",
+                                    "description": "The location that contains this job.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -602,7 +602,7 @@
                         "jobs": {
                             "methods": {
                                 "create": {
-                                    "description": "Creates a dataflow job.",
+                                    "description": "Creates a Cloud Dataflow job.",
                                     "httpMethod": "POST",
                                     "id": "dataflow.projects.locations.jobs.create",
                                     "parameterOrder": [
@@ -611,19 +611,19 @@
                                     ],
                                     "parameters": {
                                         "projectId": {
-                                            "description": "The project which owns the job.",
+                                            "description": "The ID of the Cloud Platform project that the job belongs to.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "location": {
-                                            "description": "The location which contains this job.",
+                                            "description": "The location that contains this job.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "view": {
-                                            "description": "Level of information requested in response.",
+                                            "description": "The level of information requested in response.",
                                             "enum": [
                                                 "JOB_VIEW_UNKNOWN",
                                                 "JOB_VIEW_SUMMARY",
@@ -633,7 +633,7 @@
                                             "type": "string"
                                         },
                                         "replaceJobId": {
-                                            "description": "DEPRECATED. This field is now on the Job message.",
+                                            "description": "Deprecated. This field is now in the Job message.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -651,7 +651,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets the state of the specified dataflow job.",
+                                    "description": "Gets the state of the specified Cloud Dataflow job.",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.jobs.get",
                                     "parameterOrder": [
@@ -661,25 +661,25 @@
                                     ],
                                     "parameters": {
                                         "projectId": {
-                                            "description": "The project which owns the job.",
+                                            "description": "The ID of the Cloud Platform project that the job belongs to.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "location": {
-                                            "description": "The location which contains this job.",
+                                            "description": "The location that contains this job.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "jobId": {
-                                            "description": "Identifies a single job.",
+                                            "description": "The job ID.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "view": {
-                                            "description": "Level of information requested in response.",
+                                            "description": "The level of information requested in response.",
                                             "enum": [
                                                 "JOB_VIEW_UNKNOWN",
                                                 "JOB_VIEW_SUMMARY",
@@ -699,7 +699,7 @@
                                     ]
                                 },
                                 "update": {
-                                    "description": "Updates the state of an existing dataflow job.",
+                                    "description": "Updates the state of an existing Cloud Dataflow job.",
                                     "httpMethod": "PUT",
                                     "id": "dataflow.projects.locations.jobs.update",
                                     "parameterOrder": [
@@ -709,19 +709,19 @@
                                     ],
                                     "parameters": {
                                         "projectId": {
-                                            "description": "The project which owns the job.",
+                                            "description": "The ID of the Cloud Platform project that the job belongs to.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "location": {
-                                            "description": "The location which contains this job.",
+                                            "description": "The location that contains this job.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
                                         },
                                         "jobId": {
-                                            "description": "Identifies a single job.",
+                                            "description": "The job ID.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -740,7 +740,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "List the jobs of a project",
+                                    "description": "List the jobs of a project.",
                                     "httpMethod": "GET",
                                     "id": "dataflow.projects.locations.jobs.list",
                                     "parameterOrder": [
@@ -755,7 +755,7 @@
                                             "type": "string"
                                         },
                                         "location": {
-                                            "description": "The location which contains this job.",
+                                            "description": "The location that contains this job.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -772,7 +772,7 @@
                                             "type": "string"
                                         },
                                         "view": {
-                                            "description": "Level of information requested in response. Default is SUMMARY.",
+                                            "description": "Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.",
                                             "enum": [
                                                 "JOB_VIEW_UNKNOWN",
                                                 "JOB_VIEW_SUMMARY",
@@ -1016,7 +1016,7 @@
                 "templates": {
                     "methods": {
                         "create": {
-                            "description": "Creates a dataflow job from a template.",
+                            "description": "Creates a Cloud Dataflow job from a template.",
                             "httpMethod": "POST",
                             "id": "dataflow.projects.templates.create",
                             "parameterOrder": [
@@ -1024,7 +1024,7 @@
                             ],
                             "parameters": {
                                 "projectId": {
-                                    "description": "The project which owns the job.",
+                                    "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -1101,23 +1101,23 @@
             "type": "object"
         },
         "Job": {
-            "description": "Defines a job to be run by the Dataflow service.",
+            "description": "Defines a job to be run by the Cloud Dataflow service.",
             "id": "Job",
             "properties": {
                 "id": {
-                    "description": "The unique ID of this job. This field is set by the Dataflow service when the Job is created, and is immutable for the life of the Job.",
+                    "description": "The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.",
                     "type": "string"
                 },
                 "projectId": {
-                    "description": "The project which owns the job.",
+                    "description": "The ID of the Cloud Platform project that the job belongs to.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "The user-specified Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt will return the existing Job. The name must match the regular expression [a-z]([-a-z0-9]{0,38}[a-z0-9])?",
+                    "description": "The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`",
                     "type": "string"
                 },
                 "type": {
-                    "description": "The type of dataflow job.",
+                    "description": "The type of Cloud Dataflow job.",
                     "enum": [
                         "JOB_TYPE_UNKNOWN",
                         "JOB_TYPE_BATCH",
@@ -1127,7 +1127,7 @@
                 },
                 "environment": {
                     "$ref": "Environment",
-                    "description": "Environment for the job."
+                    "description": "The environment for the job."
                 },
                 "steps": {
                     "description": "The top-level steps that constitute the entire job.",
@@ -1137,7 +1137,7 @@
                     "type": "array"
                 },
                 "currentState": {
-                    "description": "The current state of the job. Jobs are created in the JOB_STATE_STOPPED state unless otherwise specified. A job in the JOB_STATE_RUNNING state may asynchronously enter a terminal state. Once a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Dataflow service; callers cannot mutate it.",
+                    "description": "The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.",
                     "enum": [
                         "JOB_STATE_UNKNOWN",
                         "JOB_STATE_STOPPED",
@@ -1156,7 +1156,7 @@
                     "type": "string"
                 },
                 "requestedState": {
-                    "description": "The job's requested state. UpdateJob may be used to switch between the JOB_STATE_STOPPED and JOB_STATE_RUNNING states, by setting requested_state. UpdateJob may also be used to directly set a job's requested state to JOB_STATE_CANCELLED or JOB_STATE_DONE, irrevocably terminating the job if it has not already reached a terminal state.",
+                    "description": "The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.",
                     "enum": [
                         "JOB_STATE_UNKNOWN",
                         "JOB_STATE_STOPPED",
@@ -1172,29 +1172,29 @@
                 },
                 "executionInfo": {
                     "$ref": "JobExecutionInfo",
-                    "description": "Information about how the Dataflow service will actually run the job."
+                    "description": "Information about how the Cloud Dataflow service will run the job."
                 },
                 "createTime": {
-                    "description": "Timestamp when job was initially created. Immutable, set by the Dataflow service.",
+                    "description": "The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.",
                     "type": "string"
                 },
                 "replaceJobId": {
-                    "description": "If this job is an update of an existing job, this field will be the ID of the job it replaced. When sending a CreateJobRequest, you can update a job by specifying it here. The job named here will be stopped, and its intermediate state transferred to this job.",
+                    "description": "If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.",
                     "type": "string"
                 },
                 "transformNameMapping": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.",
+                    "description": "The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.",
                     "type": "object"
                 },
                 "clientRequestId": {
-                    "description": "Client's unique identifier of the job, re-used by SDK across retried attempts. If this field is set, the service will ensure its uniqueness. That is, the request to create a job will fail if the service has knowledge of a previously submitted job with the same client's id and job name. The caller may, for example, use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.",
+                    "description": "The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.",
                     "type": "string"
                 },
                 "replacedByJobId": {
-                    "description": "If another job is an update of this job (and thus, this job is in JOB_STATE_UPDATED), this field will contain the ID of that job.",
+                    "description": "If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.",
                     "type": "string"
                 },
                 "tempFiles": {
@@ -1212,7 +1212,7 @@
                     "type": "object"
                 },
                 "location": {
-                    "description": "The location which contains this job.",
+                    "description": "The location that contains this job.",
                     "type": "string"
                 }
             },
@@ -1238,7 +1238,7 @@
                     "type": "array"
                 },
                 "workerPools": {
-                    "description": "Worker pools. At least one \"harness\" worker pool must be specified in order for the job to have workers.",
+                    "description": "The worker pools. At least one \"harness\" worker pool must be specified in order for the job to have workers.",
                     "items": {
                         "$ref": "WorkerPool"
                     },
@@ -1269,7 +1269,7 @@
                         "description": "Properties of the object.",
                         "type": "any"
                     },
-                    "description": "The Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.",
+                    "description": "The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.",
                     "type": "object"
                 },
                 "internalExperiments": {
@@ -1288,11 +1288,11 @@
             "type": "object"
         },
         "WorkerPool": {
-            "description": "Describes one particular pool of Dataflow workers to be instantiated by the Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.",
+            "description": "Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.",
             "id": "WorkerPool",
             "properties": {
                 "kind": {
-                    "description": "The kind of the worker pool; currently only 'harness' and 'shuffle' are supported.",
+                    "description": "The kind of the worker pool; currently only `harness` and `shuffle` are supported.",
                     "type": "string"
                 },
                 "numWorkers": {
@@ -1322,7 +1322,7 @@
                     "type": "string"
                 },
                 "teardownPolicy": {
-                    "description": "Sets the policy for determining when to turndown worker pool. Allowed values are: TEARDOWN_ALWAYS, TEARDOWN_ON_SUCCESS, and TEARDOWN_NEVER. TEARDOWN_ALWAYS means workers are always torn down regardless of whether the job succeeds. TEARDOWN_ON_SUCCESS means workers are torn down if the job succeeds. TEARDOWN_NEVER means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the TEARDOWN_ALWAYS policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.",
+                    "description": "Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.",
                     "enum": [
                         "TEARDOWN_POLICY_UNKNOWN",
                         "TEARDOWN_ALWAYS",
@@ -1391,7 +1391,7 @@
                     "type": "string"
                 },
                 "workerHarnessContainerImage": {
-                    "description": "Docker container image that executes Dataflow worker harness, residing in Google Container Registry. Required.",
+                    "description": "Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry.",
                     "type": "string"
                 },
                 "numThreadsPerWorker": {
@@ -1412,7 +1412,7 @@
             "type": "object"
         },
         "Package": {
-            "description": "Packages that need to be installed in order for a worker to run the steps of the Dataflow job which will be assigned to its worker pool. This is the mechanism by which the SDK causes code to be loaded onto the workers. For example, the Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc) required in order for that code to run.",
+            "description": "The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run.",
             "id": "Package",
             "properties": {
                 "name": {
@@ -1439,7 +1439,7 @@
                     "type": "string"
                 },
                 "oauthScopes": {
-                    "description": "OAuth2 scopes to be requested by the taskrunner in order to access the dataflow API.",
+                    "description": "The OAuth2 scopes to be requested by the taskrunner in order to access the Cloud Dataflow API.",
                     "items": {
                         "type": "string"
                     },
@@ -1450,27 +1450,27 @@
                     "type": "string"
                 },
                 "dataflowApiVersion": {
-                    "description": "API version of endpoint, e.g. \"v1b3\"",
+                    "description": "The API version of endpoint, e.g. \"v1b3\"",
                     "type": "string"
                 },
                 "parallelWorkerSettings": {
                     "$ref": "WorkerSettings",
-                    "description": "Settings to pass to the parallel worker harness."
+                    "description": "The settings to pass to the parallel worker harness."
                 },
                 "baseTaskDir": {
-                    "description": "Location on the worker for task-specific subdirectories.",
+                    "description": "The location on the worker for task-specific subdirectories.",
                     "type": "string"
                 },
                 "continueOnException": {
-                    "description": "Do we continue taskrunner if an exception is hit?",
+                    "description": "Whether to continue taskrunner if an exception is hit.",
                     "type": "boolean"
                 },
                 "logToSerialconsole": {
-                    "description": "Send taskrunner log into to Google Compute Engine VM serial console?",
+                    "description": "Whether to send taskrunner log info to Google Compute Engine VM serial console.",
                     "type": "boolean"
                 },
                 "alsologtostderr": {
-                    "description": "Also send taskrunner log info to stderr?",
+                    "description": "Whether to also send taskrunner log info to stderr.",
                     "type": "boolean"
                 },
                 "logUploadLocation": {
@@ -1478,7 +1478,7 @@
                     "type": "string"
                 },
                 "logDir": {
-                    "description": "Directory on the VM to store logs.",
+                    "description": "The directory on the VM to store logs.",
                     "type": "string"
                 },
                 "tempStoragePrefix": {
@@ -1486,27 +1486,27 @@
                     "type": "string"
                 },
                 "harnessCommand": {
-                    "description": "Command to launch the worker harness.",
+                    "description": "The command to launch the worker harness.",
                     "type": "string"
                 },
                 "workflowFileName": {
-                    "description": "Store the workflow in this file.",
+                    "description": "The file to store the workflow in.",
                     "type": "string"
                 },
                 "commandlinesFileName": {
-                    "description": "Store preprocessing commands in this file.",
+                    "description": "The file to store preprocessing commands in.",
                     "type": "string"
                 },
                 "vmId": {
-                    "description": "ID string of VM.",
+                    "description": "The ID string of the VM.",
                     "type": "string"
                 },
                 "languageHint": {
-                    "description": "Suggested backend language.",
+                    "description": "The suggested backend language.",
                     "type": "string"
                 },
                 "streamingWorkerMainClass": {
-                    "description": "Streaming worker main class name.",
+                    "description": "The streaming worker main class name.",
                     "type": "string"
                 }
             },
@@ -1521,11 +1521,11 @@
                     "type": "string"
                 },
                 "reportingEnabled": {
-                    "description": "Send work progress updates to service.",
+                    "description": "Whether to send work progress updates to the service.",
                     "type": "boolean"
                 },
                 "servicePath": {
-                    "description": "The Dataflow service path relative to the root URL, for example, \"dataflow/v1b3/projects\".",
+                    "description": "The Cloud Dataflow service path relative to the root URL, for example, \"dataflow/v1b3/projects\".",
                     "type": "string"
                 },
                 "shuffleServicePath": {
@@ -1533,7 +1533,7 @@
                     "type": "string"
                 },
                 "workerId": {
-                    "description": "ID of the worker running this pipeline.",
+                    "description": "The ID of the worker running this pipeline.",
                     "type": "string"
                 },
                 "tempStoragePrefix": {
@@ -1553,7 +1553,7 @@
                     "type": "integer"
                 },
                 "diskType": {
-                    "description": "Disk storage type, as defined by Google Compute Engine. This must be a disk type appropriate to the project and zone in which the workers will run. If unknown or unspecified, the service will attempt to choose a reasonable default. For example, the standard persistent disk type is a resource name typically ending in \"pd-standard\". If SSD persistent disks are available, the resource name typically ends with \"pd-ssd\". The actual valid values are defined the Google Compute Engine API, not by the Dataflow API; consult the Google Compute Engine documentation for more information about determining the set of available disk types for a particular project and zone. Google Compute Engine Disk types are local to a particular project in a particular zone, and so the resource name will typically look something like this: compute.googleapis.com/projects/\n/zones//diskTypes/pd-standard",
+                    "description": "Disk storage type, as defined by Google Compute Engine. This must be a disk type appropriate to the project and zone in which the workers will run. If unknown or unspecified, the service will attempt to choose a reasonable default. For example, the standard persistent disk type is a resource name typically ending in \"pd-standard\". If SSD persistent disks are available, the resource name typically ends with \"pd-ssd\". The actual valid values are defined the Google Compute Engine API, not by the Cloud Dataflow API; consult the Google Compute Engine documentation for more information about determining the set of available disk types for a particular project and zone. Google Compute Engine Disk types are local to a particular project in a particular zone, and so the resource name will typically look something like this: compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard",
                     "type": "string"
                 },
                 "mountPoint": {
@@ -1585,15 +1585,15 @@
             "type": "object"
         },
         "Step": {
-            "description": "Defines a particular step within a Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. (Note that the Dataflow service may be used to run many different types of jobs, not just Map-Reduce).",
+            "description": "Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.",
             "id": "Step",
             "properties": {
                 "kind": {
-                    "description": "The kind of step in the dataflow Job.",
+                    "description": "The kind of step in the Cloud Dataflow job.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Name identifying the step. This must be unique for each step with respect to all other steps in the dataflow Job.",
+                    "description": "The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.",
                     "type": "string"
                 },
                 "properties": {
@@ -1608,7 +1608,7 @@
             "type": "object"
         },
         "JobExecutionInfo": {
-            "description": "Additional information about how a Dataflow job will be executed which isn’t contained in the submitted job.",
+            "description": "Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.",
             "id": "JobExecutionInfo",
             "properties": {
                 "stages": {
@@ -1636,7 +1636,7 @@
             "type": "object"
         },
         "ListJobsResponse": {
-            "description": "Response to a request to list Dataflow jobs. This may be a partial response, depending on the page size in the ListJobsRequest.",
+            "description": "Response to a request to list Cloud Dataflow jobs. This may be a partial response, depending on the page size in the ListJobsRequest.",
             "id": "ListJobsResponse",
             "properties": {
                 "jobs": {
@@ -1661,7 +1661,7 @@
             "type": "object"
         },
         "FailedLocation": {
-            "description": "FailedLocation indicates which location failed to respond to a request for data.",
+            "description": "Indicates which location failed to respond to a request for data.",
             "id": "FailedLocation",
             "properties": {
                 "name": {
@@ -1804,47 +1804,55 @@
             "type": "object"
         },
         "CreateJobFromTemplateRequest": {
-            "description": "Request to create a Dataflow job.",
+            "description": "A request to create a Cloud Dataflow job from a template.",
             "id": "CreateJobFromTemplateRequest",
             "properties": {
                 "jobName": {
-                    "description": "The job name to use for the created job..",
+                    "description": "Required. The job name to use for the created job.",
                     "type": "string"
                 },
                 "gcsPath": {
-                    "description": "A path to the serialized JSON representation of the job.",
+                    "description": "Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.",
                     "type": "string"
                 },
                 "parameters": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Dynamic parameterization of the job's runtime environment.",
+                    "description": "The runtime parameters to pass to the job.",
                     "type": "object"
                 },
                 "environment": {
                     "$ref": "RuntimeEnvironment",
-                    "description": "Runtime environment for the job."
+                    "description": "The runtime environment for the job."
                 }
             },
             "type": "object"
         },
         "RuntimeEnvironment": {
-            "description": "Environment values to set at runtime.",
+            "description": "The environment values to set at runtime.",
             "id": "RuntimeEnvironment",
             "properties": {
                 "maxWorkers": {
-                    "description": "The maximum number of workers to start for the job.",
+                    "description": "The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "zone": {
-                    "description": "The zone to start the workers in.",
+                    "description": "The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline.",
                     "type": "string"
                 },
                 "serviceAccountEmail": {
-                    "description": "The service account to run the job as.",
+                    "description": "The email address of the service account to run the job as.",
                     "type": "string"
+                },
+                "tempLocation": {
+                    "description": "The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.",
+                    "type": "string"
+                },
+                "bypassTempDirValidation": {
+                    "description": "Whether to bypass the safety checks for the job's temporary directory. Use with caution.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2025,6 +2033,10 @@
                     "$ref": "StringList",
                     "description": "List of strings, for Set."
                 },
+                "distribution": {
+                    "$ref": "DistributionUpdate",
+                    "description": "Distribution data"
+                },
                 "internal": {
                     "description": "Value for internally-defined counters used by the Dataflow service.",
                     "type": "any"
@@ -2050,7 +2062,8 @@
                         "MEAN",
                         "OR",
                         "AND",
-                        "SET"
+                        "SET",
+                        "DISTRIBUTION"
                     ],
                     "type": "string"
                 }
@@ -2134,7 +2147,8 @@
                         "MEAN",
                         "OR",
                         "AND",
-                        "SET"
+                        "SET",
+                        "DISTRIBUTION"
                     ],
                     "type": "string"
                 },
@@ -2250,6 +2264,34 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DistributionUpdate": {
+            "description": "A metric value representing a distribution.",
+            "id": "DistributionUpdate",
+            "properties": {
+                "min": {
+                    "$ref": "SplitInt64",
+                    "description": "The minimum value present in the distribution."
+                },
+                "max": {
+                    "$ref": "SplitInt64",
+                    "description": "The maximum value present in the distribution."
+                },
+                "count": {
+                    "$ref": "SplitInt64",
+                    "description": "The count of the number of elements present in the distribution."
+                },
+                "sum": {
+                    "$ref": "SplitInt64",
+                    "description": "Use an int64 since we'd prefer the added precision. If overflow is a common problem we can detect it and use an additional int64 or a double."
+                },
+                "sumOfSquares": {
+                    "description": "Use a double since the sum of squares is likely to overflow int64.",
+                    "format": "double",
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -3634,6 +3676,10 @@
                 "workerMessageCode": {
                     "$ref": "WorkerMessageCode",
                     "description": "A worker message code."
+                },
+                "workerMetrics": {
+                    "$ref": "ResourceUtilizationReport",
+                    "description": "Resource metrics reported by workers."
                 }
             },
             "type": "object"
@@ -3687,6 +3733,24 @@
             },
             "type": "object"
         },
+        "ResourceUtilizationReport": {
+            "description": "Worker metrics exported from workers. This contains resource utilization metrics accumulated from a variety of sources. For more information, see go/df-resource-signals. Note that this proto closely follows the structure of its DFE siblings in its contents.",
+            "id": "ResourceUtilizationReport",
+            "properties": {
+                "metrics": {
+                    "description": "Each Struct must parallel DFE worker metrics protos (eg., cpu_time metric will have nested values “timestamp_ms, total_ms, rate”).",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "SendWorkerMessagesResponse": {
             "description": "The response to the worker messages.",
             "id": "SendWorkerMessagesResponse",
@@ -3708,6 +3772,10 @@
                 "workerHealthReportResponse": {
                     "$ref": "WorkerHealthReportResponse",
                     "description": "The service's response to a worker's health report."
+                },
+                "workerMetricsResponse": {
+                    "$ref": "ResourceUtilizationReportResponse",
+                    "description": "Service's response to reporting worker metrics (currently empty)."
                 }
             },
             "type": "object"
@@ -3721,6 +3789,11 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "ResourceUtilizationReportResponse": {
+            "description": "Service-side response to WorkerMessage reporting resource utilization.",
+            "id": "ResourceUtilizationReportResponse",
             "type": "object"
         }
     },

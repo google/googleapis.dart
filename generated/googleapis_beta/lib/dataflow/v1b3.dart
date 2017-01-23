@@ -14,10 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client dataflow/v1b3';
 
-/**
- * Develops and executes data processing patterns like ETL, batch computation,
- * and continuous computation.
- */
+/** Manages Google Cloud Dataflow projects on Google Cloud Platform. */
 class DataflowApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -103,23 +100,23 @@ class ProjectsJobsResourceApi {
       _requester = client;
 
   /**
-   * Creates a dataflow job.
+   * Creates a Cloud Dataflow job.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - The project which owns the job.
+   * [projectId] - The ID of the Cloud Platform project that the job belongs to.
    *
-   * [view] - Level of information requested in response.
+   * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    *
-   * [replaceJobId] - DEPRECATED. This field is now on the Job message.
+   * [replaceJobId] - Deprecated. This field is now in the Job message.
    *
-   * [location] - The location which contains this job.
+   * [location] - The location that contains this job.
    *
    * Completes with a [Job].
    *
@@ -166,21 +163,21 @@ class ProjectsJobsResourceApi {
   }
 
   /**
-   * Gets the state of the specified dataflow job.
+   * Gets the state of the specified Cloud Dataflow job.
    *
    * Request parameters:
    *
-   * [projectId] - The project which owns the job.
+   * [projectId] - The ID of the Cloud Platform project that the job belongs to.
    *
-   * [jobId] - Identifies a single job.
+   * [jobId] - The job ID.
    *
-   * [view] - Level of information requested in response.
+   * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    *
-   * [location] - The location which contains this job.
+   * [location] - The location that contains this job.
    *
    * Completes with a [Job].
    *
@@ -279,7 +276,7 @@ class ProjectsJobsResourceApi {
   }
 
   /**
-   * List the jobs of a project
+   * List the jobs of a project.
    *
    * Request parameters:
    *
@@ -292,7 +289,8 @@ class ProjectsJobsResourceApi {
    * - "TERMINATED" : A TERMINATED.
    * - "ACTIVE" : A ACTIVE.
    *
-   * [view] - Level of information requested in response. Default is SUMMARY.
+   * [view] - Level of information requested in response. Default is
+   * `JOB_VIEW_SUMMARY`.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
@@ -305,7 +303,7 @@ class ProjectsJobsResourceApi {
    * [pageToken] - Set this to the 'next_page_token' field of a previous
    * response to request additional results in a long list.
    *
-   * [location] - The location which contains this job.
+   * [location] - The location that contains this job.
    *
    * Completes with a [ListJobsResponse].
    *
@@ -355,17 +353,17 @@ class ProjectsJobsResourceApi {
   }
 
   /**
-   * Updates the state of an existing dataflow job.
+   * Updates the state of an existing Cloud Dataflow job.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - The project which owns the job.
+   * [projectId] - The ID of the Cloud Platform project that the job belongs to.
    *
-   * [jobId] - Identifies a single job.
+   * [jobId] - The job ID.
    *
-   * [location] - The location which contains this job.
+   * [location] - The location that contains this job.
    *
    * Completes with a [Job].
    *
@@ -742,23 +740,23 @@ class ProjectsLocationsJobsResourceApi {
       _requester = client;
 
   /**
-   * Creates a dataflow job.
+   * Creates a Cloud Dataflow job.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - The project which owns the job.
+   * [projectId] - The ID of the Cloud Platform project that the job belongs to.
    *
-   * [location] - The location which contains this job.
+   * [location] - The location that contains this job.
    *
-   * [view] - Level of information requested in response.
+   * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    *
-   * [replaceJobId] - DEPRECATED. This field is now on the Job message.
+   * [replaceJobId] - Deprecated. This field is now in the Job message.
    *
    * Completes with a [Job].
    *
@@ -805,17 +803,17 @@ class ProjectsLocationsJobsResourceApi {
   }
 
   /**
-   * Gets the state of the specified dataflow job.
+   * Gets the state of the specified Cloud Dataflow job.
    *
    * Request parameters:
    *
-   * [projectId] - The project which owns the job.
+   * [projectId] - The ID of the Cloud Platform project that the job belongs to.
    *
-   * [location] - The location which contains this job.
+   * [location] - The location that contains this job.
    *
-   * [jobId] - Identifies a single job.
+   * [jobId] - The job ID.
    *
-   * [view] - Level of information requested in response.
+   * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
@@ -918,13 +916,13 @@ class ProjectsLocationsJobsResourceApi {
   }
 
   /**
-   * List the jobs of a project
+   * List the jobs of a project.
    *
    * Request parameters:
    *
    * [projectId] - The project which owns the jobs.
    *
-   * [location] - The location which contains this job.
+   * [location] - The location that contains this job.
    *
    * [filter] - The kind of filter to use.
    * Possible string values are:
@@ -933,7 +931,8 @@ class ProjectsLocationsJobsResourceApi {
    * - "TERMINATED" : A TERMINATED.
    * - "ACTIVE" : A ACTIVE.
    *
-   * [view] - Level of information requested in response. Default is SUMMARY.
+   * [view] - Level of information requested in response. Default is
+   * `JOB_VIEW_SUMMARY`.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
@@ -994,17 +993,17 @@ class ProjectsLocationsJobsResourceApi {
   }
 
   /**
-   * Updates the state of an existing dataflow job.
+   * Updates the state of an existing Cloud Dataflow job.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - The project which owns the job.
+   * [projectId] - The ID of the Cloud Platform project that the job belongs to.
    *
-   * [location] - The location which contains this job.
+   * [location] - The location that contains this job.
    *
-   * [jobId] - Identifies a single job.
+   * [jobId] - The job ID.
    *
    * Completes with a [Job].
    *
@@ -1271,13 +1270,14 @@ class ProjectsTemplatesResourceApi {
       _requester = client;
 
   /**
-   * Creates a dataflow job from a template.
+   * Creates a Cloud Dataflow job from a template.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - The project which owns the job.
+   * [projectId] - Required. The ID of the Cloud Platform project that the job
+   * belongs to.
    *
    * Completes with a [Job].
    *
@@ -1625,6 +1625,7 @@ class CounterMetadata {
    * - "OR" : A OR.
    * - "AND" : A AND.
    * - "SET" : A SET.
+   * - "DISTRIBUTION" : A DISTRIBUTION.
    */
   core.String kind;
   /** A string referring to the unit type. */
@@ -1821,6 +1822,8 @@ class CounterUpdate {
    * this is false, indicating that this counter is reported as a delta.
    */
   core.bool cumulative;
+  /** Distribution data */
+  DistributionUpdate distribution;
   /** Floating point value for Sum, Max, Min. */
   core.double floatingPoint;
   /** List of floating point numbers, for Set. */
@@ -1860,6 +1863,9 @@ class CounterUpdate {
     }
     if (_json.containsKey("cumulative")) {
       cumulative = _json["cumulative"];
+    }
+    if (_json.containsKey("distribution")) {
+      distribution = new DistributionUpdate.fromJson(_json["distribution"]);
     }
     if (_json.containsKey("floatingPoint")) {
       floatingPoint = _json["floatingPoint"];
@@ -1904,6 +1910,9 @@ class CounterUpdate {
     if (cumulative != null) {
       _json["cumulative"] = cumulative;
     }
+    if (distribution != null) {
+      _json["distribution"] = (distribution).toJson();
+    }
     if (floatingPoint != null) {
       _json["floatingPoint"] = floatingPoint;
     }
@@ -1941,15 +1950,18 @@ class CounterUpdate {
   }
 }
 
-/** Request to create a Dataflow job. */
+/** A request to create a Cloud Dataflow job from a template. */
 class CreateJobFromTemplateRequest {
-  /** Runtime environment for the job. */
+  /** The runtime environment for the job. */
   RuntimeEnvironment environment;
-  /** A path to the serialized JSON representation of the job. */
+  /**
+   * Required. A Cloud Storage path to the template from which to create the
+   * job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+   */
   core.String gcsPath;
-  /** The job name to use for the created job.. */
+  /** Required. The job name to use for the created job. */
   core.String jobName;
-  /** Dynamic parameterization of the job's runtime environment. */
+  /** The runtime parameters to pass to the job. */
   core.Map<core.String, core.String> parameters;
 
   CreateJobFromTemplateRequest();
@@ -2101,13 +2113,13 @@ class Disk {
    * default. For example, the standard persistent disk type is a resource name
    * typically ending in "pd-standard". If SSD persistent disks are available,
    * the resource name typically ends with "pd-ssd". The actual valid values are
-   * defined the Google Compute Engine API, not by the Dataflow API; consult the
-   * Google Compute Engine documentation for more information about determining
-   * the set of available disk types for a particular project and zone. Google
-   * Compute Engine Disk types are local to a particular project in a particular
-   * zone, and so the resource name will typically look something like this:
-   * compute.googleapis.com/projects/
-   * /zones//diskTypes/pd-standard
+   * defined the Google Compute Engine API, not by the Cloud Dataflow API;
+   * consult the Google Compute Engine documentation for more information about
+   * determining the set of available disk types for a particular project and
+   * zone. Google Compute Engine Disk types are local to a particular project in
+   * a particular zone, and so the resource name will typically look something
+   * like this:
+   * compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
    */
   core.String diskType;
   /** Directory in a VM where disk is mounted. */
@@ -2142,6 +2154,63 @@ class Disk {
     }
     if (sizeGb != null) {
       _json["sizeGb"] = sizeGb;
+    }
+    return _json;
+  }
+}
+
+/** A metric value representing a distribution. */
+class DistributionUpdate {
+  /** The count of the number of elements present in the distribution. */
+  SplitInt64 count;
+  /** The maximum value present in the distribution. */
+  SplitInt64 max;
+  /** The minimum value present in the distribution. */
+  SplitInt64 min;
+  /**
+   * Use an int64 since we'd prefer the added precision. If overflow is a common
+   * problem we can detect it and use an additional int64 or a double.
+   */
+  SplitInt64 sum;
+  /** Use a double since the sum of squares is likely to overflow int64. */
+  core.double sumOfSquares;
+
+  DistributionUpdate();
+
+  DistributionUpdate.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = new SplitInt64.fromJson(_json["count"]);
+    }
+    if (_json.containsKey("max")) {
+      max = new SplitInt64.fromJson(_json["max"]);
+    }
+    if (_json.containsKey("min")) {
+      min = new SplitInt64.fromJson(_json["min"]);
+    }
+    if (_json.containsKey("sum")) {
+      sum = new SplitInt64.fromJson(_json["sum"]);
+    }
+    if (_json.containsKey("sumOfSquares")) {
+      sumOfSquares = _json["sumOfSquares"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (count != null) {
+      _json["count"] = (count).toJson();
+    }
+    if (max != null) {
+      _json["max"] = (max).toJson();
+    }
+    if (min != null) {
+      _json["min"] = (min).toJson();
+    }
+    if (sum != null) {
+      _json["sum"] = (sum).toJson();
+    }
+    if (sumOfSquares != null) {
+      _json["sumOfSquares"] = sumOfSquares;
     }
     return _json;
   }
@@ -2211,9 +2280,10 @@ class Environment {
    */
   core.Map<core.String, core.Object> internalExperiments;
   /**
-   * The Dataflow SDK pipeline options specified by the user. These options are
-   * passed through the service and are used to recreate the SDK pipeline
-   * options on the worker in a language agnostic and platform independent way.
+   * The Cloud Dataflow SDK pipeline options specified by the user. These
+   * options are passed through the service and are used to recreate the SDK
+   * pipeline options on the worker in a language agnostic and platform
+   * independent way.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2248,8 +2318,8 @@ class Environment {
    */
   core.Map<core.String, core.Object> version;
   /**
-   * Worker pools. At least one "harness" worker pool must be specified in order
-   * for the job to have workers.
+   * The worker pools. At least one "harness" worker pool must be specified in
+   * order for the job to have workers.
    */
   core.List<WorkerPool> workerPools;
 
@@ -2324,10 +2394,7 @@ class Environment {
   }
 }
 
-/**
- * FailedLocation indicates which location failed to respond to a request for
- * data.
- */
+/** Indicates which location failed to respond to a request for data. */
 class FailedLocation {
   /** The name of the failed location. */
   core.String name;
@@ -2642,29 +2709,29 @@ class IntegerMean {
   }
 }
 
-/** Defines a job to be run by the Dataflow service. */
+/** Defines a job to be run by the Cloud Dataflow service. */
 class Job {
   /**
-   * Client's unique identifier of the job, re-used by SDK across retried
-   * attempts. If this field is set, the service will ensure its uniqueness.
-   * That is, the request to create a job will fail if the service has knowledge
-   * of a previously submitted job with the same client's id and job name. The
-   * caller may, for example, use this field to ensure idempotence of job
-   * creation across retried attempts to create a job. By default, the field is
-   * empty and, in that case, the service ignores it.
+   * The client's unique identifier of the job, re-used across retried attempts.
+   * If this field is set, the service will ensure its uniqueness. The request
+   * to create a job will fail if the service has knowledge of a previously
+   * submitted job with the same client's ID and job name. The caller may use
+   * this field to ensure idempotence of job creation across retried attempts to
+   * create a job. By default, the field is empty and, in that case, the service
+   * ignores it.
    */
   core.String clientRequestId;
   /**
-   * Timestamp when job was initially created. Immutable, set by the Dataflow
-   * service.
+   * The timestamp when the job was initially created. Immutable and set by the
+   * Cloud Dataflow service.
    */
   core.String createTime;
   /**
-   * The current state of the job. Jobs are created in the JOB_STATE_STOPPED
-   * state unless otherwise specified. A job in the JOB_STATE_RUNNING state may
-   * asynchronously enter a terminal state. Once a job has reached a terminal
-   * state, no further state updates may be made. This field may be mutated by
-   * the Dataflow service; callers cannot mutate it.
+   * The current state of the job. Jobs are created in the `JOB_STATE_STOPPED`
+   * state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state
+   * may asynchronously enter a terminal state. After a job has reached a
+   * terminal state, no further state updates may be made. This field may be
+   * mutated by the Cloud Dataflow service; callers cannot mutate it.
    * Possible string values are:
    * - "JOB_STATE_UNKNOWN" : A JOB_STATE_UNKNOWN.
    * - "JOB_STATE_STOPPED" : A JOB_STATE_STOPPED.
@@ -2679,13 +2746,13 @@ class Job {
   core.String currentState;
   /** The timestamp associated with the current state. */
   core.String currentStateTime;
-  /** Environment for the job. */
+  /** The environment for the job. */
   Environment environment;
-  /** Information about how the Dataflow service will actually run the job. */
+  /** Information about how the Cloud Dataflow service will run the job. */
   JobExecutionInfo executionInfo;
   /**
-   * The unique ID of this job. This field is set by the Dataflow service when
-   * the Job is created, and is immutable for the life of the Job.
+   * The unique ID of this job. This field is set by the Cloud Dataflow service
+   * when the Job is created, and is immutable for the life of the job.
    */
   core.String id;
   /**
@@ -2696,36 +2763,36 @@ class Job {
    * values are additionally constrained to be <= 128 bytes in size.
    */
   core.Map<core.String, core.String> labels;
-  /** The location which contains this job. */
+  /** The location that contains this job. */
   core.String location;
   /**
-   * The user-specified Dataflow job name. Only one Job with a given name may
-   * exist in a project at any given time. If a caller attempts to create a Job
-   * with the same name as an already-existing Job, the attempt will return the
+   * The user-specified Cloud Dataflow job name. Only one Job with a given name
+   * may exist in a project at any given time. If a caller attempts to create a
+   * Job with the same name as an already-existing Job, the attempt returns the
    * existing Job. The name must match the regular expression
-   * [a-z]([-a-z0-9]{0,38}[a-z0-9])?
+   * `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
    */
   core.String name;
-  /** The project which owns the job. */
+  /** The ID of the Cloud Platform project that the job belongs to. */
   core.String projectId;
   /**
-   * If this job is an update of an existing job, this field will be the ID of
-   * the job it replaced. When sending a CreateJobRequest, you can update a job
-   * by specifying it here. The job named here will be stopped, and its
-   * intermediate state transferred to this job.
+   * If this job is an update of an existing job, this field is the job ID of
+   * the job it replaced. When sending a `CreateJobRequest`, you can update a
+   * job by specifying it here. The job named here is stopped, and its
+   * intermediate state is transferred to this job.
    */
   core.String replaceJobId;
   /**
    * If another job is an update of this job (and thus, this job is in
-   * JOB_STATE_UPDATED), this field will contain the ID of that job.
+   * `JOB_STATE_UPDATED`), this field contains the ID of that job.
    */
   core.String replacedByJobId;
   /**
-   * The job's requested state. UpdateJob may be used to switch between the
-   * JOB_STATE_STOPPED and JOB_STATE_RUNNING states, by setting requested_state.
-   * UpdateJob may also be used to directly set a job's requested state to
-   * JOB_STATE_CANCELLED or JOB_STATE_DONE, irrevocably terminating the job if
-   * it has not already reached a terminal state.
+   * The job's requested state. `UpdateJob` may be used to switch between the
+   * `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting
+   * requested_state. `UpdateJob` may also be used to directly set a job's
+   * requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably
+   * terminating the job if it has not already reached a terminal state.
    * Possible string values are:
    * - "JOB_STATE_UNKNOWN" : A JOB_STATE_UNKNOWN.
    * - "JOB_STATE_STOPPED" : A JOB_STATE_STOPPED.
@@ -2749,12 +2816,12 @@ class Job {
    */
   core.List<core.String> tempFiles;
   /**
-   * Map of transform name prefixes of the job to be replaced to the
+   * The map of transform name prefixes of the job to be replaced to the
    * corresponding name prefixes of the new job.
    */
   core.Map<core.String, core.String> transformNameMapping;
   /**
-   * The type of dataflow job.
+   * The type of Cloud Dataflow job.
    * Possible string values are:
    * - "JOB_TYPE_UNKNOWN" : A JOB_TYPE_UNKNOWN.
    * - "JOB_TYPE_BATCH" : A JOB_TYPE_BATCH.
@@ -2882,8 +2949,8 @@ class Job {
 }
 
 /**
- * Additional information about how a Dataflow job will be executed which isn’t
- * contained in the submitted job.
+ * Additional information about how a Cloud Dataflow job will be executed that
+ * isn't contained in the submitted job.
  */
 class JobExecutionInfo {
   /** A mapping from each stage to the information about that stage. */
@@ -3265,8 +3332,8 @@ class ListJobMessagesResponse {
 }
 
 /**
- * Response to a request to list Dataflow jobs. This may be a partial response,
- * depending on the page size in the ListJobsRequest.
+ * Response to a request to list Cloud Dataflow jobs. This may be a partial
+ * response, depending on the page size in the ListJobsRequest.
  */
 class ListJobsResponse {
   /** Zero or more messages describing locations that failed to respond. */
@@ -3636,6 +3703,7 @@ class NameAndKind {
    * - "OR" : A OR.
    * - "AND" : A AND.
    * - "SET" : A SET.
+   * - "DISTRIBUTION" : A DISTRIBUTION.
    */
   core.String kind;
   /** Name of the counter. */
@@ -3665,12 +3733,12 @@ class NameAndKind {
 }
 
 /**
- * Packages that need to be installed in order for a worker to run the steps of
- * the Dataflow job which will be assigned to its worker pool. This is the
- * mechanism by which the SDK causes code to be loaded onto the workers. For
- * example, the Dataflow Java SDK might use this to install jars containing the
- * user's code and all of the various dependencies (libraries, data files, etc)
- * required in order for that code to run.
+ * The packages that must be installed in order for a worker to run the steps of
+ * the Cloud Dataflow job that will be assigned to its worker pool. This is the
+ * mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the
+ * workers. For example, the Cloud Dataflow Java SDK might use this to install
+ * jars containing the user's code and all of the various dependencies
+ * (libraries, data files, etc.) required in order for that code to run.
  */
 class Package {
   /**
@@ -4234,23 +4302,93 @@ class ReportedParallelism {
   }
 }
 
-/** Environment values to set at runtime. */
+/**
+ * Worker metrics exported from workers. This contains resource utilization
+ * metrics accumulated from a variety of sources. For more information, see
+ * go/df-resource-signals. Note that this proto closely follows the structure of
+ * its DFE siblings in its contents.
+ */
+class ResourceUtilizationReport {
+  /**
+   * Each Struct must parallel DFE worker metrics protos (eg., cpu_time metric
+   * will have nested values “timestamp_ms, total_ms, rate”).
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> metrics;
+
+  ResourceUtilizationReport();
+
+  ResourceUtilizationReport.fromJson(core.Map _json) {
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (metrics != null) {
+      _json["metrics"] = metrics;
+    }
+    return _json;
+  }
+}
+
+/** Service-side response to WorkerMessage reporting resource utilization. */
+class ResourceUtilizationReportResponse {
+
+  ResourceUtilizationReportResponse();
+
+  ResourceUtilizationReportResponse.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+/** The environment values to set at runtime. */
 class RuntimeEnvironment {
-  /** The maximum number of workers to start for the job. */
+  /**
+   * Whether to bypass the safety checks for the job's temporary directory. Use
+   * with caution.
+   */
+  core.bool bypassTempDirValidation;
+  /**
+   * The maximum number of Google Compute Engine instances to be made available
+   * to your pipeline during execution, from 1 to 1000.
+   */
   core.int maxWorkers;
-  /** The service account to run the job as. */
+  /** The email address of the service account to run the job as. */
   core.String serviceAccountEmail;
-  /** The zone to start the workers in. */
+  /**
+   * The Cloud Storage path to use for temporary files. Must be a valid Cloud
+   * Storage URL, beginning with `gs://`.
+   */
+  core.String tempLocation;
+  /**
+   * The Compute Engine [availability
+   * zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
+   * for launching worker instances to run your pipeline.
+   */
   core.String zone;
 
   RuntimeEnvironment();
 
   RuntimeEnvironment.fromJson(core.Map _json) {
+    if (_json.containsKey("bypassTempDirValidation")) {
+      bypassTempDirValidation = _json["bypassTempDirValidation"];
+    }
     if (_json.containsKey("maxWorkers")) {
       maxWorkers = _json["maxWorkers"];
     }
     if (_json.containsKey("serviceAccountEmail")) {
       serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+    if (_json.containsKey("tempLocation")) {
+      tempLocation = _json["tempLocation"];
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -4259,11 +4397,17 @@ class RuntimeEnvironment {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (bypassTempDirValidation != null) {
+      _json["bypassTempDirValidation"] = bypassTempDirValidation;
+    }
     if (maxWorkers != null) {
       _json["maxWorkers"] = maxWorkers;
     }
     if (serviceAccountEmail != null) {
       _json["serviceAccountEmail"] = serviceAccountEmail;
+    }
+    if (tempLocation != null) {
+      _json["tempLocation"] = tempLocation;
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -5205,25 +5349,25 @@ class Status {
 }
 
 /**
- * Defines a particular step within a Dataflow job. A job consists of multiple
- * steps, each of which performs some specific operation as part of the overall
- * job. Data is typically passed from one step to another as part of the job.
- * Here's an example of a sequence of steps which together implement a
+ * Defines a particular step within a Cloud Dataflow job. A job consists of
+ * multiple steps, each of which performs some specific operation as part of the
+ * overall job. Data is typically passed from one step to another as part of the
+ * job. Here's an example of a sequence of steps which together implement a
  * Map-Reduce job: * Read a collection of data from some source, parsing the
  * collection's elements. * Validate the elements. * Apply a user-defined
  * function to map each element to some value and extract an element-specific
  * key value. * Group elements with the same key into a single element with that
  * key, transforming a multiply-keyed collection into a uniquely-keyed
- * collection. * Write the elements out to some data sink. (Note that the
+ * collection. * Write the elements out to some data sink. Note that the Cloud
  * Dataflow service may be used to run many different types of jobs, not just
- * Map-Reduce).
+ * Map-Reduce.
  */
 class Step {
-  /** The kind of step in the dataflow Job. */
+  /** The kind of step in the Cloud Dataflow job. */
   core.String kind;
   /**
-   * Name identifying the step. This must be unique for each step with respect
-   * to all other steps in the dataflow Job.
+   * The name that identifies the step. This must be unique for each step with
+   * respect to all other steps in the Cloud Dataflow job.
    */
   core.String name;
   /**
@@ -5608,9 +5752,9 @@ class StringList {
 
 /** Taskrunner configuration settings. */
 class TaskRunnerSettings {
-  /** Also send taskrunner log info to stderr? */
+  /** Whether to also send taskrunner log info to stderr. */
   core.bool alsologtostderr;
-  /** Location on the worker for task-specific subdirectories. */
+  /** The location on the worker for task-specific subdirectories. */
   core.String baseTaskDir;
   /**
    * The base URL for the taskrunner to use when accessing Google Cloud APIs.
@@ -5621,19 +5765,22 @@ class TaskRunnerSettings {
    * default value is "http://www.googleapis.com/"
    */
   core.String baseUrl;
-  /** Store preprocessing commands in this file. */
+  /** The file to store preprocessing commands in. */
   core.String commandlinesFileName;
-  /** Do we continue taskrunner if an exception is hit? */
+  /** Whether to continue taskrunner if an exception is hit. */
   core.bool continueOnException;
-  /** API version of endpoint, e.g. "v1b3" */
+  /** The API version of endpoint, e.g. "v1b3" */
   core.String dataflowApiVersion;
-  /** Command to launch the worker harness. */
+  /** The command to launch the worker harness. */
   core.String harnessCommand;
-  /** Suggested backend language. */
+  /** The suggested backend language. */
   core.String languageHint;
-  /** Directory on the VM to store logs. */
+  /** The directory on the VM to store logs. */
   core.String logDir;
-  /** Send taskrunner log into to Google Compute Engine VM serial console? */
+  /**
+   * Whether to send taskrunner log info to Google Compute Engine VM serial
+   * console.
+   */
   core.bool logToSerialconsole;
   /**
    * Indicates where to put logs. If this is not specified, the logs will not be
@@ -5643,13 +5790,13 @@ class TaskRunnerSettings {
    */
   core.String logUploadLocation;
   /**
-   * OAuth2 scopes to be requested by the taskrunner in order to access the
-   * dataflow API.
+   * The OAuth2 scopes to be requested by the taskrunner in order to access the
+   * Cloud Dataflow API.
    */
   core.List<core.String> oauthScopes;
-  /** Settings to pass to the parallel worker harness. */
+  /** The settings to pass to the parallel worker harness. */
   WorkerSettings parallelWorkerSettings;
-  /** Streaming worker main class name. */
+  /** The streaming worker main class name. */
   core.String streamingWorkerMainClass;
   /**
    * The UNIX group ID on the worker VM to use for tasks launched by taskrunner;
@@ -5668,9 +5815,9 @@ class TaskRunnerSettings {
    * bucket.storage.googleapis.com/{object}
    */
   core.String tempStoragePrefix;
-  /** ID string of VM. */
+  /** The ID string of the VM. */
   core.String vmId;
-  /** Store the workflow in this file. */
+  /** The file to store the workflow in. */
   core.String workflowFileName;
 
   TaskRunnerSettings();
@@ -6362,6 +6509,8 @@ class WorkerMessage {
   WorkerHealthReport workerHealthReport;
   /** A worker message code. */
   WorkerMessageCode workerMessageCode;
+  /** Resource metrics reported by workers. */
+  ResourceUtilizationReport workerMetrics;
 
   WorkerMessage();
 
@@ -6378,6 +6527,9 @@ class WorkerMessage {
     if (_json.containsKey("workerMessageCode")) {
       workerMessageCode = new WorkerMessageCode.fromJson(_json["workerMessageCode"]);
     }
+    if (_json.containsKey("workerMetrics")) {
+      workerMetrics = new ResourceUtilizationReport.fromJson(_json["workerMetrics"]);
+    }
   }
 
   core.Map toJson() {
@@ -6393,6 +6545,9 @@ class WorkerMessage {
     }
     if (workerMessageCode != null) {
       _json["workerMessageCode"] = (workerMessageCode).toJson();
+    }
+    if (workerMetrics != null) {
+      _json["workerMetrics"] = (workerMetrics).toJson();
     }
     return _json;
   }
@@ -6464,12 +6619,17 @@ class WorkerMessageCode {
 class WorkerMessageResponse {
   /** The service's response to a worker's health report. */
   WorkerHealthReportResponse workerHealthReportResponse;
+  /** Service's response to reporting worker metrics (currently empty). */
+  ResourceUtilizationReportResponse workerMetricsResponse;
 
   WorkerMessageResponse();
 
   WorkerMessageResponse.fromJson(core.Map _json) {
     if (_json.containsKey("workerHealthReportResponse")) {
       workerHealthReportResponse = new WorkerHealthReportResponse.fromJson(_json["workerHealthReportResponse"]);
+    }
+    if (_json.containsKey("workerMetricsResponse")) {
+      workerMetricsResponse = new ResourceUtilizationReportResponse.fromJson(_json["workerMetricsResponse"]);
     }
   }
 
@@ -6478,15 +6638,18 @@ class WorkerMessageResponse {
     if (workerHealthReportResponse != null) {
       _json["workerHealthReportResponse"] = (workerHealthReportResponse).toJson();
     }
+    if (workerMetricsResponse != null) {
+      _json["workerMetricsResponse"] = (workerMetricsResponse).toJson();
+    }
     return _json;
   }
 }
 
 /**
- * Describes one particular pool of Dataflow workers to be instantiated by the
- * Dataflow service in order to perform the computations required by a job. Note
- * that a workflow job may use multiple pools, in order to match the various
- * computational requirements of the various stages of the job.
+ * Describes one particular pool of Cloud Dataflow workers to be instantiated by
+ * the Cloud Dataflow service in order to perform the computations required by a
+ * job. Note that a workflow job may use multiple pools, in order to match the
+ * various computational requirements of the various stages of the job.
  */
 class WorkerPool {
   /** Settings for autoscaling of this WorkerPool. */
@@ -6525,7 +6688,7 @@ class WorkerPool {
    */
   core.String ipConfiguration;
   /**
-   * The kind of the worker pool; currently only 'harness' and 'shuffle' are
+   * The kind of the worker pool; currently only `harness` and `shuffle` are
    * supported.
    */
   core.String kind;
@@ -6579,16 +6742,16 @@ class WorkerPool {
   TaskRunnerSettings taskrunnerSettings;
   /**
    * Sets the policy for determining when to turndown worker pool. Allowed
-   * values are: TEARDOWN_ALWAYS, TEARDOWN_ON_SUCCESS, and TEARDOWN_NEVER.
-   * TEARDOWN_ALWAYS means workers are always torn down regardless of whether
-   * the job succeeds. TEARDOWN_ON_SUCCESS means workers are torn down if the
-   * job succeeds. TEARDOWN_NEVER means the workers are never torn down. If the
-   * workers are not torn down by the service, they will continue to run and use
-   * Google Compute Engine VM resources in the user's project until they are
+   * values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`.
+   * `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether
+   * the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the
+   * job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If
+   * the workers are not torn down by the service, they will continue to run and
+   * use Google Compute Engine VM resources in the user's project until they are
    * explicitly terminated by the user. Because of this, Google recommends using
-   * the TEARDOWN_ALWAYS policy except for small, manually supervised test jobs.
-   * If unknown or unspecified, the service will attempt to choose a reasonable
-   * default.
+   * the `TEARDOWN_ALWAYS` policy except for small, manually supervised test
+   * jobs. If unknown or unspecified, the service will attempt to choose a
+   * reasonable default.
    * Possible string values are:
    * - "TEARDOWN_POLICY_UNKNOWN" : A TEARDOWN_POLICY_UNKNOWN.
    * - "TEARDOWN_ALWAYS" : A TEARDOWN_ALWAYS.
@@ -6597,8 +6760,8 @@ class WorkerPool {
    */
   core.String teardownPolicy;
   /**
-   * Docker container image that executes Dataflow worker harness, residing in
-   * Google Container Registry. Required.
+   * Required. Docker container image that executes the Cloud Dataflow worker
+   * harness, residing in Google Container Registry.
    */
   core.String workerHarnessContainerImage;
   /**
@@ -6755,10 +6918,10 @@ class WorkerSettings {
    * "http://www.googleapis.com/"
    */
   core.String baseUrl;
-  /** Send work progress updates to service. */
+  /** Whether to send work progress updates to the service. */
   core.bool reportingEnabled;
   /**
-   * The Dataflow service path relative to the root URL, for example,
+   * The Cloud Dataflow service path relative to the root URL, for example,
    * "dataflow/v1b3/projects".
    */
   core.String servicePath;
@@ -6774,7 +6937,7 @@ class WorkerSettings {
    * bucket.storage.googleapis.com/{object}
    */
   core.String tempStoragePrefix;
-  /** ID of the worker running this pipeline. */
+  /** The ID of the worker running this pipeline. */
   core.String workerId;
 
   WorkerSettings();

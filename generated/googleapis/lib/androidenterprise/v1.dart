@@ -22,8 +22,6 @@ class AndroidenterpriseApi {
 
   final commons.ApiRequester _requester;
 
-  CollectionsResourceApi get collections => new CollectionsResourceApi(_requester);
-  CollectionviewersResourceApi get collectionviewers => new CollectionviewersResourceApi(_requester);
   DevicesResourceApi get devices => new DevicesResourceApi(_requester);
   EnterprisesResourceApi get enterprises => new EnterprisesResourceApi(_requester);
   EntitlementsResourceApi get entitlements => new EntitlementsResourceApi(_requester);
@@ -41,553 +39,6 @@ class AndroidenterpriseApi {
 
   AndroidenterpriseApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "androidenterprise/v1/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
-}
-
-
-class CollectionsResourceApi {
-  final commons.ApiRequester _requester;
-
-  CollectionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Deletes a collection.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String enterpriseId, core.String collectionId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-
-    _downloadOptions = null;
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /**
-   * Retrieves the details of a collection.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * Completes with a [Collection].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Collection> get(core.String enterpriseId, core.String collectionId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Collection.fromJson(data));
-  }
-
-  /**
-   * Creates a new collection.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * Completes with a [Collection].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Collection> insert(Collection request, core.String enterpriseId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Collection.fromJson(data));
-  }
-
-  /**
-   * Retrieves the IDs of all the collections for an enterprise.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * Completes with a [CollectionsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CollectionsListResponse> list(core.String enterpriseId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new CollectionsListResponse.fromJson(data));
-  }
-
-  /**
-   * Updates a collection. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * Completes with a [Collection].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Collection> patch(Collection request, core.String enterpriseId, core.String collectionId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId');
-
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Collection.fromJson(data));
-  }
-
-  /**
-   * Updates a collection.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * Completes with a [Collection].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Collection> update(Collection request, core.String enterpriseId, core.String collectionId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId');
-
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Collection.fromJson(data));
-  }
-
-}
-
-
-class CollectionviewersResourceApi {
-  final commons.ApiRequester _requester;
-
-  CollectionviewersResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Removes the user from the list of those specifically allowed to see the
-   * collection. If the collection's visibility is set to viewersOnly then only
-   * such users will see the collection.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * [userId] - The ID of the user.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String enterpriseId, core.String collectionId, core.String userId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-
-    _downloadOptions = null;
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
-
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /**
-   * Retrieves the ID of the user if they have been specifically allowed to see
-   * the collection. If the collection's visibility is set to viewersOnly then
-   * only these users will see the collection.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * [userId] - The ID of the user.
-   *
-   * Completes with a [User].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<User> get(core.String enterpriseId, core.String collectionId, core.String userId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new User.fromJson(data));
-  }
-
-  /**
-   * Retrieves the IDs of the users who have been specifically allowed to see
-   * the collection. If the collection's visibility is set to viewersOnly then
-   * only these users will see the collection.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * Completes with a [CollectionViewersListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CollectionViewersListResponse> list(core.String enterpriseId, core.String collectionId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new CollectionViewersListResponse.fromJson(data));
-  }
-
-  /**
-   * Adds the user to the list of those specifically allowed to see the
-   * collection. If the collection's visibility is set to viewersOnly then only
-   * such users will see the collection. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * [userId] - The ID of the user.
-   *
-   * Completes with a [User].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<User> patch(User request, core.String enterpriseId, core.String collectionId, core.String userId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
-
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new User.fromJson(data));
-  }
-
-  /**
-   * Adds the user to the list of those specifically allowed to see the
-   * collection. If the collection's visibility is set to viewersOnly then only
-   * such users will see the collection.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [collectionId] - The ID of the collection.
-   *
-   * [userId] - The ID of the user.
-   *
-   * Completes with a [User].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<User> update(User request, core.String enterpriseId, core.String collectionId, core.String userId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/collections/' + commons.Escaper.ecapeVariable('$collectionId') + '/users/' + commons.Escaper.ecapeVariable('$userId');
-
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new User.fromJson(data));
-  }
-
 }
 
 
@@ -901,8 +352,8 @@ class EnterprisesResourceApi {
 
   /**
    * Returns a unique token to access an embeddable UI. To generate a web UI,
-   * pass the generated token into the Play for Work javascript API. Each token
-   * may only be used to start one UI session. See the javascript API
+   * pass the generated token into the managed Google Play javascript API. Each
+   * token may only be used to start one UI session. See the javascript API
    * documentation for further information.
    *
    * [request] - The metadata request object.
@@ -1462,11 +913,11 @@ class EnterprisesResourceApi {
   /**
    * Sets the store layout for the enterprise. By default, storeLayoutType is
    * set to "basic" and the basic store layout is enabled. The basic layout only
-   * contains apps approved by the administrator, and that have been added to
-   * the available product set for a user (using the  setAvailableProductSet
-   * call). Apps on the page are sorted in order of their product ID value. If
-   * you create a custom store layout (by setting storeLayoutType = "custom"),
-   * the basic store layout is disabled.
+   * contains apps approved by the admin, and that have been added to the
+   * available product set for a user (using the  setAvailableProductSet call).
+   * Apps on the page are sorted in order of their product ID value. If you
+   * create a custom store layout (by setting storeLayoutType = "custom"), the
+   * basic store layout is disabled.
    *
    * [request] - The metadata request object.
    *
@@ -2896,8 +2347,8 @@ class ProductsResourceApi {
    * The maximum number of products that you can approve per enterprise customer
    * is 1,000.
    *
-   * To learn how to use Google Play for Work to design and create a store
-   * layout to display approved products to your users, see Store Layout Design.
+   * To learn how to use managed Google Play to design and create a store layout
+   * to display approved products to your users, see Store Layout Design.
    *
    * [request] - The metadata request object.
    *
@@ -3058,9 +2509,9 @@ class ProductsResourceApi {
    * Retrieves the schema that defines the configurable properties for this
    * product. All products have a schema, but this schema may be empty if no
    * managed configurations have been defined. This schema can be used to
-   * populate a UI that allows an administrator to configure the product. To
-   * apply a managed configuration based on the schema obtained using this API,
-   * see Managed Configurations through Play.
+   * populate a UI that allows an admin to configure the product. To apply a
+   * managed configuration based on the schema obtained using this API, see
+   * Managed Configurations through Play.
    *
    * Request parameters:
    *
@@ -3173,7 +2624,7 @@ class ProductsResourceApi {
    * returned per request. If not specified, uses a default value of 100, which
    * is also the maximum retrievable within a single response.
    *
-   * [query] - The search query as typed in the Google Play Store search box. If
+   * [query] - The search query as typed in the Google Play store search box. If
    * omitted, all approved apps will be returned (using the pagination
    * parameters), including apps that are not available in the store (e.g.
    * unpublished apps).
@@ -4167,8 +3618,8 @@ class UsersResourceApi {
 
   /**
    * Generates a token (activation code) to allow this user to configure their
-   * work account in the Android Setup Wizard. Revokes any previously generated
-   * token.
+   * managed account in the Android Setup Wizard. Revokes any previously
+   * generated token.
    *
    * This call only works with Google managed accounts.
    *
@@ -4604,11 +4055,11 @@ class UsersResourceApi {
 
 
 /**
- * This represents an enterprise administrator who can manage the enterprise in
- * the Google Play for Work Store.
+ * This represents an enterprise admin who can manage the enterprise in the
+ * managed Google Play store.
  */
 class Administrator {
-  /** The administrator's email address. */
+  /** The admin's email address. */
   core.String email;
 
   Administrator();
@@ -4628,7 +4079,7 @@ class Administrator {
   }
 }
 
-/** A token authorizing an administrator to access an iframe. */
+/** A token authorizing an admin to access an iframe. */
 class AdministratorWebToken {
   /**
    * Identifies what kind of resource this is. Value: the fixed string
@@ -4978,7 +4429,7 @@ class AppVersion {
   /** Unique increasing identifier for the app version. */
   core.int versionCode;
   /**
-   * The string used in the Play Store by the app developer to identify the
+   * The string used in the Play store by the app developer to identify the
    * version. The string is not necessarily unique or localized (for example,
    * the string could be "1.4").
    */
@@ -5084,159 +4535,6 @@ class AuthenticationToken {
 }
 
 /**
- * A collection resource defines a named set of apps that is visible to a set of
- * users in the Google Play Store app running on those users' managed devices.
- * Those users can then install any of those apps if they wish (which will
- * trigger creation of install and entitlement resources). A user cannot install
- * an app on a managed device unless the app is listed in at least one
- * collection that is visible to that user.
- *
- * Note that the API can be used to directly install an app regardless of
- * whether it is in any collection - so an enterprise has a choice of either
- * directly pushing apps to users, or allowing users to install apps if they
- * want. Which is appropriate will depend on the enterprise's policies and the
- * purpose of the apps concerned.
- */
-class Collection {
-  /** Arbitrary unique ID, allocated by the API on creation. */
-  core.String collectionId;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidenterprise#collection".
-   */
-  core.String kind;
-  /**
-   * A user-friendly name for the collection (should be unique), e.g.
-   * "Accounting apps".
-   */
-  core.String name;
-  /**
-   * The IDs of the products in the collection, in the order in which they
-   * should be displayed.
-   */
-  core.List<core.String> productId;
-  /**
-   * Whether this collection is visible to all users, or only to the users that
-   * have been granted access through the "Collectionviewers" API. With the
-   * launch of the "setAvailableProductSet" API, this property should always be
-   * set to "viewersOnly", as the "allUsers" option will bypass the
-   * "availableProductSet" for all users within a domain.
-   *
-   * The "allUsers" setting is deprecated, and will be removed.
-   */
-  core.String visibility;
-
-  Collection();
-
-  Collection.fromJson(core.Map _json) {
-    if (_json.containsKey("collectionId")) {
-      collectionId = _json["collectionId"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("productId")) {
-      productId = _json["productId"];
-    }
-    if (_json.containsKey("visibility")) {
-      visibility = _json["visibility"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (collectionId != null) {
-      _json["collectionId"] = collectionId;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (productId != null) {
-      _json["productId"] = productId;
-    }
-    if (visibility != null) {
-      _json["visibility"] = visibility;
-    }
-    return _json;
-  }
-}
-
-/** The user resources for the collection. */
-class CollectionViewersListResponse {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidenterprise#collectionViewersListResponse".
-   */
-  core.String kind;
-  /** A user of an enterprise. */
-  core.List<User> user;
-
-  CollectionViewersListResponse();
-
-  CollectionViewersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("user")) {
-      user = _json["user"].map((value) => new User.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (user != null) {
-      _json["user"] = user.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** The collection resources for the enterprise. */
-class CollectionsListResponse {
-  /**
-   * An ordered collection of products which can be made visible on the Google
-   * Play Store to a selected group of users.
-   */
-  core.List<Collection> collection;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidenterprise#collectionsListResponse".
-   */
-  core.String kind;
-
-  CollectionsListResponse();
-
-  CollectionsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("collection")) {
-      collection = _json["collection"].map((value) => new Collection.fromJson(value)).toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (collection != null) {
-      _json["collection"] = collection.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-/**
  * A device resource represents a mobile device managed by the EMM and belonging
  * to a specific enterprise user.
  *
@@ -5255,21 +4553,20 @@ class Device {
    */
   core.String kind;
   /**
-   * Identifies the extent to which the device is controlled by an Android for
-   * Work EMM in various deployment configurations.
+   * Identifies the extent to which the device is controlled by a managed Google
+   * Play EMM in various deployment configurations.
    *
    * Possible values include:
    * - "managedDevice", a device that has the EMM's device policy controller
    * (DPC) as the device owner,
-   * - "managedProfile", a device that has a work profile managed by the DPC
-   * (DPC is profile owner) in addition to a separate, personal profile that is
+   * - "managedProfile", a device that has a profile managed by the DPC (DPC is
+   * profile owner) in addition to a separate, personal profile that is
    * unavailable to the DPC,
-   * - "containerApp", a device running the Android for Work App. The Android
-   * for Work App is managed by the DPC,
+   * - "containerApp", a device running the container App. The container App is
+   * managed by the DPC,
    * - "unmanagedProfile", a device that has been allowed (by the domain's
-   * admin, using the Admin Console to enable the privilege) to use Android for
-   * Work apps or Google Apps for Work, but the profile is itself not owned by a
-   * DPC.
+   * admin, using the Admin Console to enable the privilege) to use managed
+   * Google Play, but the profile is itself not owned by a DPC.
    */
   core.String managementType;
 
@@ -5384,16 +4681,16 @@ class DevicesListResponse {
  * Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts
  * obtained from the Admin console and the Google API Console) and submitted to
  * the EMM through a more-or-less manual process.
- * - For Android for Work Accounts customers, the process involves using
+ * - For managed Google Play Accounts customers, the process involves using
  * Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction
- * with the Android for Work Sign-up UI (Google-provided mechanism) to create
+ * with the managed Google Play sign-up UI (Google-provided mechanism) to create
  * the binding without manual steps. As an EMM, you can support either or both
  * approaches in your EMM console. See Create an Enterprise for details.
  */
 class Enterprise {
   /**
-   * Administrators of the enterprise. This is only supported for enterprises
-   * created via the EMM-initiated flow.
+   * Admins of the enterprise. This is only supported for enterprises created
+   * via the EMM-initiated flow.
    */
   core.List<Administrator> administrator;
   /** The unique ID for the enterprise. */
@@ -6275,6 +5572,54 @@ class ManagedPropertyBundle {
   }
 }
 
+/** An event generated when a new device is ready to be managed. */
+class NewDeviceEvent {
+  /** The Android ID of the device. This field will always be present. */
+  core.String deviceId;
+  /**
+   * Identifies the extent to which the device is controlled by an Android for
+   * Work EMM in various deployment configurations.
+   *
+   * Possible values include:
+   * - "managedDevice", a device that has the EMM's device policy controller
+   * (DPC) as the device owner,
+   * - "managedProfile", a device that has a work profile managed by the DPC
+   * (DPC is profile owner) in addition to a separate, personal profile that is
+   * unavailable to the DPC,
+   */
+  core.String managementType;
+  /** The ID of the user. This field will always be present. */
+  core.String userId;
+
+  NewDeviceEvent();
+
+  NewDeviceEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceId")) {
+      deviceId = _json["deviceId"];
+    }
+    if (_json.containsKey("managementType")) {
+      managementType = _json["managementType"];
+    }
+    if (_json.containsKey("userId")) {
+      userId = _json["userId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (deviceId != null) {
+      _json["deviceId"] = deviceId;
+    }
+    if (managementType != null) {
+      _json["managementType"] = managementType;
+    }
+    if (userId != null) {
+      _json["userId"] = userId;
+    }
+    return _json;
+  }
+}
+
 /** An event generated when new permissions are added to an app. */
 class NewPermissionsEvent {
   /**
@@ -6336,6 +5681,8 @@ class Notification {
   core.String enterpriseId;
   /** Notifications about an app installation failure. */
   InstallFailureEvent installFailureEvent;
+  /** Notifications about new devices. */
+  NewDeviceEvent newDeviceEvent;
   /** Notifications about new app permissions. */
   NewPermissionsEvent newPermissionsEvent;
   /** Notifications about changes to a product's approval status. */
@@ -6362,6 +5709,9 @@ class Notification {
     }
     if (_json.containsKey("installFailureEvent")) {
       installFailureEvent = new InstallFailureEvent.fromJson(_json["installFailureEvent"]);
+    }
+    if (_json.containsKey("newDeviceEvent")) {
+      newDeviceEvent = new NewDeviceEvent.fromJson(_json["newDeviceEvent"]);
     }
     if (_json.containsKey("newPermissionsEvent")) {
       newPermissionsEvent = new NewPermissionsEvent.fromJson(_json["newPermissionsEvent"]);
@@ -6390,6 +5740,9 @@ class Notification {
     }
     if (installFailureEvent != null) {
       _json["installFailureEvent"] = (installFailureEvent).toJson();
+    }
+    if (newDeviceEvent != null) {
+      _json["newDeviceEvent"] = (newDeviceEvent).toJson();
     }
     if (newPermissionsEvent != null) {
       _json["newPermissionsEvent"] = (newPermissionsEvent).toJson();
@@ -6552,7 +5905,7 @@ class Permission {
 }
 
 /**
- * A Products resource represents an app in the Google Play Store that is
+ * A Products resource represents an app in the Google Play store that is
  * available to at least some users in the enterprise. (Some apps are restricted
  * to a single enterprise, and no information about them is made available
  * outside that enterprise.)
@@ -6573,7 +5926,7 @@ class Product {
   core.String detailsUrl;
   /**
    * How and to whom the package is made available. The value publicGoogleHosted
-   * means that the package is available through the Play Store and not
+   * means that the package is available through the Play store and not
    * restricted to a specific enterprise. The value privateGoogleHosted means
    * that the package is a private app (restricted to an enterprise) but hosted
    * by Google. The value privateSelfHosted means that the package is a private
@@ -6602,8 +5955,8 @@ class Product {
    */
   core.String productPricing;
   /**
-   * Whether this app can only be installed on devices using the Android for
-   * Work container app.
+   * Whether this app can only be installed on devices using the Android
+   * container app.
    */
   core.bool requiresContainerApp;
   /**
@@ -6614,8 +5967,8 @@ class Product {
   /** The name of the product. */
   core.String title;
   /**
-   * A link to the Google Play for Work details page for the product, for use by
-   * an Enterprise administrator.
+   * A link to the managed Google Play details page for the product, for use by
+   * an Enterprise admin.
    */
   core.String workDetailsUrl;
 
@@ -6971,7 +6324,7 @@ class ProductsListResponse {
   /** General pagination information. */
   PageInfo pageInfo;
   /**
-   * Information about a product (e.g. an app) in the Google Play Store, for
+   * Information about a product (e.g. an app) in the Google Play store, for
    * display to an enterprise admin.
    */
   core.List<Product> product;
@@ -7201,7 +6554,7 @@ class SignupInfo {
 }
 
 /**
- * Definition of a Google Play for Work store cluster, a list of products
+ * Definition of a managed Google Play store cluster, a list of products
  * displayed as part of a store page.
  */
 class StoreCluster {
@@ -7278,13 +6631,13 @@ class StoreCluster {
 }
 
 /**
- * General setting for the Google Play for Work store layout, currently only
+ * General setting for the managed Google Play store layout, currently only
  * specifying the page to display the first time the store is opened.
  */
 class StoreLayout {
   /**
    * The ID of the store page to be used as the homepage. The homepage will be
-   * used as the first page shown in the Google Play for Work store.
+   * used as the first page shown in the managed Google Play store.
    *
    * If a homepage has not been set, the Play store shown on devices will be
    * empty. Not specifying a homepage on a store layout effectively empties the
@@ -7406,7 +6759,7 @@ class StoreLayoutPagesListResponse {
 }
 
 /**
- * Definition of a Google Play for Work store page, made of a localized name and
+ * Definition of a managed Google Play store page, made of a localized name and
  * links to other pages. A page also contains clusters defined as a
  * subcollection.
  */
@@ -7504,13 +6857,13 @@ class TokenPagination {
  * A Users resource represents an account associated with an enterprise. The
  * account may be specific to a device or to an individual user (who can then
  * use the account across multiple devices). The account may provide access to
- * Google Play for Work only, or to other Google services, depending on the
+ * managed Google Play only, or to other Google services, depending on the
  * identity model:
- * - Google managed domain identity model requires synchronization to Google
+ * - The Google managed domain identity model requires synchronization to Google
  * account sources (via primaryEmail).
- * - Android for Work Accounts identity model provides a dynamic means for
- * enterprises to create user or device accounts as needed. These accounts
- * provide access to Google Play for Work only.
+ * - The managed Google Play Accounts identity model provides a dynamic means
+ * for enterprises to create user or device accounts as needed. These accounts
+ * provide access to managed Google Play.
  */
 class User {
   /**
@@ -7609,9 +6962,9 @@ class User {
 
 /**
  * A UserToken is used by a user when setting up a managed device or profile
- * with their work account on a device. When the user enters their email address
- * and token (activation code) the appropriate EMM app can be automatically
- * downloaded.
+ * with their managed Google Play account on a device. When the user enters
+ * their email address and token (activation code) the appropriate EMM app can
+ * be automatically downloaded.
  */
 class UserToken {
   /**

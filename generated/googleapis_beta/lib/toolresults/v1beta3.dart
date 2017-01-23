@@ -639,6 +639,8 @@ class ProjectsHistoriesExecutionsResourceApi {
 class ProjectsHistoriesExecutionsStepsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi get perfMetricsSummary => new ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi(_requester);
+  ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi get perfSampleSeries => new ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi(_requester);
   ProjectsHistoriesExecutionsStepsThumbnailsResourceApi get thumbnails => new ProjectsHistoriesExecutionsStepsThumbnailsResourceApi(_requester);
 
   ProjectsHistoriesExecutionsStepsResourceApi(commons.ApiRequester client) : 
@@ -787,6 +789,63 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Step.fromJson(data));
+  }
+
+  /**
+   * Retrieves a PerfMetricsSummary.
+   *
+   * May return any of the following error code(s): - NOT_FOUND - The specified
+   * PerfMetricsSummary does not exist
+   *
+   * Request parameters:
+   *
+   * [projectId] - The cloud project
+   *
+   * [historyId] - A tool results history ID.
+   *
+   * [executionId] - A tool results execution ID.
+   *
+   * [stepId] - A tool results step ID.
+   *
+   * Completes with a [PerfMetricsSummary].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<PerfMetricsSummary> getPerfMetricsSummary(core.String projectId, core.String historyId, core.String executionId, core.String stepId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories/' + commons.Escaper.ecapeVariable('$historyId') + '/executions/' + commons.Escaper.ecapeVariable('$executionId') + '/steps/' + commons.Escaper.ecapeVariable('$stepId') + '/perfMetricsSummary';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PerfMetricsSummary.fromJson(data));
   }
 
   /**
@@ -1033,6 +1092,443 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
 }
 
 
+class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a PerfMetricsSummary resource.
+   *
+   * May return any of the following error code(s): - ALREADY_EXISTS - A
+   * PerfMetricSummary already exists for the given Step - NOT_FOUND - The
+   * containing Step does not exist
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The cloud project
+   *
+   * [historyId] - A tool results history ID.
+   *
+   * [executionId] - A tool results execution ID.
+   *
+   * [stepId] - A tool results step ID.
+   *
+   * Completes with a [PerfMetricsSummary].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<PerfMetricsSummary> create(PerfMetricsSummary request, core.String projectId, core.String historyId, core.String executionId, core.String stepId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories/' + commons.Escaper.ecapeVariable('$historyId') + '/executions/' + commons.Escaper.ecapeVariable('$executionId') + '/steps/' + commons.Escaper.ecapeVariable('$stepId') + '/perfMetricsSummary';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PerfMetricsSummary.fromJson(data));
+  }
+
+}
+
+
+class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi get samples => new ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi(_requester);
+
+  ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a PerfSampleSeries.
+   *
+   * May return any of the following error code(s): - ALREADY_EXISTS -
+   * PerfMetricSummary already exists for the given Step - NOT_FOUND - The
+   * containing Step does not exist
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The cloud project
+   *
+   * [historyId] - A tool results history ID.
+   *
+   * [executionId] - A tool results execution ID.
+   *
+   * [stepId] - A tool results step ID.
+   *
+   * Completes with a [PerfSampleSeries].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<PerfSampleSeries> create(PerfSampleSeries request, core.String projectId, core.String historyId, core.String executionId, core.String stepId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories/' + commons.Escaper.ecapeVariable('$historyId') + '/executions/' + commons.Escaper.ecapeVariable('$executionId') + '/steps/' + commons.Escaper.ecapeVariable('$stepId') + '/perfSampleSeries';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PerfSampleSeries.fromJson(data));
+  }
+
+  /**
+   * Gets a PerfSampleSeries.
+   *
+   * May return any of the following error code(s): - NOT_FOUND - The specified
+   * PerfSampleSeries does not exist
+   *
+   * Request parameters:
+   *
+   * [projectId] - The cloud project
+   *
+   * [historyId] - A tool results history ID.
+   *
+   * [executionId] - A tool results execution ID.
+   *
+   * [stepId] - A tool results step ID.
+   *
+   * [sampleSeriesId] - A sample series id
+   *
+   * Completes with a [PerfSampleSeries].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<PerfSampleSeries> get(core.String projectId, core.String historyId, core.String executionId, core.String stepId, core.String sampleSeriesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if (sampleSeriesId == null) {
+      throw new core.ArgumentError("Parameter sampleSeriesId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories/' + commons.Escaper.ecapeVariable('$historyId') + '/executions/' + commons.Escaper.ecapeVariable('$executionId') + '/steps/' + commons.Escaper.ecapeVariable('$stepId') + '/perfSampleSeries/' + commons.Escaper.ecapeVariable('$sampleSeriesId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new PerfSampleSeries.fromJson(data));
+  }
+
+  /**
+   * Lists PerfSampleSeries for a given Step.
+   *
+   * The request provides an optional filter which specifies one or more
+   * PerfMetricsType to include in the result; if none returns all. The
+   * resulting PerfSampleSeries are sorted by ids.
+   *
+   * May return any of the following canonical error codes: - NOT_FOUND - The
+   * containing Step does not exist
+   *
+   * Request parameters:
+   *
+   * [projectId] - The cloud project
+   *
+   * [historyId] - A tool results history ID.
+   *
+   * [executionId] - A tool results execution ID.
+   *
+   * [stepId] - A tool results step ID.
+   *
+   * [filter] - Specify one or more PerfMetricType values such as CPU to filter
+   * the result
+   *
+   * Completes with a [ListPerfSampleSeriesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListPerfSampleSeriesResponse> list(core.String projectId, core.String historyId, core.String executionId, core.String stepId, {core.List<core.String> filter}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = filter;
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories/' + commons.Escaper.ecapeVariable('$historyId') + '/executions/' + commons.Escaper.ecapeVariable('$executionId') + '/steps/' + commons.Escaper.ecapeVariable('$stepId') + '/perfSampleSeries';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListPerfSampleSeriesResponse.fromJson(data));
+  }
+
+}
+
+
+class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a batch of PerfSamples - a client can submit multiple batches of
+   * Perf Samples through repeated calls to this method in order to split up a
+   * large request payload - duplicates and existing timestamp entries will be
+   * ignored. - the batch operation may partially succeed - the set of elements
+   * successfully inserted is returned in the response (omits items which
+   * already existed in the database).
+   *
+   * May return any of the following canonical error codes: - NOT_FOUND - The
+   * containing PerfSampleSeries does not exist
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The cloud project
+   *
+   * [historyId] - A tool results history ID.
+   *
+   * [executionId] - A tool results execution ID.
+   *
+   * [stepId] - A tool results step ID.
+   *
+   * [sampleSeriesId] - A sample series id
+   *
+   * Completes with a [BatchCreatePerfSamplesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BatchCreatePerfSamplesResponse> batchCreate(BatchCreatePerfSamplesRequest request, core.String projectId, core.String historyId, core.String executionId, core.String stepId, core.String sampleSeriesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if (sampleSeriesId == null) {
+      throw new core.ArgumentError("Parameter sampleSeriesId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories/' + commons.Escaper.ecapeVariable('$historyId') + '/executions/' + commons.Escaper.ecapeVariable('$executionId') + '/steps/' + commons.Escaper.ecapeVariable('$stepId') + '/perfSampleSeries/' + commons.Escaper.ecapeVariable('$sampleSeriesId') + '/samples:batchCreate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BatchCreatePerfSamplesResponse.fromJson(data));
+  }
+
+  /**
+   * Lists the Performance Samples of a given Sample Series - The list results
+   * are sorted by timestamps ascending - The default page size is 500 samples;
+   * and maximum size allowed 5000 - The response token indicates the last
+   * returned PerfSample timestamp - When the results size exceeds the page
+   * size, submit a subsequent request including the page token to return the
+   * rest of the samples up to the page limit
+   *
+   * May return any of the following canonical error codes: - OUT_OF_RANGE - The
+   * specified request page_token is out of valid range - NOT_FOUND - The
+   * containing PerfSampleSeries does not exist
+   *
+   * Request parameters:
+   *
+   * [projectId] - The cloud project
+   *
+   * [historyId] - A tool results history ID.
+   *
+   * [executionId] - A tool results execution ID.
+   *
+   * [stepId] - A tool results step ID.
+   *
+   * [sampleSeriesId] - A sample series id
+   *
+   * [pageSize] - The default page size is 500 samples, and the maximum size is
+   * 5000. If the page_size is greater than 5000, the effective page size will
+   * be 5000
+   *
+   * [pageToken] - Optional, the next_page_token returned in the previous
+   * response
+   *
+   * Completes with a [ListPerfSamplesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListPerfSamplesResponse> list(core.String projectId, core.String historyId, core.String executionId, core.String stepId, core.String sampleSeriesId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if (sampleSeriesId == null) {
+      throw new core.ArgumentError("Parameter sampleSeriesId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories/' + commons.Escaper.ecapeVariable('$historyId') + '/executions/' + commons.Escaper.ecapeVariable('$executionId') + '/steps/' + commons.Escaper.ecapeVariable('$stepId') + '/perfSampleSeries/' + commons.Escaper.ecapeVariable('$sampleSeriesId') + '/samples';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListPerfSamplesResponse.fromJson(data));
+  }
+
+}
+
+
 class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1232,12 +1728,165 @@ class Any {
 }
 
 /**
+ * Encapsulates the metadata for basic sample series represented by a line chart
+ */
+class BasicPerfSampleSeries {
+  /**
+   *
+   * Possible string values are:
+   * - "cpu"
+   * - "memory"
+   * - "network"
+   * - "perfMetricTypeUnspecified"
+   */
+  core.String perfMetricType;
+  /**
+   *
+   * Possible string values are:
+   * - "kibibyte"
+   * - "percent"
+   * - "perfUnitUnspecified"
+   */
+  core.String perfUnit;
+  /**
+   *
+   * Possible string values are:
+   * - "cpuKernel"
+   * - "cpuTotal"
+   * - "cpuUser"
+   * - "memoryRssPrivate"
+   * - "memoryRssShared"
+   * - "memoryRssTotal"
+   * - "ntBytesReceived"
+   * - "ntBytesTransferred"
+   * - "sampleSeriesTypeUnspecified"
+   */
+  core.String sampleSeriesLabel;
+
+  BasicPerfSampleSeries();
+
+  BasicPerfSampleSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("perfMetricType")) {
+      perfMetricType = _json["perfMetricType"];
+    }
+    if (_json.containsKey("perfUnit")) {
+      perfUnit = _json["perfUnit"];
+    }
+    if (_json.containsKey("sampleSeriesLabel")) {
+      sampleSeriesLabel = _json["sampleSeriesLabel"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (perfMetricType != null) {
+      _json["perfMetricType"] = perfMetricType;
+    }
+    if (perfUnit != null) {
+      _json["perfUnit"] = perfUnit;
+    }
+    if (sampleSeriesLabel != null) {
+      _json["sampleSeriesLabel"] = sampleSeriesLabel;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The request must provide up to a maximum of 5000 samples to be created; a
+ * larger sample size will cause an INVALID_ARGUMENT error
+ */
+class BatchCreatePerfSamplesRequest {
+  /**
+   * The set of PerfSamples to create should not include existing timestamps
+   */
+  core.List<PerfSample> perfSamples;
+
+  BatchCreatePerfSamplesRequest();
+
+  BatchCreatePerfSamplesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("perfSamples")) {
+      perfSamples = _json["perfSamples"].map((value) => new PerfSample.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (perfSamples != null) {
+      _json["perfSamples"] = perfSamples.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class BatchCreatePerfSamplesResponse {
+  core.List<PerfSample> perfSamples;
+
+  BatchCreatePerfSamplesResponse();
+
+  BatchCreatePerfSamplesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("perfSamples")) {
+      perfSamples = _json["perfSamples"].map((value) => new PerfSample.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (perfSamples != null) {
+      _json["perfSamples"] = perfSamples.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class CPUInfo {
+  /**
+   * description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'
+   */
+  core.String cpuProcessor;
+  /** the CPU clock speed in GHz */
+  core.double cpuSpeedInGhz;
+  /** the number of CPU cores */
+  core.int numberOfCores;
+
+  CPUInfo();
+
+  CPUInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuProcessor")) {
+      cpuProcessor = _json["cpuProcessor"];
+    }
+    if (_json.containsKey("cpuSpeedInGhz")) {
+      cpuSpeedInGhz = _json["cpuSpeedInGhz"];
+    }
+    if (_json.containsKey("numberOfCores")) {
+      numberOfCores = _json["numberOfCores"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cpuProcessor != null) {
+      _json["cpuProcessor"] = cpuProcessor;
+    }
+    if (cpuSpeedInGhz != null) {
+      _json["cpuSpeedInGhz"] = cpuSpeedInGhz;
+    }
+    if (numberOfCores != null) {
+      _json["numberOfCores"] = numberOfCores;
+    }
+    return _json;
+  }
+}
+
+/**
  * A Duration represents a signed, fixed-length span of time represented as a
  * count of seconds and fractions of seconds at nanosecond resolution. It is
  * independent of any calendar and concepts like "day" or "month". It is related
  * to Timestamp in that the difference between two Timestamp values is a
  * Duration and it can be added or subtracted from a Timestamp. Range is
  * approximately +-10,000 years.
+ *
+ * # Examples
  *
  * Example 1: Compute Duration from two Timestamps in pseudo code.
  *
@@ -1263,6 +1912,16 @@ class Any {
  *
  * td = datetime.timedelta(days=3, minutes=10) duration = Duration()
  * duration.FromTimedelta(td)
+ *
+ * # JSON Mapping
+ *
+ * In JSON format, the Duration type is encoded as a string rather than an
+ * object, where the string ends in the suffix "s" (indicating seconds) and is
+ * preceded by the number of seconds, with nanoseconds expressed as fractional
+ * seconds. For example, 3 seconds with 0 nanoseconds should be encoded in JSON
+ * format as "3s", while 3 seconds and 1 nanosecond should be expressed in JSON
+ * format as "3.000000001s", and 3 seconds and 1 microsecond should be expressed
+ * in JSON format as "3.000001s".
  */
 class Duration {
   /**
@@ -1748,6 +2407,59 @@ class ListHistoriesResponse {
   }
 }
 
+class ListPerfSampleSeriesResponse {
+  /** The resulting PerfSampleSeries sorted by id */
+  core.List<PerfSampleSeries> perfSampleSeries;
+
+  ListPerfSampleSeriesResponse();
+
+  ListPerfSampleSeriesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("perfSampleSeries")) {
+      perfSampleSeries = _json["perfSampleSeries"].map((value) => new PerfSampleSeries.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (perfSampleSeries != null) {
+      _json["perfSampleSeries"] = perfSampleSeries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ListPerfSamplesResponse {
+  /**
+   * Optional, returned if result size exceeds the page size specified in the
+   * request (or the default page size, 500, if unspecified). It indicates the
+   * last sample timestamp to be used as page_token in subsequent request
+   */
+  core.String nextPageToken;
+  core.List<PerfSample> perfSamples;
+
+  ListPerfSamplesResponse();
+
+  ListPerfSamplesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("perfSamples")) {
+      perfSamples = _json["perfSamples"].map((value) => new PerfSample.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (perfSamples != null) {
+      _json["perfSamples"] = perfSamples.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** A response containing the thumbnails in a step. */
 class ListStepThumbnailsResponse {
   /**
@@ -1822,6 +2534,35 @@ class ListStepsResponse {
     }
     if (steps != null) {
       _json["steps"] = steps.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class MemoryInfo {
+  /** Maximum memory that can be allocated to the process in KiB */
+  core.String memoryCapInKibibyte;
+  /** Total memory available on the device in KiB */
+  core.String memoryTotalInKibibyte;
+
+  MemoryInfo();
+
+  MemoryInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("memoryCapInKibibyte")) {
+      memoryCapInKibibyte = _json["memoryCapInKibibyte"];
+    }
+    if (_json.containsKey("memoryTotalInKibibyte")) {
+      memoryTotalInKibibyte = _json["memoryTotalInKibibyte"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (memoryCapInKibibyte != null) {
+      _json["memoryCapInKibibyte"] = memoryCapInKibibyte;
+    }
+    if (memoryTotalInKibibyte != null) {
+      _json["memoryTotalInKibibyte"] = memoryTotalInKibibyte;
     }
     return _json;
   }
@@ -1914,6 +2655,194 @@ class Outcome {
     }
     if (summary != null) {
       _json["summary"] = summary;
+    }
+    return _json;
+  }
+}
+
+/** Encapsulates performance environment info */
+class PerfEnvironment {
+  /** CPU related environment info */
+  CPUInfo cpuInfo;
+  /** Memory related environment info */
+  MemoryInfo memoryInfo;
+
+  PerfEnvironment();
+
+  PerfEnvironment.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuInfo")) {
+      cpuInfo = new CPUInfo.fromJson(_json["cpuInfo"]);
+    }
+    if (_json.containsKey("memoryInfo")) {
+      memoryInfo = new MemoryInfo.fromJson(_json["memoryInfo"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cpuInfo != null) {
+      _json["cpuInfo"] = (cpuInfo).toJson();
+    }
+    if (memoryInfo != null) {
+      _json["memoryInfo"] = (memoryInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+/** A summary of perf metrics collected and performance environment info */
+class PerfMetricsSummary {
+  /** A tool results execution ID. */
+  core.String executionId;
+  /** A tool results history ID. */
+  core.String historyId;
+  /**
+   * Describes the environment in which the performance metrics were collected
+   */
+  PerfEnvironment perfEnvironment;
+  /** Set of resource collected */
+  core.List<core.String> perfMetrics;
+  /** The cloud project */
+  core.String projectId;
+  /** A tool results step ID. */
+  core.String stepId;
+
+  PerfMetricsSummary();
+
+  PerfMetricsSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("executionId")) {
+      executionId = _json["executionId"];
+    }
+    if (_json.containsKey("historyId")) {
+      historyId = _json["historyId"];
+    }
+    if (_json.containsKey("perfEnvironment")) {
+      perfEnvironment = new PerfEnvironment.fromJson(_json["perfEnvironment"]);
+    }
+    if (_json.containsKey("perfMetrics")) {
+      perfMetrics = _json["perfMetrics"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("stepId")) {
+      stepId = _json["stepId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (executionId != null) {
+      _json["executionId"] = executionId;
+    }
+    if (historyId != null) {
+      _json["historyId"] = historyId;
+    }
+    if (perfEnvironment != null) {
+      _json["perfEnvironment"] = (perfEnvironment).toJson();
+    }
+    if (perfMetrics != null) {
+      _json["perfMetrics"] = perfMetrics;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (stepId != null) {
+      _json["stepId"] = stepId;
+    }
+    return _json;
+  }
+}
+
+/** Resource representing a single performance measure or data point */
+class PerfSample {
+  /** Timestamp of collection */
+  Timestamp sampleTime;
+  /** Value observed */
+  core.double value;
+
+  PerfSample();
+
+  PerfSample.fromJson(core.Map _json) {
+    if (_json.containsKey("sampleTime")) {
+      sampleTime = new Timestamp.fromJson(_json["sampleTime"]);
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (sampleTime != null) {
+      _json["sampleTime"] = (sampleTime).toJson();
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Resource representing a collection of performance samples (or data points)
+ */
+class PerfSampleSeries {
+  /** Basic series represented by a line chart */
+  BasicPerfSampleSeries basicPerfSampleSeries;
+  /** A tool results execution ID. */
+  core.String executionId;
+  /** A tool results history ID. */
+  core.String historyId;
+  /** The cloud project */
+  core.String projectId;
+  /** A sample series id */
+  core.String sampleSeriesId;
+  /** A tool results step ID. */
+  core.String stepId;
+
+  PerfSampleSeries();
+
+  PerfSampleSeries.fromJson(core.Map _json) {
+    if (_json.containsKey("basicPerfSampleSeries")) {
+      basicPerfSampleSeries = new BasicPerfSampleSeries.fromJson(_json["basicPerfSampleSeries"]);
+    }
+    if (_json.containsKey("executionId")) {
+      executionId = _json["executionId"];
+    }
+    if (_json.containsKey("historyId")) {
+      historyId = _json["historyId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("sampleSeriesId")) {
+      sampleSeriesId = _json["sampleSeriesId"];
+    }
+    if (_json.containsKey("stepId")) {
+      stepId = _json["stepId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (basicPerfSampleSeries != null) {
+      _json["basicPerfSampleSeries"] = (basicPerfSampleSeries).toJson();
+    }
+    if (executionId != null) {
+      _json["executionId"] = executionId;
+    }
+    if (historyId != null) {
+      _json["historyId"] = historyId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (sampleSeriesId != null) {
+      _json["sampleSeriesId"] = sampleSeriesId;
+    }
+    if (stepId != null) {
+      _json["stepId"] = stepId;
     }
     return _json;
   }
