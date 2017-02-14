@@ -27,7 +27,7 @@
     "description": "Retrieves your YouTube Analytics data.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/youtube/analytics/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/rhD6HTsK20KRKuHGMegrfF1N7ZI\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/59_GgXLAkkTFvQgZJWHwB-kkCLk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -327,6 +327,11 @@
                             "required": true,
                             "type": "string"
                         },
+                        "include-historical-channel-data": {
+                            "description": "If set to true historical data (i.e. channel data from before the linking of the channel to the content owner) will be retrieved.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "max-results": {
                             "description": "The maximum number of rows to include in the response.",
                             "format": "int32",
@@ -376,7 +381,7 @@
             }
         }
     },
-    "revision": "20170118",
+    "revision": "20170208",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Group": {

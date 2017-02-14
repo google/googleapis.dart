@@ -15,9 +15,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client cloudtrace/v1';
 
 /**
- * Send and retrieve trace data from Google Cloud Trace. Data is generated and
+ * Send and retrieve trace data from Stackdriver Trace. Data is generated and
  * available by default for all App Engine applications. Data from other
- * applications can be written to Cloud Trace for display, reporting, and
+ * applications can be written to Stackdriver Trace for display, reporting, and
  * analysis.
  */
 class CloudtraceApi {
@@ -50,8 +50,8 @@ class ProjectsResourceApi {
 
   /**
    * Sends new traces to Stackdriver Trace or updates existing traces. If the ID
-   * of a trace that you send matches that of an existing trace, any fields in
-   * the existing trace and its spans are overwritten by the provided values,
+   * of a trace that you send matches that of an existing trace, any fields
+   * in the existing trace and its spans are overwritten by the provided values,
    * and any new fields provided are merged with the existing trace data. If the
    * ID does not match, a new trace is created.
    *
@@ -156,6 +156,39 @@ class ProjectsTracesResourceApi {
    *
    * [projectId] - ID of the Cloud project where the trace data is stored.
    *
+   * [orderBy] - Field used to sort the returned traces. Optional.
+   * Can be one of the following:
+   *
+   * *   `trace_id`
+   * *   `name` (`name` field of root span in the trace)
+   * *   `duration` (difference between `end_time` and `start_time` fields of
+   *      the root span)
+   * *   `start` (`start_time` field of the root span)
+   *
+   * Descending order can be specified by appending `desc` to the sort field
+   * (for example, `name desc`).
+   *
+   * Only one sort field is permitted.
+   *
+   * [filter] - An optional filter for the request.
+   *
+   * [endTime] - Start of the time interval (inclusive) during which the trace
+   * data was
+   * collected from the application.
+   *
+   * [startTime] - End of the time interval (inclusive) during which the trace
+   * data was
+   * collected from the application.
+   *
+   * [pageToken] - Token identifying the page of results to return. If provided,
+   * use the
+   * value of the `next_page_token` field from a previous request. Optional.
+   *
+   * [pageSize] - Maximum number of traces to return. If not specified or <= 0,
+   * the
+   * implementation selects a reasonable value.  The implementation may
+   * return fewer traces than the requested page size. Optional.
+   *
    * [view] - Type of data returned for traces in the list. Optional. Default is
    * `MINIMAL`.
    * Possible string values are:
@@ -163,29 +196,6 @@ class ProjectsTracesResourceApi {
    * - "MINIMAL" : A MINIMAL.
    * - "ROOTSPAN" : A ROOTSPAN.
    * - "COMPLETE" : A COMPLETE.
-   *
-   * [pageSize] - Maximum number of traces to return. If not specified or <= 0,
-   * the implementation selects a reasonable value. The implementation may
-   * return fewer traces than the requested page size. Optional.
-   *
-   * [pageToken] - Token identifying the page of results to return. If provided,
-   * use the value of the `next_page_token` field from a previous request.
-   * Optional.
-   *
-   * [startTime] - End of the time interval (inclusive) during which the trace
-   * data was collected from the application.
-   *
-   * [endTime] - Start of the time interval (inclusive) during which the trace
-   * data was collected from the application.
-   *
-   * [filter] - An optional filter for the request.
-   *
-   * [orderBy] - Field used to sort the returned traces. Optional. Can be one of
-   * the following: * `trace_id` * `name` (`name` field of root span in the
-   * trace) * `duration` (difference between `end_time` and `start_time` fields
-   * of the root span) * `start` (`start_time` field of the root span)
-   * Descending order can be specified by appending `desc` to the sort field
-   * (for example, `name desc`). Only one sort field is permitted.
    *
    * Completes with a [ListTracesResponse].
    *
@@ -195,7 +205,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTracesResponse> list(core.String projectId, {core.String view, core.int pageSize, core.String pageToken, core.String startTime, core.String endTime, core.String filter, core.String orderBy}) {
+  async.Future<ListTracesResponse> list(core.String projectId, {core.String orderBy, core.String filter, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -206,26 +216,26 @@ class ProjectsTracesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/traces';
@@ -246,10 +256,14 @@ class ProjectsTracesResourceApi {
 
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request or
- * the response type of an API method. For instance: service Foo { rpc
- * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
- * representation for `Empty` is empty JSON object `{}`.
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
  */
 class Empty {
 
@@ -267,9 +281,9 @@ class Empty {
 /** The response message for the `ListTraces` method. */
 class ListTracesResponse {
   /**
-   * If defined, indicates that there are more traces that match the request and
-   * that this value should be passed to the next request to continue retrieving
-   * additional traces.
+   * If defined, indicates that there are more traces that match the request
+   * and that this value should be passed to the next request to continue
+   * retrieving additional traces.
    */
   core.String nextPageToken;
   /** List of trace records returned. */
@@ -355,28 +369,38 @@ class TraceSpan {
   core.String endTime;
   /**
    * Distinguishes between spans generated in a particular context. For example,
-   * two spans with the same name may be distinguished using `RPC_CLIENT` and
-   * `RPC_SERVER` to identify queueing latency associated with the span.
+   * two spans with the same name may be distinguished using `RPC_CLIENT`
+   * and `RPC_SERVER` to identify queueing latency associated with the span.
    * Possible string values are:
-   * - "SPAN_KIND_UNSPECIFIED" : A SPAN_KIND_UNSPECIFIED.
-   * - "RPC_SERVER" : A RPC_SERVER.
-   * - "RPC_CLIENT" : A RPC_CLIENT.
+   * - "SPAN_KIND_UNSPECIFIED" : Unspecified.
+   * - "RPC_SERVER" : Indicates that the span covers server-side handling of an
+   * RPC or other
+   * remote network request.
+   * - "RPC_CLIENT" : Indicates that the span covers the client-side wrapper
+   * around an RPC or
+   * other remote request.
    */
   core.String kind;
-  /** Collection of labels associated with the span. */
+  /**
+   * Collection of labels associated with the span. Label keys must be less than
+   * 128 bytes. Label values must be less than 16 kilobytes.
+   */
   core.Map<core.String, core.String> labels;
   /**
-   * Name of the trace. The trace name is sanitized and displayed in the
-   * Stackdriver Trace tool in the {% dynamic print site_values.console_name %}.
-   * The name may be a method name or some other per-call site name. For the
-   * same executable and the same call point, a best practice is to use a
-   * consistent name, which makes it easier to correlate cross-trace spans.
+   * Name of the span. Must be less than 128 bytes. The span name is sanitized
+   * and displayed in the Stackdriver Trace tool in the
+   * {% dynamic print site_values.console_name %}.
+   * The name may be a method name or some other per-call site name.
+   * For the same executable and the same call point, a best practice is
+   * to use a consistent name, which makes it easier to correlate
+   * cross-trace spans.
    */
   core.String name;
   /** ID of the parent span, if any. Optional. */
   core.String parentSpanId;
   /**
-   * Identifier for the span. This identifier must be unique within a trace.
+   * Identifier for the span. Must be a 64-bit integer other than 0 and
+   * unique within a trace.
    */
   core.String spanId;
   /** Start time of the span in nanoseconds from the UNIX epoch. */

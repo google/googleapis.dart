@@ -144,11 +144,11 @@ class OperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^operations$".
    *
-   * [pageSize] - The standard list page size.
-   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -158,7 +158,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -169,14 +169,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -365,11 +365,11 @@ class ProjectsBuildsResourceApi {
    *
    * [projectId] - ID of the project.
    *
-   * [pageSize] - Number of results to return in the list.
-   *
    * [filter] - The raw filter text to constrain the results.
    *
    * [pageToken] - Token to provide to skip to a particular spot in the list.
+   *
+   * [pageSize] - Number of results to return in the list.
    *
    * Completes with a [ListBuildsResponse].
    *
@@ -379,7 +379,7 @@ class ProjectsBuildsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBuildsResponse> list(core.String projectId, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListBuildsResponse> list(core.String projectId, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -390,14 +390,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/builds';
@@ -767,6 +767,8 @@ class Build {
   core.String statusDetail;
   /** Describes the operations to be performed on the workspace. */
   core.List<BuildStep> steps;
+  /** Substitutions data for Build resource. */
+  core.Map<core.String, core.String> substitutions;
   /**
    * Amount of time that this build should be allowed to run, to second
    * granularity. If this amount of time elapses, work on the build will cease
@@ -827,6 +829,9 @@ class Build {
     if (_json.containsKey("steps")) {
       steps = _json["steps"].map((value) => new BuildStep.fromJson(value)).toList();
     }
+    if (_json.containsKey("substitutions")) {
+      substitutions = _json["substitutions"];
+    }
     if (_json.containsKey("timeout")) {
       timeout = _json["timeout"];
     }
@@ -881,6 +886,9 @@ class Build {
     }
     if (steps != null) {
       _json["steps"] = steps.map((value) => (value).toJson()).toList();
+    }
+    if (substitutions != null) {
+      _json["substitutions"] = substitutions;
     }
     if (timeout != null) {
       _json["timeout"] = timeout;
@@ -1088,6 +1096,8 @@ class BuildTrigger {
    * @OutputOnly
    */
   core.String id;
+  /** Substitutions data for Build resource. */
+  core.Map<core.String, core.String> substitutions;
   /**
    * Template describing the types of source changes to trigger a build.
    *
@@ -1118,6 +1128,9 @@ class BuildTrigger {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("substitutions")) {
+      substitutions = _json["substitutions"];
+    }
     if (_json.containsKey("triggerTemplate")) {
       triggerTemplate = new RepoSource.fromJson(_json["triggerTemplate"]);
     }
@@ -1142,6 +1155,9 @@ class BuildTrigger {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (substitutions != null) {
+      _json["substitutions"] = substitutions;
     }
     if (triggerTemplate != null) {
       _json["triggerTemplate"] = (triggerTemplate).toJson();

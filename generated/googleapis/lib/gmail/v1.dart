@@ -578,6 +578,8 @@ class UsersHistoryResourceApi {
    * [userId] - The user's email address. The special value me can be used to
    * indicate the authenticated user.
    *
+   * [historyTypes] - History types to be returned by the function
+   *
    * [labelId] - Only return messages with a label matching the ID.
    *
    * [maxResults] - The maximum number of history records to return.
@@ -605,7 +607,7 @@ class UsersHistoryResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListHistoryResponse> list(core.String userId, {core.String labelId, core.int maxResults, core.String pageToken, core.String startHistoryId}) {
+  async.Future<ListHistoryResponse> list(core.String userId, {core.List<core.String> historyTypes, core.String labelId, core.int maxResults, core.String pageToken, core.String startHistoryId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -615,6 +617,9 @@ class UsersHistoryResourceApi {
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (historyTypes != null) {
+      _queryParams["historyTypes"] = historyTypes;
     }
     if (labelId != null) {
       _queryParams["labelId"] = [labelId];
@@ -1148,8 +1153,8 @@ class UsersMessagesResourceApi {
    * indicate the authenticated user.
    *
    * [deleted] - Mark the email as permanently deleted (not TRASH) and only
-   * visible in Google Apps Vault to a Vault administrator. Only used for Google
-   * Apps for Work accounts.
+   * visible in Google Vault to a Vault administrator. Only used for G Suite
+   * accounts.
    *
    * [internalDateSource] - Source for Gmail's internal date of the message.
    * Possible string values are:
@@ -1237,8 +1242,8 @@ class UsersMessagesResourceApi {
    * indicate the authenticated user.
    *
    * [deleted] - Mark the email as permanently deleted (not TRASH) and only
-   * visible in Google Apps Vault to a Vault administrator. Only used for Google
-   * Apps for Work accounts.
+   * visible in Google Vault to a Vault administrator. Only used for G Suite
+   * accounts.
    *
    * [internalDateSource] - Source for Gmail's internal date of the message.
    * Possible string values are:
@@ -2363,6 +2368,8 @@ class UsersSettingsForwardingAddressesResourceApi {
 class UsersSettingsSendAsResourceApi {
   final commons.ApiRequester _requester;
 
+  UsersSettingsSendAsSmimeInfoResourceApi get smimeInfo => new UsersSettingsSendAsSmimeInfoResourceApi(_requester);
+
   UsersSettingsSendAsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
@@ -2689,6 +2696,266 @@ class UsersSettingsSendAsResourceApi {
     _downloadOptions = null;
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/settings/sendAs/' + commons.Escaper.ecapeVariable('$sendAsEmail') + '/verify';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+}
+
+
+class UsersSettingsSendAsSmimeInfoResourceApi {
+  final commons.ApiRequester _requester;
+
+  UsersSettingsSendAsSmimeInfoResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified S/MIME config for the specified send-as alias.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * [sendAsEmail] - The email address that appears in the "From:" header for
+   * mail sent using this alias.
+   *
+   * [id] - The immutable ID for the SmimeInfo.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String userId, core.String sendAsEmail, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (sendAsEmail == null) {
+      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/sendAs/' + commons.Escaper.ecapeVariable('$sendAsEmail') + '/smimeInfo/' + commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets the specified S/MIME config for the specified send-as alias.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * [sendAsEmail] - The email address that appears in the "From:" header for
+   * mail sent using this alias.
+   *
+   * [id] - The immutable ID for the SmimeInfo.
+   *
+   * Completes with a [SmimeInfo].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SmimeInfo> get(core.String userId, core.String sendAsEmail, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (sendAsEmail == null) {
+      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/sendAs/' + commons.Escaper.ecapeVariable('$sendAsEmail') + '/smimeInfo/' + commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SmimeInfo.fromJson(data));
+  }
+
+  /**
+   * Insert (upload) the given S/MIME config for the specified send-as alias.
+   * Note that pkcs12 format is required for the key.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * [sendAsEmail] - The email address that appears in the "From:" header for
+   * mail sent using this alias.
+   *
+   * Completes with a [SmimeInfo].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SmimeInfo> insert(SmimeInfo request, core.String userId, core.String sendAsEmail) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (sendAsEmail == null) {
+      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/sendAs/' + commons.Escaper.ecapeVariable('$sendAsEmail') + '/smimeInfo';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SmimeInfo.fromJson(data));
+  }
+
+  /**
+   * Lists S/MIME configs for the specified send-as alias.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * [sendAsEmail] - The email address that appears in the "From:" header for
+   * mail sent using this alias.
+   *
+   * Completes with a [ListSmimeInfoResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListSmimeInfoResponse> list(core.String userId, core.String sendAsEmail) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (sendAsEmail == null) {
+      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/sendAs/' + commons.Escaper.ecapeVariable('$sendAsEmail') + '/smimeInfo';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListSmimeInfoResponse.fromJson(data));
+  }
+
+  /**
+   * Sets the default S/MIME config for the specified send-as alias.
+   *
+   * Request parameters:
+   *
+   * [userId] - The user's email address. The special value me can be used to
+   * indicate the authenticated user.
+   *
+   * [sendAsEmail] - The email address that appears in the "From:" header for
+   * mail sent using this alias.
+   *
+   * [id] - The immutable ID for the SmimeInfo.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future setDefault(core.String userId, core.String sendAsEmail, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (sendAsEmail == null) {
+      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/sendAs/' + commons.Escaper.ecapeVariable('$sendAsEmail') + '/smimeInfo/' + commons.Escaper.ecapeVariable('$id') + '/setDefault';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -3940,6 +4207,27 @@ class ListSendAsResponse {
   }
 }
 
+class ListSmimeInfoResponse {
+  /** List of SmimeInfo. */
+  core.List<SmimeInfo> smimeInfo;
+
+  ListSmimeInfoResponse();
+
+  ListSmimeInfoResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("smimeInfo")) {
+      smimeInfo = _json["smimeInfo"].map((value) => new SmimeInfo.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (smimeInfo != null) {
+      _json["smimeInfo"] = smimeInfo.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class ListThreadsResponse {
   /** Page token to retrieve the next page of results in the list. */
   core.String nextPageToken;
@@ -4532,6 +4820,95 @@ class SendAs {
   }
 }
 
+/** An S/MIME email config. */
+class SmimeInfo {
+  /** Encrypted key password, when key is encrypted. */
+  core.String encryptedKeyPassword;
+  /** When the certificate expires (in milliseconds since epoch). */
+  core.String expiration;
+  /** The immutable ID for the SmimeInfo. */
+  core.String id;
+  /**
+   * Whether this SmimeInfo is the default one for this user's send-as address.
+   */
+  core.bool isDefault;
+  /** The S/MIME certificate issuer's common name. */
+  core.String issuerCn;
+  /**
+   * PEM formatted X509 concatenated certificate string (standard base64
+   * encoding). Format used for returning key, which includes public key as well
+   * as certificate chain (not private key).
+   */
+  core.String pem;
+  /**
+   * PKCS#12 format containing a single private/public key pair and certificate
+   * chain. This format is only accepted from client for creating a new
+   * SmimeInfo and is never returned, because the private key is not intended to
+   * be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword
+   * should be set appropriately.
+   */
+  core.String pkcs12;
+  core.List<core.int> get pkcs12AsBytes {
+    return convert.BASE64.decode(pkcs12);
+  }
+
+  void set pkcs12AsBytes(core.List<core.int> _bytes) {
+    pkcs12 = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  SmimeInfo();
+
+  SmimeInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("encryptedKeyPassword")) {
+      encryptedKeyPassword = _json["encryptedKeyPassword"];
+    }
+    if (_json.containsKey("expiration")) {
+      expiration = _json["expiration"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("isDefault")) {
+      isDefault = _json["isDefault"];
+    }
+    if (_json.containsKey("issuerCn")) {
+      issuerCn = _json["issuerCn"];
+    }
+    if (_json.containsKey("pem")) {
+      pem = _json["pem"];
+    }
+    if (_json.containsKey("pkcs12")) {
+      pkcs12 = _json["pkcs12"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (encryptedKeyPassword != null) {
+      _json["encryptedKeyPassword"] = encryptedKeyPassword;
+    }
+    if (expiration != null) {
+      _json["expiration"] = expiration;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (isDefault != null) {
+      _json["isDefault"] = isDefault;
+    }
+    if (issuerCn != null) {
+      _json["issuerCn"] = issuerCn;
+    }
+    if (pem != null) {
+      _json["pem"] = pem;
+    }
+    if (pkcs12 != null) {
+      _json["pkcs12"] = pkcs12;
+    }
+    return _json;
+  }
+}
+
 /** Configuration for communication with an SMTP service. */
 class SmtpMsa {
   /** The hostname of the SMTP service. Required. */
@@ -4682,8 +5059,8 @@ class VacationSettings {
   core.bool restrictToContacts;
   /**
    * Flag that determines whether responses are sent to recipients who are
-   * outside of the user's domain. This feature is only available for Google
-   * Apps users.
+   * outside of the user's domain. This feature is only available for G Suite
+   * users.
    */
   core.bool restrictToDomain;
   /**

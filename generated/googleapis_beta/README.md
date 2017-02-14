@@ -93,9 +93,9 @@ Stackdriver Error Reporting groups and counts similar errors from cloud services
 
 Official API documentation: https://cloud.google.com/error-reporting/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud KMS API - cloudkms v1beta1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Key Management Service (KMS) API - cloudkms v1beta1
 
-
+Manages encryption for your cloud services the same way you do on-premise. You can generate, use, rotate, and destroy AES256 encryption keys.
 
 Official API documentation: https://cloud.google.com/kms/
 
@@ -125,7 +125,7 @@ Official API documentation: https://cloud.google.com/dataflow
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1beta1
 
-An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
 

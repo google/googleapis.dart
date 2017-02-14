@@ -14,10 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client people/v1';
 
-/**
- * The Google People API service gives access to information about profiles and
- * contacts.
- */
+/** Provides access to information about profiles and contacts. */
 class PeopleApi {
   /** Manage your contacts */
   static const ContactsScope = "https://www.googleapis.com/auth/contacts";
@@ -25,7 +22,7 @@ class PeopleApi {
   /** View your contacts */
   static const ContactsReadonlyScope = "https://www.googleapis.com/auth/contacts.readonly";
 
-  /** Know your basic profile info and list of people in your circles. */
+  /** Know the list of people in your circles, your age range, and language */
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
 
   /** View your street addresses */
@@ -59,7 +56,7 @@ class PeopleApi {
 class PeopleResourceApi {
   final commons.ApiRequester _requester;
 
-  PeopleConnectionsResourceApi get connections => new PeopleConnectionsResourceApi(_requester);
+  PeopleMeResourceApi get me => new PeopleMeResourceApi(_requester);
 
   PeopleResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -71,15 +68,20 @@ class PeopleResourceApi {
    * Request parameters:
    *
    * [resourceName] - The resource name of the person to provide information
-   * about. - To get information about the authenticated user, specify
-   * `people/me`. - To get information about any user, specify the resource name
-   * that identifies the user, such as the resource names returned by
+   * about.
+   *
+   * - To get information about the authenticated user, specify `people/me`.
+   * - To get information about any user, specify the resource name that
+   *   identifies the user, such as the resource names returned by
    * [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-   * Value must have pattern "^people/[^/]*$".
+   * Value must have pattern "^people/[^/]+$".
    *
    * [requestMask_includeField] - Comma-separated list of fields to be included
-   * in the response. Omitting this field will include all fields. Each path
-   * should start with `person.`: for example, `person.names` or
+   * in the response. Omitting
+   * this field will include all fields except for connections.list requests,
+   * which have a default mask that includes common fields like metadata, name,
+   * photo, and profile url.
+   * Each path should start with `person.`: for example, `person.names` or
    * `person.photos`.
    *
    * Completes with a [Person].
@@ -124,15 +126,18 @@ class PeopleResourceApi {
    *
    * Request parameters:
    *
+   * [requestMask_includeField] - Comma-separated list of fields to be included
+   * in the response. Omitting
+   * this field will include all fields except for connections.list requests,
+   * which have a default mask that includes common fields like metadata, name,
+   * photo, and profile url.
+   * Each path should start with `person.`: for example, `person.names` or
+   * `person.photos`.
+   *
    * [resourceNames] - The resource name, such as one returned by
    * [`people.connections.list`](/people/api/rest/v1/people.connections/list),
    * of one of the people to provide information about. You can include this
    * parameter up to 50 times in one request.
-   *
-   * [requestMask_includeField] - Comma-separated list of fields to be included
-   * in the response. Omitting this field will include all fields. Each path
-   * should start with `person.`: for example, `person.names` or
-   * `person.photos`.
    *
    * Completes with a [GetPeopleResponse].
    *
@@ -142,7 +147,7 @@ class PeopleResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetPeopleResponse> getBatchGet({core.List<core.String> resourceNames, core.String requestMask_includeField}) {
+  async.Future<GetPeopleResponse> getBatchGet({core.String requestMask_includeField, core.List<core.String> resourceNames}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -150,11 +155,11 @@ class PeopleResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (resourceNames != null) {
-      _queryParams["resourceNames"] = resourceNames;
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
     }
 
     _url = 'v1/people:batchGet';
@@ -172,41 +177,52 @@ class PeopleResourceApi {
 }
 
 
-class PeopleConnectionsResourceApi {
+class PeopleMeResourceApi {
   final commons.ApiRequester _requester;
 
-  PeopleConnectionsResourceApi(commons.ApiRequester client) : 
+  PeopleMeConnectionsResourceApi get connections => new PeopleMeConnectionsResourceApi(_requester);
+
+  PeopleMeResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class PeopleMeConnectionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  PeopleMeConnectionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Provides a list of the authenticated user's contacts merged with any linked
-   * profiles.
+   * Provides a list of the authenticated user's contacts merged with any
+   * linked profiles.
    *
    * Request parameters:
    *
-   * [resourceName] - The resource name to return connections for. Only
-   * `people/me` is valid.
-   * Value must have pattern "^people/[^/]*$".
-   *
-   * [pageToken] - The token of the page to be returned.
-   *
-   * [pageSize] - The number of connections to include in the response. Valid
-   * values are between 1 and 500, inclusive. Defaults to 100.
-   *
    * [sortOrder] - The order in which the connections should be sorted. Defaults
-   * to `LAST_MODIFIED_ASCENDING`.
+   * to
+   * `LAST_MODIFIED_ASCENDING`.
    * Possible string values are:
    * - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
    * - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
    * - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
    *
    * [syncToken] - A sync token, returned by a previous call to
-   * `people.connections.list`. Only resources changed since the sync token was
-   * created are returned.
+   * `people.connections.list`.
+   * Only resources changed since the sync token was created will be returned.
+   *
+   * [pageToken] - The token of the page to be returned.
+   *
+   * [pageSize] - The number of connections to include in the response. Valid
+   * values are
+   * between 1 and 500, inclusive. Defaults to 100.
    *
    * [requestMask_includeField] - Comma-separated list of fields to be included
-   * in the response. Omitting this field will include all fields. Each path
-   * should start with `person.`: for example, `person.names` or
+   * in the response. Omitting
+   * this field will include all fields except for connections.list requests,
+   * which have a default mask that includes common fields like metadata, name,
+   * photo, and profile url.
+   * Each path should start with `person.`: for example, `person.names` or
    * `person.photos`.
    *
    * Completes with a [ListConnectionsResponse].
@@ -217,7 +233,7 @@ class PeopleConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String pageToken, core.int pageSize, core.String sortOrder, core.String syncToken, core.String requestMask_includeField}) {
+  async.Future<ListConnectionsResponse> list({core.String sortOrder, core.String syncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -225,8 +241,11 @@ class PeopleConnectionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -234,17 +253,11 @@ class PeopleConnectionsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/connections';
+    _url = 'v1/people/me/connections';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -284,8 +297,8 @@ class Address {
    */
   core.String formattedType;
   /**
-   * The read-only value of the address formatted in the viewer's account locale
-   * or the `Accept-Language` HTTP header locale.
+   * The unstructured value of the address. If this is not set by the user it
+   * will be automatically constructed from structured values.
    */
   core.String formattedValue;
   /** Metadata about the address. */
@@ -299,9 +312,12 @@ class Address {
   /** The street address. */
   core.String streetAddress;
   /**
-   * The type of the address. The type can be custom or predefined. Possible
-   * values include, but are not limited to, the following: * `home` * `work` *
-   * `other`
+   * The type of the address. The type can be custom or predefined.
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `home`
+   * * `work`
+   * * `other`
    */
   core.String type;
 
@@ -390,6 +406,14 @@ class Address {
 
 /** A person's short biography. */
 class Biography {
+  /**
+   * The content type of the biography.
+   * Possible string values are:
+   * - "CONTENT_TYPE_UNSPECIFIED" : Unspecified.
+   * - "TEXT_PLAIN" : Plain text.
+   * - "TEXT_HTML" : HTML text.
+   */
+  core.String contentType;
   /** Metadata about the biography. */
   FieldMetadata metadata;
   /** The short biography. */
@@ -398,6 +422,9 @@ class Biography {
   Biography();
 
   Biography.fromJson(core.Map _json) {
+    if (_json.containsKey("contentType")) {
+      contentType = _json["contentType"];
+    }
     if (_json.containsKey("metadata")) {
       metadata = new FieldMetadata.fromJson(_json["metadata"]);
     }
@@ -408,6 +435,9 @@ class Biography {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (contentType != null) {
+      _json["contentType"] = contentType;
+    }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -420,8 +450,8 @@ class Biography {
 
 /**
  * A person's birthday. At least one of the `date` and `text` fields are
- * specified. The `date` and `text` fields typically represent the same date,
- * but are not guaranteed to.
+ * specified. The `date` and `text` fields typically represent the same
+ * date, but are not guaranteed to.
  */
 class Birthday {
   /** The date of the birthday. */
@@ -493,10 +523,13 @@ class BraggingRights {
 /** A Google contact group membership. */
 class ContactGroupMembership {
   /**
-   * The contact group ID for the contact group membership. The contact group ID
-   * can be custom or predefined. Possible values include, but are not limited
-   * to, the following: * `myContacts` * `starred` * A numerical ID for
-   * user-created groups.
+   * The contact group ID for the contact group membership. The contact group
+   * ID can be custom or predefined. Possible values include, but are not
+   * limited to, the following:
+   *
+   * *  `myContacts`
+   * *  `starred`
+   * *  A numerical ID for user-created groups.
    */
   core.String contactGroupId;
 
@@ -518,13 +551,13 @@ class ContactGroupMembership {
 }
 
 /**
- * A person's cover photo. A large image shown on the person's profile page that
- * represents who they are or what they care about.
+ * A person's read-only cover photo. A large image shown on the person's
+ * profile page that represents who they are or what they care about.
  */
 class CoverPhoto {
   /**
-   * True if the cover photo is the default cover photo; false if the cover
-   * photo is a user-provided cover photo.
+   * True if the cover photo is the default cover photo;
+   * false if the cover photo is a user-provided cover photo.
    */
   core.bool default_;
   /** Metadata about the cover photo. */
@@ -562,13 +595,14 @@ class CoverPhoto {
 }
 
 /**
- * Represents a whole calendar date, for example a date of birth. The time of
- * day and time zone are either specified elsewhere or are not significant. The
- * date is relative to the [Proleptic Gregorian
- * Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar). The
- * day may be 0 to represent a year and month where the day is not significant.
- * The year may be 0 to represent a month and day independent of year; for
- * example, anniversary date.
+ * Represents a whole calendar date, for example a date of birth. The time
+ * of day and time zone are either specified elsewhere or are not
+ * significant. The date is relative to the
+ * [Proleptic Gregorian
+ * Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar).
+ * The day may be 0 to represent a year and month where the day is not
+ * significant. The year may be 0 to represent a month and day independent
+ * of year; for example, anniversary date.
  */
 class Date {
   /**
@@ -579,8 +613,8 @@ class Date {
   /** Month of year. Must be from 1 to 12. */
   core.int month;
   /**
-   * Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
-   * year.
+   * Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+   * a year.
    */
   core.int year;
 
@@ -637,6 +671,8 @@ class DomainMembership {
 
 /** A person's email address. */
 class EmailAddress {
+  /** The display name of the email. */
+  core.String displayName;
   /**
    * The read-only type of the email address translated and formatted in the
    * viewer's account locale or the `Accept-Language` HTTP header locale.
@@ -646,8 +682,11 @@ class EmailAddress {
   FieldMetadata metadata;
   /**
    * The type of the email address. The type can be custom or predefined.
-   * Possible values include, but are not limited to, the following: * `home` *
-   * `work` * `other`
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `home`
+   * * `work`
+   * * `other`
    */
   core.String type;
   /** The email address. */
@@ -656,6 +695,9 @@ class EmailAddress {
   EmailAddress();
 
   EmailAddress.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("formattedType")) {
       formattedType = _json["formattedType"];
     }
@@ -672,6 +714,9 @@ class EmailAddress {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
@@ -693,16 +738,18 @@ class Event {
   /** The date of the event. */
   Date date;
   /**
-   * The read-only type of the event translated and formatted in the viewer's
-   * account locale or the `Accept-Language` HTTP header locale.
+   * The read-only type of the event translated and formatted in the
+   * viewer's account locale or the `Accept-Language` HTTP header locale.
    */
   core.String formattedType;
   /** Metadata about the event. */
   FieldMetadata metadata;
   /**
-   * The type of the event. The type can be custom or predefined. Possible
-   * values include, but are not limited to, the following: * `anniversary` *
-   * `other`
+   * The type of the event. The type can be custom or predefined.
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `anniversary`
+   * * `other`
    */
   core.String type;
 
@@ -751,9 +798,9 @@ class FieldMetadata {
   /** The source of the field. */
   Source source;
   /**
-   * True if the field is verified; false if the field is unverified. A verified
-   * field is typically a name, email address, phone number, or website that has
-   * been confirmed to be owned by the person.
+   * True if the field is verified; false if the field is unverified. A
+   * verified field is typically a name, email address, phone number, or
+   * website that has been confirmed to be owned by the person.
    */
   core.bool verified;
 
@@ -796,9 +843,14 @@ class Gender {
   /** Metadata about the gender. */
   FieldMetadata metadata;
   /**
-   * The gender for the person. The gender can be custom or predefined. Possible
-   * values include, but are not limited to, the following: * `male` * `female`
-   * * `other` * `unknown`
+   * The gender for the person. The gender can be custom or predefined.
+   * Possible values include, but are not limited to, the
+   * following:
+   *
+   * * `male`
+   * * `female`
+   * * `other`
+   * * `unknown`
    */
   core.String value;
 
@@ -868,15 +920,26 @@ class ImClient {
   FieldMetadata metadata;
   /**
    * The protocol of the IM client. The protocol can be custom or predefined.
-   * Possible values include, but are not limited to, the following: * `aim` *
-   * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` * `jabber` *
-   * `netMeeting`
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `aim`
+   * * `msn`
+   * * `yahoo`
+   * * `skype`
+   * * `qq`
+   * * `googleTalk`
+   * * `icq`
+   * * `jabber`
+   * * `netMeeting`
    */
   core.String protocol;
   /**
-   * The type of the IM client. The type can be custom or predefined. Possible
-   * values include, but are not limited to, the following: * `home` * `work` *
-   * `other`
+   * The type of the IM client. The type can be custom or predefined.
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `home`
+   * * `work`
+   * * `other`
    */
   core.String type;
   /** The user name used in the IM client. */
@@ -1001,8 +1064,8 @@ class Locale {
   /** Metadata about the locale. */
   FieldMetadata metadata;
   /**
-   * The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47) language
-   * tag representing the locale.
+   * The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47)
+   * language tag representing the locale.
    */
   core.String value;
 
@@ -1029,7 +1092,7 @@ class Locale {
   }
 }
 
-/** A person's membership in a group. */
+/** A person's read-only membership in a group. */
 class Membership {
   /** The contact group membership. */
   ContactGroupMembership contactGroupMembership;
@@ -1070,10 +1133,16 @@ class Membership {
 /** A person's name. If the name is a mononym, the family name is empty. */
 class Name {
   /**
-   * The display name formatted according to the locale specified by the
-   * viewer's account or the Accept-Language HTTP header.
+   * The read-only display name formatted according to the locale specified by
+   * the viewer's account or the <code>Accept-Language</code> HTTP header.
    */
   core.String displayName;
+  /**
+   * The read-only display name with the last name first formatted according to
+   * the locale specified by the viewer's account or the
+   * <code>Accept-Language</code> HTTP header.
+   */
+  core.String displayNameLastFirst;
   /** The family name. */
   core.String familyName;
   /** The given name. */
@@ -1088,6 +1157,8 @@ class Name {
   core.String middleName;
   /** The family name spelled as it sounds. */
   core.String phoneticFamilyName;
+  /** The full name spelled as it sounds. */
+  core.String phoneticFullName;
   /** The given name spelled as it sounds. */
   core.String phoneticGivenName;
   /** The honorific prefixes spelled as they sound. */
@@ -1102,6 +1173,9 @@ class Name {
   Name.fromJson(core.Map _json) {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
+    }
+    if (_json.containsKey("displayNameLastFirst")) {
+      displayNameLastFirst = _json["displayNameLastFirst"];
     }
     if (_json.containsKey("familyName")) {
       familyName = _json["familyName"];
@@ -1124,6 +1198,9 @@ class Name {
     if (_json.containsKey("phoneticFamilyName")) {
       phoneticFamilyName = _json["phoneticFamilyName"];
     }
+    if (_json.containsKey("phoneticFullName")) {
+      phoneticFullName = _json["phoneticFullName"];
+    }
     if (_json.containsKey("phoneticGivenName")) {
       phoneticGivenName = _json["phoneticGivenName"];
     }
@@ -1142,6 +1219,9 @@ class Name {
     var _json = new core.Map();
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    if (displayNameLastFirst != null) {
+      _json["displayNameLastFirst"] = displayNameLastFirst;
     }
     if (familyName != null) {
       _json["familyName"] = familyName;
@@ -1163,6 +1243,9 @@ class Name {
     }
     if (phoneticFamilyName != null) {
       _json["phoneticFamilyName"] = phoneticFamilyName;
+    }
+    if (phoneticFullName != null) {
+      _json["phoneticFullName"] = phoneticFullName;
     }
     if (phoneticGivenName != null) {
       _json["phoneticGivenName"] = phoneticGivenName;
@@ -1187,11 +1270,14 @@ class Nickname {
   /**
    * The type of the nickname.
    * Possible string values are:
-   * - "DEFAULT" : A DEFAULT.
-   * - "MAIDEN_NAME" : A MAIDEN_NAME.
-   * - "INITIALS" : A INITIALS.
-   * - "GPLUS" : A GPLUS.
-   * - "OTHER_NAME" : A OTHER_NAME.
+   * - "DEFAULT" : Generic nickname.
+   * - "MAIDEN_NAME" : Maiden name or birth family name. Used when the person's
+   * family name has
+   * changed as a result of marriage.
+   * - "INITIALS" : Initials.
+   * - "GPLUS" : Google+ profile nickname.
+   * - "OTHER_NAME" : A professional affiliation or other name; for example,
+   * `Dr. Smith.`
    */
   core.String type;
   /** The nickname. */
@@ -1262,8 +1348,8 @@ class Occupation {
  */
 class Organization {
   /**
-   * True if the organization is the person's current organization; false if the
-   * organization is a past organization.
+   * True if the organization is the person's current organization;
+   * false if the organization is a past organization.
    */
   core.bool current;
   /** The person's department at the organization. */
@@ -1301,8 +1387,10 @@ class Organization {
   core.String title;
   /**
    * The type of the organization. The type can be custom or predefined.
-   * Possible values include, but are not limited to, the following: * `work` *
-   * `school`
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `work`
+   * * `school`
    */
   core.String type;
 
@@ -1404,9 +1492,10 @@ class Organization {
 /**
  * Information about a person merged from various data sources such as the
  * authenticated user's contacts and profile data. Fields other than IDs,
- * metadata, and group memberships are user-edited. Most fields can have
- * multiple items. The items in a field have no guaranteed order, but each
- * non-empty field is guaranteed to have exactly one field with
+ * metadata, and group memberships are user-edited.
+ *
+ * Most fields can have multiple items. The items in a field have no guaranteed
+ * order, but each non-empty field is guaranteed to have exactly one field with
  * `metadata.primary` set to true.
  */
 class Person {
@@ -1415,10 +1504,10 @@ class Person {
   /**
    * The person's age range.
    * Possible string values are:
-   * - "AGE_RANGE_UNSPECIFIED" : A AGE_RANGE_UNSPECIFIED.
-   * - "LESS_THAN_EIGHTEEN" : A LESS_THAN_EIGHTEEN.
-   * - "EIGHTEEN_TO_TWENTY" : A EIGHTEEN_TO_TWENTY.
-   * - "TWENTY_ONE_OR_OLDER" : A TWENTY_ONE_OR_OLDER.
+   * - "AGE_RANGE_UNSPECIFIED" : Unspecified.
+   * - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
+   * - "EIGHTEEN_TO_TWENTY" : Between eighteen and twenty.
+   * - "TWENTY_ONE_OR_OLDER" : Twenty-one and older.
    */
   core.String ageRange;
   /** The person's biographies. */
@@ -1667,7 +1756,7 @@ class Person {
   }
 }
 
-/** Metadata about a person. */
+/** The read-only metadata about a person. */
 class PersonMetadata {
   /**
    * True if the person resource has been deleted. Populated only for
@@ -1675,20 +1764,24 @@ class PersonMetadata {
    * that include a sync token.
    */
   core.bool deleted;
+  /** Resource names of people linked to this resource. */
+  core.List<core.String> linkedPeopleResourceNames;
   /**
    * The type of the person object.
    * Possible string values are:
-   * - "OBJECT_TYPE_UNSPECIFIED" : A OBJECT_TYPE_UNSPECIFIED.
-   * - "PERSON" : A PERSON.
-   * - "PAGE" : A PAGE.
+   * - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
+   * - "PERSON" : Person.
+   * - "PAGE" : [Google+ Page.](http://www.google.com/+/brands/)
    */
   core.String objectType;
   /**
    * Any former resource names this person has had. Populated only for
    * [`connections.list`](/people/api/rest/v1/people.connections/list) requests
-   * that include a sync token. The resource name may change when adding or
-   * removing fields that link a contact and profile such as a verified email,
-   * verified phone number, or profile URL.
+   * that include a sync token.
+   *
+   * The resource name may change when adding or removing fields that link a
+   * contact and profile such as a verified email, verified phone number, or
+   * profile URL.
    */
   core.List<core.String> previousResourceNames;
   /** The sources of data for the person. */
@@ -1699,6 +1792,9 @@ class PersonMetadata {
   PersonMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("deleted")) {
       deleted = _json["deleted"];
+    }
+    if (_json.containsKey("linkedPeopleResourceNames")) {
+      linkedPeopleResourceNames = _json["linkedPeopleResourceNames"];
     }
     if (_json.containsKey("objectType")) {
       objectType = _json["objectType"];
@@ -1715,6 +1811,9 @@ class PersonMetadata {
     var _json = new core.Map();
     if (deleted != null) {
       _json["deleted"] = deleted;
+    }
+    if (linkedPeopleResourceNames != null) {
+      _json["linkedPeopleResourceNames"] = linkedPeopleResourceNames;
     }
     if (objectType != null) {
       _json["objectType"] = objectType;
@@ -1740,9 +1839,11 @@ class PersonResponse {
   Person person;
   /**
    * The original requested resource name. May be different than the resource
-   * name on the returned person. The resource name can change when adding or
-   * removing fields that link a contact and profile such as a verified email,
-   * verified phone number, or a profile URL.
+   * name on the returned person.
+   *
+   * The resource name can change when adding or removing fields that link a
+   * contact and profile such as a verified email, verified phone number, or a
+   * profile URL.
    */
   core.String requestedResourceName;
 
@@ -1792,9 +1893,20 @@ class PhoneNumber {
   FieldMetadata metadata;
   /**
    * The type of the phone number. The type can be custom or predefined.
-   * Possible values include, but are not limited to, the following: * `home` *
-   * `work` * `mobile` * `homeFax` * `workFax` * `otherFax` * `pager` *
-   * `workMobile` * `workPager` * `main` * `googleVoice` * `other`
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `home`
+   * * `work`
+   * * `mobile`
+   * * `homeFax`
+   * * `workFax`
+   * * `otherFax`
+   * * `pager`
+   * * `workMobile`
+   * * `workPager`
+   * * `main`
+   * * `googleVoice`
+   * * `other`
    */
   core.String type;
   /** The phone number. */
@@ -1842,8 +1954,8 @@ class PhoneNumber {
 }
 
 /**
- * A person's photo. A picture shown next to the person's name to help others
- * recognize the person.
+ * A person's read-only photo. A picture shown next to the person's name to
+ * help others recognize the person.
  */
 class Photo {
   /** Metadata about the photo. */
@@ -1887,10 +1999,23 @@ class Relation {
   core.String person;
   /**
    * The person's relation to the other person. The type can be custom or
-   * predefined. Possible values include, but are not limited to, the following
-   * values: * `spouse` * `child` * `mother` * `father` * `parent` * `brother` *
-   * `sister` * `friend` * `relative` * `domesticPartner` * `manager` *
-   * `assistant` * `referredBy` * `partner`
+   * predefined.
+   * Possible values include, but are not limited to, the following values:
+   *
+   * * `spouse`
+   * * `child`
+   * * `mother`
+   * * `father`
+   * * `parent`
+   * * `brother`
+   * * `sister`
+   * * `friend`
+   * * `relative`
+   * * `domesticPartner`
+   * * `manager`
+   * * `assistant`
+   * * `referredBy`
+   * * `partner`
    */
   core.String type;
 
@@ -1929,12 +2054,12 @@ class Relation {
   }
 }
 
-/** The kind of relationship the person is looking for. */
+/** A person's read-only relationship interest . */
 class RelationshipInterest {
   /**
    * The value of the relationship interest translated and formatted in the
-   * viewer's account locale or the locale specified in the Accept-Language HTTP
-   * header.
+   * viewer's account locale or the locale specified in the Accept-Language
+   * HTTP header.
    */
   core.String formattedValue;
   /** Metadata about the relationship interest. */
@@ -1942,7 +2067,12 @@ class RelationshipInterest {
   /**
    * The kind of relationship the person is looking for. The value can be custom
    * or predefined. Possible values include, but are not limited to, the
-   * following values: * `friend` * `date` * `relationship` * `networking`
+   * following values:
+   *
+   * * `friend`
+   * * `date`
+   * * `relationship`
+   * * `networking`
    */
   core.String value;
 
@@ -1975,7 +2105,7 @@ class RelationshipInterest {
   }
 }
 
-/** A person's relationship status. */
+/** A person's read-only relationship status. */
 class RelationshipStatus {
   /**
    * The read-only value of the relationship status translated and formatted in
@@ -1985,10 +2115,18 @@ class RelationshipStatus {
   /** Metadata about the relationship status. */
   FieldMetadata metadata;
   /**
-   * The relationship status. The value can be custom or predefined. Possible
-   * values include, but are not limited to, the following: * `single` *
-   * `inARelationship` * `engaged` * `married` * `itsComplicated` *
-   * `openRelationship` * `widowed` * `inDomesticPartnership` * `inCivilUnion`
+   * The relationship status. The value can be custom or predefined.
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `single`
+   * * `inARelationship`
+   * * `engaged`
+   * * `married`
+   * * `itsComplicated`
+   * * `openRelationship`
+   * * `widowed`
+   * * `inDomesticPartnership`
+   * * `inCivilUnion`
    */
   core.String value;
 
@@ -2024,8 +2162,8 @@ class RelationshipStatus {
 /** A person's past or current residence. */
 class Residence {
   /**
-   * True if the residence is the person's current residence; false if the
-   * residence is a past residence.
+   * True if the residence is the person's current residence;
+   * false if the residence is a past residence.
    */
   core.bool current;
   /** Metadata about the residence. */
@@ -2094,24 +2232,48 @@ class Skill {
 
 /** The source of a field. */
 class Source {
-  /** A unique identifier within the source type generated by the server. */
+  /**
+   * The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
+   * source. Used for web cache validation. Only populated in
+   * person.metadata.sources.
+   */
+  core.String etag;
+  /** The unique identifier within the source type generated by the server. */
   core.String id;
+  /**
+   * The resource name of the source. Only set if there is a separate
+   * resource endpoint.
+   */
+  core.String resourceName;
   /**
    * The source type.
    * Possible string values are:
-   * - "OTHER" : A OTHER.
-   * - "ACCOUNT" : A ACCOUNT.
-   * - "PROFILE" : A PROFILE.
-   * - "DOMAIN_PROFILE" : A DOMAIN_PROFILE.
-   * - "CONTACT" : A CONTACT.
+   * - "SOURCE_TYPE_UNSPECIFIED" : Unspecified.
+   * - "ACCOUNT" : [Google Account](https://accounts.google.com).
+   * - "PROFILE" : [Google profile](https://profiles.google.com). You can view
+   * the
+   * profile at https://profiles.google.com/<id> where <id> is the source
+   * id.
+   * - "DOMAIN_PROFILE" : [Google Apps domain
+   * profile](https://admin.google.com).
+   * - "CONTACT" : [Google contact](https://contacts.google.com). You can view
+   * the
+   * contact at https://contact.google.com/<id> where <id> is the source
+   * id.
    */
   core.String type;
 
   Source();
 
   Source.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2120,8 +2282,14 @@ class Source {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
     }
     if (type != null) {
       _json["type"] = type;
@@ -2130,7 +2298,7 @@ class Source {
   }
 }
 
-/** A brief one-line description of the person. */
+/** A read-only brief one-line description of the person. */
 class Tagline {
   /** Metadata about the tagline. */
   FieldMetadata metadata;
@@ -2170,10 +2338,18 @@ class Url {
   /** Metadata about the URL. */
   FieldMetadata metadata;
   /**
-   * The type of the URL. The type can be custom or predefined. Possible values
-   * include, but are not limited to, the following: * `home` * `work` * `blog`
-   * * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`:
-   * website for a Google+ application. * `other`
+   * The type of the URL. The type can be custom or predefined.
+   * Possible values include, but are not limited to, the following:
+   *
+   * * `home`
+   * * `work`
+   * * `blog`
+   * * `profile`
+   * * `homePage`
+   * * `ftp`
+   * * `reservations`
+   * * `appInstallPage`: website for a Google+ application.
+   * * `other`
    */
   core.String type;
   /** The URL. */

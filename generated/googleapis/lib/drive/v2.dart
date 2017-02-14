@@ -288,6 +288,40 @@ class ChangesResourceApi {
   }
 
   /**
+   * Gets the starting pageToken for listing future changes.
+   *
+   * Request parameters:
+   *
+   * Completes with a [StartPageToken].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<StartPageToken> getStartPageToken() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _url = 'changes/startPageToken';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new StartPageToken.fromJson(data));
+  }
+
+  /**
    * Lists the changes for a user.
    *
    * Request parameters:
@@ -301,7 +335,9 @@ class ChangesResourceApi {
    *
    * [maxResults] - Maximum number of changes to return.
    *
-   * [pageToken] - Page token for changes.
+   * [pageToken] - The token for continuing a previous list request on the next
+   * page. This should be set to the value of 'nextPageToken' from the previous
+   * response or to the response from the getStartPageToken method.
    *
    * [spaces] - A comma-separated list of spaces to query. Supported values are
    * 'drive', 'appDataFolder' and 'photos'.
@@ -371,7 +407,9 @@ class ChangesResourceApi {
    *
    * [maxResults] - Maximum number of changes to return.
    *
-   * [pageToken] - Page token for changes.
+   * [pageToken] - The token for continuing a previous list request on the next
+   * page. This should be set to the value of 'nextPageToken' from the previous
+   * response or to the response from the getStartPageToken method.
    *
    * [spaces] - A comma-separated list of spaces to query. Supported values are
    * 'drive', 'appDataFolder' and 'photos'.
@@ -6899,6 +6937,38 @@ class RevisionList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class StartPageToken {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#startPageToken".
+   */
+  core.String kind;
+  /** The starting page token for listing changes. */
+  core.String startPageToken;
+
+  StartPageToken();
+
+  StartPageToken.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("startPageToken")) {
+      startPageToken = _json["startPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (startPageToken != null) {
+      _json["startPageToken"] = startPageToken;
     }
     return _json;
   }

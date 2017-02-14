@@ -48,8 +48,6 @@ class OperationsResourceApi {
    * an Operation.error value with a google.rpc.Status.code of 1,
    * corresponding to `Code.CANCELLED`.
    *
-   * [request] - The metadata request object.
-   *
    * Request parameters:
    *
    * [name] - The name of the operation resource to be cancelled.
@@ -63,7 +61,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name) {
+  async.Future<Empty> cancel(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -71,9 +69,6 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
@@ -184,13 +179,13 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
-   *
    * [name] - The name of the operation collection.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -200,7 +195,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.int pageSize, core.String filter, core.String name, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list({core.String name, core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -208,17 +203,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/operations';
@@ -331,15 +326,14 @@ class SpeechResourceApi {
 
 
 /**
- * `AsyncRecognizeRequest` is the top-level message sent by the client for
- * the `AsyncRecognize` method.
+ * The top-level message sent by the client for the `AsyncRecognize` method.
  */
 class AsyncRecognizeRequest {
-  /** [Required] The audio data to be recognized. */
+  /** *Required* The audio data to be recognized. */
   RecognitionAudio audio;
   /**
-   * [Required] The `config` message provides information to the recognizer
-   * that specifies how to process the request.
+   * *Required* Provides information to the recognizer that specifies how to
+   * process the request.
    */
   RecognitionConfig config;
 
@@ -362,20 +356,6 @@ class AsyncRecognizeRequest {
     if (config != null) {
       _json["config"] = (config).toJson();
     }
-    return _json;
-  }
-}
-
-/** The request message for Operations.CancelOperation. */
-class CancelOperationRequest {
-
-  CancelOperationRequest();
-
-  CancelOperationRequest.fromJson(core.Map _json) {
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
     return _json;
   }
 }
@@ -573,12 +553,12 @@ class RecognitionAudio {
 }
 
 /**
- * The `RecognitionConfig` message provides information to the recognizer
- * that specifies how to process the request.
+ * Provides information to the recognizer that specifies how to process the
+ * request.
  */
 class RecognitionConfig {
   /**
-   * [Required] Encoding of audio data sent in all `RecognitionAudio` messages.
+   * *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
    * Possible string values are:
    * - "ENCODING_UNSPECIFIED" : Not specified. Will return result
    * google.rpc.Code.INVALID_ARGUMENT.
@@ -602,7 +582,7 @@ class RecognitionConfig {
    */
   core.String encoding;
   /**
-   * [Optional] The language of the supplied audio as a BCP-47 language tag.
+   * *Optional* The language of the supplied audio as a BCP-47 language tag.
    * Example: "en-GB"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt
    * If omitted, defaults to "en-US". See
    * [Language Support](https://cloud.google.com/speech/docs/languages)
@@ -610,23 +590,23 @@ class RecognitionConfig {
    */
   core.String languageCode;
   /**
-   * [Optional] Maximum number of recognition hypotheses to be returned.
+   * *Optional* Maximum number of recognition hypotheses to be returned.
    * Specifically, the maximum number of `SpeechRecognitionAlternative` messages
    * within each `SpeechRecognitionResult`.
    * The server may return fewer than `max_alternatives`.
    * Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of
-   * `1`. If omitted, defaults to `1`.
+   * one. If omitted, will return a maximum of one.
    */
   core.int maxAlternatives;
   /**
-   * [Optional] If set to `true`, the server will attempt to filter out
+   * *Optional* If set to `true`, the server will attempt to filter out
    * profanities, replacing all but the initial character in each filtered word
    * with asterisks, e.g. "f***". If set to `false` or omitted, profanities
    * won't be filtered out.
    */
   core.bool profanityFilter;
   /**
-   * [Required] Sample rate in Hertz of the audio data sent in all
+   * *Required* Sample rate in Hertz of the audio data sent in all
    * `RecognitionAudio` messages. Valid values are: 8000-48000.
    * 16000 is optimal. For best results, set the sampling rate of the audio
    * source to 16000 Hz. If that's not possible, use the native sample rate of
@@ -634,7 +614,7 @@ class RecognitionConfig {
    */
   core.int sampleRate;
   /**
-   * [Optional] A means to provide context to assist the speech recognition.
+   * *Optional* A means to provide context to assist the speech recognition.
    */
   SpeechContext speechContext;
 
@@ -691,7 +671,7 @@ class RecognitionConfig {
  */
 class SpeechContext {
   /**
-   * [Optional] A list of strings containing words and phrases "hints" so that
+   * *Optional* A list of strings containing words and phrases "hints" so that
    * the speech recognition is more likely to recognize them. This can be used
    * to improve the accuracy for specific words and phrases, for example, if
    * specific commands are typically spoken by the user. This can also be used
@@ -720,15 +700,17 @@ class SpeechContext {
 /** Alternative hypotheses (a.k.a. n-best list). */
 class SpeechRecognitionAlternative {
   /**
-   * [Output-only] The confidence estimate between 0.0 and 1.0. A higher number
-   * means the system is more confident that the recognition is correct.
-   * This field is typically provided only for the top hypothesis, and only for
-   * `is_final=true` results.
-   * The default of 0.0 is a sentinel value indicating confidence was not set.
+   * *Output-only* The confidence estimate between 0.0 and 1.0. A higher number
+   * indicates an estimated greater likelihood that the recognized words are
+   * correct. This field is typically provided only for the top hypothesis, and
+   * only for `is_final=true` results. Clients should not rely on the
+   * `confidence` field as it is not guaranteed to be accurate, or even set, in
+   * any of the results.
+   * The default of 0.0 is a sentinel value indicating `confidence` was not set.
    */
   core.double confidence;
   /**
-   * [Output-only] Transcript text representing the words that the user spoke.
+   * *Output-only* Transcript text representing the words that the user spoke.
    */
   core.String transcript;
 
@@ -758,7 +740,7 @@ class SpeechRecognitionAlternative {
 /** A speech recognition result corresponding to a portion of the audio. */
 class SpeechRecognitionResult {
   /**
-   * [Output-only] May contain one or more recognition hypotheses (up to the
+   * *Output-only* May contain one or more recognition hypotheses (up to the
    * maximum specified in `max_alternatives`).
    */
   core.List<SpeechRecognitionAlternative> alternatives;
@@ -883,16 +865,13 @@ class Status {
   }
 }
 
-/**
- * `SyncRecognizeRequest` is the top-level message sent by the client for
- * the `SyncRecognize` method.
- */
+/** The top-level message sent by the client for the `SyncRecognize` method. */
 class SyncRecognizeRequest {
-  /** [Required] The audio data to be recognized. */
+  /** *Required* The audio data to be recognized. */
   RecognitionAudio audio;
   /**
-   * [Required] The `config` message provides information to the recognizer
-   * that specifies how to process the request.
+   * *Required* Provides information to the recognizer that specifies how to
+   * process the request.
    */
   RecognitionConfig config;
 
@@ -920,13 +899,13 @@ class SyncRecognizeRequest {
 }
 
 /**
- * `SyncRecognizeResponse` is the only message returned to the client by
- * `SyncRecognize`. It contains the result as zero or more sequential
- * `SpeechRecognitionResult` messages.
+ * The only message returned to the client by `SyncRecognize`. method. It
+ * contains the result as zero or more sequential `SpeechRecognitionResult`
+ * messages.
  */
 class SyncRecognizeResponse {
   /**
-   * [Output-only] Sequential list of transcription results corresponding to
+   * *Output-only* Sequential list of transcription results corresponding to
    * sequential portions of audio.
    */
   core.List<SpeechRecognitionResult> results;

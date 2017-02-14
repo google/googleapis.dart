@@ -1,3 +1,27 @@
+## 0.35.0
+
+[api-new] serviceuser:v1
+[api-new] searchconsole:v1
+[api-breaking] androidenterprise
+[api-breaking] container
+[api-breaking] genomics
+[api-breaking] people
+[api-breaking] script
+[api] cloudbuild: changes
+[api] container
+[api] content
+[api] dataproc
+[api] deploymentmanager
+[api] drive
+[api] gmail
+[api] iam
+[api] identitytoolkit
+[api] people
+[api] servicecontrol
+[api] sheets
+[api] slides
+[api] youtube
+
 ## 0.34.0
 
 * [api] adexchangebuyer:v1_4: schema changes

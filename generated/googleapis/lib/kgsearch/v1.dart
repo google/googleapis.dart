@@ -39,22 +39,22 @@ class EntitiesResourceApi {
    *
    * Request parameters:
    *
-   * [limit] - Limits the number of entities to be returned.
-   *
    * [ids] - The list of entity id to be used for search instead of query
    * string.
    * To specify multiple ids in the HTTP request, repeat the parameter in the
    * URL as in ...?ids=A&ids=B
    *
+   * [limit] - Limits the number of entities to be returned.
+   *
    * [prefix] - Enables prefix match against names and aliases of entities
    *
    * [query] - The literal query string for search.
    *
-   * [indent] - Enables indenting of json results.
-   *
    * [types] - Restricts returned entities with these types, e.g. Person
    * (as defined in http://schema.org/Person). If multiple types are specified,
    * returned entities will contain one or more of these types.
+   *
+   * [indent] - Enables indenting of json results.
    *
    * [languages] - The list of language codes (defined in ISO 693) to run the
    * query with,
@@ -68,7 +68,7 @@ class EntitiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SearchResponse> search({core.int limit, core.List<core.String> ids, core.bool prefix, core.String query, core.bool indent, core.List<core.String> types, core.List<core.String> languages}) {
+  async.Future<SearchResponse> search({core.List<core.String> ids, core.int limit, core.bool prefix, core.String query, core.List<core.String> types, core.bool indent, core.List<core.String> languages}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -76,11 +76,11 @@ class EntitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (limit != null) {
-      _queryParams["limit"] = ["${limit}"];
-    }
     if (ids != null) {
       _queryParams["ids"] = ids;
+    }
+    if (limit != null) {
+      _queryParams["limit"] = ["${limit}"];
     }
     if (prefix != null) {
       _queryParams["prefix"] = ["${prefix}"];
@@ -88,11 +88,11 @@ class EntitiesResourceApi {
     if (query != null) {
       _queryParams["query"] = [query];
     }
-    if (indent != null) {
-      _queryParams["indent"] = ["${indent}"];
-    }
     if (types != null) {
       _queryParams["types"] = types;
+    }
+    if (indent != null) {
+      _queryParams["indent"] = ["${indent}"];
     }
     if (languages != null) {
       _queryParams["languages"] = languages;

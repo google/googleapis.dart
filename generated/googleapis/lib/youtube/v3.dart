@@ -66,6 +66,7 @@ class YoutubeApi {
   SearchResourceApi get search => new SearchResourceApi(_requester);
   SponsorsResourceApi get sponsors => new SponsorsResourceApi(_requester);
   SubscriptionsResourceApi get subscriptions => new SubscriptionsResourceApi(_requester);
+  SuperChatEventsResourceApi get superChatEvents => new SuperChatEventsResourceApi(_requester);
   ThumbnailsResourceApi get thumbnails => new ThumbnailsResourceApi(_requester);
   VideoAbuseReportReasonsResourceApi get videoAbuseReportReasons => new VideoAbuseReportReasonsResourceApi(_requester);
   VideoCategoriesResourceApi get videoCategories => new VideoCategoriesResourceApi(_requester);
@@ -5079,6 +5080,83 @@ class SubscriptionsResourceApi {
 }
 
 
+class SuperChatEventsResourceApi {
+  final commons.ApiRequester _requester;
+
+  SuperChatEventsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists Super Chat events for a channel.
+   *
+   * Request parameters:
+   *
+   * [part] - The part parameter specifies the superChatEvent resource parts
+   * that the API response will include. Supported values are id and snippet.
+   *
+   * [hl] - The hl parameter instructs the API to retrieve localized resource
+   * metadata for a specific application language that the YouTube website
+   * supports. The parameter value must be a language code included in the list
+   * returned by the i18nLanguages.list method.
+   *
+   * If localized resource details are available in that language, the
+   * resource's snippet.localized object will contain the localized values.
+   * However, if localized details are not available, the snippet.localized
+   * object will contain resource details in the resource's default language.
+   *
+   * [maxResults] - The maxResults parameter specifies the maximum number of
+   * items that should be returned in the result set.
+   * Value must be between "0" and "50".
+   *
+   * [pageToken] - The pageToken parameter identifies a specific page in the
+   * result set that should be returned. In an API response, the nextPageToken
+   * and prevPageToken properties identify other pages that could be retrieved.
+   *
+   * Completes with a [SuperChatEventListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SuperChatEventListResponse> list(core.String part, {core.String hl, core.int maxResults, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'superChatEvents';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SuperChatEventListResponse.fromJson(data));
+  }
+
+}
+
+
 class ThumbnailsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -8641,6 +8719,8 @@ class ChannelStatus {
 
 /** Freebase topic information related to the channel. */
 class ChannelTopicDetails {
+  /** A list of Wikipedia URLs that describe the channel's content. */
+  core.List<core.String> topicCategories;
   /**
    * A list of Freebase topic IDs associated with the channel. You can retrieve
    * information about each topic using the Freebase Topic API.
@@ -8650,6 +8730,9 @@ class ChannelTopicDetails {
   ChannelTopicDetails();
 
   ChannelTopicDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("topicCategories")) {
+      topicCategories = _json["topicCategories"];
+    }
     if (_json.containsKey("topicIds")) {
       topicIds = _json["topicIds"];
     }
@@ -8657,6 +8740,9 @@ class ChannelTopicDetails {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (topicCategories != null) {
+      _json["topicCategories"] = topicCategories;
+    }
     if (topicIds != null) {
       _json["topicIds"] = topicIds;
     }
@@ -12825,7 +12911,8 @@ class LiveChatMessageSnippet {
    * - the user that funded the broadcast newSponsorEvent - the user that just
    * became a sponsor messageDeletedEvent - the moderator that took the action
    * messageRetractedEvent - the author that retracted their message
-   * userBannedEvent - the moderator that took the action
+   * userBannedEvent - the moderator that took the action superChatEvent - the
+   * user that made the purchase
    */
   core.String authorChannelId;
   /**
@@ -12856,6 +12943,11 @@ class LiveChatMessageSnippet {
    */
   core.DateTime publishedAt;
   /**
+   * Details about the Super Chat event, this is only set if the type is
+   * 'superChatEvent'.
+   */
+  LiveChatSuperChatDetails superChatDetails;
+  /**
    * Details about the text message, this is only set if the type is
    * 'textMessageEvent'.
    */
@@ -12875,6 +12967,7 @@ class LiveChatMessageSnippet {
    * - "pollVotedEvent"
    * - "sponsorOnlyModeEndedEvent"
    * - "sponsorOnlyModeStartedEvent"
+   * - "superChatEvent"
    * - "textMessageEvent"
    * - "tombstone"
    * - "userBannedEvent"
@@ -12920,6 +13013,9 @@ class LiveChatMessageSnippet {
     }
     if (_json.containsKey("publishedAt")) {
       publishedAt = core.DateTime.parse(_json["publishedAt"]);
+    }
+    if (_json.containsKey("superChatDetails")) {
+      superChatDetails = new LiveChatSuperChatDetails.fromJson(_json["superChatDetails"]);
     }
     if (_json.containsKey("textMessageDetails")) {
       textMessageDetails = new LiveChatTextMessageDetails.fromJson(_json["textMessageDetails"]);
@@ -12969,6 +13065,9 @@ class LiveChatMessageSnippet {
     }
     if (publishedAt != null) {
       _json["publishedAt"] = (publishedAt).toIso8601String();
+    }
+    if (superChatDetails != null) {
+      _json["superChatDetails"] = (superChatDetails).toJson();
     }
     if (textMessageDetails != null) {
       _json["textMessageDetails"] = (textMessageDetails).toJson();
@@ -13298,6 +13397,64 @@ class LiveChatPollVotedDetails {
     }
     if (pollId != null) {
       _json["pollId"] = pollId;
+    }
+    return _json;
+  }
+}
+
+class LiveChatSuperChatDetails {
+  /**
+   * A rendered string that displays the fund amount and currency to the user.
+   */
+  core.String amountDisplayString;
+  /** The amount purchased by the user, in micros (1,750,000 micros = 1.75). */
+  core.String amountMicros;
+  /** The currency in which the purchase was made. */
+  core.String currency;
+  /**
+   * The tier in which the amount belongs to. Lower amounts belong to lower
+   * tiers. Starts at 1.
+   */
+  core.int tier;
+  /** The comment added by the user to this Super Chat event. */
+  core.String userComment;
+
+  LiveChatSuperChatDetails();
+
+  LiveChatSuperChatDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("amountDisplayString")) {
+      amountDisplayString = _json["amountDisplayString"];
+    }
+    if (_json.containsKey("amountMicros")) {
+      amountMicros = _json["amountMicros"];
+    }
+    if (_json.containsKey("currency")) {
+      currency = _json["currency"];
+    }
+    if (_json.containsKey("tier")) {
+      tier = _json["tier"];
+    }
+    if (_json.containsKey("userComment")) {
+      userComment = _json["userComment"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (amountDisplayString != null) {
+      _json["amountDisplayString"] = amountDisplayString;
+    }
+    if (amountMicros != null) {
+      _json["amountMicros"] = amountMicros;
+    }
+    if (currency != null) {
+      _json["currency"] = currency;
+    }
+    if (tier != null) {
+      _json["tier"] = tier;
+    }
+    if (userComment != null) {
+      _json["userComment"] = userComment;
     }
     return _json;
   }
@@ -15754,6 +15911,228 @@ class SubscriptionSubscriberSnippet {
   }
 }
 
+/**
+ * A superChatEvent resource represents a Super Chat purchase on a YouTube
+ * channel.
+ */
+class SuperChatEvent {
+  /** Etag of this resource. */
+  core.String etag;
+  /** The ID that YouTube assigns to uniquely identify the Super Chat event. */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#superChatEvent".
+   */
+  core.String kind;
+  /** The snippet object contains basic details about the Super Chat event. */
+  SuperChatEventSnippet snippet;
+
+  SuperChatEvent();
+
+  SuperChatEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new SuperChatEventSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class SuperChatEventListResponse {
+  /** Etag of this resource. */
+  core.String etag;
+  /** Serialized EventId of the request which produced this response. */
+  core.String eventId;
+  /** A list of Super Chat purchases that match the request criteria. */
+  core.List<SuperChatEvent> items;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "youtube#superChatEventListResponse".
+   */
+  core.String kind;
+  /**
+   * The token that can be used as the value of the pageToken parameter to
+   * retrieve the next page in the result set.
+   */
+  core.String nextPageToken;
+  PageInfo pageInfo;
+  TokenPagination tokenPagination;
+  /** The visitorId identifies the visitor. */
+  core.String visitorId;
+
+  SuperChatEventListResponse();
+
+  SuperChatEventListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new SuperChatEvent.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+class SuperChatEventSnippet {
+  /**
+   * The purchase amount, in micros of the purchase currency. e.g., 1 is
+   * represented as 1000000.
+   */
+  core.String amountMicros;
+  /** Channel id where the event occurred. */
+  core.String channelId;
+  /** The text contents of the comment left by the user. */
+  core.String commentText;
+  /**
+   * The date and time when the event occurred. The value is specified in ISO
+   * 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+   */
+  core.DateTime createdAt;
+  /** The currency in which the purchase was made. ISO 4217. */
+  core.String currency;
+  /**
+   * A rendered string that displays the purchase amount and currency (e.g.,
+   * "$1.00"). The string is rendered for the given language.
+   */
+  core.String displayString;
+  /**
+   * The tier for the paid message, which is based on the amount of money spent
+   * to purchase the message.
+   */
+  core.int messageType;
+  /** Details about the supporter. */
+  ChannelProfileDetails supporterDetails;
+
+  SuperChatEventSnippet();
+
+  SuperChatEventSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("amountMicros")) {
+      amountMicros = _json["amountMicros"];
+    }
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+    if (_json.containsKey("commentText")) {
+      commentText = _json["commentText"];
+    }
+    if (_json.containsKey("createdAt")) {
+      createdAt = core.DateTime.parse(_json["createdAt"]);
+    }
+    if (_json.containsKey("currency")) {
+      currency = _json["currency"];
+    }
+    if (_json.containsKey("displayString")) {
+      displayString = _json["displayString"];
+    }
+    if (_json.containsKey("messageType")) {
+      messageType = _json["messageType"];
+    }
+    if (_json.containsKey("supporterDetails")) {
+      supporterDetails = new ChannelProfileDetails.fromJson(_json["supporterDetails"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (amountMicros != null) {
+      _json["amountMicros"] = amountMicros;
+    }
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    if (commentText != null) {
+      _json["commentText"] = commentText;
+    }
+    if (createdAt != null) {
+      _json["createdAt"] = (createdAt).toIso8601String();
+    }
+    if (currency != null) {
+      _json["currency"] = currency;
+    }
+    if (displayString != null) {
+      _json["displayString"] = displayString;
+    }
+    if (messageType != null) {
+      _json["messageType"] = messageType;
+    }
+    if (supporterDetails != null) {
+      _json["supporterDetails"] = (supporterDetails).toJson();
+    }
+    return _json;
+  }
+}
+
 /** A thumbnail is an image representing a YouTube resource. */
 class Thumbnail {
   /** (Optional) Height of the thumbnail image. */
@@ -18113,6 +18492,11 @@ class VideoTopicDetails {
    */
   core.List<core.String> relevantTopicIds;
   /**
+   * A list of Wikipedia URLs that provide a high-level description of the
+   * video's content.
+   */
+  core.List<core.String> topicCategories;
+  /**
    * A list of Freebase topic IDs that are centrally associated with the video.
    * These are topics that are centrally featured in the video, and it can be
    * said that the video is mainly about each of these. You can retrieve
@@ -18126,6 +18510,9 @@ class VideoTopicDetails {
     if (_json.containsKey("relevantTopicIds")) {
       relevantTopicIds = _json["relevantTopicIds"];
     }
+    if (_json.containsKey("topicCategories")) {
+      topicCategories = _json["topicCategories"];
+    }
     if (_json.containsKey("topicIds")) {
       topicIds = _json["topicIds"];
     }
@@ -18135,6 +18522,9 @@ class VideoTopicDetails {
     var _json = new core.Map();
     if (relevantTopicIds != null) {
       _json["relevantTopicIds"] = relevantTopicIds;
+    }
+    if (topicCategories != null) {
+      _json["topicCategories"] = topicCategories;
     }
     if (topicIds != null) {
       _json["topicIds"] = topicIds;

@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/aTsDjhJX4jyEgcQh1bdOjEtV2EI\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/5vvnUnaYZD7vqEjmjYVCOzuEk5s\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -234,6 +234,25 @@
                         "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 },
+                "getStartPageToken": {
+                    "description": "Gets the starting pageToken for listing future changes.",
+                    "httpMethod": "GET",
+                    "id": "drive.changes.getStartPageToken",
+                    "path": "changes/startPageToken",
+                    "response": {
+                        "$ref": "StartPageToken"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.appdata",
+                        "https://www.googleapis.com/auth/drive.apps.readonly",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata",
+                        "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.photos.readonly",
+                        "https://www.googleapis.com/auth/drive.readonly"
+                    ]
+                },
                 "list": {
                     "description": "Lists the changes for a user.",
                     "httpMethod": "GET",
@@ -260,7 +279,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Page token for changes.",
+                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response or to the response from the getStartPageToken method.",
                             "location": "query",
                             "type": "string"
                         },
@@ -318,7 +337,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "Page token for changes.",
+                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response or to the response from the getStartPageToken method.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2658,7 +2677,7 @@
             }
         }
     },
-    "revision": "20170113",
+    "revision": "20170207",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -4311,6 +4330,21 @@
                 },
                 "selfLink": {
                     "description": "A link back to this list.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StartPageToken": {
+            "id": "StartPageToken",
+            "properties": {
+                "kind": {
+                    "default": "drive#startPageToken",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"drive#startPageToken\".",
+                    "type": "string"
+                },
+                "startPageToken": {
+                    "description": "The starting page token for listing changes.",
                     "type": "string"
                 }
             },

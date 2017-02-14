@@ -15,7 +15,7 @@
     "description": "Manages the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/emm-api",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/AnvhsO1al4ataX8d07JiUi-38Ec\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/qmu3g-0qIQB7C8meI8fD39oNLuA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -1793,39 +1793,6 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
-                },
-                "updatePermissions": {
-                    "description": "This method has been deprecated. To programmatically approve applications, you must use the iframe mechanism via the  generateApprovalUrl and  approve methods of the Products resource. For more information, see the  Play EMM API usage requirements.\n\nThe updatePermissions method (deprecated) updates the set of Android app permissions for this app that have been accepted by the enterprise.",
-                    "httpMethod": "PUT",
-                    "id": "androidenterprise.products.updatePermissions",
-                    "parameterOrder": [
-                        "enterpriseId",
-                        "productId"
-                    ],
-                    "parameters": {
-                        "enterpriseId": {
-                            "description": "The ID of the enterprise.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "productId": {
-                            "description": "The ID of the product.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "enterprises/{enterpriseId}/products/{productId}/permissions",
-                    "request": {
-                        "$ref": "ProductPermissions"
-                    },
-                    "response": {
-                        "$ref": "ProductPermissions"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/androidenterprise"
-                    ]
                 }
             }
         },
@@ -2569,7 +2536,7 @@
                     ]
                 },
                 "setAvailableProductSet": {
-                    "description": "Modifies the set of products a user is entitled to access.",
+                    "description": "Modifies the set of products that a user is entitled to access (referred to as whitelisted products). Only products that are approved or products that were previously approved (products with revoked approval) can be whitelisted.",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.users.setAvailableProductSet",
                     "parameterOrder": [
@@ -2637,7 +2604,7 @@
             }
         }
     },
-    "revision": "20170111",
+    "revision": "20170131",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Administrator": {
@@ -3579,11 +3546,6 @@
                     "type": "string"
                 },
                 "permission": {
-                    "annotations": {
-                        "required": [
-                            "androidenterprise.products.updatePermissions"
-                        ]
-                    },
                     "description": "The permissions required by the app.",
                     "items": {
                         "$ref": "ProductPermission"
@@ -3614,7 +3576,7 @@
                     "type": "array"
                 },
                 "productSetBehavior": {
-                    "description": "The interpretation of this product set. \"unknown\" should never be sent and ignored if received. \"whitelist\" means that this product set constitutes a whitelist. \"includeAll\" means that all products are accessible, including products that are approved, not approved, and even products where approval has been revoked. If the value is \"includeAll\", the value of the productId field is therefore ignored. If a value is not supplied, it is interpreted to be \"whitelist\" for backwards compatibility.",
+                    "description": "The interpretation of this product set. \"unknown\" should never be sent and is ignored if received. \"whitelist\" means that this product set constitutes a whitelist. \"includeAll\" means that all products are accessible, including products that are approved, products with revoked approval, and products that have never been approved. If the value is \"includeAll\", the value of the productId field is therefore ignored. If a value is not supplied, it is interpreted to be \"whitelist\" for backwards compatibility.",
                     "type": "string"
                 }
             },

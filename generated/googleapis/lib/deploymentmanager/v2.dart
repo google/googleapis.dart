@@ -354,8 +354,8 @@ class DeploymentsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -842,8 +842,8 @@ class ManifestsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -999,8 +999,8 @@ class OperationsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1162,8 +1162,8 @@ class ResourcesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1273,8 +1273,8 @@ class TypesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1340,16 +1340,18 @@ class TypesResourceApi {
 
 
 /**
- * Provides the configuration for non-admin_activity logging for a service.
- * Controls exemptions and specific log sub-types.
+ * Specifies the audit configuration for a service. It consists of which
+ * permission types are logged, and what identities, if any, are exempted from
+ * logging. An AuditConifg must have one or more AuditLogConfigs.
  */
 class AuditConfig {
-  /** The configuration for each type of logging */
+  /** The configuration for logging of each type of permission. */
   core.List<AuditLogConfig> auditLogConfigs;
   /**
    * Specifies the identities that are exempted from "data access" audit logging
    * for the `service` specified above. Follows the same format of
-   * Binding.members.
+   * Binding.members. This field is deprecated in favor of per-permission-type
+   * exemptions.
    */
   core.List<core.String> exemptedMembers;
   /**
@@ -1388,11 +1390,19 @@ class AuditConfig {
   }
 }
 
-/** Provides the configuration for a sub-type of logging. */
+/**
+ * Provides the configuration for logging a type of permissions. Example:
+ *
+ * { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+ * "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", } ] }
+ *
+ * This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+ * foo@gmail.com from DATA_READ logging.
+ */
 class AuditLogConfig {
   /**
-   * Specifies the identities that are exempted from this type of logging
-   * Follows the same format of Binding.members.
+   * Specifies the identities that do not cause logging for this type of
+   * permission. Follows the same format of [Binding.members][].
    */
   core.List<core.String> exemptedMembers;
   /** The log type that this config enables. */
@@ -1742,6 +1752,11 @@ class DeploymentLabelEntry {
 
 class DeploymentUpdate {
   /**
+   * [Output Only] An optional user-provided description of the deployment after
+   * the current update has been applied.
+   */
+  core.String description;
+  /**
    * [Output Only] Map of labels; provided by the client when the resource is
    * created or updated. Specifically: Label keys must be between 1 and 63
    * characters long and must conform to the following regular expression:
@@ -1759,6 +1774,9 @@ class DeploymentUpdate {
   DeploymentUpdate();
 
   DeploymentUpdate.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("labels")) {
       labels = _json["labels"].map((value) => new DeploymentUpdateLabelEntry.fromJson(value)).toList();
     }
@@ -1769,6 +1787,9 @@ class DeploymentUpdate {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
@@ -2269,7 +2290,7 @@ class OperationWarnings {
 class Operation {
   /** [Output Only] Reserved for future use. */
   core.String clientOperationId;
-  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  /** [Deprecated] This field is deprecated. */
   core.String creationTimestamp;
   /**
    * [Output Only] A textual description of the operation, which is set when the
@@ -2580,14 +2601,7 @@ class OperationsListResponse {
  * guide](https://cloud.google.com/iam).
  */
 class Policy {
-  /**
-   * Specifies audit logging configs for "data access". "data access": generally
-   * refers to data reads/writes and admin reads. "admin activity": generally
-   * refers to admin writes.
-   *
-   * Note: `AuditConfig` doesn't apply to "admin activity", which always enables
-   * audit logging.
-   */
+  /** Specifies cloud audit logging configuration for this policy. */
   core.List<AuditConfig> auditConfigs;
   /**
    * Associates a list of `members` to a `role`. Multiple `bindings` must not be

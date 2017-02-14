@@ -87,51 +87,7 @@ class ProjectsResourceApi {
   /**
    * Performs prediction on the data in the request.
    *
-   * Responses are very similar to requests. There are two top-level fields,
-   * each of which are JSON lists:
-   *
-   * <dl>
-   *   <dt>predictions</dt>
-   *   <dd>The list of predictions, one per instance in the request.</dd>
-   *   <dt>error</dt>
-   *   <dd>An error message returned instead of a prediction list if any
-   *       instance produced an error.</dd>
-   * </dl>
-   *
-   * If the call is successful, the response body will contain one prediction
-   * entry per instance in the request body. If prediction fails for any
-   * instance, the response body will contain no predictions and will contian
-   * a single error entry instead.
-   *
-   * Even though there is one prediction per instance, the format of a
-   * prediction is not directly related to the format of an instance.
-   * Predictions take whatever format is specified in the outputs collection
-   * defined in the model. The collection of predictions is returned in a JSON
-   * list. Each member of the list can be a simple value, a list, or a JSON
-   * object of any complexity. If your model has more than one output tensor,
-   * each prediction will be a JSON object containing a name/value pair for each
-   * output. The names identify the output aliases in the graph.
-   *
-   * The following examples show some possible responses:
-   *
-   * A simple set of predictions for three input instances, where each
-   * prediction is an integer value:
-   * <pre>
-   * {"predictions": [5, 4, 3]}
-   * </pre>
-   * A more complex set of predictions, each containing two named values that
-   * correspond to output tensors, named **label** and **scores** respectively.
-   * The value of **label** is the predicted category ("car" or "beach") and
-   * **scores** contains a list of probabilities for that instance across the
-   * possible categories.
-   * <pre>
-   * {"predictions": [{"label": "beach", "scores": [0.1, 0.9]},
-   *                  {"label": "car", "scores": [0.75, 0.25]}]}
-   * </pre>
-   * A response when there is an error processing an input instance:
-   * <pre>
-   * {"error": "Divide by zero"}
-   * </pre>
+   * **** REMOVE FROM GENERATED DOCUMENTATION
    *
    * [request] - The metadata request object.
    *
@@ -332,19 +288,19 @@ class ProjectsJobsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Optional. The number of jobs to retrieve per "page" of
-   * results. If there
-   * are more remaining results than this number, the response message will
-   * contain a valid value in the `next_page_token` field.
-   *
-   * The default value is 20, and the maximum page size is 100.
-   *
    * [filter] - Optional. Specifies the subset of jobs to retrieve.
    *
    * [pageToken] - Optional. A page token to request the next page of results.
    *
    * You get the token from the `next_page_token` field of the response from
    * the previous call.
+   *
+   * [pageSize] - Optional. The number of jobs to retrieve per "page" of
+   * results. If there
+   * are more remaining results than this number, the response message will
+   * contain a valid value in the `next_page_token` field.
+   *
+   * The default value is 20, and the maximum page size is 100.
    *
    * Completes with a [GoogleCloudMlV1beta1ListJobsResponse].
    *
@@ -354,7 +310,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1ListJobsResponse> list(core.String parent, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<GoogleCloudMlV1beta1ListJobsResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -365,14 +321,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -552,17 +508,17 @@ class ProjectsModelsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Optional. A page token to request the next page of results.
+   *
+   * You get the token from the `next_page_token` field of the response from
+   * the previous call.
+   *
    * [pageSize] - Optional. The number of models to retrieve per "page" of
    * results. If there
    * are more remaining results than this number, the response message will
    * contain a valid value in the `next_page_token` field.
    *
    * The default value is 20, and the maximum page size is 100.
-   *
-   * [pageToken] - Optional. A page token to request the next page of results.
-   *
-   * You get the token from the `next_page_token` field of the response from
-   * the previous call.
    *
    * Completes with a [GoogleCloudMlV1beta1ListModelsResponse].
    *
@@ -572,7 +528,7 @@ class ProjectsModelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1ListModelsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<GoogleCloudMlV1beta1ListModelsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -583,11 +539,11 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
@@ -777,17 +733,17 @@ class ProjectsModelsVersionsResourceApi {
    * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+$".
    *
+   * [pageToken] - Optional. A page token to request the next page of results.
+   *
+   * You get the token from the `next_page_token` field of the response from
+   * the previous call.
+   *
    * [pageSize] - Optional. The number of versions to retrieve per "page" of
    * results. If
    * there are more remaining results than this number, the response message
    * will contain a valid value in the `next_page_token` field.
    *
    * The default value is 20, and the maximum page size is 100.
-   *
-   * [pageToken] - Optional. A page token to request the next page of results.
-   *
-   * You get the token from the `next_page_token` field of the response from
-   * the previous call.
    *
    * Completes with a [GoogleCloudMlV1beta1ListVersionsResponse].
    *
@@ -797,7 +753,7 @@ class ProjectsModelsVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1ListVersionsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<GoogleCloudMlV1beta1ListVersionsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -808,11 +764,11 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
@@ -1039,11 +995,11 @@ class ProjectsOperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - The standard list page size.
-   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [GoogleLongrunningListOperationsResponse].
    *
@@ -1053,7 +1009,7 @@ class ProjectsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1064,14 +1020,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
@@ -1163,6 +1119,186 @@ class GoogleApiHttpBody {
     }
     if (data != null) {
       _json["data"] = data;
+    }
+    return _json;
+  }
+}
+
+/** Represents the metadata of the long-running operation. */
+class GoogleCloudMlV1OperationMetadata {
+  /** The time the operation was submitted. */
+  core.String createTime;
+  /** The time operation processing completed. */
+  core.String endTime;
+  /** Indicates whether a request to cancel this operation has been made. */
+  core.bool isCancellationRequested;
+  /** Contains the name of the model associated with the operation. */
+  core.String modelName;
+  /**
+   * The operation type.
+   * Possible string values are:
+   * - "OPERATION_TYPE_UNSPECIFIED" : Unspecified operation type.
+   * - "CREATE_VERSION" : An operation to create a new version.
+   * - "DELETE_VERSION" : An operation to delete an existing version.
+   * - "DELETE_MODEL" : An operation to delete an existing model.
+   */
+  core.String operationType;
+  /** The time operation processing started. */
+  core.String startTime;
+  /** Contains the version associated with the operation. */
+  GoogleCloudMlV1Version version;
+
+  GoogleCloudMlV1OperationMetadata();
+
+  GoogleCloudMlV1OperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("isCancellationRequested")) {
+      isCancellationRequested = _json["isCancellationRequested"];
+    }
+    if (_json.containsKey("modelName")) {
+      modelName = _json["modelName"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("version")) {
+      version = new GoogleCloudMlV1Version.fromJson(_json["version"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (isCancellationRequested != null) {
+      _json["isCancellationRequested"] = isCancellationRequested;
+    }
+    if (modelName != null) {
+      _json["modelName"] = modelName;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (version != null) {
+      _json["version"] = (version).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents a version of the model.
+ *
+ * Each version is a trained model deployed in the cloud, ready to handle
+ * prediction requests. A model can have multiple versions. You can get
+ * information about all of the versions of a given model by calling
+ * [projects.models.versions.list](/ml/reference/rest/v1/projects.models.versions/list).
+ */
+class GoogleCloudMlV1Version {
+  /** Output only. The time the version was created. */
+  core.String createTime;
+  /**
+   * Required. The Google Cloud Storage location of the trained model used to
+   * create the version. See the
+   * [overview of model deployment](/ml/docs/concepts/deployment-overview) for
+   * more informaiton.
+   *
+   * When passing Version to
+   * [projects.models.versions.create](/ml/reference/rest/v1/projects.models.versions/create)
+   * the model service uses the specified location as the source of the model.
+   * Once deployed, the model version is hosted by the prediction service, so
+   * this location is useful only as a historical record.
+   */
+  core.String deploymentUri;
+  /**
+   * Optional. The description specified for the version when it was created.
+   */
+  core.String description;
+  /**
+   * Output only. If true, this version will be used to handle prediction
+   * requests that do not specify a version.
+   *
+   * You can change the default version by calling
+   * [projects.methods.versions.setDefault](/ml/reference/rest/v1/projects.models.versions/setDefault).
+   */
+  core.bool isDefault;
+  /** Output only. The time the version was last used for prediction. */
+  core.String lastUseTime;
+  /**
+   * Required.The name specified for the version when it was created.
+   *
+   * The version name must be unique within the model it is created in.
+   */
+  core.String name;
+  /**
+   * Optional. The Google Cloud ML runtime version to use for this deployment.
+   * If not set, Google Cloud ML will choose a version.
+   */
+  core.String runtimeVersion;
+
+  GoogleCloudMlV1Version();
+
+  GoogleCloudMlV1Version.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("deploymentUri")) {
+      deploymentUri = _json["deploymentUri"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("isDefault")) {
+      isDefault = _json["isDefault"];
+    }
+    if (_json.containsKey("lastUseTime")) {
+      lastUseTime = _json["lastUseTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("runtimeVersion")) {
+      runtimeVersion = _json["runtimeVersion"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (deploymentUri != null) {
+      _json["deploymentUri"] = deploymentUri;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (isDefault != null) {
+      _json["isDefault"] = isDefault;
+    }
+    if (lastUseTime != null) {
+      _json["lastUseTime"] = lastUseTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (runtimeVersion != null) {
+      _json["runtimeVersion"] = runtimeVersion;
     }
     return _json;
   }
@@ -1307,6 +1443,14 @@ class GoogleCloudMlV1beta1HyperparameterSpec {
    */
   core.String goal;
   /**
+   * Optional. The Tensorflow summary tag name to use for optimizing trials. For
+   * current versions of Tensorflow, this tag name should exactly match what is
+   * shown in Tensorboard, including all scopes.  For versions of Tensorflow
+   * prior to 0.12, this should be only the tag passed to tf.Summary.
+   * By default, "training/hptuning/metric" will be used.
+   */
+  core.String hyperparameterMetricTag;
+  /**
    * Optional. The number of training trials to run concurrently.
    * You can reduce the time it takes to perform hyperparameter tuning by adding
    * trials in parallel. However, each trail only benefits from the information
@@ -1335,6 +1479,9 @@ class GoogleCloudMlV1beta1HyperparameterSpec {
     if (_json.containsKey("goal")) {
       goal = _json["goal"];
     }
+    if (_json.containsKey("hyperparameterMetricTag")) {
+      hyperparameterMetricTag = _json["hyperparameterMetricTag"];
+    }
     if (_json.containsKey("maxParallelTrials")) {
       maxParallelTrials = _json["maxParallelTrials"];
     }
@@ -1350,6 +1497,9 @@ class GoogleCloudMlV1beta1HyperparameterSpec {
     var _json = new core.Map();
     if (goal != null) {
       _json["goal"] = goal;
+    }
+    if (hyperparameterMetricTag != null) {
+      _json["hyperparameterMetricTag"] = hyperparameterMetricTag;
     }
     if (maxParallelTrials != null) {
       _json["maxParallelTrials"] = maxParallelTrials;
@@ -1597,6 +1747,11 @@ class GoogleCloudMlV1beta1Model {
    */
   core.String name;
   /**
+   * Optional. If true, enables StackDriver Logging for online prediction.
+   * Default is false.
+   */
+  core.bool onlinePredictionLogging;
+  /**
    * Optional. The list of regions where the model is going to be deployed.
    * Currently only one region per model is supported.
    * Defaults to 'us-central1' if nothing is set.
@@ -1615,6 +1770,9 @@ class GoogleCloudMlV1beta1Model {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("onlinePredictionLogging")) {
+      onlinePredictionLogging = _json["onlinePredictionLogging"];
+    }
     if (_json.containsKey("regions")) {
       regions = _json["regions"];
     }
@@ -1630,6 +1788,9 @@ class GoogleCloudMlV1beta1Model {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (onlinePredictionLogging != null) {
+      _json["onlinePredictionLogging"] = onlinePredictionLogging;
     }
     if (regions != null) {
       _json["regions"] = regions;
@@ -1849,7 +2010,7 @@ class GoogleCloudMlV1beta1ParameterSpec {
  * model's input definition. Instances can include named inputs or can contain
  * only unlabeled values.
  *
- * Most data does not include named inputs. Some instances will be simple
+ * Not all data includes named inputs. Some instances will be simple
  * JSON values (boolean, number, or string). However, instances are often lists
  * of simple values, or complex nested lists. Here are some examples of request
  * bodies:
@@ -1864,7 +2025,13 @@ class GoogleCloudMlV1beta1ParameterSpec {
  * </pre>
  * Sentences encoded as lists of words (vectors of strings):
  * <pre>
- * {"instances": [["the","quick","brown"], ["la","bruja","le"]]}
+ * {
+ *   "instances": [
+ *     ["the","quick","brown"],
+ *     ["la","bruja","le"],
+ *     ...
+ *   ]
+ * }
  * </pre>
  * Floating point scalar values:
  * <pre>
@@ -1872,22 +2039,53 @@ class GoogleCloudMlV1beta1ParameterSpec {
  * </pre>
  * Vectors of integers:
  * <pre>
- * {"instances": [[0, 1, 2], [3, 4, 5],...]}
+ * {
+ *   "instances": [
+ *     [0, 1, 2],
+ *     [3, 4, 5],
+ *     ...
+ *   ]
+ * }
  * </pre>
  * Tensors (in this case, two-dimensional tensors):
  * <pre>
- * {"instances": [[[0, 1, 2], [3, 4, 5]], ...]}
+ * {
+ *   "instances": [
+ *     [
+ *       [0, 1, 2],
+ *       [3, 4, 5]
+ *     ],
+ *     ...
+ *   ]
+ * }
  * </pre>
- * Images represented as a three-dimensional list. In this encoding scheme the
- * first two dimensions represent the rows and columns of the image, and the
- * third contains the R, G, and B values for each pixel.
+ * Images can be represented different ways. In this encoding scheme the first
+ * two dimensions represent the rows and columns of the image, and the third
+ * contains lists (vectors) of the R, G, and B values for each pixel.
  * <pre>
- * {"instances": [[[[138, 30, 66], [130, 20, 56], ...]]]]}
+ * {
+ *   "instances": [
+ *     [
+ *       [
+ *         [138, 30, 66],
+ *         [130, 20, 56],
+ *         ...
+ *       ],
+ *       [
+ *         [126, 38, 61],
+ *         [122, 24, 57],
+ *         ...
+ *       ],
+ *       ...
+ *     ],
+ *     ...
+ *   ]
+ * }
  * </pre>
- * Data must be encoded as UTF-8. If your data uses another character encoding,
- * you must base64 encode the data and mark it as binary. To mark a JSON string
- * as binary, replace it with an object with a single attribute named `b`:
- * <pre>{"b": "..."} </pre>
+ * JSON strings must be encoded as UTF-8. To send binary data, you must
+ * base64-encode the data and mark it as binary. To mark a JSON string
+ * as binary, replace it with a JSON object with a single attribute named `b64`:
+ * <pre>{"b64": "..."} </pre>
  * For example:
  *
  * Two Serialized tf.Examples (fake data, for illustrative purposes only):
@@ -1903,8 +2101,20 @@ class GoogleCloudMlV1beta1ParameterSpec {
  *
  * JSON input data to be preprocessed:
  * <pre>
- * {"instances": [{"a": 1.0,  "b": true,  "c": "x"},
- *                {"a": -2.0, "b": false, "c": "y"}]}
+ * {
+ *   "instances": [
+ *     {
+ *       "a": 1.0,
+ *       "b": true,
+ *       "c": "x"
+ *     },
+ *     {
+ *       "a": -2.0,
+ *       "b": false,
+ *       "c": "y"
+ *     }
+ *   ]
+ * }
  * </pre>
  * Some models have an underlying TensorFlow graph that accepts multiple input
  * tensors. In this case, you should use the names of JSON name/value pairs to
@@ -1913,15 +2123,59 @@ class GoogleCloudMlV1beta1ParameterSpec {
  * For a graph with input tensor aliases "tag" (string) and "image"
  * (base64-encoded string):
  * <pre>
- * {"instances": [{"tag": "beach", "image": {"b64": "ASa8asdf"}},
- *                {"tag": "car", "image": {"b64": "JLK7ljk3"}}]}
+ * {
+ *   "instances": [
+ *     {
+ *       "tag": "beach",
+ *       "image": {"b64": "ASa8asdf"}
+ *     },
+ *     {
+ *       "tag": "car",
+ *       "image": {"b64": "JLK7ljk3"}
+ *     }
+ *   ]
+ * }
  * </pre>
  * For a graph with input tensor aliases "tag" (string) and "image"
  * (3-dimensional array of 8-bit ints):
  * <pre>
- * {"instances": [{"tag": "beach", "image": [[[263, 1, 10], [262, 2, 11],
- * ...]]},
- * {"tag": "car", "image": [[[10, 11, 24], [23, 10, 15], ...]]}]}
+ * {
+ *   "instances": [
+ *     {
+ *       "tag": "beach",
+ *       "image": [
+ *         [
+ *           [138, 30, 66],
+ *           [130, 20, 56],
+ *           ...
+ *         ],
+ *         [
+ *           [126, 38, 61],
+ *           [122, 24, 57],
+ *           ...
+ *         ],
+ *         ...
+ *       ]
+ *     },
+ *     {
+ *       "tag": "car",
+ *       "image": [
+ *         [
+ *           [255, 0, 102],
+ *           [255, 0, 97],
+ *           ...
+ *         ],
+ *         [
+ *           [254, 1, 101],
+ *           [254, 2, 93],
+ *           ...
+ *         ],
+ *         ...
+ *       ]
+ *     },
+ *     ...
+ *   ]
+ * }
  * </pre>
  * If the call is successful, the response body will contain one prediction
  * entry per instance in the request body. If prediction fails for any
@@ -1989,9 +2243,14 @@ class GoogleCloudMlV1beta1PredictionInput {
   core.String region;
   /**
    * Optional. The Google Cloud ML runtime version to use for this batch
-   * prediction. If not set, Google Cloud ML will choose a version.
+   * prediction. If not set, Google Cloud ML will pick the runtime version used
+   * during the CreateVersion request for this model version, or choose the
+   * latest stable version when model version information is not available
+   * such as when the model is specified by uri.
    */
   core.String runtimeVersion;
+  /** Use this field if you want to specify a GCS path to the model to use. */
+  core.String uri;
   /**
    * Use this field if you want to specify a version of the model to use. The
    * string is formatted the same way as `model_version`, with the addition
@@ -2025,6 +2284,9 @@ class GoogleCloudMlV1beta1PredictionInput {
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
     }
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
     if (_json.containsKey("versionName")) {
       versionName = _json["versionName"];
     }
@@ -2052,6 +2314,9 @@ class GoogleCloudMlV1beta1PredictionInput {
     }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;
+    }
+    if (uri != null) {
+      _json["uri"] = uri;
     }
     if (versionName != null) {
       _json["versionName"] = versionName;
@@ -2128,6 +2393,14 @@ class GoogleCloudMlV1beta1TrainingInput {
   core.List<core.String> args;
   /** Optional. The set of Hyperparameters to tune. */
   GoogleCloudMlV1beta1HyperparameterSpec hyperparameters;
+  /**
+   * Optional. A GCS path in which to store training outputs and other data
+   * needed for training. This path will be passed to your TensorFlow program as
+   * the 'job_dir' command-line arg. The benefit of specifying this field is
+   * that
+   * Cloud ML will validate the path for use in training.
+   */
+  core.String jobDir;
   /**
    * Optional. Specifies the type of virtual machine to use for your training
    * job's master worker.
@@ -2210,6 +2483,7 @@ class GoogleCloudMlV1beta1TrainingInput {
    * Cloud ML, and for experimenting with new models using small datasets.
    * - "STANDARD_1" : Many workers and a few parameter servers.
    * - "PREMIUM_1" : A large number of workers with many parameter servers.
+   * - "BASIC_GPU" : A single worker instance with a GPU.
    * - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
    * use your
    * own cluster specification. When you use this tier, set values to
@@ -2265,6 +2539,9 @@ class GoogleCloudMlV1beta1TrainingInput {
     if (_json.containsKey("hyperparameters")) {
       hyperparameters = new GoogleCloudMlV1beta1HyperparameterSpec.fromJson(_json["hyperparameters"]);
     }
+    if (_json.containsKey("jobDir")) {
+      jobDir = _json["jobDir"];
+    }
     if (_json.containsKey("masterType")) {
       masterType = _json["masterType"];
     }
@@ -2304,6 +2581,9 @@ class GoogleCloudMlV1beta1TrainingInput {
     }
     if (hyperparameters != null) {
       _json["hyperparameters"] = (hyperparameters).toJson();
+    }
+    if (jobDir != null) {
+      _json["jobDir"] = jobDir;
     }
     if (masterType != null) {
       _json["masterType"] = masterType;
@@ -2436,11 +2716,6 @@ class GoogleCloudMlV1beta1Version {
    */
   core.String name;
   /**
-   * Optional. If true, enables StackDriver Logging for online prediction.
-   * Default is false.
-   */
-  core.bool onlinePredictionLogging;
-  /**
    * Optional. The Google Cloud ML runtime version to use for this deployment.
    * If not set, Google Cloud ML will choose a version.
    */
@@ -2467,9 +2742,6 @@ class GoogleCloudMlV1beta1Version {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
-    if (_json.containsKey("onlinePredictionLogging")) {
-      onlinePredictionLogging = _json["onlinePredictionLogging"];
-    }
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
     }
@@ -2494,9 +2766,6 @@ class GoogleCloudMlV1beta1Version {
     }
     if (name != null) {
       _json["name"] = name;
-    }
-    if (onlinePredictionLogging != null) {
-      _json["onlinePredictionLogging"] = onlinePredictionLogging;
     }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;

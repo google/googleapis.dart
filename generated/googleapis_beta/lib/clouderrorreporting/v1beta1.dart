@@ -110,6 +110,9 @@ class ProjectsEventsResourceApi {
    * Example: `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   *
    * [timeRange_period] - Restricts the query to the specified time range.
    * Possible string values are:
    * - "PERIOD_UNSPECIFIED" : A PERIOD_UNSPECIFIED.
@@ -119,22 +122,19 @@ class ProjectsEventsResourceApi {
    * - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
    * - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
    *
-   * [serviceFilter_resourceType] - [Optional] The exact value to match against
-   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   * [groupId] - [Required] The group for which events shall be returned.
+   *
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response.
    *
    * [serviceFilter_service] - [Optional] The exact value to match against
    * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
    *
-   * [groupId] - [Required] The group for which events shall be returned.
-   *
-   * [serviceFilter_version] - [Optional] The exact value to match against
-   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-   *
    * [pageSize] - [Optional] The maximum number of results to return per
    * response.
    *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response.
+   * [serviceFilter_version] - [Optional] The exact value to match against
+   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
    * Completes with a [ListEventsResponse].
    *
@@ -144,7 +144,7 @@ class ProjectsEventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListEventsResponse> list(core.String projectName, {core.String timeRange_period, core.String serviceFilter_resourceType, core.String serviceFilter_service, core.String groupId, core.String serviceFilter_version, core.int pageSize, core.String pageToken}) {
+  async.Future<ListEventsResponse> list(core.String projectName, {core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId, core.String pageToken, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -155,26 +155,26 @@ class ProjectsEventsResourceApi {
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
     }
-    if (timeRange_period != null) {
-      _queryParams["timeRange.period"] = [timeRange_period];
-    }
     if (serviceFilter_resourceType != null) {
       _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
-    if (serviceFilter_service != null) {
-      _queryParams["serviceFilter.service"] = [serviceFilter_service];
+    if (timeRange_period != null) {
+      _queryParams["timeRange.period"] = [timeRange_period];
     }
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
     }
-    if (serviceFilter_version != null) {
-      _queryParams["serviceFilter.version"] = [serviceFilter_version];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (serviceFilter_service != null) {
+      _queryParams["serviceFilter.service"] = [serviceFilter_service];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (serviceFilter_version != null) {
+      _queryParams["serviceFilter.version"] = [serviceFilter_version];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/events';
@@ -270,13 +270,10 @@ class ProjectsGroupStatsResourceApi {
    * Example: <code>projects/my-project-123</code>.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [alignment] - [Optional] The alignment of the timed counts to be returned.
-   * Default is `ALIGNMENT_EQUAL_AT_END`.
-   * Possible string values are:
-   * - "ERROR_COUNT_ALIGNMENT_UNSPECIFIED" : A
-   * ERROR_COUNT_ALIGNMENT_UNSPECIFIED.
-   * - "ALIGNMENT_EQUAL_ROUNDED" : A ALIGNMENT_EQUAL_ROUNDED.
-   * - "ALIGNMENT_EQUAL_AT_END" : A ALIGNMENT_EQUAL_AT_END.
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response. To view
+   * additional results, pass this token along with the identical query
+   * parameters as the first request.
    *
    * [timeRange_period] - Restricts the query to the specified time range.
    * Possible string values are:
@@ -287,8 +284,23 @@ class ProjectsGroupStatsResourceApi {
    * - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
    * - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
    *
-   * [serviceFilter_resourceType] - [Optional] The exact value to match against
-   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   * [alignment] - [Optional] The alignment of the timed counts to be returned.
+   * Default is `ALIGNMENT_EQUAL_AT_END`.
+   * Possible string values are:
+   * - "ERROR_COUNT_ALIGNMENT_UNSPECIFIED" : A
+   * ERROR_COUNT_ALIGNMENT_UNSPECIFIED.
+   * - "ALIGNMENT_EQUAL_ROUNDED" : A ALIGNMENT_EQUAL_ROUNDED.
+   * - "ALIGNMENT_EQUAL_AT_END" : A ALIGNMENT_EQUAL_AT_END.
+   *
+   * [groupId] - [Optional] List all <code>ErrorGroupStats</code> with these
+   * IDs.
+   *
+   * [serviceFilter_service] - [Optional] The exact value to match against
+   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+   *
+   * [pageSize] - [Optional] The maximum number of results to return per
+   * response.
+   * Default is 20.
    *
    * [order] - [Optional] The sort order in which the results are returned.
    * Default is `COUNT_DESC`.
@@ -299,31 +311,19 @@ class ProjectsGroupStatsResourceApi {
    * - "CREATED_DESC" : A CREATED_DESC.
    * - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
    *
-   * [groupId] - [Optional] List all <code>ErrorGroupStats</code> with these
-   * IDs.
-   *
-   * [serviceFilter_service] - [Optional] The exact value to match against
-   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+   * [serviceFilter_version] - [Optional] The exact value to match against
+   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
    * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
    * if rounded
    * alignment is chosen. Default is 00:00 UTC.
    *
-   * [serviceFilter_version] - [Optional] The exact value to match against
-   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-   *
-   * [pageSize] - [Optional] The maximum number of results to return per
-   * response.
-   * Default is 20.
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
    *
    * [timedCountDuration] - [Optional] The preferred duration for a single
    * returned `TimedCount`.
    * If not set, no timed counts are returned.
-   *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response. To view
-   * additional results, pass this token along with the identical query
-   * parameters as the first request.
    *
    * Completes with a [ListGroupStatsResponse].
    *
@@ -333,7 +333,7 @@ class ProjectsGroupStatsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String alignment, core.String timeRange_period, core.String serviceFilter_resourceType, core.String order, core.List<core.String> groupId, core.String serviceFilter_service, core.String alignmentTime, core.String serviceFilter_version, core.int pageSize, core.String timedCountDuration, core.String pageToken}) {
+  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String pageToken, core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String order, core.String serviceFilter_version, core.String alignmentTime, core.String serviceFilter_resourceType, core.String timedCountDuration}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,17 +344,14 @@ class ProjectsGroupStatsResourceApi {
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
     }
-    if (alignment != null) {
-      _queryParams["alignment"] = [alignment];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (timeRange_period != null) {
       _queryParams["timeRange.period"] = [timeRange_period];
     }
-    if (serviceFilter_resourceType != null) {
-      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
-    }
-    if (order != null) {
-      _queryParams["order"] = [order];
+    if (alignment != null) {
+      _queryParams["alignment"] = [alignment];
     }
     if (groupId != null) {
       _queryParams["groupId"] = groupId;
@@ -362,20 +359,23 @@ class ProjectsGroupStatsResourceApi {
     if (serviceFilter_service != null) {
       _queryParams["serviceFilter.service"] = [serviceFilter_service];
     }
-    if (alignmentTime != null) {
-      _queryParams["alignmentTime"] = [alignmentTime];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (alignmentTime != null) {
+      _queryParams["alignmentTime"] = [alignmentTime];
+    }
+    if (serviceFilter_resourceType != null) {
+      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
     if (timedCountDuration != null) {
       _queryParams["timedCountDuration"] = [timedCountDuration];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/groupStats';
@@ -991,10 +991,30 @@ class ReportedErrorEvent {
    */
   core.String eventTime;
   /**
-   * [Required] A message describing the error. The message can contain an
-   * exception stack in one of the supported programming languages and formats.
-   * In that case, the message is parsed and detailed exception information
-   * is returned when retrieving the error event again.
+   * [Required] The error message.
+   * If no `context.reportLocation` is provided, the message must contain a
+   * header (typically consisting of the exception type name and an error
+   * message) and an exception stack trace in one of the supported programming
+   * languages and formats.
+   * Supported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.
+   * Supported stack trace formats are:
+   *
+   * * **Java**: Must be the return value of
+   * [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).
+   * * **Python**: Must be the return value of
+   * [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).
+   * * **JavaScript**: Must be the value of
+   * [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API)
+   * as returned by V8.
+   * * **Ruby**: Must contain frames returned by
+   * [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).
+   * * **C#**: Must be the return value of
+   * [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).
+   * * **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`
+   * and contain the result of
+   * [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).
+   * * **Go**: Must be the return value of
+   * [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).
    */
   core.String message;
   /** [Required] The service context in which this error has occurred. */

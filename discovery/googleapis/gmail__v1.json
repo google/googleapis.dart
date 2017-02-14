@@ -41,7 +41,7 @@
     "description": "Access Gmail mailboxes including sending user email.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/iEu64OqTQaadpg92fJ0bQ4GFW7U\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/bv4LA8S_yqDUVUFrxfui1vcVGzk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -475,6 +475,24 @@
                                 "userId"
                             ],
                             "parameters": {
+                                "historyTypes": {
+                                    "description": "History types to be returned by the function",
+                                    "enum": [
+                                        "labelAdded",
+                                        "labelRemoved",
+                                        "messageAdded",
+                                        "messageDeleted"
+                                    ],
+                                    "enumDescriptions": [
+                                        "",
+                                        "",
+                                        "",
+                                        ""
+                                    ],
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "labelId": {
                                     "description": "Only return messages with a label matching the ID.",
                                     "location": "query",
@@ -880,7 +898,7 @@
                             "parameters": {
                                 "deleted": {
                                     "default": "false",
-                                    "description": "Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to a Vault administrator. Only used for Google Apps for Work accounts.",
+                                    "description": "Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for G Suite accounts.",
                                     "location": "query",
                                     "type": "boolean"
                                 },
@@ -958,7 +976,7 @@
                             "parameters": {
                                 "deleted": {
                                     "default": "false",
-                                    "description": "Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to a Vault administrator. Only used for Google Apps for Work accounts.",
+                                    "description": "Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for G Suite accounts.",
                                     "location": "query",
                                     "type": "boolean"
                                 },
@@ -1924,6 +1942,196 @@
                                         "https://www.googleapis.com/auth/gmail.settings.sharing"
                                     ]
                                 }
+                            },
+                            "resources": {
+                                "smimeInfo": {
+                                    "methods": {
+                                        "delete": {
+                                            "description": "Deletes the specified S/MIME config for the specified send-as alias.",
+                                            "httpMethod": "DELETE",
+                                            "id": "gmail.users.settings.sendAs.smimeInfo.delete",
+                                            "parameterOrder": [
+                                                "userId",
+                                                "sendAsEmail",
+                                                "id"
+                                            ],
+                                            "parameters": {
+                                                "id": {
+                                                    "description": "The immutable ID for the SmimeInfo.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "sendAsEmail": {
+                                                    "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "userId": {
+                                                    "default": "me",
+                                                    "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}",
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/gmail.settings.basic",
+                                                "https://www.googleapis.com/auth/gmail.settings.sharing"
+                                            ]
+                                        },
+                                        "get": {
+                                            "description": "Gets the specified S/MIME config for the specified send-as alias.",
+                                            "httpMethod": "GET",
+                                            "id": "gmail.users.settings.sendAs.smimeInfo.get",
+                                            "parameterOrder": [
+                                                "userId",
+                                                "sendAsEmail",
+                                                "id"
+                                            ],
+                                            "parameters": {
+                                                "id": {
+                                                    "description": "The immutable ID for the SmimeInfo.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "sendAsEmail": {
+                                                    "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "userId": {
+                                                    "default": "me",
+                                                    "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}",
+                                            "response": {
+                                                "$ref": "SmimeInfo"
+                                            },
+                                            "scopes": [
+                                                "https://mail.google.com/",
+                                                "https://www.googleapis.com/auth/gmail.modify",
+                                                "https://www.googleapis.com/auth/gmail.readonly",
+                                                "https://www.googleapis.com/auth/gmail.settings.basic",
+                                                "https://www.googleapis.com/auth/gmail.settings.sharing"
+                                            ]
+                                        },
+                                        "insert": {
+                                            "description": "Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format is required for the key.",
+                                            "httpMethod": "POST",
+                                            "id": "gmail.users.settings.sendAs.smimeInfo.insert",
+                                            "parameterOrder": [
+                                                "userId",
+                                                "sendAsEmail"
+                                            ],
+                                            "parameters": {
+                                                "sendAsEmail": {
+                                                    "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "userId": {
+                                                    "default": "me",
+                                                    "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo",
+                                            "request": {
+                                                "$ref": "SmimeInfo"
+                                            },
+                                            "response": {
+                                                "$ref": "SmimeInfo"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/gmail.settings.basic",
+                                                "https://www.googleapis.com/auth/gmail.settings.sharing"
+                                            ]
+                                        },
+                                        "list": {
+                                            "description": "Lists S/MIME configs for the specified send-as alias.",
+                                            "httpMethod": "GET",
+                                            "id": "gmail.users.settings.sendAs.smimeInfo.list",
+                                            "parameterOrder": [
+                                                "userId",
+                                                "sendAsEmail"
+                                            ],
+                                            "parameters": {
+                                                "sendAsEmail": {
+                                                    "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "userId": {
+                                                    "default": "me",
+                                                    "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo",
+                                            "response": {
+                                                "$ref": "ListSmimeInfoResponse"
+                                            },
+                                            "scopes": [
+                                                "https://mail.google.com/",
+                                                "https://www.googleapis.com/auth/gmail.modify",
+                                                "https://www.googleapis.com/auth/gmail.readonly",
+                                                "https://www.googleapis.com/auth/gmail.settings.basic",
+                                                "https://www.googleapis.com/auth/gmail.settings.sharing"
+                                            ]
+                                        },
+                                        "setDefault": {
+                                            "description": "Sets the default S/MIME config for the specified send-as alias.",
+                                            "httpMethod": "POST",
+                                            "id": "gmail.users.settings.sendAs.smimeInfo.setDefault",
+                                            "parameterOrder": [
+                                                "userId",
+                                                "sendAsEmail",
+                                                "id"
+                                            ],
+                                            "parameters": {
+                                                "id": {
+                                                    "description": "The immutable ID for the SmimeInfo.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "sendAsEmail": {
+                                                    "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "userId": {
+                                                    "default": "me",
+                                                    "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault",
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/gmail.settings.basic",
+                                                "https://www.googleapis.com/auth/gmail.settings.sharing"
+                                            ]
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -2174,7 +2382,7 @@
             }
         }
     },
-    "revision": "20170117",
+    "revision": "20170206",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AutoForwarding": {
@@ -2743,6 +2951,19 @@
             },
             "type": "object"
         },
+        "ListSmimeInfoResponse": {
+            "id": "ListSmimeInfoResponse",
+            "properties": {
+                "smimeInfo": {
+                    "description": "List of SmimeInfo.",
+                    "items": {
+                        "$ref": "SmimeInfo"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ListThreadsResponse": {
             "id": "ListThreadsResponse",
             "properties": {
@@ -3055,6 +3276,43 @@
             },
             "type": "object"
         },
+        "SmimeInfo": {
+            "description": "An S/MIME email config.",
+            "id": "SmimeInfo",
+            "properties": {
+                "encryptedKeyPassword": {
+                    "description": "Encrypted key password, when key is encrypted.",
+                    "type": "string"
+                },
+                "expiration": {
+                    "description": "When the certificate expires (in milliseconds since epoch).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The immutable ID for the SmimeInfo.",
+                    "type": "string"
+                },
+                "isDefault": {
+                    "description": "Whether this SmimeInfo is the default one for this user's send-as address.",
+                    "type": "boolean"
+                },
+                "issuerCn": {
+                    "description": "The S/MIME certificate issuer's common name.",
+                    "type": "string"
+                },
+                "pem": {
+                    "description": "PEM formatted X509 concatenated certificate string (standard base64 encoding). Format used for returning key, which includes public key as well as certificate chain (not private key).",
+                    "type": "string"
+                },
+                "pkcs12": {
+                    "description": "PKCS#12 format containing a single private/public key pair and certificate chain. This format is only accepted from client for creating a new SmimeInfo and is never returned, because the private key is not intended to be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set appropriately.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SmtpMsa": {
             "description": "Configuration for communication with an SMTP service.",
             "id": "SmtpMsa",
@@ -3152,7 +3410,7 @@
                     "type": "boolean"
                 },
                 "restrictToDomain": {
-                    "description": "Flag that determines whether responses are sent to recipients who are outside of the user's domain. This feature is only available for Google Apps users.",
+                    "description": "Flag that determines whether responses are sent to recipients who are outside of the user's domain. This feature is only available for G Suite users.",
                     "type": "boolean"
                 },
                 "startTime": {

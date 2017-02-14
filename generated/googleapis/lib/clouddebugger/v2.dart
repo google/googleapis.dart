@@ -264,15 +264,15 @@ class DebuggerDebuggeesResourceApi {
    *
    * Request parameters:
    *
+   * [clientVersion] - The client version making the call.
+   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
+   *
    * [includeInactive] - When set to `true`, the result includes all debuggees.
    * Otherwise, the
    * result includes only debuggees that are active.
    *
    * [project] - Project number of a Google Cloud project whose debuggees to
    * list.
-   *
-   * [clientVersion] - The client version making the call.
-   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * Completes with a [ListDebuggeesResponse].
    *
@@ -282,7 +282,7 @@ class DebuggerDebuggeesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDebuggeesResponse> list({core.bool includeInactive, core.String project, core.String clientVersion}) {
+  async.Future<ListDebuggeesResponse> list({core.String clientVersion, core.bool includeInactive, core.String project}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -290,14 +290,14 @@ class DebuggerDebuggeesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
+    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
     if (project != null) {
       _queryParams["project"] = [project];
-    }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v2/debugger/debuggees';
@@ -428,16 +428,15 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    *
    * [debuggeeId] - ID of the debuggee whose breakpoints to list.
    *
+   * [waitToken] - A wait token that, if specified, blocks the call until the
+   * breakpoints
+   * list has changed, or a server selected timeout has expired.  The value
+   * should be set from the last response. The error code
+   * `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
+   * should be called again with the same `wait_token`.
+   *
    * [clientVersion] - The client version making the call.
    * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
-   *
-   * [includeAllUsers] - When set to `true`, the response includes the list of
-   * breakpoints set by
-   * any user. Otherwise, it includes only breakpoints set by the caller.
-   *
-   * [stripResults] - This field is deprecated. The following fields are always
-   * stripped out of
-   * the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
    *
    * [action_value] - Only breakpoints with the specified action will pass the
    * filter.
@@ -445,16 +444,17 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * - "CAPTURE" : A CAPTURE.
    * - "LOG" : A LOG.
    *
+   * [includeAllUsers] - When set to `true`, the response includes the list of
+   * breakpoints set by
+   * any user. Otherwise, it includes only breakpoints set by the caller.
+   *
    * [includeInactive] - When set to `true`, the response includes active and
    * inactive
    * breakpoints. Otherwise, it includes only active breakpoints.
    *
-   * [waitToken] - A wait token that, if specified, blocks the call until the
-   * breakpoints
-   * list has changed, or a server selected timeout has expired.  The value
-   * should be set from the last response. The error code
-   * `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
-   * should be called again with the same `wait_token`.
+   * [stripResults] - This field is deprecated. The following fields are always
+   * stripped out of
+   * the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
    *
    * Completes with a [ListBreakpointsResponse].
    *
@@ -464,7 +464,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.String clientVersion, core.bool includeAllUsers, core.bool stripResults, core.String action_value, core.bool includeInactive, core.String waitToken}) {
+  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.String waitToken, core.String clientVersion, core.String action_value, core.bool includeAllUsers, core.bool includeInactive, core.bool stripResults}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -475,23 +475,23 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
+    if (waitToken != null) {
+      _queryParams["waitToken"] = [waitToken];
+    }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
-    }
-    if (includeAllUsers != null) {
-      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
-    }
-    if (stripResults != null) {
-      _queryParams["stripResults"] = ["${stripResults}"];
     }
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
     }
+    if (includeAllUsers != null) {
+      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
-    if (waitToken != null) {
-      _queryParams["waitToken"] = [waitToken];
+    if (stripResults != null) {
+      _queryParams["stripResults"] = ["${stripResults}"];
     }
 
     _url = 'v2/debugger/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints';

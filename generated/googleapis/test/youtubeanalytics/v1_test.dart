@@ -168,14 +168,14 @@ checkGroupItem(api.GroupItem o) {
   buildCounterGroupItem--;
 }
 
-buildUnnamed193() {
+buildUnnamed195() {
   var o = new core.List<api.GroupItem>();
   o.add(buildGroupItem());
   o.add(buildGroupItem());
   return o;
 }
 
-checkUnnamed193(core.List<api.GroupItem> o) {
+checkUnnamed195(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupItem(o[0]);
   checkGroupItem(o[1]);
@@ -187,7 +187,7 @@ buildGroupItemListResponse() {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed193();
+    o.items = buildUnnamed195();
     o.kind = "foo";
   }
   buildCounterGroupItemListResponse--;
@@ -198,20 +198,20 @@ checkGroupItemListResponse(api.GroupItemListResponse o) {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed193(o.items);
+    checkUnnamed195(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGroupItemListResponse--;
 }
 
-buildUnnamed194() {
+buildUnnamed196() {
   var o = new core.List<api.Group>();
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed194(core.List<api.Group> o) {
+checkUnnamed196(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -223,7 +223,7 @@ buildGroupListResponse() {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed194();
+    o.items = buildUnnamed196();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -235,7 +235,7 @@ checkGroupListResponse(api.GroupListResponse o) {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed194(o.items);
+    checkUnnamed196(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -265,43 +265,43 @@ checkResultTableColumnHeaders(api.ResultTableColumnHeaders o) {
   buildCounterResultTableColumnHeaders--;
 }
 
-buildUnnamed195() {
+buildUnnamed197() {
   var o = new core.List<api.ResultTableColumnHeaders>();
   o.add(buildResultTableColumnHeaders());
   o.add(buildResultTableColumnHeaders());
   return o;
 }
 
-checkUnnamed195(core.List<api.ResultTableColumnHeaders> o) {
+checkUnnamed197(core.List<api.ResultTableColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeaders(o[0]);
   checkResultTableColumnHeaders(o[1]);
 }
 
-buildUnnamed196() {
+buildUnnamed198() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed196(core.List<core.Object> o) {
+checkUnnamed198(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed197() {
+buildUnnamed199() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed196());
-  o.add(buildUnnamed196());
+  o.add(buildUnnamed198());
+  o.add(buildUnnamed198());
   return o;
 }
 
-checkUnnamed197(core.List<core.List<core.Object>> o) {
+checkUnnamed199(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed196(o[0]);
-  checkUnnamed196(o[1]);
+  checkUnnamed198(o[0]);
+  checkUnnamed198(o[1]);
 }
 
 core.int buildCounterResultTable = 0;
@@ -309,9 +309,9 @@ buildResultTable() {
   var o = new api.ResultTable();
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    o.columnHeaders = buildUnnamed195();
+    o.columnHeaders = buildUnnamed197();
     o.kind = "foo";
-    o.rows = buildUnnamed197();
+    o.rows = buildUnnamed199();
   }
   buildCounterResultTable--;
   return o;
@@ -320,9 +320,9 @@ buildResultTable() {
 checkResultTable(api.ResultTable o) {
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    checkUnnamed195(o.columnHeaders);
+    checkUnnamed197(o.columnHeaders);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed197(o.rows);
+    checkUnnamed199(o.rows);
   }
   buildCounterResultTable--;
 }
@@ -779,6 +779,7 @@ main() {
       var arg_currency = "foo";
       var arg_dimensions = "foo";
       var arg_filters = "foo";
+      var arg_include_historical_channel_data = true;
       var arg_max_results = 42;
       var arg_sort = "foo";
       var arg_start_index = 42;
@@ -817,6 +818,7 @@ main() {
         unittest.expect(queryMap["currency"].first, unittest.equals(arg_currency));
         unittest.expect(queryMap["dimensions"].first, unittest.equals(arg_dimensions));
         unittest.expect(queryMap["filters"].first, unittest.equals(arg_filters));
+        unittest.expect(queryMap["include-historical-channel-data"].first, unittest.equals("$arg_include_historical_channel_data"));
         unittest.expect(core.int.parse(queryMap["max-results"].first), unittest.equals(arg_max_results));
         unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
         unittest.expect(core.int.parse(queryMap["start-index"].first), unittest.equals(arg_start_index));
@@ -828,7 +830,7 @@ main() {
         var resp = convert.JSON.encode(buildResultTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.query(arg_ids, arg_start_date, arg_end_date, arg_metrics, currency: arg_currency, dimensions: arg_dimensions, filters: arg_filters, max_results: arg_max_results, sort: arg_sort, start_index: arg_start_index).then(unittest.expectAsync(((api.ResultTable response) {
+      res.query(arg_ids, arg_start_date, arg_end_date, arg_metrics, currency: arg_currency, dimensions: arg_dimensions, filters: arg_filters, include_historical_channel_data: arg_include_historical_channel_data, max_results: arg_max_results, sort: arg_sort, start_index: arg_start_index).then(unittest.expectAsync(((api.ResultTable response) {
         checkResultTable(response);
       })));
     });

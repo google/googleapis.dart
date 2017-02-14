@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/MJiuoRsHT46yY3IV3KcnT4EHa4c\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Q7x7O16Jjj1JyAS5e5qN_sA0jCo\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -2137,7 +2137,7 @@
             }
         }
     },
-    "revision": "20170111",
+    "revision": "20170207",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2627,6 +2627,10 @@
                     "description": "Country for which this issue is reported.",
                     "type": "string"
                 },
+                "detail": {
+                    "description": "A more detailed description of the issue.",
+                    "type": "string"
+                },
                 "displayedValue": {
                     "description": "Actual value displayed on the landing page.",
                     "type": "string"
@@ -2644,6 +2648,10 @@
                 },
                 "lastChecked": {
                     "description": "Last time the account was checked for this issue.",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "The attribute name that is relevant for the issue.",
                     "type": "string"
                 },
                 "numItems": {

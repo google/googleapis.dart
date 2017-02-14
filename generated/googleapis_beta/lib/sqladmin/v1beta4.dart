@@ -4159,6 +4159,16 @@ class Settings {
    * applicable to First Generation instances.
    */
   core.List<core.String> authorizedGaeApplications;
+  /**
+   * The availability type. This can be one of the following.
+   * ZONAL: A Cloud SQL instance that is zonally available. The instance is
+   * bound to a single GCE zone and may be inaccessible during an outage for
+   * that GCE zone.
+   * REGIONAL: A Cloud SQL instance that is regionally available. The instance
+   * is provisioned in multiple zones within a region and is able to provide
+   * higher availability than an instance with a zonal availability type.
+   */
+  core.String availabilityType;
   /** The daily backup configuration for the instance. */
   BackupConfiguration backupConfiguration;
   /**
@@ -4229,6 +4239,12 @@ class Settings {
    */
   core.bool storageAutoResize;
   /**
+   * The maximum size to which storage capacity can be automatically increased.
+   * The default value is 0, which specifies that there is no limit. Applies
+   * only to Second Generation instances.
+   */
+  core.String storageAutoResizeLimit;
+  /**
    * The tier of service for this instance, for example D1, D2. For more
    * information, see pricing.
    */
@@ -4242,6 +4258,9 @@ class Settings {
     }
     if (_json.containsKey("authorizedGaeApplications")) {
       authorizedGaeApplications = _json["authorizedGaeApplications"];
+    }
+    if (_json.containsKey("availabilityType")) {
+      availabilityType = _json["availabilityType"];
     }
     if (_json.containsKey("backupConfiguration")) {
       backupConfiguration = new BackupConfiguration.fromJson(_json["backupConfiguration"]);
@@ -4285,6 +4304,9 @@ class Settings {
     if (_json.containsKey("storageAutoResize")) {
       storageAutoResize = _json["storageAutoResize"];
     }
+    if (_json.containsKey("storageAutoResizeLimit")) {
+      storageAutoResizeLimit = _json["storageAutoResizeLimit"];
+    }
     if (_json.containsKey("tier")) {
       tier = _json["tier"];
     }
@@ -4297,6 +4319,9 @@ class Settings {
     }
     if (authorizedGaeApplications != null) {
       _json["authorizedGaeApplications"] = authorizedGaeApplications;
+    }
+    if (availabilityType != null) {
+      _json["availabilityType"] = availabilityType;
     }
     if (backupConfiguration != null) {
       _json["backupConfiguration"] = (backupConfiguration).toJson();
@@ -4339,6 +4364,9 @@ class Settings {
     }
     if (storageAutoResize != null) {
       _json["storageAutoResize"] = storageAutoResize;
+    }
+    if (storageAutoResizeLimit != null) {
+      _json["storageAutoResizeLimit"] = storageAutoResizeLimit;
     }
     if (tier != null) {
       _json["tier"] = tier;

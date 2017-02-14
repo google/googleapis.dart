@@ -143,7 +143,10 @@ class AnnotateImageResponse {
   core.List<EntityAnnotation> logoAnnotations;
   /** If present, safe-search annotation has completed successfully. */
   SafeSearchAnnotation safeSearchAnnotation;
-  /** If present, text (OCR) detection has completed successfully. */
+  /**
+   * If present, text (OCR) detection or document (OCR) text detection has
+   * completed successfully.
+   */
   core.List<EntityAnnotation> textAnnotations;
 
   AnnotateImageResponse();
@@ -1038,6 +1041,7 @@ class ImageProperties {
 /** External image source (Google Cloud Storage image location). */
 class ImageSource {
   /**
+   * NOTE: For new code `image_uri` below is preferred.
    * Google Cloud Storage image URI, which must be in the following form:
    * `gs://bucket_name/object_name` (for details, see
    * [Google Cloud Storage Request
@@ -1335,6 +1339,11 @@ class Property {
   }
 }
 
+/**
+ * Set of features pertaining to the image, computed by computer vision
+ * methods over safe-search verticals (for example, adult, spoof, medical,
+ * violence).
+ */
 class SafeSearchAnnotation {
   /**
    * Represents the adult content likelihood for the image.

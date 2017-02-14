@@ -3026,7 +3026,10 @@ class Bucket {
   core.List<ObjectAccessControl> defaultObjectAcl;
   /** HTTP 1.1 Entity tag for the bucket. */
   core.String etag;
-  /** The ID of the bucket. */
+  /**
+   * The ID of the bucket. For buckets, the id and name properities are the
+   * same.
+   */
   core.String id;
   /** The kind of item this is. For buckets, this is always storage#bucket. */
   core.String kind;
@@ -3751,7 +3754,10 @@ class Object {
   core.String etag;
   /** The content generation of this object. Used for object versioning. */
   core.String generation;
-  /** The ID of the object. */
+  /**
+   * The ID of the object, including the bucket name, object name, and
+   * generation number.
+   */
   core.String id;
   /** The kind of item this is. For objects, this is always storage#object. */
   core.String kind;
@@ -3771,7 +3777,7 @@ class Object {
    * particular object.
    */
   core.String metageneration;
-  /** The name of this object. Required if not specified by URL parameter. */
+  /** The name of the object. Required if not specified by URL parameter. */
   core.String name;
   /**
    * The owner of the object. This will always be the uploader of the object.

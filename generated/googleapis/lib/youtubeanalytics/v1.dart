@@ -529,6 +529,10 @@ class ReportsResourceApi {
    * video==dMH0bHeiRNg;country==IT restricts the result set to include data for
    * the given video in Italy.
    *
+   * [include_historical_channel_data] - If set to true historical data (i.e.
+   * channel data from before the linking of the channel to the content owner)
+   * will be retrieved.
+   *
    * [max_results] - The maximum number of rows to include in the response.
    *
    * [sort] - A comma-separated list of dimensions or metrics that determine the
@@ -548,7 +552,7 @@ class ReportsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ResultTable> query(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String currency, core.String dimensions, core.String filters, core.int max_results, core.String sort, core.int start_index}) {
+  async.Future<ResultTable> query(core.String ids, core.String start_date, core.String end_date, core.String metrics, {core.String currency, core.String dimensions, core.String filters, core.bool include_historical_channel_data, core.int max_results, core.String sort, core.int start_index}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -580,6 +584,9 @@ class ReportsResourceApi {
     }
     if (filters != null) {
       _queryParams["filters"] = [filters];
+    }
+    if (include_historical_channel_data != null) {
+      _queryParams["include-historical-channel-data"] = ["${include_historical_channel_data}"];
     }
     if (max_results != null) {
       _queryParams["max-results"] = ["${max_results}"];

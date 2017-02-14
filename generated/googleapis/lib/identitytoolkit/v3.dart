@@ -803,7 +803,7 @@ class DeleteAccountResponse {
   }
 }
 
-/** Respone of downloading accounts in batch. */
+/** Response of downloading accounts in batch. */
 class DownloadAccountResponse {
   /** The fixed string "identitytoolkit#DownloadAccountResponse". */
   core.String kind;
@@ -1896,6 +1896,8 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   core.String idToken;
   /** Instance id token of the app. */
   core.String instanceId;
+  /** Privileged caller can create user with specified user id. */
+  core.String localId;
   /** The new password of the user. */
   core.String password;
   /** The photo url of the user. */
@@ -1927,6 +1929,9 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
     if (_json.containsKey("instanceId")) {
       instanceId = _json["instanceId"];
+    }
+    if (_json.containsKey("localId")) {
+      localId = _json["localId"];
     }
     if (_json.containsKey("password")) {
       password = _json["password"];
@@ -1961,6 +1966,9 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
+    }
+    if (localId != null) {
+      _json["localId"] = localId;
     }
     if (password != null) {
       _json["password"] = password;
@@ -2588,6 +2596,8 @@ class SetAccountInfoResponse {
   core.String displayName;
   /** The email of the user. */
   core.String email;
+  /** If email has been verified. */
+  core.bool emailVerified;
   /**
    * If idToken is STS id token, then this field will be expiration time of STS
    * id token in seconds.
@@ -2626,6 +2636,9 @@ class SetAccountInfoResponse {
     if (_json.containsKey("email")) {
       email = _json["email"];
     }
+    if (_json.containsKey("emailVerified")) {
+      emailVerified = _json["emailVerified"];
+    }
     if (_json.containsKey("expiresIn")) {
       expiresIn = _json["expiresIn"];
     }
@@ -2662,6 +2675,9 @@ class SetAccountInfoResponse {
     }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (emailVerified != null) {
+      _json["emailVerified"] = emailVerified;
     }
     if (expiresIn != null) {
       _json["expiresIn"] = expiresIn;
@@ -3116,6 +3132,8 @@ class VerifyAssertionResponse {
    * from the asserted email.
    */
   core.String inputEmail;
+  /** True if it's a new user sign-in, false if it's a returning user. */
+  core.bool isNewUser;
   /** The fixed string "identitytoolkit#VerifyAssertionResponse". */
   core.String kind;
   /** The language preference of the user. */
@@ -3230,6 +3248,9 @@ class VerifyAssertionResponse {
     }
     if (_json.containsKey("inputEmail")) {
       inputEmail = _json["inputEmail"];
+    }
+    if (_json.containsKey("isNewUser")) {
+      isNewUser = _json["isNewUser"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3348,6 +3369,9 @@ class VerifyAssertionResponse {
     }
     if (inputEmail != null) {
       _json["inputEmail"] = inputEmail;
+    }
+    if (isNewUser != null) {
+      _json["isNewUser"] = isNewUser;
     }
     if (kind != null) {
       _json["kind"] = kind;

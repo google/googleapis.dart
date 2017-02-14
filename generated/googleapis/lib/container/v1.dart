@@ -604,6 +604,129 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     return _response.then((data) => new ListNodePoolsResponse.fromJson(data));
   }
 
+  /**
+   * Roll back the previously Aborted or Failed NodePool upgrade. This will be
+   * an no-op if the last upgrade successfully completed.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster resides.
+   *
+   * [clusterId] - The name of the cluster to rollback.
+   *
+   * [nodePoolId] - The name of the node pool to rollback.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> rollback(RollbackNodePoolUpgradeRequest request, core.String projectId, core.String zone, core.String clusterId, core.String nodePoolId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (nodePoolId == null) {
+      throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools/' + commons.Escaper.ecapeVariable('$nodePoolId') + ':rollback';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets the NodeManagement options for a node pool.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster resides.
+   *
+   * [clusterId] - The name of the cluster to update.
+   *
+   * [nodePoolId] - The name of the node pool to update.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setManagement(SetNodePoolManagementRequest request, core.String projectId, core.String zone, core.String clusterId, core.String nodePoolId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (nodePoolId == null) {
+      throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools/' + commons.Escaper.ecapeVariable('$nodePoolId') + '/setManagement';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
 }
 
 
@@ -612,6 +735,62 @@ class ProjectsZonesOperationsResourceApi {
 
   ProjectsZonesOperationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Cancels the specified operation.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the operation resides.
+   *
+   * [operationId] - The server-assigned `name` of the operation.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String projectId, core.String zone, core.String operationId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (operationId == null) {
+      throw new core.ArgumentError("Parameter operationId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/operations/' + commons.Escaper.ecapeVariable('$operationId') + ':cancel';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
 
   /**
    * Gets the specified operation.
@@ -755,6 +934,60 @@ class AddonsConfig {
   }
 }
 
+/**
+ * AutoUpgradeOptions defines the set of options for the user to control how the
+ * Auto Upgrades will proceed.
+ */
+class AutoUpgradeOptions {
+  /**
+   * [Output only] This field is set when upgrades are about to commence with
+   * the approximate start time for the upgrades, in
+   * [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+   */
+  core.String autoUpgradeStartTime;
+  /**
+   * [Output only] This field is set when upgrades are about to commence with
+   * the description of the upgrade.
+   */
+  core.String description;
+
+  AutoUpgradeOptions();
+
+  AutoUpgradeOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("autoUpgradeStartTime")) {
+      autoUpgradeStartTime = _json["autoUpgradeStartTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (autoUpgradeStartTime != null) {
+      _json["autoUpgradeStartTime"] = autoUpgradeStartTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    return _json;
+  }
+}
+
+/** CancelOperationRequest cancels a single operation. */
+class CancelOperationRequest {
+
+  CancelOperationRequest();
+
+  CancelOperationRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
 /** A Google Container Engine cluster. */
 class Cluster {
   /** Configurations for the various addons available to run in the cluster. */
@@ -784,12 +1017,25 @@ class Cluster {
   /** An optional description of this cluster. */
   core.String description;
   /**
+   * Kubernetes alpha features are enabled on this cluster. This includes alpha
+   * API groups (e.g. v1alpha1) and features that may not be production ready in
+   * the kubernetes version of the master and nodes. The cluster has no SLA for
+   * uptime and master/node upgrades are disabled. Alpha enabled clusters are
+   * automatically deleted thirty days after creation.
+   */
+  core.bool enableKubernetesAlpha;
+  /**
    * [Output only] The IP address of this cluster's master endpoint. The
    * endpoint can be accessed from the internet at
    * `https://username:password@endpoint/`. See the `masterAuth` property of
    * this resource for username and password information.
    */
   core.String endpoint;
+  /**
+   * [Output only] The time the cluster will be automatically deleted in
+   * [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+   */
+  core.String expireTime;
   /**
    * [Output only] The software version of the master endpoint and kubelets used
    * in the cluster when it was first created. The version can be upgraded over
@@ -865,8 +1111,7 @@ class Cluster {
    */
   core.int nodeIpv4CidrSize;
   /**
-   * The node pools associated with this cluster. When creating a new cluster,
-   * only a single node pool should be specified. This field should not be set
+   * The node pools associated with this cluster. This field should not be set
    * if "node_config" or "initial_node_count" are specified.
    */
   core.List<NodePool> nodePools;
@@ -931,8 +1176,14 @@ class Cluster {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("enableKubernetesAlpha")) {
+      enableKubernetesAlpha = _json["enableKubernetesAlpha"];
+    }
     if (_json.containsKey("endpoint")) {
       endpoint = _json["endpoint"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
     }
     if (_json.containsKey("initialClusterVersion")) {
       initialClusterVersion = _json["initialClusterVersion"];
@@ -1013,8 +1264,14 @@ class Cluster {
     if (description != null) {
       _json["description"] = description;
     }
+    if (enableKubernetesAlpha != null) {
+      _json["enableKubernetesAlpha"] = enableKubernetesAlpha;
+    }
     if (endpoint != null) {
       _json["endpoint"] = endpoint;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
     }
     if (initialClusterVersion != null) {
       _json["initialClusterVersion"] = initialClusterVersion;
@@ -1082,6 +1339,20 @@ class ClusterUpdate {
   /** Configurations for the various addons available to run in the cluster. */
   AddonsConfig desiredAddonsConfig;
   /**
+   * The desired image type for the node pool. NOTE: Set the "desired_node_pool"
+   * field as well.
+   */
+  core.String desiredImageType;
+  /**
+   * The desired list of Google Compute Engine
+   * [locations](/compute/docs/zones#available) in which the cluster's nodes
+   * should be located. Changing the locations a cluster is in will result in
+   * nodes being either created or removed from the cluster, depending on
+   * whether locations are being added or removed. This list must always include
+   * the cluster's primary zone.
+   */
+  core.List<core.String> desiredLocations;
+  /**
    * The Kubernetes version to change the master to. The only valid value is the
    * latest supported version. Use "-" to have the server automatically select
    * the latest version.
@@ -1094,9 +1365,17 @@ class ClusterUpdate {
    */
   core.String desiredMonitoringService;
   /**
-   * The node pool to be upgraded. This field is mandatory if the
-   * "desired_node_version" or "desired_image_family" is specified and there is
-   * more than one node pool on the cluster.
+   * Autoscaler configuration for the node pool specified in
+   * desired_node_pool_id. If there is only one pool in the cluster and
+   * desired_node_pool_id is not provided then the change applies to that single
+   * node pool.
+   */
+  NodePoolAutoscaling desiredNodePoolAutoscaling;
+  /**
+   * The node pool to be upgraded. This field is mandatory if
+   * "desired_node_version", "desired_image_family" or
+   * "desired_node_pool_autoscaling" is specified and there is more than one
+   * node pool on the cluster.
    */
   core.String desiredNodePoolId;
   /**
@@ -1111,11 +1390,20 @@ class ClusterUpdate {
     if (_json.containsKey("desiredAddonsConfig")) {
       desiredAddonsConfig = new AddonsConfig.fromJson(_json["desiredAddonsConfig"]);
     }
+    if (_json.containsKey("desiredImageType")) {
+      desiredImageType = _json["desiredImageType"];
+    }
+    if (_json.containsKey("desiredLocations")) {
+      desiredLocations = _json["desiredLocations"];
+    }
     if (_json.containsKey("desiredMasterVersion")) {
       desiredMasterVersion = _json["desiredMasterVersion"];
     }
     if (_json.containsKey("desiredMonitoringService")) {
       desiredMonitoringService = _json["desiredMonitoringService"];
+    }
+    if (_json.containsKey("desiredNodePoolAutoscaling")) {
+      desiredNodePoolAutoscaling = new NodePoolAutoscaling.fromJson(_json["desiredNodePoolAutoscaling"]);
     }
     if (_json.containsKey("desiredNodePoolId")) {
       desiredNodePoolId = _json["desiredNodePoolId"];
@@ -1130,11 +1418,20 @@ class ClusterUpdate {
     if (desiredAddonsConfig != null) {
       _json["desiredAddonsConfig"] = (desiredAddonsConfig).toJson();
     }
+    if (desiredImageType != null) {
+      _json["desiredImageType"] = desiredImageType;
+    }
+    if (desiredLocations != null) {
+      _json["desiredLocations"] = desiredLocations;
+    }
     if (desiredMasterVersion != null) {
       _json["desiredMasterVersion"] = desiredMasterVersion;
     }
     if (desiredMonitoringService != null) {
       _json["desiredMonitoringService"] = desiredMonitoringService;
+    }
+    if (desiredNodePoolAutoscaling != null) {
+      _json["desiredNodePoolAutoscaling"] = (desiredNodePoolAutoscaling).toJson();
     }
     if (desiredNodePoolId != null) {
       _json["desiredNodePoolId"] = desiredNodePoolId;
@@ -1189,6 +1486,26 @@ class CreateNodePoolRequest {
     if (nodePool != null) {
       _json["nodePool"] = (nodePool).toJson();
     }
+    return _json;
+  }
+}
+
+/**
+ * A generic empty message that you can re-use to avoid defining duplicated
+ * empty messages in your APIs. A typical example is to use it as the request or
+ * the response type of an API method. For instance: service Foo { rpc
+ * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+ * representation for `Empty` is empty JSON object `{}`.
+ */
+class Empty {
+
+  Empty();
+
+  Empty.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
     return _json;
   }
 }
@@ -1424,6 +1741,29 @@ class NodeConfig {
    */
   core.int diskSizeGb;
   /**
+   * The image type to use for this node. Note that for a given image type, the
+   * latest version of it will be used.
+   */
+  core.String imageType;
+  /**
+   * The map of Kubernetes labels (key/value pairs) to be applied to each node.
+   * These will added in addition to any default label(s) that Kubernetes may
+   * apply to the node. In case of conflict in label keys, the applied set may
+   * differ depending on the Kubernetes version -- it's best to assume the
+   * behavior is undefined and conflicts should be avoided. For more
+   * information, including usage and the valid values, see:
+   * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+   */
+  core.Map<core.String, core.String> labels;
+  /**
+   * The number of local SSD disks to be attached to the node. The limit for
+   * this value is dependant upon the maximum number of disks available on a
+   * machine per zone. See:
+   * https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits for
+   * more information.
+   */
+  core.int localSsdCount;
+  /**
    * The name of a Google Compute Engine [machine
    * type](/compute/docs/machine-types) (e.g. `n1-standard-1`). If unspecified,
    * the default machine type is `n1-standard-1`.
@@ -1455,12 +1795,39 @@ class NodeConfig {
    * required scopes will be added.
    */
   core.List<core.String> oauthScopes;
+  /**
+   * Whether the nodes are created as preemptible VM instances. See:
+   * https://cloud.google.com/compute/docs/instances/preemptible for more
+   * inforamtion about preemptible VM instances.
+   */
+  core.bool preemptible;
+  /**
+   * The Google Cloud Platform Service Account to be used by the node VMs. If no
+   * Service Account is specified, the "default" service account is used.
+   */
+  core.String serviceAccount;
+  /**
+   * The list of instance tags applied to all nodes. Tags are used to identify
+   * valid sources or targets for network firewalls and are specified by the
+   * client during cluster or node pool creation. Each tag within the list must
+   * comply with RFC1035.
+   */
+  core.List<core.String> tags;
 
   NodeConfig();
 
   NodeConfig.fromJson(core.Map _json) {
     if (_json.containsKey("diskSizeGb")) {
       diskSizeGb = _json["diskSizeGb"];
+    }
+    if (_json.containsKey("imageType")) {
+      imageType = _json["imageType"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+    if (_json.containsKey("localSsdCount")) {
+      localSsdCount = _json["localSsdCount"];
     }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
@@ -1471,12 +1838,30 @@ class NodeConfig {
     if (_json.containsKey("oauthScopes")) {
       oauthScopes = _json["oauthScopes"];
     }
+    if (_json.containsKey("preemptible")) {
+      preemptible = _json["preemptible"];
+    }
+    if (_json.containsKey("serviceAccount")) {
+      serviceAccount = _json["serviceAccount"];
+    }
+    if (_json.containsKey("tags")) {
+      tags = _json["tags"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
+    }
+    if (imageType != null) {
+      _json["imageType"] = imageType;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (localSsdCount != null) {
+      _json["localSsdCount"] = localSsdCount;
     }
     if (machineType != null) {
       _json["machineType"] = machineType;
@@ -1486,6 +1871,48 @@ class NodeConfig {
     }
     if (oauthScopes != null) {
       _json["oauthScopes"] = oauthScopes;
+    }
+    if (preemptible != null) {
+      _json["preemptible"] = preemptible;
+    }
+    if (serviceAccount != null) {
+      _json["serviceAccount"] = serviceAccount;
+    }
+    if (tags != null) {
+      _json["tags"] = tags;
+    }
+    return _json;
+  }
+}
+
+/**
+ * NodeManagement defines the set of node management services turned on for the
+ * node pool.
+ */
+class NodeManagement {
+  /** Whether the nodes will be automatically upgraded. */
+  core.bool autoUpgrade;
+  /** Specifies the Auto Upgrade knobs for the node pool. */
+  AutoUpgradeOptions upgradeOptions;
+
+  NodeManagement();
+
+  NodeManagement.fromJson(core.Map _json) {
+    if (_json.containsKey("autoUpgrade")) {
+      autoUpgrade = _json["autoUpgrade"];
+    }
+    if (_json.containsKey("upgradeOptions")) {
+      upgradeOptions = new AutoUpgradeOptions.fromJson(_json["upgradeOptions"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (autoUpgrade != null) {
+      _json["autoUpgrade"] = autoUpgrade;
+    }
+    if (upgradeOptions != null) {
+      _json["upgradeOptions"] = (upgradeOptions).toJson();
     }
     return _json;
   }
@@ -1500,6 +1927,11 @@ class NodeConfig {
  * the workload.
  */
 class NodePool {
+  /**
+   * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a
+   * valid configuration is present.
+   */
+  NodePoolAutoscaling autoscaling;
   /** The node configuration of the pool. */
   NodeConfig config;
   /**
@@ -1513,12 +1945,14 @@ class NodePool {
    * groups](/compute/docs/instance-groups/) associated with this node pool.
    */
   core.List<core.String> instanceGroupUrls;
+  /** NodeManagement configuration for this NodePool. */
+  NodeManagement management;
   /** The name of the node pool. */
   core.String name;
-  /** Server-defined URL for the resource. */
+  /** [Output only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
-   * The status of the nodes in this pool instance.
+   * [Output only] The status of the nodes in this pool instance.
    * Possible string values are:
    * - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
    * - "PROVISIONING" : A PROVISIONING.
@@ -1534,12 +1968,15 @@ class NodePool {
    * pool instance, if available.
    */
   core.String statusMessage;
-  /** The version of the Kubernetes of this node. */
+  /** [Output only] The version of the Kubernetes of this node. */
   core.String version;
 
   NodePool();
 
   NodePool.fromJson(core.Map _json) {
+    if (_json.containsKey("autoscaling")) {
+      autoscaling = new NodePoolAutoscaling.fromJson(_json["autoscaling"]);
+    }
     if (_json.containsKey("config")) {
       config = new NodeConfig.fromJson(_json["config"]);
     }
@@ -1548,6 +1985,9 @@ class NodePool {
     }
     if (_json.containsKey("instanceGroupUrls")) {
       instanceGroupUrls = _json["instanceGroupUrls"];
+    }
+    if (_json.containsKey("management")) {
+      management = new NodeManagement.fromJson(_json["management"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1568,6 +2008,9 @@ class NodePool {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (autoscaling != null) {
+      _json["autoscaling"] = (autoscaling).toJson();
+    }
     if (config != null) {
       _json["config"] = (config).toJson();
     }
@@ -1576,6 +2019,9 @@ class NodePool {
     }
     if (instanceGroupUrls != null) {
       _json["instanceGroupUrls"] = instanceGroupUrls;
+    }
+    if (management != null) {
+      _json["management"] = (management).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1591,6 +2037,53 @@ class NodePool {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/**
+ * NodePoolAutoscaling contains information required by cluster autoscaler to
+ * adjust the size of the node pool to the current cluster usage.
+ */
+class NodePoolAutoscaling {
+  /** Is autoscaling enabled for this node pool. */
+  core.bool enabled;
+  /**
+   * Maximum number of nodes in the NodePool. Must be >= min_node_count. There
+   * has to enough quota to scale up the cluster.
+   */
+  core.int maxNodeCount;
+  /**
+   * Minimum number of nodes in the NodePool. Must be >= 1 and <=
+   * max_node_count.
+   */
+  core.int minNodeCount;
+
+  NodePoolAutoscaling();
+
+  NodePoolAutoscaling.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("maxNodeCount")) {
+      maxNodeCount = _json["maxNodeCount"];
+    }
+    if (_json.containsKey("minNodeCount")) {
+      minNodeCount = _json["minNodeCount"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (maxNodeCount != null) {
+      _json["maxNodeCount"] = maxNodeCount;
+    }
+    if (minNodeCount != null) {
+      _json["minNodeCount"] = minNodeCount;
     }
     return _json;
   }
@@ -1617,6 +2110,7 @@ class Operation {
    * - "UPDATE_CLUSTER" : A UPDATE_CLUSTER.
    * - "CREATE_NODE_POOL" : A CREATE_NODE_POOL.
    * - "DELETE_NODE_POOL" : A DELETE_NODE_POOL.
+   * - "SET_NODE_POOL_MANAGEMENT" : A SET_NODE_POOL_MANAGEMENT.
    */
   core.String operationType;
   /** Server-defined URL for the resource. */
@@ -1628,6 +2122,7 @@ class Operation {
    * - "PENDING" : A PENDING.
    * - "RUNNING" : A RUNNING.
    * - "DONE" : A DONE.
+   * - "ABORTING" : A ABORTING.
    */
   core.String status;
   /** If an error has occurred, a textual description of the error. */
@@ -1699,14 +2194,34 @@ class Operation {
   }
 }
 
+/**
+ * RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed
+ * NodePool upgrade. This will be an no-op if the last upgrade successfully
+ * completed.
+ */
+class RollbackNodePoolUpgradeRequest {
+
+  RollbackNodePoolUpgradeRequest();
+
+  RollbackNodePoolUpgradeRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
 /** Container Engine service configuration. */
 class ServerConfig {
   /** Version of Kubernetes the service deploys by default. */
   core.String defaultClusterVersion;
-  /** Default image family. */
-  core.String defaultImageFamily;
-  /** List of valid image families. */
-  core.List<core.String> validImageFamilies;
+  /** Default image type. */
+  core.String defaultImageType;
+  /** List of valid image types. */
+  core.List<core.String> validImageTypes;
+  /** List of valid master versions. */
+  core.List<core.String> validMasterVersions;
   /** List of valid node upgrade target versions. */
   core.List<core.String> validNodeVersions;
 
@@ -1716,11 +2231,14 @@ class ServerConfig {
     if (_json.containsKey("defaultClusterVersion")) {
       defaultClusterVersion = _json["defaultClusterVersion"];
     }
-    if (_json.containsKey("defaultImageFamily")) {
-      defaultImageFamily = _json["defaultImageFamily"];
+    if (_json.containsKey("defaultImageType")) {
+      defaultImageType = _json["defaultImageType"];
     }
-    if (_json.containsKey("validImageFamilies")) {
-      validImageFamilies = _json["validImageFamilies"];
+    if (_json.containsKey("validImageTypes")) {
+      validImageTypes = _json["validImageTypes"];
+    }
+    if (_json.containsKey("validMasterVersions")) {
+      validMasterVersions = _json["validMasterVersions"];
     }
     if (_json.containsKey("validNodeVersions")) {
       validNodeVersions = _json["validNodeVersions"];
@@ -1732,14 +2250,42 @@ class ServerConfig {
     if (defaultClusterVersion != null) {
       _json["defaultClusterVersion"] = defaultClusterVersion;
     }
-    if (defaultImageFamily != null) {
-      _json["defaultImageFamily"] = defaultImageFamily;
+    if (defaultImageType != null) {
+      _json["defaultImageType"] = defaultImageType;
     }
-    if (validImageFamilies != null) {
-      _json["validImageFamilies"] = validImageFamilies;
+    if (validImageTypes != null) {
+      _json["validImageTypes"] = validImageTypes;
+    }
+    if (validMasterVersions != null) {
+      _json["validMasterVersions"] = validMasterVersions;
     }
     if (validNodeVersions != null) {
       _json["validNodeVersions"] = validNodeVersions;
+    }
+    return _json;
+  }
+}
+
+/**
+ * SetNodePoolManagementRequest sets the node management properties of a node
+ * pool.
+ */
+class SetNodePoolManagementRequest {
+  /** NodeManagement configuration for the node pool. */
+  NodeManagement management;
+
+  SetNodePoolManagementRequest();
+
+  SetNodePoolManagementRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("management")) {
+      management = new NodeManagement.fromJson(_json["management"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (management != null) {
+      _json["management"] = (management).toJson();
     }
     return _json;
   }

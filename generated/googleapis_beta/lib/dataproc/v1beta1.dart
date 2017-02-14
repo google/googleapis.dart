@@ -14,9 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client dataproc/v1beta1';
 
-/**
- * An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
- */
+/** Manages Hadoop-based clusters and jobs on Google Cloud Platform. */
 class DataprocApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -42,8 +40,7 @@ class OperationsResourceApi {
    * Starts asynchronous cancellation on a long-running operation. The server
    * makes a best effort to cancel the operation, but success is not guaranteed.
    * If the server doesn't support this method, it returns
-   * `google.rpc.Code.UNIMPLEMENTED`. Clients can use
-   * [operations.get](/dataproc/reference/rest/v1beta1/operations/get) or other
+   * google.rpc.Code.UNIMPLEMENTED. Clients can use operations.get or other
    * methods to check whether the cancellation succeeded or whether the
    * operation completed despite cancellation.
    *
@@ -93,7 +90,7 @@ class OperationsResourceApi {
    * Deletes a long-running operation. This method indicates that the client is
    * no longer interested in the operation result. It does not cancel the
    * operation. If the server doesn't support this method, it returns
-   * `google.rpc.Code.UNIMPLEMENTED`.
+   * google.rpc.Code.UNIMPLEMENTED.
    *
    * Request parameters:
    *
@@ -176,20 +173,20 @@ class OperationsResourceApi {
 
   /**
    * Lists operations that match the specified filter in the request. If the
-   * server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-   * `name` binding below allows API services to override the binding to use
-   * different resource name schemes, such as `users / * /operations`.
+   * server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
+   * binding below allows API services to override the binding to use different
+   * resource name schemes, such as users / * /operations.
    *
    * Request parameters:
    *
    * [name] - The name of the operation collection.
    * Value must have pattern "^operations$".
    *
-   * [filter] - The standard list filter.
+   * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
    *
-   * [pageToken] - The standard list page token.
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -199,7 +196,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.int pageSize, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -210,14 +207,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -259,8 +256,8 @@ class ProjectsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the cluster belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * cluster belongs to.
    *
    * Completes with a [Operation].
    *
@@ -302,10 +299,10 @@ class ProjectsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the cluster belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * cluster belongs to.
    *
-   * [clusterName] - [Required] The cluster name.
+   * [clusterName] - Required The cluster name.
    *
    * Completes with a [Operation].
    *
@@ -344,16 +341,16 @@ class ProjectsClustersResourceApi {
 
   /**
    * Gets cluster diagnostic information. After the operation completes, the
-   * Operation.response field contains `DiagnoseClusterOutputLocation`.
+   * Operation.response field contains DiagnoseClusterOutputLocation.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the cluster belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * cluster belongs to.
    *
-   * [clusterName] - [Required] The cluster name.
+   * [clusterName] - Required The cluster name.
    *
    * Completes with a [Operation].
    *
@@ -398,10 +395,10 @@ class ProjectsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the cluster belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * cluster belongs to.
    *
-   * [clusterName] - [Required] The cluster name.
+   * [clusterName] - Required The cluster name.
    *
    * Completes with a [Cluster].
    *
@@ -443,16 +440,16 @@ class ProjectsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the cluster belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * cluster belongs to.
    *
-   * [filter] - [Optional] A filter constraining which clusters to list. Valid
+   * [filter] - Optional A filter constraining which clusters to list. Valid
    * filters contain label terms such as: labels.key1 = val1 AND (-labels.k2 =
    * val2 OR labels.k3 = val3)
    *
-   * [pageSize] - The standard List page size.
-   *
    * [pageToken] - The standard List page token.
+   *
+   * [pageSize] - The standard List page size.
    *
    * Completes with a [ListClustersResponse].
    *
@@ -462,7 +459,7 @@ class ProjectsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, {core.String filter, core.int pageSize, core.String pageToken}) {
+  async.Future<ListClustersResponse> list(core.String projectId, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -476,11 +473,11 @@ class ProjectsClustersResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/clusters';
@@ -502,24 +499,39 @@ class ProjectsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project the
+   * [projectId] - Required The ID of the Google Cloud Platform project the
    * cluster belongs to.
    *
-   * [clusterName] - [Required] The cluster name.
+   * [clusterName] - Required The cluster name.
    *
-   * [updateMask] - [Required] Specifies the path, relative to Cluster, of the
-   * field to update. For example, to change the number of workers in a cluster
-   * to 5, the update_mask parameter would be specified as
-   * configuration.worker_configuration.num_instances, and the `PATCH` request
-   * body would specify the new value, as follows: { "configuration":{
-   * "workerConfiguration":{ "numInstances":"5" } } } Similarly, to change the
-   * number of preemptible workers in a cluster to 5, the update_mask parameter
-   * would be config.secondary_worker_config.num_instances, and the `PATCH`
-   * request body would be set as follows: { "config":{
-   * "secondaryWorkerConfig":{ "numInstances":"5" } } } Note: Currently,
-   * config.worker_config.num_instances and
-   * config.secondary_worker_config.num_instances are the only fields that can
-   * be updated.
+   * [updateMask] - Required Specifies the path, relative to
+   * <code>Cluster</code>, of the field to update. For example, to change the
+   * number of workers in a cluster to 5, the <code>update_mask</code> parameter
+   * would be specified as
+   * <code>configuration.worker_configuration.num_instances</code>, and the
+   * PATCH request body would specify the new value, as follows:
+   * {
+   *   "configuration":{
+   *     "workerConfiguration":{
+   *       "numInstances":"5"
+   *     }
+   *   }
+   * }
+   * Similarly, to change the number of preemptible workers in a cluster to 5,
+   * the <code>update_mask</code> parameter would be
+   * <code>config.secondary_worker_config.num_instances</code>, and the PATCH
+   * request body would be set as follows:
+   * {
+   *   "config":{
+   *     "secondaryWorkerConfig":{
+   *       "numInstances":"5"
+   *     }
+   *   }
+   * }
+   * <strong>Note:</strong> Currently,
+   * <code>config.worker_config.num_instances</code> and
+   * <code>config.secondary_worker_config.num_instances</code> are the only
+   * fields that can be updated.
    *
    * Completes with a [Operation].
    *
@@ -573,18 +585,16 @@ class ProjectsJobsResourceApi {
 
   /**
    * Starts a job cancellation request. To access the job resource after
-   * cancellation, call
-   * [jobs.list](/dataproc/reference/rest/v1beta1/projects.jobs/list) or
-   * [jobs.get](/dataproc/reference/rest/v1beta1/projects.jobs/get).
+   * cancellation, call jobs.list or jobs.get.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the job belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * job belongs to.
    *
-   * [jobId] - [Required] The job ID.
+   * [jobId] - Required The job ID.
    *
    * Completes with a [Job].
    *
@@ -626,14 +636,14 @@ class ProjectsJobsResourceApi {
 
   /**
    * Deletes the job from the project. If the job is active, the delete fails,
-   * and the response returns `FAILED_PRECONDITION`.
+   * and the response returns FAILED_PRECONDITION.
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the job belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * job belongs to.
    *
-   * [jobId] - [Required] The job ID.
+   * [jobId] - Required The job ID.
    *
    * Completes with a [Empty].
    *
@@ -675,10 +685,10 @@ class ProjectsJobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the job belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * job belongs to.
    *
-   * [jobId] - [Required] The job ID.
+   * [jobId] - Required The job ID.
    *
    * Completes with a [Job].
    *
@@ -720,27 +730,27 @@ class ProjectsJobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the job belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * job belongs to.
    *
-   * [pageSize] - [Optional] The number of results to return in each response.
-   *
-   * [pageToken] - [Optional] The page token, returned by a previous call, to
+   * [pageToken] - Optional The page token, returned by a previous call, to
    * request the next page of results.
    *
-   * [clusterName] - [Optional] If set, the returned jobs list includes only
-   * jobs that were submitted to the named cluster.
+   * [pageSize] - Optional The number of results to return in each response.
    *
-   * [jobStateMatcher] - [Optional] Specifies enumerated categories of jobs to
+   * [clusterName] - Optional If set, the returned jobs list includes only jobs
+   * that were submitted to the named cluster.
+   *
+   * [filter] - Optional A filter constraining which jobs to list. Valid filters
+   * contain job state and label terms such as: labels.key1 = val1 AND
+   * (labels.k2 = val2 OR labels.k3 = val3)
+   *
+   * [jobStateMatcher] - Optional Specifies enumerated categories of jobs to
    * list.
    * Possible string values are:
    * - "ALL" : A ALL.
    * - "ACTIVE" : A ACTIVE.
    * - "NON_ACTIVE" : A NON_ACTIVE.
-   *
-   * [filter] - [Optional] A filter constraining which jobs to list. Valid
-   * filters contain job state and label terms such as: labels.key1 = val1 AND
-   * (labels.k2 = val2 OR labels.k3 = val3)
    *
    * Completes with a [ListJobsResponse].
    *
@@ -750,7 +760,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.int pageSize, core.String pageToken, core.String clusterName, core.String jobStateMatcher, core.String filter}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String clusterName, core.String filter, core.String jobStateMatcher}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -761,20 +771,20 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
     }
-    if (jobStateMatcher != null) {
-      _queryParams["jobStateMatcher"] = [jobStateMatcher];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (jobStateMatcher != null) {
+      _queryParams["jobStateMatcher"] = [jobStateMatcher];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -790,14 +800,74 @@ class ProjectsJobsResourceApi {
   }
 
   /**
+   * Updates a job in a project.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * job belongs to.
+   *
+   * [jobId] - Required The job ID.
+   *
+   * [updateMask] - Required Specifies the path, relative to <code>Job</code>,
+   * of the field to update. For example, to update the labels of a Job the
+   * <code>update_mask</code> parameter would be specified as
+   * <code>labels</code>, and the PATCH request body would specify the new
+   * value. <strong>Note:</strong> Currently, <code>labels</code> is the only
+   * field that can be updated.
+   *
+   * Completes with a [Job].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Job> patch(Job request, core.String projectId, core.String jobId, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Job.fromJson(data));
+  }
+
+  /**
    * Submits a job to a cluster.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [projectId] - [Required] The ID of the Google Cloud Platform project that
-   * the job belongs to.
+   * [projectId] - Required The ID of the Google Cloud Platform project that the
+   * job belongs to.
    *
    * Completes with a [Job].
    *
@@ -872,39 +942,38 @@ class CancelOperationRequest {
  */
 class Cluster {
   /**
-   * [Required] The cluster name. Cluster names within a project must be unique.
+   * Required The cluster name. Cluster names within a project must be unique.
    * Names from deleted clusters can be reused.
    */
   core.String clusterName;
   /**
-   * [Output-only] A cluster UUID (Unique Universal Identifier). Cloud Dataproc
+   * Output-only A cluster UUID (Unique Universal Identifier). Cloud Dataproc
    * generates this value when it creates the cluster.
    */
   core.String clusterUuid;
   /**
-   * [Required] The cluster configuration. Note that Cloud Dataproc may set
+   * Required The cluster configuration. Note that Cloud Dataproc may set
    * default values, and values may change when clusters are updated.
    */
   ClusterConfiguration configuration;
   /**
-   * [Optional] The labels to associate with this cluster. Label keys must be
+   * Optional The labels to associate with this cluster.Label keys must be
    * between 1 and 63 characters long, and must conform to the following PCRE
-   * regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and
-   * 63 characters long, and must conform to the following PCRE regular
-   * expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be
-   * associated with a given cluster.
+   * regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63
+   * characters long, and must conform to the following PCRE regular expression:
+   * \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 64 labels can be associated with a
+   * given cluster.
    */
   core.Map<core.String, core.String> labels;
   /** Contains cluster daemon metrics such as HDFS and YARN stats. */
   ClusterMetrics metrics;
   /**
-   * [Required] The Google Cloud Platform project ID that the cluster belongs
-   * to.
+   * Required The Google Cloud Platform project ID that the cluster belongs to.
    */
   core.String projectId;
-  /** [Output-only] Cluster status. */
+  /** Output-only Cluster status. */
   ClusterStatus status;
-  /** [Output-only] Previous cluster statuses. */
+  /** Output-only Previous cluster statuses. */
   core.List<ClusterStatus> statusHistory;
 
   Cluster();
@@ -969,7 +1038,7 @@ class Cluster {
 /** The cluster configuration. */
 class ClusterConfiguration {
   /**
-   * [Optional] A Google Cloud Storage staging bucket used for sharing generated
+   * Optional A Google Cloud Storage staging bucket used for sharing generated
    * SSH keys and configuration. If you do not specify a staging bucket, Cloud
    * Dataproc will determine an appropriate Cloud Storage location (US, ASIA, or
    * EU) for your cluster's staging bucket according to the Google Compute
@@ -978,33 +1047,37 @@ class ClusterConfiguration {
    */
   core.String configurationBucket;
   /**
-   * [Required] The shared Google Compute Engine configuration settings for all
+   * Required The shared Google Compute Engine configuration settings for all
    * instances in a cluster.
    */
   GceClusterConfiguration gceClusterConfiguration;
   /**
-   * [Optional] Commands to execute on each node after configuration is
-   * completed. By default, executables are run on master and all worker nodes.
-   * You can test a node's role metadata to run an executable on a master or
-   * worker node, as shown below: ROLE=$(/usr/share/google/get_metadata_value
-   * attributes/role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific
-   * actions ... else ... worker specific actions ... fi
+   * Optional Commands to execute on each node after configuration is completed.
+   * By default, executables are run on master and all worker nodes. You can
+   * test a node's <code>role</code> metadata to run an executable on a master
+   * or worker node, as shown below:
+   * ROLE=$(/usr/share/google/get_metadata_value attributes/role)
+   * if [[ "${ROLE}" == 'Master' ]]; then
+   *   ... master specific actions ...
+   * else
+   *   ... worker specific actions ...
+   * fi
    */
   core.List<NodeInitializationAction> initializationActions;
   /**
-   * [Optional] The Google Compute Engine configuration settings for the master
+   * Optional The Google Compute Engine configuration settings for the master
    * instance in a cluster.
    */
   InstanceGroupConfiguration masterConfiguration;
   /**
-   * [Optional] The Google Compute Engine configuration settings for additional
+   * Optional The Google Compute Engine configuration settings for additional
    * worker instances in a cluster.
    */
   InstanceGroupConfiguration secondaryWorkerConfiguration;
-  /** [Optional] The configuration settings for software inside the cluster. */
+  /** Optional The configuration settings for software inside the cluster. */
   SoftwareConfiguration softwareConfiguration;
   /**
-   * [Optional] The Google Compute Engine configuration settings for worker
+   * Optional The Google Compute Engine configuration settings for worker
    * instances in a cluster.
    */
   InstanceGroupConfiguration workerConfiguration;
@@ -1094,20 +1167,22 @@ class ClusterMetrics {
 
 /** Metadata describing the operation. */
 class ClusterOperationMetadata {
-  /** [Output-only] Name of the cluster for the operation. */
+  /** Output-only Name of the cluster for the operation. */
   core.String clusterName;
-  /** [Output-only] Cluster UUID for the operation. */
+  /** Output-only Cluster UUID for the operation. */
   core.String clusterUuid;
-  /** [Output-only] Short description of operation. */
+  /** Output-only Short description of operation. */
   core.String description;
-  /** [Output-only] labels associated with the operation */
+  /** Output-only Labels associated with the operation */
   core.Map<core.String, core.String> labels;
-  /** [Output-only] The operation type. */
+  /** Output-only The operation type. */
   core.String operationType;
-  /** [Output-only] Current operation status. */
+  /** Output-only Current operation status. */
   ClusterOperationStatus status;
-  /** [Output-only] The previous operation status. */
+  /** Output-only The previous operation status. */
   core.List<ClusterOperationStatus> statusHistory;
+  /** Output-only Errors encountered during operation execution. */
+  core.List<core.String> warnings;
 
   ClusterOperationMetadata();
 
@@ -1132,6 +1207,9 @@ class ClusterOperationMetadata {
     }
     if (_json.containsKey("statusHistory")) {
       statusHistory = _json["statusHistory"].map((value) => new ClusterOperationStatus.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warnings")) {
+      warnings = _json["warnings"];
     }
   }
 
@@ -1158,26 +1236,29 @@ class ClusterOperationMetadata {
     if (statusHistory != null) {
       _json["statusHistory"] = statusHistory.map((value) => (value).toJson()).toList();
     }
+    if (warnings != null) {
+      _json["warnings"] = warnings;
+    }
     return _json;
   }
 }
 
 /** The status of the operation. */
 class ClusterOperationStatus {
-  /** [Output-only]A message containing any operation metadata details. */
+  /** Output-onlyA message containing any operation metadata details. */
   core.String details;
-  /** [Output-only] A message containing the detailed operation state. */
+  /** Output-only A message containing the detailed operation state. */
   core.String innerState;
   /**
-   * [Output-only] A message containing the operation state.
+   * Output-only A message containing the operation state.
    * Possible string values are:
-   * - "UNKNOWN" : A UNKNOWN.
-   * - "PENDING" : A PENDING.
-   * - "RUNNING" : A RUNNING.
-   * - "DONE" : A DONE.
+   * - "UNKNOWN" : Unused.
+   * - "PENDING" : The operation has been created.
+   * - "RUNNING" : The operation is running.
+   * - "DONE" : The operation is done; either cancelled or completed.
    */
   core.String state;
-  /** [Output-only] The time this state was entered. */
+  /** Output-only The time this state was entered. */
   core.String stateStartTime;
 
   ClusterOperationStatus();
@@ -1222,12 +1303,15 @@ class ClusterStatus {
   /**
    * The cluster's state.
    * Possible string values are:
-   * - "UNKNOWN" : A UNKNOWN.
-   * - "CREATING" : A CREATING.
-   * - "RUNNING" : A RUNNING.
-   * - "ERROR" : A ERROR.
-   * - "DELETING" : A DELETING.
-   * - "UPDATING" : A UPDATING.
+   * - "UNKNOWN" : The cluster state is unknown.
+   * - "CREATING" : The cluster is being created and set up. It is not ready for
+   * use.
+   * - "RUNNING" : The cluster is currently running and healthy. It is ready for
+   * use.
+   * - "ERROR" : The cluster encountered an error. It is not ready for use.
+   * - "DELETING" : The cluster is being deleted. It cannot be used.
+   * - "UPDATING" : The cluster is being updated. It continues to accept and
+   * process jobs.
    */
   core.String state;
   /** Time when this state was entered. */
@@ -1265,7 +1349,7 @@ class ClusterStatus {
 /** The location where output from diagnostic command can be found. */
 class DiagnoseClusterOutputLocation {
   /**
-   * [Output-only] The Google Cloud Storage URI of the diagnostic output. This
+   * Output-only The Google Cloud Storage URI of the diagnostic output. This
    * will be a plain text file with summary of collected diagnostics.
    */
   core.String outputUri;
@@ -1304,7 +1388,7 @@ class DiagnoseClusterRequest {
 /** The location of diagnostic output. */
 class DiagnoseClusterResults {
   /**
-   * [Output-only] The Google Cloud Storage URI of the diagnostic output. The
+   * Output-only The Google Cloud Storage URI of the diagnostic output. The
    * output report is a plain text file with a summary of collected diagnostics.
    */
   core.String outputUri;
@@ -1328,10 +1412,10 @@ class DiagnoseClusterResults {
 
 /** Specifies the configuration of disk options for a group of VM instances. */
 class DiskConfiguration {
-  /** [Optional] Size in GB of the boot disk (default is 500GB). */
+  /** Optional Size in GB of the boot disk (default is 500GB). */
   core.int bootDiskSizeGb;
   /**
-   * [Optional] Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+   * Optional Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
    * not attached, the boot disk is used to store runtime logs and HDFS data. If
    * one or more SSDs are attached, this runtime bulk data is spread across
    * them, and the boot disk contains only basic configuration and installed
@@ -1365,9 +1449,11 @@ class DiskConfiguration {
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
  * empty messages in your APIs. A typical example is to use it as the request or
- * the response type of an API method. For instance: service Foo { rpc
- * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
- * representation for `Empty` is empty JSON object `{}`.
+ * the response type of an API method. For instance:
+ * service Foo {
+ *   rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ * }
+ * The JSON representation for Empty is empty JSON object {}.
  */
 class Empty {
 
@@ -1405,9 +1491,20 @@ class GceClusterConfiguration {
    * if it exists. Cannot be a "Custom Subnet Network" (see
    * https://cloud.google.com/compute/docs/subnetworks for more information).
    * Example:
-   * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default`.
+   * https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default.
    */
   core.String networkUri;
+  /**
+   * Optional The service account of the instances. Defaults to the default
+   * Google Compute Engine service account. Custom service accounts need
+   * permissions equivalent to the folloing IAM roles:
+   * roles/logging.logWriter
+   * roles/storage.objectAdmin(see
+   * https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts
+   * for more information). Example:
+   * [account_id]@[project_id].iam.gserviceaccount.com
+   */
+  core.String serviceAccount;
   /**
    * The URIs of service account scopes to be included in Google Compute Engine
    * instances. The following base set of scopes is always included: -
@@ -1424,15 +1521,15 @@ class GceClusterConfiguration {
   /**
    * The Google Compute Engine subnetwork to be used for machine communications.
    * Cannot be specified with network_uri. Example:
-   * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`.
+   * https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0.
    */
   core.String subnetworkUri;
   /** The Google Compute Engine tags to add to all instances. */
   core.List<core.String> tags;
   /**
-   * [Required] The zone where the Google Compute Engine cluster will be
-   * located. Example:
-   * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]`.
+   * Required The zone where the Google Compute Engine cluster will be located.
+   * Example:
+   * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone].
    */
   core.String zoneUri;
 
@@ -1447,6 +1544,9 @@ class GceClusterConfiguration {
     }
     if (_json.containsKey("networkUri")) {
       networkUri = _json["networkUri"];
+    }
+    if (_json.containsKey("serviceAccount")) {
+      serviceAccount = _json["serviceAccount"];
     }
     if (_json.containsKey("serviceAccountScopes")) {
       serviceAccountScopes = _json["serviceAccountScopes"];
@@ -1473,6 +1573,9 @@ class GceClusterConfiguration {
     if (networkUri != null) {
       _json["networkUri"] = networkUri;
     }
+    if (serviceAccount != null) {
+      _json["serviceAccount"] = serviceAccount;
+    }
     if (serviceAccountScopes != null) {
       _json["serviceAccountScopes"] = serviceAccountScopes;
     }
@@ -1492,32 +1595,32 @@ class GceClusterConfiguration {
 /** A Cloud Dataproc job for running Hadoop MapReduce jobs on YARN. */
 class HadoopJob {
   /**
-   * [Optional] HCFS URIs of archives to be extracted in the working directory
-   * of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz,
-   * .tgz, or .zip.
+   * Optional HCFS URIs of archives to be extracted in the working directory of
+   * Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz,
+   * or .zip.
    */
   core.List<core.String> archiveUris;
   /**
-   * [Optional] The arguments to pass to the driver. Do not include arguments,
-   * such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since
-   * a collision may occur that causes an incorrect job submission.
+   * Optional The arguments to pass to the driver. Do not include arguments,
+   * such as -libjars or -Dfoo=bar, that can be set as job properties, since a
+   * collision may occur that causes an incorrect job submission.
    */
   core.List<core.String> args;
   /**
-   * [Optional] HCFS URIs of files to be copied to the working directory of
-   * Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+   * Optional HCFS URIs of files to be copied to the working directory of Hadoop
+   * drivers and distributed tasks. Useful for naively parallel tasks.
    */
   core.List<core.String> fileUris;
   /**
-   * [Optional] Jar file URIs to add to the CLASSPATHs of the Hadoop driver and
+   * Optional Jar file URIs to add to the CLASSPATHs of the Hadoop driver and
    * tasks.
    */
   core.List<core.String> jarFileUris;
-  /** [Optional] The runtime log configuration for job execution. */
+  /** Optional The runtime log configuration for job execution. */
   LoggingConfiguration loggingConfiguration;
   /**
    * The name of the driver's main class. The jar file containing the class must
-   * be in the default CLASSPATH or specified in `jar_file_uris`.
+   * be in the default CLASSPATH or specified in jar_file_uris.
    */
   core.String mainClass;
   /**
@@ -1529,7 +1632,7 @@ class HadoopJob {
    */
   core.String mainJarFileUri;
   /**
-   * [Optional] A mapping of property names to values, used to configure Hadoop.
+   * Optional A mapping of property names to values, used to configure Hadoop.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in /etc/hadoop/conf / * -site and
    * classes in user code.
@@ -1598,18 +1701,18 @@ class HadoopJob {
 /** A Cloud Dataproc job for running Hive queries on YARN. */
 class HiveJob {
   /**
-   * [Optional] Whether to continue executing queries if a query fails. The
-   * default value is `false`. Setting to `true` can be useful when executing
+   * Optional Whether to continue executing queries if a query fails. The
+   * default value is false. Setting to true can be useful when executing
    * independent parallel queries.
    */
   core.bool continueOnFailure;
   /**
-   * [Optional] HCFS URIs of jar files to add to the CLASSPATH of the Hive
-   * server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+   * Optional HCFS URIs of jar files to add to the CLASSPATH of the Hive server
+   * and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
    */
   core.List<core.String> jarFileUris;
   /**
-   * [Optional] A mapping of property names and values, used to configure Hive.
+   * Optional A mapping of property names and values, used to configure Hive.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
    * /etc/hive/conf/hive-site.xml, and classes in user code.
@@ -1620,8 +1723,8 @@ class HiveJob {
   /** A list of queries. */
   QueryList queryList;
   /**
-   * [Optional] Mapping of query variable names to values (equivalent to the
-   * Hive command: `SET name="value";`).
+   * Optional Mapping of query variable names to values (equivalent to the Hive
+   * command: SET name="value";).
    */
   core.Map<core.String, core.String> scriptVariables;
 
@@ -1680,13 +1783,13 @@ class InstanceGroupConfiguration {
   /** Disk option configuration settings. */
   DiskConfiguration diskConfiguration;
   /**
-   * [Output-only] The Google Compute Engine image resource used for cluster
-   * instances. Inferred from `SoftwareConfiguration.image_version`.
+   * Output-only The Google Compute Engine image resource used for cluster
+   * instances. Inferred from SoftwareConfiguration.image_version.
    */
   core.String imageUri;
   /**
-   * The list of instance names. Dataproc derives the names from `cluster_name`,
-   * `num_instances`, and the instance group if not set by user (recommended
+   * The list of instance names. Dataproc derives the names from cluster_name,
+   * num_instances, and the instance group if not set by user (recommended
    * practice is to let Dataproc derive the name).
    */
   core.List<core.String> instanceNames;
@@ -1694,11 +1797,11 @@ class InstanceGroupConfiguration {
   core.bool isPreemptible;
   /**
    * The Google Compute Engine machine type used for cluster instances. Example:
-   * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2`.
+   * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2.
    */
   core.String machineTypeUri;
   /**
-   * [Output-only] The configuration for Google Compute Engine Instance Group
+   * Output-only The configuration for Google Compute Engine Instance Group
    * Manager that manages this group. This is only used for preemptible instance
    * groups.
    */
@@ -1765,18 +1868,18 @@ class InstanceGroupConfiguration {
 /** A Cloud Dataproc job resource. */
 class Job {
   /**
-   * [Output-only] If present, the location of miscellaneous control files which
+   * Output-only If present, the location of miscellaneous control files which
    * may be used as part of job setup and handling. If not present, control
-   * files may be placed in the same location as `driver_output_uri`.
+   * files may be placed in the same location as driver_output_uri.
    */
   core.String driverControlFilesUri;
   /**
-   * [Output-only] A URI pointing to the location of the stdin of the job's
-   * driver program, only set if the job is interactive.
+   * Output-only A URI pointing to the location of the stdin of the job's driver
+   * program, only set if the job is interactive.
    */
   core.String driverInputResourceUri;
   /**
-   * [Output-only] A URI pointing to the location of the stdout of the job's
+   * Output-only A URI pointing to the location of the stdout of the job's
    * driver program.
    */
   core.String driverOutputResourceUri;
@@ -1785,51 +1888,55 @@ class Job {
   /** Job is a Hive job. */
   HiveJob hiveJob;
   /**
-   * [Optional] If set to `true`, the driver's stdin will be kept open and
-   * `driver_input_uri` will be set to provide a path at which additional input
+   * Optional If set to true, the driver's stdin will be kept open and
+   * driver_input_uri will be set to provide a path at which additional input
    * can be sent to the driver.
    */
   core.bool interactive;
   /**
-   * [Optional] The labels to associate with this job. Label keys must be
-   * between 1 and 63 characters long, and must conform to the following regular
-   * expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63
+   * Optional The labels to associate with this job.Label keys must be between 1
+   * and 63 characters long, and must conform to the following regular
+   * expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63
    * characters long, and must conform to the following regular expression:
-   * [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a
+   * \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 64 labels can be associated with a
    * given job.
    */
   core.Map<core.String, core.String> labels;
   /** Job is a Pig job. */
   PigJob pigJob;
   /**
-   * [Required] Job information, including how, when, and where to run the job.
+   * Required Job information, including how, when, and where to run the job.
    */
   JobPlacement placement;
   /** Job is a Pyspark job. */
   PySparkJob pysparkJob;
   /**
-   * [Optional] The fully qualified reference to the job, which can be used to
+   * Optional The fully qualified reference to the job, which can be used to
    * obtain the equivalent REST path of the job resource. If this property is
-   * not specified when a job is created, the server generates a job_id.
+   * not specified when a job is created, the server generates a
+   * <code>job_id</code>.
    */
   JobReference reference;
+  /** Optional Job scheduling configuration. */
+  JobScheduling scheduling;
   /** Job is a Spark job. */
   SparkJob sparkJob;
   /** Job is a SparkSql job. */
   SparkSqlJob sparkSqlJob;
   /**
-   * [Output-only] The job status. Additional application-specific status
-   * information may be contained in the type_job and yarn_applications fields.
+   * Output-only The job status. Additional application-specific status
+   * information may be contained in the <code>type_job</code> and
+   * <code>yarn_applications</code> fields.
    */
   JobStatus status;
-  /** [Output-only] The previous job status. */
+  /** Output-only The previous job status. */
   core.List<JobStatus> statusHistory;
   /**
-   * [Output-only] The email address of the user submitting the job. For jobs
-   * submitted on the cluster, the address is username@hostname.
+   * Output-only The email address of the user submitting the job. For jobs
+   * submitted on the cluster, the address is <code>username@hostname</code>.
    */
   core.String submittedBy;
-  /** [Output-only] The collection of YARN applications spun up by this job. */
+  /** Output-only The collection of YARN applications spun up by this job. */
   core.List<YarnApplication> yarnApplications;
 
   Job();
@@ -1867,6 +1974,9 @@ class Job {
     }
     if (_json.containsKey("reference")) {
       reference = new JobReference.fromJson(_json["reference"]);
+    }
+    if (_json.containsKey("scheduling")) {
+      scheduling = new JobScheduling.fromJson(_json["scheduling"]);
     }
     if (_json.containsKey("sparkJob")) {
       sparkJob = new SparkJob.fromJson(_json["sparkJob"]);
@@ -1923,6 +2033,9 @@ class Job {
     if (reference != null) {
       _json["reference"] = (reference).toJson();
     }
+    if (scheduling != null) {
+      _json["scheduling"] = (scheduling).toJson();
+    }
     if (sparkJob != null) {
       _json["sparkJob"] = (sparkJob).toJson();
     }
@@ -1947,10 +2060,10 @@ class Job {
 
 /** Cloud Dataproc job configuration. */
 class JobPlacement {
-  /** [Required] The name of the cluster where the job will be submitted. */
+  /** Required The name of the cluster where the job will be submitted. */
   core.String clusterName;
   /**
-   * [Output-only] A cluster UUID generated by the Dataproc service when the job
+   * Output-only A cluster UUID generated by the Dataproc service when the job
    * is submitted.
    */
   core.String clusterUuid;
@@ -1981,15 +2094,15 @@ class JobPlacement {
 /** Encapsulates the full scoping used to reference a job. */
 class JobReference {
   /**
-   * [Required] The job ID, which must be unique within the project. The job ID
-   * is generated by the server upon job submission or provided by the user as a
+   * Required The job ID, which must be unique within the project. The job ID is
+   * generated by the server upon job submission or provided by the user as a
    * means to perform retries without creating duplicate jobs. The ID must
    * contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens
    * (-). The maximum length is 512 characters.
    */
   core.String jobId;
   /**
-   * [Required] The ID of the Google Cloud Platform project that the job belongs
+   * Required The ID of the Google Cloud Platform project that the job belongs
    * to.
    */
   core.String projectId;
@@ -2017,28 +2130,63 @@ class JobReference {
   }
 }
 
+/**
+ * Job scheduling options.Beta Feature: These options are available for testing
+ * purposes only. They may be changed before final release.
+ */
+class JobScheduling {
+  /**
+   * Optional Maximum number of times per hour a driver may be restarted as a
+   * result of driver terminating with non-zero code before job is reported
+   * failed.A job may be reported as thrashing if driver exits with non-zero
+   * code 4 times within 10 minute window.Maximum value is 10.
+   */
+  core.int maxFailuresPerHour;
+
+  JobScheduling();
+
+  JobScheduling.fromJson(core.Map _json) {
+    if (_json.containsKey("maxFailuresPerHour")) {
+      maxFailuresPerHour = _json["maxFailuresPerHour"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (maxFailuresPerHour != null) {
+      _json["maxFailuresPerHour"] = maxFailuresPerHour;
+    }
+    return _json;
+  }
+}
+
 /** Cloud Dataproc job status. */
 class JobStatus {
   /**
-   * [Optional] Job state details, such as an error description if the state is
-   * ERROR.
+   * Optional Job state details, such as an error description if the state is
+   * <code>ERROR</code>.
    */
   core.String details;
   /**
-   * [Required] A state message specifying the overall job state.
+   * Required A state message specifying the overall job state.
    * Possible string values are:
-   * - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
-   * - "PENDING" : A PENDING.
-   * - "SETUP_DONE" : A SETUP_DONE.
-   * - "RUNNING" : A RUNNING.
-   * - "CANCEL_PENDING" : A CANCEL_PENDING.
-   * - "CANCEL_STARTED" : A CANCEL_STARTED.
-   * - "CANCELLED" : A CANCELLED.
-   * - "DONE" : A DONE.
-   * - "ERROR" : A ERROR.
+   * - "STATE_UNSPECIFIED" : The job state is unknown.
+   * - "PENDING" : The job is pending; it has been submitted, but is not yet
+   * running.
+   * - "SETUP_DONE" : Job has been received by the service and completed initial
+   * setup; it will shortly be submitted to the cluster.
+   * - "RUNNING" : The job is running on the cluster.
+   * - "CANCEL_PENDING" : A CancelJob request has been received, but is pending.
+   * - "CANCEL_STARTED" : Transient in-flight resources have been canceled, and
+   * the request to cancel the running job has been issued to the cluster.
+   * - "CANCELLED" : The job cancelation was successful.
+   * - "DONE" : The job has completed successfully.
+   * - "ERROR" : The job has completed, but encountered an error.
+   * - "ATTEMPT_FAILURE" : Job attempt has failed. The detail field contains
+   * failure details for this attempt.Applies to restartable jobs only.
    */
   core.String state;
-  /** [Output-only] The time when this state was entered. */
+  /** Output-only The time when this state was entered. */
   core.String stateStartTime;
 
   JobStatus();
@@ -2072,7 +2220,7 @@ class JobStatus {
 
 /** The list of all clusters in a project. */
 class ListClustersResponse {
-  /** [Output-only] The clusters in the project. */
+  /** Output-only The clusters in the project. */
   core.List<Cluster> clusters;
   /** The standard List next-page token. */
   core.String nextPageToken;
@@ -2102,12 +2250,12 @@ class ListClustersResponse {
 
 /** A list of jobs in a project. */
 class ListJobsResponse {
-  /** [Output-only] Jobs list. */
+  /** Output-only Jobs list. */
   core.List<Job> jobs;
   /**
-   * [Optional] This token is included in the response if there are more results
-   * to fetch. To fetch additional results, provide this value as the
-   * `page_token` in a subsequent ListJobsRequest.
+   * Optional This token is included in the response if there are more results
+   * to fetch. To fetch additional results, provide this value as the page_token
+   * in a subsequent <code>ListJobsRequest</code>.
    */
   core.String nextPageToken;
 
@@ -2168,7 +2316,7 @@ class ListOperationsResponse {
 class LoggingConfiguration {
   /**
    * The per-package log levels for the driver. This may include "root" package
-   * name to configure rootLogger. Examples: 'com.google = FATAL', 'root =
+   * name to configure rootLogger. Examples:  'com.google = FATAL', 'root =
    * INFO', 'org.apache = DEBUG'
    */
   core.Map<core.String, core.String> driverLogLevels;
@@ -2192,11 +2340,11 @@ class LoggingConfiguration {
 
 /** Specifies the resources used to actively manage an instance group. */
 class ManagedGroupConfiguration {
-  /** [Output-only] The name of the Instance Group Manager for this group. */
+  /** Output-only The name of the Instance Group Manager for this group. */
   core.String instanceGroupManagerName;
   /**
-   * [Output-only] The name of the Instance Template used for the Managed
-   * Instance Group.
+   * Output-only The name of the Instance Template used for the Managed Instance
+   * Group.
    */
   core.String instanceTemplateName;
 
@@ -2228,13 +2376,13 @@ class ManagedGroupConfiguration {
  * period for executable completion.
  */
 class NodeInitializationAction {
-  /** [Required] Google Cloud Storage URI of executable file. */
+  /** Required Google Cloud Storage URI of executable file. */
   core.String executableFile;
   /**
-   * [Optional] Amount of time executable has to complete. Default is 10
-   * minutes. Cluster creation fails with an explanatory error message (the name
-   * of the executable that caused the error and the exceeded timeout period) if
-   * the executable is not completed at end of the timeout period.
+   * Optional Amount of time executable has to complete. Default is 10 minutes.
+   * Cluster creation fails with an explanatory error message (the name of the
+   * executable that caused the error and the exceeded timeout period) if the
+   * executable is not completed at end of the timeout period.
    */
   core.String executionTimeout;
 
@@ -2267,8 +2415,8 @@ class NodeInitializationAction {
  */
 class Operation {
   /**
-   * If the value is `false`, it means the operation is still in progress. If
-   * true, the operation is completed, and either `error` or `response` is
+   * If the value is false, it means the operation is still in progress. If
+   * true, the operation is completed, and either error or response is
    * available.
    */
   core.bool done;
@@ -2286,18 +2434,18 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
   /**
    * The server-assigned name, which is only unique within the same service that
-   * originally returns it. If you use the default HTTP mapping, the `name`
-   * should have the format of `operations/some/unique/name`.
+   * originally returns it. If you use the default HTTP mapping, the name should
+   * have the format of operations/some/unique/name.
    */
   core.String name;
   /**
    * The normal response of the operation in case of success. If the original
-   * method returns no data on success, such as `Delete`, the response is
-   * `google.protobuf.Empty`. If the original method is standard
-   * `Get`/`Create`/`Update`, the response should be the resource. For other
-   * methods, the response should have the type `XxxResponse`, where `Xxx` is
-   * the original method name. For example, if the original method name is
-   * `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+   * method returns no data on success, such as Delete, the response is
+   * google.protobuf.Empty. If the original method is standard
+   * Get/Create/Update, the response should be the resource. For other methods,
+   * the response should have the type XxxResponse, where Xxx is the original
+   * method name. For example, if the original method name is TakeSnapshot(),
+   * the inferred response type is TakeSnapshotResponse.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2351,7 +2499,7 @@ class OperationMetadata {
   core.String clusterName;
   /** Cluster UUId for the operation. */
   core.String clusterUuid;
-  /** [Output-only] Short description of operation. */
+  /** Output-only Short description of operation. */
   core.String description;
   /** A message containing any operation metadata details. */
   core.String details;
@@ -2361,23 +2509,25 @@ class OperationMetadata {
   core.String innerState;
   /** The time that the operation was requested. */
   core.String insertTime;
-  /** [Output-only] The operation type. */
+  /** Output-only The operation type. */
   core.String operationType;
   /** The time that the operation was started by the server. */
   core.String startTime;
   /**
    * A message containing the operation state.
    * Possible string values are:
-   * - "UNKNOWN" : A UNKNOWN.
-   * - "PENDING" : A PENDING.
-   * - "RUNNING" : A RUNNING.
-   * - "DONE" : A DONE.
+   * - "UNKNOWN" : Unused.
+   * - "PENDING" : The operation has been created.
+   * - "RUNNING" : The operation is currently running.
+   * - "DONE" : The operation is done, either cancelled or completed.
    */
   core.String state;
-  /** [Output-only] Current operation status. */
+  /** Output-only Current operation status. */
   OperationStatus status;
-  /** [Output-only] Previous operation status. */
+  /** Output-only Previous operation status. */
   core.List<OperationStatus> statusHistory;
+  /** Output-only Errors encountered during operation execution. */
+  core.List<core.String> warnings;
 
   OperationMetadata();
 
@@ -2417,6 +2567,9 @@ class OperationMetadata {
     }
     if (_json.containsKey("statusHistory")) {
       statusHistory = _json["statusHistory"].map((value) => new OperationStatus.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warnings")) {
+      warnings = _json["warnings"];
     }
   }
 
@@ -2458,6 +2611,9 @@ class OperationMetadata {
     if (statusHistory != null) {
       _json["statusHistory"] = statusHistory.map((value) => (value).toJson()).toList();
     }
+    if (warnings != null) {
+      _json["warnings"] = warnings;
+    }
     return _json;
   }
 }
@@ -2471,10 +2627,10 @@ class OperationStatus {
   /**
    * A message containing the operation state.
    * Possible string values are:
-   * - "UNKNOWN" : A UNKNOWN.
-   * - "PENDING" : A PENDING.
-   * - "RUNNING" : A RUNNING.
-   * - "DONE" : A DONE.
+   * - "UNKNOWN" : Unused.
+   * - "PENDING" : The operation has been created.
+   * - "RUNNING" : The operation is running.
+   * - "DONE" : The operation is done; either cancelled or completed.
    */
   core.String state;
   /** The time this state was entered. */
@@ -2518,20 +2674,20 @@ class OperationStatus {
 /** A Cloud Dataproc job for running Pig queries on YARN. */
 class PigJob {
   /**
-   * [Optional] Whether to continue executing queries if a query fails. The
-   * default value is `false`. Setting to `true` can be useful when executing
+   * Optional Whether to continue executing queries if a query fails. The
+   * default value is false. Setting to true can be useful when executing
    * independent parallel queries.
    */
   core.bool continueOnFailure;
   /**
-   * [Optional] HCFS URIs of jar files to add to the CLASSPATH of the Pig Client
+   * Optional HCFS URIs of jar files to add to the CLASSPATH of the Pig Client
    * and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
    */
   core.List<core.String> jarFileUris;
-  /** [Optional] The runtime log configuration for job execution. */
+  /** Optional The runtime log configuration for job execution. */
   LoggingConfiguration loggingConfiguration;
   /**
-   * [Optional] A mapping of property names to values, used to configure Pig.
+   * Optional A mapping of property names to values, used to configure Pig.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
    * /etc/pig/conf/pig.properties, and classes in user code.
@@ -2542,8 +2698,8 @@ class PigJob {
   /** A list of queries. */
   QueryList queryList;
   /**
-   * [Optional] Mapping of query variable names to values (equivalent to the Pig
-   * command: `name=[value]`).
+   * Optional Mapping of query variable names to values (equivalent to the Pig
+   * command: name=[value]).
    */
   core.Map<core.String, core.String> scriptVariables;
 
@@ -2603,42 +2759,42 @@ class PigJob {
 /** A Cloud Dataproc job for running PySpark applications on YARN. */
 class PySparkJob {
   /**
-   * [Optional] HCFS URIs of archives to be extracted in the working directory
-   * of .jar, .tar, .tar.gz, .tgz, and .zip.
+   * Optional HCFS URIs of archives to be extracted in the working directory of
+   * .jar, .tar, .tar.gz, .tgz, and .zip.
    */
   core.List<core.String> archiveUris;
   /**
-   * [Optional] The arguments to pass to the driver. Do not include arguments,
-   * such as `--conf`, that can be set as job properties, since a collision may
+   * Optional The arguments to pass to the driver. Do not include arguments,
+   * such as --conf, that can be set as job properties, since a collision may
    * occur that causes an incorrect job submission.
    */
   core.List<core.String> args;
   /**
-   * [Optional] HCFS URIs of files to be copied to the working directory of
-   * Python drivers and distributed tasks. Useful for naively parallel tasks.
+   * Optional HCFS URIs of files to be copied to the working directory of Python
+   * drivers and distributed tasks. Useful for naively parallel tasks.
    */
   core.List<core.String> fileUris;
   /**
-   * [Optional] HCFS URIs of jar files to add to the CLASSPATHs of the Python
+   * Optional HCFS URIs of jar files to add to the CLASSPATHs of the Python
    * driver and tasks.
    */
   core.List<core.String> jarFileUris;
-  /** [Optional] The runtime log configuration for job execution. */
+  /** Optional The runtime log configuration for job execution. */
   LoggingConfiguration loggingConfiguration;
   /**
-   * [Required] The Hadoop Compatible Filesystem (HCFS) URI of the main Python
+   * Required The Hadoop Compatible Filesystem (HCFS) URI of the main Python
    * file to use as the driver. Must be a .py file.
    */
   core.String mainPythonFileUri;
   /**
-   * [Optional] A mapping of property names to values, used to configure
-   * PySpark. Properties that conflict with values set by the Cloud Dataproc API
-   * may be overwritten. Can include properties set in
+   * Optional A mapping of property names to values, used to configure PySpark.
+   * Properties that conflict with values set by the Cloud Dataproc API may be
+   * overwritten. Can include properties set in
    * /etc/spark/conf/spark-defaults.conf and classes in user code.
    */
   core.Map<core.String, core.String> properties;
   /**
-   * [Optional] HCFS file URIs of Python files to pass to the PySpark framework.
+   * Optional HCFS file URIs of Python files to pass to the PySpark framework.
    * Supported file types: .py, .egg, and .zip.
    */
   core.List<core.String> pythonFileUris;
@@ -2705,11 +2861,19 @@ class PySparkJob {
 /** A list of queries to run on a cluster. */
 class QueryList {
   /**
-   * [Required] The queries to execute. You do not need to terminate a query
-   * with a semicolon. Multiple queries can be specified in one string by
-   * separating each with a semicolon. Here is an example of an Cloud Dataproc
-   * API snippet that uses a QueryList to specify a HiveJob: "hiveJob": {
-   * "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+   * Required The queries to execute. You do not need to terminate a query with
+   * a semicolon. Multiple queries can be specified in one string by separating
+   * each with a semicolon. Here is an example of an Cloud Dataproc API snippet
+   * that uses a QueryList to specify a HiveJob:
+   * "hiveJob": {
+   *   "queryList": {
+   *     "queries": [
+   *       "query1",
+   *       "query2",
+   *       "query3;query4",
+   *     ]
+   *   }
+   * }
    */
   core.List<core.String> queries;
 
@@ -2735,18 +2899,17 @@ class QueryList {
  */
 class SoftwareConfiguration {
   /**
-   * [Optional] The version of software inside the cluster. It must match the
-   * regular expression `[0-9]+\.[0-9]+`. If unspecified, it defaults to the
-   * latest version (see [Cloud Dataproc Versioning](/dataproc/versioning)).
+   * Optional The version of software inside the cluster. It must match the
+   * regular expression [0-9]+\.[0-9]+. If unspecified, it defaults to the
+   * latest version (see Cloud Dataproc Versioning).
    */
   core.String imageVersion;
   /**
-   * [Optional] The properties to set on daemon configuration files. Property
-   * keys are specified in "prefix:property" format, such as
-   * "core:fs.defaultFS". The following are supported prefixes and their
-   * mappings: core - core-site.xml hdfs - hdfs-site.xml mapred -
-   * mapred-site.xml yarn - yarn-site.xml hive - hive-site.xml pig -
-   * pig.properties spark - spark-defaults.conf
+   * Optional The properties to set on daemon configuration files.Property keys
+   * are specified in "prefix:property" format, such as "core:fs.defaultFS". The
+   * following are supported prefixes and their mappings:  core - core-site.xml
+   * hdfs - hdfs-site.xml  mapred - mapred-site.xml  yarn - yarn-site.xml  hive
+   * - hive-site.xml  pig - pig.properties  spark - spark-defaults.conf
    */
   core.Map<core.String, core.String> properties;
 
@@ -2776,32 +2939,32 @@ class SoftwareConfiguration {
 /** A Cloud Dataproc job for running Spark applications on YARN. */
 class SparkJob {
   /**
-   * [Optional] HCFS URIs of archives to be extracted in the working directory
-   * of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz,
-   * .tgz, and .zip.
+   * Optional HCFS URIs of archives to be extracted in the working directory of
+   * Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz,
+   * and .zip.
    */
   core.List<core.String> archiveUris;
   /**
-   * [Optional] The arguments to pass to the driver. Do not include arguments,
-   * such as `--conf`, that can be set as job properties, since a collision may
+   * Optional The arguments to pass to the driver. Do not include arguments,
+   * such as --conf, that can be set as job properties, since a collision may
    * occur that causes an incorrect job submission.
    */
   core.List<core.String> args;
   /**
-   * [Optional] HCFS URIs of files to be copied to the working directory of
-   * Spark drivers and distributed tasks. Useful for naively parallel tasks.
+   * Optional HCFS URIs of files to be copied to the working directory of Spark
+   * drivers and distributed tasks. Useful for naively parallel tasks.
    */
   core.List<core.String> fileUris;
   /**
-   * [Optional] HCFS URIs of jar files to add to the CLASSPATHs of the Spark
+   * Optional HCFS URIs of jar files to add to the CLASSPATHs of the Spark
    * driver and tasks.
    */
   core.List<core.String> jarFileUris;
-  /** [Optional] The runtime log configuration for job execution. */
+  /** Optional The runtime log configuration for job execution. */
   LoggingConfiguration loggingConfiguration;
   /**
    * The name of the driver's main class. The jar file that contains the class
-   * must be in the default CLASSPATH or specified in `jar_file_uris`.
+   * must be in the default CLASSPATH or specified in jar_file_uris.
    */
   core.String mainClass;
   /**
@@ -2810,7 +2973,7 @@ class SparkJob {
    */
   core.String mainJarFileUri;
   /**
-   * [Optional] A mapping of property names to values, used to configure Spark.
+   * Optional A mapping of property names to values, used to configure Spark.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in
    * /etc/spark/conf/spark-defaults.conf and classes in user code.
@@ -2878,12 +3041,12 @@ class SparkJob {
 
 /** A Cloud Dataproc job for running Spark SQL queries. */
 class SparkSqlJob {
-  /** [Optional] HCFS URIs of jar files to be added to the Spark CLASSPATH. */
+  /** Optional HCFS URIs of jar files to be added to the Spark CLASSPATH. */
   core.List<core.String> jarFileUris;
-  /** [Optional] The runtime log configuration for job execution. */
+  /** Optional The runtime log configuration for job execution. */
   LoggingConfiguration loggingConfiguration;
   /**
-   * [Optional] A mapping of property names to values, used to configure Spark
+   * Optional A mapping of property names to values, used to configure Spark
    * SQL's SparkConf. Properties that conflict with values set by the Cloud
    * Dataproc API may be overwritten.
    */
@@ -2893,8 +3056,8 @@ class SparkSqlJob {
   /** A list of queries. */
   QueryList queryList;
   /**
-   * [Optional] Mapping of query variable names to values (equivalent to the
-   * Spark SQL command: SET `name="value";`).
+   * Optional Mapping of query variable names to values (equivalent to the Spark
+   * SQL command: SET name="value";).
    */
   core.Map<core.String, core.String> scriptVariables;
 
@@ -2946,39 +3109,40 @@ class SparkSqlJob {
 }
 
 /**
- * The `Status` type defines a logical error model that is suitable for
- * different programming environments, including REST APIs and RPC APIs. It is
- * used by [gRPC](https://github.com/grpc). The error model is designed to be: -
- * Simple to use and understand for most users - Flexible enough to meet
- * unexpected needs # Overview The `Status` message contains three pieces of
- * data: error code, error message, and error details. The error code should be
- * an enum value of google.rpc.Code, but it may accept additional error codes if
- * needed. The error message should be a developer-facing English message that
- * helps developers *understand* and *resolve* the error. If a localized
- * user-facing error message is needed, put the localized message in the error
- * details or localize it in the client. The optional error details may contain
- * arbitrary information about the error. There is a predefined set of error
- * detail types in the package `google.rpc` which can be used for common error
- * conditions. # Language mapping The `Status` message is the logical
+ * The Status type defines a logical error model that is suitable for different
+ * programming environments, including REST APIs and RPC APIs. It is used by
+ * gRPC (https://github.com/grpc). The error model is designed to be:
+ * Simple to use and understand for most users
+ * Flexible enough to meet unexpected needsOverviewThe Status message contains
+ * three pieces of data: error code, error message, and error details. The error
+ * code should be an enum value of google.rpc.Code, but it may accept additional
+ * error codes if needed. The error message should be a developer-facing English
+ * message that helps developers understand and resolve the error. If a
+ * localized user-facing error message is needed, put the localized message in
+ * the error details or localize it in the client. The optional error details
+ * may contain arbitrary information about the error. There is a predefined set
+ * of error detail types in the package google.rpc which can be used for common
+ * error conditions.Language mappingThe Status message is the logical
  * representation of the error model, but it is not necessarily the actual wire
- * format. When the `Status` message is exposed in different client libraries
- * and different wire protocols, it can be mapped differently. For example, it
- * will likely be mapped to some exceptions in Java, but more likely mapped to
- * some error codes in C. # Other uses The error model and the `Status` message
- * can be used in a variety of environments, either with or without APIs, to
- * provide a consistent developer experience across different environments.
- * Example uses of this error model include: - Partial errors. If a service
- * needs to return partial errors to the client, it may embed the `Status` in
- * the normal response to indicate the partial errors. - Workflow errors. A
- * typical workflow has multiple steps. Each step may have a `Status` message
- * for error reporting purpose. - Batch operations. If a client uses batch
- * request and batch response, the `Status` message should be used directly
- * inside batch response, one for each error sub-response. - Asynchronous
- * operations. If an API call embeds asynchronous operation results in its
- * response, the status of those operations should be represented directly using
- * the `Status` message. - Logging. If some API errors are stored in logs, the
- * message `Status` could be used directly after any stripping needed for
- * security/privacy reasons.
+ * format. When the Status message is exposed in different client libraries and
+ * different wire protocols, it can be mapped differently. For example, it will
+ * likely be mapped to some exceptions in Java, but more likely mapped to some
+ * error codes in C.Other usesThe error model and the Status message can be used
+ * in a variety of environments, either with or without APIs, to provide a
+ * consistent developer experience across different environments.Example uses of
+ * this error model include:
+ * Partial errors. If a service needs to return partial errors to the client, it
+ * may embed the Status in the normal response to indicate the partial errors.
+ * Workflow errors. A typical workflow has multiple steps. Each step may have a
+ * Status message for error reporting purpose.
+ * Batch operations. If a client uses batch request and batch response, the
+ * Status message should be used directly inside batch response, one for each
+ * error sub-response.
+ * Asynchronous operations. If an API call embeds asynchronous operation results
+ * in its response, the status of those operations should be represented
+ * directly using the Status message.
+ * Logging. If some API errors are stored in logs, the message Status could be
+ * used directly after any stripping needed for security/privacy reasons.
  */
 class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -3029,7 +3193,7 @@ class Status {
 
 /** A request to submit a job. */
 class SubmitJobRequest {
-  /** [Required] The job resource. */
+  /** Required The job resource. */
   Job job;
 
   SubmitJobRequest();
@@ -3051,29 +3215,29 @@ class SubmitJobRequest {
 
 /**
  * A YARN application created by a job. Application information is a subset of
- * org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.
+ * <code>org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto</code>.
  */
 class YarnApplication {
-  /** [Required] The application name. */
+  /** Required The application name. */
   core.String name;
-  /** [Required] The numerical progress of the application, from 1 to 100. */
+  /** Required The numerical progress of the application, from 1 to 100. */
   core.double progress;
   /**
-   * [Required] The application state.
+   * Required The application state.
    * Possible string values are:
-   * - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
-   * - "NEW" : A NEW.
-   * - "NEW_SAVING" : A NEW_SAVING.
-   * - "SUBMITTED" : A SUBMITTED.
-   * - "ACCEPTED" : A ACCEPTED.
-   * - "RUNNING" : A RUNNING.
-   * - "FINISHED" : A FINISHED.
-   * - "FAILED" : A FAILED.
-   * - "KILLED" : A KILLED.
+   * - "STATE_UNSPECIFIED" : Status is unspecified.
+   * - "NEW" : Status is NEW.
+   * - "NEW_SAVING" : Status is NEW_SAVING.
+   * - "SUBMITTED" : Status is SUBMITTED.
+   * - "ACCEPTED" : Status is ACCEPTED.
+   * - "RUNNING" : Status is RUNNING.
+   * - "FINISHED" : Status is FINISHED.
+   * - "FAILED" : Status is FAILED.
+   * - "KILLED" : Status is KILLED.
    */
   core.String state;
   /**
-   * [Optional] The HTTP URL of the ApplicationMaster, HistoryServer, or
+   * Optional The HTTP URL of the ApplicationMaster, HistoryServer, or
    * TimelineServer that provides application-specific information. The URL uses
    * the internal hostname, and requires a proxy server for resolution and,
    * possibly, access.

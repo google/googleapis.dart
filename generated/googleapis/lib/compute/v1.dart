@@ -130,7 +130,6 @@ class AddressesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -391,7 +390,6 @@ class AddressesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -502,7 +500,6 @@ class AutoscalersResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -764,7 +761,6 @@ class AutoscalersResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -995,7 +991,6 @@ class BackendServicesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1292,7 +1287,6 @@ class BackendServicesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1510,7 +1504,6 @@ class DiskTypesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1666,7 +1659,6 @@ class DiskTypesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1777,7 +1769,6 @@ class DisksResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -2107,7 +2098,6 @@ class DisksResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -2417,7 +2407,6 @@ class FirewallsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -2630,7 +2619,6 @@ class ForwardingRulesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -2892,7 +2880,6 @@ class ForwardingRulesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -3205,7 +3192,6 @@ class GlobalAddressesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -3456,7 +3442,6 @@ class GlobalForwardingRulesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -3618,7 +3603,6 @@ class GlobalOperationsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -3813,7 +3797,6 @@ class GlobalOperationsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -4064,7 +4047,6 @@ class HealthChecksResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -4421,7 +4403,6 @@ class HttpHealthChecksResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -4778,7 +4759,6 @@ class HttpsHealthChecksResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -5241,7 +5221,6 @@ class ImagesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -5412,7 +5391,6 @@ class InstanceGroupManagersResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -5738,7 +5716,6 @@ class InstanceGroupManagersResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -5822,7 +5799,6 @@ class InstanceGroupManagersResourceApi {
    * [filter] - null
    *
    * [maxResults] - null
-   * Value must be between "0" and "500".
    *
    * [orderBy] - null
    *
@@ -6228,7 +6204,6 @@ class InstanceGroupsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -6487,7 +6462,6 @@ class InstanceGroupsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -6596,7 +6570,6 @@ class InstanceGroupsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -6976,7 +6949,6 @@ class InstanceTemplatesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -7149,7 +7121,6 @@ class InstancesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -7660,7 +7631,6 @@ class InstancesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -8411,7 +8381,6 @@ class MachineTypesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -8567,7 +8536,6 @@ class MachineTypesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -8820,7 +8788,6 @@ class NetworksResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -9375,7 +9342,6 @@ class RegionAutoscalersResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -9829,7 +9795,6 @@ class RegionBackendServicesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -10349,7 +10314,6 @@ class RegionInstanceGroupManagersResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -10431,7 +10395,6 @@ class RegionInstanceGroupManagersResourceApi {
    * [filter] - null
    *
    * [maxResults] - null
-   * Value must be between "0" and "500".
    *
    * [orderBy] - null
    *
@@ -10827,7 +10790,6 @@ class RegionInstanceGroupsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -10938,7 +10900,6 @@ class RegionInstanceGroupsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -11222,7 +11183,6 @@ class RegionOperationsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -11381,7 +11341,6 @@ class RegionsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -11489,7 +11448,6 @@ class RoutersResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -11804,7 +11762,6 @@ class RoutersResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -12234,7 +12191,6 @@ class RoutesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -12444,7 +12400,6 @@ class SnapshotsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -12695,7 +12650,6 @@ class SslCertificatesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -12803,7 +12757,6 @@ class SubnetworksResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -13123,7 +13076,6 @@ class SubnetworksResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -13377,7 +13329,6 @@ class TargetHttpProxiesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -13680,7 +13631,6 @@ class TargetHttpsProxiesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -13894,7 +13844,6 @@ class TargetInstancesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -14157,7 +14106,6 @@ class TargetInstancesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -14384,7 +14332,6 @@ class TargetPoolsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -14707,7 +14654,6 @@ class TargetPoolsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -15140,7 +15086,6 @@ class TargetSslProxiesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -15407,7 +15352,6 @@ class TargetVpnGatewaysResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -15670,7 +15614,6 @@ class TargetVpnGatewaysResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -15976,7 +15919,6 @@ class UrlMapsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -16244,7 +16186,6 @@ class VpnTunnelsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -16507,7 +16448,6 @@ class VpnTunnelsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -16728,7 +16668,6 @@ class ZoneOperationsResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -16887,7 +16826,6 @@ class ZonesResourceApi {
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
    * page of results in subsequent list requests.
-   * Value must be between "0" and "500".
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -17327,6 +17265,7 @@ class AddressesScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -18022,6 +17961,7 @@ class AutoscalersScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -18925,6 +18865,7 @@ class BackendServicesScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -19563,23 +19504,16 @@ class DiskAggregatedList {
 /** A list of Disk resources. */
 class DiskList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of persistent disks. */
+  /** A list of Disk resources. */
   core.List<Disk> items;
   /**
    * [Output Only] Type of resource. Always compute#diskList for lists of disks.
    */
   core.String kind;
-  /**
-   * [Output Only] This token allows you to get the next page of results for
-   * list requests. If the number of results is larger than maxResults, use the
-   * nextPageToken as a value for the query parameter pageToken in the next list
-   * request. Subsequent list requests will have their own nextPageToken to
-   * continue paging through the results.
-   */
+  /** [Output Only] A token used to continue a truncated list request. */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -19955,6 +19889,7 @@ class DiskTypesScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -20110,6 +20045,7 @@ class DisksScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -20456,7 +20392,7 @@ class ForwardingRule {
   /**
    * The IP address that this forwarding rule is serving on behalf of.
    *
-   * For global forwarding rules, the address must be a global IP; for regional
+   * For global forwarding rules, the address must be a global IP. For regional
    * forwarding rules, the address must live in the same region as the
    * forwarding rule. By default, this field is empty and an ephemeral IP from
    * the same scope (global or regional) will be assigned.
@@ -20473,11 +20409,11 @@ class ForwardingRule {
    * The IP protocol to which this rule applies. Valid options are TCP, UDP,
    * ESP, AH, SCTP or ICMP.
    *
-   * When the load balancing scheme is INTERNAL</code, only TCP and UDP are
-   * valid.
+   * When the load balancing scheme is INTERNAL, only TCP and UDP are valid.
    * Possible string values are:
    * - "AH"
    * - "ESP"
+   * - "ICMP"
    * - "SCTP"
    * - "TCP"
    * - "UDP"
@@ -20509,7 +20445,7 @@ class ForwardingRule {
   core.String kind;
   /**
    * This signifies what the ForwardingRule will be used for and can only take
-   * the following values: INTERNAL EXTERNAL The value of INTERNAL means that
+   * the following values: INTERNAL, EXTERNAL The value of INTERNAL means that
    * this will be used for Internal Network Load Balancing (TCP, UDP). The value
    * of EXTERNAL means that this will be used for External Load Balancing
    * (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
@@ -20879,6 +20815,7 @@ class ForwardingRulesScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -23481,6 +23418,7 @@ class InstanceGroupManagersScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -23832,6 +23770,7 @@ class InstanceGroupsScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -24467,6 +24406,7 @@ class InstancesScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -25046,6 +24986,7 @@ class MachineTypesScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -25595,11 +25536,14 @@ class NetworkInterface {
    */
   core.String name;
   /**
-   * URL of the network resource for this instance. This is required for
-   * creating an instance but optional when creating a firewall rule. If not
-   * specified when creating a firewall rule, the default network is used:
+   * URL of the network resource for this instance. When creating an instance,
+   * if neither the network nor the subnetwork is specified, the default network
+   * global/networks/default is used; if the network is not specified but the
+   * subnetwork is specified, the network is inferred.
    *
-   * global/networks/default
+   * This field is optional when creating a firewall rule. If not specified when
+   * creating a firewall rule, the default network global/networks/default is
+   * used.
    *
    * If you specify this property, you can specify the network as a full or
    * partial URL. For example, the following are all valid URLs:
@@ -25864,6 +25808,7 @@ class OperationWarnings {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -26361,6 +26306,7 @@ class OperationsScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -26668,6 +26614,7 @@ class Quota {
    * - "AUTOSCALERS"
    * - "BACKEND_SERVICES"
    * - "CPUS"
+   * - "CPUS_ALL_REGIONS"
    * - "DISKS_TOTAL_GB"
    * - "FIREWALLS"
    * - "FORWARDING_RULES"
@@ -26696,7 +26643,6 @@ class Quota {
    * - "TARGET_POOLS"
    * - "TARGET_SSL_PROXIES"
    * - "TARGET_VPN_GATEWAYS"
-   * - "TOTAL_CPUS"
    * - "URL_MAPS"
    * - "VPN_TUNNELS"
    */
@@ -27467,6 +27413,7 @@ class RouteWarnings {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -27522,7 +27469,7 @@ class RouteWarnings {
  * smallest priority value. If there is still a tie, it uses the layer three and
  * four packet headers to select just one of the remaining matching routes. The
  * packet is then forwarded as specified by the nextHop field of the winning
- * route - either to another instance destination, a instance gateway or a
+ * route - either to another instance destination, an instance gateway, or a
  * Google Compute Engine-operated gateway.
  *
  * Packets that do not match any route in the sending instance's routing table
@@ -28416,6 +28363,7 @@ class RoutersScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -29476,6 +29424,7 @@ class SubnetworksScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -30326,6 +30275,7 @@ class TargetInstancesScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -30900,6 +30850,7 @@ class TargetPoolsScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -31568,6 +31519,7 @@ class TargetVpnGatewaysScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"
@@ -32469,6 +32421,7 @@ class VpnTunnelsScopedListWarning {
    * - "NOT_CRITICAL_ERROR"
    * - "NO_RESULTS_ON_PAGE"
    * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
    * - "RESOURCE_NOT_DELETED"
    * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
    * - "UNREACHABLE"

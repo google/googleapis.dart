@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client genomics/v1';
 
-/** Stores, processes, explores and shares genomic data. */
+/** Upload, process, query, and search Genomics data in the cloud. */
 class GenomicsApi {
   /** View and manage your data in Google BigQuery */
   static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
@@ -58,15 +58,20 @@ class AnnotationsResourceApi {
       _requester = client;
 
   /**
-   * Creates one or more new annotations atomically. All annotations must belong
-   * to the same annotation set. Caller must have WRITE permission for this
-   * annotation set. For optimal performance, batch positionally adjacent
-   * annotations together. If the request has a systemic issue, such as an
-   * attempt to write to an inaccessible annotation set, the entire RPC will
-   * fail accordingly. For lesser data issues, when possible an error will be
-   * isolated to the corresponding batch entry in the response; the remaining
-   * well formed annotations will be created normally. For details on the
-   * requirements for each individual annotation resource, see CreateAnnotation.
+   * Creates one or more new annotations atomically. All annotations must
+   * belong to the same annotation set. Caller must have WRITE
+   * permission for this annotation set. For optimal performance, batch
+   * positionally adjacent annotations together.
+   *
+   * If the request has a systemic issue, such as an attempt to write to
+   * an inaccessible annotation set, the entire RPC will fail accordingly. For
+   * lesser data issues, when possible an error will be isolated to the
+   * corresponding batch entry in the response; the remaining well formed
+   * annotations will be created normally.
+   *
+   * For details on the requirements for each individual annotation resource,
+   * see
+   * CreateAnnotation.
    *
    * [request] - The metadata request object.
    *
@@ -105,15 +110,28 @@ class AnnotationsResourceApi {
   }
 
   /**
-   * Creates a new annotation. Caller must have WRITE permission for the
-   * associated annotation set. The following fields are required: *
-   * annotationSetId * referenceName or referenceId ### Transcripts For
-   * annotations of type TRANSCRIPT, the following fields of transcript must be
-   * provided: * exons.start * exons.end All other fields may be optionally
-   * specified, unless documented as being server-generated (for example, the
-   * `id` field). The annotated range must be no longer than 100Mbp (mega base
-   * pairs). See the Annotation resource for additional restrictions on each
-   * field.
+   * Creates a new annotation. Caller must have WRITE permission
+   * for the associated annotation set.
+   *
+   * The following fields are required:
+   *
+   * * annotationSetId
+   * * referenceName or
+   *   referenceId
+   *
+   * ### Transcripts
+   *
+   * For annotations of type TRANSCRIPT, the following fields of
+   * transcript must be provided:
+   *
+   * * exons.start
+   * * exons.end
+   *
+   * All other fields may be optionally specified, unless documented as being
+   * server-generated (for example, the `id` field). The annotated
+   * range must be no longer than 100Mbp (mega base pairs). See the
+   * Annotation resource
+   * for additional restrictions on each field.
    *
    * [request] - The metadata request object.
    *
@@ -152,8 +170,8 @@ class AnnotationsResourceApi {
   }
 
   /**
-   * Deletes an annotation. Caller must have WRITE permission for the associated
-   * annotation set.
+   * Deletes an annotation. Caller must have WRITE permission for
+   * the associated annotation set.
    *
    * Request parameters:
    *
@@ -192,8 +210,8 @@ class AnnotationsResourceApi {
   }
 
   /**
-   * Gets an annotation. Caller must have READ permission for the associated
-   * annotation set.
+   * Gets an annotation. Caller must have READ permission
+   * for the associated annotation set.
    *
    * Request parameters:
    *
@@ -232,13 +250,13 @@ class AnnotationsResourceApi {
   }
 
   /**
-   * Searches for annotations that match the given criteria. Results are ordered
-   * by genomic coordinate (by reference sequence, then position). Annotations
-   * with equivalent genomic coordinates are returned in an unspecified order.
-   * This order is consistent, such that two queries for the same content
-   * (regardless of page size) yield annotations in the same order across their
-   * respective streams of paginated responses. Caller must have READ permission
-   * for the queried annotation sets.
+   * Searches for annotations that match the given criteria. Results are
+   * ordered by genomic coordinate (by reference sequence, then position).
+   * Annotations with equivalent genomic coordinates are returned in an
+   * unspecified order. This order is consistent, such that two queries for the
+   * same content (regardless of page size) yield annotations in the same order
+   * across their respective streams of paginated responses. Caller must have
+   * READ permission for the queried annotation sets.
    *
    * [request] - The metadata request object.
    *
@@ -277,8 +295,8 @@ class AnnotationsResourceApi {
   }
 
   /**
-   * Updates an annotation. Caller must have WRITE permission for the associated
-   * dataset.
+   * Updates an annotation. Caller must have
+   * WRITE permission for the associated dataset.
    *
    * [request] - The metadata request object.
    *
@@ -287,7 +305,11 @@ class AnnotationsResourceApi {
    * [annotationId] - The ID of the annotation to be updated.
    *
    * [updateMask] - An optional mask specifying which fields to update. Mutable
-   * fields are name, variant, transcript, and info. If unspecified, all mutable
+   * fields are
+   * name,
+   * variant,
+   * transcript, and
+   * info. If unspecified, all mutable
    * fields will be updated.
    *
    * Completes with a [Annotation].
@@ -339,9 +361,15 @@ class AnnotationsetsResourceApi {
 
   /**
    * Creates a new annotation set. Caller must have WRITE permission for the
-   * associated dataset. The following fields are required: * datasetId *
-   * referenceSetId All other fields may be optionally specified, unless
-   * documented as being server-generated (for example, the `id` field).
+   * associated dataset.
+   *
+   * The following fields are required:
+   *
+   *   * datasetId
+   *   * referenceSetId
+   *
+   * All other fields may be optionally specified, unless documented as being
+   * server-generated (for example, the `id` field).
    *
    * [request] - The metadata request object.
    *
@@ -380,8 +408,8 @@ class AnnotationsetsResourceApi {
   }
 
   /**
-   * Deletes an annotation set. Caller must have WRITE permission for the
-   * associated annotation set.
+   * Deletes an annotation set. Caller must have WRITE permission
+   * for the associated annotation set.
    *
    * Request parameters:
    *
@@ -420,8 +448,8 @@ class AnnotationsetsResourceApi {
   }
 
   /**
-   * Gets an annotation set. Caller must have READ permission for the associated
-   * dataset.
+   * Gets an annotation set. Caller must have READ permission for
+   * the associated dataset.
    *
    * Request parameters:
    *
@@ -514,8 +542,11 @@ class AnnotationsetsResourceApi {
    * [annotationSetId] - The ID of the annotation set to be updated.
    *
    * [updateMask] - An optional mask specifying which fields to update. Mutable
-   * fields are name, source_uri, and info. If unspecified, all mutable fields
-   * will be updated.
+   * fields are
+   * name,
+   * source_uri, and
+   * info. If unspecified, all
+   * mutable fields will be updated.
    *
    * Completes with a [AnnotationSet].
    *
@@ -565,8 +596,10 @@ class CallsetsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new call set. For the definitions of call sets and other genomics
-   * resources, see [Fundamentals of Google
+   * Creates a new call set.
+   *
+   * For the definitions of call sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
@@ -606,8 +639,10 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Deletes a call set. For the definitions of call sets and other genomics
-   * resources, see [Fundamentals of Google
+   * Deletes a call set.
+   *
+   * For the definitions of call sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -647,8 +682,10 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Gets a call set by ID. For the definitions of call sets and other genomics
-   * resources, see [Fundamentals of Google
+   * Gets a call set by ID.
+   *
+   * For the definitions of call sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -688,9 +725,12 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Updates a call set. For the definitions of call sets and other genomics
-   * resources, see [Fundamentals of Google
+   * Updates a call set.
+   *
+   * For the definitions of call sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * This method supports patch semantics.
    *
    * [request] - The metadata request object.
@@ -700,8 +740,10 @@ class CallsetsResourceApi {
    * [callSetId] - The ID of the call set to be updated.
    *
    * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, the only mutable field is name. The only acceptable value is "name".
-   * If unspecified, all mutable fields will be updated.
+   * time, the only
+   * mutable field is name. The only
+   * acceptable value is "name". If unspecified, all mutable fields will be
+   * updated.
    *
    * Completes with a [CallSet].
    *
@@ -742,9 +784,12 @@ class CallsetsResourceApi {
   }
 
   /**
-   * Gets a list of call sets matching the criteria. For the definitions of call
-   * sets and other genomics resources, see [Fundamentals of Google
+   * Gets a list of call sets matching the criteria.
+   *
+   * For the definitions of call sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.searchCallSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L178).
    *
@@ -794,8 +839,10 @@ class DatasetsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new dataset. For the definitions of datasets and other genomics
-   * resources, see [Fundamentals of Google
+   * Creates a new dataset.
+   *
+   * For the definitions of datasets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
@@ -835,9 +882,13 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Deletes a dataset and all of its contents (all read group sets, reference
-   * sets, variant sets, call sets, annotation sets, etc.) This is reversible
-   * (up to one week after the deletion) via the datasets.undelete operation.
+   * Deletes a dataset and all of its contents (all read group sets,
+   * reference sets, variant sets, call sets, annotation sets, etc.)
+   * This is reversible (up to one week after the deletion) via
+   * the
+   * datasets.undelete
+   * operation.
+   *
    * For the definitions of datasets and other genomics resources, see
    * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
@@ -879,8 +930,10 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Gets a dataset by ID. For the definitions of datasets and other genomics
-   * resources, see [Fundamentals of Google
+   * Gets a dataset by ID.
+   *
+   * For the definitions of datasets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -920,10 +973,14 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Gets the access control policy for the dataset. This is empty if the policy
-   * or resource does not exist. See Getting a Policy for more information. For
-   * the definitions of datasets and other genomics resources, see [Fundamentals
-   * of Google
+   * Gets the access control policy for the dataset. This is empty if the
+   * policy or resource does not exist.
+   *
+   * See <a href="/iam/docs/managing-policies#getting_a_policy">Getting a
+   * Policy</a> for more information.
+   *
+   * For the definitions of datasets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
@@ -931,7 +988,8 @@ class DatasetsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
-   * Format is `datasets/`.
+   * Format is
+   * `datasets/<dataset ID>`.
    * Value must have pattern "^datasets/[^/]+$".
    *
    * Completes with a [Policy].
@@ -970,20 +1028,24 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Lists datasets within a project. For the definitions of datasets and other
-   * genomics resources, see [Fundamentals of Google
+   * Lists datasets within a project.
+   *
+   * For the definitions of datasets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
+   * [pageSize] - The maximum number of results to return in a single page. If
+   * unspecified,
+   * defaults to 50. The maximum value is 1024.
+   *
    * [projectId] - Required. The Google Cloud project ID to list datasets for.
    *
-   * [pageSize] - The maximum number of results to return in a single page. If
-   * unspecified, defaults to 50. The maximum value is 1024.
-   *
    * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of `nextPageToken` from the previous response.
+   * result sets.
+   * To get the next page of results, set this parameter to the value of
+   * `nextPageToken` from the previous response.
    *
    * Completes with a [ListDatasetsResponse].
    *
@@ -993,7 +1055,7 @@ class DatasetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDatasetsResponse> list({core.String projectId, core.int pageSize, core.String pageToken}) {
+  async.Future<ListDatasetsResponse> list({core.int pageSize, core.String projectId, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1001,11 +1063,11 @@ class DatasetsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1024,9 +1086,12 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Updates a dataset. For the definitions of datasets and other genomics
-   * resources, see [Fundamentals of Google
+   * Updates a dataset.
+   *
+   * For the definitions of datasets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * This method supports patch semantics.
    *
    * [request] - The metadata request object.
@@ -1036,8 +1101,10 @@ class DatasetsResourceApi {
    * [datasetId] - The ID of the dataset to be updated.
    *
    * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, the only mutable field is name. The only acceptable value is "name".
-   * If unspecified, all mutable fields will be updated.
+   * time, the only
+   * mutable field is name. The only
+   * acceptable value is "name". If unspecified, all mutable fields will be
+   * updated.
    *
    * Completes with a [Dataset].
    *
@@ -1079,17 +1146,22 @@ class DatasetsResourceApi {
 
   /**
    * Sets the access control policy on the specified dataset. Replaces any
-   * existing policy. For the definitions of datasets and other genomics
-   * resources, see [Fundamentals of Google
+   * existing policy.
+   *
+   * For the definitions of datasets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-   * See Setting a Policy for more information.
+   *
+   * See <a href="/iam/docs/managing-policies#setting_a_policy">Setting a
+   * Policy</a> for more information.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
-   * Format is `datasets/`.
+   * Format is
+   * `datasets/<dataset ID>`.
    * Value must have pattern "^datasets/[^/]+$".
    *
    * Completes with a [Policy].
@@ -1128,9 +1200,12 @@ class DatasetsResourceApi {
   }
 
   /**
-   * Returns permissions that a caller has on the specified resource. See
-   * Testing Permissions for more information. For the definitions of datasets
-   * and other genomics resources, see [Fundamentals of Google
+   * Returns permissions that a caller has on the specified resource.
+   * See <a href="/iam/docs/managing-policies#testing_permissions">Testing
+   * Permissions</a> for more information.
+   *
+   * For the definitions of datasets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
@@ -1138,7 +1213,8 @@ class DatasetsResourceApi {
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which policy is being specified.
-   * Format is `datasets/`.
+   * Format is
+   * `datasets/<dataset ID>`.
    * Value must have pattern "^datasets/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -1178,9 +1254,11 @@ class DatasetsResourceApi {
 
   /**
    * Undeletes a dataset by restoring a dataset which was deleted via this API.
+   *
    * For the definitions of datasets and other genomics resources, see
    * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * This operation is only possible for a week after the deletion occurred.
    *
    * [request] - The metadata request object.
@@ -1283,7 +1361,7 @@ class OperationsResourceApi {
   }
 
   /**
-   * Gets the latest state of a long-running operation. Clients can use this
+   * Gets the latest state of a long-running operation.  Clients can use this
    * method to poll the operation result at intervals as recommended by the API
    * service.
    *
@@ -1332,17 +1410,29 @@ class OperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^operations$".
    *
-   * [filter] - A string for filtering Operations. The following filter fields
-   * are supported: * projectId: Required. Corresponds to
-   * OperationMetadata.projectId. * createTime: The time this job was created,
-   * in seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can
-   * use `>=` and/or `= 1432140000` * `projectId = my-project AND createTime >=
-   * 1432140000 AND createTime <= 1432150000 AND status = RUNNING` * `projectId
-   * = my-project AND labels.color = *` * `projectId = my-project AND
-   * labels.color = red`
-   *
    * [pageSize] - The maximum number of results to return. If unspecified,
-   * defaults to 256. The maximum value is 2048.
+   * defaults to
+   * 256. The maximum value is 2048.
+   *
+   * [filter] - A string for filtering Operations.
+   * The following filter fields are supported&#58;
+   *
+   * * projectId&#58; Required. Corresponds to
+   *   OperationMetadata.projectId.
+   * * createTime&#58; The time this job was created, in seconds from the
+   * [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `<=`
+   *   operators.
+   * * status&#58; Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only
+   *   one status may be specified.
+   * * labels.key where key is a label key.
+   *
+   * Examples&#58;
+   *
+   * * `projectId = my-project AND createTime >= 1432140000`
+   * * `projectId = my-project AND createTime >= 1432140000 AND createTime <=
+   * 1432150000 AND status = RUNNING`
+   * * `projectId = my-project AND labels.color = *`
+   * * `projectId = my-project AND labels.color = red`
    *
    * [pageToken] - The standard list page token.
    *
@@ -1354,7 +1444,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.int pageSize, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1365,11 +1455,11 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1399,15 +1489,17 @@ class ReadgroupsetsResourceApi {
       _requester = client;
 
   /**
-   * Deletes a read group set. For the definitions of read group sets and other
-   * genomics resources, see [Fundamentals of Google
+   * Deletes a read group set.
+   *
+   * For the definitions of read group sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
    *
    * [readGroupSetId] - The ID of the read group set to be deleted. The caller
-   * must have WRITE permissions to the dataset associated with this read group
-   * set.
+   * must have WRITE
+   * permissions to the dataset associated with this read group set.
    *
    * Completes with a [Empty].
    *
@@ -1442,20 +1534,24 @@ class ReadgroupsetsResourceApi {
   }
 
   /**
-   * Exports a read group set to a BAM file in Google Cloud Storage. For the
-   * definitions of read group sets and other genomics resources, see
+   * Exports a read group set to a BAM file in Google Cloud Storage.
+   *
+   * For the definitions of read group sets and other genomics resources, see
    * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Note that currently there may be some differences between exported BAM
    * files and the original BAM file at the time of import. See
-   * ImportReadGroupSets for caveats.
+   * ImportReadGroupSets
+   * for caveats.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [readGroupSetId] - Required. The ID of the read group set to export. The
-   * caller must have READ access to this read group set.
+   * caller must have
+   * READ access to this read group set.
    *
    * Completes with a [Operation].
    *
@@ -1493,8 +1589,10 @@ class ReadgroupsetsResourceApi {
   }
 
   /**
-   * Gets a read group set by ID. For the definitions of read group sets and
-   * other genomics resources, see [Fundamentals of Google
+   * Gets a read group set by ID.
+   *
+   * For the definitions of read group sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -1535,17 +1633,23 @@ class ReadgroupsetsResourceApi {
 
   /**
    * Creates read group sets by asynchronously importing the provided
-   * information. For the definitions of read group sets and other genomics
-   * resources, see [Fundamentals of Google
+   * information.
+   *
+   * For the definitions of read group sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-   * The caller must have WRITE permissions to the dataset. ## Notes on
-   * [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import - Tags will be
-   * converted to strings - tag types are not preserved - Comments (`@CO`) in
-   * the input file header will not be preserved - Original header order of
-   * references (`@SQ`) will not be preserved - Any reverse stranded unmapped
-   * reads will be reverse complemented, and their qualities (also the "BQ" and
-   * "OQ" tags, if any) will be reversed - Unmapped reads will be stripped of
-   * positional information (reference name and position)
+   *
+   * The caller must have WRITE permissions to the dataset.
+   *
+   * ## Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import
+   *
+   * - Tags will be converted to strings - tag types are not preserved
+   * - Comments (`@CO`) in the input file header will not be preserved
+   * - Original header order of references (`@SQ`) will not be preserved
+   * - Any reverse stranded unmapped reads will be reverse complemented, and
+   * their qualities (also the "BQ" and "OQ" tags, if any) will be reversed
+   * - Unmapped reads will be stripped of positional information (reference name
+   * and position)
    *
    * [request] - The metadata request object.
    *
@@ -1584,9 +1688,12 @@ class ReadgroupsetsResourceApi {
   }
 
   /**
-   * Updates a read group set. For the definitions of read group sets and other
-   * genomics resources, see [Fundamentals of Google
+   * Updates a read group set.
+   *
+   * For the definitions of read group sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * This method supports patch semantics.
    *
    * [request] - The metadata request object.
@@ -1594,12 +1701,17 @@ class ReadgroupsetsResourceApi {
    * Request parameters:
    *
    * [readGroupSetId] - The ID of the read group set to be updated. The caller
-   * must have WRITE permissions to the dataset associated with this read group
-   * set.
+   * must have WRITE
+   * permissions to the dataset associated with this read group set.
    *
    * [updateMask] - An optional mask specifying which fields to update.
-   * Supported fields: * name. * referenceSetId. Leaving `updateMask` unset is
-   * equivalent to specifying all mutable fields.
+   * Supported fields:
+   *
+   * * name.
+   * * referenceSetId.
+   *
+   * Leaving `updateMask` unset is equivalent to specifying all mutable
+   * fields.
    *
    * Completes with a [ReadGroupSet].
    *
@@ -1640,9 +1752,12 @@ class ReadgroupsetsResourceApi {
   }
 
   /**
-   * Searches for read group sets matching the criteria. For the definitions of
-   * read group sets and other genomics resources, see [Fundamentals of Google
+   * Searches for read group sets matching the criteria.
+   *
+   * For the definitions of read group sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.searchReadGroupSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L135).
    *
@@ -1694,10 +1809,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /**
    * Lists fixed width coverage buckets for a read group set, each of which
    * correspond to a range of a reference sequence. Each bucket summarizes
-   * coverage information across its corresponding genomic range. For the
-   * definitions of read group sets and other genomics resources, see
+   * coverage information across its corresponding genomic range.
+   *
+   * For the definitions of read group sets and other genomics resources, see
    * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Coverage is defined as the number of reads which are aligned to a given
    * base in the reference sequence. Coverage buckets are available at several
    * precomputed bucket widths, enabling retrieval of various coverage 'zoom
@@ -1709,30 +1826,36 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * [readGroupSetId] - Required. The ID of the read group set over which
    * coverage is requested.
    *
-   * [referenceName] - The name of the reference to query, within the reference
-   * set associated with this query. Optional.
+   * [pageSize] - The maximum number of results to return in a single page. If
+   * unspecified,
+   * defaults to 1024. The maximum value is 2048.
    *
    * [start] - The start position of the range on the reference, 0-based
-   * inclusive. If specified, `referenceName` must also be specified. Defaults
-   * to 0.
-   *
-   * [end] - The end position of the range on the reference, 0-based exclusive.
-   * If specified, `referenceName` must also be specified. If unset or 0,
-   * defaults to the length of the reference.
+   * inclusive. If
+   * specified, `referenceName` must also be specified. Defaults to 0.
    *
    * [targetBucketWidth] - The desired width of each reported coverage bucket in
-   * base pairs. This will be rounded down to the nearest precomputed bucket
-   * width; the value of which is returned as `bucketWidth` in the response.
-   * Defaults to infinity (each bucket spans an entire reference sequence) or
-   * the length of the target range, if specified. The smallest precomputed
-   * `bucketWidth` is currently 2048 base pairs; this is subject to change.
+   * base pairs. This
+   * will be rounded down to the nearest precomputed bucket width; the value
+   * of which is returned as `bucketWidth` in the response. Defaults
+   * to infinity (each bucket spans an entire reference sequence) or the length
+   * of the target range, if specified. The smallest precomputed
+   * `bucketWidth` is currently 2048 base pairs; this is subject to
+   * change.
+   *
+   * [referenceName] - The name of the reference to query, within the reference
+   * set associated
+   * with this query. Optional.
+   *
+   * [end] - The end position of the range on the reference, 0-based exclusive.
+   * If
+   * specified, `referenceName` must also be specified. If unset or 0, defaults
+   * to the length of the reference.
    *
    * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of `nextPageToken` from the previous response.
-   *
-   * [pageSize] - The maximum number of results to return in a single page. If
-   * unspecified, defaults to 1024. The maximum value is 2048.
+   * result sets.
+   * To get the next page of results, set this parameter to the value of
+   * `nextPageToken` from the previous response.
    *
    * Completes with a [ListCoverageBucketsResponse].
    *
@@ -1742,7 +1865,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.String referenceName, core.String start, core.String end, core.String targetBucketWidth, core.String pageToken, core.int pageSize}) {
+  async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.int pageSize, core.String start, core.String targetBucketWidth, core.String referenceName, core.String end, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1753,23 +1876,23 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
     }
-    if (referenceName != null) {
-      _queryParams["referenceName"] = [referenceName];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (start != null) {
       _queryParams["start"] = [start];
     }
-    if (end != null) {
-      _queryParams["end"] = [end];
-    }
     if (targetBucketWidth != null) {
       _queryParams["targetBucketWidth"] = [targetBucketWidth];
     }
+    if (referenceName != null) {
+      _queryParams["referenceName"] = [referenceName];
+    }
+    if (end != null) {
+      _queryParams["end"] = [end];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId') + '/coveragebuckets';
@@ -1794,22 +1917,29 @@ class ReadsResourceApi {
       _requester = client;
 
   /**
-   * Gets a list of reads for one or more read group sets. For the definitions
-   * of read group sets and other genomics resources, see [Fundamentals of
-   * Google
+   * Gets a list of reads for one or more read group sets.
+   *
+   * For the definitions of read group sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Reads search operates over a genomic coordinate space of reference sequence
-   * & position defined over the reference sequences to which the requested read
-   * group sets are aligned. If a target positional range is specified, search
-   * returns all reads whose alignment to the reference genome overlap the
-   * range. A query which specifies only read group set IDs yields all reads in
-   * those read group sets, including unmapped reads. All reads returned
-   * (including reads on subsequent pages) are ordered by genomic coordinate (by
-   * reference sequence, then position). Reads with equivalent genomic
-   * coordinates are returned in an unspecified order. This order is consistent,
-   * such that two queries for the same content (regardless of page size) yield
-   * reads in the same order across their respective streams of paginated
-   * responses. Implements
+   * & position defined over the reference sequences to which the requested
+   * read group sets are aligned.
+   *
+   * If a target positional range is specified, search returns all reads whose
+   * alignment to the reference genome overlap the range. A query which
+   * specifies only read group set IDs yields all reads in those read group
+   * sets, including unmapped reads.
+   *
+   * All reads returned (including reads on subsequent pages) are ordered by
+   * genomic coordinate (by reference sequence, then position). Reads with
+   * equivalent genomic coordinates are returned in an unspecified order. This
+   * order is consistent, such that two queries for the same content (regardless
+   * of page size) yield reads in the same order across their respective streams
+   * of paginated responses.
+   *
+   * Implements
    * [GlobalAllianceApi.searchReads](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L85).
    *
    * [request] - The metadata request object.
@@ -1848,46 +1978,6 @@ class ReadsResourceApi {
     return _response.then((data) => new SearchReadsResponse.fromJson(data));
   }
 
-  /**
-   * Returns a stream of all the reads matching the search request, ordered by
-   * reference name, position, and ID.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [StreamReadsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<StreamReadsResponse> stream(StreamReadsRequest request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-
-    _url = 'v1/reads:stream';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new StreamReadsResponse.fromJson(data));
-  }
-
 }
 
 
@@ -1900,9 +1990,12 @@ class ReferencesResourceApi {
       _requester = client;
 
   /**
-   * Gets a reference. For the definitions of references and other genomics
-   * resources, see [Fundamentals of Google
+   * Gets a reference.
+   *
+   * For the definitions of references and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.getReference](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L158).
    *
@@ -1943,9 +2036,12 @@ class ReferencesResourceApi {
   }
 
   /**
-   * Searches for references which match the given criteria. For the definitions
-   * of references and other genomics resources, see [Fundamentals of Google
+   * Searches for references which match the given criteria.
+   *
+   * For the definitions of references and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.searchReferences](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L146).
    *
@@ -1995,10 +2091,12 @@ class ReferencesBasesResourceApi {
       _requester = client;
 
   /**
-   * Lists the bases in a reference, optionally restricted to a range. For the
-   * definitions of references and other genomics resources, see [Fundamentals
-   * of Google
+   * Lists the bases in a reference, optionally restricted to a range.
+   *
+   * For the definitions of references and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.getReferenceBases](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L221).
    *
@@ -2006,18 +2104,21 @@ class ReferencesBasesResourceApi {
    *
    * [referenceId] - The ID of the reference.
    *
+   * [pageSize] - The maximum number of bases to return in a single page. If
+   * unspecified,
+   * defaults to 200Kbp (kilo base pairs). The maximum value is 10Mbp (mega base
+   * pairs).
+   *
    * [start] - The start position (0-based) of this query. Defaults to 0.
    *
    * [end] - The end position (0-based, exclusive) of this query. Defaults to
-   * the length of this reference.
+   * the length
+   * of this reference.
    *
    * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of `nextPageToken` from the previous response.
-   *
-   * [pageSize] - The maximum number of bases to return in a single page. If
-   * unspecified, defaults to 200Kbp (kilo base pairs). The maximum value is
-   * 10Mbp (mega base pairs).
+   * result sets.
+   * To get the next page of results, set this parameter to the value of
+   * `nextPageToken` from the previous response.
    *
    * Completes with a [ListBasesResponse].
    *
@@ -2027,7 +2128,7 @@ class ReferencesBasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBasesResponse> list(core.String referenceId, {core.String start, core.String end, core.String pageToken, core.int pageSize}) {
+  async.Future<ListBasesResponse> list(core.String referenceId, {core.int pageSize, core.String start, core.String end, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2038,6 +2139,9 @@ class ReferencesBasesResourceApi {
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (start != null) {
       _queryParams["start"] = [start];
     }
@@ -2046,9 +2150,6 @@ class ReferencesBasesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/references/' + commons.Escaper.ecapeVariable('$referenceId') + '/bases';
@@ -2073,9 +2174,12 @@ class ReferencesetsResourceApi {
       _requester = client;
 
   /**
-   * Gets a reference set. For the definitions of references and other genomics
-   * resources, see [Fundamentals of Google
+   * Gets a reference set.
+   *
+   * For the definitions of references and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.getReferenceSet](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L83).
    *
@@ -2116,10 +2220,12 @@ class ReferencesetsResourceApi {
   }
 
   /**
-   * Searches for reference sets which match the given criteria. For the
-   * definitions of references and other genomics resources, see [Fundamentals
-   * of Google
+   * Searches for reference sets which match the given criteria.
+   *
+   * For the definitions of references and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.searchReferenceSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L71)
    *
@@ -2169,8 +2275,10 @@ class VariantsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new variant. For the definitions of variants and other genomics
-   * resources, see [Fundamentals of Google
+   * Creates a new variant.
+   *
+   * For the definitions of variants and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
@@ -2210,8 +2318,10 @@ class VariantsResourceApi {
   }
 
   /**
-   * Deletes a variant. For the definitions of variants and other genomics
-   * resources, see [Fundamentals of Google
+   * Deletes a variant.
+   *
+   * For the definitions of variants and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -2251,8 +2361,10 @@ class VariantsResourceApi {
   }
 
   /**
-   * Gets a variant by ID. For the definitions of variants and other genomics
-   * resources, see [Fundamentals of Google
+   * Gets a variant by ID.
+   *
+   * For the definitions of variants and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -2293,18 +2405,23 @@ class VariantsResourceApi {
 
   /**
    * Creates variant data by asynchronously importing the provided information.
+   *
    * For the definitions of variant sets and other genomics resources, see
    * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * The variants for import will be merged with any existing variant that
    * matches its reference sequence, start, end, reference bases, and
    * alternative bases. If no such variant exists, a new one will be created.
-   * When variants are merged, the call information from the new variant is
-   * added to the existing variant, and Variant info fields are merged as
-   * specified in infoMergeConfig. As a special case, for single-sample VCF
-   * files, QUAL and FILTER fields will be moved to the call level; these are
-   * sometimes interpreted in a call-specific context. Imported VCF headers are
-   * appended to the metadata already in a variant set.
+   *
+   * When variants are merged, the call information from the new variant
+   * is added to the existing variant, and Variant info fields are merged
+   * as specified in
+   * infoMergeConfig.
+   * As a special case, for single-sample VCF files, QUAL and FILTER fields will
+   * be moved to the call level; these are sometimes interpreted in a
+   * call-specific context.
+   * Imported VCF headers are appended to the metadata already in a variant set.
    *
    * [request] - The metadata request object.
    *
@@ -2343,34 +2460,97 @@ class VariantsResourceApi {
   }
 
   /**
-   * Merges the given variants with existing variants. For the definitions of
-   * variants and other genomics resources, see [Fundamentals of Google
+   * Merges the given variants with existing variants.
+   *
+   * For the definitions of variants and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-   * Each variant will be merged with an existing variant that matches its
-   * reference sequence, start, end, reference bases, and alternative bases. If
-   * no such variant exists, a new one will be created. When variants are
-   * merged, the call information from the new variant is added to the existing
-   * variant. Variant info fields are merged as specified in the infoMergeConfig
-   * field of the MergeVariantsRequest. Please exercise caution when using this
-   * method! It is easy to introduce mistakes in existing variants and difficult
-   * to back out of them. For example, suppose you were trying to merge a new
-   * variant with an existing one and both variants contain calls that belong to
-   * callsets with the same callset ID. // Existing variant - irrelevant fields
-   * trimmed for clarity { "variantSetId": "10473108253681171589",
-   * "referenceName": "1", "start": "10582", "referenceBases": "G",
-   * "alternateBases": [ "A" ], "calls": [ { "callSetId":
-   * "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 0, 1 ],
-   * } ] } // New variant with conflicting call information { "variantSetId":
-   * "10473108253681171589", "referenceName": "1", "start": "10582",
-   * "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
-   * "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 1, 1 ],
-   * } ] } The resulting merged variant would overwrite the existing calls with
-   * those from the new variant: { "variantSetId": "10473108253681171589",
-   * "referenceName": "1", "start": "10582", "referenceBases": "G",
-   * "alternateBases": [ "A" ], "calls": [ { "callSetId":
-   * "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 1, 1 ],
-   * } ] } This may be the desired outcome, but it is up to the user to
-   * determine if if that is indeed the case.
+   *
+   * Each variant will be
+   * merged with an existing variant that matches its reference sequence,
+   * start, end, reference bases, and alternative bases. If no such variant
+   * exists, a new one will be created.
+   *
+   * When variants are merged, the call information from the new variant
+   * is added to the existing variant. Variant info fields are merged as
+   * specified in the
+   * infoMergeConfig
+   * field of the MergeVariantsRequest.
+   *
+   * Please exercise caution when using this method!  It is easy to introduce
+   * mistakes in existing variants and difficult to back out of them.  For
+   * example,
+   * suppose you were trying to merge a new variant with an existing one and
+   * both
+   * variants contain calls that belong to callsets with the same callset ID.
+   *
+   *     // Existing variant - irrelevant fields trimmed for clarity
+   *     {
+   *         "variantSetId": "10473108253681171589",
+   *         "referenceName": "1",
+   *         "start": "10582",
+   *         "referenceBases": "G",
+   *         "alternateBases": [
+   *             "A"
+   *         ],
+   *         "calls": [
+   *             {
+   *                 "callSetId": "10473108253681171589-0",
+   *                 "callSetName": "CALLSET0",
+   *                 "genotype": [
+   *                     0,
+   *                     1
+   *                 ],
+   *             }
+   *         ]
+   *     }
+   *
+   *     // New variant with conflicting call information
+   *     {
+   *         "variantSetId": "10473108253681171589",
+   *         "referenceName": "1",
+   *         "start": "10582",
+   *         "referenceBases": "G",
+   *         "alternateBases": [
+   *             "A"
+   *         ],
+   *         "calls": [
+   *             {
+   *                 "callSetId": "10473108253681171589-0",
+   *                 "callSetName": "CALLSET0",
+   *                 "genotype": [
+   *                     1,
+   *                     1
+   *                 ],
+   *             }
+   *         ]
+   *     }
+   *
+   * The resulting merged variant would overwrite the existing calls with those
+   * from the new variant:
+   *
+   *     {
+   *         "variantSetId": "10473108253681171589",
+   *         "referenceName": "1",
+   *         "start": "10582",
+   *         "referenceBases": "G",
+   *         "alternateBases": [
+   *             "A"
+   *         ],
+   *         "calls": [
+   *             {
+   *                 "callSetId": "10473108253681171589-0",
+   *                 "callSetName": "CALLSET0",
+   *                 "genotype": [
+   *                     1,
+   *                     1
+   *                 ],
+   *             }
+   *         ]
+   *     }
+   *
+   * This may be the desired outcome, but it is up to the user to determine if
+   * if that is indeed the case.
    *
    * [request] - The metadata request object.
    *
@@ -2409,9 +2589,12 @@ class VariantsResourceApi {
   }
 
   /**
-   * Updates a variant. For the definitions of variants and other genomics
-   * resources, see [Fundamentals of Google
+   * Updates a variant.
+   *
+   * For the definitions of variants and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * This method supports patch semantics. Returns the modified variant without
    * its calls.
    *
@@ -2422,7 +2605,9 @@ class VariantsResourceApi {
    * [variantId] - The ID of the variant to be updated.
    *
    * [updateMask] - An optional mask specifying which fields to update. At this
-   * time, mutable fields are names and info. Acceptable values are "names" and
+   * time, mutable
+   * fields are names and
+   * info. Acceptable values are "names" and
    * "info". If unspecified, all mutable fields will be updated.
    *
    * Completes with a [Variant].
@@ -2464,9 +2649,12 @@ class VariantsResourceApi {
   }
 
   /**
-   * Gets a list of variants matching the criteria. For the definitions of
-   * variants and other genomics resources, see [Fundamentals of Google
+   * Gets a list of variants matching the criteria.
+   *
+   * For the definitions of variants and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.searchVariants](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L126).
    *
@@ -2506,46 +2694,6 @@ class VariantsResourceApi {
     return _response.then((data) => new SearchVariantsResponse.fromJson(data));
   }
 
-  /**
-   * Returns a stream of all the variants matching the search request, ordered
-   * by reference name, position, and ID.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [StreamVariantsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<StreamVariantsResponse> stream(StreamVariantsRequest request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-
-    _url = 'v1/variants:stream';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new StreamVariantsResponse.fromJson(data));
-  }
-
 }
 
 
@@ -2556,9 +2704,12 @@ class VariantsetsResourceApi {
       _requester = client;
 
   /**
-   * Creates a new variant set. For the definitions of variant sets and other
-   * genomics resources, see [Fundamentals of Google
+   * Creates a new variant set.
+   *
+   * For the definitions of variant sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * The provided variant set must have a valid `datasetId` set - all other
    * fields are optional. Note that the `id` field will be ignored, as this is
    * assigned by the server.
@@ -2601,8 +2752,10 @@ class VariantsetsResourceApi {
 
   /**
    * Deletes a variant set including all variants, call sets, and calls within.
-   * This is not reversible. For the definitions of variant sets and other
-   * genomics resources, see [Fundamentals of Google
+   * This is not reversible.
+   *
+   * For the definitions of variant sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -2642,8 +2795,10 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Exports variant set data to an external destination. For the definitions of
-   * variant sets and other genomics resources, see [Fundamentals of Google
+   * Exports variant set data to an external destination.
+   *
+   * For the definitions of variant sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
@@ -2651,8 +2806,8 @@ class VariantsetsResourceApi {
    * Request parameters:
    *
    * [variantSetId] - Required. The ID of the variant set that contains variant
-   * data which should be exported. The caller must have READ access to this
-   * variant set.
+   * data which
+   * should be exported. The caller must have READ access to this variant set.
    *
    * Completes with a [Operation].
    *
@@ -2690,8 +2845,10 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Gets a variant set by ID. For the definitions of variant sets and other
-   * genomics resources, see [Fundamentals of Google
+   * Gets a variant set by ID.
+   *
+   * For the definitions of variant sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * Request parameters:
@@ -2731,8 +2888,10 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Updates a variant set using patch semantics. For the definitions of variant
-   * sets and other genomics resources, see [Fundamentals of Google
+   * Updates a variant set using patch semantics.
+   *
+   * For the definitions of variant sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    *
    * [request] - The metadata request object.
@@ -2742,8 +2901,14 @@ class VariantsetsResourceApi {
    * [variantSetId] - The ID of the variant to be updated (must already exist).
    *
    * [updateMask] - An optional mask specifying which fields to update.
-   * Supported fields: * metadata. * name. * description. Leaving `updateMask`
-   * unset is equivalent to specifying all mutable fields.
+   * Supported fields:
+   *
+   * * metadata.
+   * * name.
+   * * description.
+   *
+   * Leaving `updateMask` unset is equivalent to specifying all mutable
+   * fields.
    *
    * Completes with a [VariantSet].
    *
@@ -2784,10 +2949,12 @@ class VariantsetsResourceApi {
   }
 
   /**
-   * Returns a list of all variant sets matching search criteria. For the
-   * definitions of variant sets and other genomics resources, see [Fundamentals
-   * of Google
+   * Returns a list of all variant sets matching search criteria.
+   *
+   * For the definitions of variant sets and other genomics resources, see
+   * [Fundamentals of Google
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+   *
    * Implements
    * [GlobalAllianceApi.searchVariantSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L49).
    *
@@ -2834,9 +3001,10 @@ class VariantsetsResourceApi {
 /**
  * An annotation describes a region of reference genome. The value of an
  * annotation may be one of several canonical types, supplemented by arbitrary
- * info tags. An annotation is not inherently associated with a specific sample
- * or individual (though a client could choose to use annotations in this way).
- * Example canonical annotation types are `GENE` and `VARIANT`.
+ * info tags. An annotation is not inherently associated with a specific
+ * sample or individual (though a client could choose to use annotations in
+ * this way). Example canonical annotation types are `GENE` and
+ * `VARIANT`.
  */
 class Annotation {
   /** The annotation set to which this annotation belongs. */
@@ -2847,7 +3015,7 @@ class Annotation {
   core.String id;
   /**
    * A map of additional read alignment information. This must be of the form
-   * map (string key mapping to a list of string values).
+   * map<string, string[]> (string key mapping to a list of string values).
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2858,8 +3026,8 @@ class Annotation {
   /** The ID of the Google Genomics reference associated with this range. */
   core.String referenceId;
   /**
-   * The display name corresponding to the reference specified by `referenceId`,
-   * for example `chr1`, `1`, or `chrX`.
+   * The display name corresponding to the reference specified by
+   * `referenceId`, for example `chr1`, `1`, or `chrX`.
    */
   core.String referenceName;
   /**
@@ -2871,21 +3039,30 @@ class Annotation {
   /** The start position of the range on the reference, 0-based inclusive. */
   core.String start;
   /**
-   * A transcript value represents the assertion that a particular region of the
-   * reference genome may be transcribed as RNA. An alternative splicing pattern
-   * would be represented as a separate transcript object. This field is only
-   * set for annotations of type `TRANSCRIPT`.
+   * A transcript value represents the assertion that a particular region of
+   * the reference genome may be transcribed as RNA. An alternative splicing
+   * pattern would be represented as a separate transcript object. This field
+   * is only set for annotations of type `TRANSCRIPT`.
    */
   Transcript transcript;
   /**
    * The data type for this annotation. Must match the containing annotation
    * set's type.
    * Possible string values are:
-   * - "ANNOTATION_TYPE_UNSPECIFIED" : A ANNOTATION_TYPE_UNSPECIFIED.
-   * - "GENERIC" : A GENERIC.
-   * - "VARIANT" : A VARIANT.
-   * - "GENE" : A GENE.
-   * - "TRANSCRIPT" : A TRANSCRIPT.
+   * - "ANNOTATION_TYPE_UNSPECIFIED"
+   * - "GENERIC" : A `GENERIC` annotation type should be used when no other
+   * annotation
+   * type will suffice. This represents an untyped annotation of the reference
+   * genome.
+   * - "VARIANT" : A `VARIANT` annotation type.
+   * - "GENE" : A `GENE` annotation type represents the existence of a gene at
+   * the
+   * associated reference coordinates. The start coordinate is typically the
+   * gene's transcription start site and the end is typically the end of the
+   * gene's last exon.
+   * - "TRANSCRIPT" : A `TRANSCRIPT` annotation type represents the assertion
+   * that a
+   * particular region of the reference genome may be transcribed as RNA.
    */
   core.String type;
   /**
@@ -2993,7 +3170,7 @@ class AnnotationSet {
   core.String id;
   /**
    * A map of additional read alignment information. This must be of the form
-   * map (string key mapping to a list of string values).
+   * map<string, string[]> (string key mapping to a list of string values).
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3014,11 +3191,20 @@ class AnnotationSet {
   /**
    * The type of annotations contained within this set.
    * Possible string values are:
-   * - "ANNOTATION_TYPE_UNSPECIFIED" : A ANNOTATION_TYPE_UNSPECIFIED.
-   * - "GENERIC" : A GENERIC.
-   * - "VARIANT" : A VARIANT.
-   * - "GENE" : A GENE.
-   * - "TRANSCRIPT" : A TRANSCRIPT.
+   * - "ANNOTATION_TYPE_UNSPECIFIED"
+   * - "GENERIC" : A `GENERIC` annotation type should be used when no other
+   * annotation
+   * type will suffice. This represents an untyped annotation of the reference
+   * genome.
+   * - "VARIANT" : A `VARIANT` annotation type.
+   * - "GENE" : A `GENE` annotation type represents the existence of a gene at
+   * the
+   * associated reference coordinates. The start coordinate is typically the
+   * gene's transcription start site and the end is typically the end of the
+   * gene's last exon.
+   * - "TRANSCRIPT" : A `TRANSCRIPT` annotation type represents the assertion
+   * that a
+   * particular region of the reference genome may be transcribed as RNA.
    */
   core.String type;
 
@@ -3086,9 +3272,9 @@ class BatchCreateAnnotationsRequest {
    * If provided, duplicated requests will result in the same response; if not
    * provided, duplicated requests may result in duplicated data. For a given
    * annotation set, callers should not reuse `request_id`s when writing
-   * different batches of annotations - behavior in this case is undefined. A
-   * common approach is to use a UUID. For batch jobs where worker crashes are a
-   * possibility, consider using some unique variant of a worker or run ID.
+   * different batches of annotations - behavior in this case is undefined.
+   * A common approach is to use a UUID. For batch jobs where worker crashes are
+   * a possibility, consider using some unique variant of a worker or run ID.
    */
   core.String requestId;
 
@@ -3143,23 +3329,32 @@ class BatchCreateAnnotationsResponse {
 class Binding {
   /**
    * Specifies the identities requesting access for a Cloud Platform resource.
-   * `members` can have the following values: * `allUsers`: A special identifier
-   * that represents anyone who is on the internet; with or without a Google
-   * account. * `allAuthenticatedUsers`: A special identifier that represents
-   * anyone who is authenticated with a Google account or a service account. *
-   * `user:{emailid}`: An email address that represents a specific Google
-   * account. For example, `alice@gmail.com` or `joe@example.com`. *
-   * `serviceAccount:{emailid}`: An email address that represents a service
-   * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
-   * `group:{emailid}`: An email address that represents a Google group. For
-   * example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain
-   * name that represents all the users of that domain. For example,
-   * `google.com` or `example.com`.
+   * `members` can have the following values:
+   *
+   * * `allUsers`: A special identifier that represents anyone who is
+   *    on the internet; with or without a Google account.
+   *
+   * * `allAuthenticatedUsers`: A special identifier that represents anyone
+   *    who is authenticated with a Google account or a service account.
+   *
+   * * `user:{emailid}`: An email address that represents a specific Google
+   *    account. For example, `alice@gmail.com` or `joe@example.com`.
+   *
+   *
+   * * `serviceAccount:{emailid}`: An email address that represents a service
+   *    account. For example, `my-other-app@appspot.gserviceaccount.com`.
+   *
+   * * `group:{emailid}`: An email address that represents a Google group.
+   *    For example, `admins@example.com`.
+   *
+   * * `domain:{domain}`: A Google Apps domain name that represents all the
+   *    users of that domain. For example, `google.com` or `example.com`.
    */
   core.List<core.String> members;
   /**
-   * Role that is assigned to `members`. For example, `roles/viewer`,
-   * `roles/editor`, or `roles/owner`. Required
+   * Role that is assigned to `members`.
+   * For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+   * Required
    */
   core.String role;
 
@@ -3188,8 +3383,9 @@ class Binding {
 
 /**
  * A call set is a collection of variant calls, typically for one sample. It
- * belongs to a variant set. For more genomics resource definitions, see
- * [Fundamentals of Google
+ * belongs to a variant set.
+ *
+ * For more genomics resource definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class CallSet {
@@ -3198,8 +3394,8 @@ class CallSet {
   /** The server-generated call set ID, unique across all call sets. */
   core.String id;
   /**
-   * A map of additional call set information. This must be of the form map
-   * (string key mapping to a list of string values).
+   * A map of additional call set information. This must be of the form
+   * map<string, string[]> (string key mapping to a list of string values).
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3210,9 +3406,10 @@ class CallSet {
   /** The sample ID this call set corresponds to. */
   core.String sampleId;
   /**
-   * The IDs of the variant sets this call set belongs to. This field must have
-   * exactly length one, as a call set belongs to a single variant set. This
-   * field is repeated for compatibility with the [GA4GH 0.5.1
+   * The IDs of the variant sets this call set belongs to. This field must
+   * have exactly length one, as a call set belongs to a single variant set.
+   * This field is repeated for compatibility with the
+   * [GA4GH 0.5.1
    * API](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variants.avdl#L76).
    */
   core.List<core.String> variantSetIds;
@@ -3283,24 +3480,60 @@ class CigarUnit {
   /**
    *
    * Possible string values are:
-   * - "OPERATION_UNSPECIFIED" : A OPERATION_UNSPECIFIED.
-   * - "ALIGNMENT_MATCH" : A ALIGNMENT_MATCH.
-   * - "INSERT" : A INSERT.
-   * - "DELETE" : A DELETE.
-   * - "SKIP" : A SKIP.
-   * - "CLIP_SOFT" : A CLIP_SOFT.
-   * - "CLIP_HARD" : A CLIP_HARD.
-   * - "PAD" : A PAD.
-   * - "SEQUENCE_MATCH" : A SEQUENCE_MATCH.
-   * - "SEQUENCE_MISMATCH" : A SEQUENCE_MISMATCH.
+   * - "OPERATION_UNSPECIFIED"
+   * - "ALIGNMENT_MATCH" : An alignment match indicates that a sequence can be
+   * aligned to the
+   * reference without evidence of an INDEL. Unlike the
+   * `SEQUENCE_MATCH` and `SEQUENCE_MISMATCH` operators,
+   * the `ALIGNMENT_MATCH` operator does not indicate whether the
+   * reference and read sequences are an exact match. This operator is
+   * equivalent to SAM's `M`.
+   * - "INSERT" : The insert operator indicates that the read contains evidence
+   * of bases
+   * being inserted into the reference. This operator is equivalent to SAM's
+   * `I`.
+   * - "DELETE" : The delete operator indicates that the read contains evidence
+   * of bases
+   * being deleted from the reference. This operator is equivalent to SAM's
+   * `D`.
+   * - "SKIP" : The skip operator indicates that this read skips a long segment
+   * of the
+   * reference, but the bases have not been deleted. This operator is commonly
+   * used when working with RNA-seq data, where reads may skip long segments
+   * of the reference between exons. This operator is equivalent to SAM's
+   * `N`.
+   * - "CLIP_SOFT" : The soft clip operator indicates that bases at the
+   * start/end of a read
+   * have not been considered during alignment. This may occur if the majority
+   * of a read maps, except for low quality bases at the start/end of a read.
+   * This operator is equivalent to SAM's `S`. Bases that are soft
+   * clipped will still be stored in the read.
+   * - "CLIP_HARD" : The hard clip operator indicates that bases at the
+   * start/end of a read
+   * have been omitted from this alignment. This may occur if this linear
+   * alignment is part of a chimeric alignment, or if the read has been
+   * trimmed (for example, during error correction or to trim poly-A tails for
+   * RNA-seq). This operator is equivalent to SAM's `H`.
+   * - "PAD" : The pad operator indicates that there is padding in an alignment.
+   * This
+   * operator is equivalent to SAM's `P`.
+   * - "SEQUENCE_MATCH" : This operator indicates that this portion of the
+   * aligned sequence exactly
+   * matches the reference. This operator is equivalent to SAM's `=`.
+   * - "SEQUENCE_MISMATCH" : This operator indicates that this portion of the
+   * aligned sequence is an
+   * alignment match to the reference, but a sequence mismatch. This can
+   * indicate a SNP or a read error. This operator is equivalent to SAM's
+   * `X`.
    */
   core.String operation;
   /** The number of genomic bases that the operation runs for. Required. */
   core.String operationLength;
   /**
-   * `referenceSequence` is only used at mismatches (`SEQUENCE_MISMATCH`) and
-   * deletions (`DELETE`). Filling this field replaces SAM's MD tag. If the
-   * relevant information is not available, this field is unset.
+   * `referenceSequence` is only used at mismatches
+   * (`SEQUENCE_MISMATCH`) and deletions (`DELETE`).
+   * Filling this field replaces SAM's MD tag. If the relevant information is
+   * not available, this field is unset.
    */
   core.String referenceSequence;
 
@@ -3335,8 +3568,8 @@ class CigarUnit {
 
 class ClinicalCondition {
   /**
-   * The MedGen concept id associated with this gene. Search for these IDs at
-   * http://www.ncbi.nlm.nih.gov/medgen/
+   * The MedGen concept id associated with this gene.
+   * Search for these IDs at http://www.ncbi.nlm.nih.gov/medgen/
    */
   core.String conceptId;
   /** The set of external IDs for this condition. */
@@ -3344,7 +3577,8 @@ class ClinicalCondition {
   /** A set of names for the condition. */
   core.List<core.String> names;
   /**
-   * The OMIM id for this condition. Search for these IDs at http://omim.org/
+   * The OMIM id for this condition.
+   * Search for these IDs at http://omim.org/
    */
   core.String omimId;
 
@@ -3475,8 +3709,8 @@ class ComputeEngine {
  */
 class CoverageBucket {
   /**
-   * The average number of reads which are aligned to each individual reference
-   * base in this bucket.
+   * The average number of reads which are aligned to each individual
+   * reference base in this bucket.
    */
   core.double meanCoverage;
   /** The genomic coordinate range spanned by this bucket. */
@@ -3506,8 +3740,9 @@ class CoverageBucket {
 }
 
 /**
- * A Dataset is a collection of genomic data. For more genomics resource
- * definitions, see [Fundamentals of Google
+ * A Dataset is a collection of genomic data.
+ *
+ * For more genomics resource definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class Dataset {
@@ -3557,10 +3792,14 @@ class Dataset {
 
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request or
- * the response type of an API method. For instance: service Foo { rpc
- * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
- * representation for `Empty` is empty JSON object `{}`.
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
  */
 class Empty {
 
@@ -3612,14 +3851,19 @@ class Exon {
    */
   core.String end;
   /**
-   * The frame of this exon. Contains a value of 0, 1, or 2, which indicates the
-   * offset of the first coding base of the exon within the reading frame of the
-   * coding DNA sequence, if any. This field is dependent on the strandedness of
-   * this annotation (see Annotation.reverse_strand). For forward stranded
-   * annotations, this offset is relative to the exon.start. For reverse strand
-   * annotations, this offset is relative to the exon.end `- 1`. Unset if this
-   * exon does not intersect the coding sequence. Upon creation of a transcript,
-   * the frame must be populated for all or none of the coding exons.
+   * The frame of this exon. Contains a value of 0, 1, or 2, which indicates
+   * the offset of the first coding base of the exon within the reading frame
+   * of the coding DNA sequence, if any. This field is dependent on the
+   * strandedness of this annotation (see
+   * Annotation.reverse_strand).
+   * For forward stranded annotations, this offset is relative to the
+   * exon.start. For reverse
+   * strand annotations, this offset is relative to the
+   * exon.end `- 1`.
+   *
+   * Unset if this exon does not intersect the coding sequence. Upon creation
+   * of a transcript, the frame must be populated for all or none of the
+   * coding exons.
    */
   core.int frame;
   /**
@@ -3666,9 +3910,9 @@ class Experiment {
   core.String instrumentModel;
   /**
    * A client-supplied library identifier; a library is a collection of DNA
-   * fragments which have been prepared for sequencing from a sample. This field
-   * is important for quality control as error or bias can be introduced during
-   * sample preparation.
+   * fragments which have been prepared for sequencing from a sample. This
+   * field is important for quality control as error or bias can be introduced
+   * during sample preparation.
    */
   core.String libraryId;
   /**
@@ -3718,20 +3962,20 @@ class Experiment {
 /** The read group set export request. */
 class ExportReadGroupSetRequest {
   /**
-   * Required. A Google Cloud Storage URI for the exported BAM file. The
-   * currently authenticated user must have write access to the new file. An
-   * error will be returned if the URI already contains data.
+   * Required. A Google Cloud Storage URI for the exported BAM file.
+   * The currently authenticated user must have write access to the new file.
+   * An error will be returned if the URI already contains data.
    */
   core.String exportUri;
   /**
-   * Required. The Google Cloud project ID that owns this export. The caller
-   * must have WRITE access to this project.
+   * Required. The Google Cloud project ID that owns this
+   * export. The caller must have WRITE access to this project.
    */
   core.String projectId;
   /**
    * The reference names to export. If this is not specified, all reference
-   * sequences, including unmapped reads, are exported. Use `*` to export only
-   * unmapped reads.
+   * sequences, including unmapped reads, are exported.
+   * Use `*` to export only unmapped reads.
    */
   core.List<core.String> referenceNames;
 
@@ -3772,8 +4016,9 @@ class ExportVariantSetRequest {
    */
   core.String bigqueryDataset;
   /**
-   * Required. The BigQuery table to export data to. If the table doesn't exist,
-   * it will be created. If it already exists, it will be overwritten.
+   * Required. The BigQuery table to export data to.
+   * If the table doesn't exist, it will be created. If it already exists, it
+   * will be overwritten.
    */
   core.String bigqueryTable;
   /**
@@ -3784,14 +4029,14 @@ class ExportVariantSetRequest {
   /**
    * The format for the exported data.
    * Possible string values are:
-   * - "FORMAT_UNSPECIFIED" : A FORMAT_UNSPECIFIED.
-   * - "FORMAT_BIGQUERY" : A FORMAT_BIGQUERY.
+   * - "FORMAT_UNSPECIFIED"
+   * - "FORMAT_BIGQUERY" : Export the data to Google BigQuery.
    */
   core.String format;
   /**
-   * Required. The Google Cloud project ID that owns the destination BigQuery
-   * dataset. The caller must have WRITE access to this project. This project
-   * will also own the resulting export job.
+   * Required. The Google Cloud project ID that owns the destination
+   * BigQuery dataset. The caller must have WRITE access to this project.  This
+   * project will also own the resulting export job.
    */
   core.String projectId;
 
@@ -3890,9 +4135,20 @@ class ImportReadGroupSetsRequest {
    * The partition strategy describes how read groups are partitioned into read
    * group sets.
    * Possible string values are:
-   * - "PARTITION_STRATEGY_UNSPECIFIED" : A PARTITION_STRATEGY_UNSPECIFIED.
-   * - "PER_FILE_PER_SAMPLE" : A PER_FILE_PER_SAMPLE.
-   * - "MERGE_ALL" : A MERGE_ALL.
+   * - "PARTITION_STRATEGY_UNSPECIFIED"
+   * - "PER_FILE_PER_SAMPLE" : In most cases, this strategy yields one read
+   * group set per file. This is
+   * the default behavior.
+   *
+   * Allocate one read group set per file per sample. For BAM files, read
+   * groups are considered to share a sample if they have identical sample
+   * names. Furthermore, all reads for each file which do not belong to a read
+   * group, if any, will be grouped into a single read group set per-file.
+   * - "MERGE_ALL" : Includes all read groups in all imported files into a
+   * single read group
+   * set. Requires that the headers for all imported files are equivalent. All
+   * reads which do not belong to a read group, if any, will be grouped into a
+   * separate read group set.
    */
   core.String partitionStrategy;
   /**
@@ -3904,8 +4160,15 @@ class ImportReadGroupSetsRequest {
   core.String referenceSetId;
   /**
    * A list of URIs pointing at [BAM
-   * files](https://samtools.github.io/hts-specs/SAMv1.pdf) in Google Cloud
-   * Storage.
+   * files](https://samtools.github.io/hts-specs/SAMv1.pdf)
+   * in Google Cloud Storage.
+   * Those URIs can include wildcards (*), but do not add or remove
+   * matching files before import has completed.
+   *
+   * Note that Google Cloud Storage object listing is only eventually
+   * consistent: files added may be not be immediately visible to
+   * everyone. Thus, if using a wildcard it is preferable not to start
+   * the import immediately after the files are created.
    */
   core.List<core.String> sourceUris;
 
@@ -3972,25 +4235,30 @@ class ImportVariantsRequest {
    * The format of the variant data being imported. If unspecified, defaults to
    * to `VCF`.
    * Possible string values are:
-   * - "FORMAT_UNSPECIFIED" : A FORMAT_UNSPECIFIED.
-   * - "FORMAT_VCF" : A FORMAT_VCF.
-   * - "FORMAT_COMPLETE_GENOMICS" : A FORMAT_COMPLETE_GENOMICS.
+   * - "FORMAT_UNSPECIFIED"
+   * - "FORMAT_VCF" : VCF (Variant Call Format). The VCF files may be gzip
+   * compressed. gVCF is
+   * also supported.
+   * - "FORMAT_COMPLETE_GENOMICS" : Complete Genomics masterVarBeta format. The
+   * masterVarBeta files may
+   * be bzip2 compressed.
    */
   core.String format;
   /**
-   * A mapping between info field keys and the InfoMergeOperations to be
-   * performed on them. This is plumbed down to the MergeVariantRequests
+   * A mapping between info field keys and the InfoMergeOperations to
+   * be performed on them. This is plumbed down to the MergeVariantRequests
    * generated by the resulting import job.
    */
   core.Map<core.String, core.String> infoMergeConfig;
   /**
-   * Convert reference names to the canonical representation. hg19 haploytypes
-   * (those reference names containing "_hap") are not modified in any way. All
-   * other reference names are modified according to the following rules: The
-   * reference name is capitalized. The "chr" prefix is dropped for all
-   * autosomes and sex chromsomes. For example "chr17" becomes "17" and "chrX"
-   * becomes "X". All mitochondrial chromosomes ("chrM", "chrMT", etc) become
-   * "MT".
+   * Convert reference names to the canonical representation.
+   * hg19 haploytypes (those reference names containing "_hap")
+   * are not modified in any way.
+   * All other reference names are modified according to the following rules:
+   * The reference name is capitalized.
+   * The "chr" prefix is dropped for all autosomes and sex chromsomes.
+   * For example "chr17" becomes "17" and "chrX" becomes "X".
+   * All mitochondrial chromosomes ("chrM", "chrMT", etc) become "MT".
    */
   core.bool normalizeReferenceNames;
   /**
@@ -4077,9 +4345,11 @@ class LinearAlignment {
    */
   core.List<CigarUnit> cigar;
   /**
-   * The mapping quality of this alignment. Represents how likely the read maps
-   * to this position as opposed to other locations. Specifically, this is -10
-   * log10 Pr(mapping position is wrong), rounded to the nearest integer.
+   * The mapping quality of this alignment. Represents how likely
+   * the read maps to this position as opposed to other locations.
+   *
+   * Specifically, this is -10 log10 Pr(mapping position is wrong), rounded to
+   * the nearest integer.
    */
   core.int mappingQuality;
   /** The position of this alignment. */
@@ -4122,9 +4392,9 @@ class ListBasesResponse {
    */
   core.String nextPageToken;
   /**
-   * The offset position (0-based) of the given `sequence` from the start of
-   * this `Reference`. This value will differ for each page in a paginated
-   * request.
+   * The offset position (0-based) of the given `sequence` from the
+   * start of this `Reference`. This value will differ for each page
+   * in a paginated request.
    */
   core.String offset;
   /** A substring of the bases that make up this reference. */
@@ -4170,8 +4440,8 @@ class ListCoverageBucketsResponse {
   /**
    * The coverage buckets. The list of buckets is sparse; a bucket with 0
    * overlapping reads is not returned. A bucket never crosses more than one
-   * reference sequence. Each bucket has width `bucketWidth`, unless its end is
-   * the end of the reference sequence.
+   * reference sequence. Each bucket has width `bucketWidth`, unless
+   * its end is the end of the reference sequence.
    */
   core.List<CoverageBucket> coverageBuckets;
   /**
@@ -4276,8 +4546,8 @@ class ListOperationsResponse {
 
 class MergeVariantsRequest {
   /**
-   * A mapping between info field keys and the InfoMergeOperations to be
-   * performed on them.
+   * A mapping between info field keys and the InfoMergeOperations to
+   * be performed on them.
    */
   core.Map<core.String, core.String> infoMergeConfig;
   /** The destination variant set. */
@@ -4320,8 +4590,8 @@ class MergeVariantsRequest {
  */
 class Operation {
   /**
-   * If the value is `false`, it means the operation is still in progress. If
-   * true, the operation is completed, and either `error` or `response` is
+   * If the value is `false`, it means the operation is still in progress.
+   * If true, the operation is completed, and either `error` or `response` is
    * available.
    */
   core.bool done;
@@ -4337,14 +4607,14 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
   /**
    * The server-assigned name, which is only unique within the same service that
-   * originally returns it. For example:
+   * originally returns it. For example&#58;
    * `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`
    */
   core.String name;
   /**
    * If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If
-   * importing Variants, an ImportVariantsResponse is returned. For exports, an
-   * empty response is returned.
+   * importing Variants, an ImportVariantsResponse is returned. For pipelines
+   * and exports, an empty response is returned.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -4446,8 +4716,8 @@ class OperationMetadata {
   core.String endTime;
   /**
    * Optional event messages that were generated during the job's execution.
-   * This also contains any warnings that were generated during import or
-   * export.
+   * This also contains any warnings that were generated during import
+   * or export.
    */
   core.List<OperationEvent> events;
   /**
@@ -4542,33 +4812,54 @@ class OperationMetadata {
 }
 
 /**
- * Defines an Identity and Access Management (IAM) policy. It is used to specify
- * access control policies for Cloud Platform resources. A `Policy` consists of
- * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
- * where the members can be user accounts, Google groups, Google domains, and
- * service accounts. A `role` is a named list of permissions defined by IAM.
- * **Example** { "bindings": [ { "role": "roles/owner", "members": [
- * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
- * "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
- * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
- * of IAM and its features, see the [IAM developer's
- * guide](https://cloud.google.com/iam).
+ * Defines an Identity and Access Management (IAM) policy. It is used to
+ * specify access control policies for Cloud Platform resources.
+ *
+ *
+ * A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+ * `members` to a `role`, where the members can be user accounts, Google groups,
+ * Google domains, and service accounts. A `role` is a named list of permissions
+ * defined by IAM.
+ *
+ * **Example**
+ *
+ *     {
+ *       "bindings": [
+ *         {
+ *           "role": "roles/owner",
+ *           "members": [
+ *             "user:mike@example.com",
+ *             "group:admins@example.com",
+ *             "domain:google.com",
+ *             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+ *           ]
+ *         },
+ *         {
+ *           "role": "roles/viewer",
+ *           "members": ["user:sean@example.com"]
+ *         }
+ *       ]
+ *     }
+ *
+ * For a description of IAM and its features, see the
+ * [IAM developer's guide](https://cloud.google.com/iam).
  */
 class Policy {
   /**
-   * Associates a list of `members` to a `role`. Multiple `bindings` must not be
-   * specified for the same `role`. `bindings` with no members will result in an
-   * error.
+   * Associates a list of `members` to a `role`.
+   * Multiple `bindings` must not be specified for the same `role`.
+   * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;
   /**
-   * `etag` is used for optimistic concurrency control as a way to help prevent
-   * simultaneous updates of a policy from overwriting each other. It is
-   * strongly suggested that systems make use of the `etag` in the
+   * `etag` is used for optimistic concurrency control as a way to help
+   * prevent simultaneous updates of a policy from overwriting each other.
+   * It is strongly suggested that systems make use of the `etag` in the
    * read-modify-write cycle to perform policy updates in order to avoid race
    * conditions: An `etag` is returned in the response to `getIamPolicy`, and
    * systems are expected to put that etag in the request to `setIamPolicy` to
    * ensure that their change will be applied to the same version of the policy.
+   *
    * If no `etag` is provided in the call to `setIamPolicy`, then the existing
    * policy is overwritten blindly.
    */
@@ -4723,7 +5014,10 @@ class Program {
 class Range {
   /** The end position of the range on the reference, 0-based exclusive. */
   core.String end;
-  /** The reference sequence name, for example `chr1`, `1`, or `chrX`. */
+  /**
+   * The reference sequence name, for example `chr1`,
+   * `1`, or `chrX`.
+   */
   core.String referenceName;
   /** The start position of the range on the reference, 0-based inclusive. */
   core.String start;
@@ -4759,62 +5053,107 @@ class Range {
 
 /**
  * A read alignment describes a linear alignment of a string of DNA to a
- * reference sequence, in addition to metadata about the fragment (the molecule
- * of DNA sequenced) and the read (the bases which were read by the sequencer).
- * A read is equivalent to a line in a SAM file. A read belongs to exactly one
- * read group and exactly one read group set. For more genomics resource
- * definitions, see [Fundamentals of Google
+ * reference sequence, in addition to metadata
+ * about the fragment (the molecule of DNA sequenced) and the read (the bases
+ * which were read by the sequencer). A read is equivalent to a line in a SAM
+ * file. A read belongs to exactly one read group and exactly one
+ * read group set.
+ *
+ * For more genomics resource definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
- * ### Reverse-stranded reads Mapped reads (reads having a non-null `alignment`)
- * can be aligned to either the forward or the reverse strand of their
- * associated reference. Strandedness of a mapped read is encoded by
- * `alignment.position.reverseStrand`. If we consider the reference to be a
- * forward-stranded coordinate space of `[0, reference.length)` with `0` as the
- * left-most position and `reference.length` as the right-most position, reads
- * are always aligned left to right. That is, `alignment.position.position`
- * always refers to the left-most reference coordinate and `alignment.cigar`
- * describes the alignment of this read to the reference from left to right. All
- * per-base fields such as `alignedSequence` and `alignedQuality` share this
- * same left-to-right orientation; this is true of reads which are aligned to
- * either strand. For reverse-stranded reads, this means that `alignedSequence`
- * is the reverse complement of the bases that were originally reported by the
- * sequencing machine. ### Generating a reference-aligned sequence string When
- * interacting with mapped reads, it's often useful to produce a string
+ *
+ * ### Reverse-stranded reads
+ *
+ * Mapped reads (reads having a non-null `alignment`) can be aligned to either
+ * the forward or the reverse strand of their associated reference. Strandedness
+ * of a mapped read is encoded by `alignment.position.reverseStrand`.
+ *
+ * If we consider the reference to be a forward-stranded coordinate space of
+ * `[0, reference.length)` with `0` as the left-most position and
+ * `reference.length` as the right-most position, reads are always aligned left
+ * to right. That is, `alignment.position.position` always refers to the
+ * left-most reference coordinate and `alignment.cigar` describes the alignment
+ * of this read to the reference from left to right. All per-base fields such as
+ * `alignedSequence` and `alignedQuality` share this same left-to-right
+ * orientation; this is true of reads which are aligned to either strand. For
+ * reverse-stranded reads, this means that `alignedSequence` is the reverse
+ * complement of the bases that were originally reported by the sequencing
+ * machine.
+ *
+ * ### Generating a reference-aligned sequence string
+ *
+ * When interacting with mapped reads, it's often useful to produce a string
  * representing the local alignment of the read to reference. The following
- * pseudocode demonstrates one way of doing this: out = "" offset = 0 for c in
- * read.alignment.cigar { switch c.operation { case "ALIGNMENT_MATCH",
- * "SEQUENCE_MATCH", "SEQUENCE_MISMATCH": out +=
- * read.alignedSequence[offset:offset+c.operationLength] offset +=
- * c.operationLength break case "CLIP_SOFT", "INSERT": offset +=
- * c.operationLength break case "PAD": out += repeat("*", c.operationLength)
- * break case "DELETE": out += repeat("-", c.operationLength) break case "SKIP":
- * out += repeat(" ", c.operationLength) break case "CLIP_HARD": break } }
- * return out ### Converting to SAM's CIGAR string The following pseudocode
- * generates a SAM CIGAR string from the `cigar` field. Note that this is a
- * lossy conversion (`cigar.referenceSequence` is lost). cigarMap = {
- * "ALIGNMENT_MATCH": "M", "INSERT": "I", "DELETE": "D", "SKIP": "N",
- * "CLIP_SOFT": "S", "CLIP_HARD": "H", "PAD": "P", "SEQUENCE_MATCH": "=",
- * "SEQUENCE_MISMATCH": "X", } cigarStr = "" for c in read.alignment.cigar {
- * cigarStr += c.operationLength + cigarMap[c.operation] } return cigarStr
+ * pseudocode demonstrates one way of doing this:
+ *
+ *     out = ""
+ *     offset = 0
+ *     for c in read.alignment.cigar {
+ *       switch c.operation {
+ *       case "ALIGNMENT_MATCH", "SEQUENCE_MATCH", "SEQUENCE_MISMATCH":
+ *         out += read.alignedSequence[offset:offset+c.operationLength]
+ *         offset += c.operationLength
+ *         break
+ *       case "CLIP_SOFT", "INSERT":
+ *         offset += c.operationLength
+ *         break
+ *       case "PAD":
+ *         out += repeat("*", c.operationLength)
+ *         break
+ *       case "DELETE":
+ *         out += repeat("-", c.operationLength)
+ *         break
+ *       case "SKIP":
+ *         out += repeat(" ", c.operationLength)
+ *         break
+ *       case "CLIP_HARD":
+ *         break
+ *       }
+ *     }
+ *     return out
+ *
+ * ### Converting to SAM's CIGAR string
+ *
+ * The following pseudocode generates a SAM CIGAR string from the
+ * `cigar` field. Note that this is a lossy conversion
+ * (`cigar.referenceSequence` is lost).
+ *
+ *     cigarMap = {
+ *       "ALIGNMENT_MATCH": "M",
+ *       "INSERT": "I",
+ *       "DELETE": "D",
+ *       "SKIP": "N",
+ *       "CLIP_SOFT": "S",
+ *       "CLIP_HARD": "H",
+ *       "PAD": "P",
+ *       "SEQUENCE_MATCH": "=",
+ *       "SEQUENCE_MISMATCH": "X",
+ *     }
+ *     cigarStr = ""
+ *     for c in read.alignment.cigar {
+ *       cigarStr += c.operationLength + cigarMap[c.operation]
+ *     }
+ *     return cigarStr
  */
 class Read {
   /**
    * The quality of the read sequence contained in this alignment record
-   * (equivalent to QUAL in SAM). `alignedSequence` and `alignedQuality` may be
-   * shorter than the full read sequence and quality. This will occur if the
-   * alignment is part of a chimeric alignment, or if the read was trimmed. When
-   * this occurs, the CIGAR for this read will begin/end with a hard clip
-   * operator that will indicate the length of the excised sequence.
-   */
-  core.List<core.int> alignedQuality;
-  /**
-   * The bases of the read sequence contained in this alignment record,
-   * **without CIGAR operations applied** (equivalent to SEQ in SAM).
+   * (equivalent to QUAL in SAM).
    * `alignedSequence` and `alignedQuality` may be shorter than the full read
    * sequence and quality. This will occur if the alignment is part of a
    * chimeric alignment, or if the read was trimmed. When this occurs, the CIGAR
    * for this read will begin/end with a hard clip operator that will indicate
    * the length of the excised sequence.
+   */
+  core.List<core.int> alignedQuality;
+  /**
+   * The bases of the read sequence contained in this alignment record,
+   * **without CIGAR operations applied** (equivalent to SEQ in SAM).
+   * `alignedSequence` and `alignedQuality` may be
+   * shorter than the full read sequence and quality. This will occur if the
+   * alignment is part of a chimeric alignment, or if the read was trimmed. When
+   * this occurs, the CIGAR for this read will begin/end with a hard clip
+   * operator that will indicate the length of the excised sequence.
    */
   core.String alignedSequence;
   /**
@@ -4840,15 +5179,16 @@ class Read {
   core.String id;
   /**
    * A map of additional read alignment information. This must be of the form
-   * map (string key mapping to a list of string values).
+   * map<string, string[]> (string key mapping to a list of string values).
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.List<core.Object>> info;
   /**
-   * The mapping of the primary alignment of the `(readNumber+1)%numberReads`
-   * read in the fragment. It replaces mate position and mate strand in SAM.
+   * The mapping of the primary alignment of the
+   * `(readNumber+1)%numberReads` read in the fragment. It replaces
+   * mate position and mate strand in SAM.
    */
   Position nextMatePosition;
   /** The number of reads in the fragment (extension to SAM flag 0x1). */
@@ -4861,7 +5201,8 @@ class Read {
   /**
    * The ID of the read group this read belongs to. A read belongs to exactly
    * one read group. This is a server-generated ID which is distinct from SAM's
-   * RG tag (for that value, see ReadGroup.name).
+   * RG tag (for that value, see
+   * ReadGroup.name).
    */
   core.String readGroupId;
   /**
@@ -4875,25 +5216,26 @@ class Read {
    */
   core.int readNumber;
   /**
-   * Whether this alignment is secondary. Equivalent to SAM flag 0x100. A
-   * secondary alignment represents an alternative to the primary alignment for
-   * this read. Aligners may return secondary alignments if a read can map
+   * Whether this alignment is secondary. Equivalent to SAM flag 0x100.
+   * A secondary alignment represents an alternative to the primary alignment
+   * for this read. Aligners may return secondary alignments if a read can map
    * ambiguously to multiple coordinates in the genome. By convention, each read
-   * has one and only one alignment where both `secondaryAlignment` and
-   * `supplementaryAlignment` are false.
+   * has one and only one alignment where both `secondaryAlignment`
+   * and `supplementaryAlignment` are false.
    */
   core.bool secondaryAlignment;
   /**
    * Whether this alignment is supplementary. Equivalent to SAM flag 0x800.
    * Supplementary alignments are used in the representation of a chimeric
-   * alignment. In a chimeric alignment, a read is split into multiple linear
-   * alignments that map to different reference contigs. The first linear
-   * alignment in the read will be designated as the representative alignment;
-   * the remaining linear alignments will be designated as supplementary
-   * alignments. These alignments may have different mapping quality scores. In
-   * each linear alignment in a chimeric alignment, the read will be hard
-   * clipped. The `alignedSequence` and `alignedQuality` fields in the alignment
-   * record will only represent the bases for its respective linear alignment.
+   * alignment. In a chimeric alignment, a read is split into multiple
+   * linear alignments that map to different reference contigs. The first
+   * linear alignment in the read will be designated as the representative
+   * alignment; the remaining linear alignments will be designated as
+   * supplementary alignments. These alignments may have different mapping
+   * quality scores. In each linear alignment in a chimeric alignment, the read
+   * will be hard clipped. The `alignedSequence` and
+   * `alignedQuality` fields in the alignment record will only
+   * represent the bases for its respective linear alignment.
    */
   core.bool supplementaryAlignment;
 
@@ -5021,14 +5363,14 @@ class ReadGroup {
   /** The experiment used to generate this read group. */
   Experiment experiment;
   /**
-   * The server-generated read group ID, unique for all read groups. Note: This
-   * is different than the @RG ID field in the SAM spec. For that value, see
-   * name.
+   * The server-generated read group ID, unique for all read groups.
+   * Note: This is different than the @RG ID field in the SAM spec. For that
+   * value, see name.
    */
   core.String id;
   /**
-   * A map of additional read group information. This must be of the form map
-   * (string key mapping to a list of string values).
+   * A map of additional read group information. This must be of the form
+   * map<string, string[]> (string key mapping to a list of string values).
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5046,7 +5388,8 @@ class ReadGroup {
   /**
    * The programs used to generate this read group. Programs are always
    * identical for all read groups within a read group set. For this reason,
-   * only the first read group in a returned set will have this field populated.
+   * only the first read group in a returned set will have this field
+   * populated.
    */
   core.List<Program> programs;
   /** The reference set the reads in this read group are aligned to. */
@@ -5129,9 +5472,13 @@ class ReadGroup {
  * A read group set is a logical collection of read groups, which are
  * collections of reads produced by a sequencer. A read group set typically
  * models reads corresponding to one sample, sequenced one way, and aligned one
- * way. * A read group set belongs to one dataset. * A read group belongs to one
- * read group set. * A read belongs to one read group. For more genomics
- * resource definitions, see [Fundamentals of Google
+ * way.
+ *
+ * * A read group set belongs to one dataset.
+ * * A read group belongs to one read group set.
+ * * A read belongs to one read group.
+ *
+ * For more genomics resource definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class ReadGroupSet {
@@ -5224,8 +5571,9 @@ class ReadGroupSet {
  * A reference is a canonical assembled DNA sequence, intended to act as a
  * reference coordinate space for other genomic annotations. A single reference
  * might represent the human chromosome 1 or mitochandrial DNA, for instance. A
- * reference belongs to one or more reference sets. For more genomics resource
- * definitions, see [Fundamentals of Google
+ * reference belongs to one or more reference sets.
+ *
+ * For more genomics resource definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class Reference {
@@ -5234,8 +5582,8 @@ class Reference {
   /** The length of this reference's sequence. */
   core.String length;
   /**
-   * MD5 of the upper-case sequence excluding all whitespace characters (this is
-   * equivalent to SQ:M5 in SAM). This value is represented in lower case
+   * MD5 of the upper-case sequence excluding all whitespace characters (this
+   * is equivalent to SQ:M5 in SAM). This value is represented in lower case
    * hexadecimal format.
    */
   core.String md5checksum;
@@ -5310,15 +5658,15 @@ class Reference {
 }
 
 /**
- * ReferenceBound records an upper bound for the starting coordinate of variants
- * in a particular reference.
+ * ReferenceBound records an upper bound for the starting coordinate of
+ * variants in a particular reference.
  */
 class ReferenceBound {
   /** The name of the reference associated with this reference bound. */
   core.String referenceName;
   /**
-   * An upper bound (inclusive) on the starting coordinate of any variant in the
-   * reference sequence.
+   * An upper bound (inclusive) on the starting coordinate of any
+   * variant in the reference sequence.
    */
   core.String upperBound;
 
@@ -5347,11 +5695,12 @@ class ReferenceBound {
 
 /**
  * A reference set is a set of references which typically comprise a reference
- * assembly for a species, such as `GRCh38` which is representative of the human
- * genome. A reference set defines a common coordinate space for comparing
- * reference-aligned experimental data. A reference set contains 1 or more
- * references. For more genomics resource definitions, see [Fundamentals of
- * Google
+ * assembly for a species, such as `GRCh38` which is representative
+ * of the human genome. A reference set defines a common coordinate space for
+ * comparing reference-aligned experimental data. A reference set contains 1 or
+ * more references.
+ *
+ * For more genomics resource definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class ReferenceSet {
@@ -5366,9 +5715,9 @@ class ReferenceSet {
   /**
    * Order-independent MD5 checksum which identifies this reference set. The
    * checksum is computed by sorting all lower case hexidecimal string
-   * `reference.md5checksum` (for all reference in this set) in ascending
-   * lexicographic order, concatenating, and taking the MD5 of that value. The
-   * resulting value is represented in lower case hexadecimal format.
+   * `reference.md5checksum` (for all reference in this set) in
+   * ascending lexicographic order, concatenating, and taking the MD5 of that
+   * value. The resulting value is represented in lower case hexadecimal format.
    */
   core.String md5checksum;
   /**
@@ -5452,8 +5801,9 @@ class ReferenceSet {
 }
 
 /**
- * Runtime metadata that will be populated in the runtimeMetadata field of the
- * Operation associated with a RunPipeline execution.
+ * Runtime metadata that will be populated in the
+ * runtimeMetadata
+ * field of the Operation associated with a RunPipeline execution.
  */
 class RuntimeMetadata {
   /** Execution information specific to Google Compute Engine. */
@@ -5493,8 +5843,8 @@ class SearchAnnotationSetsRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
@@ -5591,15 +5941,16 @@ class SearchAnnotationSetsResponse {
 
 class SearchAnnotationsRequest {
   /**
-   * Required. The annotation sets to search within. The caller must have `READ`
-   * access to these annotation sets. All queried annotation sets must have the
-   * same type.
+   * Required. The annotation sets to search within. The caller must have
+   * `READ` access to these annotation sets.
+   * All queried annotation sets must have the same type.
    */
   core.List<core.String> annotationSetIds;
   /**
    * The end position of the range on the reference, 0-based exclusive. If
-   * referenceId or referenceName must be specified, Defaults to the length of
-   * the reference.
+   * referenceId or
+   * referenceName
+   * must be specified, Defaults to the length of the reference.
    */
   core.String end;
   /**
@@ -5608,8 +5959,8 @@ class SearchAnnotationsRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
@@ -5622,7 +5973,10 @@ class SearchAnnotationsRequest {
   core.String referenceName;
   /**
    * The start position of the range on the reference, 0-based inclusive. If
-   * specified, referenceId or referenceName must be specified. Defaults to 0.
+   * specified,
+   * referenceId or
+   * referenceName
+   * must be specified. Defaults to 0.
    */
   core.String start;
 
@@ -5725,8 +6079,8 @@ class SearchCallSetsRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
@@ -5823,8 +6177,8 @@ class SearchReadGroupSetsRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
@@ -5911,8 +6265,8 @@ class SearchReadsRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
@@ -5997,10 +6351,10 @@ class SearchReadsRequest {
 /** The read search response. */
 class SearchReadsResponse {
   /**
-   * The list of matching alignments sorted by mapped genomic coordinate, if
-   * any, ascending in position within the same reference. Unmapped reads, which
-   * have no position, are returned contiguously and are sorted in ascending
-   * lexicographic order by fragment name.
+   * The list of matching alignments sorted by mapped genomic coordinate,
+   * if any, ascending in position within the same reference. Unmapped reads,
+   * which have no position, are returned contiguously and are sorted in
+   * ascending lexicographic order by fragment name.
    */
   core.List<Read> alignments;
   /**
@@ -6036,8 +6390,9 @@ class SearchReadsResponse {
 class SearchReferenceSetsRequest {
   /**
    * If present, return reference sets for which a prefix of any of
-   * sourceAccessions match any of these strings. Accession numbers typically
-   * have a main number and a version, for example `NC_000001.11`.
+   * sourceAccessions
+   * match any of these strings. Accession numbers typically have a main number
+   * and a version, for example `NC_000001.11`.
    */
   core.List<core.String> accessions;
   /**
@@ -6046,8 +6401,8 @@ class SearchReferenceSetsRequest {
    */
   core.String assemblyId;
   /**
-   * If present, return reference sets for which the md5checksum matches
-   * exactly.
+   * If present, return reference sets for which the
+   * md5checksum matches exactly.
    */
   core.List<core.String> md5checksums;
   /**
@@ -6056,8 +6411,8 @@ class SearchReferenceSetsRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
@@ -6138,13 +6493,15 @@ class SearchReferenceSetsResponse {
 
 class SearchReferencesRequest {
   /**
-   * If present, return references for which a prefix of any of sourceAccessions
-   * match any of these strings. Accession numbers typically have a main number
-   * and a version, for example `GCF_000001405.26`.
+   * If present, return references for which a prefix of any of
+   * sourceAccessions match
+   * any of these strings. Accession numbers typically have a main number and a
+   * version, for example `GCF_000001405.26`.
    */
   core.List<core.String> accessions;
   /**
-   * If present, return references for which the md5checksum matches exactly.
+   * If present, return references for which the
+   * md5checksum matches exactly.
    */
   core.List<core.String> md5checksums;
   /**
@@ -6153,8 +6510,8 @@ class SearchReferencesRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
@@ -6248,8 +6605,8 @@ class SearchVariantSetsRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
@@ -6320,9 +6677,9 @@ class SearchVariantSetsResponse {
 /** The variant search request. */
 class SearchVariantsRequest {
   /**
-   * Only return variant calls which belong to call sets with these ids. Leaving
-   * this blank returns all variant calls. If a variant has no calls belonging
-   * to any of these call sets, it won't be returned at all.
+   * Only return variant calls which belong to call sets with these ids.
+   * Leaving this blank returns all variant calls. If a variant has no
+   * calls belonging to any of these call sets, it won't be returned at all.
    */
   core.List<core.String> callSetIds;
   /**
@@ -6343,16 +6700,16 @@ class SearchVariantsRequest {
    */
   core.int pageSize;
   /**
-   * The continuation token, which is used to page through large result sets. To
-   * get the next page of results, set this parameter to the value of
+   * The continuation token, which is used to page through large result sets.
+   * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
    */
   core.String pageToken;
   /** Required. Only return variants in this reference sequence. */
   core.String referenceName;
   /**
-   * The beginning of the window (0-based, inclusive) for which overlapping
-   * variants should be returned. If unspecified, defaults to 0.
+   * The beginning of the window (0-based, inclusive) for which
+   * overlapping variants should be returned. If unspecified, defaults to 0.
    */
   core.String start;
   /** Only return variants which have exactly this name. */
@@ -6467,8 +6824,9 @@ class SearchVariantsResponse {
 class SetIamPolicyRequest {
   /**
    * REQUIRED: The complete policy to be applied to the `resource`. The size of
-   * the policy is limited to a few 10s of KB. An empty policy is a valid policy
-   * but certain Cloud Platform services (such as Projects) might reject them.
+   * the policy is limited to a few 10s of KB. An empty policy is a
+   * valid policy but certain Cloud Platform services (such as Projects)
+   * might reject them.
    */
   Policy policy;
 
@@ -6491,45 +6849,66 @@ class SetIamPolicyRequest {
 
 /**
  * The `Status` type defines a logical error model that is suitable for
- * different programming environments, including REST APIs and RPC APIs. It is
- * used by [gRPC](https://github.com/grpc). The error model is designed to be: -
- * Simple to use and understand for most users - Flexible enough to meet
- * unexpected needs # Overview The `Status` message contains three pieces of
- * data: error code, error message, and error details. The error code should be
- * an enum value of google.rpc.Code, but it may accept additional error codes if
- * needed. The error message should be a developer-facing English message that
- * helps developers *understand* and *resolve* the error. If a localized
- * user-facing error message is needed, put the localized message in the error
- * details or localize it in the client. The optional error details may contain
- * arbitrary information about the error. There is a predefined set of error
- * detail types in the package `google.rpc` which can be used for common error
- * conditions. # Language mapping The `Status` message is the logical
- * representation of the error model, but it is not necessarily the actual wire
- * format. When the `Status` message is exposed in different client libraries
- * and different wire protocols, it can be mapped differently. For example, it
- * will likely be mapped to some exceptions in Java, but more likely mapped to
- * some error codes in C. # Other uses The error model and the `Status` message
- * can be used in a variety of environments, either with or without APIs, to
- * provide a consistent developer experience across different environments.
- * Example uses of this error model include: - Partial errors. If a service
- * needs to return partial errors to the client, it may embed the `Status` in
- * the normal response to indicate the partial errors. - Workflow errors. A
- * typical workflow has multiple steps. Each step may have a `Status` message
- * for error reporting purpose. - Batch operations. If a client uses batch
- * request and batch response, the `Status` message should be used directly
- * inside batch response, one for each error sub-response. - Asynchronous
- * operations. If an API call embeds asynchronous operation results in its
- * response, the status of those operations should be represented directly using
- * the `Status` message. - Logging. If some API errors are stored in logs, the
- * message `Status` could be used directly after any stripping needed for
- * security/privacy reasons.
+ * different
+ * programming environments, including REST APIs and RPC APIs. It is used by
+ * [gRPC](https://github.com/grpc). The error model is designed to be:
+ *
+ * - Simple to use and understand for most users
+ * - Flexible enough to meet unexpected needs
+ *
+ * # Overview
+ *
+ * The `Status` message contains three pieces of data: error code, error
+ * message,
+ * and error details. The error code should be an enum value of
+ * google.rpc.Code, but it may accept additional error codes if needed.  The
+ * error message should be a developer-facing English message that helps
+ * developers *understand* and *resolve* the error. If a localized user-facing
+ * error message is needed, put the localized message in the error details or
+ * localize it in the client. The optional error details may contain arbitrary
+ * information about the error. There is a predefined set of error detail types
+ * in the package `google.rpc` which can be used for common error conditions.
+ *
+ * # Language mapping
+ *
+ * The `Status` message is the logical representation of the error model, but it
+ * is not necessarily the actual wire format. When the `Status` message is
+ * exposed in different client libraries and different wire protocols, it can be
+ * mapped differently. For example, it will likely be mapped to some exceptions
+ * in Java, but more likely mapped to some error codes in C.
+ *
+ * # Other uses
+ *
+ * The error model and the `Status` message can be used in a variety of
+ * environments, either with or without APIs, to provide a
+ * consistent developer experience across different environments.
+ *
+ * Example uses of this error model include:
+ *
+ * - Partial errors. If a service needs to return partial errors to the client,
+ *     it may embed the `Status` in the normal response to indicate the partial
+ *     errors.
+ *
+ * - Workflow errors. A typical workflow has multiple steps. Each step may
+ *     have a `Status` message for error reporting purpose.
+ *
+ * - Batch operations. If a client uses batch request and batch response, the
+ *     `Status` message should be used directly inside batch response, one for
+ *     each error sub-response.
+ *
+ * - Asynchronous operations. If an API call embeds asynchronous operation
+ *     results in its response, the status of those operations should be
+ *     represented directly using the `Status` message.
+ *
+ * - Logging. If some API errors are stored in logs, the message `Status` could
+ * be used directly after any stripping needed for security/privacy reasons.
  */
 class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details. There will be a common set
-   * of message types for APIs to use.
+   * A list of messages that carry the error details.  There will be a
+   * common set of message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6571,229 +6950,20 @@ class Status {
   }
 }
 
-/** The stream reads request. */
-class StreamReadsRequest {
-  /**
-   * The end position of the range on the reference, 0-based exclusive. If
-   * specified, `referenceName` must also be specified.
-   */
-  core.String end;
-  /**
-   * The Google Cloud project ID which will be billed for this access. The
-   * caller must have WRITE access to this project. Required.
-   */
-  core.String projectId;
-  /** The ID of the read group set from which to stream reads. */
-  core.String readGroupSetId;
-  /**
-   * The reference sequence name, for example `chr1`, `1`, or `chrX`. If set to
-   * *, only unmapped reads are returned.
-   */
-  core.String referenceName;
-  /**
-   * Restricts results to a shard containing approximately `1/totalShards` of
-   * the normal response payload for this query. Results from a sharded request
-   * are disjoint from those returned by all queries which differ only in their
-   * shard parameter. A shard may yield 0 results; this is especially likely for
-   * large values of `totalShards`. Valid values are `[0, totalShards)`.
-   */
-  core.int shard;
-  /**
-   * The start position of the range on the reference, 0-based inclusive. If
-   * specified, `referenceName` must also be specified.
-   */
-  core.String start;
-  /**
-   * Specifying `totalShards` causes a disjoint subset of the normal response
-   * payload to be returned for each query with a unique `shard` parameter
-   * specified. A best effort is made to yield equally sized shards. Sharding
-   * can be used to distribute processing amongst workers, where each worker is
-   * assigned a unique `shard` number and all workers specify the same
-   * `totalShards` number. The union of reads returned for all sharded queries
-   * `[0, totalShards)` is equal to those returned by a single unsharded query.
-   * Queries for different values of `totalShards` with common divisors will
-   * share shard boundaries. For example, streaming `shard` 2 of 5 `totalShards`
-   * yields the same results as streaming `shard`s 4 and 5 of 10 `totalShards`.
-   * This property can be leveraged for adaptive retries.
-   */
-  core.int totalShards;
-
-  StreamReadsRequest();
-
-  StreamReadsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("end")) {
-      end = _json["end"];
-    }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
-    }
-    if (_json.containsKey("readGroupSetId")) {
-      readGroupSetId = _json["readGroupSetId"];
-    }
-    if (_json.containsKey("referenceName")) {
-      referenceName = _json["referenceName"];
-    }
-    if (_json.containsKey("shard")) {
-      shard = _json["shard"];
-    }
-    if (_json.containsKey("start")) {
-      start = _json["start"];
-    }
-    if (_json.containsKey("totalShards")) {
-      totalShards = _json["totalShards"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (end != null) {
-      _json["end"] = end;
-    }
-    if (projectId != null) {
-      _json["projectId"] = projectId;
-    }
-    if (readGroupSetId != null) {
-      _json["readGroupSetId"] = readGroupSetId;
-    }
-    if (referenceName != null) {
-      _json["referenceName"] = referenceName;
-    }
-    if (shard != null) {
-      _json["shard"] = shard;
-    }
-    if (start != null) {
-      _json["start"] = start;
-    }
-    if (totalShards != null) {
-      _json["totalShards"] = totalShards;
-    }
-    return _json;
-  }
-}
-
-class StreamReadsResponse {
-  core.List<Read> alignments;
-
-  StreamReadsResponse();
-
-  StreamReadsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("alignments")) {
-      alignments = _json["alignments"].map((value) => new Read.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (alignments != null) {
-      _json["alignments"] = alignments.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** The stream variants request. */
-class StreamVariantsRequest {
-  /**
-   * Only return variant calls which belong to call sets with these IDs. Leaving
-   * this blank returns all variant calls.
-   */
-  core.List<core.String> callSetIds;
-  /**
-   * The end of the window (0-based, exclusive) for which overlapping variants
-   * should be returned.
-   */
-  core.String end;
-  /**
-   * The Google Cloud project ID which will be billed for this access. The
-   * caller must have WRITE access to this project. Required.
-   */
-  core.String projectId;
-  /** Required. Only return variants in this reference sequence. */
-  core.String referenceName;
-  /**
-   * The beginning of the window (0-based, inclusive) for which overlapping
-   * variants should be returned.
-   */
-  core.String start;
-  /** The variant set ID from which to stream variants. */
-  core.String variantSetId;
-
-  StreamVariantsRequest();
-
-  StreamVariantsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("callSetIds")) {
-      callSetIds = _json["callSetIds"];
-    }
-    if (_json.containsKey("end")) {
-      end = _json["end"];
-    }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
-    }
-    if (_json.containsKey("referenceName")) {
-      referenceName = _json["referenceName"];
-    }
-    if (_json.containsKey("start")) {
-      start = _json["start"];
-    }
-    if (_json.containsKey("variantSetId")) {
-      variantSetId = _json["variantSetId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (callSetIds != null) {
-      _json["callSetIds"] = callSetIds;
-    }
-    if (end != null) {
-      _json["end"] = end;
-    }
-    if (projectId != null) {
-      _json["projectId"] = projectId;
-    }
-    if (referenceName != null) {
-      _json["referenceName"] = referenceName;
-    }
-    if (start != null) {
-      _json["start"] = start;
-    }
-    if (variantSetId != null) {
-      _json["variantSetId"] = variantSetId;
-    }
-    return _json;
-  }
-}
-
-class StreamVariantsResponse {
-  core.List<Variant> variants;
-
-  StreamVariantsResponse();
-
-  StreamVariantsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("variants")) {
-      variants = _json["variants"].map((value) => new Variant.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (variants != null) {
-      _json["variants"] = variants.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
 /** Request message for `TestIamPermissions` method. */
 class TestIamPermissionsRequest {
   /**
-   * REQUIRED: The set of permissions to check for the 'resource'. Permissions
-   * with wildcards (such as '*' or 'storage.*') are not allowed. Allowed
-   * permissions are: * `genomics.datasets.create` * `genomics.datasets.delete`
-   * * `genomics.datasets.get` * `genomics.datasets.list` *
-   * `genomics.datasets.update` * `genomics.datasets.getIamPolicy` *
-   * `genomics.datasets.setIamPolicy`
+   * REQUIRED: The set of permissions to check for the 'resource'.
+   * Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+   * Allowed permissions are&#58;
+   *
+   * * `genomics.datasets.create`
+   * * `genomics.datasets.delete`
+   * * `genomics.datasets.get`
+   * * `genomics.datasets.list`
+   * * `genomics.datasets.update`
+   * * `genomics.datasets.getIamPolicy`
+   * * `genomics.datasets.setIamPolicy`
    */
   core.List<core.String> permissions;
 
@@ -6847,25 +7017,34 @@ class Transcript {
   /**
    * The range of the coding sequence for this transcript, if any. To determine
    * the exact ranges of coding sequence, intersect this range with those of the
-   * exons, if any. If there are any exons, the codingSequence must start and
-   * end within them. Note that in some cases, the reference genome will not
-   * exactly match the observed mRNA transcript e.g. due to variance in the
-   * source genome from reference. In these cases, exon.frame will not
-   * necessarily match the expected reference reading frame and coding exon
-   * reference bases cannot necessarily be concatenated to produce the original
-   * transcript mRNA.
+   * exons, if any. If there are any
+   * exons, the
+   * codingSequence must start
+   * and end within them.
+   *
+   * Note that in some cases, the reference genome will not exactly match the
+   * observed mRNA transcript e.g. due to variance in the source genome from
+   * reference. In these cases,
+   * exon.frame will not necessarily
+   * match the expected reference reading frame and coding exon reference bases
+   * cannot necessarily be concatenated to produce the original transcript mRNA.
    */
   CodingSequence codingSequence;
   /**
-   * The exons that compose this transcript. This field should be unset for
-   * genomes where transcript splicing does not occur, for example prokaryotes.
-   * Introns are regions of the transcript that are not included in the spliced
-   * RNA product. Though not explicitly modeled here, intron ranges can be
-   * deduced; all regions of this transcript that are not exons are introns.
-   * Exonic sequences do not necessarily code for a translational product (amino
-   * acids). Only the regions of exons bounded by the codingSequence correspond
-   * to coding DNA sequence. Exons are ordered by start position and may not
-   * overlap.
+   * The <a href="http://en.wikipedia.org/wiki/Exon">exons</a> that compose
+   * this transcript. This field should be unset for genomes where transcript
+   * splicing does not occur, for example prokaryotes.
+   *
+   * Introns are regions of the transcript that are not included in the
+   * spliced RNA product. Though not explicitly modeled here, intron ranges can
+   * be deduced; all regions of this transcript that are not exons are introns.
+   *
+   * Exonic sequences do not necessarily code for a translational product
+   * (amino acids). Only the regions of exons bounded by the
+   * codingSequence correspond
+   * to coding DNA sequence.
+   *
+   * Exons are ordered by start position and may not overlap.
    */
   core.List<Exon> exons;
   /**
@@ -6918,9 +7097,11 @@ class UndeleteDatasetRequest {
 /**
  * A variant represents a change in DNA sequence relative to a reference
  * sequence. For example, a variant could represent a SNP or an insertion.
- * Variants belong to a variant set. For more genomics resource definitions, see
- * [Fundamentals of Google
+ * Variants belong to a variant set.
+ *
+ * For more genomics resource definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
+ *
  * Each of the calls on a variant represent a determination of genotype with
  * respect to that variant. For example, a call might assign probability of 0.32
  * to the occurrence of a SNP named rs1234 in a sample named NA12345. A call
@@ -6939,9 +7120,9 @@ class Variant {
   core.String created;
   /**
    * The end position (0-based) of this variant. This corresponds to the first
-   * base after the last base in the reference allele. So, the length of the
-   * reference allele is (end - start). This is useful for variants that don't
-   * explicitly give alternate bases, for example large deletions.
+   * base after the last base in the reference allele. So, the length of
+   * the reference allele is (end - start). This is useful for variants
+   * that don't explicitly give alternate bases, for example large deletions.
    */
   core.String end;
   /**
@@ -6952,8 +7133,8 @@ class Variant {
   /** The server-generated variant ID, unique across all variants. */
   core.String id;
   /**
-   * A map of additional variant information. This must be of the form map
-   * (string key mapping to a list of string values).
+   * A map of additional variant information. This must be of the form
+   * map<string, string[]> (string key mapping to a list of string values).
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6962,19 +7143,23 @@ class Variant {
   /** Names for the variant, for example a RefSNP ID. */
   core.List<core.String> names;
   /**
-   * A measure of how likely this variant is to be real. A higher value is
-   * better.
+   * A measure of how likely this variant is to be real.
+   * A higher value is better.
    */
   core.double quality;
   /**
-   * The reference bases for this variant. They start at the given position.
+   * The reference bases for this variant. They start at the given
+   * position.
    */
   core.String referenceBases;
-  /** The reference on which this variant occurs. (such as `chr20` or `X`) */
+  /**
+   * The reference on which this variant occurs.
+   * (such as `chr20` or `X`)
+   */
   core.String referenceName;
   /**
-   * The position at which this variant occurs (0-based). This corresponds to
-   * the first base of the string of reference bases.
+   * The position at which this variant occurs (0-based).
+   * This corresponds to the first base of the string of reference bases.
    */
   core.String start;
   /** The ID of the variant set this variant belongs to. */
@@ -7071,55 +7256,75 @@ class Variant {
 
 class VariantAnnotation {
   /**
-   * The alternate allele for this variant. If multiple alternate alleles exist
-   * at this location, create a separate variant for each one, as they may
-   * represent distinct conditions.
+   * The alternate allele for this variant. If multiple alternate alleles
+   * exist at this location, create a separate variant for each one, as they
+   * may represent distinct conditions.
    */
   core.String alternateBases;
   /**
-   * Describes the clinical significance of a variant. It is adapted from the
-   * ClinVar controlled vocabulary for clinical significance described at:
+   * Describes the clinical significance of a variant.
+   * It is adapted from the ClinVar controlled vocabulary for clinical
+   * significance described at:
    * http://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/
    * Possible string values are:
-   * - "CLINICAL_SIGNIFICANCE_UNSPECIFIED" : A
-   * CLINICAL_SIGNIFICANCE_UNSPECIFIED.
-   * - "CLINICAL_SIGNIFICANCE_OTHER" : A CLINICAL_SIGNIFICANCE_OTHER.
-   * - "UNCERTAIN" : A UNCERTAIN.
-   * - "BENIGN" : A BENIGN.
-   * - "LIKELY_BENIGN" : A LIKELY_BENIGN.
-   * - "LIKELY_PATHOGENIC" : A LIKELY_PATHOGENIC.
-   * - "PATHOGENIC" : A PATHOGENIC.
-   * - "DRUG_RESPONSE" : A DRUG_RESPONSE.
-   * - "HISTOCOMPATIBILITY" : A HISTOCOMPATIBILITY.
-   * - "CONFERS_SENSITIVITY" : A CONFERS_SENSITIVITY.
-   * - "RISK_FACTOR" : A RISK_FACTOR.
-   * - "ASSOCIATION" : A ASSOCIATION.
-   * - "PROTECTIVE" : A PROTECTIVE.
-   * - "MULTIPLE_REPORTED" : A MULTIPLE_REPORTED.
+   * - "CLINICAL_SIGNIFICANCE_UNSPECIFIED"
+   * - "CLINICAL_SIGNIFICANCE_OTHER" : `OTHER` should be used when no other
+   * clinical significance
+   * value will suffice.
+   * - "UNCERTAIN"
+   * - "BENIGN"
+   * - "LIKELY_BENIGN"
+   * - "LIKELY_PATHOGENIC"
+   * - "PATHOGENIC"
+   * - "DRUG_RESPONSE"
+   * - "HISTOCOMPATIBILITY"
+   * - "CONFERS_SENSITIVITY"
+   * - "RISK_FACTOR"
+   * - "ASSOCIATION"
+   * - "PROTECTIVE"
+   * - "MULTIPLE_REPORTED" : `MULTIPLE_REPORTED` should be used when multiple
+   * clinical
+   * signficances are reported for a variant. The original clinical
+   * significance values may be provided in the `info` field.
    */
   core.String clinicalSignificance;
   /**
-   * The set of conditions associated with this variant. A condition describes
-   * the way a variant influences human health.
+   * The set of conditions associated with this variant.
+   * A condition describes the way a variant influences human health.
    */
   core.List<ClinicalCondition> conditions;
   /**
    * Effect of the variant on the coding sequence.
    * Possible string values are:
-   * - "EFFECT_UNSPECIFIED" : A EFFECT_UNSPECIFIED.
-   * - "EFFECT_OTHER" : A EFFECT_OTHER.
-   * - "FRAMESHIFT" : A FRAMESHIFT.
-   * - "FRAME_PRESERVING_INDEL" : A FRAME_PRESERVING_INDEL.
-   * - "SYNONYMOUS_SNP" : A SYNONYMOUS_SNP.
-   * - "NONSYNONYMOUS_SNP" : A NONSYNONYMOUS_SNP.
-   * - "STOP_GAIN" : A STOP_GAIN.
-   * - "STOP_LOSS" : A STOP_LOSS.
-   * - "SPLICE_SITE_DISRUPTION" : A SPLICE_SITE_DISRUPTION.
+   * - "EFFECT_UNSPECIFIED"
+   * - "EFFECT_OTHER" : `EFFECT_OTHER` should be used when no other Effect
+   * will suffice.
+   * - "FRAMESHIFT" : `FRAMESHIFT` indicates a mutation in which the insertion
+   * or
+   * deletion of nucleotides resulted in a frameshift change.
+   * - "FRAME_PRESERVING_INDEL" : `FRAME_PRESERVING_INDEL` indicates a mutation
+   * in which a
+   * multiple of three nucleotides has been inserted or deleted, resulting
+   * in no change to the reading frame of the coding sequence.
+   * - "SYNONYMOUS_SNP" : `SYNONYMOUS_SNP` indicates a single nucleotide
+   * polymorphism
+   * mutation that results in no amino acid change.
+   * - "NONSYNONYMOUS_SNP" : `NONSYNONYMOUS_SNP` indicates a single nucleotide
+   * polymorphism mutation that results in an amino acid change.
+   * - "STOP_GAIN" : `STOP_GAIN` indicates a mutation that leads to the creation
+   * of a stop codon at the variant site. Frameshift mutations creating
+   * downstream stop codons do not count as `STOP_GAIN`.
+   * - "STOP_LOSS" : `STOP_LOSS` indicates a mutation that eliminates a
+   * stop codon at the variant site.
+   * - "SPLICE_SITE_DISRUPTION" : `SPLICE_SITE_DISRUPTION` indicates that this
+   * variant is
+   * found in a splice site for the associated transcript, and alters the
+   * normal splicing pattern.
    */
   core.String effect;
   /**
-   * Google annotation ID of the gene affected by this variant. This should be
-   * provided when the variant is created.
+   * Google annotation ID of the gene affected by this variant. This should
+   * be provided when the variant is created.
    */
   core.String geneId;
   /**
@@ -7130,14 +7335,19 @@ class VariantAnnotation {
   /**
    * Type has been adapted from ClinVar's list of variant types.
    * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : A TYPE_UNSPECIFIED.
-   * - "TYPE_OTHER" : A TYPE_OTHER.
-   * - "INSERTION" : A INSERTION.
-   * - "DELETION" : A DELETION.
-   * - "SUBSTITUTION" : A SUBSTITUTION.
-   * - "SNP" : A SNP.
-   * - "STRUCTURAL" : A STRUCTURAL.
-   * - "CNV" : A CNV.
+   * - "TYPE_UNSPECIFIED"
+   * - "TYPE_OTHER" : `TYPE_OTHER` should be used when no other Type will
+   * suffice.
+   * Further explanation of the variant type may be included in the
+   * info field.
+   * - "INSERTION" : `INSERTION` indicates an insertion.
+   * - "DELETION" : `DELETION` indicates a deletion.
+   * - "SUBSTITUTION" : `SUBSTITUTION` indicates a block substitution of
+   * two or more nucleotides.
+   * - "SNP" : `SNP` indicates a single nucleotide polymorphism.
+   * - "STRUCTURAL" : `STRUCTURAL` indicates a large structural variant,
+   * including chromosomal fusions, inversions, etc.
+   * - "CNV" : `CNV` indicates a variation in copy number.
    */
   core.String type;
 
@@ -7197,8 +7407,8 @@ class VariantAnnotation {
 /**
  * A call represents the determination of genotype with respect to a particular
  * variant. It may include associated information such as quality and phasing.
- * For example, a call might assign a probability of 0.32 to the occurrence of a
- * SNP named rs1234 in a call set with the name NA12345.
+ * For example, a call might assign a probability of 0.32 to the occurrence of
+ * a SNP named rs1234 in a call set with the name NA12345.
  */
 class VariantCall {
   /** The ID of the call set this variant call belongs to. */
@@ -7207,38 +7417,42 @@ class VariantCall {
   core.String callSetName;
   /**
    * The genotype of this variant call. Each value represents either the value
-   * of the `referenceBases` field or a 1-based index into `alternateBases`. If
-   * a variant had a `referenceBases` value of `T` and an `alternateBases` value
-   * of `["A", "C"]`, and the `genotype` was `[2, 1]`, that would mean the call
-   * represented the heterozygous value `CA` for this variant. If the `genotype`
-   * was instead `[0, 1]`, the represented value would be `TA`. Ordering of the
-   * genotype values is important if the `phaseset` is present. If a genotype is
-   * not called (that is, a `.` is present in the GT string) -1 is returned.
+   * of the `referenceBases` field or a 1-based index into
+   * `alternateBases`. If a variant had a `referenceBases`
+   * value of `T` and an `alternateBases`
+   * value of `["A", "C"]`, and the `genotype` was
+   * `[2, 1]`, that would mean the call
+   * represented the heterozygous value `CA` for this variant.
+   * If the `genotype` was instead `[0, 1]`, the
+   * represented value would be `TA`. Ordering of the
+   * genotype values is important if the `phaseset` is present.
+   * If a genotype is not called (that is, a `.` is present in the
+   * GT string) -1 is returned.
    */
   core.List<core.int> genotype;
   /**
-   * The genotype likelihoods for this variant call. Each array entry represents
-   * how likely a specific genotype is for this call. The value ordering is
-   * defined by the GL tag in the VCF spec. If Phred-scaled genotype likelihood
-   * scores (PL) are available and log10(P) genotype likelihood scores (GL) are
-   * not, PL scores are converted to GL scores. If both are available, PL scores
-   * are stored in `info`.
+   * The genotype likelihoods for this variant call. Each array entry
+   * represents how likely a specific genotype is for this call. The value
+   * ordering is defined by the GL tag in the VCF spec.
+   * If Phred-scaled genotype likelihood scores (PL) are available and
+   * log10(P) genotype likelihood scores (GL) are not, PL scores are converted
+   * to GL scores.  If both are available, PL scores are stored in `info`.
    */
   core.List<core.double> genotypeLikelihood;
   /**
-   * A map of additional variant call information. This must be of the form map
-   * (string key mapping to a list of string values).
+   * A map of additional variant call information. This must be of the form
+   * map<string, string[]> (string key mapping to a list of string values).
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.List<core.Object>> info;
   /**
-   * If this field is present, this variant call's genotype ordering implies the
-   * phase of the bases and is consistent with any other variant calls in the
-   * same reference sequence which have the same phaseset value. When importing
-   * data from VCF, if the genotype data was phased but no phase set was
-   * specified this field will be set to `*`.
+   * If this field is present, this variant call's genotype ordering implies
+   * the phase of the bases and is consistent with any other variant calls in
+   * the same reference sequence which have the same phaseset value.
+   * When importing data from VCF, if the genotype data was phased but no
+   * phase set was specified this field will be set to `*`.
    */
   core.String phaseset;
 
@@ -7291,8 +7505,9 @@ class VariantCall {
 
 /**
  * A variant set is a collection of call sets and variants. It contains summary
- * statistics of those contents. A variant set belongs to a dataset. For more
- * genomics resource definitions, see [Fundamentals of Google
+ * statistics of those contents. A variant set belongs to a dataset.
+ *
+ * For more genomics resource definitions, see [Fundamentals of Google
  * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
  */
 class VariantSet {
@@ -7307,8 +7522,8 @@ class VariantSet {
   /** User-specified, mutable name. */
   core.String name;
   /**
-   * A list of all references used by the variants in a variant set with
-   * associated coordinate upper bounds for each one.
+   * A list of all references used by the variants in a variant set
+   * with associated coordinate upper bounds for each one.
    */
   core.List<ReferenceBound> referenceBounds;
   /**
@@ -7316,11 +7531,12 @@ class VariantSet {
    * describes the alignment provenance of the variant set, while the
    * `referenceBounds` describe the shape of the actual variant data. The
    * reference set's reference names are a superset of those found in the
-   * `referenceBounds`. For example, given a variant set that is mapped to the
-   * GRCh38 reference set and contains a single variant on reference 'X',
-   * `referenceBounds` would contain only an entry for 'X', while the associated
-   * reference set enumerates all possible references: '1', '2', 'X', 'Y', 'MT',
-   * etc.
+   * `referenceBounds`.
+   *
+   * For example, given a variant set that is mapped to the GRCh38 reference set
+   * and contains a single variant on reference 'X', `referenceBounds` would
+   * contain only an entry for 'X', while the associated reference set
+   * enumerates all possible references: '1', '2', 'X', 'Y', 'MT', etc.
    */
   core.String referenceSetId;
 
@@ -7378,22 +7594,23 @@ class VariantSet {
 }
 
 /**
- * Metadata describes a single piece of variant call metadata. These data
- * include a top level key and either a single value string (value) or a list of
- * key-value pairs (info.) Value and info are mutually exclusive.
+ * Metadata describes a single piece of variant call metadata.
+ * These data include a top level key and either a single value string (value)
+ * or a list of key-value pairs (info.)
+ * Value and info are mutually exclusive.
  */
 class VariantSetMetadata {
   /** A textual description of this metadata. */
   core.String description;
   /**
-   * User-provided ID field, not enforced by this API. Two or more pieces of
-   * structured metadata with identical id and key fields are considered
-   * equivalent.
+   * User-provided ID field, not enforced by this API.
+   * Two or more pieces of structured metadata with identical
+   * id and key fields are considered equivalent.
    */
   core.String id;
   /**
-   * Remaining structured metadata key-value pairs. This must be of the form map
-   * (string key mapping to a list of string values).
+   * Remaining structured metadata key-value pairs. This must be of the form
+   * map<string, string[]> (string key mapping to a list of string values).
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -7407,15 +7624,15 @@ class VariantSetMetadata {
    */
   core.String number;
   /**
-   * The type of data. Possible types include: Integer, Float, Flag, Character,
-   * and String.
+   * The type of data. Possible types include: Integer, Float,
+   * Flag, Character, and String.
    * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : A TYPE_UNSPECIFIED.
-   * - "INTEGER" : A INTEGER.
-   * - "FLOAT" : A FLOAT.
-   * - "FLAG" : A FLAG.
-   * - "CHARACTER" : A CHARACTER.
-   * - "STRING" : A STRING.
+   * - "TYPE_UNSPECIFIED"
+   * - "INTEGER"
+   * - "FLOAT"
+   * - "FLAG"
+   * - "CHARACTER"
+   * - "STRING"
    */
   core.String type;
   /** The value field for simple metadata */

@@ -63,13 +63,16 @@ class BillingAccountsLogsResourceApi {
 
   /**
    * Deletes all the log entries in a log. The log reappears if it receives new
-   * entries.
+   * entries. Log entries written shortly before the delete operation might not
+   * be deleted.
    *
    * Request parameters:
    *
    * [logName] - Required. The resource name of the log to delete:
    * "projects/[PROJECT_ID]/logs/[LOG_ID]"
    * "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+   * "folders/[FOLDER_ID]/logs/[LOG_ID]"
    * [LOG_ID] must be URL-encoded. For example,
    * "projects/my-project-id/logs/syslog",
    * "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
@@ -109,14 +112,16 @@ class BillingAccountsLogsResourceApi {
   }
 
   /**
-   * Lists the logs in projects or organizations. Only logs that have entries
-   * are listed.
+   * Lists the logs in projects, organizations, folders, or billing accounts.
+   * Only logs that have entries are listed.
    *
    * Request parameters:
    *
    * [parent] - Required. The resource name that owns the logs:
    * "projects/[PROJECT_ID]"
    * "organizations/[ORGANIZATION_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]"
+   * "folders/[FOLDER_ID]"
    *
    * Value must have pattern "^billingAccounts/[^/]+$".
    *
@@ -336,13 +341,16 @@ class OrganizationsLogsResourceApi {
 
   /**
    * Deletes all the log entries in a log. The log reappears if it receives new
-   * entries.
+   * entries. Log entries written shortly before the delete operation might not
+   * be deleted.
    *
    * Request parameters:
    *
    * [logName] - Required. The resource name of the log to delete:
    * "projects/[PROJECT_ID]/logs/[LOG_ID]"
    * "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+   * "folders/[FOLDER_ID]/logs/[LOG_ID]"
    * [LOG_ID] must be URL-encoded. For example,
    * "projects/my-project-id/logs/syslog",
    * "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
@@ -382,14 +390,16 @@ class OrganizationsLogsResourceApi {
   }
 
   /**
-   * Lists the logs in projects or organizations. Only logs that have entries
-   * are listed.
+   * Lists the logs in projects, organizations, folders, or billing accounts.
+   * Only logs that have entries are listed.
    *
    * Request parameters:
    *
    * [parent] - Required. The resource name that owns the logs:
    * "projects/[PROJECT_ID]"
    * "organizations/[ORGANIZATION_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]"
+   * "folders/[FOLDER_ID]"
    *
    * Value must have pattern "^organizations/[^/]+$".
    *
@@ -463,13 +473,16 @@ class ProjectsLogsResourceApi {
 
   /**
    * Deletes all the log entries in a log. The log reappears if it receives new
-   * entries.
+   * entries. Log entries written shortly before the delete operation might not
+   * be deleted.
    *
    * Request parameters:
    *
    * [logName] - Required. The resource name of the log to delete:
    * "projects/[PROJECT_ID]/logs/[LOG_ID]"
    * "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+   * "folders/[FOLDER_ID]/logs/[LOG_ID]"
    * [LOG_ID] must be URL-encoded. For example,
    * "projects/my-project-id/logs/syslog",
    * "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
@@ -509,14 +522,16 @@ class ProjectsLogsResourceApi {
   }
 
   /**
-   * Lists the logs in projects or organizations. Only logs that have entries
-   * are listed.
+   * Lists the logs in projects, organizations, folders, or billing accounts.
+   * Only logs that have entries are listed.
    *
    * Request parameters:
    *
    * [parent] - Required. The resource name that owns the logs:
    * "projects/[PROJECT_ID]"
    * "organizations/[ORGANIZATION_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]"
+   * "folders/[FOLDER_ID]"
    *
    * Value must have pattern "^projects/[^/]+$".
    *
@@ -717,14 +732,14 @@ class ProjectsMetricsResourceApi {
    *
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogMetricsResponse].
    *
@@ -734,7 +749,7 @@ class ProjectsMetricsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogMetricsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListLogMetricsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -745,11 +760,11 @@ class ProjectsMetricsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';
@@ -836,19 +851,21 @@ class ProjectsSinksResourceApi {
    * [parent] - Required. The resource in which to create the sink:
    * "projects/[PROJECT_ID]"
    * "organizations/[ORGANIZATION_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]"
+   * "folders/[FOLDER_ID]"
    * Examples: "projects/my-logging-project", "organizations/123456789".
    * Value must have pattern "^projects/[^/]+$".
    *
    * [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
    * returned as writer_identity in the new sink. If this value is omitted or
    * set to false, and if the sink's parent is a project, then the value
-   * returned as writer_identity is cloud-logs@google.com, the same identity
-   * used before the addition of writer identities to this API. The sink's
-   * destination must be in the same project as the sink itself.If this field is
-   * set to true, or if the sink is owned by a non-project resource such as an
-   * organization, then the value of writer_identity will be a unique service
-   * account used only for exports from the new sink. For more information, see
-   * writer_identity in LogSink.
+   * returned as writer_identity is cloud-logs@system.gserviceaccount.com, the
+   * same identity used before the addition of writer identities to this API.
+   * The sink's destination must be in the same project as the sink itself.If
+   * this field is set to true, or if the sink is owned by a non-project
+   * resource such as an organization, then the value of writer_identity will be
+   * a unique service account used only for exports from the new sink. For more
+   * information, see writer_identity in LogSink.
    *
    * Completes with a [LogSink].
    *
@@ -898,9 +915,9 @@ class ProjectsSinksResourceApi {
    * including the parent resource and the sink identifier:
    * "projects/[PROJECT_ID]/sinks/[SINK_ID]"
    * "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-   * It is an error if the sink does not exist. Example:
-   * "projects/my-project-id/sinks/my-sink-id". It is an error if the sink does
-   * not exist.
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+   * "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+   * Example: "projects/my-project-id/sinks/my-sink-id".
    * Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
    *
    * Completes with a [Empty].
@@ -940,9 +957,11 @@ class ProjectsSinksResourceApi {
    *
    * Request parameters:
    *
-   * [sinkName] - Required. The parent resource name of the sink:
+   * [sinkName] - Required. The resource name of the sink:
    * "projects/[PROJECT_ID]/sinks/[SINK_ID]"
    * "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+   * "folders/[FOLDER_ID]/sinks/[SINK_ID]"
    * Example: "projects/my-project-id/sinks/my-sink-id".
    * Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
    *
@@ -983,18 +1002,22 @@ class ProjectsSinksResourceApi {
    *
    * Request parameters:
    *
-   * [parent] - Required. The parent resource whose sinks are to be listed.
-   * Examples: "projects/my-logging-project", "organizations/123456789".
+   * [parent] - Required. The parent resource whose sinks are to be listed:
+   * "projects/[PROJECT_ID]"
+   * "organizations/[ORGANIZATION_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]"
+   * "folders/[FOLDER_ID]"
+   *
    * Value must have pattern "^projects/[^/]+$".
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
-   *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -1004,7 +1027,7 @@ class ProjectsSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListSinksResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListSinksResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1015,11 +1038,11 @@ class ProjectsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -1050,6 +1073,8 @@ class ProjectsSinksResourceApi {
    * including the parent resource and the sink identifier:
    * "projects/[PROJECT_ID]/sinks/[SINK_ID]"
    * "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+   * "folders/[FOLDER_ID]/sinks/[SINK_ID]"
    * Example: "projects/my-project-id/sinks/my-sink-id".
    * Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
    *
@@ -1379,10 +1404,12 @@ class ListLogEntriesRequest {
    */
   core.List<core.String> projectIds;
   /**
-   * Required. Names of one or more resources from which to retrieve log
+   * Required. Names of one or more parent resources from which to retrieve log
    * entries:
    * "projects/[PROJECT_ID]"
    * "organizations/[ORGANIZATION_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]"
+   * "folders/[FOLDER_ID]"
    * Projects listed in the project_ids field are added to this list.
    */
   core.List<core.String> resourceNames;
@@ -1644,6 +1671,8 @@ class LogEntry {
    * Required. The resource name of the log to which this log entry belongs:
    * "projects/[PROJECT_ID]/logs/[LOG_ID]"
    * "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+   * "folders/[FOLDER_ID]/logs/[LOG_ID]"
    * [LOG_ID] must be URL-encoded within log_name. Example:
    * "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
    * [LOG_ID] must be less than 512 characters long and can only include the
@@ -2052,7 +2081,8 @@ class LogMetric {
  * Describes a sink used to export log entries to one of the following
  * destinations in any project: a Cloud Storage bucket, a BigQuery dataset, or a
  * Cloud Pub/Sub topic. A logs filter controls which log entries are exported.
- * The sink must be created within a project or organization.
+ * The sink must be created within a project, organization, billing account, or
+ * folder.
  */
 class LogSink {
   /**
@@ -2719,6 +2749,8 @@ class WriteLogEntriesRequest {
    * in entries that do not specify a value for log_name:
    * "projects/[PROJECT_ID]/logs/[LOG_ID]"
    * "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+   * "folders/[FOLDER_ID]/logs/[LOG_ID]"
    * [LOG_ID] must be URL-encoded. For example,
    * "projects/my-project-id/logs/syslog" or
    * "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".

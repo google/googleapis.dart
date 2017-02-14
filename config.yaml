@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.34.0
+    version: 0.35.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -17,8 +17,8 @@ packages:
     - admin:reports_v1  # https://developers.google.com/admin-sdk/reports/
     - adsensehost:v4.1  # https://developers.google.com/adsense/host/
     - adsense:v1.4  # https://developers.google.com/adsense/management/
-    - analytics:v3  # https://developers.google.com/analytics/
     - analyticsreporting:v4  # https://developers.google.com/analytics/devguides/reporting/core/v4/
+    - analytics:v3  # https://developers.google.com/analytics/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidpublisher:v2  # https://developers.google.com/android-publisher/
     - appengine:v1  # https://cloud.google.com/appengine/docs/admin-api/
@@ -30,19 +30,19 @@ packages:
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
     - civicinfo:v2  # https://developers.google.com/civic-information/
     - classroom:v1  # https://developers.google.com/classroom/
-    - cloudbuild:v1  # https://cloud.google.com/container-builder/docs/
     - cloudbilling:v1  # https://cloud.google.com/billing/
+    - cloudbuild:v1  # https://cloud.google.com/container-builder/docs/
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
-    - cloudtrace:v1 # https://cloud.google.com/cloud-trace/
     - cloudresourcemanager:v1  # https://cloud.google.com/resource-manager/
+    - cloudtrace:v1 # https://cloud.google.com/cloud-trace/
     - compute:v1  # https://developers.google.com/compute/
+    - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
     - container:v1
     - content:v2  # https://developers.google.com/shopping-content/
     - content:v2sandbox
     - customsearch:v1  # https://developers.google.com/custom-search/
-    - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
-    - datastore:v1 # https://developers.google.com/datastore/
     - dataproc:v1 # https://cloud.google.com/dataproc/
+    - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2
     - dfareporting:v2.5  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.6  # https://developers.google.com/doubleclick-advertisers/reporting/
@@ -53,8 +53,8 @@ packages:
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - drive:v3  # https://developers.google.com/drive/v3/reference/
-    - firebaserules:v1  # https://firebase.google.com/docs/storage/security/start
     - firebasedynamiclinks:v1  #
+    - firebaserules:v1  # https://firebase.google.com/docs/storage/security/start
     - fitness:v1  # https://developers.google.com/fitness/
     - fusiontables:v1  # https://developers.google.com/fusiontables/
     - fusiontables:v2  # https://developers.google.com/fusiontables/
@@ -65,8 +65,8 @@ packages:
     - gmail:v1  # https://developers.google.com/gmail/
     - groupsmigration:v1  # https://developers.google.com/admin-sdk/groups-migration/
     - groupssettings:v1  # https://developers.google.com/admin-sdk/groups-settings/
-    - identitytoolkit:v3  # https://developers.google.com/identity-toolkit/
     - iam:v1 # https://cloud.google.com/iam/
+    - identitytoolkit:v3  # https://developers.google.com/identity-toolkit/
     - kgsearch:v1  # https://developers.google.com/knowledge-graph/
     - language:v1 # https://cloud.google.com/natural-language/
     - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
@@ -89,14 +89,16 @@ packages:
     - runtimeconfig:v1  # 
     - safebrowsing:v4  # https://developers.google.com/safe-browsing/
     - script:v1  # https://developers.google.com/apps-script/execution/rest/v1/run
+    - searchconsole:v1  # https://developers.google.com/webmaster-tools/search-console-api/
     - servicecontrol:v1  # https://cloud.google.com/service-control/
     - servicemanagement:v1  # https://cloud.google.com/service-management/
-    - slides:v1  # https://developers.google.com/slides/
-    - surveys:v2  # 
+    - serviceuser:v1  # https://cloud.google.com/service-user/
     - sheets:v4  # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1  # https://developers.google.com/site-verification/
+    - slides:v1  # https://developers.google.com/slides/
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
     - storage:v1  # https://developers.google.com/storage/
+    - surveys:v2  # 
     - tagmanager:v1  # https://developers.google.com/tag-manager/
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
     - translate:v2  # https://developers.google.com/translate/
@@ -109,7 +111,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.32.1
+    version: 0.33.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md

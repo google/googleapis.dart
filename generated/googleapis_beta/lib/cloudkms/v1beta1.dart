@@ -14,6 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client cloudkms/v1beta1';
 
+/**
+ * Manages encryption for your cloud services the same way you do on-premise.
+ * You can generate, use, rotate, and destroy AES256 encryption keys.
+ */
 class CloudkmsApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
@@ -94,11 +98,11 @@ class ProjectsLocationsResourceApi {
    * [name] - The resource that owns the locations collection, if applicable.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - The standard list page size.
-   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -108,7 +112,7 @@ class ProjectsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListLocationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -119,14 +123,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
@@ -706,13 +710,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * `projects / * /locations / * /keyRings / * `.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
    *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListCryptoKeysResponse.next_page_token.
+   *
    * [pageSize] - Optional limit on the number of CryptoKeys to include in the
    * response.  Further CryptoKeys can subsequently be obtained by
    * including the ListCryptoKeysResponse.next_page_token in a subsequent
    * request.  If unspecified, the server will pick an appropriate default.
-   *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListCryptoKeysResponse.next_page_token.
    *
    * Completes with a [ListCryptoKeysResponse].
    *
@@ -722,7 +726,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -733,11 +737,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeys';

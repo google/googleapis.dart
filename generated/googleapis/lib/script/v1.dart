@@ -66,22 +66,23 @@ class ScriptsResourceApi {
       _requester = client;
 
   /**
-   * Runs a function in an Apps Script project that has been deployed for use
-   * with the Apps Script Execution API. This method requires authorization with
-   * an OAuth 2.0 token that includes at least one of the scopes listed in the
-   * [Authentication](#authentication) section; script projects that do not
-   * require authorization cannot be executed through this API. To find the
-   * correct scopes to include in the authentication token, open the project in
-   * the script editor, then select **File > Project properties** and click the
-   * **Scopes** tab.
+   * Runs a function in an Apps Script project. The project must be deployed
+   * for use with the Apps Script Execution API.
+   *
+   * This method requires authorization with an OAuth 2.0 token that includes at
+   * least one of the scopes listed in the [Authorization](#authorization)
+   * section; script projects that do not require authorization cannot be
+   * executed through this API. To find the correct scopes to include in the
+   * authentication token, open the project in the script editor, then select
+   * **File > Project properties** and click the **Scopes** tab.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [scriptId] - The project key of the script to be executed. To find the
-   * project key, open the project in the script editor, then select **File >
-   * Project properties**.
+   * project key, open
+   * the project in the script editor and select **File > Project properties**.
    *
    * Completes with a [Operation].
    *
@@ -124,10 +125,12 @@ class ScriptsResourceApi {
 
 /**
  * An object that provides information about the nature of an error in the Apps
- * Script Execution API. If an `run` call succeeds but the script function (or
- * Apps Script itself) throws an exception, the response body's `error` field
- * will contain a `Status` object. The `Status` object's `details` field will
- * contain an array with a single one of these `ExecutionError` objects.
+ * Script Execution API. If an
+ * `run` call succeeds but the
+ * script function (or Apps Script itself) throws an exception, the response
+ * body's `error` field contains a
+ * `Status` object. The `Status` object's `details` field
+ * contains an array with a single one of these `ExecutionError` objects.
  */
 class ExecutionError {
   /**
@@ -177,7 +180,7 @@ class ExecutionError {
 
 /**
  * A request to run the function in a script. The script is identified by the
- * specified `script_id`. Executing a function on a script will return results
+ * specified `script_id`. Executing a function on a script returns results
  * based on the implementation of the script.
  */
 class ExecutionRequest {
@@ -193,17 +196,29 @@ class ExecutionRequest {
    */
   core.String function;
   /**
-   * The parameters to be passed to the function being executed. The type for
-   * each parameter should match the expected type in Apps Script. Parameters
-   * cannot be Apps Script-specific objects (such as a `Document` or
-   * `Calendar`); they can only be primitive types such as a `string`, `number`,
-   * `array`, `object`, or `boolean`. Optional.
+   * The parameters to be passed to the function being executed. The object type
+   * for each parameter should match the expected type in Apps Script.
+   * Parameters cannot be Apps Script-specific object types (such as a
+   * `Document` or a `Calendar`); they can only be primitive types such as
+   * `string`, `number`, `array`, `object`, or `boolean`. Optional.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.List<core.Object> parameters;
-  /** This field is not used. */
+  /**
+   * For Android add-ons only. An ID that represents the user's current session
+   * in the Android app for Google Docs or Sheets, included as extra data in the
+   * [`Intent`](https://developer.android.com/guide/components/intents-filters.html)
+   * that launches the add-on. When an Android add-on is run with a session
+   * state, it gains the privileges of a
+   * [bound](https://developers.google.com/apps-script/guides/bound) script
+   * &mdash;
+   * that is, it can access information like the user's current cursor position
+   * (in Docs) or selected cell (in Sheets). To retrieve the state, call
+   * `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
+   * Optional.
+   */
   core.String sessionState;
 
   ExecutionRequest();
@@ -243,15 +258,17 @@ class ExecutionRequest {
 
 /**
  * An object that provides the return value of a function executed through the
- * Apps Script Execution API. If an `run` call succeeds and the script function
- * returns successfully, the response body's `response` field will contain this
+ * Apps Script Execution API. If a
+ * `run` call succeeds and the
+ * script function returns successfully, the response body's
+ * `response` field contains this
  * `ExecutionResponse` object.
  */
 class ExecutionResponse {
   /**
-   * The return value of the script function. The type will match the type
+   * The return value of the script function. The type matches the object type
    * returned in Apps Script. Functions called through the Execution API cannot
-   * return Apps Script-specific objects (such as a `Document` or `Calendar`);
+   * return Apps Script-specific objects (such as a `Document` or a `Calendar`);
    * they can only return primitive types such as a `string`, `number`, `array`,
    * `object`, or `boolean`.
    *
@@ -259,13 +276,6 @@ class ExecutionResponse {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object result;
-  /**
-   *
-   * Possible string values are:
-   * - "SUCCESS" : A SUCCESS.
-   * - "CANCELED" : A CANCELED.
-   */
-  core.String status;
 
   ExecutionResponse();
 
@@ -273,18 +283,12 @@ class ExecutionResponse {
     if (_json.containsKey("result")) {
       result = _json["result"];
     }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (result != null) {
       _json["result"] = result;
-    }
-    if (status != null) {
-      _json["status"] = status;
     }
     return _json;
   }
@@ -294,19 +298,18 @@ class ExecutionResponse {
  * The response will not arrive until the function finishes executing. The
  * maximum runtime is listed in the guide to [limitations in Apps
  * Script](https://developers.google.com/apps-script/guides/services/quotas#current_limitations).
- * If the script function returns successfully, the `response` field will
+ * <p>If the script function returns successfully, the `response` field will
  * contain an `ExecutionResponse` object with the function's return value in the
- * object's `result` field.
- *
- * If the script function (or Apps Script itself) throws an exception, the
+ * object's `result` field.</p>
+ * <p>If the script function (or Apps Script itself) throws an exception, the
  * `error` field will contain a `Status` object. The `Status` object's `details`
  * field will contain an array with a single `ExecutionError` object that
- * provides information about the nature of the error.
- *
- * If the `run` call itself fails (for example, because of a malformed request
- * or an authorization error), the method will return an HTTP response code in
- * the 4XX range with a different format for the response body. Client libraries
- * will automatically convert a 4XX response into an exception class.
+ * provides information about the nature of the error.</p>
+ * <p>If the `run` call itself fails (for example, because of a malformed
+ * request or an authorization error), the method will return an HTTP response
+ * code in the 4XX range with a different format for the response body. Client
+ * libraries will automatically convert a 4XX response into an exception
+ * class.</p>
  */
 class Operation {
   /** This field is not used. */
@@ -415,7 +418,10 @@ class ScriptStackTraceElement {
  * `Status` object.
  */
 class Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
+  /**
+   * The status code. For this API, this value will always be 3, corresponding
+   * to an INVALID_ARGUMENT error.
+   */
   core.int code;
   /**
    * An array that contains a single `ExecutionError` object that provides
@@ -426,9 +432,10 @@ class Status {
    */
   core.List<core.Map<core.String, core.Object>> details;
   /**
-   * A developer-facing error message, which should be in English. Any
-   * user-facing error message should be localized and sent in the
-   * google.rpc.Status.details field, or localized by the client.
+   * A developer-facing error message, which is in English. Any user-facing
+   * error message is localized and sent in the
+   * [`google.rpc.Status.details`](google.rpc.Status.details) field, or
+   * localized by the client.
    */
   core.String message;
 

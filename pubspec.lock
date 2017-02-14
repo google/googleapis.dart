@@ -12,7 +12,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.11.3"
+    version: "1.13.0"
   charcode:
     description:
       name: charcode
@@ -80,4 +80,4 @@ packages:
     source: hosted
     version: "2.1.12"
 sdks:
-  dart: ">=1.21.0-dev.1.0 <2.0.0"
+  dart: ">=1.21.0 <2.0.0"

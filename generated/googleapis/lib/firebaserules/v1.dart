@@ -289,6 +289,8 @@ class ProjectsReleasesResourceApi {
    * Format: `projects/{project_id}`
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Next page token for the next batch of `Release` instances.
+   *
    * [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
    * Note: `page_size` is just a hint and the service may choose to load less
    * than `page_size` due to the size of the output. To traverse all of the
@@ -321,8 +323,6 @@ class ProjectsReleasesResourceApi {
    * collections. Fully qualified prefixed may also be used. e.g.
    * `name=projects/foo/releases/prod* ruleset_name=projects/foo/rulesets/uuid1`
    *
-   * [pageToken] - Next page token for the next batch of `Release` instances.
-   *
    * Completes with a [ListReleasesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -331,7 +331,7 @@ class ProjectsReleasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReleasesResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListReleasesResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -342,14 +342,14 @@ class ProjectsReleasesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
@@ -597,13 +597,13 @@ class ProjectsRulesetsResourceApi {
    * Format: `projects/{project_id}`
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Next page token for loading the next batch of `Ruleset`
+   * instances.
+   *
    * [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
    * Note: `page_size` is just a hint and the service may choose to load less
    * than `page_size` due to the size of the output. To traverse all of the
    * releases, caller should iterate until the `page_token` is empty.
-   *
-   * [pageToken] - Next page token for loading the next batch of `Ruleset`
-   * instances.
    *
    * Completes with a [ListRulesetsResponse].
    *
@@ -613,7 +613,7 @@ class ProjectsRulesetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListRulesetsResponse> list(core.String name, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListRulesetsResponse> list(core.String name, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -624,11 +624,11 @@ class ProjectsRulesetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';

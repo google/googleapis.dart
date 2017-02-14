@@ -2725,61 +2725,6 @@ class ProductsResourceApi {
     return _response.then((data) => null);
   }
 
-  /**
-   * This method has been deprecated. To programmatically approve applications,
-   * you must use the iframe mechanism via the  generateApprovalUrl and  approve
-   * methods of the Products resource. For more information, see the  Play EMM
-   * API usage requirements.
-   *
-   * The updatePermissions method (deprecated) updates the set of Android app
-   * permissions for this app that have been accepted by the enterprise.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [enterpriseId] - The ID of the enterprise.
-   *
-   * [productId] - The ID of the product.
-   *
-   * Completes with a [ProductPermissions].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ProductPermissions> updatePermissions(ProductPermissions request, core.String enterpriseId, core.String productId) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (productId == null) {
-      throw new core.ArgumentError("Parameter productId is required.");
-    }
-
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/products/' + commons.Escaper.ecapeVariable('$productId') + '/permissions';
-
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ProductPermissions.fromJson(data));
-  }
-
 }
 
 
@@ -3948,7 +3893,10 @@ class UsersResourceApi {
   }
 
   /**
-   * Modifies the set of products a user is entitled to access.
+   * Modifies the set of products that a user is entitled to access (referred to
+   * as whitelisted products). Only products that are approved or products that
+   * were previously approved (products with revoked approval) can be
+   * whitelisted.
    *
    * [request] - The metadata request object.
    *
@@ -6219,12 +6167,12 @@ class ProductSet {
   core.List<core.String> productId;
   /**
    * The interpretation of this product set. "unknown" should never be sent and
-   * ignored if received. "whitelist" means that this product set constitutes a
-   * whitelist. "includeAll" means that all products are accessible, including
-   * products that are approved, not approved, and even products where approval
-   * has been revoked. If the value is "includeAll", the value of the productId
-   * field is therefore ignored. If a value is not supplied, it is interpreted
-   * to be "whitelist" for backwards compatibility.
+   * is ignored if received. "whitelist" means that this product set constitutes
+   * a whitelist. "includeAll" means that all products are accessible, including
+   * products that are approved, products with revoked approval, and products
+   * that have never been approved. If the value is "includeAll", the value of
+   * the productId field is therefore ignored. If a value is not supplied, it is
+   * interpreted to be "whitelist" for backwards compatibility.
    */
   core.String productSetBehavior;
 

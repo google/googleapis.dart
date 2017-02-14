@@ -283,7 +283,7 @@
             }
         }
     },
-    "revision": "20170110",
+    "revision": "20170123",
     "rootUrl": "https://datastore.googleapis.com/",
     "schemas": {
         "Value": {

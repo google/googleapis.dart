@@ -1351,6 +1351,13 @@ class CreateSlideRequest {
    */
   core.String objectId;
   /**
+   * An optional list of object ID mappings from the placeholder(s) on the
+   * layout to the placeholder(s)
+   * that will be created on the new slide from that specified layout. Can only
+   * be used when `slide_layout_reference` is specified.
+   */
+  core.List<LayoutPlaceholderIdMapping> placeholderIdMappings;
+  /**
    * Layout reference of the slide to be inserted, based on the *current
    * master*, which is one of the following:
    *
@@ -1375,6 +1382,9 @@ class CreateSlideRequest {
     if (_json.containsKey("objectId")) {
       objectId = _json["objectId"];
     }
+    if (_json.containsKey("placeholderIdMappings")) {
+      placeholderIdMappings = _json["placeholderIdMappings"].map((value) => new LayoutPlaceholderIdMapping.fromJson(value)).toList();
+    }
     if (_json.containsKey("slideLayoutReference")) {
       slideLayoutReference = new LayoutReference.fromJson(_json["slideLayoutReference"]);
     }
@@ -1387,6 +1397,9 @@ class CreateSlideRequest {
     }
     if (objectId != null) {
       _json["objectId"] = objectId;
+    }
+    if (placeholderIdMappings != null) {
+      _json["placeholderIdMappings"] = placeholderIdMappings.map((value) => (value).toJson()).toList();
     }
     if (slideLayoutReference != null) {
       _json["slideLayoutReference"] = (slideLayoutReference).toJson();
@@ -1716,6 +1729,58 @@ class DeleteObjectRequest {
     var _json = new core.Map();
     if (objectId != null) {
       _json["objectId"] = objectId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Deletes bullets from all of the paragraphs that overlap with the given text
+ * index range.
+ *
+ * The nesting level of each paragraph will be visually preserved by adding
+ * indent to the start of the corresponding paragraph.
+ */
+class DeleteParagraphBulletsRequest {
+  /**
+   * The optional table cell location if the text to be modified is in a table
+   * cell. If present, the object_id must refer to a table.
+   */
+  TableCellLocation cellLocation;
+  /**
+   * The object ID of the shape or table containing the text to delete bullets
+   * from.
+   */
+  core.String objectId;
+  /**
+   * The range of text to delete bullets from, based on TextElement indexes.
+   */
+  Range textRange;
+
+  DeleteParagraphBulletsRequest();
+
+  DeleteParagraphBulletsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("cellLocation")) {
+      cellLocation = new TableCellLocation.fromJson(_json["cellLocation"]);
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("textRange")) {
+      textRange = new Range.fromJson(_json["textRange"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cellLocation != null) {
+      _json["cellLocation"] = (cellLocation).toJson();
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (textRange != null) {
+      _json["textRange"] = (textRange).toJson();
     }
     return _json;
   }
@@ -2320,6 +2385,67 @@ class InsertTextRequest {
 }
 
 /**
+ * The user-specified ID mapping for a placeholder that will be created on a
+ * slide from a specified layout.
+ */
+class LayoutPlaceholderIdMapping {
+  /**
+   * The placeholder on a layout that will be applied to a slide. Only type and
+   * index are needed. For example, a
+   * predefined `TITLE_AND_BODY` layout may usually have a TITLE placeholder
+   * with index 0 and a BODY placeholder with index 0.
+   */
+  Placeholder layoutPlaceholder;
+  /**
+   * The object ID of the placeholder on a layout that will be applied
+   * to a slide.
+   */
+  core.String layoutPlaceholderObjectId;
+  /**
+   * A user-supplied object ID for the placeholder identified above that to be
+   * created onto a slide.
+   *
+   * If you specify an ID, it must be unique among all pages and page elements
+   * in the presentation. The ID must start with an alphanumeric character or an
+   * underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+   * may include those as well as a hyphen or colon (matches regex
+   * `[a-zA-Z0-9_-:]`).
+   * The length of the ID must not be less than 5 or greater than 50.
+   *
+   * If you don't specify an ID, a unique one is generated.
+   */
+  core.String objectId;
+
+  LayoutPlaceholderIdMapping();
+
+  LayoutPlaceholderIdMapping.fromJson(core.Map _json) {
+    if (_json.containsKey("layoutPlaceholder")) {
+      layoutPlaceholder = new Placeholder.fromJson(_json["layoutPlaceholder"]);
+    }
+    if (_json.containsKey("layoutPlaceholderObjectId")) {
+      layoutPlaceholderObjectId = _json["layoutPlaceholderObjectId"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (layoutPlaceholder != null) {
+      _json["layoutPlaceholder"] = (layoutPlaceholder).toJson();
+    }
+    if (layoutPlaceholderObjectId != null) {
+      _json["layoutPlaceholderObjectId"] = layoutPlaceholderObjectId;
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    return _json;
+  }
+}
+
+/**
  * The properties of Page are only
  * relevant for pages with page_type LAYOUT.
  */
@@ -2750,6 +2876,38 @@ class NestingLevel {
   }
 }
 
+/**
+ * The properties of Page that are only
+ * relevant for pages with page_type NOTES.
+ */
+class NotesProperties {
+  /**
+   * The object ID of the shape on this notes page that contains the speaker
+   * notes for the corresponding slide.
+   * The actual shape may not always exist on the notes page. Inserting text
+   * using this object ID will automatically create the shape. In this case, the
+   * actual shape may have different object ID. The `GetPresentation` or
+   * `GetPage` action will always return the latest object ID.
+   */
+  core.String speakerNotesObjectId;
+
+  NotesProperties();
+
+  NotesProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("speakerNotesObjectId")) {
+      speakerNotesObjectId = _json["speakerNotesObjectId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (speakerNotesObjectId != null) {
+      _json["speakerNotesObjectId"] = speakerNotesObjectId;
+    }
+    return _json;
+  }
+}
+
 /** A themeable solid color value. */
 class OpaqueColor {
   /** An opaque RGB color. */
@@ -2952,6 +3110,8 @@ class OutlineFill {
 class Page {
   /** Layout specific properties. Only set if page_type = LAYOUT. */
   LayoutProperties layoutProperties;
+  /** Notes specific properties. Only set if page_type = NOTES. */
+  NotesProperties notesProperties;
   /**
    * The object ID for this page. Object IDs used by
    * Page and
@@ -2968,6 +3128,8 @@ class Page {
    * - "SLIDE" : A slide page.
    * - "MASTER" : A master slide page.
    * - "LAYOUT" : A layout page.
+   * - "NOTES" : A notes page.
+   * - "NOTES_MASTER" : A notes master page.
    */
   core.String pageType;
   /** Slide specific properties. Only set if page_type = SLIDE. */
@@ -2978,6 +3140,9 @@ class Page {
   Page.fromJson(core.Map _json) {
     if (_json.containsKey("layoutProperties")) {
       layoutProperties = new LayoutProperties.fromJson(_json["layoutProperties"]);
+    }
+    if (_json.containsKey("notesProperties")) {
+      notesProperties = new NotesProperties.fromJson(_json["notesProperties"]);
     }
     if (_json.containsKey("objectId")) {
       objectId = _json["objectId"];
@@ -3000,6 +3165,9 @@ class Page {
     var _json = new core.Map();
     if (layoutProperties != null) {
       _json["layoutProperties"] = (layoutProperties).toJson();
+    }
+    if (notesProperties != null) {
+      _json["notesProperties"] = (notesProperties).toJson();
     }
     if (objectId != null) {
       _json["objectId"] = objectId;
@@ -3370,7 +3538,9 @@ class ParagraphStyle {
    */
   core.String alignment;
   /**
-   * The text direction of this paragraph. This property is read-only.
+   * The text direction of this paragraph. If unset, the value defaults to
+   * LEFT_TO_RIGHT
+   * since text direction is not inherited. This property is read-only.
    * Possible string values are:
    * - "TEXT_DIRECTION_UNSPECIFIED" : The text direction is inherited from the
    * parent.
@@ -3577,6 +3747,21 @@ class Presentation {
    *   master, regardless of their layout.
    */
   core.List<Page> masters;
+  /**
+   * The notes master in the presentation. It serves three purposes:
+   *
+   * - Placeholder shapes on a notes master contain the default text styles and
+   *   shape properties of all placeholder shapes on notes pages. Specifically,
+   *   a SLIDE_IMAGE placeholder shape is defined to contain the slide
+   * thumbnail, and a BODY placeholder shape is defined to contain the speaker
+   *   notes.
+   * - The notes master page properties define the common page properties
+   *   inherited by all notes pages.
+   * - Any other shapes on the notes master will appear on all notes pages.
+   *
+   * The notes master is read-only.
+   */
+  Page notesMaster;
   /** The size of pages in the presentation. */
   Size pageSize;
   /** The ID of the presentation. */
@@ -3600,6 +3785,9 @@ class Presentation {
     }
     if (_json.containsKey("masters")) {
       masters = _json["masters"].map((value) => new Page.fromJson(value)).toList();
+    }
+    if (_json.containsKey("notesMaster")) {
+      notesMaster = new Page.fromJson(_json["notesMaster"]);
     }
     if (_json.containsKey("pageSize")) {
       pageSize = new Size.fromJson(_json["pageSize"]);
@@ -3625,6 +3813,9 @@ class Presentation {
     }
     if (masters != null) {
       _json["masters"] = masters.map((value) => (value).toJson()).toList();
+    }
+    if (notesMaster != null) {
+      _json["notesMaster"] = (notesMaster).toJson();
     }
     if (pageSize != null) {
       _json["pageSize"] = (pageSize).toJson();
@@ -3705,14 +3896,98 @@ class Range {
 /** A recolor effect applied on an image. */
 class Recolor {
   /**
+   * The name of the recolor effect.
+   *
+   * The name is determined from the `recolor_stops` by matching the gradient
+   * against the colors in the page's current color scheme. This property is
+   * read-only.
+   * Possible string values are:
+   * - "NONE" : No recolor effect. The default value.
+   * - "LIGHT1" : A recolor effect that lightens the image using the page's
+   * first available
+   * color from its color scheme.
+   * - "LIGHT2" : A recolor effect that lightens the image using the page's
+   * second
+   * available color from its color scheme.
+   * - "LIGHT3" : A recolor effect that lightens the image using the page's
+   * third available
+   * color from its color scheme.
+   * - "LIGHT4" : A recolor effect that lightens the image using the page's
+   * forth available
+   * color from its color scheme.
+   * - "LIGHT5" : A recolor effect that lightens the image using the page's
+   * fifth available
+   * color from its color scheme.
+   * - "LIGHT6" : A recolor effect that lightens the image using the page's
+   * sixth available
+   * color from its color scheme.
+   * - "LIGHT7" : A recolor effect that lightens the image using the page's
+   * seventh
+   * available color from its color scheme.e.
+   * - "LIGHT8" : A recolor effect that lightens the image using the page's
+   * eighth
+   * available color from its color scheme.
+   * - "LIGHT9" : A recolor effect that lightens the image using the page's
+   * ninth available
+   * color from its color scheme.
+   * - "LIGHT10" : A recolor effect that lightens the image using the page's
+   * tenth available
+   * color from its color scheme.
+   * - "DARK1" : A recolor effect that darkens the image using the page's first
+   * available
+   * color from its color scheme.
+   * - "DARK2" : A recolor effect that darkens the image using the page's second
+   * available
+   * color from its color scheme.
+   * - "DARK3" : A recolor effect that darkens the image using the page's third
+   * available
+   * color from its color scheme.
+   * - "DARK4" : A recolor effect that darkens the image using the page's fourth
+   * available
+   * color from its color scheme.
+   * - "DARK5" : A recolor effect that darkens the image using the page's fifth
+   * available
+   * color from its color scheme.
+   * - "DARK6" : A recolor effect that darkens the image using the page's sixth
+   * available
+   * color from its color scheme.
+   * - "DARK7" : A recolor effect that darkens the image using the page's
+   * seventh
+   * available color from its color scheme.
+   * - "DARK8" : A recolor effect that darkens the image using the page's eighth
+   * available
+   * color from its color scheme.
+   * - "DARK9" : A recolor effect that darkens the image using the page's ninth
+   * available
+   * color from its color scheme.
+   * - "DARK10" : A recolor effect that darkens the image using the page's tenth
+   * available
+   * color from its color scheme.
+   * - "GRAYSCALE" : A recolor effect that recolors the image to grayscale.
+   * - "NEGATIVE" : A recolor effect that recolors the image to negative
+   * grayscale.
+   * - "SEPIA" : A recolor effect that recolors the image using the sepia color.
+   * - "CUSTOM" : Custom recolor effect. Refer to `recolor_stops` for the
+   * concrete
+   * gradient.
+   */
+  core.String name;
+  /**
    * The recolor effect is represented by a gradient, which is a list of color
-   * stops. This property is read-only.
+   * stops.
+   *
+   * The colors in the gradient will replace the corresponding colors at
+   * the same position in the color palette and apply to the image. This
+   * property is read-only.
    */
   core.List<ColorStop> recolorStops;
 
   Recolor();
 
   Recolor.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("recolorStops")) {
       recolorStops = _json["recolorStops"].map((value) => new ColorStop.fromJson(value)).toList();
     }
@@ -3720,6 +3995,9 @@ class Recolor {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
     if (recolorStops != null) {
       _json["recolorStops"] = recolorStops.map((value) => (value).toJson()).toList();
     }
@@ -3839,6 +4117,94 @@ class ReplaceAllShapesWithImageResponse {
   }
 }
 
+/**
+ * Replaces all shapes that match the given criteria with the provided Google
+ * Sheets chart. The chart will be scaled and centered to fit within the bounds
+ * of the original shape.
+ *
+ * NOTE: Replacing shapes with a chart requires at least one of the
+ * spreadsheets.readonly, spreadsheets, drive.readonly, or drive OAuth scopes.
+ */
+class ReplaceAllShapesWithSheetsChartRequest {
+  /** The ID of the specific chart in the Google Sheets spreadsheet. */
+  core.int chartId;
+  /**
+   * The criteria that the shapes must match in order to be replaced. The
+   * request will replace all of the shapes that contain the given text.
+   */
+  SubstringMatchCriteria containsText;
+  /**
+   * The mode with which the chart is linked to the source spreadsheet. When
+   * not specified, the chart will be an image that is not linked.
+   * Possible string values are:
+   * - "NOT_LINKED_IMAGE" : The chart is not associated with the source
+   * spreadsheet and cannot be
+   * updated. A chart that is not linked will be inserted as an image.
+   * - "LINKED" : Linking the chart allows it to be updated, and other
+   * collaborators will
+   * see a link to the spreadsheet.
+   */
+  core.String linkingMode;
+  /** The ID of the Google Sheets spreadsheet that contains the chart. */
+  core.String spreadsheetId;
+
+  ReplaceAllShapesWithSheetsChartRequest();
+
+  ReplaceAllShapesWithSheetsChartRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("chartId")) {
+      chartId = _json["chartId"];
+    }
+    if (_json.containsKey("containsText")) {
+      containsText = new SubstringMatchCriteria.fromJson(_json["containsText"]);
+    }
+    if (_json.containsKey("linkingMode")) {
+      linkingMode = _json["linkingMode"];
+    }
+    if (_json.containsKey("spreadsheetId")) {
+      spreadsheetId = _json["spreadsheetId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (chartId != null) {
+      _json["chartId"] = chartId;
+    }
+    if (containsText != null) {
+      _json["containsText"] = (containsText).toJson();
+    }
+    if (linkingMode != null) {
+      _json["linkingMode"] = linkingMode;
+    }
+    if (spreadsheetId != null) {
+      _json["spreadsheetId"] = spreadsheetId;
+    }
+    return _json;
+  }
+}
+
+/** The result of replacing shapes with a Google Sheets chart. */
+class ReplaceAllShapesWithSheetsChartResponse {
+  /** The number of shapes replaced with charts. */
+  core.int occurrencesChanged;
+
+  ReplaceAllShapesWithSheetsChartResponse();
+
+  ReplaceAllShapesWithSheetsChartResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("occurrencesChanged")) {
+      occurrencesChanged = _json["occurrencesChanged"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (occurrencesChanged != null) {
+      _json["occurrencesChanged"] = occurrencesChanged;
+    }
+    return _json;
+  }
+}
+
 /** Replaces all instances of text matching a criteria with replace text. */
 class ReplaceAllTextRequest {
   /** Finds text in a shape matching this substring. */
@@ -3911,6 +4277,8 @@ class Request {
   CreateVideoRequest createVideo;
   /** Deletes a page or page element from the presentation. */
   DeleteObjectRequest deleteObject;
+  /** Deletes bullets from paragraphs. */
+  DeleteParagraphBulletsRequest deleteParagraphBullets;
   /** Deletes a column from a table. */
   DeleteTableColumnRequest deleteTableColumn;
   /** Deletes a row from a table. */
@@ -3929,6 +4297,8 @@ class Request {
   RefreshSheetsChartRequest refreshSheetsChart;
   /** Replaces all shapes matching some criteria with an image. */
   ReplaceAllShapesWithImageRequest replaceAllShapesWithImage;
+  /** Replaces all shapes matching some criteria with a Google Sheets chart. */
+  ReplaceAllShapesWithSheetsChartRequest replaceAllShapesWithSheetsChart;
   /** Replaces all instances of specified text. */
   ReplaceAllTextRequest replaceAllText;
   /** Updates the properties of an Image. */
@@ -3980,6 +4350,9 @@ class Request {
     if (_json.containsKey("deleteObject")) {
       deleteObject = new DeleteObjectRequest.fromJson(_json["deleteObject"]);
     }
+    if (_json.containsKey("deleteParagraphBullets")) {
+      deleteParagraphBullets = new DeleteParagraphBulletsRequest.fromJson(_json["deleteParagraphBullets"]);
+    }
     if (_json.containsKey("deleteTableColumn")) {
       deleteTableColumn = new DeleteTableColumnRequest.fromJson(_json["deleteTableColumn"]);
     }
@@ -4006,6 +4379,9 @@ class Request {
     }
     if (_json.containsKey("replaceAllShapesWithImage")) {
       replaceAllShapesWithImage = new ReplaceAllShapesWithImageRequest.fromJson(_json["replaceAllShapesWithImage"]);
+    }
+    if (_json.containsKey("replaceAllShapesWithSheetsChart")) {
+      replaceAllShapesWithSheetsChart = new ReplaceAllShapesWithSheetsChartRequest.fromJson(_json["replaceAllShapesWithSheetsChart"]);
     }
     if (_json.containsKey("replaceAllText")) {
       replaceAllText = new ReplaceAllTextRequest.fromJson(_json["replaceAllText"]);
@@ -4068,6 +4444,9 @@ class Request {
     if (deleteObject != null) {
       _json["deleteObject"] = (deleteObject).toJson();
     }
+    if (deleteParagraphBullets != null) {
+      _json["deleteParagraphBullets"] = (deleteParagraphBullets).toJson();
+    }
     if (deleteTableColumn != null) {
       _json["deleteTableColumn"] = (deleteTableColumn).toJson();
     }
@@ -4094,6 +4473,9 @@ class Request {
     }
     if (replaceAllShapesWithImage != null) {
       _json["replaceAllShapesWithImage"] = (replaceAllShapesWithImage).toJson();
+    }
+    if (replaceAllShapesWithSheetsChart != null) {
+      _json["replaceAllShapesWithSheetsChart"] = (replaceAllShapesWithSheetsChart).toJson();
     }
     if (replaceAllText != null) {
       _json["replaceAllText"] = (replaceAllText).toJson();
@@ -4152,6 +4534,11 @@ class Response {
    * image.
    */
   ReplaceAllShapesWithImageResponse replaceAllShapesWithImage;
+  /**
+   * The result of replacing all shapes matching some criteria with a Google
+   * Sheets chart.
+   */
+  ReplaceAllShapesWithSheetsChartResponse replaceAllShapesWithSheetsChart;
   /** The result of replacing text. */
   ReplaceAllTextResponse replaceAllText;
 
@@ -4184,6 +4571,9 @@ class Response {
     }
     if (_json.containsKey("replaceAllShapesWithImage")) {
       replaceAllShapesWithImage = new ReplaceAllShapesWithImageResponse.fromJson(_json["replaceAllShapesWithImage"]);
+    }
+    if (_json.containsKey("replaceAllShapesWithSheetsChart")) {
+      replaceAllShapesWithSheetsChart = new ReplaceAllShapesWithSheetsChartResponse.fromJson(_json["replaceAllShapesWithSheetsChart"]);
     }
     if (_json.containsKey("replaceAllText")) {
       replaceAllText = new ReplaceAllTextResponse.fromJson(_json["replaceAllText"]);
@@ -4218,6 +4608,9 @@ class Response {
     }
     if (replaceAllShapesWithImage != null) {
       _json["replaceAllShapesWithImage"] = (replaceAllShapesWithImage).toJson();
+    }
+    if (replaceAllShapesWithSheetsChart != null) {
+      _json["replaceAllShapesWithSheetsChart"] = (replaceAllShapesWithSheetsChart).toJson();
     }
     if (replaceAllText != null) {
       _json["replaceAllText"] = (replaceAllText).toJson();
@@ -5019,6 +5412,18 @@ class SlideProperties {
   core.String layoutObjectId;
   /** The object ID of the master that this slide is based on. */
   core.String masterObjectId;
+  /**
+   * The notes page that this slide is associated with. It defines the visual
+   * appearance of a notes page when printing or exporting slides with speaker
+   * notes. A notes page inherits properties from the
+   * notes mater.
+   * The placeholder shape with type BODY on the notes page contains the speaker
+   * notes for this slide. The ID of this shape is identified by the
+   * speaker notes object id field.
+   * The notes page is read-only except for the text content and styles of the
+   * speaker notes shape.
+   */
+  Page notesPage;
 
   SlideProperties();
 
@@ -5029,6 +5434,9 @@ class SlideProperties {
     if (_json.containsKey("masterObjectId")) {
       masterObjectId = _json["masterObjectId"];
     }
+    if (_json.containsKey("notesPage")) {
+      notesPage = new Page.fromJson(_json["notesPage"]);
+    }
   }
 
   core.Map toJson() {
@@ -5038,6 +5446,9 @@ class SlideProperties {
     }
     if (masterObjectId != null) {
       _json["masterObjectId"] = masterObjectId;
+    }
+    if (notesPage != null) {
+      _json["notesPage"] = (notesPage).toJson();
     }
     return _json;
   }
@@ -6239,10 +6650,10 @@ class UpdateTextStyleRequest {
    * should not be specified. A single `"*"` can be used as short-hand for
    * listing every field.
    *
-   * For example to update the text style to bold, set `fields` to `"bold"`.
+   * For example, to update the text style to bold, set `fields` to `"bold"`.
    *
-   * To reset a property to its default value,
-   * include its field name in the field mask but leave the field itself unset.
+   * To reset a property to its default value, include its field name in the
+   * field mask but leave the field itself unset.
    */
   core.String fields;
   /** The object ID of the shape or table with the text to be styled. */

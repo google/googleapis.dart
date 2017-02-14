@@ -232,11 +232,12 @@ The Google Cloud Resource Manager API provides methods for creating, reading, an
 
 Official API documentation: https://cloud.google.com/resource-manager
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Trace API - cloudtrace v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Trace API - cloudtrace v1
 
-Send and retrieve trace data from Google Cloud Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Cloud Trace for display, reporting, and analysis.
+Send and retrieve trace data from Stackdriver Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Stackdriver Trace for display, reporting, and analysis.
 
-Official API documentation: https://cloud.google.com/tools/cloud-trace
+
+Official API documentation: https://cloud.google.com/trace
 
 #### ![Logo](https://www.google.com/images/icons/product/compute_engine-16.png) Compute Engine API - compute v1
 
@@ -274,7 +275,7 @@ Official API documentation: https://developers.google.com/custom-search/v1/using
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1
 
-An API for managing Hadoop-based clusters and jobs on Google Cloud Platform.
+Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
 
@@ -396,9 +397,9 @@ Official API documentation: https://developers.google.com/games/services
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Genomics API - genomics v1
 
-Stores, processes, explores and shares genomic data.
+Upload, process, query, and search Genomics data in the cloud.
 
-Official API documentation: https://cloud.google.com/genomics/
+Official API documentation: https://cloud.google.com/genomics
 
 #### ![Logo](https://www.google.com/images/icons/product/googlemail-16.png) Gmail API - gmail v1
 
@@ -498,7 +499,7 @@ Official API documentation: https://developers.google.com/partners/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google People API - people v1
 
-The Google People API service gives access to information about profiles and contacts.
+Provides access to information about profiles and contacts.
 
 Official API documentation: https://developers.google.com/people/
 
@@ -564,6 +565,12 @@ Executes Google Apps Script projects.
 
 Official API documentation: https://developers.google.com/apps-script/execution/rest/v1/scripts/run
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Search Console URL Testing Tools API - searchconsole v1
+
+Provides tools for running validation tests against single URLs
+
+Official API documentation: https://developers.google.com/webmaster-tools/search-console-api/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service Control API - servicecontrol v1
 
 Google Service Control provides control plane functionality to managed services, such as logging, monitoring, and status checks.
@@ -575,6 +582,12 @@ Official API documentation: https://cloud.google.com/service-control/
 Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.
 
 Official API documentation: https://cloud.google.com/service-management/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service User API - serviceuser v1
+
+The Service User API allows service consumers to enable services they want to use on Google Cloud Platform or disable services they no longer use. Consumers can also list the set of services they have already enabled.
+
+Official API documentation: https://cloud.google.com/service-user/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Sheets API - sheets v4
 

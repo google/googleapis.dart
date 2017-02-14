@@ -146,9 +146,6 @@ class OrganizationsResourceApi {
    *
    * Request parameters:
    *
-   * [pageSize] - The maximum number of Organizations to return in the response.
-   * This field is optional.
-   *
    * [filter] - An optional query string used to filter the Organizations to
    * return in
    * the response. Filter rules are case-insensitive.
@@ -170,6 +167,9 @@ class OrganizationsResourceApi {
    * that indicates from where listing should continue.
    * This field is optional.
    *
+   * [pageSize] - The maximum number of Organizations to return in the response.
+   * This field is optional.
+   *
    * Completes with a [ListOrganizationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -178,7 +178,7 @@ class OrganizationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOrganizationsResponse> list({core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListOrganizationsResponse> list({core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -186,14 +186,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/organizations';
@@ -628,6 +628,12 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
+   * [pageToken] - A pagination token returned from a previous call to
+   * ListProjects
+   * that indicates from where listing should continue.
+   *
+   * Optional.
+   *
    * [pageSize] - The maximum number of Projects to return in the response.
    * The server can return fewer Projects than requested.
    * If unspecified, server picks an appropriate default.
@@ -657,12 +663,6 @@ class ProjectsResourceApi {
    *
    * Optional.
    *
-   * [pageToken] - A pagination token returned from a previous call to
-   * ListProjects
-   * that indicates from where listing should continue.
-   *
-   * Optional.
-   *
    * Completes with a [ListProjectsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -671,7 +671,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListProjectsResponse> list({core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListProjectsResponse> list({core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -679,14 +679,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/projects';

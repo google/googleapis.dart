@@ -4065,6 +4065,8 @@ class AccountStatus {
 class AccountStatusDataQualityIssue {
   /** Country for which this issue is reported. */
   core.String country;
+  /** A more detailed description of the issue. */
+  core.String detail;
   /** Actual value displayed on the landing page. */
   core.String displayedValue;
   /** Example items featuring the issue. */
@@ -4073,6 +4075,8 @@ class AccountStatusDataQualityIssue {
   core.String id;
   /** Last time the account was checked for this issue. */
   core.String lastChecked;
+  /** The attribute name that is relevant for the issue. */
+  core.String location;
   /** Number of items in the account found to have the said issue. */
   core.int numItems;
   /** Severity of the problem. */
@@ -4086,6 +4090,9 @@ class AccountStatusDataQualityIssue {
     if (_json.containsKey("country")) {
       country = _json["country"];
     }
+    if (_json.containsKey("detail")) {
+      detail = _json["detail"];
+    }
     if (_json.containsKey("displayedValue")) {
       displayedValue = _json["displayedValue"];
     }
@@ -4097,6 +4104,9 @@ class AccountStatusDataQualityIssue {
     }
     if (_json.containsKey("lastChecked")) {
       lastChecked = _json["lastChecked"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
     }
     if (_json.containsKey("numItems")) {
       numItems = _json["numItems"];
@@ -4114,6 +4124,9 @@ class AccountStatusDataQualityIssue {
     if (country != null) {
       _json["country"] = country;
     }
+    if (detail != null) {
+      _json["detail"] = detail;
+    }
     if (displayedValue != null) {
       _json["displayedValue"] = displayedValue;
     }
@@ -4125,6 +4138,9 @@ class AccountStatusDataQualityIssue {
     }
     if (lastChecked != null) {
       _json["lastChecked"] = lastChecked;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (numItems != null) {
       _json["numItems"] = numItems;

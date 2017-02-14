@@ -18,7 +18,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/9lrbPxfnfcTzLSOgIxD2Vj83GmI\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Eza5dkILxsH0BZXGL1UuGyoKbqY\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -340,7 +340,7 @@
             }
         }
     },
-    "revision": "20161206",
+    "revision": "20170203",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -399,7 +399,7 @@
             "type": "object"
         },
         "DownloadAccountResponse": {
-            "description": "Respone of downloading accounts in batch.",
+            "description": "Response of downloading accounts in batch.",
             "id": "DownloadAccountResponse",
             "properties": {
                 "kind": {
@@ -979,6 +979,10 @@
                     "description": "Instance id token of the app.",
                     "type": "string"
                 },
+                "localId": {
+                    "description": "Privileged caller can create user with specified user id.",
+                    "type": "string"
+                },
                 "password": {
                     "description": "The new password of the user.",
                     "type": "string"
@@ -1271,6 +1275,10 @@
                 "email": {
                     "description": "The email of the user.",
                     "type": "string"
+                },
+                "emailVerified": {
+                    "description": "If email has been verified.",
+                    "type": "boolean"
                 },
                 "expiresIn": {
                     "description": "If idToken is STS id token, then this field will be expiration time of STS id token in seconds.",
@@ -1585,6 +1593,10 @@
                 "inputEmail": {
                     "description": "It's the identifier param in the createAuthUri request if the identifier is an email. It can be used to check whether the user input email is different from the asserted email.",
                     "type": "string"
+                },
+                "isNewUser": {
+                    "description": "True if it's a new user sign-in, false if it's a returning user.",
+                    "type": "boolean"
                 },
                 "kind": {
                     "default": "identitytoolkit#VerifyAssertionResponse",

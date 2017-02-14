@@ -5591,11 +5591,11 @@ class Step {
    * The status code.
    * Possible string values are:
    * - "STATUS_UNSPECIFIED" : Unspecifed code.
-   * - "DONE" : The step has completed without errors.
-   * - "NOT_STARTED" : The step has not started yet.
-   * - "IN_PROGRESS" : The step is in progress.
-   * - "FAILED" : The step has completed with errors.
-   * - "CANCELLED" : The step has completed with cancellation.
+   * - "DONE" : The operation or step has completed without errors.
+   * - "NOT_STARTED" : The operation or step has not started yet.
+   * - "IN_PROGRESS" : The operation or step is in progress.
+   * - "FAILED" : The operation or step has completed with errors.
+   * - "CANCELLED" : The operation or step has completed with cancellation.
    */
   core.String status;
 

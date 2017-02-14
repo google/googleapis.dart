@@ -53,15 +53,17 @@ class ProjectsServiceAccountsResourceApi {
       _requester = client;
 
   /**
-   * Creates a ServiceAccount and returns it.
+   * Creates a ServiceAccount
+   * and returns it.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [name] - Required. The resource name of the project associated with the
-   * service accounts, such as `projects/my-project-123`.
-   * Value must have pattern "^projects/[^/]*$".
+   * service
+   * accounts, such as `projects/my-project-123`.
+   * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [ServiceAccount].
    *
@@ -104,10 +106,11 @@ class ProjectsServiceAccountsResourceApi {
    * Request parameters:
    *
    * [name] - The resource name of the service account in the following format:
-   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
-   * the project will infer the project from the account. The `account` value
-   * can be the `email` address or the `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   * Using `-` as a wildcard for the project will infer the project from
+   * the account. The `account` value can be the `email` address or the
+   * `unique_id` of the service account.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -147,10 +150,11 @@ class ProjectsServiceAccountsResourceApi {
    * Request parameters:
    *
    * [name] - The resource name of the service account in the following format:
-   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
-   * the project will infer the project from the account. The `account` value
-   * can be the `email` address or the `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   * Using `-` as a wildcard for the project will infer the project from
+   * the account. The `account` value can be the `email` address or the
+   * `unique_id` of the service account.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [ServiceAccount].
    *
@@ -185,14 +189,16 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Returns the IAM access control policy for a ServiceAccount.
+   * Returns the IAM access control policy for a
+   * ServiceAccount.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * requested. `resource` is usually specified as a path. For example, a
-   * Project resource is specified as `projects/{project}`.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * requested.
+   * `resource` is usually specified as a path. For example, a Project
+   * resource is specified as `projects/{project}`.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [Policy].
    *
@@ -232,15 +238,18 @@ class ProjectsServiceAccountsResourceApi {
    * Request parameters:
    *
    * [name] - Required. The resource name of the project associated with the
-   * service accounts, such as `projects/my-project-123`.
-   * Value must have pattern "^projects/[^/]*$".
-   *
-   * [pageSize] - Optional limit on the number of service accounts to include in
-   * the response. Further accounts can subsequently be obtained by including
-   * the ListServiceAccountsResponse.next_page_token in a subsequent request.
+   * service
+   * accounts, such as `projects/my-project-123`.
+   * Value must have pattern "^projects/[^/]+$".
    *
    * [pageToken] - Optional pagination token returned in an earlier
    * ListServiceAccountsResponse.next_page_token.
+   *
+   * [pageSize] - Optional limit on the number of service accounts to include in
+   * the
+   * response. Further accounts can subsequently be obtained by including the
+   * ListServiceAccountsResponse.next_page_token
+   * in a subsequent request.
    *
    * Completes with a [ListServiceAccountsResponse].
    *
@@ -250,7 +259,7 @@ class ProjectsServiceAccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListServiceAccountsResponse> list(core.String name, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListServiceAccountsResponse> list(core.String name, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -261,11 +270,11 @@ class ProjectsServiceAccountsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/serviceAccounts';
@@ -281,16 +290,18 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Sets the IAM access control policy for a ServiceAccount.
+   * Sets the IAM access control policy for a
+   * ServiceAccount.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy is being
-   * specified. `resource` is usually specified as a path. For example, a
-   * Project resource is specified as `projects/{project}`.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * specified.
+   * `resource` is usually specified as a path. For example, a Project
+   * resource is specified as `projects/{project}`.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [Policy].
    *
@@ -335,10 +346,11 @@ class ProjectsServiceAccountsResourceApi {
    * Request parameters:
    *
    * [name] - The resource name of the service account in the following format:
-   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
-   * the project will infer the project from the account. The `account` value
-   * can be the `email` address or the `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   * Using `-` as a wildcard for the project will infer the project from
+   * the account. The `account` value can be the `email` address or the
+   * `unique_id` of the service account.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [SignBlobResponse].
    *
@@ -376,17 +388,71 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Tests the specified permissions against the IAM access control policy for a
-   * ServiceAccount.
+   * Signs a JWT using a service account's system-managed private key.
+   *
+   * If no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an
+   * an expiry time of one hour by default. If you request an expiry time of
+   * more than one hour, the request will fail.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the service account in the following format:
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   * Using `-` as a wildcard for the project will infer the project from
+   * the account. The `account` value can be the `email` address or the
+   * `unique_id` of the service account.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+   *
+   * Completes with a [SignJwtResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SignJwtResponse> signJwt(SignJwtRequest request, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SignJwtResponse.fromJson(data));
+  }
+
+  /**
+   * Tests the specified permissions against the IAM access control policy
+   * for a ServiceAccount.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
-   * requested. `resource` is usually specified as a path. For example, a
-   * Project resource is specified as `projects/{project}`.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * requested.
+   * `resource` is usually specified as a path. For example, a Project
+   * resource is specified as `projects/{project}`.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -424,20 +490,26 @@ class ProjectsServiceAccountsResourceApi {
   }
 
   /**
-   * Updates a ServiceAccount. Currently, only the following fields are
-   * updatable: `display_name` . The `etag` is mandatory.
+   * Updates a ServiceAccount.
+   *
+   * Currently, only the following fields are updatable:
+   * `display_name` .
+   * The `etag` is mandatory.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [name] - The resource name of the service account in the following format:
-   * `projects/{project}/serviceAccounts/{account}`. Requests using `-` as a
-   * wildcard for the project will infer the project from the `account` and the
-   * `account` value can be the `email` address or the `unique_id` of the
-   * service account. In responses the resource name will always be in the
-   * format `projects/{project}/serviceAccounts/{email}`.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   *
+   * Requests using `-` as a wildcard for the project will infer the project
+   * from the `account` and the `account` value can be the `email` address or
+   * the `unique_id` of the service account.
+   *
+   * In responses the resource name will always be in the format
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [ServiceAccount].
    *
@@ -484,17 +556,19 @@ class ProjectsServiceAccountsKeysResourceApi {
       _requester = client;
 
   /**
-   * Creates a ServiceAccountKey and returns it.
+   * Creates a ServiceAccountKey
+   * and returns it.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [name] - The resource name of the service account in the following format:
-   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
-   * the project will infer the project from the account. The `account` value
-   * can be the `email` address or the `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   * Using `-` as a wildcard for the project will infer the project from
+   * the account. The `account` value can be the `email` address or the
+   * `unique_id` of the service account.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [ServiceAccountKey].
    *
@@ -537,12 +611,13 @@ class ProjectsServiceAccountsKeysResourceApi {
    * Request parameters:
    *
    * [name] - The resource name of the service account key in the following
-   * format: `projects/{project}/serviceAccounts/{account}/keys/{key}`. Using
-   * `-` as a wildcard for the project will infer the project from the account.
-   * The `account` value can be the `email` address or the `unique_id` of the
-   * service account.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/] * /
-   * keys/[^/]*$".
+   * format:
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
+   * Using `-` as a wildcard for the project will infer the project from
+   * the account. The `account` value can be the `email` address or the
+   * `unique_id` of the service account.
+   * Value must have pattern
+   * "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
    *
    * Completes with a [Empty].
    *
@@ -577,20 +652,23 @@ class ProjectsServiceAccountsKeysResourceApi {
   }
 
   /**
-   * Gets the ServiceAccountKey by key id.
+   * Gets the ServiceAccountKey
+   * by key id.
    *
    * Request parameters:
    *
    * [name] - The resource name of the service account key in the following
-   * format: `projects/{project}/serviceAccounts/{account}/keys/{key}`. Using
-   * `-` as a wildcard for the project will infer the project from the account.
-   * The `account` value can be the `email` address or the `unique_id` of the
-   * service account.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/] * /
-   * keys/[^/]*$".
+   * format:
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
    *
-   * [publicKeyType] - The output format of the public key requested. X509_PEM
-   * is the default output format.
+   * Using `-` as a wildcard for the project will infer the project from
+   * the account. The `account` value can be the `email` address or the
+   * `unique_id` of the service account.
+   * Value must have pattern
+   * "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
+   *
+   * [publicKeyType] - The output format of the public key requested.
+   * X509_PEM is the default output format.
    * Possible string values are:
    * - "TYPE_NONE" : A TYPE_NONE.
    * - "TYPE_X509_PEM_FILE" : A TYPE_X509_PEM_FILE.
@@ -637,14 +715,17 @@ class ProjectsServiceAccountsKeysResourceApi {
    * Request parameters:
    *
    * [name] - The resource name of the service account in the following format:
-   * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
-   * the project, will infer the project from the account. The `account` value
-   * can be the `email` address or the `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/] * / serviceAccounts/[^/]*$".
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   *
+   * Using `-` as a wildcard for the project, will infer the project from
+   * the account. The `account` value can be the `email` address or the
+   * `unique_id` of the service account.
+   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * [keyTypes] - Filters the types of keys the user wants to include in the
-   * list response. Duplicate key types are not allowed. If no key type is
-   * provided, all keys are returned.
+   * list
+   * response. Duplicate key types are not allowed. If no key type
+   * is provided, all keys are returned.
    *
    * Completes with a [ListServiceAccountKeysResponse].
    *
@@ -691,9 +772,9 @@ class RolesResourceApi {
       _requester = client;
 
   /**
-   * Queries roles that can be granted on a particular resource. A role is
-   * grantable if it can be used as the role in a binding for a policy for that
-   * resource.
+   * Queries roles that can be granted on a particular resource.
+   * A role is grantable if it can be used as the role in a binding for a policy
+   * for that resource.
    *
    * [request] - The metadata request object.
    *
@@ -736,8 +817,9 @@ class RolesResourceApi {
 
 
 /**
- * Audit log information specific to Cloud IAM. This message is serialized as an
- * `Any` type in the `ServiceData` message of an `AuditLog` message.
+ * Audit log information specific to Cloud IAM. This message is serialized
+ * as an `Any` type in the `ServiceData` message of an
+ * `AuditLog` message.
  */
 class AuditData {
   /** Policy delta between the original policy and the newly set policy. */
@@ -764,23 +846,32 @@ class AuditData {
 class Binding {
   /**
    * Specifies the identities requesting access for a Cloud Platform resource.
-   * `members` can have the following values: * `allUsers`: A special identifier
-   * that represents anyone who is on the internet; with or without a Google
-   * account. * `allAuthenticatedUsers`: A special identifier that represents
-   * anyone who is authenticated with a Google account or a service account. *
-   * `user:{emailid}`: An email address that represents a specific Google
-   * account. For example, `alice@gmail.com` or `joe@example.com`. *
-   * `serviceAccount:{emailid}`: An email address that represents a service
-   * account. For example, `my-other-app@appspot.gserviceaccount.com`. *
-   * `group:{emailid}`: An email address that represents a Google group. For
-   * example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain
-   * name that represents all the users of that domain. For example,
-   * `google.com` or `example.com`.
+   * `members` can have the following values:
+   *
+   * * `allUsers`: A special identifier that represents anyone who is
+   *    on the internet; with or without a Google account.
+   *
+   * * `allAuthenticatedUsers`: A special identifier that represents anyone
+   *    who is authenticated with a Google account or a service account.
+   *
+   * * `user:{emailid}`: An email address that represents a specific Google
+   *    account. For example, `alice@gmail.com` or `joe@example.com`.
+   *
+   *
+   * * `serviceAccount:{emailid}`: An email address that represents a service
+   *    account. For example, `my-other-app@appspot.gserviceaccount.com`.
+   *
+   * * `group:{emailid}`: An email address that represents a Google group.
+   *    For example, `admins@example.com`.
+   *
+   * * `domain:{domain}`: A Google Apps domain name that represents all the
+   *    users of that domain. For example, `google.com` or `example.com`.
    */
   core.List<core.String> members;
   /**
-   * Role that is assigned to `members`. For example, `roles/viewer`,
-   * `roles/editor`, or `roles/owner`. Required
+   * Role that is assigned to `members`.
+   * For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+   * Required
    */
   core.String role;
 
@@ -813,21 +904,24 @@ class Binding {
  */
 class BindingDelta {
   /**
-   * The action that was performed on a Binding. Required
+   * The action that was performed on a Binding.
+   * Required
    * Possible string values are:
-   * - "ACTION_UNSPECIFIED" : A ACTION_UNSPECIFIED.
-   * - "ADD" : A ADD.
-   * - "REMOVE" : A REMOVE.
+   * - "ACTION_UNSPECIFIED" : Unspecified.
+   * - "ADD" : Addition of a Binding.
+   * - "REMOVE" : Removal of a Binding.
    */
   core.String action;
   /**
-   * A single identity requesting access for a Cloud Platform resource. Follows
-   * the same format of Binding.members. Required
+   * A single identity requesting access for a Cloud Platform resource.
+   * Follows the same format of Binding.members.
+   * Required
    */
   core.String member;
   /**
-   * Role that is assigned to `members`. For example, `roles/viewer`,
-   * `roles/editor`, or `roles/owner`. Required
+   * Role that is assigned to `members`.
+   * For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+   * Required
    */
   core.String role;
 
@@ -863,21 +957,25 @@ class BindingDelta {
 /** The service account key create request. */
 class CreateServiceAccountKeyRequest {
   /**
-   * Which type of key and algorithm to use for the key. The default is
-   * currently a 4K RSA key. However this may change in the future.
+   * Which type of key and algorithm to use for the key.
+   * The default is currently a 4K RSA key.  However this may change in the
+   * future.
    * Possible string values are:
-   * - "KEY_ALG_UNSPECIFIED" : A KEY_ALG_UNSPECIFIED.
-   * - "KEY_ALG_RSA_1024" : A KEY_ALG_RSA_1024.
-   * - "KEY_ALG_RSA_2048" : A KEY_ALG_RSA_2048.
+   * - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
+   * - "KEY_ALG_RSA_1024" : 1k RSA Key.
+   * - "KEY_ALG_RSA_2048" : 2k RSA Key.
    */
   core.String keyAlgorithm;
   /**
    * The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the
    * default output format.
    * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : A TYPE_UNSPECIFIED.
-   * - "TYPE_PKCS12_FILE" : A TYPE_PKCS12_FILE.
-   * - "TYPE_GOOGLE_CREDENTIALS_FILE" : A TYPE_GOOGLE_CREDENTIALS_FILE.
+   * - "TYPE_UNSPECIFIED" : Unspecified. Equivalent to
+   * `TYPE_GOOGLE_CREDENTIALS_FILE`.
+   * - "TYPE_PKCS12_FILE" : PKCS12 format.
+   * The password for the PKCS12 file is `notasecret`.
+   * For more information, see https://tools.ietf.org/html/rfc7292.
+   * - "TYPE_GOOGLE_CREDENTIALS_FILE" : Google Credentials File format.
    */
   core.String privateKeyType;
 
@@ -907,15 +1005,16 @@ class CreateServiceAccountKeyRequest {
 /** The service account create request. */
 class CreateServiceAccountRequest {
   /**
-   * Required. The account id that is used to generate the service account email
-   * address and a stable unique id. It is unique within a project, must be 6-30
-   * characters long, and match the regular expression
+   * Required. The account id that is used to generate the service account
+   * email address and a stable unique id. It is unique within a project,
+   * must be 6-30 characters long, and match the regular expression
    * `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
    */
   core.String accountId;
   /**
-   * The ServiceAccount resource to create. Currently, only the following values
-   * are user assignable: `display_name` .
+   * The ServiceAccount resource to create.
+   * Currently, only the following values are user assignable:
+   * `display_name` .
    */
   ServiceAccount serviceAccount;
 
@@ -944,10 +1043,14 @@ class CreateServiceAccountRequest {
 
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request or
- * the response type of an API method. For instance: service Foo { rpc
- * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
- * representation for `Empty` is empty JSON object `{}`.
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
  */
 class Empty {
 
@@ -990,7 +1093,8 @@ class ListServiceAccountsResponse {
   core.List<ServiceAccount> accounts;
   /**
    * To retrieve the next page of results, set
-   * ListServiceAccountsRequest.page_token to this value.
+   * ListServiceAccountsRequest.page_token
+   * to this value.
    */
   core.String nextPageToken;
 
@@ -1018,33 +1122,54 @@ class ListServiceAccountsResponse {
 }
 
 /**
- * Defines an Identity and Access Management (IAM) policy. It is used to specify
- * access control policies for Cloud Platform resources. A `Policy` consists of
- * a list of `bindings`. A `Binding` binds a list of `members` to a `role`,
- * where the members can be user accounts, Google groups, Google domains, and
- * service accounts. A `role` is a named list of permissions defined by IAM.
- * **Example** { "bindings": [ { "role": "roles/owner", "members": [
- * "user:mike@example.com", "group:admins@example.com", "domain:google.com",
- * "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role":
- * "roles/viewer", "members": ["user:sean@example.com"] } ] } For a description
- * of IAM and its features, see the [IAM developer's
- * guide](https://cloud.google.com/iam).
+ * Defines an Identity and Access Management (IAM) policy. It is used to
+ * specify access control policies for Cloud Platform resources.
+ *
+ *
+ * A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+ * `members` to a `role`, where the members can be user accounts, Google groups,
+ * Google domains, and service accounts. A `role` is a named list of permissions
+ * defined by IAM.
+ *
+ * **Example**
+ *
+ *     {
+ *       "bindings": [
+ *         {
+ *           "role": "roles/owner",
+ *           "members": [
+ *             "user:mike@example.com",
+ *             "group:admins@example.com",
+ *             "domain:google.com",
+ *             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+ *           ]
+ *         },
+ *         {
+ *           "role": "roles/viewer",
+ *           "members": ["user:sean@example.com"]
+ *         }
+ *       ]
+ *     }
+ *
+ * For a description of IAM and its features, see the
+ * [IAM developer's guide](https://cloud.google.com/iam).
  */
 class Policy {
   /**
-   * Associates a list of `members` to a `role`. Multiple `bindings` must not be
-   * specified for the same `role`. `bindings` with no members will result in an
-   * error.
+   * Associates a list of `members` to a `role`.
+   * Multiple `bindings` must not be specified for the same `role`.
+   * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;
   /**
-   * `etag` is used for optimistic concurrency control as a way to help prevent
-   * simultaneous updates of a policy from overwriting each other. It is
-   * strongly suggested that systems make use of the `etag` in the
+   * `etag` is used for optimistic concurrency control as a way to help
+   * prevent simultaneous updates of a policy from overwriting each other.
+   * It is strongly suggested that systems make use of the `etag` in the
    * read-modify-write cycle to perform policy updates in order to avoid race
    * conditions: An `etag` is returned in the response to `getIamPolicy`, and
    * systems are expected to put that etag in the request to `setIamPolicy` to
    * ensure that their change will be applied to the same version of the policy.
+   *
    * If no `etag` is provided in the call to `setIamPolicy`, then the existing
    * policy is overwritten blindly.
    */
@@ -1114,8 +1239,9 @@ class PolicyDelta {
 class QueryGrantableRolesRequest {
   /**
    * Required. The full resource name to query from the list of grantable roles.
-   * The name follows the Google Cloud Platform resource format. For example, a
-   * Cloud Platform project with id `my-project` will be named
+   *
+   * The name follows the Google Cloud Platform resource format.
+   * For example, a Cloud Platform project with id `my-project` will be named
    * `//cloudresourcemanager.googleapis.com/projects/my-project`.
    */
   core.String fullResourceName;
@@ -1161,19 +1287,21 @@ class QueryGrantableRolesResponse {
 
 /** A role in the Identity and Access Management API. */
 class Role {
-  /** Optional. A human-readable description for the role. */
+  /** Optional.  A human-readable description for the role. */
   core.String description;
   /**
-   * The name of the role. When Role is used in CreateRole, the role name must
-   * not be set. When Role is used in output and other input such as UpdateRole,
-   * the role name is the complete path, e.g., roles/logging.viewer for curated
-   * roles and organizations/{organization-id}/roles/logging.viewer for custom
-   * roles.
+   * The name of the role.
+   *
+   * When Role is used in CreateRole, the role name must not be set.
+   *
+   * When Role is used in output and other input such as UpdateRole, the role
+   * name is the complete path, e.g., roles/logging.viewer for curated roles
+   * and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
    */
   core.String name;
   /**
-   * Optional. A human-readable title for the role. Typically this is limited to
-   * 100 UTF-8 bytes.
+   * Optional.  A human-readable title for the role.  Typically this
+   * is limited to 100 UTF-8 bytes.
    */
   core.String title;
 
@@ -1207,22 +1335,27 @@ class Role {
 }
 
 /**
- * A service account in the Identity and Access Management API. To create a
- * service account, specify the `project_id` and the `account_id` for the
- * account. The `account_id` is unique within the project, and is used to
- * generate the service account email address and a stable `unique_id`. If the
- * account already exists, the account's resource name is returned in
- * util::Status's ResourceInfo.resource_name in the format of
- * projects/{project}/serviceAccounts/{email}. The caller can use the name in
- * other methods to access the account. All other methods can identify the
- * service account using the format
- * `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for
- * the project will infer the project from the account. The `account` value can
- * be the `email` address or the `unique_id` of the service account.
+ * A service account in the Identity and Access Management API.
+ *
+ * To create a service account, specify the `project_id` and the `account_id`
+ * for the account.  The `account_id` is unique within the project, and is used
+ * to generate the service account email address and a stable
+ * `unique_id`.
+ *
+ * If the account already exists, the account's resource name is returned
+ * in util::Status's ResourceInfo.resource_name in the format of
+ * projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}. The caller can
+ * use the name in other methods to access the account.
+ *
+ * All other methods can identify the service account using the format
+ * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+ * Using `-` as a wildcard for the project will infer the project from
+ * the account. The `account` value can be the `email` address or the
+ * `unique_id` of the service account.
  */
 class ServiceAccount {
   /**
-   * Optional. A user-specified description of the service account. Must be
+   * Optional. A user-specified description of the service account.  Must be
    * fewer than 100 UTF-8 bytes.
    */
   core.String displayName;
@@ -1239,17 +1372,20 @@ class ServiceAccount {
   }
   /**
    * The resource name of the service account in the following format:
-   * `projects/{project}/serviceAccounts/{account}`. Requests using `-` as a
-   * wildcard for the project will infer the project from the `account` and the
-   * `account` value can be the `email` address or the `unique_id` of the
-   * service account. In responses the resource name will always be in the
-   * format `projects/{project}/serviceAccounts/{email}`.
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+   *
+   * Requests using `-` as a wildcard for the project will infer the project
+   * from the `account` and the `account` value can be the `email` address or
+   * the `unique_id` of the service account.
+   *
+   * In responses the resource name will always be in the format
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
    */
   core.String name;
   /**
-   * @OutputOnly. The OAuth2 client id for the service account. This is used in
-   * conjunction with the OAuth2 clientconfig API to make three legged OAuth2
-   * (3LO) flows to access the data of Google users.
+   * @OutputOnly. The OAuth2 client id for the service account.
+   * This is used in conjunction with the OAuth2 clientconfig API to make
+   * three legged OAuth2 (3LO) flows to access the data of Google users.
    */
   core.String oauth2ClientId;
   /** @OutputOnly The id of the project that owns the service account. */
@@ -1311,32 +1447,40 @@ class ServiceAccount {
 }
 
 /**
- * Represents a service account key. A service account has two sets of
- * key-pairs: user-managed, and system-managed. User-managed key-pairs can be
- * created and deleted by users. Users are responsible for rotating these keys
- * periodically to ensure security of their service accounts. Users retain the
- * private key of these key-pairs, and Google retains ONLY the public key.
+ * Represents a service account key.
+ *
+ * A service account has two sets of key-pairs: user-managed, and
+ * system-managed.
+ *
+ * User-managed key-pairs can be created and deleted by users.  Users are
+ * responsible for rotating these keys periodically to ensure security of
+ * their service accounts.  Users retain the private key of these key-pairs,
+ * and Google retains ONLY the public key.
+ *
  * System-managed key-pairs are managed automatically by Google, and rotated
- * daily without user intervention. The private key never leaves Google's
- * servers to maximize security. Public keys for all service accounts are also
- * published at the OAuth2 Service Account API.
+ * daily without user intervention.  The private key never leaves Google's
+ * servers to maximize security.
+ *
+ * Public keys for all service accounts are also published at the OAuth2
+ * Service Account API.
  */
 class ServiceAccountKey {
   /**
    * Specifies the algorithm (and possibly key size) for the key.
    * Possible string values are:
-   * - "KEY_ALG_UNSPECIFIED" : A KEY_ALG_UNSPECIFIED.
-   * - "KEY_ALG_RSA_1024" : A KEY_ALG_RSA_1024.
-   * - "KEY_ALG_RSA_2048" : A KEY_ALG_RSA_2048.
+   * - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
+   * - "KEY_ALG_RSA_1024" : 1k RSA Key.
+   * - "KEY_ALG_RSA_2048" : 2k RSA Key.
    */
   core.String keyAlgorithm;
   /**
    * The resource name of the service account key in the following format
-   * `projects/{project}/serviceAccounts/{account}/keys/{key}`.
+   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
    */
   core.String name;
   /**
-   * The private key data. Only provided in `CreateServiceAccountKey` responses.
+   * The private key data. Only provided in `CreateServiceAccountKey`
+   * responses.
    */
   core.String privateKeyData;
   core.List<core.int> get privateKeyDataAsBytes {
@@ -1347,14 +1491,19 @@ class ServiceAccountKey {
     privateKeyData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
   /**
-   * The output format for the private key. Only provided in
-   * `CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or
-   * `ListServiceAccountKey` responses. Google never exposes system-managed
-   * private keys, and never retains user-managed private keys.
+   * The output format for the private key.
+   * Only provided in `CreateServiceAccountKey` responses, not
+   * in `GetServiceAccountKey` or `ListServiceAccountKey` responses.
+   *
+   * Google never exposes system-managed private keys, and never retains
+   * user-managed private keys.
    * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : A TYPE_UNSPECIFIED.
-   * - "TYPE_PKCS12_FILE" : A TYPE_PKCS12_FILE.
-   * - "TYPE_GOOGLE_CREDENTIALS_FILE" : A TYPE_GOOGLE_CREDENTIALS_FILE.
+   * - "TYPE_UNSPECIFIED" : Unspecified. Equivalent to
+   * `TYPE_GOOGLE_CREDENTIALS_FILE`.
+   * - "TYPE_PKCS12_FILE" : PKCS12 format.
+   * The password for the PKCS12 file is `notasecret`.
+   * For more information, see https://tools.ietf.org/html/rfc7292.
+   * - "TYPE_GOOGLE_CREDENTIALS_FILE" : Google Credentials File format.
    */
   core.String privateKeyType;
   /**
@@ -1430,8 +1579,9 @@ class ServiceAccountKey {
 class SetIamPolicyRequest {
   /**
    * REQUIRED: The complete policy to be applied to the `resource`. The size of
-   * the policy is limited to a few 10s of KB. An empty policy is a valid policy
-   * but certain Cloud Platform services (such as Projects) might reject them.
+   * the policy is limited to a few 10s of KB. An empty policy is a
+   * valid policy but certain Cloud Platform services (such as Projects)
+   * might reject them.
    */
   Policy policy;
 
@@ -1518,13 +1668,65 @@ class SignBlobResponse {
   }
 }
 
+/** The service account sign JWT request. */
+class SignJwtRequest {
+  /** The JWT payload to sign, a JSON JWT Claim set. */
+  core.String payload;
+
+  SignJwtRequest();
+
+  SignJwtRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("payload")) {
+      payload = _json["payload"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (payload != null) {
+      _json["payload"] = payload;
+    }
+    return _json;
+  }
+}
+
+/** The service account sign JWT response. */
+class SignJwtResponse {
+  /** The id of the key used to sign the JWT. */
+  core.String keyId;
+  /** The signed JWT. */
+  core.String signedJwt;
+
+  SignJwtResponse();
+
+  SignJwtResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("keyId")) {
+      keyId = _json["keyId"];
+    }
+    if (_json.containsKey("signedJwt")) {
+      signedJwt = _json["signedJwt"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (keyId != null) {
+      _json["keyId"] = keyId;
+    }
+    if (signedJwt != null) {
+      _json["signedJwt"] = signedJwt;
+    }
+    return _json;
+  }
+}
+
 /** Request message for `TestIamPermissions` method. */
 class TestIamPermissionsRequest {
   /**
    * The set of permissions to check for the `resource`. Permissions with
    * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see [IAM
-   * Overview](https://cloud.google.com/iam/docs/overview#permissions).
+   * information see
+   * [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
    */
   core.List<core.String> permissions;
 
