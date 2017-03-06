@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/3Z8GtIeozMxTVEAC0FAMorK61fA\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/4KQ_G6wmJaubOLAoFI_4oB1Hy0M\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -910,7 +910,7 @@
             }
         }
     },
-    "revision": "20170111",
+    "revision": "20170217",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BackupConfiguration": {

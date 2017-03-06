@@ -733,14 +733,6 @@ class ProjectsJobsResourceApi {
    * [projectId] - Required The ID of the Google Cloud Platform project that the
    * job belongs to.
    *
-   * [pageToken] - Optional The page token, returned by a previous call, to
-   * request the next page of results.
-   *
-   * [pageSize] - Optional The number of results to return in each response.
-   *
-   * [clusterName] - Optional If set, the returned jobs list includes only jobs
-   * that were submitted to the named cluster.
-   *
    * [filter] - Optional A filter constraining which jobs to list. Valid filters
    * contain job state and label terms such as: labels.key1 = val1 AND
    * (labels.k2 = val2 OR labels.k3 = val3)
@@ -752,6 +744,14 @@ class ProjectsJobsResourceApi {
    * - "ACTIVE" : A ACTIVE.
    * - "NON_ACTIVE" : A NON_ACTIVE.
    *
+   * [pageToken] - Optional The page token, returned by a previous call, to
+   * request the next page of results.
+   *
+   * [pageSize] - Optional The number of results to return in each response.
+   *
+   * [clusterName] - Optional If set, the returned jobs list includes only jobs
+   * that were submitted to the named cluster.
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -760,7 +760,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String clusterName, core.String filter, core.String jobStateMatcher}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String filter, core.String jobStateMatcher, core.String pageToken, core.int pageSize, core.String clusterName}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -771,6 +771,12 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (jobStateMatcher != null) {
+      _queryParams["jobStateMatcher"] = [jobStateMatcher];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -779,12 +785,6 @@ class ProjectsJobsResourceApi {
     }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (jobStateMatcher != null) {
-      _queryParams["jobStateMatcher"] = [jobStateMatcher];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -907,6 +907,45 @@ class ProjectsJobsResourceApi {
 }
 
 
+
+/**
+ * Specifies the type and number of accelerator cards attached to the instances
+ * of an instance group (see GPUs on Compute Engine).
+ */
+class AcceleratorConfiguration {
+  /**
+   * The number of the accelerator cards of this type exposed to this instance.
+   */
+  core.int acceleratorCount;
+  /**
+   * Full or partial URI of the accelerator type resource to expose to this
+   * instance. See Google Compute Engine AcceleratorTypes(
+   * /compute/docs/reference/beta/acceleratorTypes)
+   */
+  core.String acceleratorTypeUri;
+
+  AcceleratorConfiguration();
+
+  AcceleratorConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorCount")) {
+      acceleratorCount = _json["acceleratorCount"];
+    }
+    if (_json.containsKey("acceleratorTypeUri")) {
+      acceleratorTypeUri = _json["acceleratorTypeUri"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (acceleratorCount != null) {
+      _json["acceleratorCount"] = acceleratorCount;
+    }
+    if (acceleratorTypeUri != null) {
+      _json["acceleratorTypeUri"] = acceleratorTypeUri;
+    }
+    return _json;
+  }
+}
 
 /** A request to cancel a job. */
 class CancelJobRequest {
@@ -1346,11 +1385,11 @@ class ClusterStatus {
   }
 }
 
-/** The location where output from diagnostic command can be found. */
+/** The location of diagnostic output. */
 class DiagnoseClusterOutputLocation {
   /**
-   * Output-only The Google Cloud Storage URI of the diagnostic output. This
-   * will be a plain text file with summary of collected diagnostics.
+   * Output-only The Google Cloud Storage URI of the diagnostic output. This is
+   * a plain text file with a summary of collected diagnostics.
    */
   core.String outputUri;
 
@@ -1780,6 +1819,11 @@ class HiveJob {
  * group, such as a master or worker group.
  */
 class InstanceGroupConfiguration {
+  /**
+   * Optional The Google Compute Engine accelerator configuration for these
+   * instances.
+   */
+  core.List<AcceleratorConfiguration> accelerators;
   /** Disk option configuration settings. */
   DiskConfiguration diskConfiguration;
   /**
@@ -1815,6 +1859,9 @@ class InstanceGroupConfiguration {
   InstanceGroupConfiguration();
 
   InstanceGroupConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("accelerators")) {
+      accelerators = _json["accelerators"].map((value) => new AcceleratorConfiguration.fromJson(value)).toList();
+    }
     if (_json.containsKey("diskConfiguration")) {
       diskConfiguration = new DiskConfiguration.fromJson(_json["diskConfiguration"]);
     }
@@ -1840,6 +1887,9 @@ class InstanceGroupConfiguration {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (accelerators != null) {
+      _json["accelerators"] = accelerators.map((value) => (value).toJson()).toList();
+    }
     if (diskConfiguration != null) {
       _json["diskConfiguration"] = (diskConfiguration).toJson();
     }
@@ -2098,7 +2148,7 @@ class JobReference {
    * generated by the server upon job submission or provided by the user as a
    * means to perform retries without creating duplicate jobs. The ID must
    * contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens
-   * (-). The maximum length is 512 characters.
+   * (-). The maximum length is 100 characters.
    */
   core.String jobId;
   /**
@@ -2501,27 +2551,8 @@ class OperationMetadata {
   core.String clusterUuid;
   /** Output-only Short description of operation. */
   core.String description;
-  /** A message containing any operation metadata details. */
-  core.String details;
-  /** The time that the operation completed. */
-  core.String endTime;
-  /** A message containing the detailed operation state. */
-  core.String innerState;
-  /** The time that the operation was requested. */
-  core.String insertTime;
   /** Output-only The operation type. */
   core.String operationType;
-  /** The time that the operation was started by the server. */
-  core.String startTime;
-  /**
-   * A message containing the operation state.
-   * Possible string values are:
-   * - "UNKNOWN" : Unused.
-   * - "PENDING" : The operation has been created.
-   * - "RUNNING" : The operation is currently running.
-   * - "DONE" : The operation is done, either cancelled or completed.
-   */
-  core.String state;
   /** Output-only Current operation status. */
   OperationStatus status;
   /** Output-only Previous operation status. */
@@ -2541,26 +2572,8 @@ class OperationMetadata {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
-    if (_json.containsKey("details")) {
-      details = _json["details"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("innerState")) {
-      innerState = _json["innerState"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
-    }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
     }
     if (_json.containsKey("status")) {
       status = new OperationStatus.fromJson(_json["status"]);
@@ -2584,26 +2597,8 @@ class OperationMetadata {
     if (description != null) {
       _json["description"] = description;
     }
-    if (details != null) {
-      _json["details"] = details;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (innerState != null) {
-      _json["innerState"] = innerState;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
     if (operationType != null) {
       _json["operationType"] = operationType;
-    }
-    if (startTime != null) {
-      _json["startTime"] = startTime;
-    }
-    if (state != null) {
-      _json["state"] = state;
     }
     if (status != null) {
       _json["status"] = (status).toJson();

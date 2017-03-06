@@ -2556,10 +2556,7 @@ class CreativeFilteringReasonsReasons {
    * aggregated across all publishers on the exchange.
    */
   core.String filteringCount;
-  /**
-   * The filtering status code. Please refer to the creative-status-codes.txt
-   * file for different statuses.
-   */
+  /** The filtering status code as defined in  creative-status-codes.txt. */
   core.int filteringStatus;
 
   CreativeFilteringReasonsReasons();
@@ -2869,7 +2866,9 @@ class CreativeServingRestrictionsContexts {
   core.String contextType;
   /**
    * Only set when contextType=LOCATION. Represents the geo criterias this
-   * restriction applies to.
+   * restriction applies to. Impressions are considered to match a context if
+   * either the user location or publisher location matches a given
+   * geoCriteriaId.
    */
   core.List<core.int> geoCriteriaId;
   /**
@@ -3006,7 +3005,10 @@ class Creative {
    * requests.
    */
   core.List<core.String> advertiserId;
-  /** The name of the company being advertised in the creative. */
+  /**
+   * The name of the company being advertised in the creative. The value
+   * provided must exist in the advertisers.txt file.
+   */
   core.String advertiserName;
   /** The agency id for this creative. */
   core.String agencyId;
@@ -3016,7 +3018,11 @@ class Creative {
    * uploads. (formatted RFC 3339 timestamp).
    */
   core.DateTime apiUploadTimestamp;
-  /** All attributes for the ads that may be shown from this snippet. */
+  /**
+   * List of buyer selectable attributes for the ads that may be shown from this
+   * snippet. Each attribute is represented by an integer as defined in
+   * buyer-declarable-creative-attributes.txt.
+   */
   core.List<core.int> attribute;
   /** A buyer-specific id identifying the creative in this ad. */
   core.String buyerCreativeId;
@@ -3070,17 +3076,21 @@ class Creative {
    */
   core.String openAuctionStatus;
   /**
-   * Detected product categories, if any. Read-only. This field should not be
-   * set in requests.
+   * Detected product categories, if any. Each category is represented by an
+   * integer as defined in  ad-product-categories.txt. Read-only. This field
+   * should not be set in requests.
    */
   core.List<core.int> productCategories;
   /**
    * All restricted categories for the ads that may be shown from this snippet.
+   * Each category is represented by an integer as defined in the
+   * ad-restricted-categories.txt.
    */
   core.List<core.int> restrictedCategories;
   /**
-   * Detected sensitive categories, if any. Read-only. This field should not be
-   * set in requests.
+   * Detected sensitive categories, if any. Each category is represented by an
+   * integer as defined in  ad-sensitive-categories.txt. Read-only. This field
+   * should not be set in requests.
    */
   core.List<core.int> sensitiveCategories;
   /**
@@ -3090,7 +3100,10 @@ class Creative {
    * This field should not be set in requests.
    */
   core.List<CreativeServingRestrictions> servingRestrictions;
-  /** All vendor types for the ads that may be shown from this snippet. */
+  /**
+   * List of vendor types for the ads that may be shown from this snippet. Each
+   * vendor type is represented by an integer as defined in vendors.txt.
+   */
   core.List<core.int> vendorType;
   /**
    * The version for this creative. Read-only. This field should not be set in
@@ -3399,6 +3412,12 @@ class CreativesList {
 
 class DealServingMetadata {
   /**
+   * True if alcohol ads are allowed for this deal (read-only). This field is
+   * only populated when querying for finalized orders using the method
+   * GetFinalizedOrderDeals
+   */
+  core.bool alcoholAdsAllowed;
+  /**
    * Tracks which parties (if any) have paused a deal. (readonly, except via
    * PauseResumeOrderDeals action)
    */
@@ -3407,6 +3426,9 @@ class DealServingMetadata {
   DealServingMetadata();
 
   DealServingMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("alcoholAdsAllowed")) {
+      alcoholAdsAllowed = _json["alcoholAdsAllowed"];
+    }
     if (_json.containsKey("dealPauseStatus")) {
       dealPauseStatus = new DealServingMetadataDealPauseStatus.fromJson(_json["dealPauseStatus"]);
     }
@@ -3414,6 +3436,9 @@ class DealServingMetadata {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (alcoholAdsAllowed != null) {
+      _json["alcoholAdsAllowed"] = alcoholAdsAllowed;
+    }
     if (dealPauseStatus != null) {
       _json["dealPauseStatus"] = (dealPauseStatus).toJson();
     }

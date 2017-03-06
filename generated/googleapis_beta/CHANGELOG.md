@@ -1,3 +1,14 @@
+## 0.34.0
+
+* [api-new] appengine
+* [api] sqladmin
+* [api] dataproc
+* [api] adexchangebuyer2
+* [api] dataflow
+* [api] ml
+* [api-breaking] dataproc
+* [api-removed] dfareporting
+
 ## 0.33.0
 
 [api-breaking] dataflow

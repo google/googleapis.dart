@@ -74,6 +74,12 @@ Accesses the latest features for managing Ad Exchange accounts, Real-Time Biddin
 
 Official API documentation: https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta
+
+Provisions and manages App Engine applications.
+
+Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta4
 
 Provisions and manages App Engine applications.
@@ -142,12 +148,6 @@ Accesses the schemaless NoSQL database to provide fully managed, robust, scalabl
 
 Official API documentation: https://cloud.google.com/datastore/
 
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.5beta1
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
-
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud DNS API - dns v2beta1
 
 Configures and serves authoritative DNS records.
@@ -166,7 +166,7 @@ Writes log entries and manages your Stackdriver Logging configuration.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Machine Learning - ml v1beta1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Machine Learning Engine - ml v1beta1
 
 An API to enable creating and using machine learning models.
 
@@ -242,7 +242,7 @@ Official API documentation: https://developers.google.com/appengine/docs/python/
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results API - toolresults v1beta3
 
-Reads and publishes results from Cloud Test Lab.
+Reads and publishes results from Firebase Test Lab.
 
-Official API documentation: https://developers.google.com/cloud-test-lab/
+Official API documentation: https://firebase.google.com/docs/test-lab/
 

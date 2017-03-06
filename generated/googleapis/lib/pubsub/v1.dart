@@ -151,6 +151,10 @@ class ProjectsSnapshotsResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -706,6 +710,10 @@ class ProjectsSubscriptionsResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -952,12 +960,12 @@ class ProjectsTopicsResourceApi {
    * Format is `projects/{project}`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageSize] - Maximum number of topics to return.
+   *
    * [pageToken] - The value returned by the last `ListTopicsResponse`;
    * indicates that this is
    * a continuation of a prior `ListTopics` call, and that the system should
    * return the next page of data.
-   *
-   * [pageSize] - Maximum number of topics to return.
    *
    * Completes with a [ListTopicsResponse].
    *
@@ -967,7 +975,7 @@ class ProjectsTopicsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTopicsResponse> list(core.String project, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListTopicsResponse> list(core.String project, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -978,11 +986,11 @@ class ProjectsTopicsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$project') + '/topics';
@@ -1099,6 +1107,10 @@ class ProjectsTopicsResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -1162,12 +1174,12 @@ class ProjectsTopicsSubscriptionsResourceApi {
    * Format is `projects/{project}/topics/{topic}`.
    * Value must have pattern "^projects/[^/]+/topics/[^/]+$".
    *
-   * [pageSize] - Maximum number of subscription names to return.
-   *
    * [pageToken] - The value returned by the last
    * `ListTopicSubscriptionsResponse`; indicates
    * that this is a continuation of a prior `ListTopicSubscriptions` call, and
    * that the system should return the next page of data.
+   *
+   * [pageSize] - Maximum number of subscription names to return.
    *
    * Completes with a [ListTopicSubscriptionsResponse].
    *
@@ -1177,7 +1189,7 @@ class ProjectsTopicsSubscriptionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTopicSubscriptionsResponse> list(core.String topic, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListTopicSubscriptionsResponse> list(core.String topic, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1188,11 +1200,11 @@ class ProjectsTopicsSubscriptionsResourceApi {
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$topic') + '/subscriptions';

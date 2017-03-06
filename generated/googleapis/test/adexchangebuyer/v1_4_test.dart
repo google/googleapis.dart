@@ -76,14 +76,14 @@ checkAccountBidderLocation(api.AccountBidderLocation o) {
   buildCounterAccountBidderLocation--;
 }
 
-buildUnnamed1903() {
+buildUnnamed1673() {
   var o = new core.List<api.AccountBidderLocation>();
   o.add(buildAccountBidderLocation());
   o.add(buildAccountBidderLocation());
   return o;
 }
 
-checkUnnamed1903(core.List<api.AccountBidderLocation> o) {
+checkUnnamed1673(core.List<api.AccountBidderLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccountBidderLocation(o[0]);
   checkAccountBidderLocation(o[1]);
@@ -94,7 +94,7 @@ buildAccount() {
   var o = new api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    o.bidderLocation = buildUnnamed1903();
+    o.bidderLocation = buildUnnamed1673();
     o.cookieMatchingNid = "foo";
     o.cookieMatchingUrl = "foo";
     o.id = 42;
@@ -110,7 +110,7 @@ buildAccount() {
 checkAccount(api.Account o) {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    checkUnnamed1903(o.bidderLocation);
+    checkUnnamed1673(o.bidderLocation);
     unittest.expect(o.cookieMatchingNid, unittest.equals('foo'));
     unittest.expect(o.cookieMatchingUrl, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals(42));
@@ -122,14 +122,14 @@ checkAccount(api.Account o) {
   buildCounterAccount--;
 }
 
-buildUnnamed1904() {
+buildUnnamed1674() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed1904(core.List<api.Account> o) {
+checkUnnamed1674(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -140,7 +140,7 @@ buildAccountsList() {
   var o = new api.AccountsList();
   buildCounterAccountsList++;
   if (buildCounterAccountsList < 3) {
-    o.items = buildUnnamed1904();
+    o.items = buildUnnamed1674();
     o.kind = "foo";
   }
   buildCounterAccountsList--;
@@ -150,20 +150,20 @@ buildAccountsList() {
 checkAccountsList(api.AccountsList o) {
   buildCounterAccountsList++;
   if (buildCounterAccountsList < 3) {
-    checkUnnamed1904(o.items);
+    checkUnnamed1674(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAccountsList--;
 }
 
-buildUnnamed1905() {
+buildUnnamed1675() {
   var o = new core.List<api.MarketplaceDeal>();
   o.add(buildMarketplaceDeal());
   o.add(buildMarketplaceDeal());
   return o;
 }
 
-checkUnnamed1905(core.List<api.MarketplaceDeal> o) {
+checkUnnamed1675(core.List<api.MarketplaceDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceDeal(o[0]);
   checkMarketplaceDeal(o[1]);
@@ -174,7 +174,7 @@ buildAddOrderDealsRequest() {
   var o = new api.AddOrderDealsRequest();
   buildCounterAddOrderDealsRequest++;
   if (buildCounterAddOrderDealsRequest < 3) {
-    o.deals = buildUnnamed1905();
+    o.deals = buildUnnamed1675();
     o.proposalRevisionNumber = "foo";
     o.updateAction = "foo";
   }
@@ -185,21 +185,21 @@ buildAddOrderDealsRequest() {
 checkAddOrderDealsRequest(api.AddOrderDealsRequest o) {
   buildCounterAddOrderDealsRequest++;
   if (buildCounterAddOrderDealsRequest < 3) {
-    checkUnnamed1905(o.deals);
+    checkUnnamed1675(o.deals);
     unittest.expect(o.proposalRevisionNumber, unittest.equals('foo'));
     unittest.expect(o.updateAction, unittest.equals('foo'));
   }
   buildCounterAddOrderDealsRequest--;
 }
 
-buildUnnamed1906() {
+buildUnnamed1676() {
   var o = new core.List<api.MarketplaceDeal>();
   o.add(buildMarketplaceDeal());
   o.add(buildMarketplaceDeal());
   return o;
 }
 
-checkUnnamed1906(core.List<api.MarketplaceDeal> o) {
+checkUnnamed1676(core.List<api.MarketplaceDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceDeal(o[0]);
   checkMarketplaceDeal(o[1]);
@@ -210,7 +210,7 @@ buildAddOrderDealsResponse() {
   var o = new api.AddOrderDealsResponse();
   buildCounterAddOrderDealsResponse++;
   if (buildCounterAddOrderDealsResponse < 3) {
-    o.deals = buildUnnamed1906();
+    o.deals = buildUnnamed1676();
     o.proposalRevisionNumber = "foo";
   }
   buildCounterAddOrderDealsResponse--;
@@ -220,20 +220,20 @@ buildAddOrderDealsResponse() {
 checkAddOrderDealsResponse(api.AddOrderDealsResponse o) {
   buildCounterAddOrderDealsResponse++;
   if (buildCounterAddOrderDealsResponse < 3) {
-    checkUnnamed1906(o.deals);
+    checkUnnamed1676(o.deals);
     unittest.expect(o.proposalRevisionNumber, unittest.equals('foo'));
   }
   buildCounterAddOrderDealsResponse--;
 }
 
-buildUnnamed1907() {
+buildUnnamed1677() {
   var o = new core.List<api.MarketplaceNote>();
   o.add(buildMarketplaceNote());
   o.add(buildMarketplaceNote());
   return o;
 }
 
-checkUnnamed1907(core.List<api.MarketplaceNote> o) {
+checkUnnamed1677(core.List<api.MarketplaceNote> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceNote(o[0]);
   checkMarketplaceNote(o[1]);
@@ -244,7 +244,7 @@ buildAddOrderNotesRequest() {
   var o = new api.AddOrderNotesRequest();
   buildCounterAddOrderNotesRequest++;
   if (buildCounterAddOrderNotesRequest < 3) {
-    o.notes = buildUnnamed1907();
+    o.notes = buildUnnamed1677();
   }
   buildCounterAddOrderNotesRequest--;
   return o;
@@ -253,19 +253,19 @@ buildAddOrderNotesRequest() {
 checkAddOrderNotesRequest(api.AddOrderNotesRequest o) {
   buildCounterAddOrderNotesRequest++;
   if (buildCounterAddOrderNotesRequest < 3) {
-    checkUnnamed1907(o.notes);
+    checkUnnamed1677(o.notes);
   }
   buildCounterAddOrderNotesRequest--;
 }
 
-buildUnnamed1908() {
+buildUnnamed1678() {
   var o = new core.List<api.MarketplaceNote>();
   o.add(buildMarketplaceNote());
   o.add(buildMarketplaceNote());
   return o;
 }
 
-checkUnnamed1908(core.List<api.MarketplaceNote> o) {
+checkUnnamed1678(core.List<api.MarketplaceNote> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceNote(o[0]);
   checkMarketplaceNote(o[1]);
@@ -276,7 +276,7 @@ buildAddOrderNotesResponse() {
   var o = new api.AddOrderNotesResponse();
   buildCounterAddOrderNotesResponse++;
   if (buildCounterAddOrderNotesResponse < 3) {
-    o.notes = buildUnnamed1908();
+    o.notes = buildUnnamed1678();
   }
   buildCounterAddOrderNotesResponse--;
   return o;
@@ -285,19 +285,19 @@ buildAddOrderNotesResponse() {
 checkAddOrderNotesResponse(api.AddOrderNotesResponse o) {
   buildCounterAddOrderNotesResponse++;
   if (buildCounterAddOrderNotesResponse < 3) {
-    checkUnnamed1908(o.notes);
+    checkUnnamed1678(o.notes);
   }
   buildCounterAddOrderNotesResponse--;
 }
 
-buildUnnamed1909() {
+buildUnnamed1679() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1909(core.List<core.String> o) {
+checkUnnamed1679(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -310,7 +310,7 @@ buildBillingInfo() {
   if (buildCounterBillingInfo < 3) {
     o.accountId = 42;
     o.accountName = "foo";
-    o.billingId = buildUnnamed1909();
+    o.billingId = buildUnnamed1679();
     o.kind = "foo";
   }
   buildCounterBillingInfo--;
@@ -322,20 +322,20 @@ checkBillingInfo(api.BillingInfo o) {
   if (buildCounterBillingInfo < 3) {
     unittest.expect(o.accountId, unittest.equals(42));
     unittest.expect(o.accountName, unittest.equals('foo'));
-    checkUnnamed1909(o.billingId);
+    checkUnnamed1679(o.billingId);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBillingInfo--;
 }
 
-buildUnnamed1910() {
+buildUnnamed1680() {
   var o = new core.List<api.BillingInfo>();
   o.add(buildBillingInfo());
   o.add(buildBillingInfo());
   return o;
 }
 
-checkUnnamed1910(core.List<api.BillingInfo> o) {
+checkUnnamed1680(core.List<api.BillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBillingInfo(o[0]);
   checkBillingInfo(o[1]);
@@ -346,7 +346,7 @@ buildBillingInfoList() {
   var o = new api.BillingInfoList();
   buildCounterBillingInfoList++;
   if (buildCounterBillingInfoList < 3) {
-    o.items = buildUnnamed1910();
+    o.items = buildUnnamed1680();
     o.kind = "foo";
   }
   buildCounterBillingInfoList--;
@@ -356,7 +356,7 @@ buildBillingInfoList() {
 checkBillingInfoList(api.BillingInfoList o) {
   buildCounterBillingInfoList++;
   if (buildCounterBillingInfoList < 3) {
-    checkUnnamed1910(o.items);
+    checkUnnamed1680(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBillingInfoList--;
@@ -431,14 +431,14 @@ checkContactInformation(api.ContactInformation o) {
   buildCounterContactInformation--;
 }
 
-buildUnnamed1911() {
+buildUnnamed1681() {
   var o = new core.List<api.Proposal>();
   o.add(buildProposal());
   o.add(buildProposal());
   return o;
 }
 
-checkUnnamed1911(core.List<api.Proposal> o) {
+checkUnnamed1681(core.List<api.Proposal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProposal(o[0]);
   checkProposal(o[1]);
@@ -449,7 +449,7 @@ buildCreateOrdersRequest() {
   var o = new api.CreateOrdersRequest();
   buildCounterCreateOrdersRequest++;
   if (buildCounterCreateOrdersRequest < 3) {
-    o.proposals = buildUnnamed1911();
+    o.proposals = buildUnnamed1681();
     o.webPropertyCode = "foo";
   }
   buildCounterCreateOrdersRequest--;
@@ -459,20 +459,20 @@ buildCreateOrdersRequest() {
 checkCreateOrdersRequest(api.CreateOrdersRequest o) {
   buildCounterCreateOrdersRequest++;
   if (buildCounterCreateOrdersRequest < 3) {
-    checkUnnamed1911(o.proposals);
+    checkUnnamed1681(o.proposals);
     unittest.expect(o.webPropertyCode, unittest.equals('foo'));
   }
   buildCounterCreateOrdersRequest--;
 }
 
-buildUnnamed1912() {
+buildUnnamed1682() {
   var o = new core.List<api.Proposal>();
   o.add(buildProposal());
   o.add(buildProposal());
   return o;
 }
 
-checkUnnamed1912(core.List<api.Proposal> o) {
+checkUnnamed1682(core.List<api.Proposal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProposal(o[0]);
   checkProposal(o[1]);
@@ -483,7 +483,7 @@ buildCreateOrdersResponse() {
   var o = new api.CreateOrdersResponse();
   buildCounterCreateOrdersResponse++;
   if (buildCounterCreateOrdersResponse < 3) {
-    o.proposals = buildUnnamed1912();
+    o.proposals = buildUnnamed1682();
   }
   buildCounterCreateOrdersResponse--;
   return o;
@@ -492,84 +492,84 @@ buildCreateOrdersResponse() {
 checkCreateOrdersResponse(api.CreateOrdersResponse o) {
   buildCounterCreateOrdersResponse++;
   if (buildCounterCreateOrdersResponse < 3) {
-    checkUnnamed1912(o.proposals);
+    checkUnnamed1682(o.proposals);
   }
   buildCounterCreateOrdersResponse--;
 }
 
-buildUnnamed1913() {
+buildUnnamed1683() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1913(core.List<core.String> o) {
+checkUnnamed1683(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1914() {
+buildUnnamed1684() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1914(core.List<core.int> o) {
+checkUnnamed1684(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed1915() {
+buildUnnamed1685() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1915(core.List<core.String> o) {
+checkUnnamed1685(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1916() {
+buildUnnamed1686() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1916(core.List<core.String> o) {
+checkUnnamed1686(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1917() {
+buildUnnamed1687() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1917(core.List<core.int> o) {
+checkUnnamed1687(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed1918() {
+buildUnnamed1688() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1918(core.List<core.String> o) {
+checkUnnamed1688(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -580,10 +580,10 @@ buildCreativeCorrectionsContexts() {
   var o = new api.CreativeCorrectionsContexts();
   buildCounterCreativeCorrectionsContexts++;
   if (buildCounterCreativeCorrectionsContexts < 3) {
-    o.auctionType = buildUnnamed1916();
+    o.auctionType = buildUnnamed1686();
     o.contextType = "foo";
-    o.geoCriteriaId = buildUnnamed1917();
-    o.platform = buildUnnamed1918();
+    o.geoCriteriaId = buildUnnamed1687();
+    o.platform = buildUnnamed1688();
   }
   buildCounterCreativeCorrectionsContexts--;
   return o;
@@ -592,35 +592,35 @@ buildCreativeCorrectionsContexts() {
 checkCreativeCorrectionsContexts(api.CreativeCorrectionsContexts o) {
   buildCounterCreativeCorrectionsContexts++;
   if (buildCounterCreativeCorrectionsContexts < 3) {
-    checkUnnamed1916(o.auctionType);
+    checkUnnamed1686(o.auctionType);
     unittest.expect(o.contextType, unittest.equals('foo'));
-    checkUnnamed1917(o.geoCriteriaId);
-    checkUnnamed1918(o.platform);
+    checkUnnamed1687(o.geoCriteriaId);
+    checkUnnamed1688(o.platform);
   }
   buildCounterCreativeCorrectionsContexts--;
 }
 
-buildUnnamed1919() {
+buildUnnamed1689() {
   var o = new core.List<api.CreativeCorrectionsContexts>();
   o.add(buildCreativeCorrectionsContexts());
   o.add(buildCreativeCorrectionsContexts());
   return o;
 }
 
-checkUnnamed1919(core.List<api.CreativeCorrectionsContexts> o) {
+checkUnnamed1689(core.List<api.CreativeCorrectionsContexts> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeCorrectionsContexts(o[0]);
   checkCreativeCorrectionsContexts(o[1]);
 }
 
-buildUnnamed1920() {
+buildUnnamed1690() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1920(core.List<core.String> o) {
+checkUnnamed1690(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -631,8 +631,8 @@ buildCreativeCorrections() {
   var o = new api.CreativeCorrections();
   buildCounterCreativeCorrections++;
   if (buildCounterCreativeCorrections < 3) {
-    o.contexts = buildUnnamed1919();
-    o.details = buildUnnamed1920();
+    o.contexts = buildUnnamed1689();
+    o.details = buildUnnamed1690();
     o.reason = "foo";
   }
   buildCounterCreativeCorrections--;
@@ -642,34 +642,34 @@ buildCreativeCorrections() {
 checkCreativeCorrections(api.CreativeCorrections o) {
   buildCounterCreativeCorrections++;
   if (buildCounterCreativeCorrections < 3) {
-    checkUnnamed1919(o.contexts);
-    checkUnnamed1920(o.details);
+    checkUnnamed1689(o.contexts);
+    checkUnnamed1690(o.details);
     unittest.expect(o.reason, unittest.equals('foo'));
   }
   buildCounterCreativeCorrections--;
 }
 
-buildUnnamed1921() {
+buildUnnamed1691() {
   var o = new core.List<api.CreativeCorrections>();
   o.add(buildCreativeCorrections());
   o.add(buildCreativeCorrections());
   return o;
 }
 
-checkUnnamed1921(core.List<api.CreativeCorrections> o) {
+checkUnnamed1691(core.List<api.CreativeCorrections> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeCorrections(o[0]);
   checkCreativeCorrections(o[1]);
 }
 
-buildUnnamed1922() {
+buildUnnamed1692() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1922(core.List<core.String> o) {
+checkUnnamed1692(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -696,14 +696,14 @@ checkCreativeFilteringReasonsReasons(api.CreativeFilteringReasonsReasons o) {
   buildCounterCreativeFilteringReasonsReasons--;
 }
 
-buildUnnamed1923() {
+buildUnnamed1693() {
   var o = new core.List<api.CreativeFilteringReasonsReasons>();
   o.add(buildCreativeFilteringReasonsReasons());
   o.add(buildCreativeFilteringReasonsReasons());
   return o;
 }
 
-checkUnnamed1923(core.List<api.CreativeFilteringReasonsReasons> o) {
+checkUnnamed1693(core.List<api.CreativeFilteringReasonsReasons> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeFilteringReasonsReasons(o[0]);
   checkCreativeFilteringReasonsReasons(o[1]);
@@ -715,7 +715,7 @@ buildCreativeFilteringReasons() {
   buildCounterCreativeFilteringReasons++;
   if (buildCounterCreativeFilteringReasons < 3) {
     o.date = "foo";
-    o.reasons = buildUnnamed1923();
+    o.reasons = buildUnnamed1693();
   }
   buildCounterCreativeFilteringReasons--;
   return o;
@@ -725,32 +725,32 @@ checkCreativeFilteringReasons(api.CreativeFilteringReasons o) {
   buildCounterCreativeFilteringReasons++;
   if (buildCounterCreativeFilteringReasons < 3) {
     unittest.expect(o.date, unittest.equals('foo'));
-    checkUnnamed1923(o.reasons);
+    checkUnnamed1693(o.reasons);
   }
   buildCounterCreativeFilteringReasons--;
 }
 
-buildUnnamed1924() {
+buildUnnamed1694() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1924(core.List<core.String> o) {
+checkUnnamed1694(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1925() {
+buildUnnamed1695() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1925(core.List<core.String> o) {
+checkUnnamed1695(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -802,14 +802,14 @@ checkCreativeNativeAdImage(api.CreativeNativeAdImage o) {
   buildCounterCreativeNativeAdImage--;
 }
 
-buildUnnamed1926() {
+buildUnnamed1696() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1926(core.List<core.String> o) {
+checkUnnamed1696(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -851,7 +851,7 @@ buildCreativeNativeAd() {
     o.clickTrackingUrl = "foo";
     o.headline = "foo";
     o.image = buildCreativeNativeAdImage();
-    o.impressionTrackingUrl = buildUnnamed1926();
+    o.impressionTrackingUrl = buildUnnamed1696();
     o.logo = buildCreativeNativeAdLogo();
     o.price = "foo";
     o.starRating = 42.0;
@@ -873,7 +873,7 @@ checkCreativeNativeAd(api.CreativeNativeAd o) {
     unittest.expect(o.clickTrackingUrl, unittest.equals('foo'));
     unittest.expect(o.headline, unittest.equals('foo'));
     checkCreativeNativeAdImage(o.image);
-    checkUnnamed1926(o.impressionTrackingUrl);
+    checkUnnamed1696(o.impressionTrackingUrl);
     checkCreativeNativeAdLogo(o.logo);
     unittest.expect(o.price, unittest.equals('foo'));
     unittest.expect(o.starRating, unittest.equals(42.0));
@@ -883,79 +883,79 @@ checkCreativeNativeAd(api.CreativeNativeAd o) {
   buildCounterCreativeNativeAd--;
 }
 
-buildUnnamed1927() {
+buildUnnamed1697() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1927(core.List<core.int> o) {
+checkUnnamed1697(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed1928() {
+buildUnnamed1698() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1928(core.List<core.int> o) {
+checkUnnamed1698(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed1929() {
+buildUnnamed1699() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1929(core.List<core.int> o) {
+checkUnnamed1699(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed1930() {
+buildUnnamed1700() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1930(core.List<core.String> o) {
+checkUnnamed1700(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1931() {
+buildUnnamed1701() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1931(core.List<core.int> o) {
+checkUnnamed1701(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed1932() {
+buildUnnamed1702() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1932(core.List<core.String> o) {
+checkUnnamed1702(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -966,10 +966,10 @@ buildCreativeServingRestrictionsContexts() {
   var o = new api.CreativeServingRestrictionsContexts();
   buildCounterCreativeServingRestrictionsContexts++;
   if (buildCounterCreativeServingRestrictionsContexts < 3) {
-    o.auctionType = buildUnnamed1930();
+    o.auctionType = buildUnnamed1700();
     o.contextType = "foo";
-    o.geoCriteriaId = buildUnnamed1931();
-    o.platform = buildUnnamed1932();
+    o.geoCriteriaId = buildUnnamed1701();
+    o.platform = buildUnnamed1702();
   }
   buildCounterCreativeServingRestrictionsContexts--;
   return o;
@@ -978,35 +978,35 @@ buildCreativeServingRestrictionsContexts() {
 checkCreativeServingRestrictionsContexts(api.CreativeServingRestrictionsContexts o) {
   buildCounterCreativeServingRestrictionsContexts++;
   if (buildCounterCreativeServingRestrictionsContexts < 3) {
-    checkUnnamed1930(o.auctionType);
+    checkUnnamed1700(o.auctionType);
     unittest.expect(o.contextType, unittest.equals('foo'));
-    checkUnnamed1931(o.geoCriteriaId);
-    checkUnnamed1932(o.platform);
+    checkUnnamed1701(o.geoCriteriaId);
+    checkUnnamed1702(o.platform);
   }
   buildCounterCreativeServingRestrictionsContexts--;
 }
 
-buildUnnamed1933() {
+buildUnnamed1703() {
   var o = new core.List<api.CreativeServingRestrictionsContexts>();
   o.add(buildCreativeServingRestrictionsContexts());
   o.add(buildCreativeServingRestrictionsContexts());
   return o;
 }
 
-checkUnnamed1933(core.List<api.CreativeServingRestrictionsContexts> o) {
+checkUnnamed1703(core.List<api.CreativeServingRestrictionsContexts> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeServingRestrictionsContexts(o[0]);
   checkCreativeServingRestrictionsContexts(o[1]);
 }
 
-buildUnnamed1934() {
+buildUnnamed1704() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1934(core.List<core.String> o) {
+checkUnnamed1704(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1017,7 +1017,7 @@ buildCreativeServingRestrictionsDisapprovalReasons() {
   var o = new api.CreativeServingRestrictionsDisapprovalReasons();
   buildCounterCreativeServingRestrictionsDisapprovalReasons++;
   if (buildCounterCreativeServingRestrictionsDisapprovalReasons < 3) {
-    o.details = buildUnnamed1934();
+    o.details = buildUnnamed1704();
     o.reason = "foo";
   }
   buildCounterCreativeServingRestrictionsDisapprovalReasons--;
@@ -1027,20 +1027,20 @@ buildCreativeServingRestrictionsDisapprovalReasons() {
 checkCreativeServingRestrictionsDisapprovalReasons(api.CreativeServingRestrictionsDisapprovalReasons o) {
   buildCounterCreativeServingRestrictionsDisapprovalReasons++;
   if (buildCounterCreativeServingRestrictionsDisapprovalReasons < 3) {
-    checkUnnamed1934(o.details);
+    checkUnnamed1704(o.details);
     unittest.expect(o.reason, unittest.equals('foo'));
   }
   buildCounterCreativeServingRestrictionsDisapprovalReasons--;
 }
 
-buildUnnamed1935() {
+buildUnnamed1705() {
   var o = new core.List<api.CreativeServingRestrictionsDisapprovalReasons>();
   o.add(buildCreativeServingRestrictionsDisapprovalReasons());
   o.add(buildCreativeServingRestrictionsDisapprovalReasons());
   return o;
 }
 
-checkUnnamed1935(core.List<api.CreativeServingRestrictionsDisapprovalReasons> o) {
+checkUnnamed1705(core.List<api.CreativeServingRestrictionsDisapprovalReasons> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeServingRestrictionsDisapprovalReasons(o[0]);
   checkCreativeServingRestrictionsDisapprovalReasons(o[1]);
@@ -1051,8 +1051,8 @@ buildCreativeServingRestrictions() {
   var o = new api.CreativeServingRestrictions();
   buildCounterCreativeServingRestrictions++;
   if (buildCounterCreativeServingRestrictions < 3) {
-    o.contexts = buildUnnamed1933();
-    o.disapprovalReasons = buildUnnamed1935();
+    o.contexts = buildUnnamed1703();
+    o.disapprovalReasons = buildUnnamed1705();
     o.reason = "foo";
   }
   buildCounterCreativeServingRestrictions--;
@@ -1062,34 +1062,34 @@ buildCreativeServingRestrictions() {
 checkCreativeServingRestrictions(api.CreativeServingRestrictions o) {
   buildCounterCreativeServingRestrictions++;
   if (buildCounterCreativeServingRestrictions < 3) {
-    checkUnnamed1933(o.contexts);
-    checkUnnamed1935(o.disapprovalReasons);
+    checkUnnamed1703(o.contexts);
+    checkUnnamed1705(o.disapprovalReasons);
     unittest.expect(o.reason, unittest.equals('foo'));
   }
   buildCounterCreativeServingRestrictions--;
 }
 
-buildUnnamed1936() {
+buildUnnamed1706() {
   var o = new core.List<api.CreativeServingRestrictions>();
   o.add(buildCreativeServingRestrictions());
   o.add(buildCreativeServingRestrictions());
   return o;
 }
 
-checkUnnamed1936(core.List<api.CreativeServingRestrictions> o) {
+checkUnnamed1706(core.List<api.CreativeServingRestrictions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeServingRestrictions(o[0]);
   checkCreativeServingRestrictions(o[1]);
 }
 
-buildUnnamed1937() {
+buildUnnamed1707() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1937(core.List<core.int> o) {
+checkUnnamed1707(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -1103,28 +1103,28 @@ buildCreative() {
     o.HTMLSnippet = "foo";
     o.accountId = 42;
     o.adChoicesDestinationUrl = "foo";
-    o.advertiserId = buildUnnamed1913();
+    o.advertiserId = buildUnnamed1683();
     o.advertiserName = "foo";
     o.agencyId = "foo";
     o.apiUploadTimestamp = core.DateTime.parse("2002-02-27T14:01:02");
-    o.attribute = buildUnnamed1914();
+    o.attribute = buildUnnamed1684();
     o.buyerCreativeId = "foo";
-    o.clickThroughUrl = buildUnnamed1915();
-    o.corrections = buildUnnamed1921();
+    o.clickThroughUrl = buildUnnamed1685();
+    o.corrections = buildUnnamed1691();
     o.dealsStatus = "foo";
-    o.detectedDomains = buildUnnamed1922();
+    o.detectedDomains = buildUnnamed1692();
     o.filteringReasons = buildCreativeFilteringReasons();
     o.height = 42;
-    o.impressionTrackingUrl = buildUnnamed1924();
+    o.impressionTrackingUrl = buildUnnamed1694();
     o.kind = "foo";
-    o.languages = buildUnnamed1925();
+    o.languages = buildUnnamed1695();
     o.nativeAd = buildCreativeNativeAd();
     o.openAuctionStatus = "foo";
-    o.productCategories = buildUnnamed1927();
-    o.restrictedCategories = buildUnnamed1928();
-    o.sensitiveCategories = buildUnnamed1929();
-    o.servingRestrictions = buildUnnamed1936();
-    o.vendorType = buildUnnamed1937();
+    o.productCategories = buildUnnamed1697();
+    o.restrictedCategories = buildUnnamed1698();
+    o.sensitiveCategories = buildUnnamed1699();
+    o.servingRestrictions = buildUnnamed1706();
+    o.vendorType = buildUnnamed1707();
     o.version = 42;
     o.videoURL = "foo";
     o.width = 42;
@@ -1139,28 +1139,28 @@ checkCreative(api.Creative o) {
     unittest.expect(o.HTMLSnippet, unittest.equals('foo'));
     unittest.expect(o.accountId, unittest.equals(42));
     unittest.expect(o.adChoicesDestinationUrl, unittest.equals('foo'));
-    checkUnnamed1913(o.advertiserId);
+    checkUnnamed1683(o.advertiserId);
     unittest.expect(o.advertiserName, unittest.equals('foo'));
     unittest.expect(o.agencyId, unittest.equals('foo'));
     unittest.expect(o.apiUploadTimestamp, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed1914(o.attribute);
+    checkUnnamed1684(o.attribute);
     unittest.expect(o.buyerCreativeId, unittest.equals('foo'));
-    checkUnnamed1915(o.clickThroughUrl);
-    checkUnnamed1921(o.corrections);
+    checkUnnamed1685(o.clickThroughUrl);
+    checkUnnamed1691(o.corrections);
     unittest.expect(o.dealsStatus, unittest.equals('foo'));
-    checkUnnamed1922(o.detectedDomains);
+    checkUnnamed1692(o.detectedDomains);
     checkCreativeFilteringReasons(o.filteringReasons);
     unittest.expect(o.height, unittest.equals(42));
-    checkUnnamed1924(o.impressionTrackingUrl);
+    checkUnnamed1694(o.impressionTrackingUrl);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1925(o.languages);
+    checkUnnamed1695(o.languages);
     checkCreativeNativeAd(o.nativeAd);
     unittest.expect(o.openAuctionStatus, unittest.equals('foo'));
-    checkUnnamed1927(o.productCategories);
-    checkUnnamed1928(o.restrictedCategories);
-    checkUnnamed1929(o.sensitiveCategories);
-    checkUnnamed1936(o.servingRestrictions);
-    checkUnnamed1937(o.vendorType);
+    checkUnnamed1697(o.productCategories);
+    checkUnnamed1698(o.restrictedCategories);
+    checkUnnamed1699(o.sensitiveCategories);
+    checkUnnamed1706(o.servingRestrictions);
+    checkUnnamed1707(o.vendorType);
     unittest.expect(o.version, unittest.equals(42));
     unittest.expect(o.videoURL, unittest.equals('foo'));
     unittest.expect(o.width, unittest.equals(42));
@@ -1191,14 +1191,14 @@ checkCreativeDealIdsDealStatuses(api.CreativeDealIdsDealStatuses o) {
   buildCounterCreativeDealIdsDealStatuses--;
 }
 
-buildUnnamed1938() {
+buildUnnamed1708() {
   var o = new core.List<api.CreativeDealIdsDealStatuses>();
   o.add(buildCreativeDealIdsDealStatuses());
   o.add(buildCreativeDealIdsDealStatuses());
   return o;
 }
 
-checkUnnamed1938(core.List<api.CreativeDealIdsDealStatuses> o) {
+checkUnnamed1708(core.List<api.CreativeDealIdsDealStatuses> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeDealIdsDealStatuses(o[0]);
   checkCreativeDealIdsDealStatuses(o[1]);
@@ -1209,7 +1209,7 @@ buildCreativeDealIds() {
   var o = new api.CreativeDealIds();
   buildCounterCreativeDealIds++;
   if (buildCounterCreativeDealIds < 3) {
-    o.dealStatuses = buildUnnamed1938();
+    o.dealStatuses = buildUnnamed1708();
     o.kind = "foo";
   }
   buildCounterCreativeDealIds--;
@@ -1219,20 +1219,20 @@ buildCreativeDealIds() {
 checkCreativeDealIds(api.CreativeDealIds o) {
   buildCounterCreativeDealIds++;
   if (buildCounterCreativeDealIds < 3) {
-    checkUnnamed1938(o.dealStatuses);
+    checkUnnamed1708(o.dealStatuses);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCreativeDealIds--;
 }
 
-buildUnnamed1939() {
+buildUnnamed1709() {
   var o = new core.List<api.Creative>();
   o.add(buildCreative());
   o.add(buildCreative());
   return o;
 }
 
-checkUnnamed1939(core.List<api.Creative> o) {
+checkUnnamed1709(core.List<api.Creative> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreative(o[0]);
   checkCreative(o[1]);
@@ -1243,7 +1243,7 @@ buildCreativesList() {
   var o = new api.CreativesList();
   buildCounterCreativesList++;
   if (buildCounterCreativesList < 3) {
-    o.items = buildUnnamed1939();
+    o.items = buildUnnamed1709();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1254,7 +1254,7 @@ buildCreativesList() {
 checkCreativesList(api.CreativesList o) {
   buildCounterCreativesList++;
   if (buildCounterCreativesList < 3) {
-    checkUnnamed1939(o.items);
+    checkUnnamed1709(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1266,6 +1266,7 @@ buildDealServingMetadata() {
   var o = new api.DealServingMetadata();
   buildCounterDealServingMetadata++;
   if (buildCounterDealServingMetadata < 3) {
+    o.alcoholAdsAllowed = true;
     o.dealPauseStatus = buildDealServingMetadataDealPauseStatus();
   }
   buildCounterDealServingMetadata--;
@@ -1275,6 +1276,7 @@ buildDealServingMetadata() {
 checkDealServingMetadata(api.DealServingMetadata o) {
   buildCounterDealServingMetadata++;
   if (buildCounterDealServingMetadata < 3) {
+    unittest.expect(o.alcoholAdsAllowed, unittest.isTrue);
     checkDealServingMetadataDealPauseStatus(o.dealPauseStatus);
   }
   buildCounterDealServingMetadata--;
@@ -1344,14 +1346,14 @@ checkDealTerms(api.DealTerms o) {
   buildCounterDealTerms--;
 }
 
-buildUnnamed1940() {
+buildUnnamed1710() {
   var o = new core.List<api.PricePerBuyer>();
   o.add(buildPricePerBuyer());
   o.add(buildPricePerBuyer());
   return o;
 }
 
-checkUnnamed1940(core.List<api.PricePerBuyer> o) {
+checkUnnamed1710(core.List<api.PricePerBuyer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPricePerBuyer(o[0]);
   checkPricePerBuyer(o[1]);
@@ -1363,7 +1365,7 @@ buildDealTermsGuaranteedFixedPriceTerms() {
   buildCounterDealTermsGuaranteedFixedPriceTerms++;
   if (buildCounterDealTermsGuaranteedFixedPriceTerms < 3) {
     o.billingInfo = buildDealTermsGuaranteedFixedPriceTermsBillingInfo();
-    o.fixedPrices = buildUnnamed1940();
+    o.fixedPrices = buildUnnamed1710();
     o.guaranteedImpressions = "foo";
     o.guaranteedLooks = "foo";
     o.minimumDailyLooks = "foo";
@@ -1376,7 +1378,7 @@ checkDealTermsGuaranteedFixedPriceTerms(api.DealTermsGuaranteedFixedPriceTerms o
   buildCounterDealTermsGuaranteedFixedPriceTerms++;
   if (buildCounterDealTermsGuaranteedFixedPriceTerms < 3) {
     checkDealTermsGuaranteedFixedPriceTermsBillingInfo(o.billingInfo);
-    checkUnnamed1940(o.fixedPrices);
+    checkUnnamed1710(o.fixedPrices);
     unittest.expect(o.guaranteedImpressions, unittest.equals('foo'));
     unittest.expect(o.guaranteedLooks, unittest.equals('foo'));
     unittest.expect(o.minimumDailyLooks, unittest.equals('foo'));
@@ -1409,14 +1411,14 @@ checkDealTermsGuaranteedFixedPriceTermsBillingInfo(api.DealTermsGuaranteedFixedP
   buildCounterDealTermsGuaranteedFixedPriceTermsBillingInfo--;
 }
 
-buildUnnamed1941() {
+buildUnnamed1711() {
   var o = new core.List<api.PricePerBuyer>();
   o.add(buildPricePerBuyer());
   o.add(buildPricePerBuyer());
   return o;
 }
 
-checkUnnamed1941(core.List<api.PricePerBuyer> o) {
+checkUnnamed1711(core.List<api.PricePerBuyer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPricePerBuyer(o[0]);
   checkPricePerBuyer(o[1]);
@@ -1428,7 +1430,7 @@ buildDealTermsNonGuaranteedAuctionTerms() {
   buildCounterDealTermsNonGuaranteedAuctionTerms++;
   if (buildCounterDealTermsNonGuaranteedAuctionTerms < 3) {
     o.autoOptimizePrivateAuction = true;
-    o.reservePricePerBuyers = buildUnnamed1941();
+    o.reservePricePerBuyers = buildUnnamed1711();
   }
   buildCounterDealTermsNonGuaranteedAuctionTerms--;
   return o;
@@ -1438,19 +1440,19 @@ checkDealTermsNonGuaranteedAuctionTerms(api.DealTermsNonGuaranteedAuctionTerms o
   buildCounterDealTermsNonGuaranteedAuctionTerms++;
   if (buildCounterDealTermsNonGuaranteedAuctionTerms < 3) {
     unittest.expect(o.autoOptimizePrivateAuction, unittest.isTrue);
-    checkUnnamed1941(o.reservePricePerBuyers);
+    checkUnnamed1711(o.reservePricePerBuyers);
   }
   buildCounterDealTermsNonGuaranteedAuctionTerms--;
 }
 
-buildUnnamed1942() {
+buildUnnamed1712() {
   var o = new core.List<api.PricePerBuyer>();
   o.add(buildPricePerBuyer());
   o.add(buildPricePerBuyer());
   return o;
 }
 
-checkUnnamed1942(core.List<api.PricePerBuyer> o) {
+checkUnnamed1712(core.List<api.PricePerBuyer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPricePerBuyer(o[0]);
   checkPricePerBuyer(o[1]);
@@ -1461,7 +1463,7 @@ buildDealTermsNonGuaranteedFixedPriceTerms() {
   var o = new api.DealTermsNonGuaranteedFixedPriceTerms();
   buildCounterDealTermsNonGuaranteedFixedPriceTerms++;
   if (buildCounterDealTermsNonGuaranteedFixedPriceTerms < 3) {
-    o.fixedPrices = buildUnnamed1942();
+    o.fixedPrices = buildUnnamed1712();
   }
   buildCounterDealTermsNonGuaranteedFixedPriceTerms--;
   return o;
@@ -1470,7 +1472,7 @@ buildDealTermsNonGuaranteedFixedPriceTerms() {
 checkDealTermsNonGuaranteedFixedPriceTerms(api.DealTermsNonGuaranteedFixedPriceTerms o) {
   buildCounterDealTermsNonGuaranteedFixedPriceTerms++;
   if (buildCounterDealTermsNonGuaranteedFixedPriceTerms < 3) {
-    checkUnnamed1942(o.fixedPrices);
+    checkUnnamed1712(o.fixedPrices);
   }
   buildCounterDealTermsNonGuaranteedFixedPriceTerms--;
 }
@@ -1496,14 +1498,14 @@ checkDealTermsRubiconNonGuaranteedTerms(api.DealTermsRubiconNonGuaranteedTerms o
   buildCounterDealTermsRubiconNonGuaranteedTerms--;
 }
 
-buildUnnamed1943() {
+buildUnnamed1713() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1943(core.List<core.String> o) {
+checkUnnamed1713(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1514,7 +1516,7 @@ buildDeleteOrderDealsRequest() {
   var o = new api.DeleteOrderDealsRequest();
   buildCounterDeleteOrderDealsRequest++;
   if (buildCounterDeleteOrderDealsRequest < 3) {
-    o.dealIds = buildUnnamed1943();
+    o.dealIds = buildUnnamed1713();
     o.proposalRevisionNumber = "foo";
     o.updateAction = "foo";
   }
@@ -1525,21 +1527,21 @@ buildDeleteOrderDealsRequest() {
 checkDeleteOrderDealsRequest(api.DeleteOrderDealsRequest o) {
   buildCounterDeleteOrderDealsRequest++;
   if (buildCounterDeleteOrderDealsRequest < 3) {
-    checkUnnamed1943(o.dealIds);
+    checkUnnamed1713(o.dealIds);
     unittest.expect(o.proposalRevisionNumber, unittest.equals('foo'));
     unittest.expect(o.updateAction, unittest.equals('foo'));
   }
   buildCounterDeleteOrderDealsRequest--;
 }
 
-buildUnnamed1944() {
+buildUnnamed1714() {
   var o = new core.List<api.MarketplaceDeal>();
   o.add(buildMarketplaceDeal());
   o.add(buildMarketplaceDeal());
   return o;
 }
 
-checkUnnamed1944(core.List<api.MarketplaceDeal> o) {
+checkUnnamed1714(core.List<api.MarketplaceDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceDeal(o[0]);
   checkMarketplaceDeal(o[1]);
@@ -1550,7 +1552,7 @@ buildDeleteOrderDealsResponse() {
   var o = new api.DeleteOrderDealsResponse();
   buildCounterDeleteOrderDealsResponse++;
   if (buildCounterDeleteOrderDealsResponse < 3) {
-    o.deals = buildUnnamed1944();
+    o.deals = buildUnnamed1714();
     o.proposalRevisionNumber = "foo";
   }
   buildCounterDeleteOrderDealsResponse--;
@@ -1560,20 +1562,20 @@ buildDeleteOrderDealsResponse() {
 checkDeleteOrderDealsResponse(api.DeleteOrderDealsResponse o) {
   buildCounterDeleteOrderDealsResponse++;
   if (buildCounterDeleteOrderDealsResponse < 3) {
-    checkUnnamed1944(o.deals);
+    checkUnnamed1714(o.deals);
     unittest.expect(o.proposalRevisionNumber, unittest.equals('foo'));
   }
   buildCounterDeleteOrderDealsResponse--;
 }
 
-buildUnnamed1945() {
+buildUnnamed1715() {
   var o = new core.List<api.DeliveryControlFrequencyCap>();
   o.add(buildDeliveryControlFrequencyCap());
   o.add(buildDeliveryControlFrequencyCap());
   return o;
 }
 
-checkUnnamed1945(core.List<api.DeliveryControlFrequencyCap> o) {
+checkUnnamed1715(core.List<api.DeliveryControlFrequencyCap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeliveryControlFrequencyCap(o[0]);
   checkDeliveryControlFrequencyCap(o[1]);
@@ -1586,7 +1588,7 @@ buildDeliveryControl() {
   if (buildCounterDeliveryControl < 3) {
     o.creativeBlockingLevel = "foo";
     o.deliveryRateType = "foo";
-    o.frequencyCaps = buildUnnamed1945();
+    o.frequencyCaps = buildUnnamed1715();
   }
   buildCounterDeliveryControl--;
   return o;
@@ -1597,7 +1599,7 @@ checkDeliveryControl(api.DeliveryControl o) {
   if (buildCounterDeliveryControl < 3) {
     unittest.expect(o.creativeBlockingLevel, unittest.equals('foo'));
     unittest.expect(o.deliveryRateType, unittest.equals('foo'));
-    checkUnnamed1945(o.frequencyCaps);
+    checkUnnamed1715(o.frequencyCaps);
   }
   buildCounterDeliveryControl--;
 }
@@ -1625,14 +1627,14 @@ checkDeliveryControlFrequencyCap(api.DeliveryControlFrequencyCap o) {
   buildCounterDeliveryControlFrequencyCap--;
 }
 
-buildUnnamed1946() {
+buildUnnamed1716() {
   var o = new core.List<api.DimensionDimensionValue>();
   o.add(buildDimensionDimensionValue());
   o.add(buildDimensionDimensionValue());
   return o;
 }
 
-checkUnnamed1946(core.List<api.DimensionDimensionValue> o) {
+checkUnnamed1716(core.List<api.DimensionDimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionDimensionValue(o[0]);
   checkDimensionDimensionValue(o[1]);
@@ -1644,7 +1646,7 @@ buildDimension() {
   buildCounterDimension++;
   if (buildCounterDimension < 3) {
     o.dimensionType = "foo";
-    o.dimensionValues = buildUnnamed1946();
+    o.dimensionValues = buildUnnamed1716();
   }
   buildCounterDimension--;
   return o;
@@ -1654,7 +1656,7 @@ checkDimension(api.Dimension o) {
   buildCounterDimension++;
   if (buildCounterDimension < 3) {
     unittest.expect(o.dimensionType, unittest.equals('foo'));
-    checkUnnamed1946(o.dimensionValues);
+    checkUnnamed1716(o.dimensionValues);
   }
   buildCounterDimension--;
 }
@@ -1682,14 +1684,14 @@ checkDimensionDimensionValue(api.DimensionDimensionValue o) {
   buildCounterDimensionDimensionValue--;
 }
 
-buildUnnamed1947() {
+buildUnnamed1717() {
   var o = new core.List<api.MarketplaceDeal>();
   o.add(buildMarketplaceDeal());
   o.add(buildMarketplaceDeal());
   return o;
 }
 
-checkUnnamed1947(core.List<api.MarketplaceDeal> o) {
+checkUnnamed1717(core.List<api.MarketplaceDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceDeal(o[0]);
   checkMarketplaceDeal(o[1]);
@@ -1700,7 +1702,7 @@ buildEditAllOrderDealsRequest() {
   var o = new api.EditAllOrderDealsRequest();
   buildCounterEditAllOrderDealsRequest++;
   if (buildCounterEditAllOrderDealsRequest < 3) {
-    o.deals = buildUnnamed1947();
+    o.deals = buildUnnamed1717();
     o.proposal = buildProposal();
     o.proposalRevisionNumber = "foo";
     o.updateAction = "foo";
@@ -1712,7 +1714,7 @@ buildEditAllOrderDealsRequest() {
 checkEditAllOrderDealsRequest(api.EditAllOrderDealsRequest o) {
   buildCounterEditAllOrderDealsRequest++;
   if (buildCounterEditAllOrderDealsRequest < 3) {
-    checkUnnamed1947(o.deals);
+    checkUnnamed1717(o.deals);
     checkProposal(o.proposal);
     unittest.expect(o.proposalRevisionNumber, unittest.equals('foo'));
     unittest.expect(o.updateAction, unittest.equals('foo'));
@@ -1720,14 +1722,14 @@ checkEditAllOrderDealsRequest(api.EditAllOrderDealsRequest o) {
   buildCounterEditAllOrderDealsRequest--;
 }
 
-buildUnnamed1948() {
+buildUnnamed1718() {
   var o = new core.List<api.MarketplaceDeal>();
   o.add(buildMarketplaceDeal());
   o.add(buildMarketplaceDeal());
   return o;
 }
 
-checkUnnamed1948(core.List<api.MarketplaceDeal> o) {
+checkUnnamed1718(core.List<api.MarketplaceDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceDeal(o[0]);
   checkMarketplaceDeal(o[1]);
@@ -1738,7 +1740,7 @@ buildEditAllOrderDealsResponse() {
   var o = new api.EditAllOrderDealsResponse();
   buildCounterEditAllOrderDealsResponse++;
   if (buildCounterEditAllOrderDealsResponse < 3) {
-    o.deals = buildUnnamed1948();
+    o.deals = buildUnnamed1718();
     o.orderRevisionNumber = "foo";
   }
   buildCounterEditAllOrderDealsResponse--;
@@ -1748,20 +1750,20 @@ buildEditAllOrderDealsResponse() {
 checkEditAllOrderDealsResponse(api.EditAllOrderDealsResponse o) {
   buildCounterEditAllOrderDealsResponse++;
   if (buildCounterEditAllOrderDealsResponse < 3) {
-    checkUnnamed1948(o.deals);
+    checkUnnamed1718(o.deals);
     unittest.expect(o.orderRevisionNumber, unittest.equals('foo'));
   }
   buildCounterEditAllOrderDealsResponse--;
 }
 
-buildUnnamed1949() {
+buildUnnamed1719() {
   var o = new core.List<api.Product>();
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
 }
 
-checkUnnamed1949(core.List<api.Product> o) {
+checkUnnamed1719(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProduct(o[0]);
   checkProduct(o[1]);
@@ -1772,7 +1774,7 @@ buildGetOffersResponse() {
   var o = new api.GetOffersResponse();
   buildCounterGetOffersResponse++;
   if (buildCounterGetOffersResponse < 3) {
-    o.products = buildUnnamed1949();
+    o.products = buildUnnamed1719();
   }
   buildCounterGetOffersResponse--;
   return o;
@@ -1781,19 +1783,19 @@ buildGetOffersResponse() {
 checkGetOffersResponse(api.GetOffersResponse o) {
   buildCounterGetOffersResponse++;
   if (buildCounterGetOffersResponse < 3) {
-    checkUnnamed1949(o.products);
+    checkUnnamed1719(o.products);
   }
   buildCounterGetOffersResponse--;
 }
 
-buildUnnamed1950() {
+buildUnnamed1720() {
   var o = new core.List<api.MarketplaceDeal>();
   o.add(buildMarketplaceDeal());
   o.add(buildMarketplaceDeal());
   return o;
 }
 
-checkUnnamed1950(core.List<api.MarketplaceDeal> o) {
+checkUnnamed1720(core.List<api.MarketplaceDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceDeal(o[0]);
   checkMarketplaceDeal(o[1]);
@@ -1804,7 +1806,7 @@ buildGetOrderDealsResponse() {
   var o = new api.GetOrderDealsResponse();
   buildCounterGetOrderDealsResponse++;
   if (buildCounterGetOrderDealsResponse < 3) {
-    o.deals = buildUnnamed1950();
+    o.deals = buildUnnamed1720();
   }
   buildCounterGetOrderDealsResponse--;
   return o;
@@ -1813,19 +1815,19 @@ buildGetOrderDealsResponse() {
 checkGetOrderDealsResponse(api.GetOrderDealsResponse o) {
   buildCounterGetOrderDealsResponse++;
   if (buildCounterGetOrderDealsResponse < 3) {
-    checkUnnamed1950(o.deals);
+    checkUnnamed1720(o.deals);
   }
   buildCounterGetOrderDealsResponse--;
 }
 
-buildUnnamed1951() {
+buildUnnamed1721() {
   var o = new core.List<api.MarketplaceNote>();
   o.add(buildMarketplaceNote());
   o.add(buildMarketplaceNote());
   return o;
 }
 
-checkUnnamed1951(core.List<api.MarketplaceNote> o) {
+checkUnnamed1721(core.List<api.MarketplaceNote> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceNote(o[0]);
   checkMarketplaceNote(o[1]);
@@ -1836,7 +1838,7 @@ buildGetOrderNotesResponse() {
   var o = new api.GetOrderNotesResponse();
   buildCounterGetOrderNotesResponse++;
   if (buildCounterGetOrderNotesResponse < 3) {
-    o.notes = buildUnnamed1951();
+    o.notes = buildUnnamed1721();
   }
   buildCounterGetOrderNotesResponse--;
   return o;
@@ -1845,19 +1847,19 @@ buildGetOrderNotesResponse() {
 checkGetOrderNotesResponse(api.GetOrderNotesResponse o) {
   buildCounterGetOrderNotesResponse++;
   if (buildCounterGetOrderNotesResponse < 3) {
-    checkUnnamed1951(o.notes);
+    checkUnnamed1721(o.notes);
   }
   buildCounterGetOrderNotesResponse--;
 }
 
-buildUnnamed1952() {
+buildUnnamed1722() {
   var o = new core.List<api.Proposal>();
   o.add(buildProposal());
   o.add(buildProposal());
   return o;
 }
 
-checkUnnamed1952(core.List<api.Proposal> o) {
+checkUnnamed1722(core.List<api.Proposal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProposal(o[0]);
   checkProposal(o[1]);
@@ -1868,7 +1870,7 @@ buildGetOrdersResponse() {
   var o = new api.GetOrdersResponse();
   buildCounterGetOrdersResponse++;
   if (buildCounterGetOrdersResponse < 3) {
-    o.proposals = buildUnnamed1952();
+    o.proposals = buildUnnamed1722();
   }
   buildCounterGetOrdersResponse--;
   return o;
@@ -1877,19 +1879,19 @@ buildGetOrdersResponse() {
 checkGetOrdersResponse(api.GetOrdersResponse o) {
   buildCounterGetOrdersResponse++;
   if (buildCounterGetOrdersResponse < 3) {
-    checkUnnamed1952(o.proposals);
+    checkUnnamed1722(o.proposals);
   }
   buildCounterGetOrdersResponse--;
 }
 
-buildUnnamed1953() {
+buildUnnamed1723() {
   var o = new core.List<api.PublisherProfileApiProto>();
   o.add(buildPublisherProfileApiProto());
   o.add(buildPublisherProfileApiProto());
   return o;
 }
 
-checkUnnamed1953(core.List<api.PublisherProfileApiProto> o) {
+checkUnnamed1723(core.List<api.PublisherProfileApiProto> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublisherProfileApiProto(o[0]);
   checkPublisherProfileApiProto(o[1]);
@@ -1900,7 +1902,7 @@ buildGetPublisherProfilesByAccountIdResponse() {
   var o = new api.GetPublisherProfilesByAccountIdResponse();
   buildCounterGetPublisherProfilesByAccountIdResponse++;
   if (buildCounterGetPublisherProfilesByAccountIdResponse < 3) {
-    o.profiles = buildUnnamed1953();
+    o.profiles = buildUnnamed1723();
   }
   buildCounterGetPublisherProfilesByAccountIdResponse--;
   return o;
@@ -1909,32 +1911,32 @@ buildGetPublisherProfilesByAccountIdResponse() {
 checkGetPublisherProfilesByAccountIdResponse(api.GetPublisherProfilesByAccountIdResponse o) {
   buildCounterGetPublisherProfilesByAccountIdResponse++;
   if (buildCounterGetPublisherProfilesByAccountIdResponse < 3) {
-    checkUnnamed1953(o.profiles);
+    checkUnnamed1723(o.profiles);
   }
   buildCounterGetPublisherProfilesByAccountIdResponse--;
 }
 
-buildUnnamed1954() {
+buildUnnamed1724() {
   var o = new core.List<api.ContactInformation>();
   o.add(buildContactInformation());
   o.add(buildContactInformation());
   return o;
 }
 
-checkUnnamed1954(core.List<api.ContactInformation> o) {
+checkUnnamed1724(core.List<api.ContactInformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContactInformation(o[0]);
   checkContactInformation(o[1]);
 }
 
-buildUnnamed1955() {
+buildUnnamed1725() {
   var o = new core.List<api.SharedTargeting>();
   o.add(buildSharedTargeting());
   o.add(buildSharedTargeting());
   return o;
 }
 
-checkUnnamed1955(core.List<api.SharedTargeting> o) {
+checkUnnamed1725(core.List<api.SharedTargeting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSharedTargeting(o[0]);
   checkSharedTargeting(o[1]);
@@ -1964,8 +1966,8 @@ buildMarketplaceDeal() {
     o.productRevisionNumber = "foo";
     o.programmaticCreativeSource = "foo";
     o.proposalId = "foo";
-    o.sellerContacts = buildUnnamed1954();
-    o.sharedTargetings = buildUnnamed1955();
+    o.sellerContacts = buildUnnamed1724();
+    o.sharedTargetings = buildUnnamed1725();
     o.syndicationProduct = "foo";
     o.terms = buildDealTerms();
     o.webPropertyCode = "foo";
@@ -1996,8 +1998,8 @@ checkMarketplaceDeal(api.MarketplaceDeal o) {
     unittest.expect(o.productRevisionNumber, unittest.equals('foo'));
     unittest.expect(o.programmaticCreativeSource, unittest.equals('foo'));
     unittest.expect(o.proposalId, unittest.equals('foo'));
-    checkUnnamed1954(o.sellerContacts);
-    checkUnnamed1955(o.sharedTargetings);
+    checkUnnamed1724(o.sellerContacts);
+    checkUnnamed1725(o.sharedTargetings);
     unittest.expect(o.syndicationProduct, unittest.equals('foo'));
     checkDealTerms(o.terms);
     unittest.expect(o.webPropertyCode, unittest.equals('foo'));
@@ -2084,53 +2086,53 @@ checkMarketplaceNote(api.MarketplaceNote o) {
   buildCounterMarketplaceNote--;
 }
 
-buildUnnamed1956() {
+buildUnnamed1726() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed1956(core.List<core.Object> o) {
+checkUnnamed1726(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1957() {
+buildUnnamed1727() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed1957(core.List<core.Object> o) {
+checkUnnamed1727(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o[0]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o[1]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1958() {
+buildUnnamed1728() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed1958(core.List<core.Object> o) {
+checkUnnamed1728(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o[0]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
   var casted6 = (o[1]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1959() {
+buildUnnamed1729() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed1959(core.List<core.Object> o) {
+checkUnnamed1729(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o[0]) as core.Map; unittest.expect(casted7, unittest.hasLength(3)); unittest.expect(casted7["list"], unittest.equals([1, 2, 3])); unittest.expect(casted7["bool"], unittest.equals(true)); unittest.expect(casted7["string"], unittest.equals('foo')); 
   var casted8 = (o[1]) as core.Map; unittest.expect(casted8, unittest.hasLength(3)); unittest.expect(casted8["list"], unittest.equals([1, 2, 3])); unittest.expect(casted8["bool"], unittest.equals(true)); unittest.expect(casted8["string"], unittest.equals('foo')); 
@@ -2143,11 +2145,11 @@ buildPerformanceReport() {
   if (buildCounterPerformanceReport < 3) {
     o.bidRate = 42.0;
     o.bidRequestRate = 42.0;
-    o.calloutStatusRate = buildUnnamed1956();
-    o.cookieMatcherStatusRate = buildUnnamed1957();
-    o.creativeStatusRate = buildUnnamed1958();
+    o.calloutStatusRate = buildUnnamed1726();
+    o.cookieMatcherStatusRate = buildUnnamed1727();
+    o.creativeStatusRate = buildUnnamed1728();
     o.filteredBidRate = 42.0;
-    o.hostedMatchStatusRate = buildUnnamed1959();
+    o.hostedMatchStatusRate = buildUnnamed1729();
     o.inventoryMatchRate = 42.0;
     o.kind = "foo";
     o.latency50thPercentile = 42.0;
@@ -2173,11 +2175,11 @@ checkPerformanceReport(api.PerformanceReport o) {
   if (buildCounterPerformanceReport < 3) {
     unittest.expect(o.bidRate, unittest.equals(42.0));
     unittest.expect(o.bidRequestRate, unittest.equals(42.0));
-    checkUnnamed1956(o.calloutStatusRate);
-    checkUnnamed1957(o.cookieMatcherStatusRate);
-    checkUnnamed1958(o.creativeStatusRate);
+    checkUnnamed1726(o.calloutStatusRate);
+    checkUnnamed1727(o.cookieMatcherStatusRate);
+    checkUnnamed1728(o.creativeStatusRate);
     unittest.expect(o.filteredBidRate, unittest.equals(42.0));
-    checkUnnamed1959(o.hostedMatchStatusRate);
+    checkUnnamed1729(o.hostedMatchStatusRate);
     unittest.expect(o.inventoryMatchRate, unittest.equals(42.0));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.latency50thPercentile, unittest.equals(42.0));
@@ -2197,14 +2199,14 @@ checkPerformanceReport(api.PerformanceReport o) {
   buildCounterPerformanceReport--;
 }
 
-buildUnnamed1960() {
+buildUnnamed1730() {
   var o = new core.List<api.PerformanceReport>();
   o.add(buildPerformanceReport());
   o.add(buildPerformanceReport());
   return o;
 }
 
-checkUnnamed1960(core.List<api.PerformanceReport> o) {
+checkUnnamed1730(core.List<api.PerformanceReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerformanceReport(o[0]);
   checkPerformanceReport(o[1]);
@@ -2216,7 +2218,7 @@ buildPerformanceReportList() {
   buildCounterPerformanceReportList++;
   if (buildCounterPerformanceReportList < 3) {
     o.kind = "foo";
-    o.performanceReport = buildUnnamed1960();
+    o.performanceReport = buildUnnamed1730();
   }
   buildCounterPerformanceReportList--;
   return o;
@@ -2226,19 +2228,19 @@ checkPerformanceReportList(api.PerformanceReportList o) {
   buildCounterPerformanceReportList++;
   if (buildCounterPerformanceReportList < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1960(o.performanceReport);
+    checkUnnamed1730(o.performanceReport);
   }
   buildCounterPerformanceReportList--;
 }
 
-buildUnnamed1961() {
+buildUnnamed1731() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1961(core.List<core.String> o) {
+checkUnnamed1731(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2265,40 +2267,40 @@ checkPretargetingConfigDimensions(api.PretargetingConfigDimensions o) {
   buildCounterPretargetingConfigDimensions--;
 }
 
-buildUnnamed1962() {
+buildUnnamed1732() {
   var o = new core.List<api.PretargetingConfigDimensions>();
   o.add(buildPretargetingConfigDimensions());
   o.add(buildPretargetingConfigDimensions());
   return o;
 }
 
-checkUnnamed1962(core.List<api.PretargetingConfigDimensions> o) {
+checkUnnamed1732(core.List<api.PretargetingConfigDimensions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPretargetingConfigDimensions(o[0]);
   checkPretargetingConfigDimensions(o[1]);
 }
 
-buildUnnamed1963() {
+buildUnnamed1733() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1963(core.List<core.String> o) {
+checkUnnamed1733(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1964() {
+buildUnnamed1734() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1964(core.List<core.String> o) {
+checkUnnamed1734(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2325,105 +2327,105 @@ checkPretargetingConfigExcludedPlacements(api.PretargetingConfigExcludedPlacemen
   buildCounterPretargetingConfigExcludedPlacements--;
 }
 
-buildUnnamed1965() {
+buildUnnamed1735() {
   var o = new core.List<api.PretargetingConfigExcludedPlacements>();
   o.add(buildPretargetingConfigExcludedPlacements());
   o.add(buildPretargetingConfigExcludedPlacements());
   return o;
 }
 
-checkUnnamed1965(core.List<api.PretargetingConfigExcludedPlacements> o) {
+checkUnnamed1735(core.List<api.PretargetingConfigExcludedPlacements> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPretargetingConfigExcludedPlacements(o[0]);
   checkPretargetingConfigExcludedPlacements(o[1]);
 }
 
-buildUnnamed1966() {
+buildUnnamed1736() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1966(core.List<core.String> o) {
+checkUnnamed1736(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1967() {
+buildUnnamed1737() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1967(core.List<core.String> o) {
+checkUnnamed1737(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1968() {
+buildUnnamed1738() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1968(core.List<core.String> o) {
+checkUnnamed1738(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1969() {
+buildUnnamed1739() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1969(core.List<core.String> o) {
+checkUnnamed1739(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1970() {
+buildUnnamed1740() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1970(core.List<core.String> o) {
+checkUnnamed1740(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1971() {
+buildUnnamed1741() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1971(core.List<core.String> o) {
+checkUnnamed1741(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1972() {
+buildUnnamed1742() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1972(core.List<core.String> o) {
+checkUnnamed1742(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2450,92 +2452,92 @@ checkPretargetingConfigPlacements(api.PretargetingConfigPlacements o) {
   buildCounterPretargetingConfigPlacements--;
 }
 
-buildUnnamed1973() {
+buildUnnamed1743() {
   var o = new core.List<api.PretargetingConfigPlacements>();
   o.add(buildPretargetingConfigPlacements());
   o.add(buildPretargetingConfigPlacements());
   return o;
 }
 
-checkUnnamed1973(core.List<api.PretargetingConfigPlacements> o) {
+checkUnnamed1743(core.List<api.PretargetingConfigPlacements> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPretargetingConfigPlacements(o[0]);
   checkPretargetingConfigPlacements(o[1]);
 }
 
-buildUnnamed1974() {
+buildUnnamed1744() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1974(core.List<core.String> o) {
+checkUnnamed1744(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1975() {
+buildUnnamed1745() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1975(core.List<core.String> o) {
+checkUnnamed1745(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1976() {
+buildUnnamed1746() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1976(core.List<core.String> o) {
+checkUnnamed1746(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1977() {
+buildUnnamed1747() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1977(core.List<core.String> o) {
+checkUnnamed1747(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1978() {
+buildUnnamed1748() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1978(core.List<core.String> o) {
+checkUnnamed1748(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1979() {
+buildUnnamed1749() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1979(core.List<core.String> o) {
+checkUnnamed1749(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2564,14 +2566,14 @@ checkPretargetingConfigVideoPlayerSizes(api.PretargetingConfigVideoPlayerSizes o
   buildCounterPretargetingConfigVideoPlayerSizes--;
 }
 
-buildUnnamed1980() {
+buildUnnamed1750() {
   var o = new core.List<api.PretargetingConfigVideoPlayerSizes>();
   o.add(buildPretargetingConfigVideoPlayerSizes());
   o.add(buildPretargetingConfigVideoPlayerSizes());
   return o;
 }
 
-checkUnnamed1980(core.List<api.PretargetingConfigVideoPlayerSizes> o) {
+checkUnnamed1750(core.List<api.PretargetingConfigVideoPlayerSizes> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPretargetingConfigVideoPlayerSizes(o[0]);
   checkPretargetingConfigVideoPlayerSizes(o[1]);
@@ -2585,29 +2587,29 @@ buildPretargetingConfig() {
     o.billingId = "foo";
     o.configId = "foo";
     o.configName = "foo";
-    o.creativeType = buildUnnamed1961();
-    o.dimensions = buildUnnamed1962();
-    o.excludedContentLabels = buildUnnamed1963();
-    o.excludedGeoCriteriaIds = buildUnnamed1964();
-    o.excludedPlacements = buildUnnamed1965();
-    o.excludedUserLists = buildUnnamed1966();
-    o.excludedVerticals = buildUnnamed1967();
-    o.geoCriteriaIds = buildUnnamed1968();
+    o.creativeType = buildUnnamed1731();
+    o.dimensions = buildUnnamed1732();
+    o.excludedContentLabels = buildUnnamed1733();
+    o.excludedGeoCriteriaIds = buildUnnamed1734();
+    o.excludedPlacements = buildUnnamed1735();
+    o.excludedUserLists = buildUnnamed1736();
+    o.excludedVerticals = buildUnnamed1737();
+    o.geoCriteriaIds = buildUnnamed1738();
     o.isActive = true;
     o.kind = "foo";
-    o.languages = buildUnnamed1969();
+    o.languages = buildUnnamed1739();
     o.minimumViewabilityDecile = 42;
-    o.mobileCarriers = buildUnnamed1970();
-    o.mobileDevices = buildUnnamed1971();
-    o.mobileOperatingSystemVersions = buildUnnamed1972();
-    o.placements = buildUnnamed1973();
-    o.platforms = buildUnnamed1974();
-    o.supportedCreativeAttributes = buildUnnamed1975();
-    o.userIdentifierDataRequired = buildUnnamed1976();
-    o.userLists = buildUnnamed1977();
-    o.vendorTypes = buildUnnamed1978();
-    o.verticals = buildUnnamed1979();
-    o.videoPlayerSizes = buildUnnamed1980();
+    o.mobileCarriers = buildUnnamed1740();
+    o.mobileDevices = buildUnnamed1741();
+    o.mobileOperatingSystemVersions = buildUnnamed1742();
+    o.placements = buildUnnamed1743();
+    o.platforms = buildUnnamed1744();
+    o.supportedCreativeAttributes = buildUnnamed1745();
+    o.userIdentifierDataRequired = buildUnnamed1746();
+    o.userLists = buildUnnamed1747();
+    o.vendorTypes = buildUnnamed1748();
+    o.verticals = buildUnnamed1749();
+    o.videoPlayerSizes = buildUnnamed1750();
   }
   buildCounterPretargetingConfig--;
   return o;
@@ -2619,41 +2621,41 @@ checkPretargetingConfig(api.PretargetingConfig o) {
     unittest.expect(o.billingId, unittest.equals('foo'));
     unittest.expect(o.configId, unittest.equals('foo'));
     unittest.expect(o.configName, unittest.equals('foo'));
-    checkUnnamed1961(o.creativeType);
-    checkUnnamed1962(o.dimensions);
-    checkUnnamed1963(o.excludedContentLabels);
-    checkUnnamed1964(o.excludedGeoCriteriaIds);
-    checkUnnamed1965(o.excludedPlacements);
-    checkUnnamed1966(o.excludedUserLists);
-    checkUnnamed1967(o.excludedVerticals);
-    checkUnnamed1968(o.geoCriteriaIds);
+    checkUnnamed1731(o.creativeType);
+    checkUnnamed1732(o.dimensions);
+    checkUnnamed1733(o.excludedContentLabels);
+    checkUnnamed1734(o.excludedGeoCriteriaIds);
+    checkUnnamed1735(o.excludedPlacements);
+    checkUnnamed1736(o.excludedUserLists);
+    checkUnnamed1737(o.excludedVerticals);
+    checkUnnamed1738(o.geoCriteriaIds);
     unittest.expect(o.isActive, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1969(o.languages);
+    checkUnnamed1739(o.languages);
     unittest.expect(o.minimumViewabilityDecile, unittest.equals(42));
-    checkUnnamed1970(o.mobileCarriers);
-    checkUnnamed1971(o.mobileDevices);
-    checkUnnamed1972(o.mobileOperatingSystemVersions);
-    checkUnnamed1973(o.placements);
-    checkUnnamed1974(o.platforms);
-    checkUnnamed1975(o.supportedCreativeAttributes);
-    checkUnnamed1976(o.userIdentifierDataRequired);
-    checkUnnamed1977(o.userLists);
-    checkUnnamed1978(o.vendorTypes);
-    checkUnnamed1979(o.verticals);
-    checkUnnamed1980(o.videoPlayerSizes);
+    checkUnnamed1740(o.mobileCarriers);
+    checkUnnamed1741(o.mobileDevices);
+    checkUnnamed1742(o.mobileOperatingSystemVersions);
+    checkUnnamed1743(o.placements);
+    checkUnnamed1744(o.platforms);
+    checkUnnamed1745(o.supportedCreativeAttributes);
+    checkUnnamed1746(o.userIdentifierDataRequired);
+    checkUnnamed1747(o.userLists);
+    checkUnnamed1748(o.vendorTypes);
+    checkUnnamed1749(o.verticals);
+    checkUnnamed1750(o.videoPlayerSizes);
   }
   buildCounterPretargetingConfig--;
 }
 
-buildUnnamed1981() {
+buildUnnamed1751() {
   var o = new core.List<api.PretargetingConfig>();
   o.add(buildPretargetingConfig());
   o.add(buildPretargetingConfig());
   return o;
 }
 
-checkUnnamed1981(core.List<api.PretargetingConfig> o) {
+checkUnnamed1751(core.List<api.PretargetingConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPretargetingConfig(o[0]);
   checkPretargetingConfig(o[1]);
@@ -2664,7 +2666,7 @@ buildPretargetingConfigList() {
   var o = new api.PretargetingConfigList();
   buildCounterPretargetingConfigList++;
   if (buildCounterPretargetingConfigList < 3) {
-    o.items = buildUnnamed1981();
+    o.items = buildUnnamed1751();
     o.kind = "foo";
   }
   buildCounterPretargetingConfigList--;
@@ -2674,7 +2676,7 @@ buildPretargetingConfigList() {
 checkPretargetingConfigList(api.PretargetingConfigList o) {
   buildCounterPretargetingConfigList++;
   if (buildCounterPretargetingConfigList < 3) {
-    checkUnnamed1981(o.items);
+    checkUnnamed1751(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterPretargetingConfigList--;
@@ -2749,40 +2751,40 @@ checkPrivateData(api.PrivateData o) {
   buildCounterPrivateData--;
 }
 
-buildUnnamed1982() {
+buildUnnamed1752() {
   var o = new core.List<api.ContactInformation>();
   o.add(buildContactInformation());
   o.add(buildContactInformation());
   return o;
 }
 
-checkUnnamed1982(core.List<api.ContactInformation> o) {
+checkUnnamed1752(core.List<api.ContactInformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContactInformation(o[0]);
   checkContactInformation(o[1]);
 }
 
-buildUnnamed1983() {
+buildUnnamed1753() {
   var o = new core.List<api.MarketplaceLabel>();
   o.add(buildMarketplaceLabel());
   o.add(buildMarketplaceLabel());
   return o;
 }
 
-checkUnnamed1983(core.List<api.MarketplaceLabel> o) {
+checkUnnamed1753(core.List<api.MarketplaceLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceLabel(o[0]);
   checkMarketplaceLabel(o[1]);
 }
 
-buildUnnamed1984() {
+buildUnnamed1754() {
   var o = new core.List<api.SharedTargeting>();
   o.add(buildSharedTargeting());
   o.add(buildSharedTargeting());
   return o;
 }
 
-checkUnnamed1984(core.List<api.SharedTargeting> o) {
+checkUnnamed1754(core.List<api.SharedTargeting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSharedTargeting(o[0]);
   checkSharedTargeting(o[1]);
@@ -2794,14 +2796,14 @@ buildProduct() {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
     o.creationTimeMs = "foo";
-    o.creatorContacts = buildUnnamed1982();
+    o.creatorContacts = buildUnnamed1752();
     o.deliveryControl = buildDeliveryControl();
     o.flightEndTimeMs = "foo";
     o.flightStartTimeMs = "foo";
     o.hasCreatorSignedOff = true;
     o.inventorySource = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed1983();
+    o.labels = buildUnnamed1753();
     o.lastUpdateTimeMs = "foo";
     o.legacyOfferId = "foo";
     o.marketplacePublisherProfileId = "foo";
@@ -2812,7 +2814,7 @@ buildProduct() {
     o.publisherProvidedForecast = buildPublisherProvidedForecast();
     o.revisionNumber = "foo";
     o.seller = buildSeller();
-    o.sharedTargetings = buildUnnamed1984();
+    o.sharedTargetings = buildUnnamed1754();
     o.state = "foo";
     o.syndicationProduct = "foo";
     o.terms = buildDealTerms();
@@ -2826,14 +2828,14 @@ checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
     unittest.expect(o.creationTimeMs, unittest.equals('foo'));
-    checkUnnamed1982(o.creatorContacts);
+    checkUnnamed1752(o.creatorContacts);
     checkDeliveryControl(o.deliveryControl);
     unittest.expect(o.flightEndTimeMs, unittest.equals('foo'));
     unittest.expect(o.flightStartTimeMs, unittest.equals('foo'));
     unittest.expect(o.hasCreatorSignedOff, unittest.isTrue);
     unittest.expect(o.inventorySource, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1983(o.labels);
+    checkUnnamed1753(o.labels);
     unittest.expect(o.lastUpdateTimeMs, unittest.equals('foo'));
     unittest.expect(o.legacyOfferId, unittest.equals('foo'));
     unittest.expect(o.marketplacePublisherProfileId, unittest.equals('foo'));
@@ -2844,7 +2846,7 @@ checkProduct(api.Product o) {
     checkPublisherProvidedForecast(o.publisherProvidedForecast);
     unittest.expect(o.revisionNumber, unittest.equals('foo'));
     checkSeller(o.seller);
-    checkUnnamed1984(o.sharedTargetings);
+    checkUnnamed1754(o.sharedTargetings);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.syndicationProduct, unittest.equals('foo'));
     checkDealTerms(o.terms);
@@ -2853,53 +2855,53 @@ checkProduct(api.Product o) {
   buildCounterProduct--;
 }
 
-buildUnnamed1985() {
+buildUnnamed1755() {
   var o = new core.List<api.ContactInformation>();
   o.add(buildContactInformation());
   o.add(buildContactInformation());
   return o;
 }
 
-checkUnnamed1985(core.List<api.ContactInformation> o) {
+checkUnnamed1755(core.List<api.ContactInformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContactInformation(o[0]);
   checkContactInformation(o[1]);
 }
 
-buildUnnamed1986() {
+buildUnnamed1756() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1986(core.List<core.String> o) {
+checkUnnamed1756(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1987() {
+buildUnnamed1757() {
   var o = new core.List<api.MarketplaceLabel>();
   o.add(buildMarketplaceLabel());
   o.add(buildMarketplaceLabel());
   return o;
 }
 
-checkUnnamed1987(core.List<api.MarketplaceLabel> o) {
+checkUnnamed1757(core.List<api.MarketplaceLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarketplaceLabel(o[0]);
   checkMarketplaceLabel(o[1]);
 }
 
-buildUnnamed1988() {
+buildUnnamed1758() {
   var o = new core.List<api.ContactInformation>();
   o.add(buildContactInformation());
   o.add(buildContactInformation());
   return o;
 }
 
-checkUnnamed1988(core.List<api.ContactInformation> o) {
+checkUnnamed1758(core.List<api.ContactInformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContactInformation(o[0]);
   checkContactInformation(o[1]);
@@ -2912,16 +2914,16 @@ buildProposal() {
   if (buildCounterProposal < 3) {
     o.billedBuyer = buildBuyer();
     o.buyer = buildBuyer();
-    o.buyerContacts = buildUnnamed1985();
+    o.buyerContacts = buildUnnamed1755();
     o.buyerPrivateData = buildPrivateData();
-    o.dbmAdvertiserIds = buildUnnamed1986();
+    o.dbmAdvertiserIds = buildUnnamed1756();
     o.hasBuyerSignedOff = true;
     o.hasSellerSignedOff = true;
     o.inventorySource = "foo";
     o.isRenegotiating = true;
     o.isSetupComplete = true;
     o.kind = "foo";
-    o.labels = buildUnnamed1987();
+    o.labels = buildUnnamed1757();
     o.lastUpdaterOrCommentorRole = "foo";
     o.name = "foo";
     o.negotiationId = "foo";
@@ -2932,7 +2934,7 @@ buildProposal() {
     o.revisionNumber = "foo";
     o.revisionTimeMs = "foo";
     o.seller = buildSeller();
-    o.sellerContacts = buildUnnamed1988();
+    o.sellerContacts = buildUnnamed1758();
   }
   buildCounterProposal--;
   return o;
@@ -2943,16 +2945,16 @@ checkProposal(api.Proposal o) {
   if (buildCounterProposal < 3) {
     checkBuyer(o.billedBuyer);
     checkBuyer(o.buyer);
-    checkUnnamed1985(o.buyerContacts);
+    checkUnnamed1755(o.buyerContacts);
     checkPrivateData(o.buyerPrivateData);
-    checkUnnamed1986(o.dbmAdvertiserIds);
+    checkUnnamed1756(o.dbmAdvertiserIds);
     unittest.expect(o.hasBuyerSignedOff, unittest.isTrue);
     unittest.expect(o.hasSellerSignedOff, unittest.isTrue);
     unittest.expect(o.inventorySource, unittest.equals('foo'));
     unittest.expect(o.isRenegotiating, unittest.isTrue);
     unittest.expect(o.isSetupComplete, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1987(o.labels);
+    checkUnnamed1757(o.labels);
     unittest.expect(o.lastUpdaterOrCommentorRole, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.negotiationId, unittest.equals('foo'));
@@ -2963,32 +2965,32 @@ checkProposal(api.Proposal o) {
     unittest.expect(o.revisionNumber, unittest.equals('foo'));
     unittest.expect(o.revisionTimeMs, unittest.equals('foo'));
     checkSeller(o.seller);
-    checkUnnamed1988(o.sellerContacts);
+    checkUnnamed1758(o.sellerContacts);
   }
   buildCounterProposal--;
 }
 
-buildUnnamed1989() {
+buildUnnamed1759() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1989(core.List<core.String> o) {
+checkUnnamed1759(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1990() {
+buildUnnamed1760() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1990(core.List<core.String> o) {
+checkUnnamed1760(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3014,14 +3016,14 @@ buildPublisherProfileApiProto() {
     o.overview = "foo";
     o.profileId = 42;
     o.programmaticContact = "foo";
-    o.publisherDomains = buildUnnamed1989();
+    o.publisherDomains = buildUnnamed1759();
     o.publisherProfileId = "foo";
     o.publisherProvidedForecast = buildPublisherProvidedForecast();
     o.rateCardInfoLink = "foo";
     o.samplePageLink = "foo";
     o.seller = buildSeller();
     o.state = "foo";
-    o.topHeadlines = buildUnnamed1990();
+    o.topHeadlines = buildUnnamed1760();
   }
   buildCounterPublisherProfileApiProto--;
   return o;
@@ -3045,26 +3047,26 @@ checkPublisherProfileApiProto(api.PublisherProfileApiProto o) {
     unittest.expect(o.overview, unittest.equals('foo'));
     unittest.expect(o.profileId, unittest.equals(42));
     unittest.expect(o.programmaticContact, unittest.equals('foo'));
-    checkUnnamed1989(o.publisherDomains);
+    checkUnnamed1759(o.publisherDomains);
     unittest.expect(o.publisherProfileId, unittest.equals('foo'));
     checkPublisherProvidedForecast(o.publisherProvidedForecast);
     unittest.expect(o.rateCardInfoLink, unittest.equals('foo'));
     unittest.expect(o.samplePageLink, unittest.equals('foo'));
     checkSeller(o.seller);
     unittest.expect(o.state, unittest.equals('foo'));
-    checkUnnamed1990(o.topHeadlines);
+    checkUnnamed1760(o.topHeadlines);
   }
   buildCounterPublisherProfileApiProto--;
 }
 
-buildUnnamed1991() {
+buildUnnamed1761() {
   var o = new core.List<api.Dimension>();
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-checkUnnamed1991(core.List<api.Dimension> o) {
+checkUnnamed1761(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
@@ -3075,7 +3077,7 @@ buildPublisherProvidedForecast() {
   var o = new api.PublisherProvidedForecast();
   buildCounterPublisherProvidedForecast++;
   if (buildCounterPublisherProvidedForecast < 3) {
-    o.dimensions = buildUnnamed1991();
+    o.dimensions = buildUnnamed1761();
     o.weeklyImpressions = "foo";
     o.weeklyUniques = "foo";
   }
@@ -3086,7 +3088,7 @@ buildPublisherProvidedForecast() {
 checkPublisherProvidedForecast(api.PublisherProvidedForecast o) {
   buildCounterPublisherProvidedForecast++;
   if (buildCounterPublisherProvidedForecast < 3) {
-    checkUnnamed1991(o.dimensions);
+    checkUnnamed1761(o.dimensions);
     unittest.expect(o.weeklyImpressions, unittest.equals('foo'));
     unittest.expect(o.weeklyUniques, unittest.equals('foo'));
   }
@@ -3114,27 +3116,27 @@ checkSeller(api.Seller o) {
   buildCounterSeller--;
 }
 
-buildUnnamed1992() {
+buildUnnamed1762() {
   var o = new core.List<api.TargetingValue>();
   o.add(buildTargetingValue());
   o.add(buildTargetingValue());
   return o;
 }
 
-checkUnnamed1992(core.List<api.TargetingValue> o) {
+checkUnnamed1762(core.List<api.TargetingValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetingValue(o[0]);
   checkTargetingValue(o[1]);
 }
 
-buildUnnamed1993() {
+buildUnnamed1763() {
   var o = new core.List<api.TargetingValue>();
   o.add(buildTargetingValue());
   o.add(buildTargetingValue());
   return o;
 }
 
-checkUnnamed1993(core.List<api.TargetingValue> o) {
+checkUnnamed1763(core.List<api.TargetingValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetingValue(o[0]);
   checkTargetingValue(o[1]);
@@ -3145,8 +3147,8 @@ buildSharedTargeting() {
   var o = new api.SharedTargeting();
   buildCounterSharedTargeting++;
   if (buildCounterSharedTargeting < 3) {
-    o.exclusions = buildUnnamed1992();
-    o.inclusions = buildUnnamed1993();
+    o.exclusions = buildUnnamed1762();
+    o.inclusions = buildUnnamed1763();
     o.key = "foo";
   }
   buildCounterSharedTargeting--;
@@ -3156,8 +3158,8 @@ buildSharedTargeting() {
 checkSharedTargeting(api.SharedTargeting o) {
   buildCounterSharedTargeting++;
   if (buildCounterSharedTargeting < 3) {
-    checkUnnamed1992(o.exclusions);
-    checkUnnamed1993(o.inclusions);
+    checkUnnamed1762(o.exclusions);
+    checkUnnamed1763(o.inclusions);
     unittest.expect(o.key, unittest.equals('foo'));
   }
   buildCounterSharedTargeting--;
@@ -3188,14 +3190,14 @@ checkTargetingValue(api.TargetingValue o) {
   buildCounterTargetingValue--;
 }
 
-buildUnnamed1994() {
+buildUnnamed1764() {
   var o = new core.List<api.TargetingValueSize>();
   o.add(buildTargetingValueSize());
   o.add(buildTargetingValueSize());
   return o;
 }
 
-checkUnnamed1994(core.List<api.TargetingValueSize> o) {
+checkUnnamed1764(core.List<api.TargetingValueSize> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetingValueSize(o[0]);
   checkTargetingValueSize(o[1]);
@@ -3206,7 +3208,7 @@ buildTargetingValueCreativeSize() {
   var o = new api.TargetingValueCreativeSize();
   buildCounterTargetingValueCreativeSize++;
   if (buildCounterTargetingValueCreativeSize < 3) {
-    o.companionSizes = buildUnnamed1994();
+    o.companionSizes = buildUnnamed1764();
     o.creativeSizeType = "foo";
     o.size = buildTargetingValueSize();
     o.skippableAdType = "foo";
@@ -3218,7 +3220,7 @@ buildTargetingValueCreativeSize() {
 checkTargetingValueCreativeSize(api.TargetingValueCreativeSize o) {
   buildCounterTargetingValueCreativeSize++;
   if (buildCounterTargetingValueCreativeSize < 3) {
-    checkUnnamed1994(o.companionSizes);
+    checkUnnamed1764(o.companionSizes);
     unittest.expect(o.creativeSizeType, unittest.equals('foo'));
     checkTargetingValueSize(o.size);
     unittest.expect(o.skippableAdType, unittest.equals('foo'));
@@ -3226,14 +3228,14 @@ checkTargetingValueCreativeSize(api.TargetingValueCreativeSize o) {
   buildCounterTargetingValueCreativeSize--;
 }
 
-buildUnnamed1995() {
+buildUnnamed1765() {
   var o = new core.List<api.TargetingValueDayPartTargetingDayPart>();
   o.add(buildTargetingValueDayPartTargetingDayPart());
   o.add(buildTargetingValueDayPartTargetingDayPart());
   return o;
 }
 
-checkUnnamed1995(core.List<api.TargetingValueDayPartTargetingDayPart> o) {
+checkUnnamed1765(core.List<api.TargetingValueDayPartTargetingDayPart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetingValueDayPartTargetingDayPart(o[0]);
   checkTargetingValueDayPartTargetingDayPart(o[1]);
@@ -3244,7 +3246,7 @@ buildTargetingValueDayPartTargeting() {
   var o = new api.TargetingValueDayPartTargeting();
   buildCounterTargetingValueDayPartTargeting++;
   if (buildCounterTargetingValueDayPartTargeting < 3) {
-    o.dayParts = buildUnnamed1995();
+    o.dayParts = buildUnnamed1765();
     o.timeZoneType = "foo";
   }
   buildCounterTargetingValueDayPartTargeting--;
@@ -3254,7 +3256,7 @@ buildTargetingValueDayPartTargeting() {
 checkTargetingValueDayPartTargeting(api.TargetingValueDayPartTargeting o) {
   buildCounterTargetingValueDayPartTargeting++;
   if (buildCounterTargetingValueDayPartTargeting < 3) {
-    checkUnnamed1995(o.dayParts);
+    checkUnnamed1765(o.dayParts);
     unittest.expect(o.timeZoneType, unittest.equals('foo'));
   }
   buildCounterTargetingValueDayPartTargeting--;
@@ -3333,27 +3335,27 @@ checkUpdatePrivateAuctionProposalRequest(api.UpdatePrivateAuctionProposalRequest
   buildCounterUpdatePrivateAuctionProposalRequest--;
 }
 
-buildUnnamed1996() {
+buildUnnamed1766() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1996(core.List<core.int> o) {
+checkUnnamed1766(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed1997() {
+buildUnnamed1767() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1997(core.List<core.String> o) {
+checkUnnamed1767(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4717,8 +4719,8 @@ main() {
 
       var mock = new HttpServerMock();
       api.CreativesResourceApi res = new api.AdexchangebuyerApi(mock).creatives;
-      var arg_accountId = buildUnnamed1996();
-      var arg_buyerCreativeId = buildUnnamed1997();
+      var arg_accountId = buildUnnamed1766();
+      var arg_buyerCreativeId = buildUnnamed1767();
       var arg_dealsStatusFilter = "foo";
       var arg_maxResults = 42;
       var arg_openAuctionStatusFilter = "foo";

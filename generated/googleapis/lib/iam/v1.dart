@@ -958,7 +958,7 @@ class BindingDelta {
 class CreateServiceAccountKeyRequest {
   /**
    * Which type of key and algorithm to use for the key.
-   * The default is currently a 4K RSA key.  However this may change in the
+   * The default is currently a 2K RSA key.  However this may change in the
    * future.
    * Possible string values are:
    * - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.

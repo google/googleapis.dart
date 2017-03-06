@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/wBOBQg7Gs1S9CwApK0nCAqVzk_Y\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/z8hLagElncDGGS_B7W6I6uNUHDs\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2413,7 +2413,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Returns a list of reviews.",
+                    "description": "Returns a list of reviews. Only reviews from last week will be returned.",
                     "httpMethod": "GET",
                     "id": "androidpublisher.reviews.list",
                     "parameterOrder": [
@@ -2488,7 +2488,7 @@
             }
         }
     },
-    "revision": "20170105",
+    "revision": "20170222",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -3427,6 +3427,11 @@
                 },
                 "startTimeMillis": {
                     "description": "Time at which the subscription was granted, in milliseconds since the Epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "userCancellationTimeMillis": {
+                    "description": "The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only present if cancelReason is 0.",
                     "format": "int64",
                     "type": "string"
                 }

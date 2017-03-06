@@ -390,6 +390,13 @@ class ServicesResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
+   * [view] - Specifies which parts of the Service Config should be returned in
+   * the
+   * response.
+   * Possible string values are:
+   * - "BASIC" : A BASIC.
+   * - "FULL" : A FULL.
+   *
    * [configId] - The id of the service configuration resource.
    *
    * Completes with a [Service].
@@ -400,7 +407,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<Service> getConfig(core.String serviceName, {core.String configId}) {
+  async.Future<Service> getConfig(core.String serviceName, {core.String view, core.String configId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -410,6 +417,9 @@ class ServicesResourceApi {
 
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (configId != null) {
       _queryParams["configId"] = [configId];
@@ -438,8 +448,7 @@ class ServicesResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^services/[^/]+$".
    *
    * Completes with a [Policy].
@@ -480,9 +489,9 @@ class ServicesResourceApi {
   /**
    * Lists managed services.
    *
-   * If called without any authentication, it returns only the public services.
-   * If called with authentication, it returns all services that the caller has
-   * "servicemanagement.services.get" permission for.
+   * Returns all public services. For authenticated users, also returns all
+   * services the calling user has "servicemanagement.services.get" permission
+   * for.
    *
    * **BETA:** If the caller specifies the `consumer_id`, it returns only the
    * services enabled on the consumer. The `consumer_id` must have the format
@@ -555,8 +564,7 @@ class ServicesResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^services/[^/]+$".
    *
    * Completes with a [Policy].
@@ -599,14 +607,17 @@ class ServicesResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^services/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -759,6 +770,13 @@ class ServicesConfigsResourceApi {
    *
    * [configId] - The id of the service configuration resource.
    *
+   * [view] - Specifies which parts of the Service Config should be returned in
+   * the
+   * response.
+   * Possible string values are:
+   * - "BASIC" : A BASIC.
+   * - "FULL" : A FULL.
+   *
    * Completes with a [Service].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -767,7 +785,7 @@ class ServicesConfigsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<Service> get(core.String serviceName, core.String configId) {
+  async.Future<Service> get(core.String serviceName, core.String configId, {core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -780,6 +798,9 @@ class ServicesConfigsResourceApi {
     }
     if (configId == null) {
       throw new core.ArgumentError("Parameter configId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/configs/' + commons.Escaper.ecapeVariable('$configId');
@@ -1020,9 +1041,9 @@ class ServicesRolloutsResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
-   * [pageToken] - The token of the page to retrieve.
-   *
    * [pageSize] - The max number of items to include in the response list.
+   *
+   * [pageToken] - The token of the page to retrieve.
    *
    * Completes with a [ListServiceRolloutsResponse].
    *
@@ -1032,7 +1053,7 @@ class ServicesRolloutsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServiceRolloutsResponse> list(core.String serviceName, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListServiceRolloutsResponse> list(core.String serviceName, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1043,11 +1064,11 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/rollouts';
@@ -1201,6 +1222,50 @@ class Api {
  * It consists of which permission types are logged, and what identities, if
  * any, are exempted from logging.
  * An AuditConifg must have one or more AuditLogConfigs.
+ *
+ * If there are AuditConfigs for both `allServices` and a specific service,
+ * the union of the two AuditConfigs is used for that service: the log_types
+ * specified in each AuditConfig are enabled, and the exempted_members in each
+ * AuditConfig are exempted.
+ * Example Policy with multiple AuditConfigs:
+ * {
+ *   "audit_configs": [
+ *     {
+ *       "service": "allServices"
+ *       "audit_log_configs": [
+ *         {
+ *           "log_type": "DATA_READ",
+ *           "exempted_members": [
+ *             "user:foo@gmail.com"
+ *           ]
+ *         },
+ *         {
+ *           "log_type": "DATA_WRITE",
+ *         },
+ *         {
+ *           "log_type": "ADMIN_READ",
+ *         }
+ *       ]
+ *     },
+ *     {
+ *       "service": "fooservice@googleapis.com"
+ *       "audit_log_configs": [
+ *         {
+ *           "log_type": "DATA_READ",
+ *         },
+ *         {
+ *           "log_type": "DATA_WRITE",
+ *           "exempted_members": [
+ *             "user:bar@gmail.com"
+ *           ]
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * }
+ * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+ * logging. It also exempts foo@gmail.com from DATA_READ logging, and
+ * bar@gmail.com from DATA_WRITE logging.
  */
 class AuditConfig {
   /**
@@ -1208,12 +1273,6 @@ class AuditConfig {
    * Next ID: 4
    */
   core.List<AuditLogConfig> auditLogConfigs;
-  /**
-   * Specifies the identities that are exempted from "data access" audit
-   * logging for the `service` specified above.
-   * Follows the same format of Binding.members.
-   * This field is deprecated in favor of per-permission-type exemptions.
-   */
   core.List<core.String> exemptedMembers;
   /**
    * Specifies a service that will be enabled for audit logging.
@@ -1575,6 +1634,42 @@ class AuthenticationRule {
   }
 }
 
+/**
+ * Configuration of authorization.
+ *
+ * This section determines the authorization provider, if unspecified, then no
+ * authorization check will be done.
+ *
+ * Example:
+ *
+ *     experimental:
+ *       authorization:
+ *         provider: firebaserules.googleapis.com
+ */
+class AuthorizationConfig {
+  /**
+   * The name of the authorization provider, such as
+   * firebaserules.googleapis.com.
+   */
+  core.String provider;
+
+  AuthorizationConfig();
+
+  AuthorizationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("provider")) {
+      provider = _json["provider"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (provider != null) {
+      _json["provider"] = provider;
+    }
+    return _json;
+  }
+}
+
 /** `Backend` defines the backend configuration for a service. */
 class Backend {
   /**
@@ -1759,6 +1854,24 @@ class Condition {
    * - "ATTRIBUTION" : The principal (even if an authority selector is present),
    * which
    * must only be used for attribution, not authorization.
+   * - "APPROVER" : An approver (distinct from the requester) that has
+   * authorized this
+   * request.
+   * When used with IN, the condition indicates that one of the approvers
+   * associated with the request matches the specified principal, or is a
+   * member of the specified group. Approvers can only grant additional
+   * access, and are thus only used in a strictly positive context
+   * (e.g. ALLOW/IN or DENY/NOT_IN).
+   * See: go/rpc-security-policy-dynamicauth.
+   * - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
+   * with this request.
+   * String values should match enum names from tech.iam.JustificationType,
+   * e.g. "MANUAL_STRING". It is not permitted to grant access based on
+   * the *absence* of a justification, so justification conditions can only
+   * be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+   *
+   * Multiple justifications, e.g., a Buganizer ID and a manually-entered
+   * reason, are normal and supported.
    */
   core.String iam;
   /**
@@ -1767,8 +1880,12 @@ class Condition {
    * - "NO_OP" : Default no-op.
    * - "EQUALS" : DEPRECATED. Use IN instead.
    * - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
-   * - "IN" : Set-inclusion check.
-   * - "NOT_IN" : Set-exclusion check.
+   * - "IN" : The condition is true if the subject (or any element of it if it
+   * is
+   * a set) matches any of the supplied values.
+   * - "NOT_IN" : The condition is true if the subject (or every element of it
+   * if it is
+   * a set) matches none of the supplied values.
    * - "DISCHARGED" : Subject is discharged
    */
   core.String op;
@@ -2818,6 +2935,31 @@ class EnumValue {
   }
 }
 
+/**
+ * Experimental service configuration. These configuration options can
+ * only be used by whitelisted users.
+ */
+class Experimental {
+  /** Authorization configuration. */
+  AuthorizationConfig authorization;
+
+  Experimental();
+
+  Experimental.fromJson(core.Map _json) {
+    if (_json.containsKey("authorization")) {
+      authorization = new AuthorizationConfig.fromJson(_json["authorization"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (authorization != null) {
+      _json["authorization"] = (authorization).toJson();
+    }
+    return _json;
+  }
+}
+
 /** A single field of a message type. */
 class Field {
   /**
@@ -3330,15 +3472,16 @@ class HttpRule {
   /** Used for listing and getting information about resources. */
   core.String get;
   /**
-   * Do not use this. For media support, add instead
-   * [][google.bytestream.RestByteStream] as an API to your
-   * configuration.
+   * Use this only for Scotty Requests. Do not use this for bytestream methods.
+   * For media support, add instead [][google.bytestream.RestByteStream] as an
+   * API to your configuration.
    */
   MediaDownload mediaDownload;
   /**
-   * Do not use this. For media support, add instead
+   * Use this only for Scotty Requests. Do not use this for media support using
+   * Bytestream, add instead
    * [][google.bytestream.RestByteStream] as an API to your
-   * configuration.
+   * configuration for Bytestream methods.
    */
   MediaUpload mediaUpload;
   /** Used for updating a resource. */
@@ -3861,17 +4004,26 @@ class ManagedService {
 }
 
 /**
- * Do not use this. For media support, add instead
- * [][google.bytestream.RestByteStream] as an API to your
- * configuration.
+ * Use this only for Scotty Requests. Do not use this for media support using
+ * Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
+ * your configuration for Bytestream methods.
  */
 class MediaDownload {
+  /**
+   * DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+   *
+   * Specify name of the download service if one is used for download.
+   */
+  core.String downloadService;
   /** Whether download is enabled. */
   core.bool enabled;
 
   MediaDownload();
 
   MediaDownload.fromJson(core.Map _json) {
+    if (_json.containsKey("downloadService")) {
+      downloadService = _json["downloadService"];
+    }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
     }
@@ -3879,6 +4031,9 @@ class MediaDownload {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (downloadService != null) {
+      _json["downloadService"] = downloadService;
+    }
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -3887,13 +4042,19 @@ class MediaDownload {
 }
 
 /**
- * Do not use this. For media support, add instead
- * [][google.bytestream.RestByteStream] as an API to your
- * configuration.
+ * Use this only for Scotty Requests. Do not use this for media support using
+ * Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
+ * your configuration for Bytestream methods.
  */
 class MediaUpload {
   /** Whether upload is enabled. */
   core.bool enabled;
+  /**
+   * DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+   *
+   * Specify name of the upload service if one is used for upload.
+   */
+  core.String uploadService;
 
   MediaUpload();
 
@@ -3901,12 +4062,18 @@ class MediaUpload {
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
     }
+    if (_json.containsKey("uploadService")) {
+      uploadService = _json["uploadService"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (enabled != null) {
       _json["enabled"] = enabled;
+    }
+    if (uploadService != null) {
+      _json["uploadService"] = uploadService;
     }
     return _json;
   }
@@ -5190,6 +5357,8 @@ class Service {
    *     - name: google.someapi.v1.SomeEnum
    */
   core.List<Enum> enums;
+  /** Experimental configuration. */
+  Experimental experimental;
   /** HTTP configuration. */
   Http http;
   /**
@@ -5283,6 +5452,9 @@ class Service {
     if (_json.containsKey("enums")) {
       enums = _json["enums"].map((value) => new Enum.fromJson(value)).toList();
     }
+    if (_json.containsKey("experimental")) {
+      experimental = new Experimental.fromJson(_json["experimental"]);
+    }
     if (_json.containsKey("http")) {
       http = new Http.fromJson(_json["http"]);
     }
@@ -5361,6 +5533,9 @@ class Service {
     }
     if (enums != null) {
       _json["enums"] = enums.map((value) => (value).toJson()).toList();
+    }
+    if (experimental != null) {
+      _json["experimental"] = (experimental).toJson();
     }
     if (http != null) {
       _json["http"] = (http).toJson();

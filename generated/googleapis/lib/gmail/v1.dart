@@ -18,7 +18,7 @@ const core.String USER_AGENT = 'dart-api-client gmail/v1';
 
 /** Access Gmail mailboxes including sending user email. */
 class GmailApi {
-  /** View and manage your mail */
+  /** Read, send, delete, and manage your email */
   static const MailGoogleComScope = "https://mail.google.com/";
 
   /** Manage drafts and send emails */
@@ -1813,6 +1813,9 @@ class UsersSettingsResourceApi {
    * Updates the auto-forwarding setting for the specified account. A verified
    * forwarding address must be specified when auto-forwarding is enabled.
    *
+   * This method is only available to service account clients that have been
+   * delegated domain-wide authority.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -2189,6 +2192,9 @@ class UsersSettingsForwardingAddressesResourceApi {
    * status will be set to pending; otherwise, the resource will be created with
    * verification status set to accepted.
    *
+   * This method is only available to service account clients that have been
+   * delegated domain-wide authority.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -2234,6 +2240,9 @@ class UsersSettingsForwardingAddressesResourceApi {
   /**
    * Deletes the specified forwarding address and revokes any verification that
    * may have been required.
+   *
+   * This method is only available to service account clients that have been
+   * delegated domain-wide authority.
    *
    * Request parameters:
    *
@@ -2382,6 +2391,9 @@ class UsersSettingsSendAsResourceApi {
    * created with verification status set to accepted. If a signature is
    * provided, Gmail will sanitize the HTML before saving it with the alias.
    *
+   * This method is only available to service account clients that have been
+   * delegated domain-wide authority.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -2427,6 +2439,9 @@ class UsersSettingsSendAsResourceApi {
   /**
    * Deletes the specified send-as alias. Revokes any verification that may have
    * been required for using it.
+   *
+   * This method is only available to service account clients that have been
+   * delegated domain-wide authority.
    *
    * Request parameters:
    *
@@ -2560,8 +2575,11 @@ class UsersSettingsSendAsResourceApi {
 
   /**
    * Updates a send-as alias. If a signature is provided, Gmail will sanitize
-   * the HTML before saving it with the alias. This method supports patch
-   * semantics.
+   * the HTML before saving it with the alias.
+   *
+   * Addresses other than the primary address for the account can only be
+   * updated by service account clients that have been delegated domain-wide
+   * authority. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -2614,6 +2632,10 @@ class UsersSettingsSendAsResourceApi {
    * Updates a send-as alias. If a signature is provided, Gmail will sanitize
    * the HTML before saving it with the alias.
    *
+   * Addresses other than the primary address for the account can only be
+   * updated by service account clients that have been delegated domain-wide
+   * authority.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -2664,6 +2686,9 @@ class UsersSettingsSendAsResourceApi {
   /**
    * Sends a verification email to the specified send-as alias address. The
    * verification status must be pending.
+   *
+   * This method is only available to service account clients that have been
+   * delegated domain-wide authority.
    *
    * Request parameters:
    *

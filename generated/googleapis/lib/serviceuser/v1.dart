@@ -15,9 +15,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client serviceuser/v1';
 
 /**
- * The Service User API allows service consumers to enable services they want to
- * use on Google Cloud Platform or disable services they no longer use.
- * Consumers can also list the set of services they have already enabled.
+ * Enables services that service consumers want to use on Google Cloud Platform,
+ * lists the available or enabled services, or disables services that service
+ * consumers no longer use.
  */
 class ServiceuserApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -33,6 +33,7 @@ class ServiceuserApi {
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ServicesResourceApi get services => new ServicesResourceApi(_requester);
 
   ServiceuserApi(http_1.Client client, {core.String rootUrl: "https://serviceuser.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -172,11 +173,11 @@ class ProjectsServicesResourceApi {
    * - projects/my-project
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Requested size of the next page of data.
-   *
    * [pageToken] - Token identifying which result to start with; returned by a
    * previous list
    * call.
+   *
+   * [pageSize] - Requested size of the next page of data.
    *
    * Completes with a [ListEnabledServicesResponse].
    *
@@ -186,7 +187,7 @@ class ProjectsServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListEnabledServicesResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListEnabledServicesResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -197,11 +198,11 @@ class ProjectsServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
@@ -214,6 +215,65 @@ class ProjectsServicesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListEnabledServicesResponse.fromJson(data));
+  }
+
+}
+
+
+class ServicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ServicesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Search available services.
+   *
+   * When no filter is specified, returns all accessible services. For
+   * authenticated users, also returns all services the calling user has
+   * "servicemanagement.services.bind" permission for.
+   *
+   * Request parameters:
+   *
+   * [pageToken] - Token identifying which result to start with; returned by a
+   * previous list
+   * call.
+   *
+   * [pageSize] - Requested size of the next page of data.
+   *
+   * Completes with a [SearchServicesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http_1.Client] completes with an error when making a REST
+   * call, this method will complete with the same error.
+   */
+  async.Future<SearchServicesResponse> search({core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1/services:search';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SearchServicesResponse.fromJson(data));
   }
 
 }
@@ -580,6 +640,42 @@ class AuthenticationRule {
     }
     if (selector != null) {
       _json["selector"] = selector;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Configuration of authorization.
+ *
+ * This section determines the authorization provider, if unspecified, then no
+ * authorization check will be done.
+ *
+ * Example:
+ *
+ *     experimental:
+ *       authorization:
+ *         provider: firebaserules.googleapis.com
+ */
+class AuthorizationConfig {
+  /**
+   * The name of the authorization provider, such as
+   * firebaserules.googleapis.com.
+   */
+  core.String provider;
+
+  AuthorizationConfig();
+
+  AuthorizationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("provider")) {
+      provider = _json["provider"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (provider != null) {
+      _json["provider"] = provider;
     }
     return _json;
   }
@@ -1099,34 +1195,6 @@ class EnableServiceRequest {
 }
 
 /**
- * An EnabledService message contains the details about a service that has been
- * enabled for use.
- */
-class EnabledService {
-  /**
-   * The Service definition for the enabled service
-   * Only the name and title fields will be populated.
-   */
-  Service service;
-
-  EnabledService();
-
-  EnabledService.fromJson(core.Map _json) {
-    if (_json.containsKey("service")) {
-      service = new Service.fromJson(_json["service"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (service != null) {
-      _json["service"] = (service).toJson();
-    }
-    return _json;
-  }
-}
-
-/**
  * `Endpoint` describes a network endpoint that serves a set of APIs.
  * A service may expose any number of endpoints, and all endpoints share the
  * same service configuration, such as quota configuration and monitoring
@@ -1302,6 +1370,31 @@ class EnumValue {
     }
     if (options != null) {
       _json["options"] = options.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Experimental service configuration. These configuration options can
+ * only be used by whitelisted users.
+ */
+class Experimental {
+  /** Authorization configuration. */
+  AuthorizationConfig authorization;
+
+  Experimental();
+
+  Experimental.fromJson(core.Map _json) {
+    if (_json.containsKey("authorization")) {
+      authorization = new AuthorizationConfig.fromJson(_json["authorization"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (authorization != null) {
+      _json["authorization"] = (authorization).toJson();
     }
     return _json;
   }
@@ -1704,15 +1797,16 @@ class HttpRule {
   /** Used for listing and getting information about resources. */
   core.String get;
   /**
-   * Do not use this. For media support, add instead
-   * [][google.bytestream.RestByteStream] as an API to your
-   * configuration.
+   * Use this only for Scotty Requests. Do not use this for bytestream methods.
+   * For media support, add instead [][google.bytestream.RestByteStream] as an
+   * API to your configuration.
    */
   MediaDownload mediaDownload;
   /**
-   * Do not use this. For media support, add instead
+   * Use this only for Scotty Requests. Do not use this for media support using
+   * Bytestream, add instead
    * [][google.bytestream.RestByteStream] as an API to your
-   * configuration.
+   * configuration for Bytestream methods.
    */
   MediaUpload mediaUpload;
   /** Used for updating a resource. */
@@ -1871,7 +1965,7 @@ class ListEnabledServicesResponse {
    */
   core.String nextPageToken;
   /** Services enabled for the specified parent. */
-  core.List<EnabledService> services;
+  core.List<PublishedService> services;
 
   ListEnabledServicesResponse();
 
@@ -1880,7 +1974,7 @@ class ListEnabledServicesResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("services")) {
-      services = _json["services"].map((value) => new EnabledService.fromJson(value)).toList();
+      services = _json["services"].map((value) => new PublishedService.fromJson(value)).toList();
     }
   }
 
@@ -2078,17 +2172,26 @@ class LoggingDestination {
 }
 
 /**
- * Do not use this. For media support, add instead
- * [][google.bytestream.RestByteStream] as an API to your
- * configuration.
+ * Use this only for Scotty Requests. Do not use this for media support using
+ * Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
+ * your configuration for Bytestream methods.
  */
 class MediaDownload {
+  /**
+   * DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+   *
+   * Specify name of the download service if one is used for download.
+   */
+  core.String downloadService;
   /** Whether download is enabled. */
   core.bool enabled;
 
   MediaDownload();
 
   MediaDownload.fromJson(core.Map _json) {
+    if (_json.containsKey("downloadService")) {
+      downloadService = _json["downloadService"];
+    }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
     }
@@ -2096,6 +2199,9 @@ class MediaDownload {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (downloadService != null) {
+      _json["downloadService"] = downloadService;
+    }
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -2104,13 +2210,19 @@ class MediaDownload {
 }
 
 /**
- * Do not use this. For media support, add instead
- * [][google.bytestream.RestByteStream] as an API to your
- * configuration.
+ * Use this only for Scotty Requests. Do not use this for media support using
+ * Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
+ * your configuration for Bytestream methods.
  */
 class MediaUpload {
   /** Whether upload is enabled. */
   core.bool enabled;
+  /**
+   * DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+   *
+   * Specify name of the upload service if one is used for upload.
+   */
+  core.String uploadService;
 
   MediaUpload();
 
@@ -2118,12 +2230,18 @@ class MediaUpload {
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
     }
+    if (_json.containsKey("uploadService")) {
+      uploadService = _json["uploadService"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (enabled != null) {
       _json["enabled"] = enabled;
+    }
+    if (uploadService != null) {
+      _json["uploadService"] = uploadService;
     }
     return _json;
   }
@@ -2964,6 +3082,77 @@ class Page {
 }
 
 /**
+ * The published version of a Service that is managed by
+ * Google Service Management.
+ */
+class PublishedService {
+  /**
+   * The resource name of the service.
+   *
+   * A valid name would be:
+   * - services/serviceuser.googleapis.com
+   */
+  core.String name;
+  /** The service's published configuration. */
+  Service service;
+
+  PublishedService();
+
+  PublishedService.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("service")) {
+      service = new Service.fromJson(_json["service"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (service != null) {
+      _json["service"] = (service).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Response message for SearchServices method. */
+class SearchServicesResponse {
+  /**
+   * Token that can be passed to `ListAvailableServices` to resume a paginated
+   * query.
+   */
+  core.String nextPageToken;
+  /** Services available publicly or available to the authenticated caller. */
+  core.List<PublishedService> services;
+
+  SearchServicesResponse();
+
+  SearchServicesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("services")) {
+      services = _json["services"].map((value) => new PublishedService.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (services != null) {
+      _json["services"] = services.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
  * `Service` is the root object of Google service configuration schema. It
  * describes basic information about a service, such as the name and the
  * title, and delegates other aspects to sub-sections. Each sub-section is
@@ -3032,6 +3221,8 @@ class Service {
    *     - name: google.someapi.v1.SomeEnum
    */
   core.List<Enum> enums;
+  /** Experimental configuration. */
+  Experimental experimental;
   /** HTTP configuration. */
   Http http;
   /**
@@ -3125,6 +3316,9 @@ class Service {
     if (_json.containsKey("enums")) {
       enums = _json["enums"].map((value) => new Enum.fromJson(value)).toList();
     }
+    if (_json.containsKey("experimental")) {
+      experimental = new Experimental.fromJson(_json["experimental"]);
+    }
     if (_json.containsKey("http")) {
       http = new Http.fromJson(_json["http"]);
     }
@@ -3203,6 +3397,9 @@ class Service {
     }
     if (enums != null) {
       _json["enums"] = enums.map((value) => (value).toJson()).toList();
+    }
+    if (experimental != null) {
+      _json["experimental"] = (experimental).toJson();
     }
     if (http != null) {
       _json["http"] = (http).toJson();

@@ -51,27 +51,27 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1576() {
+buildUnnamed1341() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1576(core.List<core.String> o) {
+checkUnnamed1341(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1577() {
+buildUnnamed1342() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1577(core.List<core.String> o) {
+checkUnnamed1342(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -83,12 +83,12 @@ buildAttributes() {
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
     o.brand = "foo";
-    o.gtin = buildUnnamed1576();
+    o.gtin = buildUnnamed1341();
     o.mpn = "foo";
     o.productLine = "foo";
     o.productName = "foo";
     o.productPageUrl = "foo";
-    o.productType = buildUnnamed1577();
+    o.productType = buildUnnamed1342();
     o.title = "foo";
   }
   buildCounterAttributes--;
@@ -99,12 +99,12 @@ checkAttributes(api.Attributes o) {
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
     unittest.expect(o.brand, unittest.equals('foo'));
-    checkUnnamed1576(o.gtin);
+    checkUnnamed1341(o.gtin);
     unittest.expect(o.mpn, unittest.equals('foo'));
     unittest.expect(o.productLine, unittest.equals('foo'));
     unittest.expect(o.productName, unittest.equals('foo'));
     unittest.expect(o.productPageUrl, unittest.equals('foo'));
-    checkUnnamed1577(o.productType);
+    checkUnnamed1342(o.productType);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterAttributes--;
@@ -135,14 +135,14 @@ checkIssue(api.Issue o) {
   buildCounterIssue--;
 }
 
-buildUnnamed1578() {
+buildUnnamed1343() {
   var o = new core.List<api.Product>();
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
 }
 
-checkUnnamed1578(core.List<api.Product> o) {
+checkUnnamed1343(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProduct(o[0]);
   checkProduct(o[1]);
@@ -154,7 +154,7 @@ buildListProductsResponse() {
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
     o.nextPageToken = "foo";
-    o.products = buildUnnamed1578();
+    o.products = buildUnnamed1343();
   }
   buildCounterListProductsResponse--;
   return o;
@@ -164,32 +164,32 @@ checkListProductsResponse(api.ListProductsResponse o) {
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1578(o.products);
+    checkUnnamed1343(o.products);
   }
   buildCounterListProductsResponse--;
 }
 
-buildUnnamed1579() {
+buildUnnamed1344() {
   var o = new core.List<api.Issue>();
   o.add(buildIssue());
   o.add(buildIssue());
   return o;
 }
 
-checkUnnamed1579(core.List<api.Issue> o) {
+checkUnnamed1344(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssue(o[0]);
   checkIssue(o[1]);
 }
 
-buildUnnamed1580() {
+buildUnnamed1345() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1580(core.List<core.String> o) {
+checkUnnamed1345(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -202,8 +202,8 @@ buildProduct() {
   if (buildCounterProduct < 3) {
     o.contentLanguage = "foo";
     o.finalAttributes = buildAttributes();
-    o.issues = buildUnnamed1579();
-    o.manuallyDeletedAttributes = buildUnnamed1580();
+    o.issues = buildUnnamed1344();
+    o.manuallyDeletedAttributes = buildUnnamed1345();
     o.manuallyProvidedAttributes = buildAttributes();
     o.name = "foo";
     o.parent = "foo";
@@ -220,8 +220,8 @@ checkProduct(api.Product o) {
   if (buildCounterProduct < 3) {
     unittest.expect(o.contentLanguage, unittest.equals('foo'));
     checkAttributes(o.finalAttributes);
-    checkUnnamed1579(o.issues);
-    checkUnnamed1580(o.manuallyDeletedAttributes);
+    checkUnnamed1344(o.issues);
+    checkUnnamed1345(o.manuallyDeletedAttributes);
     checkAttributes(o.manuallyProvidedAttributes);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));

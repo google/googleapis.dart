@@ -288,8 +288,6 @@ class ProjectsJobsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - Optional. Specifies the subset of jobs to retrieve.
-   *
    * [pageToken] - Optional. A page token to request the next page of results.
    *
    * You get the token from the `next_page_token` field of the response from
@@ -302,6 +300,8 @@ class ProjectsJobsResourceApi {
    *
    * The default value is 20, and the maximum page size is 100.
    *
+   * [filter] - Optional. Specifies the subset of jobs to retrieve.
+   *
    * Completes with a [GoogleCloudMlV1beta1ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -310,7 +310,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1ListJobsResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleCloudMlV1beta1ListJobsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,14 +321,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -995,11 +995,11 @@ class ProjectsOperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - The standard list filter.
-   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [GoogleLongrunningListOperationsResponse].
    *
@@ -1009,7 +1009,7 @@ class ProjectsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1020,14 +1020,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
@@ -1119,6 +1119,33 @@ class GoogleApiHttpBody {
     }
     if (data != null) {
       _json["data"] = data;
+    }
+    return _json;
+  }
+}
+
+/** Options for manually scaling a model. */
+class GoogleCloudMlV1ManualScaling {
+  /**
+   * The number of nodes to allocate for this model. These nodes are always up,
+   * starting from the time the model is deployed, so the cost of operating
+   * this model will be proportional to nodes * number of hours since
+   * deployment.
+   */
+  core.int nodes;
+
+  GoogleCloudMlV1ManualScaling();
+
+  GoogleCloudMlV1ManualScaling.fromJson(core.Map _json) {
+    if (_json.containsKey("nodes")) {
+      nodes = _json["nodes"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nodes != null) {
+      _json["nodes"] = nodes;
     }
     return _json;
   }
@@ -1240,6 +1267,15 @@ class GoogleCloudMlV1Version {
   /** Output only. The time the version was last used for prediction. */
   core.String lastUseTime;
   /**
+   * Optional. Manually select the number of nodes to use for serving the
+   * model. If unset (i.e., by default), the number of nodes used to serve
+   * the model automatically scales with traffic. However, care should be
+   * taken to ramp up traffic according to the model's ability to scale. If
+   * your model needs to handle bursts of traffic beyond it's ability to
+   * scale, it is recommended you set this field appropriately.
+   */
+  GoogleCloudMlV1ManualScaling manualScaling;
+  /**
    * Required.The name specified for the version when it was created.
    *
    * The version name must be unique within the model it is created in.
@@ -1269,6 +1305,9 @@ class GoogleCloudMlV1Version {
     if (_json.containsKey("lastUseTime")) {
       lastUseTime = _json["lastUseTime"];
     }
+    if (_json.containsKey("manualScaling")) {
+      manualScaling = new GoogleCloudMlV1ManualScaling.fromJson(_json["manualScaling"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1293,6 +1332,9 @@ class GoogleCloudMlV1Version {
     }
     if (lastUseTime != null) {
       _json["lastUseTime"] = lastUseTime;
+    }
+    if (manualScaling != null) {
+      _json["manualScaling"] = (manualScaling).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1717,6 +1759,33 @@ class GoogleCloudMlV1beta1ListVersionsResponse {
     }
     if (versions != null) {
       _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Options for manually scaling a model. */
+class GoogleCloudMlV1beta1ManualScaling {
+  /**
+   * The number of nodes to allocate for this model. These nodes are always up,
+   * starting from the time the model is deployed, so the cost of operating
+   * this model will be proportional to nodes * number of hours since
+   * deployment.
+   */
+  core.int nodes;
+
+  GoogleCloudMlV1beta1ManualScaling();
+
+  GoogleCloudMlV1beta1ManualScaling.fromJson(core.Map _json) {
+    if (_json.containsKey("nodes")) {
+      nodes = _json["nodes"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nodes != null) {
+      _json["nodes"] = nodes;
     }
     return _json;
   }
@@ -2249,7 +2318,10 @@ class GoogleCloudMlV1beta1PredictionInput {
    * such as when the model is specified by uri.
    */
   core.String runtimeVersion;
-  /** Use this field if you want to specify a GCS path to the model to use. */
+  /**
+   * Use this field if you want to specify a Google Cloud Storage path for
+   * the model to use.
+   */
   core.String uri;
   /**
    * Use this field if you want to specify a version of the model to use. The
@@ -2394,11 +2466,10 @@ class GoogleCloudMlV1beta1TrainingInput {
   /** Optional. The set of Hyperparameters to tune. */
   GoogleCloudMlV1beta1HyperparameterSpec hyperparameters;
   /**
-   * Optional. A GCS path in which to store training outputs and other data
-   * needed for training. This path will be passed to your TensorFlow program as
-   * the 'job_dir' command-line arg. The benefit of specifying this field is
-   * that
-   * Cloud ML will validate the path for use in training.
+   * Optional. A Google Cloud Storage path in which to store training outputs
+   * and other data needed for training. This path is passed to your TensorFlow
+   * program as the 'job_dir' command-line argument. The benefit of specifying
+   * this field is that Cloud ML validates the path for use in training.
    */
   core.String jobDir;
   /**
@@ -2434,6 +2505,19 @@ class GoogleCloudMlV1beta1TrainingInput {
    *   <dd>
    *   A machine with roughly twice the number of cores and roughly double the
    *   memory of <code suppresswarning="true">complex_model_m</code>.
+   *   </dd>
+   *   <dt>standard_gpu</dt>
+   *   <dd>
+   * A machine equivalent to <code suppresswarning="true">standard</code> that
+   *   also includes a
+   *   <a href="ml/docs/how-tos/using-gpus">
+   *   GPU that you can use in your trainer</a>.
+   *   </dd>
+   *   <dt>complex_model_m_gpu</dt>
+   *   <dd>
+   *   A machine equivalent to
+   *   <code suppresswarning="true">coplex_model_m</code> that also includes
+   *   four GPUs.
    *   </dd>
    * </dl>
    *
@@ -2483,7 +2567,8 @@ class GoogleCloudMlV1beta1TrainingInput {
    * Cloud ML, and for experimenting with new models using small datasets.
    * - "STANDARD_1" : Many workers and a few parameter servers.
    * - "PREMIUM_1" : A large number of workers with many parameter servers.
-   * - "BASIC_GPU" : A single worker instance with a GPU.
+   * - "BASIC_GPU" : A single worker instance [with a
+   * GPU](ml/docs/how-tos/using-gpus).
    * - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
    * use your
    * own cluster specification. When you use this tier, set values to
@@ -2710,6 +2795,15 @@ class GoogleCloudMlV1beta1Version {
   /** Output only. The time the version was last used for prediction. */
   core.String lastUseTime;
   /**
+   * Optional. Manually select the number of nodes to use for serving the
+   * model. If unset (i.e., by default), the number of nodes used to serve
+   * the model automatically scales with traffic. However, care should be
+   * taken to ramp up traffic according to the model's ability to scale. If
+   * your model needs to handle bursts of traffic beyond it's ability to
+   * scale, it is recommended you set this field appropriately.
+   */
+  GoogleCloudMlV1beta1ManualScaling manualScaling;
+  /**
    * Required.The name specified for the version when it was created.
    *
    * The version name must be unique within the model it is created in.
@@ -2739,6 +2833,9 @@ class GoogleCloudMlV1beta1Version {
     if (_json.containsKey("lastUseTime")) {
       lastUseTime = _json["lastUseTime"];
     }
+    if (_json.containsKey("manualScaling")) {
+      manualScaling = new GoogleCloudMlV1beta1ManualScaling.fromJson(_json["manualScaling"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2763,6 +2860,9 @@ class GoogleCloudMlV1beta1Version {
     }
     if (lastUseTime != null) {
       _json["lastUseTime"] = lastUseTime;
+    }
+    if (manualScaling != null) {
+      _json["manualScaling"] = (manualScaling).toJson();
     }
     if (name != null) {
       _json["name"] = name;

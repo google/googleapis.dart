@@ -169,6 +169,59 @@ checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
+buildUnnamed2079() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2079(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterResellernotifyGetwatchdetailsResponse = 0;
+buildResellernotifyGetwatchdetailsResponse() {
+  var o = new api.ResellernotifyGetwatchdetailsResponse();
+  buildCounterResellernotifyGetwatchdetailsResponse++;
+  if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
+    o.serviceAccountEmailAddresses = buildUnnamed2079();
+    o.topicName = "foo";
+  }
+  buildCounterResellernotifyGetwatchdetailsResponse--;
+  return o;
+}
+
+checkResellernotifyGetwatchdetailsResponse(api.ResellernotifyGetwatchdetailsResponse o) {
+  buildCounterResellernotifyGetwatchdetailsResponse++;
+  if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
+    checkUnnamed2079(o.serviceAccountEmailAddresses);
+    unittest.expect(o.topicName, unittest.equals('foo'));
+  }
+  buildCounterResellernotifyGetwatchdetailsResponse--;
+}
+
+core.int buildCounterResellernotifyResource = 0;
+buildResellernotifyResource() {
+  var o = new api.ResellernotifyResource();
+  buildCounterResellernotifyResource++;
+  if (buildCounterResellernotifyResource < 3) {
+    o.topicName = "foo";
+  }
+  buildCounterResellernotifyResource--;
+  return o;
+}
+
+checkResellernotifyResource(api.ResellernotifyResource o) {
+  buildCounterResellernotifyResource++;
+  if (buildCounterResellernotifyResource < 3) {
+    unittest.expect(o.topicName, unittest.equals('foo'));
+  }
+  buildCounterResellernotifyResource--;
+}
+
 core.int buildCounterSeats = 0;
 buildSeats() {
   var o = new api.Seats();
@@ -238,14 +291,14 @@ checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-buildUnnamed2256() {
+buildUnnamed2080() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2256(core.List<core.String> o) {
+checkUnnamed2080(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -312,7 +365,7 @@ buildSubscription() {
     o.skuId = "foo";
     o.status = "foo";
     o.subscriptionId = "foo";
-    o.suspensionReasons = buildUnnamed2256();
+    o.suspensionReasons = buildUnnamed2080();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -337,21 +390,21 @@ checkSubscription(api.Subscription o) {
     unittest.expect(o.skuId, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
-    checkUnnamed2256(o.suspensionReasons);
+    checkUnnamed2080(o.suspensionReasons);
     checkSubscriptionTransferInfo(o.transferInfo);
     checkSubscriptionTrialSettings(o.trialSettings);
   }
   buildCounterSubscription--;
 }
 
-buildUnnamed2257() {
+buildUnnamed2081() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed2257(core.List<api.Subscription> o) {
+checkUnnamed2081(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -364,7 +417,7 @@ buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.subscriptions = buildUnnamed2257();
+    o.subscriptions = buildUnnamed2081();
   }
   buildCounterSubscriptions--;
   return o;
@@ -375,7 +428,7 @@ checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2257(o.subscriptions);
+    checkUnnamed2081(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }
@@ -414,6 +467,24 @@ main() {
       var o = buildRenewalSettings();
       var od = new api.RenewalSettings.fromJson(o.toJson());
       checkRenewalSettings(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ResellernotifyGetwatchdetailsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildResellernotifyGetwatchdetailsResponse();
+      var od = new api.ResellernotifyGetwatchdetailsResponse.fromJson(o.toJson());
+      checkResellernotifyGetwatchdetailsResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ResellernotifyResource", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildResellernotifyResource();
+      var od = new api.ResellernotifyResource.fromJson(o.toJson());
+      checkResellernotifyResource(od);
     });
   });
 
@@ -685,6 +756,149 @@ main() {
       }), true);
       res.update(arg_request, arg_customerId).then(unittest.expectAsync(((api.Customer response) {
         checkCustomer(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-ResellernotifyResourceApi", () {
+    unittest.test("method--getwatchdetails", () {
+
+      var mock = new HttpServerMock();
+      api.ResellernotifyResourceApi res = new api.ResellerApi(mock).resellernotify;
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("apps/reseller/v1/"));
+        pathOffset += 17;
+        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("resellernotify/getwatchdetails"));
+        pathOffset += 30;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildResellernotifyGetwatchdetailsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getwatchdetails().then(unittest.expectAsync(((api.ResellernotifyGetwatchdetailsResponse response) {
+        checkResellernotifyGetwatchdetailsResponse(response);
+      })));
+    });
+
+    unittest.test("method--register", () {
+
+      var mock = new HttpServerMock();
+      api.ResellernotifyResourceApi res = new api.ResellerApi(mock).resellernotify;
+      var arg_serviceAccountEmailAddress = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("apps/reseller/v1/"));
+        pathOffset += 17;
+        unittest.expect(path.substring(pathOffset, pathOffset + 23), unittest.equals("resellernotify/register"));
+        pathOffset += 23;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["serviceAccountEmailAddress"].first, unittest.equals(arg_serviceAccountEmailAddress));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildResellernotifyResource());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.register(serviceAccountEmailAddress: arg_serviceAccountEmailAddress).then(unittest.expectAsync(((api.ResellernotifyResource response) {
+        checkResellernotifyResource(response);
+      })));
+    });
+
+    unittest.test("method--unregister", () {
+
+      var mock = new HttpServerMock();
+      api.ResellernotifyResourceApi res = new api.ResellerApi(mock).resellernotify;
+      var arg_serviceAccountEmailAddress = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("apps/reseller/v1/"));
+        pathOffset += 17;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("resellernotify/unregister"));
+        pathOffset += 25;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["serviceAccountEmailAddress"].first, unittest.equals(arg_serviceAccountEmailAddress));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildResellernotifyResource());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.unregister(serviceAccountEmailAddress: arg_serviceAccountEmailAddress).then(unittest.expectAsync(((api.ResellernotifyResource response) {
+        checkResellernotifyResource(response);
       })));
     });
 

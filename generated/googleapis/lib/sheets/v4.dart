@@ -311,11 +311,6 @@ class SpreadsheetsValuesResourceApi {
    * [range] - The A1 notation of a range to search for a logical table of data.
    * Values will be appended after the last row of the table.
    *
-   * [includeValuesInResponse] - Determines if the update response should
-   * include the values
-   * of the cells that were appended. By default, responses
-   * do not include the updated values.
-   *
    * [responseValueRenderOption] - Determines how values in the response should
    * be rendered.
    * The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -344,6 +339,11 @@ class SpreadsheetsValuesResourceApi {
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
    * - "FORMATTED_STRING" : A FORMATTED_STRING.
    *
+   * [includeValuesInResponse] - Determines if the update response should
+   * include the values
+   * of the cells that were appended. By default, responses
+   * do not include the updated values.
+   *
    * Completes with a [AppendValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -352,7 +352,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.bool includeValuesInResponse, core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption, core.String responseDateTimeRenderOption}) {
+  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -369,9 +369,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -383,6 +380,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (responseDateTimeRenderOption != null) {
       _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range') + ':append';
@@ -452,6 +452,20 @@ class SpreadsheetsValuesResourceApi {
    *
    * [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
    *
+   * [ranges] - The A1 notation of the values to retrieve.
+   *
+   * [majorDimension] - The major dimension that results should use.
+   *
+   * For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+   * then requesting `range=A1:B2,majorDimension=ROWS` will return
+   * `[[1,2],[3,4]]`,
+   * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+   * `[[1,3],[2,4]]`.
+   * Possible string values are:
+   * - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+   * - "ROWS" : A ROWS.
+   * - "COLUMNS" : A COLUMNS.
+   *
    * [valueRenderOption] - How values should be represented in the output.
    * The default render option is ValueRenderOption.FORMATTED_VALUE.
    * Possible string values are:
@@ -468,20 +482,6 @@ class SpreadsheetsValuesResourceApi {
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
    * - "FORMATTED_STRING" : A FORMATTED_STRING.
    *
-   * [ranges] - The A1 notation of the values to retrieve.
-   *
-   * [majorDimension] - The major dimension that results should use.
-   *
-   * For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-   * then requesting `range=A1:B2,majorDimension=ROWS` will return
-   * `[[1,2],[3,4]]`,
-   * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-   * `[[1,3],[2,4]]`.
-   * Possible string values are:
-   * - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-   * - "ROWS" : A ROWS.
-   * - "COLUMNS" : A COLUMNS.
-   *
    * Completes with a [BatchGetValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -490,7 +490,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId, {core.String valueRenderOption, core.String dateTimeRenderOption, core.List<core.String> ranges, core.String majorDimension}) {
+  async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId, {core.List<core.String> ranges, core.String majorDimension, core.String valueRenderOption, core.String dateTimeRenderOption}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -501,17 +501,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
-    }
-    if (dateTimeRenderOption != null) {
-      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
-    }
     if (ranges != null) {
       _queryParams["ranges"] = ranges;
     }
     if (majorDimension != null) {
       _queryParams["majorDimension"] = [majorDimension];
+    }
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
+    }
+    if (dateTimeRenderOption != null) {
+      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values:batchGet';
@@ -720,6 +720,14 @@ class SpreadsheetsValuesResourceApi {
    *
    * [range] - The A1 notation of the values to update.
    *
+   * [responseValueRenderOption] - Determines how values in the response should
+   * be rendered.
+   * The default render option is ValueRenderOption.FORMATTED_VALUE.
+   * Possible string values are:
+   * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+   * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+   * - "FORMULA" : A FORMULA.
+   *
    * [valueInputOption] - How the input data should be interpreted.
    * Possible string values are:
    * - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
@@ -743,14 +751,6 @@ class SpreadsheetsValuesResourceApi {
    * the response will include all values in the requested range (excluding
    * trailing empty rows and columns).
    *
-   * [responseValueRenderOption] - Determines how values in the response should
-   * be rendered.
-   * The default render option is ValueRenderOption.FORMATTED_VALUE.
-   * Possible string values are:
-   * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-   * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-   * - "FORMULA" : A FORMULA.
-   *
    * Completes with a [UpdateValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -759,7 +759,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<UpdateValuesResponse> update(ValueRange request, core.String spreadsheetId, core.String range, {core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse, core.String responseValueRenderOption}) {
+  async.Future<UpdateValuesResponse> update(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseValueRenderOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -776,6 +776,9 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
     }
@@ -784,9 +787,6 @@ class SpreadsheetsValuesResourceApi {
     }
     if (includeValuesInResponse != null) {
       _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range');

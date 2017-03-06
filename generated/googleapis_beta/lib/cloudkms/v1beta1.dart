@@ -98,11 +98,11 @@ class ProjectsLocationsResourceApi {
    * [name] - The resource that owns the locations collection, if applicable.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - The standard list filter.
-   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -112,7 +112,7 @@ class ProjectsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListLocationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,14 +123,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
@@ -402,6 +402,10 @@ class ProjectsLocationsKeyRingsResourceApi {
    * Returns permissions that a caller has on the specified resource.
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
+   *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
    *
    * [request] - The metadata request object.
    *
@@ -863,6 +867,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -1292,6 +1300,50 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
  * It consists of which permission types are logged, and what identities, if
  * any, are exempted from logging.
  * An AuditConifg must have one or more AuditLogConfigs.
+ *
+ * If there are AuditConfigs for both `allServices` and a specific service,
+ * the union of the two AuditConfigs is used for that service: the log_types
+ * specified in each AuditConfig are enabled, and the exempted_members in each
+ * AuditConfig are exempted.
+ * Example Policy with multiple AuditConfigs:
+ * {
+ *   "audit_configs": [
+ *     {
+ *       "service": "allServices"
+ *       "audit_log_configs": [
+ *         {
+ *           "log_type": "DATA_READ",
+ *           "exempted_members": [
+ *             "user:foo@gmail.com"
+ *           ]
+ *         },
+ *         {
+ *           "log_type": "DATA_WRITE",
+ *         },
+ *         {
+ *           "log_type": "ADMIN_READ",
+ *         }
+ *       ]
+ *     },
+ *     {
+ *       "service": "fooservice@googleapis.com"
+ *       "audit_log_configs": [
+ *         {
+ *           "log_type": "DATA_READ",
+ *         },
+ *         {
+ *           "log_type": "DATA_WRITE",
+ *           "exempted_members": [
+ *             "user:bar@gmail.com"
+ *           ]
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * }
+ * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+ * logging. It also exempts foo@gmail.com from DATA_READ logging, and
+ * bar@gmail.com from DATA_WRITE logging.
  */
 class AuditConfig {
   /**
@@ -1299,12 +1351,6 @@ class AuditConfig {
    * Next ID: 4
    */
   core.List<AuditLogConfig> auditLogConfigs;
-  /**
-   * Specifies the identities that are exempted from "data access" audit
-   * logging for the `service` specified above.
-   * Follows the same format of Binding.members.
-   * This field is deprecated in favor of per-permission-type exemptions.
-   */
   core.List<core.String> exemptedMembers;
   /**
    * Specifies a service that will be enabled for audit logging.
@@ -1483,6 +1529,15 @@ class Condition {
    * - "ATTRIBUTION" : The principal (even if an authority selector is present),
    * which
    * must only be used for attribution, not authorization.
+   * - "APPROVER" : An approver (distinct from the requester) that has
+   * authorized this
+   * request.
+   * When used with IN, the condition indicates that one of the approvers
+   * associated with the request matches the specified principal, or is a
+   * member of the specified group. Approvers can only grant additional
+   * access, and are thus only used in a strictly positive context
+   * (e.g. ALLOW/IN or DENY/NOT_IN).
+   * See: go/rpc-security-policy-dynamicauth.
    */
   core.String iam;
   /**

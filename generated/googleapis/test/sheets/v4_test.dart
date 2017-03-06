@@ -5293,11 +5293,11 @@ main() {
       var arg_request = buildValueRange();
       var arg_spreadsheetId = "foo";
       var arg_range = "foo";
-      var arg_includeValuesInResponse = true;
       var arg_responseValueRenderOption = "foo";
       var arg_insertDataOption = "foo";
       var arg_valueInputOption = "foo";
       var arg_responseDateTimeRenderOption = "foo";
+      var arg_includeValuesInResponse = true;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var obj = new api.ValueRange.fromJson(json);
         checkValueRange(obj);
@@ -5341,11 +5341,11 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["includeValuesInResponse"].first, unittest.equals("$arg_includeValuesInResponse"));
         unittest.expect(queryMap["responseValueRenderOption"].first, unittest.equals(arg_responseValueRenderOption));
         unittest.expect(queryMap["insertDataOption"].first, unittest.equals(arg_insertDataOption));
         unittest.expect(queryMap["valueInputOption"].first, unittest.equals(arg_valueInputOption));
         unittest.expect(queryMap["responseDateTimeRenderOption"].first, unittest.equals(arg_responseDateTimeRenderOption));
+        unittest.expect(queryMap["includeValuesInResponse"].first, unittest.equals("$arg_includeValuesInResponse"));
 
 
         var h = {
@@ -5354,7 +5354,7 @@ main() {
         var resp = convert.JSON.encode(buildAppendValuesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.append(arg_request, arg_spreadsheetId, arg_range, includeValuesInResponse: arg_includeValuesInResponse, responseValueRenderOption: arg_responseValueRenderOption, insertDataOption: arg_insertDataOption, valueInputOption: arg_valueInputOption, responseDateTimeRenderOption: arg_responseDateTimeRenderOption).then(unittest.expectAsync(((api.AppendValuesResponse response) {
+      res.append(arg_request, arg_spreadsheetId, arg_range, responseValueRenderOption: arg_responseValueRenderOption, insertDataOption: arg_insertDataOption, valueInputOption: arg_valueInputOption, responseDateTimeRenderOption: arg_responseDateTimeRenderOption, includeValuesInResponse: arg_includeValuesInResponse).then(unittest.expectAsync(((api.AppendValuesResponse response) {
         checkAppendValuesResponse(response);
       })));
     });
@@ -5419,10 +5419,10 @@ main() {
       var mock = new HttpServerMock();
       api.SpreadsheetsValuesResourceApi res = new api.SheetsApi(mock).spreadsheets.values;
       var arg_spreadsheetId = "foo";
-      var arg_valueRenderOption = "foo";
-      var arg_dateTimeRenderOption = "foo";
       var arg_ranges = buildUnnamed407();
       var arg_majorDimension = "foo";
+      var arg_valueRenderOption = "foo";
+      var arg_dateTimeRenderOption = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5456,10 +5456,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["valueRenderOption"].first, unittest.equals(arg_valueRenderOption));
-        unittest.expect(queryMap["dateTimeRenderOption"].first, unittest.equals(arg_dateTimeRenderOption));
         unittest.expect(queryMap["ranges"], unittest.equals(arg_ranges));
         unittest.expect(queryMap["majorDimension"].first, unittest.equals(arg_majorDimension));
+        unittest.expect(queryMap["valueRenderOption"].first, unittest.equals(arg_valueRenderOption));
+        unittest.expect(queryMap["dateTimeRenderOption"].first, unittest.equals(arg_dateTimeRenderOption));
 
 
         var h = {
@@ -5468,7 +5468,7 @@ main() {
         var resp = convert.JSON.encode(buildBatchGetValuesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.batchGet(arg_spreadsheetId, valueRenderOption: arg_valueRenderOption, dateTimeRenderOption: arg_dateTimeRenderOption, ranges: arg_ranges, majorDimension: arg_majorDimension).then(unittest.expectAsync(((api.BatchGetValuesResponse response) {
+      res.batchGet(arg_spreadsheetId, ranges: arg_ranges, majorDimension: arg_majorDimension, valueRenderOption: arg_valueRenderOption, dateTimeRenderOption: arg_dateTimeRenderOption).then(unittest.expectAsync(((api.BatchGetValuesResponse response) {
         checkBatchGetValuesResponse(response);
       })));
     });
@@ -5659,10 +5659,10 @@ main() {
       var arg_request = buildValueRange();
       var arg_spreadsheetId = "foo";
       var arg_range = "foo";
+      var arg_responseValueRenderOption = "foo";
       var arg_valueInputOption = "foo";
       var arg_responseDateTimeRenderOption = "foo";
       var arg_includeValuesInResponse = true;
-      var arg_responseValueRenderOption = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var obj = new api.ValueRange.fromJson(json);
         checkValueRange(obj);
@@ -5702,10 +5702,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["responseValueRenderOption"].first, unittest.equals(arg_responseValueRenderOption));
         unittest.expect(queryMap["valueInputOption"].first, unittest.equals(arg_valueInputOption));
         unittest.expect(queryMap["responseDateTimeRenderOption"].first, unittest.equals(arg_responseDateTimeRenderOption));
         unittest.expect(queryMap["includeValuesInResponse"].first, unittest.equals("$arg_includeValuesInResponse"));
-        unittest.expect(queryMap["responseValueRenderOption"].first, unittest.equals(arg_responseValueRenderOption));
 
 
         var h = {
@@ -5714,7 +5714,7 @@ main() {
         var resp = convert.JSON.encode(buildUpdateValuesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_spreadsheetId, arg_range, valueInputOption: arg_valueInputOption, responseDateTimeRenderOption: arg_responseDateTimeRenderOption, includeValuesInResponse: arg_includeValuesInResponse, responseValueRenderOption: arg_responseValueRenderOption).then(unittest.expectAsync(((api.UpdateValuesResponse response) {
+      res.update(arg_request, arg_spreadsheetId, arg_range, responseValueRenderOption: arg_responseValueRenderOption, valueInputOption: arg_valueInputOption, responseDateTimeRenderOption: arg_responseDateTimeRenderOption, includeValuesInResponse: arg_includeValuesInResponse).then(unittest.expectAsync(((api.UpdateValuesResponse response) {
         checkUpdateValuesResponse(response);
       })));
     });

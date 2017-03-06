@@ -384,8 +384,8 @@ main() {
       var arg_orderBy = "foo";
       var arg_filter = "foo";
       var arg_endTime = "foo";
-      var arg_startTime = "foo";
       var arg_pageToken = "foo";
+      var arg_startTime = "foo";
       var arg_pageSize = 42;
       var arg_view = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -424,8 +424,8 @@ main() {
         unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["endTime"].first, unittest.equals(arg_endTime));
-        unittest.expect(queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
 
@@ -436,7 +436,7 @@ main() {
         var resp = convert.JSON.encode(buildListTracesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_projectId, orderBy: arg_orderBy, filter: arg_filter, endTime: arg_endTime, startTime: arg_startTime, pageToken: arg_pageToken, pageSize: arg_pageSize, view: arg_view).then(unittest.expectAsync(((api.ListTracesResponse response) {
+      res.list(arg_projectId, orderBy: arg_orderBy, filter: arg_filter, endTime: arg_endTime, pageToken: arg_pageToken, startTime: arg_startTime, pageSize: arg_pageSize, view: arg_view).then(unittest.expectAsync(((api.ListTracesResponse response) {
         checkListTracesResponse(response);
       })));
     });

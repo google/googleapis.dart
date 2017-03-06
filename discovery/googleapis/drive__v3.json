@@ -35,7 +35,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/DTDvxbIAPnA3cI4luILp1rGGI24\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/_OPinYCRtT0LlK4YpUqsg4iEUmE\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -120,6 +120,19 @@
                     "description": "Gets the starting pageToken for listing future changes.",
                     "httpMethod": "GET",
                     "id": "drive.changes.getStartPageToken",
+                    "parameters": {
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "teamDriveId": {
+                            "description": "The ID of the Team Drive for which the starting pageToken for listing future changes from that Team Drive will be returned.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
                     "path": "changes/startPageToken",
                     "response": {
                         "$ref": "StartPageToken"
@@ -135,16 +148,28 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists changes for a user.",
+                    "description": "Lists the changes for a user or Team Drive.",
                     "httpMethod": "GET",
                     "id": "drive.changes.list",
                     "parameterOrder": [
                         "pageToken"
                     ],
                     "parameters": {
+                        "includeCorpusRemovals": {
+                            "default": "false",
+                            "description": "Whether changes should include the file resource if the file is still accessible by the user at the time of the request, even when a file was removed from the list of changes and there will be no further change entries for this file.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "includeRemoved": {
                             "default": "true",
-                            "description": "Whether to include changes indicating that items have left the view of the changes list, for example by deletion or lost access.",
+                            "description": "Whether to include changes indicating that items have been removed from the list of changes, for example by deletion or loss of access.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "includeTeamDriveItems": {
+                            "default": "false",
+                            "description": "Whether Team Drive files or changes should be included in results.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -172,6 +197,17 @@
                         "spaces": {
                             "default": "drive",
                             "description": "A comma-separated list of spaces to query within the user corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "teamDriveId": {
+                            "description": "The Team Drive from which changes will be returned. If specified the change IDs will be reflective of the Team Drive; use the combined Team Drive ID and change ID as an identifier.",
                             "location": "query",
                             "type": "string"
                         }
@@ -199,9 +235,21 @@
                         "pageToken"
                     ],
                     "parameters": {
+                        "includeCorpusRemovals": {
+                            "default": "false",
+                            "description": "Whether changes should include the file resource if the file is still accessible by the user at the time of the request, even when a file was removed from the list of changes and there will be no further change entries for this file.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "includeRemoved": {
                             "default": "true",
-                            "description": "Whether to include changes indicating that items have left the view of the changes list, for example by deletion or lost access.",
+                            "description": "Whether to include changes indicating that items have been removed from the list of changes, for example by deletion or loss of access.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "includeTeamDriveItems": {
+                            "default": "false",
+                            "description": "Whether Team Drive files or changes should be included in results.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -229,6 +277,17 @@
                         "spaces": {
                             "default": "drive",
                             "description": "A comma-separated list of spaces to query within the user corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "teamDriveId": {
+                            "description": "The Team Drive from which changes will be returned. If specified the change IDs will be reflective of the Team Drive; use the combined Team Drive ID and change ID as an identifier.",
                             "location": "query",
                             "type": "string"
                         }
@@ -490,6 +549,12 @@
                             "description": "A language hint for OCR processing during image import (ISO 639-1 code).",
                             "location": "query",
                             "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}/copy",
@@ -544,6 +609,12 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "useContentAsIndexableText": {
                             "default": "false",
                             "description": "Whether to use the uploaded content as indexable text.",
@@ -567,7 +638,7 @@
                     "supportsSubscription": true
                 },
                 "delete": {
-                    "description": "Permanently deletes a file owned by the user without moving it to the trash. If the target is a folder, all descendants owned by the user are also deleted.",
+                    "description": "Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a Team Drive the user must be an organizer on the parent. If the target is a folder, all descendants owned by the user are also deleted.",
                     "httpMethod": "DELETE",
                     "id": "drive.files.delete",
                     "parameterOrder": [
@@ -579,6 +650,12 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}",
@@ -677,6 +754,12 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}",
@@ -700,9 +783,13 @@
                     "httpMethod": "GET",
                     "id": "drive.files.list",
                     "parameters": {
+                        "corpora": {
+                            "description": "Comma-separated list of bodies of items (files/documents) to which the query applies. Supported bodies are 'user', 'domain', 'teamDrive' and 'allTeamDrives'. 'allTeamDrives' must be combined with 'user'; all other values must be used in isolation. Prefer 'user' or 'teamDrive' to 'allTeamDrives' for efficiency.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "corpus": {
-                            "default": "user",
-                            "description": "The source of files to list.",
+                            "description": "The source of files to list. Deprecated: use 'corpora' instead.",
                             "enum": [
                                 "domain",
                                 "user"
@@ -713,6 +800,12 @@
                             ],
                             "location": "query",
                             "type": "string"
+                        },
+                        "includeTeamDriveItems": {
+                            "default": "false",
+                            "description": "Whether Team Drive items should be included in results.",
+                            "location": "query",
+                            "type": "boolean"
                         },
                         "orderBy": {
                             "description": "A comma-separated list of sort keys. Valid keys are 'createdTime', 'folder', 'modifiedByMeTime', 'modifiedTime', 'name', 'quotaBytesUsed', 'recency', 'sharedWithMeTime', 'starred', and 'viewedByMeTime'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedTime desc,name. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored.",
@@ -741,6 +834,17 @@
                         "spaces": {
                             "default": "drive",
                             "description": "A comma-separated list of spaces to query within the corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "teamDriveId": {
+                            "description": "ID of Team Drive to search.",
                             "location": "query",
                             "type": "string"
                         }
@@ -810,6 +914,12 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "useContentAsIndexableText": {
                             "default": "false",
                             "description": "Whether to use the uploaded content as indexable text.",
@@ -852,6 +962,12 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}/watch",
@@ -879,7 +995,7 @@
         "permissions": {
             "methods": {
                 "create": {
-                    "description": "Creates a permission for a file.",
+                    "description": "Creates a permission for a file or Team Drive.",
                     "httpMethod": "POST",
                     "id": "drive.permissions.create",
                     "parameterOrder": [
@@ -892,13 +1008,19 @@
                             "type": "string"
                         },
                         "fileId": {
-                            "description": "The ID of the file.",
+                            "description": "The ID of the file or Team Drive.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "sendNotificationEmail": {
                             "description": "Whether to send a notification email when sharing to users or groups. This defaults to true for users and groups, and is not allowed for other requests. It must not be disabled for ownership transfers.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -931,7 +1053,7 @@
                     ],
                     "parameters": {
                         "fileId": {
-                            "description": "The ID of the file.",
+                            "description": "The ID of the file or Team Drive.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -941,6 +1063,12 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}/permissions/{permissionId}",
@@ -969,6 +1097,12 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}/permissions/{permissionId}",
@@ -985,7 +1119,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists a file's permissions.",
+                    "description": "Lists a file's or Team Drive's permissions.",
                     "httpMethod": "GET",
                     "id": "drive.permissions.list",
                     "parameterOrder": [
@@ -993,10 +1127,29 @@
                     ],
                     "parameters": {
                         "fileId": {
-                            "description": "The ID of the file.",
+                            "description": "The ID of the file or Team Drive.",
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The maximum number of permissions to return per page. When not set for files in a Team Drive, at most 100 results will be returned. When not set for files that are not in a Team Drive, the entire list will be returned.",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "100",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}/permissions",
@@ -1022,7 +1175,7 @@
                     ],
                     "parameters": {
                         "fileId": {
-                            "description": "The ID of the file.",
+                            "description": "The ID of the file or Team Drive.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1036,6 +1189,12 @@
                         "removeExpiration": {
                             "default": "false",
                             "description": "Whether to remove the expiration date.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "supportsTeamDrives": {
+                            "default": "false",
+                            "description": "Whether the requesting application supports Team Drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1424,9 +1583,138 @@
                     ]
                 }
             }
+        },
+        "teamdrives": {
+            "methods": {
+                "create": {
+                    "description": "Creates a new Team Drive.",
+                    "httpMethod": "POST",
+                    "id": "drive.teamdrives.create",
+                    "parameterOrder": [
+                        "requestId"
+                    ],
+                    "parameters": {
+                        "requestId": {
+                            "description": "An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409 error will be returned.",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "teamdrives",
+                    "request": {
+                        "$ref": "TeamDrive"
+                    },
+                    "response": {
+                        "$ref": "TeamDrive"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive"
+                    ]
+                },
+                "delete": {
+                    "description": "Permanently deletes a Team Drive for which the user is an organizer. The Team Drive cannot contain any untrashed items.",
+                    "httpMethod": "DELETE",
+                    "id": "drive.teamdrives.delete",
+                    "parameterOrder": [
+                        "teamDriveId"
+                    ],
+                    "parameters": {
+                        "teamDriveId": {
+                            "description": "The ID of the Team Drive",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "teamdrives/{teamDriveId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive"
+                    ]
+                },
+                "get": {
+                    "description": "Gets a Team Drive's metadata by ID.",
+                    "httpMethod": "GET",
+                    "id": "drive.teamdrives.get",
+                    "parameterOrder": [
+                        "teamDriveId"
+                    ],
+                    "parameters": {
+                        "teamDriveId": {
+                            "description": "The ID of the Team Drive",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "teamdrives/{teamDriveId}",
+                    "response": {
+                        "$ref": "TeamDrive"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.readonly"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the user's Team Drives.",
+                    "httpMethod": "GET",
+                    "id": "drive.teamdrives.list",
+                    "parameters": {
+                        "pageSize": {
+                            "default": "10",
+                            "description": "Maximum number of Team Drives to return.",
+                            "format": "int32",
+                            "location": "query",
+                            "maximum": "100",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Page token for Team Drives.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "teamdrives",
+                    "response": {
+                        "$ref": "TeamDriveList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.readonly"
+                    ]
+                },
+                "update": {
+                    "description": "Updates a Team Drive's metadata",
+                    "httpMethod": "PATCH",
+                    "id": "drive.teamdrives.update",
+                    "parameterOrder": [
+                        "teamDriveId"
+                    ],
+                    "parameters": {
+                        "teamDriveId": {
+                            "description": "The ID of the Team Drive",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "teamdrives/{teamDriveId}",
+                    "request": {
+                        "$ref": "TeamDrive"
+                    },
+                    "response": {
+                        "$ref": "TeamDrive"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20170207",
+    "revision": "20170228",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -1516,12 +1804,12 @@
             "type": "object"
         },
         "Change": {
-            "description": "A change to a file.",
+            "description": "A change to a file or Team Drive.",
             "id": "Change",
             "properties": {
                 "file": {
                     "$ref": "File",
-                    "description": "The updated state of the file. Present if the file has not been removed."
+                    "description": "The updated state of the file. Present if the type is file and the file has not been removed from this list of changes."
                 },
                 "fileId": {
                     "description": "The ID of the file which has changed.",
@@ -1533,12 +1821,24 @@
                     "type": "string"
                 },
                 "removed": {
-                    "description": "Whether the file has been removed from the view of the changes list, for example by deletion or lost access.",
+                    "description": "Whether the file or Team Drive has been removed from this list of changes, for example by deletion or loss of access.",
                     "type": "boolean"
+                },
+                "teamDrive": {
+                    "$ref": "TeamDrive",
+                    "description": "The updated state of the Team Drive. Present if the type is teamDrive, the user is still a member of the Team Drive, and the Team Drive has not been removed."
+                },
+                "teamDriveId": {
+                    "description": "The ID of the Team Drive associated with this change.",
+                    "type": "string"
                 },
                 "time": {
                     "description": "The time of this change (RFC 3339 date-time).",
                     "format": "date-time",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the change. Possible values are file and teamDrive.",
                     "type": "string"
                 }
             },
@@ -1736,26 +2036,70 @@
                     "type": "object"
                 },
                 "capabilities": {
-                    "description": "Capabilities the current user has on the file.",
+                    "description": "Capabilities the current user has on the file. Each capability corresponds to a fine-grained action that a user may take.",
                     "properties": {
+                        "canAddChildren": {
+                            "description": "Whether the user can add children to this folder. This is always false when the item is not a folder.",
+                            "type": "boolean"
+                        },
                         "canComment": {
                             "description": "Whether the user can comment on the file.",
                             "type": "boolean"
                         },
                         "canCopy": {
-                            "description": "Whether the user can copy the file.",
+                            "description": "Whether the user can copy the file. For a Team Drive item, whether non-folder descendants of this item, or this item itself if it is not a folder, can be copied.",
+                            "type": "boolean"
+                        },
+                        "canDelete": {
+                            "description": "Whether the file can be deleted by the user.",
+                            "type": "boolean"
+                        },
+                        "canDownload": {
+                            "description": "Whether the file can be downloaded by the user.",
                             "type": "boolean"
                         },
                         "canEdit": {
                             "description": "Whether the user can edit the file's content.",
                             "type": "boolean"
                         },
+                        "canListChildren": {
+                            "description": "Whether the user can list the children of this folder. This is always false when the item is not a folder.",
+                            "type": "boolean"
+                        },
+                        "canMoveItemIntoTeamDrive": {
+                            "description": "Whether the current user can move this item into a Team Drive. If the item is in a Team Drive, this field is equivalent to canMoveTeamDriveItem.",
+                            "type": "boolean"
+                        },
+                        "canMoveTeamDriveItem": {
+                            "description": "Whether the user can move this Team Drive item by changing its parent. Note that a request to change the parent for this item may still fail depending on the new parent that is being added. Only populated for Team Drive files.",
+                            "type": "boolean"
+                        },
                         "canReadRevisions": {
-                            "description": "Whether the current user has read access to the Revisions resource of the file.",
+                            "description": "Whether the user has read access to the Revisions resource of the file. For a Team Drive item, whether revisions of non-folder descendants of this item, or this item itself if it is not a folder, can be read.",
+                            "type": "boolean"
+                        },
+                        "canReadTeamDrive": {
+                            "description": "Whether the user has read access to the Team Drive to which this file belongs. Only populated for Team Drive files.",
+                            "type": "boolean"
+                        },
+                        "canRemoveChildren": {
+                            "description": "Whether the user can remove children from this folder. This is always false when the item is not a folder.",
+                            "type": "boolean"
+                        },
+                        "canRename": {
+                            "description": "Whether the file can be renamed by the user.",
                             "type": "boolean"
                         },
                         "canShare": {
                             "description": "Whether the user can modify the file's permissions and sharing settings.",
+                            "type": "boolean"
+                        },
+                        "canTrash": {
+                            "description": "Whether the file can be trashed by the user.",
+                            "type": "boolean"
+                        },
+                        "canUntrash": {
+                            "description": "Whether the file can be restored from the trash by the current user.",
                             "type": "boolean"
                         }
                     },
@@ -1810,6 +2154,10 @@
                 "fullFileExtension": {
                     "description": "The full file extension extracted from the name field. May contain multiple concatenated extensions, such as \"tar.gz\". This is only available for files with binary content in Drive.\nThis is automatically updated when the name field changes, however it is not cleared if the new name does not contain a valid extension.",
                     "type": "string"
+                },
+                "hasAugmentedPermissions": {
+                    "description": "Whether any users are granted file access directly on this file. This field is only populated for Team Drive files.",
+                    "type": "boolean"
                 },
                 "hasThumbnail": {
                     "description": "Whether this file has a thumbnail.",
@@ -1988,11 +2336,11 @@
                     "type": "string"
                 },
                 "ownedByMe": {
-                    "description": "Whether the user owns the file.",
+                    "description": "Whether the user owns the file. Not populated for Team Drive files.",
                     "type": "boolean"
                 },
                 "owners": {
-                    "description": "The owners of the file. Currently, only certain legacy files may have more than one owner.",
+                    "description": "The owners of the file. Currently, only certain legacy files may have more than one owner. Not populated for Team Drive files.",
                     "items": {
                         "$ref": "User"
                     },
@@ -2006,7 +2354,7 @@
                     "type": "array"
                 },
                 "permissions": {
-                    "description": "The full list of permissions for the file. This is only available if the requesting user can share the file.",
+                    "description": "The full list of permissions for the file. This is only available if the requesting user can share the file. Not populated for Team Drive files.",
                     "items": {
                         "$ref": "Permission"
                     },
@@ -2025,7 +2373,7 @@
                     "type": "string"
                 },
                 "shared": {
-                    "description": "Whether the file has been shared.",
+                    "description": "Whether the file has been shared. Not populated for Team Drive files.",
                     "type": "boolean"
                 },
                 "sharedWithMeTime": {
@@ -2053,6 +2401,10 @@
                     "description": "Whether the user has starred the file.",
                     "type": "boolean"
                 },
+                "teamDriveId": {
+                    "description": "ID of the Team Drive the file resides in.",
+                    "type": "string"
+                },
                 "thumbnailLink": {
                     "description": "A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours. Only populated when the requesting app can access the file's content.",
                     "type": "string"
@@ -2065,6 +2417,15 @@
                 "trashed": {
                     "description": "Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner may trash a file, and other users cannot see files in the owner's trash.",
                     "type": "boolean"
+                },
+                "trashedTime": {
+                    "description": "The time that the item was trashed (RFC 3339 date-time). Only populated for Team Drive files.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "trashingUser": {
+                    "$ref": "User",
+                    "description": "If the file has been explicitly trashed, the user who trashed it. Only populated for Team Drive files."
                 },
                 "version": {
                     "description": "A monotonically increasing version number for the file. This reflects every change made to the file on the server, even those not visible to the user.",
@@ -2114,7 +2475,7 @@
                     "type": "string"
                 },
                 "writersCanShare": {
-                    "description": "Whether users with only writer permission can modify the file's permissions.",
+                    "description": "Whether users with only writer permission can modify the file's permissions. Not populated for Team Drive files.",
                     "type": "boolean"
                 }
             },
@@ -2130,6 +2491,10 @@
                         "$ref": "File"
                     },
                     "type": "array"
+                },
+                "incompleteSearch": {
+                    "description": "Whether the search process was incomplete. If true, then some search results may be missing, since all documents were not searched. This may occur when searching multiple Team Drives with the \"user,allTeamDrives\" corpora, but all corpora could not be searched. When this happens, it is suggested that clients narrow their query by choosing a different corpus such as \"user\" or \"teamDrive\".",
+                    "type": "boolean"
                 },
                 "kind": {
                     "default": "drive#fileList",
@@ -2187,7 +2552,7 @@
                     "type": "string"
                 },
                 "expirationTime": {
-                    "description": "The time at which this permission will expire (RFC 3339 date-time).",
+                    "description": "The time at which this permission will expire (RFC 3339 date-time). Expiration times have the following restrictions:  \n- They can only be set on user and group permissions \n- The time must be in the future \n- The time cannot be more than a year in the future",
                     "format": "date-time",
                     "type": "string"
                 },
@@ -2210,8 +2575,33 @@
                             "drive.permissions.create"
                         ]
                     },
-                    "description": "The role granted by this permission. Valid values are:  \n- owner \n- writer \n- commenter \n- reader",
+                    "description": "The role granted by this permission. While new values may be supported in the future, the following are currently allowed:  \n- organizer \n- owner \n- writer \n- commenter \n- reader",
                     "type": "string"
+                },
+                "teamDrivePermissionDetails": {
+                    "description": "Details of whether the Permissions on this Team Drive item are inherited or directly on this item. This is an output-only field which is present only for Team Drive items.",
+                    "items": {
+                        "properties": {
+                            "inherited": {
+                                "description": "Whether this permission is inherited. This field is always populated. This is an output-only field.",
+                                "type": "boolean"
+                            },
+                            "inheritedFrom": {
+                                "description": "The ID of the item from which this permission is inherited. This is an output-only field and is only populated for members of the Team Drive.",
+                                "type": "string"
+                            },
+                            "role": {
+                                "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- writer \n- commenter \n- reader",
+                                "type": "string"
+                            },
+                            "teamDrivePermissionType": {
+                                "description": "The Team Drive permission type for this user. While new values may be added in future, the following are currently possible:  \n- file\n- \n- member",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
                 },
                 "type": {
                     "annotations": {
@@ -2234,8 +2624,12 @@
                     "description": "Identifies what kind of resource this is. Value: the fixed string \"drive#permissionList\".",
                     "type": "string"
                 },
+                "nextPageToken": {
+                    "description": "The page token for the next page of permissions. This field will be absent if the end of the permissions list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
+                    "type": "string"
+                },
                 "permissions": {
-                    "description": "The list of permissions.",
+                    "description": "The list of permissions. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "Permission"
                     },
@@ -2410,6 +2804,107 @@
                 "startPageToken": {
                     "description": "The starting page token for listing changes.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TeamDrive": {
+            "description": "Representation of a Team Drive.",
+            "id": "TeamDrive",
+            "properties": {
+                "capabilities": {
+                    "description": "Capabilities the current user has on this Team Drive.",
+                    "properties": {
+                        "canAddChildren": {
+                            "description": "Whether the current user can add children to folders in this Team Drive.",
+                            "type": "boolean"
+                        },
+                        "canComment": {
+                            "description": "Whether the current user can comment on files in this Team Drive.",
+                            "type": "boolean"
+                        },
+                        "canCopy": {
+                            "description": "Whether files in this Team Drive can be copied by the current user.",
+                            "type": "boolean"
+                        },
+                        "canDeleteTeamDrive": {
+                            "description": "Whether this Team Drive can be deleted by the current user.",
+                            "type": "boolean"
+                        },
+                        "canDownload": {
+                            "description": "Whether files in this Team Drive can be downloaded by the current user.",
+                            "type": "boolean"
+                        },
+                        "canEdit": {
+                            "description": "Whether files in this Team Drive can be edited by the current user.",
+                            "type": "boolean"
+                        },
+                        "canListChildren": {
+                            "description": "Whether the current user can list the children of folders in this Team Drive.",
+                            "type": "boolean"
+                        },
+                        "canManageMembers": {
+                            "description": "Whether the current user can add members to this Team Drive or remove them or change their role.",
+                            "type": "boolean"
+                        },
+                        "canReadRevisions": {
+                            "description": "Whether the current user has read access to the Revisions resource of files in this Team Drive.",
+                            "type": "boolean"
+                        },
+                        "canRemoveChildren": {
+                            "description": "Whether the current user can remove children from folders in this Team Drive.",
+                            "type": "boolean"
+                        },
+                        "canRename": {
+                            "description": "Whether files or folders in this Team Drive can be renamed by the current user.",
+                            "type": "boolean"
+                        },
+                        "canRenameTeamDrive": {
+                            "description": "Whether this Team Drive can be renamed by the current user.",
+                            "type": "boolean"
+                        },
+                        "canShare": {
+                            "description": "Whether the current user can share files or folders in this Team Drive.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "id": {
+                    "description": "The ID of this Team Drive which is also the ID of the top level folder for this Team Drive.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "drive#teamDrive",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"drive#teamDrive\".",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of this Team Drive.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TeamDriveList": {
+            "description": "A list of Team Drives.",
+            "id": "TeamDriveList",
+            "properties": {
+                "kind": {
+                    "default": "drive#teamDriveList",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"drive#teamDriveList\".",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "The page token for the next page of Team Drives. This will be absent if the end of the Team Drives list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
+                    "type": "string"
+                },
+                "teamDrives": {
+                    "description": "The list of Team Drives. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
+                    "items": {
+                        "$ref": "TeamDrive"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

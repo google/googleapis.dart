@@ -125,6 +125,8 @@ class AnnotateImageRequest {
 
 /** Response to an image annotation request. */
 class AnnotateImageResponse {
+  /** If present, crop hints have completed successfully. */
+  CropHintsAnnotation cropHintsAnnotation;
   /**
    * If set, represents the error message for the operation.
    * Note that filled-in image annotations are guaranteed to be
@@ -133,6 +135,13 @@ class AnnotateImageResponse {
   Status error;
   /** If present, face detection has completed successfully. */
   core.List<FaceAnnotation> faceAnnotations;
+  /**
+   * If present, text (OCR) detection or document (OCR) text detection has
+   * completed successfully.
+   * This annotation provides the structural hierarchy for the OCR detected
+   * text.
+   */
+  TextAnnotation fullTextAnnotation;
   /** If present, image properties were extracted successfully. */
   ImageProperties imagePropertiesAnnotation;
   /** If present, label detection has completed successfully. */
@@ -143,20 +152,25 @@ class AnnotateImageResponse {
   core.List<EntityAnnotation> logoAnnotations;
   /** If present, safe-search annotation has completed successfully. */
   SafeSearchAnnotation safeSearchAnnotation;
-  /**
-   * If present, text (OCR) detection or document (OCR) text detection has
-   * completed successfully.
-   */
+  /** If present, text (OCR) detection has completed successfully. */
   core.List<EntityAnnotation> textAnnotations;
+  /** If present, web detection has completed successfully. */
+  WebDetection webDetection;
 
   AnnotateImageResponse();
 
   AnnotateImageResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("cropHintsAnnotation")) {
+      cropHintsAnnotation = new CropHintsAnnotation.fromJson(_json["cropHintsAnnotation"]);
+    }
     if (_json.containsKey("error")) {
       error = new Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("faceAnnotations")) {
       faceAnnotations = _json["faceAnnotations"].map((value) => new FaceAnnotation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("fullTextAnnotation")) {
+      fullTextAnnotation = new TextAnnotation.fromJson(_json["fullTextAnnotation"]);
     }
     if (_json.containsKey("imagePropertiesAnnotation")) {
       imagePropertiesAnnotation = new ImageProperties.fromJson(_json["imagePropertiesAnnotation"]);
@@ -176,15 +190,24 @@ class AnnotateImageResponse {
     if (_json.containsKey("textAnnotations")) {
       textAnnotations = _json["textAnnotations"].map((value) => new EntityAnnotation.fromJson(value)).toList();
     }
+    if (_json.containsKey("webDetection")) {
+      webDetection = new WebDetection.fromJson(_json["webDetection"]);
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (cropHintsAnnotation != null) {
+      _json["cropHintsAnnotation"] = (cropHintsAnnotation).toJson();
+    }
     if (error != null) {
       _json["error"] = (error).toJson();
     }
     if (faceAnnotations != null) {
       _json["faceAnnotations"] = faceAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (fullTextAnnotation != null) {
+      _json["fullTextAnnotation"] = (fullTextAnnotation).toJson();
     }
     if (imagePropertiesAnnotation != null) {
       _json["imagePropertiesAnnotation"] = (imagePropertiesAnnotation).toJson();
@@ -203,6 +226,9 @@ class AnnotateImageResponse {
     }
     if (textAnnotations != null) {
       _json["textAnnotations"] = textAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (webDetection != null) {
+      _json["webDetection"] = (webDetection).toJson();
     }
     return _json;
   }
@@ -249,6 +275,77 @@ class BatchAnnotateImagesResponse {
     var _json = new core.Map();
     if (responses != null) {
       _json["responses"] = responses.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Logical element on the page. */
+class Block {
+  /**
+   * Detected block type (text, image etc) for this block.
+   * Possible string values are:
+   * - "UNKNOWN" : Unknown block type.
+   * - "TEXT" : Regular text block.
+   * - "TABLE" : Table block.
+   * - "PICTURE" : Image block.
+   * - "RULER" : Horizontal/vertical line box.
+   * - "BARCODE" : Barcode block.
+   */
+  core.String blockType;
+  /**
+   * The bounding box for the block.
+   * The vertices are in the order of top-left, top-right, bottom-right,
+   * bottom-left. When a rotation of the bounding box is detected the rotation
+   * is represented as around the top-left corner as defined when the text is
+   * read in the 'natural' orientation.
+   * For example:
+   *   * when the text is horizontal it might look like:
+   *      0----1
+   *      |    |
+   *      3----2
+   *   * when it's rotated 180 degrees around the top-left corner it becomes:
+   *      2----3
+   *      |    |
+   *      1----0
+   *   and the vertice order will still be (0, 1, 2, 3).
+   */
+  BoundingPoly boundingBox;
+  /** List of paragraphs in this block (if this blocks is of type text). */
+  core.List<Paragraph> paragraphs;
+  /** Additional information detected for the block. */
+  TextProperty property;
+
+  Block();
+
+  Block.fromJson(core.Map _json) {
+    if (_json.containsKey("blockType")) {
+      blockType = _json["blockType"];
+    }
+    if (_json.containsKey("boundingBox")) {
+      boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+    }
+    if (_json.containsKey("paragraphs")) {
+      paragraphs = _json["paragraphs"].map((value) => new Paragraph.fromJson(value)).toList();
+    }
+    if (_json.containsKey("property")) {
+      property = new TextProperty.fromJson(_json["property"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (blockType != null) {
+      _json["blockType"] = blockType;
+    }
+    if (boundingBox != null) {
+      _json["boundingBox"] = (boundingBox).toJson();
+    }
+    if (paragraphs != null) {
+      _json["paragraphs"] = paragraphs.map((value) => (value).toJson()).toList();
+    }
+    if (property != null) {
+      _json["property"] = (property).toJson();
     }
     return _json;
   }
@@ -488,6 +585,180 @@ class ColorInfo {
     }
     if (score != null) {
       _json["score"] = score;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Single crop hint that is used to generate a new crop when serving an image.
+ */
+class CropHint {
+  /**
+   * The bounding polygon for the crop region. The coordinates of the bounding
+   * box are in the original image's scale, as returned in `ImageParams`.
+   */
+  BoundingPoly boundingPoly;
+  /** Confidence of this being a salient region.  Range [0, 1]. */
+  core.double confidence;
+  /**
+   * Fraction of importance of this salient region with respect to the original
+   * image.
+   */
+  core.double importanceFraction;
+
+  CropHint();
+
+  CropHint.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+    }
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
+    }
+    if (_json.containsKey("importanceFraction")) {
+      importanceFraction = _json["importanceFraction"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
+    }
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (importanceFraction != null) {
+      _json["importanceFraction"] = importanceFraction;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Set of crop hints that are used to generate new crops when serving images.
+ */
+class CropHintsAnnotation {
+  /** Crop hint results. */
+  core.List<CropHint> cropHints;
+
+  CropHintsAnnotation();
+
+  CropHintsAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("cropHints")) {
+      cropHints = _json["cropHints"].map((value) => new CropHint.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cropHints != null) {
+      _json["cropHints"] = cropHints.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Parameters for crop hints annotation request. */
+class CropHintsParams {
+  /**
+   * Aspect ratios in floats, representing the ratio of the width to the height
+   * of the image. For example, if the desired aspect ratio is 4/3, the
+   * corresponding float value should be 1.33333.  If not specified, the
+   * best possible crop is returned. The number of provided aspect ratios is
+   * limited to a maximum of 16; any aspect ratios provided after the 16th are
+   * ignored.
+   */
+  core.List<core.double> aspectRatios;
+
+  CropHintsParams();
+
+  CropHintsParams.fromJson(core.Map _json) {
+    if (_json.containsKey("aspectRatios")) {
+      aspectRatios = _json["aspectRatios"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (aspectRatios != null) {
+      _json["aspectRatios"] = aspectRatios;
+    }
+    return _json;
+  }
+}
+
+/** Detected start or end of a structural component. */
+class DetectedBreak {
+  /** True if break prepends the element. */
+  core.bool isPrefix;
+  /**
+   * Detected break type.
+   * Possible string values are:
+   * - "UNKNOWN" : Unknown break label type.
+   * - "SPACE" : Regular space.
+   * - "SURE_SPACE" : Sure space (very wide).
+   * - "EOL_SURE_SPACE" : Line-wrapping break.
+   * - "HYPHEN" : End-line hyphen that is not present in text; does
+   * - "LINE_BREAK" : not co-occur with SPACE, LEADER_SPACE, or
+   * LINE_BREAK.
+   * Line break that ends a paragraph.
+   */
+  core.String type;
+
+  DetectedBreak();
+
+  DetectedBreak.fromJson(core.Map _json) {
+    if (_json.containsKey("isPrefix")) {
+      isPrefix = _json["isPrefix"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (isPrefix != null) {
+      _json["isPrefix"] = isPrefix;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/** Detected language for a structural component. */
+class DetectedLanguage {
+  /** Confidence of detected language. Range [0, 1]. */
+  core.double confidence;
+  /**
+   * The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+   * information, see
+   * http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+   */
+  core.String languageCode;
+
+  DetectedLanguage();
+
+  DetectedLanguage.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
     }
     return _json;
   }
@@ -902,10 +1173,15 @@ class Feature {
    * - "LOGO_DETECTION" : Run logo detection.
    * - "LABEL_DETECTION" : Run label detection.
    * - "TEXT_DETECTION" : Run OCR.
+   * - "DOCUMENT_TEXT_DETECTION" : Run dense text document OCR. Takes precedence
+   * when both
+   * DOCUMENT_TEXT_DETECTION and TEXT_DETECTION are present.
    * - "SAFE_SEARCH_DETECTION" : Run computer vision models to compute image
    * safe-search properties.
    * - "IMAGE_PROPERTIES" : Compute a set of image properties, such as the
    * image's dominant colors.
+   * - "CROP_HINTS" : Run crop hints.
+   * - "WEB_DETECTION" : Run web detection.
    */
   core.String type;
 
@@ -979,6 +1255,8 @@ class Image {
 
 /** Image context and/or feature-specific parameters. */
 class ImageContext {
+  /** Parameters for crop hints annotation request. */
+  CropHintsParams cropHintsParams;
   /**
    * List of languages to use for TEXT_DETECTION. In most cases, an empty value
    * yields the best results since it enables automatic language detection. For
@@ -996,6 +1274,9 @@ class ImageContext {
   ImageContext();
 
   ImageContext.fromJson(core.Map _json) {
+    if (_json.containsKey("cropHintsParams")) {
+      cropHintsParams = new CropHintsParams.fromJson(_json["cropHintsParams"]);
+    }
     if (_json.containsKey("languageHints")) {
       languageHints = _json["languageHints"];
     }
@@ -1006,6 +1287,9 @@ class ImageContext {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (cropHintsParams != null) {
+      _json["cropHintsParams"] = (cropHintsParams).toJson();
+    }
     if (languageHints != null) {
       _json["languageHints"] = languageHints;
     }
@@ -1049,6 +1333,19 @@ class ImageSource {
    * NOTE: Cloud Storage object versioning is not supported.
    */
   core.String gcsImageUri;
+  /**
+   * Image URI which supports:
+   * 1) Google Cloud Storage image URI, which must be in the following form:
+   * `gs://bucket_name/object_name` (for details, see
+   * [Google Cloud Storage Request
+   * URIs](https://cloud.google.com/storage/docs/reference-uris)).
+   * NOTE: Cloud Storage object versioning is not supported.
+   * 2) Publicly accessible image HTTP/HTTPS URL.
+   * This is preferred over the legacy `gcs_image_uri` above. When both
+   * `gcs_image_uri` and `image_uri` are specified, `image_uri` takes
+   * precedence.
+   */
+  core.String imageUri;
 
   ImageSource();
 
@@ -1056,12 +1353,18 @@ class ImageSource {
     if (_json.containsKey("gcsImageUri")) {
       gcsImageUri = _json["gcsImageUri"];
     }
+    if (_json.containsKey("imageUri")) {
+      imageUri = _json["imageUri"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (gcsImageUri != null) {
       _json["gcsImageUri"] = gcsImageUri;
+    }
+    if (imageUri != null) {
+      _json["imageUri"] = imageUri;
     }
     return _json;
   }
@@ -1267,6 +1570,106 @@ class LocationInfo {
   }
 }
 
+/** Detected page from OCR. */
+class Page {
+  /** List of blocks of text, images etc on this page. */
+  core.List<Block> blocks;
+  /** Page height in pixels. */
+  core.int height;
+  /** Additional information detected on the page. */
+  TextProperty property;
+  /** Page width in pixels. */
+  core.int width;
+
+  Page();
+
+  Page.fromJson(core.Map _json) {
+    if (_json.containsKey("blocks")) {
+      blocks = _json["blocks"].map((value) => new Block.fromJson(value)).toList();
+    }
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("property")) {
+      property = new TextProperty.fromJson(_json["property"]);
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (blocks != null) {
+      _json["blocks"] = blocks.map((value) => (value).toJson()).toList();
+    }
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (property != null) {
+      _json["property"] = (property).toJson();
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/** Structural unit of text representing a number of words in certain order. */
+class Paragraph {
+  /**
+   * The bounding box for the paragraph.
+   * The vertices are in the order of top-left, top-right, bottom-right,
+   * bottom-left. When a rotation of the bounding box is detected the rotation
+   * is represented as around the top-left corner as defined when the text is
+   * read in the 'natural' orientation.
+   * For example:
+   *   * when the text is horizontal it might look like:
+   *      0----1
+   *      |    |
+   *      3----2
+   *   * when it's rotated 180 degrees around the top-left corner it becomes:
+   *      2----3
+   *      |    |
+   *      1----0
+   *   and the vertice order will still be (0, 1, 2, 3).
+   */
+  BoundingPoly boundingBox;
+  /** Additional information detected for the paragraph. */
+  TextProperty property;
+  /** List of words in this paragraph. */
+  core.List<Word> words;
+
+  Paragraph();
+
+  Paragraph.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingBox")) {
+      boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+    }
+    if (_json.containsKey("property")) {
+      property = new TextProperty.fromJson(_json["property"]);
+    }
+    if (_json.containsKey("words")) {
+      words = _json["words"].map((value) => new Word.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (boundingBox != null) {
+      _json["boundingBox"] = (boundingBox).toJson();
+    }
+    if (property != null) {
+      _json["property"] = (property).toJson();
+    }
+    if (words != null) {
+      _json["words"] = words.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /**
  * A 3D position in the image, used primarily for Face detection landmarks.
  * A valid Position must have both x and y coordinates.
@@ -1313,6 +1716,8 @@ class Position {
 class Property {
   /** Name of the property. */
   core.String name;
+  /** Value of numeric properties. */
+  core.String uint64Value;
   /** Value of the property. */
   core.String value;
 
@@ -1321,6 +1726,9 @@ class Property {
   Property.fromJson(core.Map _json) {
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("uint64Value")) {
+      uint64Value = _json["uint64Value"];
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -1331,6 +1739,9 @@ class Property {
     var _json = new core.Map();
     if (name != null) {
       _json["name"] = name;
+    }
+    if (uint64Value != null) {
+      _json["uint64Value"] = uint64Value;
     }
     if (value != null) {
       _json["value"] = value;
@@ -1546,6 +1957,128 @@ class Status {
   }
 }
 
+/** A single symbol representation. */
+class Symbol {
+  /**
+   * The bounding box for the symbol.
+   * The vertices are in the order of top-left, top-right, bottom-right,
+   * bottom-left. When a rotation of the bounding box is detected the rotation
+   * is represented as around the top-left corner as defined when the text is
+   * read in the 'natural' orientation.
+   * For example:
+   *   * when the text is horizontal it might look like:
+   *      0----1
+   *      |    |
+   *      3----2
+   *   * when it's rotated 180 degrees around the top-left corner it becomes:
+   *      2----3
+   *      |    |
+   *      1----0
+   *   and the vertice order will still be (0, 1, 2, 3).
+   */
+  BoundingPoly boundingBox;
+  /** Additional information detected for the symbol. */
+  TextProperty property;
+  /** The actual UTF-8 representation of the symbol. */
+  core.String text;
+
+  Symbol();
+
+  Symbol.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingBox")) {
+      boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+    }
+    if (_json.containsKey("property")) {
+      property = new TextProperty.fromJson(_json["property"]);
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (boundingBox != null) {
+      _json["boundingBox"] = (boundingBox).toJson();
+    }
+    if (property != null) {
+      _json["property"] = (property).toJson();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/**
+ * TextAnnotation contains a structured representation of OCR extracted text.
+ * The hierarchy of an OCR extracted text structure is like this:
+ *     TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
+ * Each structural component, starting from Page, may further have their own
+ * properties. Properties describe detected languages, breaks etc.. Please
+ * refer to the google.cloud.vision.v1.TextAnnotation.TextProperty message
+ * definition below for more detail.
+ */
+class TextAnnotation {
+  /** List of pages detected by OCR. */
+  core.List<Page> pages;
+  /** UTF-8 text detected on the pages. */
+  core.String text;
+
+  TextAnnotation();
+
+  TextAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("pages")) {
+      pages = _json["pages"].map((value) => new Page.fromJson(value)).toList();
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (pages != null) {
+      _json["pages"] = pages.map((value) => (value).toJson()).toList();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/** Additional information detected on the structural component. */
+class TextProperty {
+  /** Detected start or end of a text segment. */
+  DetectedBreak detectedBreak;
+  /** A list of detected languages together with confidence. */
+  core.List<DetectedLanguage> detectedLanguages;
+
+  TextProperty();
+
+  TextProperty.fromJson(core.Map _json) {
+    if (_json.containsKey("detectedBreak")) {
+      detectedBreak = new DetectedBreak.fromJson(_json["detectedBreak"]);
+    }
+    if (_json.containsKey("detectedLanguages")) {
+      detectedLanguages = _json["detectedLanguages"].map((value) => new DetectedLanguage.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (detectedBreak != null) {
+      _json["detectedBreak"] = (detectedBreak).toJson();
+    }
+    if (detectedLanguages != null) {
+      _json["detectedLanguages"] = detectedLanguages.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /**
  * A vertex represents a 2D point in the image.
  * NOTE: the vertex coordinates are in the same scale as the original image.
@@ -1574,6 +2107,224 @@ class Vertex {
     }
     if (y != null) {
       _json["y"] = y;
+    }
+    return _json;
+  }
+}
+
+/** Relevant information for the image from the Internet. */
+class WebDetection {
+  /**
+   * Fully matching images from the Internet.
+   * They're definite neardups and most often a copy of the query image with
+   * merely a size change.
+   */
+  core.List<WebImage> fullMatchingImages;
+  /** Web pages containing the matching images from the Internet. */
+  core.List<WebPage> pagesWithMatchingImages;
+  /**
+   * Partial matching images from the Internet.
+   * Those images are similar enough to share some key-point features. For
+   * example an original image will likely have partial matching for its crops.
+   */
+  core.List<WebImage> partialMatchingImages;
+  /** Deduced entities from similar images on the Internet. */
+  core.List<WebEntity> webEntities;
+
+  WebDetection();
+
+  WebDetection.fromJson(core.Map _json) {
+    if (_json.containsKey("fullMatchingImages")) {
+      fullMatchingImages = _json["fullMatchingImages"].map((value) => new WebImage.fromJson(value)).toList();
+    }
+    if (_json.containsKey("pagesWithMatchingImages")) {
+      pagesWithMatchingImages = _json["pagesWithMatchingImages"].map((value) => new WebPage.fromJson(value)).toList();
+    }
+    if (_json.containsKey("partialMatchingImages")) {
+      partialMatchingImages = _json["partialMatchingImages"].map((value) => new WebImage.fromJson(value)).toList();
+    }
+    if (_json.containsKey("webEntities")) {
+      webEntities = _json["webEntities"].map((value) => new WebEntity.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fullMatchingImages != null) {
+      _json["fullMatchingImages"] = fullMatchingImages.map((value) => (value).toJson()).toList();
+    }
+    if (pagesWithMatchingImages != null) {
+      _json["pagesWithMatchingImages"] = pagesWithMatchingImages.map((value) => (value).toJson()).toList();
+    }
+    if (partialMatchingImages != null) {
+      _json["partialMatchingImages"] = partialMatchingImages.map((value) => (value).toJson()).toList();
+    }
+    if (webEntities != null) {
+      _json["webEntities"] = webEntities.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Entity deduced from similar images on the Internet. */
+class WebEntity {
+  /** Canonical description of the entity, in English. */
+  core.String description;
+  /** Opaque entity ID. */
+  core.String entityId;
+  /**
+   * Overall relevancy score for the entity.
+   * Not normalized and not comparable across different image queries.
+   */
+  core.double score;
+
+  WebEntity();
+
+  WebEntity.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("entityId")) {
+      entityId = _json["entityId"];
+    }
+    if (_json.containsKey("score")) {
+      score = _json["score"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (entityId != null) {
+      _json["entityId"] = entityId;
+    }
+    if (score != null) {
+      _json["score"] = score;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for online images. */
+class WebImage {
+  /**
+   * Overall relevancy score for the image.
+   * Not normalized and not comparable across different image queries.
+   */
+  core.double score;
+  /** The result image URL. */
+  core.String url;
+
+  WebImage();
+
+  WebImage.fromJson(core.Map _json) {
+    if (_json.containsKey("score")) {
+      score = _json["score"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (score != null) {
+      _json["score"] = score;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for web pages. */
+class WebPage {
+  /**
+   * Overall relevancy score for the web page.
+   * Not normalized and not comparable across different image queries.
+   */
+  core.double score;
+  /** The result web page URL. */
+  core.String url;
+
+  WebPage();
+
+  WebPage.fromJson(core.Map _json) {
+    if (_json.containsKey("score")) {
+      score = _json["score"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (score != null) {
+      _json["score"] = score;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/** A word representation. */
+class Word {
+  /**
+   * The bounding box for the word.
+   * The vertices are in the order of top-left, top-right, bottom-right,
+   * bottom-left. When a rotation of the bounding box is detected the rotation
+   * is represented as around the top-left corner as defined when the text is
+   * read in the 'natural' orientation.
+   * For example:
+   *   * when the text is horizontal it might look like:
+   *      0----1
+   *      |    |
+   *      3----2
+   *   * when it's rotated 180 degrees around the top-left corner it becomes:
+   *      2----3
+   *      |    |
+   *      1----0
+   *   and the vertice order will still be (0, 1, 2, 3).
+   */
+  BoundingPoly boundingBox;
+  /** Additional information detected for the word. */
+  TextProperty property;
+  /**
+   * List of symbols in the word.
+   * The order of the symbols follows the natural reading order.
+   */
+  core.List<Symbol> symbols;
+
+  Word();
+
+  Word.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingBox")) {
+      boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+    }
+    if (_json.containsKey("property")) {
+      property = new TextProperty.fromJson(_json["property"]);
+    }
+    if (_json.containsKey("symbols")) {
+      symbols = _json["symbols"].map((value) => new Symbol.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (boundingBox != null) {
+      _json["boundingBox"] = (boundingBox).toJson();
+    }
+    if (property != null) {
+      _json["property"] = (property).toJson();
+    }
+    if (symbols != null) {
+      _json["symbols"] = symbols.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

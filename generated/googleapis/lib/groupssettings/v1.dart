@@ -16,7 +16,7 @@ const core.String USER_AGENT = 'dart-api-client groupssettings/v1';
 
 /** Lets you manage permission levels and related settings of a group. */
 class GroupssettingsApi {
-  /** View and manage the settings of a Google Apps Group */
+  /** View and manage the settings of a G Suite group */
   static const AppsGroupsSettingsScope = "https://www.googleapis.com/auth/apps.groups.settings";
 
 

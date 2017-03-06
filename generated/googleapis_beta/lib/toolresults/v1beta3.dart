@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client toolresults/v1beta3';
 
-/** Reads and publishes results from Cloud Test Lab. */
+/** Reads and publishes results from Firebase Test Lab. */
 class ToolresultsApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

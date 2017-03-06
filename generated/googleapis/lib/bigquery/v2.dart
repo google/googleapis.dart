@@ -2599,11 +2599,10 @@ class JobConfiguration {
   /**
    * [Experimental] The labels associated with this job. You can use these to
    * organize and group your jobs. Label keys and values can be no longer than
-   * 63 characters, can only contain letters, numeric characters, underscores
-   * and dashes. International characters are allowed. Label values are
-   * optional. Label keys must start with a letter and must be unique within a
-   * dataset. Both keys and values are additionally constrained to be <= 128
-   * bytes in size.
+   * 63 characters, can only contain lowercase letters, numeric characters,
+   * underscores and dashes. International characters are allowed. Label values
+   * are optional. Label keys must start with a letter and each label in the
+   * list must have a different key.
    */
   core.Map<core.String, core.String> labels;
   /** [Pick one] Configures a load job. */
@@ -4485,11 +4484,10 @@ class Table {
   /**
    * [Experimental] The labels associated with this table. You can use these to
    * organize and group your tables. Label keys and values can be no longer than
-   * 63 characters, can only contain letters, numeric characters, underscores
-   * and dashes. International characters are allowed. Label values are
-   * optional. Label keys must start with a letter and must be unique within a
-   * dataset. Both keys and values are additionally constrained to be <= 128
-   * bytes in size.
+   * 63 characters, can only contain lowercase letters, numeric characters,
+   * underscores and dashes. International characters are allowed. Label values
+   * are optional. Label keys must start with a letter and each label in the
+   * list must have a different key.
    */
   core.Map<core.String, core.String> labels;
   /**
@@ -4996,6 +4994,30 @@ class TableFieldSchema {
   }
 }
 
+/** Additional details for a view. */
+class TableListTablesView {
+  /**
+   * True if view is defined in legacy SQL dialect, false if in standard SQL.
+   */
+  core.bool useLegacySql;
+
+  TableListTablesView();
+
+  TableListTablesView.fromJson(core.Map _json) {
+    if (_json.containsKey("useLegacySql")) {
+      useLegacySql = _json["useLegacySql"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (useLegacySql != null) {
+      _json["useLegacySql"] = useLegacySql;
+    }
+    return _json;
+  }
+}
+
 class TableListTables {
   /** The user-friendly name for this table. */
   core.String friendlyName;
@@ -5012,6 +5034,8 @@ class TableListTables {
   TableReference tableReference;
   /** The type of table. Possible values are: TABLE, VIEW. */
   core.String type;
+  /** Additional details for a view. */
+  TableListTablesView view;
 
   TableListTables();
 
@@ -5034,6 +5058,9 @@ class TableListTables {
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
+    if (_json.containsKey("view")) {
+      view = new TableListTablesView.fromJson(_json["view"]);
+    }
   }
 
   core.Map toJson() {
@@ -5055,6 +5082,9 @@ class TableListTables {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (view != null) {
+      _json["view"] = (view).toJson();
     }
     return _json;
   }

@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/apps.groups.settings": {
-                    "description": "View and manage the settings of a Google Apps Group"
+                    "description": "View and manage the settings of a G Suite group"
                 }
             }
         }
@@ -14,7 +14,7 @@
     "description": "Lets you manage permission levels and related settings of a group.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/groups-settings/get_started",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/26Y5Yyn2D8WwxhPa2zJyQ3Axz8I\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/8JFCy9G09DiKop8V7jh2RwsOYyI\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"

@@ -518,7 +518,7 @@ class DownloadRequest {
    * The IDs of the specified filter type. This is used to filter entities to
    * fetch. At least one ID must be specified. Only one ID is allowed for the
    * ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter
-   * types all IDs must be from the same Advertiser.
+   * types, all IDs must be from the same Advertiser.
    */
   core.List<core.String> filterIds;
   /**
@@ -634,6 +634,7 @@ class FilterPair {
    * - "FILTER_CARRIER"
    * - "FILTER_CHANNEL_ID"
    * - "FILTER_CITY"
+   * - "FILTER_COMPANION_CREATIVE_ID"
    * - "FILTER_CONVERSION_DELAY"
    * - "FILTER_COUNTRY"
    * - "FILTER_CREATIVE_HEIGHT"
@@ -682,6 +683,7 @@ class FilterPair {
    * - "FILTER_REGULAR_CHANNEL_ID"
    * - "FILTER_SITE_ID"
    * - "FILTER_SITE_LANGUAGE"
+   * - "FILTER_SKIPPABLE_SUPPORT"
    * - "FILTER_TARGETED_USER_LIST"
    * - "FILTER_TIME_OF_DAY"
    * - "FILTER_TRUEVIEW_AD_GROUP_AD_ID"
@@ -868,6 +870,7 @@ class Parameters {
    * - "TYPE_PETRA_NIELSEN_ONLINE_GLOBAL_MARKET"
    * - "TYPE_PIXEL_LOAD"
    * - "TYPE_REACH_AND_FREQUENCY"
+   * - "TYPE_REACH_AUDIENCE"
    * - "TYPE_THIRD_PARTY_DATA_PROVIDER"
    * - "TYPE_TRUEVIEW"
    * - "TYPE_TRUEVIEW_IAR"

@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/gBf-L8hU2vSAjlFpvr_ZRh1Vf_I\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/XJ8vjwOJUtuz-unNR2L_5stMJIc\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -1255,7 +1255,7 @@
             }
         }
     },
-    "revision": "20170118",
+    "revision": "20170215",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1580,7 +1580,7 @@
                             "adexchangebuyer.creatives.insert"
                         ]
                     },
-                    "description": "The name of the company being advertised in the creative.",
+                    "description": "The name of the company being advertised in the creative. The value provided must exist in the advertisers.txt file.",
                     "type": "string"
                 },
                 "agencyId": {
@@ -1594,7 +1594,7 @@
                     "type": "string"
                 },
                 "attribute": {
-                    "description": "All attributes for the ads that may be shown from this snippet.",
+                    "description": "List of buyer selectable attributes for the ads that may be shown from this snippet. Each attribute is represented by an integer as defined in  buyer-declarable-creative-attributes.txt.",
                     "items": {
                         "format": "int32",
                         "type": "integer"
@@ -1705,7 +1705,7 @@
                                         "type": "string"
                                     },
                                     "filteringStatus": {
-                                        "description": "The filtering status code. Please refer to the creative-status-codes.txt file for different statuses.",
+                                        "description": "The filtering status code as defined in  creative-status-codes.txt.",
                                         "format": "int32",
                                         "type": "integer"
                                     }
@@ -1855,7 +1855,7 @@
                     "type": "string"
                 },
                 "productCategories": {
-                    "description": "Detected product categories, if any. Read-only. This field should not be set in requests.",
+                    "description": "Detected product categories, if any. Each category is represented by an integer as defined in  ad-product-categories.txt. Read-only. This field should not be set in requests.",
                     "items": {
                         "format": "int32",
                         "type": "integer"
@@ -1863,7 +1863,7 @@
                     "type": "array"
                 },
                 "restrictedCategories": {
-                    "description": "All restricted categories for the ads that may be shown from this snippet.",
+                    "description": "All restricted categories for the ads that may be shown from this snippet. Each category is represented by an integer as defined in the  ad-restricted-categories.txt.",
                     "items": {
                         "format": "int32",
                         "type": "integer"
@@ -1871,7 +1871,7 @@
                     "type": "array"
                 },
                 "sensitiveCategories": {
-                    "description": "Detected sensitive categories, if any. Read-only. This field should not be set in requests.",
+                    "description": "Detected sensitive categories, if any. Each category is represented by an integer as defined in  ad-sensitive-categories.txt. Read-only. This field should not be set in requests.",
                     "items": {
                         "format": "int32",
                         "type": "integer"
@@ -1898,7 +1898,7 @@
                                             "type": "string"
                                         },
                                         "geoCriteriaId": {
-                                            "description": "Only set when contextType=LOCATION. Represents the geo criterias this restriction applies to.",
+                                            "description": "Only set when contextType=LOCATION. Represents the geo criterias this restriction applies to. Impressions are considered to match a context if either the user location or publisher location matches a given geoCriteriaId.",
                                             "items": {
                                                 "format": "int32",
                                                 "type": "integer"
@@ -1947,7 +1947,7 @@
                     "type": "array"
                 },
                 "vendorType": {
-                    "description": "All vendor types for the ads that may be shown from this snippet.",
+                    "description": "List of vendor types for the ads that may be shown from this snippet. Each vendor type is represented by an integer as defined in vendors.txt.",
                     "items": {
                         "format": "int32",
                         "type": "integer"
@@ -2037,6 +2037,10 @@
         "DealServingMetadata": {
             "id": "DealServingMetadata",
             "properties": {
+                "alcoholAdsAllowed": {
+                    "description": "True if alcohol ads are allowed for this deal (read-only). This field is only populated when querying for finalized orders using the method GetFinalizedOrderDeals",
+                    "type": "boolean"
+                },
                 "dealPauseStatus": {
                     "$ref": "DealServingMetadataDealPauseStatus",
                     "description": "Tracks which parties (if any) have paused a deal. (readonly, except via PauseResumeOrderDeals action)"

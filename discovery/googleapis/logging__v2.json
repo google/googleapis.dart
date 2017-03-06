@@ -37,6 +37,34 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -53,13 +81,13 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -94,344 +122,14 @@
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
-        "folders": {
-            "resources": {
-                "logs": {
-                    "methods": {
-                        "delete": {
-                            "description": "Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted.",
-                            "httpMethod": "DELETE",
-                            "id": "logging.folders.logs.delete",
-                            "parameterOrder": [
-                                "logName"
-                            ],
-                            "parameters": {
-                                "logName": {
-                                    "description": "Required. The resource name of the log to delete:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\n[LOG_ID] must be URL-encoded. For example, \"projects/my-project-id/logs/syslog\", \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". For more information about log names, see LogEntry.",
-                                    "location": "path",
-                                    "pattern": "^folders/[^/]+/logs/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2/{+logName}",
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/logging.admin"
-                            ]
-                        },
-                        "list": {
-                            "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
-                            "httpMethod": "GET",
-                            "id": "logging.folders.logs.list",
-                            "parameterOrder": [
-                                "parent"
-                            ],
-                            "parameters": {
-                                "pageToken": {
-                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "pageSize": {
-                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                },
-                                "parent": {
-                                    "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
-                                    "location": "path",
-                                    "pattern": "^folders/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2/{+parent}/logs",
-                            "response": {
-                                "$ref": "ListLogsResponse"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/cloud-platform.read-only",
-                                "https://www.googleapis.com/auth/logging.admin",
-                                "https://www.googleapis.com/auth/logging.read"
-                            ]
-                        }
-                    }
-                },
-                "sinks": {
-                    "methods": {
-                        "delete": {
-                            "description": "Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.",
-                            "httpMethod": "DELETE",
-                            "id": "logging.folders.sinks.delete",
-                            "parameterOrder": [
-                                "sinkName"
-                            ],
-                            "parameters": {
-                                "sinkName": {
-                                    "description": "Required. The full resource name of the sink to delete, including the parent resource and the sink identifier:\n\"projects/[PROJECT_ID]/sinks/[SINK_ID]\"\n\"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\"\n\"folders/[FOLDER_ID]/sinks/[SINK_ID]\"\nExample: \"projects/my-project-id/sinks/my-sink-id\".",
-                                    "location": "path",
-                                    "pattern": "^folders/[^/]+/sinks/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2/{+sinkName}",
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/logging.admin"
-                            ]
-                        },
-                        "list": {
-                            "description": "Lists sinks.",
-                            "httpMethod": "GET",
-                            "id": "logging.folders.sinks.list",
-                            "parameterOrder": [
-                                "parent"
-                            ],
-                            "parameters": {
-                                "parent": {
-                                    "description": "Required. The parent resource whose sinks are to be listed:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
-                                    "location": "path",
-                                    "pattern": "^folders/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "pageToken": {
-                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "pageSize": {
-                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                }
-                            },
-                            "path": "v2/{+parent}/sinks",
-                            "response": {
-                                "$ref": "ListSinksResponse"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/cloud-platform.read-only",
-                                "https://www.googleapis.com/auth/logging.admin",
-                                "https://www.googleapis.com/auth/logging.read"
-                            ]
-                        },
-                        "get": {
-                            "description": "Gets a sink.",
-                            "httpMethod": "GET",
-                            "id": "logging.folders.sinks.get",
-                            "parameterOrder": [
-                                "sinkName"
-                            ],
-                            "parameters": {
-                                "sinkName": {
-                                    "description": "Required. The resource name of the sink:\n\"projects/[PROJECT_ID]/sinks/[SINK_ID]\"\n\"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\"\n\"folders/[FOLDER_ID]/sinks/[SINK_ID]\"\nExample: \"projects/my-project-id/sinks/my-sink-id\".",
-                                    "location": "path",
-                                    "pattern": "^folders/[^/]+/sinks/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2/{+sinkName}",
-                            "response": {
-                                "$ref": "LogSink"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/cloud-platform.read-only",
-                                "https://www.googleapis.com/auth/logging.admin",
-                                "https://www.googleapis.com/auth/logging.read"
-                            ]
-                        },
-                        "update": {
-                            "description": "Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create. If the named sink does exist, then this method replaces the following fields in the existing sink with values from the new sink: destination, filter, output_version_format, start_time, and end_time. The updated filter might also have a new writer_identity; see the unique_writer_identity field.",
-                            "httpMethod": "PUT",
-                            "id": "logging.folders.sinks.update",
-                            "parameterOrder": [
-                                "sinkName"
-                            ],
-                            "parameters": {
-                                "sinkName": {
-                                    "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier:\n\"projects/[PROJECT_ID]/sinks/[SINK_ID]\"\n\"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\"\n\"folders/[FOLDER_ID]/sinks/[SINK_ID]\"\nExample: \"projects/my-project-id/sinks/my-sink-id\".",
-                                    "location": "path",
-                                    "pattern": "^folders/[^/]+/sinks/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "uniqueWriterIdentity": {
-                                    "description": "Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field:\nIf the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity.\nIf the old value was false and the new value is true, then writer_identity is changed to a unique service account.\nIt is an error if the old value was true and the new value is false.",
-                                    "location": "query",
-                                    "type": "boolean"
-                                }
-                            },
-                            "path": "v2/{+sinkName}",
-                            "request": {
-                                "$ref": "LogSink"
-                            },
-                            "response": {
-                                "$ref": "LogSink"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/logging.admin"
-                            ]
-                        },
-                        "create": {
-                            "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the current time is outside the sink's start and end times or the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
-                            "httpMethod": "POST",
-                            "id": "logging.folders.sinks.create",
-                            "parameterOrder": [
-                                "parent"
-                            ],
-                            "parameters": {
-                                "parent": {
-                                    "description": "Required. The resource in which to create the sink:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\nExamples: \"projects/my-logging-project\", \"organizations/123456789\".",
-                                    "location": "path",
-                                    "pattern": "^folders/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "uniqueWriterIdentity": {
-                                    "description": "Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is cloud-logs@system.gserviceaccount.com, the same identity used before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.",
-                                    "location": "query",
-                                    "type": "boolean"
-                                }
-                            },
-                            "path": "v2/{+parent}/sinks",
-                            "request": {
-                                "$ref": "LogSink"
-                            },
-                            "response": {
-                                "$ref": "LogSink"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/logging.admin"
-                            ]
-                        }
-                    }
-                }
-            }
-        },
-        "monitoredResourceDescriptors": {
-            "methods": {
-                "list": {
-                    "description": "Lists the descriptors for monitored resource types used by Stackdriver Logging.",
-                    "httpMethod": "GET",
-                    "id": "logging.monitoredResourceDescriptors.list",
-                    "parameterOrder": [],
-                    "parameters": {
-                        "pageToken": {
-                            "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "pageSize": {
-                            "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        }
-                    },
-                    "path": "v2/monitoredResourceDescriptors",
-                    "response": {
-                        "$ref": "ListMonitoredResourceDescriptorsResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-platform.read-only",
-                        "https://www.googleapis.com/auth/logging.admin",
-                        "https://www.googleapis.com/auth/logging.read"
-                    ]
-                }
-            }
-        },
         "organizations": {
             "resources": {
                 "logs": {
                     "methods": {
-                        "list": {
-                            "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
-                            "httpMethod": "GET",
-                            "id": "logging.organizations.logs.list",
-                            "parameterOrder": [
-                                "parent"
-                            ],
-                            "parameters": {
-                                "pageSize": {
-                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                },
-                                "parent": {
-                                    "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
-                                    "location": "path",
-                                    "pattern": "^organizations/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "pageToken": {
-                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
-                                    "location": "query",
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2/{+parent}/logs",
-                            "response": {
-                                "$ref": "ListLogsResponse"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/cloud-platform.read-only",
-                                "https://www.googleapis.com/auth/logging.admin",
-                                "https://www.googleapis.com/auth/logging.read"
-                            ]
-                        },
                         "delete": {
                             "description": "Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted.",
                             "httpMethod": "DELETE",
@@ -455,6 +153,44 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
+                            "httpMethod": "GET",
+                            "id": "logging.organizations.logs.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageToken": {
+                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "parent": {
+                                    "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+parent}/logs",
+                            "response": {
+                                "$ref": "ListLogsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.read"
                             ]
                         }
                     }
@@ -494,6 +230,11 @@
                                 "parent"
                             ],
                             "parameters": {
+                                "pageToken": {
+                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "pageSize": {
                                     "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
                                     "format": "int32",
@@ -505,11 +246,6 @@
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
-                                    "type": "string"
-                                },
-                                "pageToken": {
-                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
-                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -567,7 +303,7 @@
                                     "type": "string"
                                 },
                                 "uniqueWriterIdentity": {
-                                    "description": "Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field:\nIf the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity.\nIf the old value was false and the new value is true, then writer_identity is changed to a unique service account.\nIt is an error if the old value was true and the new value is false.",
+                                    "description": "Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field:\nIf the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity.\nIf the old value is false and the new value is true, then writer_identity is changed to a unique service account.\nIt is an error if the old value is true and the new value is false.",
                                     "location": "query",
                                     "type": "boolean"
                                 }
@@ -600,7 +336,7 @@
                                     "type": "string"
                                 },
                                 "uniqueWriterIdentity": {
-                                    "description": "Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is cloud-logs@system.gserviceaccount.com, the same identity used before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.",
+                                    "description": "Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Stackdriver Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.",
                                     "location": "query",
                                     "type": "boolean"
                                 }
@@ -623,25 +359,6 @@
         },
         "entries": {
             "methods": {
-                "write": {
-                    "description": "Writes log entries to Stackdriver Logging. All log entries are written by this method.",
-                    "httpMethod": "POST",
-                    "id": "logging.entries.write",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v2/entries:write",
-                    "request": {
-                        "$ref": "WriteLogEntriesRequest"
-                    },
-                    "response": {
-                        "$ref": "WriteLogEntriesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/logging.admin",
-                        "https://www.googleapis.com/auth/logging.write"
-                    ]
-                },
                 "list": {
                     "description": "Lists log entries. Use this method to retrieve log entries from Stackdriver Logging. For ways to export log entries, see Exporting Logs.",
                     "httpMethod": "POST",
@@ -660,6 +377,25 @@
                         "https://www.googleapis.com/auth/cloud-platform.read-only",
                         "https://www.googleapis.com/auth/logging.admin",
                         "https://www.googleapis.com/auth/logging.read"
+                    ]
+                },
+                "write": {
+                    "description": "Writes log entries to Stackdriver Logging. All log entries are written by this method.",
+                    "httpMethod": "POST",
+                    "id": "logging.entries.write",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v2/entries:write",
+                    "request": {
+                        "$ref": "WriteLogEntriesRequest"
+                    },
+                    "response": {
+                        "$ref": "WriteLogEntriesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/logging.admin",
+                        "https://www.googleapis.com/auth/logging.write"
                     ]
                 }
             }
@@ -701,11 +437,6 @@
                                 "parent"
                             ],
                             "parameters": {
-                                "pageToken": {
-                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "pageSize": {
                                     "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
                                     "format": "int32",
@@ -717,6 +448,11 @@
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
+                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -735,6 +471,72 @@
                 },
                 "sinks": {
                     "methods": {
+                        "update": {
+                            "description": "Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create. If the named sink does exist, then this method replaces the following fields in the existing sink with values from the new sink: destination, filter, output_version_format, start_time, and end_time. The updated filter might also have a new writer_identity; see the unique_writer_identity field.",
+                            "httpMethod": "PUT",
+                            "id": "logging.projects.sinks.update",
+                            "parameterOrder": [
+                                "sinkName"
+                            ],
+                            "parameters": {
+                                "sinkName": {
+                                    "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier:\n\"projects/[PROJECT_ID]/sinks/[SINK_ID]\"\n\"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\"\n\"folders/[FOLDER_ID]/sinks/[SINK_ID]\"\nExample: \"projects/my-project-id/sinks/my-sink-id\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/sinks/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "uniqueWriterIdentity": {
+                                    "description": "Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field:\nIf the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity.\nIf the old value is false and the new value is true, then writer_identity is changed to a unique service account.\nIt is an error if the old value is true and the new value is false.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                }
+                            },
+                            "path": "v2/{+sinkName}",
+                            "request": {
+                                "$ref": "LogSink"
+                            },
+                            "response": {
+                                "$ref": "LogSink"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        },
+                        "create": {
+                            "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the current time is outside the sink's start and end times or the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
+                            "httpMethod": "POST",
+                            "id": "logging.projects.sinks.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. The resource in which to create the sink:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\nExamples: \"projects/my-logging-project\", \"organizations/123456789\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "uniqueWriterIdentity": {
+                                    "description": "Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Stackdriver Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                }
+                            },
+                            "path": "v2/{+parent}/sinks",
+                            "request": {
+                                "$ref": "LogSink"
+                            },
+                            "response": {
+                                "$ref": "LogSink"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        },
                         "delete": {
                             "description": "Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.",
                             "httpMethod": "DELETE",
@@ -768,13 +570,6 @@
                                 "parent"
                             ],
                             "parameters": {
-                                "parent": {
-                                    "description": "Required. The parent resource whose sinks are to be listed:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
                                 "pageToken": {
                                     "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
                                     "location": "query",
@@ -785,6 +580,13 @@
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
+                                },
+                                "parent": {
+                                    "description": "Required. The parent resource whose sinks are to be listed:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
                                 }
                             },
                             "path": "v2/{+parent}/sinks",
@@ -824,135 +626,11 @@
                                 "https://www.googleapis.com/auth/logging.admin",
                                 "https://www.googleapis.com/auth/logging.read"
                             ]
-                        },
-                        "update": {
-                            "description": "Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create. If the named sink does exist, then this method replaces the following fields in the existing sink with values from the new sink: destination, filter, output_version_format, start_time, and end_time. The updated filter might also have a new writer_identity; see the unique_writer_identity field.",
-                            "httpMethod": "PUT",
-                            "id": "logging.projects.sinks.update",
-                            "parameterOrder": [
-                                "sinkName"
-                            ],
-                            "parameters": {
-                                "sinkName": {
-                                    "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier:\n\"projects/[PROJECT_ID]/sinks/[SINK_ID]\"\n\"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\"\n\"folders/[FOLDER_ID]/sinks/[SINK_ID]\"\nExample: \"projects/my-project-id/sinks/my-sink-id\".",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/sinks/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "uniqueWriterIdentity": {
-                                    "description": "Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field:\nIf the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity.\nIf the old value was false and the new value is true, then writer_identity is changed to a unique service account.\nIt is an error if the old value was true and the new value is false.",
-                                    "location": "query",
-                                    "type": "boolean"
-                                }
-                            },
-                            "path": "v2/{+sinkName}",
-                            "request": {
-                                "$ref": "LogSink"
-                            },
-                            "response": {
-                                "$ref": "LogSink"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/logging.admin"
-                            ]
-                        },
-                        "create": {
-                            "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the current time is outside the sink's start and end times or the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
-                            "httpMethod": "POST",
-                            "id": "logging.projects.sinks.create",
-                            "parameterOrder": [
-                                "parent"
-                            ],
-                            "parameters": {
-                                "uniqueWriterIdentity": {
-                                    "description": "Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is cloud-logs@system.gserviceaccount.com, the same identity used before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.",
-                                    "location": "query",
-                                    "type": "boolean"
-                                },
-                                "parent": {
-                                    "description": "Required. The resource in which to create the sink:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\nExamples: \"projects/my-logging-project\", \"organizations/123456789\".",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2/{+parent}/sinks",
-                            "request": {
-                                "$ref": "LogSink"
-                            },
-                            "response": {
-                                "$ref": "LogSink"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/logging.admin"
-                            ]
                         }
                     }
                 },
                 "metrics": {
                     "methods": {
-                        "update": {
-                            "description": "Creates or updates a logs-based metric.",
-                            "httpMethod": "PUT",
-                            "id": "logging.projects.metrics.update",
-                            "parameterOrder": [
-                                "metricName"
-                            ],
-                            "parameters": {
-                                "metricName": {
-                                    "description": "The resource name of the metric to update:\n\"projects/[PROJECT_ID]/metrics/[METRIC_ID]\"\nThe updated metric must be provided in the request and it's name field must be the same as [METRIC_ID] If the metric does not exist in [PROJECT_ID], then a new metric is created.",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/metrics/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2/{+metricName}",
-                            "request": {
-                                "$ref": "LogMetric"
-                            },
-                            "response": {
-                                "$ref": "LogMetric"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/logging.admin",
-                                "https://www.googleapis.com/auth/logging.write"
-                            ]
-                        },
-                        "create": {
-                            "description": "Creates a logs-based metric.",
-                            "httpMethod": "POST",
-                            "id": "logging.projects.metrics.create",
-                            "parameterOrder": [
-                                "parent"
-                            ],
-                            "parameters": {
-                                "parent": {
-                                    "description": "The resource name of the project in which to create the metric:\n\"projects/[PROJECT_ID]\"\nThe new metric must be provided in the request.",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2/{+parent}/metrics",
-                            "request": {
-                                "$ref": "LogMetric"
-                            },
-                            "response": {
-                                "$ref": "LogMetric"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/logging.admin",
-                                "https://www.googleapis.com/auth/logging.write"
-                            ]
-                        },
                         "delete": {
                             "description": "Deletes a logs-based metric.",
                             "httpMethod": "DELETE",
@@ -1043,6 +721,64 @@
                                 "https://www.googleapis.com/auth/logging.admin",
                                 "https://www.googleapis.com/auth/logging.read"
                             ]
+                        },
+                        "update": {
+                            "description": "Creates or updates a logs-based metric.",
+                            "httpMethod": "PUT",
+                            "id": "logging.projects.metrics.update",
+                            "parameterOrder": [
+                                "metricName"
+                            ],
+                            "parameters": {
+                                "metricName": {
+                                    "description": "The resource name of the metric to update:\n\"projects/[PROJECT_ID]/metrics/[METRIC_ID]\"\nThe updated metric must be provided in the request and it's name field must be the same as [METRIC_ID] If the metric does not exist in [PROJECT_ID], then a new metric is created.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/metrics/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+metricName}",
+                            "request": {
+                                "$ref": "LogMetric"
+                            },
+                            "response": {
+                                "$ref": "LogMetric"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.write"
+                            ]
+                        },
+                        "create": {
+                            "description": "Creates a logs-based metric.",
+                            "httpMethod": "POST",
+                            "id": "logging.projects.metrics.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "The resource name of the project in which to create the metric:\n\"projects/[PROJECT_ID]\"\nThe new metric must be provided in the request.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+parent}/metrics",
+                            "request": {
+                                "$ref": "LogMetric"
+                            },
+                            "response": {
+                                "$ref": "LogMetric"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.write"
+                            ]
                         }
                     }
                 }
@@ -1085,12 +821,6 @@
                                 "parent"
                             ],
                             "parameters": {
-                                "pageSize": {
-                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                },
                                 "parent": {
                                     "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
                                     "location": "path",
@@ -1102,6 +832,12 @@
                                     "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
                                 }
                             },
                             "path": "v2/{+parent}/logs",
@@ -1225,7 +961,7 @@
                                     "type": "string"
                                 },
                                 "uniqueWriterIdentity": {
-                                    "description": "Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field:\nIf the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity.\nIf the old value was false and the new value is true, then writer_identity is changed to a unique service account.\nIt is an error if the old value was true and the new value is false.",
+                                    "description": "Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field:\nIf the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity.\nIf the old value is false and the new value is true, then writer_identity is changed to a unique service account.\nIt is an error if the old value is true and the new value is false.",
                                     "location": "query",
                                     "type": "boolean"
                                 }
@@ -1258,7 +994,7 @@
                                     "type": "string"
                                 },
                                 "uniqueWriterIdentity": {
-                                    "description": "Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is cloud-logs@system.gserviceaccount.com, the same identity used before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.",
+                                    "description": "Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Stackdriver Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.",
                                     "location": "query",
                                     "type": "boolean"
                                 }
@@ -1278,399 +1014,284 @@
                     }
                 }
             }
-        }
-    },
-    "revision": "20170210",
-    "rootUrl": "https://logging.googleapis.com/",
-    "schemas": {
-        "ListLogsResponse": {
-            "description": "Result returned from ListLogs.",
-            "id": "ListLogsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.",
-                    "type": "string"
-                },
-                "logNames": {
-                    "description": "A list of log names. For example, \"projects/my-project/syslog\" or \"organizations/123/cloudresourcemanager.googleapis.com%2Factivity\".",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
         },
-        "HttpRequest": {
-            "description": "A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message.",
-            "id": "HttpRequest",
-            "properties": {
-                "requestMethod": {
-                    "description": "The request method. Examples: \"GET\", \"HEAD\", \"PUT\", \"POST\".",
-                    "type": "string"
-                },
-                "requestSize": {
-                    "description": "The size of the HTTP request message in bytes, including the request headers and the request body.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "responseSize": {
-                    "description": "The size of the HTTP response message sent back to the client, in bytes, including the response headers and the response body.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "requestUrl": {
-                    "description": "The scheme (http, https), the host name, the path and the query portion of the URL that was requested. Example: \"http://example.com/some/info?color=red\".",
-                    "type": "string"
-                },
-                "remoteIp": {
-                    "description": "The IP address (IPv4 or IPv6) of the client that issued the HTTP request. Examples: \"192.168.1.1\", \"FE80::0202:B3FF:FE1E:8329\".",
-                    "type": "string"
-                },
-                "serverIp": {
-                    "description": "The IP address (IPv4 or IPv6) of the origin server that the request was sent to.",
-                    "type": "string"
-                },
-                "cacheLookup": {
-                    "description": "Whether or not a cache lookup was attempted.",
-                    "type": "boolean"
-                },
-                "cacheHit": {
-                    "description": "Whether or not an entity was served from cache (with or without validation).",
-                    "type": "boolean"
-                },
-                "cacheValidatedWithOriginServer": {
-                    "description": "Whether or not the response was validated with the origin server before being served from cache. This field is only meaningful if cache_hit is True.",
-                    "type": "boolean"
-                },
-                "status": {
-                    "description": "The response code indicating the status of response. Examples: 200, 404.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "referer": {
-                    "description": "The referer URL of the request, as defined in HTTP/1.1 Header Field Definitions (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).",
-                    "type": "string"
-                },
-                "latency": {
-                    "description": "The request processing latency on the server, from the time the request was received until the response was sent.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "userAgent": {
-                    "description": "The user agent sent by the client. Example: \"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)\".",
-                    "type": "string"
-                },
-                "cacheFillBytes": {
-                    "description": "The number of HTTP response bytes inserted into cache. Set only when a cache fill was attempted.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListSinksResponse": {
-            "description": "Result returned from ListSinks.",
-            "id": "ListSinksResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken.",
-                    "type": "string"
+        "folders": {
+            "resources": {
+                "logs": {
+                    "methods": {
+                        "delete": {
+                            "description": "Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted.",
+                            "httpMethod": "DELETE",
+                            "id": "logging.folders.logs.delete",
+                            "parameterOrder": [
+                                "logName"
+                            ],
+                            "parameters": {
+                                "logName": {
+                                    "description": "Required. The resource name of the log to delete:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\n[LOG_ID] must be URL-encoded. For example, \"projects/my-project-id/logs/syslog\", \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". For more information about log names, see LogEntry.",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/logs/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+logName}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed.",
+                            "httpMethod": "GET",
+                            "id": "logging.folders.logs.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageToken": {
+                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "parent": {
+                                    "description": "Required. The resource name that owns the logs:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+parent}/logs",
+                            "response": {
+                                "$ref": "ListLogsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.read"
+                            ]
+                        }
+                    }
                 },
                 "sinks": {
-                    "description": "A list of sinks.",
-                    "items": {
-                        "$ref": "LogSink"
+                    "methods": {
+                        "delete": {
+                            "description": "Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted.",
+                            "httpMethod": "DELETE",
+                            "id": "logging.folders.sinks.delete",
+                            "parameterOrder": [
+                                "sinkName"
+                            ],
+                            "parameters": {
+                                "sinkName": {
+                                    "description": "Required. The full resource name of the sink to delete, including the parent resource and the sink identifier:\n\"projects/[PROJECT_ID]/sinks/[SINK_ID]\"\n\"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\"\n\"folders/[FOLDER_ID]/sinks/[SINK_ID]\"\nExample: \"projects/my-project-id/sinks/my-sink-id\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/sinks/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+sinkName}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists sinks.",
+                            "httpMethod": "GET",
+                            "id": "logging.folders.sinks.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageToken": {
+                                    "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "parent": {
+                                    "description": "Required. The parent resource whose sinks are to be listed:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\n",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+parent}/sinks",
+                            "response": {
+                                "$ref": "ListSinksResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.read"
+                            ]
+                        },
+                        "get": {
+                            "description": "Gets a sink.",
+                            "httpMethod": "GET",
+                            "id": "logging.folders.sinks.get",
+                            "parameterOrder": [
+                                "sinkName"
+                            ],
+                            "parameters": {
+                                "sinkName": {
+                                    "description": "Required. The resource name of the sink:\n\"projects/[PROJECT_ID]/sinks/[SINK_ID]\"\n\"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\"\n\"folders/[FOLDER_ID]/sinks/[SINK_ID]\"\nExample: \"projects/my-project-id/sinks/my-sink-id\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/sinks/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+sinkName}",
+                            "response": {
+                                "$ref": "LogSink"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                "https://www.googleapis.com/auth/logging.admin",
+                                "https://www.googleapis.com/auth/logging.read"
+                            ]
+                        },
+                        "update": {
+                            "description": "Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create. If the named sink does exist, then this method replaces the following fields in the existing sink with values from the new sink: destination, filter, output_version_format, start_time, and end_time. The updated filter might also have a new writer_identity; see the unique_writer_identity field.",
+                            "httpMethod": "PUT",
+                            "id": "logging.folders.sinks.update",
+                            "parameterOrder": [
+                                "sinkName"
+                            ],
+                            "parameters": {
+                                "sinkName": {
+                                    "description": "Required. The full resource name of the sink to update, including the parent resource and the sink identifier:\n\"projects/[PROJECT_ID]/sinks/[SINK_ID]\"\n\"organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]\"\n\"folders/[FOLDER_ID]/sinks/[SINK_ID]\"\nExample: \"projects/my-project-id/sinks/my-sink-id\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/sinks/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "uniqueWriterIdentity": {
+                                    "description": "Optional. See sinks.create for a description of this field. When updating a sink, the effect of this field on the value of writer_identity in the updated sink depends on both the old and new values of this field:\nIf the old and new values of this field are both false or both true, then there is no change to the sink's writer_identity.\nIf the old value is false and the new value is true, then writer_identity is changed to a unique service account.\nIt is an error if the old value is true and the new value is false.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                }
+                            },
+                            "path": "v2/{+sinkName}",
+                            "request": {
+                                "$ref": "LogSink"
+                            },
+                            "response": {
+                                "$ref": "LogSink"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        },
+                        "create": {
+                            "description": "Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the current time is outside the sink's start and end times or the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.",
+                            "httpMethod": "POST",
+                            "id": "logging.folders.sinks.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. The resource in which to create the sink:\n\"projects/[PROJECT_ID]\"\n\"organizations/[ORGANIZATION_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]\"\n\"folders/[FOLDER_ID]\"\nExamples: \"projects/my-logging-project\", \"organizations/123456789\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "uniqueWriterIdentity": {
+                                    "description": "Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Stackdriver Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.",
+                                    "location": "query",
+                                    "type": "boolean"
+                                }
+                            },
+                            "path": "v2/{+parent}/sinks",
+                            "request": {
+                                "$ref": "LogSink"
+                            },
+                            "response": {
+                                "$ref": "LogSink"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/logging.admin"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "monitoredResourceDescriptors": {
+            "methods": {
+                "list": {
+                    "description": "Lists the descriptors for monitored resource types used by Stackdriver Logging.",
+                    "httpMethod": "GET",
+                    "id": "logging.monitoredResourceDescriptors.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "pageSize": {
+                            "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
+                            "location": "query",
+                            "type": "string"
+                        }
                     },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "LabelDescriptor": {
-            "description": "A description of a label.",
-            "id": "LabelDescriptor",
-            "properties": {
-                "key": {
-                    "description": "The label key.",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A human-readable description for the label.",
-                    "type": "string"
-                },
-                "valueType": {
-                    "description": "The type of data that can be assigned to the label.",
-                    "enum": [
-                        "STRING",
-                        "BOOL",
-                        "INT64"
-                    ],
-                    "enumDescriptions": [
-                        "A variable-length string. This is the default.",
-                        "Boolean; true or false.",
-                        "A 64-bit signed integer."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "MonitoredResourceDescriptor": {
-            "description": "An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of \"gce_instance\" and specifies the use of the labels \"instance_id\" and \"zone\" to identify particular VM instances.Different APIs can support different monitored resource types. APIs generally provide a list method that returns the monitored resource descriptors used by the API.",
-            "id": "MonitoredResourceDescriptor",
-            "properties": {
-                "name": {
-                    "description": "Optional. The resource name of the monitored resource descriptor: \"projects/{project_id}/monitoredResourceDescriptors/{type}\" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format \"monitoredResourceDescriptors/{type}\".",
-                    "type": "string"
-                },
-                "displayName": {
-                    "description": "Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, \"Google Cloud SQL Database\".",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "Optional. A detailed description of the monitored resource type that might be used in documentation.",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "Required. The monitored resource type. For example, the type \"cloudsql_database\" represents databases in Google Cloud SQL. The maximum length of this value is 256 characters.",
-                    "type": "string"
-                },
-                "labels": {
-                    "description": "Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels \"database_id\" and \"zone\".",
-                    "items": {
-                        "$ref": "LabelDescriptor"
+                    "path": "v2/monitoredResourceDescriptors",
+                    "response": {
+                        "$ref": "ListMonitoredResourceDescriptorsResponse"
                     },
-                    "type": "array"
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
+                        "https://www.googleapis.com/auth/logging.admin",
+                        "https://www.googleapis.com/auth/logging.read"
+                    ]
                 }
-            },
-            "type": "object"
-        },
-        "LogEntrySourceLocation": {
-            "description": "Additional information about the source code location that produced the log entry.",
-            "id": "LogEntrySourceLocation",
-            "properties": {
-                "function": {
-                    "description": "Optional. Human-readable name of the function or method being invoked, with optional context such as the class or package name. This information may be used in contexts such as the logs viewer, where a file and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java), dir/package.func (Go), function (Python).",
-                    "type": "string"
-                },
-                "line": {
-                    "description": "Optional. Line within the source file. 1-based; 0 indicates no line number available.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "file": {
-                    "description": "Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListLogEntriesResponse": {
-            "description": "Result returned from ListLogEntries.",
-            "id": "ListLogEntriesResponse",
-            "properties": {
-                "entries": {
-                    "description": "A list of log entries.",
-                    "items": {
-                        "$ref": "LogEntry"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.If a value for next_page_token appears and the entries field is empty, it means that the search found no log entries so far but it did not have time to search all the possible log entries. Retry the method with this value for page_token to continue the search. Alternatively, consider speeding up the search by changing your filter to specify a single log name or resource type, or to narrow the time range of the search.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LogLine": {
-            "description": "Application log line emitted while processing a request.",
-            "id": "LogLine",
-            "properties": {
-                "severity": {
-                    "description": "Severity of this log entry.",
-                    "enum": [
-                        "DEFAULT",
-                        "DEBUG",
-                        "INFO",
-                        "NOTICE",
-                        "WARNING",
-                        "ERROR",
-                        "CRITICAL",
-                        "ALERT",
-                        "EMERGENCY"
-                    ],
-                    "enumDescriptions": [
-                        "(0) The log entry has no assigned severity level.",
-                        "(100) Debug or trace information.",
-                        "(200) Routine information, such as ongoing status or performance.",
-                        "(300) Normal but significant events, such as start up, shut down, or a configuration change.",
-                        "(400) Warning events might cause problems.",
-                        "(500) Error events are likely to cause problems.",
-                        "(600) Critical events cause more severe problems or outages.",
-                        "(700) A person must take an action immediately.",
-                        "(800) One or more systems are unusable."
-                    ],
-                    "type": "string"
-                },
-                "logMessage": {
-                    "description": "App-provided log message.",
-                    "type": "string"
-                },
-                "sourceLocation": {
-                    "$ref": "SourceLocation",
-                    "description": "Where in the source code this log message was written."
-                },
-                "time": {
-                    "description": "Approximate time when this log entry was made.",
-                    "format": "google-datetime",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListLogMetricsResponse": {
-            "description": "Result returned from ListLogMetrics.",
-            "id": "ListLogMetricsResponse",
-            "properties": {
-                "metrics": {
-                    "description": "A list of logs-based metrics.",
-                    "items": {
-                        "$ref": "LogMetric"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
-            "id": "Empty",
-            "properties": {},
-            "type": "object"
-        },
-        "LogEntry": {
-            "description": "An individual entry in a log.",
-            "id": "LogEntry",
-            "properties": {
-                "httpRequest": {
-                    "$ref": "HttpRequest",
-                    "description": "Optional. Information about the HTTP request associated with this log entry, if applicable."
-                },
-                "resource": {
-                    "$ref": "MonitoredResource",
-                    "description": "Required. The monitored resource associated with this log entry. Example: a log entry that reports a database error would be associated with the monitored resource designating the particular database that reported the error."
-                },
-                "jsonPayload": {
-                    "additionalProperties": {
-                        "description": "Properties of the object.",
-                        "type": "any"
-                    },
-                    "description": "The log entry payload, represented as a structure that is expressed as a JSON object.",
-                    "type": "object"
-                },
-                "insertId": {
-                    "description": "Optional. A unique ID for the log entry. If you provide this field, the logging service considers other log entries in the same project with the same ID as duplicates which can be removed. If omitted, Stackdriver Logging will generate a unique ID for this log entry.",
-                    "type": "string"
-                },
-                "operation": {
-                    "$ref": "LogEntryOperation",
-                    "description": "Optional. Information about an operation associated with the log entry, if applicable."
-                },
-                "textPayload": {
-                    "description": "The log entry payload, represented as a Unicode string (UTF-8).",
-                    "type": "string"
-                },
-                "protoPayload": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "The log entry payload, represented as a protocol buffer. Some Google Cloud Platform services use this field for their log entry payloads.",
-                    "type": "object"
-                },
-                "trace": {
-                    "description": "Optional. Resource name of the trace associated with the log entry, if any. If it contains a relative resource name, the name is assumed to be relative to //tracing.googleapis.com. Example: projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824",
-                    "type": "string"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. A set of user-defined (key, value) data that provides additional information about the log entry.",
-                    "type": "object"
-                },
-                "severity": {
-                    "description": "Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT.",
-                    "enum": [
-                        "DEFAULT",
-                        "DEBUG",
-                        "INFO",
-                        "NOTICE",
-                        "WARNING",
-                        "ERROR",
-                        "CRITICAL",
-                        "ALERT",
-                        "EMERGENCY"
-                    ],
-                    "enumDescriptions": [
-                        "(0) The log entry has no assigned severity level.",
-                        "(100) Debug or trace information.",
-                        "(200) Routine information, such as ongoing status or performance.",
-                        "(300) Normal but significant events, such as start up, shut down, or a configuration change.",
-                        "(400) Warning events might cause problems.",
-                        "(500) Error events are likely to cause problems.",
-                        "(600) Critical events cause more severe problems or outages.",
-                        "(700) A person must take an action immediately.",
-                        "(800) One or more systems are unusable."
-                    ],
-                    "type": "string"
-                },
-                "sourceLocation": {
-                    "$ref": "LogEntrySourceLocation",
-                    "description": "Optional. Source code location information associated with the log entry, if any."
-                },
-                "timestamp": {
-                    "description": "Optional. The time the event described by the log entry occurred. If omitted, Stackdriver Logging will use the time the log entry is received.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "logName": {
-                    "description": "Required. The resource name of the log to which this log entry belongs:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\n[LOG_ID] must be URL-encoded within log_name. Example: \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". [LOG_ID] must be less than 512 characters long and can only include the following characters: upper and lower case alphanumeric characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins with a forward-slash, such as /projects/..., then the log entry is ingested as usual but the forward-slash is removed. Listing the log entry will not show the leading slash and filtering for a log name with a leading slash will never return any results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "SourceLocation": {
-            "description": "Specifies a location in a source code file.",
-            "id": "SourceLocation",
-            "properties": {
-                "file": {
-                    "description": "Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name.",
-                    "type": "string"
-                },
-                "functionName": {
-                    "description": "Human-readable name of the function or method being invoked, with optional context such as the class or package name. This information is used in contexts such as the logs viewer, where a file and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java), dir/package.func (Go), function (Python).",
-                    "type": "string"
-                },
-                "line": {
-                    "description": "Line within the source file.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
+            }
+        }
+    },
+    "revision": "20170228",
+    "rootUrl": "https://logging.googleapis.com/",
+    "schemas": {
         "ListLogEntriesRequest": {
             "description": "The parameters to ListLogEntries.",
             "id": "ListLogEntriesRequest",
             "properties": {
+                "pageSize": {
+                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "orderBy": {
                     "description": "Optional. How the results should be sorted. Presently, the only permitted values are \"timestamp asc\" (default) and \"timestamp desc\". The first option returns entries in order of increasing values of LogEntry.timestamp (oldest first), and the second option returns entries in order of decreasing timestamps (newest first). Entries with equal timestamps are returned in order of LogEntry.insertId.",
                     "type": "string"
@@ -1696,11 +1317,6 @@
                 "pageToken": {
                     "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call.",
                     "type": "string"
-                },
-                "pageSize": {
-                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -1709,6 +1325,15 @@
             "description": "Complete log information about a single HTTP request to an App Engine application.",
             "id": "RequestLog",
             "properties": {
+                "megaCycles": {
+                    "description": "Number of CPU megacycles used to process request.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "first": {
+                    "description": "Whether this is the first RequestLog entry for this request. If an active request has several RequestLog entries written to Stackdriver Logging, then this field will be set for one of them.",
+                    "type": "boolean"
+                },
                 "versionId": {
                     "description": "Version of the application that handled this request.",
                     "type": "string"
@@ -1842,15 +1467,6 @@
                 "instanceId": {
                     "description": "An identifier for the instance that handled the request.",
                     "type": "string"
-                },
-                "megaCycles": {
-                    "description": "Number of CPU megacycles used to process request.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "first": {
-                    "description": "Whether this is the first RequestLog entry for this request. If an active request has several RequestLog entries written to Stackdriver Logging, then this field will be set for one of them.",
-                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1859,16 +1475,16 @@
             "description": "Result returned from ListMonitoredResourceDescriptors.",
             "id": "ListMonitoredResourceDescriptorsResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.",
-                    "type": "string"
-                },
                 "resourceDescriptors": {
                     "description": "A list of resource descriptors.",
                     "items": {
                         "$ref": "MonitoredResourceDescriptor"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1877,43 +1493,12 @@
             "description": "A reference to a particular snapshot of the source tree used to build and deploy an application.",
             "id": "SourceReference",
             "properties": {
-                "repository": {
-                    "description": "Optional. A URI string identifying the repository. Example: \"https://github.com/GoogleCloudPlatform/kubernetes.git\"",
-                    "type": "string"
-                },
                 "revisionId": {
                     "description": "The canonical and persistent identifier of the deployed revision. Example (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\"",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LogMetric": {
-            "description": "Describes a logs-based metric. The value of the metric is the number of log entries that match a logs filter in a given time interval.",
-            "id": "LogMetric",
-            "properties": {
-                "name": {
-                    "description": "Required. The client-assigned metric identifier. Examples: \"error_count\", \"nginx/requests\".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.The metric identifier in this field must not be URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However, when the metric identifier appears as the [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example: \"projects/my-project/metrics/nginx%2Frequests\".",
-                    "type": "string"
                 },
-                "description": {
-                    "description": "Optional. A description of this metric, which is used in documentation.",
-                    "type": "string"
-                },
-                "version": {
-                    "description": "Output only. The API version that created or updated this metric. The version also dictates the syntax of the filter expression. When a value for this field is missing, the default value of V2 should be assumed.",
-                    "enum": [
-                        "V2",
-                        "V1"
-                    ],
-                    "enumDescriptions": [
-                        "Stackdriver Logging API v2.",
-                        "Stackdriver Logging API v1."
-                    ],
-                    "type": "string"
-                },
-                "filter": {
-                    "description": "Required. An advanced logs filter which is used to match log entries. Example:\n\"resource.type=gae_app AND severity>=ERROR\"\nThe maximum length of the filter is 20000 characters.",
+                "repository": {
+                    "description": "Optional. A URI string identifying the repository. Example: \"https://github.com/GoogleCloudPlatform/kubernetes.git\"",
                     "type": "string"
                 }
             },
@@ -1948,20 +1533,84 @@
             },
             "type": "object"
         },
+        "LogMetric": {
+            "description": "Describes a logs-based metric. The value of the metric is the number of log entries that match a logs filter in a given time interval.",
+            "id": "LogMetric",
+            "properties": {
+                "version": {
+                    "description": "Output only. The API version that created or updated this metric. The version also dictates the syntax of the filter expression. When a value for this field is missing, the default value of V2 should be assumed.",
+                    "enum": [
+                        "V2",
+                        "V1"
+                    ],
+                    "enumDescriptions": [
+                        "Stackdriver Logging API v2.",
+                        "Stackdriver Logging API v1."
+                    ],
+                    "type": "string"
+                },
+                "filter": {
+                    "description": "Required. An advanced logs filter which is used to match log entries. Example:\n\"resource.type=gae_app AND severity>=ERROR\"\nThe maximum length of the filter is 20000 characters.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The client-assigned metric identifier. Examples: \"error_count\", \"nginx/requests\".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.The metric identifier in this field must not be URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However, when the metric identifier appears as the [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example: \"projects/my-project/metrics/nginx%2Frequests\".",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Optional. A description of this metric, which is used in documentation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "MonitoredResource": {
             "description": "An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for \"gce_instance\" has labels \"instance_id\" and \"zone\":\n{ \"type\": \"gce_instance\",\n  \"labels\": { \"instance_id\": \"12345678901234\",\n              \"zone\": \"us-central1-a\" }}\n",
             "id": "MonitoredResource",
             "properties": {
-                "type": {
-                    "description": "Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Cloud SQL database is \"cloudsql_database\".",
-                    "type": "string"
-                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
                     },
                     "description": "Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Cloud SQL databases use the labels \"database_id\" and \"zone\".",
                     "type": "object"
+                },
+                "type": {
+                    "description": "Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Cloud SQL database is \"cloudsql_database\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WriteLogEntriesRequest": {
+            "description": "The parameters to WriteLogEntries.",
+            "id": "WriteLogEntriesRequest",
+            "properties": {
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Default labels that are added to the labels field of all log entries in entries. If a log entry already has a label with the same key as a label in this parameter, then the log entry's label is not changed. See LogEntry.",
+                    "type": "object"
+                },
+                "resource": {
+                    "$ref": "MonitoredResource",
+                    "description": "Optional. A default monitored resource object that is assigned to all log entries in entries that do not specify a value for resource. Example:\n{ \"type\": \"gce_instance\",\n  \"labels\": {\n    \"zone\": \"us-central1-a\", \"instance_id\": \"00000000000000000000\" }}\nSee LogEntry."
+                },
+                "logName": {
+                    "description": "Optional. A default log resource name that is assigned to all log entries in entries that do not specify a value for log_name:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\n[LOG_ID] must be URL-encoded. For example, \"projects/my-project-id/logs/syslog\" or \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". For more information about log names, see LogEntry.",
+                    "type": "string"
+                },
+                "entries": {
+                    "description": "Required. The log entries to write. Values supplied for the fields log_name, resource, and labels in this entries.write request are added to those log entries that do not provide their own values for the fields.To improve throughput and to avoid exceeding the quota limit for calls to entries.write, you should write multiple log entries at once rather than calling this method for each individual log entry.",
+                    "items": {
+                        "$ref": "LogEntry"
+                    },
+                    "type": "array"
+                },
+                "partialSuccess": {
+                    "description": "Optional. Whether valid entries should be written even if some other entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not written, the response status will be the error associated with one of the failed entries and include error details in the form of WriteLogEntriesPartialErrors.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1970,24 +1619,6 @@
             "description": "Describes a sink used to export log entries to one of the following destinations in any project: a Cloud Storage bucket, a BigQuery dataset, or a Cloud Pub/Sub topic. A logs filter controls which log entries are exported. The sink must be created within a project, organization, billing account, or folder.",
             "id": "LogSink",
             "properties": {
-                "outputVersionFormat": {
-                    "description": "Optional. The log entry format to use for this sink's exported log entries. The v2 format is used by default. The v1 format is deprecated and should be used only as part of a migration effort to v2. See Migration to the v2 API.",
-                    "enum": [
-                        "VERSION_FORMAT_UNSPECIFIED",
-                        "V2",
-                        "V1"
-                    ],
-                    "enumDescriptions": [
-                        "An unspecified format version that will default to V2.",
-                        "LogEntry version 2 format.",
-                        "LogEntry version 1 format."
-                    ],
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Required. The client-assigned sink identifier, unique within the project. Example: \"my-syslog-errors-to-pubsub\". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.",
-                    "type": "string"
-                },
                 "destination": {
                     "description": "Required. The export destination:\n\"storage.googleapis.com/[GCS_BUCKET]\"\n\"bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]\"\n\"pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]\"\nThe sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs With Sinks.",
                     "type": "string"
@@ -2009,39 +1640,408 @@
                     "description": "Optional. The time at which this sink will begin exporting log entries. Log entries are exported only if their timestamp is not earlier than the start time. The default value of this field is the time the sink is created or updated.",
                     "format": "google-datetime",
                     "type": "string"
+                },
+                "outputVersionFormat": {
+                    "description": "Optional. The log entry format to use for this sink's exported log entries. The v2 format is used by default. The v1 format is deprecated and should be used only as part of a migration effort to v2. See Migration to the v2 API.",
+                    "enum": [
+                        "VERSION_FORMAT_UNSPECIFIED",
+                        "V2",
+                        "V1"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified format version that will default to V2.",
+                        "LogEntry version 2 format.",
+                        "LogEntry version 1 format."
+                    ],
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The client-assigned sink identifier, unique within the project. Example: \"my-syslog-errors-to-pubsub\". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.",
+                    "type": "string"
                 }
             },
             "type": "object"
         },
-        "WriteLogEntriesRequest": {
-            "description": "The parameters to WriteLogEntries.",
-            "id": "WriteLogEntriesRequest",
+        "ListLogsResponse": {
+            "description": "Result returned from ListLogs.",
+            "id": "ListLogsResponse",
             "properties": {
-                "logName": {
-                    "description": "Optional. A default log resource name that is assigned to all log entries in entries that do not specify a value for log_name:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\n[LOG_ID] must be URL-encoded. For example, \"projects/my-project-id/logs/syslog\" or \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". For more information about log names, see LogEntry.",
+                "logNames": {
+                    "description": "A list of log names. For example, \"projects/my-project/syslog\" or \"organizations/123/cloudresourcemanager.googleapis.com%2Factivity\".",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListSinksResponse": {
+            "description": "Result returned from ListSinks.",
+            "id": "ListSinksResponse",
+            "properties": {
+                "sinks": {
+                    "description": "A list of sinks.",
+                    "items": {
+                        "$ref": "LogSink"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HttpRequest": {
+            "description": "A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message.",
+            "id": "HttpRequest",
+            "properties": {
+                "requestUrl": {
+                    "description": "The scheme (http, https), the host name, the path and the query portion of the URL that was requested. Example: \"http://example.com/some/info?color=red\".",
                     "type": "string"
                 },
+                "serverIp": {
+                    "description": "The IP address (IPv4 or IPv6) of the origin server that the request was sent to.",
+                    "type": "string"
+                },
+                "remoteIp": {
+                    "description": "The IP address (IPv4 or IPv6) of the client that issued the HTTP request. Examples: \"192.168.1.1\", \"FE80::0202:B3FF:FE1E:8329\".",
+                    "type": "string"
+                },
+                "cacheLookup": {
+                    "description": "Whether or not a cache lookup was attempted.",
+                    "type": "boolean"
+                },
+                "cacheHit": {
+                    "description": "Whether or not an entity was served from cache (with or without validation).",
+                    "type": "boolean"
+                },
+                "cacheValidatedWithOriginServer": {
+                    "description": "Whether or not the response was validated with the origin server before being served from cache. This field is only meaningful if cache_hit is True.",
+                    "type": "boolean"
+                },
+                "status": {
+                    "description": "The response code indicating the status of response. Examples: 200, 404.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "referer": {
+                    "description": "The referer URL of the request, as defined in HTTP/1.1 Header Field Definitions (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).",
+                    "type": "string"
+                },
+                "userAgent": {
+                    "description": "The user agent sent by the client. Example: \"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)\".",
+                    "type": "string"
+                },
+                "latency": {
+                    "description": "The request processing latency on the server, from the time the request was received until the response was sent.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "cacheFillBytes": {
+                    "description": "The number of HTTP response bytes inserted into cache. Set only when a cache fill was attempted.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "requestMethod": {
+                    "description": "The request method. Examples: \"GET\", \"HEAD\", \"PUT\", \"POST\".",
+                    "type": "string"
+                },
+                "responseSize": {
+                    "description": "The size of the HTTP response message sent back to the client, in bytes, including the response headers and the response body.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "requestSize": {
+                    "description": "The size of the HTTP request message in bytes, including the request headers and the request body.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LabelDescriptor": {
+            "description": "A description of a label.",
+            "id": "LabelDescriptor",
+            "properties": {
+                "key": {
+                    "description": "The label key.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A human-readable description for the label.",
+                    "type": "string"
+                },
+                "valueType": {
+                    "description": "The type of data that can be assigned to the label.",
+                    "enum": [
+                        "STRING",
+                        "BOOL",
+                        "INT64"
+                    ],
+                    "enumDescriptions": [
+                        "A variable-length string. This is the default.",
+                        "Boolean; true or false.",
+                        "A 64-bit signed integer."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MonitoredResourceDescriptor": {
+            "description": "An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of \"gce_instance\" and specifies the use of the labels \"instance_id\" and \"zone\" to identify particular VM instances.Different APIs can support different monitored resource types. APIs generally provide a list method that returns the monitored resource descriptors used by the API.",
+            "id": "MonitoredResourceDescriptor",
+            "properties": {
+                "name": {
+                    "description": "Optional. The resource name of the monitored resource descriptor: \"projects/{project_id}/monitoredResourceDescriptors/{type}\" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format \"monitoredResourceDescriptors/{type}\".",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, \"Google Cloud SQL Database\".",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Optional. A detailed description of the monitored resource type that might be used in documentation.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Required. The monitored resource type. For example, the type \"cloudsql_database\" represents databases in Google Cloud SQL. The maximum length of this value is 256 characters.",
+                    "type": "string"
+                },
+                "labels": {
+                    "description": "Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels \"database_id\" and \"zone\".",
+                    "items": {
+                        "$ref": "LabelDescriptor"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "LogEntrySourceLocation": {
+            "description": "Additional information about the source code location that produced the log entry.",
+            "id": "LogEntrySourceLocation",
+            "properties": {
+                "line": {
+                    "description": "Optional. Line within the source file. 1-based; 0 indicates no line number available.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "file": {
+                    "description": "Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name.",
+                    "type": "string"
+                },
+                "function": {
+                    "description": "Optional. Human-readable name of the function or method being invoked, with optional context such as the class or package name. This information may be used in contexts such as the logs viewer, where a file and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java), dir/package.func (Go), function (Python).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListLogEntriesResponse": {
+            "description": "Result returned from ListLogEntries.",
+            "id": "ListLogEntriesResponse",
+            "properties": {
                 "entries": {
-                    "description": "Required. The log entries to write. Values supplied for the fields log_name, resource, and labels in this entries.write request are added to those log entries that do not provide their own values for the fields.To improve throughput and to avoid exceeding the quota limit for calls to entries.write, you should write multiple log entries at once rather than calling this method for each individual log entry.",
+                    "description": "A list of log entries.",
                     "items": {
                         "$ref": "LogEntry"
                     },
                     "type": "array"
                 },
-                "partialSuccess": {
-                    "description": "Optional. Whether valid entries should be written even if some other entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not written, the response status will be the error associated with one of the failed entries and include error details in the form of WriteLogEntriesPartialErrors.",
-                    "type": "boolean"
+                "nextPageToken": {
+                    "description": "If there might be more results than those appearing in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.If a value for next_page_token appears and the entries field is empty, it means that the search found no log entries so far but it did not have time to search all the possible log entries. Retry the method with this value for page_token to continue the search. Alternatively, consider speeding up the search by changing your filter to specify a single log name or resource type, or to narrow the time range of the search.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LogLine": {
+            "description": "Application log line emitted while processing a request.",
+            "id": "LogLine",
+            "properties": {
+                "sourceLocation": {
+                    "$ref": "SourceLocation",
+                    "description": "Where in the source code this log message was written."
+                },
+                "time": {
+                    "description": "Approximate time when this log entry was made.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "severity": {
+                    "description": "Severity of this log entry.",
+                    "enum": [
+                        "DEFAULT",
+                        "DEBUG",
+                        "INFO",
+                        "NOTICE",
+                        "WARNING",
+                        "ERROR",
+                        "CRITICAL",
+                        "ALERT",
+                        "EMERGENCY"
+                    ],
+                    "enumDescriptions": [
+                        "(0) The log entry has no assigned severity level.",
+                        "(100) Debug or trace information.",
+                        "(200) Routine information, such as ongoing status or performance.",
+                        "(300) Normal but significant events, such as start up, shut down, or a configuration change.",
+                        "(400) Warning events might cause problems.",
+                        "(500) Error events are likely to cause problems.",
+                        "(600) Critical events cause more severe problems or outages.",
+                        "(700) A person must take an action immediately.",
+                        "(800) One or more systems are unusable."
+                    ],
+                    "type": "string"
+                },
+                "logMessage": {
+                    "description": "App-provided log message.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListLogMetricsResponse": {
+            "description": "Result returned from ListLogMetrics.",
+            "id": "ListLogMetricsResponse",
+            "properties": {
+                "metrics": {
+                    "description": "A list of logs-based metrics.",
+                    "items": {
+                        "$ref": "LogMetric"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call this method again using the value of nextPageToken as pageToken.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "LogEntry": {
+            "description": "An individual entry in a log.",
+            "id": "LogEntry",
+            "properties": {
+                "httpRequest": {
+                    "$ref": "HttpRequest",
+                    "description": "Optional. Information about the HTTP request associated with this log entry, if applicable."
+                },
+                "resource": {
+                    "$ref": "MonitoredResource",
+                    "description": "Required. The monitored resource associated with this log entry. Example: a log entry that reports a database error would be associated with the monitored resource designating the particular database that reported the error."
+                },
+                "jsonPayload": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "The log entry payload, represented as a structure that is expressed as a JSON object.",
+                    "type": "object"
+                },
+                "operation": {
+                    "$ref": "LogEntryOperation",
+                    "description": "Optional. Information about an operation associated with the log entry, if applicable."
+                },
+                "insertId": {
+                    "description": "Optional. A unique ID for the log entry. If you provide this field, the logging service considers other log entries in the same project with the same ID as duplicates which can be removed. If omitted, Stackdriver Logging will generate a unique ID for this log entry.",
+                    "type": "string"
+                },
+                "textPayload": {
+                    "description": "The log entry payload, represented as a Unicode string (UTF-8).",
+                    "type": "string"
+                },
+                "protoPayload": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "The log entry payload, represented as a protocol buffer. Some Google Cloud Platform services use this field for their log entry payloads.",
+                    "type": "object"
+                },
+                "trace": {
+                    "description": "Optional. Resource name of the trace associated with the log entry, if any. If it contains a relative resource name, the name is assumed to be relative to //tracing.googleapis.com. Example: projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824",
+                    "type": "string"
                 },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Optional. Default labels that are added to the labels field of all log entries in entries. If a log entry already has a label with the same key as a label in this parameter, then the log entry's label is not changed. See LogEntry.",
+                    "description": "Optional. A set of user-defined (key, value) data that provides additional information about the log entry.",
                     "type": "object"
                 },
-                "resource": {
-                    "$ref": "MonitoredResource",
-                    "description": "Optional. A default monitored resource object that is assigned to all log entries in entries that do not specify a value for resource. Example:\n{ \"type\": \"gce_instance\",\n  \"labels\": {\n    \"zone\": \"us-central1-a\", \"instance_id\": \"00000000000000000000\" }}\nSee LogEntry."
+                "severity": {
+                    "description": "Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT.",
+                    "enum": [
+                        "DEFAULT",
+                        "DEBUG",
+                        "INFO",
+                        "NOTICE",
+                        "WARNING",
+                        "ERROR",
+                        "CRITICAL",
+                        "ALERT",
+                        "EMERGENCY"
+                    ],
+                    "enumDescriptions": [
+                        "(0) The log entry has no assigned severity level.",
+                        "(100) Debug or trace information.",
+                        "(200) Routine information, such as ongoing status or performance.",
+                        "(300) Normal but significant events, such as start up, shut down, or a configuration change.",
+                        "(400) Warning events might cause problems.",
+                        "(500) Error events are likely to cause problems.",
+                        "(600) Critical events cause more severe problems or outages.",
+                        "(700) A person must take an action immediately.",
+                        "(800) One or more systems are unusable."
+                    ],
+                    "type": "string"
+                },
+                "sourceLocation": {
+                    "$ref": "LogEntrySourceLocation",
+                    "description": "Optional. Source code location information associated with the log entry, if any."
+                },
+                "timestamp": {
+                    "description": "Optional. The time the event described by the log entry occurred. If omitted, Stackdriver Logging will use the time the log entry is received.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "logName": {
+                    "description": "Required. The resource name of the log to which this log entry belongs:\n\"projects/[PROJECT_ID]/logs/[LOG_ID]\"\n\"organizations/[ORGANIZATION_ID]/logs/[LOG_ID]\"\n\"billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]\"\n\"folders/[FOLDER_ID]/logs/[LOG_ID]\"\n[LOG_ID] must be URL-encoded within log_name. Example: \"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity\". [LOG_ID] must be less than 512 characters long and can only include the following characters: upper and lower case alphanumeric characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins with a forward-slash, such as /projects/..., then the log entry is ingested as usual but the forward-slash is removed. Listing the log entry will not show the leading slash and filtering for a log name with a leading slash will never return any results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SourceLocation": {
+            "description": "Specifies a location in a source code file.",
+            "id": "SourceLocation",
+            "properties": {
+                "file": {
+                    "description": "Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name.",
+                    "type": "string"
+                },
+                "functionName": {
+                    "description": "Human-readable name of the function or method being invoked, with optional context such as the class or package name. This information is used in contexts such as the logs viewer, where a file and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java), dir/package.func (Go), function (Python).",
+                    "type": "string"
+                },
+                "line": {
+                    "description": "Line within the source file.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"

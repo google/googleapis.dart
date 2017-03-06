@@ -1,3 +1,24 @@
+## 0.36.0
+
+* [api-new] sourcerepo:v1
+* [api-new] tracing:v1
+* [api-new] spanner:v1
+* [api] adexchangebuyer
+* [api] androidpublisher
+* [api] bigquery
+* [api] cloudresourcemanager
+* [api] dataproc
+* [api] drive
+* [api] people
+* [api] reseller
+* [api] servicemanagement
+* [api] serviceuser
+* [api] slides
+* [api] vision
+* [api-breaking] serviceuser
+* [api-breaking] people
+* [api-removed] dfareporting
+
 ## 0.35.0
 
 [api-new] serviceuser:v1

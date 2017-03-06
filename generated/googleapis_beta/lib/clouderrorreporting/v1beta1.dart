@@ -124,11 +124,11 @@ class ProjectsEventsResourceApi {
    *
    * [groupId] - [Required] The group for which events shall be returned.
    *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response.
-   *
    * [serviceFilter_service] - [Optional] The exact value to match against
    * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+   *
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response.
    *
    * [pageSize] - [Optional] The maximum number of results to return per
    * response.
@@ -144,7 +144,7 @@ class ProjectsEventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListEventsResponse> list(core.String projectName, {core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId, core.String pageToken, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version}) {
+  async.Future<ListEventsResponse> list(core.String projectName, {core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId, core.String serviceFilter_service, core.String pageToken, core.int pageSize, core.String serviceFilter_version}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -164,11 +164,11 @@ class ProjectsEventsResourceApi {
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (serviceFilter_service != null) {
       _queryParams["serviceFilter.service"] = [serviceFilter_service];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -270,11 +270,6 @@ class ProjectsGroupStatsResourceApi {
    * Example: <code>projects/my-project-123</code>.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response. To view
-   * additional results, pass this token along with the identical query
-   * parameters as the first request.
-   *
    * [timeRange_period] - Restricts the query to the specified time range.
    * Possible string values are:
    * - "PERIOD_UNSPECIFIED" : A PERIOD_UNSPECIFIED.
@@ -314,16 +309,21 @@ class ProjectsGroupStatsResourceApi {
    * [serviceFilter_version] - [Optional] The exact value to match against
    * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   *
    * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
    * if rounded
    * alignment is chosen. Default is 00:00 UTC.
    *
-   * [serviceFilter_resourceType] - [Optional] The exact value to match against
-   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
-   *
    * [timedCountDuration] - [Optional] The preferred duration for a single
    * returned `TimedCount`.
    * If not set, no timed counts are returned.
+   *
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response. To view
+   * additional results, pass this token along with the identical query
+   * parameters as the first request.
    *
    * Completes with a [ListGroupStatsResponse].
    *
@@ -333,7 +333,7 @@ class ProjectsGroupStatsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String pageToken, core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String order, core.String serviceFilter_version, core.String alignmentTime, core.String serviceFilter_resourceType, core.String timedCountDuration}) {
+  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String order, core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String alignmentTime, core.String timedCountDuration, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -343,9 +343,6 @@ class ProjectsGroupStatsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (timeRange_period != null) {
       _queryParams["timeRange.period"] = [timeRange_period];
@@ -368,14 +365,17 @@ class ProjectsGroupStatsResourceApi {
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
     }
-    if (alignmentTime != null) {
-      _queryParams["alignmentTime"] = [alignmentTime];
-    }
     if (serviceFilter_resourceType != null) {
       _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
+    if (alignmentTime != null) {
+      _queryParams["alignmentTime"] = [alignmentTime];
+    }
     if (timedCountDuration != null) {
       _queryParams["timedCountDuration"] = [timedCountDuration];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/groupStats';

@@ -16,7 +16,7 @@ const core.String USER_AGENT = 'dart-api-client appsactivity/v1';
 
 /** Provides a historical view of activity. */
 class AppsactivityApi {
-  /** View the activity history of your Google Apps */
+  /** View the activity history of your Google apps */
   static const ActivityScope = "https://www.googleapis.com/auth/activity";
 
   /** View and manage the files in your Google Drive */

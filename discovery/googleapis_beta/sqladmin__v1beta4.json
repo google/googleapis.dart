@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/nTAQY_qt-UTPitXU3W2WOvJpMCs\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/HY0tRuJ-vWPnM8lK2hqBBFUYsUk\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -466,6 +466,13 @@
                     "description": "List all available database flags for Google Cloud SQL instances.",
                     "httpMethod": "GET",
                     "id": "sql.flags.list",
+                    "parameters": {
+                        "databaseVersion": {
+                            "description": "Database version for flag retrieval. Flags are specific to the database version.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
                     "path": "flags",
                     "response": {
                         "$ref": "FlagsListResponse"
@@ -710,6 +717,11 @@
                         "project"
                     ],
                     "parameters": {
+                        "filter": {
+                            "description": "A filter expression for filtering listed instances.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "maxResults": {
                             "description": "The maximum number of results to return per response.",
                             "format": "uint32",
@@ -1478,7 +1490,7 @@
             }
         }
     },
-    "revision": "20170111",
+    "revision": "20170217",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2190,6 +2202,21 @@
             },
             "type": "object"
         },
+        "Labels": {
+            "description": "User defined labels for Cloud SQL instances.",
+            "id": "Labels",
+            "properties": {
+                "key": {
+                    "description": "The key of the label.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the label.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "LocationPreference": {
             "description": "Preferred location. This specifies where a Cloud SQL instance should preferably be located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.",
             "id": "LocationPreference",
@@ -2500,7 +2527,7 @@
                     "type": "array"
                 },
                 "availabilityType": {
-                    "description": "The availability type. This can be one of the following.\nZONAL: A Cloud SQL instance that is zonally available. The instance is bound to a single GCE zone and may be inaccessible during an outage for that GCE zone.\nREGIONAL: A Cloud SQL instance that is regionally available. The instance is provisioned in multiple zones within a region and is able to provide higher availability than an instance with a zonal availability type.",
+                    "description": "Reserved for future use.",
                     "type": "string"
                 },
                 "backupConfiguration": {
@@ -2539,6 +2566,13 @@
                     "default": "sql#settings",
                     "description": "This is always sql#settings.",
                     "type": "string"
+                },
+                "labels": {
+                    "description": "User defined labels.",
+                    "items": {
+                        "$ref": "Labels"
+                    },
+                    "type": "array"
                 },
                 "locationPreference": {
                     "$ref": "LocationPreference",

@@ -125,14 +125,14 @@ class BillingAccountsLogsResourceApi {
    *
    * Value must have pattern "^billingAccounts/[^/]+$".
    *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
+   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
-   *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogsResponse].
    *
@@ -142,7 +142,7 @@ class BillingAccountsLogsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListLogsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -153,11 +153,11 @@ class BillingAccountsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -859,8 +859,8 @@ class ProjectsSinksResourceApi {
    * [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
    * returned as writer_identity in the new sink. If this value is omitted or
    * set to false, and if the sink's parent is a project, then the value
-   * returned as writer_identity is cloud-logs@system.gserviceaccount.com, the
-   * same identity used before the addition of writer identities to this API.
+   * returned as writer_identity is the same group or service account used by
+   * Stackdriver Logging before the addition of writer identities to this API.
    * The sink's destination must be in the same project as the sink itself.If
    * this field is set to true, or if the sink is owned by a non-project
    * resource such as an organization, then the value of writer_identity will be
@@ -1010,14 +1010,14 @@ class ProjectsSinksResourceApi {
    *
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -1027,7 +1027,7 @@ class ProjectsSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListSinksResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListSinksResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1038,11 +1038,11 @@ class ProjectsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -1084,9 +1084,9 @@ class ProjectsSinksResourceApi {
    * of this field:
    * If the old and new values of this field are both false or both true, then
    * there is no change to the sink's writer_identity.
-   * If the old value was false and the new value is true, then writer_identity
+   * If the old value is false and the new value is true, then writer_identity
    * is changed to a unique service account.
-   * It is an error if the old value was true and the new value is false.
+   * It is an error if the old value is true and the new value is false.
    *
    * Completes with a [LogSink].
    *

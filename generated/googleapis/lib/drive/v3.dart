@@ -59,6 +59,7 @@ class DriveApi {
   PermissionsResourceApi get permissions => new PermissionsResourceApi(_requester);
   RepliesResourceApi get replies => new RepliesResourceApi(_requester);
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
+  TeamdrivesResourceApi get teamdrives => new TeamdrivesResourceApi(_requester);
 
   DriveApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "drive/v3/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -119,6 +120,12 @@ class ChangesResourceApi {
    *
    * Request parameters:
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
+   * [teamDriveId] - The ID of the Team Drive for which the starting pageToken
+   * for listing future changes from that Team Drive will be returned.
+   *
    * Completes with a [StartPageToken].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -127,7 +134,7 @@ class ChangesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<StartPageToken> getStartPageToken() {
+  async.Future<StartPageToken> getStartPageToken({core.bool supportsTeamDrives, core.String teamDriveId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -135,6 +142,12 @@ class ChangesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if (teamDriveId != null) {
+      _queryParams["teamDriveId"] = [teamDriveId];
+    }
 
     _url = 'changes/startPageToken';
 
@@ -149,7 +162,7 @@ class ChangesResourceApi {
   }
 
   /**
-   * Lists changes for a user.
+   * Lists the changes for a user or Team Drive.
    *
    * Request parameters:
    *
@@ -157,8 +170,17 @@ class ChangesResourceApi {
    * page. This should be set to the value of 'nextPageToken' from the previous
    * response or to the response from the getStartPageToken method.
    *
+   * [includeCorpusRemovals] - Whether changes should include the file resource
+   * if the file is still accessible by the user at the time of the request,
+   * even when a file was removed from the list of changes and there will be no
+   * further change entries for this file.
+   *
    * [includeRemoved] - Whether to include changes indicating that items have
-   * left the view of the changes list, for example by deletion or lost access.
+   * been removed from the list of changes, for example by deletion or loss of
+   * access.
+   *
+   * [includeTeamDriveItems] - Whether Team Drive files or changes should be
+   * included in results.
    *
    * [pageSize] - The maximum number of changes to return per page.
    * Value must be between "1" and "1000".
@@ -171,6 +193,13 @@ class ChangesResourceApi {
    * [spaces] - A comma-separated list of spaces to query within the user
    * corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
+   * [teamDriveId] - The Team Drive from which changes will be returned. If
+   * specified the change IDs will be reflective of the Team Drive; use the
+   * combined Team Drive ID and change ID as an identifier.
+   *
    * Completes with a [ChangeList].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -179,7 +208,7 @@ class ChangesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ChangeList> list(core.String pageToken, {core.bool includeRemoved, core.int pageSize, core.bool restrictToMyDrive, core.String spaces}) {
+  async.Future<ChangeList> list(core.String pageToken, {core.bool includeCorpusRemovals, core.bool includeRemoved, core.bool includeTeamDriveItems, core.int pageSize, core.bool restrictToMyDrive, core.String spaces, core.bool supportsTeamDrives, core.String teamDriveId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -191,8 +220,14 @@ class ChangesResourceApi {
       throw new core.ArgumentError("Parameter pageToken is required.");
     }
     _queryParams["pageToken"] = [pageToken];
+    if (includeCorpusRemovals != null) {
+      _queryParams["includeCorpusRemovals"] = ["${includeCorpusRemovals}"];
+    }
     if (includeRemoved != null) {
       _queryParams["includeRemoved"] = ["${includeRemoved}"];
+    }
+    if (includeTeamDriveItems != null) {
+      _queryParams["includeTeamDriveItems"] = ["${includeTeamDriveItems}"];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -202,6 +237,12 @@ class ChangesResourceApi {
     }
     if (spaces != null) {
       _queryParams["spaces"] = [spaces];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if (teamDriveId != null) {
+      _queryParams["teamDriveId"] = [teamDriveId];
     }
 
     _url = 'changes';
@@ -227,8 +268,17 @@ class ChangesResourceApi {
    * page. This should be set to the value of 'nextPageToken' from the previous
    * response or to the response from the getStartPageToken method.
    *
+   * [includeCorpusRemovals] - Whether changes should include the file resource
+   * if the file is still accessible by the user at the time of the request,
+   * even when a file was removed from the list of changes and there will be no
+   * further change entries for this file.
+   *
    * [includeRemoved] - Whether to include changes indicating that items have
-   * left the view of the changes list, for example by deletion or lost access.
+   * been removed from the list of changes, for example by deletion or loss of
+   * access.
+   *
+   * [includeTeamDriveItems] - Whether Team Drive files or changes should be
+   * included in results.
    *
    * [pageSize] - The maximum number of changes to return per page.
    * Value must be between "1" and "1000".
@@ -241,6 +291,13 @@ class ChangesResourceApi {
    * [spaces] - A comma-separated list of spaces to query within the user
    * corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
+   * [teamDriveId] - The Team Drive from which changes will be returned. If
+   * specified the change IDs will be reflective of the Team Drive; use the
+   * combined Team Drive ID and change ID as an identifier.
+   *
    * Completes with a [Channel].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -249,7 +306,7 @@ class ChangesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Channel> watch(Channel request, core.String pageToken, {core.bool includeRemoved, core.int pageSize, core.bool restrictToMyDrive, core.String spaces}) {
+  async.Future<Channel> watch(Channel request, core.String pageToken, {core.bool includeCorpusRemovals, core.bool includeRemoved, core.bool includeTeamDriveItems, core.int pageSize, core.bool restrictToMyDrive, core.String spaces, core.bool supportsTeamDrives, core.String teamDriveId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -264,8 +321,14 @@ class ChangesResourceApi {
       throw new core.ArgumentError("Parameter pageToken is required.");
     }
     _queryParams["pageToken"] = [pageToken];
+    if (includeCorpusRemovals != null) {
+      _queryParams["includeCorpusRemovals"] = ["${includeCorpusRemovals}"];
+    }
     if (includeRemoved != null) {
       _queryParams["includeRemoved"] = ["${includeRemoved}"];
+    }
+    if (includeTeamDriveItems != null) {
+      _queryParams["includeTeamDriveItems"] = ["${includeTeamDriveItems}"];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -275,6 +338,12 @@ class ChangesResourceApi {
     }
     if (spaces != null) {
       _queryParams["spaces"] = [spaces];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if (teamDriveId != null) {
+      _queryParams["teamDriveId"] = [teamDriveId];
     }
 
     _url = 'changes/watch';
@@ -629,6 +698,9 @@ class FilesResourceApi {
    * [ocrLanguage] - A language hint for OCR processing during image import (ISO
    * 639-1 code).
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
    * Completes with a [File].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -637,7 +709,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<File> copy(File request, core.String fileId, {core.bool ignoreDefaultVisibility, core.bool keepRevisionForever, core.String ocrLanguage}) {
+  async.Future<File> copy(File request, core.String fileId, {core.bool ignoreDefaultVisibility, core.bool keepRevisionForever, core.String ocrLanguage, core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -659,6 +731,9 @@ class FilesResourceApi {
     }
     if (ocrLanguage != null) {
       _queryParams["ocrLanguage"] = [ocrLanguage];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
@@ -693,6 +768,9 @@ class FilesResourceApi {
    * [ocrLanguage] - A language hint for OCR processing during image import (ISO
    * 639-1 code).
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
    * [useContentAsIndexableText] - Whether to use the uploaded content as
    * indexable text.
    *
@@ -709,7 +787,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<File> create(File request, {core.bool ignoreDefaultVisibility, core.bool keepRevisionForever, core.String ocrLanguage, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  async.Future<File> create(File request, {core.bool ignoreDefaultVisibility, core.bool keepRevisionForever, core.String ocrLanguage, core.bool supportsTeamDrives, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -728,6 +806,9 @@ class FilesResourceApi {
     }
     if (ocrLanguage != null) {
       _queryParams["ocrLanguage"] = [ocrLanguage];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
     if (useContentAsIndexableText != null) {
       _queryParams["useContentAsIndexableText"] = ["${useContentAsIndexableText}"];
@@ -757,12 +838,16 @@ class FilesResourceApi {
 
   /**
    * Permanently deletes a file owned by the user without moving it to the
-   * trash. If the target is a folder, all descendants owned by the user are
-   * also deleted.
+   * trash. If the file belongs to a Team Drive the user must be an organizer on
+   * the parent. If the target is a folder, all descendants owned by the user
+   * are also deleted.
    *
    * Request parameters:
    *
    * [fileId] - The ID of the file.
+   *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -770,7 +855,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String fileId) {
+  async.Future delete(core.String fileId, {core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -780,6 +865,9 @@ class FilesResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
 
     _downloadOptions = null;
@@ -942,6 +1030,9 @@ class FilesResourceApi {
    * downloading known malware or other abusive files. This is only applicable
    * when alt=media.
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
@@ -958,7 +1049,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future get(core.String fileId, {core.bool acknowledgeAbuse, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future get(core.String fileId, {core.bool acknowledgeAbuse, core.bool supportsTeamDrives, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -971,6 +1062,9 @@ class FilesResourceApi {
     }
     if (acknowledgeAbuse != null) {
       _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
 
     _downloadOptions = downloadOptions;
@@ -997,10 +1091,19 @@ class FilesResourceApi {
    *
    * Request parameters:
    *
-   * [corpus] - The source of files to list.
+   * [corpora] - Comma-separated list of bodies of items (files/documents) to
+   * which the query applies. Supported bodies are 'user', 'domain', 'teamDrive'
+   * and 'allTeamDrives'. 'allTeamDrives' must be combined with 'user'; all
+   * other values must be used in isolation. Prefer 'user' or 'teamDrive' to
+   * 'allTeamDrives' for efficiency.
+   *
+   * [corpus] - The source of files to list. Deprecated: use 'corpora' instead.
    * Possible string values are:
    * - "domain" : Files shared to the user's domain.
    * - "user" : Files owned by or shared to the user.
+   *
+   * [includeTeamDriveItems] - Whether Team Drive items should be included in
+   * results.
    *
    * [orderBy] - A comma-separated list of sort keys. Valid keys are
    * 'createdTime', 'folder', 'modifiedByMeTime', 'modifiedTime', 'name',
@@ -1024,6 +1127,11 @@ class FilesResourceApi {
    * [spaces] - A comma-separated list of spaces to query within the corpus.
    * Supported values are 'drive', 'appDataFolder' and 'photos'.
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
+   * [teamDriveId] - ID of Team Drive to search.
+   *
    * Completes with a [FileList].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1032,7 +1140,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FileList> list({core.String corpus, core.String orderBy, core.int pageSize, core.String pageToken, core.String q, core.String spaces}) {
+  async.Future<FileList> list({core.String corpora, core.String corpus, core.bool includeTeamDriveItems, core.String orderBy, core.int pageSize, core.String pageToken, core.String q, core.String spaces, core.bool supportsTeamDrives, core.String teamDriveId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1040,8 +1148,14 @@ class FilesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (corpora != null) {
+      _queryParams["corpora"] = [corpora];
+    }
     if (corpus != null) {
       _queryParams["corpus"] = [corpus];
+    }
+    if (includeTeamDriveItems != null) {
+      _queryParams["includeTeamDriveItems"] = ["${includeTeamDriveItems}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -1057,6 +1171,12 @@ class FilesResourceApi {
     }
     if (spaces != null) {
       _queryParams["spaces"] = [spaces];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if (teamDriveId != null) {
+      _queryParams["teamDriveId"] = [teamDriveId];
     }
 
     _url = 'files';
@@ -1091,6 +1211,9 @@ class FilesResourceApi {
    *
    * [removeParents] - A comma-separated list of parent IDs to remove.
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
    * [useContentAsIndexableText] - Whether to use the uploaded content as
    * indexable text.
    *
@@ -1107,7 +1230,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<File> update(File request, core.String fileId, {core.String addParents, core.bool keepRevisionForever, core.String ocrLanguage, core.String removeParents, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  async.Future<File> update(File request, core.String fileId, {core.String addParents, core.bool keepRevisionForever, core.String ocrLanguage, core.String removeParents, core.bool supportsTeamDrives, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1132,6 +1255,9 @@ class FilesResourceApi {
     }
     if (removeParents != null) {
       _queryParams["removeParents"] = [removeParents];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
     if (useContentAsIndexableText != null) {
       _queryParams["useContentAsIndexableText"] = ["${useContentAsIndexableText}"];
@@ -1172,6 +1298,9 @@ class FilesResourceApi {
    * downloading known malware or other abusive files. This is only applicable
    * when alt=media.
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
@@ -1188,7 +1317,7 @@ class FilesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future watch(Channel request, core.String fileId, {core.bool acknowledgeAbuse, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future watch(Channel request, core.String fileId, {core.bool acknowledgeAbuse, core.bool supportsTeamDrives, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1204,6 +1333,9 @@ class FilesResourceApi {
     }
     if (acknowledgeAbuse != null) {
       _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
 
     _downloadOptions = downloadOptions;
@@ -1235,13 +1367,13 @@ class PermissionsResourceApi {
       _requester = client;
 
   /**
-   * Creates a permission for a file.
+   * Creates a permission for a file or Team Drive.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [fileId] - The ID of the file.
+   * [fileId] - The ID of the file or Team Drive.
    *
    * [emailMessage] - A custom message to include in the notification email.
    *
@@ -1249,6 +1381,9 @@ class PermissionsResourceApi {
    * to users or groups. This defaults to true for users and groups, and is not
    * allowed for other requests. It must not be disabled for ownership
    * transfers.
+   *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
    *
    * [transferOwnership] - Whether to transfer ownership to the specified user
    * and downgrade the current owner to a writer. This parameter is required as
@@ -1262,7 +1397,7 @@ class PermissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Permission> create(Permission request, core.String fileId, {core.String emailMessage, core.bool sendNotificationEmail, core.bool transferOwnership}) {
+  async.Future<Permission> create(Permission request, core.String fileId, {core.String emailMessage, core.bool sendNotificationEmail, core.bool supportsTeamDrives, core.bool transferOwnership}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1281,6 +1416,9 @@ class PermissionsResourceApi {
     }
     if (sendNotificationEmail != null) {
       _queryParams["sendNotificationEmail"] = ["${sendNotificationEmail}"];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
@@ -1303,9 +1441,12 @@ class PermissionsResourceApi {
    *
    * Request parameters:
    *
-   * [fileId] - The ID of the file.
+   * [fileId] - The ID of the file or Team Drive.
    *
    * [permissionId] - The ID of the permission.
+   *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -1313,7 +1454,7 @@ class PermissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String fileId, core.String permissionId) {
+  async.Future delete(core.String fileId, core.String permissionId, {core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1326,6 +1467,9 @@ class PermissionsResourceApi {
     }
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
 
     _downloadOptions = null;
@@ -1351,6 +1495,9 @@ class PermissionsResourceApi {
    *
    * [permissionId] - The ID of the permission.
    *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
+   *
    * Completes with a [Permission].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1359,7 +1506,7 @@ class PermissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Permission> get(core.String fileId, core.String permissionId) {
+  async.Future<Permission> get(core.String fileId, core.String permissionId, {core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1372,6 +1519,9 @@ class PermissionsResourceApi {
     }
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
@@ -1387,11 +1537,24 @@ class PermissionsResourceApi {
   }
 
   /**
-   * Lists a file's permissions.
+   * Lists a file's or Team Drive's permissions.
    *
    * Request parameters:
    *
-   * [fileId] - The ID of the file.
+   * [fileId] - The ID of the file or Team Drive.
+   *
+   * [pageSize] - The maximum number of permissions to return per page. When not
+   * set for files in a Team Drive, at most 100 results will be returned. When
+   * not set for files that are not in a Team Drive, the entire list will be
+   * returned.
+   * Value must be between "1" and "100".
+   *
+   * [pageToken] - The token for continuing a previous list request on the next
+   * page. This should be set to the value of 'nextPageToken' from the previous
+   * response.
+   *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
    *
    * Completes with a [PermissionList].
    *
@@ -1401,7 +1564,7 @@ class PermissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<PermissionList> list(core.String fileId) {
+  async.Future<PermissionList> list(core.String fileId, {core.int pageSize, core.String pageToken, core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1411,6 +1574,15 @@ class PermissionsResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
@@ -1432,11 +1604,14 @@ class PermissionsResourceApi {
    *
    * Request parameters:
    *
-   * [fileId] - The ID of the file.
+   * [fileId] - The ID of the file or Team Drive.
    *
    * [permissionId] - The ID of the permission.
    *
    * [removeExpiration] - Whether to remove the expiration date.
+   *
+   * [supportsTeamDrives] - Whether the requesting application supports Team
+   * Drives.
    *
    * [transferOwnership] - Whether to transfer ownership to the specified user
    * and downgrade the current owner to a writer. This parameter is required as
@@ -1450,7 +1625,7 @@ class PermissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Permission> update(Permission request, core.String fileId, core.String permissionId, {core.bool removeExpiration, core.bool transferOwnership}) {
+  async.Future<Permission> update(Permission request, core.String fileId, core.String permissionId, {core.bool removeExpiration, core.bool supportsTeamDrives, core.bool transferOwnership}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1469,6 +1644,9 @@ class PermissionsResourceApi {
     }
     if (removeExpiration != null) {
       _queryParams["removeExpiration"] = ["${removeExpiration}"];
+    }
+    if (supportsTeamDrives != null) {
+      _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
@@ -1989,6 +2167,232 @@ class RevisionsResourceApi {
 }
 
 
+class TeamdrivesResourceApi {
+  final commons.ApiRequester _requester;
+
+  TeamdrivesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a new Team Drive.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [requestId] - An ID, such as a random UUID, which uniquely identifies this
+   * user's request for idempotent creation of a Team Drive. A repeated request
+   * by the same user and with the same request ID will avoid creating
+   * duplicates by attempting to create the same Team Drive. If the Team Drive
+   * already exists a 409 error will be returned.
+   *
+   * Completes with a [TeamDrive].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TeamDrive> create(TeamDrive request, core.String requestId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (requestId == null) {
+      throw new core.ArgumentError("Parameter requestId is required.");
+    }
+    _queryParams["requestId"] = [requestId];
+
+    _url = 'teamdrives';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TeamDrive.fromJson(data));
+  }
+
+  /**
+   * Permanently deletes a Team Drive for which the user is an organizer. The
+   * Team Drive cannot contain any untrashed items.
+   *
+   * Request parameters:
+   *
+   * [teamDriveId] - The ID of the Team Drive
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String teamDriveId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (teamDriveId == null) {
+      throw new core.ArgumentError("Parameter teamDriveId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * Gets a Team Drive's metadata by ID.
+   *
+   * Request parameters:
+   *
+   * [teamDriveId] - The ID of the Team Drive
+   *
+   * Completes with a [TeamDrive].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TeamDrive> get(core.String teamDriveId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (teamDriveId == null) {
+      throw new core.ArgumentError("Parameter teamDriveId is required.");
+    }
+
+    _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TeamDrive.fromJson(data));
+  }
+
+  /**
+   * Lists the user's Team Drives.
+   *
+   * Request parameters:
+   *
+   * [pageSize] - Maximum number of Team Drives to return.
+   * Value must be between "1" and "100".
+   *
+   * [pageToken] - Page token for Team Drives.
+   *
+   * Completes with a [TeamDriveList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TeamDriveList> list({core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'teamdrives';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TeamDriveList.fromJson(data));
+  }
+
+  /**
+   * Updates a Team Drive's metadata
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [teamDriveId] - The ID of the Team Drive
+   *
+   * Completes with a [TeamDrive].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TeamDrive> update(TeamDrive request, core.String teamDriveId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (teamDriveId == null) {
+      throw new core.ArgumentError("Parameter teamDriveId is required.");
+    }
+
+    _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TeamDrive.fromJson(data));
+  }
+
+}
+
+
 
 /**
  * The user's storage quota limits and usage. All fields are measured in bytes.
@@ -2137,10 +2541,11 @@ class About {
   }
 }
 
-/** A change to a file. */
+/** A change to a file or Team Drive. */
 class Change {
   /**
-   * The updated state of the file. Present if the file has not been removed.
+   * The updated state of the file. Present if the type is file and the file has
+   * not been removed from this list of changes.
    */
   File file;
   /** The ID of the file which has changed. */
@@ -2151,12 +2556,22 @@ class Change {
    */
   core.String kind;
   /**
-   * Whether the file has been removed from the view of the changes list, for
-   * example by deletion or lost access.
+   * Whether the file or Team Drive has been removed from this list of changes,
+   * for example by deletion or loss of access.
    */
   core.bool removed;
+  /**
+   * The updated state of the Team Drive. Present if the type is teamDrive, the
+   * user is still a member of the Team Drive, and the Team Drive has not been
+   * removed.
+   */
+  TeamDrive teamDrive;
+  /** The ID of the Team Drive associated with this change. */
+  core.String teamDriveId;
   /** The time of this change (RFC 3339 date-time). */
   core.DateTime time;
+  /** The type of the change. Possible values are file and teamDrive. */
+  core.String type;
 
   Change();
 
@@ -2173,8 +2588,17 @@ class Change {
     if (_json.containsKey("removed")) {
       removed = _json["removed"];
     }
+    if (_json.containsKey("teamDrive")) {
+      teamDrive = new TeamDrive.fromJson(_json["teamDrive"]);
+    }
+    if (_json.containsKey("teamDriveId")) {
+      teamDriveId = _json["teamDriveId"];
+    }
     if (_json.containsKey("time")) {
       time = core.DateTime.parse(_json["time"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
     }
   }
 
@@ -2192,8 +2616,17 @@ class Change {
     if (removed != null) {
       _json["removed"] = removed;
     }
+    if (teamDrive != null) {
+      _json["teamDrive"] = (teamDrive).toJson();
+    }
+    if (teamDriveId != null) {
+      _json["teamDriveId"] = teamDriveId;
+    }
     if (time != null) {
       _json["time"] = (time).toIso8601String();
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -2579,60 +3012,175 @@ class CommentList {
   }
 }
 
-/** Capabilities the current user has on the file. */
+/**
+ * Capabilities the current user has on the file. Each capability corresponds to
+ * a fine-grained action that a user may take.
+ */
 class FileCapabilities {
+  /**
+   * Whether the user can add children to this folder. This is always false when
+   * the item is not a folder.
+   */
+  core.bool canAddChildren;
   /** Whether the user can comment on the file. */
   core.bool canComment;
-  /** Whether the user can copy the file. */
+  /**
+   * Whether the user can copy the file. For a Team Drive item, whether
+   * non-folder descendants of this item, or this item itself if it is not a
+   * folder, can be copied.
+   */
   core.bool canCopy;
+  /** Whether the file can be deleted by the user. */
+  core.bool canDelete;
+  /** Whether the file can be downloaded by the user. */
+  core.bool canDownload;
   /** Whether the user can edit the file's content. */
   core.bool canEdit;
   /**
-   * Whether the current user has read access to the Revisions resource of the
-   * file.
+   * Whether the user can list the children of this folder. This is always false
+   * when the item is not a folder.
+   */
+  core.bool canListChildren;
+  /**
+   * Whether the current user can move this item into a Team Drive. If the item
+   * is in a Team Drive, this field is equivalent to canMoveTeamDriveItem.
+   */
+  core.bool canMoveItemIntoTeamDrive;
+  /**
+   * Whether the user can move this Team Drive item by changing its parent. Note
+   * that a request to change the parent for this item may still fail depending
+   * on the new parent that is being added. Only populated for Team Drive files.
+   */
+  core.bool canMoveTeamDriveItem;
+  /**
+   * Whether the user has read access to the Revisions resource of the file. For
+   * a Team Drive item, whether revisions of non-folder descendants of this
+   * item, or this item itself if it is not a folder, can be read.
    */
   core.bool canReadRevisions;
+  /**
+   * Whether the user has read access to the Team Drive to which this file
+   * belongs. Only populated for Team Drive files.
+   */
+  core.bool canReadTeamDrive;
+  /**
+   * Whether the user can remove children from this folder. This is always false
+   * when the item is not a folder.
+   */
+  core.bool canRemoveChildren;
+  /** Whether the file can be renamed by the user. */
+  core.bool canRename;
   /**
    * Whether the user can modify the file's permissions and sharing settings.
    */
   core.bool canShare;
+  /** Whether the file can be trashed by the user. */
+  core.bool canTrash;
+  /** Whether the file can be restored from the trash by the current user. */
+  core.bool canUntrash;
 
   FileCapabilities();
 
   FileCapabilities.fromJson(core.Map _json) {
+    if (_json.containsKey("canAddChildren")) {
+      canAddChildren = _json["canAddChildren"];
+    }
     if (_json.containsKey("canComment")) {
       canComment = _json["canComment"];
     }
     if (_json.containsKey("canCopy")) {
       canCopy = _json["canCopy"];
     }
+    if (_json.containsKey("canDelete")) {
+      canDelete = _json["canDelete"];
+    }
+    if (_json.containsKey("canDownload")) {
+      canDownload = _json["canDownload"];
+    }
     if (_json.containsKey("canEdit")) {
       canEdit = _json["canEdit"];
+    }
+    if (_json.containsKey("canListChildren")) {
+      canListChildren = _json["canListChildren"];
+    }
+    if (_json.containsKey("canMoveItemIntoTeamDrive")) {
+      canMoveItemIntoTeamDrive = _json["canMoveItemIntoTeamDrive"];
+    }
+    if (_json.containsKey("canMoveTeamDriveItem")) {
+      canMoveTeamDriveItem = _json["canMoveTeamDriveItem"];
     }
     if (_json.containsKey("canReadRevisions")) {
       canReadRevisions = _json["canReadRevisions"];
     }
+    if (_json.containsKey("canReadTeamDrive")) {
+      canReadTeamDrive = _json["canReadTeamDrive"];
+    }
+    if (_json.containsKey("canRemoveChildren")) {
+      canRemoveChildren = _json["canRemoveChildren"];
+    }
+    if (_json.containsKey("canRename")) {
+      canRename = _json["canRename"];
+    }
     if (_json.containsKey("canShare")) {
       canShare = _json["canShare"];
+    }
+    if (_json.containsKey("canTrash")) {
+      canTrash = _json["canTrash"];
+    }
+    if (_json.containsKey("canUntrash")) {
+      canUntrash = _json["canUntrash"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (canAddChildren != null) {
+      _json["canAddChildren"] = canAddChildren;
+    }
     if (canComment != null) {
       _json["canComment"] = canComment;
     }
     if (canCopy != null) {
       _json["canCopy"] = canCopy;
     }
+    if (canDelete != null) {
+      _json["canDelete"] = canDelete;
+    }
+    if (canDownload != null) {
+      _json["canDownload"] = canDownload;
+    }
     if (canEdit != null) {
       _json["canEdit"] = canEdit;
+    }
+    if (canListChildren != null) {
+      _json["canListChildren"] = canListChildren;
+    }
+    if (canMoveItemIntoTeamDrive != null) {
+      _json["canMoveItemIntoTeamDrive"] = canMoveItemIntoTeamDrive;
+    }
+    if (canMoveTeamDriveItem != null) {
+      _json["canMoveTeamDriveItem"] = canMoveTeamDriveItem;
     }
     if (canReadRevisions != null) {
       _json["canReadRevisions"] = canReadRevisions;
     }
+    if (canReadTeamDrive != null) {
+      _json["canReadTeamDrive"] = canReadTeamDrive;
+    }
+    if (canRemoveChildren != null) {
+      _json["canRemoveChildren"] = canRemoveChildren;
+    }
+    if (canRename != null) {
+      _json["canRename"] = canRename;
+    }
     if (canShare != null) {
       _json["canShare"] = canShare;
+    }
+    if (canTrash != null) {
+      _json["canTrash"] = canTrash;
+    }
+    if (canUntrash != null) {
+      _json["canUntrash"] = canUntrash;
     }
     return _json;
   }
@@ -2991,7 +3539,10 @@ class File {
    * Entries with null values are cleared in update and copy requests.
    */
   core.Map<core.String, core.String> appProperties;
-  /** Capabilities the current user has on the file. */
+  /**
+   * Capabilities the current user has on the file. Each capability corresponds
+   * to a fine-grained action that a user may take.
+   */
   FileCapabilities capabilities;
   /**
    * Additional information about the content of the file. These fields are
@@ -3027,6 +3578,11 @@ class File {
    * not cleared if the new name does not contain a valid extension.
    */
   core.String fullFileExtension;
+  /**
+   * Whether any users are granted file access directly on this file. This field
+   * is only populated for Team Drive files.
+   */
+  core.bool hasAugmentedPermissions;
   /** Whether this file has a thumbnail. */
   core.bool hasThumbnail;
   /**
@@ -3082,11 +3638,11 @@ class File {
    * binary content in Drive.
    */
   core.String originalFilename;
-  /** Whether the user owns the file. */
+  /** Whether the user owns the file. Not populated for Team Drive files. */
   core.bool ownedByMe;
   /**
    * The owners of the file. Currently, only certain legacy files may have more
-   * than one owner.
+   * than one owner. Not populated for Team Drive files.
    */
   core.List<User> owners;
   /**
@@ -3098,7 +3654,7 @@ class File {
   core.List<core.String> parents;
   /**
    * The full list of permissions for the file. This is only available if the
-   * requesting user can share the file.
+   * requesting user can share the file. Not populated for Team Drive files.
    */
   core.List<Permission> permissions;
   /**
@@ -3111,7 +3667,7 @@ class File {
    * revision as well as previous revisions with keepForever enabled.
    */
   core.String quotaBytesUsed;
-  /** Whether the file has been shared. */
+  /** Whether the file has been shared. Not populated for Team Drive files. */
   core.bool shared;
   /**
    * The time at which the file was shared with the user, if applicable (RFC
@@ -3132,6 +3688,8 @@ class File {
   core.List<core.String> spaces;
   /** Whether the user has starred the file. */
   core.bool starred;
+  /** ID of the Team Drive the file resides in. */
+  core.String teamDriveId;
   /**
    * A short-lived link to the file's thumbnail, if available. Typically lasts
    * on the order of hours. Only populated when the requesting app can access
@@ -3146,6 +3704,16 @@ class File {
    * files in the owner's trash.
    */
   core.bool trashed;
+  /**
+   * The time that the item was trashed (RFC 3339 date-time). Only populated for
+   * Team Drive files.
+   */
+  core.DateTime trashedTime;
+  /**
+   * If the file has been explicitly trashed, the user who trashed it. Only
+   * populated for Team Drive files.
+   */
+  User trashingUser;
   /**
    * A monotonically increasing version number for the file. This reflects every
    * change made to the file on the server, even those not visible to the user.
@@ -3177,7 +3745,7 @@ class File {
   core.String webViewLink;
   /**
    * Whether users with only writer permission can modify the file's
-   * permissions.
+   * permissions. Not populated for Team Drive files.
    */
   core.bool writersCanShare;
 
@@ -3210,6 +3778,9 @@ class File {
     }
     if (_json.containsKey("fullFileExtension")) {
       fullFileExtension = _json["fullFileExtension"];
+    }
+    if (_json.containsKey("hasAugmentedPermissions")) {
+      hasAugmentedPermissions = _json["hasAugmentedPermissions"];
     }
     if (_json.containsKey("hasThumbnail")) {
       hasThumbnail = _json["hasThumbnail"];
@@ -3292,6 +3863,9 @@ class File {
     if (_json.containsKey("starred")) {
       starred = _json["starred"];
     }
+    if (_json.containsKey("teamDriveId")) {
+      teamDriveId = _json["teamDriveId"];
+    }
     if (_json.containsKey("thumbnailLink")) {
       thumbnailLink = _json["thumbnailLink"];
     }
@@ -3300,6 +3874,12 @@ class File {
     }
     if (_json.containsKey("trashed")) {
       trashed = _json["trashed"];
+    }
+    if (_json.containsKey("trashedTime")) {
+      trashedTime = core.DateTime.parse(_json["trashedTime"]);
+    }
+    if (_json.containsKey("trashingUser")) {
+      trashingUser = new User.fromJson(_json["trashingUser"]);
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -3355,6 +3935,9 @@ class File {
     }
     if (fullFileExtension != null) {
       _json["fullFileExtension"] = fullFileExtension;
+    }
+    if (hasAugmentedPermissions != null) {
+      _json["hasAugmentedPermissions"] = hasAugmentedPermissions;
     }
     if (hasThumbnail != null) {
       _json["hasThumbnail"] = hasThumbnail;
@@ -3437,6 +4020,9 @@ class File {
     if (starred != null) {
       _json["starred"] = starred;
     }
+    if (teamDriveId != null) {
+      _json["teamDriveId"] = teamDriveId;
+    }
     if (thumbnailLink != null) {
       _json["thumbnailLink"] = thumbnailLink;
     }
@@ -3445,6 +4031,12 @@ class File {
     }
     if (trashed != null) {
       _json["trashed"] = trashed;
+    }
+    if (trashedTime != null) {
+      _json["trashedTime"] = (trashedTime).toIso8601String();
+    }
+    if (trashingUser != null) {
+      _json["trashingUser"] = (trashingUser).toJson();
     }
     if (version != null) {
       _json["version"] = version;
@@ -3482,6 +4074,15 @@ class FileList {
    */
   core.List<File> files;
   /**
+   * Whether the search process was incomplete. If true, then some search
+   * results may be missing, since all documents were not searched. This may
+   * occur when searching multiple Team Drives with the "user,allTeamDrives"
+   * corpora, but all corpora could not be searched. When this happens, it is
+   * suggested that clients narrow their query by choosing a different corpus
+   * such as "user" or "teamDrive".
+   */
+  core.bool incompleteSearch;
+  /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "drive#fileList".
    */
@@ -3500,6 +4101,9 @@ class FileList {
     if (_json.containsKey("files")) {
       files = _json["files"].map((value) => new File.fromJson(value)).toList();
     }
+    if (_json.containsKey("incompleteSearch")) {
+      incompleteSearch = _json["incompleteSearch"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -3512,6 +4116,9 @@ class FileList {
     var _json = new core.Map();
     if (files != null) {
       _json["files"] = files.map((value) => (value).toJson()).toList();
+    }
+    if (incompleteSearch != null) {
+      _json["incompleteSearch"] = incompleteSearch;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3564,6 +4171,70 @@ class GeneratedIds {
   }
 }
 
+class PermissionTeamDrivePermissionDetails {
+  /**
+   * Whether this permission is inherited. This field is always populated. This
+   * is an output-only field.
+   */
+  core.bool inherited;
+  /**
+   * The ID of the item from which this permission is inherited. This is an
+   * output-only field and is only populated for members of the Team Drive.
+   */
+  core.String inheritedFrom;
+  /**
+   * The primary role for this user. While new values may be added in the
+   * future, the following are currently possible:
+   * - organizer
+   * - writer
+   * - commenter
+   * - reader
+   */
+  core.String role;
+  /**
+   * The Team Drive permission type for this user. While new values may be added
+   * in future, the following are currently possible:
+   * - file
+   * -
+   * - member
+   */
+  core.String teamDrivePermissionType;
+
+  PermissionTeamDrivePermissionDetails();
+
+  PermissionTeamDrivePermissionDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("inherited")) {
+      inherited = _json["inherited"];
+    }
+    if (_json.containsKey("inheritedFrom")) {
+      inheritedFrom = _json["inheritedFrom"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+    if (_json.containsKey("teamDrivePermissionType")) {
+      teamDrivePermissionType = _json["teamDrivePermissionType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (inherited != null) {
+      _json["inherited"] = inherited;
+    }
+    if (inheritedFrom != null) {
+      _json["inheritedFrom"] = inheritedFrom;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    if (teamDrivePermissionType != null) {
+      _json["teamDrivePermissionType"] = teamDrivePermissionType;
+    }
+    return _json;
+  }
+}
+
 /**
  * A permission for a file. A permission grants a user, group, domain or the
  * world access to a file or a folder hierarchy.
@@ -3582,7 +4253,13 @@ class Permission {
    * The email address of the user or group to which this permission refers.
    */
   core.String emailAddress;
-  /** The time at which this permission will expire (RFC 3339 date-time). */
+  /**
+   * The time at which this permission will expire (RFC 3339 date-time).
+   * Expiration times have the following restrictions:
+   * - They can only be set on user and group permissions
+   * - The time must be in the future
+   * - The time cannot be more than a year in the future
+   */
   core.DateTime expirationTime;
   /**
    * The ID of this permission. This is a unique identifier for the grantee, and
@@ -3597,13 +4274,21 @@ class Permission {
   /** A link to the user's profile photo, if available. */
   core.String photoLink;
   /**
-   * The role granted by this permission. Valid values are:
+   * The role granted by this permission. While new values may be supported in
+   * the future, the following are currently allowed:
+   * - organizer
    * - owner
    * - writer
    * - commenter
    * - reader
    */
   core.String role;
+  /**
+   * Details of whether the Permissions on this Team Drive item are inherited or
+   * directly on this item. This is an output-only field which is present only
+   * for Team Drive items.
+   */
+  core.List<PermissionTeamDrivePermissionDetails> teamDrivePermissionDetails;
   /**
    * The type of the grantee. Valid values are:
    * - user
@@ -3643,6 +4328,9 @@ class Permission {
     if (_json.containsKey("role")) {
       role = _json["role"];
     }
+    if (_json.containsKey("teamDrivePermissionDetails")) {
+      teamDrivePermissionDetails = _json["teamDrivePermissionDetails"].map((value) => new PermissionTeamDrivePermissionDetails.fromJson(value)).toList();
+    }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
@@ -3677,6 +4365,9 @@ class Permission {
     if (role != null) {
       _json["role"] = role;
     }
+    if (teamDrivePermissionDetails != null) {
+      _json["teamDrivePermissionDetails"] = teamDrivePermissionDetails.map((value) => (value).toJson()).toList();
+    }
     if (type != null) {
       _json["type"] = type;
     }
@@ -3691,7 +4382,17 @@ class PermissionList {
    * "drive#permissionList".
    */
   core.String kind;
-  /** The list of permissions. */
+  /**
+   * The page token for the next page of permissions. This field will be absent
+   * if the end of the permissions list has been reached. If the token is
+   * rejected for any reason, it should be discarded, and pagination should be
+   * restarted from the first page of results.
+   */
+  core.String nextPageToken;
+  /**
+   * The list of permissions. If nextPageToken is populated, then this list may
+   * be incomplete and an additional page of results should be fetched.
+   */
   core.List<Permission> permissions;
 
   PermissionList();
@@ -3699,6 +4400,9 @@ class PermissionList {
   PermissionList.fromJson(core.Map _json) {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("permissions")) {
       permissions = _json["permissions"].map((value) => new Permission.fromJson(value)).toList();
@@ -3709,6 +4413,9 @@ class PermissionList {
     var _json = new core.Map();
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     if (permissions != null) {
       _json["permissions"] = permissions.map((value) => (value).toJson()).toList();
@@ -4075,6 +4782,246 @@ class StartPageToken {
     }
     if (startPageToken != null) {
       _json["startPageToken"] = startPageToken;
+    }
+    return _json;
+  }
+}
+
+/** Capabilities the current user has on this Team Drive. */
+class TeamDriveCapabilities {
+  /**
+   * Whether the current user can add children to folders in this Team Drive.
+   */
+  core.bool canAddChildren;
+  /** Whether the current user can comment on files in this Team Drive. */
+  core.bool canComment;
+  /** Whether files in this Team Drive can be copied by the current user. */
+  core.bool canCopy;
+  /** Whether this Team Drive can be deleted by the current user. */
+  core.bool canDeleteTeamDrive;
+  /**
+   * Whether files in this Team Drive can be downloaded by the current user.
+   */
+  core.bool canDownload;
+  /** Whether files in this Team Drive can be edited by the current user. */
+  core.bool canEdit;
+  /**
+   * Whether the current user can list the children of folders in this Team
+   * Drive.
+   */
+  core.bool canListChildren;
+  /**
+   * Whether the current user can add members to this Team Drive or remove them
+   * or change their role.
+   */
+  core.bool canManageMembers;
+  /**
+   * Whether the current user has read access to the Revisions resource of files
+   * in this Team Drive.
+   */
+  core.bool canReadRevisions;
+  /**
+   * Whether the current user can remove children from folders in this Team
+   * Drive.
+   */
+  core.bool canRemoveChildren;
+  /**
+   * Whether files or folders in this Team Drive can be renamed by the current
+   * user.
+   */
+  core.bool canRename;
+  /** Whether this Team Drive can be renamed by the current user. */
+  core.bool canRenameTeamDrive;
+  /**
+   * Whether the current user can share files or folders in this Team Drive.
+   */
+  core.bool canShare;
+
+  TeamDriveCapabilities();
+
+  TeamDriveCapabilities.fromJson(core.Map _json) {
+    if (_json.containsKey("canAddChildren")) {
+      canAddChildren = _json["canAddChildren"];
+    }
+    if (_json.containsKey("canComment")) {
+      canComment = _json["canComment"];
+    }
+    if (_json.containsKey("canCopy")) {
+      canCopy = _json["canCopy"];
+    }
+    if (_json.containsKey("canDeleteTeamDrive")) {
+      canDeleteTeamDrive = _json["canDeleteTeamDrive"];
+    }
+    if (_json.containsKey("canDownload")) {
+      canDownload = _json["canDownload"];
+    }
+    if (_json.containsKey("canEdit")) {
+      canEdit = _json["canEdit"];
+    }
+    if (_json.containsKey("canListChildren")) {
+      canListChildren = _json["canListChildren"];
+    }
+    if (_json.containsKey("canManageMembers")) {
+      canManageMembers = _json["canManageMembers"];
+    }
+    if (_json.containsKey("canReadRevisions")) {
+      canReadRevisions = _json["canReadRevisions"];
+    }
+    if (_json.containsKey("canRemoveChildren")) {
+      canRemoveChildren = _json["canRemoveChildren"];
+    }
+    if (_json.containsKey("canRename")) {
+      canRename = _json["canRename"];
+    }
+    if (_json.containsKey("canRenameTeamDrive")) {
+      canRenameTeamDrive = _json["canRenameTeamDrive"];
+    }
+    if (_json.containsKey("canShare")) {
+      canShare = _json["canShare"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (canAddChildren != null) {
+      _json["canAddChildren"] = canAddChildren;
+    }
+    if (canComment != null) {
+      _json["canComment"] = canComment;
+    }
+    if (canCopy != null) {
+      _json["canCopy"] = canCopy;
+    }
+    if (canDeleteTeamDrive != null) {
+      _json["canDeleteTeamDrive"] = canDeleteTeamDrive;
+    }
+    if (canDownload != null) {
+      _json["canDownload"] = canDownload;
+    }
+    if (canEdit != null) {
+      _json["canEdit"] = canEdit;
+    }
+    if (canListChildren != null) {
+      _json["canListChildren"] = canListChildren;
+    }
+    if (canManageMembers != null) {
+      _json["canManageMembers"] = canManageMembers;
+    }
+    if (canReadRevisions != null) {
+      _json["canReadRevisions"] = canReadRevisions;
+    }
+    if (canRemoveChildren != null) {
+      _json["canRemoveChildren"] = canRemoveChildren;
+    }
+    if (canRename != null) {
+      _json["canRename"] = canRename;
+    }
+    if (canRenameTeamDrive != null) {
+      _json["canRenameTeamDrive"] = canRenameTeamDrive;
+    }
+    if (canShare != null) {
+      _json["canShare"] = canShare;
+    }
+    return _json;
+  }
+}
+
+/** Representation of a Team Drive. */
+class TeamDrive {
+  /** Capabilities the current user has on this Team Drive. */
+  TeamDriveCapabilities capabilities;
+  /**
+   * The ID of this Team Drive which is also the ID of the top level folder for
+   * this Team Drive.
+   */
+  core.String id;
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#teamDrive".
+   */
+  core.String kind;
+  /** The name of this Team Drive. */
+  core.String name;
+
+  TeamDrive();
+
+  TeamDrive.fromJson(core.Map _json) {
+    if (_json.containsKey("capabilities")) {
+      capabilities = new TeamDriveCapabilities.fromJson(_json["capabilities"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (capabilities != null) {
+      _json["capabilities"] = (capabilities).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/** A list of Team Drives. */
+class TeamDriveList {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "drive#teamDriveList".
+   */
+  core.String kind;
+  /**
+   * The page token for the next page of Team Drives. This will be absent if the
+   * end of the Team Drives list has been reached. If the token is rejected for
+   * any reason, it should be discarded, and pagination should be restarted from
+   * the first page of results.
+   */
+  core.String nextPageToken;
+  /**
+   * The list of Team Drives. If nextPageToken is populated, then this list may
+   * be incomplete and an additional page of results should be fetched.
+   */
+  core.List<TeamDrive> teamDrives;
+
+  TeamDriveList();
+
+  TeamDriveList.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("teamDrives")) {
+      teamDrives = _json["teamDrives"].map((value) => new TeamDrive.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (teamDrives != null) {
+      _json["teamDrives"] = teamDrives.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

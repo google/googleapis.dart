@@ -16,7 +16,7 @@ const core.String USER_AGENT = 'dart-api-client licensing/v1';
 
 /** Licensing API to view and manage license for your domain. */
 class LicensingApi {
-  /** View and manage Google Apps licenses for your domain */
+  /** View and manage G Suite licenses for your domain */
   static const AppsLicensingScope = "https://www.googleapis.com/auth/apps.licensing";
 
 

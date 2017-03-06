@@ -398,9 +398,9 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Deletes the binding between the EMM and enterprise. This is now deprecated;
-   * use this to unenroll customers that were previously enrolled with the
-   * 'insert' call, then enroll them again with the 'enroll' call.
+   * Deletes the binding between the EMM and enterprise. This is now deprecated.
+   * Use this method only to unenroll customers that were previously enrolled
+   * with the insert call, then enroll them again with the enroll call.
    *
    * Request parameters:
    *
@@ -766,8 +766,8 @@ class EnterprisesResourceApi {
    * the service account authenticated for the request. The notification set may
    * be empty if no notification are pending.
    * A notification set returned needs to be acknowledged within 20 seconds by
-   * calling Enterprises​.AcknowledgeNotificationSet, unless the notification
-   * set is empty.
+   * calling Enterprises.AcknowledgeNotificationSet, unless the notification set
+   * is empty.
    * Notifications that are not acknowledged within the 20 seconds will
    * eventually be included again in the response to another PullNotificationSet
    * request, and those that are never acknowledged will ultimately be deleted
@@ -866,7 +866,7 @@ class EnterprisesResourceApi {
   }
 
   /**
-   * Set the account that will be used to authenticate to the API as the
+   * Sets the account that will be used to authenticate to the API as the
    * enterprise.
    *
    * [request] - The metadata request object.
@@ -1009,7 +1009,7 @@ class EntitlementsResourceApi {
       _requester = client;
 
   /**
-   * Removes an entitlement to an app for a user and uninstalls it.
+   * Removes an entitlement to an app for a user.
    *
    * Request parameters:
    *
@@ -1109,7 +1109,7 @@ class EntitlementsResourceApi {
   }
 
   /**
-   * List of all entitlements for the specified user. Only the ID is set.
+   * Lists all entitlements for the specified user. Only the ID is set.
    *
    * Request parameters:
    *
@@ -1598,7 +1598,7 @@ class InstallsResourceApi {
 
   /**
    * Requests to install the latest version of an app to a device. If the app is
-   * already installed then it is updated to the latest version if necessary.
+   * already installed, then it is updated to the latest version if necessary.
    * This method supports patch semantics.
    *
    * [request] - The metadata request object.
@@ -1660,7 +1660,7 @@ class InstallsResourceApi {
 
   /**
    * Requests to install the latest version of an app to a device. If the app is
-   * already installed then it is updated to the latest version if necessary.
+   * already installed, then it is updated to the latest version if necessary.
    *
    * [request] - The metadata request object.
    *
@@ -2629,7 +2629,7 @@ class ProductsResourceApi {
    * parameters), including apps that are not available in the store (e.g.
    * unpublished apps).
    *
-   * [token] - A pagination token is contained in a requests response when
+   * [token] - A pagination token is contained in a request''s response when
    * there are more products. The token can be used in a subsequent request to
    * obtain more products, and so forth. This parameter cannot be used in the
    * initial request.
@@ -4483,16 +4483,16 @@ class AuthenticationToken {
 }
 
 /**
- * A device resource represents a mobile device managed by the EMM and belonging
- * to a specific enterprise user.
+ * A Devices resource represents a mobile device managed by the EMM and
+ * belonging to a specific enterprise user.
  *
- * This collection cannot be modified via the API; it is automatically populated
+ * This collection cannot be modified via the API. It is automatically populated
  * as devices are set up to be managed.
  */
 class Device {
   /**
    * The Google Play Services Android ID for the device encoded as a lowercase
-   * hex string, e.g. "123456789abcdef0".
+   * hex string. For example, "123456789abcdef0".
    */
   core.String androidId;
   /**
@@ -4796,34 +4796,30 @@ class EnterprisesSendTestPushNotificationResponse {
 }
 
 /**
- * The existence of an entitlement resource means that a user has the right to
- * use a particular app on any of their devices. This might be because the app
- * is free or because they have been allocated a license to the app from a group
- * license purchased by the enterprise.
+ * The presence of an Entitlements resource indicates that a user has the right
+ * to use a particular app. Entitlements are user specific, not device specific.
+ * This allows a user with an entitlement to an app to install the app on all
+ * their devices. It's also possible for a user to hold an entitlement to an app
+ * without installing the app on any device.
  *
- * It should always be true that a user has an app installed on one of their
- * devices only if they have an entitlement to it. So if an entitlement is
- * deleted, the app will be uninstalled from all devices. Similarly if the user
- * installs an app (and is permitted to do so), or the EMM triggers an install
- * of the app, an entitlement to that app is automatically created. If this is
- * impossible - e.g. the enterprise has not purchased sufficient licenses - then
- * installation fails.
+ * The API can be used to create an entitlement. As an option, you can also use
+ * the API to trigger the installation of an app on all a user's managed devices
+ * at the same time the entitlement is created.
  *
- * Note that entitlements are always user specific, not device specific; a user
- * may have an entitlement even though they have not installed the app anywhere.
- * Once they have an entitlement they can install the app on multiple devices.
+ * If the app is free, creating the entitlement also creates a group license for
+ * that app. For paid apps, creating the entitlement consumes one license, and
+ * that license remains consumed until the entitlement is removed. If the
+ * enterprise hasn't purchased enough licenses, then no entitlement is created
+ * and the installation fails. An entitlement is also not created for an app if
+ * the app requires permissions that the enterprise hasn't accepted.
  *
- * The API can be used to create an entitlement. If the app is a free app, a
- * group license for that app is created. If it's a paid app, creating the
- * entitlement consumes one license; it remains consumed until the entitlement
- * is removed. Optionally an installation of the app on all the user's managed
- * devices can be triggered at the time the entitlement is created. An
- * entitlement cannot be created for an app if the app requires permissions that
- * the enterprise has not yet accepted.
+ * If an entitlement is deleted, the app may be uninstalled from a user's
+ * device. As a best practice, uninstall the app by calling  Installs.delete()
+ * before deleting the entitlement.
  *
- * Entitlements for paid apps that are due to purchases by the user on a
- * non-managed profile will have "userPurchase" as entitlement reason; those
- * entitlements cannot be removed via the API.
+ * Entitlements for apps that a user pays for on an unmanaged profile have
+ * "userPurchase" as the entitlement reason. These entitlements cannot be
+ * removed via the API.
  */
 class Entitlement {
   /**
@@ -4832,14 +4828,14 @@ class Entitlement {
    */
   core.String kind;
   /**
-   * The ID of the product that the entitlement is for, e.g.
+   * The ID of the product that the entitlement is for. For example,
    * "app:com.google.android.gm".
    */
   core.String productId;
   /**
-   * The reason for the entitlement, e.g. "free" for free apps. This is
-   * temporary, it will be replaced by the acquisition kind field of group
-   * licenses.
+   * The reason for the entitlement. For example, "free" for free apps. This
+   * property is temporary: it will be replaced by the acquisition kind field of
+   * group licenses.
    */
   core.String reason;
 
@@ -4932,18 +4928,18 @@ class EntitlementsListResponse {
  */
 class GroupLicense {
   /**
-   * How this group license was acquired. "bulkPurchase" means that this group
-   * license object was created because the enterprise purchased licenses for
-   * this product; this is "free" otherwise (for free products).
+   * How this group license was acquired. "bulkPurchase" means that this
+   * Grouplicenses resource was created because the enterprise purchased
+   * licenses for this product; otherwise, the value is "free" (for free
+   * products).
    */
   core.String acquisitionKind;
   /**
    * Whether the product to which this group license relates is currently
-   * approved by the enterprise, as either "approved" or "unapproved". Products
-   * are approved when a group license is first created, but this approval may
-   * be revoked by an enterprise admin via Google Play. Unapproved products will
-   * not be visible to end users in collections and new entitlements to them
-   * should not normally be created.
+   * approved by the enterprise. Products are approved when a group license is
+   * first created, but this approval may be revoked by an enterprise admin via
+   * Google Play. Unapproved products will not be visible to end users in
+   * collections, and new entitlements to them should not normally be created.
    */
   core.String approval;
   /**
@@ -4958,12 +4954,12 @@ class GroupLicense {
   core.int numProvisioned;
   /**
    * The number of purchased licenses (possibly in multiple purchases). If this
-   * field is omitted then there is no limit on the number of licenses that can
-   * be provisioned (e.g. if the acquisition kind is "free").
+   * field is omitted, then there is no limit on the number of licenses that can
+   * be provisioned (for example, if the acquisition kind is "free").
    */
   core.int numPurchased;
   /**
-   * The ID of the product that the license is for, e.g.
+   * The ID of the product that the license is for. For example,
    * "app:com.google.android.gm".
    */
   core.String productId;
@@ -5082,21 +5078,21 @@ class GroupLicensesListResponse {
 }
 
 /**
- * The existence of an install resource indicates that an app is installed on a
+ * The existence of an Installs resource indicates that an app is installed on a
  * particular device (or that an install is pending).
  *
  * The API can be used to create an install resource using the update method.
  * This triggers the actual install of the app on the device. If the user does
- * not already have an entitlement for the app then an attempt is made to create
- * one. If this fails (e.g. because the app is not free and there is no
- * available license) then the creation of the install fails.
+ * not already have an entitlement for the app, then an attempt is made to
+ * create one. If this fails (for example, because the app is not free and there
+ * is no available license), then the creation of the install fails.
  *
- * The API can also be used to update an installed app. If the update method is
- * used on an existing install then the app will be updated to the latest
+ * The API can also be used to update an installed app. If the update method is
+ * used on an existing install, then the app will be updated to the latest
  * available version.
  *
  * Note that it is not possible to force the installation of a specific version
- * of an app; the version code is read-only.
+ * of an app: the version code is read-only.
  *
  * If a user installs an app themselves (as permitted by the enterprise), then
  * again an install resource and possibly an entitlement resource are
@@ -5121,7 +5117,7 @@ class Install {
    */
   core.String kind;
   /**
-   * The ID of the product that the install is for, e.g.
+   * The ID of the product that the install is for. For example,
    * "app:com.google.android.gm".
    */
   core.String productId;
@@ -5525,15 +5521,12 @@ class NewDeviceEvent {
   /** The Android ID of the device. This field will always be present. */
   core.String deviceId;
   /**
-   * Identifies the extent to which the device is controlled by an Android for
-   * Work EMM in various deployment configurations.
+   * Identifies the extent to which the device is controlled by an Android EMM
+   * in various deployment configurations.
    *
    * Possible values include:
-   * - "managedDevice", a device that has the EMM's device policy controller
-   * (DPC) as the device owner,
-   * - "managedProfile", a device that has a work profile managed by the DPC
-   * (DPC is profile owner) in addition to a separate, personal profile that is
-   * unavailable to the DPC,
+   * - "managedDevice", a device where the DPC is set as device owner,
+   * - "managedProfile", a device where the DPC is set as profile owner.
    */
   core.String managementType;
   /** The ID of the user. This field will always be present. */
@@ -5792,19 +5785,19 @@ class PageInfo {
 }
 
 /**
- * A permission represents some extra capability, to be granted to an Android
- * app, which requires explicit consent. An enterprise admin must consent to
- * these permissions on behalf of their users before an entitlement for the app
- * can be created.
+ * A Permissions resource represents some extra capability, to be granted to an
+ * Android app, which requires explicit consent. An enterprise admin must
+ * consent to these permissions on behalf of their users before an entitlement
+ * for the app can be created.
  *
  * The permissions collection is read-only. The information provided for each
- * permission (localized name and description) is intended to be used in the EMM
+ * permission (localized name and description) is intended to be used in the MDM
  * user interface when obtaining consent from the enterprise.
  */
 class Permission {
   /**
-   * A longer description of the permissions giving more details of what it
-   * affects.
+   * A longer description of the Permissions resource, giving more details of
+   * what it affects.
    */
   core.String description;
   /**
@@ -5868,7 +5861,9 @@ class Product {
    * contains only public versions. Alpha and beta versions are not included.
    */
   core.List<AppVersion> appVersion;
-  /** The name of the author of the product (e.g. the app developer). */
+  /**
+   * The name of the author of the product (for example, the app developer).
+   */
   core.String authorName;
   /** A link to the (consumer) Google Play details page for the product. */
   core.String detailsUrl;

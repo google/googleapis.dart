@@ -26,6 +26,7 @@ class ResellerApi {
   final commons.ApiRequester _requester;
 
   CustomersResourceApi get customers => new CustomersResourceApi(_requester);
+  ResellernotifyResourceApi get resellernotify => new ResellernotifyResourceApi(_requester);
   SubscriptionsResourceApi get subscriptions => new SubscriptionsResourceApi(_requester);
 
   ResellerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "apps/reseller/v1/"}) :
@@ -40,11 +41,14 @@ class CustomersResourceApi {
       _requester = client;
 
   /**
-   * Gets a customer resource if one exists and is owned by the reseller.
+   * Get a customer account.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
    * Completes with a [Customer].
    *
@@ -79,15 +83,18 @@ class CustomersResourceApi {
   }
 
   /**
-   * Creates a customer resource if one does not already exist.
+   * Order a new customer's account.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [customerAuthToken] - An auth token needed for inserting a customer for
-   * which domain already exists. Can be generated at
-   * https://admin.google.com/TransferToken. Optional.
+   * [customerAuthToken] - The customerAuthToken query string is required when
+   * creating a resold account that transfers a direct customer's subscription
+   * or transfers another reseller customer's subscription to your reseller
+   * management. This is a hexadecimal authentication token needed to complete
+   * the subscription transfer. For more information, see the administrator help
+   * center.
    *
    * Completes with a [Customer].
    *
@@ -125,14 +132,16 @@ class CustomersResourceApi {
   }
 
   /**
-   * Update a customer resource if one it exists and is owned by the reseller.
-   * This method supports patch semantics.
+   * Update a customer account's settings. This method supports patch semantics.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
    * Completes with a [Customer].
    *
@@ -170,13 +179,16 @@ class CustomersResourceApi {
   }
 
   /**
-   * Update a customer resource if one it exists and is owned by the reseller.
+   * Update a customer account's settings.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
    * Completes with a [Customer].
    *
@@ -216,6 +228,129 @@ class CustomersResourceApi {
 }
 
 
+class ResellernotifyResourceApi {
+  final commons.ApiRequester _requester;
+
+  ResellernotifyResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns all the details of the watch corresponding to the reseller.
+   *
+   * Request parameters:
+   *
+   * Completes with a [ResellernotifyGetwatchdetailsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails() {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+
+    _url = 'resellernotify/getwatchdetails';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ResellernotifyGetwatchdetailsResponse.fromJson(data));
+  }
+
+  /**
+   * Registers a Reseller for receiving notifications.
+   *
+   * Request parameters:
+   *
+   * [serviceAccountEmailAddress] - The service account which will own the
+   * created Cloud-PubSub topic.
+   *
+   * Completes with a [ResellernotifyResource].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ResellernotifyResource> register({core.String serviceAccountEmailAddress}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (serviceAccountEmailAddress != null) {
+      _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
+    }
+
+    _url = 'resellernotify/register';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ResellernotifyResource.fromJson(data));
+  }
+
+  /**
+   * Unregisters a Reseller for receiving notifications.
+   *
+   * Request parameters:
+   *
+   * [serviceAccountEmailAddress] - The service account which owns the
+   * Cloud-PubSub topic.
+   *
+   * Completes with a [ResellernotifyResource].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ResellernotifyResource> unregister({core.String serviceAccountEmailAddress}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (serviceAccountEmailAddress != null) {
+      _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
+    }
+
+    _url = 'resellernotify/unregister';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ResellernotifyResource.fromJson(data));
+  }
+
+}
+
+
 class SubscriptionsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -227,9 +362,16 @@ class SubscriptionsResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   * [subscriptionId] - This is a required property. The subscriptionId is the
+   * subscription identifier and is unique for each customer. Since a
+   * subscriptionId changes when a subscription is updated, we recommend to not
+   * use this ID as a key for persistent data. And the subscriptionId can be
+   * found using the retrieve all reseller subscriptions method.
    *
    * Completes with a [Subscription].
    *
@@ -267,15 +409,24 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Changes the plan of a subscription
+   * Update a subscription plan. Use this method to update a plan for a 30-day
+   * trial or a flexible plan subscription to an annual commitment plan with
+   * monthly or yearly payments.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   * [subscriptionId] - This is a required property. The subscriptionId is the
+   * subscription identifier and is unique for each customer. Since a
+   * subscriptionId changes when a subscription is updated, we recommend to not
+   * use this ID as a key for persistent data. And the subscriptionId can be
+   * found using the retrieve all reseller subscriptions method.
    *
    * Completes with a [Subscription].
    *
@@ -316,15 +467,23 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Changes the renewal settings of a subscription
+   * Update a user license's renewal settings. This is applicable for accounts
+   * with annual commitment plans only.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   * [subscriptionId] - This is a required property. The subscriptionId is the
+   * subscription identifier and is unique for each customer. Since a
+   * subscriptionId changes when a subscription is updated, we recommend to not
+   * use this ID as a key for persistent data. And the subscriptionId can be
+   * found using the retrieve all reseller subscriptions method.
    *
    * Completes with a [Subscription].
    *
@@ -365,15 +524,22 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Changes the seats configuration of a subscription
+   * Update a subscription's user license settings.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   * [subscriptionId] - This is a required property. The subscriptionId is the
+   * subscription identifier and is unique for each customer. Since a
+   * subscriptionId changes when a subscription is updated, we recommend to not
+   * use this ID as a key for persistent data. And the subscriptionId can be
+   * found using the retrieve all reseller subscriptions method.
    *
    * Completes with a [Subscription].
    *
@@ -414,22 +580,53 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Cancels/Downgrades a subscription.
+   * Cancel, suspend or transfer a subscription to direct.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   * [subscriptionId] - This is a required property. The subscriptionId is the
+   * subscription identifier and is unique for each customer. Since a
+   * subscriptionId changes when a subscription is updated, we recommend to not
+   * use this ID as a key for persistent data. And the subscriptionId can be
+   * found using the retrieve all reseller subscriptions method.
    *
-   * [deletionType] - Whether the subscription is to be fully cancelled or
-   * downgraded
+   * [deletionType] - The deletionType query string enables the cancellation,
+   * downgrade, or suspension of a subscription.
    * Possible string values are:
-   * - "cancel" : Cancels the subscription immediately
-   * - "downgrade" : Downgrades a Google Apps for Business subscription to
-   * Google Apps
-   * - "suspend" : Suspends the subscriptions for 4 days before cancelling it
-   * - "transfer_to_direct" : Transfers a subscription directly to Google
+   * - "cancel" : Cancels the subscription immediately. This does not apply to a
+   * G Suite subscription.
+   * - "downgrade" : Downgrades a G Suite subscription to a Google Apps Free
+   * edition subscription only if the customer was initially subscribed to a
+   * Google Apps Free edition (also known as the Standard edition). Once
+   * downgraded, the customer no longer has access to the previous G Suite
+   * subscription and is no longer managed by the reseller.
+   *
+   * A G Suite subscription's downgrade cannot be invoked if an active or
+   * suspended Google Drive or Google Vault subscription is present. The Google
+   * Drive or Google Vault subscription must be cancelled before the G Suite
+   * subscription's downgrade is invoked.
+   *
+   * The downgrade deletionType does not apply to other products or G Suite
+   * SKUs.
+   * - "suspend" : (DEPRECATED) The G Suite account is suspended for four days
+   * and then cancelled. Once suspended, an administrator has access to the
+   * suspended account, but the account users can not access their services. A
+   * suspension can be lifted, using the reseller tools.
+   *
+   * A G Suite subscription's suspension can not be invoked if an active or
+   * suspended Google Drive or Google Vault subscription is present. The Google
+   * Drive or Google Vault subscription must be cancelled before the G Suite
+   * subscription's suspension is invoked.
+   * - "transfer_to_direct" : Transfers a subscription directly to Google.  The
+   * customer is immediately transferred to a direct billing relationship with
+   * Google and is given a short amount of time with no service interruption.
+   * The customer can then choose to set up billing directly with Google by
+   * using a credit card, or they can transfer to another reseller.
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -471,13 +668,20 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Gets a subscription of the customer.
+   * Get a specific subscription.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   * [subscriptionId] - This is a required property. The subscriptionId is the
+   * subscription identifier and is unique for each customer. Since a
+   * subscriptionId changes when a subscription is updated, we recommend to not
+   * use this ID as a key for persistent data. And the subscriptionId can be
+   * found using the retrieve all reseller subscriptions method.
    *
    * Completes with a [Subscription].
    *
@@ -515,17 +719,23 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Creates/Transfers a subscription for the customer.
+   * Create or transfer a subscription.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [customerAuthToken] - An auth token needed for transferring a subscription.
-   * Can be generated at
-   * https://www.google.com/a/cpanel/customer-domain/TransferToken. Optional.
+   * [customerAuthToken] - The customerAuthToken query string is required when
+   * creating a resold account that transfers a direct customer's subscription
+   * or transfers another reseller customer's subscription to your reseller
+   * management. This is a hexadecimal authentication token needed to complete
+   * the subscription transfer. For more information, see the administrator help
+   * center.
    *
    * Completes with a [Subscription].
    *
@@ -566,21 +776,36 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Lists subscriptions of a reseller, optionally filtered by a customer name
-   * prefix.
+   * List of subscriptions managed by the reseller. The list can be all
+   * subscriptions, all of a customer's subscriptions, or all of a customer's
+   * transferable subscriptions.
    *
    * Request parameters:
    *
-   * [customerAuthToken] - An auth token needed if the customer is not a resold
-   * customer of this reseller. Can be generated at
-   * https://www.google.com/a/cpanel/customer-domain/TransferToken.Optional.
+   * [customerAuthToken] - The customerAuthToken query string is required when
+   * creating a resold account that transfers a direct customer's subscription
+   * or transfers another reseller customer's subscription to your reseller
+   * management. This is a hexadecimal authentication token needed to complete
+   * the subscription transfer. For more information, see the administrator help
+   * center.
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [customerNamePrefix] - Prefix of the customer's domain name by which the
-   * subscriptions should be filtered. Optional
+   * [customerNamePrefix] - When retrieving all of your subscriptions and
+   * filtering for specific customers, you can enter a prefix for a customer
+   * name. Using an example customer group that includes exam.com, example20.com
+   * and example.com:
+   * - exa -- Returns all customer names that start with 'exa' which could
+   * include exam.com, example20.com, and example.com. A name prefix is similar
+   * to using a regular expression's asterisk, exa*.
+   * - example -- Returns example20.com and example.com.
    *
-   * [maxResults] - Maximum number of results to return
+   * [maxResults] - When retrieving a large list, the maxResults is the maximum
+   * number of results per page. The nextPageToken value takes you to the next
+   * page. The default is 20.
    * Value must be between "1" and "100".
    *
    * [pageToken] - Token to specify next page in the list
@@ -630,13 +855,21 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Starts paid service of a trial subscription
+   * Immediately move a 30-day free trial subscription to a paid service
+   * subscription.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   * [subscriptionId] - This is a required property. The subscriptionId is the
+   * subscription identifier and is unique for each customer. Since a
+   * subscriptionId changes when a subscription is updated, we recommend to not
+   * use this ID as a key for persistent data. And the subscriptionId can be
+   * found using the retrieve all reseller subscriptions method.
    *
    * Completes with a [Subscription].
    *
@@ -674,13 +907,20 @@ class SubscriptionsResourceApi {
   }
 
   /**
-   * Suspends an active subscription
+   * Suspends an active subscription.
    *
    * Request parameters:
    *
-   * [customerId] - Id of the Customer
+   * [customerId] - Either the customer's primary domain name or the customer's
+   * unique identifier. If using the domain name, we do not recommend using a
+   * customerId as a key for persistent data. If the domain name for a
+   * customerId is changed, the Google system automatically updates.
    *
-   * [subscriptionId] - Id of the subscription, which is unique for a customer
+   * [subscriptionId] - This is a required property. The subscriptionId is the
+   * subscription identifier and is unique for each customer. Since a
+   * subscriptionId changes when a subscription is updated, we recommend to not
+   * use this ID as a key for persistent data. And the subscriptionId can be
+   * found using the retrieve all reseller subscriptions method.
    *
    * Completes with a [Subscription].
    *
@@ -723,34 +963,37 @@ class SubscriptionsResourceApi {
 
 /** JSON template for address of a customer. */
 class Address {
-  /** Address line 1 of the address. */
-  core.String addressLine1;
-  /** Address line 2 of the address. */
-  core.String addressLine2;
-  /** Address line 3 of the address. */
-  core.String addressLine3;
-  /** Name of the contact person. */
-  core.String contactName;
-  /** ISO 3166 country code. */
-  core.String countryCode;
-  /** Identifies the resource as a customer address. */
-  core.String kind;
   /**
-   * Name of the locality. This is in accordance with -
-   * http://portablecontacts.net/draft-spec.html#address_element.
+   * A customer's physical address. An address can be composed of one to three
+   * lines. The addressline2 and addressLine3 are optional.
    */
+  core.String addressLine1;
+  /** Line 2 of the address. */
+  core.String addressLine2;
+  /** Line 3 of the address. */
+  core.String addressLine3;
+  /** The customer contact's name. This is required. */
+  core.String contactName;
+  /**
+   * For countryCode information, see the ISO 3166 country code elements. Verify
+   * that country is approved for resale of Google products. This property is
+   * required when creating a new customer.
+   */
+  core.String countryCode;
+  /**
+   * Identifies the resource as a customer address. Value: customers#address
+   */
+  core.String kind;
+  /** An example of a locality value is the city of San Francisco. */
   core.String locality;
-  /** Name of the organization. */
+  /** The company or company division name. This is required. */
   core.String organizationName;
   /**
-   * The postal code. This is in accordance with -
-   * http://portablecontacts.net/draft-spec.html#address_element.
+   * A postalCode example is a postal zip code such as 94043. This property is
+   * required when creating a new customer.
    */
   core.String postalCode;
-  /**
-   * Name of the region. This is in accordance with -
-   * http://portablecontacts.net/draft-spec.html#address_element.
-   */
+  /** An example of a region value is CA for the state of California. */
   core.String region;
 
   Address();
@@ -827,17 +1070,44 @@ class Address {
 /** JSON template for the ChangePlan rpc request. */
 class ChangePlanRequest {
   /**
-   * External name of the deal code applicable for the subscription. This field
-   * is optional. If missing, the deal price plan won't be used.
+   * Google-issued code (100 char max) for discounted pricing on subscription
+   * plans. Deal code must be included in changePlan request in order to receive
+   * discounted rate. This property is optional. If a deal code has already been
+   * added to a subscription, this property may be left empty and the existing
+   * discounted rate will still apply (if not empty, only provide the deal code
+   * that is already present on the subscription). If a deal code has never been
+   * added to a subscription and this property is left blank, regular pricing
+   * will apply.
    */
   core.String dealCode;
-  /** Identifies the resource as a subscription change plan request. */
+  /**
+   * Identifies the resource as a subscription change plan request. Value:
+   * subscriptions#changePlanRequest
+   */
   core.String kind;
-  /** Name of the plan to change to. */
+  /**
+   * The planName property is required. This is the name of the subscription's
+   * payment plan. For more information about the Google payment plans, see API
+   * concepts.
+   *
+   * Possible values are:
+   * - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments
+   * - ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments
+   * - FLEXIBLE - The flexible plan
+   * - TRIAL - The 30-day free trial plan
+   */
   core.String planName;
-  /** Purchase order id for your order tracking purposes. */
+  /**
+   * This is an optional property. This purchase order (PO) information is for
+   * resellers to use for their company tracking usage. If a purchaseOrderId
+   * value is given it appears in the API responses and shows up in the invoice.
+   * The property accepts up to 80 plain text characters.
+   */
   core.String purchaseOrderId;
-  /** Number/Limit of seats in the new plan. */
+  /**
+   * This is a required property. The seats property is the number of user seat
+   * licenses.
+   */
   Seats seats;
 
   ChangePlanRequest();
@@ -883,21 +1153,45 @@ class ChangePlanRequest {
 
 /** JSON template for a customer. */
 class Customer {
-  /** The alternate email of the customer. */
+  /**
+   * Like the "Customer email" in the reseller tools, this email is the
+   * secondary contact used if something happens to the customer's service such
+   * as service outage or a security issue. This property is required when
+   * creating a new customer and should not use the same domain as
+   * customerDomain.
+   */
   core.String alternateEmail;
-  /** The domain name of the customer. */
+  /**
+   * The customer's primary domain name string. customerDomain is required when
+   * creating a new customer. Do not include the www prefix in the domain when
+   * adding a customer.
+   */
   core.String customerDomain;
   /** Whether the customer's primary domain has been verified. */
   core.bool customerDomainVerified;
-  /** The id of the customer. */
+  /**
+   * This property will always be returned in a response as the unique
+   * identifier generated by Google. In a request, this property can be either
+   * the primary domain or the unique identifier generated by Google.
+   */
   core.String customerId;
-  /** Identifies the resource as a customer. */
+  /** Identifies the resource as a customer. Value: reseller#customer */
   core.String kind;
-  /** The phone number of the customer. */
+  /**
+   * Customer contact phone number. This can be continuous numbers, with spaces,
+   * etc. But it must be a real phone number and not, for example, "123". See
+   * phone  local format conventions.
+   */
   core.String phoneNumber;
-  /** The postal address of the customer. */
+  /**
+   * A customer's address information. Each field has a limit of 255 charcters.
+   */
   Address postalAddress;
-  /** Ui url for customer resource. */
+  /**
+   * URL to customer's Admin console dashboard. The read-only URL is generated
+   * by the API service. This is used if your client application requires the
+   * customer to complete a task in the Admin console.
+   */
   core.String resourceUiUrl;
 
   Customer();
@@ -961,9 +1255,16 @@ class Customer {
 
 /** JSON template for a subscription renewal settings. */
 class RenewalSettings {
-  /** Identifies the resource as a subscription renewal setting. */
+  /**
+   * Identifies the resource as a subscription renewal setting. Value:
+   * subscriptions#renewalSettings
+   */
   core.String kind;
-  /** Subscription renewal type. */
+  /**
+   * Renewal settings for the annual commitment plan. For more detailed
+   * information, see renewal options in the administrator help center. When
+   * renewing a subscription, the renewalType is a required property.
+   */
   core.String renewalType;
 
   RenewalSettings();
@@ -989,9 +1290,64 @@ class RenewalSettings {
   }
 }
 
+/** JSON template for resellernotify getwatchdetails response. */
+class ResellernotifyGetwatchdetailsResponse {
+  /** List of registered service accounts. */
+  core.List<core.String> serviceAccountEmailAddresses;
+  /** Topic name of the PubSub */
+  core.String topicName;
+
+  ResellernotifyGetwatchdetailsResponse();
+
+  ResellernotifyGetwatchdetailsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("serviceAccountEmailAddresses")) {
+      serviceAccountEmailAddresses = _json["serviceAccountEmailAddresses"];
+    }
+    if (_json.containsKey("topicName")) {
+      topicName = _json["topicName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (serviceAccountEmailAddresses != null) {
+      _json["serviceAccountEmailAddresses"] = serviceAccountEmailAddresses;
+    }
+    if (topicName != null) {
+      _json["topicName"] = topicName;
+    }
+    return _json;
+  }
+}
+
+/** JSON template for resellernotify response. */
+class ResellernotifyResource {
+  /** Topic name of the PubSub */
+  core.String topicName;
+
+  ResellernotifyResource();
+
+  ResellernotifyResource.fromJson(core.Map _json) {
+    if (_json.containsKey("topicName")) {
+      topicName = _json["topicName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (topicName != null) {
+      _json["topicName"] = topicName;
+    }
+    return _json;
+  }
+}
+
 /** JSON template for subscription seats. */
 class Seats {
-  /** Identifies the resource as a subscription change plan request. */
+  /**
+   * Identifies the resource as a subscription change plan request. Value:
+   * subscriptions#seats
+   */
   core.String kind;
   /**
    * Read-only field containing the current number of licensed seats for
@@ -1000,13 +1356,40 @@ class Seats {
    */
   core.int licensedNumberOfSeats;
   /**
-   * Maximum number of seats that can be purchased. This needs to be provided
-   * only for a non-commitment plan. For a commitment plan it is decided by the
-   * contract.
+   * The maximumNumberOfSeats property is the maximum number of licenses that
+   * the customer can purchase. This property applies to plans other than the
+   * annual commitment plan. How a user's licenses are managed depends on the
+   * subscription's payment plan:
+   * - annual commitment plan (with monthly or yearly payments) — For this plan,
+   * a reseller is invoiced on the number of user licenses in the numberOfSeats
+   * property. The maximumNumberOfSeats property is a read-only property in the
+   * API's response.
+   * - flexible plan — For this plan, a reseller is invoiced on the actual
+   * number of users which is capped by the maximumNumberOfSeats. This is the
+   * maximum number of user licenses a customer has for user license
+   * provisioning. This quantity can be increased up to the maximum limit
+   * defined in the reseller's contract. And the minimum quantity is the current
+   * number of users in the customer account.
+   * - 30-day free trial plan — A subscription in a 30-day free trial is
+   * restricted to maximum 10 seats.
    */
   core.int maximumNumberOfSeats;
   /**
-   * Number of seats to purchase. This is applicable only for a commitment plan.
+   * The numberOfSeats property holds the customer's number of user licenses.
+   * How a user's licenses are managed depends on the subscription's plan:
+   * - annual commitment plan (with monthly or yearly pay) — For this plan, a
+   * reseller is invoiced on the number of user licenses in the numberOfSeats
+   * property. This is the maximum number of user licenses that a reseller's
+   * customer can create. The reseller can add more licenses, but once set, the
+   * numberOfSeats can not be reduced until renewal. The reseller is invoiced
+   * based on the numberOfSeats value regardless of how many of these user
+   * licenses are provisioned users.
+   * - flexible plan — For this plan, a reseller is invoiced on the actual
+   * number of users which is capped by the maximumNumberOfSeats. The
+   * numberOfSeats property is not used in the request or response for flexible
+   * plan customers.
+   * - 30-day free trial plan — The numberOfSeats property is not used in the
+   * request or response for an account in a 30-day trial.
    */
   core.int numberOfSeats;
 
@@ -1045,12 +1428,18 @@ class Seats {
   }
 }
 
-/** Interval of the commitment if it is a commitment plan. */
+/**
+ * In this version of the API, annual commitment plan's interval is one year.
+ */
 class SubscriptionPlanCommitmentInterval {
-  /** End time of the commitment interval in milliseconds since Unix epoch. */
+  /**
+   * An annual commitment plan's interval's endTime in milliseconds using the
+   * UNIX Epoch format. See an example Epoch converter.
+   */
   core.String endTime;
   /**
-   * Start time of the commitment interval in milliseconds since Unix epoch.
+   * An annual commitment plan's interval's startTime in milliseconds using UNIX
+   * Epoch format. See an example Epoch converter.
    */
   core.String startTime;
 
@@ -1077,13 +1466,39 @@ class SubscriptionPlanCommitmentInterval {
   }
 }
 
-/** Plan details of the subscription */
+/**
+ * The plan property is required. In this version of the API, the G Suite plans
+ * are the flexible plan, annual commitment plan, and the 30-day free trial
+ * plan. For more information about the API"s payment plans, see the API
+ * concepts.
+ */
 class SubscriptionPlan {
-  /** Interval of the commitment if it is a commitment plan. */
+  /**
+   * In this version of the API, annual commitment plan's interval is one year.
+   */
   SubscriptionPlanCommitmentInterval commitmentInterval;
-  /** Whether the plan is a commitment plan or not. */
+  /**
+   * The isCommitmentPlan property's boolean value identifies the plan as an
+   * annual commitment plan:
+   * - true — The subscription's plan is an annual commitment plan.
+   * - false — The plan is not an annual commitment plan.
+   */
   core.bool isCommitmentPlan;
-  /** The plan name of this subscription's plan. */
+  /**
+   * The planName property is required. This is the name of the subscription's
+   * plan. For more information about the Google payment plans, see the API
+   * concepts.
+   *
+   * Possible values are:
+   * - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments
+   * - ANNUAL_YEARLY_PAY — The annual commitment plan with yearly payments
+   * - FLEXIBLE — The flexible plan
+   * - TRIAL — The 30-day free trial plan. A subscription in trial will be
+   * suspended after the 30th free day if no payment plan is assigned. Calling
+   * changePlan will assign a payment plan to a trial but will not activate the
+   * plan. A trial will automatically begin its assigned payment plan after its
+   * 30th free day or immediately after calling startPaidService.
+   */
   core.String planName;
 
   SubscriptionPlan();
@@ -1115,10 +1530,22 @@ class SubscriptionPlan {
   }
 }
 
-/** Transfer related information for the subscription. */
+/**
+ * Read-only transfer related information for the subscription. For more
+ * information, see retrieve transferable subscriptions for a customer.
+ */
 class SubscriptionTransferInfo {
+  /**
+   * When inserting a subscription, this is the minimum number of seats listed
+   * in the transfer order for this product. For example, if the customer has 20
+   * users, the reseller cannot place a transfer order of 15 seats. The minimum
+   * is 20 seats.
+   */
   core.int minimumTransferableSeats;
-  /** Time when transfer token or intent to transfer will expire. */
+  /**
+   * The time when transfer token or intent to transfer will expire. The time is
+   * in milliseconds using UNIX Epoch format.
+   */
   core.String transferabilityExpirationTime;
 
   SubscriptionTransferInfo();
@@ -1144,11 +1571,21 @@ class SubscriptionTransferInfo {
   }
 }
 
-/** Trial Settings of the subscription. */
+/**
+ * The G Suite annual commitment and flexible payment plans can be in a 30-day
+ * free trial. For more information, see the API concepts.
+ */
 class SubscriptionTrialSettings {
-  /** Whether the subscription is in trial. */
+  /**
+   * Determines if a subscription's plan is in a 30-day free trial or not:
+   * - true — The plan is in trial.
+   * - false — The plan is not in trial.
+   */
   core.bool isInTrial;
-  /** End time of the trial in milliseconds since Unix epoch. */
+  /**
+   * Date when the trial ends. The value is in milliseconds using the UNIX Epoch
+   * format. See an example Epoch converter.
+   */
   core.String trialEndTime;
 
   SubscriptionTrialSettings();
@@ -1176,45 +1613,90 @@ class SubscriptionTrialSettings {
 
 /** JSON template for a subscription. */
 class Subscription {
-  /** Billing method of this subscription. */
+  /**
+   * Read-only field that returns the current billing method for a subscription.
+   */
   core.String billingMethod;
-  /** Creation time of this subscription in milliseconds since Unix epoch. */
+  /**
+   * The creationTime property is the date when subscription was created. It is
+   * in milliseconds using the Epoch format. See an example Epoch converter.
+   */
   core.String creationTime;
   /** Primary domain name of the customer */
   core.String customerDomain;
-  /** The id of the customer to whom the subscription belongs. */
+  /**
+   * This property will always be returned in a response as the unique
+   * identifier generated by Google. In a request, this property can be either
+   * the primary domain or the unique identifier generated by Google.
+   */
   core.String customerId;
   /**
-   * External name of the deal, if this subscription was provisioned under one.
-   * Otherwise this field will be empty.
+   * Google-issued code (100 char max) for discounted pricing on subscription
+   * plans. Deal code must be included in insert requests in order to receive
+   * discounted rate. This property is optional, regular pricing applies if left
+   * empty.
    */
   core.String dealCode;
-  /** Identifies the resource as a Subscription. */
+  /**
+   * Identifies the resource as a Subscription. Value: reseller#subscription
+   */
   core.String kind;
-  /** Plan details of the subscription */
+  /**
+   * The plan property is required. In this version of the API, the G Suite
+   * plans are the flexible plan, annual commitment plan, and the 30-day free
+   * trial plan. For more information about the API"s payment plans, see the API
+   * concepts.
+   */
   SubscriptionPlan plan;
-  /** Purchase order id for your order tracking purposes. */
+  /**
+   * This is an optional property. This purchase order (PO) information is for
+   * resellers to use for their company tracking usage. If a purchaseOrderId
+   * value is given it appears in the API responses and shows up in the invoice.
+   * The property accepts up to 80 plain text characters.
+   */
   core.String purchaseOrderId;
-  /** Renewal settings of the subscription. */
+  /**
+   * Renewal settings for the annual commitment plan. For more detailed
+   * information, see renewal options in the administrator help center.
+   */
   RenewalSettings renewalSettings;
-  /** Ui url for subscription resource. */
+  /**
+   * URL to customer's Subscriptions page in the Admin console. The read-only
+   * URL is generated by the API service. This is used if your client
+   * application requires the customer to complete a task using the
+   * Subscriptions page in the Admin console.
+   */
   core.String resourceUiUrl;
-  /** Number/Limit of seats in the new plan. */
+  /**
+   * This is a required property. The number and limit of user seat licenses in
+   * the plan.
+   */
   Seats seats;
-  /** Name of the sku for which this subscription is purchased. */
+  /**
+   * A required property. The skuId is a unique system identifier for a
+   * product's SKU assigned to a customer in the subscription. For products and
+   * SKUs available in this version of the API, see  Product and SKU IDs.
+   */
   core.String skuId;
-  /** Status of the subscription. */
+  /** This is an optional property. */
   core.String status;
-  /** The id of the subscription. */
+  /**
+   * The subscriptionId is the subscription identifier and is unique for each
+   * customer. This is a required property. Since a subscriptionId changes when
+   * a subscription is updated, we recommend not using this ID as a key for
+   * persistent data. Use the subscriptionId as described in retrieve all
+   * reseller subscriptions.
+   */
   core.String subscriptionId;
   /**
    * Read-only field containing an enumerable of all the current suspension
    * reasons for a subscription. It is possible for a subscription to have many
    * concurrent, overlapping suspension reasons. A subscription's STATUS is
-   * SUSPENDED until all pending suspensions are removed. Possible options
-   * include:
+   * SUSPENDED until all pending suspensions are removed.
+   *
+   * Possible options include:
    * - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the
-   * Google Apps Resold Terms of Services.
+   * G Suite Resold Terms of Services.
    * - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their
    * service was cancelled at the end of their term.
    * - RESELLER_INITIATED - A manual suspension invoked by a Reseller.
@@ -1223,9 +1705,15 @@ class Subscription {
    * abuse or otherwise).
    */
   core.List<core.String> suspensionReasons;
-  /** Transfer related information for the subscription. */
+  /**
+   * Read-only transfer related information for the subscription. For more
+   * information, see retrieve transferable subscriptions for a customer.
+   */
   SubscriptionTransferInfo transferInfo;
-  /** Trial Settings of the subscription. */
+  /**
+   * The G Suite annual commitment and flexible payment plans can be in a 30-day
+   * free trial. For more information, see the API concepts.
+   */
   SubscriptionTrialSettings trialSettings;
 
   Subscription();
@@ -1343,7 +1831,10 @@ class Subscription {
 
 /** JSON template for a subscription list. */
 class Subscriptions {
-  /** Identifies the resource as a collection of subscriptions. */
+  /**
+   * Identifies the resource as a collection of subscriptions. Value:
+   * reseller#subscriptions
+   */
   core.String kind;
   /**
    * The continuation token, used to page through large result sets. Provide

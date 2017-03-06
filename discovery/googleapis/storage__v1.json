@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/O7Py_2CML0H8P13RcDMQNO73JoU\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/87TjkqlQLQJ6FjZ3rw1XvgyEGys\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -446,7 +446,8 @@
                     ],
                     "parameters": {
                         "maxResults": {
-                            "description": "Maximum number of buckets to return.",
+                            "default": "1000",
+                            "description": "Maximum number of buckets to return in a single response. The service will use this parameter or 1,000 items, whichever is smaller.",
                             "format": "uint32",
                             "location": "query",
                             "minimum": "0",
@@ -1634,7 +1635,8 @@
                             "type": "string"
                         },
                         "maxResults": {
-                            "description": "Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total results may be returned than requested. The default value of this parameter is 1,000 items.",
+                            "default": "1000",
+                            "description": "Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are omitted, fewer total results may be returned than requested. The service will use this parameter or 1,000 items, whichever is smaller.",
                             "format": "uint32",
                             "location": "query",
                             "minimum": "0",
@@ -2047,7 +2049,8 @@
                             "type": "string"
                         },
                         "maxResults": {
-                            "description": "Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total results may be returned than requested. The default value of this parameter is 1,000 items.",
+                            "default": "1000",
+                            "description": "Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are omitted, fewer total results may be returned than requested. The service will use this parameter or 1,000 items, whichever is smaller.",
                             "format": "uint32",
                             "location": "query",
                             "minimum": "0",
@@ -2102,7 +2105,7 @@
             }
         }
     },
-    "revision": "20170203",
+    "revision": "20170224",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

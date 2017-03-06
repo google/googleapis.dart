@@ -28,12 +28,167 @@ class CloudresourcemanagerApi {
 
   final commons.ApiRequester _requester;
 
+  LiensResourceApi get liens => new LiensResourceApi(_requester);
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);
   OrganizationsResourceApi get organizations => new OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   CloudresourcemanagerApi(http.Client client, {core.String rootUrl: "https://cloudresourcemanager.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class LiensResourceApi {
+  final commons.ApiRequester _requester;
+
+  LiensResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Create a Lien which applies to the resource denoted by the `parent` field.
+   *
+   * Callers of this method will require permission on the `parent` resource.
+   * For example, applying to `projects/1234` requires permission
+   * `resourcemanager.projects.updateLiens`.
+   *
+   * NOTE: Some resources may limit the number of Liens which may be applied.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Lien].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Lien> create(Lien request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/liens';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Lien.fromJson(data));
+  }
+
+  /**
+   * Delete a Lien by `name`.
+   *
+   * Callers of this method will require permission on the `parent` resource.
+   * For example, a Lien with a `parent` of `projects/1234` requires permission
+   * `resourcemanager.projects.updateLiens`.
+   *
+   * Request parameters:
+   *
+   * [name] - The name/identifier of the Lien to delete.
+   * Value must have pattern "^liens/.+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * List all Liens applied to the `parent` resource.
+   *
+   * Callers of this method will require permission on the `parent` resource.
+   * For example, a Lien with a `parent` of `projects/1234` requires permission
+   * `resourcemanager.projects.get`.
+   *
+   * Request parameters:
+   *
+   * [parent] - The name of the resource to list all attached Liens.
+   * For example, `projects/1234`.
+   *
+   * [pageToken] - The `next_page_token` value returned from a previous List
+   * request, if any.
+   *
+   * [pageSize] - The maximum number of items to return. This is a suggestion
+   * for the server.
+   *
+   * Completes with a [ListLiensResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListLiensResponse> list({core.String parent, core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1/liens';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLiensResponse.fromJson(data));
+  }
+
 }
 
 
@@ -146,8 +301,7 @@ class OrganizationsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^organizations/[^/]+$".
    *
    * Completes with a [Policy].
@@ -238,8 +392,7 @@ class OrganizationsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^organizations/[^/]+$".
    *
    * Completes with a [Policy].
@@ -288,8 +441,7 @@ class OrganizationsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^organizations/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -549,8 +701,7 @@ class ProjectsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    *
    * Completes with a [Policy].
    *
@@ -713,8 +864,7 @@ class ProjectsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    *
    * Completes with a [Policy].
    *
@@ -760,8 +910,7 @@ class ProjectsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -1165,6 +1314,132 @@ class GetIamPolicyRequest {
 }
 
 /**
+ * A Lien represents an encumbrance on the actions that can be performed on a
+ * resource.
+ */
+class Lien {
+  /** The creation time of this Lien. */
+  core.String createTime;
+  /**
+   * A system-generated unique identifier for this Lien.
+   *
+   * Example: `liens/1234abcd`
+   */
+  core.String name;
+  /**
+   * A stable, user-visible/meaningful string identifying the origin of the
+   * Lien, intended to be inspected programmatically. Maximum length of 200
+   * characters.
+   *
+   * Example: 'compute.googleapis.com'
+   */
+  core.String origin;
+  /**
+   * A reference to the resource this Lien is attached to. The server will
+   * validate the parent against those for which Liens are supported.
+   *
+   * Example: `projects/1234`
+   */
+  core.String parent;
+  /**
+   * Concise user-visible strings indicating why an action cannot be performed
+   * on a resource. Maximum lenth of 200 characters.
+   *
+   * Example: 'Holds production API key'
+   */
+  core.String reason;
+  /**
+   * The types of operations which should be blocked as a result of this Lien.
+   * Each value should correspond to an IAM permission. The server will
+   * validate the permissions against those for which Liens are supported.
+   *
+   * An empty list is meaningless and will be rejected.
+   *
+   * Example: ['resourcemanager.projects.delete']
+   */
+  core.List<core.String> restrictions;
+
+  Lien();
+
+  Lien.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("origin")) {
+      origin = _json["origin"];
+    }
+    if (_json.containsKey("parent")) {
+      parent = _json["parent"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+    if (_json.containsKey("restrictions")) {
+      restrictions = _json["restrictions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (origin != null) {
+      _json["origin"] = origin;
+    }
+    if (parent != null) {
+      _json["parent"] = parent;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    if (restrictions != null) {
+      _json["restrictions"] = restrictions;
+    }
+    return _json;
+  }
+}
+
+/** The response message for Liens.ListLiens. */
+class ListLiensResponse {
+  /** A list of Liens. */
+  core.List<Lien> liens;
+  /**
+   * Token to retrieve the next page of results, or empty if there are no more
+   * results in the list.
+   */
+  core.String nextPageToken;
+
+  ListLiensResponse();
+
+  ListLiensResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("liens")) {
+      liens = _json["liens"].map((value) => new Lien.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (liens != null) {
+      _json["liens"] = liens.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
  * A page of the response received from the
  * ListProjects
  * method.
@@ -1314,8 +1589,8 @@ class Organization {
   core.String creationTime;
   /**
    * A friendly string to be used to refer to the Organization in the UI.
-   * Assigned by the server, set to the firm name of the Google For Work
-   * customer that owns this organization.
+   * Assigned by the server, set to the primary domain of the G Suite
+   * customer that owns the organization.
    * @OutputOnly
    */
   core.String displayName;
@@ -1505,7 +1780,7 @@ class Policy {
 
 /**
  * A Project is a high-level Google Cloud Platform entity.  It is a
- * container for ACLs, APIs, AppEngine Apps, VMs, and other
+ * container for ACLs, APIs, App Engine Apps, VMs, and other
  * Google Cloud Platform resources.
  */
 class Project {
@@ -1692,7 +1967,7 @@ class ProjectCreationStatus {
 /**
  * A container to reference an id for any resource type. A `resource` in Google
  * Cloud Platform is a generic term for something you (a developer) may want to
- * interact with through one of our API's. Some examples are an AppEngine app,
+ * interact with through one of our API's. Some examples are an App Engine app,
  * a Compute Engine instance, a Cloud SQL database, and so on.
  */
 class ResourceId {
@@ -1703,7 +1978,7 @@ class ResourceId {
   core.String id;
   /**
    * Required field representing the resource type this id is for.
-   * At present, the only valid type is "organization".
+   * At present, the valid types are: "organization"
    */
   core.String type;
 

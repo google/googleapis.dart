@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.35.0
+    version: 0.36.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -44,7 +44,6 @@ packages:
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2
-    - dfareporting:v2.5  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.6  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.7  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
@@ -86,7 +85,7 @@ packages:
     - pubsub:v1  # https://cloud.google.com/pubsub/
     - qpxExpress:v1  # https://developers.google.com/qpx-express/
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
-    - runtimeconfig:v1  # 
+    - runtimeconfig:v1  #
     - safebrowsing:v4  # https://developers.google.com/safe-browsing/
     - script:v1  # https://developers.google.com/apps-script/execution/rest/v1/run
     - searchconsole:v1  # https://developers.google.com/webmaster-tools/search-console-api/
@@ -96,11 +95,14 @@ packages:
     - sheets:v4  # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1  # https://developers.google.com/site-verification/
     - slides:v1  # https://developers.google.com/slides/
+    - sourcerepo:v1  # https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
+    - spanner:v1  # https://cloud.google.com/spanner/docs/
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
     - storage:v1  # https://developers.google.com/storage/
-    - surveys:v2  # 
+    - surveys:v2  #
     - tagmanager:v1  # https://developers.google.com/tag-manager/
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
+    - tracing:v1  # https://cloud.google.com/trace/api/
     - translate:v2  # https://developers.google.com/translate/
     - urlshortener:v1  # https://developers.google.com/url-shortener/
     - vision:v1  # https://cloud.google.com/vision/reference/rest/
@@ -111,7 +113,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.33.0
+    version: 0.34.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -121,16 +123,16 @@ packages:
     - adexchangebuyer2:v2beta1  # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - appengine:v1beta4  # https://cloud.google.com/appengine/docs/admin-api/
     - appengine:v1beta5  # https://cloud.google.com/appengine/docs/admin-api/
+    - appengine:v1beta  # https://cloud.google.com/appengine/docs/admin-api/
     - clouderrorreporting:v1beta1  # https://cloud.google.com/error-reporting/
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
-    - cloudkms:v1beta1 # https://cloud.google.com/kms/docs/ 
+    - cloudkms:v1beta1 # https://cloud.google.com/kms/docs/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - datastore:v1beta3  # https://developers.google.com/datastore/
     - dataproc:v1beta1 # https://cloud.google.com/dataproc/
-    - dfareporting:v2.5beta1  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - language:v1beta1  # https://cloud.google.com/natural-language/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging

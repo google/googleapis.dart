@@ -100,8 +100,7 @@ class OrganizationsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^organizations/[^/]+$".
    *
    * Completes with a [Policy].
@@ -146,6 +145,9 @@ class OrganizationsResourceApi {
    *
    * Request parameters:
    *
+   * [pageSize] - The maximum number of Organizations to return in the response.
+   * This field is optional.
+   *
    * [filter] - An optional query string used to filter the Organizations to
    * return in
    * the response. Filter rules are case-insensitive.
@@ -167,9 +169,6 @@ class OrganizationsResourceApi {
    * that indicates from where listing should continue.
    * This field is optional.
    *
-   * [pageSize] - The maximum number of Organizations to return in the response.
-   * This field is optional.
-   *
    * Completes with a [ListOrganizationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -178,7 +177,7 @@ class OrganizationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOrganizationsResponse> list({core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOrganizationsResponse> list({core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -186,14 +185,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/organizations';
@@ -219,8 +218,7 @@ class OrganizationsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^organizations/[^/]+$".
    *
    * Completes with a [Policy].
@@ -269,8 +267,7 @@ class OrganizationsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^organizations/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -583,8 +580,7 @@ class ProjectsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    *
    * Completes with a [Policy].
    *
@@ -628,12 +624,6 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
-   * [pageToken] - A pagination token returned from a previous call to
-   * ListProjects
-   * that indicates from where listing should continue.
-   *
-   * Optional.
-   *
    * [pageSize] - The maximum number of Projects to return in the response.
    * The server can return fewer Projects than requested.
    * If unspecified, server picks an appropriate default.
@@ -663,6 +653,12 @@ class ProjectsResourceApi {
    *
    * Optional.
    *
+   * [pageToken] - A pagination token returned from a previous call to
+   * ListProjects
+   * that indicates from where listing should continue.
+   *
+   * Optional.
+   *
    * Completes with a [ListProjectsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -671,7 +667,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListProjectsResponse> list({core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListProjectsResponse> list({core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -679,14 +675,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/projects';
@@ -747,8 +743,7 @@ class ProjectsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    *
    * Completes with a [Policy].
    *
@@ -794,8 +789,7 @@ class ProjectsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -1301,8 +1295,8 @@ class Organization {
   core.String creationTime;
   /**
    * A friendly string to be used to refer to the Organization in the UI.
-   * Assigned by the server, set to the firm name of the Google For Work
-   * customer that owns this organization.
+   * Assigned by the server, set to the primary domain of the G Suite
+   * customer that owns the organization.
    * @OutputOnly
    */
   core.String displayName;
@@ -1505,7 +1499,7 @@ class Policy {
 
 /**
  * A Project is a high-level Google Cloud Platform entity.  It is a
- * container for ACLs, APIs, AppEngine Apps, VMs, and other
+ * container for ACLs, APIs, App Engine Apps, VMs, and other
  * Google Cloud Platform resources.
  */
 class Project {
@@ -1691,7 +1685,7 @@ class ProjectCreationStatus {
 /**
  * A container to reference an id for any resource type. A `resource` in Google
  * Cloud Platform is a generic term for something you (a developer) may want to
- * interact with through one of our API's. Some examples are an AppEngine app,
+ * interact with through one of our API's. Some examples are an App Engine app,
  * a Compute Engine instance, a Cloud SQL database, and so on.
  */
 class ResourceId {

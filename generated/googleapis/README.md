@@ -159,7 +159,7 @@ Provisions and manages App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Apps Activity API - appsactivity v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) G Suite Activity API - appsactivity v1
 
 Provides a historical view of activity.
 
@@ -291,12 +291,6 @@ Official API documentation: https://cloud.google.com/datastore/
 Declares, configures, and deploys complex solutions on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/deployment-manager/
-
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.5
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/reporting/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.6
 
@@ -585,9 +579,9 @@ Official API documentation: https://cloud.google.com/service-management/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service User API - serviceuser v1
 
-The Service User API allows service consumers to enable services they want to use on Google Cloud Platform or disable services they no longer use. Consumers can also list the set of services they have already enabled.
+Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.
 
-Official API documentation: https://cloud.google.com/service-user/
+Official API documentation: https://cloud.google.com/service-management/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Sheets API - sheets v4
 
@@ -606,6 +600,18 @@ Official API documentation: https://developers.google.com/site-verification/
 An API for creating and editing Google Slides presentations.
 
 Official API documentation: https://developers.google.com/slides/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Source Repositories API - sourcerepo v1
+
+Access source code repositories hosted by Google.
+
+Official API documentation: https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Spanner API - spanner v1
+
+Cloud Spanner is a managed, mission-critical, globally consistent and scalable relational database service.
+
+Official API documentation: https://cloud.google.com/spanner/
 
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - storage v1
 
@@ -634,6 +640,13 @@ Official API documentation: https://developers.google.com/tag-manager/api/v1/
 Lets you manage your tasks and task lists.
 
 Official API documentation: https://developers.google.com/google-apps/tasks/firstapp
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Tracing API - tracing v1
+
+Send and retrieve trace data from Google Stackdriver Trace.
+
+
+Official API documentation: https://cloud.google.com/trace
 
 #### ![Logo](https://www.google.com/images/icons/product/translate-16.png) Translate API - translate v2
 

@@ -68,17 +68,17 @@ class ProjectsConfigsResourceApi {
    * for this request, in the format `projects/[PROJECT_ID]`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [requestId] - An optional but recommended unique <code>request_id</code>.
-   * If the server
-   * receives two <code>create()</code> requests  with the same
-   * <code>request_id</code>, then the second request will be ignored and the
+   * [requestId] - An optional but recommended unique `request_id`. If the
+   * server
+   * receives two `create()` requests  with the same
+   * `request_id`, then the second request will be ignored and the
    * first resource created and stored in the backend is returned.
-   * Empty <code>request_id</code> fields are ignored.
+   * Empty `request_id` fields are ignored.
    *
    * It is responsibility of the client to ensure uniqueness of the
-   * <code>request_id</code> strings.
+   * `request_id` strings.
    *
-   * <code>request_id</code> strings are limited to 64 characters.
+   * `request_id` strings are limited to 64 characters.
    *
    * Completes with a [RuntimeConfig].
    *
@@ -211,8 +211,7 @@ class ProjectsConfigsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
    * Completes with a [Policy].
@@ -313,8 +312,7 @@ class ProjectsConfigsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
    * Completes with a [Policy].
@@ -357,14 +355,17 @@ class ProjectsConfigsResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -505,12 +506,15 @@ class ProjectsConfigsOperationsResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+/operations/.+$".
    *
    * [permissions] - The set of permissions to check for the `resource`.
@@ -584,17 +588,17 @@ class ProjectsConfigsVariablesResourceApi {
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
-   * [requestId] - An optional but recommended unique <code>request_id</code>.
-   * If the server
-   * receives two <code>create()</code> requests  with the same
-   * <code>request_id</code>, then the second request will be ignored and the
+   * [requestId] - An optional but recommended unique `request_id`. If the
+   * server
+   * receives two `create()` requests  with the same
+   * `request_id`, then the second request will be ignored and the
    * first resource created and stored in the backend is returned.
-   * Empty <code>request_id</code> fields are ignored.
+   * Empty `request_id` fields are ignored.
    *
    * It is responsibility of the client to ensure uniqueness of the
-   * <code>request_id</code> strings.
+   * `request_id` strings.
    *
-   * <code>request_id</code> strings are limited to 64 characters.
+   * `request_id` strings are limited to 64 characters.
    *
    * Completes with a [Variable].
    *
@@ -733,7 +737,10 @@ class ProjectsConfigsVariablesResourceApi {
   /**
    * Lists variables within given a configuration, matching any provided
    * filters.
-   * This only lists variable names, not the values.
+   * This only lists variable names, not the values, unless `return_values` is
+   * true, in which case only variables that user has IAM permission to
+   * GetVariable
+   * will be returned.
    *
    * Request parameters:
    *
@@ -744,10 +751,6 @@ class ProjectsConfigsVariablesResourceApi {
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
-   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
-   * `nextPageToken`
-   * returned by a previous list request to get the next page of results.
-   *
    * [pageSize] - Specifies the number of results to return per page. If there
    * are fewer
    * elements than the specified number, returns all elements.
@@ -755,6 +758,15 @@ class ProjectsConfigsVariablesResourceApi {
    * [filter] - Filters variables by matching the specified filter. For example:
    *
    * `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+   *
+   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
+   * `nextPageToken`
+   * returned by a previous list request to get the next page of results.
+   *
+   * [returnValues] - The flag indicates whether the user wants to return values
+   * of variables.
+   * If true, then only those variables that user has IAM GetVariable permission
+   * will be returned along with their values.
    *
    * Completes with a [ListVariablesResponse].
    *
@@ -764,7 +776,7 @@ class ProjectsConfigsVariablesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVariablesResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListVariablesResponse> list(core.String parent, {core.int pageSize, core.String filter, core.String pageToken, core.bool returnValues}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -775,14 +787,17 @@ class ProjectsConfigsVariablesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnValues != null) {
+      _queryParams["returnValues"] = ["${returnValues}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/variables';
@@ -802,12 +817,15 @@ class ProjectsConfigsVariablesResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.+$".
    *
    * [permissions] - The set of permissions to check for the `resource`.
@@ -986,17 +1004,17 @@ class ProjectsConfigsWaitersResourceApi {
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
-   * [requestId] - An optional but recommended unique <code>request_id</code>.
-   * If the server
-   * receives two <code>create()</code> requests  with the same
-   * <code>request_id</code>, then the second request will be ignored and the
+   * [requestId] - An optional but recommended unique `request_id`. If the
+   * server
+   * receives two `create()` requests  with the same
+   * `request_id`, then the second request will be ignored and the
    * first resource created and stored in the backend is returned.
-   * Empty <code>request_id</code> fields are ignored.
+   * Empty `request_id` fields are ignored.
    *
    * It is responsibility of the client to ensure uniqueness of the
-   * <code>request_id</code> strings.
+   * `request_id` strings.
    *
-   * <code>request_id</code> strings are limited to 64 characters.
+   * `request_id` strings are limited to 64 characters.
    *
    * Completes with a [Operation].
    *
@@ -1185,12 +1203,15 @@ class ProjectsConfigsWaitersResourceApi {
    * If the resource does not exist, this will return an empty set of
    * permissions, not a NOT_FOUND error.
    *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$".
    *
    * [permissions] - The set of permissions to check for the `resource`.
@@ -1956,7 +1977,7 @@ class Variable {
   /**
    * The string value of the variable. The length of the value must be less
    * than 4096 bytes. Empty values are also accepted. For example,
-   * <code>text: "my text value"</code>.
+   * `text: "my text value"`. The string must be valid UTF-8.
    */
   core.String text;
   /** [Output Only] The time of the last variable update. */

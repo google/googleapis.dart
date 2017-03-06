@@ -56,7 +56,7 @@ class PeopleApi {
 class PeopleResourceApi {
   final commons.ApiRequester _requester;
 
-  PeopleMeResourceApi get me => new PeopleMeResourceApi(_requester);
+  PeopleConnectionsResourceApi get connections => new PeopleConnectionsResourceApi(_requester);
 
   PeopleResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -177,20 +177,10 @@ class PeopleResourceApi {
 }
 
 
-class PeopleMeResourceApi {
+class PeopleConnectionsResourceApi {
   final commons.ApiRequester _requester;
 
-  PeopleMeConnectionsResourceApi get connections => new PeopleMeConnectionsResourceApi(_requester);
-
-  PeopleMeResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-}
-
-
-class PeopleMeConnectionsResourceApi {
-  final commons.ApiRequester _requester;
-
-  PeopleMeConnectionsResourceApi(commons.ApiRequester client) : 
+  PeopleConnectionsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
@@ -199,23 +189,15 @@ class PeopleMeConnectionsResourceApi {
    *
    * Request parameters:
    *
-   * [sortOrder] - The order in which the connections should be sorted. Defaults
-   * to
-   * `LAST_MODIFIED_ASCENDING`.
-   * Possible string values are:
-   * - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
-   * - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
-   * - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
+   * [resourceName] - The resource name to return connections for. Only
+   * `people/me` is valid.
+   * Value must have pattern "^people/[^/]+$".
    *
-   * [syncToken] - A sync token, returned by a previous call to
-   * `people.connections.list`.
-   * Only resources changed since the sync token was created will be returned.
+   * [requestSyncToken] - Whether the response should include a sync token,
+   * which can be used to get
+   * all changes since the last request.
    *
    * [pageToken] - The token of the page to be returned.
-   *
-   * [pageSize] - The number of connections to include in the response. Valid
-   * values are
-   * between 1 and 500, inclusive. Defaults to 100.
    *
    * [requestMask_includeField] - Comma-separated list of fields to be included
    * in the response. Omitting
@@ -225,6 +207,22 @@ class PeopleMeConnectionsResourceApi {
    * Each path should start with `person.`: for example, `person.names` or
    * `person.photos`.
    *
+   * [pageSize] - The number of connections to include in the response. Valid
+   * values are
+   * between 1 and 500, inclusive. Defaults to 100.
+   *
+   * [syncToken] - A sync token, returned by a previous call to
+   * `people.connections.list`.
+   * Only resources changed since the sync token was created will be returned.
+   *
+   * [sortOrder] - The order in which the connections should be sorted. Defaults
+   * to
+   * `LAST_MODIFIED_ASCENDING`.
+   * Possible string values are:
+   * - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
+   * - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
+   * - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
+   *
    * Completes with a [ListConnectionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -233,7 +231,7 @@ class PeopleMeConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list({core.String sortOrder, core.String syncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField}) {
+  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.bool requestSyncToken, core.String pageToken, core.String requestMask_includeField, core.int pageSize, core.String syncToken, core.String sortOrder}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -241,23 +239,29 @@ class PeopleMeConnectionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
     }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+    if (requestSyncToken != null) {
+      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
 
-    _url = 'v1/people/me/connections';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/connections';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -399,6 +403,43 @@ class Address {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/** A person's age range. */
+class AgeRangeType {
+  /**
+   * The age range.
+   * Possible string values are:
+   * - "AGE_RANGE_UNSPECIFIED" : Unspecified.
+   * - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
+   * - "EIGHTEEN_TO_TWENTY" : Between eighteen and twenty.
+   * - "TWENTY_ONE_OR_OLDER" : Twenty-one and older.
+   */
+  core.String ageRange;
+  /** Metadata about the age range. */
+  FieldMetadata metadata;
+
+  AgeRangeType();
+
+  AgeRangeType.fromJson(core.Map _json) {
+    if (_json.containsKey("ageRange")) {
+      ageRange = _json["ageRange"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (ageRange != null) {
+      _json["ageRange"] = ageRange;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
     }
     return _json;
   }
@@ -1497,12 +1538,13 @@ class Organization {
  * Most fields can have multiple items. The items in a field have no guaranteed
  * order, but each non-empty field is guaranteed to have exactly one field with
  * `metadata.primary` set to true.
+ * NEXT_ID: 31
  */
 class Person {
   /** The person's street addresses. */
   core.List<Address> addresses;
   /**
-   * The person's age range.
+   * DEPRECATED(Please read person.age_ranges instead). The person's age range.
    * Possible string values are:
    * - "AGE_RANGE_UNSPECIFIED" : Unspecified.
    * - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
@@ -1510,6 +1552,8 @@ class Person {
    * - "TWENTY_ONE_OR_OLDER" : Twenty-one and older.
    */
   core.String ageRange;
+  /** The person's age ranges. */
+  core.List<AgeRangeType> ageRanges;
   /** The person's biographies. */
   core.List<Biography> biographies;
   /** The person's birthdays. */
@@ -1579,6 +1623,9 @@ class Person {
     }
     if (_json.containsKey("ageRange")) {
       ageRange = _json["ageRange"];
+    }
+    if (_json.containsKey("ageRanges")) {
+      ageRanges = _json["ageRanges"].map((value) => new AgeRangeType.fromJson(value)).toList();
     }
     if (_json.containsKey("biographies")) {
       biographies = _json["biographies"].map((value) => new Biography.fromJson(value)).toList();
@@ -1670,6 +1717,9 @@ class Person {
     }
     if (ageRange != null) {
       _json["ageRange"] = ageRange;
+    }
+    if (ageRanges != null) {
+      _json["ageRanges"] = ageRanges.map((value) => (value).toJson()).toList();
     }
     if (biographies != null) {
       _json["biographies"] = biographies.map((value) => (value).toJson()).toList();
@@ -1767,6 +1817,7 @@ class PersonMetadata {
   /** Resource names of people linked to this resource. */
   core.List<core.String> linkedPeopleResourceNames;
   /**
+   * DEPRECATED(Please read person.metadata.sources.profile_metadata instead).
    * The type of the person object.
    * Possible string values are:
    * - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
@@ -1981,6 +2032,34 @@ class Photo {
     }
     if (url != null) {
       _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/** The read-only metadata about a profile. */
+class ProfileMetadata {
+  /**
+   * The profile object type.
+   * Possible string values are:
+   * - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
+   * - "PERSON" : Person.
+   * - "PAGE" : [Google+ Page.](http://www.google.com/+/brands/)
+   */
+  core.String objectType;
+
+  ProfileMetadata();
+
+  ProfileMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("objectType")) {
+      objectType = _json["objectType"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (objectType != null) {
+      _json["objectType"] = objectType;
     }
     return _json;
   }
@@ -2240,11 +2319,8 @@ class Source {
   core.String etag;
   /** The unique identifier within the source type generated by the server. */
   core.String id;
-  /**
-   * The resource name of the source. Only set if there is a separate
-   * resource endpoint.
-   */
-  core.String resourceName;
+  /** Metadata about a source of type PROFILE. */
+  ProfileMetadata profileMetadata;
   /**
    * The source type.
    * Possible string values are:
@@ -2272,8 +2348,8 @@ class Source {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
-    if (_json.containsKey("resourceName")) {
-      resourceName = _json["resourceName"];
+    if (_json.containsKey("profileMetadata")) {
+      profileMetadata = new ProfileMetadata.fromJson(_json["profileMetadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2288,8 +2364,8 @@ class Source {
     if (id != null) {
       _json["id"] = id;
     }
-    if (resourceName != null) {
-      _json["resourceName"] = resourceName;
+    if (profileMetadata != null) {
+      _json["profileMetadata"] = (profileMetadata).toJson();
     }
     if (type != null) {
       _json["type"] = type;

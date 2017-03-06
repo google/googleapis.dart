@@ -3523,7 +3523,7 @@ class ParagraphMarker {
  */
 class ParagraphStyle {
   /**
-   * The text alignment for this paragraph. This property is read-only.
+   * The text alignment for this paragraph.
    * Possible string values are:
    * - "ALIGNMENT_UNSPECIFIED" : The paragraph alignment is inherited from the
    * parent.
@@ -3540,7 +3540,7 @@ class ParagraphStyle {
   /**
    * The text direction of this paragraph. If unset, the value defaults to
    * LEFT_TO_RIGHT
-   * since text direction is not inherited. This property is read-only.
+   * since text direction is not inherited.
    * Possible string values are:
    * - "TEXT_DIRECTION_UNSPECIFIED" : The text direction is inherited from the
    * parent.
@@ -3551,39 +3551,37 @@ class ParagraphStyle {
   /**
    * The amount indentation for the paragraph on the side that corresponds to
    * the end of the text, based on the current text direction. If unset, the
-   * value is inherited from the parent. This property is read-only.
+   * value is inherited from the parent.
    */
   Dimension indentEnd;
   /**
    * The amount of indentation for the start of the first line of the paragraph.
-   * If unset, the value is inherited from the parent. This property is
-   * read-only.
+   * If unset, the value is inherited from the parent.
    */
   Dimension indentFirstLine;
   /**
    * The amount indentation for the paragraph on the side that corresponds to
    * the start of the text, based on the current text direction. If unset, the
-   * value is inherited from the parent. This property is read-only.
+   * value is inherited from the parent.
    */
   Dimension indentStart;
   /**
    * The amount of space between lines, as a percentage of normal, where normal
    * is represented as 100.0. If unset, the value is inherited from the parent.
-   * This property is read-only.
    */
   core.double lineSpacing;
   /**
    * The amount of extra space above the paragraph. If unset, the value is
-   * inherited from the parent. This property is read-only.
+   * inherited from the parent.
    */
   Dimension spaceAbove;
   /**
    * The amount of extra space above the paragraph. If unset, the value is
-   * inherited from the parent. This property is read-only.
+   * inherited from the parent.
    */
   Dimension spaceBelow;
   /**
-   * The spacing mode for the paragraph. This property is read-only.
+   * The spacing mode for the paragraph.
    * Possible string values are:
    * - "SPACING_MODE_UNSPECIFIED" : The spacing mode is inherited from the
    * parent.
@@ -4309,6 +4307,8 @@ class Request {
   UpdatePageElementTransformRequest updatePageElementTransform;
   /** Updates the properties of a Page. */
   UpdatePagePropertiesRequest updatePageProperties;
+  /** Updates the styling of paragraphs within a Shape or Table. */
+  UpdateParagraphStyleRequest updateParagraphStyle;
   /** Updates the properties of a Shape. */
   UpdateShapePropertiesRequest updateShapeProperties;
   /** Updates the position of a set of slides in the presentation. */
@@ -4397,6 +4397,9 @@ class Request {
     }
     if (_json.containsKey("updatePageProperties")) {
       updatePageProperties = new UpdatePagePropertiesRequest.fromJson(_json["updatePageProperties"]);
+    }
+    if (_json.containsKey("updateParagraphStyle")) {
+      updateParagraphStyle = new UpdateParagraphStyleRequest.fromJson(_json["updateParagraphStyle"]);
     }
     if (_json.containsKey("updateShapeProperties")) {
       updateShapeProperties = new UpdateShapePropertiesRequest.fromJson(_json["updateShapeProperties"]);
@@ -4491,6 +4494,9 @@ class Request {
     }
     if (updatePageProperties != null) {
       _json["updatePageProperties"] = (updatePageProperties).toJson();
+    }
+    if (updateParagraphStyle != null) {
+      _json["updateParagraphStyle"] = (updateParagraphStyle).toJson();
     }
     if (updateShapeProperties != null) {
       _json["updateShapeProperties"] = (updateShapeProperties).toJson();
@@ -5416,10 +5422,10 @@ class SlideProperties {
    * The notes page that this slide is associated with. It defines the visual
    * appearance of a notes page when printing or exporting slides with speaker
    * notes. A notes page inherits properties from the
-   * notes mater.
+   * notes master.
    * The placeholder shape with type BODY on the notes page contains the speaker
    * notes for this slide. The ID of this shape is identified by the
-   * speaker notes object id field.
+   * speakerNotesObjectId field.
    * The notes page is read-only except for the text content and styles of the
    * speaker notes shape.
    */
@@ -6101,7 +6107,7 @@ class TextStyle {
    * - "SUBSCRIPT" : The text is vertically offset downwards (subscript).
    */
   core.String baselineOffset;
-  /** Whether or not the text is bold. */
+  /** Whether or not the text is rendered as bold. */
   core.bool bold;
   /**
    * The font family of the text.
@@ -6483,6 +6489,79 @@ class UpdatePagePropertiesRequest {
   }
 }
 
+/**
+ * Updates the styling for all of the paragraphs within a Shape or Table that
+ * overlap with the given text index range.
+ */
+class UpdateParagraphStyleRequest {
+  /**
+   * The location of the cell in the table containing the paragraph(s) to
+   * style. If object_id refers to a table, cell_location must have a value.
+   * Otherwise, it must not.
+   */
+  TableCellLocation cellLocation;
+  /**
+   * The fields that should be updated.
+   *
+   * At least one field must be specified. The root `style` is implied and
+   * should not be specified. A single `"*"` can be used as short-hand for
+   * listing every field.
+   *
+   * For example, to update the paragraph alignment, set `fields` to
+   * `"alignment"`.
+   *
+   * To reset a property to its default value, include its field name in the
+   * field mask but leave the field itself unset.
+   */
+  core.String fields;
+  /** The object ID of the shape or table with the text to be styled. */
+  core.String objectId;
+  /** The paragraph's style. */
+  ParagraphStyle style;
+  /** The range of text containing the paragraph(s) to style. */
+  Range textRange;
+
+  UpdateParagraphStyleRequest();
+
+  UpdateParagraphStyleRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("cellLocation")) {
+      cellLocation = new TableCellLocation.fromJson(_json["cellLocation"]);
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("style")) {
+      style = new ParagraphStyle.fromJson(_json["style"]);
+    }
+    if (_json.containsKey("textRange")) {
+      textRange = new Range.fromJson(_json["textRange"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cellLocation != null) {
+      _json["cellLocation"] = (cellLocation).toJson();
+    }
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (style != null) {
+      _json["style"] = (style).toJson();
+    }
+    if (textRange != null) {
+      _json["textRange"] = (textRange).toJson();
+    }
+    return _json;
+  }
+}
+
 /** Update the properties of a Shape. */
 class UpdateShapePropertiesRequest {
   /**
@@ -6639,8 +6718,9 @@ class UpdateTableCellPropertiesRequest {
  */
 class UpdateTextStyleRequest {
   /**
-   * The optional table cell location if the text to be styled is in a table
-   * cell. If present, the object_id must refer to a table.
+   * The location of the cell in the table containing the text to style. If
+   * object_id refers to a table, cell_location must have a value. Otherwise, it
+   * must not.
    */
   TableCellLocation cellLocation;
   /**

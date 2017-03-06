@@ -19,10 +19,10 @@ const core.String USER_AGENT = 'dart-api-client admin/reports_v1';
  * usage, collaboration, security, and risk for their users.
  */
 class AdminApi {
-  /** View audit reports of Google Apps for your domain */
+  /** View audit reports for your G Suite domain */
   static const AdminReportsAuditReadonlyScope = "https://www.googleapis.com/auth/admin.reports.audit.readonly";
 
-  /** View usage reports of Google Apps for your domain */
+  /** View usage reports for your G Suite domain */
   static const AdminReportsUsageReadonlyScope = "https://www.googleapis.com/auth/admin.reports.usage.readonly";
 
 

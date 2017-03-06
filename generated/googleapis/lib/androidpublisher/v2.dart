@@ -3262,7 +3262,7 @@ class ReviewsResourceApi {
   }
 
   /**
-   * Returns a list of reviews.
+   * Returns a list of reviews. Only reviews from last week will be returned.
    *
    * Request parameters:
    *
@@ -5248,6 +5248,11 @@ class SubscriptionPurchase {
    * Epoch.
    */
   core.String startTimeMillis;
+  /**
+   * The time at which the subscription was canceled by the user, in
+   * milliseconds since the epoch. Only present if cancelReason is 0.
+   */
+  core.String userCancellationTimeMillis;
 
   SubscriptionPurchase();
 
@@ -5282,6 +5287,9 @@ class SubscriptionPurchase {
     if (_json.containsKey("startTimeMillis")) {
       startTimeMillis = _json["startTimeMillis"];
     }
+    if (_json.containsKey("userCancellationTimeMillis")) {
+      userCancellationTimeMillis = _json["userCancellationTimeMillis"];
+    }
   }
 
   core.Map toJson() {
@@ -5315,6 +5323,9 @@ class SubscriptionPurchase {
     }
     if (startTimeMillis != null) {
       _json["startTimeMillis"] = startTimeMillis;
+    }
+    if (userCancellationTimeMillis != null) {
+      _json["userCancellationTimeMillis"] = userCancellationTimeMillis;
     }
     return _json;
   }

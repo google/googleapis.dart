@@ -117,6 +117,7 @@ class ProjectsJobsResourceApi {
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+   * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
    * Completes with a [Job].
    *
@@ -171,13 +172,14 @@ class ProjectsJobsResourceApi {
    *
    * [jobId] - The job ID.
    *
+   * [location] - The location that contains this job.
+   *
    * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
-   *
-   * [location] - The location that contains this job.
+   * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
    * Completes with a [Job].
    *
@@ -187,7 +189,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> get(core.String projectId, core.String jobId, {core.String view, core.String location}) {
+  async.Future<Job> get(core.String projectId, core.String jobId, {core.String location, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -201,11 +203,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
@@ -305,6 +307,7 @@ class ProjectsJobsResourceApi {
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+   * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
    * Completes with a [ListJobsResponse].
    *
@@ -532,6 +535,19 @@ class ProjectsJobsMessagesResourceApi {
    *
    * [jobId] - The job to get messages about.
    *
+   * [startTime] - If specified, return only messages with timestamps >=
+   * start_time.
+   * The default is the job creation time (i.e. beginning of messages).
+   *
+   * [pageToken] - If supplied, this should be the value of next_page_token
+   * returned
+   * by an earlier call. This will cause the next page of results to
+   * be returned.
+   *
+   * [pageSize] - If specified, determines the maximum number of messages to
+   * return.  If unspecified, the service may choose an appropriate
+   * default, or may return an arbitrarily large number of results.
+   *
    * [minimumImportance] - Filter to only get messages with importance >= level
    * Possible string values are:
    * - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
@@ -547,19 +563,6 @@ class ProjectsJobsMessagesResourceApi {
    * now
    * (i.e. return up to the latest messages available).
    *
-   * [startTime] - If specified, return only messages with timestamps >=
-   * start_time.
-   * The default is the job creation time (i.e. beginning of messages).
-   *
-   * [pageToken] - If supplied, this should be the value of next_page_token
-   * returned
-   * by an earlier call. This will cause the next page of results to
-   * be returned.
-   *
-   * [pageSize] - If specified, determines the maximum number of messages to
-   * return.  If unspecified, the service may choose an appropriate
-   * default, or may return an arbitrarily large number of results.
-   *
    * Completes with a [ListJobMessagesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -568,7 +571,7 @@ class ProjectsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String minimumImportance, core.String location, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String startTime, core.String pageToken, core.int pageSize, core.String minimumImportance, core.String location, core.String endTime}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -582,15 +585,6 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (minimumImportance != null) {
-      _queryParams["minimumImportance"] = [minimumImportance];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
@@ -599,6 +593,15 @@ class ProjectsJobsMessagesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (minimumImportance != null) {
+      _queryParams["minimumImportance"] = [minimumImportance];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
@@ -753,13 +756,14 @@ class ProjectsLocationsJobsResourceApi {
    *
    * [location] - The location that contains this job.
    *
+   * [replaceJobId] - Deprecated. This field is now in the Job message.
+   *
    * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
-   *
-   * [replaceJobId] - Deprecated. This field is now in the Job message.
+   * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
    * Completes with a [Job].
    *
@@ -769,7 +773,7 @@ class ProjectsLocationsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> create(Job request, core.String projectId, core.String location, {core.String view, core.String replaceJobId}) {
+  async.Future<Job> create(Job request, core.String projectId, core.String location, {core.String replaceJobId, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -786,11 +790,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs';
@@ -821,6 +825,7 @@ class ProjectsLocationsJobsResourceApi {
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+   * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
    * Completes with a [Job].
    *
@@ -948,6 +953,7 @@ class ProjectsLocationsJobsResourceApi {
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+   * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
    * Completes with a [ListJobsResponse].
    *
@@ -1074,14 +1080,14 @@ class ProjectsLocationsJobsMessagesResourceApi {
    * now
    * (i.e. return up to the latest messages available).
    *
-   * [startTime] - If specified, return only messages with timestamps >=
-   * start_time.
-   * The default is the job creation time (i.e. beginning of messages).
-   *
    * [pageToken] - If supplied, this should be the value of next_page_token
    * returned
    * by an earlier call. This will cause the next page of results to
    * be returned.
+   *
+   * [startTime] - If specified, return only messages with timestamps >=
+   * start_time.
+   * The default is the job creation time (i.e. beginning of messages).
    *
    * [pageSize] - If specified, determines the maximum number of messages to
    * return.  If unspecified, the service may choose an appropriate
@@ -1104,7 +1110,7 @@ class ProjectsLocationsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String location, core.String jobId, {core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String minimumImportance}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String location, core.String jobId, {core.String endTime, core.String pageToken, core.String startTime, core.int pageSize, core.String minimumImportance}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1124,11 +1130,11 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1318,6 +1324,120 @@ class ProjectsTemplatesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Job.fromJson(data));
+  }
+
+  /**
+   * Get the template associated with a template.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Required. The ID of the Cloud Platform project that the job
+   * belongs to.
+   *
+   * [view] - The view to retrieve. Defaults to METADATA_ONLY.
+   * Possible string values are:
+   * - "METADATA_ONLY" : A METADATA_ONLY.
+   *
+   * [gcsPath] - Required. A Cloud Storage path to the template from which to
+   * create the job.
+   * Must be a valid Cloud Storage URL, beginning with `gs://`.
+   *
+   * Completes with a [GetTemplateResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetTemplateResponse> get(core.String projectId, {core.String view, core.String gcsPath}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/templates:get';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetTemplateResponse.fromJson(data));
+  }
+
+  /**
+   * Launch a template.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Required. The ID of the Cloud Platform project that the job
+   * belongs to.
+   *
+   * [dryRun] - Whether or not the job should actually be executed after
+   * validating parameters. Defaults to false. Validation errors do
+   * not cause the HTTP request to fail if true.
+   *
+   * [gcsPath] - Required. A Cloud Storage path to the template from which to
+   * create
+   * the job.
+   * Must be valid Cloud Storage URL, beginning with 'gs://'.
+   *
+   * Completes with a [LaunchTemplateResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, {core.bool dryRun, core.String gcsPath}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/templates:launch';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LaunchTemplateResponse.fromJson(data));
   }
 
 }
@@ -1558,6 +1678,95 @@ class CPUTime {
     }
     if (totalMs != null) {
       _json["totalMs"] = totalMs;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Description of an interstitial value between transforms in an execution
+ * stage.
+ */
+class ComponentSource {
+  /** Dataflow service generated name for this source. */
+  core.String name;
+  /**
+   * User name for the original user transform or collection with which this
+   * source is most closely associated.
+   */
+  core.String originalTransformOrCollection;
+  /**
+   * Human-readable name for this transform; may be user or system generated.
+   */
+  core.String userName;
+
+  ComponentSource();
+
+  ComponentSource.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("originalTransformOrCollection")) {
+      originalTransformOrCollection = _json["originalTransformOrCollection"];
+    }
+    if (_json.containsKey("userName")) {
+      userName = _json["userName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (originalTransformOrCollection != null) {
+      _json["originalTransformOrCollection"] = originalTransformOrCollection;
+    }
+    if (userName != null) {
+      _json["userName"] = userName;
+    }
+    return _json;
+  }
+}
+
+/** Description of a transform executed as part of an execution stage. */
+class ComponentTransform {
+  /** Dataflow service generated name for this source. */
+  core.String name;
+  /**
+   * User name for the original user transform with which this transform is
+   * most closely associated.
+   */
+  core.String originalTransform;
+  /**
+   * Human-readable name for this transform; may be user or system generated.
+   */
+  core.String userName;
+
+  ComponentTransform();
+
+  ComponentTransform.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("originalTransform")) {
+      originalTransform = _json["originalTransform"];
+    }
+    if (_json.containsKey("userName")) {
+      userName = _json["userName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (originalTransform != null) {
+      _json["originalTransform"] = originalTransform;
+    }
+    if (userName != null) {
+      _json["userName"] = userName;
     }
     return _json;
   }
@@ -2231,6 +2440,132 @@ class Disk {
   }
 }
 
+/** Data provided with a pipeline or transform to provide descriptive info. */
+class DisplayData {
+  /** Contains value if the data is of a boolean type. */
+  core.bool boolValue;
+  /** Contains value if the data is of duration type. */
+  core.String durationValue;
+  /** Contains value if the data is of float type. */
+  core.double floatValue;
+  /** Contains value if the data is of int64 type. */
+  core.String int64Value;
+  /** Contains value if the data is of java class type. */
+  core.String javaClassValue;
+  /**
+   * The key identifying the display data.
+   * This is intended to be used as a label for the display data
+   * when viewed in a dax monitoring system.
+   */
+  core.String key;
+  /** An optional label to display in a dax UI for the element. */
+  core.String label;
+  /**
+   * The namespace for the key. This is usually a class name or programming
+   * language namespace (i.e. python module) which defines the display data.
+   * This allows a dax monitoring system to specially handle the data
+   * and perform custom rendering.
+   */
+  core.String namespace;
+  /**
+   * A possible additional shorter value to display.
+   * For example a java_class_name_value of com.mypackage.MyDoFn
+   * will be stored with MyDoFn as the short_str_value and
+   * com.mypackage.MyDoFn as the java_class_name value.
+   * short_str_value can be displayed and java_class_name_value
+   * will be displayed as a tooltip.
+   */
+  core.String shortStrValue;
+  /** Contains value if the data is of string type. */
+  core.String strValue;
+  /** Contains value if the data is of timestamp type. */
+  core.String timestampValue;
+  /** An optional full URL. */
+  core.String url;
+
+  DisplayData();
+
+  DisplayData.fromJson(core.Map _json) {
+    if (_json.containsKey("boolValue")) {
+      boolValue = _json["boolValue"];
+    }
+    if (_json.containsKey("durationValue")) {
+      durationValue = _json["durationValue"];
+    }
+    if (_json.containsKey("floatValue")) {
+      floatValue = _json["floatValue"];
+    }
+    if (_json.containsKey("int64Value")) {
+      int64Value = _json["int64Value"];
+    }
+    if (_json.containsKey("javaClassValue")) {
+      javaClassValue = _json["javaClassValue"];
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("namespace")) {
+      namespace = _json["namespace"];
+    }
+    if (_json.containsKey("shortStrValue")) {
+      shortStrValue = _json["shortStrValue"];
+    }
+    if (_json.containsKey("strValue")) {
+      strValue = _json["strValue"];
+    }
+    if (_json.containsKey("timestampValue")) {
+      timestampValue = _json["timestampValue"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (boolValue != null) {
+      _json["boolValue"] = boolValue;
+    }
+    if (durationValue != null) {
+      _json["durationValue"] = durationValue;
+    }
+    if (floatValue != null) {
+      _json["floatValue"] = floatValue;
+    }
+    if (int64Value != null) {
+      _json["int64Value"] = int64Value;
+    }
+    if (javaClassValue != null) {
+      _json["javaClassValue"] = javaClassValue;
+    }
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (namespace != null) {
+      _json["namespace"] = namespace;
+    }
+    if (shortStrValue != null) {
+      _json["shortStrValue"] = shortStrValue;
+    }
+    if (strValue != null) {
+      _json["strValue"] = strValue;
+    }
+    if (timestampValue != null) {
+      _json["timestampValue"] = timestampValue;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
 /** A metric value representing a distribution. */
 class DistributionUpdate {
   /** The count of the number of elements present in the distribution. */
@@ -2477,6 +2812,96 @@ class Environment {
   }
 }
 
+/**
+ * Description of the composing transforms, names/ids, and input/outputs of a
+ * stage of execution.  Some composing transforms and sources may have been
+ * generated by the Dataflow service during execution planning.
+ */
+class ExecutionStageSummary {
+  /**
+   * Collections produced and consumed by component transforms of this stage.
+   */
+  core.List<ComponentSource> componentSource;
+  /** Transforms that comprise this execution stage. */
+  core.List<ComponentTransform> componentTransform;
+  /** Dataflow service generated id for this stage. */
+  core.String id;
+  /** Input sources for this stage. */
+  core.List<StageSource> inputSource;
+  /**
+   * Type of tranform this stage is executing.
+   * Possible string values are:
+   * - "UNKNOWN_KIND" : Unrecognized transform type.
+   * - "PAR_DO_KIND" : ParDo transform.
+   * - "GROUP_BY_KEY_KIND" : Group By Key transform.
+   * - "FLATTEN_KIND" : Flatten transform.
+   * - "READ_KIND" : Read transform.
+   * - "WRITE_KIND" : Write transform.
+   * - "CONSTANT_KIND" : Constructs from a constant value, such as with
+   * Create.of.
+   * - "SINGLETON_KIND" : Creates a Singleton view of a collection.
+   * - "SHUFFLE_KIND" : Opening or closing a shuffle session, often as part of a
+   * GroupByKey.
+   */
+  core.String kind;
+  /** Dataflow service generated name for this stage. */
+  core.String name;
+  /** Output sources for this stage. */
+  core.List<StageSource> outputSource;
+
+  ExecutionStageSummary();
+
+  ExecutionStageSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("componentSource")) {
+      componentSource = _json["componentSource"].map((value) => new ComponentSource.fromJson(value)).toList();
+    }
+    if (_json.containsKey("componentTransform")) {
+      componentTransform = _json["componentTransform"].map((value) => new ComponentTransform.fromJson(value)).toList();
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("inputSource")) {
+      inputSource = _json["inputSource"].map((value) => new StageSource.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("outputSource")) {
+      outputSource = _json["outputSource"].map((value) => new StageSource.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (componentSource != null) {
+      _json["componentSource"] = componentSource.map((value) => (value).toJson()).toList();
+    }
+    if (componentTransform != null) {
+      _json["componentTransform"] = componentTransform.map((value) => (value).toJson()).toList();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (inputSource != null) {
+      _json["inputSource"] = inputSource.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (outputSource != null) {
+      _json["outputSource"] = outputSource.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** Indicates which location failed to respond to a request for data. */
 class FailedLocation {
   /** The name of the failed location. */
@@ -2625,6 +3050,42 @@ class GetDebugConfigResponse {
     var _json = new core.Map();
     if (config != null) {
       _json["config"] = config;
+    }
+    return _json;
+  }
+}
+
+/** The response to a GetTemplate request. */
+class GetTemplateResponse {
+  /**
+   * The template metadata describing the template name, available
+   * parameters, etc.
+   */
+  TemplateMetadata metadata;
+  /**
+   * The status of the get template request. Any problems with the
+   * request will be indicated in the error_details.
+   */
+  Status status;
+
+  GetTemplateResponse();
+
+  GetTemplateResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("metadata")) {
+      metadata = new TemplateMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
     }
     return _json;
   }
@@ -2874,7 +3335,7 @@ class Job {
   core.String currentStateTime;
   /** The environment for the job. */
   Environment environment;
-  /** Information about how the Cloud Dataflow service will run the job. */
+  /** Deprecated. */
   JobExecutionInfo executionInfo;
   /**
    * The unique ID of this job.
@@ -2909,6 +3370,13 @@ class Job {
    * `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
    */
   core.String name;
+  /**
+   * Preliminary field: The format of this data may change at any time.
+   * A description of the user pipeline and stages through which it is executed.
+   * Created by Cloud Dataflow service.  Only retrieved with
+   * JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
+   */
+  PipelineDescription pipelineDescription;
   /** The ID of the Cloud Platform project that the job belongs to. */
   core.String projectId;
   /**
@@ -3043,6 +3511,9 @@ class Job {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("pipelineDescription")) {
+      pipelineDescription = new PipelineDescription.fromJson(_json["pipelineDescription"]);
+    }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
@@ -3100,6 +3571,9 @@ class Job {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (pipelineDescription != null) {
+      _json["pipelineDescription"] = (pipelineDescription).toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -3415,6 +3889,80 @@ class KeyRangeLocation {
     }
     if (start != null) {
       _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
+/** Parameters to provide to the template being launched. */
+class LaunchTemplateParameters {
+  /** The runtime environment for the job. */
+  RuntimeEnvironment environment;
+  /** Required. The job name to use for the created job. */
+  core.String jobName;
+  /** The runtime parameters to pass to the job. */
+  core.Map<core.String, core.String> parameters;
+
+  LaunchTemplateParameters();
+
+  LaunchTemplateParameters.fromJson(core.Map _json) {
+    if (_json.containsKey("environment")) {
+      environment = new RuntimeEnvironment.fromJson(_json["environment"]);
+    }
+    if (_json.containsKey("jobName")) {
+      jobName = _json["jobName"];
+    }
+    if (_json.containsKey("parameters")) {
+      parameters = _json["parameters"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (environment != null) {
+      _json["environment"] = (environment).toJson();
+    }
+    if (jobName != null) {
+      _json["jobName"] = jobName;
+    }
+    if (parameters != null) {
+      _json["parameters"] = parameters;
+    }
+    return _json;
+  }
+}
+
+/** Response to the request to launch a template. */
+class LaunchTemplateResponse {
+  /**
+   * The job that was launched, if the request was not a dry run and
+   * the job was successfully launched.
+   */
+  Job job;
+  /**
+   * The status of the launch template request. Any problems with the request
+   * will be indicated in the error_details.
+   */
+  Status status;
+
+  LaunchTemplateResponse();
+
+  LaunchTemplateResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("job")) {
+      job = new Job.fromJson(_json["job"]);
+    }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (job != null) {
+      _json["job"] = (job).toJson();
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
     }
     return _json;
   }
@@ -4154,6 +4702,60 @@ class ParallelInstruction {
   }
 }
 
+/** Metadata for a specific parameter. */
+class ParameterMetadata {
+  /** Required. The help text to display for the parameter. */
+  core.String helpText;
+  /** Optional. Whether the parameter is optional. Defaults to false. */
+  core.bool isOptional;
+  /** Required. The label to display for the parameter. */
+  core.String label;
+  /** Required. The name of the parameter. */
+  core.String name;
+  /** Optional. Regexes that the parameter must match. */
+  core.List<core.String> regexes;
+
+  ParameterMetadata();
+
+  ParameterMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("helpText")) {
+      helpText = _json["helpText"];
+    }
+    if (_json.containsKey("isOptional")) {
+      isOptional = _json["isOptional"];
+    }
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("regexes")) {
+      regexes = _json["regexes"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (helpText != null) {
+      _json["helpText"] = helpText;
+    }
+    if (isOptional != null) {
+      _json["isOptional"] = isOptional;
+    }
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (regexes != null) {
+      _json["regexes"] = regexes;
+    }
+    return _json;
+  }
+}
+
 /**
  * An instruction that does a partial group-by-key.
  * One input and one output.
@@ -4230,6 +4832,50 @@ class PartialGroupByKeyInstruction {
     }
     if (valueCombiningFn != null) {
       _json["valueCombiningFn"] = valueCombiningFn;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A descriptive representation of submitted pipeline as well as the executed
+ * form.  This data is provided by the Dataflow service for ease of visualizing
+ * the pipeline and interpretting Dataflow provided metrics.
+ */
+class PipelineDescription {
+  /** Pipeline level display data. */
+  core.List<DisplayData> displayData;
+  /** Description of each stage of execution of the pipeline. */
+  core.List<ExecutionStageSummary> executionPipelineStage;
+  /**
+   * Description of each transform in the pipeline and collections between them.
+   */
+  core.List<TransformSummary> originalPipelineTransform;
+
+  PipelineDescription();
+
+  PipelineDescription.fromJson(core.Map _json) {
+    if (_json.containsKey("displayData")) {
+      displayData = _json["displayData"].map((value) => new DisplayData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("executionPipelineStage")) {
+      executionPipelineStage = _json["executionPipelineStage"].map((value) => new ExecutionStageSummary.fromJson(value)).toList();
+    }
+    if (_json.containsKey("originalPipelineTransform")) {
+      originalPipelineTransform = _json["originalPipelineTransform"].map((value) => new TransformSummary.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (displayData != null) {
+      _json["displayData"] = displayData.map((value) => (value).toJson()).toList();
+    }
+    if (executionPipelineStage != null) {
+      _json["executionPipelineStage"] = executionPipelineStage.map((value) => (value).toJson()).toList();
+    }
+    if (originalPipelineTransform != null) {
+      _json["originalPipelineTransform"] = originalPipelineTransform.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5492,6 +6138,55 @@ class SplitInt64 {
   }
 }
 
+/** Description of an input or output of an execution stage. */
+class StageSource {
+  /** Dataflow service generated name for this source. */
+  core.String name;
+  /**
+   * User name for the original user transform or collection with which this
+   * source is most closely associated.
+   */
+  core.String originalTransformOrCollection;
+  /** Size of the source, if measurable. */
+  core.String sizeBytes;
+  /** Human-readable name for this source; may be user or system generated. */
+  core.String userName;
+
+  StageSource();
+
+  StageSource.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("originalTransformOrCollection")) {
+      originalTransformOrCollection = _json["originalTransformOrCollection"];
+    }
+    if (_json.containsKey("sizeBytes")) {
+      sizeBytes = _json["sizeBytes"];
+    }
+    if (_json.containsKey("userName")) {
+      userName = _json["userName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (originalTransformOrCollection != null) {
+      _json["originalTransformOrCollection"] = originalTransformOrCollection;
+    }
+    if (sizeBytes != null) {
+      _json["sizeBytes"] = sizeBytes;
+    }
+    if (userName != null) {
+      _json["userName"] = userName;
+    }
+    return _json;
+  }
+}
+
 /** State family configuration. */
 class StateFamilyConfig {
   /** If true, this family corresponds to a read operation. */
@@ -5663,6 +6358,7 @@ class Step {
   /**
    * Named properties associated with the step. Each kind of
    * predefined step has its own required set of properties.
+   * Must be provided on Create.  Only retrieved with JOB_VIEW_ALL.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6251,6 +6947,57 @@ class TaskRunnerSettings {
   }
 }
 
+/** Metadata describing a template. */
+class TemplateMetadata {
+  /**
+   * If true, will bypass the validation that the temp directory is
+   * writable. This should only be used with templates for pipelines
+   * that are guaranteed not to need to write to the temp directory,
+   * which is subject to change based on the optimizer.
+   */
+  core.bool bypassTempDirValidation;
+  /** Optional. A description of the template. */
+  core.String description;
+  /** Required. The name of the template. */
+  core.String name;
+  /** The parameters for the template. */
+  core.List<ParameterMetadata> parameters;
+
+  TemplateMetadata();
+
+  TemplateMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("bypassTempDirValidation")) {
+      bypassTempDirValidation = _json["bypassTempDirValidation"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parameters")) {
+      parameters = _json["parameters"].map((value) => new ParameterMetadata.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bypassTempDirValidation != null) {
+      _json["bypassTempDirValidation"] = bypassTempDirValidation;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parameters != null) {
+      _json["parameters"] = parameters.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /**
  * Global topology of the streaming Dataflow job, including all
  * computations and their sharded locations.
@@ -6303,6 +7050,82 @@ class TopologyConfig {
     }
     if (userStageToComputationNameMap != null) {
       _json["userStageToComputationNameMap"] = userStageToComputationNameMap;
+    }
+    return _json;
+  }
+}
+
+/** Description of the type, names/ids, and input/outputs for a transform. */
+class TransformSummary {
+  /** Transform-specific display data. */
+  core.List<DisplayData> displayData;
+  /** SDK generated id of this transform instance. */
+  core.String id;
+  /** User names for all collection inputs to this transform. */
+  core.List<core.String> inputCollectionName;
+  /**
+   * Type of transform.
+   * Possible string values are:
+   * - "UNKNOWN_KIND" : Unrecognized transform type.
+   * - "PAR_DO_KIND" : ParDo transform.
+   * - "GROUP_BY_KEY_KIND" : Group By Key transform.
+   * - "FLATTEN_KIND" : Flatten transform.
+   * - "READ_KIND" : Read transform.
+   * - "WRITE_KIND" : Write transform.
+   * - "CONSTANT_KIND" : Constructs from a constant value, such as with
+   * Create.of.
+   * - "SINGLETON_KIND" : Creates a Singleton view of a collection.
+   * - "SHUFFLE_KIND" : Opening or closing a shuffle session, often as part of a
+   * GroupByKey.
+   */
+  core.String kind;
+  /** User provided name for this transform instance. */
+  core.String name;
+  /** User  names for all collection outputs to this transform. */
+  core.List<core.String> outputCollectionName;
+
+  TransformSummary();
+
+  TransformSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("displayData")) {
+      displayData = _json["displayData"].map((value) => new DisplayData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("inputCollectionName")) {
+      inputCollectionName = _json["inputCollectionName"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("outputCollectionName")) {
+      outputCollectionName = _json["outputCollectionName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (displayData != null) {
+      _json["displayData"] = displayData.map((value) => (value).toJson()).toList();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (inputCollectionName != null) {
+      _json["inputCollectionName"] = inputCollectionName;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (outputCollectionName != null) {
+      _json["outputCollectionName"] = outputCollectionName;
     }
     return _json;
   }

@@ -129,7 +129,8 @@ class AddressesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -389,7 +390,8 @@ class AddressesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -499,7 +501,8 @@ class AutoscalersResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -760,7 +763,8 @@ class AutoscalersResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -990,7 +994,8 @@ class BackendServicesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1286,7 +1291,8 @@ class BackendServicesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1503,7 +1509,8 @@ class DiskTypesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1658,7 +1665,8 @@ class DiskTypesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1768,7 +1776,8 @@ class DisksResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -1846,6 +1855,8 @@ class DisksResourceApi {
    * [disk] - Name of the persistent disk to snapshot.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [guestFlush] - null
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1854,7 +1865,7 @@ class DisksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> createSnapshot(Snapshot request, core.String project, core.String zone, core.String disk) {
+  async.Future<Operation> createSnapshot(Snapshot request, core.String project, core.String zone, core.String disk, {core.bool guestFlush}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1873,6 +1884,9 @@ class DisksResourceApi {
     }
     if (disk == null) {
       throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (guestFlush != null) {
+      _queryParams["guestFlush"] = ["${guestFlush}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk') + '/createSnapshot';
@@ -2097,7 +2111,8 @@ class DisksResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -2406,7 +2421,8 @@ class FirewallsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -2618,7 +2634,8 @@ class ForwardingRulesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -2879,7 +2896,8 @@ class ForwardingRulesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -3191,7 +3209,8 @@ class GlobalAddressesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -3441,7 +3460,8 @@ class GlobalForwardingRulesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -3602,7 +3622,8 @@ class GlobalOperationsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -3796,7 +3817,8 @@ class GlobalOperationsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -4046,7 +4068,8 @@ class HealthChecksResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -4402,7 +4425,8 @@ class HttpHealthChecksResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -4758,7 +4782,8 @@ class HttpsHealthChecksResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -5220,7 +5245,8 @@ class ImagesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -5390,7 +5416,8 @@ class InstanceGroupManagersResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -5715,7 +5742,8 @@ class InstanceGroupManagersResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -6203,7 +6231,8 @@ class InstanceGroupsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -6461,7 +6490,8 @@ class InstanceGroupsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -6569,7 +6599,8 @@ class InstanceGroupsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -6948,7 +6979,8 @@ class InstanceTemplatesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -7120,7 +7152,8 @@ class InstancesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -7489,9 +7522,11 @@ class InstancesResourceApi {
    * [port] - Specifies which COM or serial port to retrieve data from.
    * Value must be between "1" and "4".
    *
-   * [start_1] - For the initial request, leave this field unspecified. For
-   * subsequent calls, this field should be set to the next value that was
-   * returned in the previous call.
+   * [start_1] - Returns output starting from a specific byte position. Use this
+   * to page through output when the output is too large to return in a single
+   * request. For the initial request, leave this field unspecified. For
+   * subsequent calls, this field should be set to the next value returned in
+   * the previous call.
    *
    * Completes with a [SerialPortOutput].
    *
@@ -7630,7 +7665,8 @@ class InstancesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -7991,7 +8027,8 @@ class InstancesResourceApi {
   }
 
   /**
-   * Sets the service account on the instance.
+   * Sets the service account on the instance. For more information, read
+   * Changing the service account and access scopes for an instance.
    *
    * [request] - The metadata request object.
    *
@@ -8380,7 +8417,8 @@ class MachineTypesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -8535,7 +8573,8 @@ class MachineTypesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -8787,7 +8826,8 @@ class NetworksResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -9341,7 +9381,8 @@ class RegionAutoscalersResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -9794,7 +9835,8 @@ class RegionBackendServicesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -10313,7 +10355,8 @@ class RegionInstanceGroupManagersResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -10789,7 +10832,8 @@ class RegionInstanceGroupsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -10899,7 +10943,8 @@ class RegionInstanceGroupsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -11182,7 +11227,8 @@ class RegionOperationsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -11340,7 +11386,8 @@ class RegionsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -11447,7 +11494,8 @@ class RoutersResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -11761,7 +11809,8 @@ class RoutersResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -12190,7 +12239,8 @@ class RoutesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -12399,7 +12449,8 @@ class SnapshotsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -12649,7 +12700,8 @@ class SslCertificatesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -12756,7 +12808,8 @@ class SubnetworksResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -13075,7 +13128,8 @@ class SubnetworksResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -13328,7 +13382,8 @@ class TargetHttpProxiesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -13630,7 +13685,8 @@ class TargetHttpsProxiesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -13843,7 +13899,8 @@ class TargetInstancesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -14105,7 +14162,8 @@ class TargetInstancesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -14331,7 +14389,8 @@ class TargetPoolsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -14653,7 +14712,8 @@ class TargetPoolsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -15085,7 +15145,8 @@ class TargetSslProxiesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -15351,7 +15412,8 @@ class TargetVpnGatewaysResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -15613,7 +15675,8 @@ class TargetVpnGatewaysResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -15918,7 +15981,8 @@ class UrlMapsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -16185,7 +16249,8 @@ class VpnTunnelsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -16447,7 +16512,8 @@ class VpnTunnelsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -16667,7 +16733,8 @@ class ZoneOperationsResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -16825,7 +16892,8 @@ class ZonesResourceApi {
    * [maxResults] - The maximum number of results per page that should be
    * returned. If the number of available results is larger than maxResults,
    * Compute Engine returns a nextPageToken that can be used to get the next
-   * page of results in subsequent list requests.
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
    *
    * [orderBy] - Sorts list results by a certain order. By default, results are
    * returned in alphanumerical order based on the resource name.
@@ -18492,7 +18560,7 @@ class BackendService {
   /**
    * The protocol this BackendService uses to communicate with backends.
    *
-   * Possible values are HTTP, HTTPS, HTTP2, TCP and SSL. The default is HTTP.
+   * Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.
    *
    * For internal load balancing, the possible values are TCP and UDP, and the
    * default is TCP.
@@ -18760,7 +18828,13 @@ class BackendServiceList {
    * of backend services.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -19454,7 +19528,8 @@ class DiskAggregatedList {
    * list requests. If the number of results is larger than maxResults, use the
    * nextPageToken as a value for the query parameter pageToken in the next list
    * request. Subsequent list requests will have their own nextPageToken to
-   * continue paging through the results.
+   * continue paging through the results. Acceptable values are 0 to 500,
+   * inclusive. (Default: 500)
    */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
@@ -19513,7 +19588,13 @@ class DiskList {
    * [Output Only] Type of resource. Always compute#diskList for lists of disks.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * This token allows you to get the next page of results for list requests. If
+   * the number of results is larger than maxResults, use the nextPageToken as a
+   * value for the query parameter pageToken in the next list request.
+   * Subsequent list requests will have their own nextPageToken to continue
+   * paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -20516,9 +20597,9 @@ class ForwardingRule {
    * The URL of the target resource to receive the matched traffic. For regional
    * forwarding rules, this target must live in the same region as the
    * forwarding rule. For global forwarding rules, this target must be a global
-   * TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be
-   * of a type appropriate to the target object. For example, TargetHttpProxy
-   * requires HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
+   * load balancing resource. The forwarded traffic must be of a type
+   * appropriate to the target object. For example, TargetHttpProxy requires
+   * HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
    *
    * This field is not used for internal load balancing.
    */
@@ -22303,9 +22384,11 @@ class Instance {
   core.String selfLink;
   /**
    * A list of service accounts, with their specified scopes, authorized for
-   * this instance. Service accounts generate access tokens that can be accessed
-   * through the metadata server and used to authenticate applications on the
-   * instance. See Service Accounts for more information.
+   * this instance. Only one service account per VM instance is supported.
+   *
+   * Service accounts generate access tokens that can be accessed through the
+   * metadata server and used to authenticate applications on the instance. See
+   * Service Accounts for more information.
    */
   core.List<ServiceAccount> serviceAccounts;
   /**
@@ -25856,7 +25939,7 @@ class OperationWarnings {
 class Operation {
   /** [Output Only] Reserved for future use. */
   core.String clientOperationId;
-  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  /** [Deprecated] This field is deprecated. */
   core.String creationTimestamp;
   /**
    * [Output Only] A textual description of the operation, which is set when the
@@ -26612,6 +26695,7 @@ class Quota {
    * [Output Only] Name of the quota metric.
    * Possible string values are:
    * - "AUTOSCALERS"
+   * - "BACKEND_BUCKETS"
    * - "BACKEND_SERVICES"
    * - "CPUS"
    * - "CPUS_ALL_REGIONS"
@@ -28580,10 +28664,10 @@ class SerialPortOutput {
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
   /**
-   * [Output Only] The starting byte position of the output that was returned.
-   * This should match the start parameter sent with the request. If the serial
-   * console output exceeds the size of the buffer, older output will be
-   * overwritten by newer content and the start values will be mismatched.
+   * The starting byte position of the output that was returned. This should
+   * match the start parameter sent with the request. If the serial console
+   * output exceeds the size of the buffer, older output will be overwritten by
+   * newer content and the start values will be mismatched.
    */
   core.String start;
 
@@ -30352,8 +30436,8 @@ class TargetInstancesScopedList {
 }
 
 /**
- * A TargetPool resource. This resource defines a pool of instances, associated
- * HttpHealthCheck resources, and the fallback target pool.
+ * A TargetPool resource. This resource defines a pool of instances, an
+ * associated HttpHealthCheck resource, and the fallback target pool.
  */
 class TargetPool {
   /**
@@ -30397,10 +30481,10 @@ class TargetPool {
    */
   core.double failoverRatio;
   /**
-   * A list of URLs to the HttpHealthCheck resource. A member instance in this
-   * pool is considered healthy if and only if all specified health checks pass.
-   * An empty list means all member instances will be considered healthy at all
-   * times.
+   * The URL of the HttpHealthCheck resource. A member instance in this pool is
+   * considered healthy if and only if the health checks pass. An empty list
+   * means all member instances will be considered healthy at all times. Only
+   * HttpHealthChecks are supported. Only one health check may be specified.
    */
   core.List<core.String> healthChecks;
   /**
@@ -30694,7 +30778,7 @@ class TargetPoolList {
 }
 
 class TargetPoolsAddHealthCheckRequest {
-  /** A list of HttpHealthCheck resources to add to the target pool. */
+  /** The HttpHealthCheck to add to the target pool. */
   core.List<HealthCheckReference> healthChecks;
 
   TargetPoolsAddHealthCheckRequest();

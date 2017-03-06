@@ -580,6 +580,9 @@ class FlagsResourceApi {
    *
    * Request parameters:
    *
+   * [databaseVersion] - Database version for flag retrieval. Flags are specific
+   * to the database version.
+   *
    * Completes with a [FlagsListResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -588,7 +591,7 @@ class FlagsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FlagsListResponse> list() {
+  async.Future<FlagsListResponse> list({core.String databaseVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -596,6 +599,9 @@ class FlagsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (databaseVersion != null) {
+      _queryParams["databaseVersion"] = [databaseVersion];
+    }
 
     _url = 'flags';
 
@@ -963,6 +969,8 @@ class InstancesResourceApi {
    * [project] - Project ID of the project for which to list Cloud SQL
    * instances.
    *
+   * [filter] - A filter expression for filtering listed instances.
+   *
    * [maxResults] - The maximum number of results to return per response.
    *
    * [pageToken] - A previously-returned page token representing part of the
@@ -976,7 +984,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<InstancesListResponse> list(core.String project, {core.int maxResults, core.String pageToken}) {
+  async.Future<InstancesListResponse> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -986,6 +994,9 @@ class InstancesResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -3534,6 +3545,36 @@ class IpMapping {
   }
 }
 
+/** User defined labels for Cloud SQL instances. */
+class Labels {
+  /** The key of the label. */
+  core.String key;
+  /** The value of the label. */
+  core.String value;
+
+  Labels();
+
+  Labels.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /**
  * Preferred location. This specifies where a Cloud SQL instance should
  * preferably be located, either in a specific Compute Engine zone, or
@@ -4159,15 +4200,7 @@ class Settings {
    * applicable to First Generation instances.
    */
   core.List<core.String> authorizedGaeApplications;
-  /**
-   * The availability type. This can be one of the following.
-   * ZONAL: A Cloud SQL instance that is zonally available. The instance is
-   * bound to a single GCE zone and may be inaccessible during an outage for
-   * that GCE zone.
-   * REGIONAL: A Cloud SQL instance that is regionally available. The instance
-   * is provisioned in multiple zones within a region and is able to provide
-   * higher availability than an instance with a zonal availability type.
-   */
+  /** Reserved for future use. */
   core.String availabilityType;
   /** The daily backup configuration for the instance. */
   BackupConfiguration backupConfiguration;
@@ -4202,6 +4235,8 @@ class Settings {
   IpConfiguration ipConfiguration;
   /** This is always sql#settings. */
   core.String kind;
+  /** User defined labels. */
+  core.List<Labels> labels;
   /**
    * The location preference settings. This allows the instance to be located as
    * near as possible to either an App Engine app or GCE zone for better
@@ -4286,6 +4321,9 @@ class Settings {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"].map((value) => new Labels.fromJson(value)).toList();
+    }
     if (_json.containsKey("locationPreference")) {
       locationPreference = new LocationPreference.fromJson(_json["locationPreference"]);
     }
@@ -4346,6 +4384,9 @@ class Settings {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labels != null) {
+      _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
     if (locationPreference != null) {
       _json["locationPreference"] = (locationPreference).toJson();

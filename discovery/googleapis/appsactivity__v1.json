@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/activity": {
-                    "description": "View the activity history of your Google Apps"
+                    "description": "View the activity history of your Google apps"
                 },
                 "https://www.googleapis.com/auth/drive": {
                     "description": "View and manage the files in your Google Drive"
@@ -26,7 +26,7 @@
     "description": "Provides a historical view of activity.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/activity/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/JeTIzxCSn99gVwop4eTRu5wI2HY\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/y29Ei9gfsS6BekrALyS-uw4tzTU\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -153,7 +153,7 @@
             }
         }
     },
-    "revision": "20161202",
+    "revision": "20170215",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Activity": {
@@ -484,6 +484,6 @@
         }
     },
     "servicePath": "appsactivity/v1/",
-    "title": "Google Apps Activity API",
+    "title": "G Suite Activity API",
     "version": "v1"
 }
