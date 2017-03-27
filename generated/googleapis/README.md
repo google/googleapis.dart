@@ -113,7 +113,7 @@ Official API documentation: https://developers.google.com/admin-sdk/directory/
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Admin Reports API - admin reports_v1
 
-Fetches reports for the administrators of Google Apps customers about the usage, collaboration, security, and risk for their users.
+Fetches reports for the administrators of G Suite customers about the usage, collaboration, security, and risk for their users.
 
 Official API documentation: https://developers.google.com/admin-sdk/reports/
 
@@ -209,7 +209,8 @@ Official API documentation: https://developers.google.com/classroom/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Billing API - cloudbilling v1
 
-Retrieves Google Developers Console billing accounts and associates them with projects.
+Allows developers to manage billing for their Google Cloud Platform projects
+    programmatically.
 
 Official API documentation: https://cloud.google.com/billing/
 
@@ -225,6 +226,18 @@ Examines the call stack and variables of a running application without stopping 
 
 
 Official API documentation: http://cloud.google.com/debugger
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Functions API - cloudfunctions v1
+
+API for managing lightweight user-provided functions executed in response to events.
+
+Official API documentation: https://cloud.google.com/functions
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Key Management Service (KMS) API - cloudkms v1
+
+Manages encryption for your cloud services the same way you do on-premise. You can generate, use, rotate, and destroy AES256 encryption keys.
+
+Official API documentation: https://cloud.google.com/kms/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1
 
@@ -439,7 +452,7 @@ Official API documentation: https://cloud.google.com/natural-language/
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Enterprise License Manager API - licensing v1
 
-Licensing API to view and manage license for your domain.
+Views and manages licenses for your domain.
 
 Official API documentation: https://developers.google.com/google-apps/licensing/
 
@@ -460,6 +473,12 @@ Official API documentation: https://developers.google.com/manufacturers/
 Interacts with Glass users via the timeline.
 
 Official API documentation: https://developers.google.com/glass
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Machine Learning Engine - ml v1
+
+An API to enable creating and using machine learning models.
+
+Official API documentation: https://cloud.google.com/ml/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Monitoring API - monitoring v3
 
@@ -487,7 +506,7 @@ Official API documentation: https://developers.google.com/speed/docs/insights/v2
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Partners API - partners v2
 
-Lets advertisers search certified companies and create contact leads with them, and also audits the usage of clients.
+Searches certified companies and creates contact leads with them, and also audits the usage of clients.
 
 Official API documentation: https://developers.google.com/partners/
 
@@ -547,9 +566,9 @@ Provides capabilities for dynamic configuration and coordination for application
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Safe Browsing APIs - safebrowsing v4
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Safe Browsing API - safebrowsing v4
 
-Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.
+The Safe Browsing API is an experimental API that allows client applications to check URLs against Google's constantly-updated blacklists of suspected phishing and malware pages. Your client application can use the API to download an encrypted table for local, client-side lookups of URLs.
 
 Official API documentation: https://developers.google.com/safe-browsing/
 

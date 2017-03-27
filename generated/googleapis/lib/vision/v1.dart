@@ -2128,6 +2128,8 @@ class WebDetection {
    * example an original image will likely have partial matching for its crops.
    */
   core.List<WebImage> partialMatchingImages;
+  /** The visually similar image results. */
+  core.List<WebImage> visuallySimilarImages;
   /** Deduced entities from similar images on the Internet. */
   core.List<WebEntity> webEntities;
 
@@ -2142,6 +2144,9 @@ class WebDetection {
     }
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = _json["partialMatchingImages"].map((value) => new WebImage.fromJson(value)).toList();
+    }
+    if (_json.containsKey("visuallySimilarImages")) {
+      visuallySimilarImages = _json["visuallySimilarImages"].map((value) => new WebImage.fromJson(value)).toList();
     }
     if (_json.containsKey("webEntities")) {
       webEntities = _json["webEntities"].map((value) => new WebEntity.fromJson(value)).toList();
@@ -2158,6 +2163,9 @@ class WebDetection {
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] = partialMatchingImages.map((value) => (value).toJson()).toList();
+    }
+    if (visuallySimilarImages != null) {
+      _json["visuallySimilarImages"] = visuallySimilarImages.map((value) => (value).toJson()).toList();
     }
     if (webEntities != null) {
       _json["webEntities"] = webEntities.map((value) => (value).toJson()).toList();

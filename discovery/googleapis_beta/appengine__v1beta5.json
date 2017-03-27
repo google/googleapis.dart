@@ -20,7 +20,7 @@
     "description": "Provisions and manages App Engine applications.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/appengine/docs/admin-api/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/UEz2jJACNpYPzXjVH7xBeGPwZAM\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/AFji6hGPcc-FYE_lDpM9fS8tpbM\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -114,7 +114,7 @@
         "apps": {
             "methods": {
                 "create": {
-                    "description": "Creates an App Engine application for a Google Cloud Platform project. This requires a project that excludes an App Engine application. For details about creating a project without an application, see the Google Cloud Resource Manager create project topic (https://cloud.google.com/resource-manager/docs/creating-project).",
+                    "description": "Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/python/console/).",
                     "httpMethod": "POST",
                     "id": "appengine.apps.create",
                     "path": "v1beta5/apps",
@@ -393,7 +393,7 @@
                                     "type": "string"
                                 },
                                 "migrateTraffic": {
-                                    "description": "Set to true to gradually shift traffic from one version to another single version. By default, traffic is shifted immediately. For gradual traffic migration, the target version must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#inboundservicetype) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#automaticscaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services#shardby) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).",
+                                    "description": "Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#inboundservicetype) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services.versions#automaticscaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services#shardby) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).",
                                     "location": "query",
                                     "type": "boolean"
                                 }
@@ -723,7 +723,7 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "Lists the instances of a version.",
+                                            "description": "Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).",
                                             "httpMethod": "GET",
                                             "id": "appengine.apps.services.versions.instances.list",
                                             "parameterOrder": [
@@ -905,7 +905,7 @@
             }
         }
     },
-    "revision": "20161208",
+    "revision": "20170324",
     "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "ListOperationsResponse": {
@@ -1030,6 +1030,9 @@
                 "defaultBucket": {
                     "description": "A Google Cloud Storage bucket that can be used by the application to store content.@OutputOnly",
                     "type": "string"
+                },
+                "iap": {
+                    "$ref": "IdentityAwareProxy"
                 }
             },
             "type": "object"
@@ -1048,6 +1051,29 @@
                 },
                 "service": {
                     "description": "Resource id of a service in this application that should serve the matched request. The service must already exist. Example: default.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IdentityAwareProxy": {
+            "description": "Identity-Aware Proxy",
+            "id": "IdentityAwareProxy",
+            "properties": {
+                "enabled": {
+                    "description": "Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.",
+                    "type": "boolean"
+                },
+                "oauth2ClientId": {
+                    "description": "OAuth2 client ID to use for the authentication flow.",
+                    "type": "string"
+                },
+                "oauth2ClientSecret": {
+                    "description": "For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly",
+                    "type": "string"
+                },
+                "oauth2ClientSecretSha256": {
+                    "description": "Hex-encoded SHA-256 hash of the client secret.@OutputOnly",
                     "type": "string"
                 }
             },
@@ -1729,7 +1755,7 @@
                 },
                 "container": {
                     "$ref": "ContainerInfo",
-                    "description": "A Docker image that App Engine uses the run the version. Only applicable for instances in App Engine flexible environment."
+                    "description": "The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment."
                 },
                 "sourceReferences": {
                     "description": "Origin of the source code for this deployment. There can be more than one source reference per version if source code is distributed among multiple repositories.",
@@ -1761,11 +1787,11 @@
             "type": "object"
         },
         "ContainerInfo": {
-            "description": "Docker image that is used to start a VM container for the version you deploy.",
+            "description": "Docker image that is used to create a container and start a VM instance for the version that you deploy. Only applicable for instances running in the App Engine flexible environment.",
             "id": "ContainerInfo",
             "properties": {
                 "image": {
-                    "description": "URI to the hosted container image in a Docker repository. The URI must be fully qualified and include a tag or digest. Examples: \"gcr.io/my-project/image:tag\" or \"gcr.io/my-project/image@digest\"",
+                    "description": "URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: \"gcr.io/my-project/image:tag\" or \"gcr.io/my-project/image@digest\"",
                     "type": "string"
                 }
             },
@@ -1991,7 +2017,7 @@
             "type": "object"
         },
         "ListLocationsResponse": {
-            "description": "The response message for LocationService.ListLocations.",
+            "description": "The response message for Locations.ListLocations.",
             "id": "ListLocationsResponse",
             "properties": {
                 "locations": {
@@ -2119,6 +2145,44 @@
                 "target": {
                     "description": "Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OperationMetadataV1Beta": {
+            "description": "Metadata for the given google.longrunning.Operation.",
+            "id": "OperationMetadataV1Beta",
+            "properties": {
+                "method": {
+                    "description": "API method that initiated this operation. Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly",
+                    "type": "string"
+                },
+                "insertTime": {
+                    "description": "Time that this operation was created.@OutputOnly",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Time that this operation completed.@OutputOnly",
+                    "type": "string"
+                },
+                "user": {
+                    "description": "User who requested this operation.@OutputOnly",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly",
+                    "type": "string"
+                },
+                "ephemeralMessage": {
+                    "description": "Ephemeral message that may change every time the operation is polled. @OutputOnly",
+                    "type": "string"
+                },
+                "warning": {
+                    "description": "Durable messages that persist on every operation poll. @OutputOnly",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

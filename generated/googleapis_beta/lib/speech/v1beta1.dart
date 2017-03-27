@@ -179,13 +179,13 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [filter] - The standard list filter.
-   *
    * [name] - The name of the operation collection.
    *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -195,7 +195,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.String filter, core.String name, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list({core.String name, core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -203,9 +203,6 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
@@ -214,6 +211,9 @@ class OperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/operations';

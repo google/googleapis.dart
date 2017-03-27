@@ -168,20 +168,100 @@ class AccountsProductsResourceApi {
  */
 class Attributes {
   /**
+   * The additional images of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#addlimage.
+   */
+  core.List<Image> additionalImageLink;
+  /**
+   * The target age group of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#agegroup.
+   */
+  core.String ageGroup;
+  /**
    * The brand name of the product. For more information, see
    * https://support.google.com/manufacturers/answer/6124116#brand.
    */
   core.String brand;
+  /**
+   * The capacity of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#capacity.
+   */
+  Capacity capacity;
+  /**
+   * The color of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#color.
+   */
+  core.String color;
+  /**
+   * The count of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#count.
+   */
+  Count count;
+  /**
+   * The description of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#description.
+   */
+  core.String description;
+  /**
+   * The disclosure date of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#disclosure.
+   */
+  core.String disclosureDate;
+  /**
+   * The rich format description of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#featuredesc.
+   */
+  core.List<FeatureDescription> featureDescription;
+  /**
+   * The flavor of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#flavor.
+   */
+  core.String flavor;
+  /**
+   * The format of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#format.
+   */
+  core.String format;
+  /**
+   * The target gender of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#gender.
+   */
+  core.String gender;
   /**
    * The Global Trade Item Number (GTIN) of the product. For more information,
    * see https://support.google.com/manufacturers/answer/6124116#gtin.
    */
   core.List<core.String> gtin;
   /**
+   * The image of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#image.
+   */
+  Image imageLink;
+  /**
+   * The item group id of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#itemgroupid.
+   */
+  core.String itemGroupId;
+  /**
+   * The material of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#material.
+   */
+  core.String material;
+  /**
    * The Manufacturer Part Number (MPN) of the product. For more information,
    * see https://support.google.com/manufacturers/answer/6124116#mpn.
    */
   core.String mpn;
+  /**
+   * The pattern of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#pattern.
+   */
+  core.String pattern;
+  /**
+   * The details of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#productdetail.
+   */
+  core.List<ProductDetail> productDetail;
   /**
    * The name of the group of products related to the product. For more
    * information, see
@@ -194,33 +274,120 @@ class Attributes {
    */
   core.String productName;
   /**
-   * The URL of the manufacturer's detail page of the product. For more
-   * information, see
+   * The URL of the detail page of the product. For more information, see
    * https://support.google.com/manufacturers/answer/6124116#productpage.
    */
   core.String productPageUrl;
   /**
-   * The manufacturer's category of the product. For more information, see
+   * The category of the product. For more information, see
    * https://support.google.com/manufacturers/answer/6124116#producttype.
    */
   core.List<core.String> productType;
+  /**
+   * The release date of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#release.
+   */
+  core.String releaseDate;
+  /**
+   * The scent of the product. For more information, see
+   *  https://support.google.com/manufacturers/answer/6124116#scent.
+   */
+  core.String scent;
+  /**
+   * The size of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#size.
+   */
+  core.String size;
+  /**
+   * The size system of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#sizesystem.
+   */
+  core.String sizeSystem;
+  /**
+   * The size type of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#sizetype.
+   */
+  core.String sizeType;
+  /**
+   * The suggested retail price (MSRP) of the product. For more information,
+   * see https://support.google.com/manufacturers/answer/6124116#price.
+   */
+  Price suggestedRetailPrice;
+  /**
+   * The theme of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#theme.
+   */
+  core.String theme;
   /**
    * The title of the product. For more information, see
    * https://support.google.com/manufacturers/answer/6124116#title.
    */
   core.String title;
+  /**
+   * The videos of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#video.
+   */
+  core.List<core.String> videoLink;
 
   Attributes();
 
   Attributes.fromJson(core.Map _json) {
+    if (_json.containsKey("additionalImageLink")) {
+      additionalImageLink = _json["additionalImageLink"].map((value) => new Image.fromJson(value)).toList();
+    }
+    if (_json.containsKey("ageGroup")) {
+      ageGroup = _json["ageGroup"];
+    }
     if (_json.containsKey("brand")) {
       brand = _json["brand"];
+    }
+    if (_json.containsKey("capacity")) {
+      capacity = new Capacity.fromJson(_json["capacity"]);
+    }
+    if (_json.containsKey("color")) {
+      color = _json["color"];
+    }
+    if (_json.containsKey("count")) {
+      count = new Count.fromJson(_json["count"]);
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("disclosureDate")) {
+      disclosureDate = _json["disclosureDate"];
+    }
+    if (_json.containsKey("featureDescription")) {
+      featureDescription = _json["featureDescription"].map((value) => new FeatureDescription.fromJson(value)).toList();
+    }
+    if (_json.containsKey("flavor")) {
+      flavor = _json["flavor"];
+    }
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
+    if (_json.containsKey("gender")) {
+      gender = _json["gender"];
     }
     if (_json.containsKey("gtin")) {
       gtin = _json["gtin"];
     }
+    if (_json.containsKey("imageLink")) {
+      imageLink = new Image.fromJson(_json["imageLink"]);
+    }
+    if (_json.containsKey("itemGroupId")) {
+      itemGroupId = _json["itemGroupId"];
+    }
+    if (_json.containsKey("material")) {
+      material = _json["material"];
+    }
     if (_json.containsKey("mpn")) {
       mpn = _json["mpn"];
+    }
+    if (_json.containsKey("pattern")) {
+      pattern = _json["pattern"];
+    }
+    if (_json.containsKey("productDetail")) {
+      productDetail = _json["productDetail"].map((value) => new ProductDetail.fromJson(value)).toList();
     }
     if (_json.containsKey("productLine")) {
       productLine = _json["productLine"];
@@ -234,21 +401,93 @@ class Attributes {
     if (_json.containsKey("productType")) {
       productType = _json["productType"];
     }
+    if (_json.containsKey("releaseDate")) {
+      releaseDate = _json["releaseDate"];
+    }
+    if (_json.containsKey("scent")) {
+      scent = _json["scent"];
+    }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
+    if (_json.containsKey("sizeSystem")) {
+      sizeSystem = _json["sizeSystem"];
+    }
+    if (_json.containsKey("sizeType")) {
+      sizeType = _json["sizeType"];
+    }
+    if (_json.containsKey("suggestedRetailPrice")) {
+      suggestedRetailPrice = new Price.fromJson(_json["suggestedRetailPrice"]);
+    }
+    if (_json.containsKey("theme")) {
+      theme = _json["theme"];
+    }
     if (_json.containsKey("title")) {
       title = _json["title"];
+    }
+    if (_json.containsKey("videoLink")) {
+      videoLink = _json["videoLink"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (additionalImageLink != null) {
+      _json["additionalImageLink"] = additionalImageLink.map((value) => (value).toJson()).toList();
+    }
+    if (ageGroup != null) {
+      _json["ageGroup"] = ageGroup;
+    }
     if (brand != null) {
       _json["brand"] = brand;
+    }
+    if (capacity != null) {
+      _json["capacity"] = (capacity).toJson();
+    }
+    if (color != null) {
+      _json["color"] = color;
+    }
+    if (count != null) {
+      _json["count"] = (count).toJson();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (disclosureDate != null) {
+      _json["disclosureDate"] = disclosureDate;
+    }
+    if (featureDescription != null) {
+      _json["featureDescription"] = featureDescription.map((value) => (value).toJson()).toList();
+    }
+    if (flavor != null) {
+      _json["flavor"] = flavor;
+    }
+    if (format != null) {
+      _json["format"] = format;
+    }
+    if (gender != null) {
+      _json["gender"] = gender;
     }
     if (gtin != null) {
       _json["gtin"] = gtin;
     }
+    if (imageLink != null) {
+      _json["imageLink"] = (imageLink).toJson();
+    }
+    if (itemGroupId != null) {
+      _json["itemGroupId"] = itemGroupId;
+    }
+    if (material != null) {
+      _json["material"] = material;
+    }
     if (mpn != null) {
       _json["mpn"] = mpn;
+    }
+    if (pattern != null) {
+      _json["pattern"] = pattern;
+    }
+    if (productDetail != null) {
+      _json["productDetail"] = productDetail.map((value) => (value).toJson()).toList();
     }
     if (productLine != null) {
       _json["productLine"] = productLine;
@@ -262,8 +501,206 @@ class Attributes {
     if (productType != null) {
       _json["productType"] = productType;
     }
+    if (releaseDate != null) {
+      _json["releaseDate"] = releaseDate;
+    }
+    if (scent != null) {
+      _json["scent"] = scent;
+    }
+    if (size != null) {
+      _json["size"] = size;
+    }
+    if (sizeSystem != null) {
+      _json["sizeSystem"] = sizeSystem;
+    }
+    if (sizeType != null) {
+      _json["sizeType"] = sizeType;
+    }
+    if (suggestedRetailPrice != null) {
+      _json["suggestedRetailPrice"] = (suggestedRetailPrice).toJson();
+    }
+    if (theme != null) {
+      _json["theme"] = theme;
+    }
     if (title != null) {
       _json["title"] = title;
+    }
+    if (videoLink != null) {
+      _json["videoLink"] = videoLink;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The capacity of a product. For more information, see
+ * https://support.google.com/manufacturers/answer/6124116#capacity.
+ */
+class Capacity {
+  /** The unit of the capacity, i.e., MB, GB, or TB. */
+  core.String unit;
+  /** The numeric value of the capacity. */
+  core.String value;
+
+  Capacity();
+
+  Capacity.fromJson(core.Map _json) {
+    if (_json.containsKey("unit")) {
+      unit = _json["unit"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (unit != null) {
+      _json["unit"] = unit;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The number of products in a single package. For more information, see
+ * https://support.google.com/manufacturers/answer/6124116#count.
+ */
+class Count {
+  /** The unit in which these products are counted. */
+  core.String unit;
+  /** The numeric value of the number of products in a package. */
+  core.String value;
+
+  Count();
+
+  Count.fromJson(core.Map _json) {
+    if (_json.containsKey("unit")) {
+      unit = _json["unit"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (unit != null) {
+      _json["unit"] = unit;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A feature description of the product. For more information, see
+ * https://support.google.com/manufacturers/answer/6124116#featuredesc.
+ */
+class FeatureDescription {
+  /** A short description of the feature. */
+  core.String headline;
+  /** An optional image describing the feature. */
+  Image image;
+  /** A detailed description of the feature. */
+  core.String text;
+
+  FeatureDescription();
+
+  FeatureDescription.fromJson(core.Map _json) {
+    if (_json.containsKey("headline")) {
+      headline = _json["headline"];
+    }
+    if (_json.containsKey("image")) {
+      image = new Image.fromJson(_json["image"]);
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (headline != null) {
+      _json["headline"] = headline;
+    }
+    if (image != null) {
+      _json["image"] = (image).toJson();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/** An image. */
+class Image {
+  /**
+   * The URL of the image. For crawled images, this is the provided URL. For
+   * uploaded images, this is a serving URL from Google if the image has been
+   * processed successfully.
+   */
+  core.String imageUrl;
+  /**
+   * The status of the image.
+   * @OutputOnly
+   * Possible string values are:
+   * - "STATUS_UNSPECIFIED" : Status is unspecified. Should not be used.
+   * - "PENDING_PROCESSING" : Image was uploaded and is being processed.
+   * - "PENDING_CRAWL" : The image crawl is still pending.
+   * - "OK" : The image was processed and it meets the requirements.
+   * - "ROBOTED" : The image URL is protected by robots.txt file and cannot be
+   * crawled.
+   * - "XROBOTED" : The image URL is protected by X-Robots-Tag and cannot be
+   * crawled.
+   * - "CRAWL_ERROR" : There was an error while crawling the image.
+   * - "PROCESSING_ERROR" : The image cannot be processed.
+   * - "DECODING_ERROR" : The image cannot be decoded.
+   * - "TOO_BIG" : The image is too big.
+   * - "CRAWL_SKIPPED" : The image was manually overridden and will not be
+   * crawled.
+   */
+  core.String status;
+  /**
+   * The type of the image, i.e., crawled or uploaded.
+   * @OutputOnly
+   * Possible string values are:
+   * - "TYPE_UNSPECIFIED" : Type is unspecified. Should not be used.
+   * - "CRAWLED" : The image was crawled from a provided URL.
+   * - "UPLOADED" : The image was uploaded.
+   */
+  core.String type;
+
+  Image();
+
+  Image.fromJson(core.Map _json) {
+    if (_json.containsKey("imageUrl")) {
+      imageUrl = _json["imageUrl"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (imageUrl != null) {
+      _json["imageUrl"] = imageUrl;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -294,6 +731,8 @@ class Issue {
    * pending review.
    */
   core.String severity;
+  /** The timestamp when this issue appeared. */
+  core.String timestamp;
   /**
    * The server-generated type of the issue, for example,
    * “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.
@@ -312,6 +751,9 @@ class Issue {
     if (_json.containsKey("severity")) {
       severity = _json["severity"];
     }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
@@ -327,6 +769,9 @@ class Issue {
     }
     if (severity != null) {
       _json["severity"] = severity;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
     }
     if (type != null) {
       _json["type"] = type;
@@ -359,6 +804,36 @@ class ListProductsResponse {
     }
     if (products != null) {
       _json["products"] = products.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** A price. */
+class Price {
+  /** The numeric value of the price. */
+  core.String amount;
+  /** The currency in which the price is denoted. */
+  core.String currency;
+
+  Price();
+
+  Price.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = _json["amount"];
+    }
+    if (_json.containsKey("currency")) {
+      currency = _json["currency"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (amount != null) {
+      _json["amount"] = amount;
+    }
+    if (currency != null) {
+      _json["currency"] = currency;
     }
     return _json;
   }
@@ -501,6 +976,49 @@ class Product {
     }
     if (uploadedAttributes != null) {
       _json["uploadedAttributes"] = (uploadedAttributes).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A product detail of the product. For more information, see
+ * https://support.google.com/manufacturers/answer/6124116#productdetail.
+ */
+class ProductDetail {
+  /** The name of the attribute. */
+  core.String attributeName;
+  /** The value of the attribute. */
+  core.String attributeValue;
+  /**
+   * A short section name that can be reused between multiple product details.
+   */
+  core.String sectionName;
+
+  ProductDetail();
+
+  ProductDetail.fromJson(core.Map _json) {
+    if (_json.containsKey("attributeName")) {
+      attributeName = _json["attributeName"];
+    }
+    if (_json.containsKey("attributeValue")) {
+      attributeValue = _json["attributeValue"];
+    }
+    if (_json.containsKey("sectionName")) {
+      sectionName = _json["sectionName"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (attributeName != null) {
+      _json["attributeName"] = attributeName;
+    }
+    if (attributeValue != null) {
+      _json["attributeValue"] = attributeValue;
+    }
+    if (sectionName != null) {
+      _json["sectionName"] = sectionName;
     }
     return _json;
   }

@@ -2,14 +2,14 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/trace.readonly": {
-                    "description": "Read Trace data for a project or application"
-                },
                 "https://www.googleapis.com/auth/trace.append": {
                     "description": "Write Trace data for a project or application"
                 },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/trace.readonly": {
+                    "description": "Read Trace data for a project or application"
                 }
             }
         }
@@ -31,21 +31,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
         "pp": {
             "default": "true",
             "description": "Pretty-print response.",
@@ -116,6 +101,21 @@
             ],
             "location": "query",
             "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -161,11 +161,6 @@
                                 "projectId"
                             ],
                             "parameters": {
-                                "orderBy": {
-                                    "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "projectId": {
                                     "description": "ID of the Cloud project where the trace data is stored.",
                                     "location": "path",
@@ -183,14 +178,14 @@
                                     "location": "query",
                                     "type": "string"
                                 },
-                                "pageToken": {
-                                    "description": "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request. Optional.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "startTime": {
                                     "description": "End of the time interval (inclusive) during which the trace data was\ncollected from the application.",
                                     "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request. Optional.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -208,6 +203,11 @@
                                         "ROOTSPAN",
                                         "COMPLETE"
                                     ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -257,7 +257,7 @@
             }
         }
     },
-    "revision": "20170225",
+    "revision": "20170320",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
         "ListTracesResponse": {
@@ -324,6 +324,21 @@
             "description": "A span represents a single timed event within a trace. Spans can be nested\nand form a trace tree. Often, a trace contains a root span that describes the\nend-to-end latency of an operation and, optionally, one or more subspans for\nits suboperations. Spans do not need to be contiguous. There may be gaps\nbetween spans in a trace.",
             "id": "TraceSpan",
             "properties": {
+                "parentSpanId": {
+                    "description": "ID of the parent span, if any. Optional.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "End time of the span in nanoseconds from the UNIX epoch.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Start time of the span in nanoseconds from the UNIX epoch.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "kind": {
                     "description": "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span.",
                     "enum": [
@@ -352,21 +367,6 @@
                 "spanId": {
                     "description": "Identifier for the span. Must be a 64-bit integer other than 0 and\nunique within a trace.",
                     "format": "uint64",
-                    "type": "string"
-                },
-                "parentSpanId": {
-                    "description": "ID of the parent span, if any. Optional.",
-                    "format": "uint64",
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "End time of the span in nanoseconds from the UNIX epoch.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "startTime": {
-                    "description": "Start time of the span in nanoseconds from the UNIX epoch.",
-                    "format": "google-datetime",
                     "type": "string"
                 }
             },

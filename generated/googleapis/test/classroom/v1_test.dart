@@ -70,14 +70,14 @@ checkAssignment(api.Assignment o) {
   buildCounterAssignment--;
 }
 
-buildUnnamed670() {
+buildUnnamed691() {
   var o = new core.List<api.Attachment>();
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-checkUnnamed670(core.List<api.Attachment> o) {
+checkUnnamed691(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -88,7 +88,7 @@ buildAssignmentSubmission() {
   var o = new api.AssignmentSubmission();
   buildCounterAssignmentSubmission++;
   if (buildCounterAssignmentSubmission < 3) {
-    o.attachments = buildUnnamed670();
+    o.attachments = buildUnnamed691();
   }
   buildCounterAssignmentSubmission--;
   return o;
@@ -97,7 +97,7 @@ buildAssignmentSubmission() {
 checkAssignmentSubmission(api.AssignmentSubmission o) {
   buildCounterAssignmentSubmission++;
   if (buildCounterAssignmentSubmission < 3) {
-    checkUnnamed670(o.attachments);
+    checkUnnamed691(o.attachments);
   }
   buildCounterAssignmentSubmission--;
 }
@@ -127,14 +127,14 @@ checkAttachment(api.Attachment o) {
   buildCounterAttachment--;
 }
 
-buildUnnamed671() {
+buildUnnamed692() {
   var o = new core.List<api.CourseMaterialSet>();
   o.add(buildCourseMaterialSet());
   o.add(buildCourseMaterialSet());
   return o;
 }
 
-checkUnnamed671(core.List<api.CourseMaterialSet> o) {
+checkUnnamed692(core.List<api.CourseMaterialSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseMaterialSet(o[0]);
   checkCourseMaterialSet(o[1]);
@@ -147,7 +147,7 @@ buildCourse() {
   if (buildCounterCourse < 3) {
     o.alternateLink = "foo";
     o.courseGroupEmail = "foo";
-    o.courseMaterialSets = buildUnnamed671();
+    o.courseMaterialSets = buildUnnamed692();
     o.courseState = "foo";
     o.creationTime = "foo";
     o.description = "foo";
@@ -172,7 +172,7 @@ checkCourse(api.Course o) {
   if (buildCounterCourse < 3) {
     unittest.expect(o.alternateLink, unittest.equals('foo'));
     unittest.expect(o.courseGroupEmail, unittest.equals('foo'));
-    checkUnnamed671(o.courseMaterialSets);
+    checkUnnamed692(o.courseMaterialSets);
     unittest.expect(o.courseState, unittest.equals('foo'));
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
@@ -235,14 +235,14 @@ checkCourseMaterial(api.CourseMaterial o) {
   buildCounterCourseMaterial--;
 }
 
-buildUnnamed672() {
+buildUnnamed693() {
   var o = new core.List<api.CourseMaterial>();
   o.add(buildCourseMaterial());
   o.add(buildCourseMaterial());
   return o;
 }
 
-checkUnnamed672(core.List<api.CourseMaterial> o) {
+checkUnnamed693(core.List<api.CourseMaterial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseMaterial(o[0]);
   checkCourseMaterial(o[1]);
@@ -253,7 +253,7 @@ buildCourseMaterialSet() {
   var o = new api.CourseMaterialSet();
   buildCounterCourseMaterialSet++;
   if (buildCounterCourseMaterialSet < 3) {
-    o.materials = buildUnnamed672();
+    o.materials = buildUnnamed693();
     o.title = "foo";
   }
   buildCounterCourseMaterialSet--;
@@ -263,20 +263,20 @@ buildCourseMaterialSet() {
 checkCourseMaterialSet(api.CourseMaterialSet o) {
   buildCounterCourseMaterialSet++;
   if (buildCounterCourseMaterialSet < 3) {
-    checkUnnamed672(o.materials);
+    checkUnnamed693(o.materials);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterCourseMaterialSet--;
 }
 
-buildUnnamed673() {
+buildUnnamed694() {
   var o = new core.List<api.Material>();
   o.add(buildMaterial());
   o.add(buildMaterial());
   return o;
 }
 
-checkUnnamed673(core.List<api.Material> o) {
+checkUnnamed694(core.List<api.Material> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMaterial(o[0]);
   checkMaterial(o[1]);
@@ -296,7 +296,7 @@ buildCourseWork() {
     o.dueDate = buildDate();
     o.dueTime = buildTimeOfDay();
     o.id = "foo";
-    o.materials = buildUnnamed673();
+    o.materials = buildUnnamed694();
     o.maxPoints = 42.0;
     o.multipleChoiceQuestion = buildMultipleChoiceQuestion();
     o.state = "foo";
@@ -321,7 +321,7 @@ checkCourseWork(api.CourseWork o) {
     checkDate(o.dueDate);
     checkTimeOfDay(o.dueTime);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed673(o.materials);
+    checkUnnamed694(o.materials);
     unittest.expect(o.maxPoints, unittest.equals(42.0));
     checkMultipleChoiceQuestion(o.multipleChoiceQuestion);
     unittest.expect(o.state, unittest.equals('foo'));
@@ -565,14 +565,14 @@ checkLink(api.Link o) {
   buildCounterLink--;
 }
 
-buildUnnamed674() {
+buildUnnamed695() {
   var o = new core.List<api.CourseAlias>();
   o.add(buildCourseAlias());
   o.add(buildCourseAlias());
   return o;
 }
 
-checkUnnamed674(core.List<api.CourseAlias> o) {
+checkUnnamed695(core.List<api.CourseAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseAlias(o[0]);
   checkCourseAlias(o[1]);
@@ -583,7 +583,7 @@ buildListCourseAliasesResponse() {
   var o = new api.ListCourseAliasesResponse();
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    o.aliases = buildUnnamed674();
+    o.aliases = buildUnnamed695();
     o.nextPageToken = "foo";
   }
   buildCounterListCourseAliasesResponse--;
@@ -593,20 +593,20 @@ buildListCourseAliasesResponse() {
 checkListCourseAliasesResponse(api.ListCourseAliasesResponse o) {
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    checkUnnamed674(o.aliases);
+    checkUnnamed695(o.aliases);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCourseAliasesResponse--;
 }
 
-buildUnnamed675() {
+buildUnnamed696() {
   var o = new core.List<api.CourseWork>();
   o.add(buildCourseWork());
   o.add(buildCourseWork());
   return o;
 }
 
-checkUnnamed675(core.List<api.CourseWork> o) {
+checkUnnamed696(core.List<api.CourseWork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseWork(o[0]);
   checkCourseWork(o[1]);
@@ -617,7 +617,7 @@ buildListCourseWorkResponse() {
   var o = new api.ListCourseWorkResponse();
   buildCounterListCourseWorkResponse++;
   if (buildCounterListCourseWorkResponse < 3) {
-    o.courseWork = buildUnnamed675();
+    o.courseWork = buildUnnamed696();
     o.nextPageToken = "foo";
   }
   buildCounterListCourseWorkResponse--;
@@ -627,20 +627,20 @@ buildListCourseWorkResponse() {
 checkListCourseWorkResponse(api.ListCourseWorkResponse o) {
   buildCounterListCourseWorkResponse++;
   if (buildCounterListCourseWorkResponse < 3) {
-    checkUnnamed675(o.courseWork);
+    checkUnnamed696(o.courseWork);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCourseWorkResponse--;
 }
 
-buildUnnamed676() {
+buildUnnamed697() {
   var o = new core.List<api.Course>();
   o.add(buildCourse());
   o.add(buildCourse());
   return o;
 }
 
-checkUnnamed676(core.List<api.Course> o) {
+checkUnnamed697(core.List<api.Course> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourse(o[0]);
   checkCourse(o[1]);
@@ -651,7 +651,7 @@ buildListCoursesResponse() {
   var o = new api.ListCoursesResponse();
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    o.courses = buildUnnamed676();
+    o.courses = buildUnnamed697();
     o.nextPageToken = "foo";
   }
   buildCounterListCoursesResponse--;
@@ -661,20 +661,20 @@ buildListCoursesResponse() {
 checkListCoursesResponse(api.ListCoursesResponse o) {
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    checkUnnamed676(o.courses);
+    checkUnnamed697(o.courses);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCoursesResponse--;
 }
 
-buildUnnamed677() {
+buildUnnamed698() {
   var o = new core.List<api.GuardianInvitation>();
   o.add(buildGuardianInvitation());
   o.add(buildGuardianInvitation());
   return o;
 }
 
-checkUnnamed677(core.List<api.GuardianInvitation> o) {
+checkUnnamed698(core.List<api.GuardianInvitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGuardianInvitation(o[0]);
   checkGuardianInvitation(o[1]);
@@ -685,7 +685,7 @@ buildListGuardianInvitationsResponse() {
   var o = new api.ListGuardianInvitationsResponse();
   buildCounterListGuardianInvitationsResponse++;
   if (buildCounterListGuardianInvitationsResponse < 3) {
-    o.guardianInvitations = buildUnnamed677();
+    o.guardianInvitations = buildUnnamed698();
     o.nextPageToken = "foo";
   }
   buildCounterListGuardianInvitationsResponse--;
@@ -695,20 +695,20 @@ buildListGuardianInvitationsResponse() {
 checkListGuardianInvitationsResponse(api.ListGuardianInvitationsResponse o) {
   buildCounterListGuardianInvitationsResponse++;
   if (buildCounterListGuardianInvitationsResponse < 3) {
-    checkUnnamed677(o.guardianInvitations);
+    checkUnnamed698(o.guardianInvitations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListGuardianInvitationsResponse--;
 }
 
-buildUnnamed678() {
+buildUnnamed699() {
   var o = new core.List<api.Guardian>();
   o.add(buildGuardian());
   o.add(buildGuardian());
   return o;
 }
 
-checkUnnamed678(core.List<api.Guardian> o) {
+checkUnnamed699(core.List<api.Guardian> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGuardian(o[0]);
   checkGuardian(o[1]);
@@ -719,7 +719,7 @@ buildListGuardiansResponse() {
   var o = new api.ListGuardiansResponse();
   buildCounterListGuardiansResponse++;
   if (buildCounterListGuardiansResponse < 3) {
-    o.guardians = buildUnnamed678();
+    o.guardians = buildUnnamed699();
     o.nextPageToken = "foo";
   }
   buildCounterListGuardiansResponse--;
@@ -729,20 +729,20 @@ buildListGuardiansResponse() {
 checkListGuardiansResponse(api.ListGuardiansResponse o) {
   buildCounterListGuardiansResponse++;
   if (buildCounterListGuardiansResponse < 3) {
-    checkUnnamed678(o.guardians);
+    checkUnnamed699(o.guardians);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListGuardiansResponse--;
 }
 
-buildUnnamed679() {
+buildUnnamed700() {
   var o = new core.List<api.Invitation>();
   o.add(buildInvitation());
   o.add(buildInvitation());
   return o;
 }
 
-checkUnnamed679(core.List<api.Invitation> o) {
+checkUnnamed700(core.List<api.Invitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInvitation(o[0]);
   checkInvitation(o[1]);
@@ -753,7 +753,7 @@ buildListInvitationsResponse() {
   var o = new api.ListInvitationsResponse();
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    o.invitations = buildUnnamed679();
+    o.invitations = buildUnnamed700();
     o.nextPageToken = "foo";
   }
   buildCounterListInvitationsResponse--;
@@ -763,20 +763,20 @@ buildListInvitationsResponse() {
 checkListInvitationsResponse(api.ListInvitationsResponse o) {
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    checkUnnamed679(o.invitations);
+    checkUnnamed700(o.invitations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListInvitationsResponse--;
 }
 
-buildUnnamed680() {
+buildUnnamed701() {
   var o = new core.List<api.StudentSubmission>();
   o.add(buildStudentSubmission());
   o.add(buildStudentSubmission());
   return o;
 }
 
-checkUnnamed680(core.List<api.StudentSubmission> o) {
+checkUnnamed701(core.List<api.StudentSubmission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudentSubmission(o[0]);
   checkStudentSubmission(o[1]);
@@ -788,7 +788,7 @@ buildListStudentSubmissionsResponse() {
   buildCounterListStudentSubmissionsResponse++;
   if (buildCounterListStudentSubmissionsResponse < 3) {
     o.nextPageToken = "foo";
-    o.studentSubmissions = buildUnnamed680();
+    o.studentSubmissions = buildUnnamed701();
   }
   buildCounterListStudentSubmissionsResponse--;
   return o;
@@ -798,19 +798,19 @@ checkListStudentSubmissionsResponse(api.ListStudentSubmissionsResponse o) {
   buildCounterListStudentSubmissionsResponse++;
   if (buildCounterListStudentSubmissionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed680(o.studentSubmissions);
+    checkUnnamed701(o.studentSubmissions);
   }
   buildCounterListStudentSubmissionsResponse--;
 }
 
-buildUnnamed681() {
+buildUnnamed702() {
   var o = new core.List<api.Student>();
   o.add(buildStudent());
   o.add(buildStudent());
   return o;
 }
 
-checkUnnamed681(core.List<api.Student> o) {
+checkUnnamed702(core.List<api.Student> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudent(o[0]);
   checkStudent(o[1]);
@@ -822,7 +822,7 @@ buildListStudentsResponse() {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     o.nextPageToken = "foo";
-    o.students = buildUnnamed681();
+    o.students = buildUnnamed702();
   }
   buildCounterListStudentsResponse--;
   return o;
@@ -832,19 +832,19 @@ checkListStudentsResponse(api.ListStudentsResponse o) {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed681(o.students);
+    checkUnnamed702(o.students);
   }
   buildCounterListStudentsResponse--;
 }
 
-buildUnnamed682() {
+buildUnnamed703() {
   var o = new core.List<api.Teacher>();
   o.add(buildTeacher());
   o.add(buildTeacher());
   return o;
 }
 
-checkUnnamed682(core.List<api.Teacher> o) {
+checkUnnamed703(core.List<api.Teacher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeacher(o[0]);
   checkTeacher(o[1]);
@@ -856,7 +856,7 @@ buildListTeachersResponse() {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     o.nextPageToken = "foo";
-    o.teachers = buildUnnamed682();
+    o.teachers = buildUnnamed703();
   }
   buildCounterListTeachersResponse--;
   return o;
@@ -866,7 +866,7 @@ checkListTeachersResponse(api.ListTeachersResponse o) {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed682(o.teachers);
+    checkUnnamed703(o.teachers);
   }
   buildCounterListTeachersResponse--;
 }
@@ -896,14 +896,14 @@ checkMaterial(api.Material o) {
   buildCounterMaterial--;
 }
 
-buildUnnamed683() {
+buildUnnamed704() {
   var o = new core.List<api.Attachment>();
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-checkUnnamed683(core.List<api.Attachment> o) {
+checkUnnamed704(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -914,7 +914,7 @@ buildModifyAttachmentsRequest() {
   var o = new api.ModifyAttachmentsRequest();
   buildCounterModifyAttachmentsRequest++;
   if (buildCounterModifyAttachmentsRequest < 3) {
-    o.addAttachments = buildUnnamed683();
+    o.addAttachments = buildUnnamed704();
   }
   buildCounterModifyAttachmentsRequest--;
   return o;
@@ -923,19 +923,19 @@ buildModifyAttachmentsRequest() {
 checkModifyAttachmentsRequest(api.ModifyAttachmentsRequest o) {
   buildCounterModifyAttachmentsRequest++;
   if (buildCounterModifyAttachmentsRequest < 3) {
-    checkUnnamed683(o.addAttachments);
+    checkUnnamed704(o.addAttachments);
   }
   buildCounterModifyAttachmentsRequest--;
 }
 
-buildUnnamed684() {
+buildUnnamed705() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed684(core.List<core.String> o) {
+checkUnnamed705(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -946,7 +946,7 @@ buildMultipleChoiceQuestion() {
   var o = new api.MultipleChoiceQuestion();
   buildCounterMultipleChoiceQuestion++;
   if (buildCounterMultipleChoiceQuestion < 3) {
-    o.choices = buildUnnamed684();
+    o.choices = buildUnnamed705();
   }
   buildCounterMultipleChoiceQuestion--;
   return o;
@@ -955,7 +955,7 @@ buildMultipleChoiceQuestion() {
 checkMultipleChoiceQuestion(api.MultipleChoiceQuestion o) {
   buildCounterMultipleChoiceQuestion++;
   if (buildCounterMultipleChoiceQuestion < 3) {
-    checkUnnamed684(o.choices);
+    checkUnnamed705(o.choices);
   }
   buildCounterMultipleChoiceQuestion--;
 }
@@ -1215,14 +1215,14 @@ checkTurnInStudentSubmissionRequest(api.TurnInStudentSubmissionRequest o) {
   buildCounterTurnInStudentSubmissionRequest--;
 }
 
-buildUnnamed685() {
+buildUnnamed706() {
   var o = new core.List<api.GlobalPermission>();
   o.add(buildGlobalPermission());
   o.add(buildGlobalPermission());
   return o;
 }
 
-checkUnnamed685(core.List<api.GlobalPermission> o) {
+checkUnnamed706(core.List<api.GlobalPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlobalPermission(o[0]);
   checkGlobalPermission(o[1]);
@@ -1236,7 +1236,7 @@ buildUserProfile() {
     o.emailAddress = "foo";
     o.id = "foo";
     o.name = buildName();
-    o.permissions = buildUnnamed685();
+    o.permissions = buildUnnamed706();
     o.photoUrl = "foo";
   }
   buildCounterUserProfile--;
@@ -1249,7 +1249,7 @@ checkUserProfile(api.UserProfile o) {
     unittest.expect(o.emailAddress, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     checkName(o.name);
-    checkUnnamed685(o.permissions);
+    checkUnnamed706(o.permissions);
     unittest.expect(o.photoUrl, unittest.equals('foo'));
   }
   buildCounterUserProfile--;
@@ -1280,53 +1280,53 @@ checkYouTubeVideo(api.YouTubeVideo o) {
   buildCounterYouTubeVideo--;
 }
 
-buildUnnamed686() {
+buildUnnamed707() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed686(core.List<core.String> o) {
+checkUnnamed707(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed687() {
+buildUnnamed708() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed687(core.List<core.String> o) {
+checkUnnamed708(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed688() {
+buildUnnamed709() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed688(core.List<core.String> o) {
+checkUnnamed709(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed689() {
+buildUnnamed710() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed689(core.List<core.String> o) {
+checkUnnamed710(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1867,10 +1867,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.CoursesResourceApi res = new api.ClassroomApi(mock).courses;
-      var arg_studentId = "foo";
-      var arg_teacherId = "foo";
-      var arg_courseStates = buildUnnamed686();
+      var arg_courseStates = buildUnnamed707();
       var arg_pageSize = 42;
+      var arg_teacherId = "foo";
+      var arg_studentId = "foo";
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1898,10 +1898,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["studentId"].first, unittest.equals(arg_studentId));
-        unittest.expect(queryMap["teacherId"].first, unittest.equals(arg_teacherId));
         unittest.expect(queryMap["courseStates"], unittest.equals(arg_courseStates));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["teacherId"].first, unittest.equals(arg_teacherId));
+        unittest.expect(queryMap["studentId"].first, unittest.equals(arg_studentId));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
@@ -1911,7 +1911,7 @@ main() {
         var resp = convert.JSON.encode(buildListCoursesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(studentId: arg_studentId, teacherId: arg_teacherId, courseStates: arg_courseStates, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListCoursesResponse response) {
+      res.list(courseStates: arg_courseStates, pageSize: arg_pageSize, teacherId: arg_teacherId, studentId: arg_studentId, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListCoursesResponse response) {
         checkListCoursesResponse(response);
       })));
     });
@@ -2363,9 +2363,9 @@ main() {
       var mock = new HttpServerMock();
       api.CoursesCourseWorkResourceApi res = new api.ClassroomApi(mock).courses.courseWork;
       var arg_courseId = "foo";
-      var arg_courseWorkStates = buildUnnamed687();
-      var arg_orderBy = "foo";
+      var arg_courseWorkStates = buildUnnamed708();
       var arg_pageSize = 42;
+      var arg_orderBy = "foo";
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2401,8 +2401,8 @@ main() {
           }
         }
         unittest.expect(queryMap["courseWorkStates"], unittest.equals(arg_courseWorkStates));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
@@ -2412,7 +2412,7 @@ main() {
         var resp = convert.JSON.encode(buildListCourseWorkResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_courseId, courseWorkStates: arg_courseWorkStates, orderBy: arg_orderBy, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListCourseWorkResponse response) {
+      res.list(arg_courseId, courseWorkStates: arg_courseWorkStates, pageSize: arg_pageSize, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListCourseWorkResponse response) {
         checkListCourseWorkResponse(response);
       })));
     });
@@ -2551,10 +2551,10 @@ main() {
       api.CoursesCourseWorkStudentSubmissionsResourceApi res = new api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_courseId = "foo";
       var arg_courseWorkId = "foo";
+      var arg_states = buildUnnamed709();
       var arg_userId = "foo";
-      var arg_states = buildUnnamed688();
-      var arg_late = "foo";
       var arg_pageSize = 42;
+      var arg_late = "foo";
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2596,10 +2596,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
         unittest.expect(queryMap["states"], unittest.equals(arg_states));
-        unittest.expect(queryMap["late"].first, unittest.equals(arg_late));
+        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["late"].first, unittest.equals(arg_late));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
@@ -2609,7 +2609,7 @@ main() {
         var resp = convert.JSON.encode(buildListStudentSubmissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_courseId, arg_courseWorkId, userId: arg_userId, states: arg_states, late: arg_late, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListStudentSubmissionsResponse response) {
+      res.list(arg_courseId, arg_courseWorkId, states: arg_states, userId: arg_userId, pageSize: arg_pageSize, late: arg_late, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListStudentSubmissionsResponse response) {
         checkListStudentSubmissionsResponse(response);
       })));
     });
@@ -3617,9 +3617,9 @@ main() {
 
       var mock = new HttpServerMock();
       api.InvitationsResourceApi res = new api.ClassroomApi(mock).invitations;
-      var arg_userId = "foo";
       var arg_courseId = "foo";
       var arg_pageSize = 42;
+      var arg_userId = "foo";
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3647,9 +3647,9 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
         unittest.expect(queryMap["courseId"].first, unittest.equals(arg_courseId));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
@@ -3659,7 +3659,7 @@ main() {
         var resp = convert.JSON.encode(buildListInvitationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(userId: arg_userId, courseId: arg_courseId, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListInvitationsResponse response) {
+      res.list(courseId: arg_courseId, pageSize: arg_pageSize, userId: arg_userId, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListInvitationsResponse response) {
         checkListInvitationsResponse(response);
       })));
     });
@@ -3834,10 +3834,10 @@ main() {
       var mock = new HttpServerMock();
       api.UserProfilesGuardianInvitationsResourceApi res = new api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_studentId = "foo";
-      var arg_invitedEmailAddress = "foo";
-      var arg_states = buildUnnamed689();
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_invitedEmailAddress = "foo";
+      var arg_states = buildUnnamed710();
+      var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3871,10 +3871,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["invitedEmailAddress"].first, unittest.equals(arg_invitedEmailAddress));
         unittest.expect(queryMap["states"], unittest.equals(arg_states));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
@@ -3883,7 +3883,7 @@ main() {
         var resp = convert.JSON.encode(buildListGuardianInvitationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_studentId, invitedEmailAddress: arg_invitedEmailAddress, states: arg_states, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListGuardianInvitationsResponse response) {
+      res.list(arg_studentId, pageSize: arg_pageSize, invitedEmailAddress: arg_invitedEmailAddress, states: arg_states, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListGuardianInvitationsResponse response) {
         checkListGuardianInvitationsResponse(response);
       })));
     });
@@ -4068,9 +4068,9 @@ main() {
       var mock = new HttpServerMock();
       api.UserProfilesGuardiansResourceApi res = new api.ClassroomApi(mock).userProfiles.guardians;
       var arg_studentId = "foo";
+      var arg_pageSize = 42;
       var arg_invitedEmailAddress = "foo";
       var arg_pageToken = "foo";
-      var arg_pageSize = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4104,9 +4104,9 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["invitedEmailAddress"].first, unittest.equals(arg_invitedEmailAddress));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
@@ -4115,7 +4115,7 @@ main() {
         var resp = convert.JSON.encode(buildListGuardiansResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_studentId, invitedEmailAddress: arg_invitedEmailAddress, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListGuardiansResponse response) {
+      res.list(arg_studentId, pageSize: arg_pageSize, invitedEmailAddress: arg_invitedEmailAddress, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListGuardiansResponse response) {
         checkListGuardiansResponse(response);
       })));
     });

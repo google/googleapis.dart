@@ -110,6 +110,9 @@ class ProjectsEventsResourceApi {
    * Example: `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [serviceFilter_version] - [Optional] The exact value to match against
+   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+   *
    * [serviceFilter_resourceType] - [Optional] The exact value to match against
    * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
    *
@@ -124,17 +127,14 @@ class ProjectsEventsResourceApi {
    *
    * [groupId] - [Required] The group for which events shall be returned.
    *
-   * [serviceFilter_service] - [Optional] The exact value to match against
-   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
-   *
    * [pageToken] - [Optional] A `next_page_token` provided by a previous
    * response.
    *
+   * [serviceFilter_service] - [Optional] The exact value to match against
+   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+   *
    * [pageSize] - [Optional] The maximum number of results to return per
    * response.
-   *
-   * [serviceFilter_version] - [Optional] The exact value to match against
-   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
    * Completes with a [ListEventsResponse].
    *
@@ -144,7 +144,7 @@ class ProjectsEventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListEventsResponse> list(core.String projectName, {core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId, core.String serviceFilter_service, core.String pageToken, core.int pageSize, core.String serviceFilter_version}) {
+  async.Future<ListEventsResponse> list(core.String projectName, {core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId, core.String pageToken, core.String serviceFilter_service, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -155,6 +155,9 @@ class ProjectsEventsResourceApi {
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
     }
+    if (serviceFilter_version != null) {
+      _queryParams["serviceFilter.version"] = [serviceFilter_version];
+    }
     if (serviceFilter_resourceType != null) {
       _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
@@ -164,17 +167,14 @@ class ProjectsEventsResourceApi {
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
     }
-    if (serviceFilter_service != null) {
-      _queryParams["serviceFilter.service"] = [serviceFilter_service];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (serviceFilter_service != null) {
+      _queryParams["serviceFilter.service"] = [serviceFilter_service];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (serviceFilter_version != null) {
-      _queryParams["serviceFilter.version"] = [serviceFilter_version];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/events';
@@ -297,6 +297,9 @@ class ProjectsGroupStatsResourceApi {
    * response.
    * Default is 20.
    *
+   * [serviceFilter_version] - [Optional] The exact value to match against
+   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+   *
    * [order] - [Optional] The sort order in which the results are returned.
    * Default is `COUNT_DESC`.
    * Possible string values are:
@@ -305,9 +308,6 @@ class ProjectsGroupStatsResourceApi {
    * - "LAST_SEEN_DESC" : A LAST_SEEN_DESC.
    * - "CREATED_DESC" : A CREATED_DESC.
    * - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
-   *
-   * [serviceFilter_version] - [Optional] The exact value to match against
-   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
    * [serviceFilter_resourceType] - [Optional] The exact value to match against
    * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
@@ -333,7 +333,7 @@ class ProjectsGroupStatsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String order, core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String alignmentTime, core.String timedCountDuration, core.String pageToken}) {
+  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version, core.String order, core.String serviceFilter_resourceType, core.String alignmentTime, core.String timedCountDuration, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -359,11 +359,11 @@ class ProjectsGroupStatsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (order != null) {
-      _queryParams["order"] = [order];
-    }
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
+    }
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (serviceFilter_resourceType != null) {
       _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];

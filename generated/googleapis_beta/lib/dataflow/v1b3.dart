@@ -172,14 +172,14 @@ class ProjectsJobsResourceApi {
    *
    * [jobId] - The job ID.
    *
-   * [location] - The location that contains this job.
-   *
    * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+   *
+   * [location] - The location that contains this job.
    *
    * Completes with a [Job].
    *
@@ -189,7 +189,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> get(core.String projectId, core.String jobId, {core.String location, core.String view}) {
+  async.Future<Job> get(core.String projectId, core.String jobId, {core.String view, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -203,11 +203,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
@@ -535,15 +535,6 @@ class ProjectsJobsMessagesResourceApi {
    *
    * [jobId] - The job to get messages about.
    *
-   * [startTime] - If specified, return only messages with timestamps >=
-   * start_time.
-   * The default is the job creation time (i.e. beginning of messages).
-   *
-   * [pageToken] - If supplied, this should be the value of next_page_token
-   * returned
-   * by an earlier call. This will cause the next page of results to
-   * be returned.
-   *
    * [pageSize] - If specified, determines the maximum number of messages to
    * return.  If unspecified, the service may choose an appropriate
    * default, or may return an arbitrarily large number of results.
@@ -557,11 +548,20 @@ class ProjectsJobsMessagesResourceApi {
    * - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
    * - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
    *
-   * [location] - The location which contains the job specified by job_id.
-   *
    * [endTime] - Return only messages with timestamps < end_time. The default is
    * now
    * (i.e. return up to the latest messages available).
+   *
+   * [location] - The location which contains the job specified by job_id.
+   *
+   * [pageToken] - If supplied, this should be the value of next_page_token
+   * returned
+   * by an earlier call. This will cause the next page of results to
+   * be returned.
+   *
+   * [startTime] - If specified, return only messages with timestamps >=
+   * start_time.
+   * The default is the job creation time (i.e. beginning of messages).
    *
    * Completes with a [ListJobMessagesResponse].
    *
@@ -571,7 +571,7 @@ class ProjectsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String startTime, core.String pageToken, core.int pageSize, core.String minimumImportance, core.String location, core.String endTime}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.int pageSize, core.String minimumImportance, core.String endTime, core.String location, core.String pageToken, core.String startTime}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -585,23 +585,23 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (minimumImportance != null) {
       _queryParams["minimumImportance"] = [minimumImportance];
     }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
@@ -756,14 +756,14 @@ class ProjectsLocationsJobsResourceApi {
    *
    * [location] - The location that contains this job.
    *
-   * [replaceJobId] - Deprecated. This field is now in the Job message.
-   *
    * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+   *
+   * [replaceJobId] - Deprecated. This field is now in the Job message.
    *
    * Completes with a [Job].
    *
@@ -773,7 +773,7 @@ class ProjectsLocationsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> create(Job request, core.String projectId, core.String location, {core.String replaceJobId, core.String view}) {
+  async.Future<Job> create(Job request, core.String projectId, core.String location, {core.String view, core.String replaceJobId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -790,11 +790,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (replaceJobId != null) {
-      _queryParams["replaceJobId"] = [replaceJobId];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (replaceJobId != null) {
+      _queryParams["replaceJobId"] = [replaceJobId];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs';
@@ -932,17 +932,6 @@ class ProjectsLocationsJobsResourceApi {
    *
    * [location] - The location that contains this job.
    *
-   * [filter] - The kind of filter to use.
-   * Possible string values are:
-   * - "UNKNOWN" : A UNKNOWN.
-   * - "ALL" : A ALL.
-   * - "TERMINATED" : A TERMINATED.
-   * - "ACTIVE" : A ACTIVE.
-   *
-   * [pageToken] - Set this to the 'next_page_token' field of a previous
-   * response
-   * to request additional results in a long list.
-   *
    * [pageSize] - If there are many jobs, limit response to at most this many.
    * The actual number of jobs returned will be the lesser of max_responses
    * and an unspecified server-defined limit.
@@ -955,6 +944,17 @@ class ProjectsLocationsJobsResourceApi {
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
+   * [filter] - The kind of filter to use.
+   * Possible string values are:
+   * - "UNKNOWN" : A UNKNOWN.
+   * - "ALL" : A ALL.
+   * - "TERMINATED" : A TERMINATED.
+   * - "ACTIVE" : A ACTIVE.
+   *
+   * [pageToken] - Set this to the 'next_page_token' field of a previous
+   * response
+   * to request additional results in a long list.
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -963,7 +963,7 @@ class ProjectsLocationsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, core.String location, {core.String filter, core.String pageToken, core.int pageSize, core.String view}) {
+  async.Future<ListJobsResponse> list(core.String projectId, core.String location, {core.int pageSize, core.String view, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -977,17 +977,17 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs';
@@ -1390,14 +1390,14 @@ class ProjectsTemplatesResourceApi {
    * [projectId] - Required. The ID of the Cloud Platform project that the job
    * belongs to.
    *
-   * [dryRun] - Whether or not the job should actually be executed after
-   * validating parameters. Defaults to false. Validation errors do
-   * not cause the HTTP request to fail if true.
-   *
    * [gcsPath] - Required. A Cloud Storage path to the template from which to
    * create
    * the job.
    * Must be valid Cloud Storage URL, beginning with 'gs://'.
+   *
+   * [dryRun] - Whether or not the job should actually be executed after
+   * validating parameters. Defaults to false. Validation errors do
+   * not cause the HTTP request to fail if true.
    *
    * Completes with a [LaunchTemplateResponse].
    *
@@ -1407,7 +1407,7 @@ class ProjectsTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, {core.bool dryRun, core.String gcsPath}) {
+  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, {core.String gcsPath, core.bool dryRun}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1421,11 +1421,11 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (dryRun != null) {
-      _queryParams["dryRun"] = ["${dryRun}"];
-    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/templates:launch';
@@ -3843,13 +3843,13 @@ class KeyRangeLocation {
    * streaming computation cross-worker message delivery.
    */
   core.String deliveryEndpoint;
-  /** The end (exclusive) of the key range. */
-  core.String end;
   /**
-   * The location of the persistent state for this range, as a
+   * DEPRECATED. The location of the persistent state for this range, as a
    * persistent directory in the worker local filesystem.
    */
-  core.String persistentDirectory;
+  core.String deprecatedPersistentDirectory;
+  /** The end (exclusive) of the key range. */
+  core.String end;
   /** The start (inclusive) of the key range. */
   core.String start;
 
@@ -3862,11 +3862,11 @@ class KeyRangeLocation {
     if (_json.containsKey("deliveryEndpoint")) {
       deliveryEndpoint = _json["deliveryEndpoint"];
     }
+    if (_json.containsKey("deprecatedPersistentDirectory")) {
+      deprecatedPersistentDirectory = _json["deprecatedPersistentDirectory"];
+    }
     if (_json.containsKey("end")) {
       end = _json["end"];
-    }
-    if (_json.containsKey("persistentDirectory")) {
-      persistentDirectory = _json["persistentDirectory"];
     }
     if (_json.containsKey("start")) {
       start = _json["start"];
@@ -3881,11 +3881,11 @@ class KeyRangeLocation {
     if (deliveryEndpoint != null) {
       _json["deliveryEndpoint"] = deliveryEndpoint;
     }
+    if (deprecatedPersistentDirectory != null) {
+      _json["deprecatedPersistentDirectory"] = deprecatedPersistentDirectory;
+    }
     if (end != null) {
       _json["end"] = end;
-    }
-    if (persistentDirectory != null) {
-      _json["persistentDirectory"] = persistentDirectory;
     }
     if (start != null) {
       _json["start"] = start;
@@ -3939,11 +3939,6 @@ class LaunchTemplateResponse {
    * the job was successfully launched.
    */
   Job job;
-  /**
-   * The status of the launch template request. Any problems with the request
-   * will be indicated in the error_details.
-   */
-  Status status;
 
   LaunchTemplateResponse();
 
@@ -3951,18 +3946,12 @@ class LaunchTemplateResponse {
     if (_json.containsKey("job")) {
       job = new Job.fromJson(_json["job"]);
     }
-    if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
-    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (job != null) {
       _json["job"] = (job).toJson();
-    }
-    if (status != null) {
-      _json["status"] = (status).toJson();
     }
     return _json;
   }

@@ -59,8 +59,10 @@ buildLicenseAssignment() {
     o.etags = "foo";
     o.kind = "foo";
     o.productId = "foo";
+    o.productName = "foo";
     o.selfLink = "foo";
     o.skuId = "foo";
+    o.skuName = "foo";
     o.userId = "foo";
   }
   buildCounterLicenseAssignment--;
@@ -73,8 +75,10 @@ checkLicenseAssignment(api.LicenseAssignment o) {
     unittest.expect(o.etags, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.productId, unittest.equals('foo'));
+    unittest.expect(o.productName, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.skuId, unittest.equals('foo'));
+    unittest.expect(o.skuName, unittest.equals('foo'));
     unittest.expect(o.userId, unittest.equals('foo'));
   }
   buildCounterLicenseAssignment--;
@@ -99,14 +103,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed1768() {
+buildUnnamed1872() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed1768(core.List<api.LicenseAssignment> o) {
+checkUnnamed1872(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -118,7 +122,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1768();
+    o.items = buildUnnamed1872();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -130,7 +134,7 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1768(o.items);
+    checkUnnamed1872(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }

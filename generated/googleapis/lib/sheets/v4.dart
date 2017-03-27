@@ -291,9 +291,9 @@ class SpreadsheetsValuesResourceApi {
    * existing data and find a "table" within that range. Values will be
    * appended to the next row of the table, starting with the first column of
    * the table. See the
-   * [guide](/sheets/guides/values#appending_values)
+   * [guide](/sheets/api/guides/values#appending_values)
    * and
-   * [sample code](/sheets/samples/writing#append_values)
+   * [sample code](/sheets/api/samples/writing#append_values)
    * for specific details of how tables are detected and data is appended.
    *
    * The caller must specify the spreadsheet ID, range, and
@@ -452,20 +452,6 @@ class SpreadsheetsValuesResourceApi {
    *
    * [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
    *
-   * [ranges] - The A1 notation of the values to retrieve.
-   *
-   * [majorDimension] - The major dimension that results should use.
-   *
-   * For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-   * then requesting `range=A1:B2,majorDimension=ROWS` will return
-   * `[[1,2],[3,4]]`,
-   * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-   * `[[1,3],[2,4]]`.
-   * Possible string values are:
-   * - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-   * - "ROWS" : A ROWS.
-   * - "COLUMNS" : A COLUMNS.
-   *
    * [valueRenderOption] - How values should be represented in the output.
    * The default render option is ValueRenderOption.FORMATTED_VALUE.
    * Possible string values are:
@@ -482,6 +468,20 @@ class SpreadsheetsValuesResourceApi {
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
    * - "FORMATTED_STRING" : A FORMATTED_STRING.
    *
+   * [ranges] - The A1 notation of the values to retrieve.
+   *
+   * [majorDimension] - The major dimension that results should use.
+   *
+   * For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+   * then requesting `range=A1:B2,majorDimension=ROWS` will return
+   * `[[1,2],[3,4]]`,
+   * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+   * `[[1,3],[2,4]]`.
+   * Possible string values are:
+   * - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+   * - "ROWS" : A ROWS.
+   * - "COLUMNS" : A COLUMNS.
+   *
    * Completes with a [BatchGetValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -490,7 +490,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId, {core.List<core.String> ranges, core.String majorDimension, core.String valueRenderOption, core.String dateTimeRenderOption}) {
+  async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId, {core.String valueRenderOption, core.String dateTimeRenderOption, core.List<core.String> ranges, core.String majorDimension}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -501,17 +501,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (ranges != null) {
-      _queryParams["ranges"] = ranges;
-    }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
-    }
     if (valueRenderOption != null) {
       _queryParams["valueRenderOption"] = [valueRenderOption];
     }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
+    }
+    if (ranges != null) {
+      _queryParams["ranges"] = ranges;
+    }
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values:batchGet';
@@ -2003,11 +2003,13 @@ class BatchUpdateValuesRequest {
    * - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
    * be output
    * as doubles in "serial number" format, as popularized by Lotus 1-2-3.
-   * Days are counted from December 31st 1899 and are incremented by 1,
-   * and times are fractions of a day.  For example, January 1st 1900 at noon
-   * would be 1.5, 1 because it's 1 day offset from December 31st 1899,
-   * and .5 because noon is half a day.  February 1st 1900 at 3pm would
-   * be 32.625. This correctly treats the year 1900 as not a leap year.
+   * The whole number portion of the value (left of the decimal) counts
+   * the days since December 30th 1899. The fractional portion (right of
+   * the decimal) counts the time as a fraction of the day. For example,
+   * January 1st 1900 at noon would be 2.5, 2 because it's 2 days after
+   * December 30st 1899, and .5 because noon is half a day.  February 1st
+   * 1900 at 3pm would be 33.625. This correctly treats the year 1900 as
+   * not a leap year.
    * - "FORMATTED_STRING" : Instructs date, time, datetime, and duration fields
    * to be output
    * as strings in their given number format (which is dependent
@@ -2640,6 +2642,8 @@ class CellFormat {
    * The format of the text in the cell (unless overridden by a format run).
    */
   TextFormat textFormat;
+  /** The rotation applied to text in a cell */
+  TextRotation textRotation;
   /**
    * The vertical alignment of the value in the cell.
    * Possible string values are:
@@ -2719,6 +2723,9 @@ class CellFormat {
     if (_json.containsKey("textFormat")) {
       textFormat = new TextFormat.fromJson(_json["textFormat"]);
     }
+    if (_json.containsKey("textRotation")) {
+      textRotation = new TextRotation.fromJson(_json["textRotation"]);
+    }
     if (_json.containsKey("verticalAlignment")) {
       verticalAlignment = _json["verticalAlignment"];
     }
@@ -2752,6 +2759,9 @@ class CellFormat {
     }
     if (textFormat != null) {
       _json["textFormat"] = (textFormat).toJson();
+    }
+    if (textRotation != null) {
+      _json["textRotation"] = (textRotation).toJson();
     }
     if (verticalAlignment != null) {
       _json["verticalAlignment"] = verticalAlignment;
@@ -4830,13 +4840,13 @@ class InterpolationPoint {
  */
 class IterativeCalculationSettings {
   /**
-   * When iterative calculation is enabled, the threshold value such that
-   * calculation rounds stop when succesive results differ by less.
+   * When iterative calculation is enabled and successive results differ by
+   * less than this threshold value, the calculation rounds stop.
    */
   core.double convergenceThreshold;
   /**
    * When iterative calculation is enabled, the maximum number of calculation
-   * rounds to perform during iterative calculation.
+   * rounds to perform.
    */
   core.int maxIterations;
 
@@ -4985,7 +4995,8 @@ class NumberFormat {
   /**
    * Pattern string used for formatting.  If not set, a default pattern based on
    * the user's locale will be used if necessary for the given type.
-   * See the [Date and Number Formats guide](/sheets/guides/formats) for more
+   * See the [Date and Number Formats guide](/sheets/api/guides/formats) for
+   * more
    * information about the supported patterns.
    */
   core.String pattern;
@@ -6942,6 +6953,56 @@ class TextFormatRun {
     }
     if (startIndex != null) {
       _json["startIndex"] = startIndex;
+    }
+    return _json;
+  }
+}
+
+/** The rotation applied to text in a cell. */
+class TextRotation {
+  /**
+   * The angle between the standard orientation and the desired orientation.
+   * Measured in degrees. Valid values are between -90 and 90. Positive
+   * angles are angled upwards, negative are angled downwards.
+   *
+   * Note: For LTR text direction positive angles are in the counterclockwise
+   * direction, whereas for RTL they are in the clockwise direction
+   */
+  core.int angle;
+  /**
+   * If true, text reads top to bottom, but the orientation of individual
+   * characters is unchanged.
+   * For example:
+   *
+   *     | V |
+   *     | e |
+   *     | r |
+   *     | t |
+   *     | i |
+   *     | c |
+   *     | a |
+   *     | l |
+   */
+  core.bool vertical;
+
+  TextRotation();
+
+  TextRotation.fromJson(core.Map _json) {
+    if (_json.containsKey("angle")) {
+      angle = _json["angle"];
+    }
+    if (_json.containsKey("vertical")) {
+      vertical = _json["vertical"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (angle != null) {
+      _json["angle"] = angle;
+    }
+    if (vertical != null) {
+      _json["vertical"] = vertical;
     }
     return _json;
   }

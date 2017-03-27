@@ -222,8 +222,7 @@ class EntriesResourceApi {
   }
 
   /**
-   * Writes log entries to Stackdriver Logging. All log entries are written by
-   * this method.
+   * Writes log entries to Stackdriver Logging.
    *
    * [request] - The metadata request object.
    *
@@ -732,14 +731,14 @@ class ProjectsMetricsResourceApi {
    *
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
+   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
-   *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogMetricsResponse].
    *
@@ -749,7 +748,7 @@ class ProjectsMetricsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogMetricsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListLogMetricsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -760,11 +759,11 @@ class ProjectsMetricsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';
@@ -1380,20 +1379,20 @@ class ListLogEntriesRequest {
    * returns entries in order of increasing values of LogEntry.timestamp (oldest
    * first), and the second option returns entries in order of decreasing
    * timestamps (newest first). Entries with equal timestamps are returned in
-   * order of LogEntry.insertId.
+   * order of their insert_id values.
    */
   core.String orderBy;
   /**
    * Optional. The maximum number of results to return from this request.
-   * Non-positive values are ignored. The presence of nextPageToken in the
+   * Non-positive values are ignored. The presence of next_page_token in the
    * response indicates that more results might be available.
    */
   core.int pageSize;
   /**
    * Optional. If present, then retrieve the next batch of results from the
-   * preceding call to this method. pageToken must be the value of nextPageToken
-   * from the previous response. The values of other method parameters should be
-   * identical to those in the previous call.
+   * preceding call to this method. page_token must be the value of
+   * next_page_token from the previous response. The values of other method
+   * parameters should be identical to those in the previous call.
    */
   core.String pageToken;
   /**
@@ -1648,10 +1647,12 @@ class LogEntry {
    */
   HttpRequest httpRequest;
   /**
-   * Optional. A unique ID for the log entry. If you provide this field, the
-   * logging service considers other log entries in the same project with the
-   * same ID as duplicates which can be removed. If omitted, Stackdriver Logging
-   * will generate a unique ID for this log entry.
+   * Optional. A unique identifier for the log entry. If you provide a value,
+   * then Stackdriver Logging considers other log entries in the same project,
+   * with the same timestamp, and with the same insert_id to be duplicates which
+   * can be removed. If omitted in new log entries, then Stackdriver Logging
+   * will insert its own unique identifier. The insert_id is used to order log
+   * entries that have the same timestamp value.
    */
   core.String insertId;
   /**
@@ -1730,7 +1731,10 @@ class LogEntry {
   core.String textPayload;
   /**
    * Optional. The time the event described by the log entry occurred. If
-   * omitted, Stackdriver Logging will use the time the log entry is received.
+   * omitted in a new log entry, Stackdriver Logging will insert the time the
+   * log entry is received. Stackdriver Logging might reject log entries whose
+   * time stamps are more than a couple of hours in the future. Log entries with
+   * time stamps in the past are accepted.
    */
   core.String timestamp;
   /**
@@ -2730,11 +2734,15 @@ class SourceReference {
 class WriteLogEntriesRequest {
   /**
    * Required. The log entries to write. Values supplied for the fields
-   * log_name, resource, and labels in this entries.write request are added to
-   * those log entries that do not provide their own values for the fields.To
-   * improve throughput and to avoid exceeding the quota limit for calls to
-   * entries.write, you should write multiple log entries at once rather than
-   * calling this method for each individual log entry.
+   * log_name, resource, and labels in this entries.write request are inserted
+   * into those log entries in this list that do not provide their own
+   * values.Stackdriver Logging also creates and inserts values for timestamp
+   * and insert_id if the entries do not provide them. The created insert_id for
+   * the N'th entry in this list will be greater than earlier entries and less
+   * than later entries. Otherwise, the order of log entries in this list does
+   * not matter.To improve throughput and to avoid exceeding the quota limit for
+   * calls to entries.write, you should write multiple log entries at once
+   * rather than calling this method for each individual log entry.
    */
   core.List<LogEntry> entries;
   /**
@@ -2760,9 +2768,9 @@ class WriteLogEntriesRequest {
   /**
    * Optional. Whether valid entries should be written even if some other
    * entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any
-   * entry is not written, the response status will be the error associated with
-   * one of the failed entries and include error details in the form of
-   * WriteLogEntriesPartialErrors.
+   * entry is not written, then the response status is the error associated with
+   * one of the failed entries and the response includes error details keyed by
+   * the entries' zero-based index in the entries.write method.
    */
   core.bool partialSuccess;
   /**

@@ -193,10 +193,6 @@ class PeopleConnectionsResourceApi {
    * `people/me` is valid.
    * Value must have pattern "^people/[^/]+$".
    *
-   * [requestSyncToken] - Whether the response should include a sync token,
-   * which can be used to get
-   * all changes since the last request.
-   *
    * [pageToken] - The token of the page to be returned.
    *
    * [requestMask_includeField] - Comma-separated list of fields to be included
@@ -223,6 +219,10 @@ class PeopleConnectionsResourceApi {
    * - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
    * - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
    *
+   * [requestSyncToken] - Whether the response should include a sync token,
+   * which can be used to get
+   * all changes since the last request.
+   *
    * Completes with a [ListConnectionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -231,7 +231,7 @@ class PeopleConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.bool requestSyncToken, core.String pageToken, core.String requestMask_includeField, core.int pageSize, core.String syncToken, core.String sortOrder}) {
+  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String pageToken, core.String requestMask_includeField, core.int pageSize, core.String syncToken, core.String sortOrder, core.bool requestSyncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -241,9 +241,6 @@ class PeopleConnectionsResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
-    }
-    if (requestSyncToken != null) {
-      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -259,6 +256,9 @@ class PeopleConnectionsResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (requestSyncToken != null) {
+      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/connections';
@@ -1070,6 +1070,8 @@ class ListConnectionsResponse {
   core.String nextPageToken;
   /** The token that can be used to retrieve changes since the last request. */
   core.String nextSyncToken;
+  /** The total number of people in the list without pagination. */
+  core.int totalPeople;
 
   ListConnectionsResponse();
 
@@ -1083,6 +1085,9 @@ class ListConnectionsResponse {
     if (_json.containsKey("nextSyncToken")) {
       nextSyncToken = _json["nextSyncToken"];
     }
+    if (_json.containsKey("totalPeople")) {
+      totalPeople = _json["totalPeople"];
+    }
   }
 
   core.Map toJson() {
@@ -1095,6 +1100,9 @@ class ListConnectionsResponse {
     }
     if (nextSyncToken != null) {
       _json["nextSyncToken"] = nextSyncToken;
+    }
+    if (totalPeople != null) {
+      _json["totalPeople"] = totalPeople;
     }
     return _json;
   }

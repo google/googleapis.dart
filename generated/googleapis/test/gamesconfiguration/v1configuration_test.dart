@@ -113,14 +113,14 @@ checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail--;
 }
 
-buildUnnamed661() {
+buildUnnamed682() {
   var o = new core.List<api.AchievementConfiguration>();
   o.add(buildAchievementConfiguration());
   o.add(buildAchievementConfiguration());
   return o;
 }
 
-checkUnnamed661(core.List<api.AchievementConfiguration> o) {
+checkUnnamed682(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementConfiguration(o[0]);
   checkAchievementConfiguration(o[1]);
@@ -131,7 +131,7 @@ buildAchievementConfigurationListResponse() {
   var o = new api.AchievementConfigurationListResponse();
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    o.items = buildUnnamed661();
+    o.items = buildUnnamed682();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -142,7 +142,7 @@ buildAchievementConfigurationListResponse() {
 checkAchievementConfigurationListResponse(api.AchievementConfigurationListResponse o) {
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    checkUnnamed661(o.items);
+    checkUnnamed682(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -288,14 +288,14 @@ checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
   buildCounterLeaderboardConfigurationDetail--;
 }
 
-buildUnnamed662() {
+buildUnnamed683() {
   var o = new core.List<api.LeaderboardConfiguration>();
   o.add(buildLeaderboardConfiguration());
   o.add(buildLeaderboardConfiguration());
   return o;
 }
 
-checkUnnamed662(core.List<api.LeaderboardConfiguration> o) {
+checkUnnamed683(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardConfiguration(o[0]);
   checkLeaderboardConfiguration(o[1]);
@@ -306,7 +306,7 @@ buildLeaderboardConfigurationListResponse() {
   var o = new api.LeaderboardConfigurationListResponse();
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    o.items = buildUnnamed662();
+    o.items = buildUnnamed683();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -317,7 +317,7 @@ buildLeaderboardConfigurationListResponse() {
 checkLeaderboardConfigurationListResponse(api.LeaderboardConfigurationListResponse o) {
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    checkUnnamed662(o.items);
+    checkUnnamed683(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -347,14 +347,14 @@ checkLocalizedString(api.LocalizedString o) {
   buildCounterLocalizedString--;
 }
 
-buildUnnamed663() {
+buildUnnamed684() {
   var o = new core.List<api.LocalizedString>();
   o.add(buildLocalizedString());
   o.add(buildLocalizedString());
   return o;
 }
 
-checkUnnamed663(core.List<api.LocalizedString> o) {
+checkUnnamed684(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedString(o[0]);
   checkLocalizedString(o[1]);
@@ -366,7 +366,7 @@ buildLocalizedStringBundle() {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     o.kind = "foo";
-    o.translations = buildUnnamed663();
+    o.translations = buildUnnamed684();
   }
   buildCounterLocalizedStringBundle--;
   return o;
@@ -376,7 +376,7 @@ checkLocalizedStringBundle(api.LocalizedStringBundle o) {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed663(o.translations);
+    checkUnnamed684(o.translations);
   }
   buildCounterLocalizedStringBundle--;
 }

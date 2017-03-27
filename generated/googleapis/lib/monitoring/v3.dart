@@ -635,12 +635,6 @@ class ProjectsMetricDescriptorsResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - If this field is empty, all custom and system-defined metric
-   * descriptors are returned. Otherwise, the filter specifies which metric
-   * descriptors are to be returned. For example, the following filter matches
-   * all custom metrics:
-   * metric.type = starts_with("custom.googleapis.com/")
-   *
    * [pageToken] - If this field is not empty then it must contain the
    * nextPageToken value returned by a previous call to this method. Using this
    * field causes the method to return additional results from the previous
@@ -648,6 +642,12 @@ class ProjectsMetricDescriptorsResourceApi {
    *
    * [pageSize] - A positive number that is the maximum number of results to
    * return.
+   *
+   * [filter] - If this field is empty, all custom and system-defined metric
+   * descriptors are returned. Otherwise, the filter specifies which metric
+   * descriptors are to be returned. For example, the following filter matches
+   * all custom metrics:
+   * metric.type = starts_with("custom.googleapis.com/")
    *
    * Completes with a [ListMetricDescriptorsResponse].
    *
@@ -657,7 +657,7 @@ class ProjectsMetricDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListMetricDescriptorsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListMetricDescriptorsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -668,14 +668,14 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/metricDescriptors';
@@ -876,53 +876,6 @@ class ProjectsTimeSeriesResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - A monitoring filter that specifies which time series should be
-   * returned. The filter must specify a single metric type, and can
-   * additionally specify metric labels and other information. For example:
-   * metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-   *     metric.label.instance_name = "my-instance-name"
-   *
-   * [pageToken] - If this field is not empty then it must contain the
-   * nextPageToken value returned by a previous call to this method. Using this
-   * field causes the method to return additional results from the previous
-   * method call.
-   *
-   * [aggregation_perSeriesAligner] - The approach to be used to align
-   * individual time series. Not all alignment functions may be applied to all
-   * time series, depending on the metric type and value type of the original
-   * time series. Alignment may change the metric type or the value type of the
-   * time series.Time series data must be aligned in order to perform cross-time
-   * series reduction. If crossSeriesReducer is specified, then perSeriesAligner
-   * must be specified and not equal ALIGN_NONE and alignmentPeriod must be
-   * specified; otherwise, an error is returned.
-   * Possible string values are:
-   * - "ALIGN_NONE" : A ALIGN_NONE.
-   * - "ALIGN_DELTA" : A ALIGN_DELTA.
-   * - "ALIGN_RATE" : A ALIGN_RATE.
-   * - "ALIGN_INTERPOLATE" : A ALIGN_INTERPOLATE.
-   * - "ALIGN_NEXT_OLDER" : A ALIGN_NEXT_OLDER.
-   * - "ALIGN_MIN" : A ALIGN_MIN.
-   * - "ALIGN_MAX" : A ALIGN_MAX.
-   * - "ALIGN_MEAN" : A ALIGN_MEAN.
-   * - "ALIGN_COUNT" : A ALIGN_COUNT.
-   * - "ALIGN_SUM" : A ALIGN_SUM.
-   * - "ALIGN_STDDEV" : A ALIGN_STDDEV.
-   * - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
-   * - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
-   * - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
-   * - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
-   * - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
-   * - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
-   *
-   * [interval_startTime] - Optional. The beginning of the time interval. The
-   * default value for the start time is the end time. The start time must not
-   * be later than the end time.
-   *
-   * [view] - Specifies which information is returned about the time series.
-   * Possible string values are:
-   * - "FULL" : A FULL.
-   * - "HEADERS" : A HEADERS.
-   *
    * [aggregation_groupByFields] - The set of fields to preserve when
    * crossSeriesReducer is specified. The groupByFields determine how the time
    * series are partitioned into subsets prior to applying the aggregation
@@ -978,6 +931,53 @@ class ProjectsTimeSeriesResourceApi {
    * - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
    * - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
    *
+   * [filter] - A monitoring filter that specifies which time series should be
+   * returned. The filter must specify a single metric type, and can
+   * additionally specify metric labels and other information. For example:
+   * metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+   *     metric.label.instance_name = "my-instance-name"
+   *
+   * [pageToken] - If this field is not empty then it must contain the
+   * nextPageToken value returned by a previous call to this method. Using this
+   * field causes the method to return additional results from the previous
+   * method call.
+   *
+   * [aggregation_perSeriesAligner] - The approach to be used to align
+   * individual time series. Not all alignment functions may be applied to all
+   * time series, depending on the metric type and value type of the original
+   * time series. Alignment may change the metric type or the value type of the
+   * time series.Time series data must be aligned in order to perform cross-time
+   * series reduction. If crossSeriesReducer is specified, then perSeriesAligner
+   * must be specified and not equal ALIGN_NONE and alignmentPeriod must be
+   * specified; otherwise, an error is returned.
+   * Possible string values are:
+   * - "ALIGN_NONE" : A ALIGN_NONE.
+   * - "ALIGN_DELTA" : A ALIGN_DELTA.
+   * - "ALIGN_RATE" : A ALIGN_RATE.
+   * - "ALIGN_INTERPOLATE" : A ALIGN_INTERPOLATE.
+   * - "ALIGN_NEXT_OLDER" : A ALIGN_NEXT_OLDER.
+   * - "ALIGN_MIN" : A ALIGN_MIN.
+   * - "ALIGN_MAX" : A ALIGN_MAX.
+   * - "ALIGN_MEAN" : A ALIGN_MEAN.
+   * - "ALIGN_COUNT" : A ALIGN_COUNT.
+   * - "ALIGN_SUM" : A ALIGN_SUM.
+   * - "ALIGN_STDDEV" : A ALIGN_STDDEV.
+   * - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
+   * - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
+   * - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
+   * - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
+   * - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
+   * - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
+   *
+   * [interval_startTime] - Optional. The beginning of the time interval. The
+   * default value for the start time is the end time. The start time must not
+   * be later than the end time.
+   *
+   * [view] - Specifies which information is returned about the time series.
+   * Possible string values are:
+   * - "FULL" : A FULL.
+   * - "HEADERS" : A HEADERS.
+   *
    * Completes with a [ListTimeSeriesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -986,7 +986,7 @@ class ProjectsTimeSeriesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTimeSeriesResponse> list(core.String name, {core.String filter, core.String pageToken, core.String aggregation_perSeriesAligner, core.String interval_startTime, core.String view, core.List<core.String> aggregation_groupByFields, core.String interval_endTime, core.String aggregation_alignmentPeriod, core.int pageSize, core.String orderBy, core.String aggregation_crossSeriesReducer}) {
+  async.Future<ListTimeSeriesResponse> list(core.String name, {core.List<core.String> aggregation_groupByFields, core.String interval_endTime, core.String aggregation_alignmentPeriod, core.int pageSize, core.String orderBy, core.String aggregation_crossSeriesReducer, core.String filter, core.String pageToken, core.String aggregation_perSeriesAligner, core.String interval_startTime, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -996,21 +996,6 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (aggregation_perSeriesAligner != null) {
-      _queryParams["aggregation.perSeriesAligner"] = [aggregation_perSeriesAligner];
-    }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if (aggregation_groupByFields != null) {
       _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
@@ -1030,6 +1015,21 @@ class ProjectsTimeSeriesResourceApi {
     if (aggregation_crossSeriesReducer != null) {
       _queryParams["aggregation.crossSeriesReducer"] = [aggregation_crossSeriesReducer];
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (aggregation_perSeriesAligner != null) {
+      _queryParams["aggregation.perSeriesAligner"] = [aggregation_perSeriesAligner];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/timeSeries';
 
@@ -1048,23 +1048,19 @@ class ProjectsTimeSeriesResourceApi {
 
 
 /**
- * A Distribution may optionally contain a histogram of the values in the
- * population. The histogram is given in bucket_counts as counts of values that
- * fall into one of a sequence of non-overlapping buckets. The sequence of
- * buckets is described by bucket_options.A bucket specifies an inclusive lower
+ * BucketOptions describes the bucket boundaries used to create a histogram for
+ * the distribution. The buckets can be in a linear sequence, an exponential
+ * sequence, or each bucket can be specified explicitly. BucketOptions does not
+ * include the number of values in each bucket.A bucket has an inclusive lower
  * bound and exclusive upper bound for the values that are counted for that
- * bucket. The upper bound of a bucket is strictly greater than the lower
- * bound.The sequence of N buckets for a Distribution consists of an underflow
+ * bucket. The upper bound of a bucket must be strictly greater than the lower
+ * bound. The sequence of N buckets for a distribution consists of an underflow
  * bucket (number 0), zero or more finite buckets (number 1 through N - 2) and
  * an overflow bucket (number N - 1). The buckets are contiguous: the lower
  * bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The
  * buckets span the whole range of finite values: lower bound of the underflow
  * bucket is -infinity and the upper bound of the overflow bucket is +infinity.
- * The finite buckets are so-called because both bounds are finite.BucketOptions
- * describes bucket boundaries in one of three ways. Two describe the boundaries
- * by giving parameters for a formula to generate boundaries and one gives the
- * bucket boundaries explicitly.If bucket_options is not given, then no
- * bucket_counts may be given.
+ * The finite buckets are so-called because both bounds are finite.
  */
 class BucketOptions {
   /** The explicit buckets. */
@@ -1315,34 +1311,40 @@ class CreateTimeSeriesRequest {
 }
 
 /**
- * Distribution contains summary statistics for a population of values and,
- * optionally, a histogram representing the distribution of those values across
- * a specified set of histogram buckets.The summary statistics are the count,
- * mean, sum of the squared deviation from the mean, the minimum, and the
- * maximum of the set of population of values.The histogram is based on a
- * sequence of buckets and gives a count of values that fall into each bucket.
- * The boundaries of the buckets are given either explicitly or by specifying
- * parameters for a method of computing them (buckets of fixed width or buckets
- * of exponentially increasing width).Although it is not forbidden, it is
- * generally a bad idea to include non-finite values (infinities or NaNs) in the
+ * Distribution contains summary statistics for a population of values. It
+ * optionally contains a histogram representing the distribution of those values
+ * across a set of buckets.The summary statistics are the count, mean, sum of
+ * the squared deviation from the mean, the minimum, and the maximum of the set
+ * of population of values. The histogram is based on a sequence of buckets and
+ * gives a count of values that fall into each bucket. The boundaries of the
+ * buckets are given either explicitly or by formulas for buckets of fixed or
+ * exponentially increasing widths.Although it is not forbidden, it is generally
+ * a bad idea to include non-finite values (infinities or NaNs) in the
  * population of values, as this will render the mean and
  * sum_of_squared_deviation fields meaningless.
  */
 class Distribution {
   /**
-   * If bucket_options is given, then the sum of the values in bucket_counts
-   * must equal the value in count. If bucket_options is not given, no
-   * bucket_counts fields may be given.Bucket counts are given in order under
-   * the numbering scheme described above (the underflow bucket has number 0;
-   * the finite buckets, if any, have numbers 1 through N-2; the overflow bucket
-   * has number N-1).The size of bucket_counts must be no greater than N as
-   * defined in bucket_options.Any suffix of trailing zero bucket_count fields
-   * may be omitted.
+   * Required in the Stackdriver Monitoring API v3. The values for each bucket
+   * specified in bucket_options. The sum of the values in bucketCounts must
+   * equal the value in the count field of the Distribution object. The order of
+   * the bucket counts follows the numbering schemes described for the three
+   * bucket types. The underflow bucket has number 0; the finite buckets, if
+   * any, have numbers 1 through N-2; and the overflow bucket has number N-1.
+   * The size of bucket_counts must not be greater than N. If the size is less
+   * than N, then the remaining buckets are assigned values of zero.
    */
   core.List<core.String> bucketCounts;
-  /** Defines the histogram bucket boundaries. */
+  /**
+   * Required in the Stackdriver Monitoring API v3. Defines the histogram bucket
+   * boundaries.
+   */
   BucketOptions bucketOptions;
-  /** The number of values in the population. Must be non-negative. */
+  /**
+   * The number of values in the population. Must be non-negative. This value
+   * must equal the sum of the values in bucket_counts if a histogram is
+   * provided.
+   */
   core.String count;
   /**
    * The arithmetic mean of the values in the population. If count is zero then
@@ -1435,11 +1437,12 @@ class Empty {
 }
 
 /**
- * A set of buckets with arbitrary widths.Defines size(bounds) + 1 (= N) buckets
- * with these boundaries for bucket i:Upper bound (0 <= i < N-1): boundsi  Lower
- * bound (1 <= i < N); boundsi - 1There must be at least one element in bounds.
- * If bounds has only one element, there are no finite buckets, and that single
- * element is the common boundary of the overflow and underflow buckets.
+ * Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
+ * (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i <
+ * N-1): boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must
+ * contain at least one element. If bounds has only one element, then there are
+ * no finite buckets, and that single element is the common boundary of the
+ * overflow and underflow buckets.
  */
 class Explicit {
   /** The values must be monotonically increasing. */
@@ -1463,12 +1466,12 @@ class Explicit {
 }
 
 /**
- * Specify a sequence of buckets that have a width that is proportional to the
- * value of the lower bound. Each bucket represents a constant relative
- * uncertainty on a specific value in the bucket.Defines num_finite_buckets + 2
- * (= N) buckets with these boundaries for bucket i:Upper bound (0 <= i < N-1):
- * scale * (growth_factor ^ i).  Lower bound (1 <= i < N): scale *
- * (growth_factor ^ (i - 1)).
+ * Specifies an exponential sequence of buckets that have a width that is
+ * proportional to the value of the lower bound. Each bucket represents a
+ * constant relative uncertainty on a specific value in the bucket.There are
+ * num_finite_buckets + 2 (= N) buckets. Bucket i has the following
+ * boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower
+ * bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
  */
 class Exponential {
   /** Must be greater than 1. */
@@ -1774,11 +1777,12 @@ class LabelDescriptor {
 }
 
 /**
- * Specify a sequence of buckets that all have the same width (except overflow
- * and underflow). Each bucket represents a constant absolute uncertainty on the
- * specific value in the bucket.Defines num_finite_buckets + 2 (= N) buckets
- * with these boundaries for bucket i:Upper bound (0 <= i < N-1): offset +
- * (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1)).
+ * Specifies a linear sequence of buckets that all have the same width (except
+ * overflow and underflow). Each bucket represents a constant absolute
+ * uncertainty on the specific value in the bucket.There are num_finite_buckets
+ * + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i
+ * < N-1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i
+ * - 1)).
  */
 class Linear {
   /** Must be greater than 0. */

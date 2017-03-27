@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client admin/reports_v1';
 
 /**
- * Fetches reports for the administrators of Google Apps customers about the
- * usage, collaboration, security, and risk for their users.
+ * Fetches reports for the administrators of G Suite customers about the usage,
+ * collaboration, security, and risk for their users.
  */
 class AdminApi {
   /** View audit reports for your G Suite domain */
@@ -56,7 +56,7 @@ class ActivitiesResourceApi {
    * [applicationName] - Application name for which the events are to be
    * retrieved.
    * Value must have pattern
-   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)".
+   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -64,7 +64,7 @@ class ActivitiesResourceApi {
    * [customerId] - Represents the customer for which the data is to be fetched.
    * Value must have pattern "C.+".
    *
-   * [endTime] - Return events which occured at or before this time.
+   * [endTime] - Return events which occurred at or before this time.
    * Value must have pattern
    * "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
    *
@@ -80,7 +80,7 @@ class ActivitiesResourceApi {
    *
    * [pageToken] - Token to specify next page.
    *
-   * [startTime] - Return events which occured at or after this time.
+   * [startTime] - Return events which occurred at or after this time.
    * Value must have pattern
    * "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
    *
@@ -157,7 +157,7 @@ class ActivitiesResourceApi {
    * [applicationName] - Application name for which the events are to be
    * retrieved.
    * Value must have pattern
-   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)".
+   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -165,7 +165,7 @@ class ActivitiesResourceApi {
    * [customerId] - Represents the customer for which the data is to be fetched.
    * Value must have pattern "C.+".
    *
-   * [endTime] - Return events which occured at or before this time.
+   * [endTime] - Return events which occurred at or before this time.
    * Value must have pattern
    * "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
    *
@@ -181,7 +181,7 @@ class ActivitiesResourceApi {
    *
    * [pageToken] - Token to specify next page.
    *
-   * [startTime] - Return events which occured at or after this time.
+   * [startTime] - Return events which occurred at or after this time.
    * Value must have pattern
    * "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
    *
@@ -322,7 +322,7 @@ class CustomerUsageReportsResourceApi {
    * [parameters] - Represents the application name, parameter name pairs to
    * fetch in csv as app_name1:param_name1, app_name2:param_name2.
    * Value must have pattern
-   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+)".
+   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
    *
    * Completes with a [UsageReports].
    *
@@ -393,7 +393,7 @@ class UserUsageReportResourceApi {
    * [filters] - Represents the set of filters including parameter operator
    * value.
    * Value must have pattern
-   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
+   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
    *
    * [maxResults] - Maximum number of results to return. Maximum allowed is 1000
    *
@@ -402,7 +402,7 @@ class UserUsageReportResourceApi {
    * [parameters] - Represents the application name, parameter name pairs to
    * fetch in csv as app_name1:param_name1, app_name2:param_name2.
    * Value must have pattern
-   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+)".
+   * "(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
    *
    * Completes with a [UsageReports].
    *

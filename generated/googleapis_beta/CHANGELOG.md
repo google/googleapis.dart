@@ -1,3 +1,18 @@
+## 0.35.0
+
+* [api-new] dlp:v2beta1
+* [api] appengine:v1beta4
+* [api] appengine:v1beta5
+* [api] appengine:v1beta
+* [api] cloudresourcemanager:v1beta1
+* [api] dataflow:v1b3
+* [api] dataproc:v1beta1
+* [api] proximitybeacon:v1beta1
+* [api-breaking] appengine:v1beta
+* [api-breaking] dataflow:v1b3
+* [api-removed] cloudkmsv1beta1
+* [api-removed] mlv1beta1
+
 ## 0.34.0
 
 * [api-new] appengine

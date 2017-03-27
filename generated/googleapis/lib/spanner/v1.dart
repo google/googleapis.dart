@@ -102,13 +102,13 @@ class ProjectsInstanceConfigsResourceApi {
    * `projects/<project>`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - If non-empty, `page_token` should contain a
-   * next_page_token
-   * from a previous ListInstanceConfigsResponse.
-   *
    * [pageSize] - Number of instance configurations to be returned in the
    * response. If 0 or
    * less, defaults to the server's maximum allowed page size.
+   *
+   * [pageToken] - If non-empty, `page_token` should contain a
+   * next_page_token
+   * from a previous ListInstanceConfigsResponse.
    *
    * Completes with a [ListInstanceConfigsResponse].
    *
@@ -118,7 +118,7 @@ class ProjectsInstanceConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstanceConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListInstanceConfigsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -129,11 +129,11 @@ class ProjectsInstanceConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instanceConfigs';
@@ -396,14 +396,6 @@ class ProjectsInstancesResourceApi {
    * requested. Values are of the form `projects/<project>`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - If non-empty, `page_token` should contain a
-   * next_page_token from a
-   * previous ListInstancesResponse.
-   *
-   * [pageSize] - Number of instances to be returned in the response. If 0 or
-   * less, defaults
-   * to the server's maximum allowed page size.
-   *
    * [filter] - An expression for filtering the results of the request. Filter
    * rules are
    * case insensitive. The fields eligible for filtering are:
@@ -425,6 +417,14 @@ class ProjectsInstancesResourceApi {
    *                                  it has the label "env" with its value
    *                                  containing "dev".
    *
+   * [pageToken] - If non-empty, `page_token` should contain a
+   * next_page_token from a
+   * previous ListInstancesResponse.
+   *
+   * [pageSize] - Number of instances to be returned in the response. If 0 or
+   * less, defaults
+   * to the server's maximum allowed page size.
+   *
    * Completes with a [ListInstancesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -433,7 +433,7 @@ class ProjectsInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstancesResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListInstancesResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -444,14 +444,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instances';
@@ -910,13 +910,13 @@ class ProjectsInstancesDatabasesResourceApi {
    * Values are of the form `projects/<project>/instances/<instance>`.
    * Value must have pattern "^projects/[^/]+/instances/[^/]+$".
    *
-   * [pageToken] - If non-empty, `page_token` should contain a
-   * next_page_token from a
-   * previous ListDatabasesResponse.
-   *
    * [pageSize] - Number of databases to be returned in the response. If 0 or
    * less,
    * defaults to the server's maximum allowed page size.
+   *
+   * [pageToken] - If non-empty, `page_token` should contain a
+   * next_page_token from a
+   * previous ListDatabasesResponse.
    *
    * Completes with a [ListDatabasesResponse].
    *
@@ -926,7 +926,7 @@ class ProjectsInstancesDatabasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDatabasesResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListDatabasesResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -937,11 +937,11 @@ class ProjectsInstancesDatabasesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/databases';
@@ -1444,10 +1444,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
    *
    * Cloud Spanner limits the number of sessions that can exist at any given
    * time; thus, it is a good idea to delete idle and/or unneeded sessions.
-   * Aside from explicit deletes, Cloud Spanner can delete sessions for
-   * which no operations are sent for more than an hour, or due to
-   * internal errors. If a session is deleted, requests to it
-   * return `NOT_FOUND`.
+   * Aside from explicit deletes, Cloud Spanner can delete sessions for which no
+   * operations are sent for more than an hour. If a session is deleted,
+   * requests to it return `NOT_FOUND`.
    *
    * Idle sessions can be kept alive by sending a trivial SQL query
    * periodically, e.g., `"SELECT 1"`.
@@ -2001,11 +2000,11 @@ class ProjectsInstancesOperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
    *
+   * [filter] - The standard list filter.
+   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -2015,7 +2014,7 @@ class ProjectsInstancesOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2026,14 +2025,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2413,6 +2412,15 @@ class Condition {
    * any of the given values". It is not permitted to grant access based on
    * the *absence* of a realm, so realm conditions can only be used in
    * a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+   * - "APPROVER" : An approver (distinct from the requester) that has
+   * authorized this
+   * request.
+   * When used with IN, the condition indicates that one of the approvers
+   * associated with the request matches the specified principal, or is a
+   * member of the specified group. Approvers can only grant additional
+   * access, and are thus only used in a strictly positive context
+   * (e.g. ALLOW/IN or DENY/NOT_IN).
+   * See: go/rpc-security-policy-dynamicauth.
    */
   core.String iam;
   /**

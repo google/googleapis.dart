@@ -57,7 +57,9 @@ class ProjectsServicesResourceApi {
       _requester = client;
 
   /**
-   * Disable a managed service for a consumer.
+   * Disable a service so it can no longer be used with a
+   * project. This prevents unintended usage that may cause unexpected billing
+   * charges or security leaks.
    *
    * Operation<response: google.protobuf.Empty>
    *
@@ -110,12 +112,11 @@ class ProjectsServicesResourceApi {
   }
 
   /**
-   * Enable a managed service for a consumer with the default settings.
+   * Enable a service so it can be used with a project.
+   * See [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for
+   * more information.
    *
    * Operation<response: google.protobuf.Empty>
-   *
-   * google.rpc.Status errors may contain a
-   * google.rpc.PreconditionFailure error detail.
    *
    * [request] - The metadata request object.
    *
@@ -2972,6 +2973,55 @@ class Operation {
   }
 }
 
+/** The metadata associated with a long running operation resource. */
+class OperationMetadata {
+  /** Percentage of completion of this operation, ranging from 0 to 100. */
+  core.int progressPercentage;
+  /**
+   * The full name of the resources that this operation is directly
+   * associated with.
+   */
+  core.List<core.String> resourceNames;
+  /** The start time of the operation. */
+  core.String startTime;
+  /** Detailed status information for each step. The order is undetermined. */
+  core.List<Step> steps;
+
+  OperationMetadata();
+
+  OperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("progressPercentage")) {
+      progressPercentage = _json["progressPercentage"];
+    }
+    if (_json.containsKey("resourceNames")) {
+      resourceNames = _json["resourceNames"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("steps")) {
+      steps = _json["steps"].map((value) => new Step.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (progressPercentage != null) {
+      _json["progressPercentage"] = progressPercentage;
+    }
+    if (resourceNames != null) {
+      _json["resourceNames"] = resourceNames;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (steps != null) {
+      _json["steps"] = steps.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /**
  * A protocol buffer option, which can be attached to a message, field,
  * enumeration, etc.
@@ -3255,6 +3305,10 @@ class Service {
    * manage consumption of the service, etc.
    */
   core.String producerProjectId;
+  /**
+   * Output only. The source information for this configuration if available.
+   */
+  SourceInfo sourceInfo;
   /** System parameter configuration. */
   SystemParameters systemParameters;
   /**
@@ -3346,6 +3400,9 @@ class Service {
     if (_json.containsKey("producerProjectId")) {
       producerProjectId = _json["producerProjectId"];
     }
+    if (_json.containsKey("sourceInfo")) {
+      sourceInfo = new SourceInfo.fromJson(_json["sourceInfo"]);
+    }
     if (_json.containsKey("systemParameters")) {
       systemParameters = new SystemParameters.fromJson(_json["systemParameters"]);
     }
@@ -3428,6 +3485,9 @@ class Service {
     if (producerProjectId != null) {
       _json["producerProjectId"] = producerProjectId;
     }
+    if (sourceInfo != null) {
+      _json["sourceInfo"] = (sourceInfo).toJson();
+    }
     if (systemParameters != null) {
       _json["systemParameters"] = (systemParameters).toJson();
     }
@@ -3473,6 +3533,33 @@ class SourceContext {
     var _json = new core.Map();
     if (fileName != null) {
       _json["fileName"] = fileName;
+    }
+    return _json;
+  }
+}
+
+/** Source information used to create a Service Config */
+class SourceInfo {
+  /**
+   * All files used during config generation.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> sourceFiles;
+
+  SourceInfo();
+
+  SourceInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("sourceFiles")) {
+      sourceFiles = _json["sourceFiles"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (sourceFiles != null) {
+      _json["sourceFiles"] = sourceFiles;
     }
     return _json;
   }
@@ -3576,6 +3663,45 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/** Represents the status of one operation step. */
+class Step {
+  /** The short description of the step. */
+  core.String description;
+  /**
+   * The status code.
+   * Possible string values are:
+   * - "STATUS_UNSPECIFIED" : Unspecifed code.
+   * - "DONE" : The operation or step has completed without errors.
+   * - "NOT_STARTED" : The operation or step has not started yet.
+   * - "IN_PROGRESS" : The operation or step is in progress.
+   * - "FAILED" : The operation or step has completed with errors.
+   * - "CANCELLED" : The operation or step has completed with cancellation.
+   */
+  core.String status;
+
+  Step();
+
+  Step.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }

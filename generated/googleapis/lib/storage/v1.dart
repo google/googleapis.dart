@@ -455,6 +455,45 @@ class BucketsResourceApi {
   }
 
   /**
+   * Returns an IAM policy for the specified bucket.
+   *
+   * Request parameters:
+   *
+   * [bucket] - Name of a bucket.
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> getIamPolicy(core.String bucket) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
    * Creates a new bucket.
    *
    * [request] - The metadata request object.
@@ -706,6 +745,96 @@ class BucketsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Bucket.fromJson(data));
+  }
+
+  /**
+   * Updates an IAM policy for the specified bucket.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [bucket] - Name of a bucket.
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> setIamPolicy(Policy request, core.String bucket) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
+   * Tests a set of permissions on the given bucket to see which, if any, are
+   * held by the caller.
+   *
+   * Request parameters:
+   *
+   * [bucket] - Name of a bucket.
+   *
+   * [permissions] - Permissions to test.
+   *
+   * Completes with a [TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String bucket, core.List<core.String> permissions) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (permissions == null || permissions.isEmpty) {
+      throw new core.ArgumentError("Parameter permissions is required.");
+    }
+    _queryParams["permissions"] = permissions;
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam/testPermissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
   /**
@@ -1960,6 +2089,57 @@ class ObjectsResourceApi {
   }
 
   /**
+   * Returns an IAM policy for the specified object.
+   *
+   * Request parameters:
+   *
+   * [bucket] - Name of the bucket in which the object resides.
+   *
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
+   *
+   * [generation] - If present, selects a specific revision of this object (as
+   * opposed to the latest version, the default).
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> getIamPolicy(core.String bucket, core.String object, {core.String generation}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (object == null) {
+      throw new core.ArgumentError("Parameter object is required.");
+    }
+    if (generation != null) {
+      _queryParams["generation"] = [generation];
+    }
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/iam';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
    * Stores a new object and metadata.
    *
    * [request] - The metadata request object.
@@ -2452,6 +2632,120 @@ class ObjectsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new RewriteResponse.fromJson(data));
+  }
+
+  /**
+   * Updates an IAM policy for the specified object.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [bucket] - Name of the bucket in which the object resides.
+   *
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
+   *
+   * [generation] - If present, selects a specific revision of this object (as
+   * opposed to the latest version, the default).
+   *
+   * Completes with a [Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Policy> setIamPolicy(Policy request, core.String bucket, core.String object, {core.String generation}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (object == null) {
+      throw new core.ArgumentError("Parameter object is required.");
+    }
+    if (generation != null) {
+      _queryParams["generation"] = [generation];
+    }
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/iam';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /**
+   * Tests a set of permissions on the given object to see which, if any, are
+   * held by the caller.
+   *
+   * Request parameters:
+   *
+   * [bucket] - Name of the bucket in which the object resides.
+   *
+   * [object] - Name of the object. For information about how to URL encode
+   * object names to be path safe, see Encoding URI Path Parts.
+   *
+   * [permissions] - Permissions to test.
+   *
+   * [generation] - If present, selects a specific revision of this object (as
+   * opposed to the latest version, the default).
+   *
+   * Completes with a [TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String bucket, core.String object, core.List<core.String> permissions, {core.String generation}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (object == null) {
+      throw new core.ArgumentError("Parameter object is required.");
+    }
+    if (permissions == null || permissions.isEmpty) {
+      throw new core.ArgumentError("Parameter permissions is required.");
+    }
+    _queryParams["permissions"] = permissions;
+    if (generation != null) {
+      _queryParams["generation"] = [generation];
+    }
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/iam/testPermissions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
   /**
@@ -4234,6 +4528,148 @@ class Objects {
   }
 }
 
+class PolicyBindings {
+  /**
+   * A collection of identifiers for members who may assume the provided role.
+   * Recognized identifiers are as follows:
+   * - allUsers — A special identifier that represents anyone on the internet;
+   * with or without a Google account.
+   * - allAuthenticatedUsers — A special identifier that represents anyone who
+   * is authenticated with a Google account or a service account.
+   * - user:emailid — An email address that represents a specific account. For
+   * example, user:alice@gmail.com or user:joe@example.com.
+   * - serviceAccount:emailid — An email address that represents a service
+   * account. For example,
+   * serviceAccount:my-other-app@appspot.gserviceaccount.com .
+   * - group:emailid — An email address that represents a Google group. For
+   * example, group:admins@example.com.
+   * - domain:domain — A Google Apps domain name that represents all the users
+   * of that domain. For example, domain:google.com or domain:example.com.
+   * - projectOwner:projectid — Owners of the given project. For example,
+   * projectOwner:my-example-project
+   * - projectEditor:projectid — Editors of the given project. For example,
+   * projectEditor:my-example-project
+   * - projectViewer:projectid — Viewers of the given project. For example,
+   * projectViewer:my-example-project
+   */
+  core.List<core.String> members;
+  /**
+   * The role to which members belong. Two types of roles are supported: new IAM
+   * roles, which grant permissions that do not map directly to those provided
+   * by ACLs, and legacy IAM roles, which do map directly to ACL permissions.
+   * All roles are of the format roles/storage.specificRole.
+   * The new IAM roles are:
+   * - roles/storage.admin — Full control of Google Cloud Storage resources.
+   * - roles/storage.objectViewer — Read-Only access to Google Cloud Storage
+   * objects.
+   * - roles/storage.objectCreator — Access to create objects in Google Cloud
+   * Storage.
+   * - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.
+   * The legacy IAM roles are:
+   * - roles/storage.legacyObjectReader — Read-only access to objects without
+   * listing. Equivalent to an ACL entry on an object with the READER role.
+   * - roles/storage.legacyObjectOwner — Read/write access to existing objects
+   * without listing. Equivalent to an ACL entry on an object with the OWNER
+   * role.
+   * - roles/storage.legacyBucketReader — Read access to buckets with object
+   * listing. Equivalent to an ACL entry on a bucket with the READER role.
+   * - roles/storage.legacyBucketWriter — Read access to buckets with object
+   * listing/creation/deletion. Equivalent to an ACL entry on a bucket with the
+   * WRITER role.
+   * - roles/storage.legacyBucketOwner — Read and write access to existing
+   * buckets with object listing/creation/deletion. Equivalent to an ACL entry
+   * on a bucket with the OWNER role.
+   */
+  core.String role;
+
+  PolicyBindings();
+
+  PolicyBindings.fromJson(core.Map _json) {
+    if (_json.containsKey("members")) {
+      members = _json["members"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (members != null) {
+      _json["members"] = members;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    return _json;
+  }
+}
+
+/** A bucket/object IAM policy. */
+class Policy {
+  /**
+   * An association between a role, which comes with a set of permissions, and
+   * members who may assume that role.
+   */
+  core.List<PolicyBindings> bindings;
+  /** HTTP 1.1  Entity tag for the policy. */
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.BASE64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
+   * The kind of item this is. For policies, this is always storage#policy. This
+   * field is ignored on input.
+   */
+  core.String kind;
+  /**
+   * The ID of the resource to which this policy belongs. Will be of the form
+   * buckets/bucket for buckets, and buckets/bucket/objects/object for objects.
+   * A specific generation may be specified by appending #generationNumber to
+   * the end of the object name, e.g. buckets/my-bucket/objects/data.txt#17. The
+   * current generation can be denoted with #0. This field is ignored on input.
+   */
+  core.String resourceId;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("bindings")) {
+      bindings = _json["bindings"].map((value) => new PolicyBindings.fromJson(value)).toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("resourceId")) {
+      resourceId = _json["resourceId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (resourceId != null) {
+      _json["resourceId"] = resourceId;
+    }
+    return _json;
+  }
+}
+
 /** A rewrite response. */
 class RewriteResponse {
   /**
@@ -4306,6 +4742,54 @@ class RewriteResponse {
     }
     if (totalBytesRewritten != null) {
       _json["totalBytesRewritten"] = totalBytesRewritten;
+    }
+    return _json;
+  }
+}
+
+/** A storage.(buckets|objects).testIamPermissions response. */
+class TestIamPermissionsResponse {
+  /** The kind of item this is. */
+  core.String kind;
+  /**
+   * The permissions held by the caller. Permissions are always of the format
+   * storage.resource.capability, where resource is one of buckets or objects.
+   * The supported permissions are as follows:
+   * - storage.buckets.delete — Delete bucket.
+   * - storage.buckets.get — Read bucket metadata.
+   * - storage.buckets.getIamPolicy — Read bucket IAM policy.
+   * - storage.buckets.create — Create bucket.
+   * - storage.buckets.list — List buckets.
+   * - storage.buckets.setIamPolicy — Update bucket IAM policy.
+   * - storage.buckets.update — Update bucket metadata.
+   * - storage.objects.delete — Delete object.
+   * - storage.objects.get — Read object data and metadata.
+   * - storage.objects.getIamPolicy — Read object IAM policy.
+   * - storage.objects.create — Create object.
+   * - storage.objects.list — List objects.
+   * - storage.objects.setIamPolicy — Update object IAM policy.
+   * - storage.objects.update — Update object metadata.
+   */
+  core.List<core.String> permissions;
+
+  TestIamPermissionsResponse();
+
+  TestIamPermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (permissions != null) {
+      _json["permissions"] = permissions;
     }
     return _json;
   }

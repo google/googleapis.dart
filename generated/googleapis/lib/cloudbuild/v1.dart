@@ -144,11 +144,11 @@ class OperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^operations$".
    *
+   * [filter] - The standard list filter.
+   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -158,7 +158,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -169,14 +169,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -365,11 +365,11 @@ class ProjectsBuildsResourceApi {
    *
    * [projectId] - ID of the project.
    *
-   * [pageToken] - Token to provide to skip to a particular spot in the list.
-   *
    * [pageSize] - Number of results to return in the list.
    *
    * [filter] - The raw filter text to constrain the results.
+   *
+   * [pageToken] - Token to provide to skip to a particular spot in the list.
    *
    * Completes with a [ListBuildsResponse].
    *
@@ -379,7 +379,7 @@ class ProjectsBuildsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBuildsResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListBuildsResponse> list(core.String projectId, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -390,14 +390,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/builds';
@@ -996,10 +996,10 @@ class BuildStep {
    *
    * The Docker daemon's cache will already have the latest versions of all of
    * the officially supported build steps
-   * (https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon
-   * will also have cached many of the layers for some popular images, like
-   * "ubuntu", "debian", but they will be refreshed at the time you attempt to
-   * use them.
+   * ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).
+   * The Docker daemon will also have cached many of the layers for some popular
+   * images, like "ubuntu", "debian", but they will be refreshed at the time you
+   * attempt to use them.
    *
    * If you built an image in a previous build step, it will be stored in the
    * host's Docker daemon's cache and is available to use as the name for a

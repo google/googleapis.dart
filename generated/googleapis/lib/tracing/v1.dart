@@ -105,8 +105,7 @@ class ProjectsTracesResourceApi {
    *
    * Request parameters:
    *
-   * [name] - ID of the trace which is
-   * "projects/<project_id>/traces/<trace_id>".
+   * [name] - ID of the trace. Format is `projects/PROJECT_ID/traces/TRACE_ID`.
    * Value must have pattern "^projects/[^/]+/traces/[^/]+$".
    *
    * Completes with a [Trace].
@@ -149,9 +148,26 @@ class ProjectsTracesResourceApi {
    * [parent] - ID of the Cloud project where the trace data is stored.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [filter] - An optional filter for the request.
+   * Example:
+   * `version_label_key:a some_label:some_label_key`
+   * returns traces from version `a` and has `some_label` with `some_label_key`.
+   *
+   * [endTime] - End of the time interval (inclusive) during which the trace
+   * data was
+   * collected from the application.
+   *
+   * [startTime] - Start of the time interval (inclusive) during which the trace
+   * data was
+   * collected from the application.
+   *
+   * [pageToken] - Token identifying the page of results to return. If provided,
+   * use the
+   * value of the `next_page_token` field from a previous request. Optional.
+   *
    * [pageSize] - Maximum number of traces to return. If not specified or <= 0,
    * the
-   * implementation selects a reasonable value.  The implementation may
+   * implementation selects a reasonable value. The implementation may
    * return fewer traces than the requested page size. Optional.
    *
    * [orderBy] - Field used to sort the returned traces. Optional.
@@ -168,23 +184,6 @@ class ProjectsTracesResourceApi {
    *
    * Only one sort field is permitted.
    *
-   * [filter] - An optional filter for the request.
-   * Example:
-   * "version_label_key:a some_label:some_label_key"
-   * returns traces from version a and has some_label with some_label_key.
-   *
-   * [endTime] - End of the time interval (inclusive) during which the trace
-   * data was
-   * collected from the application.
-   *
-   * [pageToken] - Token identifying the page of results to return. If provided,
-   * use the
-   * value of the `next_page_token` field from a previous request. Optional.
-   *
-   * [startTime] - Start of the time interval (inclusive) during which the trace
-   * data was
-   * collected from the application.
-   *
    * Completes with a [ListTracesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -193,7 +192,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTracesResponse> list(core.String parent, {core.int pageSize, core.String orderBy, core.String filter, core.String endTime, core.String pageToken, core.String startTime}) {
+  async.Future<ListTracesResponse> list(core.String parent, {core.String filter, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String orderBy}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -204,23 +203,23 @@ class ProjectsTracesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces';
@@ -240,13 +239,13 @@ class ProjectsTracesResourceApi {
    *
    * Request parameters:
    *
-   * [name] - ID of the span set where is
-   * "projects/<project_id>/traces/<trace_id>".
+   * [name] - ID of the trace for which to list child spans. Format is
+   * `projects/PROJECT_ID/traces/TRACE_ID`.
    * Value must have pattern "^projects/[^/]+/traces/[^/]+$".
    *
    * [pageToken] - Token identifying the page of results to return. If provided,
    * use the
-   * value of the `page_token` field from a previous request. Optional.
+   * value of the `nextPageToken` field from a previous request. Optional.
    *
    * Completes with a [ListSpansResponse].
    *
@@ -317,7 +316,7 @@ class Annotation {
   }
 }
 
-/** Allowed attribute values. */
+/** The allowed types for the value side of an attribute key:value pair. */
 class AttributeValue {
   /** A boolean value. */
   core.bool boolValue;
@@ -402,22 +401,21 @@ class Empty {
 }
 
 /**
- * Link one span with another which may be in a different Trace. Used (for
- * example) in batching operations, where a single batch handler processes
- * multiple requests from different traces.
+ * A pointer from this span to another span in a different `Trace`. Used
+ * (for example) in batching operations, where a single batch handler
+ * processes multiple requests from different traces.
  */
 class Link {
-  /** The span identifier of the linked span. */
+  /** The `id` of the linked span. */
   core.String spanId;
-  /** The trace identifier of the linked span. */
+  /** The ID of the parent trace of the linked span. */
   core.String traceId;
   /**
-   * The type of the link.
+   * The relationship of the current span relative to the linked span.
    * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : The relation of current span and linked span is
-   * unknown.
-   * - "CHILD" : Current span is child of the linked span.
-   * - "PARENT" : Current span is parent of the linked span.
+   * - "TYPE_UNSPECIFIED" : The relationship of the two spans is unknown.
+   * - "CHILD" : The current span is a child of the linked span.
+   * - "PARENT" : The current span is the parent of the linked span.
    */
   core.String type;
 
@@ -450,15 +448,15 @@ class Link {
   }
 }
 
-/** The response message for the 'ListSpans' method. */
+/** The response message for the `ListSpans` method. */
 class ListSpansResponse {
   /**
-   * If defined, indicates that there are more spans that match the request
-   * and that this value should be passed to the next request to continue
-   * retrieving additional spans.
+   * If defined, indicates that there are more spans that match the request.
+   * Pass this as the value of `pageToken` in a subsequent request to retrieve
+   * additional spans.
    */
   core.String nextPageToken;
-  /** The requested spans if they are any in the specified trace. */
+  /** The requested spans if there are any in the specified trace. */
   core.List<Span> spans;
 
   ListSpansResponse();
@@ -558,25 +556,23 @@ class Module {
 class NetworkEvent {
   /**
    * If available, this is the kernel time:
-   * For sent messages, this is the time at which the first bit was sent.
-   * For received messages, this is the time at which the last bit was
-   * received.
+   *
+   * *  For sent messages, this is the time at which the first bit was sent.
+   * *  For received messages, this is the time at which the last bit was
+   *    received.
    */
   core.String kernelTime;
-  /**
-   * Every message has an identifier, which must be different from all the
-   * network messages in this span.
-   * This is especially important when the request/response are streamed.
-   */
+  /** An identifier for the message, which must be unique in this span. */
   core.String messageId;
-  /** Number of bytes send/receive. */
+  /** The number of bytes sent or received. */
   core.String messageSize;
   /**
-   * Type of a NetworkEvent.
+   * Type of NetworkEvent. Indicates whether the RPC message was sent or
+   * received.
    * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : Unknown event.
-   * - "SENT" : Event type for sending RPC message.
-   * - "RECV" : Event type for receiving RPC message.
+   * - "TYPE_UNSPECIFIED" : Unknown event type.
+   * - "SENT" : Indicates a sent RPC message.
+   * - "RECV" : Indicates a received RPC message.
    */
   core.String type;
 
@@ -617,51 +613,57 @@ class NetworkEvent {
 
 /**
  * A span represents a single operation within a trace. Spans can be nested
- * and form a trace tree. Often, a trace contains a root span that describes the
- * end-to-end latency and, optionally, one or more subspans for
- * its sub-operations. Spans do not need to be contiguous. There may be gaps
- * between spans in a trace.
+ * to form a trace tree. Often, a trace contains a root span that
+ * describes the end-to-end latency and, optionally, one or more subspans for
+ * its sub-operations. (A trace could alternatively contain multiple root spans,
+ * or none at all.) Spans do not need to be contiguous. There may be gaps
+ * and/or overlaps between spans in a trace.
  */
 class Span {
   /**
-   * Properties of a span. Attributes at the span level.
-   * E.g.
-   * "/instance_id": "my-instance"
-   * "/zone": "us-central1-a"
-   * "/grpc/peer_address": "ip:port" (dns, etc.)
-   * "/grpc/deadline": "Duration"
-   * "/http/user_agent"
-   * "/http/request_bytes": 300
-   * "/http/response_bytes": 1200
-   * "/http/url": google.com/apis
-   * "/pid"
-   * "abc.com/myattribute": "my attribute value"
+   * Properties of a span in key:value format. The maximum length for the
+   * key is 128 characters. The value can be a string (up to 2000 characters),
+   * int, or boolean.
    *
-   * Maximum length for attribute key is 128 characters, for string attribute
-   * value is 2K characters.
+   * Some common pair examples:
+   *
+   *     "/instance_id": "my-instance"
+   *     "/zone": "us-central1-a"
+   *     "/grpc/peer_address": "ip:port" (dns, etc.)
+   *     "/grpc/deadline": "Duration"
+   *     "/http/user_agent"
+   *     "/http/request_bytes": 300
+   *     "/http/response_bytes": 1200
+   *     "/http/url": google.com/apis
+   *     "abc.com/myattribute": true
    */
   core.Map<core.String, AttributeValue> attributes;
-  /** True if this Span has a remote parent (is an RPC server Span). */
+  /** True if this span has a remote parent (is an RPC server span). */
   core.bool hasRemoteParent;
   /**
    * Identifier for the span. Must be a 64-bit integer other than 0 and
    * unique within a trace.
    */
   core.String id;
-  /** A collection of links. */
+  /**
+   * A collection of links, which are references from this span to another span
+   * in a different trace.
+   */
   core.List<Link> links;
   /**
-   * Local machine clock time from the UNIX epoch,
-   * at which span execution ended.
-   * On the server side these are the times when the server application
-   * handler finishes running.
+   * End time of the span.
+   * On the client side, this is the local machine clock time at which the span
+   * execution was ended; on the server
+   * side, this is the time at which the server application handler stopped
+   * running.
    */
   core.String localEndTime;
   /**
-   * Local machine clock time from the UNIX epoch,
-   * at which span execution started.
-   * On the server side these are the times when the server application
-   * handler starts running.
+   * Start time of the span.
+   * On the client side, this is the local machine clock time at which the span
+   * execution was started; on the server
+   * side, this is the time at which the server application handler started
+   * running.
    */
   core.String localStartTime;
   /**
@@ -673,13 +675,20 @@ class Span {
    * cross-trace spans.
    */
   core.String name;
-  /** ID of parent span. 0 or missing if this is a root span. */
+  /**
+   * ID of the parent span. If this is a root span, the value must be `0` or
+   * empty.
+   */
   core.String parentId;
-  /** Stack trace captured at the start of the span. This is optional. */
+  /** Stack trace captured at the start of the span. */
   StackTrace stackTrace;
-  /** The final status of the Span. This is optional. */
+  /** An optional final status for this span. */
   Status status;
-  /** A collection of time-stamped events. */
+  /**
+   * A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
+   * on the span, consisting of either user-supplied key:value pairs, or
+   * details of an RPC message sent/received on the network.
+   */
   core.List<TimeEvent> timeEvents;
 
   Span();
@@ -781,30 +790,31 @@ class SpanUpdates {
   }
 }
 
-/** Presents a single stack frame in a stack trace. */
+/** Represents a single stack frame in a stack trace. */
 class StackFrame {
   /**
-   * Column number is important in JavaScript(anonymous functions),
-   * Might not be available in some languages.
+   * Column number is important in JavaScript (anonymous functions).
+   * May not be available in some languages.
    */
   core.String columnNumber;
-  /** File name of the frame. */
+  /** The filename of the file containing this frame. */
   core.String fileName;
-  /** Fully qualified names which uniquely identify function/method/etc. */
+  /**
+   * The fully-qualified name that uniquely identifies this function or
+   * method.
+   */
   core.String functionName;
   /** Line number of the frame. */
   core.String lineNumber;
   /** Binary module the code is loaded from. */
   Module loadModule;
   /**
-   * Used when function name is ‘mangled’. Not guaranteed to be fully
-   * qualified but usually it is.
+   * Used when the function name is
+   * [mangled](http://www.avabodh.com/cxxin/namemangling.html). May be
+   * fully-qualified.
    */
   core.String originalFunctionName;
-  /**
-   * source_version is deployment specific. It might be
-   * better to be stored in deployment metadata.
-   */
+  /** The version of the deployed source code. */
   core.String sourceVersion;
 
   StackFrame();
@@ -865,12 +875,15 @@ class StackTrace {
   /** Stack frames of this stack trace. */
   core.List<StackFrame> stackFrame;
   /**
-   * User can choose to use their own hash function to hash large attributes to
-   * save network bandwidth and storage.
-   * Typical usage is to pass both stack_frame and stack_trace_hash_id initially
-   * to inform the storage of the mapping. And in subsequent calls, pass in
-   * stack_trace_hash_id only. User shall verify the hash value is
-   * successfully stored.
+   * The hash ID is used to conserve network bandwidth for duplicate
+   * stack traces within a single trace.
+   *
+   * Often multiple spans will have identical stack traces.
+   * The first occurance of a stack trace should contain both the
+   * `stackFrame` content and a value in `stackTraceHashId`.
+   *
+   * Subsequent spans within the same request can refer
+   * to that stack trace by only setting `stackTraceHashId`.
    */
   core.String stackTraceHashId;
 
@@ -1002,11 +1015,11 @@ class Status {
 
 /** A time-stamped annotation in the Span. */
 class TimeEvent {
-  /** Optional field for user supplied <string, AttributeValue> map */
+  /** One or more key:value pairs. */
   Annotation annotation;
-  /** The local machine absolute timestamp when this event happened. */
+  /** The timestamp indicating the time the event occurred. */
   core.String localTime;
-  /** Optional field that can be used only for network events. */
+  /** An event describing an RPC message sent/received on the network. */
   NetworkEvent networkEvent;
 
   TimeEvent();
@@ -1040,14 +1053,14 @@ class TimeEvent {
 
 /**
  * A trace describes how long it takes for an application to perform some
- * operations. It consists of a set of spans, each of which contains details
- * about an operation with time information and operation details.
+ * operations. It consists of a set of spans, each representing
+ * an operation and including time information and operation details.
  */
 class Trace {
   /**
-   * ID of the trace which is "projects/<project_id>/traces/<trace_id>".
-   * trace_id is globally unique identifier for the trace. Common to all the
-   * spans. It is conceptually a 128-bit hex-encoded value.
+   * A globally unique identifier for the trace in the format
+   * `projects/PROJECT_NUMBER/traces/TRACE_ID`. `TRACE_ID` is a base16-encoded
+   * string of a 128-bit number and is required to be 32 char long.
    */
   core.String name;
 

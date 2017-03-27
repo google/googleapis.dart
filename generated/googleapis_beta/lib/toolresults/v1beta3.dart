@@ -1743,6 +1743,7 @@ class BasicPerfSampleSeries {
   /**
    *
    * Possible string values are:
+   * - "bytesPerSecond"
    * - "kibibyte"
    * - "percent"
    * - "perfUnitUnspecified"
@@ -1757,6 +1758,9 @@ class BasicPerfSampleSeries {
    * - "memoryRssPrivate"
    * - "memoryRssShared"
    * - "memoryRssTotal"
+   * - "memoryTotal"
+   * - "networkReceived"
+   * - "networkSent"
    * - "ntBytesReceived"
    * - "ntBytesTransferred"
    * - "sampleSeriesTypeUnspecified"
@@ -1934,7 +1938,8 @@ class Duration {
   core.int nanos;
   /**
    * Signed seconds of the span of time. Must be from -315,576,000,000 to
-   * +315,576,000,000 inclusive.
+   * +315,576,000,000 inclusive. Note: these bounds are computed from: 60
+   * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
    */
   core.String seconds;
 

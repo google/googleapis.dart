@@ -24,6 +24,16 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -35,18 +45,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -60,6 +65,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -79,13 +89,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -99,16 +109,6 @@
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
@@ -169,11 +169,6 @@
                     "id": "speech.operations.list",
                     "parameterOrder": [],
                     "parameters": {
-                        "filter": {
-                            "description": "The standard list filter.",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "name": {
                             "description": "The name of the operation collection.",
                             "location": "query",
@@ -189,6 +184,11 @@
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
+                        },
+                        "filter": {
+                            "description": "The standard list filter.",
+                            "location": "query",
+                            "type": "string"
                         }
                     },
                     "path": "v1beta1/operations",
@@ -264,9 +264,40 @@
             }
         }
     },
-    "revision": "20170303",
+    "revision": "20170323",
     "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
+        "RecognitionAudio": {
+            "description": "Contains audio data in the encoding specified in the `RecognitionConfig`.\nEither `content` or `uri` must be supplied. Supplying both or neither\nreturns google.rpc.Code.INVALID_ARGUMENT. See\n[audio limits](https://cloud.google.com/speech/limits#content).",
+            "id": "RecognitionAudio",
+            "properties": {
+                "content": {
+                    "description": "The audio data bytes encoded as specified in\n`RecognitionConfig`. Note: as with all bytes fields, protobuffers use a\npure binary representation, whereas JSON representations use base64.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "uri": {
+                    "description": "URI that points to a file that contains audio data bytes as specified in\n`RecognitionConfig`. Currently, only Google Cloud Storage URIs are\nsupported, which must be specified in the following format:\n`gs://bucket_name/object_name` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/reference-uris).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AsyncRecognizeRequest": {
+            "description": "The top-level message sent by the client for the `AsyncRecognize` method.",
+            "id": "AsyncRecognizeRequest",
+            "properties": {
+                "config": {
+                    "$ref": "RecognitionConfig",
+                    "description": "*Required* Provides information to the recognizer that specifies how to\nprocess the request."
+                },
+                "audio": {
+                    "$ref": "RecognitionAudio",
+                    "description": "*Required* The audio data to be recognized."
+                }
+            },
+            "type": "object"
+        },
         "Operation": {
             "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
             "id": "Operation",
@@ -306,20 +337,6 @@
             "description": "Provides information to the recognizer that specifies how to process the\nrequest.",
             "id": "RecognitionConfig",
             "properties": {
-                "maxAlternatives": {
-                    "description": "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "sampleRate": {
-                    "description": "*Required* Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "languageCode": {
-                    "description": "*Optional* The language of the supplied audio as a BCP-47 language tag.\nExample: \"en-GB\"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt\nIf omitted, defaults to \"en-US\". See\n[Language Support](https://cloud.google.com/speech/docs/languages)\nfor a list of the currently supported language codes.",
-                    "type": "string"
-                },
                 "speechContext": {
                     "$ref": "SpeechContext",
                     "description": "*Optional* A means to provide context to assist the speech recognition."
@@ -347,6 +364,20 @@
                 "profanityFilter": {
                     "description": "*Optional* If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out.",
                     "type": "boolean"
+                },
+                "maxAlternatives": {
+                    "description": "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "sampleRate": {
+                    "description": "*Required* Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "languageCode": {
+                    "description": "*Optional* The language of the supplied audio as a BCP-47 language tag.\nExample: \"en-GB\"  https://www.rfc-editor.org/rfc/bcp/bcp47.txt\nIf omitted, defaults to \"en-US\". See\n[Language Support](https://cloud.google.com/speech/docs/languages)\nfor a list of the currently supported language codes.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -447,16 +478,16 @@
             "description": "The response message for Operations.ListOperations.",
             "id": "ListOperationsResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
-                },
                 "operations": {
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -471,37 +502,6 @@
                         "$ref": "SpeechRecognitionAlternative"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "AsyncRecognizeRequest": {
-            "description": "The top-level message sent by the client for the `AsyncRecognize` method.",
-            "id": "AsyncRecognizeRequest",
-            "properties": {
-                "config": {
-                    "$ref": "RecognitionConfig",
-                    "description": "*Required* Provides information to the recognizer that specifies how to\nprocess the request."
-                },
-                "audio": {
-                    "$ref": "RecognitionAudio",
-                    "description": "*Required* The audio data to be recognized."
-                }
-            },
-            "type": "object"
-        },
-        "RecognitionAudio": {
-            "description": "Contains audio data in the encoding specified in the `RecognitionConfig`.\nEither `content` or `uri` must be supplied. Supplying both or neither\nreturns google.rpc.Code.INVALID_ARGUMENT. See\n[audio limits](https://cloud.google.com/speech/limits#content).",
-            "id": "RecognitionAudio",
-            "properties": {
-                "content": {
-                    "description": "The audio data bytes encoded as specified in\n`RecognitionConfig`. Note: as with all bytes fields, protobuffers use a\npure binary representation, whereas JSON representations use base64.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "uri": {
-                    "description": "URI that points to a file that contains audio data bytes as specified in\n`RecognitionConfig`. Currently, only Google Cloud Storage URIs are\nsupported, which must be specified in the following format:\n`gs://bucket_name/object_name` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/reference-uris).",
-                    "type": "string"
                 }
             },
             "type": "object"

@@ -196,8 +196,7 @@ class ProjectsServiceAccountsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [Policy].
@@ -299,8 +298,7 @@ class ProjectsServiceAccountsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [Policy].
@@ -450,8 +448,7 @@ class ProjectsServiceAccountsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].

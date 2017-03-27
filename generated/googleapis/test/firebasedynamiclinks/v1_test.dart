@@ -120,14 +120,14 @@ checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-buildUnnamed1856() {
+buildUnnamed1960() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed1856(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed1960(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -140,7 +140,7 @@ buildCreateShortDynamicLinkResponse() {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     o.previewLink = "foo";
     o.shortLink = "foo";
-    o.warning = buildUnnamed1856();
+    o.warning = buildUnnamed1960();
   }
   buildCounterCreateShortDynamicLinkResponse--;
   return o;
@@ -151,7 +151,7 @@ checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     unittest.expect(o.previewLink, unittest.equals('foo'));
     unittest.expect(o.shortLink, unittest.equals('foo'));
-    checkUnnamed1856(o.warning);
+    checkUnnamed1960(o.warning);
   }
   buildCounterCreateShortDynamicLinkResponse--;
 }
@@ -166,6 +166,7 @@ buildDynamicLinkInfo() {
     o.dynamicLinkDomain = "foo";
     o.iosInfo = buildIosInfo();
     o.link = "foo";
+    o.navigationInfo = buildNavigationInfo();
     o.socialMetaTagInfo = buildSocialMetaTagInfo();
   }
   buildCounterDynamicLinkInfo--;
@@ -180,6 +181,7 @@ checkDynamicLinkInfo(api.DynamicLinkInfo o) {
     unittest.expect(o.dynamicLinkDomain, unittest.equals('foo'));
     checkIosInfo(o.iosInfo);
     unittest.expect(o.link, unittest.equals('foo'));
+    checkNavigationInfo(o.navigationInfo);
     checkSocialMetaTagInfo(o.socialMetaTagInfo);
   }
   buildCounterDynamicLinkInfo--;
@@ -287,6 +289,25 @@ checkIosInfo(api.IosInfo o) {
     unittest.expect(o.iosIpadFallbackLink, unittest.equals('foo'));
   }
   buildCounterIosInfo--;
+}
+
+core.int buildCounterNavigationInfo = 0;
+buildNavigationInfo() {
+  var o = new api.NavigationInfo();
+  buildCounterNavigationInfo++;
+  if (buildCounterNavigationInfo < 3) {
+    o.enableForcedRedirect = true;
+  }
+  buildCounterNavigationInfo--;
+  return o;
+}
+
+checkNavigationInfo(api.NavigationInfo o) {
+  buildCounterNavigationInfo++;
+  if (buildCounterNavigationInfo < 3) {
+    unittest.expect(o.enableForcedRedirect, unittest.isTrue);
+  }
+  buildCounterNavigationInfo--;
 }
 
 core.int buildCounterSocialMetaTagInfo = 0;
@@ -410,6 +431,15 @@ main() {
       var o = buildIosInfo();
       var od = new api.IosInfo.fromJson(o.toJson());
       checkIosInfo(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-NavigationInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildNavigationInfo();
+      var od = new api.NavigationInfo.fromJson(o.toJson());
+      checkNavigationInfo(od);
     });
   });
 

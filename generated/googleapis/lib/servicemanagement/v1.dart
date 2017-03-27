@@ -91,6 +91,82 @@ class OperationsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /**
+   * Lists service operations that match the specified filter in the request.
+   *
+   * Request parameters:
+   *
+   * [name] - Not used.
+   *
+   * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The maximum number of operations to return. If unspecified,
+   * defaults to
+   * 50. The maximum value is 100.
+   *
+   * [filter] - A string for filtering Operations.
+   *   The following filter fields are supported&#58;
+   *
+   *   * serviceName&#58; Required. Only `=` operator is allowed.
+   *   * startTime&#58; The time this job was started, in ISO 8601 format.
+   *     Allowed operators are `>=`,  `>`, `<=`, and `<`.
+   *   * status&#58; Can be `done`, `in_progress`, or `failed`. Allowed
+   *     operators are `=`, and `!=`.
+   *
+   *   Filter expression supports conjunction (AND) and disjunction (OR)
+   *   logical operators. However, the serviceName restriction must be at the
+   *   top-level and can only be combined with other restrictions via the AND
+   *   logical operator.
+   *
+   *   Examples&#58;
+   *
+   *   * `serviceName={some-service}.googleapis.com`
+   * * `serviceName={some-service}.googleapis.com AND startTime>="2017-02-01"`
+   *   * `serviceName={some-service}.googleapis.com AND status=done`
+   * * `serviceName={some-service}.googleapis.com AND (status=done OR
+   * startTime>="2017-02-01")`
+   *
+   * Completes with a [ListOperationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http_1.Client] completes with an error when making a REST
+   * call, this method will complete with the same error.
+   */
+  async.Future<ListOperationsResponse> list({core.String name, core.String pageToken, core.int pageSize, core.String filter}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name != null) {
+      _queryParams["name"] = [name];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+
+    _url = 'v1/operations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+
 }
 
 
@@ -192,7 +268,9 @@ class ServicesResourceApi {
   }
 
   /**
-   * Disable a managed service for a project.
+   * Disables a service for a project, so it can no longer be
+   * be used for the project. It prevents accidental usage that may cause
+   * unexpected billing charges or security leaks.
    *
    * Operation<response: DisableServiceResponse>
    *
@@ -240,12 +318,12 @@ class ServicesResourceApi {
   }
 
   /**
-   * Enable a managed service for a project with default setting.
+   * Enables a service for a project, so it can be used
+   * for the project. See
+   * [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for
+   * more information.
    *
    * Operation<response: EnableServiceResponse>
-   *
-   * google.rpc.Status errors may contain a
-   * google.rpc.PreconditionFailure error detail.
    *
    * [request] - The metadata request object.
    *
@@ -390,14 +468,14 @@ class ServicesResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
+   * [configId] - The id of the service configuration resource.
+   *
    * [view] - Specifies which parts of the Service Config should be returned in
    * the
    * response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
-   *
-   * [configId] - The id of the service configuration resource.
    *
    * Completes with a [Service].
    *
@@ -407,7 +485,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<Service> getConfig(core.String serviceName, {core.String view, core.String configId}) {
+  async.Future<Service> getConfig(core.String serviceName, {core.String configId, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -418,11 +496,11 @@ class ServicesResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (configId != null) {
       _queryParams["configId"] = [configId];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/config';
@@ -499,6 +577,8 @@ class ServicesResourceApi {
    *
    * Request parameters:
    *
+   * [producerProjectId] - Include services produced by the specified project.
+   *
    * [consumerId] - Include services consumed by the specified consumer.
    *
    * The Google Service Management implementation accepts the following
@@ -511,8 +591,6 @@ class ServicesResourceApi {
    *
    * [pageSize] - Requested size of the next page of data.
    *
-   * [producerProjectId] - Include services produced by the specified project.
-   *
    * Completes with a [ListServicesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -521,7 +599,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list({core.String consumerId, core.String pageToken, core.int pageSize, core.String producerProjectId}) {
+  async.Future<ListServicesResponse> list({core.String producerProjectId, core.String consumerId, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -529,6 +607,9 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (producerProjectId != null) {
+      _queryParams["producerProjectId"] = [producerProjectId];
+    }
     if (consumerId != null) {
       _queryParams["consumerId"] = [consumerId];
     }
@@ -537,9 +618,6 @@ class ServicesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (producerProjectId != null) {
-      _queryParams["producerProjectId"] = [producerProjectId];
     }
 
     _url = 'v1/services';
@@ -1219,8 +1297,8 @@ class Api {
 
 /**
  * Specifies the audit configuration for a service.
- * It consists of which permission types are logged, and what identities, if
- * any, are exempted from logging.
+ * The configuration determines which permission types are logged, and what
+ * identities, if any, are exempted from logging.
  * An AuditConifg must have one or more AuditLogConfigs.
  *
  * If there are AuditConfigs for both `allServices` and a specific service,
@@ -1276,7 +1354,7 @@ class AuditConfig {
   core.List<core.String> exemptedMembers;
   /**
    * Specifies a service that will be enabled for audit logging.
-   * For example, `resourcemanager`, `storage`, `compute`.
+   * For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
    * `allServices` is a special value that covers all services.
    */
   core.String service;
@@ -3091,6 +3169,93 @@ class Field {
   }
 }
 
+/** The metadata associated with a long running operation resource. */
+class FlowOperationMetadata {
+  /**
+   * The state of the operation with respect to cancellation.
+   * Possible string values are:
+   * - "RUNNING" : Default state, cancellable but not cancelled.
+   * - "UNCANCELLABLE" : The operation has proceeded past the point of no return
+   * and cannot
+   * be cancelled.
+   * - "CANCELLED" : The operation has been cancelled, work should cease
+   * and any needed rollback steps executed.
+   */
+  core.String cancelState;
+  /**
+   * Deadline for the flow to complete, to prevent orphaned Operations.
+   *
+   * If the flow has not completed by this time, it may be terminated by
+   * the engine, or force-failed by Operation lookup.
+   *
+   * Note that this is not a hard deadline after which the Flow will
+   * definitely be failed, rather it is a deadline after which it is reasonable
+   * to suspect a problem and other parts of the system may kill operation
+   * to ensure we don't have orphans.
+   * see also: go/prevent-orphaned-operations
+   */
+  core.String deadline;
+  /**
+   * The name of the top-level flow corresponding to this operation.
+   * Must be equal to the "name" field for a FlowName enum.
+   */
+  core.String flowName;
+  /** Is the update for the operation persisted? */
+  core.bool isPersisted;
+  /**
+   * The full name of the resources that this flow is directly associated with.
+   */
+  core.List<core.String> resourceNames;
+  /** The start time of the operation. */
+  core.String startTime;
+
+  FlowOperationMetadata();
+
+  FlowOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("cancelState")) {
+      cancelState = _json["cancelState"];
+    }
+    if (_json.containsKey("deadline")) {
+      deadline = _json["deadline"];
+    }
+    if (_json.containsKey("flowName")) {
+      flowName = _json["flowName"];
+    }
+    if (_json.containsKey("isPersisted")) {
+      isPersisted = _json["isPersisted"];
+    }
+    if (_json.containsKey("resourceNames")) {
+      resourceNames = _json["resourceNames"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cancelState != null) {
+      _json["cancelState"] = cancelState;
+    }
+    if (deadline != null) {
+      _json["deadline"] = deadline;
+    }
+    if (flowName != null) {
+      _json["flowName"] = flowName;
+    }
+    if (isPersisted != null) {
+      _json["isPersisted"] = isPersisted;
+    }
+    if (resourceNames != null) {
+      _json["resourceNames"] = resourceNames;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
 /** Request message for GenerateConfigReport method. */
 class GenerateConfigReportRequest {
   /**
@@ -3632,6 +3797,36 @@ class LabelDescriptor {
   }
 }
 
+/** The response message for Operations.ListOperations. */
+class ListOperationsResponse {
+  /** The standard List next-page token. */
+  core.String nextPageToken;
+  /** A list of operations that matches the specified filter in the request. */
+  core.List<Operation> operations;
+
+  ListOperationsResponse();
+
+  ListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("operations")) {
+      operations = _json["operations"].map((value) => new Operation.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (operations != null) {
+      _json["operations"] = operations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** Response message for ListServiceConfigs method. */
 class ListServiceConfigsResponse {
   /** The token of the next page of results. */
@@ -3724,31 +3919,7 @@ class ListServicesResponse {
   }
 }
 
-/**
- * Specifies what kind of log the caller must write
- * Increment a streamz counter with the specified metric and field names.
- *
- * Metric names should start with a '/', generally be lowercase-only,
- * and end in "_count". Field names should not contain an initial slash.
- * The actual exported metric names will have "/iam/policy" prepended.
- *
- * Field names correspond to IAM request parameters and field values are
- * their respective values.
- *
- * At present the only supported field names are
- *    - "iam_principal", corresponding to IAMContext.principal;
- *    - "" (empty string), resulting in one aggretated counter with no field.
- *
- * Examples:
- *   counter { metric: "/debug_access_count"  field: "iam_principal" }
- *   ==> increment counter /iam/policy/backend_debug_access_count
- *                         {iam_principal=[value of IAMContext.principal]}
- *
- * At this time we do not support:
- * * multiple field names (though this may be supported in the future)
- * * decrementing the counter
- * * incrementing it by anything other than 1
- */
+/** Specifies what kind of log the caller must write */
 class LogConfig {
   /** Cloud audit options. */
   CloudAuditOptions cloudAudit;
@@ -5391,6 +5562,10 @@ class Service {
    * manage consumption of the service, etc.
    */
   core.String producerProjectId;
+  /**
+   * Output only. The source information for this configuration if available.
+   */
+  SourceInfo sourceInfo;
   /** System parameter configuration. */
   SystemParameters systemParameters;
   /**
@@ -5482,6 +5657,9 @@ class Service {
     if (_json.containsKey("producerProjectId")) {
       producerProjectId = _json["producerProjectId"];
     }
+    if (_json.containsKey("sourceInfo")) {
+      sourceInfo = new SourceInfo.fromJson(_json["sourceInfo"]);
+    }
     if (_json.containsKey("systemParameters")) {
       systemParameters = new SystemParameters.fromJson(_json["systemParameters"]);
     }
@@ -5564,6 +5742,9 @@ class Service {
     if (producerProjectId != null) {
       _json["producerProjectId"] = producerProjectId;
     }
+    if (sourceInfo != null) {
+      _json["sourceInfo"] = (sourceInfo).toJson();
+    }
     if (systemParameters != null) {
       _json["systemParameters"] = (systemParameters).toJson();
     }
@@ -5597,8 +5778,8 @@ class SetIamPolicyRequest {
   Policy policy;
   /**
    * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-   * the fields in the mask will be modified. If no mask is provided, a default
-   * mask is used:
+   * the fields in the mask will be modified. If no mask is provided, the
+   * following default mask is used:
    * paths: "bindings, etag"
    * This field is only used by Cloud IAM.
    */
@@ -5650,6 +5831,33 @@ class SourceContext {
     var _json = new core.Map();
     if (fileName != null) {
       _json["fileName"] = fileName;
+    }
+    return _json;
+  }
+}
+
+/** Source information used to create a Service Config */
+class SourceInfo {
+  /**
+   * All files used during config generation.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> sourceFiles;
+
+  SourceInfo();
+
+  SourceInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("sourceFiles")) {
+      sourceFiles = _json["sourceFiles"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (sourceFiles != null) {
+      _json["sourceFiles"] = sourceFiles;
     }
     return _json;
   }

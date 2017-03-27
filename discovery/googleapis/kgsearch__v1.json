@@ -15,22 +15,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -42,18 +26,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -67,6 +46,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -86,18 +70,34 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
         "access_token": {
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         }
@@ -112,6 +112,18 @@
                     "id": "kgsearch.entities.search",
                     "parameterOrder": [],
                     "parameters": {
+                        "ids": {
+                            "description": "The list of entity id to be used for search instead of query string.\nTo specify multiple ids in the HTTP request, repeat the parameter in the\nURL as in ...?ids=A&ids=B",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "limit": {
+                            "description": "Limits the number of entities to be returned.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "prefix": {
                             "description": "Enables prefix match against names and aliases of entities",
                             "location": "query",
@@ -138,18 +150,6 @@
                             "location": "query",
                             "repeated": true,
                             "type": "string"
-                        },
-                        "ids": {
-                            "description": "The list of entity id to be used for search instead of query string.\nTo specify multiple ids in the HTTP request, repeat the parameter in the\nURL as in ...?ids=A&ids=B",
-                            "location": "query",
-                            "repeated": true,
-                            "type": "string"
-                        },
-                        "limit": {
-                            "description": "Limits the number of entities to be returned.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
                         }
                     },
                     "path": "v1/entities:search",

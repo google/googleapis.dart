@@ -130,6 +130,11 @@ class ControllerDebuggeesBreakpointsResourceApi {
    *
    * [debuggeeId] - Identifies the debuggee.
    *
+   * [waitToken] - A wait token that, if specified, blocks the method call until
+   * the list
+   * of active breakpoints has changed, or a server selected timeout has
+   * expired.  The value should be set from the last returned response.
+   *
    * [successOnTimeout] - If set to `true`, returns `google.rpc.Code.OK` status
    * and sets the
    * `wait_expired` response field to `true` when the server-selected timeout
@@ -137,11 +142,6 @@ class ControllerDebuggeesBreakpointsResourceApi {
    *
    * If set to `false`, returns `google.rpc.Code.ABORTED` status when the
    * server-selected timeout has expired (deprecated).
-   *
-   * [waitToken] - A wait token that, if specified, blocks the method call until
-   * the list
-   * of active breakpoints has changed, or a server selected timeout has
-   * expired.  The value should be set from the last returned response.
    *
    * Completes with a [ListActiveBreakpointsResponse].
    *
@@ -151,7 +151,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId, {core.bool successOnTimeout, core.String waitToken}) {
+  async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId, {core.String waitToken, core.bool successOnTimeout}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -162,11 +162,11 @@ class ControllerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
-    if (successOnTimeout != null) {
-      _queryParams["successOnTimeout"] = ["${successOnTimeout}"];
-    }
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
+    }
+    if (successOnTimeout != null) {
+      _queryParams["successOnTimeout"] = ["${successOnTimeout}"];
     }
 
     _url = 'v2/controller/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints';
@@ -444,13 +444,13 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * - "CAPTURE" : A CAPTURE.
    * - "LOG" : A LOG.
    *
-   * [includeAllUsers] - When set to `true`, the response includes the list of
-   * breakpoints set by
-   * any user. Otherwise, it includes only breakpoints set by the caller.
-   *
    * [includeInactive] - When set to `true`, the response includes active and
    * inactive
    * breakpoints. Otherwise, it includes only active breakpoints.
+   *
+   * [includeAllUsers] - When set to `true`, the response includes the list of
+   * breakpoints set by
+   * any user. Otherwise, it includes only breakpoints set by the caller.
    *
    * [stripResults] - This field is deprecated. The following fields are always
    * stripped out of
@@ -464,7 +464,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.String waitToken, core.String clientVersion, core.String action_value, core.bool includeAllUsers, core.bool includeInactive, core.bool stripResults}) {
+  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.String waitToken, core.String clientVersion, core.String action_value, core.bool includeInactive, core.bool includeAllUsers, core.bool stripResults}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -484,11 +484,11 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
     }
-    if (includeAllUsers != null) {
-      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
-    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
+    if (includeAllUsers != null) {
+      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
     }
     if (stripResults != null) {
       _queryParams["stripResults"] = ["${stripResults}"];

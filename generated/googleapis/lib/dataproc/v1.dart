@@ -278,6 +278,10 @@ class ProjectsRegionsClustersResourceApi {
    * [region] - Required The Cloud Dataproc region in which to handle the
    * request.
    *
+   * [pageToken] - Optional The standard List page token.
+   *
+   * [pageSize] - Optional The standard List page size.
+   *
    * [filter] - Optional A filter constraining the clusters to list. Filters are
    * case-sensitive and have the following syntax:field = value AND field =
    * value ...where field is one of status.state, clusterName, or labels.[KEY],
@@ -290,10 +294,6 @@ class ProjectsRegionsClustersResourceApi {
    * implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
    * = mycluster AND labels.env = staging AND labels.starred = *
    *
-   * [pageToken] - Optional The standard List page token.
-   *
-   * [pageSize] - Optional The standard List page size.
-   *
    * Completes with a [ListClustersResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -302,7 +302,7 @@ class ProjectsRegionsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,14 +316,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/clusters';
@@ -949,11 +949,11 @@ class ProjectsRegionsOperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
    *
-   * [pageSize] - The standard list page size.
-   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -963,7 +963,7 @@ class ProjectsRegionsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -974,14 +974,14 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1442,6 +1442,18 @@ class ClusterStatus {
   core.String state;
   /** Output-only Time when this state was entered. */
   core.String stateStartTime;
+  /**
+   * Output-only Additional state information that includes status reported by
+   * the agent.
+   * Possible string values are:
+   * - "UNSPECIFIED"
+   * - "UNHEALTHY" : The cluster is known to be in an unhealthy state (for
+   * example, critical daemons are not running or HDFS capacity is
+   * exhausted).Applies to RUNNING state.
+   * - "STALE_STATUS" : The agent-reported status is out of date (may occur if
+   * Cloud Dataproc loses communication with Agent).Applies to RUNNING state.
+   */
+  core.String substate;
 
   ClusterStatus();
 
@@ -1455,6 +1467,9 @@ class ClusterStatus {
     if (_json.containsKey("stateStartTime")) {
       stateStartTime = _json["stateStartTime"];
     }
+    if (_json.containsKey("substate")) {
+      substate = _json["substate"];
+    }
   }
 
   core.Map toJson() {
@@ -1467,6 +1482,9 @@ class ClusterStatus {
     }
     if (stateStartTime != null) {
       _json["stateStartTime"] = stateStartTime;
+    }
+    if (substate != null) {
+      _json["substate"] = substate;
     }
     return _json;
   }
@@ -2313,6 +2331,21 @@ class JobStatus {
   core.String state;
   /** Output-only The time when this state was entered. */
   core.String stateStartTime;
+  /**
+   * Output-only Additional state information, which includes status reported by
+   * the agent.
+   * Possible string values are:
+   * - "UNSPECIFIED"
+   * - "SUBMITTED" : The Job is submitted to the agent.Applies to RUNNING state.
+   * - "QUEUED" : The Job has been received and is awaiting execution (it may be
+   * waiting for a condition to be met). See the "details" field for the reason
+   * for the delay.Applies to RUNNING state.
+   * - "STALE_STATUS" : The agent-reported status is out of date, which may be
+   * caused by a loss of communication between the agent and Cloud Dataproc. If
+   * the agent does not send a timely update, the job will fail.Applies to
+   * RUNNING state.
+   */
+  core.String substate;
 
   JobStatus();
 
@@ -2326,6 +2359,9 @@ class JobStatus {
     if (_json.containsKey("stateStartTime")) {
       stateStartTime = _json["stateStartTime"];
     }
+    if (_json.containsKey("substate")) {
+      substate = _json["substate"];
+    }
   }
 
   core.Map toJson() {
@@ -2338,6 +2374,9 @@ class JobStatus {
     }
     if (stateStartTime != null) {
       _json["stateStartTime"] = stateStartTime;
+    }
+    if (substate != null) {
+      _json["substate"] = substate;
     }
     return _json;
   }

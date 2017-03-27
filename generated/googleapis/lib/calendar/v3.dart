@@ -3212,6 +3212,81 @@ class Colors {
   }
 }
 
+class DeepLinkData {
+  core.List<Link> links;
+  core.String url;
+
+  DeepLinkData();
+
+  DeepLinkData.fromJson(core.Map _json) {
+    if (_json.containsKey("links")) {
+      links = _json["links"].map((value) => new Link.fromJson(value)).toList();
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (links != null) {
+      _json["links"] = links.map((value) => (value).toJson()).toList();
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+class DisplayInfo {
+  core.String appIconUrl;
+  core.String appShortTitle;
+  core.String appTitle;
+  core.String linkShortTitle;
+  core.String linkTitle;
+
+  DisplayInfo();
+
+  DisplayInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("appIconUrl")) {
+      appIconUrl = _json["appIconUrl"];
+    }
+    if (_json.containsKey("appShortTitle")) {
+      appShortTitle = _json["appShortTitle"];
+    }
+    if (_json.containsKey("appTitle")) {
+      appTitle = _json["appTitle"];
+    }
+    if (_json.containsKey("linkShortTitle")) {
+      linkShortTitle = _json["linkShortTitle"];
+    }
+    if (_json.containsKey("linkTitle")) {
+      linkTitle = _json["linkTitle"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (appIconUrl != null) {
+      _json["appIconUrl"] = appIconUrl;
+    }
+    if (appShortTitle != null) {
+      _json["appShortTitle"] = appShortTitle;
+    }
+    if (appTitle != null) {
+      _json["appTitle"] = appTitle;
+    }
+    if (linkShortTitle != null) {
+      _json["linkShortTitle"] = linkShortTitle;
+    }
+    if (linkTitle != null) {
+      _json["linkTitle"] = linkTitle;
+    }
+    return _json;
+  }
+}
+
 class Error {
   /** Domain, or broad category, of the error. */
   core.String domain;
@@ -4210,6 +4285,35 @@ class EventDateTime {
   }
 }
 
+class EventHabitInstance {
+  /** Metadata specific to this instance. */
+  HabitInstanceData data;
+  /** Id of the habit this instance belongs to. */
+  core.String parentId;
+
+  EventHabitInstance();
+
+  EventHabitInstance.fromJson(core.Map _json) {
+    if (_json.containsKey("data")) {
+      data = new HabitInstanceData.fromJson(_json["data"]);
+    }
+    if (_json.containsKey("parentId")) {
+      parentId = _json["parentId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (data != null) {
+      _json["data"] = (data).toJson();
+    }
+    if (parentId != null) {
+      _json["parentId"] = parentId;
+    }
+    return _json;
+  }
+}
+
 class EventReminder {
   /**
    * The method used by this reminder. Possible values are:
@@ -4572,6 +4676,129 @@ class FreeBusyResponse {
     }
     if (timeMin != null) {
       _json["timeMin"] = (timeMin).toIso8601String();
+    }
+    return _json;
+  }
+}
+
+class HabitInstanceData {
+  core.String status;
+  core.bool statusInferred;
+  core.String type;
+
+  HabitInstanceData();
+
+  HabitInstanceData.fromJson(core.Map _json) {
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("statusInferred")) {
+      statusInferred = _json["statusInferred"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (statusInferred != null) {
+      _json["statusInferred"] = statusInferred;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class LaunchInfo {
+  core.String appId;
+  core.String installUrl;
+  core.String intentAction;
+  core.String uri;
+
+  LaunchInfo();
+
+  LaunchInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("appId")) {
+      appId = _json["appId"];
+    }
+    if (_json.containsKey("installUrl")) {
+      installUrl = _json["installUrl"];
+    }
+    if (_json.containsKey("intentAction")) {
+      intentAction = _json["intentAction"];
+    }
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (appId != null) {
+      _json["appId"] = appId;
+    }
+    if (installUrl != null) {
+      _json["installUrl"] = installUrl;
+    }
+    if (intentAction != null) {
+      _json["intentAction"] = intentAction;
+    }
+    if (uri != null) {
+      _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
+class Link {
+  core.String applinkingSource;
+  DisplayInfo displayInfo;
+  LaunchInfo launchInfo;
+  core.String platform;
+  core.String url;
+
+  Link();
+
+  Link.fromJson(core.Map _json) {
+    if (_json.containsKey("applinkingSource")) {
+      applinkingSource = _json["applinkingSource"];
+    }
+    if (_json.containsKey("displayInfo")) {
+      displayInfo = new DisplayInfo.fromJson(_json["displayInfo"]);
+    }
+    if (_json.containsKey("launchInfo")) {
+      launchInfo = new LaunchInfo.fromJson(_json["launchInfo"]);
+    }
+    if (_json.containsKey("platform")) {
+      platform = _json["platform"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (applinkingSource != null) {
+      _json["applinkingSource"] = applinkingSource;
+    }
+    if (displayInfo != null) {
+      _json["displayInfo"] = (displayInfo).toJson();
+    }
+    if (launchInfo != null) {
+      _json["launchInfo"] = (launchInfo).toJson();
+    }
+    if (platform != null) {
+      _json["platform"] = platform;
+    }
+    if (url != null) {
+      _json["url"] = url;
     }
     return _json;
   }

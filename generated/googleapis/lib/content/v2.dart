@@ -5293,7 +5293,10 @@ class Datafeed {
    * language for targetCountry.
    */
   core.String contentLanguage;
-  /** The type of data feed. */
+  /**
+   * The type of data feed. For product inventory feeds, only feeds for local
+   * stores, not online stores, are supported.
+   */
   core.String contentType;
   /** Fetch schedule for the feed file. */
   DatafeedFetchSchedule fetchSchedule;

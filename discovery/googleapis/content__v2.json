@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/IOklgKO6g9VrWVhKo7-yNnlHwZM\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/ZCZOOwDCC1weteZqQodwch31zkc\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -2137,7 +2137,7 @@
             }
         }
     },
-    "revision": "20170221",
+    "revision": "20170303",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3282,7 +3282,7 @@
                             "content.datafeeds.update"
                         ]
                     },
-                    "description": "The type of data feed.",
+                    "description": "The type of data feed. For product inventory feeds, only feeds for local stores, not online stores, are supported.",
                     "type": "string"
                 },
                 "fetchSchedule": {

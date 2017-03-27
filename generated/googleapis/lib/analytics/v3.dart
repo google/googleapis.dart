@@ -3285,6 +3285,56 @@ class ManagementRemarketingAudienceResourceApi {
       _requester = client;
 
   /**
+   * Delete a remarketing audience.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID to which the remarketing audience belongs.
+   *
+   * [webPropertyId] - Web property ID to which the remarketing audience
+   * belongs.
+   *
+   * [remarketingAudienceId] - The ID of the remarketing audience to delete.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String accountId, core.String webPropertyId, core.String remarketingAudienceId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (webPropertyId == null) {
+      throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if (remarketingAudienceId == null) {
+      throw new core.ArgumentError("Parameter remarketingAudienceId is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'management/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/webproperties/' + commons.Escaper.ecapeVariable('$webPropertyId') + '/remarketingAudiences/' + commons.Escaper.ecapeVariable('$remarketingAudienceId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
    * Gets a remarketing audience to which the user has access.
    *
    * Request parameters:

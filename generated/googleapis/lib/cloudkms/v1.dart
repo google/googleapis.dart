@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-library googleapis_beta.cloudkms.v1beta1;
+library googleapis.cloudkms.v1;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client cloudkms/v1beta1';
+const core.String USER_AGENT = 'dart-api-client cloudkms/v1';
 
 /**
  * Manages encryption for your cloud services the same way you do on-premise.
@@ -78,7 +78,7 @@ class ProjectsLocationsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -98,11 +98,11 @@ class ProjectsLocationsResourceApi {
    * [name] - The resource that owns the locations collection, if applicable.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [filter] - The standard list filter.
+   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -112,7 +112,7 @@ class ProjectsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListLocationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,17 +123,17 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -197,7 +197,7 @@ class ProjectsLocationsKeyRingsResourceApi {
       _queryParams["keyRingId"] = [keyRingId];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -237,7 +237,7 @@ class ProjectsLocationsKeyRingsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -258,8 +258,7 @@ class ProjectsLocationsKeyRingsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
    *
    * Completes with a [Policy].
@@ -282,7 +281,7 @@ class ProjectsLocationsKeyRingsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -303,13 +302,13 @@ class ProjectsLocationsKeyRingsResourceApi {
    * KeyRings, in the format `projects / * /locations / * `.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
    *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListKeyRingsResponse.next_page_token.
-   *
    * [pageSize] - Optional limit on the number of KeyRings to include in the
    * response.  Further KeyRings can subsequently be obtained by
    * including the ListKeyRingsResponse.next_page_token in a subsequent
    * request.  If unspecified, the server will pick an appropriate default.
+   *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListKeyRingsResponse.next_page_token.
    *
    * Completes with a [ListKeyRingsResponse].
    *
@@ -319,7 +318,7 @@ class ProjectsLocationsKeyRingsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListKeyRingsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListKeyRingsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -330,14 +329,14 @@ class ProjectsLocationsKeyRingsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -359,8 +358,7 @@ class ProjectsLocationsKeyRingsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
    *
    * Completes with a [Policy].
@@ -386,7 +384,7 @@ class ProjectsLocationsKeyRingsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -413,8 +411,7 @@ class ProjectsLocationsKeyRingsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -440,7 +437,7 @@ class ProjectsLocationsKeyRingsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -506,7 +503,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _queryParams["cryptoKeyId"] = [cryptoKeyId];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeys';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeys';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -554,7 +551,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':decrypt';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':decrypt';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -604,7 +601,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':encrypt';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':encrypt';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -646,7 +643,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -667,8 +664,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
    *
@@ -692,7 +688,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -714,13 +710,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * `projects / * /locations / * /keyRings / * `.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
    *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListCryptoKeysResponse.next_page_token.
-   *
    * [pageSize] - Optional limit on the number of CryptoKeys to include in the
    * response.  Further CryptoKeys can subsequently be obtained by
    * including the ListCryptoKeysResponse.next_page_token in a subsequent
    * request.  If unspecified, the server will pick an appropriate default.
+   *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListCryptoKeysResponse.next_page_token.
    *
    * Completes with a [ListCryptoKeysResponse].
    *
@@ -730,7 +726,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -741,14 +737,14 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeys';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeys';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -800,7 +796,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       _queryParams["updateMask"] = [updateMask];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -822,8 +818,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
    *
@@ -850,7 +845,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -877,8 +872,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
    *
@@ -905,7 +899,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -951,7 +945,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':updatePrimaryVersion';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':updatePrimaryVersion';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1011,7 +1005,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       throw new core.ArgumentError("Parameter parent is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeyVersions';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeyVersions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1068,7 +1062,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':destroy';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':destroy';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1109,7 +1103,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1167,7 +1161,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeyVersions';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeyVersions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1227,7 +1221,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       _queryParams["updateMask"] = [updateMask];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "PATCH",
@@ -1279,7 +1273,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':restore';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':restore';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1297,8 +1291,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
 /**
  * Specifies the audit configuration for a service.
- * It consists of which permission types are logged, and what identities, if
- * any, are exempted from logging.
+ * The configuration determines which permission types are logged, and what
+ * identities, if any, are exempted from logging.
  * An AuditConifg must have one or more AuditLogConfigs.
  *
  * If there are AuditConfigs for both `allServices` and a specific service,
@@ -1354,7 +1348,7 @@ class AuditConfig {
   core.List<core.String> exemptedMembers;
   /**
    * Specifies a service that will be enabled for audit logging.
-   * For example, `resourcemanager`, `storage`, `compute`.
+   * For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
    * `allServices` is a special value that covers all services.
    */
   core.String service;
@@ -1538,6 +1532,15 @@ class Condition {
    * access, and are thus only used in a strictly positive context
    * (e.g. ALLOW/IN or DENY/NOT_IN).
    * See: go/rpc-security-policy-dynamicauth.
+   * - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
+   * with this request.
+   * String values should match enum names from tech.iam.JustificationType,
+   * e.g. "MANUAL_STRING". It is not permitted to grant access based on
+   * the *absence* of a justification, so justification conditions can only
+   * be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+   *
+   * Multiple justifications, e.g., a Buganizer ID and a manually-entered
+   * reason, are normal and supported.
    */
   core.String iam;
   /**
@@ -1546,8 +1549,12 @@ class Condition {
    * - "NO_OP" : Default no-op.
    * - "EQUALS" : DEPRECATED. Use IN instead.
    * - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
-   * - "IN" : Set-inclusion check.
-   * - "NOT_IN" : Set-exclusion check.
+   * - "IN" : The condition is true if the subject (or any element of it if it
+   * is
+   * a set) matches any of the supplied values.
+   * - "NOT_IN" : The condition is true if the subject (or every element of it
+   * if it is
+   * a set) matches none of the supplied values.
    * - "DISCHARGED" : Subject is discharged
    */
   core.String op;
@@ -2278,31 +2285,7 @@ class Location {
   }
 }
 
-/**
- * Specifies what kind of log the caller must write
- * Increment a streamz counter with the specified metric and field names.
- *
- * Metric names should start with a '/', generally be lowercase-only,
- * and end in "_count". Field names should not contain an initial slash.
- * The actual exported metric names will have "/iam/policy" prepended.
- *
- * Field names correspond to IAM request parameters and field values are
- * their respective values.
- *
- * At present the only supported field names are
- *    - "iam_principal", corresponding to IAMContext.principal;
- *    - "" (empty string), resulting in one aggretated counter with no field.
- *
- * Examples:
- *   counter { metric: "/debug_access_count"  field: "iam_principal" }
- *   ==> increment counter /iam/policy/backend_debug_access_count
- *                         {iam_principal=[value of IAMContext.principal]}
- *
- * At this time we do not support:
- * * multiple field names (though this may be supported in the future)
- * * decrementing the counter
- * * incrementing it by anything other than 1
- */
+/** Specifies what kind of log the caller must write */
 class LogConfig {
   /** Cloud audit options. */
   CloudAuditOptions cloudAudit;
@@ -2588,8 +2571,8 @@ class SetIamPolicyRequest {
   Policy policy;
   /**
    * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-   * the fields in the mask will be modified. If no mask is provided, a default
-   * mask is used:
+   * the fields in the mask will be modified. If no mask is provided, the
+   * following default mask is used:
    * paths: "bindings, etag"
    * This field is only used by Cloud IAM.
    */

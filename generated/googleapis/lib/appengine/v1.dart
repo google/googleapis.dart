@@ -46,11 +46,12 @@ class AppsResourceApi {
       _requester = client;
 
   /**
-   * Creates an App Engine application for a Google Cloud Platform project. This
-   * requires a project that excludes an App Engine application. For details
-   * about creating a project without an application, see the Google Cloud
-   * Resource Manager create project topic
-   * (https://cloud.google.com/resource-manager/docs/creating-project).
+   * Creates an App Engine application for a Google Cloud Platform project.
+   * Required fields: id - The ID of the target Cloud Platform project. location
+   * - The region (https://cloud.google.com/appengine/docs/locations) where you
+   * want the App Engine application located.For more information about App
+   * Engine applications, see Managing Projects, Applications, and Billing
+   * (https://cloud.google.com/appengine/docs/python/console/).
    *
    * [request] - The metadata request object.
    *
@@ -130,10 +131,9 @@ class AppsResourceApi {
 
   /**
    * Updates the specified Application resource. You can update the following
-   * fields: auth_domain
-   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#Application.FIELDS.auth_domain)
-   * default_cookie_expiration
-   * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#Application.FIELDS.default_cookie_expiration)
+   * fields: auth_domain - Google authentication domain for controlling user
+   * access to the application. default_cookie_expiration - Cookie expiration
+   * policy for the application.
    *
    * [request] - The metadata request object.
    *
@@ -615,9 +615,9 @@ class AppsServicesResourceApi {
    *
    * [updateMask] - Standard field mask for the set of fields to be updated.
    *
-   * [migrateTraffic] - Set to true to gradually shift traffic from one version
-   * to another single version. By default, traffic is shifted immediately. For
-   * gradual traffic migration, the target version must be located within
+   * [migrateTraffic] - Set to true to gradually shift traffic to one or more
+   * versions that you specify. By default, traffic is shifted immediately. For
+   * gradual traffic migration, the target versions must be located within
    * instances that are configured for both warmup requests
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#inboundservicetype)
    * and automatic scaling
@@ -1165,7 +1165,9 @@ class AppsServicesVersionsInstancesResourceApi {
   }
 
   /**
-   * Lists the instances of a version.
+   * Lists the instances of a version.Tip: To aggregate details about instances
+   * over time, see the Stackdriver Monitoring API
+   * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
    *
    * Request parameters:
    *
@@ -1360,10 +1362,16 @@ class Application {
   core.String defaultHostname;
   /**
    * HTTP path dispatch rules for requests to the application that do not
-   * explicitly target a service or version. Rules are
-   * order-dependent.@OutputOnly
+   * explicitly target a service or version. Rules are order-dependent. Up to 20
+   * dispatch rules can be supported.@OutputOnly
    */
   core.List<UrlDispatchRule> dispatchRules;
+  /**
+   * The Google Container Registry domain used for storing managed build docker
+   * images for this application.
+   */
+  core.String gcrDomain;
+  IdentityAwareProxy iap;
   /**
    * Identifier of the Application resource. This identifier is equivalent to
    * the project ID of the Google Cloud Platform project where you want to
@@ -1383,6 +1391,15 @@ class Application {
    * apps/myapp.@OutputOnly
    */
   core.String name;
+  /**
+   * Serving status of this application.
+   * Possible string values are:
+   * - "UNSPECIFIED" : A UNSPECIFIED.
+   * - "SERVING" : A SERVING.
+   * - "USER_DISABLED" : A USER_DISABLED.
+   * - "SYSTEM_DISABLED" : A SYSTEM_DISABLED.
+   */
+  core.String servingStatus;
 
   Application();
 
@@ -1405,6 +1422,12 @@ class Application {
     if (_json.containsKey("dispatchRules")) {
       dispatchRules = _json["dispatchRules"].map((value) => new UrlDispatchRule.fromJson(value)).toList();
     }
+    if (_json.containsKey("gcrDomain")) {
+      gcrDomain = _json["gcrDomain"];
+    }
+    if (_json.containsKey("iap")) {
+      iap = new IdentityAwareProxy.fromJson(_json["iap"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -1413,6 +1436,9 @@ class Application {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("servingStatus")) {
+      servingStatus = _json["servingStatus"];
     }
   }
 
@@ -1436,6 +1462,12 @@ class Application {
     if (dispatchRules != null) {
       _json["dispatchRules"] = dispatchRules.map((value) => (value).toJson()).toList();
     }
+    if (gcrDomain != null) {
+      _json["gcrDomain"] = gcrDomain;
+    }
+    if (iap != null) {
+      _json["iap"] = (iap).toJson();
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -1444,6 +1476,9 @@ class Application {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (servingStatus != null) {
+      _json["servingStatus"] = servingStatus;
     }
     return _json;
   }
@@ -1623,12 +1658,14 @@ class BasicScaling {
 }
 
 /**
- * Docker image that is used to start a VM container for the version you deploy.
+ * Docker image that is used to create a container and start a VM instance for
+ * the version that you deploy. Only applicable for instances running in the App
+ * Engine flexible environment.
  */
 class ContainerInfo {
   /**
-   * URI to the hosted container image in a Docker repository. The URI must be
-   * fully qualified and include a tag or digest. Examples:
+   * URI to the hosted container image in Google Container Registry. The URI
+   * must be fully qualified and include a tag or digest. Examples:
    * "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
    */
   core.String image;
@@ -1714,8 +1751,8 @@ class DebugInstanceRequest {
 /** Code and application artifacts used to deploy a version to App Engine. */
 class Deployment {
   /**
-   * A Docker image that App Engine uses to run the version. Only applicable for
-   * instances in App Engine flexible environment.
+   * The Docker image for the container that runs the version. Only applicable
+   * for instances running in the App Engine flexible environment.
    */
   ContainerInfo container;
   /**
@@ -2022,6 +2059,61 @@ class HealthCheck {
   }
 }
 
+/** Identity-Aware Proxy */
+class IdentityAwareProxy {
+  /**
+   * Whether the serving infrastructure will authenticate and authorize all
+   * incoming requests.If true, the oauth2_client_id and oauth2_client_secret
+   * fields must be non-empty.
+   */
+  core.bool enabled;
+  /** OAuth2 client ID to use for the authentication flow. */
+  core.String oauth2ClientId;
+  /**
+   * OAuth2 client secret to use for the authentication flow.For security
+   * reasons, this value cannot be retrieved via the API. Instead, the SHA-256
+   * hash of the value is returned in the oauth2_client_secret_sha256
+   * field.@InputOnly
+   */
+  core.String oauth2ClientSecret;
+  /** Hex-encoded SHA-256 hash of the client secret.@OutputOnly */
+  core.String oauth2ClientSecretSha256;
+
+  IdentityAwareProxy();
+
+  IdentityAwareProxy.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("oauth2ClientId")) {
+      oauth2ClientId = _json["oauth2ClientId"];
+    }
+    if (_json.containsKey("oauth2ClientSecret")) {
+      oauth2ClientSecret = _json["oauth2ClientSecret"];
+    }
+    if (_json.containsKey("oauth2ClientSecretSha256")) {
+      oauth2ClientSecretSha256 = _json["oauth2ClientSecretSha256"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (oauth2ClientId != null) {
+      _json["oauth2ClientId"] = oauth2ClientId;
+    }
+    if (oauth2ClientSecret != null) {
+      _json["oauth2ClientSecret"] = oauth2ClientSecret;
+    }
+    if (oauth2ClientSecretSha256 != null) {
+      _json["oauth2ClientSecretSha256"] = oauth2ClientSecretSha256;
+    }
+    return _json;
+  }
+}
+
 /**
  * An Instance resource is the computing unit that App Engine uses to
  * automatically scale an application.
@@ -2257,7 +2349,7 @@ class ListInstancesResponse {
   }
 }
 
-/** The response message for LocationService.ListLocations. */
+/** The response message for Locations.ListLocations. */
 class ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   core.List<Location> locations;
@@ -2372,6 +2464,88 @@ class ListVersionsResponse {
     }
     if (versions != null) {
       _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Health checking configuration for VM instances. Unhealthy instances are
+ * killed and replaced with new instances.
+ */
+class LivenessCheck {
+  /** Interval between health checks. */
+  core.String checkInterval;
+  /**
+   * Number of consecutive failed checks required before considering the VM
+   * unhealthy.
+   */
+  core.int failureThreshold;
+  /**
+   * Host header to send when performing a HTTP Liveness check. Example:
+   * "myapp.appspot.com"
+   */
+  core.String host;
+  /** The initial delay before starting to execute the checks. */
+  core.String initialDelay;
+  /** The request path. */
+  core.String path;
+  /**
+   * Number of consecutive successful checks required before considering the VM
+   * healthy.
+   */
+  core.int successThreshold;
+  /** Time before the check is considered failed. */
+  core.String timeout;
+
+  LivenessCheck();
+
+  LivenessCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("checkInterval")) {
+      checkInterval = _json["checkInterval"];
+    }
+    if (_json.containsKey("failureThreshold")) {
+      failureThreshold = _json["failureThreshold"];
+    }
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("initialDelay")) {
+      initialDelay = _json["initialDelay"];
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+    if (_json.containsKey("successThreshold")) {
+      successThreshold = _json["successThreshold"];
+    }
+    if (_json.containsKey("timeout")) {
+      timeout = _json["timeout"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (checkInterval != null) {
+      _json["checkInterval"] = checkInterval;
+    }
+    if (failureThreshold != null) {
+      _json["failureThreshold"] = failureThreshold;
+    }
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (initialDelay != null) {
+      _json["initialDelay"] = initialDelay;
+    }
+    if (path != null) {
+      _json["path"] = path;
+    }
+    if (successThreshold != null) {
+      _json["successThreshold"] = successThreshold;
+    }
+    if (timeout != null) {
+      _json["timeout"] = timeout;
     }
     return _json;
   }
@@ -2908,6 +3082,85 @@ class OperationMetadataV1 {
 }
 
 /** Metadata for the given google.longrunning.Operation. */
+class OperationMetadataV1Beta {
+  /** Time that this operation completed.@OutputOnly */
+  core.String endTime;
+  /**
+   * Ephemeral message that may change every time the operation is polled.
+   * @OutputOnly
+   */
+  core.String ephemeralMessage;
+  /** Time that this operation was created.@OutputOnly */
+  core.String insertTime;
+  /**
+   * API method that initiated this operation. Example:
+   * google.appengine.v1beta.Versions.CreateVersion.@OutputOnly
+   */
+  core.String method;
+  /**
+   * Name of the resource that this operation is acting on. Example:
+   * apps/myapp/services/default.@OutputOnly
+   */
+  core.String target;
+  /** User who requested this operation.@OutputOnly */
+  core.String user;
+  /** Durable messages that persist on every operation poll. @OutputOnly */
+  core.List<core.String> warning;
+
+  OperationMetadataV1Beta();
+
+  OperationMetadataV1Beta.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("ephemeralMessage")) {
+      ephemeralMessage = _json["ephemeralMessage"];
+    }
+    if (_json.containsKey("insertTime")) {
+      insertTime = _json["insertTime"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+    if (_json.containsKey("user")) {
+      user = _json["user"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = _json["warning"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (ephemeralMessage != null) {
+      _json["ephemeralMessage"] = ephemeralMessage;
+    }
+    if (insertTime != null) {
+      _json["insertTime"] = insertTime;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    if (user != null) {
+      _json["user"] = user;
+    }
+    if (warning != null) {
+      _json["warning"] = warning;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for the given google.longrunning.Operation. */
 class OperationMetadataV1Beta5 {
   /** Timestamp that this operation completed.@OutputOnly */
   core.String endTime;
@@ -2962,6 +3215,76 @@ class OperationMetadataV1Beta5 {
     }
     if (user != null) {
       _json["user"] = user;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Readiness checking configuration for VM instances. Unhealthy instances are
+ * removed from traffic rotation.
+ */
+class ReadinessCheck {
+  /** Interval between health checks. */
+  core.String checkInterval;
+  /** Number of consecutive failed checks required before removing traffic. */
+  core.int failureThreshold;
+  /**
+   * Host header to send when performing a HTTP Readiness check. Example:
+   * "myapp.appspot.com"
+   */
+  core.String host;
+  /** The request path. */
+  core.String path;
+  /**
+   * Number of consecutive successful checks required before receiving traffic.
+   */
+  core.int successThreshold;
+  /** Time before the check is considered failed. */
+  core.String timeout;
+
+  ReadinessCheck();
+
+  ReadinessCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("checkInterval")) {
+      checkInterval = _json["checkInterval"];
+    }
+    if (_json.containsKey("failureThreshold")) {
+      failureThreshold = _json["failureThreshold"];
+    }
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+    if (_json.containsKey("successThreshold")) {
+      successThreshold = _json["successThreshold"];
+    }
+    if (_json.containsKey("timeout")) {
+      timeout = _json["timeout"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (checkInterval != null) {
+      _json["checkInterval"] = checkInterval;
+    }
+    if (failureThreshold != null) {
+      _json["failureThreshold"] = failureThreshold;
+    }
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (path != null) {
+      _json["path"] = path;
+    }
+    if (successThreshold != null) {
+      _json["successThreshold"] = successThreshold;
+    }
+    if (timeout != null) {
+      _json["timeout"] = timeout;
     }
     return _json;
   }
@@ -3335,6 +3658,7 @@ class TrafficSplit {
    * - "UNSPECIFIED" : A UNSPECIFIED.
    * - "COOKIE" : A COOKIE.
    * - "IP" : A IP.
+   * - "RANDOM" : A RANDOM.
    */
   core.String shardBy;
 
@@ -3370,7 +3694,7 @@ class UrlDispatchRule {
   core.String domain;
   /**
    * Pathname within the host. Must start with a "/". A single "*" can be
-   * included at the end of the path. The sum of the lengths of the domain and
+   * included at the end of the path.The sum of the lengths of the domain and
    * path may not exceed 100 characters.
    */
   core.String path;
@@ -3635,6 +3959,12 @@ class Version {
    */
   core.List<Library> libraries;
   /**
+   * Configures liveness health checking for VM instances. Unhealthy instances
+   * are stopped and replaced with new instancesOnly returned in GET requests if
+   * view=FULL is set.
+   */
+  LivenessCheck livenessCheck;
+  /**
    * A service with manual scaling runs continuously, allowing you to perform
    * complex initialization and rely on the state of its memory over time.
    */
@@ -3652,6 +3982,12 @@ class Version {
    * set.
    */
   core.String nobuildFilesRegex;
+  /**
+   * Configures readiness health checking for VM instances. Unhealthy instances
+   * are not put into the backend traffic rotation.Only returned in GET requests
+   * if view=FULL is set.
+   */
+  ReadinessCheck readinessCheck;
   /** Machine resources for this version. Only applicable for VM runtimes. */
   Resources resources;
   /** Desired runtime. Example: python27. */
@@ -3736,6 +4072,9 @@ class Version {
     if (_json.containsKey("libraries")) {
       libraries = _json["libraries"].map((value) => new Library.fromJson(value)).toList();
     }
+    if (_json.containsKey("livenessCheck")) {
+      livenessCheck = new LivenessCheck.fromJson(_json["livenessCheck"]);
+    }
     if (_json.containsKey("manualScaling")) {
       manualScaling = new ManualScaling.fromJson(_json["manualScaling"]);
     }
@@ -3747,6 +4086,9 @@ class Version {
     }
     if (_json.containsKey("nobuildFilesRegex")) {
       nobuildFilesRegex = _json["nobuildFilesRegex"];
+    }
+    if (_json.containsKey("readinessCheck")) {
+      readinessCheck = new ReadinessCheck.fromJson(_json["readinessCheck"]);
     }
     if (_json.containsKey("resources")) {
       resources = new Resources.fromJson(_json["resources"]);
@@ -3827,6 +4169,9 @@ class Version {
     if (libraries != null) {
       _json["libraries"] = libraries.map((value) => (value).toJson()).toList();
     }
+    if (livenessCheck != null) {
+      _json["livenessCheck"] = (livenessCheck).toJson();
+    }
     if (manualScaling != null) {
       _json["manualScaling"] = (manualScaling).toJson();
     }
@@ -3838,6 +4183,9 @@ class Version {
     }
     if (nobuildFilesRegex != null) {
       _json["nobuildFilesRegex"] = nobuildFilesRegex;
+    }
+    if (readinessCheck != null) {
+      _json["readinessCheck"] = (readinessCheck).toJson();
     }
     if (resources != null) {
       _json["resources"] = (resources).toJson();

@@ -250,6 +250,72 @@ class PresentationsPagesResourceApi {
     return _response.then((data) => new Page.fromJson(data));
   }
 
+  /**
+   * Generates a thumbnail of the latest version of the specified page in the
+   * presentation and returns a URL to the thumbnail image.
+   *
+   * Request parameters:
+   *
+   * [presentationId] - The ID of the presentation to retrieve.
+   *
+   * [pageObjectId] - The object ID of the page whose thumbnail to retrieve.
+   *
+   * [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
+   * image.
+   *
+   * If you don't specify the mime type, the default mime type will be PNG.
+   * Possible string values are:
+   * - "PNG" : A PNG.
+   *
+   * [thumbnailProperties_thumbnailSize] - The optional thumbnail image size.
+   *
+   * If you don't specify the size, the server chooses a default size of the
+   * image.
+   * Possible string values are:
+   * - "THUMBNAIL_SIZE_UNSPECIFIED" : A THUMBNAIL_SIZE_UNSPECIFIED.
+   * - "LARGE" : A LARGE.
+   *
+   * Completes with a [Thumbnail].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Thumbnail> getThumbnail(core.String presentationId, core.String pageObjectId, {core.String thumbnailProperties_mimeType, core.String thumbnailProperties_thumbnailSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (presentationId == null) {
+      throw new core.ArgumentError("Parameter presentationId is required.");
+    }
+    if (pageObjectId == null) {
+      throw new core.ArgumentError("Parameter pageObjectId is required.");
+    }
+    if (thumbnailProperties_mimeType != null) {
+      _queryParams["thumbnailProperties.mimeType"] = [thumbnailProperties_mimeType];
+    }
+    if (thumbnailProperties_thumbnailSize != null) {
+      _queryParams["thumbnailProperties.thumbnailSize"] = [thumbnailProperties_thumbnailSize];
+    }
+
+    _url = 'v1/presentations/' + commons.Escaper.ecapeVariable('$presentationId') + '/pages/' + commons.Escaper.ecapeVariable('$pageObjectId') + '/thumbnail';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Thumbnail.fromJson(data));
+  }
+
 }
 
 
@@ -394,6 +460,11 @@ class AutoText {
 class BatchUpdatePresentationRequest {
   /** A list of updates to apply to the presentation. */
   core.List<Request> requests;
+  /**
+   * Provides control over how write requests are executed, such as
+   * conditionally updating the presentation.
+   */
+  WriteControl writeControl;
 
   BatchUpdatePresentationRequest();
 
@@ -401,12 +472,18 @@ class BatchUpdatePresentationRequest {
     if (_json.containsKey("requests")) {
       requests = _json["requests"].map((value) => new Request.fromJson(value)).toList();
     }
+    if (_json.containsKey("writeControl")) {
+      writeControl = new WriteControl.fromJson(_json["writeControl"]);
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (requests != null) {
       _json["requests"] = requests.map((value) => (value).toJson()).toList();
+    }
+    if (writeControl != null) {
+      _json["writeControl"] = (writeControl).toJson();
     }
     return _json;
   }
@@ -3132,6 +3209,19 @@ class Page {
    * - "NOTES_MASTER" : A notes master page.
    */
   core.String pageType;
+  /**
+   * The revision ID of the presentation containing this page. Can be used in
+   * update requests to assert that the presentation revision hasn't changed
+   * since the last read operation. Only populated if the user has edit access
+   * to the presentation.
+   *
+   * The format of the revision ID may change over time, so it should be treated
+   * opaquely. A returned revision ID is only guaranteed to be valid for 24
+   * hours after it has been returned and cannot be shared across
+   * users. Callers can assume that if two revision IDs are equal then the
+   * presentation has not changed.
+   */
+  core.String revisionId;
   /** Slide specific properties. Only set if page_type = SLIDE. */
   SlideProperties slideProperties;
 
@@ -3155,6 +3245,9 @@ class Page {
     }
     if (_json.containsKey("pageType")) {
       pageType = _json["pageType"];
+    }
+    if (_json.containsKey("revisionId")) {
+      revisionId = _json["revisionId"];
     }
     if (_json.containsKey("slideProperties")) {
       slideProperties = new SlideProperties.fromJson(_json["slideProperties"]);
@@ -3180,6 +3273,9 @@ class Page {
     }
     if (pageType != null) {
       _json["pageType"] = pageType;
+    }
+    if (revisionId != null) {
+      _json["revisionId"] = revisionId;
     }
     if (slideProperties != null) {
       _json["slideProperties"] = (slideProperties).toJson();
@@ -3750,9 +3846,8 @@ class Presentation {
    *
    * - Placeholder shapes on a notes master contain the default text styles and
    *   shape properties of all placeholder shapes on notes pages. Specifically,
-   *   a SLIDE_IMAGE placeholder shape is defined to contain the slide
-   * thumbnail, and a BODY placeholder shape is defined to contain the speaker
-   *   notes.
+   *   a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a
+   *   `BODY` placeholder shape contains the speaker notes.
    * - The notes master page properties define the common page properties
    *   inherited by all notes pages.
    * - Any other shapes on the notes master will appear on all notes pages.
@@ -3764,6 +3859,19 @@ class Presentation {
   Size pageSize;
   /** The ID of the presentation. */
   core.String presentationId;
+  /**
+   * The revision ID of the presentation. Can be used in update requests
+   * to assert that the presentation revision hasn't changed since the last
+   * read operation. Only populated if the user has edit access to the
+   * presentation.
+   *
+   * The format of the revision ID may change over time, so it should be treated
+   * opaquely. A returned revision ID is only guaranteed to be valid for 24
+   * hours after it has been returned and cannot be shared across users. Callers
+   * can assume that if two revision IDs are equal then the presentation has not
+   * changed.
+   */
+  core.String revisionId;
   /**
    * The slides in the presentation.
    * A slide inherits properties from a slide layout.
@@ -3793,6 +3901,9 @@ class Presentation {
     if (_json.containsKey("presentationId")) {
       presentationId = _json["presentationId"];
     }
+    if (_json.containsKey("revisionId")) {
+      revisionId = _json["revisionId"];
+    }
     if (_json.containsKey("slides")) {
       slides = _json["slides"].map((value) => new Page.fromJson(value)).toList();
     }
@@ -3820,6 +3931,9 @@ class Presentation {
     }
     if (presentationId != null) {
       _json["presentationId"] = presentationId;
+    }
+    if (revisionId != null) {
+      _json["revisionId"] = revisionId;
     }
     if (slides != null) {
       _json["slides"] = slides.map((value) => (value).toJson()).toList();
@@ -6162,6 +6276,16 @@ class TextStyle {
   core.bool strikethrough;
   /** Whether or not the text is underlined. */
   core.bool underline;
+  /**
+   * The font family and rendered weight of the text. This property is
+   * read-only.
+   *
+   * This field is an extension of `font_family` meant to support explicit font
+   * weights without breaking backwards compatibility. As such, when reading the
+   * style of a range of text, the value of `weighted_font_family.font_family`
+   * will always be equal to that of `font_family`.
+   */
+  WeightedFontFamily weightedFontFamily;
 
   TextStyle();
 
@@ -6199,6 +6323,9 @@ class TextStyle {
     if (_json.containsKey("underline")) {
       underline = _json["underline"];
     }
+    if (_json.containsKey("weightedFontFamily")) {
+      weightedFontFamily = new WeightedFontFamily.fromJson(_json["weightedFontFamily"]);
+    }
   }
 
   core.Map toJson() {
@@ -6235,6 +6362,9 @@ class TextStyle {
     }
     if (underline != null) {
       _json["underline"] = underline;
+    }
+    if (weightedFontFamily != null) {
+      _json["weightedFontFamily"] = (weightedFontFamily).toJson();
     }
     return _json;
   }
@@ -6287,6 +6417,53 @@ class ThemeColorPair {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/** The thumbnail of a page. */
+class Thumbnail {
+  /**
+   * The content URL of the thumbnail image.
+   *
+   * The URL to the image has a default lifetime of 30 minutes.
+   * This URL is tagged with the account of the requester. Anyone with the URL
+   * effectively accesses the image as the original requester. Access to the
+   * image may be lost if the presentation's sharing settings change.
+   * The mime type of the thumbnail image is the same as specified in the
+   * `GetPageThumbnailRequest`.
+   */
+  core.String contentUrl;
+  /** The positive height in pixels of the thumbnail image. */
+  core.int height;
+  /** The positive width in pixels of the thumbnail image. */
+  core.int width;
+
+  Thumbnail();
+
+  Thumbnail.fromJson(core.Map _json) {
+    if (_json.containsKey("contentUrl")) {
+      contentUrl = _json["contentUrl"];
+    }
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (contentUrl != null) {
+      _json["contentUrl"] = contentUrl;
+    }
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (width != null) {
+      _json["width"] = width;
     }
     return _json;
   }
@@ -6496,7 +6673,7 @@ class UpdatePagePropertiesRequest {
 class UpdateParagraphStyleRequest {
   /**
    * The location of the cell in the table containing the paragraph(s) to
-   * style. If object_id refers to a table, cell_location must have a value.
+   * style. If `object_id` refers to a table, `cell_location` must have a value.
    * Otherwise, it must not.
    */
   TableCellLocation cellLocation;
@@ -6719,8 +6896,8 @@ class UpdateTableCellPropertiesRequest {
 class UpdateTextStyleRequest {
   /**
    * The location of the cell in the table containing the text to style. If
-   * object_id refers to a table, cell_location must have a value. Otherwise, it
-   * must not.
+   * `object_id` refers to a table, `cell_location` must have a value.
+   * Otherwise, it must not.
    */
   TableCellLocation cellLocation;
   /**
@@ -6932,6 +7109,51 @@ class VideoProperties {
   }
 }
 
+/** Represents a font family and weight used to style a TextRun. */
+class WeightedFontFamily {
+  /**
+   * The font family of the text.
+   *
+   * The font family can be any font from the Font menu in Slides or from
+   * [Google Fonts] (https://fonts.google.com/). If the font name is
+   * unrecognized, the text is rendered in `Arial`.
+   */
+  core.String fontFamily;
+  /**
+   * The rendered weight of the text. This field can have any value that is a
+   * multiple of 100 between 100 and 900, inclusive. This range corresponds to
+   * only the numerical values described in the "Cascading Style Sheets Level
+   * 2 Revision 1 (CSS 2.1) Specification",
+   * [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness). The
+   * non-numerical values in the specification are disallowed. Weights greater
+   * than or equal to 700 are considered bold, and weights less than 700 are
+   * not bold. The default value is `400` ("normal").
+   */
+  core.int weight;
+
+  WeightedFontFamily();
+
+  WeightedFontFamily.fromJson(core.Map _json) {
+    if (_json.containsKey("fontFamily")) {
+      fontFamily = _json["fontFamily"];
+    }
+    if (_json.containsKey("weight")) {
+      weight = _json["weight"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (fontFamily != null) {
+      _json["fontFamily"] = fontFamily;
+    }
+    if (weight != null) {
+      _json["weight"] = weight;
+    }
+    return _json;
+  }
+}
+
 /**
  * A PageElement kind representing
  * word art.
@@ -6952,6 +7174,33 @@ class WordArt {
     var _json = new core.Map();
     if (renderedText != null) {
       _json["renderedText"] = renderedText;
+    }
+    return _json;
+  }
+}
+
+/** Provides control over how write requests are executed. */
+class WriteControl {
+  /**
+   * The revision ID of the presentation required for the write request. If
+   * specified and the `required_revision_id` doesn't exactly match the
+   * presentation's current `revision_id`, the request will not be processed and
+   * will return a 400 bad request error.
+   */
+  core.String requiredRevisionId;
+
+  WriteControl();
+
+  WriteControl.fromJson(core.Map _json) {
+    if (_json.containsKey("requiredRevisionId")) {
+      requiredRevisionId = _json["requiredRevisionId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (requiredRevisionId != null) {
+      _json["requiredRevisionId"] = requiredRevisionId;
     }
     return _json;
   }

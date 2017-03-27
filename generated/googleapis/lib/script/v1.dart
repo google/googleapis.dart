@@ -16,7 +16,7 @@ const core.String USER_AGENT = 'dart-api-client script/v1';
 
 /** Executes Google Apps Script projects. */
 class ScriptApi {
-  /** View and manage your mail */
+  /** Read, send, delete, and manage your email */
   static const MailGoogleComScope = "https://mail.google.com/";
 
   /** Manage your calendars */

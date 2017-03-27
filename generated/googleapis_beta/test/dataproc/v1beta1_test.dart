@@ -106,27 +106,27 @@ checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-buildUnnamed3118() {
+buildUnnamed3210() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3118(core.Map<core.String, core.String> o) {
+checkUnnamed3210(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3119() {
+buildUnnamed3211() {
   var o = new core.List<api.ClusterStatus>();
   o.add(buildClusterStatus());
   o.add(buildClusterStatus());
   return o;
 }
 
-checkUnnamed3119(core.List<api.ClusterStatus> o) {
+checkUnnamed3211(core.List<api.ClusterStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClusterStatus(o[0]);
   checkClusterStatus(o[1]);
@@ -140,11 +140,11 @@ buildCluster() {
     o.clusterName = "foo";
     o.clusterUuid = "foo";
     o.configuration = buildClusterConfiguration();
-    o.labels = buildUnnamed3118();
+    o.labels = buildUnnamed3210();
     o.metrics = buildClusterMetrics();
     o.projectId = "foo";
     o.status = buildClusterStatus();
-    o.statusHistory = buildUnnamed3119();
+    o.statusHistory = buildUnnamed3211();
   }
   buildCounterCluster--;
   return o;
@@ -156,23 +156,23 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.clusterName, unittest.equals('foo'));
     unittest.expect(o.clusterUuid, unittest.equals('foo'));
     checkClusterConfiguration(o.configuration);
-    checkUnnamed3118(o.labels);
+    checkUnnamed3210(o.labels);
     checkClusterMetrics(o.metrics);
     unittest.expect(o.projectId, unittest.equals('foo'));
     checkClusterStatus(o.status);
-    checkUnnamed3119(o.statusHistory);
+    checkUnnamed3211(o.statusHistory);
   }
   buildCounterCluster--;
 }
 
-buildUnnamed3120() {
+buildUnnamed3212() {
   var o = new core.List<api.NodeInitializationAction>();
   o.add(buildNodeInitializationAction());
   o.add(buildNodeInitializationAction());
   return o;
 }
 
-checkUnnamed3120(core.List<api.NodeInitializationAction> o) {
+checkUnnamed3212(core.List<api.NodeInitializationAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNodeInitializationAction(o[0]);
   checkNodeInitializationAction(o[1]);
@@ -185,7 +185,7 @@ buildClusterConfiguration() {
   if (buildCounterClusterConfiguration < 3) {
     o.configurationBucket = "foo";
     o.gceClusterConfiguration = buildGceClusterConfiguration();
-    o.initializationActions = buildUnnamed3120();
+    o.initializationActions = buildUnnamed3212();
     o.masterConfiguration = buildInstanceGroupConfiguration();
     o.secondaryWorkerConfiguration = buildInstanceGroupConfiguration();
     o.softwareConfiguration = buildSoftwareConfiguration();
@@ -200,7 +200,7 @@ checkClusterConfiguration(api.ClusterConfiguration o) {
   if (buildCounterClusterConfiguration < 3) {
     unittest.expect(o.configurationBucket, unittest.equals('foo'));
     checkGceClusterConfiguration(o.gceClusterConfiguration);
-    checkUnnamed3120(o.initializationActions);
+    checkUnnamed3212(o.initializationActions);
     checkInstanceGroupConfiguration(o.masterConfiguration);
     checkInstanceGroupConfiguration(o.secondaryWorkerConfiguration);
     checkSoftwareConfiguration(o.softwareConfiguration);
@@ -209,27 +209,27 @@ checkClusterConfiguration(api.ClusterConfiguration o) {
   buildCounterClusterConfiguration--;
 }
 
-buildUnnamed3121() {
+buildUnnamed3213() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3121(core.Map<core.String, core.String> o) {
+checkUnnamed3213(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3122() {
+buildUnnamed3214() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3122(core.Map<core.String, core.String> o) {
+checkUnnamed3214(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -240,8 +240,8 @@ buildClusterMetrics() {
   var o = new api.ClusterMetrics();
   buildCounterClusterMetrics++;
   if (buildCounterClusterMetrics < 3) {
-    o.hdfsMetrics = buildUnnamed3121();
-    o.yarnMetrics = buildUnnamed3122();
+    o.hdfsMetrics = buildUnnamed3213();
+    o.yarnMetrics = buildUnnamed3214();
   }
   buildCounterClusterMetrics--;
   return o;
@@ -250,46 +250,46 @@ buildClusterMetrics() {
 checkClusterMetrics(api.ClusterMetrics o) {
   buildCounterClusterMetrics++;
   if (buildCounterClusterMetrics < 3) {
-    checkUnnamed3121(o.hdfsMetrics);
-    checkUnnamed3122(o.yarnMetrics);
+    checkUnnamed3213(o.hdfsMetrics);
+    checkUnnamed3214(o.yarnMetrics);
   }
   buildCounterClusterMetrics--;
 }
 
-buildUnnamed3123() {
+buildUnnamed3215() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3123(core.Map<core.String, core.String> o) {
+checkUnnamed3215(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3124() {
+buildUnnamed3216() {
   var o = new core.List<api.ClusterOperationStatus>();
   o.add(buildClusterOperationStatus());
   o.add(buildClusterOperationStatus());
   return o;
 }
 
-checkUnnamed3124(core.List<api.ClusterOperationStatus> o) {
+checkUnnamed3216(core.List<api.ClusterOperationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClusterOperationStatus(o[0]);
   checkClusterOperationStatus(o[1]);
 }
 
-buildUnnamed3125() {
+buildUnnamed3217() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3125(core.List<core.String> o) {
+checkUnnamed3217(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -303,11 +303,11 @@ buildClusterOperationMetadata() {
     o.clusterName = "foo";
     o.clusterUuid = "foo";
     o.description = "foo";
-    o.labels = buildUnnamed3123();
+    o.labels = buildUnnamed3215();
     o.operationType = "foo";
     o.status = buildClusterOperationStatus();
-    o.statusHistory = buildUnnamed3124();
-    o.warnings = buildUnnamed3125();
+    o.statusHistory = buildUnnamed3216();
+    o.warnings = buildUnnamed3217();
   }
   buildCounterClusterOperationMetadata--;
   return o;
@@ -319,11 +319,11 @@ checkClusterOperationMetadata(api.ClusterOperationMetadata o) {
     unittest.expect(o.clusterName, unittest.equals('foo'));
     unittest.expect(o.clusterUuid, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed3123(o.labels);
+    checkUnnamed3215(o.labels);
     unittest.expect(o.operationType, unittest.equals('foo'));
     checkClusterOperationStatus(o.status);
-    checkUnnamed3124(o.statusHistory);
-    checkUnnamed3125(o.warnings);
+    checkUnnamed3216(o.statusHistory);
+    checkUnnamed3217(o.warnings);
   }
   buildCounterClusterOperationMetadata--;
 }
@@ -361,6 +361,7 @@ buildClusterStatus() {
     o.detail = "foo";
     o.state = "foo";
     o.stateStartTime = "foo";
+    o.substate = "foo";
   }
   buildCounterClusterStatus--;
   return o;
@@ -372,6 +373,7 @@ checkClusterStatus(api.ClusterStatus o) {
     unittest.expect(o.detail, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.stateStartTime, unittest.equals('foo'));
+    unittest.expect(o.substate, unittest.equals('foo'));
   }
   buildCounterClusterStatus--;
 }
@@ -469,40 +471,40 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed3126() {
+buildUnnamed3218() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3126(core.Map<core.String, core.String> o) {
+checkUnnamed3218(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3127() {
+buildUnnamed3219() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3127(core.List<core.String> o) {
+checkUnnamed3219(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3128() {
+buildUnnamed3220() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3128(core.List<core.String> o) {
+checkUnnamed3220(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -514,12 +516,12 @@ buildGceClusterConfiguration() {
   buildCounterGceClusterConfiguration++;
   if (buildCounterGceClusterConfiguration < 3) {
     o.internalIpOnly = true;
-    o.metadata = buildUnnamed3126();
+    o.metadata = buildUnnamed3218();
     o.networkUri = "foo";
     o.serviceAccount = "foo";
-    o.serviceAccountScopes = buildUnnamed3127();
+    o.serviceAccountScopes = buildUnnamed3219();
     o.subnetworkUri = "foo";
-    o.tags = buildUnnamed3128();
+    o.tags = buildUnnamed3220();
     o.zoneUri = "foo";
   }
   buildCounterGceClusterConfiguration--;
@@ -530,77 +532,77 @@ checkGceClusterConfiguration(api.GceClusterConfiguration o) {
   buildCounterGceClusterConfiguration++;
   if (buildCounterGceClusterConfiguration < 3) {
     unittest.expect(o.internalIpOnly, unittest.isTrue);
-    checkUnnamed3126(o.metadata);
+    checkUnnamed3218(o.metadata);
     unittest.expect(o.networkUri, unittest.equals('foo'));
     unittest.expect(o.serviceAccount, unittest.equals('foo'));
-    checkUnnamed3127(o.serviceAccountScopes);
+    checkUnnamed3219(o.serviceAccountScopes);
     unittest.expect(o.subnetworkUri, unittest.equals('foo'));
-    checkUnnamed3128(o.tags);
+    checkUnnamed3220(o.tags);
     unittest.expect(o.zoneUri, unittest.equals('foo'));
   }
   buildCounterGceClusterConfiguration--;
 }
 
-buildUnnamed3129() {
+buildUnnamed3221() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3129(core.List<core.String> o) {
+checkUnnamed3221(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3130() {
+buildUnnamed3222() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3130(core.List<core.String> o) {
+checkUnnamed3222(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3131() {
+buildUnnamed3223() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3131(core.List<core.String> o) {
+checkUnnamed3223(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3132() {
+buildUnnamed3224() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3132(core.List<core.String> o) {
+checkUnnamed3224(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3133() {
+buildUnnamed3225() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3133(core.Map<core.String, core.String> o) {
+checkUnnamed3225(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -611,14 +613,14 @@ buildHadoopJob() {
   var o = new api.HadoopJob();
   buildCounterHadoopJob++;
   if (buildCounterHadoopJob < 3) {
-    o.archiveUris = buildUnnamed3129();
-    o.args = buildUnnamed3130();
-    o.fileUris = buildUnnamed3131();
-    o.jarFileUris = buildUnnamed3132();
+    o.archiveUris = buildUnnamed3221();
+    o.args = buildUnnamed3222();
+    o.fileUris = buildUnnamed3223();
+    o.jarFileUris = buildUnnamed3224();
     o.loggingConfiguration = buildLoggingConfiguration();
     o.mainClass = "foo";
     o.mainJarFileUri = "foo";
-    o.properties = buildUnnamed3133();
+    o.properties = buildUnnamed3225();
   }
   buildCounterHadoopJob--;
   return o;
@@ -627,52 +629,52 @@ buildHadoopJob() {
 checkHadoopJob(api.HadoopJob o) {
   buildCounterHadoopJob++;
   if (buildCounterHadoopJob < 3) {
-    checkUnnamed3129(o.archiveUris);
-    checkUnnamed3130(o.args);
-    checkUnnamed3131(o.fileUris);
-    checkUnnamed3132(o.jarFileUris);
+    checkUnnamed3221(o.archiveUris);
+    checkUnnamed3222(o.args);
+    checkUnnamed3223(o.fileUris);
+    checkUnnamed3224(o.jarFileUris);
     checkLoggingConfiguration(o.loggingConfiguration);
     unittest.expect(o.mainClass, unittest.equals('foo'));
     unittest.expect(o.mainJarFileUri, unittest.equals('foo'));
-    checkUnnamed3133(o.properties);
+    checkUnnamed3225(o.properties);
   }
   buildCounterHadoopJob--;
 }
 
-buildUnnamed3134() {
+buildUnnamed3226() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3134(core.List<core.String> o) {
+checkUnnamed3226(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3135() {
+buildUnnamed3227() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3135(core.Map<core.String, core.String> o) {
+checkUnnamed3227(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3136() {
+buildUnnamed3228() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3136(core.Map<core.String, core.String> o) {
+checkUnnamed3228(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -684,11 +686,11 @@ buildHiveJob() {
   buildCounterHiveJob++;
   if (buildCounterHiveJob < 3) {
     o.continueOnFailure = true;
-    o.jarFileUris = buildUnnamed3134();
-    o.properties = buildUnnamed3135();
+    o.jarFileUris = buildUnnamed3226();
+    o.properties = buildUnnamed3227();
     o.queryFileUri = "foo";
     o.queryList = buildQueryList();
-    o.scriptVariables = buildUnnamed3136();
+    o.scriptVariables = buildUnnamed3228();
   }
   buildCounterHiveJob--;
   return o;
@@ -698,36 +700,36 @@ checkHiveJob(api.HiveJob o) {
   buildCounterHiveJob++;
   if (buildCounterHiveJob < 3) {
     unittest.expect(o.continueOnFailure, unittest.isTrue);
-    checkUnnamed3134(o.jarFileUris);
-    checkUnnamed3135(o.properties);
+    checkUnnamed3226(o.jarFileUris);
+    checkUnnamed3227(o.properties);
     unittest.expect(o.queryFileUri, unittest.equals('foo'));
     checkQueryList(o.queryList);
-    checkUnnamed3136(o.scriptVariables);
+    checkUnnamed3228(o.scriptVariables);
   }
   buildCounterHiveJob--;
 }
 
-buildUnnamed3137() {
+buildUnnamed3229() {
   var o = new core.List<api.AcceleratorConfiguration>();
   o.add(buildAcceleratorConfiguration());
   o.add(buildAcceleratorConfiguration());
   return o;
 }
 
-checkUnnamed3137(core.List<api.AcceleratorConfiguration> o) {
+checkUnnamed3229(core.List<api.AcceleratorConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAcceleratorConfiguration(o[0]);
   checkAcceleratorConfiguration(o[1]);
 }
 
-buildUnnamed3138() {
+buildUnnamed3230() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3138(core.List<core.String> o) {
+checkUnnamed3230(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -738,10 +740,10 @@ buildInstanceGroupConfiguration() {
   var o = new api.InstanceGroupConfiguration();
   buildCounterInstanceGroupConfiguration++;
   if (buildCounterInstanceGroupConfiguration < 3) {
-    o.accelerators = buildUnnamed3137();
+    o.accelerators = buildUnnamed3229();
     o.diskConfiguration = buildDiskConfiguration();
     o.imageUri = "foo";
-    o.instanceNames = buildUnnamed3138();
+    o.instanceNames = buildUnnamed3230();
     o.isPreemptible = true;
     o.machineTypeUri = "foo";
     o.managedGroupConfiguration = buildManagedGroupConfiguration();
@@ -754,10 +756,10 @@ buildInstanceGroupConfiguration() {
 checkInstanceGroupConfiguration(api.InstanceGroupConfiguration o) {
   buildCounterInstanceGroupConfiguration++;
   if (buildCounterInstanceGroupConfiguration < 3) {
-    checkUnnamed3137(o.accelerators);
+    checkUnnamed3229(o.accelerators);
     checkDiskConfiguration(o.diskConfiguration);
     unittest.expect(o.imageUri, unittest.equals('foo'));
-    checkUnnamed3138(o.instanceNames);
+    checkUnnamed3230(o.instanceNames);
     unittest.expect(o.isPreemptible, unittest.isTrue);
     unittest.expect(o.machineTypeUri, unittest.equals('foo'));
     checkManagedGroupConfiguration(o.managedGroupConfiguration);
@@ -766,40 +768,40 @@ checkInstanceGroupConfiguration(api.InstanceGroupConfiguration o) {
   buildCounterInstanceGroupConfiguration--;
 }
 
-buildUnnamed3139() {
+buildUnnamed3231() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3139(core.Map<core.String, core.String> o) {
+checkUnnamed3231(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3140() {
+buildUnnamed3232() {
   var o = new core.List<api.JobStatus>();
   o.add(buildJobStatus());
   o.add(buildJobStatus());
   return o;
 }
 
-checkUnnamed3140(core.List<api.JobStatus> o) {
+checkUnnamed3232(core.List<api.JobStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJobStatus(o[0]);
   checkJobStatus(o[1]);
 }
 
-buildUnnamed3141() {
+buildUnnamed3233() {
   var o = new core.List<api.YarnApplication>();
   o.add(buildYarnApplication());
   o.add(buildYarnApplication());
   return o;
 }
 
-checkUnnamed3141(core.List<api.YarnApplication> o) {
+checkUnnamed3233(core.List<api.YarnApplication> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkYarnApplication(o[0]);
   checkYarnApplication(o[1]);
@@ -816,7 +818,7 @@ buildJob() {
     o.hadoopJob = buildHadoopJob();
     o.hiveJob = buildHiveJob();
     o.interactive = true;
-    o.labels = buildUnnamed3139();
+    o.labels = buildUnnamed3231();
     o.pigJob = buildPigJob();
     o.placement = buildJobPlacement();
     o.pysparkJob = buildPySparkJob();
@@ -825,9 +827,9 @@ buildJob() {
     o.sparkJob = buildSparkJob();
     o.sparkSqlJob = buildSparkSqlJob();
     o.status = buildJobStatus();
-    o.statusHistory = buildUnnamed3140();
+    o.statusHistory = buildUnnamed3232();
     o.submittedBy = "foo";
-    o.yarnApplications = buildUnnamed3141();
+    o.yarnApplications = buildUnnamed3233();
   }
   buildCounterJob--;
   return o;
@@ -842,7 +844,7 @@ checkJob(api.Job o) {
     checkHadoopJob(o.hadoopJob);
     checkHiveJob(o.hiveJob);
     unittest.expect(o.interactive, unittest.isTrue);
-    checkUnnamed3139(o.labels);
+    checkUnnamed3231(o.labels);
     checkPigJob(o.pigJob);
     checkJobPlacement(o.placement);
     checkPySparkJob(o.pysparkJob);
@@ -851,9 +853,9 @@ checkJob(api.Job o) {
     checkSparkJob(o.sparkJob);
     checkSparkSqlJob(o.sparkSqlJob);
     checkJobStatus(o.status);
-    checkUnnamed3140(o.statusHistory);
+    checkUnnamed3232(o.statusHistory);
     unittest.expect(o.submittedBy, unittest.equals('foo'));
-    checkUnnamed3141(o.yarnApplications);
+    checkUnnamed3233(o.yarnApplications);
   }
   buildCounterJob--;
 }
@@ -927,6 +929,7 @@ buildJobStatus() {
     o.details = "foo";
     o.state = "foo";
     o.stateStartTime = "foo";
+    o.substate = "foo";
   }
   buildCounterJobStatus--;
   return o;
@@ -938,18 +941,19 @@ checkJobStatus(api.JobStatus o) {
     unittest.expect(o.details, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.stateStartTime, unittest.equals('foo'));
+    unittest.expect(o.substate, unittest.equals('foo'));
   }
   buildCounterJobStatus--;
 }
 
-buildUnnamed3142() {
+buildUnnamed3234() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed3142(core.List<api.Cluster> o) {
+checkUnnamed3234(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -960,7 +964,7 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed3142();
+    o.clusters = buildUnnamed3234();
     o.nextPageToken = "foo";
   }
   buildCounterListClustersResponse--;
@@ -970,20 +974,20 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed3142(o.clusters);
+    checkUnnamed3234(o.clusters);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed3143() {
+buildUnnamed3235() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed3143(core.List<api.Job> o) {
+checkUnnamed3235(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -994,7 +998,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed3143();
+    o.jobs = buildUnnamed3235();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -1004,20 +1008,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed3143(o.jobs);
+    checkUnnamed3235(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed3144() {
+buildUnnamed3236() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed3144(core.List<api.Operation> o) {
+checkUnnamed3236(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -1029,7 +1033,7 @@ buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed3144();
+    o.operations = buildUnnamed3236();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -1039,19 +1043,19 @@ checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3144(o.operations);
+    checkUnnamed3236(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
 
-buildUnnamed3145() {
+buildUnnamed3237() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3145(core.Map<core.String, core.String> o) {
+checkUnnamed3237(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1062,7 +1066,7 @@ buildLoggingConfiguration() {
   var o = new api.LoggingConfiguration();
   buildCounterLoggingConfiguration++;
   if (buildCounterLoggingConfiguration < 3) {
-    o.driverLogLevels = buildUnnamed3145();
+    o.driverLogLevels = buildUnnamed3237();
   }
   buildCounterLoggingConfiguration--;
   return o;
@@ -1071,7 +1075,7 @@ buildLoggingConfiguration() {
 checkLoggingConfiguration(api.LoggingConfiguration o) {
   buildCounterLoggingConfiguration++;
   if (buildCounterLoggingConfiguration < 3) {
-    checkUnnamed3145(o.driverLogLevels);
+    checkUnnamed3237(o.driverLogLevels);
   }
   buildCounterLoggingConfiguration--;
 }
@@ -1118,27 +1122,27 @@ checkNodeInitializationAction(api.NodeInitializationAction o) {
   buildCounterNodeInitializationAction--;
 }
 
-buildUnnamed3146() {
+buildUnnamed3238() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3146(core.Map<core.String, core.Object> o) {
+checkUnnamed3238(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed3147() {
+buildUnnamed3239() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3147(core.Map<core.String, core.Object> o) {
+checkUnnamed3239(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o["y"]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
@@ -1151,9 +1155,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed3146();
+    o.metadata = buildUnnamed3238();
     o.name = "foo";
-    o.response = buildUnnamed3147();
+    o.response = buildUnnamed3239();
   }
   buildCounterOperation--;
   return o;
@@ -1164,34 +1168,34 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed3146(o.metadata);
+    checkUnnamed3238(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3147(o.response);
+    checkUnnamed3239(o.response);
   }
   buildCounterOperation--;
 }
 
-buildUnnamed3148() {
+buildUnnamed3240() {
   var o = new core.List<api.OperationStatus>();
   o.add(buildOperationStatus());
   o.add(buildOperationStatus());
   return o;
 }
 
-checkUnnamed3148(core.List<api.OperationStatus> o) {
+checkUnnamed3240(core.List<api.OperationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationStatus(o[0]);
   checkOperationStatus(o[1]);
 }
 
-buildUnnamed3149() {
+buildUnnamed3241() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3149(core.List<core.String> o) {
+checkUnnamed3241(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1207,8 +1211,8 @@ buildOperationMetadata() {
     o.description = "foo";
     o.operationType = "foo";
     o.status = buildOperationStatus();
-    o.statusHistory = buildUnnamed3148();
-    o.warnings = buildUnnamed3149();
+    o.statusHistory = buildUnnamed3240();
+    o.warnings = buildUnnamed3241();
   }
   buildCounterOperationMetadata--;
   return o;
@@ -1222,8 +1226,8 @@ checkOperationMetadata(api.OperationMetadata o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.operationType, unittest.equals('foo'));
     checkOperationStatus(o.status);
-    checkUnnamed3148(o.statusHistory);
-    checkUnnamed3149(o.warnings);
+    checkUnnamed3240(o.statusHistory);
+    checkUnnamed3241(o.warnings);
   }
   buildCounterOperationMetadata--;
 }
@@ -1253,40 +1257,40 @@ checkOperationStatus(api.OperationStatus o) {
   buildCounterOperationStatus--;
 }
 
-buildUnnamed3150() {
+buildUnnamed3242() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3150(core.List<core.String> o) {
+checkUnnamed3242(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3151() {
+buildUnnamed3243() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3151(core.Map<core.String, core.String> o) {
+checkUnnamed3243(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3152() {
+buildUnnamed3244() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3152(core.Map<core.String, core.String> o) {
+checkUnnamed3244(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1298,12 +1302,12 @@ buildPigJob() {
   buildCounterPigJob++;
   if (buildCounterPigJob < 3) {
     o.continueOnFailure = true;
-    o.jarFileUris = buildUnnamed3150();
+    o.jarFileUris = buildUnnamed3242();
     o.loggingConfiguration = buildLoggingConfiguration();
-    o.properties = buildUnnamed3151();
+    o.properties = buildUnnamed3243();
     o.queryFileUri = "foo";
     o.queryList = buildQueryList();
-    o.scriptVariables = buildUnnamed3152();
+    o.scriptVariables = buildUnnamed3244();
   }
   buildCounterPigJob--;
   return o;
@@ -1313,89 +1317,89 @@ checkPigJob(api.PigJob o) {
   buildCounterPigJob++;
   if (buildCounterPigJob < 3) {
     unittest.expect(o.continueOnFailure, unittest.isTrue);
-    checkUnnamed3150(o.jarFileUris);
+    checkUnnamed3242(o.jarFileUris);
     checkLoggingConfiguration(o.loggingConfiguration);
-    checkUnnamed3151(o.properties);
+    checkUnnamed3243(o.properties);
     unittest.expect(o.queryFileUri, unittest.equals('foo'));
     checkQueryList(o.queryList);
-    checkUnnamed3152(o.scriptVariables);
+    checkUnnamed3244(o.scriptVariables);
   }
   buildCounterPigJob--;
 }
 
-buildUnnamed3153() {
+buildUnnamed3245() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3153(core.List<core.String> o) {
+checkUnnamed3245(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3154() {
+buildUnnamed3246() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3154(core.List<core.String> o) {
+checkUnnamed3246(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3155() {
+buildUnnamed3247() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3155(core.List<core.String> o) {
+checkUnnamed3247(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3156() {
+buildUnnamed3248() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3156(core.List<core.String> o) {
+checkUnnamed3248(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3157() {
+buildUnnamed3249() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3157(core.Map<core.String, core.String> o) {
+checkUnnamed3249(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3158() {
+buildUnnamed3250() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3158(core.List<core.String> o) {
+checkUnnamed3250(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1406,14 +1410,14 @@ buildPySparkJob() {
   var o = new api.PySparkJob();
   buildCounterPySparkJob++;
   if (buildCounterPySparkJob < 3) {
-    o.archiveUris = buildUnnamed3153();
-    o.args = buildUnnamed3154();
-    o.fileUris = buildUnnamed3155();
-    o.jarFileUris = buildUnnamed3156();
+    o.archiveUris = buildUnnamed3245();
+    o.args = buildUnnamed3246();
+    o.fileUris = buildUnnamed3247();
+    o.jarFileUris = buildUnnamed3248();
     o.loggingConfiguration = buildLoggingConfiguration();
     o.mainPythonFileUri = "foo";
-    o.properties = buildUnnamed3157();
-    o.pythonFileUris = buildUnnamed3158();
+    o.properties = buildUnnamed3249();
+    o.pythonFileUris = buildUnnamed3250();
   }
   buildCounterPySparkJob--;
   return o;
@@ -1422,26 +1426,26 @@ buildPySparkJob() {
 checkPySparkJob(api.PySparkJob o) {
   buildCounterPySparkJob++;
   if (buildCounterPySparkJob < 3) {
-    checkUnnamed3153(o.archiveUris);
-    checkUnnamed3154(o.args);
-    checkUnnamed3155(o.fileUris);
-    checkUnnamed3156(o.jarFileUris);
+    checkUnnamed3245(o.archiveUris);
+    checkUnnamed3246(o.args);
+    checkUnnamed3247(o.fileUris);
+    checkUnnamed3248(o.jarFileUris);
     checkLoggingConfiguration(o.loggingConfiguration);
     unittest.expect(o.mainPythonFileUri, unittest.equals('foo'));
-    checkUnnamed3157(o.properties);
-    checkUnnamed3158(o.pythonFileUris);
+    checkUnnamed3249(o.properties);
+    checkUnnamed3250(o.pythonFileUris);
   }
   buildCounterPySparkJob--;
 }
 
-buildUnnamed3159() {
+buildUnnamed3251() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3159(core.List<core.String> o) {
+checkUnnamed3251(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1452,7 +1456,7 @@ buildQueryList() {
   var o = new api.QueryList();
   buildCounterQueryList++;
   if (buildCounterQueryList < 3) {
-    o.queries = buildUnnamed3159();
+    o.queries = buildUnnamed3251();
   }
   buildCounterQueryList--;
   return o;
@@ -1461,19 +1465,19 @@ buildQueryList() {
 checkQueryList(api.QueryList o) {
   buildCounterQueryList++;
   if (buildCounterQueryList < 3) {
-    checkUnnamed3159(o.queries);
+    checkUnnamed3251(o.queries);
   }
   buildCounterQueryList--;
 }
 
-buildUnnamed3160() {
+buildUnnamed3252() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3160(core.Map<core.String, core.String> o) {
+checkUnnamed3252(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1485,7 +1489,7 @@ buildSoftwareConfiguration() {
   buildCounterSoftwareConfiguration++;
   if (buildCounterSoftwareConfiguration < 3) {
     o.imageVersion = "foo";
-    o.properties = buildUnnamed3160();
+    o.properties = buildUnnamed3252();
   }
   buildCounterSoftwareConfiguration--;
   return o;
@@ -1495,71 +1499,71 @@ checkSoftwareConfiguration(api.SoftwareConfiguration o) {
   buildCounterSoftwareConfiguration++;
   if (buildCounterSoftwareConfiguration < 3) {
     unittest.expect(o.imageVersion, unittest.equals('foo'));
-    checkUnnamed3160(o.properties);
+    checkUnnamed3252(o.properties);
   }
   buildCounterSoftwareConfiguration--;
 }
 
-buildUnnamed3161() {
+buildUnnamed3253() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3161(core.List<core.String> o) {
+checkUnnamed3253(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3162() {
+buildUnnamed3254() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3162(core.List<core.String> o) {
+checkUnnamed3254(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3163() {
+buildUnnamed3255() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3163(core.List<core.String> o) {
+checkUnnamed3255(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3164() {
+buildUnnamed3256() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3164(core.List<core.String> o) {
+checkUnnamed3256(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3165() {
+buildUnnamed3257() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3165(core.Map<core.String, core.String> o) {
+checkUnnamed3257(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1570,14 +1574,14 @@ buildSparkJob() {
   var o = new api.SparkJob();
   buildCounterSparkJob++;
   if (buildCounterSparkJob < 3) {
-    o.archiveUris = buildUnnamed3161();
-    o.args = buildUnnamed3162();
-    o.fileUris = buildUnnamed3163();
-    o.jarFileUris = buildUnnamed3164();
+    o.archiveUris = buildUnnamed3253();
+    o.args = buildUnnamed3254();
+    o.fileUris = buildUnnamed3255();
+    o.jarFileUris = buildUnnamed3256();
     o.loggingConfiguration = buildLoggingConfiguration();
     o.mainClass = "foo";
     o.mainJarFileUri = "foo";
-    o.properties = buildUnnamed3165();
+    o.properties = buildUnnamed3257();
   }
   buildCounterSparkJob--;
   return o;
@@ -1586,52 +1590,52 @@ buildSparkJob() {
 checkSparkJob(api.SparkJob o) {
   buildCounterSparkJob++;
   if (buildCounterSparkJob < 3) {
-    checkUnnamed3161(o.archiveUris);
-    checkUnnamed3162(o.args);
-    checkUnnamed3163(o.fileUris);
-    checkUnnamed3164(o.jarFileUris);
+    checkUnnamed3253(o.archiveUris);
+    checkUnnamed3254(o.args);
+    checkUnnamed3255(o.fileUris);
+    checkUnnamed3256(o.jarFileUris);
     checkLoggingConfiguration(o.loggingConfiguration);
     unittest.expect(o.mainClass, unittest.equals('foo'));
     unittest.expect(o.mainJarFileUri, unittest.equals('foo'));
-    checkUnnamed3165(o.properties);
+    checkUnnamed3257(o.properties);
   }
   buildCounterSparkJob--;
 }
 
-buildUnnamed3166() {
+buildUnnamed3258() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3166(core.List<core.String> o) {
+checkUnnamed3258(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3167() {
+buildUnnamed3259() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3167(core.Map<core.String, core.String> o) {
+checkUnnamed3259(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3168() {
+buildUnnamed3260() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3168(core.Map<core.String, core.String> o) {
+checkUnnamed3260(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1642,12 +1646,12 @@ buildSparkSqlJob() {
   var o = new api.SparkSqlJob();
   buildCounterSparkSqlJob++;
   if (buildCounterSparkSqlJob < 3) {
-    o.jarFileUris = buildUnnamed3166();
+    o.jarFileUris = buildUnnamed3258();
     o.loggingConfiguration = buildLoggingConfiguration();
-    o.properties = buildUnnamed3167();
+    o.properties = buildUnnamed3259();
     o.queryFileUri = "foo";
     o.queryList = buildQueryList();
-    o.scriptVariables = buildUnnamed3168();
+    o.scriptVariables = buildUnnamed3260();
   }
   buildCounterSparkSqlJob--;
   return o;
@@ -1656,40 +1660,40 @@ buildSparkSqlJob() {
 checkSparkSqlJob(api.SparkSqlJob o) {
   buildCounterSparkSqlJob++;
   if (buildCounterSparkSqlJob < 3) {
-    checkUnnamed3166(o.jarFileUris);
+    checkUnnamed3258(o.jarFileUris);
     checkLoggingConfiguration(o.loggingConfiguration);
-    checkUnnamed3167(o.properties);
+    checkUnnamed3259(o.properties);
     unittest.expect(o.queryFileUri, unittest.equals('foo'));
     checkQueryList(o.queryList);
-    checkUnnamed3168(o.scriptVariables);
+    checkUnnamed3260(o.scriptVariables);
   }
   buildCounterSparkSqlJob--;
 }
 
-buildUnnamed3169() {
+buildUnnamed3261() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3169(core.Map<core.String, core.Object> o) {
+checkUnnamed3261(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
   var casted6 = (o["y"]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed3170() {
+buildUnnamed3262() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3169());
-  o.add(buildUnnamed3169());
+  o.add(buildUnnamed3261());
+  o.add(buildUnnamed3261());
   return o;
 }
 
-checkUnnamed3170(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3262(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3169(o[0]);
-  checkUnnamed3169(o[1]);
+  checkUnnamed3261(o[0]);
+  checkUnnamed3261(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1698,7 +1702,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3170();
+    o.details = buildUnnamed3262();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -1709,7 +1713,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3170(o.details);
+    checkUnnamed3262(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -2558,9 +2562,9 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsClustersResourceApi res = new api.DataprocApi(mock).projects.clusters;
       var arg_projectId = "foo";
-      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_filter = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2594,9 +2598,9 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
 
 
         var h = {
@@ -2605,7 +2609,7 @@ main() {
         var resp = convert.JSON.encode(buildListClustersResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_projectId, filter: arg_filter, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListClustersResponse response) {
+      res.list(arg_projectId, pageToken: arg_pageToken, pageSize: arg_pageSize, filter: arg_filter).then(unittest.expectAsync(((api.ListClustersResponse response) {
         checkListClustersResponse(response);
       })));
     });
@@ -2853,11 +2857,11 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.DataprocApi(mock).projects.jobs;
       var arg_projectId = "foo";
-      var arg_filter = "foo";
-      var arg_jobStateMatcher = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_clusterName = "foo";
+      var arg_filter = "foo";
+      var arg_jobStateMatcher = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2891,11 +2895,11 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(queryMap["jobStateMatcher"].first, unittest.equals(arg_jobStateMatcher));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["clusterName"].first, unittest.equals(arg_clusterName));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["jobStateMatcher"].first, unittest.equals(arg_jobStateMatcher));
 
 
         var h = {
@@ -2904,7 +2908,7 @@ main() {
         var resp = convert.JSON.encode(buildListJobsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_projectId, filter: arg_filter, jobStateMatcher: arg_jobStateMatcher, pageToken: arg_pageToken, pageSize: arg_pageSize, clusterName: arg_clusterName).then(unittest.expectAsync(((api.ListJobsResponse response) {
+      res.list(arg_projectId, pageToken: arg_pageToken, pageSize: arg_pageSize, clusterName: arg_clusterName, filter: arg_filter, jobStateMatcher: arg_jobStateMatcher).then(unittest.expectAsync(((api.ListJobsResponse response) {
         checkListJobsResponse(response);
       })));
     });

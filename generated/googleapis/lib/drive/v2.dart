@@ -6437,7 +6437,11 @@ class File {
   core.String thumbnailLink;
   /** The thumbnail version for use in thumbnail cache invalidation. */
   core.String thumbnailVersion;
-  /** The title of this file. */
+  /**
+   * The title of this file. Note that for immutable items such as the top level
+   * folders of Team Drives, My Drive root folder, and Application Data folder
+   * the title is constant.
+   */
   core.String title;
   /**
    * The time that the item was trashed (formatted RFC 3339 timestamp). Only

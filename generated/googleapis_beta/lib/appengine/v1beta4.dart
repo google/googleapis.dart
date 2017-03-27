@@ -46,11 +46,12 @@ class AppsResourceApi {
       _requester = client;
 
   /**
-   * Creates an App Engine application for a Google Cloud Platform project. This
-   * requires a project that excludes an App Engine application. For details
-   * about creating a project without an application, see the Google Cloud
-   * Resource Manager create project topic
-   * (https://cloud.google.com/resource-manager/docs/creating-project).
+   * Creates an App Engine application for a Google Cloud Platform project.
+   * Required fields: id - The ID of the target Cloud Platform project. location
+   * - The region (https://cloud.google.com/appengine/docs/locations) where you
+   * want the App Engine application located.For more information about App
+   * Engine applications, see Managing Projects, Applications, and Billing
+   * (https://cloud.google.com/appengine/docs/python/console/).
    *
    * [request] - The metadata request object.
    *
@@ -464,9 +465,9 @@ class AppsModulesResourceApi {
    *
    * [mask] - Standard field mask for the set of fields to be updated.
    *
-   * [migrateTraffic] - Set to true to gradually shift traffic from one version
-   * to another single version. By default, traffic is shifted immediately. For
-   * gradual traffic migration, the target version must be located within
+   * [migrateTraffic] - Set to true to gradually shift traffic to one or more
+   * versions that you specify. By default, traffic is shifted immediately. For
+   * gradual traffic migration, the target versions must be located within
    * instances that are configured for both warmup requests
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps.modules.versions#inboundservicetype)
    * and automatic scaling
@@ -1014,7 +1015,9 @@ class AppsModulesVersionsInstancesResourceApi {
   }
 
   /**
-   * Lists the instances of a version.
+   * Lists the instances of a version.Tip: To aggregate details about instances
+   * over time, see the Stackdriver Monitoring API
+   * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
    *
    * Request parameters:
    *
@@ -1325,6 +1328,7 @@ class Application {
    * order-dependent.@OutputOnly
    */
   core.List<UrlDispatchRule> dispatchRules;
+  IdentityAwareProxy iap;
   /**
    * Identifier of the Application resource. This identifier is equivalent to
    * the project ID of the Google Cloud Platform project where you want to
@@ -1366,6 +1370,9 @@ class Application {
     if (_json.containsKey("dispatchRules")) {
       dispatchRules = _json["dispatchRules"].map((value) => new UrlDispatchRule.fromJson(value)).toList();
     }
+    if (_json.containsKey("iap")) {
+      iap = new IdentityAwareProxy.fromJson(_json["iap"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -1396,6 +1403,9 @@ class Application {
     }
     if (dispatchRules != null) {
       _json["dispatchRules"] = dispatchRules.map((value) => (value).toJson()).toList();
+    }
+    if (iap != null) {
+      _json["iap"] = (iap).toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -1584,12 +1594,14 @@ class BasicScaling {
 }
 
 /**
- * Docker image that is used to start a VM container for the version you deploy.
+ * Docker image that is used to create a container and start a VM instance for
+ * the version that you deploy. Only applicable for instances running in the App
+ * Engine flexible environment.
  */
 class ContainerInfo {
   /**
-   * URI to the hosted container image in a Docker repository. The URI must be
-   * fully qualified and include a tag or digest. Examples:
+   * URI to the hosted container image in Google Container Registry. The URI
+   * must be fully qualified and include a tag or digest. Examples:
    * "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
    */
   core.String image;
@@ -1675,8 +1687,8 @@ class DebugInstanceRequest {
 /** Code and application artifacts used to deploy a version to App Engine. */
 class Deployment {
   /**
-   * A Docker image that App Engine uses the run the version. Only applicable
-   * for instances in App Engine flexible environment.
+   * The Docker image for the container that runs the version. Only applicable
+   * for instances running in the App Engine flexible environment.
    */
   ContainerInfo container;
   /**
@@ -1945,6 +1957,60 @@ class HealthCheck {
   }
 }
 
+/** Identity-Aware Proxy */
+class IdentityAwareProxy {
+  /**
+   * Whether the serving infrastructure will authenticate and authorize all
+   * incoming requests.If true, the oauth2_client_id and oauth2_client_secret
+   * fields must be non-empty.
+   */
+  core.bool enabled;
+  /** OAuth2 client ID to use for the authentication flow. */
+  core.String oauth2ClientId;
+  /**
+   * For security reasons, this value cannot be retrieved via the API. Instead,
+   * the SHA-256 hash of the value is returned in the
+   * oauth2_client_secret_sha256 field.@InputOnly
+   */
+  core.String oauth2ClientSecret;
+  /** Hex-encoded SHA-256 hash of the client secret.@OutputOnly */
+  core.String oauth2ClientSecretSha256;
+
+  IdentityAwareProxy();
+
+  IdentityAwareProxy.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("oauth2ClientId")) {
+      oauth2ClientId = _json["oauth2ClientId"];
+    }
+    if (_json.containsKey("oauth2ClientSecret")) {
+      oauth2ClientSecret = _json["oauth2ClientSecret"];
+    }
+    if (_json.containsKey("oauth2ClientSecretSha256")) {
+      oauth2ClientSecretSha256 = _json["oauth2ClientSecretSha256"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (oauth2ClientId != null) {
+      _json["oauth2ClientId"] = oauth2ClientId;
+    }
+    if (oauth2ClientSecret != null) {
+      _json["oauth2ClientSecret"] = oauth2ClientSecret;
+    }
+    if (oauth2ClientSecretSha256 != null) {
+      _json["oauth2ClientSecretSha256"] = oauth2ClientSecretSha256;
+    }
+    return _json;
+  }
+}
+
 /**
  * An Instance resource is the computing unit that App Engine uses to
  * automatically scale an application.
@@ -2180,7 +2246,7 @@ class ListInstancesResponse {
   }
 }
 
-/** The response message for LocationService.ListLocations. */
+/** The response message for Locations.ListLocations. */
 class ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   core.List<Location> locations;
@@ -2812,6 +2878,85 @@ class OperationMetadataV1 {
   OperationMetadataV1();
 
   OperationMetadataV1.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("ephemeralMessage")) {
+      ephemeralMessage = _json["ephemeralMessage"];
+    }
+    if (_json.containsKey("insertTime")) {
+      insertTime = _json["insertTime"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+    if (_json.containsKey("user")) {
+      user = _json["user"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = _json["warning"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (ephemeralMessage != null) {
+      _json["ephemeralMessage"] = ephemeralMessage;
+    }
+    if (insertTime != null) {
+      _json["insertTime"] = insertTime;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    if (user != null) {
+      _json["user"] = user;
+    }
+    if (warning != null) {
+      _json["warning"] = warning;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for the given google.longrunning.Operation. */
+class OperationMetadataV1Beta {
+  /** Time that this operation completed.@OutputOnly */
+  core.String endTime;
+  /**
+   * Ephemeral message that may change every time the operation is polled.
+   * @OutputOnly
+   */
+  core.String ephemeralMessage;
+  /** Time that this operation was created.@OutputOnly */
+  core.String insertTime;
+  /**
+   * API method that initiated this operation. Example:
+   * google.appengine.v1beta.Versions.CreateVersion.@OutputOnly
+   */
+  core.String method;
+  /**
+   * Name of the resource that this operation is acting on. Example:
+   * apps/myapp/services/default.@OutputOnly
+   */
+  core.String target;
+  /** User who requested this operation.@OutputOnly */
+  core.String user;
+  /** Durable messages that persist on every operation poll. @OutputOnly */
+  core.List<core.String> warning;
+
+  OperationMetadataV1Beta();
+
+  OperationMetadataV1Beta.fromJson(core.Map _json) {
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }

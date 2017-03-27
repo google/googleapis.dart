@@ -61,8 +61,7 @@ class ProjectsSnapshotsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
    *
    * Completes with a [Policy].
@@ -107,8 +106,7 @@ class ProjectsSnapshotsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
    *
    * Completes with a [Policy].
@@ -161,8 +159,7 @@ class ProjectsSnapshotsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -416,8 +413,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
    *
    * Completes with a [Policy].
@@ -666,8 +662,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
    *
    * Completes with a [Policy].
@@ -720,8 +715,7 @@ class ProjectsSubscriptionsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -915,8 +909,7 @@ class ProjectsTopicsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/topics/[^/]+$".
    *
    * Completes with a [Policy].
@@ -960,12 +953,12 @@ class ProjectsTopicsResourceApi {
    * Format is `projects/{project}`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Maximum number of topics to return.
-   *
    * [pageToken] - The value returned by the last `ListTopicsResponse`;
    * indicates that this is
    * a continuation of a prior `ListTopics` call, and that the system should
    * return the next page of data.
+   *
+   * [pageSize] - Maximum number of topics to return.
    *
    * Completes with a [ListTopicsResponse].
    *
@@ -975,7 +968,7 @@ class ProjectsTopicsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTopicsResponse> list(core.String project, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListTopicsResponse> list(core.String project, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -986,11 +979,11 @@ class ProjectsTopicsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$project') + '/topics';
@@ -1063,8 +1056,7 @@ class ProjectsTopicsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy is being
    * specified.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/topics/[^/]+$".
    *
    * Completes with a [Policy].
@@ -1117,8 +1109,7 @@ class ProjectsTopicsResourceApi {
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
-   * `resource` is usually specified as a path. For example, a Project
-   * resource is specified as `projects/{project}`.
+   * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/topics/[^/]+$".
    *
    * Completes with a [TestIamPermissionsResponse].
@@ -1777,11 +1768,10 @@ class PushConfig {
    * control different aspects of the message delivery.
    *
    * The currently supported attribute is `x-goog-version`, which you can
-   * use to change the format of the push message. This attribute
+   * use to change the format of the pushed message. This attribute
    * indicates the version of the data expected by the endpoint. This
-   * controls the shape of the envelope (i.e. its fields and metadata).
-   * The endpoint version is based on the version of the Pub/Sub
-   * API.
+   * controls the shape of the pushed message (i.e., its fields and metadata).
+   * The endpoint version is based on the version of the Pub/Sub API.
    *
    * If not present during the `CreateSubscription` call, it will default to
    * the version of the API used to make such call. If not present during a

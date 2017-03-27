@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-library googleapis_beta.ml.v1beta1;
+library googleapis.ml.v1;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client ml/v1beta1';
+const core.String USER_AGENT = 'dart-api-client ml/v1';
 
 /** An API to enable creating and using machine learning models. */
 class MlApi {
@@ -52,7 +52,7 @@ class ProjectsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * Completes with a [GoogleCloudMlV1beta1GetConfigResponse].
+   * Completes with a [GoogleCloudMlV1GetConfigResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -60,7 +60,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1GetConfigResponse> getConfig(core.String name) {
+  async.Future<GoogleCloudMlV1GetConfigResponse> getConfig(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -72,7 +72,7 @@ class ProjectsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':getConfig';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':getConfig';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -81,7 +81,7 @@ class ProjectsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1GetConfigResponse.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1GetConfigResponse.fromJson(data));
   }
 
   /**
@@ -106,7 +106,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleApiHttpBody> predict(GoogleCloudMlV1beta1PredictRequest request, core.String name) {
+  async.Future<GoogleApiHttpBody> predict(GoogleCloudMlV1PredictRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -121,7 +121,7 @@ class ProjectsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':predict';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':predict';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -162,7 +162,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleProtobufEmpty> cancel(GoogleCloudMlV1beta1CancelJobRequest request, core.String name) {
+  async.Future<GoogleProtobufEmpty> cancel(GoogleCloudMlV1CancelJobRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -177,7 +177,7 @@ class ProjectsJobsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -201,7 +201,7 @@ class ProjectsJobsResourceApi {
    * Authorization: requires `Editor` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * Completes with a [GoogleCloudMlV1beta1Job].
+   * Completes with a [GoogleCloudMlV1Job].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -209,7 +209,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1Job> create(GoogleCloudMlV1beta1Job request, core.String parent) {
+  async.Future<GoogleCloudMlV1Job> create(GoogleCloudMlV1Job request, core.String parent) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -224,7 +224,7 @@ class ProjectsJobsResourceApi {
       throw new core.ArgumentError("Parameter parent is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -233,7 +233,7 @@ class ProjectsJobsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1Job.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1Job.fromJson(data));
   }
 
   /**
@@ -246,7 +246,7 @@ class ProjectsJobsResourceApi {
    * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
    *
-   * Completes with a [GoogleCloudMlV1beta1Job].
+   * Completes with a [GoogleCloudMlV1Job].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -254,7 +254,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1Job> get(core.String name) {
+  async.Future<GoogleCloudMlV1Job> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -266,7 +266,7 @@ class ProjectsJobsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -275,7 +275,7 @@ class ProjectsJobsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1Job.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1Job.fromJson(data));
   }
 
   /**
@@ -287,6 +287,8 @@ class ProjectsJobsResourceApi {
    *
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
+   *
+   * [filter] - Optional. Specifies the subset of jobs to retrieve.
    *
    * [pageToken] - Optional. A page token to request the next page of results.
    *
@@ -300,9 +302,7 @@ class ProjectsJobsResourceApi {
    *
    * The default value is 20, and the maximum page size is 100.
    *
-   * [filter] - Optional. Specifies the subset of jobs to retrieve.
-   *
-   * Completes with a [GoogleCloudMlV1beta1ListJobsResponse].
+   * Completes with a [GoogleCloudMlV1ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -310,7 +310,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1ListJobsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,17 +321,17 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -340,7 +340,7 @@ class ProjectsJobsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1ListJobsResponse.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1ListJobsResponse.fromJson(data));
   }
 
 }
@@ -359,7 +359,7 @@ class ProjectsModelsResourceApi {
    *
    * You must add at least one version before you can request predictions from
    * the model. Add versions by calling
-   * [projects.models.versions.create](/ml/reference/rest/v1beta1/projects.models.versions/create).
+   * [projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create).
    *
    * [request] - The metadata request object.
    *
@@ -370,7 +370,7 @@ class ProjectsModelsResourceApi {
    * Authorization: requires `Editor` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * Completes with a [GoogleCloudMlV1beta1Model].
+   * Completes with a [GoogleCloudMlV1Model].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -378,7 +378,7 @@ class ProjectsModelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1Model> create(GoogleCloudMlV1beta1Model request, core.String parent) {
+  async.Future<GoogleCloudMlV1Model> create(GoogleCloudMlV1Model request, core.String parent) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -393,7 +393,7 @@ class ProjectsModelsResourceApi {
       throw new core.ArgumentError("Parameter parent is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -402,7 +402,7 @@ class ProjectsModelsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1Model.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1Model.fromJson(data));
   }
 
   /**
@@ -410,7 +410,7 @@ class ProjectsModelsResourceApi {
    *
    * You can only delete a model if there are no versions in it. You can delete
    * versions by calling
-   * [projects.models.versions.delete](/ml/reference/rest/v1beta1/projects.models.versions/delete).
+   * [projects.models.versions.delete](/ml-engine/reference/rest/v1/projects.models.versions/delete).
    *
    * Request parameters:
    *
@@ -439,7 +439,7 @@ class ProjectsModelsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -463,7 +463,7 @@ class ProjectsModelsResourceApi {
    * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+$".
    *
-   * Completes with a [GoogleCloudMlV1beta1Model].
+   * Completes with a [GoogleCloudMlV1Model].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -471,7 +471,7 @@ class ProjectsModelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1Model> get(core.String name) {
+  async.Future<GoogleCloudMlV1Model> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -483,7 +483,7 @@ class ProjectsModelsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -492,7 +492,7 @@ class ProjectsModelsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1Model.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1Model.fromJson(data));
   }
 
   /**
@@ -520,7 +520,7 @@ class ProjectsModelsResourceApi {
    *
    * The default value is 20, and the maximum page size is 100.
    *
-   * Completes with a [GoogleCloudMlV1beta1ListModelsResponse].
+   * Completes with a [GoogleCloudMlV1ListModelsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -528,7 +528,7 @@ class ProjectsModelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1ListModelsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -546,7 +546,7 @@ class ProjectsModelsResourceApi {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -555,7 +555,7 @@ class ProjectsModelsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1ListModelsResponse.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1ListModelsResponse.fromJson(data));
   }
 
 }
@@ -575,7 +575,7 @@ class ProjectsModelsVersionsResourceApi {
    * model. When you add a version to a model that already has one or more
    * versions, the default version does not automatically change. If you want a
    * new version to be the default, you must call
-   * [projects.models.versions.setDefault](/ml/reference/rest/v1beta1/projects.models.versions/setDefault).
+   * [projects.models.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
    *
    * [request] - The metadata request object.
    *
@@ -594,7 +594,7 @@ class ProjectsModelsVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningOperation> create(GoogleCloudMlV1beta1Version request, core.String parent) {
+  async.Future<GoogleLongrunningOperation> create(GoogleCloudMlV1Version request, core.String parent) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -609,7 +609,7 @@ class ProjectsModelsVersionsResourceApi {
       throw new core.ArgumentError("Parameter parent is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -635,7 +635,7 @@ class ProjectsModelsVersionsResourceApi {
    * [name] - Required. The name of the version. You can get the names of all
    * the
    * versions of a model by calling
-   * [projects.models.versions.list](/ml/reference/rest/v1beta1/projects.models.versions/list).
+   * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
    *
    * Authorization: requires `Editor` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
@@ -660,7 +660,7 @@ class ProjectsModelsVersionsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -676,7 +676,7 @@ class ProjectsModelsVersionsResourceApi {
    * Gets information about a model version.
    *
    * Models can have multiple versions. You can call
-   * [projects.models.versions.list](/ml/reference/rest/v1beta1/projects.models.versions/list)
+   * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list)
    * to get the same information that this method returns for all of the
    * versions of a model.
    *
@@ -687,7 +687,7 @@ class ProjectsModelsVersionsResourceApi {
    * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
    *
-   * Completes with a [GoogleCloudMlV1beta1Version].
+   * Completes with a [GoogleCloudMlV1Version].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -695,7 +695,7 @@ class ProjectsModelsVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1Version> get(core.String name) {
+  async.Future<GoogleCloudMlV1Version> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -707,7 +707,7 @@ class ProjectsModelsVersionsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -716,7 +716,7 @@ class ProjectsModelsVersionsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1Version.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1Version.fromJson(data));
   }
 
   /**
@@ -745,7 +745,7 @@ class ProjectsModelsVersionsResourceApi {
    *
    * The default value is 20, and the maximum page size is 100.
    *
-   * Completes with a [GoogleCloudMlV1beta1ListVersionsResponse].
+   * Completes with a [GoogleCloudMlV1ListVersionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -753,7 +753,7 @@ class ProjectsModelsVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1ListVersionsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -771,7 +771,7 @@ class ProjectsModelsVersionsResourceApi {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -780,7 +780,7 @@ class ProjectsModelsVersionsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1ListVersionsResponse.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1ListVersionsResponse.fromJson(data));
   }
 
   /**
@@ -800,12 +800,12 @@ class ProjectsModelsVersionsResourceApi {
    * [name] - Required. The name of the version to make the default for the
    * model. You
    * can get the names of all the versions of a model by calling
-   * [projects.models.versions.list](/ml/reference/rest/v1beta1/projects.models.versions/list).
+   * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
    *
    * Authorization: requires `Editor` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
    *
-   * Completes with a [GoogleCloudMlV1beta1Version].
+   * Completes with a [GoogleCloudMlV1Version].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -813,7 +813,7 @@ class ProjectsModelsVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1beta1Version> setDefault(GoogleCloudMlV1beta1SetDefaultVersionRequest request, core.String name) {
+  async.Future<GoogleCloudMlV1Version> setDefault(GoogleCloudMlV1SetDefaultVersionRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -828,7 +828,7 @@ class ProjectsModelsVersionsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setDefault';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setDefault';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -837,7 +837,7 @@ class ProjectsModelsVersionsResourceApi {
                                        uploadOptions: _uploadOptions,
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1beta1Version.fromJson(data));
+    return _response.then((data) => new GoogleCloudMlV1Version.fromJson(data));
   }
 
 }
@@ -886,7 +886,7 @@ class ProjectsOperationsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -929,7 +929,7 @@ class ProjectsOperationsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "DELETE",
@@ -971,7 +971,7 @@ class ProjectsOperationsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -995,11 +995,11 @@ class ProjectsOperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [filter] - The standard list filter.
+   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
    *
    * Completes with a [GoogleLongrunningListOperationsResponse].
    *
@@ -1009,7 +1009,7 @@ class ProjectsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1020,17 +1020,17 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -1124,6 +1124,424 @@ class GoogleApiHttpBody {
   }
 }
 
+/** An observed value of a metric. */
+class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
+  /** The objective value at this training step. */
+  core.double objectiveValue;
+  /** The global training step for this metric. */
+  core.String trainingStep;
+
+  GoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
+
+  GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(core.Map _json) {
+    if (_json.containsKey("objectiveValue")) {
+      objectiveValue = _json["objectiveValue"];
+    }
+    if (_json.containsKey("trainingStep")) {
+      trainingStep = _json["trainingStep"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (objectiveValue != null) {
+      _json["objectiveValue"] = objectiveValue;
+    }
+    if (trainingStep != null) {
+      _json["trainingStep"] = trainingStep;
+    }
+    return _json;
+  }
+}
+
+/** Request message for the CancelJob method. */
+class GoogleCloudMlV1CancelJobRequest {
+
+  GoogleCloudMlV1CancelJobRequest();
+
+  GoogleCloudMlV1CancelJobRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
+/** Returns service account information associated with a project. */
+class GoogleCloudMlV1GetConfigResponse {
+  /** The service account Cloud ML uses to access resources in the project. */
+  core.String serviceAccount;
+  /** The project number for `service_account`. */
+  core.String serviceAccountProject;
+
+  GoogleCloudMlV1GetConfigResponse();
+
+  GoogleCloudMlV1GetConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("serviceAccount")) {
+      serviceAccount = _json["serviceAccount"];
+    }
+    if (_json.containsKey("serviceAccountProject")) {
+      serviceAccountProject = _json["serviceAccountProject"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (serviceAccount != null) {
+      _json["serviceAccount"] = serviceAccount;
+    }
+    if (serviceAccountProject != null) {
+      _json["serviceAccountProject"] = serviceAccountProject;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents the result of a single hyperparameter tuning trial from a
+ * training job. The TrainingOutput object that is returned on successful
+ * completion of a training job with hyperparameter tuning includes a list
+ * of HyperparameterOutput objects, one for each successful trial.
+ */
+class GoogleCloudMlV1HyperparameterOutput {
+  /** All recorded object metrics for this trial. */
+  core.List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> allMetrics;
+  /** The final objective metric seen for this trial. */
+  GoogleCloudMlV1HyperparameterOutputHyperparameterMetric finalMetric;
+  /** The hyperparameters given to this trial. */
+  core.Map<core.String, core.String> hyperparameters;
+  /** The trial id for these results. */
+  core.String trialId;
+
+  GoogleCloudMlV1HyperparameterOutput();
+
+  GoogleCloudMlV1HyperparameterOutput.fromJson(core.Map _json) {
+    if (_json.containsKey("allMetrics")) {
+      allMetrics = _json["allMetrics"].map((value) => new GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(value)).toList();
+    }
+    if (_json.containsKey("finalMetric")) {
+      finalMetric = new GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(_json["finalMetric"]);
+    }
+    if (_json.containsKey("hyperparameters")) {
+      hyperparameters = _json["hyperparameters"];
+    }
+    if (_json.containsKey("trialId")) {
+      trialId = _json["trialId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (allMetrics != null) {
+      _json["allMetrics"] = allMetrics.map((value) => (value).toJson()).toList();
+    }
+    if (finalMetric != null) {
+      _json["finalMetric"] = (finalMetric).toJson();
+    }
+    if (hyperparameters != null) {
+      _json["hyperparameters"] = hyperparameters;
+    }
+    if (trialId != null) {
+      _json["trialId"] = trialId;
+    }
+    return _json;
+  }
+}
+
+/** Represents a set of hyperparameters to optimize. */
+class GoogleCloudMlV1HyperparameterSpec {
+  /**
+   * Required. The type of goal to use for tuning. Available types are
+   * `MAXIMIZE` and `MINIMIZE`.
+   *
+   * Defaults to `MAXIMIZE`.
+   * Possible string values are:
+   * - "GOAL_TYPE_UNSPECIFIED" : Goal Type will default to maximize.
+   * - "MAXIMIZE" : Maximize the goal metric.
+   * - "MINIMIZE" : Minimize the goal metric.
+   */
+  core.String goal;
+  /**
+   * Optional. The Tensorflow summary tag name to use for optimizing trials. For
+   * current versions of Tensorflow, this tag name should exactly match what is
+   * shown in Tensorboard, including all scopes.  For versions of Tensorflow
+   * prior to 0.12, this should be only the tag passed to tf.Summary.
+   * By default, "training/hptuning/metric" will be used.
+   */
+  core.String hyperparameterMetricTag;
+  /**
+   * Optional. The number of training trials to run concurrently.
+   * You can reduce the time it takes to perform hyperparameter tuning by adding
+   * trials in parallel. However, each trail only benefits from the information
+   * gained in completed trials. That means that a trial does not get access to
+   * the results of trials running at the same time, which could reduce the
+   * quality of the overall optimization.
+   *
+   * Each trial will use the same scale tier and machine types.
+   *
+   * Defaults to one.
+   */
+  core.int maxParallelTrials;
+  /**
+   * Optional. How many training trials should be attempted to optimize
+   * the specified hyperparameters.
+   *
+   * Defaults to one.
+   */
+  core.int maxTrials;
+  /** Required. The set of parameters to tune. */
+  core.List<GoogleCloudMlV1ParameterSpec> params;
+
+  GoogleCloudMlV1HyperparameterSpec();
+
+  GoogleCloudMlV1HyperparameterSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("goal")) {
+      goal = _json["goal"];
+    }
+    if (_json.containsKey("hyperparameterMetricTag")) {
+      hyperparameterMetricTag = _json["hyperparameterMetricTag"];
+    }
+    if (_json.containsKey("maxParallelTrials")) {
+      maxParallelTrials = _json["maxParallelTrials"];
+    }
+    if (_json.containsKey("maxTrials")) {
+      maxTrials = _json["maxTrials"];
+    }
+    if (_json.containsKey("params")) {
+      params = _json["params"].map((value) => new GoogleCloudMlV1ParameterSpec.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (goal != null) {
+      _json["goal"] = goal;
+    }
+    if (hyperparameterMetricTag != null) {
+      _json["hyperparameterMetricTag"] = hyperparameterMetricTag;
+    }
+    if (maxParallelTrials != null) {
+      _json["maxParallelTrials"] = maxParallelTrials;
+    }
+    if (maxTrials != null) {
+      _json["maxTrials"] = maxTrials;
+    }
+    if (params != null) {
+      _json["params"] = params.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Represents a training or prediction job. */
+class GoogleCloudMlV1Job {
+  /** Output only. When the job was created. */
+  core.String createTime;
+  /** Output only. When the job processing was completed. */
+  core.String endTime;
+  /** Output only. The details of a failure or a cancellation. */
+  core.String errorMessage;
+  /** Required. The user-specified id of the job. */
+  core.String jobId;
+  /** Input parameters to create a prediction job. */
+  GoogleCloudMlV1PredictionInput predictionInput;
+  /** The current prediction job result. */
+  GoogleCloudMlV1PredictionOutput predictionOutput;
+  /** Output only. When the job processing was started. */
+  core.String startTime;
+  /**
+   * Output only. The detailed state of a job.
+   * Possible string values are:
+   * - "STATE_UNSPECIFIED" : The job state is unspecified.
+   * - "QUEUED" : The job has been just created and processing has not yet
+   * begun.
+   * - "PREPARING" : The service is preparing to run the job.
+   * - "RUNNING" : The job is in progress.
+   * - "SUCCEEDED" : The job completed successfully.
+   * - "FAILED" : The job failed.
+   * `error_message` should contain the details of the failure.
+   * - "CANCELLING" : The job is being cancelled.
+   * `error_message` should describe the reason for the cancellation.
+   * - "CANCELLED" : The job has been cancelled.
+   * `error_message` should describe the reason for the cancellation.
+   */
+  core.String state;
+  /** Input parameters to create a training job. */
+  GoogleCloudMlV1TrainingInput trainingInput;
+  /** The current training job result. */
+  GoogleCloudMlV1TrainingOutput trainingOutput;
+
+  GoogleCloudMlV1Job();
+
+  GoogleCloudMlV1Job.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("errorMessage")) {
+      errorMessage = _json["errorMessage"];
+    }
+    if (_json.containsKey("jobId")) {
+      jobId = _json["jobId"];
+    }
+    if (_json.containsKey("predictionInput")) {
+      predictionInput = new GoogleCloudMlV1PredictionInput.fromJson(_json["predictionInput"]);
+    }
+    if (_json.containsKey("predictionOutput")) {
+      predictionOutput = new GoogleCloudMlV1PredictionOutput.fromJson(_json["predictionOutput"]);
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("trainingInput")) {
+      trainingInput = new GoogleCloudMlV1TrainingInput.fromJson(_json["trainingInput"]);
+    }
+    if (_json.containsKey("trainingOutput")) {
+      trainingOutput = new GoogleCloudMlV1TrainingOutput.fromJson(_json["trainingOutput"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (errorMessage != null) {
+      _json["errorMessage"] = errorMessage;
+    }
+    if (jobId != null) {
+      _json["jobId"] = jobId;
+    }
+    if (predictionInput != null) {
+      _json["predictionInput"] = (predictionInput).toJson();
+    }
+    if (predictionOutput != null) {
+      _json["predictionOutput"] = (predictionOutput).toJson();
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (trainingInput != null) {
+      _json["trainingInput"] = (trainingInput).toJson();
+    }
+    if (trainingOutput != null) {
+      _json["trainingOutput"] = (trainingOutput).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Response message for the ListJobs method. */
+class GoogleCloudMlV1ListJobsResponse {
+  /** The list of jobs. */
+  core.List<GoogleCloudMlV1Job> jobs;
+  /**
+   * Optional. Pass this token as the `page_token` field of the request for a
+   * subsequent call.
+   */
+  core.String nextPageToken;
+
+  GoogleCloudMlV1ListJobsResponse();
+
+  GoogleCloudMlV1ListJobsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("jobs")) {
+      jobs = _json["jobs"].map((value) => new GoogleCloudMlV1Job.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (jobs != null) {
+      _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** Response message for the ListModels method. */
+class GoogleCloudMlV1ListModelsResponse {
+  /** The list of models. */
+  core.List<GoogleCloudMlV1Model> models;
+  /**
+   * Optional. Pass this token as the `page_token` field of the request for a
+   * subsequent call.
+   */
+  core.String nextPageToken;
+
+  GoogleCloudMlV1ListModelsResponse();
+
+  GoogleCloudMlV1ListModelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("models")) {
+      models = _json["models"].map((value) => new GoogleCloudMlV1Model.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (models != null) {
+      _json["models"] = models.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** Response message for the ListVersions method. */
+class GoogleCloudMlV1ListVersionsResponse {
+  /**
+   * Optional. Pass this token as the `page_token` field of the request for a
+   * subsequent call.
+   */
+  core.String nextPageToken;
+  /** The list of versions. */
+  core.List<GoogleCloudMlV1Version> versions;
+
+  GoogleCloudMlV1ListVersionsResponse();
+
+  GoogleCloudMlV1ListVersionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("versions")) {
+      versions = _json["versions"].map((value) => new GoogleCloudMlV1Version.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (versions != null) {
+      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** Options for manually scaling a model. */
 class GoogleCloudMlV1ManualScaling {
   /**
@@ -1146,6 +1564,89 @@ class GoogleCloudMlV1ManualScaling {
     var _json = new core.Map();
     if (nodes != null) {
       _json["nodes"] = nodes;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents a machine learning solution.
+ *
+ * A model can have multiple versions, each of which is a deployed, trained
+ * model ready to receive prediction requests. The model itself is just a
+ * container.
+ */
+class GoogleCloudMlV1Model {
+  /**
+   * Output only. The default version of the model. This version will be used to
+   * handle prediction requests that do not specify a version.
+   *
+   * You can change the default version by calling
+   * [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
+   */
+  GoogleCloudMlV1Version defaultVersion;
+  /** Optional. The description specified for the model when it was created. */
+  core.String description;
+  /**
+   * Required. The name specified for the model when it was created.
+   *
+   * The model name must be unique within the project it is created in.
+   */
+  core.String name;
+  /**
+   * Optional. If true, enables StackDriver Logging for online prediction.
+   * Default is false.
+   */
+  core.bool onlinePredictionLogging;
+  /**
+   * Optional. The list of regions where the model is going to be deployed.
+   * Currently only one region per model is supported.
+   * Defaults to 'us-central1' if nothing is set.
+   * Note:
+   * *   No matter where a model is deployed, it can always be accessed by
+   *     users from anywhere, both for online and batch prediction.
+   * *   The region for a batch prediction job is set by the region field when
+   *     submitting the batch prediction job and does not take its value from
+   *     this field.
+   */
+  core.List<core.String> regions;
+
+  GoogleCloudMlV1Model();
+
+  GoogleCloudMlV1Model.fromJson(core.Map _json) {
+    if (_json.containsKey("defaultVersion")) {
+      defaultVersion = new GoogleCloudMlV1Version.fromJson(_json["defaultVersion"]);
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("onlinePredictionLogging")) {
+      onlinePredictionLogging = _json["onlinePredictionLogging"];
+    }
+    if (_json.containsKey("regions")) {
+      regions = _json["regions"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (defaultVersion != null) {
+      _json["defaultVersion"] = (defaultVersion).toJson();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (onlinePredictionLogging != null) {
+      _json["onlinePredictionLogging"] = onlinePredictionLogging;
+    }
+    if (regions != null) {
+      _json["regions"] = regions;
     }
     return _json;
   }
@@ -1228,725 +1729,8 @@ class GoogleCloudMlV1OperationMetadata {
   }
 }
 
-/**
- * Represents a version of the model.
- *
- * Each version is a trained model deployed in the cloud, ready to handle
- * prediction requests. A model can have multiple versions. You can get
- * information about all of the versions of a given model by calling
- * [projects.models.versions.list](/ml/reference/rest/v1/projects.models.versions/list).
- */
-class GoogleCloudMlV1Version {
-  /** Output only. The time the version was created. */
-  core.String createTime;
-  /**
-   * Required. The Google Cloud Storage location of the trained model used to
-   * create the version. See the
-   * [overview of model deployment](/ml/docs/concepts/deployment-overview) for
-   * more informaiton.
-   *
-   * When passing Version to
-   * [projects.models.versions.create](/ml/reference/rest/v1/projects.models.versions/create)
-   * the model service uses the specified location as the source of the model.
-   * Once deployed, the model version is hosted by the prediction service, so
-   * this location is useful only as a historical record.
-   */
-  core.String deploymentUri;
-  /**
-   * Optional. The description specified for the version when it was created.
-   */
-  core.String description;
-  /**
-   * Output only. If true, this version will be used to handle prediction
-   * requests that do not specify a version.
-   *
-   * You can change the default version by calling
-   * [projects.methods.versions.setDefault](/ml/reference/rest/v1/projects.models.versions/setDefault).
-   */
-  core.bool isDefault;
-  /** Output only. The time the version was last used for prediction. */
-  core.String lastUseTime;
-  /**
-   * Optional. Manually select the number of nodes to use for serving the
-   * model. If unset (i.e., by default), the number of nodes used to serve
-   * the model automatically scales with traffic. However, care should be
-   * taken to ramp up traffic according to the model's ability to scale. If
-   * your model needs to handle bursts of traffic beyond it's ability to
-   * scale, it is recommended you set this field appropriately.
-   */
-  GoogleCloudMlV1ManualScaling manualScaling;
-  /**
-   * Required.The name specified for the version when it was created.
-   *
-   * The version name must be unique within the model it is created in.
-   */
-  core.String name;
-  /**
-   * Optional. The Google Cloud ML runtime version to use for this deployment.
-   * If not set, Google Cloud ML will choose a version.
-   */
-  core.String runtimeVersion;
-
-  GoogleCloudMlV1Version();
-
-  GoogleCloudMlV1Version.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("deploymentUri")) {
-      deploymentUri = _json["deploymentUri"];
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("isDefault")) {
-      isDefault = _json["isDefault"];
-    }
-    if (_json.containsKey("lastUseTime")) {
-      lastUseTime = _json["lastUseTime"];
-    }
-    if (_json.containsKey("manualScaling")) {
-      manualScaling = new GoogleCloudMlV1ManualScaling.fromJson(_json["manualScaling"]);
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("runtimeVersion")) {
-      runtimeVersion = _json["runtimeVersion"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
-    if (deploymentUri != null) {
-      _json["deploymentUri"] = deploymentUri;
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (isDefault != null) {
-      _json["isDefault"] = isDefault;
-    }
-    if (lastUseTime != null) {
-      _json["lastUseTime"] = lastUseTime;
-    }
-    if (manualScaling != null) {
-      _json["manualScaling"] = (manualScaling).toJson();
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (runtimeVersion != null) {
-      _json["runtimeVersion"] = runtimeVersion;
-    }
-    return _json;
-  }
-}
-
-/** An observed value of a metric. */
-class GoogleCloudMlV1beta1HyperparameterOutputHyperparameterMetric {
-  /** The objective value at this training step. */
-  core.double objectiveValue;
-  /** The global training step for this metric. */
-  core.String trainingStep;
-
-  GoogleCloudMlV1beta1HyperparameterOutputHyperparameterMetric();
-
-  GoogleCloudMlV1beta1HyperparameterOutputHyperparameterMetric.fromJson(core.Map _json) {
-    if (_json.containsKey("objectiveValue")) {
-      objectiveValue = _json["objectiveValue"];
-    }
-    if (_json.containsKey("trainingStep")) {
-      trainingStep = _json["trainingStep"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (objectiveValue != null) {
-      _json["objectiveValue"] = objectiveValue;
-    }
-    if (trainingStep != null) {
-      _json["trainingStep"] = trainingStep;
-    }
-    return _json;
-  }
-}
-
-/** Request message for the CancelJob method. */
-class GoogleCloudMlV1beta1CancelJobRequest {
-
-  GoogleCloudMlV1beta1CancelJobRequest();
-
-  GoogleCloudMlV1beta1CancelJobRequest.fromJson(core.Map _json) {
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    return _json;
-  }
-}
-
-/** Returns service account information associated with a project. */
-class GoogleCloudMlV1beta1GetConfigResponse {
-  /** The service account Cloud ML uses to access resources in the project. */
-  core.String serviceAccount;
-  /** The project number for `service_account`. */
-  core.String serviceAccountProject;
-
-  GoogleCloudMlV1beta1GetConfigResponse();
-
-  GoogleCloudMlV1beta1GetConfigResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("serviceAccount")) {
-      serviceAccount = _json["serviceAccount"];
-    }
-    if (_json.containsKey("serviceAccountProject")) {
-      serviceAccountProject = _json["serviceAccountProject"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (serviceAccount != null) {
-      _json["serviceAccount"] = serviceAccount;
-    }
-    if (serviceAccountProject != null) {
-      _json["serviceAccountProject"] = serviceAccountProject;
-    }
-    return _json;
-  }
-}
-
-/**
- * Represents the result of a single hyperparameter tuning trial from a
- * training job. The TrainingOutput object that is returned on successful
- * completion of a training job with hyperparameter tuning includes a list
- * of HyperparameterOutput objects, one for each successful trial.
- */
-class GoogleCloudMlV1beta1HyperparameterOutput {
-  /** All recorded object metrics for this trial. */
-  core.List<GoogleCloudMlV1beta1HyperparameterOutputHyperparameterMetric> allMetrics;
-  /** The final objective metric seen for this trial. */
-  GoogleCloudMlV1beta1HyperparameterOutputHyperparameterMetric finalMetric;
-  /** The hyperparameters given to this trial. */
-  core.Map<core.String, core.String> hyperparameters;
-  /** The trial id for these results. */
-  core.String trialId;
-
-  GoogleCloudMlV1beta1HyperparameterOutput();
-
-  GoogleCloudMlV1beta1HyperparameterOutput.fromJson(core.Map _json) {
-    if (_json.containsKey("allMetrics")) {
-      allMetrics = _json["allMetrics"].map((value) => new GoogleCloudMlV1beta1HyperparameterOutputHyperparameterMetric.fromJson(value)).toList();
-    }
-    if (_json.containsKey("finalMetric")) {
-      finalMetric = new GoogleCloudMlV1beta1HyperparameterOutputHyperparameterMetric.fromJson(_json["finalMetric"]);
-    }
-    if (_json.containsKey("hyperparameters")) {
-      hyperparameters = _json["hyperparameters"];
-    }
-    if (_json.containsKey("trialId")) {
-      trialId = _json["trialId"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (allMetrics != null) {
-      _json["allMetrics"] = allMetrics.map((value) => (value).toJson()).toList();
-    }
-    if (finalMetric != null) {
-      _json["finalMetric"] = (finalMetric).toJson();
-    }
-    if (hyperparameters != null) {
-      _json["hyperparameters"] = hyperparameters;
-    }
-    if (trialId != null) {
-      _json["trialId"] = trialId;
-    }
-    return _json;
-  }
-}
-
-/** Represents a set of hyperparameters to optimize. */
-class GoogleCloudMlV1beta1HyperparameterSpec {
-  /**
-   * Required. The type of goal to use for tuning. Available types are
-   * `MAXIMIZE` and `MINIMIZE`.
-   *
-   * Defaults to `MAXIMIZE`.
-   * Possible string values are:
-   * - "GOAL_TYPE_UNSPECIFIED" : Goal Type will default to maximize.
-   * - "MAXIMIZE" : Maximize the goal metric.
-   * - "MINIMIZE" : Minimize the goal metric.
-   */
-  core.String goal;
-  /**
-   * Optional. The Tensorflow summary tag name to use for optimizing trials. For
-   * current versions of Tensorflow, this tag name should exactly match what is
-   * shown in Tensorboard, including all scopes.  For versions of Tensorflow
-   * prior to 0.12, this should be only the tag passed to tf.Summary.
-   * By default, "training/hptuning/metric" will be used.
-   */
-  core.String hyperparameterMetricTag;
-  /**
-   * Optional. The number of training trials to run concurrently.
-   * You can reduce the time it takes to perform hyperparameter tuning by adding
-   * trials in parallel. However, each trail only benefits from the information
-   * gained in completed trials. That means that a trial does not get access to
-   * the results of trials running at the same time, which could reduce the
-   * quality of the overall optimization.
-   *
-   * Each trial will use the same scale tier and machine types.
-   *
-   * Defaults to one.
-   */
-  core.int maxParallelTrials;
-  /**
-   * Optional. How many training trials should be attempted to optimize
-   * the specified hyperparameters.
-   *
-   * Defaults to one.
-   */
-  core.int maxTrials;
-  /** Required. The set of parameters to tune. */
-  core.List<GoogleCloudMlV1beta1ParameterSpec> params;
-
-  GoogleCloudMlV1beta1HyperparameterSpec();
-
-  GoogleCloudMlV1beta1HyperparameterSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("goal")) {
-      goal = _json["goal"];
-    }
-    if (_json.containsKey("hyperparameterMetricTag")) {
-      hyperparameterMetricTag = _json["hyperparameterMetricTag"];
-    }
-    if (_json.containsKey("maxParallelTrials")) {
-      maxParallelTrials = _json["maxParallelTrials"];
-    }
-    if (_json.containsKey("maxTrials")) {
-      maxTrials = _json["maxTrials"];
-    }
-    if (_json.containsKey("params")) {
-      params = _json["params"].map((value) => new GoogleCloudMlV1beta1ParameterSpec.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (goal != null) {
-      _json["goal"] = goal;
-    }
-    if (hyperparameterMetricTag != null) {
-      _json["hyperparameterMetricTag"] = hyperparameterMetricTag;
-    }
-    if (maxParallelTrials != null) {
-      _json["maxParallelTrials"] = maxParallelTrials;
-    }
-    if (maxTrials != null) {
-      _json["maxTrials"] = maxTrials;
-    }
-    if (params != null) {
-      _json["params"] = params.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** Represents a training or prediction job. */
-class GoogleCloudMlV1beta1Job {
-  /** Output only. When the job was created. */
-  core.String createTime;
-  /** Output only. When the job processing was completed. */
-  core.String endTime;
-  /** Output only. The details of a failure or a cancellation. */
-  core.String errorMessage;
-  /** Required. The user-specified id of the job. */
-  core.String jobId;
-  /** Input parameters to create a prediction job. */
-  GoogleCloudMlV1beta1PredictionInput predictionInput;
-  /** The current prediction job result. */
-  GoogleCloudMlV1beta1PredictionOutput predictionOutput;
-  /** Output only. When the job processing was started. */
-  core.String startTime;
-  /**
-   * Output only. The detailed state of a job.
-   * Possible string values are:
-   * - "STATE_UNSPECIFIED" : The job state is unspecified.
-   * - "QUEUED" : The job has been just created and processing has not yet
-   * begun.
-   * - "PREPARING" : The service is preparing to run the job.
-   * - "RUNNING" : The job is in progress.
-   * - "SUCCEEDED" : The job completed successfully.
-   * - "FAILED" : The job failed.
-   * `error_message` should contain the details of the failure.
-   * - "CANCELLING" : The job is being cancelled.
-   * `error_message` should describe the reason for the cancellation.
-   * - "CANCELLED" : The job has been cancelled.
-   * `error_message` should describe the reason for the cancellation.
-   */
-  core.String state;
-  /** Input parameters to create a training job. */
-  GoogleCloudMlV1beta1TrainingInput trainingInput;
-  /** The current training job result. */
-  GoogleCloudMlV1beta1TrainingOutput trainingOutput;
-
-  GoogleCloudMlV1beta1Job();
-
-  GoogleCloudMlV1beta1Job.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("errorMessage")) {
-      errorMessage = _json["errorMessage"];
-    }
-    if (_json.containsKey("jobId")) {
-      jobId = _json["jobId"];
-    }
-    if (_json.containsKey("predictionInput")) {
-      predictionInput = new GoogleCloudMlV1beta1PredictionInput.fromJson(_json["predictionInput"]);
-    }
-    if (_json.containsKey("predictionOutput")) {
-      predictionOutput = new GoogleCloudMlV1beta1PredictionOutput.fromJson(_json["predictionOutput"]);
-    }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("trainingInput")) {
-      trainingInput = new GoogleCloudMlV1beta1TrainingInput.fromJson(_json["trainingInput"]);
-    }
-    if (_json.containsKey("trainingOutput")) {
-      trainingOutput = new GoogleCloudMlV1beta1TrainingOutput.fromJson(_json["trainingOutput"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (errorMessage != null) {
-      _json["errorMessage"] = errorMessage;
-    }
-    if (jobId != null) {
-      _json["jobId"] = jobId;
-    }
-    if (predictionInput != null) {
-      _json["predictionInput"] = (predictionInput).toJson();
-    }
-    if (predictionOutput != null) {
-      _json["predictionOutput"] = (predictionOutput).toJson();
-    }
-    if (startTime != null) {
-      _json["startTime"] = startTime;
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    if (trainingInput != null) {
-      _json["trainingInput"] = (trainingInput).toJson();
-    }
-    if (trainingOutput != null) {
-      _json["trainingOutput"] = (trainingOutput).toJson();
-    }
-    return _json;
-  }
-}
-
-/** Response message for the ListJobs method. */
-class GoogleCloudMlV1beta1ListJobsResponse {
-  /** The list of jobs. */
-  core.List<GoogleCloudMlV1beta1Job> jobs;
-  /**
-   * Optional. Pass this token as the `page_token` field of the request for a
-   * subsequent call.
-   */
-  core.String nextPageToken;
-
-  GoogleCloudMlV1beta1ListJobsResponse();
-
-  GoogleCloudMlV1beta1ListJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobs")) {
-      jobs = _json["jobs"].map((value) => new GoogleCloudMlV1beta1Job.fromJson(value)).toList();
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (jobs != null) {
-      _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/** Response message for the ListModels method. */
-class GoogleCloudMlV1beta1ListModelsResponse {
-  /** The list of models. */
-  core.List<GoogleCloudMlV1beta1Model> models;
-  /**
-   * Optional. Pass this token as the `page_token` field of the request for a
-   * subsequent call.
-   */
-  core.String nextPageToken;
-
-  GoogleCloudMlV1beta1ListModelsResponse();
-
-  GoogleCloudMlV1beta1ListModelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("models")) {
-      models = _json["models"].map((value) => new GoogleCloudMlV1beta1Model.fromJson(value)).toList();
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (models != null) {
-      _json["models"] = models.map((value) => (value).toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/** Response message for the ListVersions method. */
-class GoogleCloudMlV1beta1ListVersionsResponse {
-  /**
-   * Optional. Pass this token as the `page_token` field of the request for a
-   * subsequent call.
-   */
-  core.String nextPageToken;
-  /** The list of versions. */
-  core.List<GoogleCloudMlV1beta1Version> versions;
-
-  GoogleCloudMlV1beta1ListVersionsResponse();
-
-  GoogleCloudMlV1beta1ListVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-    if (_json.containsKey("versions")) {
-      versions = _json["versions"].map((value) => new GoogleCloudMlV1beta1Version.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    if (versions != null) {
-      _json["versions"] = versions.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** Options for manually scaling a model. */
-class GoogleCloudMlV1beta1ManualScaling {
-  /**
-   * The number of nodes to allocate for this model. These nodes are always up,
-   * starting from the time the model is deployed, so the cost of operating
-   * this model will be proportional to nodes * number of hours since
-   * deployment.
-   */
-  core.int nodes;
-
-  GoogleCloudMlV1beta1ManualScaling();
-
-  GoogleCloudMlV1beta1ManualScaling.fromJson(core.Map _json) {
-    if (_json.containsKey("nodes")) {
-      nodes = _json["nodes"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (nodes != null) {
-      _json["nodes"] = nodes;
-    }
-    return _json;
-  }
-}
-
-/**
- * Represents a machine learning solution.
- *
- * A model can have multiple versions, each of which is a deployed, trained
- * model ready to receive prediction requests. The model itself is just a
- * container.
- */
-class GoogleCloudMlV1beta1Model {
-  /**
-   * Output only. The default version of the model. This version will be used to
-   * handle prediction requests that do not specify a version.
-   *
-   * You can change the default version by calling
-   * [projects.methods.versions.setDefault](/ml/reference/rest/v1beta1/projects.models.versions/setDefault).
-   */
-  GoogleCloudMlV1beta1Version defaultVersion;
-  /** Optional. The description specified for the model when it was created. */
-  core.String description;
-  /**
-   * Required. The name specified for the model when it was created.
-   *
-   * The model name must be unique within the project it is created in.
-   */
-  core.String name;
-  /**
-   * Optional. If true, enables StackDriver Logging for online prediction.
-   * Default is false.
-   */
-  core.bool onlinePredictionLogging;
-  /**
-   * Optional. The list of regions where the model is going to be deployed.
-   * Currently only one region per model is supported.
-   * Defaults to 'us-central1' if nothing is set.
-   */
-  core.List<core.String> regions;
-
-  GoogleCloudMlV1beta1Model();
-
-  GoogleCloudMlV1beta1Model.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultVersion")) {
-      defaultVersion = new GoogleCloudMlV1beta1Version.fromJson(_json["defaultVersion"]);
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("onlinePredictionLogging")) {
-      onlinePredictionLogging = _json["onlinePredictionLogging"];
-    }
-    if (_json.containsKey("regions")) {
-      regions = _json["regions"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (defaultVersion != null) {
-      _json["defaultVersion"] = (defaultVersion).toJson();
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (onlinePredictionLogging != null) {
-      _json["onlinePredictionLogging"] = onlinePredictionLogging;
-    }
-    if (regions != null) {
-      _json["regions"] = regions;
-    }
-    return _json;
-  }
-}
-
-/** Represents the metadata of the long-running operation. */
-class GoogleCloudMlV1beta1OperationMetadata {
-  /** The time the operation was submitted. */
-  core.String createTime;
-  /** The time operation processing completed. */
-  core.String endTime;
-  /** Indicates whether a request to cancel this operation has been made. */
-  core.bool isCancellationRequested;
-  /** Contains the name of the model associated with the operation. */
-  core.String modelName;
-  /**
-   * The operation type.
-   * Possible string values are:
-   * - "OPERATION_TYPE_UNSPECIFIED" : Unspecified operation type.
-   * - "CREATE_VERSION" : An operation to create a new version.
-   * - "DELETE_VERSION" : An operation to delete an existing version.
-   * - "DELETE_MODEL" : An operation to delete an existing model.
-   */
-  core.String operationType;
-  /** The time operation processing started. */
-  core.String startTime;
-  /** Contains the version associated with the operation. */
-  GoogleCloudMlV1beta1Version version;
-
-  GoogleCloudMlV1beta1OperationMetadata();
-
-  GoogleCloudMlV1beta1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("isCancellationRequested")) {
-      isCancellationRequested = _json["isCancellationRequested"];
-    }
-    if (_json.containsKey("modelName")) {
-      modelName = _json["modelName"];
-    }
-    if (_json.containsKey("operationType")) {
-      operationType = _json["operationType"];
-    }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
-    }
-    if (_json.containsKey("version")) {
-      version = new GoogleCloudMlV1beta1Version.fromJson(_json["version"]);
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (isCancellationRequested != null) {
-      _json["isCancellationRequested"] = isCancellationRequested;
-    }
-    if (modelName != null) {
-      _json["modelName"] = modelName;
-    }
-    if (operationType != null) {
-      _json["operationType"] = operationType;
-    }
-    if (startTime != null) {
-      _json["startTime"] = startTime;
-    }
-    if (version != null) {
-      _json["version"] = (version).toJson();
-    }
-    return _json;
-  }
-}
-
 /** Represents a single hyperparameter to optimize. */
-class GoogleCloudMlV1beta1ParameterSpec {
+class GoogleCloudMlV1ParameterSpec {
   /** Required if type is `CATEGORICAL`. The list of possible categories. */
   core.List<core.String> categoricalValues;
   /**
@@ -2010,9 +1794,9 @@ class GoogleCloudMlV1beta1ParameterSpec {
    */
   core.String type;
 
-  GoogleCloudMlV1beta1ParameterSpec();
+  GoogleCloudMlV1ParameterSpec();
 
-  GoogleCloudMlV1beta1ParameterSpec.fromJson(core.Map _json) {
+  GoogleCloudMlV1ParameterSpec.fromJson(core.Map _json) {
     if (_json.containsKey("categoricalValues")) {
       categoricalValues = _json["categoricalValues"];
     }
@@ -2251,16 +2035,16 @@ class GoogleCloudMlV1beta1ParameterSpec {
  * instance, the response body will contain no predictions and will contian
  * a single error entry instead.
  */
-class GoogleCloudMlV1beta1PredictRequest {
+class GoogleCloudMlV1PredictRequest {
   /**
    *
    * Required. The prediction request body.
    */
   GoogleApiHttpBody httpBody;
 
-  GoogleCloudMlV1beta1PredictRequest();
+  GoogleCloudMlV1PredictRequest();
 
-  GoogleCloudMlV1beta1PredictRequest.fromJson(core.Map _json) {
+  GoogleCloudMlV1PredictRequest.fromJson(core.Map _json) {
     if (_json.containsKey("httpBody")) {
       httpBody = new GoogleApiHttpBody.fromJson(_json["httpBody"]);
     }
@@ -2276,7 +2060,7 @@ class GoogleCloudMlV1beta1PredictRequest {
 }
 
 /** Represents input parameters for a prediction job. */
-class GoogleCloudMlV1beta1PredictionInput {
+class GoogleCloudMlV1PredictionInput {
   /**
    * Required. The format of the input data files.
    * Possible string values are:
@@ -2332,9 +2116,9 @@ class GoogleCloudMlV1beta1PredictionInput {
    */
   core.String versionName;
 
-  GoogleCloudMlV1beta1PredictionInput();
+  GoogleCloudMlV1PredictionInput();
 
-  GoogleCloudMlV1beta1PredictionInput.fromJson(core.Map _json) {
+  GoogleCloudMlV1PredictionInput.fromJson(core.Map _json) {
     if (_json.containsKey("dataFormat")) {
       dataFormat = _json["dataFormat"];
     }
@@ -2398,7 +2182,7 @@ class GoogleCloudMlV1beta1PredictionInput {
 }
 
 /** Represents results of a prediction job. */
-class GoogleCloudMlV1beta1PredictionOutput {
+class GoogleCloudMlV1PredictionOutput {
   /** The number of data instances which resulted in errors. */
   core.String errorCount;
   /** Node hours used by the batch prediction job. */
@@ -2410,9 +2194,9 @@ class GoogleCloudMlV1beta1PredictionOutput {
   /** The number of generated predictions. */
   core.String predictionCount;
 
-  GoogleCloudMlV1beta1PredictionOutput();
+  GoogleCloudMlV1PredictionOutput();
 
-  GoogleCloudMlV1beta1PredictionOutput.fromJson(core.Map _json) {
+  GoogleCloudMlV1PredictionOutput.fromJson(core.Map _json) {
     if (_json.containsKey("errorCount")) {
       errorCount = _json["errorCount"];
     }
@@ -2446,11 +2230,11 @@ class GoogleCloudMlV1beta1PredictionOutput {
 }
 
 /** Request message for the SetDefaultVersion request. */
-class GoogleCloudMlV1beta1SetDefaultVersionRequest {
+class GoogleCloudMlV1SetDefaultVersionRequest {
 
-  GoogleCloudMlV1beta1SetDefaultVersionRequest();
+  GoogleCloudMlV1SetDefaultVersionRequest();
 
-  GoogleCloudMlV1beta1SetDefaultVersionRequest.fromJson(core.Map _json) {
+  GoogleCloudMlV1SetDefaultVersionRequest.fromJson(core.Map _json) {
   }
 
   core.Map toJson() {
@@ -2460,11 +2244,11 @@ class GoogleCloudMlV1beta1SetDefaultVersionRequest {
 }
 
 /** Represents input parameters for a training job. */
-class GoogleCloudMlV1beta1TrainingInput {
+class GoogleCloudMlV1TrainingInput {
   /** Optional. Command line arguments to pass to the program. */
   core.List<core.String> args;
   /** Optional. The set of Hyperparameters to tune. */
-  GoogleCloudMlV1beta1HyperparameterSpec hyperparameters;
+  GoogleCloudMlV1HyperparameterSpec hyperparameters;
   /**
    * Optional. A Google Cloud Storage path in which to store training outputs
    * and other data needed for training. This path is passed to your TensorFlow
@@ -2510,7 +2294,7 @@ class GoogleCloudMlV1beta1TrainingInput {
    *   <dd>
    * A machine equivalent to <code suppresswarning="true">standard</code> that
    *   also includes a
-   *   <a href="ml/docs/how-tos/using-gpus">
+   *   <a href="/ml-engine/docs/how-tos/using-gpus">
    *   GPU that you can use in your trainer</a>.
    *   </dd>
    *   <dt>complex_model_m_gpu</dt>
@@ -2568,7 +2352,7 @@ class GoogleCloudMlV1beta1TrainingInput {
    * - "STANDARD_1" : Many workers and a few parameter servers.
    * - "PREMIUM_1" : A large number of workers with many parameter servers.
    * - "BASIC_GPU" : A single worker instance [with a
-   * GPU](ml/docs/how-tos/using-gpus).
+   * GPU](/ml-engine/docs/how-tos/using-gpus).
    * - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
    * use your
    * own cluster specification. When you use this tier, set values to
@@ -2615,14 +2399,14 @@ class GoogleCloudMlV1beta1TrainingInput {
    */
   core.String workerType;
 
-  GoogleCloudMlV1beta1TrainingInput();
+  GoogleCloudMlV1TrainingInput();
 
-  GoogleCloudMlV1beta1TrainingInput.fromJson(core.Map _json) {
+  GoogleCloudMlV1TrainingInput.fromJson(core.Map _json) {
     if (_json.containsKey("args")) {
       args = _json["args"];
     }
     if (_json.containsKey("hyperparameters")) {
-      hyperparameters = new GoogleCloudMlV1beta1HyperparameterSpec.fromJson(_json["hyperparameters"]);
+      hyperparameters = new GoogleCloudMlV1HyperparameterSpec.fromJson(_json["hyperparameters"]);
     }
     if (_json.containsKey("jobDir")) {
       jobDir = _json["jobDir"];
@@ -2705,7 +2489,7 @@ class GoogleCloudMlV1beta1TrainingInput {
 }
 
 /** Represents results of a training job. Output only. */
-class GoogleCloudMlV1beta1TrainingOutput {
+class GoogleCloudMlV1TrainingOutput {
   /**
    * The number of hyperparameter tuning trials that completed successfully.
    * Only set for hyperparameter tuning jobs.
@@ -2719,11 +2503,11 @@ class GoogleCloudMlV1beta1TrainingOutput {
    * Results for individual Hyperparameter trials.
    * Only set for hyperparameter tuning jobs.
    */
-  core.List<GoogleCloudMlV1beta1HyperparameterOutput> trials;
+  core.List<GoogleCloudMlV1HyperparameterOutput> trials;
 
-  GoogleCloudMlV1beta1TrainingOutput();
+  GoogleCloudMlV1TrainingOutput();
 
-  GoogleCloudMlV1beta1TrainingOutput.fromJson(core.Map _json) {
+  GoogleCloudMlV1TrainingOutput.fromJson(core.Map _json) {
     if (_json.containsKey("completedTrialCount")) {
       completedTrialCount = _json["completedTrialCount"];
     }
@@ -2734,7 +2518,7 @@ class GoogleCloudMlV1beta1TrainingOutput {
       isHyperparameterTuningJob = _json["isHyperparameterTuningJob"];
     }
     if (_json.containsKey("trials")) {
-      trials = _json["trials"].map((value) => new GoogleCloudMlV1beta1HyperparameterOutput.fromJson(value)).toList();
+      trials = _json["trials"].map((value) => new GoogleCloudMlV1HyperparameterOutput.fromJson(value)).toList();
     }
   }
 
@@ -2762,19 +2546,20 @@ class GoogleCloudMlV1beta1TrainingOutput {
  * Each version is a trained model deployed in the cloud, ready to handle
  * prediction requests. A model can have multiple versions. You can get
  * information about all of the versions of a given model by calling
- * [projects.models.versions.list](/ml/reference/rest/v1beta1/projects.models.versions/list).
+ * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
  */
-class GoogleCloudMlV1beta1Version {
+class GoogleCloudMlV1Version {
   /** Output only. The time the version was created. */
   core.String createTime;
   /**
    * Required. The Google Cloud Storage location of the trained model used to
    * create the version. See the
-   * [overview of model deployment](/ml/docs/concepts/deployment-overview) for
+   * [overview of model
+   * deployment](/ml-engine/docs/concepts/deployment-overview) for
    * more informaiton.
    *
    * When passing Version to
-   * [projects.models.versions.create](/ml/reference/rest/v1beta1/projects.models.versions/create)
+   * [projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create)
    * the model service uses the specified location as the source of the model.
    * Once deployed, the model version is hosted by the prediction service, so
    * this location is useful only as a historical record.
@@ -2789,7 +2574,230 @@ class GoogleCloudMlV1beta1Version {
    * requests that do not specify a version.
    *
    * You can change the default version by calling
-   * [projects.methods.versions.setDefault](/ml/reference/rest/v1beta1/projects.models.versions/setDefault).
+   * [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
+   */
+  core.bool isDefault;
+  /** Output only. The time the version was last used for prediction. */
+  core.String lastUseTime;
+  /**
+   * Optional. Manually select the number of nodes to use for serving the
+   * model. If unset (i.e., by default), the number of nodes used to serve
+   * the model automatically scales with traffic. However, care should be
+   * taken to ramp up traffic according to the model's ability to scale. If
+   * your model needs to handle bursts of traffic beyond it's ability to
+   * scale, it is recommended you set this field appropriately.
+   */
+  GoogleCloudMlV1ManualScaling manualScaling;
+  /**
+   * Required.The name specified for the version when it was created.
+   *
+   * The version name must be unique within the model it is created in.
+   */
+  core.String name;
+  /**
+   * Optional. The Google Cloud ML runtime version to use for this deployment.
+   * If not set, Google Cloud ML will choose a version.
+   */
+  core.String runtimeVersion;
+
+  GoogleCloudMlV1Version();
+
+  GoogleCloudMlV1Version.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("deploymentUri")) {
+      deploymentUri = _json["deploymentUri"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("isDefault")) {
+      isDefault = _json["isDefault"];
+    }
+    if (_json.containsKey("lastUseTime")) {
+      lastUseTime = _json["lastUseTime"];
+    }
+    if (_json.containsKey("manualScaling")) {
+      manualScaling = new GoogleCloudMlV1ManualScaling.fromJson(_json["manualScaling"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("runtimeVersion")) {
+      runtimeVersion = _json["runtimeVersion"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (deploymentUri != null) {
+      _json["deploymentUri"] = deploymentUri;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (isDefault != null) {
+      _json["isDefault"] = isDefault;
+    }
+    if (lastUseTime != null) {
+      _json["lastUseTime"] = lastUseTime;
+    }
+    if (manualScaling != null) {
+      _json["manualScaling"] = (manualScaling).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (runtimeVersion != null) {
+      _json["runtimeVersion"] = runtimeVersion;
+    }
+    return _json;
+  }
+}
+
+/** Options for manually scaling a model. */
+class GoogleCloudMlV1beta1ManualScaling {
+  /**
+   * The number of nodes to allocate for this model. These nodes are always up,
+   * starting from the time the model is deployed, so the cost of operating
+   * this model will be proportional to nodes * number of hours since
+   * deployment.
+   */
+  core.int nodes;
+
+  GoogleCloudMlV1beta1ManualScaling();
+
+  GoogleCloudMlV1beta1ManualScaling.fromJson(core.Map _json) {
+    if (_json.containsKey("nodes")) {
+      nodes = _json["nodes"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (nodes != null) {
+      _json["nodes"] = nodes;
+    }
+    return _json;
+  }
+}
+
+/** Represents the metadata of the long-running operation. */
+class GoogleCloudMlV1beta1OperationMetadata {
+  /** The time the operation was submitted. */
+  core.String createTime;
+  /** The time operation processing completed. */
+  core.String endTime;
+  /** Indicates whether a request to cancel this operation has been made. */
+  core.bool isCancellationRequested;
+  /** Contains the name of the model associated with the operation. */
+  core.String modelName;
+  /**
+   * The operation type.
+   * Possible string values are:
+   * - "OPERATION_TYPE_UNSPECIFIED" : Unspecified operation type.
+   * - "CREATE_VERSION" : An operation to create a new version.
+   * - "DELETE_VERSION" : An operation to delete an existing version.
+   * - "DELETE_MODEL" : An operation to delete an existing model.
+   */
+  core.String operationType;
+  /** The time operation processing started. */
+  core.String startTime;
+  /** Contains the version associated with the operation. */
+  GoogleCloudMlV1beta1Version version;
+
+  GoogleCloudMlV1beta1OperationMetadata();
+
+  GoogleCloudMlV1beta1OperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("isCancellationRequested")) {
+      isCancellationRequested = _json["isCancellationRequested"];
+    }
+    if (_json.containsKey("modelName")) {
+      modelName = _json["modelName"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("version")) {
+      version = new GoogleCloudMlV1beta1Version.fromJson(_json["version"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (isCancellationRequested != null) {
+      _json["isCancellationRequested"] = isCancellationRequested;
+    }
+    if (modelName != null) {
+      _json["modelName"] = modelName;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (version != null) {
+      _json["version"] = (version).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents a version of the model.
+ *
+ * Each version is a trained model deployed in the cloud, ready to handle
+ * prediction requests. A model can have multiple versions. You can get
+ * information about all of the versions of a given model by calling
+ * [projects.models.versions.list](/ml-engine/reference/rest/v1beta1/projects.models.versions/list).
+ */
+class GoogleCloudMlV1beta1Version {
+  /** Output only. The time the version was created. */
+  core.String createTime;
+  /**
+   * Required. The Google Cloud Storage location of the trained model used to
+   * create the version. See the
+   * [overview of model
+   * deployment](/ml-engine/docs/concepts/deployment-overview) for
+   * more informaiton.
+   *
+   * When passing Version to
+   * [projects.models.versions.create](/ml-engine/reference/rest/v1beta1/projects.models.versions/create)
+   * the model service uses the specified location as the source of the model.
+   * Once deployed, the model version is hosted by the prediction service, so
+   * this location is useful only as a historical record.
+   */
+  core.String deploymentUri;
+  /**
+   * Optional. The description specified for the version when it was created.
+   */
+  core.String description;
+  /**
+   * Output only. If true, this version will be used to handle prediction
+   * requests that do not specify a version.
+   *
+   * You can change the default version by calling
+   * [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1beta1/projects.models.versions/setDefault).
    */
   core.bool isDefault;
   /** Output only. The time the version was last used for prediction. */

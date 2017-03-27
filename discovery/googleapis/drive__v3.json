@@ -35,7 +35,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/_OPinYCRtT0LlK4YpUqsg4iEUmE\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Awu7J7NA3oyXK1BDXFMkCtzkJ-A\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1714,7 +1714,7 @@
             }
         }
     },
-    "revision": "20170228",
+    "revision": "20170320",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2328,7 +2328,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name of the file. This is not necessarily unique within a folder.",
+                    "description": "The name of the file. This is not necessarily unique within a folder. Note that for immutable items such as the top level folders of Team Drives, My Drive root folder, and Application Data folder the name is constant.",
                     "type": "string"
                 },
                 "originalFilename": {

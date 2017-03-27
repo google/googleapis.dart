@@ -72,14 +72,14 @@ checkDirectoryListItemsIcons(api.DirectoryListItemsIcons o) {
   buildCounterDirectoryListItemsIcons--;
 }
 
-buildUnnamed234() {
+buildUnnamed255() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed234(core.List<core.String> o) {
+checkUnnamed255(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -97,7 +97,7 @@ buildDirectoryListItems() {
     o.icons = buildDirectoryListItemsIcons();
     o.id = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed234();
+    o.labels = buildUnnamed255();
     o.name = "foo";
     o.preferred = true;
     o.title = "foo";
@@ -117,7 +117,7 @@ checkDirectoryListItems(api.DirectoryListItems o) {
     checkDirectoryListItemsIcons(o.icons);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed234(o.labels);
+    checkUnnamed255(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.preferred, unittest.isTrue);
     unittest.expect(o.title, unittest.equals('foo'));
@@ -126,14 +126,14 @@ checkDirectoryListItems(api.DirectoryListItems o) {
   buildCounterDirectoryListItems--;
 }
 
-buildUnnamed235() {
+buildUnnamed256() {
   var o = new core.List<api.DirectoryListItems>();
   o.add(buildDirectoryListItems());
   o.add(buildDirectoryListItems());
   return o;
 }
 
-checkUnnamed235(core.List<api.DirectoryListItems> o) {
+checkUnnamed256(core.List<api.DirectoryListItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDirectoryListItems(o[0]);
   checkDirectoryListItems(o[1]);
@@ -145,7 +145,7 @@ buildDirectoryList() {
   buildCounterDirectoryList++;
   if (buildCounterDirectoryList < 3) {
     o.discoveryVersion = "foo";
-    o.items = buildUnnamed235();
+    o.items = buildUnnamed256();
     o.kind = "foo";
   }
   buildCounterDirectoryList--;
@@ -156,20 +156,20 @@ checkDirectoryList(api.DirectoryList o) {
   buildCounterDirectoryList++;
   if (buildCounterDirectoryList < 3) {
     unittest.expect(o.discoveryVersion, unittest.equals('foo'));
-    checkUnnamed235(o.items);
+    checkUnnamed256(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterDirectoryList--;
 }
 
-buildUnnamed236() {
+buildUnnamed257() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed236(core.List<core.String> o) {
+checkUnnamed257(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -180,7 +180,7 @@ buildJsonSchemaAnnotations() {
   var o = new api.JsonSchemaAnnotations();
   buildCounterJsonSchemaAnnotations++;
   if (buildCounterJsonSchemaAnnotations < 3) {
-    o.required = buildUnnamed236();
+    o.required = buildUnnamed257();
   }
   buildCounterJsonSchemaAnnotations--;
   return o;
@@ -189,45 +189,45 @@ buildJsonSchemaAnnotations() {
 checkJsonSchemaAnnotations(api.JsonSchemaAnnotations o) {
   buildCounterJsonSchemaAnnotations++;
   if (buildCounterJsonSchemaAnnotations < 3) {
-    checkUnnamed236(o.required);
+    checkUnnamed257(o.required);
   }
   buildCounterJsonSchemaAnnotations--;
 }
 
-buildUnnamed237() {
+buildUnnamed258() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed237(core.List<core.String> o) {
+checkUnnamed258(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed238() {
+buildUnnamed259() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed238(core.List<core.String> o) {
+checkUnnamed259(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed239() {
+buildUnnamed260() {
   var o = new core.Map<core.String, api.JsonSchema>();
   o["x"] = buildJsonSchema();
   o["y"] = buildJsonSchema();
   return o;
 }
 
-checkUnnamed239(core.Map<core.String, api.JsonSchema> o) {
+checkUnnamed260(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o["x"]);
   checkJsonSchema(o["y"]);
@@ -254,14 +254,14 @@ checkJsonSchemaVariantMap(api.JsonSchemaVariantMap o) {
   buildCounterJsonSchemaVariantMap--;
 }
 
-buildUnnamed240() {
+buildUnnamed261() {
   var o = new core.List<api.JsonSchemaVariantMap>();
   o.add(buildJsonSchemaVariantMap());
   o.add(buildJsonSchemaVariantMap());
   return o;
 }
 
-checkUnnamed240(core.List<api.JsonSchemaVariantMap> o) {
+checkUnnamed261(core.List<api.JsonSchemaVariantMap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchemaVariantMap(o[0]);
   checkJsonSchemaVariantMap(o[1]);
@@ -273,7 +273,7 @@ buildJsonSchemaVariant() {
   buildCounterJsonSchemaVariant++;
   if (buildCounterJsonSchemaVariant < 3) {
     o.discriminant = "foo";
-    o.map = buildUnnamed240();
+    o.map = buildUnnamed261();
   }
   buildCounterJsonSchemaVariant--;
   return o;
@@ -283,7 +283,7 @@ checkJsonSchemaVariant(api.JsonSchemaVariant o) {
   buildCounterJsonSchemaVariant++;
   if (buildCounterJsonSchemaVariant < 3) {
     unittest.expect(o.discriminant, unittest.equals('foo'));
-    checkUnnamed240(o.map);
+    checkUnnamed261(o.map);
   }
   buildCounterJsonSchemaVariant--;
 }
@@ -298,8 +298,8 @@ buildJsonSchema() {
     o.annotations = buildJsonSchemaAnnotations();
     o.default_ = "foo";
     o.description = "foo";
-    o.enum_ = buildUnnamed237();
-    o.enumDescriptions = buildUnnamed238();
+    o.enum_ = buildUnnamed258();
+    o.enumDescriptions = buildUnnamed259();
     o.format = "foo";
     o.id = "foo";
     o.items = buildJsonSchema();
@@ -307,7 +307,7 @@ buildJsonSchema() {
     o.maximum = "foo";
     o.minimum = "foo";
     o.pattern = "foo";
-    o.properties = buildUnnamed239();
+    o.properties = buildUnnamed260();
     o.readOnly = true;
     o.repeated = true;
     o.required = true;
@@ -326,8 +326,8 @@ checkJsonSchema(api.JsonSchema o) {
     checkJsonSchemaAnnotations(o.annotations);
     unittest.expect(o.default_, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed237(o.enum_);
-    checkUnnamed238(o.enumDescriptions);
+    checkUnnamed258(o.enum_);
+    checkUnnamed259(o.enumDescriptions);
     unittest.expect(o.format, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     checkJsonSchema(o.items);
@@ -335,7 +335,7 @@ checkJsonSchema(api.JsonSchema o) {
     unittest.expect(o.maximum, unittest.equals('foo'));
     unittest.expect(o.minimum, unittest.equals('foo'));
     unittest.expect(o.pattern, unittest.equals('foo'));
-    checkUnnamed239(o.properties);
+    checkUnnamed260(o.properties);
     unittest.expect(o.readOnly, unittest.isTrue);
     unittest.expect(o.repeated, unittest.isTrue);
     unittest.expect(o.required, unittest.isTrue);
@@ -364,14 +364,14 @@ checkRestDescriptionAuthOauth2ScopesValue(api.RestDescriptionAuthOauth2ScopesVal
   buildCounterRestDescriptionAuthOauth2ScopesValue--;
 }
 
-buildUnnamed241() {
+buildUnnamed262() {
   var o = new core.Map<core.String, api.RestDescriptionAuthOauth2ScopesValue>();
   o["x"] = buildRestDescriptionAuthOauth2ScopesValue();
   o["y"] = buildRestDescriptionAuthOauth2ScopesValue();
   return o;
 }
 
-checkUnnamed241(core.Map<core.String, api.RestDescriptionAuthOauth2ScopesValue> o) {
+checkUnnamed262(core.Map<core.String, api.RestDescriptionAuthOauth2ScopesValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestDescriptionAuthOauth2ScopesValue(o["x"]);
   checkRestDescriptionAuthOauth2ScopesValue(o["y"]);
@@ -382,7 +382,7 @@ buildRestDescriptionAuthOauth2() {
   var o = new api.RestDescriptionAuthOauth2();
   buildCounterRestDescriptionAuthOauth2++;
   if (buildCounterRestDescriptionAuthOauth2 < 3) {
-    o.scopes = buildUnnamed241();
+    o.scopes = buildUnnamed262();
   }
   buildCounterRestDescriptionAuthOauth2--;
   return o;
@@ -391,7 +391,7 @@ buildRestDescriptionAuthOauth2() {
 checkRestDescriptionAuthOauth2(api.RestDescriptionAuthOauth2 o) {
   buildCounterRestDescriptionAuthOauth2++;
   if (buildCounterRestDescriptionAuthOauth2 < 3) {
-    checkUnnamed241(o.scopes);
+    checkUnnamed262(o.scopes);
   }
   buildCounterRestDescriptionAuthOauth2--;
 }
@@ -415,14 +415,14 @@ checkRestDescriptionAuth(api.RestDescriptionAuth o) {
   buildCounterRestDescriptionAuth--;
 }
 
-buildUnnamed242() {
+buildUnnamed263() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed242(core.List<core.String> o) {
+checkUnnamed263(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -449,66 +449,66 @@ checkRestDescriptionIcons(api.RestDescriptionIcons o) {
   buildCounterRestDescriptionIcons--;
 }
 
-buildUnnamed243() {
+buildUnnamed264() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed243(core.List<core.String> o) {
+checkUnnamed264(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed244() {
+buildUnnamed265() {
   var o = new core.Map<core.String, api.RestMethod>();
   o["x"] = buildRestMethod();
   o["y"] = buildRestMethod();
   return o;
 }
 
-checkUnnamed244(core.Map<core.String, api.RestMethod> o) {
+checkUnnamed265(core.Map<core.String, api.RestMethod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestMethod(o["x"]);
   checkRestMethod(o["y"]);
 }
 
-buildUnnamed245() {
+buildUnnamed266() {
   var o = new core.Map<core.String, api.JsonSchema>();
   o["x"] = buildJsonSchema();
   o["y"] = buildJsonSchema();
   return o;
 }
 
-checkUnnamed245(core.Map<core.String, api.JsonSchema> o) {
+checkUnnamed266(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o["x"]);
   checkJsonSchema(o["y"]);
 }
 
-buildUnnamed246() {
+buildUnnamed267() {
   var o = new core.Map<core.String, api.RestResource>();
   o["x"] = buildRestResource();
   o["y"] = buildRestResource();
   return o;
 }
 
-checkUnnamed246(core.Map<core.String, api.RestResource> o) {
+checkUnnamed267(core.Map<core.String, api.RestResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestResource(o["x"]);
   checkRestResource(o["y"]);
 }
 
-buildUnnamed247() {
+buildUnnamed268() {
   var o = new core.Map<core.String, api.JsonSchema>();
   o["x"] = buildJsonSchema();
   o["y"] = buildJsonSchema();
   return o;
 }
 
-checkUnnamed247(core.Map<core.String, api.JsonSchema> o) {
+checkUnnamed268(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o["x"]);
   checkJsonSchema(o["y"]);
@@ -529,22 +529,22 @@ buildRestDescription() {
     o.documentationLink = "foo";
     o.etag = "foo";
     o.exponentialBackoffDefault = true;
-    o.features = buildUnnamed242();
+    o.features = buildUnnamed263();
     o.icons = buildRestDescriptionIcons();
     o.id = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed243();
-    o.methods = buildUnnamed244();
+    o.labels = buildUnnamed264();
+    o.methods = buildUnnamed265();
     o.name = "foo";
     o.ownerDomain = "foo";
     o.ownerName = "foo";
     o.packagePath = "foo";
-    o.parameters = buildUnnamed245();
+    o.parameters = buildUnnamed266();
     o.protocol = "foo";
-    o.resources = buildUnnamed246();
+    o.resources = buildUnnamed267();
     o.revision = "foo";
     o.rootUrl = "foo";
-    o.schemas = buildUnnamed247();
+    o.schemas = buildUnnamed268();
     o.servicePath = "foo";
     o.title = "foo";
     o.version = "foo";
@@ -567,22 +567,22 @@ checkRestDescription(api.RestDescription o) {
     unittest.expect(o.documentationLink, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.exponentialBackoffDefault, unittest.isTrue);
-    checkUnnamed242(o.features);
+    checkUnnamed263(o.features);
     checkRestDescriptionIcons(o.icons);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed243(o.labels);
-    checkUnnamed244(o.methods);
+    checkUnnamed264(o.labels);
+    checkUnnamed265(o.methods);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.ownerDomain, unittest.equals('foo'));
     unittest.expect(o.ownerName, unittest.equals('foo'));
     unittest.expect(o.packagePath, unittest.equals('foo'));
-    checkUnnamed245(o.parameters);
+    checkUnnamed266(o.parameters);
     unittest.expect(o.protocol, unittest.equals('foo'));
-    checkUnnamed246(o.resources);
+    checkUnnamed267(o.resources);
     unittest.expect(o.revision, unittest.equals('foo'));
     unittest.expect(o.rootUrl, unittest.equals('foo'));
-    checkUnnamed247(o.schemas);
+    checkUnnamed268(o.schemas);
     unittest.expect(o.servicePath, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals('foo'));
@@ -591,14 +591,14 @@ checkRestDescription(api.RestDescription o) {
   buildCounterRestDescription--;
 }
 
-buildUnnamed248() {
+buildUnnamed269() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed248(core.List<core.String> o) {
+checkUnnamed269(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -672,7 +672,7 @@ buildRestMethodMediaUpload() {
   var o = new api.RestMethodMediaUpload();
   buildCounterRestMethodMediaUpload++;
   if (buildCounterRestMethodMediaUpload < 3) {
-    o.accept = buildUnnamed248();
+    o.accept = buildUnnamed269();
     o.maxSize = "foo";
     o.protocols = buildRestMethodMediaUploadProtocols();
   }
@@ -683,34 +683,34 @@ buildRestMethodMediaUpload() {
 checkRestMethodMediaUpload(api.RestMethodMediaUpload o) {
   buildCounterRestMethodMediaUpload++;
   if (buildCounterRestMethodMediaUpload < 3) {
-    checkUnnamed248(o.accept);
+    checkUnnamed269(o.accept);
     unittest.expect(o.maxSize, unittest.equals('foo'));
     checkRestMethodMediaUploadProtocols(o.protocols);
   }
   buildCounterRestMethodMediaUpload--;
 }
 
-buildUnnamed249() {
+buildUnnamed270() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed249(core.List<core.String> o) {
+checkUnnamed270(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed250() {
+buildUnnamed271() {
   var o = new core.Map<core.String, api.JsonSchema>();
   o["x"] = buildJsonSchema();
   o["y"] = buildJsonSchema();
   return o;
 }
 
-checkUnnamed250(core.Map<core.String, api.JsonSchema> o) {
+checkUnnamed271(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o["x"]);
   checkJsonSchema(o["y"]);
@@ -756,14 +756,14 @@ checkRestMethodResponse(api.RestMethodResponse o) {
   buildCounterRestMethodResponse--;
 }
 
-buildUnnamed251() {
+buildUnnamed272() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed251(core.List<core.String> o) {
+checkUnnamed272(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -779,12 +779,12 @@ buildRestMethod() {
     o.httpMethod = "foo";
     o.id = "foo";
     o.mediaUpload = buildRestMethodMediaUpload();
-    o.parameterOrder = buildUnnamed249();
-    o.parameters = buildUnnamed250();
+    o.parameterOrder = buildUnnamed270();
+    o.parameters = buildUnnamed271();
     o.path = "foo";
     o.request = buildRestMethodRequest();
     o.response = buildRestMethodResponse();
-    o.scopes = buildUnnamed251();
+    o.scopes = buildUnnamed272();
     o.supportsMediaDownload = true;
     o.supportsMediaUpload = true;
     o.supportsSubscription = true;
@@ -802,12 +802,12 @@ checkRestMethod(api.RestMethod o) {
     unittest.expect(o.httpMethod, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     checkRestMethodMediaUpload(o.mediaUpload);
-    checkUnnamed249(o.parameterOrder);
-    checkUnnamed250(o.parameters);
+    checkUnnamed270(o.parameterOrder);
+    checkUnnamed271(o.parameters);
     unittest.expect(o.path, unittest.equals('foo'));
     checkRestMethodRequest(o.request);
     checkRestMethodResponse(o.response);
-    checkUnnamed251(o.scopes);
+    checkUnnamed272(o.scopes);
     unittest.expect(o.supportsMediaDownload, unittest.isTrue);
     unittest.expect(o.supportsMediaUpload, unittest.isTrue);
     unittest.expect(o.supportsSubscription, unittest.isTrue);
@@ -816,27 +816,27 @@ checkRestMethod(api.RestMethod o) {
   buildCounterRestMethod--;
 }
 
-buildUnnamed252() {
+buildUnnamed273() {
   var o = new core.Map<core.String, api.RestMethod>();
   o["x"] = buildRestMethod();
   o["y"] = buildRestMethod();
   return o;
 }
 
-checkUnnamed252(core.Map<core.String, api.RestMethod> o) {
+checkUnnamed273(core.Map<core.String, api.RestMethod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestMethod(o["x"]);
   checkRestMethod(o["y"]);
 }
 
-buildUnnamed253() {
+buildUnnamed274() {
   var o = new core.Map<core.String, api.RestResource>();
   o["x"] = buildRestResource();
   o["y"] = buildRestResource();
   return o;
 }
 
-checkUnnamed253(core.Map<core.String, api.RestResource> o) {
+checkUnnamed274(core.Map<core.String, api.RestResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestResource(o["x"]);
   checkRestResource(o["y"]);
@@ -847,8 +847,8 @@ buildRestResource() {
   var o = new api.RestResource();
   buildCounterRestResource++;
   if (buildCounterRestResource < 3) {
-    o.methods = buildUnnamed252();
-    o.resources = buildUnnamed253();
+    o.methods = buildUnnamed273();
+    o.resources = buildUnnamed274();
   }
   buildCounterRestResource--;
   return o;
@@ -857,8 +857,8 @@ buildRestResource() {
 checkRestResource(api.RestResource o) {
   buildCounterRestResource++;
   if (buildCounterRestResource < 3) {
-    checkUnnamed252(o.methods);
-    checkUnnamed253(o.resources);
+    checkUnnamed273(o.methods);
+    checkUnnamed274(o.resources);
   }
   buildCounterRestResource--;
 }

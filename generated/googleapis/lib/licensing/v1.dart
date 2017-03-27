@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client licensing/v1';
 
-/** Licensing API to view and manage license for your domain. */
+/** Views and manages licenses for your domain. */
 class LicensingApi {
   /** View and manage G Suite licenses for your domain */
   static const AppsLicensingScope = "https://www.googleapis.com/auth/apps.licensing";
@@ -423,12 +423,16 @@ class LicenseAssignment {
   core.String etags;
   /** Identifies the resource as a LicenseAssignment. */
   core.String kind;
-  /** Name of the product. */
+  /** Id of the product. */
   core.String productId;
+  /** Display Name of the product. */
+  core.String productName;
   /** Link to this page. */
   core.String selfLink;
-  /** Name of the sku of the product. */
+  /** Id of the sku of the product. */
   core.String skuId;
+  /** Display Name of the sku of the product. */
+  core.String skuName;
   /** Email id of the user. */
   core.String userId;
 
@@ -444,11 +448,17 @@ class LicenseAssignment {
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
     }
+    if (_json.containsKey("productName")) {
+      productName = _json["productName"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("skuId")) {
       skuId = _json["skuId"];
+    }
+    if (_json.containsKey("skuName")) {
+      skuName = _json["skuName"];
     }
     if (_json.containsKey("userId")) {
       userId = _json["userId"];
@@ -466,11 +476,17 @@ class LicenseAssignment {
     if (productId != null) {
       _json["productId"] = productId;
     }
+    if (productName != null) {
+      _json["productName"] = productName;
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
     if (skuId != null) {
       _json["skuId"] = skuId;
+    }
+    if (skuName != null) {
+      _json["skuName"] = skuName;
     }
     if (userId != null) {
       _json["userId"] = userId;

@@ -97,14 +97,14 @@ checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError--;
 }
 
-buildUnnamed1129() {
+buildUnnamed1160() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1129(core.List<core.String> o) {
+checkUnnamed1160(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -116,7 +116,7 @@ buildBatchGetAmpUrlsRequest() {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     o.lookupStrategy = "foo";
-    o.urls = buildUnnamed1129();
+    o.urls = buildUnnamed1160();
   }
   buildCounterBatchGetAmpUrlsRequest--;
   return o;
@@ -126,32 +126,32 @@ checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     unittest.expect(o.lookupStrategy, unittest.equals('foo'));
-    checkUnnamed1129(o.urls);
+    checkUnnamed1160(o.urls);
   }
   buildCounterBatchGetAmpUrlsRequest--;
 }
 
-buildUnnamed1130() {
+buildUnnamed1161() {
   var o = new core.List<api.AmpUrl>();
   o.add(buildAmpUrl());
   o.add(buildAmpUrl());
   return o;
 }
 
-checkUnnamed1130(core.List<api.AmpUrl> o) {
+checkUnnamed1161(core.List<api.AmpUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrl(o[0]);
   checkAmpUrl(o[1]);
 }
 
-buildUnnamed1131() {
+buildUnnamed1162() {
   var o = new core.List<api.AmpUrlError>();
   o.add(buildAmpUrlError());
   o.add(buildAmpUrlError());
   return o;
 }
 
-checkUnnamed1131(core.List<api.AmpUrlError> o) {
+checkUnnamed1162(core.List<api.AmpUrlError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrlError(o[0]);
   checkAmpUrlError(o[1]);
@@ -162,8 +162,8 @@ buildBatchGetAmpUrlsResponse() {
   var o = new api.BatchGetAmpUrlsResponse();
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    o.ampUrls = buildUnnamed1130();
-    o.urlErrors = buildUnnamed1131();
+    o.ampUrls = buildUnnamed1161();
+    o.urlErrors = buildUnnamed1162();
   }
   buildCounterBatchGetAmpUrlsResponse--;
   return o;
@@ -172,8 +172,8 @@ buildBatchGetAmpUrlsResponse() {
 checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    checkUnnamed1130(o.ampUrls);
-    checkUnnamed1131(o.urlErrors);
+    checkUnnamed1161(o.ampUrls);
+    checkUnnamed1162(o.urlErrors);
   }
   buildCounterBatchGetAmpUrlsResponse--;
 }

@@ -29,7 +29,7 @@
     "description": "Creates and runs virtual machines on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/2r-KYylgeCVqVKbBLdmgF6oHJmk\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/-AXC-k_8CfD_YvETyckkdtLmETM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -619,6 +619,226 @@
                     "path": "{project}/zones/{zone}/autoscalers",
                     "request": {
                         "$ref": "Autoscaler"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                }
+            }
+        },
+        "backendBuckets": {
+            "methods": {
+                "delete": {
+                    "description": "Deletes the specified BackendBucket resource.",
+                    "httpMethod": "DELETE",
+                    "id": "compute.backendBuckets.delete",
+                    "parameterOrder": [
+                        "project",
+                        "backendBucket"
+                    ],
+                    "parameters": {
+                        "backendBucket": {
+                            "description": "Name of the BackendBucket resource to delete.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/backendBuckets/{backendBucket}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified BackendBucket resource. Get a list of available backend buckets by making a list() request.",
+                    "httpMethod": "GET",
+                    "id": "compute.backendBuckets.get",
+                    "parameterOrder": [
+                        "project",
+                        "backendBucket"
+                    ],
+                    "parameters": {
+                        "backendBucket": {
+                            "description": "Name of the BackendBucket resource to return.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/backendBuckets/{backendBucket}",
+                    "response": {
+                        "$ref": "BackendBucket"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates a BackendBucket resource in the specified project using the data included in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.backendBuckets.insert",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/backendBuckets",
+                    "request": {
+                        "$ref": "BackendBucket"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves the list of BackendBucket resources available to the specified project.",
+                    "httpMethod": "GET",
+                    "id": "compute.backendBuckets.list",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/backendBuckets",
+                    "response": {
+                        "$ref": "BackendBucketList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates the specified BackendBucket resource with the data included in the request. This method supports patch semantics.",
+                    "httpMethod": "PATCH",
+                    "id": "compute.backendBuckets.patch",
+                    "parameterOrder": [
+                        "project",
+                        "backendBucket"
+                    ],
+                    "parameters": {
+                        "backendBucket": {
+                            "description": "Name of the BackendBucket resource to update.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/backendBuckets/{backendBucket}",
+                    "request": {
+                        "$ref": "BackendBucket"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "update": {
+                    "description": "Updates the specified BackendBucket resource with the data included in the request.",
+                    "httpMethod": "PUT",
+                    "id": "compute.backendBuckets.update",
+                    "parameterOrder": [
+                        "project",
+                        "backendBucket"
+                    ],
+                    "parameters": {
+                        "backendBucket": {
+                            "description": "Name of the BackendBucket resource to update.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/backendBuckets/{backendBucket}",
+                    "request": {
+                        "$ref": "BackendBucket"
                     },
                     "response": {
                         "$ref": "Operation"
@@ -10795,7 +11015,7 @@
             }
         }
     },
-    "revision": "20170228",
+    "revision": "20170302",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -11501,6 +11721,79 @@
                     "description": "Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization target for the group. The default is 0.8. Valid range is [0.0, 1.0].\n\nThis cannot be used for internal load balancing.",
                     "format": "float",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "BackendBucket": {
+            "description": "A BackendBucket resource. This resource defines a Cloud Storage bucket.",
+            "id": "BackendBucket",
+            "properties": {
+                "bucketName": {
+                    "description": "Cloud Storage bucket name.",
+                    "type": "string"
+                },
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "type": "string"
+                },
+                "enableCdn": {
+                    "description": "If true, enable Cloud CDN for this BackendBucket.",
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#backendBucket",
+                    "description": "Type of the resource.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BackendBucketList": {
+            "description": "Contains a list of BackendBucket resources.",
+            "id": "BackendBucketList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A list of BackendBucket resources.",
+                    "items": {
+                        "$ref": "BackendBucket"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#backendBucketList",
+                    "description": "Type of resource.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] A token used to continue a truncated list request.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -12768,7 +13061,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "description": "The TCP port number for the health check request. The default value is 80.",
+                    "description": "The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -12803,7 +13096,7 @@
                     "type": "string"
                 },
                 "port": {
-                    "description": "The TCP port number for the health check request. The default value is 443.",
+                    "description": "The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -13428,7 +13721,13 @@
                     "description": "The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys."
                 },
                 "name": {
+                    "annotations": {
+                        "required": [
+                            "compute.instances.insert"
+                        ]
+                    },
                     "description": "The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     "type": "string"
                 },
                 "networkInterfaces": {
@@ -16581,7 +16880,7 @@
             "id": "SSLHealthCheck",
             "properties": {
                 "port": {
-                    "description": "The TCP port number for the health check request. The default value is 443.",
+                    "description": "The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -17096,7 +17395,7 @@
             "id": "TCPHealthCheck",
             "properties": {
                 "port": {
-                    "description": "The TCP port number for the health check request. The default value is 80.",
+                    "description": "The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.",
                     "format": "int32",
                     "type": "integer"
                 },

@@ -8035,6 +8035,13 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object phones;
+  /**
+   *
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object posixAccounts;
   /** username of User */
   core.String primaryEmail;
   /**
@@ -8044,6 +8051,13 @@ class User {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Object relations;
+  /**
+   *
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object sshPublicKeys;
   /** Indicates if user is suspended */
   core.bool suspended;
   /** Suspension reason if user is suspended (Read-only) */
@@ -8153,11 +8167,17 @@ class User {
     if (_json.containsKey("phones")) {
       phones = _json["phones"];
     }
+    if (_json.containsKey("posixAccounts")) {
+      posixAccounts = _json["posixAccounts"];
+    }
     if (_json.containsKey("primaryEmail")) {
       primaryEmail = _json["primaryEmail"];
     }
     if (_json.containsKey("relations")) {
       relations = _json["relations"];
+    }
+    if (_json.containsKey("sshPublicKeys")) {
+      sshPublicKeys = _json["sshPublicKeys"];
     }
     if (_json.containsKey("suspended")) {
       suspended = _json["suspended"];
@@ -8268,11 +8288,17 @@ class User {
     if (phones != null) {
       _json["phones"] = phones;
     }
+    if (posixAccounts != null) {
+      _json["posixAccounts"] = posixAccounts;
+    }
     if (primaryEmail != null) {
       _json["primaryEmail"] = primaryEmail;
     }
     if (relations != null) {
       _json["relations"] = relations;
+    }
+    if (sshPublicKeys != null) {
+      _json["sshPublicKeys"] = sshPublicKeys;
     }
     if (suspended != null) {
       _json["suspended"] = suspended;
@@ -8972,6 +8998,87 @@ class UserPhoto {
   }
 }
 
+/**
+ * JSON template for a POSIX account entry. Description of the field family:
+ * go/fbs-posix.
+ */
+class UserPosixAccount {
+  /** The GECOS (user information) entry for this account. */
+  core.String gecos;
+  /** The default group ID. */
+  core.int gid;
+  /** The path to the home directory for this account. */
+  core.String homeDirectory;
+  /** If this is user's primary account within the SystemId. */
+  core.bool primary;
+  /** The path to the login shell for this account. */
+  core.String shell;
+  /** System identifier for which account Username or Uid apply to. */
+  core.String systemId;
+  /** The user ID. */
+  core.int uid;
+  /** The username of the account. */
+  core.String username;
+
+  UserPosixAccount();
+
+  UserPosixAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("gecos")) {
+      gecos = _json["gecos"];
+    }
+    if (_json.containsKey("gid")) {
+      gid = _json["gid"];
+    }
+    if (_json.containsKey("homeDirectory")) {
+      homeDirectory = _json["homeDirectory"];
+    }
+    if (_json.containsKey("primary")) {
+      primary = _json["primary"];
+    }
+    if (_json.containsKey("shell")) {
+      shell = _json["shell"];
+    }
+    if (_json.containsKey("systemId")) {
+      systemId = _json["systemId"];
+    }
+    if (_json.containsKey("uid")) {
+      uid = _json["uid"];
+    }
+    if (_json.containsKey("username")) {
+      username = _json["username"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (gecos != null) {
+      _json["gecos"] = gecos;
+    }
+    if (gid != null) {
+      _json["gid"] = gid;
+    }
+    if (homeDirectory != null) {
+      _json["homeDirectory"] = homeDirectory;
+    }
+    if (primary != null) {
+      _json["primary"] = primary;
+    }
+    if (shell != null) {
+      _json["shell"] = shell;
+    }
+    if (systemId != null) {
+      _json["systemId"] = systemId;
+    }
+    if (uid != null) {
+      _json["uid"] = uid;
+    }
+    if (username != null) {
+      _json["username"] = username;
+    }
+    return _json;
+  }
+}
+
 /** JSON template for a relation entry. */
 class UserRelation {
   /** Custom Type. */
@@ -9008,6 +9115,44 @@ class UserRelation {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/** JSON template for a POSIX account entry. */
+class UserSshPublicKey {
+  /** An expiration time in microseconds since epoch. */
+  core.String expirationTimeUsec;
+  /** A SHA-256 fingerprint of the SSH public key. (Read-only) */
+  core.String fingerprint;
+  /** An SSH public key. */
+  core.String key;
+
+  UserSshPublicKey();
+
+  UserSshPublicKey.fromJson(core.Map _json) {
+    if (_json.containsKey("expirationTimeUsec")) {
+      expirationTimeUsec = _json["expirationTimeUsec"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (expirationTimeUsec != null) {
+      _json["expirationTimeUsec"] = expirationTimeUsec;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (key != null) {
+      _json["key"] = key;
     }
     return _json;
   }

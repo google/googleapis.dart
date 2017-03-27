@@ -1678,6 +1678,13 @@ class Subscription {
    * SKUs available in this version of the API, see  Product and SKU IDs.
    */
   core.String skuId;
+  /**
+   * Read-only external display name for a product's SKU assigned to a customer
+   * in the subscription. SKU names are subject to change at Google's
+   * discretion. For products and SKUs available in this version of the API, see
+   * Product and SKU IDs.
+   */
+  core.String skuName;
   /** This is an optional property. */
   core.String status;
   /**
@@ -1755,6 +1762,9 @@ class Subscription {
     if (_json.containsKey("skuId")) {
       skuId = _json["skuId"];
     }
+    if (_json.containsKey("skuName")) {
+      skuName = _json["skuName"];
+    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
@@ -1809,6 +1819,9 @@ class Subscription {
     }
     if (skuId != null) {
       _json["skuId"] = skuId;
+    }
+    if (skuName != null) {
+      _json["skuName"] = skuName;
     }
     if (status != null) {
       _json["status"] = status;

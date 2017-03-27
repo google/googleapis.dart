@@ -17,7 +17,7 @@
     "description": "Interacts with Glass users via the timeline.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/glass",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/nxDdKsGKU-CGQ0rCYbUZuIhDXnY\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/ByQfozwRvb0RCKvC-TI-WjVIzjc\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -735,7 +735,7 @@
             }
         }
     },
-    "revision": "20160616",
+    "revision": "20170314",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

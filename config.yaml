@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.36.0
+    version: 0.37.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -33,6 +33,8 @@ packages:
     - cloudbilling:v1  # https://cloud.google.com/billing/
     - cloudbuild:v1  # https://cloud.google.com/container-builder/docs/
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
+    - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
+    - cloudkms:v1 # https://cloud.google.com/kms/docs/
     - cloudresourcemanager:v1  # https://cloud.google.com/resource-manager/
     - cloudtrace:v1 # https://cloud.google.com/cloud-trace/
     - compute:v1  # https://developers.google.com/compute/
@@ -72,6 +74,7 @@ packages:
     - logging:v2  #
     - manufacturers:v1  #
     - mirror:v1  # https://developers.google.com/glass/develop/mirror/
+    - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3
     - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
     - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
@@ -113,7 +116,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.34.0
+    version: 0.35.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -128,15 +131,14 @@ packages:
     - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
-    - cloudkms:v1beta1 # https://cloud.google.com/kms/docs/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
+    - dataproc:v1beta1 # https://cloud.google.com/dataproc/
     - datastore:v1beta2  # https://developers.google.com/datastore/
     - datastore:v1beta3  # https://developers.google.com/datastore/
-    - dataproc:v1beta1 # https://cloud.google.com/dataproc/
+    - dlp:v2beta1 # https://cloud.google.com/dlp/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - language:v1beta1  # https://cloud.google.com/natural-language/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
-    - ml:v1beta1  #
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapoolupdater:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/manager/
@@ -157,15 +159,20 @@ skipped_apis:
 - analytics:v2.4  # v3 included
 - androidpublisher:v1.1  # v2 included
 - androidpublisher:v1  # v2 included
+- appengine:v1alpha  # v1 included
 - blogger:v2  # v3 included
+- cloudfunctions:v1beta2 # v1 included
 - clouduseraccounts:alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_alpha  # Leave out alpha versions for now
 - clouduseraccounts:vm_beta # seems to be the same API as "beta"
 - compute:alpha # v1 included
 - compute:beta # v1 included
-- datastore:v1beta1  # v1beta2 included
 - dataproc:v1alpha1 # v1beta1 included
+- datastore:v1beta1  # v1beta2 included
+- deploymentmanager:alpha # v2beta # v1 included
+- deploymentmanager:v2beta # v1 included
 - genomics:v1alpha2 # v1 included
+- ml:v1beta1  # v1 included
 - oauth2:v1  # v2 included
 - prediction:v1.2  # v1.6 included
 - prediction:v1.3  # v1.6 included

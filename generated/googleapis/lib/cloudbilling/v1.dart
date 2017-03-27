@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client cloudbilling/v1';
 
 /**
- * Retrieves Google Developers Console billing accounts and associates them with
- * projects.
+ * Allows developers to manage billing for their Google Cloud Platform projects
+ *     programmatically.
  */
 class CloudbillingApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -50,7 +50,7 @@ class BillingAccountsResourceApi {
    *
    * [name] - The resource name of the billing account to retrieve. For example,
    * `billingAccounts/012345-567890-ABCDEF`.
-   * Value must have pattern "^billingAccounts/[^/]*$".
+   * Value must have pattern "^billingAccounts/[^/]+$".
    *
    * Completes with a [BillingAccount].
    *
@@ -91,10 +91,12 @@ class BillingAccountsResourceApi {
    * Request parameters:
    *
    * [pageSize] - Requested page size. The maximum page size is 100; this is
-   * also the default.
+   * also the
+   * default.
    *
    * [pageToken] - A token identifying a page of results to return. This should
-   * be a `next_page_token` value returned from a previous `ListBillingAccounts`
+   * be a
+   * `next_page_token` value returned from a previous `ListBillingAccounts`
    * call. If unspecified, the first page of results is returned.
    *
    * Completes with a [ListBillingAccountsResponse].
@@ -149,17 +151,18 @@ class BillingAccountsProjectsResourceApi {
    * Request parameters:
    *
    * [name] - The resource name of the billing account associated with the
-   * projects that you want to list. For example,
-   * `billingAccounts/012345-567890-ABCDEF`.
-   * Value must have pattern "^billingAccounts/[^/]*$".
+   * projects that
+   * you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
+   * Value must have pattern "^billingAccounts/[^/]+$".
    *
    * [pageSize] - Requested page size. The maximum page size is 100; this is
-   * also the default.
+   * also the
+   * default.
    *
    * [pageToken] - A token identifying a page of results to be returned. This
-   * should be a `next_page_token` value returned from a previous
-   * `ListProjectBillingInfo` call. If unspecified, the first page of results is
-   * returned.
+   * should be a
+   * `next_page_token` value returned from a previous `ListProjectBillingInfo`
+   * call. If unspecified, the first page of results is returned.
    *
    * Completes with a [ListProjectBillingInfoResponse].
    *
@@ -218,7 +221,7 @@ class ProjectsResourceApi {
    *
    * [name] - The resource name of the project for which billing information is
    * retrieved. For example, `projects/tokyo-rain-123`.
-   * Value must have pattern "^projects/[^/]*$".
+   * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [ProjectBillingInfo].
    *
@@ -259,34 +262,40 @@ class ProjectsResourceApi {
    * Associating a project with an open billing account enables billing on the
    * project and allows charges for resource usage. If the project already had a
    * billing account, this method changes the billing account used for resource
-   * usage charges. *Note:* Incurred charges that have not yet been reported in
-   * the transaction history of the Google Developers Console may be billed to
-   * the new billing account, even if the charge occurred before the new billing
-   * account was assigned to the project. The current authenticated user must
-   * have ownership privileges for both the
+   * usage charges.
+   *
+   * *Note:* Incurred charges that have not yet been reported in the transaction
+   * history of the Google Cloud Console may be billed to the new billing
+   * account, even if the charge occurred before the new billing account was
+   * assigned to the project.
+   *
+   * The current authenticated user must have ownership privileges for both the
    * [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
    * ) and the [billing
-   * account](https://support.google.com/cloud/answer/4430947). You can disable
-   * billing on the project by setting the `billing_account_name` field to
-   * empty. This action disassociates the current billing account from the
-   * project. Any billable activity of your in-use services will stop, and your
-   * application could stop functioning as expected. Any unbilled charges to
-   * date will be billed to the previously associated account. The current
-   * authenticated user must be either an owner of the project or an owner of
-   * the billing account for the project. Note that associating a project with a
-   * *closed* billing account will have much the same effect as disabling
-   * billing on the project: any paid resources used by the project will be shut
-   * down. Thus, unless you wish to disable billing, you should always call this
-   * method with the name of an *open* billing account.
+   * account](https://support.google.com/cloud/answer/4430947).
+   *
+   * You can disable billing on the project by setting the
+   * `billing_account_name` field to empty. This action disassociates the
+   * current billing account from the project. Any billable activity of your
+   * in-use services will stop, and your application could stop functioning as
+   * expected. Any unbilled charges to date will be billed to the previously
+   * associated account. The current authenticated user must be either an owner
+   * of the project or an owner of the billing account for the project.
+   *
+   * Note that associating a project with a *closed* billing account will have
+   * much the same effect as disabling billing on the project: any paid
+   * resources used by the project will be shut down. Thus, unless you wish to
+   * disable billing, you should always call this method with the name of an
+   * *open* billing account.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [name] - The resource name of the project associated with the billing
-   * information that you want to update. For example,
-   * `projects/tokyo-rain-123`.
-   * Value must have pattern "^projects/[^/]*$".
+   * information
+   * that you want to update. For example, `projects/tokyo-rain-123`.
+   * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [ProjectBillingInfo].
    *
@@ -328,14 +337,14 @@ class ProjectsResourceApi {
 
 
 /**
- * A billing account in [Google Developers
- * Console](https://console.developers.google.com/). You can assign a billing
- * account to one or more projects.
+ * A billing account in [Google Cloud
+ * Console](https://console.cloud.google.com/). You can assign a billing account
+ * to one or more projects.
  */
 class BillingAccount {
   /**
    * The display name given to the billing account, such as `My Billing
-   * Account`. This name is displayed in the Google Developers Console.
+   * Account`. This name is displayed in the Google Cloud Console.
    */
   core.String displayName;
   /**
@@ -453,9 +462,9 @@ class ListProjectBillingInfoResponse {
 }
 
 /**
- * Encapsulation of billing information for a Developers Console project. A
- * project has at most one associated billing account at a time (but a billing
- * account can be assigned to multiple projects).
+ * Encapsulation of billing information for a Cloud Console project. A project
+ * has at most one associated billing account at a time (but a billing account
+ * can be assigned to multiple projects).
  */
 class ProjectBillingInfo {
   /**

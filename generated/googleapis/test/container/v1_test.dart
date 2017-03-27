@@ -110,40 +110,40 @@ checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-buildUnnamed1569() {
+buildUnnamed1637() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1569(core.List<core.String> o) {
+checkUnnamed1637(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1570() {
+buildUnnamed1638() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1570(core.List<core.String> o) {
+checkUnnamed1638(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1571() {
+buildUnnamed1639() {
   var o = new core.List<api.NodePool>();
   o.add(buildNodePool());
   o.add(buildNodePool());
   return o;
 }
 
-checkUnnamed1571(core.List<api.NodePool> o) {
+checkUnnamed1639(core.List<api.NodePool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNodePool(o[0]);
   checkNodePool(o[1]);
@@ -166,8 +166,8 @@ buildCluster() {
     o.expireTime = "foo";
     o.initialClusterVersion = "foo";
     o.initialNodeCount = 42;
-    o.instanceGroupUrls = buildUnnamed1569();
-    o.locations = buildUnnamed1570();
+    o.instanceGroupUrls = buildUnnamed1637();
+    o.locations = buildUnnamed1638();
     o.loggingService = "foo";
     o.masterAuth = buildMasterAuth();
     o.monitoringService = "foo";
@@ -175,7 +175,7 @@ buildCluster() {
     o.network = "foo";
     o.nodeConfig = buildNodeConfig();
     o.nodeIpv4CidrSize = 42;
-    o.nodePools = buildUnnamed1571();
+    o.nodePools = buildUnnamed1639();
     o.selfLink = "foo";
     o.servicesIpv4Cidr = "foo";
     o.status = "foo";
@@ -202,8 +202,8 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.expireTime, unittest.equals('foo'));
     unittest.expect(o.initialClusterVersion, unittest.equals('foo'));
     unittest.expect(o.initialNodeCount, unittest.equals(42));
-    checkUnnamed1569(o.instanceGroupUrls);
-    checkUnnamed1570(o.locations);
+    checkUnnamed1637(o.instanceGroupUrls);
+    checkUnnamed1638(o.locations);
     unittest.expect(o.loggingService, unittest.equals('foo'));
     checkMasterAuth(o.masterAuth);
     unittest.expect(o.monitoringService, unittest.equals('foo'));
@@ -211,7 +211,7 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.network, unittest.equals('foo'));
     checkNodeConfig(o.nodeConfig);
     unittest.expect(o.nodeIpv4CidrSize, unittest.equals(42));
-    checkUnnamed1571(o.nodePools);
+    checkUnnamed1639(o.nodePools);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.servicesIpv4Cidr, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -222,14 +222,14 @@ checkCluster(api.Cluster o) {
   buildCounterCluster--;
 }
 
-buildUnnamed1572() {
+buildUnnamed1640() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1572(core.List<core.String> o) {
+checkUnnamed1640(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -242,7 +242,7 @@ buildClusterUpdate() {
   if (buildCounterClusterUpdate < 3) {
     o.desiredAddonsConfig = buildAddonsConfig();
     o.desiredImageType = "foo";
-    o.desiredLocations = buildUnnamed1572();
+    o.desiredLocations = buildUnnamed1640();
     o.desiredMasterVersion = "foo";
     o.desiredMonitoringService = "foo";
     o.desiredNodePoolAutoscaling = buildNodePoolAutoscaling();
@@ -258,7 +258,7 @@ checkClusterUpdate(api.ClusterUpdate o) {
   if (buildCounterClusterUpdate < 3) {
     checkAddonsConfig(o.desiredAddonsConfig);
     unittest.expect(o.desiredImageType, unittest.equals('foo'));
-    checkUnnamed1572(o.desiredLocations);
+    checkUnnamed1640(o.desiredLocations);
     unittest.expect(o.desiredMasterVersion, unittest.equals('foo'));
     unittest.expect(o.desiredMonitoringService, unittest.equals('foo'));
     checkNodePoolAutoscaling(o.desiredNodePoolAutoscaling);
@@ -361,27 +361,27 @@ checkHttpLoadBalancing(api.HttpLoadBalancing o) {
   buildCounterHttpLoadBalancing--;
 }
 
-buildUnnamed1573() {
+buildUnnamed1641() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1573(core.List<api.Cluster> o) {
+checkUnnamed1641(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
 }
 
-buildUnnamed1574() {
+buildUnnamed1642() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1574(core.List<core.String> o) {
+checkUnnamed1642(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -392,8 +392,8 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1573();
-    o.missingZones = buildUnnamed1574();
+    o.clusters = buildUnnamed1641();
+    o.missingZones = buildUnnamed1642();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -402,20 +402,20 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1573(o.clusters);
-    checkUnnamed1574(o.missingZones);
+    checkUnnamed1641(o.clusters);
+    checkUnnamed1642(o.missingZones);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed1575() {
+buildUnnamed1643() {
   var o = new core.List<api.NodePool>();
   o.add(buildNodePool());
   o.add(buildNodePool());
   return o;
 }
 
-checkUnnamed1575(core.List<api.NodePool> o) {
+checkUnnamed1643(core.List<api.NodePool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNodePool(o[0]);
   checkNodePool(o[1]);
@@ -426,7 +426,7 @@ buildListNodePoolsResponse() {
   var o = new api.ListNodePoolsResponse();
   buildCounterListNodePoolsResponse++;
   if (buildCounterListNodePoolsResponse < 3) {
-    o.nodePools = buildUnnamed1575();
+    o.nodePools = buildUnnamed1643();
   }
   buildCounterListNodePoolsResponse--;
   return o;
@@ -435,32 +435,32 @@ buildListNodePoolsResponse() {
 checkListNodePoolsResponse(api.ListNodePoolsResponse o) {
   buildCounterListNodePoolsResponse++;
   if (buildCounterListNodePoolsResponse < 3) {
-    checkUnnamed1575(o.nodePools);
+    checkUnnamed1643(o.nodePools);
   }
   buildCounterListNodePoolsResponse--;
 }
 
-buildUnnamed1576() {
+buildUnnamed1644() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1576(core.List<core.String> o) {
+checkUnnamed1644(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1577() {
+buildUnnamed1645() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1577(core.List<api.Operation> o) {
+checkUnnamed1645(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -471,8 +471,8 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.missingZones = buildUnnamed1576();
-    o.operations = buildUnnamed1577();
+    o.missingZones = buildUnnamed1644();
+    o.operations = buildUnnamed1645();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -481,8 +481,8 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1576(o.missingZones);
-    checkUnnamed1577(o.operations);
+    checkUnnamed1644(o.missingZones);
+    checkUnnamed1645(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -514,53 +514,53 @@ checkMasterAuth(api.MasterAuth o) {
   buildCounterMasterAuth--;
 }
 
-buildUnnamed1578() {
+buildUnnamed1646() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1578(core.Map<core.String, core.String> o) {
+checkUnnamed1646(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1579() {
+buildUnnamed1647() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1579(core.Map<core.String, core.String> o) {
+checkUnnamed1647(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1580() {
+buildUnnamed1648() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1580(core.List<core.String> o) {
+checkUnnamed1648(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1581() {
+buildUnnamed1649() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1581(core.List<core.String> o) {
+checkUnnamed1649(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -573,14 +573,14 @@ buildNodeConfig() {
   if (buildCounterNodeConfig < 3) {
     o.diskSizeGb = 42;
     o.imageType = "foo";
-    o.labels = buildUnnamed1578();
+    o.labels = buildUnnamed1646();
     o.localSsdCount = 42;
     o.machineType = "foo";
-    o.metadata = buildUnnamed1579();
-    o.oauthScopes = buildUnnamed1580();
+    o.metadata = buildUnnamed1647();
+    o.oauthScopes = buildUnnamed1648();
     o.preemptible = true;
     o.serviceAccount = "foo";
-    o.tags = buildUnnamed1581();
+    o.tags = buildUnnamed1649();
   }
   buildCounterNodeConfig--;
   return o;
@@ -591,14 +591,14 @@ checkNodeConfig(api.NodeConfig o) {
   if (buildCounterNodeConfig < 3) {
     unittest.expect(o.diskSizeGb, unittest.equals(42));
     unittest.expect(o.imageType, unittest.equals('foo'));
-    checkUnnamed1578(o.labels);
+    checkUnnamed1646(o.labels);
     unittest.expect(o.localSsdCount, unittest.equals(42));
     unittest.expect(o.machineType, unittest.equals('foo'));
-    checkUnnamed1579(o.metadata);
-    checkUnnamed1580(o.oauthScopes);
+    checkUnnamed1647(o.metadata);
+    checkUnnamed1648(o.oauthScopes);
     unittest.expect(o.preemptible, unittest.isTrue);
     unittest.expect(o.serviceAccount, unittest.equals('foo'));
-    checkUnnamed1581(o.tags);
+    checkUnnamed1649(o.tags);
   }
   buildCounterNodeConfig--;
 }
@@ -624,14 +624,14 @@ checkNodeManagement(api.NodeManagement o) {
   buildCounterNodeManagement--;
 }
 
-buildUnnamed1582() {
+buildUnnamed1650() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1582(core.List<core.String> o) {
+checkUnnamed1650(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -645,7 +645,7 @@ buildNodePool() {
     o.autoscaling = buildNodePoolAutoscaling();
     o.config = buildNodeConfig();
     o.initialNodeCount = 42;
-    o.instanceGroupUrls = buildUnnamed1582();
+    o.instanceGroupUrls = buildUnnamed1650();
     o.management = buildNodeManagement();
     o.name = "foo";
     o.selfLink = "foo";
@@ -663,7 +663,7 @@ checkNodePool(api.NodePool o) {
     checkNodePoolAutoscaling(o.autoscaling);
     checkNodeConfig(o.config);
     unittest.expect(o.initialNodeCount, unittest.equals(42));
-    checkUnnamed1582(o.instanceGroupUrls);
+    checkUnnamed1650(o.instanceGroupUrls);
     checkNodeManagement(o.management);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -747,40 +747,40 @@ checkRollbackNodePoolUpgradeRequest(api.RollbackNodePoolUpgradeRequest o) {
   buildCounterRollbackNodePoolUpgradeRequest--;
 }
 
-buildUnnamed1583() {
+buildUnnamed1651() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1583(core.List<core.String> o) {
+checkUnnamed1651(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1584() {
+buildUnnamed1652() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1584(core.List<core.String> o) {
+checkUnnamed1652(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1585() {
+buildUnnamed1653() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1585(core.List<core.String> o) {
+checkUnnamed1653(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -793,9 +793,9 @@ buildServerConfig() {
   if (buildCounterServerConfig < 3) {
     o.defaultClusterVersion = "foo";
     o.defaultImageType = "foo";
-    o.validImageTypes = buildUnnamed1583();
-    o.validMasterVersions = buildUnnamed1584();
-    o.validNodeVersions = buildUnnamed1585();
+    o.validImageTypes = buildUnnamed1651();
+    o.validMasterVersions = buildUnnamed1652();
+    o.validNodeVersions = buildUnnamed1653();
   }
   buildCounterServerConfig--;
   return o;
@@ -806,9 +806,9 @@ checkServerConfig(api.ServerConfig o) {
   if (buildCounterServerConfig < 3) {
     unittest.expect(o.defaultClusterVersion, unittest.equals('foo'));
     unittest.expect(o.defaultImageType, unittest.equals('foo'));
-    checkUnnamed1583(o.validImageTypes);
-    checkUnnamed1584(o.validMasterVersions);
-    checkUnnamed1585(o.validNodeVersions);
+    checkUnnamed1651(o.validImageTypes);
+    checkUnnamed1652(o.validMasterVersions);
+    checkUnnamed1653(o.validNodeVersions);
   }
   buildCounterServerConfig--;
 }

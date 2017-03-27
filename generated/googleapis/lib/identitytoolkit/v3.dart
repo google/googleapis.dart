@@ -2100,6 +2100,12 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 /** Request to verify the IDP assertion. */
 class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   /**
+   * When it's true, automatically creates a new account if the user doesn't
+   * exist. When it's false, allows existing user to sign in normally and throws
+   * exception if the user doesn't exist.
+   */
+  core.bool autoCreate;
+  /**
    * GCP project number of the requesting delegated app. Currently only intended
    * for Firebase V1 migration.
    */
@@ -2137,6 +2143,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   IdentitytoolkitRelyingpartyVerifyAssertionRequest();
 
   IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("autoCreate")) {
+      autoCreate = _json["autoCreate"];
+    }
     if (_json.containsKey("delegatedProjectNumber")) {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
     }
@@ -2171,6 +2180,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (autoCreate != null) {
+      _json["autoCreate"] = autoCreate;
+    }
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -2416,12 +2428,34 @@ class IdpConfig {
  * etc.)
  */
 class Relyingparty {
+  /**
+   * whether or not to install the android app on the device where the link is
+   * opened
+   */
+  core.bool androidInstallApp;
+  /**
+   * minimum version of the app. if the version on the device is lower than this
+   * version then the user is taken to the play store to upgrade the app
+   */
+  core.String androidMinimumVersion;
+  /** android package name of the android app to handle the action code */
+  core.String androidPackageName;
+  /**
+   * whether or not the app can handle the oob code without first going to web
+   */
+  core.bool canHandleCodeInApp;
   /** The recaptcha response from the user. */
   core.String captchaResp;
   /** The recaptcha challenge presented to the user. */
   core.String challenge;
+  /** The url to continue to the Gitkit app */
+  core.String continueUrl;
   /** The email of the user. */
   core.String email;
+  /** iOS app store id to download the app if it's not already installed */
+  core.String iOSAppStoreId;
+  /** the iOS bundle id of iOS app to handle the action code */
+  core.String iOSBundleId;
   /** The user's Gitkit login token for email change. */
   core.String idToken;
   /** The fixed string "identitytoolkit#relyingparty". */
@@ -2436,14 +2470,35 @@ class Relyingparty {
   Relyingparty();
 
   Relyingparty.fromJson(core.Map _json) {
+    if (_json.containsKey("androidInstallApp")) {
+      androidInstallApp = _json["androidInstallApp"];
+    }
+    if (_json.containsKey("androidMinimumVersion")) {
+      androidMinimumVersion = _json["androidMinimumVersion"];
+    }
+    if (_json.containsKey("androidPackageName")) {
+      androidPackageName = _json["androidPackageName"];
+    }
+    if (_json.containsKey("canHandleCodeInApp")) {
+      canHandleCodeInApp = _json["canHandleCodeInApp"];
+    }
     if (_json.containsKey("captchaResp")) {
       captchaResp = _json["captchaResp"];
     }
     if (_json.containsKey("challenge")) {
       challenge = _json["challenge"];
     }
+    if (_json.containsKey("continueUrl")) {
+      continueUrl = _json["continueUrl"];
+    }
     if (_json.containsKey("email")) {
       email = _json["email"];
+    }
+    if (_json.containsKey("iOSAppStoreId")) {
+      iOSAppStoreId = _json["iOSAppStoreId"];
+    }
+    if (_json.containsKey("iOSBundleId")) {
+      iOSBundleId = _json["iOSBundleId"];
     }
     if (_json.containsKey("idToken")) {
       idToken = _json["idToken"];
@@ -2464,14 +2519,35 @@ class Relyingparty {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (androidInstallApp != null) {
+      _json["androidInstallApp"] = androidInstallApp;
+    }
+    if (androidMinimumVersion != null) {
+      _json["androidMinimumVersion"] = androidMinimumVersion;
+    }
+    if (androidPackageName != null) {
+      _json["androidPackageName"] = androidPackageName;
+    }
+    if (canHandleCodeInApp != null) {
+      _json["canHandleCodeInApp"] = canHandleCodeInApp;
+    }
     if (captchaResp != null) {
       _json["captchaResp"] = captchaResp;
     }
     if (challenge != null) {
       _json["challenge"] = challenge;
     }
+    if (continueUrl != null) {
+      _json["continueUrl"] = continueUrl;
+    }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (iOSAppStoreId != null) {
+      _json["iOSAppStoreId"] = iOSAppStoreId;
+    }
+    if (iOSBundleId != null) {
+      _json["iOSBundleId"] = iOSBundleId;
     }
     if (idToken != null) {
       _json["idToken"] = idToken;

@@ -443,13 +443,13 @@ class ProjectsClustersResourceApi {
    * [projectId] - Required The ID of the Google Cloud Platform project that the
    * cluster belongs to.
    *
-   * [filter] - Optional A filter constraining which clusters to list. Valid
-   * filters contain label terms such as: labels.key1 = val1 AND (-labels.k2 =
-   * val2 OR labels.k3 = val3)
-   *
    * [pageToken] - The standard List page token.
    *
    * [pageSize] - The standard List page size.
+   *
+   * [filter] - Optional A filter constraining which clusters to list. Valid
+   * filters contain label terms such as: labels.key1 = val1 AND (-labels.k2 =
+   * val2 OR labels.k3 = val3)
    *
    * Completes with a [ListClustersResponse].
    *
@@ -459,7 +459,7 @@ class ProjectsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListClustersResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -470,14 +470,14 @@ class ProjectsClustersResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/clusters';
@@ -733,6 +733,14 @@ class ProjectsJobsResourceApi {
    * [projectId] - Required The ID of the Google Cloud Platform project that the
    * job belongs to.
    *
+   * [pageToken] - Optional The page token, returned by a previous call, to
+   * request the next page of results.
+   *
+   * [pageSize] - Optional The number of results to return in each response.
+   *
+   * [clusterName] - Optional If set, the returned jobs list includes only jobs
+   * that were submitted to the named cluster.
+   *
    * [filter] - Optional A filter constraining which jobs to list. Valid filters
    * contain job state and label terms such as: labels.key1 = val1 AND
    * (labels.k2 = val2 OR labels.k3 = val3)
@@ -744,14 +752,6 @@ class ProjectsJobsResourceApi {
    * - "ACTIVE" : A ACTIVE.
    * - "NON_ACTIVE" : A NON_ACTIVE.
    *
-   * [pageToken] - Optional The page token, returned by a previous call, to
-   * request the next page of results.
-   *
-   * [pageSize] - Optional The number of results to return in each response.
-   *
-   * [clusterName] - Optional If set, the returned jobs list includes only jobs
-   * that were submitted to the named cluster.
-   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -760,7 +760,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.String filter, core.String jobStateMatcher, core.String pageToken, core.int pageSize, core.String clusterName}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String clusterName, core.String filter, core.String jobStateMatcher}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -771,12 +771,6 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (jobStateMatcher != null) {
-      _queryParams["jobStateMatcher"] = [jobStateMatcher];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -785,6 +779,12 @@ class ProjectsJobsResourceApi {
     }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (jobStateMatcher != null) {
+      _queryParams["jobStateMatcher"] = [jobStateMatcher];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -1355,6 +1355,18 @@ class ClusterStatus {
   core.String state;
   /** Time when this state was entered. */
   core.String stateStartTime;
+  /**
+   * Output-only Additional state information that includes status reported by
+   * the agent.
+   * Possible string values are:
+   * - "UNSPECIFIED"
+   * - "UNHEALTHY" : The cluster is known to be in an unhealthy state (for
+   * example, critical daemons are not running or HDFS capacity is
+   * exhausted).Applies to RUNNING state.
+   * - "STALE_STATUS" : The agent-reported status is out of date (may occur if
+   * Cloud Dataproc loses communication with Agent).Applies to RUNNING state.
+   */
+  core.String substate;
 
   ClusterStatus();
 
@@ -1368,6 +1380,9 @@ class ClusterStatus {
     if (_json.containsKey("stateStartTime")) {
       stateStartTime = _json["stateStartTime"];
     }
+    if (_json.containsKey("substate")) {
+      substate = _json["substate"];
+    }
   }
 
   core.Map toJson() {
@@ -1380,6 +1395,9 @@ class ClusterStatus {
     }
     if (stateStartTime != null) {
       _json["stateStartTime"] = stateStartTime;
+    }
+    if (substate != null) {
+      _json["substate"] = substate;
     }
     return _json;
   }
@@ -2238,6 +2256,21 @@ class JobStatus {
   core.String state;
   /** Output-only The time when this state was entered. */
   core.String stateStartTime;
+  /**
+   * Output-only Additional state information, which includes status reported by
+   * the agent.
+   * Possible string values are:
+   * - "UNSPECIFIED"
+   * - "SUBMITTED" : The Job is submitted to the agent.Applies to RUNNING state.
+   * - "QUEUED" : The Job has been received and is awaiting execution (it may be
+   * waiting for a condition to be met). See the "details" field for the reason
+   * for the delay.Applies to RUNNING state.
+   * - "STALE_STATUS" : The agent-reported status is out of date, which may be
+   * caused by a loss of communication between the agent and Cloud Dataproc. If
+   * the agent does not send a timely update, the job will fail.Applies to
+   * RUNNING state.
+   */
+  core.String substate;
 
   JobStatus();
 
@@ -2251,6 +2284,9 @@ class JobStatus {
     if (_json.containsKey("stateStartTime")) {
       stateStartTime = _json["stateStartTime"];
     }
+    if (_json.containsKey("substate")) {
+      substate = _json["substate"];
+    }
   }
 
   core.Map toJson() {
@@ -2263,6 +2299,9 @@ class JobStatus {
     }
     if (stateStartTime != null) {
       _json["stateStartTime"] = stateStartTime;
+    }
+    if (substate != null) {
+      _json["substate"] = substate;
     }
     return _json;
   }

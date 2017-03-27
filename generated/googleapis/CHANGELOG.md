@@ -1,3 +1,32 @@
+## 0.37.0
+
+* [api-new] cloudfunctions:v1
+* [api-new] cloudkms:v1
+* [api-new] ml:v1
+* [api] admin:directory_v1
+* [api] analytics:v3
+* [api] appengine:v1
+* [api] calendar:v3
+* [api] cloudresourcemanager:v1
+* [api] compute:v1
+* [api] dataproc:v1
+* [api] firebasedynamiclinks:v1
+* [api] firebaserules:v1
+* [api] identitytoolkit:v3
+* [api] licensing:v1
+* [api] manufacturers:v1
+* [api] partners:v2
+* [api] people:v1
+* [api] reseller:v1
+* [api] safebrowsing:v4
+* [api] servicemanagement:v1
+* [api] serviceuser:v1
+* [api] sheets:v4
+* [api] slides:v1
+* [api] storage:v1
+* [api] vision:v1
+* [api-breaking] classroom:v1
+
 ## 0.36.0
 
 * [api-new] sourcerepo:v1

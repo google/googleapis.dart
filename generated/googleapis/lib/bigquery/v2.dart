@@ -848,6 +848,9 @@ class TabledataResourceApi {
    * [pageToken] - Page token, returned by a previous call, identifying the
    * result set
    *
+   * [selectedFields] - List of fields to return (comma-separated). If
+   * unspecified, all fields are returned
+   *
    * [startIndex] - Zero-based index of the starting row to read
    *
    * Completes with a [TableDataList].
@@ -858,7 +861,7 @@ class TabledataResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TableDataList> list(core.String projectId, core.String datasetId, core.String tableId, {core.int maxResults, core.String pageToken, core.String startIndex}) {
+  async.Future<TableDataList> list(core.String projectId, core.String datasetId, core.String tableId, {core.int maxResults, core.String pageToken, core.String selectedFields, core.String startIndex}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -880,6 +883,9 @@ class TabledataResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (selectedFields != null) {
+      _queryParams["selectedFields"] = [selectedFields];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = [startIndex];
@@ -969,6 +975,9 @@ class TablesResourceApi {
    *
    * [tableId] - Table ID of the requested table
    *
+   * [selectedFields] - List of fields to return (comma-separated). If
+   * unspecified, all fields are returned
+   *
    * Completes with a [Table].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -977,7 +986,7 @@ class TablesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Table> get(core.String projectId, core.String datasetId, core.String tableId) {
+  async.Future<Table> get(core.String projectId, core.String datasetId, core.String tableId, {core.String selectedFields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -993,6 +1002,9 @@ class TablesResourceApi {
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if (selectedFields != null) {
+      _queryParams["selectedFields"] = [selectedFields];
     }
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId') + '/tables/' + commons.Escaper.ecapeVariable('$tableId');
@@ -1682,10 +1694,9 @@ class Dataset {
   /** [Output-only] The resource type. */
   core.String kind;
   /**
-   * [Experimental] The labels associated with this dataset. You can use these
-   * to organize and group your datasets. You can set this property when
-   * inserting or updating a dataset. See Labeling Datasets for more
-   * information.
+   * The labels associated with this dataset. You can use these to organize and
+   * group your datasets. You can set this property when inserting or updating a
+   * dataset. See Labeling Datasets for more information.
    */
   core.Map<core.String, core.String> labels;
   /**
@@ -1694,8 +1705,8 @@ class Dataset {
    */
   core.String lastModifiedTime;
   /**
-   * [Experimental] The geographic location where the dataset should reside.
-   * Possible values include EU and US. The default value is US.
+   * The geographic location where the dataset should reside. Possible values
+   * include EU and US. The default value is US.
    */
   core.String location;
   /**
@@ -1809,8 +1820,8 @@ class DatasetListDatasets {
    */
   core.String kind;
   /**
-   * [Experimental] The labels associated with this dataset. You can use these
-   * to organize and group your datasets.
+   * The labels associated with this dataset. You can use these to organize and
+   * group your datasets.
    */
   core.Map<core.String, core.String> labels;
 
@@ -2158,8 +2169,8 @@ class ExplainQueryStep {
 
 class ExternalDataConfiguration {
   /**
-   * [Experimental] Try to detect schema and format options automatically. Any
-   * option specified explicitly will be honored.
+   * Try to detect schema and format options automatically. Any option specified
+   * explicitly will be honored.
    */
   core.bool autodetect;
   /** [Optional] Additional options if sourceFormat is set to BIGTABLE. */
@@ -2204,10 +2215,8 @@ class ExternalDataConfiguration {
    * [Required] The data format. For CSV files, specify "CSV". For Google
    * sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify
    * "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud
-   * Datastore backups, specify "DATASTORE_BACKUP". [Experimental] For Google
-   * Cloud Bigtable, specify "BIGTABLE". Please note that reading from Google
-   * Cloud Bigtable is experimental and has to be enabled for your project.
-   * Please contact Google Cloud Support to enable this for your project.
+   * Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud
+   * Bigtable, specify "BIGTABLE".
    */
   core.String sourceFormat;
   /**
@@ -2321,8 +2330,8 @@ class GetQueryResultsResponse {
   /** The resource type of the response. */
   core.String kind;
   /**
-   * [Output-only, Experimental] The number of rows affected by a DML statement.
-   * Present only for DML statements INSERT, UPDATE or DELETE.
+   * [Output-only] The number of rows affected by a DML statement. Present only
+   * for DML statements INSERT, UPDATE or DELETE.
    */
   core.String numDmlAffectedRows;
   /** A token used for paging results. */
@@ -2761,8 +2770,8 @@ class JobConfigurationLoad {
    */
   core.bool allowQuotedNewlines;
   /**
-   * [Experimental] Indicates if we should automatically infer the options and
-   * schema for CSV and JSON sources.
+   * Indicates if we should automatically infer the options and schema for CSV
+   * and JSON sources.
    */
   core.bool autodetect;
   /**
@@ -2820,12 +2829,12 @@ class JobConfigurationLoad {
    */
   core.String nullMarker;
   /**
-   * [Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates
-   * which entity properties to load into BigQuery from a Cloud Datastore
-   * backup. Property names are case sensitive and must be top-level properties.
-   * If no properties are specified, BigQuery loads all properties. If any named
-   * property isn't found in the Cloud Datastore backup, an invalid error is
-   * returned in the job result.
+   * If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
+   * properties to load into BigQuery from a Cloud Datastore backup. Property
+   * names are case sensitive and must be top-level properties. If no properties
+   * are specified, BigQuery loads all properties. If any named property isn't
+   * found in the Cloud Datastore backup, an invalid error is returned in the
+   * job result.
    */
   core.List<core.String> projectionFields;
   /**
@@ -3071,9 +3080,8 @@ class JobConfigurationQuery {
    */
   core.String maximumBytesBilled;
   /**
-   * [Experimental] Standard SQL only. Set to POSITIONAL to use positional (?)
-   * query parameters or to NAMED to use named (@myparam) query parameters in
-   * this query.
+   * Standard SQL only. Set to POSITIONAL to use positional (?) query parameters
+   * or to NAMED to use named (@myparam) query parameters in this query.
    */
   core.String parameterMode;
   /** [Deprecated] This property is deprecated. */
@@ -3123,9 +3131,7 @@ class JobConfigurationQuery {
    * true.
    */
   core.bool useQueryCache;
-  /**
-   * [Experimental] Describes user-defined function resources used in the query.
-   */
+  /** Describes user-defined function resources used in the query. */
   core.List<UserDefinedFunctionResource> userDefinedFunctionResources;
   /**
    * [Optional] Specifies the action that occurs if the destination table
@@ -3588,11 +3594,11 @@ class JobStatistics2 {
    */
   core.bool cacheHit;
   /**
-   * [Output-only, Experimental] The number of rows affected by a DML statement.
-   * Present only for DML statements INSERT, UPDATE or DELETE.
+   * [Output-only] The number of rows affected by a DML statement. Present only
+   * for DML statements INSERT, UPDATE or DELETE.
    */
   core.String numDmlAffectedRows;
-  /** [Output-only, Experimental] Describes execution plan for the query. */
+  /** [Output-only] Describes execution plan for the query. */
   core.List<ExplainQueryStage> queryPlan;
   /**
    * [Output-only, Experimental] Referenced tables for the job. Queries that
@@ -4156,9 +4162,8 @@ class QueryRequest {
    */
   core.int maxResults;
   /**
-   * [Experimental] Standard SQL only. Set to POSITIONAL to use positional (?)
-   * query parameters or to NAMED to use named (@myparam) query parameters in
-   * this query.
+   * Standard SQL only. Set to POSITIONAL to use positional (?) query parameters
+   * or to NAMED to use named (@myparam) query parameters in this query.
    */
   core.String parameterMode;
   /** [Deprecated] This property is deprecated. */
@@ -4169,7 +4174,7 @@ class QueryRequest {
    * [myProjectId:myDatasetId.myTableId]".
    */
   core.String query;
-  /** [Experimental] Query parameters for Standard SQL queries. */
+  /** Query parameters for Standard SQL queries. */
   core.List<QueryParameter> queryParameters;
   /**
    * [Optional] How long to wait for the query to complete, in milliseconds,
@@ -4300,8 +4305,8 @@ class QueryResponse {
   /** The resource type. */
   core.String kind;
   /**
-   * [Output-only, Experimental] The number of rows affected by a DML statement.
-   * Present only for DML statements INSERT, UPDATE or DELETE.
+   * [Output-only] The number of rows affected by a DML statement. Present only
+   * for DML statements INSERT, UPDATE or DELETE.
    */
   core.String numDmlAffectedRows;
   /** A token used for paging results. */
@@ -5310,9 +5315,7 @@ class ViewDefinition {
    * reference this view must use the same flag value.
    */
   core.bool useLegacySql;
-  /**
-   * [Experimental] Describes user-defined function resources used in the query.
-   */
+  /** Describes user-defined function resources used in the query. */
   core.List<UserDefinedFunctionResource> userDefinedFunctionResources;
 
   ViewDefinition();

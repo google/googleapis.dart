@@ -289,6 +289,8 @@ class DynamicLinkInfo {
    * Required.
    */
   core.String link;
+  /** Information of navigation behavior of a Firebase Dynamic Links. */
+  NavigationInfo navigationInfo;
   /**
    * Parameters for social meta tag params.
    * Used to set meta tag data for link previews on social sites.
@@ -313,6 +315,9 @@ class DynamicLinkInfo {
     if (_json.containsKey("link")) {
       link = _json["link"];
     }
+    if (_json.containsKey("navigationInfo")) {
+      navigationInfo = new NavigationInfo.fromJson(_json["navigationInfo"]);
+    }
     if (_json.containsKey("socialMetaTagInfo")) {
       socialMetaTagInfo = new SocialMetaTagInfo.fromJson(_json["socialMetaTagInfo"]);
     }
@@ -334,6 +339,9 @@ class DynamicLinkInfo {
     }
     if (link != null) {
       _json["link"] = link;
+    }
+    if (navigationInfo != null) {
+      _json["navigationInfo"] = (navigationInfo).toJson();
     }
     if (socialMetaTagInfo != null) {
       _json["socialMetaTagInfo"] = (socialMetaTagInfo).toJson();
@@ -616,6 +624,31 @@ class IosInfo {
     }
     if (iosIpadFallbackLink != null) {
       _json["iosIpadFallbackLink"] = iosIpadFallbackLink;
+    }
+    return _json;
+  }
+}
+
+/** Information of navigation behavior. */
+class NavigationInfo {
+  /**
+   * If this option is on, FDL click will be forced to redirect rather than
+   * show an interstitial page.
+   */
+  core.bool enableForcedRedirect;
+
+  NavigationInfo();
+
+  NavigationInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("enableForcedRedirect")) {
+      enableForcedRedirect = _json["enableForcedRedirect"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (enableForcedRedirect != null) {
+      _json["enableForcedRedirect"] = enableForcedRedirect;
     }
     return _json;
   }

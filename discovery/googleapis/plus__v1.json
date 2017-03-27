@@ -23,7 +23,7 @@
     "description": "Builds on top of the Google+ platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/api/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/YN03yNghWOizwdibl--2r18KQjc\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/4yuXl8tCsTdnArP4UCiTXQpS3Hs\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/gplus-16.png",
         "x32": "http://www.google.com/images/icons/product/gplus-32.png"
@@ -491,7 +491,7 @@
             }
         }
     },
-    "revision": "20170301",
+    "revision": "20170322",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

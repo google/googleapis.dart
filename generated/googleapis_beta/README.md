@@ -99,12 +99,6 @@ Stackdriver Error Reporting groups and counts similar errors from cloud services
 
 Official API documentation: https://cloud.google.com/error-reporting/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Key Management Service (KMS) API - cloudkms v1beta1
-
-Manages encryption for your cloud services the same way you do on-premise. You can generate, use, rotate, and destroy AES256 encryption keys.
-
-Official API documentation: https://cloud.google.com/kms/
-
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Monitoring API - cloudmonitoring v2beta2
 
 Accesses Google Cloud Monitoring data.
@@ -148,6 +142,12 @@ Accesses the schemaless NoSQL database to provide fully managed, robust, scalabl
 
 Official API documentation: https://cloud.google.com/datastore/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DLP API - dlp v2beta1
+
+The Google Data Loss Prevention API provides methods for detection of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.
+
+Official API documentation: https://cloud.google.com/dlp/docs/
+
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud DNS API - dns v2beta1
 
 Configures and serves authoritative DNS records.
@@ -165,12 +165,6 @@ Official API documentation: https://cloud.google.com/natural-language/
 Writes log entries and manages your Stackdriver Logging configuration.
 
 Official API documentation: https://cloud.google.com/logging/docs/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Machine Learning Engine - ml v1beta1
-
-An API to enable creating and using machine learning models.
-
-Official API documentation: https://cloud.google.com/ml/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Proximity Beacon API - proximitybeacon v1beta1
 

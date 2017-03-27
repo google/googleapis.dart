@@ -93,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/5JjoP3Vg5udAY4zd2Hcsn9dKASM\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Kf10_CyV-UXMG4pe1PBWM5iJx_0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -3423,7 +3423,7 @@
             }
         }
     },
-    "revision": "20161214",
+    "revision": "20170216",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -5188,6 +5188,9 @@
                 "phones": {
                     "type": "any"
                 },
+                "posixAccounts": {
+                    "type": "any"
+                },
                 "primaryEmail": {
                     "annotations": {
                         "required": [
@@ -5198,6 +5201,9 @@
                     "type": "string"
                 },
                 "relations": {
+                    "type": "any"
+                },
+                "sshPublicKeys": {
                     "type": "any"
                 },
                 "suspended": {
@@ -5547,6 +5553,47 @@
             },
             "type": "object"
         },
+        "UserPosixAccount": {
+            "description": "JSON template for a POSIX account entry. Description of the field family: go/fbs-posix.",
+            "id": "UserPosixAccount",
+            "properties": {
+                "gecos": {
+                    "description": "The GECOS (user information) entry for this account.",
+                    "type": "string"
+                },
+                "gid": {
+                    "description": "The default group ID.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "homeDirectory": {
+                    "description": "The path to the home directory for this account.",
+                    "type": "string"
+                },
+                "primary": {
+                    "description": "If this is user's primary account within the SystemId.",
+                    "type": "boolean"
+                },
+                "shell": {
+                    "description": "The path to the login shell for this account.",
+                    "type": "string"
+                },
+                "systemId": {
+                    "description": "System identifier for which account Username or Uid apply to.",
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "The user ID.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "username": {
+                    "description": "The username of the account.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "UserRelation": {
             "description": "JSON template for a relation entry.",
             "id": "UserRelation",
@@ -5561,6 +5608,27 @@
                 },
                 "value": {
                     "description": "The name of the relation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserSshPublicKey": {
+            "description": "JSON template for a POSIX account entry.",
+            "id": "UserSshPublicKey",
+            "properties": {
+                "expirationTimeUsec": {
+                    "description": "An expiration time in microseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "description": "A SHA-256 fingerprint of the SSH public key. (Read-only)",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "key": {
+                    "description": "An SSH public key.",
                     "type": "string"
                 }
             },

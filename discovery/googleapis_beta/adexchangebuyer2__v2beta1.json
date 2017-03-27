@@ -25,48 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
@@ -74,11 +32,6 @@
         },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -92,6 +45,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -110,12 +68,439 @@
             ],
             "location": "query",
             "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
     "resources": {
         "accounts": {
             "resources": {
+                "clients": {
+                    "methods": {
+                        "create": {
+                            "description": "Creates a new client buyer.",
+                            "httpMethod": "POST",
+                            "id": "adexchangebuyer2.accounts.clients.create",
+                            "parameterOrder": [
+                                "accountId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Unique numerical account ID for the buyer of which the client buyer\nis a customer; the sponsor buyer to create a client for. (required)",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/clients",
+                            "request": {
+                                "$ref": "Client"
+                            },
+                            "response": {
+                                "$ref": "Client"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        },
+                        "get": {
+                            "description": "Gets a client buyer with a given client account ID.",
+                            "httpMethod": "GET",
+                            "id": "adexchangebuyer2.accounts.clients.get",
+                            "parameterOrder": [
+                                "accountId",
+                                "clientAccountId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "clientAccountId": {
+                                    "description": "Numerical account ID of the client buyer to retrieve. (required)",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
+                            "response": {
+                                "$ref": "Client"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists all the clients for the current sponsor buyer.",
+                            "httpMethod": "GET",
+                            "id": "adexchangebuyer2.accounts.clients.list",
+                            "parameterOrder": [
+                                "accountId"
+                            ],
+                            "parameters": {
+                                "pageToken": {
+                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientsResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.list method.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "accountId": {
+                                    "description": "Unique numerical account ID of the sponsor buyer to list the clients for.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Requested page size. The server may return fewer clients than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/clients",
+                            "response": {
+                                "$ref": "ListClientsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        },
+                        "update": {
+                            "description": "Updates an existing client buyer.",
+                            "httpMethod": "PUT",
+                            "id": "adexchangebuyer2.accounts.clients.update",
+                            "parameterOrder": [
+                                "accountId",
+                                "clientAccountId"
+                            ],
+                            "parameters": {
+                                "accountId": {
+                                    "description": "Unique numerical account ID for the buyer of which the client buyer\nis a customer; the sponsor buyer to update a client for. (required)",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "clientAccountId": {
+                                    "description": "Unique numerical account ID of the client to update. (required)",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
+                            "request": {
+                                "$ref": "Client"
+                            },
+                            "response": {
+                                "$ref": "Client"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/adexchange.buyer"
+                            ]
+                        }
+                    },
+                    "resources": {
+                        "invitations": {
+                            "methods": {
+                                "get": {
+                                    "description": "Retrieves an existing client user invitation.",
+                                    "httpMethod": "GET",
+                                    "id": "adexchangebuyer2.accounts.clients.invitations.get",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId",
+                                        "invitationId"
+                                    ],
+                                    "parameters": {
+                                        "accountId": {
+                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "clientAccountId": {
+                                            "description": "Numerical account ID of the client buyer that the user invitation\nto be retrieved is associated with. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "invitationId": {
+                                            "description": "Numerical identifier of the user invitation to retrieve. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}",
+                                    "response": {
+                                        "$ref": "ClientUserInvitation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists all the client users invitations for a client\nwith a given account ID.",
+                                    "httpMethod": "GET",
+                                    "id": "adexchangebuyer2.accounts.clients.invitations.list",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId"
+                                    ],
+                                    "parameters": {
+                                        "accountId": {
+                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Requested page size. Server may return fewer clients than requested.\nIf unspecified, server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "clientAccountId": {
+                                            "description": "Numerical account ID of the client buyer to list invitations for.\n(required)\nYou must either specify a string representation of a\nnumerical account identifier or the `-` character\nto list all the invitations for all the clients\nof a given sponsor buyer.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageToken": {
+                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUserInvitationsResponse.nextPageToken\nreturned from the previous call to the\nclients.invitations.list\nmethod.",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
+                                    "response": {
+                                        "$ref": "ListClientUserInvitationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                },
+                                "create": {
+                                    "description": "Creates and sends out an email invitation to access\nan Ad Exchange client buyer account.",
+                                    "httpMethod": "POST",
+                                    "id": "adexchangebuyer2.accounts.clients.invitations.create",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId"
+                                    ],
+                                    "parameters": {
+                                        "clientAccountId": {
+                                            "description": "Numerical account ID of the client buyer that the user\nshould be associated with. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "accountId": {
+                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
+                                    "request": {
+                                        "$ref": "ClientUserInvitation"
+                                    },
+                                    "response": {
+                                        "$ref": "ClientUserInvitation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                }
+                            }
+                        },
+                        "users": {
+                            "methods": {
+                                "list": {
+                                    "description": "Lists all the known client users for a specified\nsponsor buyer account ID.",
+                                    "httpMethod": "GET",
+                                    "id": "adexchangebuyer2.accounts.clients.users.list",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId"
+                                    ],
+                                    "parameters": {
+                                        "clientAccountId": {
+                                            "description": "The account ID of the client buyer to list users for. (required)\nYou must specify either a string representation of a\nnumerical account identifier or the `-` character\nto list all the client users for all the clients\nof a given sponsor buyer.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageToken": {
+                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUsersResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.users.list method.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "accountId": {
+                                            "description": "Numerical account ID of the sponsor buyer of the client to list users for.\n(required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Requested page size. The server may return fewer clients than requested.\nIf unspecified, the server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users",
+                                    "response": {
+                                        "$ref": "ListClientUsersResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Retrieves an existing client user.",
+                                    "httpMethod": "GET",
+                                    "id": "adexchangebuyer2.accounts.clients.users.get",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId",
+                                        "userId"
+                                    ],
+                                    "parameters": {
+                                        "accountId": {
+                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "clientAccountId": {
+                                            "description": "Numerical account ID of the client buyer\nthat the user to be retrieved is associated with. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "userId": {
+                                            "description": "Numerical identifier of the user to retrieve. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
+                                    "response": {
+                                        "$ref": "ClientUser"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                },
+                                "update": {
+                                    "description": "Updates an existing client user.\nOnly the user status can be changed on update.",
+                                    "httpMethod": "PUT",
+                                    "id": "adexchangebuyer2.accounts.clients.users.update",
+                                    "parameterOrder": [
+                                        "accountId",
+                                        "clientAccountId",
+                                        "userId"
+                                    ],
+                                    "parameters": {
+                                        "userId": {
+                                            "description": "Numerical identifier of the user to retrieve. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "accountId": {
+                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "clientAccountId": {
+                                            "description": "Numerical account ID of the client buyer that the user to be retrieved\nis associated with. (required)",
+                                            "format": "int64",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
+                                    "request": {
+                                        "$ref": "ClientUser"
+                                    },
+                                    "response": {
+                                        "$ref": "ClientUser"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adexchange.buyer"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
                 "creatives": {
                     "methods": {
                         "create": {
@@ -440,475 +825,31 @@
                             }
                         }
                     }
-                },
-                "clients": {
-                    "methods": {
-                        "get": {
-                            "description": "Gets a client buyer with a given client account ID.",
-                            "httpMethod": "GET",
-                            "id": "adexchangebuyer2.accounts.clients.get",
-                            "parameterOrder": [
-                                "accountId",
-                                "clientAccountId"
-                            ],
-                            "parameters": {
-                                "accountId": {
-                                    "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                    "format": "int64",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "clientAccountId": {
-                                    "description": "Numerical account ID of the client buyer to retrieve. (required)",
-                                    "format": "int64",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
-                            "response": {
-                                "$ref": "Client"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/adexchange.buyer"
-                            ]
-                        },
-                        "list": {
-                            "description": "Lists all the clients for the current sponsor buyer.",
-                            "httpMethod": "GET",
-                            "id": "adexchangebuyer2.accounts.clients.list",
-                            "parameterOrder": [
-                                "accountId"
-                            ],
-                            "parameters": {
-                                "pageToken": {
-                                    "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientsResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.list method.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "accountId": {
-                                    "description": "Unique numerical account ID of the sponsor buyer to list the clients for.",
-                                    "format": "int64",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "pageSize": {
-                                    "description": "Requested page size. The server may return fewer clients than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                }
-                            },
-                            "path": "v2beta1/accounts/{accountId}/clients",
-                            "response": {
-                                "$ref": "ListClientsResponse"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/adexchange.buyer"
-                            ]
-                        },
-                        "update": {
-                            "description": "Updates an existing client buyer.",
-                            "httpMethod": "PUT",
-                            "id": "adexchangebuyer2.accounts.clients.update",
-                            "parameterOrder": [
-                                "accountId",
-                                "clientAccountId"
-                            ],
-                            "parameters": {
-                                "accountId": {
-                                    "description": "Unique numerical account ID for the buyer of which the client buyer\nis a customer; the sponsor buyer to update a client for. (required)",
-                                    "format": "int64",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "clientAccountId": {
-                                    "description": "Unique numerical account ID of the client to update. (required)",
-                                    "format": "int64",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}",
-                            "request": {
-                                "$ref": "Client"
-                            },
-                            "response": {
-                                "$ref": "Client"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/adexchange.buyer"
-                            ]
-                        },
-                        "create": {
-                            "description": "Creates a new client buyer.",
-                            "httpMethod": "POST",
-                            "id": "adexchangebuyer2.accounts.clients.create",
-                            "parameterOrder": [
-                                "accountId"
-                            ],
-                            "parameters": {
-                                "accountId": {
-                                    "description": "Unique numerical account ID for the buyer of which the client buyer\nis a customer; the sponsor buyer to create a client for. (required)",
-                                    "format": "int64",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v2beta1/accounts/{accountId}/clients",
-                            "request": {
-                                "$ref": "Client"
-                            },
-                            "response": {
-                                "$ref": "Client"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/adexchange.buyer"
-                            ]
-                        }
-                    },
-                    "resources": {
-                        "invitations": {
-                            "methods": {
-                                "get": {
-                                    "description": "Retrieves an existing client user invitation.",
-                                    "httpMethod": "GET",
-                                    "id": "adexchangebuyer2.accounts.clients.invitations.get",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId",
-                                        "invitationId"
-                                    ],
-                                    "parameters": {
-                                        "accountId": {
-                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "Numerical account ID of the client buyer that the user invitation\nto be retrieved is associated with. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "invitationId": {
-                                            "description": "Numerical identifier of the user invitation to retrieve. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}",
-                                    "response": {
-                                        "$ref": "ClientUserInvitation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                },
-                                "list": {
-                                    "description": "Lists all the client users invitations for a client\nwith a given account ID.",
-                                    "httpMethod": "GET",
-                                    "id": "adexchangebuyer2.accounts.clients.invitations.list",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId"
-                                    ],
-                                    "parameters": {
-                                        "pageToken": {
-                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUserInvitationsResponse.nextPageToken\nreturned from the previous call to the\nclients.invitations.list\nmethod.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "accountId": {
-                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Requested page size. Server may return fewer clients than requested.\nIf unspecified, server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "Numerical account ID of the client buyer to list invitations for.\n(required)\nYou must either specify a string representation of a\nnumerical account identifier or the `-` character\nto list all the invitations for all the clients\nof a given sponsor buyer.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
-                                    "response": {
-                                        "$ref": "ListClientUserInvitationsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                },
-                                "create": {
-                                    "description": "Creates and sends out an email invitation to access\nan Ad Exchange client buyer account.",
-                                    "httpMethod": "POST",
-                                    "id": "adexchangebuyer2.accounts.clients.invitations.create",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId"
-                                    ],
-                                    "parameters": {
-                                        "accountId": {
-                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "Numerical account ID of the client buyer that the user\nshould be associated with. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations",
-                                    "request": {
-                                        "$ref": "ClientUserInvitation"
-                                    },
-                                    "response": {
-                                        "$ref": "ClientUserInvitation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                }
-                            }
-                        },
-                        "users": {
-                            "methods": {
-                                "list": {
-                                    "description": "Lists all the known client users for a specified\nsponsor buyer account ID.",
-                                    "httpMethod": "GET",
-                                    "id": "adexchangebuyer2.accounts.clients.users.list",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId"
-                                    ],
-                                    "parameters": {
-                                        "pageToken": {
-                                            "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUsersResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.users.list method.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "accountId": {
-                                            "description": "Numerical account ID of the sponsor buyer of the client to list users for.\n(required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Requested page size. The server may return fewer clients than requested.\nIf unspecified, the server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "The account ID of the client buyer to list users for. (required)\nYou must specify either a string representation of a\nnumerical account identifier or the `-` character\nto list all the client users for all the clients\nof a given sponsor buyer.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users",
-                                    "response": {
-                                        "$ref": "ListClientUsersResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                },
-                                "get": {
-                                    "description": "Retrieves an existing client user.",
-                                    "httpMethod": "GET",
-                                    "id": "adexchangebuyer2.accounts.clients.users.get",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId",
-                                        "userId"
-                                    ],
-                                    "parameters": {
-                                        "userId": {
-                                            "description": "Numerical identifier of the user to retrieve. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "accountId": {
-                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "Numerical account ID of the client buyer\nthat the user to be retrieved is associated with. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
-                                    "response": {
-                                        "$ref": "ClientUser"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                },
-                                "update": {
-                                    "description": "Updates an existing client user.\nOnly the user status can be changed on update.",
-                                    "httpMethod": "PUT",
-                                    "id": "adexchangebuyer2.accounts.clients.users.update",
-                                    "parameterOrder": [
-                                        "accountId",
-                                        "clientAccountId",
-                                        "userId"
-                                    ],
-                                    "parameters": {
-                                        "userId": {
-                                            "description": "Numerical identifier of the user to retrieve. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "accountId": {
-                                            "description": "Numerical account ID of the client's sponsor buyer. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "clientAccountId": {
-                                            "description": "Numerical account ID of the client buyer that the user to be retrieved\nis associated with. (required)",
-                                            "format": "int64",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}",
-                                    "request": {
-                                        "$ref": "ClientUser"
-                                    },
-                                    "response": {
-                                        "$ref": "ClientUser"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/adexchange.buyer"
-                                    ]
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
     },
-    "revision": "20170302",
+    "revision": "20170323",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
-        "ListClientUsersResponse": {
-            "id": "ListClientUsersResponse",
-            "properties": {
-                "users": {
-                    "description": "The returned list of client users.",
-                    "items": {
-                        "$ref": "ClientUser"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientUsersRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListClientUserInvitationsResponse": {
-            "id": "ListClientUserInvitationsResponse",
-            "properties": {
-                "invitations": {
-                    "description": "The returned list of client users.",
-                    "items": {
-                        "$ref": "ClientUserInvitation"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientUserInvitationsRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LocationContext": {
-            "description": "@OutputOnly The Geo criteria the restriction applies to.",
-            "id": "LocationContext",
-            "properties": {
-                "geoCriteriaIds": {
-                    "description": "IDs representing the geo location for this context.\nPlease refer to the\n[geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)\nfile for different geo criteria IDs.",
-                    "items": {
-                        "format": "int32",
-                        "type": "integer"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "PlatformContext": {
-            "description": "@OutputOnly The type of platform the restriction applies to.",
-            "id": "PlatformContext",
-            "properties": {
-                "platforms": {
-                    "description": "The platforms this restriction applies to.",
-                    "enumDescriptions": [
-                        "Desktop platform.",
-                        "Android platform.",
-                        "iOS platform."
-                    ],
-                    "items": {
-                        "enum": [
-                            "DESKTOP",
-                            "ANDROID",
-                            "IOS"
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "ClientUser": {
             "description": "A client user is created under a client buyer and has restricted access to\nthe Ad Exchange Marketplace and certain other sections\nof the Ad Exchange Buyer UI based on the role\ngranted to the associated client buyer.\n\nThe only way a new client user can be created is via accepting an\nemail invitation\n(see the\naccounts.clients.invitations.create\nmethod).\n\nAll fields are required unless otherwise specified.",
             "id": "ClientUser",
             "properties": {
+                "userId": {
+                    "description": "The unique numerical ID of the client user\nthat has accepted an invitation.\nThe value of this field is ignored in an update operation.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "User's email address. The value of this field\nis ignored in an update operation.",
+                    "type": "string"
+                },
+                "clientAccountId": {
+                    "description": "Numerical account ID of the client buyer\nwith which the user is associated; the\nbuyer must be a client of the current sponsor buyer.\nThe value of this field is ignored in an update operation.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "status": {
                     "description": "The status of the client user.",
                     "enum": [
@@ -924,20 +865,6 @@
                         "A user that is currently disabled."
                     ],
                     "type": "string"
-                },
-                "userId": {
-                    "description": "The unique numerical ID of the client user\nthat has accepted an invitation.\nThe value of this field is ignored in an update operation.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "email": {
-                    "description": "User's email address. The value of this field\nis ignored in an update operation.",
-                    "type": "string"
-                },
-                "clientAccountId": {
-                    "description": "Numerical account ID of the client buyer\nwith which the user is associated; the\nbuyer must be a client of the current sponsor buyer.\nThe value of this field is ignored in an update operation.",
-                    "format": "int64",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -946,16 +873,16 @@
             "description": "The association between a creative and a deal.",
             "id": "CreativeDealAssociation",
             "properties": {
-                "accountId": {
-                    "description": "The account the creative belongs to.",
-                    "type": "string"
-                },
                 "creativeId": {
                     "description": "The ID of the creative associated with the deal.",
                     "type": "string"
                 },
                 "dealsId": {
                     "description": "The externalDealId for the deal associated with the creative.",
+                    "type": "string"
+                },
+                "accountId": {
+                    "description": "The account the creative belongs to.",
                     "type": "string"
                 }
             },
@@ -965,33 +892,6 @@
             "description": "A creative and its classification data.",
             "id": "Creative",
             "properties": {
-                "native": {
-                    "$ref": "NativeContent",
-                    "description": "A native creative."
-                },
-                "video": {
-                    "$ref": "VideoContent",
-                    "description": "A video creative."
-                },
-                "servingRestrictions": {
-                    "description": "@OutputOnly The granular status of this ad in specific contexts.\nA context here relates to where something ultimately serves (for example,\na physical location, a platform, an HTTPS vs HTTP request, or the type\nof auction).",
-                    "items": {
-                        "$ref": "ServingRestriction"
-                    },
-                    "type": "array"
-                },
-                "agencyId": {
-                    "description": "The agency ID for this creative.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "clickThroughUrls": {
-                    "description": "The set of destination URLs for the creative.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "detectedSensitiveCategories": {
                     "description": "@OutputOnly Detected sensitive categories, if any.\nSee the ad-sensitive-categories.txt file in the technical documentation for\na list of IDs. You should use these IDs along with the\nexcluded-sensitive-category field in the bid request to filter your bids.",
                     "items": {
@@ -1195,6 +1095,33 @@
                 "accountId": {
                     "description": "The account that this creative belongs to.\nCan be used to filter the response of the\ncreatives.list\nmethod.",
                     "type": "string"
+                },
+                "native": {
+                    "$ref": "NativeContent",
+                    "description": "A native creative."
+                },
+                "video": {
+                    "$ref": "VideoContent",
+                    "description": "A video creative."
+                },
+                "servingRestrictions": {
+                    "description": "@OutputOnly The granular status of this ad in specific contexts.\nA context here relates to where something ultimately serves (for example,\na physical location, a platform, an HTTPS vs HTTP request, or the type\nof auction).",
+                    "items": {
+                        "$ref": "ServingRestriction"
+                    },
+                    "type": "array"
+                },
+                "agencyId": {
+                    "description": "The agency ID for this creative.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "clickThroughUrls": {
+                    "description": "The set of destination URLs for the creative.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1203,16 +1130,16 @@
             "description": "@OutputOnly Filtering reasons for this creative during a period of a single\nday (from midnight to midnight Pacific).",
             "id": "FilteringStats",
             "properties": {
+                "date": {
+                    "$ref": "Date",
+                    "description": "The day during which the data was collected.\nThe data is collected from 00:00:00 to 23:59:59 PT.\nDuring switches from PST to PDT and back, the day may\ncontain 23 or 25 hours of data instead of the usual 24."
+                },
                 "reasons": {
                     "description": "The set of filtering reasons for this date.",
                     "items": {
                         "$ref": "Reason"
                     },
                     "type": "array"
-                },
-                "date": {
-                    "$ref": "Date",
-                    "description": "The day during which the data was collected.\nThe data is collected from 00:00:00 to 23:59:59 PT.\nDuring switches from PST to PDT and back, the day may\ncontain 23 or 25 hours of data instead of the usual 24."
                 }
             },
             "type": "object"
@@ -1232,6 +1159,22 @@
             "description": "A client resource represents a client buyer&mdash;an agency,\na brand, or an advertiser customer of the sponsor buyer.\nUsers associated with the client buyer have restricted access to\nthe Ad Exchange Marketplace and certain other sections\nof the Ad Exchange Buyer UI based on the role\ngranted to the client buyer.\nAll fields are required unless otherwise specified.",
             "id": "Client",
             "properties": {
+                "entityType": {
+                    "description": "The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`.",
+                    "enum": [
+                        "ENTITY_TYPE_UNSPECIFIED",
+                        "ADVERTISER",
+                        "BRAND",
+                        "AGENCY"
+                    ],
+                    "enumDescriptions": [
+                        "A placeholder for an undefined client entity type. Should not be used.",
+                        "An advertiser.",
+                        "A brand.",
+                        "An advertising agency."
+                    ],
+                    "type": "string"
+                },
                 "clientName": {
                     "description": "Name used to represent this client to publishers.\nYou may have multiple clients that map to the same entity,\nbut for each client the combination of `clientName` and entity\nmust be unique.\nYou can specify this field as empty.",
                     "type": "string"
@@ -1283,22 +1226,6 @@
                         "A client that is currently active."
                     ],
                     "type": "string"
-                },
-                "entityType": {
-                    "description": "The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`.",
-                    "enum": [
-                        "ENTITY_TYPE_UNSPECIFIED",
-                        "ADVERTISER",
-                        "BRAND",
-                        "AGENCY"
-                    ],
-                    "enumDescriptions": [
-                        "A placeholder for an undefined client entity type. Should not be used.",
-                        "An advertiser.",
-                        "A brand.",
-                        "An advertising agency."
-                    ],
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1307,13 +1234,6 @@
             "description": "@OutputOnly Shows any corrections that were applied to this creative.",
             "id": "Correction",
             "properties": {
-                "details": {
-                    "description": "Additional details about what was corrected.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "type": {
                     "description": "The type of correction that was applied to the creative.",
                     "enum": [
@@ -1352,6 +1272,31 @@
                         "$ref": "ServingContext"
                     },
                     "type": "array"
+                },
+                "details": {
+                    "description": "Additional details about what was corrected.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListDealAssociationsResponse": {
+            "description": "A response for listing creative and deal associations",
+            "id": "ListDealAssociationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListDealAssociationsRequest.page_token\nfield in the subsequent call to 'ListDealAssociation' method to retrieve\nthe next page of results.",
+                    "type": "string"
+                },
+                "associations": {
+                    "description": "The list of associations.",
+                    "items": {
+                        "$ref": "CreativeDealAssociation"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1365,30 +1310,6 @@
                     "description": "The association between a creative and a deal that should be added."
                 }
             },
-            "type": "object"
-        },
-        "ListDealAssociationsResponse": {
-            "description": "A response for listing creative and deal associations",
-            "id": "ListDealAssociationsResponse",
-            "properties": {
-                "associations": {
-                    "description": "The list of associations.",
-                    "items": {
-                        "$ref": "CreativeDealAssociation"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListDealAssociationsRequest.page_token\nfield in the subsequent call to 'ListDealAssociation' method to retrieve\nthe next page of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "StopWatchingCreativeRequest": {
-            "description": "A request for stopping notifications for changes to creative Status.",
-            "id": "StopWatchingCreativeRequest",
-            "properties": {},
             "type": "object"
         },
         "Disapproval": {
@@ -1601,24 +1522,16 @@
             },
             "type": "object"
         },
+        "StopWatchingCreativeRequest": {
+            "description": "A request for stopping notifications for changes to creative Status.",
+            "id": "StopWatchingCreativeRequest",
+            "properties": {},
+            "type": "object"
+        },
         "ServingRestriction": {
             "description": "@OutputOnly A representation of the status of an ad in a\nspecific context. A context here relates to where something ultimately serves\n(for example, a user or publisher geo, a platform, an HTTPS vs HTTP request,\nor the type of auction).",
             "id": "ServingRestriction",
             "properties": {
-                "disapprovalReasons": {
-                    "description": "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.",
-                    "items": {
-                        "$ref": "Disapproval"
-                    },
-                    "type": "array"
-                },
-                "contexts": {
-                    "description": "The contexts for the restriction.",
-                    "items": {
-                        "$ref": "ServingContext"
-                    },
-                    "type": "array"
-                },
                 "status": {
                     "description": "The status of the creative in this context (for example, it has been\nexplicitly disapproved or is pending review).",
                     "enum": [
@@ -1632,6 +1545,20 @@
                         "The ad is pending review in this context."
                     ],
                     "type": "string"
+                },
+                "disapprovalReasons": {
+                    "description": "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.",
+                    "items": {
+                        "$ref": "Disapproval"
+                    },
+                    "type": "array"
+                },
+                "contexts": {
+                    "description": "The contexts for the restriction.",
+                    "items": {
+                        "$ref": "ServingContext"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1691,6 +1618,23 @@
                             "WEB"
                         ],
                         "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListClientsResponse": {
+            "id": "ListClientsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientsRequest.pageToken\nfield in the subsequent call to the\naccounts.clients.list method\nto retrieve the next page of results.",
+                    "type": "string"
+                },
+                "clients": {
+                    "description": "The returned list of clients.",
+                    "items": {
+                        "$ref": "Client"
                     },
                     "type": "array"
                 }
@@ -1757,23 +1701,6 @@
             },
             "type": "object"
         },
-        "ListClientsResponse": {
-            "id": "ListClientsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientsRequest.pageToken\nfield in the subsequent call to the\naccounts.clients.list method\nto retrieve the next page of results.",
-                    "type": "string"
-                },
-                "clients": {
-                    "description": "The returned list of clients.",
-                    "items": {
-                        "$ref": "Client"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "SecurityContext": {
             "description": "@OutputOnly A security context.",
             "id": "SecurityContext",
@@ -1792,6 +1719,24 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListCreativesResponse": {
+            "description": "A response for listing creatives.",
+            "id": "ListCreativesResponse",
+            "properties": {
+                "creatives": {
+                    "description": "The list of creatives.",
+                    "items": {
+                        "$ref": "Creative"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListCreativesRequest.page_token\nfield in the subsequent call to `ListCreatives` method to retrieve the next\npage of results.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1817,32 +1762,10 @@
             },
             "type": "object"
         },
-        "ListCreativesResponse": {
-            "description": "A response for listing creatives.",
-            "id": "ListCreativesResponse",
-            "properties": {
-                "creatives": {
-                    "description": "The list of creatives.",
-                    "items": {
-                        "$ref": "Creative"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListCreativesRequest.page_token\nfield in the subsequent call to `ListCreatives` method to retrieve the next\npage of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ServingContext": {
             "description": "The serving context for this restriction.",
             "id": "ServingContext",
             "properties": {
-                "location": {
-                    "$ref": "LocationContext",
-                    "description": "Matches impressions coming from users *or* publishers in a specific\nlocation."
-                },
                 "auctionType": {
                     "$ref": "AuctionContext",
                     "description": "Matches impressions for a particular auction type."
@@ -1868,6 +1791,10 @@
                 "platform": {
                     "$ref": "PlatformContext",
                     "description": "Matches impressions coming from a particular platform."
+                },
+                "location": {
+                    "$ref": "LocationContext",
+                    "description": "Matches impressions coming from users *or* publishers in a specific\nlocation."
                 }
             },
             "type": "object"
@@ -1876,17 +1803,17 @@
             "description": "An image resource. You may provide a larger image than was requested,\nso long as the aspect ratio is preserved.",
             "id": "Image",
             "properties": {
+                "width": {
+                    "description": "Image width in pixels.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "url": {
                     "description": "The URL of the image.",
                     "type": "string"
                 },
                 "height": {
                     "description": "Image height in pixels.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "width": {
-                    "description": "Image width in pixels.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -1897,15 +1824,15 @@
             "description": "A specific filtering status and how many times it occurred.",
             "id": "Reason",
             "properties": {
-                "status": {
-                    "description": "The filtering status code. Please refer to the\n[creative-status-codes.txt](https://storage.googleapis.com/adx-rtb-dictionaries/creative-status-codes.txt)\nfile for different statuses.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "count": {
                     "description": "The number of times the creative was filtered for the status. The\ncount is aggregated across all publishers on the exchange.",
                     "format": "int64",
                     "type": "string"
+                },
+                "status": {
+                    "description": "The filtering status code. Please refer to the\n[creative-status-codes.txt](https://storage.googleapis.com/adx-rtb-dictionaries/creative-status-codes.txt)\nfile for different statuses.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -1925,17 +1852,17 @@
             "description": "An invitation for a new client user to get access to the Ad Exchange\nBuyer UI.\nAll fields are required unless otherwise specified.",
             "id": "ClientUserInvitation",
             "properties": {
-                "invitationId": {
-                    "description": "The unique numerical ID of the invitation that is sent to the user.\nThe value of this field is ignored in create operations.",
-                    "format": "int64",
-                    "type": "string"
-                },
                 "email": {
                     "description": "The email address to which the invitation is sent. Email\naddresses should be unique among all client users under each sponsor\nbuyer.",
                     "type": "string"
                 },
                 "clientAccountId": {
                     "description": "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in create operations.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "invitationId": {
+                    "description": "The unique numerical ID of the invitation that is sent to the user.\nThe value of this field is ignored in create operations.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -1956,6 +1883,79 @@
                         "enum": [
                             "OPEN_AUCTION",
                             "DIRECT_DEALS"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListClientUserInvitationsResponse": {
+            "id": "ListClientUserInvitationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientUserInvitationsRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results.",
+                    "type": "string"
+                },
+                "invitations": {
+                    "description": "The returned list of client users.",
+                    "items": {
+                        "$ref": "ClientUserInvitation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListClientUsersResponse": {
+            "id": "ListClientUsersResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results.\nPass this value in the\nListClientUsersRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results.",
+                    "type": "string"
+                },
+                "users": {
+                    "description": "The returned list of client users.",
+                    "items": {
+                        "$ref": "ClientUser"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "LocationContext": {
+            "description": "@OutputOnly The Geo criteria the restriction applies to.",
+            "id": "LocationContext",
+            "properties": {
+                "geoCriteriaIds": {
+                    "description": "IDs representing the geo location for this context.\nPlease refer to the\n[geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)\nfile for different geo criteria IDs.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PlatformContext": {
+            "description": "@OutputOnly The type of platform the restriction applies to.",
+            "id": "PlatformContext",
+            "properties": {
+                "platforms": {
+                    "description": "The platforms this restriction applies to.",
+                    "enumDescriptions": [
+                        "Desktop platform.",
+                        "Android platform.",
+                        "iOS platform."
+                    ],
+                    "items": {
+                        "enum": [
+                            "DESKTOP",
+                            "ANDROID",
+                            "IOS"
                         ],
                         "type": "string"
                     },

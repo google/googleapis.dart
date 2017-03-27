@@ -91,6 +91,40 @@ checkFile(api.File o) {
   buildCounterFile--;
 }
 
+buildUnnamed3075() {
+  var o = new core.List<core.Object>();
+  o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
+  o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
+  return o;
+}
+
+checkUnnamed3075(core.List<core.Object> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
+  var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
+}
+
+core.int buildCounterFunctionCall = 0;
+buildFunctionCall() {
+  var o = new api.FunctionCall();
+  buildCounterFunctionCall++;
+  if (buildCounterFunctionCall < 3) {
+    o.args = buildUnnamed3075();
+    o.function = "foo";
+  }
+  buildCounterFunctionCall--;
+  return o;
+}
+
+checkFunctionCall(api.FunctionCall o) {
+  buildCounterFunctionCall++;
+  if (buildCounterFunctionCall < 3) {
+    checkUnnamed3075(o.args);
+    unittest.expect(o.function, unittest.equals('foo'));
+  }
+  buildCounterFunctionCall--;
+}
+
 core.int buildCounterIssue = 0;
 buildIssue() {
   var o = new api.Issue();
@@ -114,14 +148,14 @@ checkIssue(api.Issue o) {
   buildCounterIssue--;
 }
 
-buildUnnamed2969() {
+buildUnnamed3076() {
   var o = new core.List<api.Release>();
   o.add(buildRelease());
   o.add(buildRelease());
   return o;
 }
 
-checkUnnamed2969(core.List<api.Release> o) {
+checkUnnamed3076(core.List<api.Release> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRelease(o[0]);
   checkRelease(o[1]);
@@ -133,7 +167,7 @@ buildListReleasesResponse() {
   buildCounterListReleasesResponse++;
   if (buildCounterListReleasesResponse < 3) {
     o.nextPageToken = "foo";
-    o.releases = buildUnnamed2969();
+    o.releases = buildUnnamed3076();
   }
   buildCounterListReleasesResponse--;
   return o;
@@ -143,19 +177,19 @@ checkListReleasesResponse(api.ListReleasesResponse o) {
   buildCounterListReleasesResponse++;
   if (buildCounterListReleasesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2969(o.releases);
+    checkUnnamed3076(o.releases);
   }
   buildCounterListReleasesResponse--;
 }
 
-buildUnnamed2970() {
+buildUnnamed3077() {
   var o = new core.List<api.Ruleset>();
   o.add(buildRuleset());
   o.add(buildRuleset());
   return o;
 }
 
-checkUnnamed2970(core.List<api.Ruleset> o) {
+checkUnnamed3077(core.List<api.Ruleset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRuleset(o[0]);
   checkRuleset(o[1]);
@@ -167,7 +201,7 @@ buildListRulesetsResponse() {
   buildCounterListRulesetsResponse++;
   if (buildCounterListRulesetsResponse < 3) {
     o.nextPageToken = "foo";
-    o.rulesets = buildUnnamed2970();
+    o.rulesets = buildUnnamed3077();
   }
   buildCounterListRulesetsResponse--;
   return o;
@@ -177,7 +211,7 @@ checkListRulesetsResponse(api.ListRulesetsResponse o) {
   buildCounterListRulesetsResponse++;
   if (buildCounterListRulesetsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2970(o.rulesets);
+    checkUnnamed3077(o.rulesets);
   }
   buildCounterListRulesetsResponse--;
 }
@@ -230,14 +264,14 @@ checkRuleset(api.Ruleset o) {
   buildCounterRuleset--;
 }
 
-buildUnnamed2971() {
+buildUnnamed3078() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed2971(core.List<api.File> o) {
+checkUnnamed3078(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -248,7 +282,7 @@ buildSource() {
   var o = new api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    o.files = buildUnnamed2971();
+    o.files = buildUnnamed3078();
   }
   buildCounterSource--;
   return o;
@@ -257,7 +291,7 @@ buildSource() {
 checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    checkUnnamed2971(o.files);
+    checkUnnamed3078(o.files);
   }
   buildCounterSource--;
 }
@@ -285,6 +319,57 @@ checkSourcePosition(api.SourcePosition o) {
   buildCounterSourcePosition--;
 }
 
+buildUnnamed3079() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3079(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3080() {
+  var o = new core.List<api.FunctionCall>();
+  o.add(buildFunctionCall());
+  o.add(buildFunctionCall());
+  return o;
+}
+
+checkUnnamed3080(core.List<api.FunctionCall> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFunctionCall(o[0]);
+  checkFunctionCall(o[1]);
+}
+
+core.int buildCounterTestResult = 0;
+buildTestResult() {
+  var o = new api.TestResult();
+  buildCounterTestResult++;
+  if (buildCounterTestResult < 3) {
+    o.debugMessages = buildUnnamed3079();
+    o.errorPosition = buildSourcePosition();
+    o.functionCalls = buildUnnamed3080();
+    o.state = "foo";
+  }
+  buildCounterTestResult--;
+  return o;
+}
+
+checkTestResult(api.TestResult o) {
+  buildCounterTestResult++;
+  if (buildCounterTestResult < 3) {
+    checkUnnamed3079(o.debugMessages);
+    checkSourcePosition(o.errorPosition);
+    checkUnnamed3080(o.functionCalls);
+    unittest.expect(o.state, unittest.equals('foo'));
+  }
+  buildCounterTestResult--;
+}
+
 core.int buildCounterTestRulesetRequest = 0;
 buildTestRulesetRequest() {
   var o = new api.TestRulesetRequest();
@@ -304,17 +389,30 @@ checkTestRulesetRequest(api.TestRulesetRequest o) {
   buildCounterTestRulesetRequest--;
 }
 
-buildUnnamed2972() {
+buildUnnamed3081() {
   var o = new core.List<api.Issue>();
   o.add(buildIssue());
   o.add(buildIssue());
   return o;
 }
 
-checkUnnamed2972(core.List<api.Issue> o) {
+checkUnnamed3081(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssue(o[0]);
   checkIssue(o[1]);
+}
+
+buildUnnamed3082() {
+  var o = new core.List<api.TestResult>();
+  o.add(buildTestResult());
+  o.add(buildTestResult());
+  return o;
+}
+
+checkUnnamed3082(core.List<api.TestResult> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTestResult(o[0]);
+  checkTestResult(o[1]);
 }
 
 core.int buildCounterTestRulesetResponse = 0;
@@ -322,7 +420,8 @@ buildTestRulesetResponse() {
   var o = new api.TestRulesetResponse();
   buildCounterTestRulesetResponse++;
   if (buildCounterTestRulesetResponse < 3) {
-    o.issues = buildUnnamed2972();
+    o.issues = buildUnnamed3081();
+    o.testResults = buildUnnamed3082();
   }
   buildCounterTestRulesetResponse--;
   return o;
@@ -331,7 +430,8 @@ buildTestRulesetResponse() {
 checkTestRulesetResponse(api.TestRulesetResponse o) {
   buildCounterTestRulesetResponse++;
   if (buildCounterTestRulesetResponse < 3) {
-    checkUnnamed2972(o.issues);
+    checkUnnamed3081(o.issues);
+    checkUnnamed3082(o.testResults);
   }
   buildCounterTestRulesetResponse--;
 }
@@ -352,6 +452,15 @@ main() {
       var o = buildFile();
       var od = new api.File.fromJson(o.toJson());
       checkFile(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-FunctionCall", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildFunctionCall();
+      var od = new api.FunctionCall.fromJson(o.toJson());
+      checkFunctionCall(od);
     });
   });
 
@@ -415,6 +524,15 @@ main() {
       var o = buildSourcePosition();
       var od = new api.SourcePosition.fromJson(o.toJson());
       checkSourcePosition(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-TestResult", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTestResult();
+      var od = new api.TestResult.fromJson(o.toJson());
+      checkTestResult(od);
     });
   });
 
@@ -878,6 +996,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsRulesetsResourceApi res = new api.FirebaserulesApi(mock).projects.rulesets;
       var arg_name = "foo";
+      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
@@ -907,6 +1026,7 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
@@ -917,7 +1037,7 @@ main() {
         var resp = convert.JSON.encode(buildListRulesetsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListRulesetsResponse response) {
+      res.list(arg_name, filter: arg_filter, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListRulesetsResponse response) {
         checkListRulesetsResponse(response);
       })));
     });

@@ -39,6 +39,7 @@ class ComputeApi {
 
   AddressesResourceApi get addresses => new AddressesResourceApi(_requester);
   AutoscalersResourceApi get autoscalers => new AutoscalersResourceApi(_requester);
+  BackendBucketsResourceApi get backendBuckets => new BackendBucketsResourceApi(_requester);
   BackendServicesResourceApi get backendServices => new BackendServicesResourceApi(_requester);
   DiskTypesResourceApi get diskTypes => new DiskTypesResourceApi(_requester);
   DisksResourceApi get disks => new DisksResourceApi(_requester);
@@ -936,6 +937,363 @@ class AutoscalersResourceApi {
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class BackendBucketsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BackendBucketsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified BackendBucket resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [backendBucket] - Name of the BackendBucket resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String backendBucket) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendBucket == null) {
+      throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets/' + commons.Escaper.ecapeVariable('$backendBucket');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified BackendBucket resource. Get a list of available
+   * backend buckets by making a list() request.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [backendBucket] - Name of the BackendBucket resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [BackendBucket].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BackendBucket> get(core.String project, core.String backendBucket) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendBucket == null) {
+      throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets/' + commons.Escaper.ecapeVariable('$backendBucket');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BackendBucket.fromJson(data));
+  }
+
+  /**
+   * Creates a BackendBucket resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(BackendBucket request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of BackendBucket resources available to the specified
+   * project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter expression for filtering listed resources, in the
+   * form filter={expression}. Your {expression} must be in the format:
+   * field_name comparison_string literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use filter=name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [BackendBucketList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BackendBucketList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BackendBucketList.fromJson(data));
+  }
+
+  /**
+   * Updates the specified BackendBucket resource with the data included in the
+   * request. This method supports patch semantics.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [backendBucket] - Name of the BackendBucket resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(BackendBucket request, core.String project, core.String backendBucket) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendBucket == null) {
+      throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets/' + commons.Escaper.ecapeVariable('$backendBucket');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates the specified BackendBucket resource with the data included in the
+   * request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [backendBucket] - Name of the BackendBucket resource to update.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> update(BackendBucket request, core.String project, core.String backendBucket) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendBucket == null) {
+      throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets/' + commons.Escaper.ecapeVariable('$backendBucket');
 
     var _response = _requester.request(_url,
                                        "PUT",
@@ -18461,6 +18819,153 @@ class Backend {
   }
 }
 
+/** A BackendBucket resource. This resource defines a Cloud Storage bucket. */
+class BackendBucket {
+  /** Cloud Storage bucket name. */
+  core.String bucketName;
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional textual description of the resource; provided by the client
+   * when the resource is created.
+   */
+  core.String description;
+  /** If true, enable Cloud CDN for this BackendBucket. */
+  core.bool enableCdn;
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /** Type of the resource. */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+
+  BackendBucket();
+
+  BackendBucket.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketName")) {
+      bucketName = _json["bucketName"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("enableCdn")) {
+      enableCdn = _json["enableCdn"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (bucketName != null) {
+      _json["bucketName"] = bucketName;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (enableCdn != null) {
+      _json["enableCdn"] = enableCdn;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of BackendBucket resources. */
+class BackendBucketList {
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /** A list of BackendBucket resources. */
+  core.List<BackendBucket> items;
+  /** Type of resource. */
+  core.String kind;
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  BackendBucketList();
+
+  BackendBucketList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new BackendBucket.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
 /**
  * A BackendService resource. This resource defines a group of backend virtual
  * machines and their serving capacity.
@@ -21013,6 +21518,7 @@ class HTTPHealthCheck {
   core.String host;
   /**
    * The TCP port number for the health check request. The default value is 80.
+   * Valid values are 1 through 65535.
    */
   core.int port;
   /**
@@ -21083,6 +21589,7 @@ class HTTPSHealthCheck {
   core.String host;
   /**
    * The TCP port number for the health check request. The default value is 443.
+   * Valid values are 1 through 65535.
    */
   core.int port;
   /**
@@ -28526,6 +29033,7 @@ class RoutersScopedList {
 class SSLHealthCheck {
   /**
    * The TCP port number for the health check request. The default value is 443.
+   * Valid values are 1 through 65535.
    */
   core.int port;
   /**
@@ -29586,6 +30094,7 @@ class SubnetworksScopedList {
 class TCPHealthCheck {
   /**
    * The TCP port number for the health check request. The default value is 80.
+   * Valid values are 1 through 65535.
    */
   core.int port;
   /**

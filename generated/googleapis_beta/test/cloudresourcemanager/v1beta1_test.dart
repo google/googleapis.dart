@@ -70,14 +70,82 @@ checkAncestor(api.Ancestor o) {
   buildCounterAncestor--;
 }
 
-buildUnnamed3312() {
+buildUnnamed3422() {
+  var o = new core.List<api.AuditLogConfig>();
+  o.add(buildAuditLogConfig());
+  o.add(buildAuditLogConfig());
+  return o;
+}
+
+checkUnnamed3422(core.List<api.AuditLogConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuditLogConfig(o[0]);
+  checkAuditLogConfig(o[1]);
+}
+
+core.int buildCounterAuditConfig = 0;
+buildAuditConfig() {
+  var o = new api.AuditConfig();
+  buildCounterAuditConfig++;
+  if (buildCounterAuditConfig < 3) {
+    o.auditLogConfigs = buildUnnamed3422();
+    o.service = "foo";
+  }
+  buildCounterAuditConfig--;
+  return o;
+}
+
+checkAuditConfig(api.AuditConfig o) {
+  buildCounterAuditConfig++;
+  if (buildCounterAuditConfig < 3) {
+    checkUnnamed3422(o.auditLogConfigs);
+    unittest.expect(o.service, unittest.equals('foo'));
+  }
+  buildCounterAuditConfig--;
+}
+
+buildUnnamed3423() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3312(core.List<core.String> o) {
+checkUnnamed3423(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterAuditLogConfig = 0;
+buildAuditLogConfig() {
+  var o = new api.AuditLogConfig();
+  buildCounterAuditLogConfig++;
+  if (buildCounterAuditLogConfig < 3) {
+    o.exemptedMembers = buildUnnamed3423();
+    o.logType = "foo";
+  }
+  buildCounterAuditLogConfig--;
+  return o;
+}
+
+checkAuditLogConfig(api.AuditLogConfig o) {
+  buildCounterAuditLogConfig++;
+  if (buildCounterAuditLogConfig < 3) {
+    checkUnnamed3423(o.exemptedMembers);
+    unittest.expect(o.logType, unittest.equals('foo'));
+  }
+  buildCounterAuditLogConfig--;
+}
+
+buildUnnamed3424() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3424(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -88,7 +156,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed3312();
+    o.members = buildUnnamed3424();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -98,10 +166,98 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed3312(o.members);
+    checkUnnamed3424(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
+}
+
+core.int buildCounterBooleanConstraint = 0;
+buildBooleanConstraint() {
+  var o = new api.BooleanConstraint();
+  buildCounterBooleanConstraint++;
+  if (buildCounterBooleanConstraint < 3) {
+  }
+  buildCounterBooleanConstraint--;
+  return o;
+}
+
+checkBooleanConstraint(api.BooleanConstraint o) {
+  buildCounterBooleanConstraint++;
+  if (buildCounterBooleanConstraint < 3) {
+  }
+  buildCounterBooleanConstraint--;
+}
+
+core.int buildCounterBooleanPolicy = 0;
+buildBooleanPolicy() {
+  var o = new api.BooleanPolicy();
+  buildCounterBooleanPolicy++;
+  if (buildCounterBooleanPolicy < 3) {
+    o.enforced = true;
+  }
+  buildCounterBooleanPolicy--;
+  return o;
+}
+
+checkBooleanPolicy(api.BooleanPolicy o) {
+  buildCounterBooleanPolicy++;
+  if (buildCounterBooleanPolicy < 3) {
+    unittest.expect(o.enforced, unittest.isTrue);
+  }
+  buildCounterBooleanPolicy--;
+}
+
+core.int buildCounterClearOrgPolicyRequest = 0;
+buildClearOrgPolicyRequest() {
+  var o = new api.ClearOrgPolicyRequest();
+  buildCounterClearOrgPolicyRequest++;
+  if (buildCounterClearOrgPolicyRequest < 3) {
+    o.constraint = "foo";
+    o.etag = "foo";
+  }
+  buildCounterClearOrgPolicyRequest--;
+  return o;
+}
+
+checkClearOrgPolicyRequest(api.ClearOrgPolicyRequest o) {
+  buildCounterClearOrgPolicyRequest++;
+  if (buildCounterClearOrgPolicyRequest < 3) {
+    unittest.expect(o.constraint, unittest.equals('foo'));
+    unittest.expect(o.etag, unittest.equals('foo'));
+  }
+  buildCounterClearOrgPolicyRequest--;
+}
+
+core.int buildCounterConstraint = 0;
+buildConstraint() {
+  var o = new api.Constraint();
+  buildCounterConstraint++;
+  if (buildCounterConstraint < 3) {
+    o.booleanConstraint = buildBooleanConstraint();
+    o.constraintDefault = "foo";
+    o.description = "foo";
+    o.displayName = "foo";
+    o.listConstraint = buildListConstraint();
+    o.name = "foo";
+    o.version = 42;
+  }
+  buildCounterConstraint--;
+  return o;
+}
+
+checkConstraint(api.Constraint o) {
+  buildCounterConstraint++;
+  if (buildCounterConstraint < 3) {
+    checkBooleanConstraint(o.booleanConstraint);
+    unittest.expect(o.constraintDefault, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    checkListConstraint(o.listConstraint);
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.version, unittest.equals(42));
+  }
+  buildCounterConstraint--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -182,14 +338,14 @@ checkGetAncestryRequest(api.GetAncestryRequest o) {
   buildCounterGetAncestryRequest--;
 }
 
-buildUnnamed3313() {
+buildUnnamed3425() {
   var o = new core.List<api.Ancestor>();
   o.add(buildAncestor());
   o.add(buildAncestor());
   return o;
 }
 
-checkUnnamed3313(core.List<api.Ancestor> o) {
+checkUnnamed3425(core.List<api.Ancestor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAncestor(o[0]);
   checkAncestor(o[1]);
@@ -200,7 +356,7 @@ buildGetAncestryResponse() {
   var o = new api.GetAncestryResponse();
   buildCounterGetAncestryResponse++;
   if (buildCounterGetAncestryResponse < 3) {
-    o.ancestor = buildUnnamed3313();
+    o.ancestor = buildUnnamed3425();
   }
   buildCounterGetAncestryResponse--;
   return o;
@@ -209,9 +365,28 @@ buildGetAncestryResponse() {
 checkGetAncestryResponse(api.GetAncestryResponse o) {
   buildCounterGetAncestryResponse++;
   if (buildCounterGetAncestryResponse < 3) {
-    checkUnnamed3313(o.ancestor);
+    checkUnnamed3425(o.ancestor);
   }
   buildCounterGetAncestryResponse--;
+}
+
+core.int buildCounterGetEffectiveOrgPolicyRequest = 0;
+buildGetEffectiveOrgPolicyRequest() {
+  var o = new api.GetEffectiveOrgPolicyRequest();
+  buildCounterGetEffectiveOrgPolicyRequest++;
+  if (buildCounterGetEffectiveOrgPolicyRequest < 3) {
+    o.constraint = "foo";
+  }
+  buildCounterGetEffectiveOrgPolicyRequest--;
+  return o;
+}
+
+checkGetEffectiveOrgPolicyRequest(api.GetEffectiveOrgPolicyRequest o) {
+  buildCounterGetEffectiveOrgPolicyRequest++;
+  if (buildCounterGetEffectiveOrgPolicyRequest < 3) {
+    unittest.expect(o.constraint, unittest.equals('foo'));
+  }
+  buildCounterGetEffectiveOrgPolicyRequest--;
 }
 
 core.int buildCounterGetIamPolicyRequest = 0;
@@ -231,14 +406,162 @@ checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest--;
 }
 
-buildUnnamed3314() {
+core.int buildCounterGetOrgPolicyRequest = 0;
+buildGetOrgPolicyRequest() {
+  var o = new api.GetOrgPolicyRequest();
+  buildCounterGetOrgPolicyRequest++;
+  if (buildCounterGetOrgPolicyRequest < 3) {
+    o.constraint = "foo";
+  }
+  buildCounterGetOrgPolicyRequest--;
+  return o;
+}
+
+checkGetOrgPolicyRequest(api.GetOrgPolicyRequest o) {
+  buildCounterGetOrgPolicyRequest++;
+  if (buildCounterGetOrgPolicyRequest < 3) {
+    unittest.expect(o.constraint, unittest.equals('foo'));
+  }
+  buildCounterGetOrgPolicyRequest--;
+}
+
+core.int buildCounterListAvailableOrgPolicyConstraintsRequest = 0;
+buildListAvailableOrgPolicyConstraintsRequest() {
+  var o = new api.ListAvailableOrgPolicyConstraintsRequest();
+  buildCounterListAvailableOrgPolicyConstraintsRequest++;
+  if (buildCounterListAvailableOrgPolicyConstraintsRequest < 3) {
+    o.pageSize = 42;
+    o.pageToken = "foo";
+  }
+  buildCounterListAvailableOrgPolicyConstraintsRequest--;
+  return o;
+}
+
+checkListAvailableOrgPolicyConstraintsRequest(api.ListAvailableOrgPolicyConstraintsRequest o) {
+  buildCounterListAvailableOrgPolicyConstraintsRequest++;
+  if (buildCounterListAvailableOrgPolicyConstraintsRequest < 3) {
+    unittest.expect(o.pageSize, unittest.equals(42));
+    unittest.expect(o.pageToken, unittest.equals('foo'));
+  }
+  buildCounterListAvailableOrgPolicyConstraintsRequest--;
+}
+
+buildUnnamed3426() {
+  var o = new core.List<api.Constraint>();
+  o.add(buildConstraint());
+  o.add(buildConstraint());
+  return o;
+}
+
+checkUnnamed3426(core.List<api.Constraint> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkConstraint(o[0]);
+  checkConstraint(o[1]);
+}
+
+core.int buildCounterListAvailableOrgPolicyConstraintsResponse = 0;
+buildListAvailableOrgPolicyConstraintsResponse() {
+  var o = new api.ListAvailableOrgPolicyConstraintsResponse();
+  buildCounterListAvailableOrgPolicyConstraintsResponse++;
+  if (buildCounterListAvailableOrgPolicyConstraintsResponse < 3) {
+    o.constraints = buildUnnamed3426();
+    o.nextPageToken = "foo";
+  }
+  buildCounterListAvailableOrgPolicyConstraintsResponse--;
+  return o;
+}
+
+checkListAvailableOrgPolicyConstraintsResponse(api.ListAvailableOrgPolicyConstraintsResponse o) {
+  buildCounterListAvailableOrgPolicyConstraintsResponse++;
+  if (buildCounterListAvailableOrgPolicyConstraintsResponse < 3) {
+    checkUnnamed3426(o.constraints);
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+  }
+  buildCounterListAvailableOrgPolicyConstraintsResponse--;
+}
+
+core.int buildCounterListConstraint = 0;
+buildListConstraint() {
+  var o = new api.ListConstraint();
+  buildCounterListConstraint++;
+  if (buildCounterListConstraint < 3) {
+    o.suggestedValue = "foo";
+  }
+  buildCounterListConstraint--;
+  return o;
+}
+
+checkListConstraint(api.ListConstraint o) {
+  buildCounterListConstraint++;
+  if (buildCounterListConstraint < 3) {
+    unittest.expect(o.suggestedValue, unittest.equals('foo'));
+  }
+  buildCounterListConstraint--;
+}
+
+core.int buildCounterListOrgPoliciesRequest = 0;
+buildListOrgPoliciesRequest() {
+  var o = new api.ListOrgPoliciesRequest();
+  buildCounterListOrgPoliciesRequest++;
+  if (buildCounterListOrgPoliciesRequest < 3) {
+    o.pageSize = 42;
+    o.pageToken = "foo";
+  }
+  buildCounterListOrgPoliciesRequest--;
+  return o;
+}
+
+checkListOrgPoliciesRequest(api.ListOrgPoliciesRequest o) {
+  buildCounterListOrgPoliciesRequest++;
+  if (buildCounterListOrgPoliciesRequest < 3) {
+    unittest.expect(o.pageSize, unittest.equals(42));
+    unittest.expect(o.pageToken, unittest.equals('foo'));
+  }
+  buildCounterListOrgPoliciesRequest--;
+}
+
+buildUnnamed3427() {
+  var o = new core.List<api.OrgPolicy>();
+  o.add(buildOrgPolicy());
+  o.add(buildOrgPolicy());
+  return o;
+}
+
+checkUnnamed3427(core.List<api.OrgPolicy> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkOrgPolicy(o[0]);
+  checkOrgPolicy(o[1]);
+}
+
+core.int buildCounterListOrgPoliciesResponse = 0;
+buildListOrgPoliciesResponse() {
+  var o = new api.ListOrgPoliciesResponse();
+  buildCounterListOrgPoliciesResponse++;
+  if (buildCounterListOrgPoliciesResponse < 3) {
+    o.nextPageToken = "foo";
+    o.policies = buildUnnamed3427();
+  }
+  buildCounterListOrgPoliciesResponse--;
+  return o;
+}
+
+checkListOrgPoliciesResponse(api.ListOrgPoliciesResponse o) {
+  buildCounterListOrgPoliciesResponse++;
+  if (buildCounterListOrgPoliciesResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed3427(o.policies);
+  }
+  buildCounterListOrgPoliciesResponse--;
+}
+
+buildUnnamed3428() {
   var o = new core.List<api.Organization>();
   o.add(buildOrganization());
   o.add(buildOrganization());
   return o;
 }
 
-checkUnnamed3314(core.List<api.Organization> o) {
+checkUnnamed3428(core.List<api.Organization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrganization(o[0]);
   checkOrganization(o[1]);
@@ -250,7 +573,7 @@ buildListOrganizationsResponse() {
   buildCounterListOrganizationsResponse++;
   if (buildCounterListOrganizationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.organizations = buildUnnamed3314();
+    o.organizations = buildUnnamed3428();
   }
   buildCounterListOrganizationsResponse--;
   return o;
@@ -260,19 +583,72 @@ checkListOrganizationsResponse(api.ListOrganizationsResponse o) {
   buildCounterListOrganizationsResponse++;
   if (buildCounterListOrganizationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3314(o.organizations);
+    checkUnnamed3428(o.organizations);
   }
   buildCounterListOrganizationsResponse--;
 }
 
-buildUnnamed3315() {
+buildUnnamed3429() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3429(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3430() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3430(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterListPolicy = 0;
+buildListPolicy() {
+  var o = new api.ListPolicy();
+  buildCounterListPolicy++;
+  if (buildCounterListPolicy < 3) {
+    o.allValues = "foo";
+    o.allowedValues = buildUnnamed3429();
+    o.deniedValues = buildUnnamed3430();
+    o.inheritFromParent = true;
+    o.suggestedValue = "foo";
+  }
+  buildCounterListPolicy--;
+  return o;
+}
+
+checkListPolicy(api.ListPolicy o) {
+  buildCounterListPolicy++;
+  if (buildCounterListPolicy < 3) {
+    unittest.expect(o.allValues, unittest.equals('foo'));
+    checkUnnamed3429(o.allowedValues);
+    checkUnnamed3430(o.deniedValues);
+    unittest.expect(o.inheritFromParent, unittest.isTrue);
+    unittest.expect(o.suggestedValue, unittest.equals('foo'));
+  }
+  buildCounterListPolicy--;
+}
+
+buildUnnamed3431() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed3315(core.List<api.Project> o) {
+checkUnnamed3431(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -284,7 +660,7 @@ buildListProjectsResponse() {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     o.nextPageToken = "foo";
-    o.projects = buildUnnamed3315();
+    o.projects = buildUnnamed3431();
   }
   buildCounterListProjectsResponse--;
   return o;
@@ -294,9 +670,40 @@ checkListProjectsResponse(api.ListProjectsResponse o) {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3315(o.projects);
+    checkUnnamed3431(o.projects);
   }
   buildCounterListProjectsResponse--;
+}
+
+core.int buildCounterOrgPolicy = 0;
+buildOrgPolicy() {
+  var o = new api.OrgPolicy();
+  buildCounterOrgPolicy++;
+  if (buildCounterOrgPolicy < 3) {
+    o.booleanPolicy = buildBooleanPolicy();
+    o.constraint = "foo";
+    o.etag = "foo";
+    o.listPolicy = buildListPolicy();
+    o.restoreDefault = buildRestoreDefault();
+    o.updateTime = "foo";
+    o.version = 42;
+  }
+  buildCounterOrgPolicy--;
+  return o;
+}
+
+checkOrgPolicy(api.OrgPolicy o) {
+  buildCounterOrgPolicy++;
+  if (buildCounterOrgPolicy < 3) {
+    checkBooleanPolicy(o.booleanPolicy);
+    unittest.expect(o.constraint, unittest.equals('foo'));
+    unittest.expect(o.etag, unittest.equals('foo'));
+    checkListPolicy(o.listPolicy);
+    checkRestoreDefault(o.restoreDefault);
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(o.version, unittest.equals(42));
+  }
+  buildCounterOrgPolicy--;
 }
 
 core.int buildCounterOrganization = 0;
@@ -347,14 +754,27 @@ checkOrganizationOwner(api.OrganizationOwner o) {
   buildCounterOrganizationOwner--;
 }
 
-buildUnnamed3316() {
+buildUnnamed3432() {
+  var o = new core.List<api.AuditConfig>();
+  o.add(buildAuditConfig());
+  o.add(buildAuditConfig());
+  return o;
+}
+
+checkUnnamed3432(core.List<api.AuditConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuditConfig(o[0]);
+  checkAuditConfig(o[1]);
+}
+
+buildUnnamed3433() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed3316(core.List<api.Binding> o) {
+checkUnnamed3433(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -365,7 +785,8 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed3316();
+    o.auditConfigs = buildUnnamed3432();
+    o.bindings = buildUnnamed3433();
     o.etag = "foo";
     o.version = 42;
   }
@@ -376,21 +797,22 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3316(o.bindings);
+    checkUnnamed3432(o.auditConfigs);
+    checkUnnamed3433(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed3317() {
+buildUnnamed3434() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3317(core.Map<core.String, core.String> o) {
+checkUnnamed3434(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -402,7 +824,7 @@ buildProject() {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed3317();
+    o.labels = buildUnnamed3434();
     o.lifecycleState = "foo";
     o.name = "foo";
     o.parent = buildResourceId();
@@ -417,7 +839,7 @@ checkProject(api.Project o) {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed3317(o.labels);
+    checkUnnamed3434(o.labels);
     unittest.expect(o.lifecycleState, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkResourceId(o.parent);
@@ -471,12 +893,30 @@ checkResourceId(api.ResourceId o) {
   buildCounterResourceId--;
 }
 
+core.int buildCounterRestoreDefault = 0;
+buildRestoreDefault() {
+  var o = new api.RestoreDefault();
+  buildCounterRestoreDefault++;
+  if (buildCounterRestoreDefault < 3) {
+  }
+  buildCounterRestoreDefault--;
+  return o;
+}
+
+checkRestoreDefault(api.RestoreDefault o) {
+  buildCounterRestoreDefault++;
+  if (buildCounterRestoreDefault < 3) {
+  }
+  buildCounterRestoreDefault--;
+}
+
 core.int buildCounterSetIamPolicyRequest = 0;
 buildSetIamPolicyRequest() {
   var o = new api.SetIamPolicyRequest();
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     o.policy = buildPolicy();
+    o.updateMask = "foo";
   }
   buildCounterSetIamPolicyRequest--;
   return o;
@@ -486,18 +926,38 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     checkPolicy(o.policy);
+    unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed3318() {
+core.int buildCounterSetOrgPolicyRequest = 0;
+buildSetOrgPolicyRequest() {
+  var o = new api.SetOrgPolicyRequest();
+  buildCounterSetOrgPolicyRequest++;
+  if (buildCounterSetOrgPolicyRequest < 3) {
+    o.policy = buildOrgPolicy();
+  }
+  buildCounterSetOrgPolicyRequest--;
+  return o;
+}
+
+checkSetOrgPolicyRequest(api.SetOrgPolicyRequest o) {
+  buildCounterSetOrgPolicyRequest++;
+  if (buildCounterSetOrgPolicyRequest < 3) {
+    checkOrgPolicy(o.policy);
+  }
+  buildCounterSetOrgPolicyRequest--;
+}
+
+buildUnnamed3435() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3318(core.List<core.String> o) {
+checkUnnamed3435(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -508,7 +968,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3318();
+    o.permissions = buildUnnamed3435();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -517,19 +977,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3318(o.permissions);
+    checkUnnamed3435(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed3319() {
+buildUnnamed3436() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3319(core.List<core.String> o) {
+checkUnnamed3436(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -540,7 +1000,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3319();
+    o.permissions = buildUnnamed3436();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -549,7 +1009,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3319(o.permissions);
+    checkUnnamed3436(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -582,11 +1042,65 @@ main() {
   });
 
 
+  unittest.group("obj-schema-AuditConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAuditConfig();
+      var od = new api.AuditConfig.fromJson(o.toJson());
+      checkAuditConfig(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-AuditLogConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAuditLogConfig();
+      var od = new api.AuditLogConfig.fromJson(o.toJson());
+      checkAuditLogConfig(od);
+    });
+  });
+
+
   unittest.group("obj-schema-Binding", () {
     unittest.test("to-json--from-json", () {
       var o = buildBinding();
       var od = new api.Binding.fromJson(o.toJson());
       checkBinding(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BooleanConstraint", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBooleanConstraint();
+      var od = new api.BooleanConstraint.fromJson(o.toJson());
+      checkBooleanConstraint(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-BooleanPolicy", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBooleanPolicy();
+      var od = new api.BooleanPolicy.fromJson(o.toJson());
+      checkBooleanPolicy(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ClearOrgPolicyRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildClearOrgPolicyRequest();
+      var od = new api.ClearOrgPolicyRequest.fromJson(o.toJson());
+      checkClearOrgPolicyRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-Constraint", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildConstraint();
+      var od = new api.Constraint.fromJson(o.toJson());
+      checkConstraint(od);
     });
   });
 
@@ -636,11 +1150,74 @@ main() {
   });
 
 
+  unittest.group("obj-schema-GetEffectiveOrgPolicyRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGetEffectiveOrgPolicyRequest();
+      var od = new api.GetEffectiveOrgPolicyRequest.fromJson(o.toJson());
+      checkGetEffectiveOrgPolicyRequest(od);
+    });
+  });
+
+
   unittest.group("obj-schema-GetIamPolicyRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGetIamPolicyRequest();
       var od = new api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GetOrgPolicyRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGetOrgPolicyRequest();
+      var od = new api.GetOrgPolicyRequest.fromJson(o.toJson());
+      checkGetOrgPolicyRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListAvailableOrgPolicyConstraintsRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListAvailableOrgPolicyConstraintsRequest();
+      var od = new api.ListAvailableOrgPolicyConstraintsRequest.fromJson(o.toJson());
+      checkListAvailableOrgPolicyConstraintsRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListAvailableOrgPolicyConstraintsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListAvailableOrgPolicyConstraintsResponse();
+      var od = new api.ListAvailableOrgPolicyConstraintsResponse.fromJson(o.toJson());
+      checkListAvailableOrgPolicyConstraintsResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListConstraint", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListConstraint();
+      var od = new api.ListConstraint.fromJson(o.toJson());
+      checkListConstraint(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListOrgPoliciesRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListOrgPoliciesRequest();
+      var od = new api.ListOrgPoliciesRequest.fromJson(o.toJson());
+      checkListOrgPoliciesRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-ListOrgPoliciesResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListOrgPoliciesResponse();
+      var od = new api.ListOrgPoliciesResponse.fromJson(o.toJson());
+      checkListOrgPoliciesResponse(od);
     });
   });
 
@@ -654,11 +1231,29 @@ main() {
   });
 
 
+  unittest.group("obj-schema-ListPolicy", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListPolicy();
+      var od = new api.ListPolicy.fromJson(o.toJson());
+      checkListPolicy(od);
+    });
+  });
+
+
   unittest.group("obj-schema-ListProjectsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListProjectsResponse();
       var od = new api.ListProjectsResponse.fromJson(o.toJson());
       checkListProjectsResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-OrgPolicy", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildOrgPolicy();
+      var od = new api.OrgPolicy.fromJson(o.toJson());
+      checkOrgPolicy(od);
     });
   });
 
@@ -717,11 +1312,29 @@ main() {
   });
 
 
+  unittest.group("obj-schema-RestoreDefault", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildRestoreDefault();
+      var od = new api.RestoreDefault.fromJson(o.toJson());
+      checkRestoreDefault(od);
+    });
+  });
+
+
   unittest.group("obj-schema-SetIamPolicyRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildSetIamPolicyRequest();
       var od = new api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-SetOrgPolicyRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSetOrgPolicyRequest();
+      var od = new api.SetOrgPolicyRequest.fromJson(o.toJson());
+      checkSetOrgPolicyRequest(od);
     });
   });
 
@@ -754,6 +1367,104 @@ main() {
 
 
   unittest.group("resource-OrganizationsResourceApi", () {
+    unittest.test("method--clearOrgPolicy", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildClearOrgPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ClearOrgPolicyRequest.fromJson(json);
+        checkClearOrgPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.clearOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
+    });
+
+    unittest.test("method--clearOrgPolicyV1", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildClearOrgPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ClearOrgPolicyRequest.fromJson(json);
+        checkClearOrgPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.clearOrgPolicyV1(arg_request, arg_resource).then(unittest.expectAsync(((api.Empty response) {
+        checkEmpty(response);
+      })));
+    });
+
     unittest.test("method--get", () {
 
       var mock = new HttpServerMock();
@@ -798,6 +1509,104 @@ main() {
       }), true);
       res.get(arg_name, organizationId: arg_organizationId).then(unittest.expectAsync(((api.Organization response) {
         checkOrganization(response);
+      })));
+    });
+
+    unittest.test("method--getEffectiveOrgPolicy", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildGetEffectiveOrgPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.GetEffectiveOrgPolicyRequest.fromJson(json);
+        checkGetEffectiveOrgPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOrgPolicy());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getEffectiveOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+        checkOrgPolicy(response);
+      })));
+    });
+
+    unittest.test("method--getEffectiveOrgPolicyV1", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildGetEffectiveOrgPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.GetEffectiveOrgPolicyRequest.fromJson(json);
+        checkGetEffectiveOrgPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOrgPolicy());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getEffectiveOrgPolicyV1(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+        checkOrgPolicy(response);
       })));
     });
 
@@ -850,6 +1659,104 @@ main() {
       })));
     });
 
+    unittest.test("method--getOrgPolicy", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildGetOrgPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.GetOrgPolicyRequest.fromJson(json);
+        checkGetOrgPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOrgPolicy());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+        checkOrgPolicy(response);
+      })));
+    });
+
+    unittest.test("method--getOrgPolicyV1", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildGetOrgPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.GetOrgPolicyRequest.fromJson(json);
+        checkGetOrgPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOrgPolicy());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getOrgPolicyV1(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+        checkOrgPolicy(response);
+      })));
+    });
+
     unittest.test("method--list", () {
 
       var mock = new HttpServerMock();
@@ -899,6 +1806,104 @@ main() {
       })));
     });
 
+    unittest.test("method--listAvailableOrgPolicyConstraints", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildListAvailableOrgPolicyConstraintsRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ListAvailableOrgPolicyConstraintsRequest.fromJson(json);
+        checkListAvailableOrgPolicyConstraintsRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListAvailableOrgPolicyConstraintsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.listAvailableOrgPolicyConstraints(arg_request, arg_resource).then(unittest.expectAsync(((api.ListAvailableOrgPolicyConstraintsResponse response) {
+        checkListAvailableOrgPolicyConstraintsResponse(response);
+      })));
+    });
+
+    unittest.test("method--listOrgPolicies", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildListOrgPoliciesRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.ListOrgPoliciesRequest.fromJson(json);
+        checkListOrgPoliciesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildListOrgPoliciesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.listOrgPolicies(arg_request, arg_resource).then(unittest.expectAsync(((api.ListOrgPoliciesResponse response) {
+        checkListOrgPoliciesResponse(response);
+      })));
+    });
+
     unittest.test("method--setIamPolicy", () {
 
       var mock = new HttpServerMock();
@@ -945,6 +1950,104 @@ main() {
       }), true);
       res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
         checkPolicy(response);
+      })));
+    });
+
+    unittest.test("method--setOrgPolicy", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildSetOrgPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.SetOrgPolicyRequest.fromJson(json);
+        checkSetOrgPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOrgPolicy());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.setOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+        checkOrgPolicy(response);
+      })));
+    });
+
+    unittest.test("method--setOrgPolicyV1", () {
+
+      var mock = new HttpServerMock();
+      api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
+      var arg_request = buildSetOrgPolicyRequest();
+      var arg_resource = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.SetOrgPolicyRequest.fromJson(json);
+        checkSetOrgPolicyRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildOrgPolicy());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.setOrgPolicyV1(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+        checkOrgPolicy(response);
       })));
     });
 

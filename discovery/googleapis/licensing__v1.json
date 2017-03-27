@@ -11,10 +11,10 @@
     "basePath": "/apps/licensing/v1/product/",
     "baseUrl": "https://www.googleapis.com/apps/licensing/v1/product/",
     "batchPath": "batch",
-    "description": "Licensing API to view and manage license for your domain.",
+    "description": "Views and manages licenses for your domain.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/licensing/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/QQRbdYm0j-JrEGkOGWqDQAEBikU\"",
+    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/WD_dCFRiB71YKGuRij6Gw1Sn7dI\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -357,7 +357,7 @@
             }
         }
     },
-    "revision": "20150901",
+    "revision": "20170213",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "LicenseAssignment": {
@@ -379,7 +379,11 @@
                             "licensing.licenseAssignments.update"
                         ]
                     },
-                    "description": "Name of the product.",
+                    "description": "Id of the product.",
+                    "type": "string"
+                },
+                "productName": {
+                    "description": "Display Name of the product.",
                     "type": "string"
                 },
                 "selfLink": {
@@ -392,7 +396,11 @@
                             "licensing.licenseAssignments.update"
                         ]
                     },
-                    "description": "Name of the sku of the product.",
+                    "description": "Id of the sku of the product.",
+                    "type": "string"
+                },
+                "skuName": {
+                    "description": "Display Name of the sku of the product.",
                     "type": "string"
                 },
                 "userId": {

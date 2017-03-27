@@ -15,13 +15,17 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client safebrowsing/v4';
 
 /**
- * Enables client applications to check web resources (most commonly URLs)
- * against Google-generated lists of unsafe web resources.
+ * The Safe Browsing API is an experimental API that allows client applications
+ * to check URLs against Google's constantly-updated blacklists of suspected
+ * phishing and malware pages. Your client application can use the API to
+ * download an encrypted table for local, client-side lookups of URLs.
  */
 class SafebrowsingApi {
 
   final commons.ApiRequester _requester;
 
+  EncodedFullHashesResourceApi get encodedFullHashes => new EncodedFullHashesResourceApi(_requester);
+  EncodedUpdatesResourceApi get encodedUpdates => new EncodedUpdatesResourceApi(_requester);
   FullHashesResourceApi get fullHashes => new FullHashesResourceApi(_requester);
   ThreatListUpdatesResourceApi get threatListUpdates => new ThreatListUpdatesResourceApi(_requester);
   ThreatListsResourceApi get threatLists => new ThreatListsResourceApi(_requester);
@@ -29,6 +33,122 @@ class SafebrowsingApi {
 
   SafebrowsingApi(http.Client client, {core.String rootUrl: "https://safebrowsing.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class EncodedFullHashesResourceApi {
+  final commons.ApiRequester _requester;
+
+  EncodedFullHashesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Request parameters:
+   *
+   * [encodedRequest] - A serialized FindFullHashesRequest proto.
+   *
+   * [clientId] - A client ID that (hopefully) uniquely identifies the client
+   * implementation
+   * of the Safe Browsing API.
+   *
+   * [clientVersion] - The version of the client implementation.
+   *
+   * Completes with a [FindFullHashesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<FindFullHashesResponse> get(core.String encodedRequest, {core.String clientId, core.String clientVersion}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (encodedRequest == null) {
+      throw new core.ArgumentError("Parameter encodedRequest is required.");
+    }
+    if (clientId != null) {
+      _queryParams["clientId"] = [clientId];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
+    }
+
+    _url = 'v4/encodedFullHashes/' + commons.Escaper.ecapeVariable('$encodedRequest');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FindFullHashesResponse.fromJson(data));
+  }
+
+}
+
+
+class EncodedUpdatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  EncodedUpdatesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Request parameters:
+   *
+   * [encodedRequest] - A serialized FetchThreatListUpdatesRequest proto.
+   *
+   * [clientVersion] - The version of the client implementation.
+   *
+   * [clientId] - A client ID that uniquely identifies the client implementation
+   * of the Safe
+   * Browsing API.
+   *
+   * Completes with a [FetchThreatListUpdatesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest, {core.String clientVersion, core.String clientId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (encodedRequest == null) {
+      throw new core.ArgumentError("Parameter encodedRequest is required.");
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
+    }
+    if (clientId != null) {
+      _queryParams["clientId"] = [clientId];
+    }
+
+    _url = 'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FetchThreatListUpdatesResponse.fromJson(data));
+  }
+
 }
 
 
@@ -289,21 +409,21 @@ class ClientInfo {
 /** The constraints for this update. */
 class Constraints {
   /**
-   * Sets the maximum number of entries that the client is willing to have in
-   * the local database. This should be a power of 2 between 2**10 and 2**20. If
-   * zero, no database size limit is set.
+   * Sets the maximum number of entries that the client is willing to have
+   * in the local database. This should be a power of 2 between 2**10 and
+   * 2**20. If zero, no database size limit is set.
    */
   core.int maxDatabaseEntries;
   /**
    * The maximum size in number of entries. The update will not contain more
-   * entries than this value. This should be a power of 2 between 2**10 and
-   * 2**20. If zero, no update size limit is set.
+   * entries than this value.  This should be a power of 2 between 2**10 and
+   * 2**20.  If zero, no update size limit is set.
    */
   core.int maxUpdateEntries;
   /**
-   * Requests the list for a specific geographic location. If not set the server
-   * may pick that value based on the user's IP address. Expects ISO 3166-1
-   * alpha-2 format.
+   * Requests the list for a specific geographic location. If not set the
+   * server may pick that value based on the user's IP address. Expects ISO
+   * 3166-1 alpha-2 format.
    */
   core.String region;
   /** The compression types supported by the client. */
@@ -346,7 +466,9 @@ class Constraints {
 
 /**
  * Describes a Safe Browsing API update request. Clients can request updates for
- * multiple lists in a single request. NOTE: Field index 2 is unused. NEXT: 4
+ * multiple lists in a single request.
+ * NOTE: Field index 2 is unused.
+ * NEXT: 5
  */
 class FetchThreatListUpdatesRequest {
   /** The client metadata. */
@@ -411,6 +533,11 @@ class FetchThreatListUpdatesResponse {
 
 /** Request to return full hashes matched by the provided hash prefixes. */
 class FindFullHashesRequest {
+  /**
+   * Client metadata associated with callers of higher-level APIs built on top
+   * of the client's implementation.
+   */
+  ClientInfo apiClient;
   /** The client metadata. */
   ClientInfo client;
   /** The current client states for each of the client's local threat lists. */
@@ -421,6 +548,9 @@ class FindFullHashesRequest {
   FindFullHashesRequest();
 
   FindFullHashesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("apiClient")) {
+      apiClient = new ClientInfo.fromJson(_json["apiClient"]);
+    }
     if (_json.containsKey("client")) {
       client = new ClientInfo.fromJson(_json["client"]);
     }
@@ -434,6 +564,9 @@ class FindFullHashesRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (apiClient != null) {
+      _json["apiClient"] = (apiClient).toJson();
+    }
     if (client != null) {
       _json["client"] = (client).toJson();
     }
@@ -570,15 +703,15 @@ class ListUpdateRequest {
   /**
    * The type of platform at risk by entries present in the list.
    * Possible string values are:
-   * - "PLATFORM_TYPE_UNSPECIFIED" : A PLATFORM_TYPE_UNSPECIFIED.
-   * - "WINDOWS" : A WINDOWS.
-   * - "LINUX" : A LINUX.
-   * - "ANDROID" : A ANDROID.
-   * - "OSX" : A OSX.
-   * - "IOS" : A IOS.
-   * - "ANY_PLATFORM" : A ANY_PLATFORM.
-   * - "ALL_PLATFORMS" : A ALL_PLATFORMS.
-   * - "CHROME" : A CHROME.
+   * - "PLATFORM_TYPE_UNSPECIFIED" : Unknown platform.
+   * - "WINDOWS" : Threat posed to Windows.
+   * - "LINUX" : Threat posed to Linux.
+   * - "ANDROID" : Threat posed to Android.
+   * - "OSX" : Threat posed to OS X.
+   * - "IOS" : Threat posed to iOS.
+   * - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
+   * - "ALL_PLATFORMS" : Threat posed to all defined platforms.
+   * - "CHROME" : Threat posed to Chrome.
    */
   core.String platformType;
   /**
@@ -596,20 +729,24 @@ class ListUpdateRequest {
   /**
    * The types of entries present in the list.
    * Possible string values are:
-   * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : A THREAT_ENTRY_TYPE_UNSPECIFIED.
+   * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : Unspecified.
    * - "URL" : A URL.
-   * - "EXECUTABLE" : A EXECUTABLE.
-   * - "IP_RANGE" : A IP_RANGE.
+   * - "EXECUTABLE" : An executable program.
+   * - "IP_RANGE" : An IP range.
+   * - "CHROME_EXTENSION" : Chrome extension.
+   * - "FILENAME" : Filename.
+   * - "CERT" : CERT
    */
   core.String threatEntryType;
   /**
    * The type of threat posed by entries present in the list.
    * Possible string values are:
-   * - "THREAT_TYPE_UNSPECIFIED" : A THREAT_TYPE_UNSPECIFIED.
-   * - "MALWARE" : A MALWARE.
-   * - "SOCIAL_ENGINEERING" : A SOCIAL_ENGINEERING.
-   * - "UNWANTED_SOFTWARE" : A UNWANTED_SOFTWARE.
-   * - "POTENTIALLY_HARMFUL_APPLICATION" : A POTENTIALLY_HARMFUL_APPLICATION.
+   * - "THREAT_TYPE_UNSPECIFIED" : Unknown.
+   * - "MALWARE" : Malware threat type.
+   * - "SOCIAL_ENGINEERING" : Social engineering threat type.
+   * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
+   * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
+   * threat type.
    */
   core.String threatType;
 
@@ -681,48 +818,56 @@ class ListUpdateResponse {
   /**
    * The platform type for which data is returned.
    * Possible string values are:
-   * - "PLATFORM_TYPE_UNSPECIFIED" : A PLATFORM_TYPE_UNSPECIFIED.
-   * - "WINDOWS" : A WINDOWS.
-   * - "LINUX" : A LINUX.
-   * - "ANDROID" : A ANDROID.
-   * - "OSX" : A OSX.
-   * - "IOS" : A IOS.
-   * - "ANY_PLATFORM" : A ANY_PLATFORM.
-   * - "ALL_PLATFORMS" : A ALL_PLATFORMS.
-   * - "CHROME" : A CHROME.
+   * - "PLATFORM_TYPE_UNSPECIFIED" : Unknown platform.
+   * - "WINDOWS" : Threat posed to Windows.
+   * - "LINUX" : Threat posed to Linux.
+   * - "ANDROID" : Threat posed to Android.
+   * - "OSX" : Threat posed to OS X.
+   * - "IOS" : Threat posed to iOS.
+   * - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
+   * - "ALL_PLATFORMS" : Threat posed to all defined platforms.
+   * - "CHROME" : Threat posed to Chrome.
    */
   core.String platformType;
   /**
-   * A set of entries to remove from a local threat type's list. Repeated for
-   * the same reason as above.
+   * A set of entries to remove from a local threat type's list. In practice,
+   * this field is empty or contains exactly one ThreatEntrySet.
    */
   core.List<ThreatEntrySet> removals;
   /**
    * The type of response. This may indicate that an action is required by the
    * client when the response is received.
    * Possible string values are:
-   * - "RESPONSE_TYPE_UNSPECIFIED" : A RESPONSE_TYPE_UNSPECIFIED.
-   * - "PARTIAL_UPDATE" : A PARTIAL_UPDATE.
-   * - "FULL_UPDATE" : A FULL_UPDATE.
+   * - "RESPONSE_TYPE_UNSPECIFIED" : Unknown.
+   * - "PARTIAL_UPDATE" : Partial updates are applied to the client's existing
+   * local database.
+   * - "FULL_UPDATE" : Full updates replace the client's entire local database.
+   * This means
+   * that either the client was seriously out-of-date or the client is
+   * believed to be corrupt.
    */
   core.String responseType;
   /**
    * The format of the threats.
    * Possible string values are:
-   * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : A THREAT_ENTRY_TYPE_UNSPECIFIED.
+   * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : Unspecified.
    * - "URL" : A URL.
-   * - "EXECUTABLE" : A EXECUTABLE.
-   * - "IP_RANGE" : A IP_RANGE.
+   * - "EXECUTABLE" : An executable program.
+   * - "IP_RANGE" : An IP range.
+   * - "CHROME_EXTENSION" : Chrome extension.
+   * - "FILENAME" : Filename.
+   * - "CERT" : CERT
    */
   core.String threatEntryType;
   /**
    * The threat type for which data is returned.
    * Possible string values are:
-   * - "THREAT_TYPE_UNSPECIFIED" : A THREAT_TYPE_UNSPECIFIED.
-   * - "MALWARE" : A MALWARE.
-   * - "SOCIAL_ENGINEERING" : A SOCIAL_ENGINEERING.
-   * - "UNWANTED_SOFTWARE" : A UNWANTED_SOFTWARE.
-   * - "POTENTIALLY_HARMFUL_APPLICATION" : A POTENTIALLY_HARMFUL_APPLICATION.
+   * - "THREAT_TYPE_UNSPECIFIED" : Unknown.
+   * - "MALWARE" : Malware threat type.
+   * - "SOCIAL_ENGINEERING" : Social engineering threat type.
+   * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
+   * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
+   * threat type.
    */
   core.String threatType;
 
@@ -787,7 +932,7 @@ class ListUpdateResponse {
 
 /** A single metadata entry. */
 class MetadataEntry {
-  /** The metadata entry key. */
+  /** The metadata entry key. For JSON requests, the key is base64-encoded. */
   core.String key;
   core.List<core.int> get keyAsBytes {
     return convert.BASE64.decode(key);
@@ -796,7 +941,9 @@ class MetadataEntry {
   void set keyAsBytes(core.List<core.int> _bytes) {
     key = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** The metadata entry value. */
+  /**
+   * The metadata entry value. For JSON requests, the value is base64-encoded.
+   */
   core.String value;
   core.List<core.int> get valueAsBytes {
     return convert.BASE64.decode(value);
@@ -833,19 +980,21 @@ class MetadataEntry {
  * The uncompressed threat entries in hash format of a particular prefix length.
  * Hashes can be anywhere from 4 to 32 bytes in size. A large majority are 4
  * bytes, but some hashes are lengthened if they collide with the hash of a
- * popular URL. Used for sending ThreatEntrySet to clients that do not support
- * compression, or when sending non-4-byte hashes to clients that do support
- * compression.
+ * popular URL.
+ *
+ * Used for sending ThreatEntrySet to clients that do not support compression,
+ * or when sending non-4-byte hashes to clients that do support compression.
  */
 class RawHashes {
   /**
-   * The number of bytes for each prefix encoded below. This field can be
+   * The number of bytes for each prefix encoded below.  This field can be
    * anywhere from 4 (shortest prefix) to 32 (full SHA256 hash).
    */
   core.int prefixSize;
   /**
-   * The hashes, all concatenated into one long string. Each hash has a prefix
-   * size of |prefix_size| above. Hashes are sorted in lexicographic order.
+   * The hashes, in binary format, concatenated into one long string. Hashes are
+   * sorted in lexicographic order. For JSON API users, hashes are
+   * base64-encoded.
    */
   core.String rawHashes;
   core.List<core.int> get rawHashesAsBytes {
@@ -973,8 +1122,8 @@ class RiceDeltaEncoding {
  */
 class ThreatEntry {
   /**
-   * The digest of an executable in SHA256 format. The API supports both binary
-   * and hex digests.
+   * The digest of an executable in SHA256 format. The API supports both
+   * binary and hex digests. For JSON requests, digests are base64-encoded.
    */
   core.String digest;
   core.List<core.int> get digestAsBytes {
@@ -986,7 +1135,8 @@ class ThreatEntry {
   }
   /**
    * A hash prefix, consisting of the most significant 4-32 bytes of a SHA256
-   * hash. This field is in binary format.
+   * hash. This field is in binary format. For JSON requests, hashes are
+   * base64-encoded.
    */
   core.String hash;
   core.List<core.int> get hashAsBytes {
@@ -1061,9 +1211,9 @@ class ThreatEntrySet {
   /**
    * The compression type for the entries in this set.
    * Possible string values are:
-   * - "COMPRESSION_TYPE_UNSPECIFIED" : A COMPRESSION_TYPE_UNSPECIFIED.
-   * - "RAW" : A RAW.
-   * - "RICE" : A RICE.
+   * - "COMPRESSION_TYPE_UNSPECIFIED" : Unknown.
+   * - "RAW" : Raw, uncompressed data.
+   * - "RICE" : Rice-Golomb encoded data.
    */
   core.String compressionType;
   /** The raw SHA256-formatted entries. */
@@ -1072,12 +1222,15 @@ class ThreatEntrySet {
   RawIndices rawIndices;
   /**
    * The encoded 4-byte prefixes of SHA256-formatted entries, using a
-   * Golomb-Rice encoding.
+   * Golomb-Rice encoding. The hashes are converted to uint32, sorted in
+   * ascending order, then delta encoded and stored as encoded_data.
    */
   RiceDeltaEncoding riceHashes;
   /**
    * The encoded local, lexicographically-sorted list indices, using a
-   * Golomb-Rice encoding. Used for sending compressed removal indices.
+   * Golomb-Rice encoding. Used for sending compressed removal indices. The
+   * removal indices (uint32) are sorted in ascending order, then delta encoded
+   * and stored as encoded_data.
    */
   RiceDeltaEncoding riceIndices;
 
@@ -1180,34 +1333,38 @@ class ThreatListDescriptor {
   /**
    * The platform type targeted by the list's entries.
    * Possible string values are:
-   * - "PLATFORM_TYPE_UNSPECIFIED" : A PLATFORM_TYPE_UNSPECIFIED.
-   * - "WINDOWS" : A WINDOWS.
-   * - "LINUX" : A LINUX.
-   * - "ANDROID" : A ANDROID.
-   * - "OSX" : A OSX.
-   * - "IOS" : A IOS.
-   * - "ANY_PLATFORM" : A ANY_PLATFORM.
-   * - "ALL_PLATFORMS" : A ALL_PLATFORMS.
-   * - "CHROME" : A CHROME.
+   * - "PLATFORM_TYPE_UNSPECIFIED" : Unknown platform.
+   * - "WINDOWS" : Threat posed to Windows.
+   * - "LINUX" : Threat posed to Linux.
+   * - "ANDROID" : Threat posed to Android.
+   * - "OSX" : Threat posed to OS X.
+   * - "IOS" : Threat posed to iOS.
+   * - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
+   * - "ALL_PLATFORMS" : Threat posed to all defined platforms.
+   * - "CHROME" : Threat posed to Chrome.
    */
   core.String platformType;
   /**
    * The entry types contained in the list.
    * Possible string values are:
-   * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : A THREAT_ENTRY_TYPE_UNSPECIFIED.
+   * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : Unspecified.
    * - "URL" : A URL.
-   * - "EXECUTABLE" : A EXECUTABLE.
-   * - "IP_RANGE" : A IP_RANGE.
+   * - "EXECUTABLE" : An executable program.
+   * - "IP_RANGE" : An IP range.
+   * - "CHROME_EXTENSION" : Chrome extension.
+   * - "FILENAME" : Filename.
+   * - "CERT" : CERT
    */
   core.String threatEntryType;
   /**
    * The threat type posed by the list's entries.
    * Possible string values are:
-   * - "THREAT_TYPE_UNSPECIFIED" : A THREAT_TYPE_UNSPECIFIED.
-   * - "MALWARE" : A MALWARE.
-   * - "SOCIAL_ENGINEERING" : A SOCIAL_ENGINEERING.
-   * - "UNWANTED_SOFTWARE" : A UNWANTED_SOFTWARE.
-   * - "POTENTIALLY_HARMFUL_APPLICATION" : A POTENTIALLY_HARMFUL_APPLICATION.
+   * - "THREAT_TYPE_UNSPECIFIED" : Unknown.
+   * - "MALWARE" : Malware threat type.
+   * - "SOCIAL_ENGINEERING" : Social engineering threat type.
+   * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
+   * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
+   * threat type.
    */
   core.String threatType;
 
@@ -1250,15 +1407,15 @@ class ThreatMatch {
   /**
    * The platform type matching this threat.
    * Possible string values are:
-   * - "PLATFORM_TYPE_UNSPECIFIED" : A PLATFORM_TYPE_UNSPECIFIED.
-   * - "WINDOWS" : A WINDOWS.
-   * - "LINUX" : A LINUX.
-   * - "ANDROID" : A ANDROID.
-   * - "OSX" : A OSX.
-   * - "IOS" : A IOS.
-   * - "ANY_PLATFORM" : A ANY_PLATFORM.
-   * - "ALL_PLATFORMS" : A ALL_PLATFORMS.
-   * - "CHROME" : A CHROME.
+   * - "PLATFORM_TYPE_UNSPECIFIED" : Unknown platform.
+   * - "WINDOWS" : Threat posed to Windows.
+   * - "LINUX" : Threat posed to Linux.
+   * - "ANDROID" : Threat posed to Android.
+   * - "OSX" : Threat posed to OS X.
+   * - "IOS" : Threat posed to iOS.
+   * - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
+   * - "ALL_PLATFORMS" : Threat posed to all defined platforms.
+   * - "CHROME" : Threat posed to Chrome.
    */
   core.String platformType;
   /** The threat matching this threat. */
@@ -1268,20 +1425,24 @@ class ThreatMatch {
   /**
    * The threat entry type matching this threat.
    * Possible string values are:
-   * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : A THREAT_ENTRY_TYPE_UNSPECIFIED.
+   * - "THREAT_ENTRY_TYPE_UNSPECIFIED" : Unspecified.
    * - "URL" : A URL.
-   * - "EXECUTABLE" : A EXECUTABLE.
-   * - "IP_RANGE" : A IP_RANGE.
+   * - "EXECUTABLE" : An executable program.
+   * - "IP_RANGE" : An IP range.
+   * - "CHROME_EXTENSION" : Chrome extension.
+   * - "FILENAME" : Filename.
+   * - "CERT" : CERT
    */
   core.String threatEntryType;
   /**
    * The threat type matching this threat.
    * Possible string values are:
-   * - "THREAT_TYPE_UNSPECIFIED" : A THREAT_TYPE_UNSPECIFIED.
-   * - "MALWARE" : A MALWARE.
-   * - "SOCIAL_ENGINEERING" : A SOCIAL_ENGINEERING.
-   * - "UNWANTED_SOFTWARE" : A UNWANTED_SOFTWARE.
-   * - "POTENTIALLY_HARMFUL_APPLICATION" : A POTENTIALLY_HARMFUL_APPLICATION.
+   * - "THREAT_TYPE_UNSPECIFIED" : Unknown.
+   * - "MALWARE" : Malware threat type.
+   * - "SOCIAL_ENGINEERING" : Social engineering threat type.
+   * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
+   * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
+   * threat type.
    */
   core.String threatType;
 

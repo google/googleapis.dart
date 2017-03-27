@@ -38,6 +38,9 @@ class AppengineApi {
 class AppsResourceApi {
   final commons.ApiRequester _requester;
 
+  AppsAuthorizedCertificatesResourceApi get authorizedCertificates => new AppsAuthorizedCertificatesResourceApi(_requester);
+  AppsAuthorizedDomainsResourceApi get authorizedDomains => new AppsAuthorizedDomainsResourceApi(_requester);
+  AppsDomainMappingsResourceApi get domainMappings => new AppsDomainMappingsResourceApi(_requester);
   AppsLocationsResourceApi get locations => new AppsLocationsResourceApi(_requester);
   AppsOperationsResourceApi get operations => new AppsOperationsResourceApi(_requester);
   AppsServicesResourceApi get services => new AppsServicesResourceApi(_requester);
@@ -47,12 +50,11 @@ class AppsResourceApi {
 
   /**
    * Creates an App Engine application for a Google Cloud Platform project.
-   * Required fields:
-   * id - The ID of the target Cloud Platform project.
-   * location - The region (https://cloud.google.com/appengine/docs/locations)
-   * where you want the App Engine application located.For more information
-   * about App Engine applications, see Managing Projects, Applications, and
-   * Billing (https://cloud.google.com/appengine/docs/python/console/).
+   * Required fields: id - The ID of the target Cloud Platform project. location
+   * - The region (https://cloud.google.com/appengine/docs/locations) where you
+   * want the App Engine application located.For more information about App
+   * Engine applications, see Managing Projects, Applications, and Billing
+   * (https://cloud.google.com/appengine/docs/python/console/).
    *
    * [request] - The metadata request object.
    *
@@ -132,10 +134,9 @@ class AppsResourceApi {
 
   /**
    * Updates the specified Application resource. You can update the following
-   * fields:
-   * auth_domain - Google authentication domain for controlling user access to
-   * the application.
-   * default_cookie_expiration - Cookie expiration policy for the application.
+   * fields: auth_domain - Google authentication domain for controlling user
+   * access to the application. default_cookie_expiration - Cookie expiration
+   * policy for the application.
    *
    * [request] - The metadata request object.
    *
@@ -235,6 +236,583 @@ class AppsResourceApi {
 }
 
 
+class AppsAuthorizedCertificatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsAuthorizedCertificatesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Uploads the specified SSL certificate.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent Application resource.
+   * Example: apps/myapp.
+   *
+   * Completes with a [AuthorizedCertificate].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AuthorizedCertificate> create(AuthorizedCertificate request, core.String appsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/authorizedCertificates';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AuthorizedCertificate.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified SSL certificate.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource to delete. Example:
+   * apps/myapp/authorizedCertificates/12345.
+   *
+   * [authorizedCertificatesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String appsId, core.String authorizedCertificatesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (authorizedCertificatesId == null) {
+      throw new core.ArgumentError("Parameter authorizedCertificatesId is required.");
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/authorizedCertificates/' + commons.Escaper.ecapeVariable('$authorizedCertificatesId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Gets the specified SSL certificate.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * apps/myapp/authorizedCertificates/12345.
+   *
+   * [authorizedCertificatesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [view] - Controls the set of fields returned in the GET response.
+   * Possible string values are:
+   * - "BASIC_CERTIFICATE" : A BASIC_CERTIFICATE.
+   * - "FULL_CERTIFICATE" : A FULL_CERTIFICATE.
+   *
+   * Completes with a [AuthorizedCertificate].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AuthorizedCertificate> get(core.String appsId, core.String authorizedCertificatesId, {core.String view}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (authorizedCertificatesId == null) {
+      throw new core.ArgumentError("Parameter authorizedCertificatesId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/authorizedCertificates/' + commons.Escaper.ecapeVariable('$authorizedCertificatesId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AuthorizedCertificate.fromJson(data));
+  }
+
+  /**
+   * Lists all SSL certificates the user is authorized to administer.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent Application resource.
+   * Example: apps/myapp.
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * Completes with a [ListAuthorizedCertificatesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListAuthorizedCertificatesResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/authorizedCertificates';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListAuthorizedCertificatesResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the specified SSL certificate. To renew a certificate and maintain
+   * its existing domain mappings, update certificate_data with a new
+   * certificate. The new certificate must be applicable to the same domains as
+   * the original certificate. The certificate display_name may also be updated.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource to update. Example:
+   * apps/myapp/authorizedCertificates/12345.
+   *
+   * [authorizedCertificatesId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [updateMask] - Standard field mask for the set of fields to be updated.
+   * Updates are only supported on the certificate_raw_data and display_name
+   * fields.
+   *
+   * Completes with a [AuthorizedCertificate].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AuthorizedCertificate> patch(AuthorizedCertificate request, core.String appsId, core.String authorizedCertificatesId, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (authorizedCertificatesId == null) {
+      throw new core.ArgumentError("Parameter authorizedCertificatesId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/authorizedCertificates/' + commons.Escaper.ecapeVariable('$authorizedCertificatesId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AuthorizedCertificate.fromJson(data));
+  }
+
+}
+
+
+class AppsAuthorizedDomainsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsAuthorizedDomainsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists all domains the user is authorized to administer.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent Application resource.
+   * Example: apps/myapp.
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * Completes with a [ListAuthorizedDomainsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListAuthorizedDomainsResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/authorizedDomains';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListAuthorizedDomainsResponse.fromJson(data));
+  }
+
+}
+
+
+class AppsDomainMappingsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsDomainMappingsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Maps a domain to an application. A user must be authorized to administer a
+   * domain in order to map it to an application. For a list of available
+   * authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent Application resource.
+   * Example: apps/myapp.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> create(DomainMapping request, core.String appsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/domainMappings';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified domain mapping. A user must be authorized to
+   * administer the associated domain in order to delete a DomainMapping
+   * resource.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource to delete. Example:
+   * apps/myapp/domainMappings/example.com.
+   *
+   * [domainMappingsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String appsId, core.String domainMappingsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (domainMappingsId == null) {
+      throw new core.ArgumentError("Parameter domainMappingsId is required.");
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/domainMappings/' + commons.Escaper.ecapeVariable('$domainMappingsId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Gets the specified domain mapping.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource requested. Example:
+   * apps/myapp/domainMappings/example.com.
+   *
+   * [domainMappingsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * Completes with a [DomainMapping].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<DomainMapping> get(core.String appsId, core.String domainMappingsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (domainMappingsId == null) {
+      throw new core.ArgumentError("Parameter domainMappingsId is required.");
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/domainMappings/' + commons.Escaper.ecapeVariable('$domainMappingsId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DomainMapping.fromJson(data));
+  }
+
+  /**
+   * Lists the domain mappings on an application.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `parent`. Name of the parent Application resource.
+   * Example: apps/myapp.
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * Completes with a [ListDomainMappingsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListDomainMappingsResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/domainMappings';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListDomainMappingsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates the specified domain mapping. To map an SSL certificate to a domain
+   * mapping, update certificate_id to point to an AuthorizedCertificate
+   * resource. A user must be authorized to administer the associated domain in
+   * order to update a DomainMapping resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [appsId] - Part of `name`. Name of the resource to update. Example:
+   * apps/myapp/domainMappings/example.com.
+   *
+   * [domainMappingsId] - Part of `name`. See documentation of `appsId`.
+   *
+   * [updateMask] - Standard field mask for the set of fields to be updated.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> patch(DomainMapping request, core.String appsId, core.String domainMappingsId, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (domainMappingsId == null) {
+      throw new core.ArgumentError("Parameter domainMappingsId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/domainMappings/' + commons.Escaper.ecapeVariable('$domainMappingsId');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
 class AppsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -293,11 +871,11 @@ class AppsLocationsResourceApi {
    * [appsId] - Part of `name`. The resource that owns the locations collection,
    * if applicable.
    *
-   * [pageToken] - The standard list page token.
+   * [filter] - The standard list filter.
    *
    * [pageSize] - The standard list page size.
    *
-   * [filter] - The standard list filter.
+   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -307,7 +885,7 @@ class AppsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String appsId, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListLocationsResponse> list(core.String appsId, {core.String filter, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -318,14 +896,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
@@ -407,9 +985,9 @@ class AppsOperationsResourceApi {
    *
    * [filter] - The standard list filter.
    *
-   * [pageToken] - The standard list page token.
-   *
    * [pageSize] - The standard list page size.
+   *
+   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -419,7 +997,7 @@ class AppsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String appsId, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String appsId, {core.String filter, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -433,11 +1011,11 @@ class AppsOperationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
@@ -561,9 +1139,9 @@ class AppsServicesResourceApi {
    * [appsId] - Part of `parent`. Name of the parent Application resource.
    * Example: apps/myapp.
    *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
    * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListServicesResponse].
    *
@@ -573,7 +1151,7 @@ class AppsServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list(core.String appsId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListServicesResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -584,11 +1162,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
@@ -855,14 +1433,14 @@ class AppsServicesVersionsResourceApi {
    *
    * [servicesId] - Part of `parent`. See documentation of `appsId`.
    *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
-   * [pageSize] - Maximum results to return per page.
-   *
    * [view] - Controls the set of fields returned in the List response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListVersionsResponse].
    *
@@ -872,7 +1450,7 @@ class AppsServicesVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.String pageToken, core.int pageSize, core.String view}) {
+  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.String view, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -886,14 +1464,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions';
@@ -911,21 +1489,18 @@ class AppsServicesVersionsResourceApi {
   /**
    * Updates the specified Version resource. You can specify the following
    * fields depending on the App Engine environment and type of scaling that the
-   * version resource uses:
-   * serving_status
+   * version resource uses: serving_status
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status):
-   * For Version resources that use basic scaling, manual scaling, or run in
-   * the App Engine flexible environment.
-   * instance_class
+   * For Version resources that use basic scaling, manual scaling, or run in the
+   * App Engine flexible environment. instance_class
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class):
    * For Version resources that run in the App Engine standard environment.
    * automatic_scaling.min_idle_instances
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
-   * For Version resources that use automatic scaling and run in the App  Engine
-   * standard environment.
-   * automatic_scaling.max_idle_instances
+   * For Version resources that use automatic scaling and run in the App Engine
+   * standard environment. automatic_scaling.max_idle_instances
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling):
-   * For Version resources that use automatic scaling and run in the App  Engine
+   * For Version resources that use automatic scaling and run in the App Engine
    * standard environment.
    *
    * [request] - The metadata request object.
@@ -1170,7 +1745,9 @@ class AppsServicesVersionsInstancesResourceApi {
   }
 
   /**
-   * Lists the instances of a version.
+   * Lists the instances of a version.Tip: To aggregate details about instances
+   * over time, see the Stackdriver Monitoring API
+   * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
    *
    * Request parameters:
    *
@@ -1181,9 +1758,9 @@ class AppsServicesVersionsInstancesResourceApi {
    *
    * [versionsId] - Part of `parent`. See documentation of `appsId`.
    *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
    * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListInstancesResponse].
    *
@@ -1193,7 +1770,7 @@ class AppsServicesVersionsInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1210,11 +1787,11 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances';
@@ -1243,26 +1820,18 @@ class ApiConfigHandler {
    * Action to take when users access resources that require authentication.
    * Defaults to redirect.
    * Possible string values are:
-   * - "AUTH_FAIL_ACTION_UNSPECIFIED" : Not specified. AUTH_FAIL_ACTION_REDIRECT
-   * is assumed.
-   * - "AUTH_FAIL_ACTION_REDIRECT" : Redirects user to "accounts.google.com".
-   * The user is redirected back to the application URL after signing in or
-   * creating an account.
-   * - "AUTH_FAIL_ACTION_UNAUTHORIZED" : Rejects request with a 401 HTTP status
-   * code and an error message.
+   * - "AUTH_FAIL_ACTION_UNSPECIFIED" : A AUTH_FAIL_ACTION_UNSPECIFIED.
+   * - "AUTH_FAIL_ACTION_REDIRECT" : A AUTH_FAIL_ACTION_REDIRECT.
+   * - "AUTH_FAIL_ACTION_UNAUTHORIZED" : A AUTH_FAIL_ACTION_UNAUTHORIZED.
    */
   core.String authFailAction;
   /**
    * Level of login required to access this resource. Defaults to optional.
    * Possible string values are:
-   * - "LOGIN_UNSPECIFIED" : Not specified. LOGIN_OPTIONAL is assumed.
-   * - "LOGIN_OPTIONAL" : Does not require that the user is signed in.
-   * - "LOGIN_ADMIN" : If the user is not signed in, the auth_fail_action is
-   * taken. In addition, if the user is not an administrator for the
-   * application, they are given an error message regardless of
-   * auth_fail_action. If the user is an administrator, the handler proceeds.
-   * - "LOGIN_REQUIRED" : If the user has signed in, the handler proceeds
-   * normally. Otherwise, the auth_fail_action is taken.
+   * - "LOGIN_UNSPECIFIED" : A LOGIN_UNSPECIFIED.
+   * - "LOGIN_OPTIONAL" : A LOGIN_OPTIONAL.
+   * - "LOGIN_ADMIN" : A LOGIN_ADMIN.
+   * - "LOGIN_REQUIRED" : A LOGIN_REQUIRED.
    */
   core.String login;
   /** Path to the script from the application root directory. */
@@ -1270,18 +1839,11 @@ class ApiConfigHandler {
   /**
    * Security (HTTPS) enforcement for this URL.
    * Possible string values are:
-   * - "SECURE_UNSPECIFIED" : Not specified.
-   * - "SECURE_DEFAULT" : Both HTTP and HTTPS requests with URLs that match the
-   * handler succeed without redirects. The application can examine the request
-   * to determine which protocol was used, and respond accordingly.
-   * - "SECURE_NEVER" : Requests for a URL that match this handler that use
-   * HTTPS are automatically redirected to the HTTP equivalent URL.
-   * - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match the
-   * handler succeed without redirects. The application can examine the request
-   * to determine which protocol was used and respond accordingly.
-   * - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
-   * use HTTPS are automatically redirected to the HTTPS URL with the same path.
-   * Query parameters are reserved for the redirect.
+   * - "SECURE_UNSPECIFIED" : A SECURE_UNSPECIFIED.
+   * - "SECURE_DEFAULT" : A SECURE_DEFAULT.
+   * - "SECURE_NEVER" : A SECURE_NEVER.
+   * - "SECURE_OPTIONAL" : A SECURE_OPTIONAL.
+   * - "SECURE_ALWAYS" : A SECURE_ALWAYS.
    */
   core.String securityLevel;
   /** URL to serve the endpoint at. */
@@ -1380,10 +1942,15 @@ class Application {
   core.String defaultHostname;
   /**
    * HTTP path dispatch rules for requests to the application that do not
-   * explicitly target a service or version. Rules are
-   * order-dependent.@OutputOnly
+   * explicitly target a service or version. Rules are order-dependent. Up to 20
+   * dispatch rules can be supported.@OutputOnly
    */
   core.List<UrlDispatchRule> dispatchRules;
+  /**
+   * The Google Container Registry domain used for storing managed build docker
+   * images for this application.
+   */
+  core.String gcrDomain;
   IdentityAwareProxy iap;
   /**
    * Identifier of the Application resource. This identifier is equivalent to
@@ -1404,6 +1971,15 @@ class Application {
    * apps/myapp.@OutputOnly
    */
   core.String name;
+  /**
+   * Serving status of this application.
+   * Possible string values are:
+   * - "UNSPECIFIED" : A UNSPECIFIED.
+   * - "SERVING" : A SERVING.
+   * - "USER_DISABLED" : A USER_DISABLED.
+   * - "SYSTEM_DISABLED" : A SYSTEM_DISABLED.
+   */
+  core.String servingStatus;
 
   Application();
 
@@ -1426,6 +2002,9 @@ class Application {
     if (_json.containsKey("dispatchRules")) {
       dispatchRules = _json["dispatchRules"].map((value) => new UrlDispatchRule.fromJson(value)).toList();
     }
+    if (_json.containsKey("gcrDomain")) {
+      gcrDomain = _json["gcrDomain"];
+    }
     if (_json.containsKey("iap")) {
       iap = new IdentityAwareProxy.fromJson(_json["iap"]);
     }
@@ -1437,6 +2016,9 @@ class Application {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("servingStatus")) {
+      servingStatus = _json["servingStatus"];
     }
   }
 
@@ -1460,6 +2042,9 @@ class Application {
     if (dispatchRules != null) {
       _json["dispatchRules"] = dispatchRules.map((value) => (value).toJson()).toList();
     }
+    if (gcrDomain != null) {
+      _json["gcrDomain"] = gcrDomain;
+    }
     if (iap != null) {
       _json["iap"] = (iap).toJson();
     }
@@ -1468,6 +2053,163 @@ class Application {
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (servingStatus != null) {
+      _json["servingStatus"] = servingStatus;
+    }
+    return _json;
+  }
+}
+
+/**
+ * An SSL certificate that a user has been authorized to administer. A user is
+ * authorized to administer any certificate that applies to one of their
+ * authorized domains.
+ */
+class AuthorizedCertificate {
+  /**
+   * The SSL certificate serving the AuthorizedCertificate resource. This must
+   * be obtained independently from a certificate authority.
+   */
+  CertificateRawData certificateRawData;
+  /**
+   * The user-specified display name of the certificate. This is not guaranteed
+   * to be unique. Example: My Certificate.
+   */
+  core.String displayName;
+  /**
+   * Aggregate count of the domain mappings with this certificate mapped. This
+   * count includes domain mappings on applications for which the user does not
+   * have VIEWER permissions.Only returned by GET requests when specifically
+   * requested by the view=FULL option.@OutputOnly
+   */
+  core.int domainMappingsCount;
+  /**
+   * Topmost applicable domains of this certificate. This certificate applies to
+   * these domains and their subdomains. Example: example.com.@OutputOnly
+   */
+  core.List<core.String> domainNames;
+  /**
+   * The time when this certificate expires. To update the renewal time on this
+   * certificate, upload an SSL certificate with a different expiration time
+   * using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly
+   */
+  core.String expireTime;
+  /**
+   * Relative name of the certificate. This is a unique value autogenerated on
+   * AuthorizedCertificate resource creation. Example: 12345.@OutputOnly
+   */
+  core.String id;
+  /**
+   * Full path to the AuthorizedCertificate resource in the API. Example:
+   * apps/myapp/authorizedCertificates/12345.@OutputOnly
+   */
+  core.String name;
+  /**
+   * The full paths to user visible Domain Mapping resources that have this
+   * certificate mapped. Example: apps/myapp/domainMappings/example.com.This may
+   * not represent the full list of mapped domain mappings if the user does not
+   * have VIEWER permissions on all of the applications that have this
+   * certificate mapped. See domain_mappings_count for a complete count.Only
+   * returned by GET requests when specifically requested by the view=FULL
+   * option.@OutputOnly
+   */
+  core.List<core.String> visibleDomainMappings;
+
+  AuthorizedCertificate();
+
+  AuthorizedCertificate.fromJson(core.Map _json) {
+    if (_json.containsKey("certificateRawData")) {
+      certificateRawData = new CertificateRawData.fromJson(_json["certificateRawData"]);
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("domainMappingsCount")) {
+      domainMappingsCount = _json["domainMappingsCount"];
+    }
+    if (_json.containsKey("domainNames")) {
+      domainNames = _json["domainNames"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("visibleDomainMappings")) {
+      visibleDomainMappings = _json["visibleDomainMappings"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (certificateRawData != null) {
+      _json["certificateRawData"] = (certificateRawData).toJson();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (domainMappingsCount != null) {
+      _json["domainMappingsCount"] = domainMappingsCount;
+    }
+    if (domainNames != null) {
+      _json["domainNames"] = domainNames;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (visibleDomainMappings != null) {
+      _json["visibleDomainMappings"] = visibleDomainMappings;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A domain that a user has been authorized to administer. To authorize use of a
+ * domain, verify ownership via Webmaster Central
+ * (https://www.google.com/webmasters/verification/home).
+ */
+class AuthorizedDomain {
+  /**
+   * Fully qualified domain name of the domain authorized for use. Example:
+   * example.com.
+   */
+  core.String id;
+  /**
+   * Full path to the AuthorizedDomain resource in the API. Example:
+   * apps/myapp/authorizedDomains/example.com.@OutputOnly
+   */
+  core.String name;
+
+  AuthorizedDomain();
+
+  AuthorizedDomain.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
     }
     if (name != null) {
       _json["name"] = name;
@@ -1649,6 +2391,46 @@ class BasicScaling {
   }
 }
 
+/** An SSL certificate obtained from a certificate authority. */
+class CertificateRawData {
+  /**
+   * Unencrypted PEM encoded RSA private key. This field is set once on
+   * certificate creation and then encrypted. The key size must be 2048 bits or
+   * fewer. Must include the header and footer. Example:
+   * -----BEGIN RSA PRIVATE KEY-----  -----END RSA PRIVATE KEY-----
+   * @InputOnly
+   */
+  core.String privateKey;
+  /**
+   * PEM encoded x.509 public key certificate. This field is set once on
+   * certificate creation. Must include the header and footer. Example:
+   * -----BEGIN CERTIFICATE-----  -----END CERTIFICATE-----
+   */
+  core.String publicCertificate;
+
+  CertificateRawData();
+
+  CertificateRawData.fromJson(core.Map _json) {
+    if (_json.containsKey("privateKey")) {
+      privateKey = _json["privateKey"];
+    }
+    if (_json.containsKey("publicCertificate")) {
+      publicCertificate = _json["publicCertificate"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (privateKey != null) {
+      _json["privateKey"] = privateKey;
+    }
+    if (publicCertificate != null) {
+      _json["publicCertificate"] = publicCertificate;
+    }
+    return _json;
+  }
+}
+
 /**
  * Docker image that is used to create a container and start a VM instance for
  * the version that you deploy. Only applicable for instances running in the App
@@ -1715,9 +2497,8 @@ class CpuUtilization {
 /** Request message for Instances.DebugInstance. */
 class DebugInstanceRequest {
   /**
-   * Public SSH key to add to the instance. Examples:
-   * [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]
-   * [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh
+   * Public SSH key to add to the instance. Examples: [USERNAME]:ssh-rsa
+   * [KEY_VALUE] [USERNAME] [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh
    * {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}For more information,
    * see Adding and Removing SSH Keys
    * (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
@@ -1832,6 +2613,84 @@ class DiskUtilization {
   }
 }
 
+/** A domain serving an App Engine application. */
+class DomainMapping {
+  /**
+   * Relative name of the domain serving the application. Example: example.com.
+   */
+  core.String id;
+  /**
+   * Full path to the DomainMapping resource in the API. Example:
+   * apps/myapp/domainMapping/example.com.@OutputOnly
+   */
+  core.String name;
+  /**
+   * The resource records required to configure this domain mapping. These
+   * records must be added to the domain's DNS configuration in order to serve
+   * the application via this domain mapping.@OutputOnly
+   */
+  core.List<ResourceRecord> resourceRecords;
+  /**
+   * SSL configuration for this domain. If unconfigured, this domain will not
+   * serve with SSL.
+   */
+  SslSettings sslSettings;
+
+  DomainMapping();
+
+  DomainMapping.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("resourceRecords")) {
+      resourceRecords = _json["resourceRecords"].map((value) => new ResourceRecord.fromJson(value)).toList();
+    }
+    if (_json.containsKey("sslSettings")) {
+      sslSettings = new SslSettings.fromJson(_json["sslSettings"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (resourceRecords != null) {
+      _json["resourceRecords"] = resourceRecords.map((value) => (value).toJson()).toList();
+    }
+    if (sslSettings != null) {
+      _json["sslSettings"] = (sslSettings).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A generic empty message that you can re-use to avoid defining duplicated
+ * empty messages in your APIs. A typical example is to use it as the request or
+ * the response type of an API method. For instance: service Foo { rpc
+ * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+ * representation for Empty is empty JSON object {}.
+ */
+class Empty {
+
+  Empty();
+
+  Empty.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
 /**
  * Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
  * Endpoints API Service provides tooling for serving Open API and gRPC
@@ -1879,12 +2738,11 @@ class ErrorHandler {
   /**
    * Error condition this handler applies to.
    * Possible string values are:
-   * - "ERROR_CODE_UNSPECIFIED" : Not specified. ERROR_CODE_DEFAULT is assumed.
-   * - "ERROR_CODE_DEFAULT" : All other error types.
-   * - "ERROR_CODE_OVER_QUOTA" : Application has exceeded a resource quota.
-   * - "ERROR_CODE_DOS_API_DENIAL" : Client blocked by the application's Denial
-   * of Service protection configuration.
-   * - "ERROR_CODE_TIMEOUT" : Deadline reached before the application responds.
+   * - "ERROR_CODE_UNSPECIFIED" : A ERROR_CODE_UNSPECIFIED.
+   * - "ERROR_CODE_DEFAULT" : A ERROR_CODE_DEFAULT.
+   * - "ERROR_CODE_OVER_QUOTA" : A ERROR_CODE_OVER_QUOTA.
+   * - "ERROR_CODE_DOS_API_DENIAL" : A ERROR_CODE_DOS_API_DENIAL.
+   * - "ERROR_CODE_TIMEOUT" : A ERROR_CODE_TIMEOUT.
    */
   core.String errorCode;
   /** MIME type of file. Defaults to text/html. */
@@ -1934,8 +2792,7 @@ class FileInfo {
   core.String sha1Sum;
   /**
    * URL source to use to fetch this file. Must be a URL to a resource in Google
-   * Cloud Storage in the form
-   * 'http(s)://storage.googleapis.com/<bucket>/<object>'.
+   * Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
    */
   core.String sourceUrl;
 
@@ -2119,9 +2976,9 @@ class Instance {
   /**
    * Availability of the instance.@OutputOnly
    * Possible string values are:
-   * - "UNSPECIFIED"
-   * - "RESIDENT"
-   * - "DYNAMIC"
+   * - "UNSPECIFIED" : A UNSPECIFIED.
+   * - "RESIDENT" : A RESIDENT.
+   * - "DYNAMIC" : A DYNAMIC.
    */
   core.String availability;
   /** Average latency (ms) over the last minute.@OutputOnly */
@@ -2314,6 +3171,96 @@ class Library {
   }
 }
 
+/** Response message for AuthorizedCertificates.ListAuthorizedCertificates. */
+class ListAuthorizedCertificatesResponse {
+  /** The SSL certificates the user is authorized to administer. */
+  core.List<AuthorizedCertificate> certificates;
+  /** Continuation token for fetching the next page of results. */
+  core.String nextPageToken;
+
+  ListAuthorizedCertificatesResponse();
+
+  ListAuthorizedCertificatesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("certificates")) {
+      certificates = _json["certificates"].map((value) => new AuthorizedCertificate.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (certificates != null) {
+      _json["certificates"] = certificates.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** Response message for AuthorizedDomains.ListAuthorizedDomains. */
+class ListAuthorizedDomainsResponse {
+  /** The authorized domains belonging to the user. */
+  core.List<AuthorizedDomain> domains;
+  /** Continuation token for fetching the next page of results. */
+  core.String nextPageToken;
+
+  ListAuthorizedDomainsResponse();
+
+  ListAuthorizedDomainsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("domains")) {
+      domains = _json["domains"].map((value) => new AuthorizedDomain.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (domains != null) {
+      _json["domains"] = domains.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** Response message for DomainMappings.ListDomainMappings. */
+class ListDomainMappingsResponse {
+  /** The domain mappings for the application. */
+  core.List<DomainMapping> domainMappings;
+  /** Continuation token for fetching the next page of results. */
+  core.String nextPageToken;
+
+  ListDomainMappingsResponse();
+
+  ListDomainMappingsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("domainMappings")) {
+      domainMappings = _json["domainMappings"].map((value) => new DomainMapping.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (domainMappings != null) {
+      _json["domainMappings"] = domainMappings.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /** Response message for Instances.ListInstances. */
 class ListInstancesResponse {
   /** The instances belonging to the requested version. */
@@ -2472,10 +3419,10 @@ class LivenessCheck {
   /** Interval between health checks. */
   core.String checkInterval;
   /**
-   * Number of consecutive successful checks required before considering the VM
-   * healthy.
+   * Number of consecutive failed checks required before considering the VM
+   * unhealthy.
    */
-  core.int healthyThreshold;
+  core.int failureThreshold;
   /**
    * Host header to send when performing a HTTP Liveness check. Example:
    * "myapp.appspot.com"
@@ -2485,13 +3432,13 @@ class LivenessCheck {
   core.String initialDelay;
   /** The request path. */
   core.String path;
+  /**
+   * Number of consecutive successful checks required before considering the VM
+   * healthy.
+   */
+  core.int successThreshold;
   /** Time before the check is considered failed. */
   core.String timeout;
-  /**
-   * Number of consecutive failed checks required before considering the VM
-   * unhealthy.
-   */
-  core.int unhealthyThreshold;
 
   LivenessCheck();
 
@@ -2499,8 +3446,8 @@ class LivenessCheck {
     if (_json.containsKey("checkInterval")) {
       checkInterval = _json["checkInterval"];
     }
-    if (_json.containsKey("healthyThreshold")) {
-      healthyThreshold = _json["healthyThreshold"];
+    if (_json.containsKey("failureThreshold")) {
+      failureThreshold = _json["failureThreshold"];
     }
     if (_json.containsKey("host")) {
       host = _json["host"];
@@ -2511,11 +3458,11 @@ class LivenessCheck {
     if (_json.containsKey("path")) {
       path = _json["path"];
     }
+    if (_json.containsKey("successThreshold")) {
+      successThreshold = _json["successThreshold"];
+    }
     if (_json.containsKey("timeout")) {
       timeout = _json["timeout"];
-    }
-    if (_json.containsKey("unhealthyThreshold")) {
-      unhealthyThreshold = _json["unhealthyThreshold"];
     }
   }
 
@@ -2524,8 +3471,8 @@ class LivenessCheck {
     if (checkInterval != null) {
       _json["checkInterval"] = checkInterval;
     }
-    if (healthyThreshold != null) {
-      _json["healthyThreshold"] = healthyThreshold;
+    if (failureThreshold != null) {
+      _json["failureThreshold"] = failureThreshold;
     }
     if (host != null) {
       _json["host"] = host;
@@ -2536,11 +3483,11 @@ class LivenessCheck {
     if (path != null) {
       _json["path"] = path;
     }
+    if (successThreshold != null) {
+      _json["successThreshold"] = successThreshold;
+    }
     if (timeout != null) {
       _json["timeout"] = timeout;
-    }
-    if (unhealthyThreshold != null) {
-      _json["unhealthyThreshold"] = unhealthyThreshold;
     }
     return _json;
   }
@@ -2688,17 +3635,16 @@ class Network {
    * Google Cloud Platform sub-network where the virtual machines are created.
    * Specify the short name, not the resource path.If a subnetwork name is
    * specified, a network name will also be required unless it is for the
-   * default network.
-   * If the network the VM instance is being created in is a Legacy network,
-   * then the IP address is allocated from the IPv4Range.
-   * If the network the VM instance is being created in is an auto Subnet Mode
-   * Network, then only network name should be specified (not the
-   * subnetwork_name) and the IP address is created from the IPCidrRange of the
-   * subnetwork that exists in that zone for that network.
-   * If the network the VM instance is being created in is a custom Subnet Mode
-   * Network, then the subnetwork_name must be specified and the IP address is
-   * created from the IPCidrRange of the subnetwork.If specified, the subnetwork
-   * must exist in the same region as the Flex app.
+   * default network. If the network the VM instance is being created in is a
+   * Legacy network, then the IP address is allocated from the IPv4Range. If the
+   * network the VM instance is being created in is an auto Subnet Mode Network,
+   * then only network name should be specified (not the subnetwork_name) and
+   * the IP address is created from the IPCidrRange of the subnetwork that
+   * exists in that zone for that network. If the network the VM instance is
+   * being created in is a custom Subnet Mode Network, then the subnetwork_name
+   * must be specified and the IP address is created from the IPCidrRange of the
+   * subnetwork.If specified, the subnetwork must exist in the same region as
+   * the Flex app.
    */
   core.String subnetworkName;
 
@@ -3078,85 +4024,6 @@ class OperationMetadataV1 {
 }
 
 /** Metadata for the given google.longrunning.Operation. */
-class OperationMetadataV1Alpha {
-  /** Time that this operation completed.@OutputOnly */
-  core.String endTime;
-  /**
-   * Ephemeral message that may change every time the operation is polled.
-   * @OutputOnly
-   */
-  core.String ephemeralMessage;
-  /** Time that this operation was created.@OutputOnly */
-  core.String insertTime;
-  /**
-   * API method that initiated this operation. Example:
-   * google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly
-   */
-  core.String method;
-  /**
-   * Name of the resource that this operation is acting on. Example:
-   * apps/myapp/services/default.@OutputOnly
-   */
-  core.String target;
-  /** User who requested this operation.@OutputOnly */
-  core.String user;
-  /** Durable messages that persist on every operation poll. @OutputOnly */
-  core.List<core.String> warning;
-
-  OperationMetadataV1Alpha();
-
-  OperationMetadataV1Alpha.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("ephemeralMessage")) {
-      ephemeralMessage = _json["ephemeralMessage"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
-    if (_json.containsKey("method")) {
-      method = _json["method"];
-    }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
-    }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
-    }
-    if (_json.containsKey("warning")) {
-      warning = _json["warning"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (ephemeralMessage != null) {
-      _json["ephemeralMessage"] = ephemeralMessage;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
-    if (method != null) {
-      _json["method"] = method;
-    }
-    if (target != null) {
-      _json["target"] = target;
-    }
-    if (user != null) {
-      _json["user"] = user;
-    }
-    if (warning != null) {
-      _json["warning"] = warning;
-    }
-    return _json;
-  }
-}
-
-/** Metadata for the given google.longrunning.Operation. */
 class OperationMetadataV1Beta {
   /** Time that this operation completed.@OutputOnly */
   core.String endTime;
@@ -3302,10 +4169,8 @@ class OperationMetadataV1Beta5 {
 class ReadinessCheck {
   /** Interval between health checks. */
   core.String checkInterval;
-  /**
-   * Number of consecutive successful checks required before receiving traffic.
-   */
-  core.int healthyThreshold;
+  /** Number of consecutive failed checks required before removing traffic. */
+  core.int failureThreshold;
   /**
    * Host header to send when performing a HTTP Readiness check. Example:
    * "myapp.appspot.com"
@@ -3313,10 +4178,12 @@ class ReadinessCheck {
   core.String host;
   /** The request path. */
   core.String path;
+  /**
+   * Number of consecutive successful checks required before receiving traffic.
+   */
+  core.int successThreshold;
   /** Time before the check is considered failed. */
   core.String timeout;
-  /** Number of consecutive failed checks required before removing traffic. */
-  core.int unhealthyThreshold;
 
   ReadinessCheck();
 
@@ -3324,8 +4191,8 @@ class ReadinessCheck {
     if (_json.containsKey("checkInterval")) {
       checkInterval = _json["checkInterval"];
     }
-    if (_json.containsKey("healthyThreshold")) {
-      healthyThreshold = _json["healthyThreshold"];
+    if (_json.containsKey("failureThreshold")) {
+      failureThreshold = _json["failureThreshold"];
     }
     if (_json.containsKey("host")) {
       host = _json["host"];
@@ -3333,11 +4200,11 @@ class ReadinessCheck {
     if (_json.containsKey("path")) {
       path = _json["path"];
     }
+    if (_json.containsKey("successThreshold")) {
+      successThreshold = _json["successThreshold"];
+    }
     if (_json.containsKey("timeout")) {
       timeout = _json["timeout"];
-    }
-    if (_json.containsKey("unhealthyThreshold")) {
-      unhealthyThreshold = _json["unhealthyThreshold"];
     }
   }
 
@@ -3346,8 +4213,8 @@ class ReadinessCheck {
     if (checkInterval != null) {
       _json["checkInterval"] = checkInterval;
     }
-    if (healthyThreshold != null) {
-      _json["healthyThreshold"] = healthyThreshold;
+    if (failureThreshold != null) {
+      _json["failureThreshold"] = failureThreshold;
     }
     if (host != null) {
       _json["host"] = host;
@@ -3355,11 +4222,11 @@ class ReadinessCheck {
     if (path != null) {
       _json["path"] = path;
     }
+    if (successThreshold != null) {
+      _json["successThreshold"] = successThreshold;
+    }
     if (timeout != null) {
       _json["timeout"] = timeout;
-    }
-    if (unhealthyThreshold != null) {
-      _json["unhealthyThreshold"] = unhealthyThreshold;
     }
     return _json;
   }
@@ -3404,6 +4271,56 @@ class RequestUtilization {
     }
     if (targetRequestCountPerSecond != null) {
       _json["targetRequestCountPerSecond"] = targetRequestCountPerSecond;
+    }
+    return _json;
+  }
+}
+
+/** A DNS resource record. */
+class ResourceRecord {
+  /**
+   * Relative name of the object affected by this record. Only applicable for
+   * CNAME records. Example: 'www'.
+   */
+  core.String name;
+  /**
+   * Data for this record. Values vary by record type, as defined in RFC 1035
+   * (section 5) and RFC 1034 (section 3.6.1).
+   */
+  core.String rrdata;
+  /**
+   * Resource record type. Example: AAAA.
+   * Possible string values are:
+   * - "A" : A A.
+   * - "AAAA" : A AAAA.
+   * - "CNAME" : A CNAME.
+   */
+  core.String type;
+
+  ResourceRecord();
+
+  ResourceRecord.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("rrdata")) {
+      rrdata = _json["rrdata"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (rrdata != null) {
+      _json["rrdata"] = rrdata;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -3531,6 +4448,31 @@ class Service {
   }
 }
 
+/** SSL configuration for a DomainMapping resource. */
+class SslSettings {
+  /**
+   * ID of the AuthorizedCertificate resource configuring SSL for the
+   * application. Clearing this field will remove SSL support. Example: 12345.
+   */
+  core.String certificateId;
+
+  SslSettings();
+
+  SslSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("certificateId")) {
+      certificateId = _json["certificateId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (certificateId != null) {
+      _json["certificateId"] = certificateId;
+    }
+    return _json;
+  }
+}
+
 /**
  * Files served directly to the user for a given URL, such as images, CSS
  * stylesheets, or JavaScript source files. Static file handlers describe which
@@ -3632,38 +4574,36 @@ class StaticFilesHandler {
 /**
  * The Status type defines a logical error model that is suitable for different
  * programming environments, including REST APIs and RPC APIs. It is used by
- * gRPC (https://github.com/grpc). The error model is designed to be:
- * Simple to use and understand for most users
- * Flexible enough to meet unexpected needsOverviewThe Status message contains
- * three pieces of data: error code, error message, and error details. The error
- * code should be an enum value of google.rpc.Code, but it may accept additional
- * error codes if needed. The error message should be a developer-facing English
- * message that helps developers understand and resolve the error. If a
- * localized user-facing error message is needed, put the localized message in
- * the error details or localize it in the client. The optional error details
- * may contain arbitrary information about the error. There is a predefined set
- * of error detail types in the package google.rpc which can be used for common
- * error conditions.Language mappingThe Status message is the logical
- * representation of the error model, but it is not necessarily the actual wire
- * format. When the Status message is exposed in different client libraries and
- * different wire protocols, it can be mapped differently. For example, it will
- * likely be mapped to some exceptions in Java, but more likely mapped to some
- * error codes in C.Other usesThe error model and the Status message can be used
- * in a variety of environments, either with or without APIs, to provide a
- * consistent developer experience across different environments.Example uses of
- * this error model include:
- * Partial errors. If a service needs to return partial errors to the client, it
- * may embed the Status in the normal response to indicate the partial errors.
- * Workflow errors. A typical workflow has multiple steps. Each step may have a
- * Status message for error reporting purpose.
- * Batch operations. If a client uses batch request and batch response, the
- * Status message should be used directly inside batch response, one for each
- * error sub-response.
+ * gRPC (https://github.com/grpc). The error model is designed to be: Simple to
+ * use and understand for most users Flexible enough to meet unexpected
+ * needsOverviewThe Status message contains three pieces of data: error code,
+ * error message, and error details. The error code should be an enum value of
+ * google.rpc.Code, but it may accept additional error codes if needed. The
+ * error message should be a developer-facing English message that helps
+ * developers understand and resolve the error. If a localized user-facing error
+ * message is needed, put the localized message in the error details or localize
+ * it in the client. The optional error details may contain arbitrary
+ * information about the error. There is a predefined set of error detail types
+ * in the package google.rpc which can be used for common error
+ * conditions.Language mappingThe Status message is the logical representation
+ * of the error model, but it is not necessarily the actual wire format. When
+ * the Status message is exposed in different client libraries and different
+ * wire protocols, it can be mapped differently. For example, it will likely be
+ * mapped to some exceptions in Java, but more likely mapped to some error codes
+ * in C.Other usesThe error model and the Status message can be used in a
+ * variety of environments, either with or without APIs, to provide a consistent
+ * developer experience across different environments.Example uses of this error
+ * model include: Partial errors. If a service needs to return partial errors to
+ * the client, it may embed the Status in the normal response to indicate the
+ * partial errors. Workflow errors. A typical workflow has multiple steps. Each
+ * step may have a Status message for error reporting purpose. Batch operations.
+ * If a client uses batch request and batch response, the Status message should
+ * be used directly inside batch response, one for each error sub-response.
  * Asynchronous operations. If an API call embeds asynchronous operation results
  * in its response, the status of those operations should be represented
- * directly using the Status message.
- * Logging. If some API errors are stored in logs, the message Status could be
- * used directly after any stripping needed for security/privacy reasons.
+ * directly using the Status message. Logging. If some API errors are stored in
+ * logs, the message Status could be used directly after any stripping needed
+ * for security/privacy reasons.
  */
 class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -3732,11 +4672,10 @@ class TrafficSplit {
    * selection algorithm will be stable for either type until allocations are
    * changed.
    * Possible string values are:
-   * - "UNSPECIFIED" : Diversion method unspecified.
-   * - "COOKIE" : Diversion based on a specially named cookie, "GOOGAPPUID." The
-   * cookie must be set by the application itself or no diversion will occur.
-   * - "IP" : Diversion based on applying the modulus operation to a fingerprint
-   * of the IP address.
+   * - "UNSPECIFIED" : A UNSPECIFIED.
+   * - "COOKIE" : A COOKIE.
+   * - "IP" : A IP.
+   * - "RANDOM" : A RANDOM.
    */
   core.String shardBy;
 
@@ -3772,7 +4711,7 @@ class UrlDispatchRule {
   core.String domain;
   /**
    * Pathname within the host. Must start with a "/". A single "*" can be
-   * included at the end of the path. The sum of the lengths of the domain and
+   * included at the end of the path.The sum of the lengths of the domain and
    * path may not exceed 100 characters.
    */
   core.String path;
@@ -3823,38 +4762,30 @@ class UrlMap {
    * Action to take when users access resources that require authentication.
    * Defaults to redirect.
    * Possible string values are:
-   * - "AUTH_FAIL_ACTION_UNSPECIFIED" : Not specified. AUTH_FAIL_ACTION_REDIRECT
-   * is assumed.
-   * - "AUTH_FAIL_ACTION_REDIRECT" : Redirects user to "accounts.google.com".
-   * The user is redirected back to the application URL after signing in or
-   * creating an account.
-   * - "AUTH_FAIL_ACTION_UNAUTHORIZED" : Rejects request with a 401 HTTP status
-   * code and an error message.
+   * - "AUTH_FAIL_ACTION_UNSPECIFIED" : A AUTH_FAIL_ACTION_UNSPECIFIED.
+   * - "AUTH_FAIL_ACTION_REDIRECT" : A AUTH_FAIL_ACTION_REDIRECT.
+   * - "AUTH_FAIL_ACTION_UNAUTHORIZED" : A AUTH_FAIL_ACTION_UNAUTHORIZED.
    */
   core.String authFailAction;
   /**
    * Level of login required to access this resource.
    * Possible string values are:
-   * - "LOGIN_UNSPECIFIED" : Not specified. LOGIN_OPTIONAL is assumed.
-   * - "LOGIN_OPTIONAL" : Does not require that the user is signed in.
-   * - "LOGIN_ADMIN" : If the user is not signed in, the auth_fail_action is
-   * taken. In addition, if the user is not an administrator for the
-   * application, they are given an error message regardless of
-   * auth_fail_action. If the user is an administrator, the handler proceeds.
-   * - "LOGIN_REQUIRED" : If the user has signed in, the handler proceeds
-   * normally. Otherwise, the auth_fail_action is taken.
+   * - "LOGIN_UNSPECIFIED" : A LOGIN_UNSPECIFIED.
+   * - "LOGIN_OPTIONAL" : A LOGIN_OPTIONAL.
+   * - "LOGIN_ADMIN" : A LOGIN_ADMIN.
+   * - "LOGIN_REQUIRED" : A LOGIN_REQUIRED.
    */
   core.String login;
   /**
    * 30x code to use when performing redirects for the secure field. Defaults to
    * 302.
    * Possible string values are:
-   * - "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED" : Not specified. 302 is
-   * assumed.
-   * - "REDIRECT_HTTP_RESPONSE_CODE_301" : 301 Moved Permanently code.
-   * - "REDIRECT_HTTP_RESPONSE_CODE_302" : 302 Moved Temporarily code.
-   * - "REDIRECT_HTTP_RESPONSE_CODE_303" : 303 See Other code.
-   * - "REDIRECT_HTTP_RESPONSE_CODE_307" : 307 Temporary Redirect code.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED" : A
+   * REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_301" : A REDIRECT_HTTP_RESPONSE_CODE_301.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_302" : A REDIRECT_HTTP_RESPONSE_CODE_302.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_303" : A REDIRECT_HTTP_RESPONSE_CODE_303.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_307" : A REDIRECT_HTTP_RESPONSE_CODE_307.
    */
   core.String redirectHttpResponseCode;
   /** Executes a script to handle the request that matches this URL pattern. */
@@ -3862,18 +4793,11 @@ class UrlMap {
   /**
    * Security (HTTPS) enforcement for this URL.
    * Possible string values are:
-   * - "SECURE_UNSPECIFIED" : Not specified.
-   * - "SECURE_DEFAULT" : Both HTTP and HTTPS requests with URLs that match the
-   * handler succeed without redirects. The application can examine the request
-   * to determine which protocol was used, and respond accordingly.
-   * - "SECURE_NEVER" : Requests for a URL that match this handler that use
-   * HTTPS are automatically redirected to the HTTP equivalent URL.
-   * - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match the
-   * handler succeed without redirects. The application can examine the request
-   * to determine which protocol was used and respond accordingly.
-   * - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
-   * use HTTPS are automatically redirected to the HTTPS URL with the same path.
-   * Query parameters are reserved for the redirect.
+   * - "SECURE_UNSPECIFIED" : A SECURE_UNSPECIFIED.
+   * - "SECURE_DEFAULT" : A SECURE_DEFAULT.
+   * - "SECURE_NEVER" : A SECURE_NEVER.
+   * - "SECURE_OPTIONAL" : A SECURE_OPTIONAL.
+   * - "SECURE_ALWAYS" : A SECURE_ALWAYS.
    */
   core.String securityLevel;
   /** Returns the contents of a file, such as an image, as the response. */
@@ -4041,9 +4965,9 @@ class Version {
   core.List<core.String> inboundServices;
   /**
    * Instance class that is used to run this version. Valid values are:
-   * AutomaticScaling: F1, F2, F4, F4_1G
-   * ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for
-   * AutomaticScaling and B1 for ManualScaling or BasicScaling.
+   * AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2,
+   * B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling
+   * or BasicScaling.
    */
   core.String instanceClass;
   /**
@@ -4090,11 +5014,9 @@ class Version {
    * status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
    * invalid value. Defaults to SERVING.
    * Possible string values are:
-   * - "SERVING_STATUS_UNSPECIFIED" : Not specified.
-   * - "SERVING" : Currently serving. Instances are created according to the
-   * scaling settings of the version.
-   * - "STOPPED" : Disabled. No instances will be created and the scaling
-   * settings are ignored until the state of the version changes to SERVING.
+   * - "SERVING_STATUS_UNSPECIFIED" : A SERVING_STATUS_UNSPECIFIED.
+   * - "SERVING" : A SERVING.
+   * - "STOPPED" : A STOPPED.
    */
   core.String servingStatus;
   /** Whether multiple requests can be dispatched to this version at once. */
@@ -4354,8 +5276,7 @@ class ZipInfo {
   core.int filesCount;
   /**
    * URL of the zip file to deploy from. Must be a URL to a resource in Google
-   * Cloud Storage in the form
-   * 'http(s)://storage.googleapis.com/<bucket>/<object>'.
+   * Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
    */
   core.String sourceUrl;
 

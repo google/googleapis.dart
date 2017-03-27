@@ -3630,7 +3630,11 @@ class File {
    * user.
    */
   core.DateTime modifiedTime;
-  /** The name of the file. This is not necessarily unique within a folder. */
+  /**
+   * The name of the file. This is not necessarily unique within a folder. Note
+   * that for immutable items such as the top level folders of Team Drives, My
+   * Drive root folder, and Application Data folder the name is constant.
+   */
   core.String name;
   /**
    * The original filename of the uploaded content if available, or else the

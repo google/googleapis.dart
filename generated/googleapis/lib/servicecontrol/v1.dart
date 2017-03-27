@@ -49,6 +49,16 @@ class ServicesResourceApi {
    * permission on the specified service. For more information, see
    * [Google Cloud IAM](https://cloud.google.com/iam).
    *
+   * **NOTE:** the client code **must** fail-open if the server returns one
+   * of the following quota errors:
+   * -   `PROJECT_STATUS_UNAVAILABLE`
+   * -   `SERVICE_STATUS_UNAVAILABLE`
+   * -   `BILLING_STATUS_UNAVAILABLE`
+   * -   `QUOTA_SYSTEM_UNAVAILABLE`
+   *
+   * The server may inject above errors to prohibit any hard dependency
+   * on the quota system.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -213,6 +223,16 @@ class ServicesResourceApi {
    * This method requires the `servicemanagement.services.quota`
    * permission on the specified service. For more information, see
    * [Google Cloud IAM](https://cloud.google.com/iam).
+   *
+   * **NOTE:** the client code **must** fail-open if the server returns one
+   * of the following quota errors:
+   * -   `PROJECT_STATUS_UNAVAILABLE`
+   * -   `SERVICE_STATUS_UNAVAILABLE`
+   * -   `BILLING_STATUS_UNAVAILABLE`
+   * -   `QUOTA_SYSTEM_UNAVAILABLE`
+   *
+   * The server may inject above errors to prohibit any hard dependency
+   * on the quota system.
    *
    * [request] - The metadata request object.
    *
@@ -480,6 +500,10 @@ class AllocateQuotaResponse {
    * 3. For both rate quota and allocation quota, the quota limit reached
    * condition will be specified using the following boolean metric:
    *   "serviceruntime.googleapis.com/quota/exceeded"
+   *
+   * 4. For allocation quota, value for each quota limit associated with
+   * the metrics will be specified using the following gauge metric:
+   *   "serviceruntime.googleapis.com/quota/limit"
    */
   core.List<MetricValueSet> quotaMetrics;
   /** ID of the actual config used to process the request. */
@@ -1150,6 +1174,25 @@ class EndReconciliationResponse {
   core.String operationId;
   /**
    * Metric values as tracked by One Platform before the adjustment was made.
+   * The following metrics will be included:
+   *
+   * 1. Per quota metric total usage will be specified using the following gauge
+   * metric:
+   *   "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+   *
+   * 2. Value for each quota limit associated with the metrics will be specified
+   * using the following gauge metric:
+   *   "serviceruntime.googleapis.com/quota/limit"
+   *
+   * 3. Delta value of the usage after the reconciliation for limits associated
+   * with the metrics will be specified using the following metric:
+   *   "serviceruntime.googleapis.com/allocation/reconciliation_delta"
+   * The delta value is defined as:
+   *   new_usage_from_client - existing_value_in_spanner.
+   * This metric is not defined in serviceruntime.yaml or in Cloud Monarch.
+   * This metric is meant for callers' use only. Since this metric is not
+   * defined in the monitoring backend, reporting on this metric will result in
+   * an error.
    */
   core.List<MetricValueSet> quotaMetrics;
   /** Indicates the decision of the reconciliation end. */
@@ -1848,7 +1891,7 @@ class QuotaError {
    * - "SPATULA_HEADER_INVALID" : Consumer's spatula header is invalid.
    * - "LOAS_ROLE_INVALID" : The consumer's LOAS role is invalid.
    * - "NO_LOAS_PROJECT" : The consumer's LOAS role has no associated project.
-   * - "PROJECT_STATUS_UNVAILABLE" : The backend server for looking up project
+   * - "PROJECT_STATUS_UNAVAILABLE" : The backend server for looking up project
    * id/number is unavailable.
    * - "SERVICE_STATUS_UNAVAILABLE" : The backend server for checking service
    * status is unavailable.
@@ -2020,7 +2063,7 @@ class QuotaOperation {
    * For ReleaseQuota request, this mode is supported only for precise quota
    * limits. In this case, this operation releases quota for the amount
    * specified in the service configuration or specified using the quota
-   * metrics. If the release can make available quota negative, release error
+   * metrics. If the release can make used quota negative, release error
    * will be returned and no quota will be released.
    * - "BEST_EFFORT" : For AllocateQuota request, this mode is supported only
    * for imprecise
@@ -2031,9 +2074,9 @@ class QuotaOperation {
    * For ReleaseQuota request, this mode is supported for both precise quota
    * limits and imprecise quota limits. In this case, this operation releases
    * quota for the amount specified in the service configuration or specified
-   * using the quota metrics. If the release can make available quota
-   * negative, request does not fail but only the available quota will be
-   * released. After the ReleaseQuota request completes, the available quota
+   * using the quota metrics. If the release can make used quota
+   * negative, request does not fail but only the used quota will be
+   * released. After the ReleaseQuota request completes, the used quota
    * will be 0, and never goes to negative.
    * - "CHECK_ONLY" : For AllocateQuota request, only checks if there is enough
    * quota
@@ -2089,15 +2132,7 @@ class QuotaOperation {
   }
 }
 
-/**
- * Represents the properties needed for quota operations.
- *
- * Use the metric_value_sets field in Operation message to provide cost
- * override with metric_name in <service_name>/quota/<quota_group_name>/cost
- * format. Overrides for unmatched quota groups will be ignored.
- * Costs are expected to be >= 0. Cost 0 will cause no quota check,
- * but still traffic restrictions will be enforced.
- */
+/** Represents the properties needed for quota operations. */
 class QuotaProperties {
   /**
    * LimitType IDs that should be used for checking quota. Key in this map
@@ -2209,6 +2244,10 @@ class ReleaseQuotaResponse {
    * 2. For allocation quota, per quota metric total usage will be specified
    * using the following gauge metric:
    *   "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+   *
+   * 3. For allocation quota, value for each quota limit associated with
+   * the metrics will be specified using the following gauge metric:
+   *   "serviceruntime.googleapis.com/quota/limit"
    */
   core.List<MetricValueSet> quotaMetrics;
   /** Indicates the decision of the release. */
@@ -2502,7 +2541,15 @@ class StartReconciliationResponse {
   core.String operationId;
   /**
    * Metric values as tracked by One Platform before the start of
-   * reconciliation.
+   * reconciliation. The following metrics will be included:
+   *
+   * 1. Per quota metric total usage will be specified using the following gauge
+   * metric:
+   *   "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+   *
+   * 2. Value for each quota limit associated with the metrics will be specified
+   * using the following gauge metric:
+   *   "serviceruntime.googleapis.com/quota/limit"
    */
   core.List<MetricValueSet> quotaMetrics;
   /** Indicates the decision of the reconciliation start. */
