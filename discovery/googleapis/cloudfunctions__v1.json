@@ -1,13 +1,4 @@
 {
-    "auth": {
-        "oauth2": {
-            "scopes": {
-                "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
-                }
-            }
-        }
-    },
     "basePath": "",
     "baseUrl": "https://cloudfunctions.googleapis.com/",
     "batchPath": "batch",
@@ -83,13 +74,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -113,73 +104,10 @@
         }
     },
     "protocol": "rest",
-    "resources": {
-        "projects": {
-            "resources": {
-                "locations": {
-                    "methods": {
-                        "get": {
-                            "description": "Get information about a location.",
-                            "httpMethod": "GET",
-                            "id": "cloudfunctions.projects.locations.get",
-                            "parameterOrder": [
-                                "name"
-                            ],
-                            "parameters": {
-                                "name": {
-                                    "description": "Resource name for the location.",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/locations/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/{+name}",
-                            "response": {
-                                "$ref": "Location"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
-                            ]
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "revision": "20170321",
+    "resources": {},
+    "revision": "20170412",
     "rootUrl": "https://cloudfunctions.googleapis.com/",
     "schemas": {
-        "Location": {
-            "description": "A resource that represents Google Cloud Platform location.",
-            "id": "Location",
-            "properties": {
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-                    "type": "object"
-                },
-                "name": {
-                    "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
-                    "type": "string"
-                },
-                "locationId": {
-                    "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-                    "type": "string"
-                },
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "OperationMetadataV1Beta2": {
             "description": "Metadata describing an Operation",
             "id": "OperationMetadataV1Beta2",

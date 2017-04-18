@@ -98,11 +98,11 @@ class ProjectsLocationsResourceApi {
    * [name] - The resource that owns the locations collection, if applicable.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageSize] - The standard list page size.
+   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
-   *
-   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -112,7 +112,7 @@ class ProjectsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListLocationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,14 +123,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
@@ -302,13 +302,13 @@ class ProjectsLocationsKeyRingsResourceApi {
    * KeyRings, in the format `projects / * /locations / * `.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
    *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListKeyRingsResponse.next_page_token.
+   *
    * [pageSize] - Optional limit on the number of KeyRings to include in the
    * response.  Further KeyRings can subsequently be obtained by
    * including the ListKeyRingsResponse.next_page_token in a subsequent
    * request.  If unspecified, the server will pick an appropriate default.
-   *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListKeyRingsResponse.next_page_token.
    *
    * Completes with a [ListKeyRingsResponse].
    *
@@ -318,7 +318,7 @@ class ProjectsLocationsKeyRingsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListKeyRingsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListKeyRingsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -329,11 +329,11 @@ class ProjectsLocationsKeyRingsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
@@ -710,13 +710,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * `projects / * /locations / * /keyRings / * `.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
    *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListCryptoKeysResponse.next_page_token.
+   *
    * [pageSize] - Optional limit on the number of CryptoKeys to include in the
    * response.  Further CryptoKeys can subsequently be obtained by
    * including the ListCryptoKeysResponse.next_page_token in a subsequent
    * request.  If unspecified, the server will pick an appropriate default.
-   *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListCryptoKeysResponse.next_page_token.
    *
    * Completes with a [ListCryptoKeysResponse].
    *
@@ -726,7 +726,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -737,11 +737,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeys';
@@ -1126,14 +1126,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
    *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListCryptoKeyVersionsResponse.next_page_token.
-   *
    * [pageSize] - Optional limit on the number of CryptoKeyVersions to
    * include in the response. Further CryptoKeyVersions can
    * subsequently be obtained by including the
    * ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
    * If unspecified, the server will pick an appropriate default.
+   *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListCryptoKeyVersionsResponse.next_page_token.
    *
    * Completes with a [ListCryptoKeyVersionsResponse].
    *
@@ -1143,7 +1143,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCryptoKeyVersionsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListCryptoKeyVersionsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1154,11 +1154,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeyVersions';
@@ -1299,42 +1299,45 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
  * the union of the two AuditConfigs is used for that service: the log_types
  * specified in each AuditConfig are enabled, and the exempted_members in each
  * AuditConfig are exempted.
+ *
  * Example Policy with multiple AuditConfigs:
- * {
- *   "audit_configs": [
+ *
  *     {
- *       "service": "allServices"
- *       "audit_log_configs": [
+ *       "audit_configs": [
  *         {
- *           "log_type": "DATA_READ",
- *           "exempted_members": [
- *             "user:foo@gmail.com"
+ *           "service": "allServices"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *               "exempted_members": [
+ *                 "user:foo@gmail.com"
+ *               ]
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *             },
+ *             {
+ *               "log_type": "ADMIN_READ",
+ *             }
  *           ]
  *         },
  *         {
- *           "log_type": "DATA_WRITE",
- *         },
- *         {
- *           "log_type": "ADMIN_READ",
- *         }
- *       ]
- *     },
- *     {
- *       "service": "fooservice@googleapis.com"
- *       "audit_log_configs": [
- *         {
- *           "log_type": "DATA_READ",
- *         },
- *         {
- *           "log_type": "DATA_WRITE",
- *           "exempted_members": [
- *             "user:bar@gmail.com"
+ *           "service": "fooservice.googleapis.com"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *               "exempted_members": [
+ *                 "user:bar@gmail.com"
+ *               ]
+ *             }
  *           ]
  *         }
  *       ]
  *     }
- *   ]
- * }
+ *
  * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
  * logging. It also exempts foo@gmail.com from DATA_READ logging, and
  * bar@gmail.com from DATA_WRITE logging.

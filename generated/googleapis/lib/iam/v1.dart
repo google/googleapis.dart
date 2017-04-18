@@ -1242,12 +1242,25 @@ class QueryGrantableRolesRequest {
    * `//cloudresourcemanager.googleapis.com/projects/my-project`.
    */
   core.String fullResourceName;
+  /** Optional limit on the number of roles to include in the response. */
+  core.int pageSize;
+  /**
+   * Optional pagination token returned in an earlier
+   * QueryGrantableRolesResponse.
+   */
+  core.String pageToken;
 
   QueryGrantableRolesRequest();
 
   QueryGrantableRolesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("fullResourceName")) {
       fullResourceName = _json["fullResourceName"];
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("pageToken")) {
+      pageToken = _json["pageToken"];
     }
   }
 
@@ -1256,18 +1269,32 @@ class QueryGrantableRolesRequest {
     if (fullResourceName != null) {
       _json["fullResourceName"] = fullResourceName;
     }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (pageToken != null) {
+      _json["pageToken"] = pageToken;
+    }
     return _json;
   }
 }
 
 /** The grantable role query response. */
 class QueryGrantableRolesResponse {
+  /**
+   * To retrieve the next page of results, set
+   * `QueryGrantableRolesRequest.page_token` to this value.
+   */
+  core.String nextPageToken;
   /** The list of matching roles. */
   core.List<Role> roles;
 
   QueryGrantableRolesResponse();
 
   QueryGrantableRolesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
     if (_json.containsKey("roles")) {
       roles = _json["roles"].map((value) => new Role.fromJson(value)).toList();
     }
@@ -1275,6 +1302,9 @@ class QueryGrantableRolesResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
     if (roles != null) {
       _json["roles"] = roles.map((value) => (value).toJson()).toList();
     }

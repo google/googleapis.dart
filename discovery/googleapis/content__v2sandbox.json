@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/bAt0gvJM7Cww8b8XL2Qp26UvICM\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/GuL1MzGrpXtMZGxY6n9_TdfBzPA\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -140,7 +140,7 @@
                     ]
                 },
                 "cancel": {
-                    "description": "Cancels all line items in an order. This method can only be called for non-multi-client accounts.",
+                    "description": "Cancels all line items in an order, making a full refund. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.cancel",
                     "parameterOrder": [
@@ -174,7 +174,7 @@
                     ]
                 },
                 "cancellineitem": {
-                    "description": "Cancels a line item. This method can only be called for non-multi-client accounts.",
+                    "description": "Cancels a line item, making a full refund. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.orders.cancellineitem",
                     "parameterOrder": [
@@ -622,7 +622,7 @@
             }
         }
     },
-    "revision": "20170303",
+    "revision": "20170406",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Error": {

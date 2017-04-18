@@ -14,7 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client appengine/v1';
 
-/** Provisions and manages App Engine applications. */
+/**
+ * The App Engine Admin API enables developers to provision and manage their App
+ * Engine applications.
+ */
 class AppengineApi {
   /** View and manage your applications deployed on Google App Engine */
   static const AppengineAdminScope = "https://www.googleapis.com/auth/appengine.admin";
@@ -47,11 +50,12 @@ class AppsResourceApi {
 
   /**
    * Creates an App Engine application for a Google Cloud Platform project.
-   * Required fields: id - The ID of the target Cloud Platform project. location
-   * - The region (https://cloud.google.com/appengine/docs/locations) where you
-   * want the App Engine application located.For more information about App
-   * Engine applications, see Managing Projects, Applications, and Billing
-   * (https://cloud.google.com/appengine/docs/python/console/).
+   * Required fields:
+   * id - The ID of the target Cloud Platform project.
+   * location - The region (https://cloud.google.com/appengine/docs/locations)
+   * where you want the App Engine application located.For more information
+   * about App Engine applications, see Managing Projects, Applications, and
+   * Billing (https://cloud.google.com/appengine/docs/python/console/).
    *
    * [request] - The metadata request object.
    *
@@ -131,9 +135,10 @@ class AppsResourceApi {
 
   /**
    * Updates the specified Application resource. You can update the following
-   * fields: auth_domain - Google authentication domain for controlling user
-   * access to the application. default_cookie_expiration - Cookie expiration
-   * policy for the application.
+   * fields:
+   * auth_domain - Google authentication domain for controlling user access to
+   * the application.
+   * default_cookie_expiration - Cookie expiration policy for the application.
    *
    * [request] - The metadata request object.
    *
@@ -291,11 +296,11 @@ class AppsLocationsResourceApi {
    * [appsId] - Part of `name`. The resource that owns the locations collection,
    * if applicable.
    *
-   * [filter] - The standard list filter.
+   * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
    *
-   * [pageToken] - The standard list page token.
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -305,7 +310,7 @@ class AppsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String appsId, {core.String filter, core.int pageSize, core.String pageToken}) {
+  async.Future<ListLocationsResponse> list(core.String appsId, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,14 +321,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
@@ -405,9 +410,9 @@ class AppsOperationsResourceApi {
    *
    * [filter] - The standard list filter.
    *
-   * [pageSize] - The standard list page size.
-   *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -417,7 +422,7 @@ class AppsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String appsId, {core.String filter, core.int pageSize, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String appsId, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -431,11 +436,11 @@ class AppsOperationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
@@ -559,9 +564,9 @@ class AppsServicesResourceApi {
    * [appsId] - Part of `parent`. Name of the parent Application resource.
    * Example: apps/myapp.
    *
-   * [pageSize] - Maximum results to return per page.
-   *
    * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * [pageSize] - Maximum results to return per page.
    *
    * Completes with a [ListServicesResponse].
    *
@@ -571,7 +576,7 @@ class AppsServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListServicesResponse> list(core.String appsId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -582,11 +587,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
@@ -613,8 +618,6 @@ class AppsServicesResourceApi {
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
-   * [updateMask] - Standard field mask for the set of fields to be updated.
-   *
    * [migrateTraffic] - Set to true to gradually shift traffic to one or more
    * versions that you specify. By default, traffic is shifted immediately. For
    * gradual traffic migration, the target versions must be located within
@@ -629,6 +632,8 @@ class AppsServicesResourceApi {
    * Splitting Traffic
    * (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
    *
+   * [updateMask] - Standard field mask for the set of fields to be updated.
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -637,7 +642,7 @@ class AppsServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Service request, core.String appsId, core.String servicesId, {core.String updateMask, core.bool migrateTraffic}) {
+  async.Future<Operation> patch(Service request, core.String appsId, core.String servicesId, {core.bool migrateTraffic, core.String updateMask}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -654,11 +659,11 @@ class AppsServicesResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (migrateTraffic != null) {
       _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId');
@@ -853,14 +858,14 @@ class AppsServicesVersionsResourceApi {
    *
    * [servicesId] - Part of `parent`. See documentation of `appsId`.
    *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * [pageSize] - Maximum results to return per page.
+   *
    * [view] - Controls the set of fields returned in the List response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
-   *
-   * [pageSize] - Maximum results to return per page.
-   *
-   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListVersionsResponse].
    *
@@ -870,7 +875,7 @@ class AppsServicesVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.String view, core.int pageSize, core.String pageToken}) {
+  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.String pageToken, core.int pageSize, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -884,14 +889,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions';
@@ -909,18 +914,21 @@ class AppsServicesVersionsResourceApi {
   /**
    * Updates the specified Version resource. You can specify the following
    * fields depending on the App Engine environment and type of scaling that the
-   * version resource uses: serving_status
+   * version resource uses:
+   * serving_status
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status):
-   * For Version resources that use basic scaling, manual scaling, or run in the
-   * App Engine flexible environment. instance_class
+   * For Version resources that use basic scaling, manual scaling, or run in
+   * the App Engine flexible environment.
+   * instance_class
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class):
    * For Version resources that run in the App Engine standard environment.
    * automatic_scaling.min_idle_instances
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
-   * For Version resources that use automatic scaling and run in the App Engine
-   * standard environment. automatic_scaling.max_idle_instances
+   * For Version resources that use automatic scaling and run in the App  Engine
+   * standard environment.
+   * automatic_scaling.max_idle_instances
    * (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):
-   * For Version resources that use automatic scaling and run in the App Engine
+   * For Version resources that use automatic scaling and run in the App  Engine
    * standard environment.
    *
    * [request] - The metadata request object.
@@ -1178,9 +1186,9 @@ class AppsServicesVersionsInstancesResourceApi {
    *
    * [versionsId] - Part of `parent`. See documentation of `appsId`.
    *
-   * [pageSize] - Maximum results to return per page.
-   *
    * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * [pageSize] - Maximum results to return per page.
    *
    * Completes with a [ListInstancesResponse].
    *
@@ -1190,7 +1198,7 @@ class AppsServicesVersionsInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1207,11 +1215,11 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances';
@@ -1240,18 +1248,26 @@ class ApiConfigHandler {
    * Action to take when users access resources that require authentication.
    * Defaults to redirect.
    * Possible string values are:
-   * - "AUTH_FAIL_ACTION_UNSPECIFIED" : A AUTH_FAIL_ACTION_UNSPECIFIED.
-   * - "AUTH_FAIL_ACTION_REDIRECT" : A AUTH_FAIL_ACTION_REDIRECT.
-   * - "AUTH_FAIL_ACTION_UNAUTHORIZED" : A AUTH_FAIL_ACTION_UNAUTHORIZED.
+   * - "AUTH_FAIL_ACTION_UNSPECIFIED" : Not specified. AUTH_FAIL_ACTION_REDIRECT
+   * is assumed.
+   * - "AUTH_FAIL_ACTION_REDIRECT" : Redirects user to "accounts.google.com".
+   * The user is redirected back to the application URL after signing in or
+   * creating an account.
+   * - "AUTH_FAIL_ACTION_UNAUTHORIZED" : Rejects request with a 401 HTTP status
+   * code and an error message.
    */
   core.String authFailAction;
   /**
    * Level of login required to access this resource. Defaults to optional.
    * Possible string values are:
-   * - "LOGIN_UNSPECIFIED" : A LOGIN_UNSPECIFIED.
-   * - "LOGIN_OPTIONAL" : A LOGIN_OPTIONAL.
-   * - "LOGIN_ADMIN" : A LOGIN_ADMIN.
-   * - "LOGIN_REQUIRED" : A LOGIN_REQUIRED.
+   * - "LOGIN_UNSPECIFIED" : Not specified. LOGIN_OPTIONAL is assumed.
+   * - "LOGIN_OPTIONAL" : Does not require that the user is signed in.
+   * - "LOGIN_ADMIN" : If the user is not signed in, the auth_fail_action is
+   * taken. In addition, if the user is not an administrator for the
+   * application, they are given an error message regardless of
+   * auth_fail_action. If the user is an administrator, the handler proceeds.
+   * - "LOGIN_REQUIRED" : If the user has signed in, the handler proceeds
+   * normally. Otherwise, the auth_fail_action is taken.
    */
   core.String login;
   /** Path to the script from the application root directory. */
@@ -1259,11 +1275,18 @@ class ApiConfigHandler {
   /**
    * Security (HTTPS) enforcement for this URL.
    * Possible string values are:
-   * - "SECURE_UNSPECIFIED" : A SECURE_UNSPECIFIED.
-   * - "SECURE_DEFAULT" : A SECURE_DEFAULT.
-   * - "SECURE_NEVER" : A SECURE_NEVER.
-   * - "SECURE_OPTIONAL" : A SECURE_OPTIONAL.
-   * - "SECURE_ALWAYS" : A SECURE_ALWAYS.
+   * - "SECURE_UNSPECIFIED" : Not specified.
+   * - "SECURE_DEFAULT" : Both HTTP and HTTPS requests with URLs that match the
+   * handler succeed without redirects. The application can examine the request
+   * to determine which protocol was used, and respond accordingly.
+   * - "SECURE_NEVER" : Requests for a URL that match this handler that use
+   * HTTPS are automatically redirected to the HTTP equivalent URL.
+   * - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match the
+   * handler succeed without redirects. The application can examine the request
+   * to determine which protocol was used and respond accordingly.
+   * - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
+   * use HTTPS are automatically redirected to the HTTPS URL with the same path.
+   * Query parameters are reserved for the redirect.
    */
   core.String securityLevel;
   /** URL to serve the endpoint at. */
@@ -1394,10 +1417,10 @@ class Application {
   /**
    * Serving status of this application.
    * Possible string values are:
-   * - "UNSPECIFIED" : A UNSPECIFIED.
-   * - "SERVING" : A SERVING.
-   * - "USER_DISABLED" : A USER_DISABLED.
-   * - "SYSTEM_DISABLED" : A SYSTEM_DISABLED.
+   * - "UNSPECIFIED" : Serving status is unspecified.
+   * - "SERVING" : Application is serving.
+   * - "USER_DISABLED" : Application has been disabled by the user.
+   * - "SYSTEM_DISABLED" : Application has been disabled by the system.
    */
   core.String servingStatus;
 
@@ -1723,8 +1746,9 @@ class CpuUtilization {
 /** Request message for Instances.DebugInstance. */
 class DebugInstanceRequest {
   /**
-   * Public SSH key to add to the instance. Examples: [USERNAME]:ssh-rsa
-   * [KEY_VALUE] [USERNAME] [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh
+   * Public SSH key to add to the instance. Examples:
+   * [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]
+   * [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh
    * {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}For more information,
    * see Adding and Removing SSH Keys
    * (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
@@ -1886,11 +1910,12 @@ class ErrorHandler {
   /**
    * Error condition this handler applies to.
    * Possible string values are:
-   * - "ERROR_CODE_UNSPECIFIED" : A ERROR_CODE_UNSPECIFIED.
-   * - "ERROR_CODE_DEFAULT" : A ERROR_CODE_DEFAULT.
-   * - "ERROR_CODE_OVER_QUOTA" : A ERROR_CODE_OVER_QUOTA.
-   * - "ERROR_CODE_DOS_API_DENIAL" : A ERROR_CODE_DOS_API_DENIAL.
-   * - "ERROR_CODE_TIMEOUT" : A ERROR_CODE_TIMEOUT.
+   * - "ERROR_CODE_UNSPECIFIED" : Not specified. ERROR_CODE_DEFAULT is assumed.
+   * - "ERROR_CODE_DEFAULT" : All other error types.
+   * - "ERROR_CODE_OVER_QUOTA" : Application has exceeded a resource quota.
+   * - "ERROR_CODE_DOS_API_DENIAL" : Client blocked by the application's Denial
+   * of Service protection configuration.
+   * - "ERROR_CODE_TIMEOUT" : Deadline reached before the application responds.
    */
   core.String errorCode;
   /** MIME type of file. Defaults to text/html. */
@@ -1940,7 +1965,8 @@ class FileInfo {
   core.String sha1Sum;
   /**
    * URL source to use to fetch this file. Must be a URL to a resource in Google
-   * Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+   * Cloud Storage in the form
+   * 'http(s)://storage.googleapis.com/<bucket>/<object>'.
    */
   core.String sourceUrl;
 
@@ -2124,9 +2150,9 @@ class Instance {
   /**
    * Availability of the instance.@OutputOnly
    * Possible string values are:
-   * - "UNSPECIFIED" : A UNSPECIFIED.
-   * - "RESIDENT" : A RESIDENT.
-   * - "DYNAMIC" : A DYNAMIC.
+   * - "UNSPECIFIED"
+   * - "RESIDENT"
+   * - "DYNAMIC"
    */
   core.String availability;
   /** Average latency (ms) over the last minute.@OutputOnly */
@@ -2693,16 +2719,17 @@ class Network {
    * Google Cloud Platform sub-network where the virtual machines are created.
    * Specify the short name, not the resource path.If a subnetwork name is
    * specified, a network name will also be required unless it is for the
-   * default network. If the network the VM instance is being created in is a
-   * Legacy network, then the IP address is allocated from the IPv4Range. If the
-   * network the VM instance is being created in is an auto Subnet Mode Network,
-   * then only network name should be specified (not the subnetwork_name) and
-   * the IP address is created from the IPCidrRange of the subnetwork that
-   * exists in that zone for that network. If the network the VM instance is
-   * being created in is a custom Subnet Mode Network, then the subnetwork_name
-   * must be specified and the IP address is created from the IPCidrRange of the
-   * subnetwork.If specified, the subnetwork must exist in the same region as
-   * the Flex app.
+   * default network.
+   * If the network the VM instance is being created in is a Legacy network,
+   * then the IP address is allocated from the IPv4Range.
+   * If the network the VM instance is being created in is an auto Subnet Mode
+   * Network, then only network name should be specified (not the
+   * subnetwork_name) and the IP address is created from the IPCidrRange of the
+   * subnetwork that exists in that zone for that network.
+   * If the network the VM instance is being created in is a custom Subnet Mode
+   * Network, then the subnetwork_name must be specified and the IP address is
+   * created from the IPCidrRange of the subnetwork.If specified, the subnetwork
+   * must exist in the same region as the Flex app.
    */
   core.String subnetworkName;
 
@@ -3557,36 +3584,38 @@ class StaticFilesHandler {
 /**
  * The Status type defines a logical error model that is suitable for different
  * programming environments, including REST APIs and RPC APIs. It is used by
- * gRPC (https://github.com/grpc). The error model is designed to be: Simple to
- * use and understand for most users Flexible enough to meet unexpected
- * needsOverviewThe Status message contains three pieces of data: error code,
- * error message, and error details. The error code should be an enum value of
- * google.rpc.Code, but it may accept additional error codes if needed. The
- * error message should be a developer-facing English message that helps
- * developers understand and resolve the error. If a localized user-facing error
- * message is needed, put the localized message in the error details or localize
- * it in the client. The optional error details may contain arbitrary
- * information about the error. There is a predefined set of error detail types
- * in the package google.rpc which can be used for common error
- * conditions.Language mappingThe Status message is the logical representation
- * of the error model, but it is not necessarily the actual wire format. When
- * the Status message is exposed in different client libraries and different
- * wire protocols, it can be mapped differently. For example, it will likely be
- * mapped to some exceptions in Java, but more likely mapped to some error codes
- * in C.Other usesThe error model and the Status message can be used in a
- * variety of environments, either with or without APIs, to provide a consistent
- * developer experience across different environments.Example uses of this error
- * model include: Partial errors. If a service needs to return partial errors to
- * the client, it may embed the Status in the normal response to indicate the
- * partial errors. Workflow errors. A typical workflow has multiple steps. Each
- * step may have a Status message for error reporting purpose. Batch operations.
- * If a client uses batch request and batch response, the Status message should
- * be used directly inside batch response, one for each error sub-response.
+ * gRPC (https://github.com/grpc). The error model is designed to be:
+ * Simple to use and understand for most users
+ * Flexible enough to meet unexpected needsOverviewThe Status message contains
+ * three pieces of data: error code, error message, and error details. The error
+ * code should be an enum value of google.rpc.Code, but it may accept additional
+ * error codes if needed. The error message should be a developer-facing English
+ * message that helps developers understand and resolve the error. If a
+ * localized user-facing error message is needed, put the localized message in
+ * the error details or localize it in the client. The optional error details
+ * may contain arbitrary information about the error. There is a predefined set
+ * of error detail types in the package google.rpc which can be used for common
+ * error conditions.Language mappingThe Status message is the logical
+ * representation of the error model, but it is not necessarily the actual wire
+ * format. When the Status message is exposed in different client libraries and
+ * different wire protocols, it can be mapped differently. For example, it will
+ * likely be mapped to some exceptions in Java, but more likely mapped to some
+ * error codes in C.Other usesThe error model and the Status message can be used
+ * in a variety of environments, either with or without APIs, to provide a
+ * consistent developer experience across different environments.Example uses of
+ * this error model include:
+ * Partial errors. If a service needs to return partial errors to the client, it
+ * may embed the Status in the normal response to indicate the partial errors.
+ * Workflow errors. A typical workflow has multiple steps. Each step may have a
+ * Status message for error reporting purpose.
+ * Batch operations. If a client uses batch request and batch response, the
+ * Status message should be used directly inside batch response, one for each
+ * error sub-response.
  * Asynchronous operations. If an API call embeds asynchronous operation results
  * in its response, the status of those operations should be represented
- * directly using the Status message. Logging. If some API errors are stored in
- * logs, the message Status could be used directly after any stripping needed
- * for security/privacy reasons.
+ * directly using the Status message.
+ * Logging. If some API errors are stored in logs, the message Status could be
+ * used directly after any stripping needed for security/privacy reasons.
  */
 class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -3655,10 +3684,14 @@ class TrafficSplit {
    * selection algorithm will be stable for either type until allocations are
    * changed.
    * Possible string values are:
-   * - "UNSPECIFIED" : A UNSPECIFIED.
-   * - "COOKIE" : A COOKIE.
-   * - "IP" : A IP.
-   * - "RANDOM" : A RANDOM.
+   * - "UNSPECIFIED" : Diversion method unspecified.
+   * - "COOKIE" : Diversion based on a specially named cookie, "GOOGAPPUID." The
+   * cookie must be set by the application itself or no diversion will occur.
+   * - "IP" : Diversion based on applying the modulus operation to a fingerprint
+   * of the IP address.
+   * - "RANDOM" : Diversion based on weighted random assignment. An incoming
+   * request is randomly routed to a version in the traffic split, with
+   * probability proportional to the version's traffic share.
    */
   core.String shardBy;
 
@@ -3745,30 +3778,38 @@ class UrlMap {
    * Action to take when users access resources that require authentication.
    * Defaults to redirect.
    * Possible string values are:
-   * - "AUTH_FAIL_ACTION_UNSPECIFIED" : A AUTH_FAIL_ACTION_UNSPECIFIED.
-   * - "AUTH_FAIL_ACTION_REDIRECT" : A AUTH_FAIL_ACTION_REDIRECT.
-   * - "AUTH_FAIL_ACTION_UNAUTHORIZED" : A AUTH_FAIL_ACTION_UNAUTHORIZED.
+   * - "AUTH_FAIL_ACTION_UNSPECIFIED" : Not specified. AUTH_FAIL_ACTION_REDIRECT
+   * is assumed.
+   * - "AUTH_FAIL_ACTION_REDIRECT" : Redirects user to "accounts.google.com".
+   * The user is redirected back to the application URL after signing in or
+   * creating an account.
+   * - "AUTH_FAIL_ACTION_UNAUTHORIZED" : Rejects request with a 401 HTTP status
+   * code and an error message.
    */
   core.String authFailAction;
   /**
    * Level of login required to access this resource.
    * Possible string values are:
-   * - "LOGIN_UNSPECIFIED" : A LOGIN_UNSPECIFIED.
-   * - "LOGIN_OPTIONAL" : A LOGIN_OPTIONAL.
-   * - "LOGIN_ADMIN" : A LOGIN_ADMIN.
-   * - "LOGIN_REQUIRED" : A LOGIN_REQUIRED.
+   * - "LOGIN_UNSPECIFIED" : Not specified. LOGIN_OPTIONAL is assumed.
+   * - "LOGIN_OPTIONAL" : Does not require that the user is signed in.
+   * - "LOGIN_ADMIN" : If the user is not signed in, the auth_fail_action is
+   * taken. In addition, if the user is not an administrator for the
+   * application, they are given an error message regardless of
+   * auth_fail_action. If the user is an administrator, the handler proceeds.
+   * - "LOGIN_REQUIRED" : If the user has signed in, the handler proceeds
+   * normally. Otherwise, the auth_fail_action is taken.
    */
   core.String login;
   /**
    * 30x code to use when performing redirects for the secure field. Defaults to
    * 302.
    * Possible string values are:
-   * - "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED" : A
-   * REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED.
-   * - "REDIRECT_HTTP_RESPONSE_CODE_301" : A REDIRECT_HTTP_RESPONSE_CODE_301.
-   * - "REDIRECT_HTTP_RESPONSE_CODE_302" : A REDIRECT_HTTP_RESPONSE_CODE_302.
-   * - "REDIRECT_HTTP_RESPONSE_CODE_303" : A REDIRECT_HTTP_RESPONSE_CODE_303.
-   * - "REDIRECT_HTTP_RESPONSE_CODE_307" : A REDIRECT_HTTP_RESPONSE_CODE_307.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED" : Not specified. 302 is
+   * assumed.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_301" : 301 Moved Permanently code.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_302" : 302 Moved Temporarily code.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_303" : 303 See Other code.
+   * - "REDIRECT_HTTP_RESPONSE_CODE_307" : 307 Temporary Redirect code.
    */
   core.String redirectHttpResponseCode;
   /** Executes a script to handle the request that matches this URL pattern. */
@@ -3776,11 +3817,18 @@ class UrlMap {
   /**
    * Security (HTTPS) enforcement for this URL.
    * Possible string values are:
-   * - "SECURE_UNSPECIFIED" : A SECURE_UNSPECIFIED.
-   * - "SECURE_DEFAULT" : A SECURE_DEFAULT.
-   * - "SECURE_NEVER" : A SECURE_NEVER.
-   * - "SECURE_OPTIONAL" : A SECURE_OPTIONAL.
-   * - "SECURE_ALWAYS" : A SECURE_ALWAYS.
+   * - "SECURE_UNSPECIFIED" : Not specified.
+   * - "SECURE_DEFAULT" : Both HTTP and HTTPS requests with URLs that match the
+   * handler succeed without redirects. The application can examine the request
+   * to determine which protocol was used, and respond accordingly.
+   * - "SECURE_NEVER" : Requests for a URL that match this handler that use
+   * HTTPS are automatically redirected to the HTTP equivalent URL.
+   * - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match the
+   * handler succeed without redirects. The application can examine the request
+   * to determine which protocol was used and respond accordingly.
+   * - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
+   * use HTTPS are automatically redirected to the HTTPS URL with the same path.
+   * Query parameters are reserved for the redirect.
    */
   core.String securityLevel;
   /** Returns the contents of a file, such as an image, as the response. */
@@ -3948,9 +3996,9 @@ class Version {
   core.List<core.String> inboundServices;
   /**
    * Instance class that is used to run this version. Valid values are:
-   * AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2,
-   * B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling
-   * or BasicScaling.
+   * AutomaticScaling: F1, F2, F4, F4_1G
+   * ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for
+   * AutomaticScaling and B1 for ManualScaling or BasicScaling.
    */
   core.String instanceClass;
   /**
@@ -3997,9 +4045,11 @@ class Version {
    * status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
    * invalid value. Defaults to SERVING.
    * Possible string values are:
-   * - "SERVING_STATUS_UNSPECIFIED" : A SERVING_STATUS_UNSPECIFIED.
-   * - "SERVING" : A SERVING.
-   * - "STOPPED" : A STOPPED.
+   * - "SERVING_STATUS_UNSPECIFIED" : Not specified.
+   * - "SERVING" : Currently serving. Instances are created according to the
+   * scaling settings of the version.
+   * - "STOPPED" : Disabled. No instances will be created and the scaling
+   * settings are ignored until the state of the version changes to SERVING.
    */
   core.String servingStatus;
   /** Whether multiple requests can be dispatched to this version at once. */
@@ -4259,7 +4309,8 @@ class ZipInfo {
   core.int filesCount;
   /**
    * URL of the zip file to deploy from. Must be a URL to a resource in Google
-   * Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+   * Cloud Storage in the form
+   * 'http(s)://storage.googleapis.com/<bucket>/<object>'.
    */
   core.String sourceUrl;
 

@@ -155,7 +155,7 @@ Official API documentation: https://developers.google.com/android-publisher
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1
 
-Provisions and manages App Engine applications.
+The App Engine Admin API enables developers to provision and manage their App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
@@ -264,7 +264,7 @@ Creates and conducts surveys, lists the surveys that an authenticated user owns,
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Container Engine API - container v1
 
-Builds and manages clusters that run container-based applications, powered by open source Kubernetes technology.
+The Google Container Engine API is used for building and managing container based applications, powered by the open source Kubernetes technology.
 
 Official API documentation: https://cloud.google.com/container-engine/
 
@@ -660,7 +660,7 @@ Lets you manage your tasks and task lists.
 
 Official API documentation: https://developers.google.com/google-apps/tasks/firstapp
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Tracing API - tracing v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Tracing API - tracing v2
 
 Send and retrieve trace data from Google Stackdriver Trace.
 

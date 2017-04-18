@@ -288,19 +288,19 @@ class ProjectsJobsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - Optional. Specifies the subset of jobs to retrieve.
-   *
-   * [pageToken] - Optional. A page token to request the next page of results.
-   *
-   * You get the token from the `next_page_token` field of the response from
-   * the previous call.
-   *
    * [pageSize] - Optional. The number of jobs to retrieve per "page" of
    * results. If there
    * are more remaining results than this number, the response message will
    * contain a valid value in the `next_page_token` field.
    *
    * The default value is 20, and the maximum page size is 100.
+   *
+   * [filter] - Optional. Specifies the subset of jobs to retrieve.
+   *
+   * [pageToken] - Optional. A page token to request the next page of results.
+   *
+   * You get the token from the `next_page_token` field of the response from
+   * the previous call.
    *
    * Completes with a [GoogleCloudMlV1ListJobsResponse].
    *
@@ -310,7 +310,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,14 +321,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -508,17 +508,17 @@ class ProjectsModelsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - Optional. A page token to request the next page of results.
-   *
-   * You get the token from the `next_page_token` field of the response from
-   * the previous call.
-   *
    * [pageSize] - Optional. The number of models to retrieve per "page" of
    * results. If there
    * are more remaining results than this number, the response message will
    * contain a valid value in the `next_page_token` field.
    *
    * The default value is 20, and the maximum page size is 100.
+   *
+   * [pageToken] - Optional. A page token to request the next page of results.
+   *
+   * You get the token from the `next_page_token` field of the response from
+   * the previous call.
    *
    * Completes with a [GoogleCloudMlV1ListModelsResponse].
    *
@@ -528,7 +528,7 @@ class ProjectsModelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -539,11 +539,11 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
@@ -733,17 +733,17 @@ class ProjectsModelsVersionsResourceApi {
    * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+$".
    *
-   * [pageToken] - Optional. A page token to request the next page of results.
-   *
-   * You get the token from the `next_page_token` field of the response from
-   * the previous call.
-   *
    * [pageSize] - Optional. The number of versions to retrieve per "page" of
    * results. If
    * there are more remaining results than this number, the response message
    * will contain a valid value in the `next_page_token` field.
    *
    * The default value is 20, and the maximum page size is 100.
+   *
+   * [pageToken] - Optional. A page token to request the next page of results.
+   *
+   * You get the token from the `next_page_token` field of the response from
+   * the previous call.
    *
    * Completes with a [GoogleCloudMlV1ListVersionsResponse].
    *
@@ -753,7 +753,7 @@ class ProjectsModelsVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -764,11 +764,11 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
@@ -2311,6 +2311,7 @@ class GoogleCloudMlV1TrainingInput {
   /**
    * Required. The Google Cloud Storage location of the packages with
    * the training program and any additional dependencies.
+   * The maximum number of package URIs is 100.
    */
   core.List<core.String> packageUris;
   /**
@@ -2555,14 +2556,15 @@ class GoogleCloudMlV1Version {
    * Required. The Google Cloud Storage location of the trained model used to
    * create the version. See the
    * [overview of model
-   * deployment](/ml-engine/docs/concepts/deployment-overview) for
-   * more informaiton.
+   * deployment](/ml-engine/docs/concepts/deployment-overview) for more
+   * informaiton.
    *
    * When passing Version to
    * [projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create)
    * the model service uses the specified location as the source of the model.
    * Once deployed, the model version is hosted by the prediction service, so
    * this location is useful only as a historical record.
+   * The total number of model files can't exceed 1000.
    */
   core.String deploymentUri;
   /**
@@ -2778,14 +2780,15 @@ class GoogleCloudMlV1beta1Version {
    * Required. The Google Cloud Storage location of the trained model used to
    * create the version. See the
    * [overview of model
-   * deployment](/ml-engine/docs/concepts/deployment-overview) for
-   * more informaiton.
+   * deployment](/ml-engine/docs/concepts/deployment-overview) for more
+   * informaiton.
    *
    * When passing Version to
    * [projects.models.versions.create](/ml-engine/reference/rest/v1beta1/projects.models.versions/create)
    * the model service uses the specified location as the source of the model.
    * Once deployed, the model version is hosted by the prediction service, so
    * this location is useful only as a historical record.
+   * The total number of model files can't exceed 1000.
    */
   core.String deploymentUri;
   /**

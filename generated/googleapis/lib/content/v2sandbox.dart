@@ -135,8 +135,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Cancels all line items in an order. This method can only be called for
-   * non-multi-client accounts.
+   * Cancels all line items in an order, making a full refund. This method can
+   * only be called for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *
@@ -185,8 +185,8 @@ class OrdersResourceApi {
   }
 
   /**
-   * Cancels a line item. This method can only be called for non-multi-client
-   * accounts.
+   * Cancels a line item, making a full refund. This method can only be called
+   * for non-multi-client accounts.
    *
    * [request] - The metadata request object.
    *

@@ -14,7 +14,7 @@
     "description": "Searches for books and manages your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/jiS-k8EAx6v4TcA5Qg2LzgfBvoI\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/q1aPzEOdugLS9_Y8FK61EmJhEHg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
         "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
@@ -957,6 +957,11 @@
                             "httpMethod": "POST",
                             "id": "books.mylibrary.annotations.insert",
                             "parameters": {
+                                "annotationId": {
+                                    "description": "The ID for the annotation to insert.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "country": {
                                     "description": "ISO-3166-1 code to override the IP-based location.",
                                     "location": "query",
@@ -2400,7 +2405,7 @@
             }
         }
     },
-    "revision": "20161206",
+    "revision": "20170313",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Annotation": {
@@ -3778,6 +3783,14 @@
                             "type": "object"
                         },
                         "moreFromSeries": {
+                            "properties": {
+                                "opted_state": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "rewardExpirations": {
                             "properties": {
                                 "opted_state": {
                                     "type": "string"

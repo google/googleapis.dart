@@ -1482,8 +1482,6 @@ class SurveysStartResponse {
    * error reporting or troubleshooting requests.
    */
   core.String requestId;
-  /** Survey object containing the specification of the started Survey. */
-  Survey resource;
 
   SurveysStartResponse();
 
@@ -1491,18 +1489,12 @@ class SurveysStartResponse {
     if (_json.containsKey("requestId")) {
       requestId = _json["requestId"];
     }
-    if (_json.containsKey("resource")) {
-      resource = new Survey.fromJson(_json["resource"]);
-    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (requestId != null) {
       _json["requestId"] = requestId;
-    }
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
     }
     return _json;
   }
@@ -1514,8 +1506,6 @@ class SurveysStopResponse {
    * error reporting or troubleshooting requests.
    */
   core.String requestId;
-  /** Survey object containing the specification of the stopped Survey. */
-  Survey resource;
 
   SurveysStopResponse();
 
@@ -1523,18 +1513,12 @@ class SurveysStopResponse {
     if (_json.containsKey("requestId")) {
       requestId = _json["requestId"];
     }
-    if (_json.containsKey("resource")) {
-      resource = new Survey.fromJson(_json["resource"]);
-    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (requestId != null) {
       _json["requestId"] = requestId;
-    }
-    if (resource != null) {
-      _json["resource"] = (resource).toJson();
     }
     return _json;
   }

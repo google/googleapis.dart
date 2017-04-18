@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/8cCymGQcL21bwNs4pLrUlHm7CoQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/9bnQR_kC7lWpyFxyRiXZLFFekco\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -982,6 +982,128 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
+                    ]
+                }
+            }
+        },
+        "notifications": {
+            "methods": {
+                "delete": {
+                    "description": "Permanently deletes a notification subscription.",
+                    "httpMethod": "DELETE",
+                    "id": "storage.notifications.delete",
+                    "parameterOrder": [
+                        "bucket",
+                        "notification"
+                    ],
+                    "parameters": {
+                        "bucket": {
+                            "description": "The parent bucket of the notification.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "notification": {
+                            "description": "ID of the notification to delete.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "b/{bucket}/notificationConfigs/{notification}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/devstorage.full_control",
+                        "https://www.googleapis.com/auth/devstorage.read_write"
+                    ]
+                },
+                "get": {
+                    "description": "View a notification configuration.",
+                    "httpMethod": "GET",
+                    "id": "storage.notifications.get",
+                    "parameterOrder": [
+                        "bucket",
+                        "notification"
+                    ],
+                    "parameters": {
+                        "bucket": {
+                            "description": "The parent bucket of the notification.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "notification": {
+                            "description": "Notification ID",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "b/{bucket}/notificationConfigs/{notification}",
+                    "response": {
+                        "$ref": "Notification"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
+                        "https://www.googleapis.com/auth/devstorage.full_control",
+                        "https://www.googleapis.com/auth/devstorage.read_only",
+                        "https://www.googleapis.com/auth/devstorage.read_write"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates a notification subscription for a given bucket.",
+                    "httpMethod": "POST",
+                    "id": "storage.notifications.insert",
+                    "parameterOrder": [
+                        "bucket"
+                    ],
+                    "parameters": {
+                        "bucket": {
+                            "description": "The parent bucket of the notification.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "b/{bucket}/notificationConfigs",
+                    "request": {
+                        "$ref": "Notification"
+                    },
+                    "response": {
+                        "$ref": "Notification"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/devstorage.full_control",
+                        "https://www.googleapis.com/auth/devstorage.read_write"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves a list of notification subscriptions for a given bucket.",
+                    "httpMethod": "GET",
+                    "id": "storage.notifications.list",
+                    "parameterOrder": [
+                        "bucket"
+                    ],
+                    "parameters": {
+                        "bucket": {
+                            "description": "Name of a GCS bucket.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "b/{bucket}/notificationConfigs",
+                    "response": {
+                        "$ref": "Notifications"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only",
+                        "https://www.googleapis.com/auth/devstorage.full_control",
+                        "https://www.googleapis.com/auth/devstorage.read_only",
+                        "https://www.googleapis.com/auth/devstorage.read_write"
                     ]
                 }
             }
@@ -2322,9 +2444,44 @@
                     "supportsSubscription": true
                 }
             }
+        },
+        "projects": {
+            "resources": {
+                "serviceAccount": {
+                    "methods": {
+                        "get": {
+                            "description": "Get the email address of this project's GCS service account.",
+                            "httpMethod": "GET",
+                            "id": "storage.projects.serviceAccount.get",
+                            "parameterOrder": [
+                                "projectId"
+                            ],
+                            "parameters": {
+                                "projectId": {
+                                    "description": "Project ID",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "projects/{projectId}/serviceAccount",
+                            "response": {
+                                "$ref": "ServiceAccount"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                "https://www.googleapis.com/auth/devstorage.full_control",
+                                "https://www.googleapis.com/auth/devstorage.read_only",
+                                "https://www.googleapis.com/auth/devstorage.read_write"
+                            ]
+                        }
+                    }
+                }
+            }
         }
     },
-    "revision": "20170308",
+    "revision": "20170329",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {
@@ -2397,6 +2554,14 @@
                     "default": "storage#bucket",
                     "description": "The kind of item this is. For buckets, this is always storage#bucket.",
                     "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "description": "An individual label entry.",
+                        "type": "string"
+                    },
+                    "description": "User-provided labels, in key/value pairs.",
+                    "type": "object"
                 },
                 "lifecycle": {
                     "description": "The bucket's lifecycle configuration. See lifecycle management for more information.",
@@ -2777,6 +2942,81 @@
             },
             "type": "object"
         },
+        "Notification": {
+            "description": "A subscription to receive Google PubSub notifications.",
+            "id": "Notification",
+            "properties": {
+                "custom_attributes": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.",
+                    "type": "object"
+                },
+                "etag": {
+                    "description": "HTTP 1.1 Entity tag for this subscription notification.",
+                    "type": "string"
+                },
+                "event_types": {
+                    "description": "If present, only send notifications about listed event types. If empty, sent notifications for all event types.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "The ID of the notification.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "storage#notification",
+                    "description": "The kind of item this is. For notifications, this is always storage#notification.",
+                    "type": "string"
+                },
+                "object_name_prefix": {
+                    "description": "If present, only apply this notification configuration to object names that begin with this prefix.",
+                    "type": "string"
+                },
+                "payload_format": {
+                    "default": "JSON_API_V1",
+                    "description": "The desired content of the Payload.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "The canonical URL of this notification.",
+                    "type": "string"
+                },
+                "topic": {
+                    "annotations": {
+                        "required": [
+                            "storage.notifications.insert"
+                        ]
+                    },
+                    "description": "The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Notifications": {
+            "description": "A list of notification subscriptions.",
+            "id": "Notifications",
+            "properties": {
+                "items": {
+                    "description": "The list of items.",
+                    "items": {
+                        "$ref": "Notification"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "storage#notifications",
+                    "description": "The kind of item this is. For lists of notifications, this is always storage#notifications.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Object": {
             "description": "An object.",
             "id": "Object",
@@ -3153,6 +3393,22 @@
                 "totalBytesRewritten": {
                     "description": "The total bytes written so far, which can be used to provide a waiting user with a progress indicator. This property is always present in the response.",
                     "format": "uint64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ServiceAccount": {
+            "description": "A subscription to receive Google PubSub notifications.",
+            "id": "ServiceAccount",
+            "properties": {
+                "email_address": {
+                    "description": "The ID of the notification.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "storage#serviceAccount",
+                    "description": "The kind of item this is. For notifications, this is always storage#notification.",
                     "type": "string"
                 }
             },

@@ -2928,6 +2928,8 @@ class UserInfoProviderUserInfo {
   core.String email;
   /** User's identifier at IDP. */
   core.String federatedId;
+  /** User's phone number. */
+  core.String phoneNumber;
   /** The user's photo url at the IDP. */
   core.String photoUrl;
   /**
@@ -2953,6 +2955,9 @@ class UserInfoProviderUserInfo {
     if (_json.containsKey("federatedId")) {
       federatedId = _json["federatedId"];
     }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
+    }
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
     }
@@ -2977,6 +2982,9 @@ class UserInfoProviderUserInfo {
     }
     if (federatedId != null) {
       _json["federatedId"] = federatedId;
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;
@@ -3023,6 +3031,8 @@ class UserInfo {
   }
   /** The timestamp when the password was last updated. */
   core.double passwordUpdatedAt;
+  /** User's phone number. */
+  core.String phoneNumber;
   /** The URL of the user profile photo. */
   core.String photoUrl;
   /** The IDP of the user. */
@@ -3078,6 +3088,9 @@ class UserInfo {
     if (_json.containsKey("passwordUpdatedAt")) {
       passwordUpdatedAt = _json["passwordUpdatedAt"];
     }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
+    }
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
     }
@@ -3132,6 +3145,9 @@ class UserInfo {
     }
     if (passwordUpdatedAt != null) {
       _json["passwordUpdatedAt"] = passwordUpdatedAt;
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;

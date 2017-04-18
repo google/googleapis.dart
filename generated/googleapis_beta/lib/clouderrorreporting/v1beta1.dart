@@ -110,6 +110,15 @@ class ProjectsEventsResourceApi {
    * Example: `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response.
+   *
+   * [serviceFilter_service] - [Optional] The exact value to match against
+   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+   *
+   * [pageSize] - [Optional] The maximum number of results to return per
+   * response.
+   *
    * [serviceFilter_version] - [Optional] The exact value to match against
    * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
@@ -127,15 +136,6 @@ class ProjectsEventsResourceApi {
    *
    * [groupId] - [Required] The group for which events shall be returned.
    *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response.
-   *
-   * [serviceFilter_service] - [Optional] The exact value to match against
-   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
-   *
-   * [pageSize] - [Optional] The maximum number of results to return per
-   * response.
-   *
    * Completes with a [ListEventsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -144,7 +144,7 @@ class ProjectsEventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListEventsResponse> list(core.String projectName, {core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId, core.String pageToken, core.String serviceFilter_service, core.int pageSize}) {
+  async.Future<ListEventsResponse> list(core.String projectName, {core.String pageToken, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +154,15 @@ class ProjectsEventsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (serviceFilter_service != null) {
+      _queryParams["serviceFilter.service"] = [serviceFilter_service];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
@@ -166,15 +175,6 @@ class ProjectsEventsResourceApi {
     }
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (serviceFilter_service != null) {
-      _queryParams["serviceFilter.service"] = [serviceFilter_service];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/events';
@@ -270,6 +270,22 @@ class ProjectsGroupStatsResourceApi {
    * Example: <code>projects/my-project-123</code>.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   *
+   * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
+   * if rounded
+   * alignment is chosen. Default is 00:00 UTC.
+   *
+   * [timedCountDuration] - [Optional] The preferred duration for a single
+   * returned `TimedCount`.
+   * If not set, no timed counts are returned.
+   *
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response. To view
+   * additional results, pass this token along with the identical query
+   * parameters as the first request.
+   *
    * [timeRange_period] - Restricts the query to the specified time range.
    * Possible string values are:
    * - "PERIOD_UNSPECIFIED" : A PERIOD_UNSPECIFIED.
@@ -309,22 +325,6 @@ class ProjectsGroupStatsResourceApi {
    * - "CREATED_DESC" : A CREATED_DESC.
    * - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
    *
-   * [serviceFilter_resourceType] - [Optional] The exact value to match against
-   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
-   *
-   * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
-   * if rounded
-   * alignment is chosen. Default is 00:00 UTC.
-   *
-   * [timedCountDuration] - [Optional] The preferred duration for a single
-   * returned `TimedCount`.
-   * If not set, no timed counts are returned.
-   *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response. To view
-   * additional results, pass this token along with the identical query
-   * parameters as the first request.
-   *
    * Completes with a [ListGroupStatsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -333,7 +333,7 @@ class ProjectsGroupStatsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version, core.String order, core.String serviceFilter_resourceType, core.String alignmentTime, core.String timedCountDuration, core.String pageToken}) {
+  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String serviceFilter_resourceType, core.String alignmentTime, core.String timedCountDuration, core.String pageToken, core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version, core.String order}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -343,6 +343,18 @@ class ProjectsGroupStatsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
+    }
+    if (serviceFilter_resourceType != null) {
+      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
+    }
+    if (alignmentTime != null) {
+      _queryParams["alignmentTime"] = [alignmentTime];
+    }
+    if (timedCountDuration != null) {
+      _queryParams["timedCountDuration"] = [timedCountDuration];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (timeRange_period != null) {
       _queryParams["timeRange.period"] = [timeRange_period];
@@ -364,18 +376,6 @@ class ProjectsGroupStatsResourceApi {
     }
     if (order != null) {
       _queryParams["order"] = [order];
-    }
-    if (serviceFilter_resourceType != null) {
-      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
-    }
-    if (alignmentTime != null) {
-      _queryParams["alignmentTime"] = [alignmentTime];
-    }
-    if (timedCountDuration != null) {
-      _queryParams["timedCountDuration"] = [timedCountDuration];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/groupStats';
@@ -1081,6 +1081,8 @@ class ServiceContext {
   /**
    * Represents the source code version that the developer provided,
    * which could represent a version label or a Git SHA-1 hash, for example.
+   * For App Engine standard environment, the version is set to the version of
+   * the app.
    */
   core.String version;
 
@@ -1114,11 +1116,10 @@ class ServiceContext {
 }
 
 /**
- * Indicates a location in the source code of the service for which
- * errors are reported.
- * This data should be provided by the application when reporting an error,
- * unless the error report has been generated automatically from Google App
- * Engine logs. All fields are optional.
+ * Indicates a location in the source code of the service for which errors are
+ * reported. `functionName` must be provided by the application when reporting
+ * an error, unless the error report contains a `message` with a supported
+ * exception stack trace. All fields are optional for the later case.
  */
 class SourceLocation {
   /**

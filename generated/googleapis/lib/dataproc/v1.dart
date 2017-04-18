@@ -278,8 +278,6 @@ class ProjectsRegionsClustersResourceApi {
    * [region] - Required The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [pageToken] - Optional The standard List page token.
-   *
    * [pageSize] - Optional The standard List page size.
    *
    * [filter] - Optional A filter constraining the clusters to list. Filters are
@@ -294,6 +292,8 @@ class ProjectsRegionsClustersResourceApi {
    * implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
    * = mycluster AND labels.env = staging AND labels.starred = *
    *
+   * [pageToken] - Optional The standard List page token.
+   *
    * Completes with a [ListClustersResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -302,7 +302,7 @@ class ProjectsRegionsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,14 +316,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/clusters';
@@ -605,14 +605,6 @@ class ProjectsRegionsJobsResourceApi {
    * [region] - Required The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [pageToken] - Optional The page token, returned by a previous call, to
-   * request the next page of results.
-   *
-   * [pageSize] - Optional The number of results to return in each response.
-   *
-   * [clusterName] - Optional If set, the returned jobs list includes only jobs
-   * that were submitted to the named cluster.
-   *
    * [filter] - Optional A filter constraining the jobs to list. Filters are
    * case-sensitive and have the following syntax:field = value AND field =
    * value ...where field is status.state or labels.[KEY], and [KEY] is a label
@@ -629,6 +621,14 @@ class ProjectsRegionsJobsResourceApi {
    * - "ACTIVE" : A ACTIVE.
    * - "NON_ACTIVE" : A NON_ACTIVE.
    *
+   * [pageToken] - Optional The page token, returned by a previous call, to
+   * request the next page of results.
+   *
+   * [pageSize] - Optional The number of results to return in each response.
+   *
+   * [clusterName] - Optional If set, the returned jobs list includes only jobs
+   * that were submitted to the named cluster.
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -637,7 +637,7 @@ class ProjectsRegionsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, core.String region, {core.String pageToken, core.int pageSize, core.String clusterName, core.String filter, core.String jobStateMatcher}) {
+  async.Future<ListJobsResponse> list(core.String projectId, core.String region, {core.String filter, core.String jobStateMatcher, core.String pageToken, core.int pageSize, core.String clusterName}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -651,6 +651,12 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (jobStateMatcher != null) {
+      _queryParams["jobStateMatcher"] = [jobStateMatcher];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -659,12 +665,6 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (jobStateMatcher != null) {
-      _queryParams["jobStateMatcher"] = [jobStateMatcher];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/jobs';

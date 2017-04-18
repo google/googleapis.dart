@@ -28,7 +28,6 @@ class StoragetransferApi {
   GoogleServiceAccountsResourceApi get googleServiceAccounts => new GoogleServiceAccountsResourceApi(_requester);
   TransferJobsResourceApi get transferJobs => new TransferJobsResourceApi(_requester);
   TransferOperationsResourceApi get transferOperations => new TransferOperationsResourceApi(_requester);
-  V1ResourceApi get v1 => new V1ResourceApi(_requester);
 
   StoragetransferApi(http.Client client, {core.String rootUrl: "https://storagetransfer.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -42,18 +41,21 @@ class GoogleServiceAccountsResourceApi {
       _requester = client;
 
   /**
-   * Returns the Google service account that is used by Storage Transfer Service
-   * to access buckets in the project where transfers run or in other projects.
-   * Each Google service account is associated with one Google Developers
-   * Console project. Users should add this service account to the Google Cloud
-   * Storage bucket ACLs to grant access to Storage Transfer Service. This
-   * service account is created and owned by Storage Transfer Service and can
+   * Returns the Google service account that is used by Storage Transfer
+   * Service to access buckets in the project where transfers
+   * run or in other projects. Each Google service account is associated
+   * with one Google Cloud Platform Console project. Users
+   * should add this service account to the Google Cloud Storage bucket
+   * ACLs to grant access to Storage Transfer Service. This service
+   * account is created and owned by Storage Transfer Service and can
    * only be used by Storage Transfer Service.
    *
    * Request parameters:
    *
-   * [projectId] - The ID of the Google Developers Console project that the
-   * Google service account is associated with. Required.
+   * [projectId] - The ID of the Google Cloud Platform Console project that the
+   * Google service
+   * account is associated with.
+   * Required.
    *
    * Completes with a [GoogleServiceAccount].
    *
@@ -140,11 +142,13 @@ class TransferJobsResourceApi {
    *
    * Request parameters:
    *
-   * [jobName] - The job to get. Required.
-   * Value must have pattern "^transferJobs/.*$".
+   * [jobName] - The job to get.
+   * Required.
+   * Value must have pattern "^transferJobs/.+$".
    *
-   * [projectId] - The ID of the Google Developers Console project that owns the
-   * job. Required.
+   * [projectId] - The ID of the Google Cloud Platform Console project that owns
+   * the job.
+   * Required.
    *
    * Completes with a [TransferJob].
    *
@@ -186,17 +190,19 @@ class TransferJobsResourceApi {
    *
    * Request parameters:
    *
-   * [filter] - A list of query parameters specified as JSON text in the form of
-   * {"`project_id`":"my_project_id", "`job_names`":["jobid1","jobid2",...],
-   * "`job_statuses`":["status1","status2",...]}. Since `job_names` and
-   * `job_statuses` support multiple values, their values must be specified with
-   * array notation. `project_id` is required. `job_names` and `job_statuses`
-   * are optional. The valid values for `job_statuses` are case-insensitive:
-   * `ENABLED`, `DISABLED`, and `DELETED`.
+   * [pageToken] - The list page token.
    *
    * [pageSize] - The list page size. The max allowed value is 256.
    *
-   * [pageToken] - The list page token.
+   * [filter] - A list of query parameters specified as JSON text in the form of
+   * {"project_id":"my_project_id",
+   * "job_names":["jobid1","jobid2",...],
+   * "job_statuses":["status1","status2",...]}.
+   * Since `job_names` and `job_statuses` support multiple values, their values
+   * must be specified with array notation. `project_id` is required.
+   * `job_names`
+   * and `job_statuses` are optional.  The valid values for `job_statuses` are
+   * case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
    *
    * Completes with a [ListTransferJobsResponse].
    *
@@ -206,7 +212,7 @@ class TransferJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferJobsResponse> list({core.String filter, core.int pageSize, core.String pageToken}) {
+  async.Future<ListTransferJobsResponse> list({core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -214,14 +220,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/transferJobs';
@@ -238,15 +244,16 @@ class TransferJobsResourceApi {
 
   /**
    * Updates a transfer job. Updating a job's transfer spec does not affect
-   * transfer operations that are running already. Updating the scheduling of a
-   * job is not allowed.
+   * transfer operations that are running already. Updating the scheduling
+   * of a job is not allowed.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [jobName] - The name of job to update. Required.
-   * Value must have pattern "^transferJobs/.*$".
+   * [jobName] - The name of job to update.
+   * Required.
+   * Value must have pattern "^transferJobs/.+$".
    *
    * Completes with a [TransferJob].
    *
@@ -299,7 +306,7 @@ class TransferOperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource to be cancelled.
-   * Value must have pattern "^transferOperations/.*$".
+   * Value must have pattern "^transferOperations/.+$".
    *
    * Completes with a [Empty].
    *
@@ -339,7 +346,7 @@ class TransferOperationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the operation resource to be deleted.
-   * Value must have pattern "^transferOperations/.*$".
+   * Value must have pattern "^transferOperations/.+$".
    *
    * Completes with a [Empty].
    *
@@ -374,14 +381,14 @@ class TransferOperationsResourceApi {
   }
 
   /**
-   * Gets the latest state of a long-running operation. Clients can use this
+   * Gets the latest state of a long-running operation.  Clients can use this
    * method to poll the operation result at intervals as recommended by the API
    * service.
    *
    * Request parameters:
    *
    * [name] - The name of the operation resource.
-   * Value must have pattern "^transferOperations/.*$".
+   * Value must have pattern "^transferOperations/.+$".
    *
    * Completes with a [Operation].
    *
@@ -417,20 +424,27 @@ class TransferOperationsResourceApi {
 
   /**
    * Lists operations that match the specified filter in the request. If the
-   * server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-   * `name` binding below allows API services to override the binding to use
-   * different resource name schemes, such as `users / * /operations`.
+   * server doesn't support this method, it returns `UNIMPLEMENTED`.
+   *
+   * NOTE: the `name` binding below allows API services to override the binding
+   * to use different resource name schemes, such as `users / * /operations`.
    *
    * Request parameters:
    *
    * [name] - The value `transferOperations`.
    * Value must have pattern "^transferOperations$".
    *
-   * [filter] - The standard list filter.
+   * [filter] - A list of query parameters specified as JSON text in the form of
+   * {\"project_id\" : \"my_project_id\", \"job_names\" : [\"jobid1\",
+   * \"jobid2\",...], \"operation_names\" : [\"opid1\", \"opid2\",...],
+   * \"transfer_statuses\":[\"status1\", \"status2\",...]}. Since `job_names`,
+   * `operation_names`, and `transfer_statuses` support multiple values, they
+   * must be specified with array notation. `job_names`, `operation_names`, and
+   * `transfer_statuses` are optional.
    *
-   * [pageSize] - The standard list page size.
+   * [pageToken] - The list page token.
    *
-   * [pageToken] - The standard list page token.
+   * [pageSize] - The list page size. The max allowed value is 256.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -440,7 +454,7 @@ class TransferOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.int pageSize, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -454,11 +468,11 @@ class TransferOperationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -480,8 +494,9 @@ class TransferOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the transfer operation. Required.
-   * Value must have pattern "^transferOperations/.*$".
+   * [name] - The name of the transfer operation.
+   * Required.
+   * Value must have pattern "^transferOperations/.+$".
    *
    * Completes with a [Empty].
    *
@@ -525,8 +540,9 @@ class TransferOperationsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the transfer operation. Required.
-   * Value must have pattern "^transferOperations/.*$".
+   * [name] - The name of the transfer operation.
+   * Required.
+   * Value must have pattern "^transferOperations/.+$".
    *
    * Completes with a [Empty].
    *
@@ -566,68 +582,17 @@ class TransferOperationsResourceApi {
 }
 
 
-class V1ResourceApi {
-  final commons.ApiRequester _requester;
-
-  V1ResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * Returns the Google service account that is used by Storage Transfer Service
-   * to access buckets in the project where transfers run or in other projects.
-   * Each Google service account is associated with one Google Developers
-   * Console project. Users should add this service account to the Google Cloud
-   * Storage bucket ACLs to grant access to Storage Transfer Service. This
-   * service account is created and owned by Storage Transfer Service and can
-   * only be used by Storage Transfer Service.
-   *
-   * Request parameters:
-   *
-   * [projectId] - The ID of the Google Developers Console project that the
-   * Google service account is associated with. Required.
-   *
-   * Completes with a [GoogleServiceAccount].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<GoogleServiceAccount> getGoogleServiceAccount({core.String projectId}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
-
-    _url = 'v1:getGoogleServiceAccount';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleServiceAccount.fromJson(data));
-  }
-
-}
-
-
 
 /**
- * AWS access key (see [AWS Security
+ * AWS access key (see
+ * [AWS Security
  * Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
  */
 class AwsAccessKey {
-  /** AWS access key ID. Required. */
+  /**
+   * AWS access key ID.
+   * Required.
+   */
   core.String accessKeyId;
   /**
    * AWS secret access key. This field is not returned in RPC responses.
@@ -659,18 +624,20 @@ class AwsAccessKey {
 }
 
 /**
- * An AwsS3Data can be a data source, but not a data sink. In an AwsS3Data, an
- * object's name is the S3 object's key name.
+ * An AwsS3Data can be a data source, but not a data sink.
+ * In an AwsS3Data, an object's name is the S3 object's key name.
  */
 class AwsS3Data {
   /**
    * AWS access key used to sign the API requests to the AWS S3 bucket.
-   * Permissions on the bucket must be granted to the access ID of the AWS
-   * access key. Required.
+   * Permissions on the bucket must be granted to the access ID of the
+   * AWS access key.
+   * Required.
    */
   AwsAccessKey awsAccessKey;
   /**
-   * S3 Bucket name (see [Creating a
+   * S3 Bucket name (see
+   * [Creating a
    * bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
    * Required.
    */
@@ -701,25 +668,24 @@ class AwsS3Data {
 
 /**
  * Represents a whole calendar date, e.g. date of birth. The time of day and
- * time zone are either specified elsewhere or are not significant. The date is
- * relative to the Proleptic Gregorian Calendar. The day may be 0 to represent a
- * year and month where the day is not significant, e.g. credit card expiration
- * date. The year may be 0 to represent a month and day independent of year,
- * e.g. anniversary date. Related types are
- * [google.type.TimeOfDay][google.type.TimeOfDay] and
- * `google.protobuf.Timestamp`.
+ * time zone are either specified elsewhere or are not significant. The date
+ * is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+ * represent a year and month where the day is not significant, e.g. credit card
+ * expiration date. The year may be 0 to represent a month and day independent
+ * of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+ * and `google.protobuf.Timestamp`.
  */
 class Date {
   /**
    * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-   * if specifying a year/month where the day is not sigificant.
+   * if specifying a year/month where the day is not significant.
    */
   core.int day;
-  /** Month of year of date. Must be from 1 to 12. */
+  /** Month of year. Must be from 1 to 12. */
   core.int month;
   /**
-   * Year of date. Must be from 1 to 9,999, or 0 if specifying a date without a
-   * year.
+   * Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+   * a year.
    */
   core.int year;
 
@@ -754,10 +720,14 @@ class Date {
 
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request or
- * the response type of an API method. For instance: service Foo { rpc
- * Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
- * representation for `Empty` is empty JSON object `{}`.
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
  */
 class Empty {
 
@@ -777,8 +747,9 @@ class ErrorLogEntry {
   /** A list of messages that carry the error details. */
   core.List<core.String> errorDetails;
   /**
-   * A URL that refers to the target (a data source, a data sink, or an object)
-   * with which the error is associated. Required.
+   * A URL that refers to the target (a data source, a data sink,
+   * or an object) with which the error is associated.
+   * Required.
    */
   core.String url;
 
@@ -806,32 +777,151 @@ class ErrorLogEntry {
 }
 
 /**
- * A summary of errors by error code, plus a count and sample error log entries.
+ * A summary of errors by error code, plus a count and sample error log
+ * entries.
  */
 class ErrorSummary {
   /**
    * Required.
    * Possible string values are:
-   * - "OK" : A OK.
-   * - "CANCELLED" : A CANCELLED.
-   * - "UNKNOWN" : A UNKNOWN.
-   * - "INVALID_ARGUMENT" : A INVALID_ARGUMENT.
-   * - "DEADLINE_EXCEEDED" : A DEADLINE_EXCEEDED.
-   * - "NOT_FOUND" : A NOT_FOUND.
-   * - "ALREADY_EXISTS" : A ALREADY_EXISTS.
-   * - "PERMISSION_DENIED" : A PERMISSION_DENIED.
-   * - "UNAUTHENTICATED" : A UNAUTHENTICATED.
-   * - "RESOURCE_EXHAUSTED" : A RESOURCE_EXHAUSTED.
-   * - "FAILED_PRECONDITION" : A FAILED_PRECONDITION.
-   * - "ABORTED" : A ABORTED.
-   * - "OUT_OF_RANGE" : A OUT_OF_RANGE.
-   * - "UNIMPLEMENTED" : A UNIMPLEMENTED.
-   * - "INTERNAL" : A INTERNAL.
-   * - "UNAVAILABLE" : A UNAVAILABLE.
-   * - "DATA_LOSS" : A DATA_LOSS.
+   * - "OK" : Not an error; returned on success
+   *
+   * HTTP Mapping: 200 OK
+   * - "CANCELLED" : The operation was cancelled, typically by the caller.
+   *
+   * HTTP Mapping: 499 Client Closed Request
+   * - "UNKNOWN" : Unknown error.  For example, this error may be returned when
+   * a `Status` value received from another address space belongs to
+   * an error space that is not known in this address space.  Also
+   * errors raised by APIs that do not return enough error information
+   * may be converted to this error.
+   *
+   * HTTP Mapping: 500 Internal Server Error
+   * - "INVALID_ARGUMENT" : The client specified an invalid argument.  Note that
+   * this differs
+   * from `FAILED_PRECONDITION`.  `INVALID_ARGUMENT` indicates arguments
+   * that are problematic regardless of the state of the system
+   * (e.g., a malformed file name).
+   *
+   * HTTP Mapping: 400 Bad Request
+   * - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
+   * complete. For operations
+   * that change the state of the system, this error may be returned
+   * even if the operation has completed successfully.  For example, a
+   * successful response from a server could have been delayed long
+   * enough for the deadline to expire.
+   *
+   * HTTP Mapping: 504 Gateway Timeout
+   * - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
+   * found.
+   *
+   * Note to server developers: if a request is denied for an entire class
+   * of users, such as gradual feature rollout or undocumented whitelist,
+   * `NOT_FOUND` may be used. If a request is denied for some users within
+   * a class of users, such as user-based access control, `PERMISSION_DENIED`
+   * must be used.
+   *
+   * HTTP Mapping: 404 Not Found
+   * - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
+   * file or directory)
+   * already exists.
+   *
+   * HTTP Mapping: 409 Conflict
+   * - "PERMISSION_DENIED" : The caller does not have permission to execute the
+   * specified
+   * operation. `PERMISSION_DENIED` must not be used for rejections
+   * caused by exhausting some resource (use `RESOURCE_EXHAUSTED`
+   * instead for those errors). `PERMISSION_DENIED` must not be
+   * used if the caller can not be identified (use `UNAUTHENTICATED`
+   * instead for those errors). This error code does not imply the
+   * request is valid or the requested entity exists or satisfies
+   * other pre-conditions.
+   *
+   * HTTP Mapping: 403 Forbidden
+   * - "UNAUTHENTICATED" : The request does not have valid authentication
+   * credentials for the
+   * operation.
+   *
+   * HTTP Mapping: 401 Unauthorized
+   * - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
+   * per-user quota, or
+   * perhaps the entire file system is out of space.
+   *
+   * HTTP Mapping: 429 Too Many Requests
+   * - "FAILED_PRECONDITION" : The operation was rejected because the system is
+   * not in a state
+   * required for the operation's execution.  For example, the directory
+   * to be deleted is non-empty, an rmdir operation is applied to
+   * a non-directory, etc.
+   *
+   * Service implementors can use the following guidelines to decide
+   * between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:
+   *  (a) Use `UNAVAILABLE` if the client can retry just the failing call.
+   *  (b) Use `ABORTED` if the client should retry at a higher level
+   *      (e.g., when a client-specified test-and-set fails, indicating the
+   *      client should restart a read-modify-write sequence).
+   *  (c) Use `FAILED_PRECONDITION` if the client should not retry until
+   *      the system state has been explicitly fixed.  E.g., if an "rmdir"
+   *      fails because the directory is non-empty, `FAILED_PRECONDITION`
+   *      should be returned since the client should not retry unless
+   *      the files are deleted from the directory.
+   *
+   * HTTP Mapping: 400 Bad Request
+   * - "ABORTED" : The operation was aborted, typically due to a concurrency
+   * issue such as
+   * a sequencer check failure or transaction abort.
+   *
+   * See the guidelines above for deciding between `FAILED_PRECONDITION`,
+   * `ABORTED`, and `UNAVAILABLE`.
+   *
+   * HTTP Mapping: 409 Conflict
+   * - "OUT_OF_RANGE" : The operation was attempted past the valid range.  E.g.,
+   * seeking or
+   * reading past end-of-file.
+   *
+   * Unlike `INVALID_ARGUMENT`, this error indicates a problem that may
+   * be fixed if the system state changes. For example, a 32-bit file
+   * system will generate `INVALID_ARGUMENT` if asked to read at an
+   * offset that is not in the range [0,2^32-1], but it will generate
+   * `OUT_OF_RANGE` if asked to read from an offset past the current
+   * file size.
+   *
+   * There is a fair bit of overlap between `FAILED_PRECONDITION` and
+   * `OUT_OF_RANGE`.  We recommend using `OUT_OF_RANGE` (the more specific
+   * error) when it applies so that callers who are iterating through
+   * a space can easily look for an `OUT_OF_RANGE` error to detect when
+   * they are done.
+   *
+   * HTTP Mapping: 400 Bad Request
+   * - "UNIMPLEMENTED" : The operation is not implemented or is not
+   * supported/enabled in this
+   * service.
+   *
+   * HTTP Mapping: 501 Not Implemented
+   * - "INTERNAL" : Internal errors.  This means that some invariants expected
+   * by the
+   * underlying system have been broken.  This error code is reserved
+   * for serious errors.
+   *
+   * HTTP Mapping: 500 Internal Server Error
+   * - "UNAVAILABLE" : The service is currently unavailable.  This is most
+   * likely a
+   * transient condition, which can be corrected by retrying with
+   * a backoff.
+   *
+   * See the guidelines above for deciding between `FAILED_PRECONDITION`,
+   * `ABORTED`, and `UNAVAILABLE`.
+   *
+   * HTTP Mapping: 503 Service Unavailable
+   * - "DATA_LOSS" : Unrecoverable data loss or corruption.
+   *
+   * HTTP Mapping: 500 Internal Server Error
    */
   core.String errorCode;
-  /** Count of this type of error. Required. */
+  /**
+   * Count of this type of error.
+   * Required.
+   */
   core.String errorCount;
   /** Error samples. */
   core.List<ErrorLogEntry> errorLogEntries;
@@ -872,7 +962,8 @@ class ErrorSummary {
  */
 class GcsData {
   /**
-   * Google Cloud Storage bucket name (see [Bucket Name
+   * Google Cloud Storage bucket name (see
+   * [Bucket Name
    * Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
    * Required.
    */
@@ -919,29 +1010,55 @@ class GoogleServiceAccount {
 
 /**
  * An HttpData specifies a list of objects on the web to be transferred over
- * HTTP. The information of the objects to be transferred is contained in a file
- * referenced by a URL. The first line in the file must be "TsvHttpData-1.0",
- * which specifies the format of the file. Subsequent lines specify the
- * information of the list of objects, one object per list entry. Each entry has
- * the following tab-delimited fields: * HTTP URL * Length * MD5 - This field is
- * a base64-encoded MD5 hash of the object An HTTP URL that points to the object
- * to be transferred. It must be a valid URL with URL scheme HTTP or HTTPS. When
- * an object with URL `http(s)://hostname:port/` is transferred to the data
- * sink, the name of the object at the data sink is `/`. Length and MD5 provide
- * the size and the base64-encoded MD5 hash of the object. If Length does not
- * match the actual length of the object fetched, the object will not be
- * transferred. If MD5 does not match the MD5 computed from the transferred
- * bytes, the object transfer will fail. `lastModificationTime` is not available
- * in HttpData objects. The objects that the URL list points to must allow
- * public access. Storage Transfer Service obeys `robots.txt` rules and requires
- * the HTTP server to support Range requests and to return a Content-Length
+ * HTTP.  The information of the objects to be transferred is contained in a
+ * file referenced by a URL. The first line in the file must be
+ * "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
+ * specify the information of the list of objects, one object per list entry.
+ * Each entry has the following tab-delimited fields:
+ *
+ * * HTTP URL - The location of the object.
+ *
+ * * Length - The size of the object in bytes.
+ *
+ * * MD5 - The base64-encoded MD5 hash of the object.
+ *
+ * For an example of a valid TSV file, see
+ * [Transferring data from
+ * URLs](https://cloud.google.com/storage/transfer/#urls)
+ *
+ * When transferring data based on a URL list, keep the following in mind:
+ *
+ * * When an object located at `http(s)://hostname:port/<URL-path>` is
+ * transferred
+ * to a data sink, the name of the object at the data sink is
+ * `<hostname>/<URL-path>`.
+ *
+ * * If the specified size of an object does not match the actual size of the
+ * object fetched, the object will not be transferred.
+ *
+ * * If the specified MD5 does not match the MD5 computed from the transferred
+ * bytes, the object transfer will fail. For more information, see
+ * [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
+ *
+ * * Ensure that each URL you specify is publicly accessible. For
+ * example, in Google Cloud Storage you can
+ * [share an object publicly]
+ * (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
+ * a link to it.
+ *
+ * * Storage Transfer Service obeys `robots.txt` rules and requires the source
+ * HTTP server to support `Range` requests and to return a `Content-Length`
  * header in each response.
+ *
+ * * [ObjectConditions](#ObjectConditions) have no effect when filtering objects
+ * to transfer.
  */
 class HttpData {
   /**
-   * The URL that points to the file that stores the object list entries. This
-   * file must allow public access. Currently, only URLs with HTTP and HTTPS
-   * schemes are supported. Required.
+   * The URL that points to the file that stores the object list entries.
+   * This file must allow public access.  Currently, only URLs with HTTP and
+   * HTTPS schemes are supported.
+   * Required.
    */
   core.String listUrl;
 
@@ -962,10 +1079,7 @@ class HttpData {
   }
 }
 
-/**
- * The response message for
- * [Operations.ListOperations][google.longrunning.Operations.ListOperations].
- */
+/** The response message for Operations.ListOperations. */
 class ListOperationsResponse {
   /** The standard List next-page token. */
   core.String nextPageToken;
@@ -1029,27 +1143,46 @@ class ListTransferJobsResponse {
 class ObjectConditions {
   /**
    * `excludePrefixes` must follow the requirements described for
-   * `includePrefixes`. The max size of `excludePrefixes` is 20.
+   * `includePrefixes`.
+   *
+   * The max size of `excludePrefixes` is 1000.
    */
   core.List<core.String> excludePrefixes;
   /**
    * If `includePrefixes` is specified, objects that satisfy the object
-   * conditions must have names that start with one of the `includePrefixes` and
-   * that do not start with any of the `excludePrefixes`. If `includePrefixes`
+   * conditions must have names that start with one of the `includePrefixes`
+   * and that do not start with any of the `excludePrefixes`. If
+   * `includePrefixes`
    * is not specified, all objects except those that have names starting with
    * one of the `excludePrefixes` must satisfy the object conditions.
-   * Requirements: * Each include-prefix and exclude-prefix can contain any
-   * sequence of Unicode characters, of max length 1024 bytes when UTF8-encoded,
-   * and must not contain Carriage Return or Line Feed characters. Wildcard
-   * matching and regular expression matching are not supported. * None of the
-   * include-prefix or the exclude-prefix values can be empty, if specified. *
-   * Each include-prefix must include a distinct portion of the object
-   * namespace, i.e., no include-prefix may be a prefix of another
-   * include-prefix. * Each exclude-prefix must exclude a distinct portion of
-   * the object namespace, i.e., no exclude-prefix may be a prefix of another
-   * exclude-prefix. * If `includePrefixes` is specified, then each
-   * exclude-prefix must start with the value of a path explicitly included by
-   * `includePrefixes`. The max size of `includePrefixes` is 20.
+   *
+   * Requirements:
+   *
+   *   * Each include-prefix and exclude-prefix can contain any sequence of
+   *     Unicode characters, of max length 1024 bytes when UTF8-encoded, and
+   *     must not contain Carriage Return or Line Feed characters.  Wildcard
+   *     matching and regular expression matching are not supported.
+   *
+   *   * Each include-prefix and exclude-prefix must omit the leading slash.
+   *     For example, to include the `requests.gz` object in a transfer from
+   *     `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include
+   *     prefix as `logs/y=2015/requests.gz`.
+   *
+   *   * None of the include-prefix or the exclude-prefix values can be empty,
+   *     if specified.
+   *
+   *   * Each include-prefix must include a distinct portion of the object
+   *     namespace, i.e., no include-prefix may be a prefix of another
+   *     include-prefix.
+   *
+   *   * Each exclude-prefix must exclude a distinct portion of the object
+   *     namespace, i.e., no exclude-prefix may be a prefix of another
+   *     exclude-prefix.
+   *
+   *   * If `includePrefixes` is specified, then each exclude-prefix must start
+   *     with the value of a path explicitly included by `includePrefixes`.
+   *
+   * The max size of `includePrefixes` is 1000.
    */
   core.List<core.String> includePrefixes;
   /**
@@ -1059,11 +1192,11 @@ class ObjectConditions {
   core.String maxTimeElapsedSinceLastModification;
   /**
    * If unspecified, `minTimeElapsedSinceLastModification` takes a zero value
-   * and `maxTimeElapsedSinceLastModification` takes the maximum possible value
-   * of Duration. Objects that satisfy the object conditions must either have a
-   * `lastModificationTime` greater or equal to `NOW` -
-   * `maxTimeElapsedSinceLastModification` and less than `NOW` -
-   * `minTimeElapsedSinceLastModification`, or not have a
+   * and `maxTimeElapsedSinceLastModification` takes the maximum possible
+   * value of Duration. Objects that satisfy the object conditions
+   * must either have a `lastModificationTime` greater or equal to
+   * `NOW` - `maxTimeElapsedSinceLastModification` and less than
+   * `NOW` - `minTimeElapsedSinceLastModification`, or not have a
    * `lastModificationTime`.
    */
   core.String minTimeElapsedSinceLastModification;
@@ -1109,11 +1242,12 @@ class ObjectConditions {
  */
 class Operation {
   /**
-   * If the value is `false`, it means the operation is still in progress. If
-   * true, the operation is completed and the `result` is available.
+   * If the value is `false`, it means the operation is still in progress.
+   * If true, the operation is completed, and either `error` or `response` is
+   * available.
    */
   core.bool done;
-  /** The error result of the operation in case of failure. */
+  /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
    * Represents the transfer operation object.
@@ -1124,18 +1258,19 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
   /**
    * The server-assigned name, which is only unique within the same service that
-   * originally returns it. If you use the default HTTP mapping above, the
-   * `name` should have the format of `operations/some/unique/name`.
+   * originally returns it. If you use the default HTTP mapping, the `name`
+   * should have the format of `transferOperations/some/unique/name`.
    */
   core.String name;
   /**
-   * The normal response of the operation in case of success. If the original
+   * The normal response of the operation in case of success.  If the original
    * method returns no data on success, such as `Delete`, the response is
-   * `google.protobuf.Empty`. If the original method is standard
-   * `Get`/`Create`/`Update`, the response should be the resource. For other
-   * methods, the response should have the type `XxxResponse`, where `Xxx` is
-   * the original method name. For example, if the original method name is
-   * `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+   * `google.protobuf.Empty`.  If the original method is standard
+   * `Get`/`Create`/`Update`, the response should be the resource.  For other
+   * methods, the response should have the type `XxxResponse`, where `Xxx`
+   * is the original method name.  For example, if the original method name
+   * is `TakeSnapshot()`, the inferred response type is
+   * `TakeSnapshotResponse`.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1214,16 +1349,26 @@ class ResumeTransferOperationRequest {
 /** Transfers can be scheduled to recur or to run just once. */
 class Schedule {
   /**
-   * The last day the recurring transfer will be run. If `scheduleEndDate` is
-   * the same as `scheduleStartDate`, the transfer will be executed only once.
+   * The last day the recurring transfer will be run. If `scheduleEndDate`
+   * is the same as `scheduleStartDate`, the transfer will be executed only
+   * once.
    */
   Date scheduleEndDate;
-  /** The first day the recurring transfer is scheduled to run. Required. */
+  /**
+   * The first day the recurring transfer is scheduled to run. If
+   * `scheduleStartDate` is in the past, the transfer will run for the first
+   * time on the following day.
+   * Required.
+   */
   Date scheduleStartDate;
   /**
    * The time in UTC at which the transfer will be scheduled to start in a day.
-   * Transfers may start later than this time. If not specified, transfers are
-   * scheduled to start at midnight UTC.
+   * Transfers may start later than this time. If not specified, recurring and
+   * one-time transfers that are scheduled to run today will run immediately;
+   * recurring transfers that are scheduled to run on a future date will start
+   * at approximately midnight UTC on that date. Note that when configuring a
+   * transfer with the Cloud Platform Console, the transfer's start time in a
+   * day is specified in your local timezone.
    */
   TimeOfDay startTimeOfDay;
 
@@ -1258,48 +1403,66 @@ class Schedule {
 
 /**
  * The `Status` type defines a logical error model that is suitable for
- * different programming environments, including REST APIs and RPC APIs. It is
- * used by [gRPC](https://github.com/grpc). The error model is designed to be: -
- * Simple to use and understand for most users - Flexible enough to meet
- * unexpected needs # Overview The `Status` message contains three pieces of
- * data: error code, error message, and error details. The error code should be
- * an enum value of [google.rpc.Code][google.rpc.Code], but it may accept
- * additional error codes if needed. The error message should be a
- * developer-facing English message that helps developers *understand* and
- * *resolve* the error. If a localized user-facing error message is needed, put
- * the localized message in the error details or localize it in the client. The
- * optional error details may contain arbitrary information about the error.
- * There is a predefined set of error detail types in the package `google.rpc`
- * which can be used for common error conditions. # Language mapping The
- * `Status` message is the logical representation of the error model, but it is
- * not necessarily the actual wire format. When the `Status` message is exposed
- * in different client libraries and different wire protocols, it can be mapped
- * differently. For example, it will likely be mapped to some exceptions in
- * Java, but more likely mapped to some error codes in C. # Other uses The error
- * model and the `Status` message can be used in a variety of environments,
- * either with or without APIs, to provide a consistent developer experience
- * across different environments. Example uses of this error model include: -
- * Partial errors. If a service needs to return partial errors to the client, it
- * may embed the `Status` in the normal response to indicate the partial errors.
- * - Workflow errors. A typical workflow has multiple steps. Each step may have
- * a `Status` message for error reporting purpose. - Batch operations. If a
- * client uses batch request and batch response, the `Status` message should be
- * used directly inside batch response, one for each error sub-response. -
- * Asynchronous operations. If an API call embeds asynchronous operation results
- * in its response, the status of those operations should be represented
- * directly using the `Status` message. - Logging. If some API errors are stored
- * in logs, the message `Status` could be used directly after any stripping
- * needed for security/privacy reasons.
+ * different
+ * programming environments, including REST APIs and RPC APIs. It is used by
+ * [gRPC](https://github.com/grpc). The error model is designed to be:
+ *
+ * - Simple to use and understand for most users
+ * - Flexible enough to meet unexpected needs
+ *
+ * # Overview
+ *
+ * The `Status` message contains three pieces of data: error code, error
+ * message,
+ * and error details. The error code should be an enum value of
+ * google.rpc.Code, but it may accept additional error codes if needed.  The
+ * error message should be a developer-facing English message that helps
+ * developers *understand* and *resolve* the error. If a localized user-facing
+ * error message is needed, put the localized message in the error details or
+ * localize it in the client. The optional error details may contain arbitrary
+ * information about the error. There is a predefined set of error detail types
+ * in the package `google.rpc` which can be used for common error conditions.
+ *
+ * # Language mapping
+ *
+ * The `Status` message is the logical representation of the error model, but it
+ * is not necessarily the actual wire format. When the `Status` message is
+ * exposed in different client libraries and different wire protocols, it can be
+ * mapped differently. For example, it will likely be mapped to some exceptions
+ * in Java, but more likely mapped to some error codes in C.
+ *
+ * # Other uses
+ *
+ * The error model and the `Status` message can be used in a variety of
+ * environments, either with or without APIs, to provide a
+ * consistent developer experience across different environments.
+ *
+ * Example uses of this error model include:
+ *
+ * - Partial errors. If a service needs to return partial errors to the client,
+ *     it may embed the `Status` in the normal response to indicate the partial
+ *     errors.
+ *
+ * - Workflow errors. A typical workflow has multiple steps. Each step may
+ *     have a `Status` message for error reporting purpose.
+ *
+ * - Batch operations. If a client uses batch request and batch response, the
+ *     `Status` message should be used directly inside batch response, one for
+ *     each error sub-response.
+ *
+ * - Asynchronous operations. If an API call embeds asynchronous operation
+ *     results in its response, the status of those operations should be
+ *     represented directly using the `Status` message.
+ *
+ * - Logging. If some API errors are stored in logs, the message `Status` could
+ * be used directly after any stripping needed for security/privacy reasons.
  */
 class Status {
-  /**
-   * The status code, which should be an enum value of
-   * [google.rpc.Code][google.rpc.Code].
-   */
+  /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details. There will be a common set
-   * of message types for APIs to use.
+   * A list of messages that carry the error details.  There will be a
+   * common set of message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1308,8 +1471,7 @@ class Status {
   /**
    * A developer-facing error message, which should be in English. Any
    * user-facing error message should be localized and sent in the
-   * [google.rpc.Status.details][google.rpc.Status.details] field, or localized
-   * by the client.
+   * google.rpc.Status.details field, or localized by the client.
    */
   core.String message;
 
@@ -1344,9 +1506,8 @@ class Status {
 
 /**
  * Represents a time of day. The date and time zone are either not significant
- * or are specified elsewhere. An API may chose to allow leap seconds. Related
- * types are [google.type.Date][google.type.Date] and
- * `google.protobuf.Timestamp`.
+ * or are specified elsewhere. An API may choose to allow leap seconds. Related
+ * types are google.type.Date and `google.protobuf.Timestamp`.
  */
 class TimeOfDay {
   /**
@@ -1412,8 +1573,9 @@ class TransferCounters {
   /** Bytes that failed to be deleted from the data sink. */
   core.String bytesFailedToDeleteFromSink;
   /**
-   * Bytes found in the data source that are scheduled to be transferred, which
-   * will be copied, excluded based on conditions, or skipped due to failures.
+   * Bytes found in the data source that are scheduled to be transferred,
+   * which will be copied, excluded based on conditions, or skipped due to
+   * failures.
    */
   core.String bytesFoundFromSource;
   /** Bytes found only in the data sink that are scheduled to be deleted. */
@@ -1573,34 +1735,44 @@ class TransferJob {
   /** This field cannot be changed by user requests. */
   core.String lastModificationTime;
   /**
-   * A globally unique name assigned by Storage Transfer Service when the job is
-   * created. This field should be left empty in requests to create a new
+   * A globally unique name assigned by Storage Transfer Service when the
+   * job is created. This field should be left empty in requests to create a new
    * transfer job; otherwise, the requests result in an `INVALID_ARGUMENT`
    * error.
    */
   core.String name;
   /**
-   * The ID of the Google Developers Console project that owns the job.
+   * The ID of the Google Cloud Platform Console project that owns the job.
    * Required.
    */
   core.String projectId;
-  /** Schedule specification. Required. */
+  /**
+   * Schedule specification.
+   * Required.
+   */
   Schedule schedule;
   /**
    * Status of the job. This value MUST be specified for
-   * `CreateTransferJobRequests`. NOTE: The effect of the new job status takes
-   * place during a subsequent job run. For example, if you change the job
-   * status from `ENABLED` to `DISABLED`, and an operation spawned by the
-   * transfer is running, the status change would not affect the current
-   * operation.
+   * `CreateTransferJobRequests`.
+   *
+   * NOTE: The effect of the new job status takes place during a subsequent job
+   * run. For example, if you change the job status from `ENABLED` to
+   * `DISABLED`, and an operation spawned by the transfer is running, the status
+   * change would not affect the current operation.
    * Possible string values are:
-   * - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
-   * - "ENABLED" : A ENABLED.
-   * - "DISABLED" : A DISABLED.
-   * - "DELETED" : A DELETED.
+   * - "STATUS_UNSPECIFIED" : Zero is an illegal value.
+   * - "ENABLED" : New transfers will be performed based on the schedule.
+   * - "DISABLED" : New transfers will not be scheduled.
+   * - "DELETED" : This is a soft delete state. After a transfer job is set to
+   * this
+   * state, the job and all the transfer executions are subject to
+   * garbage collection.
    */
   core.String status;
-  /** Transfer specification. Required. */
+  /**
+   * Transfer specification.
+   * Required.
+   */
   TransferSpec transferSpec;
 
   TransferJob();
@@ -1679,7 +1851,8 @@ class TransferOperation {
   /** A globally unique ID assigned by the system. */
   core.String name;
   /**
-   * The ID of the Google Developers Console project that owns the operation.
+   * The ID of the Google Cloud Platform Console project that owns the
+   * operation.
    * Required.
    */
   core.String projectId;
@@ -1688,17 +1861,20 @@ class TransferOperation {
   /**
    * Status of the transfer operation.
    * Possible string values are:
-   * - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
-   * - "IN_PROGRESS" : A IN_PROGRESS.
-   * - "PAUSED" : A PAUSED.
-   * - "SUCCESS" : A SUCCESS.
-   * - "FAILED" : A FAILED.
-   * - "ABORTED" : A ABORTED.
+   * - "STATUS_UNSPECIFIED" : Zero is an illegal value.
+   * - "IN_PROGRESS" : In progress.
+   * - "PAUSED" : Paused.
+   * - "SUCCESS" : Completed successfully.
+   * - "FAILED" : Terminated due to an unrecoverable failure.
+   * - "ABORTED" : Aborted by the user.
    */
   core.String status;
   /** The name of the transfer job that triggers this transfer operation. */
   core.String transferJobName;
-  /** Transfer specification. Required. */
+  /**
+   * Transfer specification.
+   * Required.
+   */
   TransferSpec transferSpec;
 
   TransferOperation();
@@ -1767,8 +1943,8 @@ class TransferOperation {
 }
 
 /**
- * TransferOptions uses three boolean parameters to define the actions to be
- * performed on objects in a transfer.
+ * TransferOptions uses three boolean parameters to define the actions
+ * to be performed on objects in a transfer.
  */
 class TransferOptions {
   /**
@@ -1822,8 +1998,8 @@ class TransferSpec {
   HttpData httpDataSource;
   /**
    * Only objects that satisfy these object conditions are included in the set
-   * of data source and data sink objects. Object conditions based on objects'
-   * `lastModificationTime` do not exclude objects in a data sink.
+   * of data source and data sink objects.  Object conditions based on
+   * objects' `lastModificationTime` do not exclude objects in a data sink.
    */
   ObjectConditions objectConditions;
   /**
@@ -1883,16 +2059,19 @@ class TransferSpec {
 /** Request passed to UpdateTransferJob. */
 class UpdateTransferJobRequest {
   /**
-   * The ID of the Google Developers Console project that owns the job.
+   * The ID of the Google Cloud Platform Console project that owns the job.
    * Required.
    */
   core.String projectId;
-  /** The job to update. Required. */
+  /**
+   * The job to update.
+   * Required.
+   */
   TransferJob transferJob;
   /**
    * The field mask of the fields in `transferJob` that are to be updated in
-   * this request. Fields in `transferJob` that can be updated are:
-   * `description`, `transferSpec`, and `status`. To update the `transferSpec`
+   * this request.  Fields in `transferJob` that can be updated are:
+   * `description`, `transferSpec`, and `status`.  To update the `transferSpec`
    * of the job, a complete transfer specification has to be provided. An
    * incomplete specification which misses any required fields will be rejected
    * with the error `INVALID_ARGUMENT`.

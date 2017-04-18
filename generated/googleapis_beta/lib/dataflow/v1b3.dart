@@ -19,6 +19,9 @@ class DataflowApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /** View and manage your Google Compute Engine resources */
+  static const ComputeScope = "https://www.googleapis.com/auth/compute";
+
   /** View your email address */
   static const UserinfoEmailScope = "https://www.googleapis.com/auth/userinfo.email";
 
@@ -108,16 +111,16 @@ class ProjectsJobsResourceApi {
    *
    * [projectId] - The ID of the Cloud Platform project that the job belongs to.
    *
-   * [location] - The location that contains this job.
-   *
-   * [replaceJobId] - Deprecated. This field is now in the Job message.
-   *
    * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+   *
+   * [location] - The location that contains this job.
+   *
+   * [replaceJobId] - Deprecated. This field is now in the Job message.
    *
    * Completes with a [Job].
    *
@@ -127,7 +130,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> create(Job request, core.String projectId, {core.String location, core.String replaceJobId, core.String view}) {
+  async.Future<Job> create(Job request, core.String projectId, {core.String view, core.String location, core.String replaceJobId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -141,14 +144,14 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -172,14 +175,14 @@ class ProjectsJobsResourceApi {
    *
    * [jobId] - The job ID.
    *
+   * [location] - The location that contains this job.
+   *
    * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
-   *
-   * [location] - The location that contains this job.
    *
    * Completes with a [Job].
    *
@@ -189,7 +192,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> get(core.String projectId, core.String jobId, {core.String view, core.String location}) {
+  async.Future<Job> get(core.String projectId, core.String jobId, {core.String location, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -203,11 +206,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
@@ -535,6 +538,21 @@ class ProjectsJobsMessagesResourceApi {
    *
    * [jobId] - The job to get messages about.
    *
+   * [location] - The location which contains the job specified by job_id.
+   *
+   * [endTime] - Return only messages with timestamps < end_time. The default is
+   * now
+   * (i.e. return up to the latest messages available).
+   *
+   * [startTime] - If specified, return only messages with timestamps >=
+   * start_time.
+   * The default is the job creation time (i.e. beginning of messages).
+   *
+   * [pageToken] - If supplied, this should be the value of next_page_token
+   * returned
+   * by an earlier call. This will cause the next page of results to
+   * be returned.
+   *
    * [pageSize] - If specified, determines the maximum number of messages to
    * return.  If unspecified, the service may choose an appropriate
    * default, or may return an arbitrarily large number of results.
@@ -548,21 +566,6 @@ class ProjectsJobsMessagesResourceApi {
    * - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
    * - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
    *
-   * [endTime] - Return only messages with timestamps < end_time. The default is
-   * now
-   * (i.e. return up to the latest messages available).
-   *
-   * [location] - The location which contains the job specified by job_id.
-   *
-   * [pageToken] - If supplied, this should be the value of next_page_token
-   * returned
-   * by an earlier call. This will cause the next page of results to
-   * be returned.
-   *
-   * [startTime] - If specified, return only messages with timestamps >=
-   * start_time.
-   * The default is the job creation time (i.e. beginning of messages).
-   *
    * Completes with a [ListJobMessagesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -571,7 +574,7 @@ class ProjectsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.int pageSize, core.String minimumImportance, core.String endTime, core.String location, core.String pageToken, core.String startTime}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String location, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String minimumImportance}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -585,23 +588,23 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (minimumImportance != null) {
       _queryParams["minimumImportance"] = [minimumImportance];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
@@ -730,15 +733,67 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsJobsResourceApi get jobs => new ProjectsLocationsJobsResourceApi(_requester);
+  ProjectsLocationsTemplatesResourceApi get templates => new ProjectsLocationsTemplatesResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Send a worker_message to the service.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project to send the WorkerMessages to.
+   *
+   * [location] - The location which contains the job
+   *
+   * Completes with a [SendWorkerMessagesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SendWorkerMessagesResponse> workerMessages(SendWorkerMessagesRequest request, core.String projectId, core.String location) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/WorkerMessages';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SendWorkerMessagesResponse.fromJson(data));
+  }
+
 }
 
 
 class ProjectsLocationsJobsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsJobsDebugResourceApi get debug => new ProjectsLocationsJobsDebugResourceApi(_requester);
   ProjectsLocationsJobsMessagesResourceApi get messages => new ProjectsLocationsJobsMessagesResourceApi(_requester);
   ProjectsLocationsJobsWorkItemsResourceApi get workItems => new ProjectsLocationsJobsWorkItemsResourceApi(_requester);
 
@@ -932,6 +987,17 @@ class ProjectsLocationsJobsResourceApi {
    *
    * [location] - The location that contains this job.
    *
+   * [filter] - The kind of filter to use.
+   * Possible string values are:
+   * - "UNKNOWN" : A UNKNOWN.
+   * - "ALL" : A ALL.
+   * - "TERMINATED" : A TERMINATED.
+   * - "ACTIVE" : A ACTIVE.
+   *
+   * [pageToken] - Set this to the 'next_page_token' field of a previous
+   * response
+   * to request additional results in a long list.
+   *
    * [pageSize] - If there are many jobs, limit response to at most this many.
    * The actual number of jobs returned will be the lesser of max_responses
    * and an unspecified server-defined limit.
@@ -944,17 +1010,6 @@ class ProjectsLocationsJobsResourceApi {
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
-   * [filter] - The kind of filter to use.
-   * Possible string values are:
-   * - "UNKNOWN" : A UNKNOWN.
-   * - "ALL" : A ALL.
-   * - "TERMINATED" : A TERMINATED.
-   * - "ACTIVE" : A ACTIVE.
-   *
-   * [pageToken] - Set this to the 'next_page_token' field of a previous
-   * response
-   * to request additional results in a long list.
-   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -963,7 +1018,7 @@ class ProjectsLocationsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, core.String location, {core.int pageSize, core.String view, core.String filter, core.String pageToken}) {
+  async.Future<ListJobsResponse> list(core.String projectId, core.String location, {core.String filter, core.String pageToken, core.int pageSize, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -977,17 +1032,17 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs';
@@ -1054,6 +1109,123 @@ class ProjectsLocationsJobsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Job.fromJson(data));
+  }
+
+}
+
+
+class ProjectsLocationsJobsDebugResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsDebugResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get encoded debug configuration for component. Not cacheable.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project id.
+   *
+   * [location] - The location which contains the job specified by job_id.
+   *
+   * [jobId] - The job id.
+   *
+   * Completes with a [GetDebugConfigResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetDebugConfigResponse> getConfig(GetDebugConfigRequest request, core.String projectId, core.String location, core.String jobId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/debug/getConfig';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetDebugConfigResponse.fromJson(data));
+  }
+
+  /**
+   * Send encoded debug capture data for component.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The project id.
+   *
+   * [location] - The location which contains the job specified by job_id.
+   *
+   * [jobId] - The job id.
+   *
+   * Completes with a [SendDebugCaptureResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<SendDebugCaptureResponse> sendCapture(SendDebugCaptureRequest request, core.String projectId, core.String location, core.String jobId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/debug/sendCapture';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new SendDebugCaptureResponse.fromJson(data));
   }
 
 }
@@ -1275,6 +1447,189 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
 }
 
 
+class ProjectsLocationsTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTemplatesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a Cloud Dataflow job from a template.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Required. The ID of the Cloud Platform project that the job
+   * belongs to.
+   *
+   * [location] - The location to which to direct the request.
+   *
+   * Completes with a [Job].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Job> create(CreateJobFromTemplateRequest request, core.String projectId, core.String location) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/templates';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Job.fromJson(data));
+  }
+
+  /**
+   * Get the template associated with a template.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Required. The ID of the Cloud Platform project that the job
+   * belongs to.
+   *
+   * [location] - The location to which to direct the request.
+   *
+   * [view] - The view to retrieve. Defaults to METADATA_ONLY.
+   * Possible string values are:
+   * - "METADATA_ONLY" : A METADATA_ONLY.
+   *
+   * [gcsPath] - Required. A Cloud Storage path to the template from which to
+   * create the job.
+   * Must be a valid Cloud Storage URL, beginning with `gs://`.
+   *
+   * Completes with a [GetTemplateResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GetTemplateResponse> get(core.String projectId, core.String location, {core.String view, core.String gcsPath}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/templates:get';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GetTemplateResponse.fromJson(data));
+  }
+
+  /**
+   * Launch a template.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Required. The ID of the Cloud Platform project that the job
+   * belongs to.
+   *
+   * [location] - The location to which to direct the request.
+   *
+   * [gcsPath] - Required. A Cloud Storage path to the template from which to
+   * create
+   * the job.
+   * Must be valid Cloud Storage URL, beginning with 'gs://'.
+   *
+   * [dryRun] - Whether or not the job should actually be executed after
+   * validating parameters. Defaults to false. Validation errors do
+   * not cause the HTTP request to fail if true.
+   *
+   * Completes with a [LaunchTemplateResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, core.String location, {core.String gcsPath, core.bool dryRun}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
+    }
+    if (dryRun != null) {
+      _queryParams["dryRun"] = ["${dryRun}"];
+    }
+
+    _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/templates:launch';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LaunchTemplateResponse.fromJson(data));
+  }
+
+}
+
+
 class ProjectsTemplatesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1342,6 +1697,8 @@ class ProjectsTemplatesResourceApi {
    * create the job.
    * Must be a valid Cloud Storage URL, beginning with `gs://`.
    *
+   * [location] - The location to which to direct the request.
+   *
    * Completes with a [GetTemplateResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1350,7 +1707,7 @@ class ProjectsTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetTemplateResponse> get(core.String projectId, {core.String view, core.String gcsPath}) {
+  async.Future<GetTemplateResponse> get(core.String projectId, {core.String view, core.String gcsPath, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1366,6 +1723,9 @@ class ProjectsTemplatesResourceApi {
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/templates:get';
@@ -1399,6 +1759,8 @@ class ProjectsTemplatesResourceApi {
    * validating parameters. Defaults to false. Validation errors do
    * not cause the HTTP request to fail if true.
    *
+   * [location] - The location to which to direct the request.
+   *
    * Completes with a [LaunchTemplateResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1407,7 +1769,7 @@ class ProjectsTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, {core.String gcsPath, core.bool dryRun}) {
+  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, {core.String gcsPath, core.bool dryRun, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1426,6 +1788,9 @@ class ProjectsTemplatesResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/templates:launch';
@@ -1596,6 +1961,92 @@ class ApproximateSplitRequest {
     }
     if (position != null) {
       _json["position"] = (position).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A structured message reporting an autoscaling decision made by the Dataflow
+ * service.
+ */
+class AutoscalingEvent {
+  /** The current number of workers the job has. */
+  core.String currentNumWorkers;
+  /**
+   * A message describing why the system decided to adjust the current
+   * number of workers, why it failed, or why the system decided to
+   * not make any changes to the number of workers.
+   */
+  StructuredMessage description;
+  /**
+   * The type of autoscaling event to report.
+   * Possible string values are:
+   * - "TYPE_UNKNOWN" : Default type for the enum.  Value should never be
+   * returned.
+   * - "TARGET_NUM_WORKERS_CHANGED" : The TARGET_NUM_WORKERS_CHANGED type should
+   * be used when the target
+   * worker pool size has changed at the start of an actuation. An event
+   * should always be specified as TARGET_NUM_WORKERS_CHANGED if it reflects
+   * a change in the target_num_workers.
+   * - "CURRENT_NUM_WORKERS_CHANGED" : The CURRENT_NUM_WORKERS_CHANGED type
+   * should be used when actual worker
+   * pool size has been changed, but the target_num_workers has not changed.
+   * - "ACTUATION_FAILURE" : The ACTUATION_FAILURE type should be used when we
+   * want to report
+   * an error to the user indicating why the current number of workers
+   * in the pool could not be changed.
+   * Displayed in the current status and history widgets.
+   * - "NO_CHANGE" : Used when we want to report to the user a reason why we are
+   * not currently adjusting the number of workers.
+   * Should specify both target_num_workers, current_num_workers and a
+   * decision_message.
+   */
+  core.String eventType;
+  /** The target number of workers the worker pool wants to resize to use. */
+  core.String targetNumWorkers;
+  /**
+   * The time this event was emitted to indicate a new target or current
+   * num_workers value.
+   */
+  core.String time;
+
+  AutoscalingEvent();
+
+  AutoscalingEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("currentNumWorkers")) {
+      currentNumWorkers = _json["currentNumWorkers"];
+    }
+    if (_json.containsKey("description")) {
+      description = new StructuredMessage.fromJson(_json["description"]);
+    }
+    if (_json.containsKey("eventType")) {
+      eventType = _json["eventType"];
+    }
+    if (_json.containsKey("targetNumWorkers")) {
+      targetNumWorkers = _json["targetNumWorkers"];
+    }
+    if (_json.containsKey("time")) {
+      time = _json["time"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (currentNumWorkers != null) {
+      _json["currentNumWorkers"] = currentNumWorkers;
+    }
+    if (description != null) {
+      _json["description"] = (description).toJson();
+    }
+    if (eventType != null) {
+      _json["eventType"] = eventType;
+    }
+    if (targetNumWorkers != null) {
+      _json["targetNumWorkers"] = targetNumWorkers;
+    }
+    if (time != null) {
+      _json["time"] = time;
     }
     return _json;
   }
@@ -2236,6 +2687,8 @@ class CreateJobFromTemplateRequest {
   core.String gcsPath;
   /** Required. The job name to use for the created job. */
   core.String jobName;
+  /** The location to which to direct the request. */
+  core.String location;
   /** The runtime parameters to pass to the job. */
   core.Map<core.String, core.String> parameters;
 
@@ -2250,6 +2703,9 @@ class CreateJobFromTemplateRequest {
     }
     if (_json.containsKey("jobName")) {
       jobName = _json["jobName"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
     }
     if (_json.containsKey("parameters")) {
       parameters = _json["parameters"];
@@ -2266,6 +2722,9 @@ class CreateJobFromTemplateRequest {
     }
     if (jobName != null) {
       _json["jobName"] = jobName;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (parameters != null) {
       _json["parameters"] = parameters;
@@ -2812,6 +3271,94 @@ class Environment {
   }
 }
 
+/** A message describing the state of a particular execution stage. */
+class ExecutionStageState {
+  /** The time at which the stage transitioned to this state. */
+  core.String currentStateTime;
+  /** The name of the execution stage. */
+  core.String executionStageName;
+  /**
+   * Executions stage states allow the same set of values as JobState.
+   * Possible string values are:
+   * - "JOB_STATE_UNKNOWN" : The job's run state isn't specified.
+   * - "JOB_STATE_STOPPED" : `JOB_STATE_STOPPED` indicates that the job has not
+   * yet started to run.
+   * - "JOB_STATE_RUNNING" : `JOB_STATE_RUNNING` indicates that the job is
+   * currently running.
+   * - "JOB_STATE_DONE" : `JOB_STATE_DONE` indicates that the job has
+   * successfully completed.
+   * This is a terminal job state.  This state may be set by the Cloud Dataflow
+   * service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a
+   * Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal
+   * state.
+   * - "JOB_STATE_FAILED" : `JOB_STATE_FAILED` indicates that the job has
+   * failed.  This is a
+   * terminal job state.  This state may only be set by the Cloud Dataflow
+   * service, and only as a transition from `JOB_STATE_RUNNING`.
+   * - "JOB_STATE_CANCELLED" : `JOB_STATE_CANCELLED` indicates that the job has
+   * been explicitly
+   * cancelled. This is a terminal job state. This state may only be
+   * set via a Cloud Dataflow `UpdateJob` call, and only if the job has not
+   * yet reached another terminal state.
+   * - "JOB_STATE_UPDATED" : `JOB_STATE_UPDATED` indicates that the job was
+   * successfully updated,
+   * meaning that this job was stopped and another job was started, inheriting
+   * state from this one. This is a terminal job state. This state may only be
+   * set by the Cloud Dataflow service, and only as a transition from
+   * `JOB_STATE_RUNNING`.
+   * - "JOB_STATE_DRAINING" : `JOB_STATE_DRAINING` indicates that the job is in
+   * the process of draining.
+   * A draining job has stopped pulling from its input sources and is processing
+   * any data that remains in-flight. This state may be set via a Cloud Dataflow
+   * `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs
+   * that are draining may only transition to `JOB_STATE_DRAINED`,
+   * `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.
+   * - "JOB_STATE_DRAINED" : `JOB_STATE_DRAINED` indicates that the job has been
+   * drained.
+   * A drained job terminated by stopping pulling from its input sources and
+   * processing any data that remained in-flight when draining was requested.
+   * This state is a terminal state, may only be set by the Cloud Dataflow
+   * service, and only as a transition from `JOB_STATE_DRAINING`.
+   * - "JOB_STATE_PENDING" : 'JOB_STATE_PENDING' indicates that the job has been
+   * created but is not yet
+   * running.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,
+   * or `JOB_STATE_FAILED`.
+   * - "JOB_STATE_CANCELLING" : 'JOB_STATE_CANCELLING' indicates that the job
+   * has been explicitly cancelled
+   * and is in the process of stopping.  Jobs that are cancelling may only
+   * transition to 'JOB_STATE_CANCELLED' or 'JOB_STATE_FAILED'.
+   */
+  core.String executionStageState;
+
+  ExecutionStageState();
+
+  ExecutionStageState.fromJson(core.Map _json) {
+    if (_json.containsKey("currentStateTime")) {
+      currentStateTime = _json["currentStateTime"];
+    }
+    if (_json.containsKey("executionStageName")) {
+      executionStageName = _json["executionStageName"];
+    }
+    if (_json.containsKey("executionStageState")) {
+      executionStageState = _json["executionStageState"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (currentStateTime != null) {
+      _json["currentStateTime"] = currentStateTime;
+    }
+    if (executionStageName != null) {
+      _json["executionStageName"] = executionStageName;
+    }
+    if (executionStageState != null) {
+      _json["executionStageState"] = executionStageState;
+    }
+    return _json;
+  }
+}
+
 /**
  * Description of the composing transforms, names/ids, and input/outputs of a
  * stage of execution.  Some composing transforms and sources may have been
@@ -3007,6 +3554,8 @@ class GetDebugConfigRequest {
    * requested.
    */
   core.String componentId;
+  /** The location which contains the job specified by job_id. */
+  core.String location;
   /** The worker id, i.e., VM hostname. */
   core.String workerId;
 
@@ -3015,6 +3564,9 @@ class GetDebugConfigRequest {
   GetDebugConfigRequest.fromJson(core.Map _json) {
     if (_json.containsKey("componentId")) {
       componentId = _json["componentId"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
     }
     if (_json.containsKey("workerId")) {
       workerId = _json["workerId"];
@@ -3025,6 +3577,9 @@ class GetDebugConfigRequest {
     var _json = new core.Map();
     if (componentId != null) {
       _json["componentId"] = componentId;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (workerId != null) {
       _json["workerId"] = workerId;
@@ -3329,6 +3884,14 @@ class Job {
    * processing any data that remained in-flight when draining was requested.
    * This state is a terminal state, may only be set by the Cloud Dataflow
    * service, and only as a transition from `JOB_STATE_DRAINING`.
+   * - "JOB_STATE_PENDING" : 'JOB_STATE_PENDING' indicates that the job has been
+   * created but is not yet
+   * running.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,
+   * or `JOB_STATE_FAILED`.
+   * - "JOB_STATE_CANCELLING" : 'JOB_STATE_CANCELLING' indicates that the job
+   * has been explicitly cancelled
+   * and is in the process of stopping.  Jobs that are cancelling may only
+   * transition to 'JOB_STATE_CANCELLED' or 'JOB_STATE_FAILED'.
    */
   core.String currentState;
   /** The timestamp associated with the current state. */
@@ -3441,8 +4004,21 @@ class Job {
    * processing any data that remained in-flight when draining was requested.
    * This state is a terminal state, may only be set by the Cloud Dataflow
    * service, and only as a transition from `JOB_STATE_DRAINING`.
+   * - "JOB_STATE_PENDING" : 'JOB_STATE_PENDING' indicates that the job has been
+   * created but is not yet
+   * running.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,
+   * or `JOB_STATE_FAILED`.
+   * - "JOB_STATE_CANCELLING" : 'JOB_STATE_CANCELLING' indicates that the job
+   * has been explicitly cancelled
+   * and is in the process of stopping.  Jobs that are cancelling may only
+   * transition to 'JOB_STATE_CANCELLED' or 'JOB_STATE_FAILED'.
    */
   core.String requestedState;
+  /**
+   * This field may be mutated by the Cloud Dataflow service;
+   * callers cannot mutate it.
+   */
+  core.List<ExecutionStageState> stageStates;
   /** The top-level steps that constitute the entire job. */
   core.List<Step> steps;
   /**
@@ -3526,6 +4102,9 @@ class Job {
     if (_json.containsKey("requestedState")) {
       requestedState = _json["requestedState"];
     }
+    if (_json.containsKey("stageStates")) {
+      stageStates = _json["stageStates"].map((value) => new ExecutionStageState.fromJson(value)).toList();
+    }
     if (_json.containsKey("steps")) {
       steps = _json["steps"].map((value) => new Step.fromJson(value)).toList();
     }
@@ -3586,6 +4165,9 @@ class Job {
     }
     if (requestedState != null) {
       _json["requestedState"] = requestedState;
+    }
+    if (stageStates != null) {
+      _json["stageStates"] = stageStates.map((value) => (value).toJson()).toList();
     }
     if (steps != null) {
       _json["steps"] = steps.map((value) => (value).toJson()).toList();
@@ -3659,10 +4241,7 @@ class JobExecutionStageInfo {
 
 /** A particular message pertaining to a Dataflow job. */
 class JobMessage {
-  /**
-   * Identifies the message.  This is automatically generated by the
-   * service; the caller should treat it as an opaque string.
-   */
+  /** Deprecated. */
   core.String id;
   /**
    * Importance level of the message.
@@ -4049,6 +4628,8 @@ class LeaseWorkItemResponse {
 
 /** Response to a request to list job messages. */
 class ListJobMessagesResponse {
+  /** Autoscaling events in ascending timestamp order. */
+  core.List<AutoscalingEvent> autoscalingEvents;
   /** Messages in ascending timestamp order. */
   core.List<JobMessage> jobMessages;
   /** The token to obtain the next page of results if there are more. */
@@ -4057,6 +4638,9 @@ class ListJobMessagesResponse {
   ListJobMessagesResponse();
 
   ListJobMessagesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("autoscalingEvents")) {
+      autoscalingEvents = _json["autoscalingEvents"].map((value) => new AutoscalingEvent.fromJson(value)).toList();
+    }
     if (_json.containsKey("jobMessages")) {
       jobMessages = _json["jobMessages"].map((value) => new JobMessage.fromJson(value)).toList();
     }
@@ -4067,6 +4651,9 @@ class ListJobMessagesResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (autoscalingEvents != null) {
+      _json["autoscalingEvents"] = autoscalingEvents.map((value) => (value).toJson()).toList();
+    }
     if (jobMessages != null) {
       _json["jobMessages"] = jobMessages.map((value) => (value).toJson()).toList();
     }
@@ -4691,6 +5278,41 @@ class ParallelInstruction {
   }
 }
 
+/** Structured data associated with this message. */
+class Parameter {
+  /** Key or name for this parameter. */
+  core.String key;
+  /**
+   * Value for this parameter.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object value;
+
+  Parameter();
+
+  Parameter.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /** Metadata for a specific parameter. */
 class ParameterMetadata {
   /** Required. The help text to display for the parameter. */
@@ -5290,6 +5912,8 @@ class SendDebugCaptureRequest {
   core.String componentId;
   /** The encoded debug information. */
   core.String data;
+  /** The location which contains the job specified by job_id. */
+  core.String location;
   /** The worker id, i.e., VM hostname. */
   core.String workerId;
 
@@ -5301,6 +5925,9 @@ class SendDebugCaptureRequest {
     }
     if (_json.containsKey("data")) {
       data = _json["data"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
     }
     if (_json.containsKey("workerId")) {
       workerId = _json["workerId"];
@@ -5314,6 +5941,9 @@ class SendDebugCaptureRequest {
     }
     if (data != null) {
       _json["data"] = data;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (workerId != null) {
       _json["workerId"] = workerId;
@@ -5341,12 +5971,17 @@ class SendDebugCaptureResponse {
 
 /** A request for sending worker messages to the service. */
 class SendWorkerMessagesRequest {
+  /** The location which contains the job */
+  core.String location;
   /** The WorkerMessages to send. */
   core.List<WorkerMessage> workerMessages;
 
   SendWorkerMessagesRequest();
 
   SendWorkerMessagesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
     if (_json.containsKey("workerMessages")) {
       workerMessages = _json["workerMessages"].map((value) => new WorkerMessage.fromJson(value)).toList();
     }
@@ -5354,6 +5989,9 @@ class SendWorkerMessagesRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (location != null) {
+      _json["location"] = location;
+    }
     if (workerMessages != null) {
       _json["workerMessages"] = workerMessages.map((value) => (value).toJson()).toList();
     }
@@ -6725,6 +7363,51 @@ class StringList {
     var _json = new core.Map();
     if (elements != null) {
       _json["elements"] = elements;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A rich message format, including a human readable string, a key for
+ * identifying the message, and structured data associated with the message for
+ * programmatic consumption.
+ */
+class StructuredMessage {
+  /**
+   * Idenfier for this message type.  Used by external systems to
+   * internationalize or personalize message.
+   */
+  core.String messageKey;
+  /** Human-readable version of message. */
+  core.String messageText;
+  /** The structured data associated with this message. */
+  core.List<Parameter> parameters;
+
+  StructuredMessage();
+
+  StructuredMessage.fromJson(core.Map _json) {
+    if (_json.containsKey("messageKey")) {
+      messageKey = _json["messageKey"];
+    }
+    if (_json.containsKey("messageText")) {
+      messageText = _json["messageText"];
+    }
+    if (_json.containsKey("parameters")) {
+      parameters = _json["parameters"].map((value) => new Parameter.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (messageKey != null) {
+      _json["messageKey"] = messageKey;
+    }
+    if (messageText != null) {
+      _json["messageText"] = messageText;
+    }
+    if (parameters != null) {
+      _json["parameters"] = parameters.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

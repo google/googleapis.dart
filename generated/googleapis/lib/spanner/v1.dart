@@ -102,13 +102,13 @@ class ProjectsInstanceConfigsResourceApi {
    * `projects/<project>`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Number of instance configurations to be returned in the
-   * response. If 0 or
-   * less, defaults to the server's maximum allowed page size.
-   *
    * [pageToken] - If non-empty, `page_token` should contain a
    * next_page_token
    * from a previous ListInstanceConfigsResponse.
+   *
+   * [pageSize] - Number of instance configurations to be returned in the
+   * response. If 0 or
+   * less, defaults to the server's maximum allowed page size.
    *
    * Completes with a [ListInstanceConfigsResponse].
    *
@@ -118,7 +118,7 @@ class ProjectsInstanceConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstanceConfigsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListInstanceConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -129,11 +129,11 @@ class ProjectsInstanceConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instanceConfigs';
@@ -910,13 +910,13 @@ class ProjectsInstancesDatabasesResourceApi {
    * Values are of the form `projects/<project>/instances/<instance>`.
    * Value must have pattern "^projects/[^/]+/instances/[^/]+$".
    *
-   * [pageSize] - Number of databases to be returned in the response. If 0 or
-   * less,
-   * defaults to the server's maximum allowed page size.
-   *
    * [pageToken] - If non-empty, `page_token` should contain a
    * next_page_token from a
    * previous ListDatabasesResponse.
+   *
+   * [pageSize] - Number of databases to be returned in the response. If 0 or
+   * less,
+   * defaults to the server's maximum allowed page size.
    *
    * Completes with a [ListDatabasesResponse].
    *
@@ -926,7 +926,7 @@ class ProjectsInstancesDatabasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDatabasesResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListDatabasesResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -937,11 +937,11 @@ class ProjectsInstancesDatabasesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/databases';
@@ -1271,11 +1271,11 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$".
    *
-   * [filter] - The standard list filter.
-   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -1285,7 +1285,7 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1296,14 +1296,14 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2053,9 +2053,53 @@ class ProjectsInstancesOperationsResourceApi {
 
 /**
  * Specifies the audit configuration for a service.
- * It consists of which permission types are logged, and what identities, if
- * any, are exempted from logging.
+ * The configuration determines which permission types are logged, and what
+ * identities, if any, are exempted from logging.
  * An AuditConifg must have one or more AuditLogConfigs.
+ *
+ * If there are AuditConfigs for both `allServices` and a specific service,
+ * the union of the two AuditConfigs is used for that service: the log_types
+ * specified in each AuditConfig are enabled, and the exempted_members in each
+ * AuditConfig are exempted.
+ * Example Policy with multiple AuditConfigs:
+ * {
+ *   "audit_configs": [
+ *     {
+ *       "service": "allServices"
+ *       "audit_log_configs": [
+ *         {
+ *           "log_type": "DATA_READ",
+ *           "exempted_members": [
+ *             "user:foo@gmail.com"
+ *           ]
+ *         },
+ *         {
+ *           "log_type": "DATA_WRITE",
+ *         },
+ *         {
+ *           "log_type": "ADMIN_READ",
+ *         }
+ *       ]
+ *     },
+ *     {
+ *       "service": "fooservice@googleapis.com"
+ *       "audit_log_configs": [
+ *         {
+ *           "log_type": "DATA_READ",
+ *         },
+ *         {
+ *           "log_type": "DATA_WRITE",
+ *           "exempted_members": [
+ *             "user:bar@gmail.com"
+ *           ]
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * }
+ * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+ * logging. It also exempts foo@gmail.com from DATA_READ logging, and
+ * bar@gmail.com from DATA_WRITE logging.
  */
 class AuditConfig {
   /**
@@ -2063,12 +2107,6 @@ class AuditConfig {
    * Next ID: 4
    */
   core.List<AuditLogConfig> auditLogConfigs;
-  /**
-   * Specifies the identities that are exempted from "data access" audit
-   * logging for the `service` specified above.
-   * Follows the same format of Binding.members.
-   * This field is deprecated in favor of per-permission-type exemptions.
-   */
   core.List<core.String> exemptedMembers;
   /**
    * Specifies a service that will be enabled for audit logging.
@@ -2421,6 +2459,15 @@ class Condition {
    * access, and are thus only used in a strictly positive context
    * (e.g. ALLOW/IN or DENY/NOT_IN).
    * See: go/rpc-security-policy-dynamicauth.
+   * - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
+   * with this request.
+   * String values should match enum names from tech.iam.JustificationType,
+   * e.g. "MANUAL_STRING". It is not permitted to grant access based on
+   * the *absence* of a justification, so justification conditions can only
+   * be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+   *
+   * Multiple justifications, e.g., a Buganizer ID and a manually-entered
+   * reason, are normal and supported.
    */
   core.String iam;
   /**
@@ -2429,8 +2476,12 @@ class Condition {
    * - "NO_OP" : Default no-op.
    * - "EQUALS" : DEPRECATED. Use IN instead.
    * - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
-   * - "IN" : Set-inclusion check.
-   * - "NOT_IN" : Set-exclusion check.
+   * - "IN" : The condition is true if the subject (or any element of it if it
+   * is
+   * a set) matches any of the supplied values.
+   * - "NOT_IN" : The condition is true if the subject (or every element of it
+   * if it is
+   * a set) matches none of the supplied values.
    * - "DISCHARGED" : Subject is discharged
    */
   core.String op;
@@ -4675,8 +4726,8 @@ class SetIamPolicyRequest {
   Policy policy;
   /**
    * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-   * the fields in the mask will be modified. If no mask is provided, a default
-   * mask is used:
+   * the fields in the mask will be modified. If no mask is provided, the
+   * following default mask is used:
    * paths: "bindings, etag"
    * This field is only used by Cloud IAM.
    */

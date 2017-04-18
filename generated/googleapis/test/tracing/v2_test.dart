@@ -1,4 +1,4 @@
-library googleapis.tracing.v1.test;
+library googleapis.tracing.v2.test;
 
 import "dart:core" as core;
 import "dart:collection" as collection;
@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
 import 'package:unittest/unittest.dart' as unittest;
 
-import 'package:googleapis/tracing/v1.dart' as api;
+import 'package:googleapis/tracing/v2.dart' as api;
 
 class HttpServerMock extends http.BaseClient {
   core.Function _callback;
@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3064() {
+buildUnnamed1656() {
   var o = new core.Map<core.String, api.AttributeValue>();
   o["x"] = buildAttributeValue();
   o["y"] = buildAttributeValue();
   return o;
 }
 
-checkUnnamed3064(core.Map<core.String, api.AttributeValue> o) {
+checkUnnamed1656(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttributeValue(o["x"]);
   checkAttributeValue(o["y"]);
@@ -69,7 +69,7 @@ buildAnnotation() {
   var o = new api.Annotation();
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
-    o.attributes = buildUnnamed3064();
+    o.attributes = buildUnnamed1656();
     o.description = "foo";
   }
   buildCounterAnnotation--;
@@ -79,7 +79,7 @@ buildAnnotation() {
 checkAnnotation(api.Annotation o) {
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
-    checkUnnamed3064(o.attributes);
+    checkUnnamed1656(o.attributes);
     unittest.expect(o.description, unittest.equals('foo'));
   }
   buildCounterAnnotation--;
@@ -108,36 +108,36 @@ checkAttributeValue(api.AttributeValue o) {
   buildCounterAttributeValue--;
 }
 
-buildUnnamed3065() {
-  var o = new core.Map<core.String, api.SpanUpdates>();
-  o["x"] = buildSpanUpdates();
-  o["y"] = buildSpanUpdates();
+buildUnnamed1657() {
+  var o = new core.List<api.Span>();
+  o.add(buildSpan());
+  o.add(buildSpan());
   return o;
 }
 
-checkUnnamed3065(core.Map<core.String, api.SpanUpdates> o) {
+checkUnnamed1657(core.List<api.Span> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpanUpdates(o["x"]);
-  checkSpanUpdates(o["y"]);
+  checkSpan(o[0]);
+  checkSpan(o[1]);
 }
 
-core.int buildCounterBatchUpdateSpansRequest = 0;
-buildBatchUpdateSpansRequest() {
-  var o = new api.BatchUpdateSpansRequest();
-  buildCounterBatchUpdateSpansRequest++;
-  if (buildCounterBatchUpdateSpansRequest < 3) {
-    o.spanUpdates = buildUnnamed3065();
+core.int buildCounterBatchWriteSpansRequest = 0;
+buildBatchWriteSpansRequest() {
+  var o = new api.BatchWriteSpansRequest();
+  buildCounterBatchWriteSpansRequest++;
+  if (buildCounterBatchWriteSpansRequest < 3) {
+    o.spans = buildUnnamed1657();
   }
-  buildCounterBatchUpdateSpansRequest--;
+  buildCounterBatchWriteSpansRequest--;
   return o;
 }
 
-checkBatchUpdateSpansRequest(api.BatchUpdateSpansRequest o) {
-  buildCounterBatchUpdateSpansRequest++;
-  if (buildCounterBatchUpdateSpansRequest < 3) {
-    checkUnnamed3065(o.spanUpdates);
+checkBatchWriteSpansRequest(api.BatchWriteSpansRequest o) {
+  buildCounterBatchWriteSpansRequest++;
+  if (buildCounterBatchWriteSpansRequest < 3) {
+    checkUnnamed1657(o.spans);
   }
-  buildCounterBatchUpdateSpansRequest--;
+  buildCounterBatchWriteSpansRequest--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -180,14 +180,14 @@ checkLink(api.Link o) {
   buildCounterLink--;
 }
 
-buildUnnamed3066() {
+buildUnnamed1658() {
   var o = new core.List<api.Span>();
   o.add(buildSpan());
   o.add(buildSpan());
   return o;
 }
 
-checkUnnamed3066(core.List<api.Span> o) {
+checkUnnamed1658(core.List<api.Span> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpan(o[0]);
   checkSpan(o[1]);
@@ -199,7 +199,7 @@ buildListSpansResponse() {
   buildCounterListSpansResponse++;
   if (buildCounterListSpansResponse < 3) {
     o.nextPageToken = "foo";
-    o.spans = buildUnnamed3066();
+    o.spans = buildUnnamed1658();
   }
   buildCounterListSpansResponse--;
   return o;
@@ -209,19 +209,19 @@ checkListSpansResponse(api.ListSpansResponse o) {
   buildCounterListSpansResponse++;
   if (buildCounterListSpansResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3066(o.spans);
+    checkUnnamed1658(o.spans);
   }
   buildCounterListSpansResponse--;
 }
 
-buildUnnamed3067() {
+buildUnnamed1659() {
   var o = new core.List<api.Trace>();
   o.add(buildTrace());
   o.add(buildTrace());
   return o;
 }
 
-checkUnnamed3067(core.List<api.Trace> o) {
+checkUnnamed1659(core.List<api.Trace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrace(o[0]);
   checkTrace(o[1]);
@@ -233,7 +233,7 @@ buildListTracesResponse() {
   buildCounterListTracesResponse++;
   if (buildCounterListTracesResponse < 3) {
     o.nextPageToken = "foo";
-    o.traces = buildUnnamed3067();
+    o.traces = buildUnnamed1659();
   }
   buildCounterListTracesResponse--;
   return o;
@@ -243,7 +243,7 @@ checkListTracesResponse(api.ListTracesResponse o) {
   buildCounterListTracesResponse++;
   if (buildCounterListTracesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3067(o.traces);
+    checkUnnamed1659(o.traces);
   }
   buildCounterListTracesResponse--;
 }
@@ -274,9 +274,9 @@ buildNetworkEvent() {
   var o = new api.NetworkEvent();
   buildCounterNetworkEvent++;
   if (buildCounterNetworkEvent < 3) {
-    o.kernelTime = "foo";
     o.messageId = "foo";
     o.messageSize = "foo";
+    o.time = "foo";
     o.type = "foo";
   }
   buildCounterNetworkEvent--;
@@ -286,48 +286,48 @@ buildNetworkEvent() {
 checkNetworkEvent(api.NetworkEvent o) {
   buildCounterNetworkEvent++;
   if (buildCounterNetworkEvent < 3) {
-    unittest.expect(o.kernelTime, unittest.equals('foo'));
     unittest.expect(o.messageId, unittest.equals('foo'));
     unittest.expect(o.messageSize, unittest.equals('foo'));
+    unittest.expect(o.time, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterNetworkEvent--;
 }
 
-buildUnnamed3068() {
+buildUnnamed1660() {
   var o = new core.Map<core.String, api.AttributeValue>();
   o["x"] = buildAttributeValue();
   o["y"] = buildAttributeValue();
   return o;
 }
 
-checkUnnamed3068(core.Map<core.String, api.AttributeValue> o) {
+checkUnnamed1660(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttributeValue(o["x"]);
   checkAttributeValue(o["y"]);
 }
 
-buildUnnamed3069() {
+buildUnnamed1661() {
   var o = new core.List<api.Link>();
   o.add(buildLink());
   o.add(buildLink());
   return o;
 }
 
-checkUnnamed3069(core.List<api.Link> o) {
+checkUnnamed1661(core.List<api.Link> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLink(o[0]);
   checkLink(o[1]);
 }
 
-buildUnnamed3070() {
+buildUnnamed1662() {
   var o = new core.List<api.TimeEvent>();
   o.add(buildTimeEvent());
   o.add(buildTimeEvent());
   return o;
 }
 
-checkUnnamed3070(core.List<api.TimeEvent> o) {
+checkUnnamed1662(core.List<api.TimeEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeEvent(o[0]);
   checkTimeEvent(o[1]);
@@ -338,17 +338,17 @@ buildSpan() {
   var o = new api.Span();
   buildCounterSpan++;
   if (buildCounterSpan < 3) {
-    o.attributes = buildUnnamed3068();
-    o.hasRemoteParent = true;
-    o.id = "foo";
-    o.links = buildUnnamed3069();
-    o.localEndTime = "foo";
-    o.localStartTime = "foo";
+    o.attributes = buildUnnamed1660();
+    o.displayName = "foo";
+    o.endTime = "foo";
+    o.links = buildUnnamed1661();
     o.name = "foo";
-    o.parentId = "foo";
+    o.parentSpanId = "foo";
+    o.spanId = "foo";
     o.stackTrace = buildStackTrace();
+    o.startTime = "foo";
     o.status = buildStatus();
-    o.timeEvents = buildUnnamed3070();
+    o.timeEvents = buildUnnamed1662();
   }
   buildCounterSpan--;
   return o;
@@ -357,51 +357,19 @@ buildSpan() {
 checkSpan(api.Span o) {
   buildCounterSpan++;
   if (buildCounterSpan < 3) {
-    checkUnnamed3068(o.attributes);
-    unittest.expect(o.hasRemoteParent, unittest.isTrue);
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3069(o.links);
-    unittest.expect(o.localEndTime, unittest.equals('foo'));
-    unittest.expect(o.localStartTime, unittest.equals('foo'));
+    checkUnnamed1660(o.attributes);
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.endTime, unittest.equals('foo'));
+    checkUnnamed1661(o.links);
     unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.parentId, unittest.equals('foo'));
+    unittest.expect(o.parentSpanId, unittest.equals('foo'));
+    unittest.expect(o.spanId, unittest.equals('foo'));
     checkStackTrace(o.stackTrace);
+    unittest.expect(o.startTime, unittest.equals('foo'));
     checkStatus(o.status);
-    checkUnnamed3070(o.timeEvents);
+    checkUnnamed1662(o.timeEvents);
   }
   buildCounterSpan--;
-}
-
-buildUnnamed3071() {
-  var o = new core.List<api.Span>();
-  o.add(buildSpan());
-  o.add(buildSpan());
-  return o;
-}
-
-checkUnnamed3071(core.List<api.Span> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSpan(o[0]);
-  checkSpan(o[1]);
-}
-
-core.int buildCounterSpanUpdates = 0;
-buildSpanUpdates() {
-  var o = new api.SpanUpdates();
-  buildCounterSpanUpdates++;
-  if (buildCounterSpanUpdates < 3) {
-    o.spans = buildUnnamed3071();
-  }
-  buildCounterSpanUpdates--;
-  return o;
-}
-
-checkSpanUpdates(api.SpanUpdates o) {
-  buildCounterSpanUpdates++;
-  if (buildCounterSpanUpdates < 3) {
-    checkUnnamed3071(o.spans);
-  }
-  buildCounterSpanUpdates--;
 }
 
 core.int buildCounterStackFrame = 0;
@@ -435,14 +403,14 @@ checkStackFrame(api.StackFrame o) {
   buildCounterStackFrame--;
 }
 
-buildUnnamed3072() {
+buildUnnamed1663() {
   var o = new core.List<api.StackFrame>();
   o.add(buildStackFrame());
   o.add(buildStackFrame());
   return o;
 }
 
-checkUnnamed3072(core.List<api.StackFrame> o) {
+checkUnnamed1663(core.List<api.StackFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackFrame(o[0]);
   checkStackFrame(o[1]);
@@ -453,7 +421,7 @@ buildStackTrace() {
   var o = new api.StackTrace();
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    o.stackFrame = buildUnnamed3072();
+    o.stackFrame = buildUnnamed1663();
     o.stackTraceHashId = "foo";
   }
   buildCounterStackTrace--;
@@ -463,36 +431,36 @@ buildStackTrace() {
 checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    checkUnnamed3072(o.stackFrame);
+    checkUnnamed1663(o.stackFrame);
     unittest.expect(o.stackTraceHashId, unittest.equals('foo'));
   }
   buildCounterStackTrace--;
 }
 
-buildUnnamed3073() {
+buildUnnamed1664() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3073(core.Map<core.String, core.Object> o) {
+checkUnnamed1664(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed3074() {
+buildUnnamed1665() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3073());
-  o.add(buildUnnamed3073());
+  o.add(buildUnnamed1664());
+  o.add(buildUnnamed1664());
   return o;
 }
 
-checkUnnamed3074(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed1665(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3073(o[0]);
-  checkUnnamed3073(o[1]);
+  checkUnnamed1664(o[0]);
+  checkUnnamed1664(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -501,7 +469,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3074();
+    o.details = buildUnnamed1665();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -512,7 +480,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3074(o.details);
+    checkUnnamed1665(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -524,8 +492,8 @@ buildTimeEvent() {
   buildCounterTimeEvent++;
   if (buildCounterTimeEvent < 3) {
     o.annotation = buildAnnotation();
-    o.localTime = "foo";
     o.networkEvent = buildNetworkEvent();
+    o.time = "foo";
   }
   buildCounterTimeEvent--;
   return o;
@@ -535,8 +503,8 @@ checkTimeEvent(api.TimeEvent o) {
   buildCounterTimeEvent++;
   if (buildCounterTimeEvent < 3) {
     checkAnnotation(o.annotation);
-    unittest.expect(o.localTime, unittest.equals('foo'));
     checkNetworkEvent(o.networkEvent);
+    unittest.expect(o.time, unittest.equals('foo'));
   }
   buildCounterTimeEvent--;
 }
@@ -580,11 +548,11 @@ main() {
   });
 
 
-  unittest.group("obj-schema-BatchUpdateSpansRequest", () {
+  unittest.group("obj-schema-BatchWriteSpansRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildBatchUpdateSpansRequest();
-      var od = new api.BatchUpdateSpansRequest.fromJson(o.toJson());
-      checkBatchUpdateSpansRequest(od);
+      var o = buildBatchWriteSpansRequest();
+      var od = new api.BatchWriteSpansRequest.fromJson(o.toJson());
+      checkBatchWriteSpansRequest(od);
     });
   });
 
@@ -652,15 +620,6 @@ main() {
   });
 
 
-  unittest.group("obj-schema-SpanUpdates", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildSpanUpdates();
-      var od = new api.SpanUpdates.fromJson(o.toJson());
-      checkSpanUpdates(od);
-    });
-  });
-
-
   unittest.group("obj-schema-StackFrame", () {
     unittest.test("to-json--from-json", () {
       var o = buildStackFrame();
@@ -707,15 +666,15 @@ main() {
 
 
   unittest.group("resource-ProjectsTracesResourceApi", () {
-    unittest.test("method--batchUpdate", () {
+    unittest.test("method--batchWrite", () {
 
       var mock = new HttpServerMock();
       api.ProjectsTracesResourceApi res = new api.TracingApi(mock).projects.traces;
-      var arg_request = buildBatchUpdateSpansRequest();
-      var arg_parent = "foo";
+      var arg_request = buildBatchWriteSpansRequest();
+      var arg_name = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var obj = new api.BatchUpdateSpansRequest.fromJson(json);
-        checkBatchUpdateSpansRequest(obj);
+        var obj = new api.BatchWriteSpansRequest.fromJson(json);
+        checkBatchWriteSpansRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -723,7 +682,7 @@ main() {
         var subPart;
         unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -751,53 +710,8 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.batchUpdate(arg_request, arg_parent).then(unittest.expectAsync(((api.Empty response) {
+      res.batchWrite(arg_request, arg_name).then(unittest.expectAsync(((api.Empty response) {
         checkEmpty(response);
-      })));
-    });
-
-    unittest.test("method--get", () {
-
-      var mock = new HttpServerMock();
-      api.ProjectsTracesResourceApi res = new api.TracingApi(mock).projects.traces;
-      var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = {};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-
-
-        var h = {
-          "content-type" : "application/json; charset=utf-8",
-        };
-        var resp = convert.JSON.encode(buildTrace());
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.Trace response) {
-        checkTrace(response);
       })));
     });
 
@@ -806,12 +720,12 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsTracesResourceApi res = new api.TracingApi(mock).projects.traces;
       var arg_parent = "foo";
-      var arg_filter = "foo";
-      var arg_endTime = "foo";
       var arg_startTime = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_orderBy = "foo";
+      var arg_filter = "foo";
+      var arg_endTime = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -819,7 +733,7 @@ main() {
         var subPart;
         unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -839,12 +753,12 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["endTime"].first, unittest.equals(arg_endTime));
 
 
         var h = {
@@ -853,7 +767,7 @@ main() {
         var resp = convert.JSON.encode(buildListTracesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, filter: arg_filter, endTime: arg_endTime, startTime: arg_startTime, pageToken: arg_pageToken, pageSize: arg_pageSize, orderBy: arg_orderBy).then(unittest.expectAsync(((api.ListTracesResponse response) {
+      res.list(arg_parent, startTime: arg_startTime, pageToken: arg_pageToken, pageSize: arg_pageSize, orderBy: arg_orderBy, filter: arg_filter, endTime: arg_endTime).then(unittest.expectAsync(((api.ListTracesResponse response) {
         checkListTracesResponse(response);
       })));
     });
@@ -862,7 +776,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.ProjectsTracesResourceApi res = new api.TracingApi(mock).projects.traces;
-      var arg_name = "foo";
+      var arg_parent = "foo";
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -871,7 +785,7 @@ main() {
         var subPart;
         unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -900,8 +814,61 @@ main() {
         var resp = convert.JSON.encode(buildListSpansResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listSpans(arg_name, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListSpansResponse response) {
+      res.listSpans(arg_parent, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListSpansResponse response) {
         checkListSpansResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-ProjectsTracesSpansResourceApi", () {
+    unittest.test("method--create", () {
+
+      var mock = new HttpServerMock();
+      api.ProjectsTracesSpansResourceApi res = new api.TracingApi(mock).projects.traces.spans;
+      var arg_request = buildSpan();
+      var arg_name = "foo";
+      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+        var obj = new api.Span.fromJson(json);
+        checkSpan(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildSpan());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.create(arg_request, arg_name).then(unittest.expectAsync(((api.Span response) {
+        checkSpan(response);
       })));
     });
 

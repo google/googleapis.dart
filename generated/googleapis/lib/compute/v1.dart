@@ -844,7 +844,7 @@ class AutoscalersResourceApi {
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [autoscaler] - Name of the autoscaler to update.
+   * [autoscaler] - Name of the autoscaler to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -855,7 +855,7 @@ class AutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Autoscaler request, core.String project, core.String zone, core.String autoscaler) {
+  async.Future<Operation> patch(Autoscaler request, core.String project, core.String zone, {core.String autoscaler}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -872,10 +872,9 @@ class AutoscalersResourceApi {
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
     }
-    if (autoscaler == null) {
-      throw new core.ArgumentError("Parameter autoscaler is required.");
+    if (autoscaler != null) {
+      _queryParams["autoscaler"] = [autoscaler];
     }
-    _queryParams["autoscaler"] = [autoscaler];
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
 
@@ -1211,7 +1210,7 @@ class BackendBucketsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [backendBucket] - Name of the BackendBucket resource to update.
+   * [backendBucket] - Name of the BackendBucket resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -1712,7 +1711,7 @@ class BackendServicesResourceApi {
   }
 
   /**
-   * Updates the specified BackendService resource with the data included in the
+   * Patches the specified BackendService resource with the data included in the
    * request. There are several restrictions and guidelines to keep in mind when
    * updating a backend service. Read  Restrictions and Guidelines for more
    * information. This method supports patch semantics.
@@ -1725,7 +1724,7 @@ class BackendServicesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [backendService] - Name of the BackendService resource to update.
+   * [backendService] - Name of the BackendService resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -2843,7 +2842,9 @@ class FirewallsResourceApi {
 
   /**
    * Updates the specified firewall rule with the data included in the request.
-   * This method supports patch semantics.
+   * Using PUT method, can only update following fields of firewall rule:
+   * allowed, description, sourceRanges, sourceTags, targetTags. This method
+   * supports patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -2896,6 +2897,8 @@ class FirewallsResourceApi {
 
   /**
    * Updates the specified firewall rule with the data included in the request.
+   * Using PUT method, can only update following fields of firewall rule:
+   * allowed, description, sourceRanges, sourceTags, targetTags.
    *
    * [request] - The metadata request object.
    *
@@ -4500,7 +4503,7 @@ class HealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [healthCheck] - Name of the HealthCheck resource to update.
+   * [healthCheck] - Name of the HealthCheck resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -4857,7 +4860,7 @@ class HttpHealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [httpHealthCheck] - Name of the HttpHealthCheck resource to update.
+   * [httpHealthCheck] - Name of the HttpHealthCheck resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -5214,7 +5217,7 @@ class HttpsHealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to update.
+   * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -5684,6 +5687,8 @@ class InstanceGroupManagersResourceApi {
    * not yet been removed from the group. You must separately verify the status
    * of the abandoning action with the listmanagedinstances method.
    *
+   * You can specify a maximum of 1000 instances with this method per request.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -5898,6 +5903,8 @@ class InstanceGroupManagersResourceApi {
    * still being deleted. You must separately verify the status of the deleting
    * action with the listmanagedinstances method.
    *
+   * You can specify a maximum of 1000 instances with this method per request.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -6010,6 +6017,8 @@ class InstanceGroupManagersResourceApi {
    * operation is marked as DONE when the group is created even if the instances
    * in the group have not yet been created. You must separately verify the
    * status of the individual instances with the listmanagedinstances method.
+   *
+   * A managed instance group can have up to 1000 VM instances per group.
    *
    * [request] - The metadata request object.
    *
@@ -6247,6 +6256,8 @@ class InstanceGroupManagersResourceApi {
    * as DONE when the action is scheduled even if the instances have not yet
    * been recreated. You must separately verify the status of the recreating
    * action with the listmanagedinstances method.
+   *
+   * You can specify a maximum of 1000 instances with this method per request.
    *
    * [request] - The metadata request object.
    *
@@ -8089,7 +8100,8 @@ class InstancesResourceApi {
   }
 
   /**
-   * Performs a hard reset on the instance.
+   * Performs a reset on the instance. For more information, see Resetting an
+   * instance.
    *
    * Request parameters:
    *
@@ -9819,7 +9831,7 @@ class RegionAutoscalersResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [autoscaler] - Name of the autoscaler to update.
+   * [autoscaler] - Name of the autoscaler to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -9830,7 +9842,7 @@ class RegionAutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Autoscaler request, core.String project, core.String region, core.String autoscaler) {
+  async.Future<Operation> patch(Autoscaler request, core.String project, core.String region, {core.String autoscaler}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9847,10 +9859,9 @@ class RegionAutoscalersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (autoscaler == null) {
-      throw new core.ArgumentError("Parameter autoscaler is required.");
+    if (autoscaler != null) {
+      _queryParams["autoscaler"] = [autoscaler];
     }
-    _queryParams["autoscaler"] = [autoscaler];
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers';
 
@@ -10275,7 +10286,7 @@ class RegionBackendServicesResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [backendService] - Name of the BackendService resource to update.
+   * [backendService] - Name of the BackendService resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -10399,6 +10410,8 @@ class RegionInstanceGroupManagersResourceApi {
    * not yet been removed from the group. You must separately verify the status
    * of the abandoning action with the listmanagedinstances method.
    *
+   * You can specify a maximum of 1000 instances with this method per request.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -10513,6 +10526,8 @@ class RegionInstanceGroupManagersResourceApi {
    * still being deleted. You must separately verify the status of the deleting
    * action with the listmanagedinstances method.
    *
+   * You can specify a maximum of 1000 instances with this method per request.
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -10624,6 +10639,8 @@ class RegionInstanceGroupManagersResourceApi {
    * operation is marked as DONE when the group is created even if the instances
    * in the group have not yet been created. You must separately verify the
    * status of the individual instances with the listmanagedinstances method.
+   *
+   * A regional managed instance group can contain up to 2000 instances.
    *
    * [request] - The metadata request object.
    *
@@ -10858,6 +10875,8 @@ class RegionInstanceGroupManagersResourceApi {
    * as DONE when the action is scheduled even if the instances have not yet
    * been recreated. You must separately verify the status of the recreating
    * action with the listmanagedinstances method.
+   *
+   * You can specify a maximum of 1000 instances with this method per request.
    *
    * [request] - The metadata request object.
    *
@@ -12233,7 +12252,7 @@ class RoutersResourceApi {
   }
 
   /**
-   * Updates the specified Router resource with the data included in the
+   * Patches the specified Router resource with the data included in the
    * request. This method supports patch semantics.
    *
    * [request] - The metadata request object.
@@ -12247,7 +12266,7 @@ class RoutersResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [router] - Name of the Router resource to update.
+   * [router] - Name of the Router resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -13549,6 +13568,65 @@ class SubnetworksResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new SubnetworkList.fromJson(data));
+  }
+
+  /**
+   * Set whether VMs in this subnet can access Google services without assigning
+   * external IP addresses through Cloudpath.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [subnetwork] - Name of the Subnetwork resource.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setPrivateIpGoogleAccess(SubnetworksSetPrivateIpGoogleAccessRequest request, core.String project, core.String region, core.String subnetwork) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (subnetwork == null) {
+      throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks/' + commons.Escaper.ecapeVariable('$subnetwork') + '/setPrivateIpGoogleAccess';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -16402,7 +16480,7 @@ class UrlMapsResourceApi {
   }
 
   /**
-   * Updates the specified UrlMap resource with the data included in the
+   * Patches the specified UrlMap resource with the data included in the
    * request. This method supports patch semantics.
    *
    * [request] - The metadata request object.
@@ -16413,7 +16491,7 @@ class UrlMapsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [urlMap] - Name of the UrlMap resource to update.
+   * [urlMap] - Name of the UrlMap resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
    * Completes with a [Operation].
@@ -17326,7 +17404,11 @@ class AccessConfig {
    * configs.
    */
   core.String kind;
-  /** Name of this access configuration. */
+  /**
+   * The name of this access configuration. The default and recommended name is
+   * External NAT but you can use any arbitrary string you would like. For
+   * example, My external IP or Network Access.
+   */
   core.String name;
   /**
    * An external IP address associated with this instance. Specify an unused
@@ -17380,10 +17462,7 @@ class AccessConfig {
 
 /** A reserved address resource. */
 class Address {
-  /**
-   * The static external IP address represented by this resource. Only IPv4 is
-   * supported.
-   */
+  /** The static external IP address represented by this resource. */
   core.String address;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
@@ -18982,6 +19061,8 @@ class BackendService {
   core.int affinityCookieTtlSec;
   /** The list of backends that serve this BackendService. */
   core.List<Backend> backends;
+  /** Cloud CDN configuration for this BackendService. */
+  BackendServiceCdnPolicy cdnPolicy;
   ConnectionDraining connectionDraining;
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
@@ -19117,6 +19198,9 @@ class BackendService {
     if (_json.containsKey("backends")) {
       backends = _json["backends"].map((value) => new Backend.fromJson(value)).toList();
     }
+    if (_json.containsKey("cdnPolicy")) {
+      cdnPolicy = new BackendServiceCdnPolicy.fromJson(_json["cdnPolicy"]);
+    }
     if (_json.containsKey("connectionDraining")) {
       connectionDraining = new ConnectionDraining.fromJson(_json["connectionDraining"]);
     }
@@ -19177,6 +19261,9 @@ class BackendService {
     }
     if (backends != null) {
       _json["backends"] = backends.map((value) => (value).toJson()).toList();
+    }
+    if (cdnPolicy != null) {
+      _json["cdnPolicy"] = (cdnPolicy).toJson();
     }
     if (connectionDraining != null) {
       _json["connectionDraining"] = (connectionDraining).toJson();
@@ -19284,6 +19371,28 @@ class BackendServiceAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Message containing Cloud CDN configuration for a backend service. */
+class BackendServiceCdnPolicy {
+  /** The CacheKeyPolicy for this CdnPolicy. */
+  CacheKeyPolicy cacheKeyPolicy;
+
+  BackendServiceCdnPolicy();
+
+  BackendServiceCdnPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("cacheKeyPolicy")) {
+      cacheKeyPolicy = new CacheKeyPolicy.fromJson(_json["cacheKeyPolicy"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (cacheKeyPolicy != null) {
+      _json["cacheKeyPolicy"] = (cacheKeyPolicy).toJson();
     }
     return _json;
   }
@@ -19546,6 +19655,78 @@ class CacheInvalidationRule {
     }
     if (path != null) {
       _json["path"] = path;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Message containing what to include in the cache key for a request for Cloud
+ * CDN.
+ */
+class CacheKeyPolicy {
+  /** If true, requests to different hosts will be cached separately. */
+  core.bool includeHost;
+  /** If true, http and https requests will be cached separately. */
+  core.bool includeProtocol;
+  /**
+   * If true, include query string parameters in the cache key according to
+   * query_string_whitelist and query_string_blacklist. If neither is set, the
+   * entire query string will be included. If false, the query string will be
+   * excluded from the cache key entirely.
+   */
+  core.bool includeQueryString;
+  /**
+   * Names of query string parameters to exclude in cache keys. All other
+   * parameters will be included. Either specify query_string_whitelist or
+   * query_string_blacklist, not both. '&' and '=' will be percent encoded and
+   * not treated as delimiters.
+   */
+  core.List<core.String> queryStringBlacklist;
+  /**
+   * Names of query string parameters to include in cache keys. All other
+   * parameters will be excluded. Either specify query_string_whitelist or
+   * query_string_blacklist, not both. '&' and '=' will be percent encoded and
+   * not treated as delimiters.
+   */
+  core.List<core.String> queryStringWhitelist;
+
+  CacheKeyPolicy();
+
+  CacheKeyPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("includeHost")) {
+      includeHost = _json["includeHost"];
+    }
+    if (_json.containsKey("includeProtocol")) {
+      includeProtocol = _json["includeProtocol"];
+    }
+    if (_json.containsKey("includeQueryString")) {
+      includeQueryString = _json["includeQueryString"];
+    }
+    if (_json.containsKey("queryStringBlacklist")) {
+      queryStringBlacklist = _json["queryStringBlacklist"];
+    }
+    if (_json.containsKey("queryStringWhitelist")) {
+      queryStringWhitelist = _json["queryStringWhitelist"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (includeHost != null) {
+      _json["includeHost"] = includeHost;
+    }
+    if (includeProtocol != null) {
+      _json["includeProtocol"] = includeProtocol;
+    }
+    if (includeQueryString != null) {
+      _json["includeQueryString"] = includeQueryString;
+    }
+    if (queryStringBlacklist != null) {
+      _json["queryStringBlacklist"] = queryStringBlacklist;
+    }
+    if (queryStringWhitelist != null) {
+      _json["queryStringWhitelist"] = queryStringWhitelist;
     }
     return _json;
   }
@@ -21074,8 +21255,7 @@ class ForwardingRule {
    * When the load balancing scheme is INTERNAL, a single port or a comma
    * separated list of ports can be configured. Only packets addressed to these
    * ports will be forwarded to the backends configured with this forwarding
-   * rule. If the port list is not provided then all ports are allowed to pass
-   * through.
+   * rule.
    *
    * You may specify a maximum of up to 5 ports.
    */
@@ -21103,8 +21283,7 @@ class ForwardingRule {
    * forwarding rules, this target must live in the same region as the
    * forwarding rule. For global forwarding rules, this target must be a global
    * load balancing resource. The forwarded traffic must be of a type
-   * appropriate to the target object. For example, TargetHttpProxy requires
-   * HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
+   * appropriate to the target object.
    *
    * This field is not used for internal load balancing.
    */
@@ -22885,7 +23064,7 @@ class Instance {
    * connecting to the internet. Only one interface is supported per instance.
    */
   core.List<NetworkInterface> networkInterfaces;
-  /** Scheduling options for this instance. */
+  /** Sets the scheduling options for this instance. */
   Scheduling scheduling;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -27563,7 +27742,10 @@ class RegionInstanceGroupManagerList {
 }
 
 class RegionInstanceGroupManagersAbandonInstancesRequest {
-  /** The names of one or more instances to abandon. */
+  /**
+   * The URLs of one or more instances to abandon. This can be a full URL or a
+   * partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+   */
   core.List<core.String> instances;
 
   RegionInstanceGroupManagersAbandonInstancesRequest();
@@ -27584,7 +27766,10 @@ class RegionInstanceGroupManagersAbandonInstancesRequest {
 }
 
 class RegionInstanceGroupManagersDeleteInstancesRequest {
-  /** The names of one or more instances to delete. */
+  /**
+   * The URLs of one or more instances to delete. This can be a full URL or a
+   * partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+   */
   core.List<core.String> instances;
 
   RegionInstanceGroupManagersDeleteInstancesRequest();
@@ -28606,8 +28791,9 @@ class RouterInterface {
    */
   core.String ipRange;
   /**
-   * URI of linked VPN tunnel. It must be in the same region as the router. Each
-   * interface can have at most one linked resource.
+   * URI of the linked VPN tunnel. It must be in the same region as the router.
+   * Each interface can have at most one linked resource and it could either be
+   * a VPN Tunnel or an interconnect attachment.
    */
   core.String linkedVpnTunnel;
   /**
@@ -29111,6 +29297,9 @@ class Scheduling {
    * terminated by Compute Engine (not terminated by a user). You can only set
    * the automatic restart option for standard instances. Preemptible instances
    * cannot be automatically restarted.
+   *
+   * By default, this is set to true so an instance is automatically restarted
+   * if it is terminated by Compute Engine.
    */
   core.bool automaticRestart;
   /**
@@ -29123,7 +29312,11 @@ class Scheduling {
    * - "TERMINATE"
    */
   core.String onHostMaintenance;
-  /** Whether the instance is preemptible. */
+  /**
+   * Defines whether the instance is preemptible. This can only be set during
+   * instance creation, it cannot be set or changed after the instance has been
+   * created.
+   */
   core.bool preemptible;
 
   Scheduling();
@@ -29725,6 +29918,11 @@ class Subnetwork {
    * the distributed mode can have subnetworks.
    */
   core.String network;
+  /**
+   * Whether the VMs in this subnet can access Google services without assigned
+   * external IP addresses.
+   */
+  core.bool privateIpGoogleAccess;
   /** URL of the region where the Subnetwork resides. */
   core.String region;
   /** [Output Only] Server-defined URL for the resource. */
@@ -29756,6 +29954,9 @@ class Subnetwork {
     }
     if (_json.containsKey("network")) {
       network = _json["network"];
+    }
+    if (_json.containsKey("privateIpGoogleAccess")) {
+      privateIpGoogleAccess = _json["privateIpGoogleAccess"];
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
@@ -29790,6 +29991,9 @@ class Subnetwork {
     }
     if (network != null) {
       _json["network"] = network;
+    }
+    if (privateIpGoogleAccess != null) {
+      _json["privateIpGoogleAccess"] = privateIpGoogleAccess;
     }
     if (region != null) {
       _json["region"] = region;
@@ -30086,6 +30290,26 @@ class SubnetworksScopedList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class SubnetworksSetPrivateIpGoogleAccessRequest {
+  core.bool privateIpGoogleAccess;
+
+  SubnetworksSetPrivateIpGoogleAccessRequest();
+
+  SubnetworksSetPrivateIpGoogleAccessRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("privateIpGoogleAccess")) {
+      privateIpGoogleAccess = _json["privateIpGoogleAccess"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (privateIpGoogleAccess != null) {
+      _json["privateIpGoogleAccess"] = privateIpGoogleAccess;
     }
     return _json;
   }

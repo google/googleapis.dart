@@ -1598,7 +1598,7 @@
             }
         }
     },
-    "revision": "20170321",
+    "revision": "20170416",
     "rootUrl": "https://classroom.googleapis.com/",
     "schemas": {
         "Attachment": {

@@ -182,11 +182,11 @@ class OperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^operations$".
    *
+   * [filter] - The standard list filter.
+   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -196,7 +196,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -207,14 +207,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -443,13 +443,13 @@ class ProjectsClustersResourceApi {
    * [projectId] - Required The ID of the Google Cloud Platform project that the
    * cluster belongs to.
    *
-   * [pageToken] - The standard List page token.
-   *
-   * [pageSize] - The standard List page size.
-   *
    * [filter] - Optional A filter constraining which clusters to list. Valid
    * filters contain label terms such as: labels.key1 = val1 AND (-labels.k2 =
    * val2 OR labels.k3 = val3)
+   *
+   * [pageToken] - The standard List page token.
+   *
+   * [pageSize] - The standard List page size.
    *
    * Completes with a [ListClustersResponse].
    *
@@ -459,7 +459,7 @@ class ProjectsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListClustersResponse> list(core.String projectId, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -470,14 +470,14 @@ class ProjectsClustersResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/clusters';
@@ -733,9 +733,6 @@ class ProjectsJobsResourceApi {
    * [projectId] - Required The ID of the Google Cloud Platform project that the
    * job belongs to.
    *
-   * [pageToken] - Optional The page token, returned by a previous call, to
-   * request the next page of results.
-   *
    * [pageSize] - Optional The number of results to return in each response.
    *
    * [clusterName] - Optional If set, the returned jobs list includes only jobs
@@ -752,6 +749,9 @@ class ProjectsJobsResourceApi {
    * - "ACTIVE" : A ACTIVE.
    * - "NON_ACTIVE" : A NON_ACTIVE.
    *
+   * [pageToken] - Optional The page token, returned by a previous call, to
+   * request the next page of results.
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -760,7 +760,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String clusterName, core.String filter, core.String jobStateMatcher}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.int pageSize, core.String clusterName, core.String filter, core.String jobStateMatcher, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -770,9 +770,6 @@ class ProjectsJobsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -785,6 +782,9 @@ class ProjectsJobsResourceApi {
     }
     if (jobStateMatcher != null) {
       _queryParams["jobStateMatcher"] = [jobStateMatcher];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';

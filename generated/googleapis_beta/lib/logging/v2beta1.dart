@@ -125,14 +125,14 @@ class BillingAccountsLogsResourceApi {
    *
    * Value must have pattern "^billingAccounts/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogsResponse].
    *
@@ -142,7 +142,7 @@ class BillingAccountsLogsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListLogsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -153,11 +153,11 @@ class BillingAccountsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -731,14 +731,14 @@ class ProjectsMetricsResourceApi {
    *
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogMetricsResponse].
    *
@@ -748,7 +748,7 @@ class ProjectsMetricsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogMetricsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListLogMetricsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -759,11 +759,11 @@ class ProjectsMetricsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';
@@ -2116,6 +2116,16 @@ class LogSink {
    */
   core.String filter;
   /**
+   * Optional. This field presently applies only to sinks in organizations and
+   * folders. If true, then logs from children of this entity will also be
+   * available to this sink for export. Whether particular log entries from the
+   * children are exported depends on the sink's filter expression. For example,
+   * if this sink is associated with an organization, then logs from all
+   * projects in the organization as well as from the organization itself will
+   * be available for export.
+   */
+  core.bool includeChildren;
+  /**
    * Required. The client-assigned sink identifier, unique within the project.
    * Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100
    * characters and can include only the following characters: upper and
@@ -2164,6 +2174,9 @@ class LogSink {
     if (_json.containsKey("filter")) {
       filter = _json["filter"];
     }
+    if (_json.containsKey("includeChildren")) {
+      includeChildren = _json["includeChildren"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2188,6 +2201,9 @@ class LogSink {
     }
     if (filter != null) {
       _json["filter"] = filter;
+    }
+    if (includeChildren != null) {
+      _json["includeChildren"] = includeChildren;
     }
     if (name != null) {
       _json["name"] = name;

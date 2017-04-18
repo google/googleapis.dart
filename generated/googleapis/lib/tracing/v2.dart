@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-library googleapis.tracing.v1;
+library googleapis.tracing.v2;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client tracing/v1';
+const core.String USER_AGENT = 'dart-api-client tracing/v2';
 
 /** Send and retrieve trace data from Google Stackdriver Trace. */
 class TracingApi {
@@ -48,21 +48,24 @@ class ProjectsResourceApi {
 class ProjectsTracesResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsTracesSpansResourceApi get spans => new ProjectsTracesSpansResourceApi(_requester);
+
   ProjectsTracesResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
   /**
-   * Sends new spans to Stackdriver Trace or updates existing spans. If the
-   * name of a trace that you send matches that of an existing trace, any fields
-   * in the existing trace and its spans are overwritten by the provided values,
-   * and any new fields provided are merged with the existing trace data. If the
-   * name does not match, a new trace is created with given set of spans.
+   * Sends new spans to Stackdriver Trace or updates existing traces. If the
+   * name of a trace that you send matches that of an existing trace, new spans
+   * are added to the existing trace. Attempt to update existing spans results
+   * undefined behavior. If the name does not match, a new trace is created
+   * with given set of spans.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [parent] - ID of the Cloud project where the trace data is stored.
+   * [name] - Name of the project where the spans belong to. Format is
+   * `projects/PROJECT_ID`.
    * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [Empty].
@@ -73,7 +76,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Empty> batchUpdate(BatchUpdateSpansRequest request, core.String parent) {
+  async.Future<Empty> batchWrite(BatchWriteSpansRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -84,11 +87,11 @@ class ProjectsTracesResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces:batchUpdate';
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/traces:batchWrite';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -101,61 +104,13 @@ class ProjectsTracesResourceApi {
   }
 
   /**
-   * Returns a specific trace.
-   *
-   * Request parameters:
-   *
-   * [name] - ID of the trace. Format is `projects/PROJECT_ID/traces/TRACE_ID`.
-   * Value must have pattern "^projects/[^/]+/traces/[^/]+$".
-   *
-   * Completes with a [Trace].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Trace> get(core.String name) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Trace.fromJson(data));
-  }
-
-  /**
    * Returns of a list of traces that match the specified filter conditions.
    *
    * Request parameters:
    *
-   * [parent] - ID of the Cloud project where the trace data is stored.
+   * [parent] - ID of the Cloud project where the trace data is stored which is
+   * `projects/PROJECT_ID`.
    * Value must have pattern "^projects/[^/]+$".
-   *
-   * [filter] - An optional filter for the request.
-   * Example:
-   * `version_label_key:a some_label:some_label_key`
-   * returns traces from version `a` and has `some_label` with `some_label_key`.
-   *
-   * [endTime] - End of the time interval (inclusive) during which the trace
-   * data was
-   * collected from the application.
    *
    * [startTime] - Start of the time interval (inclusive) during which the trace
    * data was
@@ -184,6 +139,15 @@ class ProjectsTracesResourceApi {
    *
    * Only one sort field is permitted.
    *
+   * [filter] - An optional filter for the request.
+   * Example:
+   * `version_label_key:a some_label:some_label_key`
+   * returns traces from version `a` and has `some_label` with `some_label_key`.
+   *
+   * [endTime] - End of the time interval (inclusive) during which the trace
+   * data was
+   * collected from the application.
+   *
    * Completes with a [ListTracesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -192,7 +156,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTracesResponse> list(core.String parent, {core.String filter, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String orderBy}) {
+  async.Future<ListTracesResponse> list(core.String parent, {core.String startTime, core.String pageToken, core.int pageSize, core.String orderBy, core.String filter, core.String endTime}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -202,12 +166,6 @@ class ProjectsTracesResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
@@ -221,8 +179,14 @@ class ProjectsTracesResourceApi {
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces';
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -239,7 +203,7 @@ class ProjectsTracesResourceApi {
    *
    * Request parameters:
    *
-   * [name] - ID of the trace for which to list child spans. Format is
+   * [parent] - ID of the trace for which to list child spans. Format is
    * `projects/PROJECT_ID/traces/TRACE_ID`.
    * Value must have pattern "^projects/[^/]+/traces/[^/]+$".
    *
@@ -255,7 +219,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListSpansResponse> listSpans(core.String name, {core.String pageToken}) {
+  async.Future<ListSpansResponse> listSpans(core.String parent, {core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -263,14 +227,14 @@ class ProjectsTracesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':listSpans';
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + ':listSpans';
 
     var _response = _requester.request(_url,
                                        "GET",
@@ -285,12 +249,83 @@ class ProjectsTracesResourceApi {
 }
 
 
+class ProjectsTracesSpansResourceApi {
+  final commons.ApiRequester _requester;
 
-/** Text annotation with a set of attributes. */
+  ProjectsTracesSpansResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a new Span.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of Span in the format
+   * `projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID`.
+   * `TRACE_ID` is a unique identifier for a trace within a project and is a
+   * base16-encoded, case-insensitive string and is required to be 32 char long.
+   * `SPAN_ID` is a unique identifier for a span within a trace. It is a
+   * base 16-encoded, case-insensitive string of a 8-bytes array and is required
+   * to be 16 char long.
+   * Value must have pattern "^projects/[^/]+/traces/[^/]+/spans/[^/]+$".
+   *
+   * Completes with a [Span].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Span> create(Span request, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Span.fromJson(data));
+  }
+
+}
+
+
+
+/**
+ * Text annotation with a set of attributes. A maximum of 32 annotations are
+ * allowed per Span.
+ */
 class Annotation {
-  /** A set of attributes on the annotation. */
+  /**
+   * A set of attributes on the annotation. A maximum of 4 attributes are
+   * allowed per Annotation. The maximum key length is 128 bytes. The
+   * value can be a string (up to 256 bytes), integer, or boolean
+   * (true/false).
+   */
   core.Map<core.String, AttributeValue> attributes;
-  /** A user-supplied message describing the event. */
+  /**
+   * A user-supplied message describing the event. The maximum length for
+   * the description is 256 characters.
+   */
   core.String description;
 
   Annotation();
@@ -354,23 +389,23 @@ class AttributeValue {
   }
 }
 
-/** The request message for the `BatchUpdateSpans` method. */
-class BatchUpdateSpansRequest {
-  /** A map from trace name to spans to be stored or updated. */
-  core.Map<core.String, SpanUpdates> spanUpdates;
+/** The request message for the `BatchWriteSpans` method. */
+class BatchWriteSpansRequest {
+  /** A collection of spans. */
+  core.List<Span> spans;
 
-  BatchUpdateSpansRequest();
+  BatchWriteSpansRequest();
 
-  BatchUpdateSpansRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("spanUpdates")) {
-      spanUpdates = commons.mapMap(_json["spanUpdates"], (item) => new SpanUpdates.fromJson(item));
+  BatchWriteSpansRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("spans")) {
+      spans = _json["spans"].map((value) => new Span.fromJson(value)).toList();
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (spanUpdates != null) {
-      _json["spanUpdates"] = commons.mapMap(spanUpdates, (item) => (item).toJson());
+    if (spans != null) {
+      _json["spans"] = spans.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -401,14 +436,24 @@ class Empty {
 }
 
 /**
- * A pointer from this span to another span in a different `Trace`. Used
+ * A pointer from this span to another span in a different `Trace` within
+ * the same service project or within a different service project. Used
  * (for example) in batching operations, where a single batch handler
- * processes multiple requests from different traces.
+ * processes multiple requests from different traces or when receives a
+ * request from a different service project.
  */
 class Link {
-  /** The `id` of the linked span. */
+  /**
+   * `SPAN_ID` is a unique identifier for a span within a trace. It is a
+   * base16-encoded, case-insensitive string of a 8-bytes array and is
+   * required to be 16 char long.
+   */
   core.String spanId;
-  /** The ID of the parent trace of the linked span. */
+  /**
+   * `TRACE_ID` is a unique identifier for a trace within a project. It is
+   * a base16-encoded, case-insensitive string of a 16-bytes array and is
+   * required to be 32 char long.
+   */
   core.String traceId;
   /**
    * The relationship of the current span relative to the linked span.
@@ -519,13 +564,13 @@ class ListTracesResponse {
 /** Binary module. */
 class Module {
   /**
-   * Build_id is a unique identifier for the module,
-   * usually a hash of its contents
+   * Build_id is a unique identifier for the module, usually a hash of its
+   * contents (up to 128 characters).
    */
   core.String buildId;
   /**
    * E.g. main binary, kernel modules, and dynamic libraries
-   * such as libc.so, sharedlib.so
+   * such as libc.so, sharedlib.so (up to 256 characters).
    */
   core.String module;
 
@@ -552,8 +597,15 @@ class Module {
   }
 }
 
-/** An event describing an RPC message sent/received on the network. */
+/**
+ * An event describing an RPC message sent/received on the network. A
+ * maximum of 128 network events are allowed per Span.
+ */
 class NetworkEvent {
+  /** An identifier for the message, which must be unique in this span. */
+  core.String messageId;
+  /** The number of bytes sent or received. */
+  core.String messageSize;
   /**
    * If available, this is the kernel time:
    *
@@ -561,11 +613,7 @@ class NetworkEvent {
    * *  For received messages, this is the time at which the last bit was
    *    received.
    */
-  core.String kernelTime;
-  /** An identifier for the message, which must be unique in this span. */
-  core.String messageId;
-  /** The number of bytes sent or received. */
-  core.String messageSize;
+  core.String time;
   /**
    * Type of NetworkEvent. Indicates whether the RPC message was sent or
    * received.
@@ -579,14 +627,14 @@ class NetworkEvent {
   NetworkEvent();
 
   NetworkEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("kernelTime")) {
-      kernelTime = _json["kernelTime"];
-    }
     if (_json.containsKey("messageId")) {
       messageId = _json["messageId"];
     }
     if (_json.containsKey("messageSize")) {
       messageSize = _json["messageSize"];
+    }
+    if (_json.containsKey("time")) {
+      time = _json["time"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -595,14 +643,14 @@ class NetworkEvent {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (kernelTime != null) {
-      _json["kernelTime"] = kernelTime;
-    }
     if (messageId != null) {
       _json["messageId"] = messageId;
     }
     if (messageSize != null) {
       _json["messageSize"] = messageSize;
+    }
+    if (time != null) {
+      _json["time"] = time;
     }
     if (type != null) {
       _json["type"] = type;
@@ -621,9 +669,9 @@ class NetworkEvent {
  */
 class Span {
   /**
-   * Properties of a span in key:value format. The maximum length for the
-   * key is 128 characters. The value can be a string (up to 2000 characters),
-   * int, or boolean.
+   * Attributes of a span with a key:value format. A maximum of 16 custom
+   * attributes are allowed per Span. The maximum key length is 128 bytes. The
+   * value can be a string (up to 256 bytes), integer, or boolean (true/false).
    *
    * Some common pair examples:
    *
@@ -638,18 +686,16 @@ class Span {
    *     "abc.com/myattribute": true
    */
   core.Map<core.String, AttributeValue> attributes;
-  /** True if this span has a remote parent (is an RPC server span). */
-  core.bool hasRemoteParent;
   /**
-   * Identifier for the span. Must be a 64-bit integer other than 0 and
-   * unique within a trace.
+   * Description of the operation in the span. It is sanitized and displayed in
+   * the Stackdriver Trace tool in the
+   * {% dynamic print site_values.console_name %}.
+   * The display_name may be a method name or some other per-call site
+   * name. For the same executable and the same call point, a best practice is
+   * to use a consistent operation name, which makes it easier to correlate
+   * cross-trace spans.
    */
-  core.String id;
-  /**
-   * A collection of links, which are references from this span to another span
-   * in a different trace.
-   */
-  core.List<Link> links;
+  core.String displayName;
   /**
    * End time of the span.
    * On the client side, this is the local machine clock time at which the span
@@ -657,7 +703,35 @@ class Span {
    * side, this is the time at which the server application handler stopped
    * running.
    */
-  core.String localEndTime;
+  core.String endTime;
+  /**
+   * A collection of links, which are references from this span to a span
+   * in the same or different trace.
+   */
+  core.List<Link> links;
+  /**
+   * The resource name of Span in the format
+   * `projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID`.
+   * `TRACE_ID` is a unique identifier for a trace within a project and is a
+   * base16-encoded, case-insensitive string and is required to be 32 char long.
+   * `SPAN_ID` is a unique identifier for a span within a trace. It is a
+   * base 16-encoded, case-insensitive string of a 8-bytes array and is required
+   * to be 16 char long.
+   */
+  core.String name;
+  /**
+   * ID of parent span which is a base 16-encoded, case-insensitive string of
+   * a 8-bytes array and is required to be 16 char long. If this is a root span,
+   * the value must be empty.
+   */
+  core.String parentSpanId;
+  /**
+   * Unique identifier for a span within a trace. It is a base 16-encoded,
+   * case-insensitive string of a 8-bytes array and is required.
+   */
+  core.String spanId;
+  /** Stack trace captured at the start of the span. */
+  StackTrace stackTrace;
   /**
    * Start time of the span.
    * On the client side, this is the local machine clock time at which the span
@@ -665,23 +739,7 @@ class Span {
    * side, this is the time at which the server application handler started
    * running.
    */
-  core.String localStartTime;
-  /**
-   * Name of the span. The span name is sanitized and displayed in the
-   * Stackdriver Trace tool in the {% dynamic print site_values.console_name %}.
-   * The name may be a method name or some other per-call site name.
-   * For the same executable and the same call point, a best practice is
-   * to use a consistent name, which makes it easier to correlate
-   * cross-trace spans.
-   */
-  core.String name;
-  /**
-   * ID of the parent span. If this is a root span, the value must be `0` or
-   * empty.
-   */
-  core.String parentId;
-  /** Stack trace captured at the start of the span. */
-  StackTrace stackTrace;
+  core.String startTime;
   /** An optional final status for this span. */
   Status status;
   /**
@@ -697,29 +755,29 @@ class Span {
     if (_json.containsKey("attributes")) {
       attributes = commons.mapMap(_json["attributes"], (item) => new AttributeValue.fromJson(item));
     }
-    if (_json.containsKey("hasRemoteParent")) {
-      hasRemoteParent = _json["hasRemoteParent"];
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
     }
     if (_json.containsKey("links")) {
       links = _json["links"].map((value) => new Link.fromJson(value)).toList();
     }
-    if (_json.containsKey("localEndTime")) {
-      localEndTime = _json["localEndTime"];
-    }
-    if (_json.containsKey("localStartTime")) {
-      localStartTime = _json["localStartTime"];
-    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
-    if (_json.containsKey("parentId")) {
-      parentId = _json["parentId"];
+    if (_json.containsKey("parentSpanId")) {
+      parentSpanId = _json["parentSpanId"];
+    }
+    if (_json.containsKey("spanId")) {
+      spanId = _json["spanId"];
     }
     if (_json.containsKey("stackTrace")) {
       stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
     }
     if (_json.containsKey("status")) {
       status = new Status.fromJson(_json["status"]);
@@ -734,57 +792,35 @@ class Span {
     if (attributes != null) {
       _json["attributes"] = commons.mapMap(attributes, (item) => (item).toJson());
     }
-    if (hasRemoteParent != null) {
-      _json["hasRemoteParent"] = hasRemoteParent;
+    if (displayName != null) {
+      _json["displayName"] = displayName;
     }
-    if (id != null) {
-      _json["id"] = id;
+    if (endTime != null) {
+      _json["endTime"] = endTime;
     }
     if (links != null) {
       _json["links"] = links.map((value) => (value).toJson()).toList();
     }
-    if (localEndTime != null) {
-      _json["localEndTime"] = localEndTime;
-    }
-    if (localStartTime != null) {
-      _json["localStartTime"] = localStartTime;
-    }
     if (name != null) {
       _json["name"] = name;
     }
-    if (parentId != null) {
-      _json["parentId"] = parentId;
+    if (parentSpanId != null) {
+      _json["parentSpanId"] = parentSpanId;
+    }
+    if (spanId != null) {
+      _json["spanId"] = spanId;
     }
     if (stackTrace != null) {
       _json["stackTrace"] = (stackTrace).toJson();
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     if (status != null) {
       _json["status"] = (status).toJson();
     }
     if (timeEvents != null) {
       _json["timeEvents"] = timeEvents.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/** Collection of spans to update. */
-class SpanUpdates {
-  /** A collection of spans. */
-  core.List<Span> spans;
-
-  SpanUpdates();
-
-  SpanUpdates.fromJson(core.Map _json) {
-    if (_json.containsKey("spans")) {
-      spans = _json["spans"].map((value) => new Span.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (spans != null) {
-      _json["spans"] = spans.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -797,11 +833,11 @@ class StackFrame {
    * May not be available in some languages.
    */
   core.String columnNumber;
-  /** The filename of the file containing this frame. */
+  /** The filename of the file containing this frame (up to 256 characters). */
   core.String fileName;
   /**
    * The fully-qualified name that uniquely identifies this function or
-   * method.
+   * method (up to 1024 characters).
    */
   core.String functionName;
   /** Line number of the frame. */
@@ -811,10 +847,10 @@ class StackFrame {
   /**
    * Used when the function name is
    * [mangled](http://www.avabodh.com/cxxin/namemangling.html). May be
-   * fully-qualified.
+   * fully-qualified (up to 1024 characters).
    */
   core.String originalFunctionName;
-  /** The version of the deployed source code. */
+  /** The version of the deployed source code (up to 128 characters). */
   core.String sourceVersion;
 
   StackFrame();
@@ -872,7 +908,7 @@ class StackFrame {
 
 /** StackTrace collected in a trace. */
 class StackTrace {
-  /** Stack frames of this stack trace. */
+  /** Stack frames in this stack trace. A maximum of 128 frames are allowed. */
   core.List<StackFrame> stackFrame;
   /**
    * The hash ID is used to conserve network bandwidth for duplicate
@@ -1017,10 +1053,10 @@ class Status {
 class TimeEvent {
   /** One or more key:value pairs. */
   Annotation annotation;
-  /** The timestamp indicating the time the event occurred. */
-  core.String localTime;
   /** An event describing an RPC message sent/received on the network. */
   NetworkEvent networkEvent;
+  /** The timestamp indicating the time the event occurred. */
+  core.String time;
 
   TimeEvent();
 
@@ -1028,11 +1064,11 @@ class TimeEvent {
     if (_json.containsKey("annotation")) {
       annotation = new Annotation.fromJson(_json["annotation"]);
     }
-    if (_json.containsKey("localTime")) {
-      localTime = _json["localTime"];
-    }
     if (_json.containsKey("networkEvent")) {
       networkEvent = new NetworkEvent.fromJson(_json["networkEvent"]);
+    }
+    if (_json.containsKey("time")) {
+      time = _json["time"];
     }
   }
 
@@ -1041,11 +1077,11 @@ class TimeEvent {
     if (annotation != null) {
       _json["annotation"] = (annotation).toJson();
     }
-    if (localTime != null) {
-      _json["localTime"] = localTime;
-    }
     if (networkEvent != null) {
       _json["networkEvent"] = (networkEvent).toJson();
+    }
+    if (time != null) {
+      _json["time"] = time;
     }
     return _json;
   }
@@ -1058,9 +1094,10 @@ class TimeEvent {
  */
 class Trace {
   /**
-   * A globally unique identifier for the trace in the format
-   * `projects/PROJECT_NUMBER/traces/TRACE_ID`. `TRACE_ID` is a base16-encoded
-   * string of a 128-bit number and is required to be 32 char long.
+   * The resource name of Trace in the format
+   * `projects/PROJECT_ID/traces/TRACE_ID`. `TRACE_ID` is a unique identifier
+   * for a trace within a project and is a base16-encoded, case-insensitive
+   * string and is required to be 32 char long.
    */
   core.String name;
 

@@ -76,19 +76,19 @@ Official API documentation: https://developers.google.com/ad-exchange/buyer-rest
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta
 
-Provisions and manages App Engine applications.
+The App Engine Admin API enables developers to provision and manage their App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta4
 
-Provisions and manages App Engine applications.
+The App Engine Admin API enables developers to provision and manage their App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta5
 
-Provisions and manages App Engine applications.
+The App Engine Admin API enables developers to provision and manage their App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
@@ -128,19 +128,6 @@ Official API documentation: https://cloud.google.com/dataflow
 Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataproc/
-
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud Datastore API - datastore v1beta2
-
-Stores and queries data in Google Cloud Datastore.
-
-Official API documentation: https://developers.google.com/datastore/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Datastore API - datastore v1beta3
-
-Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
-
-
-Official API documentation: https://cloud.google.com/datastore/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DLP API - dlp v2beta1
 

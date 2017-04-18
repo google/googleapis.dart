@@ -91,51 +91,6 @@ class FoldersResourceApi {
   }
 
   /**
-   * Clears a `Policy` from a resource.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Name of the resource for the `Policy` to clear.
-   * Value must have pattern "^folders/[^/]+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Empty> clearOrgPolicyV1(ClearOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':clearOrgPolicyV1';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
-  /**
    * Gets the effective `Policy` on a resource. This is the result of merging
    * `Policies` in the resource hierarchy. The returned `Policy` will not have
    * an `etag`set because it is a computed `Policy` across multiple resources.
@@ -172,54 +127,6 @@ class FoldersResourceApi {
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getEffectiveOrgPolicy';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
-   * Gets the effective `Policy` on a resource. This is the result of merging
-   * `Policies` in the resource hierarchy. The returned `Policy` will not have
-   * an `etag`set because it is a computed `Policy` across multiple resources.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - The name of the resource to start computing the effective
-   * `Policy`.
-   * Value must have pattern "^folders/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> getEffectiveOrgPolicyV1(GetEffectiveOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getEffectiveOrgPolicyV1';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -270,56 +177,6 @@ class FoldersResourceApi {
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getOrgPolicy';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
-   * Gets a `Policy` on a resource.
-   *
-   * If no `Policy` is set on the resource, a `Policy` is returned with default
-   * values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The
-   * `etag` value can be used with `SetOrgPolicy()` to create or update a
-   * `Policy` during read-modify-write.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Name of the resource the `Policy` is set on.
-   * Value must have pattern "^folders/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> getOrgPolicyV1(GetOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getOrgPolicyV1';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -459,55 +316,6 @@ class FoldersResourceApi {
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setOrgPolicy';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
-   * Updates the specified `Policy` on the resource. Creates a new `Policy` for
-   * that `Constraint` on the resource if one does not exist.
-   *
-   * Not supplying an `etag` on the request `Policy` results in an unconditional
-   * write of the `Policy`.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Resource name of the resource to attach the `Policy`.
-   * Value must have pattern "^folders/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> setOrgPolicyV1(SetOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setOrgPolicyV1';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -779,51 +587,6 @@ class OrganizationsResourceApi {
   }
 
   /**
-   * Clears a `Policy` from a resource.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Name of the resource for the `Policy` to clear.
-   * Value must have pattern "^organizations/[^/]+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Empty> clearOrgPolicyV1(ClearOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':clearOrgPolicyV1';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
-  /**
    * Fetches an Organization resource identified by the specified resource name.
    *
    * Request parameters:
@@ -901,54 +664,6 @@ class OrganizationsResourceApi {
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getEffectiveOrgPolicy';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
-   * Gets the effective `Policy` on a resource. This is the result of merging
-   * `Policies` in the resource hierarchy. The returned `Policy` will not have
-   * an `etag`set because it is a computed `Policy` across multiple resources.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - The name of the resource to start computing the effective
-   * `Policy`.
-   * Value must have pattern "^organizations/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> getEffectiveOrgPolicyV1(GetEffectiveOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getEffectiveOrgPolicyV1';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1048,56 +763,6 @@ class OrganizationsResourceApi {
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getOrgPolicy';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
-   * Gets a `Policy` on a resource.
-   *
-   * If no `Policy` is set on the resource, a `Policy` is returned with default
-   * values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The
-   * `etag` value can be used with `SetOrgPolicy()` to create or update a
-   * `Policy` during read-modify-write.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Name of the resource the `Policy` is set on.
-   * Value must have pattern "^organizations/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> getOrgPolicyV1(GetOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getOrgPolicyV1';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1340,55 +1005,6 @@ class OrganizationsResourceApi {
   }
 
   /**
-   * Updates the specified `Policy` on the resource. Creates a new `Policy` for
-   * that `Constraint` on the resource if one does not exist.
-   *
-   * Not supplying an `etag` on the request `Policy` results in an unconditional
-   * write of the `Policy`.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Resource name of the resource to attach the `Policy`.
-   * Value must have pattern "^organizations/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> setOrgPolicyV1(SetOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setOrgPolicyV1';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
    * Returns permissions that a caller has on the specified Organization.
    * The `resource` field should be the organization's resource name,
    * e.g. "organizations/123".
@@ -1480,51 +1096,6 @@ class ProjectsResourceApi {
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':clearOrgPolicy';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
-  /**
-   * Clears a `Policy` from a resource.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Name of the resource for the `Policy` to clear.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Empty> clearOrgPolicyV1(ClearOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':clearOrgPolicyV1';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1788,54 +1359,6 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Gets the effective `Policy` on a resource. This is the result of merging
-   * `Policies` in the resource hierarchy. The returned `Policy` will not have
-   * an `etag`set because it is a computed `Policy` across multiple resources.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - The name of the resource to start computing the effective
-   * `Policy`.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> getEffectiveOrgPolicyV1(GetEffectiveOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getEffectiveOrgPolicyV1';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
    * Returns the IAM access control policy for the specified Project.
    * Permission is denied if the policy or the resource does not exist.
    *
@@ -1933,56 +1456,6 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Gets a `Policy` on a resource.
-   *
-   * If no `Policy` is set on the resource, a `Policy` is returned with default
-   * values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The
-   * `etag` value can be used with `SetOrgPolicy()` to create or update a
-   * `Policy` during read-modify-write.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Name of the resource the `Policy` is set on.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> getOrgPolicyV1(GetOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getOrgPolicyV1';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
    * Lists Projects that are visible to the user and satisfy the
    * specified filter. This method returns Projects in an unspecified order.
    * New Projects do not necessarily appear at the end of the list.
@@ -2001,7 +1474,7 @@ class ProjectsResourceApi {
    *
    * |Filter|Description|
    * |------|-----------|
-   * |name:*|The project has a name.|
+   * |name:how*|The project's name starts with "how".|
    * |name:Howl|The project's name is `Howl` or `howl`.|
    * |name:HOWL|Equivalent to above.|
    * |NAME:howl|Equivalent to above.|
@@ -2285,55 +1758,6 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Updates the specified `Policy` on the resource. Creates a new `Policy` for
-   * that `Constraint` on the resource if one does not exist.
-   *
-   * Not supplying an `etag` on the request `Policy` results in an unconditional
-   * write of the `Policy`.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - Resource name of the resource to attach the `Policy`.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * Completes with a [OrgPolicy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<OrgPolicy> setOrgPolicyV1(SetOrgPolicyRequest request, core.String resource) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setOrgPolicyV1';
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrgPolicy.fromJson(data));
-  }
-
-  /**
    * Returns permissions that a caller has on the specified Project.
    *
    * [request] - The metadata request object.
@@ -2510,48 +1934,51 @@ class Ancestor {
  * Specifies the audit configuration for a service.
  * The configuration determines which permission types are logged, and what
  * identities, if any, are exempted from logging.
- * An AuditConifg must have one or more AuditLogConfigs.
+ * An AuditConfig must have one or more AuditLogConfigs.
  *
  * If there are AuditConfigs for both `allServices` and a specific service,
  * the union of the two AuditConfigs is used for that service: the log_types
  * specified in each AuditConfig are enabled, and the exempted_members in each
  * AuditConfig are exempted.
+ *
  * Example Policy with multiple AuditConfigs:
- * {
- *   "audit_configs": [
+ *
  *     {
- *       "service": "allServices"
- *       "audit_log_configs": [
+ *       "audit_configs": [
  *         {
- *           "log_type": "DATA_READ",
- *           "exempted_members": [
- *             "user:foo@gmail.com"
+ *           "service": "allServices"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *               "exempted_members": [
+ *                 "user:foo@gmail.com"
+ *               ]
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *             },
+ *             {
+ *               "log_type": "ADMIN_READ",
+ *             }
  *           ]
  *         },
  *         {
- *           "log_type": "DATA_WRITE",
- *         },
- *         {
- *           "log_type": "ADMIN_READ",
- *         }
- *       ]
- *     },
- *     {
- *       "service": "fooservice@googleapis.com"
- *       "audit_log_configs": [
- *         {
- *           "log_type": "DATA_READ",
- *         },
- *         {
- *           "log_type": "DATA_WRITE",
- *           "exempted_members": [
- *             "user:bar@gmail.com"
+ *           "service": "fooservice.googleapis.com"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *               "exempted_members": [
+ *                 "user:bar@gmail.com"
+ *               ]
+ *             }
  *           ]
  *         }
  *       ]
  *     }
- *   ]
- * }
+ *
  * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
  * logging. It also exempts foo@gmail.com from DATA_READ logging, and
  * bar@gmail.com from DATA_WRITE logging.
@@ -3051,6 +2478,9 @@ class FolderOperationError {
    * already being moved.
    * - "FOLDER_TO_DELETE_NON_EMPTY" : The folder the caller is trying to delete
    * contains active resources.
+   * - "DELETED_FOLDER_HEIGHT_VIOLATION" : The attempted action would violate
+   * the max deleted folder depth
+   * constraint.
    */
   core.String errorMessageId;
 

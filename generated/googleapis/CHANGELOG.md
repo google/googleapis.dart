@@ -1,3 +1,27 @@
+## 0.39.0
+
+[api-new] tracing:v2
+[api] books:v1
+[api] compute:v1
+[api] container:v1
+[api] drive:v2
+[api] drive:v3
+[api] iam:v1
+[api] identitytoolkit:v3
+[api] logging:v2
+[api] servicemanagement:v1
+[api] serviceuser:v1
+[api] storage:v1
+[api-breaking] cloudfunctions:v1
+[api-breaking] cloudresourcemanager:v1
+[api-breaking] compute:v1
+[api-breaking] consumersurveys:v2
+[api-breaking] content:v2
+[api-breaking] servicemanagement:v1
+[api-breaking] storagetransfer:v1
+[api-breaking] surveys:v2
+[api-removed] tracingv1
+
 ## 0.37.0
 
 * [api-new] cloudfunctions:v1

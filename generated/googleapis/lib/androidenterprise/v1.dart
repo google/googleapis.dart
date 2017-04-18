@@ -632,8 +632,7 @@ class EnterprisesResourceApi {
 
   /**
    * Returns the store layout for the enterprise. If the store layout has not
-   * been set, or if the store layout has no homepageId set, returns a NOT_FOUND
-   * error.
+   * been set, returns "basic" as the store layout type and no homepage.
    *
    * Request parameters:
    *
@@ -916,8 +915,8 @@ class EnterprisesResourceApi {
    * contains apps approved by the admin, and that have been added to the
    * available product set for a user (using the  setAvailableProductSet call).
    * Apps on the page are sorted in order of their product ID value. If you
-   * create a custom store layout (by setting storeLayoutType = "custom"), the
-   * basic store layout is disabled.
+   * create a custom store layout (by setting storeLayoutType = "custom" and
+   * setting a homepage), the basic store layout is disabled.
    *
    * [request] - The metadata request object.
    *
@@ -6579,15 +6578,11 @@ class StoreCluster {
  */
 class StoreLayout {
   /**
-   * The ID of the store page to be used as the homepage. The homepage will be
-   * used as the first page shown in the managed Google Play store.
+   * The ID of the store page to be used as the homepage. The homepage is the
+   * first page shown in the managed Google Play Store.
    *
-   * If a homepage has not been set, the Play store shown on devices will be
-   * empty. Not specifying a homepage on a store layout effectively empties the
-   * store.
-   *
-   * If there exists at least one page, this field must be set to the ID of a
-   * valid page.
+   * Not specifying a homepage is equivalent to setting the store layout type to
+   * "basic".
    */
   core.String homepageId;
   /**
@@ -6596,13 +6591,10 @@ class StoreLayout {
    */
   core.String kind;
   /**
-   * The store layout type. By default, this value is set to "basic". If set to
-   * "custom", "homepageId" must be specified. If set to "basic", the layout
-   * will consist of all approved apps accessible by the user, split in pages of
-   * 100 each; in this case, "homepageId" must not be specified. The "basic"
-   * setting takes precedence over any existing collections setup for this
-   * enterprise (if any). Should the enterprise use collectionViewers for
-   * controlling access rights, these will still be respected.
+   * The store layout type. By default, this value is set to "basic" if the
+   * homepageId field is not set, and to "custom" otherwise. If set to "basic",
+   * the layout will consist of all approved apps that have been whitelisted for
+   * the user.
    */
   core.String storeLayoutType;
 

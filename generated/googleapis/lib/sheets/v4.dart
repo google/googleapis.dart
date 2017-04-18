@@ -311,6 +311,20 @@ class SpreadsheetsValuesResourceApi {
    * [range] - The A1 notation of a range to search for a logical table of data.
    * Values will be appended after the last row of the table.
    *
+   * [responseDateTimeRenderOption] - Determines how dates, times, and durations
+   * in the response should be
+   * rendered. This is ignored if response_value_render_option is
+   * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+   * Possible string values are:
+   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+   * - "FORMATTED_STRING" : A FORMATTED_STRING.
+   *
+   * [includeValuesInResponse] - Determines if the update response should
+   * include the values
+   * of the cells that were appended. By default, responses
+   * do not include the updated values.
+   *
    * [responseValueRenderOption] - Determines how values in the response should
    * be rendered.
    * The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -330,20 +344,6 @@ class SpreadsheetsValuesResourceApi {
    * - "RAW" : A RAW.
    * - "USER_ENTERED" : A USER_ENTERED.
    *
-   * [responseDateTimeRenderOption] - Determines how dates, times, and durations
-   * in the response should be
-   * rendered. This is ignored if response_value_render_option is
-   * FORMATTED_VALUE.
-   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-   * Possible string values are:
-   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-   * - "FORMATTED_STRING" : A FORMATTED_STRING.
-   *
-   * [includeValuesInResponse] - Determines if the update response should
-   * include the values
-   * of the cells that were appended. By default, responses
-   * do not include the updated values.
-   *
    * Completes with a [AppendValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -352,7 +352,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse}) {
+  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseDateTimeRenderOption, core.bool includeValuesInResponse, core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -369,6 +369,12 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseDateTimeRenderOption != null) {
+      _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -377,12 +383,6 @@ class SpreadsheetsValuesResourceApi {
     }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
-    }
-    if (responseDateTimeRenderOption != null) {
-      _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range') + ':append';
@@ -1670,7 +1670,7 @@ class BasicChartSpec {
   core.String chartType;
   /**
    * The domain of data this is charting.
-   * Only a single domain is currently supported.
+   * Only a single domain is supported.
    */
   core.List<BasicChartDomain> domains;
   /**
@@ -1810,7 +1810,7 @@ class BatchClearValuesRequest {
   }
 }
 
-/** The response when updating a range of values in a spreadsheet. */
+/** The response when clearing a range of values in a spreadsheet. */
 class BatchClearValuesResponse {
   /**
    * The ranges that were cleared, in A1 notation.
@@ -1887,7 +1887,11 @@ class BatchUpdateSpreadsheetRequest {
    * resource.
    */
   core.bool includeSpreadsheetInResponse;
-  /** A list of updates to apply to the spreadsheet. */
+  /**
+   * A list of updates to apply to the spreadsheet.
+   * Requests will be applied in the order they are specified.
+   * If any request is not valid, no requests will be applied.
+   */
   core.List<Request> requests;
   /**
    * True if grid data should be returned. Meaningful only if

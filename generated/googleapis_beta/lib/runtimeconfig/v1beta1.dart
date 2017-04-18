@@ -510,18 +510,14 @@ class ProjectsConfigsOperationsResourceApi {
    * UIs and command-line tools, not for authorization checking. This operation
    * may "fail open" without warning.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
    * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+/operations/.+$".
-   *
-   * [permissions] - The set of permissions to check for the `resource`.
-   * Permissions with
-   * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see
-   * [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -531,7 +527,7 @@ class ProjectsConfigsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String resource, {core.List<core.String> permissions}) {
+  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -539,17 +535,17 @@ class ProjectsConfigsOperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
-    }
-    if (permissions != null) {
-      _queryParams["permissions"] = permissions;
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
 
     var _response = _requester.request(_url,
-                                       "GET",
+                                       "POST",
                                        body: _body,
                                        queryParams: _queryParams,
                                        uploadOptions: _uploadOptions,
@@ -751,10 +747,6 @@ class ProjectsConfigsVariablesResourceApi {
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
-   * [filter] - Filters variables by matching the specified filter. For example:
-   *
-   * `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
-   *
    * [pageToken] - Specifies a page token to use. Set `pageToken` to a
    * `nextPageToken`
    * returned by a previous list request to get the next page of results.
@@ -768,6 +760,10 @@ class ProjectsConfigsVariablesResourceApi {
    * are fewer
    * elements than the specified number, returns all elements.
    *
+   * [filter] - Filters variables by matching the specified filter. For example:
+   *
+   * `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+   *
    * Completes with a [ListVariablesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -776,7 +772,7 @@ class ProjectsConfigsVariablesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVariablesResponse> list(core.String parent, {core.String filter, core.String pageToken, core.bool returnValues, core.int pageSize}) {
+  async.Future<ListVariablesResponse> list(core.String parent, {core.String pageToken, core.bool returnValues, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -787,9 +783,6 @@ class ProjectsConfigsVariablesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -798,6 +791,9 @@ class ProjectsConfigsVariablesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/variables';
@@ -821,18 +817,14 @@ class ProjectsConfigsVariablesResourceApi {
    * UIs and command-line tools, not for authorization checking. This operation
    * may "fail open" without warning.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
    * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.+$".
-   *
-   * [permissions] - The set of permissions to check for the `resource`.
-   * Permissions with
-   * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see
-   * [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -842,7 +834,7 @@ class ProjectsConfigsVariablesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String resource, {core.List<core.String> permissions}) {
+  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -850,17 +842,17 @@ class ProjectsConfigsVariablesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
-    }
-    if (permissions != null) {
-      _queryParams["permissions"] = permissions;
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
 
     var _response = _requester.request(_url,
-                                       "GET",
+                                       "POST",
                                        body: _body,
                                        queryParams: _queryParams,
                                        uploadOptions: _uploadOptions,
@@ -1152,13 +1144,13 @@ class ProjectsConfigsWaitersResourceApi {
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
-   * [pageSize] - Specifies the number of results to return per page. If there
-   * are fewer
-   * elements than the specified number, returns all elements.
-   *
    * [pageToken] - Specifies a page token to use. Set `pageToken` to a
    * `nextPageToken`
    * returned by a previous list request to get the next page of results.
+   *
+   * [pageSize] - Specifies the number of results to return per page. If there
+   * are fewer
+   * elements than the specified number, returns all elements.
    *
    * Completes with a [ListWaitersResponse].
    *
@@ -1168,7 +1160,7 @@ class ProjectsConfigsWaitersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListWaitersResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListWaitersResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1179,11 +1171,11 @@ class ProjectsConfigsWaitersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/waiters';
@@ -1207,18 +1199,14 @@ class ProjectsConfigsWaitersResourceApi {
    * UIs and command-line tools, not for authorization checking. This operation
    * may "fail open" without warning.
    *
+   * [request] - The metadata request object.
+   *
    * Request parameters:
    *
    * [resource] - REQUIRED: The resource for which the policy detail is being
    * requested.
    * See the operation documentation for the appropriate value for this field.
    * Value must have pattern "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$".
-   *
-   * [permissions] - The set of permissions to check for the `resource`.
-   * Permissions with
-   * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see
-   * [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
    *
    * Completes with a [TestIamPermissionsResponse].
    *
@@ -1228,7 +1216,7 @@ class ProjectsConfigsWaitersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String resource, {core.List<core.String> permissions}) {
+  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1236,17 +1224,17 @@ class ProjectsConfigsWaitersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
-    }
-    if (permissions != null) {
-      _queryParams["permissions"] = permissions;
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
 
     var _response = _requester.request(_url,
-                                       "GET",
+                                       "POST",
                                        body: _body,
                                        queryParams: _queryParams,
                                        uploadOptions: _uploadOptions,

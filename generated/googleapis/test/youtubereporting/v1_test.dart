@@ -97,14 +97,14 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed996() {
+buildUnnamed987() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed996(core.List<api.Job> o) {
+checkUnnamed987(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -115,7 +115,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed996();
+    o.jobs = buildUnnamed987();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -125,20 +125,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed996(o.jobs);
+    checkUnnamed987(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed997() {
+buildUnnamed988() {
   var o = new core.List<api.ReportType>();
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-checkUnnamed997(core.List<api.ReportType> o) {
+checkUnnamed988(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0]);
   checkReportType(o[1]);
@@ -150,7 +150,7 @@ buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = "foo";
-    o.reportTypes = buildUnnamed997();
+    o.reportTypes = buildUnnamed988();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -160,19 +160,19 @@ checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed997(o.reportTypes);
+    checkUnnamed988(o.reportTypes);
   }
   buildCounterListReportTypesResponse--;
 }
 
-buildUnnamed998() {
+buildUnnamed989() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed998(core.List<api.Report> o) {
+checkUnnamed989(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -184,7 +184,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reports = buildUnnamed998();
+    o.reports = buildUnnamed989();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -194,7 +194,7 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed998(o.reports);
+    checkUnnamed989(o.reports);
   }
   buildCounterListReportsResponse--;
 }
@@ -500,10 +500,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.YoutubereportingApi(mock).jobs;
+      var arg_onBehalfOfContentOwner = "foo";
       var arg_pageToken = "foo";
       var arg_includeSystemManaged = true;
       var arg_pageSize = 42;
-      var arg_onBehalfOfContentOwner = "foo";
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -530,10 +530,10 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["includeSystemManaged"].first, unittest.equals("$arg_includeSystemManaged"));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
 
 
         var h = {
@@ -542,7 +542,7 @@ main() {
         var resp = convert.JSON.encode(buildListJobsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageToken: arg_pageToken, includeSystemManaged: arg_includeSystemManaged, pageSize: arg_pageSize, onBehalfOfContentOwner: arg_onBehalfOfContentOwner).then(unittest.expectAsync(((api.ListJobsResponse response) {
+      res.list(onBehalfOfContentOwner: arg_onBehalfOfContentOwner, pageToken: arg_pageToken, includeSystemManaged: arg_includeSystemManaged, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListJobsResponse response) {
         checkListJobsResponse(response);
       })));
     });
@@ -613,12 +613,12 @@ main() {
       var mock = new HttpServerMock();
       api.JobsReportsResourceApi res = new api.YoutubereportingApi(mock).jobs.reports;
       var arg_jobId = "foo";
+      var arg_createdAfter = "foo";
+      var arg_pageToken = "foo";
+      var arg_startTimeAtOrAfter = "foo";
+      var arg_pageSize = 42;
       var arg_onBehalfOfContentOwner = "foo";
       var arg_startTimeBefore = "foo";
-      var arg_createdAfter = "foo";
-      var arg_startTimeAtOrAfter = "foo";
-      var arg_pageToken = "foo";
-      var arg_pageSize = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -652,12 +652,12 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["startTimeAtOrAfter"].first, unittest.equals(arg_startTimeAtOrAfter));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first, unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["startTimeBefore"].first, unittest.equals(arg_startTimeBefore));
-        unittest.expect(queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
-        unittest.expect(queryMap["startTimeAtOrAfter"].first, unittest.equals(arg_startTimeAtOrAfter));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
@@ -666,7 +666,7 @@ main() {
         var resp = convert.JSON.encode(buildListReportsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_jobId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner, startTimeBefore: arg_startTimeBefore, createdAfter: arg_createdAfter, startTimeAtOrAfter: arg_startTimeAtOrAfter, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListReportsResponse response) {
+      res.list(arg_jobId, createdAfter: arg_createdAfter, pageToken: arg_pageToken, startTimeAtOrAfter: arg_startTimeAtOrAfter, pageSize: arg_pageSize, onBehalfOfContentOwner: arg_onBehalfOfContentOwner, startTimeBefore: arg_startTimeBefore).then(unittest.expectAsync(((api.ListReportsResponse response) {
         checkListReportsResponse(response);
       })));
     });

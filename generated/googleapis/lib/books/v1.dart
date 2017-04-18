@@ -1288,6 +1288,8 @@ class MylibraryAnnotationsResourceApi {
    *
    * Request parameters:
    *
+   * [annotationId] - The ID for the annotation to insert.
+   *
    * [country] - ISO-3166-1 code to override the IP-based location.
    *
    * [showOnlySummaryInResponse] - Requests that only the summary of the
@@ -1303,7 +1305,7 @@ class MylibraryAnnotationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Annotation> insert(Annotation request, {core.String country, core.bool showOnlySummaryInResponse, core.String source}) {
+  async.Future<Annotation> insert(Annotation request, {core.String annotationId, core.String country, core.bool showOnlySummaryInResponse, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1313,6 +1315,9 @@ class MylibraryAnnotationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (annotationId != null) {
+      _queryParams["annotationId"] = [annotationId];
     }
     if (country != null) {
       _queryParams["country"] = [country];
@@ -6270,9 +6275,30 @@ class UsersettingsNotificationMoreFromSeries {
   }
 }
 
+class UsersettingsNotificationRewardExpirations {
+  core.String optedState;
+
+  UsersettingsNotificationRewardExpirations();
+
+  UsersettingsNotificationRewardExpirations.fromJson(core.Map _json) {
+    if (_json.containsKey("opted_state")) {
+      optedState = _json["opted_state"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (optedState != null) {
+      _json["opted_state"] = optedState;
+    }
+    return _json;
+  }
+}
+
 class UsersettingsNotification {
   UsersettingsNotificationMoreFromAuthors moreFromAuthors;
   UsersettingsNotificationMoreFromSeries moreFromSeries;
+  UsersettingsNotificationRewardExpirations rewardExpirations;
 
   UsersettingsNotification();
 
@@ -6283,6 +6309,9 @@ class UsersettingsNotification {
     if (_json.containsKey("moreFromSeries")) {
       moreFromSeries = new UsersettingsNotificationMoreFromSeries.fromJson(_json["moreFromSeries"]);
     }
+    if (_json.containsKey("rewardExpirations")) {
+      rewardExpirations = new UsersettingsNotificationRewardExpirations.fromJson(_json["rewardExpirations"]);
+    }
   }
 
   core.Map toJson() {
@@ -6292,6 +6321,9 @@ class UsersettingsNotification {
     }
     if (moreFromSeries != null) {
       _json["moreFromSeries"] = (moreFromSeries).toJson();
+    }
+    if (rewardExpirations != null) {
+      _json["rewardExpirations"] = (rewardExpirations).toJson();
     }
     return _json;
   }

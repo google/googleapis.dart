@@ -40,8 +40,10 @@ class StorageApi {
   BucketsResourceApi get buckets => new BucketsResourceApi(_requester);
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
   DefaultObjectAccessControlsResourceApi get defaultObjectAccessControls => new DefaultObjectAccessControlsResourceApi(_requester);
+  NotificationsResourceApi get notifications => new NotificationsResourceApi(_requester);
   ObjectAccessControlsResourceApi get objectAccessControls => new ObjectAccessControlsResourceApi(_requester);
   ObjectsResourceApi get objects => new ObjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   StorageApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "storage/v1/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -1284,6 +1286,186 @@ class DefaultObjectAccessControlsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ObjectAccessControl.fromJson(data));
+  }
+
+}
+
+
+class NotificationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  NotificationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Permanently deletes a notification subscription.
+   *
+   * Request parameters:
+   *
+   * [bucket] - The parent bucket of the notification.
+   *
+   * [notification] - ID of the notification to delete.
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future delete(core.String bucket, core.String notification) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (notification == null) {
+      throw new core.ArgumentError("Parameter notification is required.");
+    }
+
+    _downloadOptions = null;
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/notificationConfigs/' + commons.Escaper.ecapeVariable('$notification');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
+   * View a notification configuration.
+   *
+   * Request parameters:
+   *
+   * [bucket] - The parent bucket of the notification.
+   *
+   * [notification] - Notification ID
+   *
+   * Completes with a [Notification].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Notification> get(core.String bucket, core.String notification) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (notification == null) {
+      throw new core.ArgumentError("Parameter notification is required.");
+    }
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/notificationConfigs/' + commons.Escaper.ecapeVariable('$notification');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Notification.fromJson(data));
+  }
+
+  /**
+   * Creates a notification subscription for a given bucket.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [bucket] - The parent bucket of the notification.
+   *
+   * Completes with a [Notification].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Notification> insert(Notification request, core.String bucket) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/notificationConfigs';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Notification.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of notification subscriptions for a given bucket.
+   *
+   * Request parameters:
+   *
+   * [bucket] - Name of a GCS bucket.
+   *
+   * Completes with a [Notifications].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Notifications> list(core.String bucket) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (bucket == null) {
+      throw new core.ArgumentError("Parameter bucket is required.");
+    }
+
+    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/notificationConfigs';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Notifications.fromJson(data));
   }
 
 }
@@ -2957,6 +3139,64 @@ class ObjectsResourceApi {
 }
 
 
+class ProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsServiceAccountResourceApi get serviceAccount => new ProjectsServiceAccountResourceApi(_requester);
+
+  ProjectsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class ProjectsServiceAccountResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsServiceAccountResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get the email address of this project's GCS service account.
+   *
+   * Request parameters:
+   *
+   * [projectId] - Project ID
+   *
+   * Completes with a [ServiceAccount].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ServiceAccount> get(core.String projectId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/serviceAccount';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServiceAccount.fromJson(data));
+  }
+
+}
+
+
 
 class BucketCors {
   /**
@@ -3330,6 +3570,8 @@ class Bucket {
   core.String id;
   /** The kind of item this is. For buckets, this is always storage#bucket. */
   core.String kind;
+  /** User-provided labels, in key/value pairs. */
+  core.Map<core.String, core.String> labels;
   /**
    * The bucket's lifecycle configuration. See lifecycle management for more
    * information.
@@ -3402,6 +3644,9 @@ class Bucket {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("lifecycle")) {
       lifecycle = new BucketLifecycle.fromJson(_json["lifecycle"]);
     }
@@ -3462,6 +3707,9 @@ class Bucket {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (lifecycle != null) {
       _json["lifecycle"] = (lifecycle).toJson();
@@ -3940,6 +4188,140 @@ class ComposeRequest {
     }
     if (sourceObjects != null) {
       _json["sourceObjects"] = sourceObjects.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** A subscription to receive Google PubSub notifications. */
+class Notification {
+  /**
+   * An optional list of additional attributes to attach to each Cloud PubSub
+   * message published for this notification subscription.
+   */
+  core.Map<core.String, core.String> customAttributes;
+  /** HTTP 1.1 Entity tag for this subscription notification. */
+  core.String etag;
+  /**
+   * If present, only send notifications about listed event types. If empty,
+   * sent notifications for all event types.
+   */
+  core.List<core.String> eventTypes;
+  /** The ID of the notification. */
+  core.String id;
+  /**
+   * The kind of item this is. For notifications, this is always
+   * storage#notification.
+   */
+  core.String kind;
+  /**
+   * If present, only apply this notification configuration to object names that
+   * begin with this prefix.
+   */
+  core.String objectNamePrefix;
+  /** The desired content of the Payload. */
+  core.String payloadFormat;
+  /** The canonical URL of this notification. */
+  core.String selfLink;
+  /**
+   * The Cloud PubSub topic to which this subscription publishes. Formatted as:
+   * '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+   */
+  core.String topic;
+
+  Notification();
+
+  Notification.fromJson(core.Map _json) {
+    if (_json.containsKey("custom_attributes")) {
+      customAttributes = _json["custom_attributes"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("event_types")) {
+      eventTypes = _json["event_types"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("object_name_prefix")) {
+      objectNamePrefix = _json["object_name_prefix"];
+    }
+    if (_json.containsKey("payload_format")) {
+      payloadFormat = _json["payload_format"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("topic")) {
+      topic = _json["topic"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (customAttributes != null) {
+      _json["custom_attributes"] = customAttributes;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventTypes != null) {
+      _json["event_types"] = eventTypes;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (objectNamePrefix != null) {
+      _json["object_name_prefix"] = objectNamePrefix;
+    }
+    if (payloadFormat != null) {
+      _json["payload_format"] = payloadFormat;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (topic != null) {
+      _json["topic"] = topic;
+    }
+    return _json;
+  }
+}
+
+/** A list of notification subscriptions. */
+class Notifications {
+  /** The list of items. */
+  core.List<Notification> items;
+  /**
+   * The kind of item this is. For lists of notifications, this is always
+   * storage#notifications.
+   */
+  core.String kind;
+
+  Notifications();
+
+  Notifications.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Notification.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -4742,6 +5124,39 @@ class RewriteResponse {
     }
     if (totalBytesRewritten != null) {
       _json["totalBytesRewritten"] = totalBytesRewritten;
+    }
+    return _json;
+  }
+}
+
+/** A subscription to receive Google PubSub notifications. */
+class ServiceAccount {
+  /** The ID of the notification. */
+  core.String emailAddress;
+  /**
+   * The kind of item this is. For notifications, this is always
+   * storage#notification.
+   */
+  core.String kind;
+
+  ServiceAccount();
+
+  ServiceAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("email_address")) {
+      emailAddress = _json["email_address"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (emailAddress != null) {
+      _json["email_address"] = emailAddress;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }

@@ -1,4 +1,13 @@
-## 0.35.0
+## 1.36.0
+
+[api] dataflow:v1b3
+[api] logging:v2beta1
+[api-breaking] cloudresourcemanager:v1beta1
+[api-breaking] runtimeconfig:v1beta1
+[api-removed] datastore:v1beta3
+[api-removed] datastore:v1beta2
+
+## 1.35.0
 
 * [api-new] dlp:v2beta1
 * [api] appengine:v1beta4

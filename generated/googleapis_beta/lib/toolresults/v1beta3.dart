@@ -1735,6 +1735,7 @@ class BasicPerfSampleSeries {
    *
    * Possible string values are:
    * - "cpu"
+   * - "graphics"
    * - "memory"
    * - "network"
    * - "perfMetricTypeUnspecified"
@@ -1744,6 +1745,7 @@ class BasicPerfSampleSeries {
    *
    * Possible string values are:
    * - "bytesPerSecond"
+   * - "framesPerSecond"
    * - "kibibyte"
    * - "percent"
    * - "perfUnitUnspecified"
@@ -1755,6 +1757,7 @@ class BasicPerfSampleSeries {
    * - "cpuKernel"
    * - "cpuTotal"
    * - "cpuUser"
+   * - "graphicsFrameRate"
    * - "memoryRssPrivate"
    * - "memoryRssShared"
    * - "memoryRssTotal"

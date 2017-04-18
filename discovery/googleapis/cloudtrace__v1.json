@@ -2,14 +2,14 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/trace.append": {
-                    "description": "Write Trace data for a project or application"
-                },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
                 },
                 "https://www.googleapis.com/auth/trace.readonly": {
                     "description": "Read Trace data for a project or application"
+                },
+                "https://www.googleapis.com/auth/trace.append": {
+                    "description": "Write Trace data for a project or application"
                 }
             }
         }
@@ -31,22 +31,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -58,13 +42,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -102,18 +86,34 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         }
@@ -161,6 +161,11 @@
                                 "projectId"
                             ],
                             "parameters": {
+                                "orderBy": {
+                                    "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "projectId": {
                                     "description": "ID of the Cloud project where the trace data is stored.",
                                     "location": "path",
@@ -205,11 +210,6 @@
                                     ],
                                     "location": "query",
                                     "type": "string"
-                                },
-                                "orderBy": {
-                                    "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
-                                    "location": "query",
-                                    "type": "string"
                                 }
                             },
                             "path": "v1/projects/{projectId}/traces",
@@ -230,14 +230,14 @@
                                 "traceId"
                             ],
                             "parameters": {
-                                "projectId": {
-                                    "description": "ID of the Cloud project where the trace data is stored.",
+                                "traceId": {
+                                    "description": "ID of the trace to return.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
-                                "traceId": {
-                                    "description": "ID of the trace to return.",
+                                "projectId": {
+                                    "description": "ID of the Cloud project where the trace data is stored.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -257,9 +257,61 @@
             }
         }
     },
-    "revision": "20170320",
+    "revision": "20170406",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
+        "TraceSpan": {
+            "description": "A span represents a single timed event within a trace. Spans can be nested\nand form a trace tree. Often, a trace contains a root span that describes the\nend-to-end latency of an operation and, optionally, one or more subspans for\nits suboperations. Spans do not need to be contiguous. There may be gaps\nbetween spans in a trace.",
+            "id": "TraceSpan",
+            "properties": {
+                "startTime": {
+                    "description": "Start time of the span in nanoseconds from the UNIX epoch.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "kind": {
+                    "description": "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span.",
+                    "enum": [
+                        "SPAN_KIND_UNSPECIFIED",
+                        "RPC_SERVER",
+                        "RPC_CLIENT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Indicates that the span covers server-side handling of an RPC or other\nremote network request.",
+                        "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request."
+                    ],
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Collection of labels associated with the span. Label keys must be less than\n128 bytes. Label values must be less than 16 kilobytes.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "Name of the span. Must be less than 128 bytes. The span name is sanitized\nand displayed in the Stackdriver Trace tool in the\n{% dynamic print site_values.console_name %}.\nThe name may be a method name or some other per-call site name.\nFor the same executable and the same call point, a best practice is\nto use a consistent name, which makes it easier to correlate\ncross-trace spans.",
+                    "type": "string"
+                },
+                "spanId": {
+                    "description": "Identifier for the span. Must be a 64-bit integer other than 0 and\nunique within a trace.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "parentSpanId": {
+                    "description": "ID of the parent span, if any. Optional.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "End time of the span in nanoseconds from the UNIX epoch.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListTracesResponse": {
             "description": "The response message for the `ListTraces` method.",
             "id": "ListTracesResponse",
@@ -316,58 +368,6 @@
                         "$ref": "Trace"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "TraceSpan": {
-            "description": "A span represents a single timed event within a trace. Spans can be nested\nand form a trace tree. Often, a trace contains a root span that describes the\nend-to-end latency of an operation and, optionally, one or more subspans for\nits suboperations. Spans do not need to be contiguous. There may be gaps\nbetween spans in a trace.",
-            "id": "TraceSpan",
-            "properties": {
-                "parentSpanId": {
-                    "description": "ID of the parent span, if any. Optional.",
-                    "format": "uint64",
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "End time of the span in nanoseconds from the UNIX epoch.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "startTime": {
-                    "description": "Start time of the span in nanoseconds from the UNIX epoch.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "kind": {
-                    "description": "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span.",
-                    "enum": [
-                        "SPAN_KIND_UNSPECIFIED",
-                        "RPC_SERVER",
-                        "RPC_CLIENT"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified.",
-                        "Indicates that the span covers server-side handling of an RPC or other\nremote network request.",
-                        "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request."
-                    ],
-                    "type": "string"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Collection of labels associated with the span. Label keys must be less than\n128 bytes. Label values must be less than 16 kilobytes.",
-                    "type": "object"
-                },
-                "name": {
-                    "description": "Name of the span. Must be less than 128 bytes. The span name is sanitized\nand displayed in the Stackdriver Trace tool in the\n{% dynamic print site_values.console_name %}.\nThe name may be a method name or some other per-call site name.\nFor the same executable and the same call point, a best practice is\nto use a consistent name, which makes it easier to correlate\ncross-trace spans.",
-                    "type": "string"
-                },
-                "spanId": {
-                    "description": "Identifier for the span. Must be a 64-bit integer other than 0 and\nunique within a trace.",
-                    "format": "uint64",
-                    "type": "string"
                 }
             },
             "type": "object"

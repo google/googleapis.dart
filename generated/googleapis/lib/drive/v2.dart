@@ -1618,7 +1618,9 @@ class FilesResourceApi {
    * [includeTeamDriveItems] - Whether Team Drive items should be included in
    * results.
    *
-   * [maxResults] - Maximum number of files to return.
+   * [maxResults] - The maximum number of files to return per page. Partial or
+   * empty result pages are possible even before the end of the files list has
+   * been reached.
    *
    * [orderBy] - A comma-separated list of sort keys. Valid keys are
    * 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate',
@@ -4261,6 +4263,43 @@ class AboutQuotaBytesByService {
   }
 }
 
+class AboutTeamDriveThemes {
+  /** A link to this Team Drive theme's background image. */
+  core.String backgroundImageLink;
+  /** The color of this Team Drive theme as an RGB hex string. */
+  core.String colorRgb;
+  /** The ID of the theme. */
+  core.String id;
+
+  AboutTeamDriveThemes();
+
+  AboutTeamDriveThemes.fromJson(core.Map _json) {
+    if (_json.containsKey("backgroundImageLink")) {
+      backgroundImageLink = _json["backgroundImageLink"];
+    }
+    if (_json.containsKey("colorRgb")) {
+      colorRgb = _json["colorRgb"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (backgroundImageLink != null) {
+      _json["backgroundImageLink"] = backgroundImageLink;
+    }
+    if (colorRgb != null) {
+      _json["colorRgb"] = colorRgb;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    return _json;
+  }
+}
+
 /** An item with user information and settings. */
 class About {
   /**
@@ -4334,6 +4373,8 @@ class About {
   core.String rootFolderId;
   /** A link back to this item. */
   core.String selfLink;
+  /** A list of themes that are supported for Team Drives. */
+  core.List<AboutTeamDriveThemes> teamDriveThemes;
   /** The authenticated user. */
   User user;
 
@@ -4408,6 +4449,9 @@ class About {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("teamDriveThemes")) {
+      teamDriveThemes = _json["teamDriveThemes"].map((value) => new AboutTeamDriveThemes.fromJson(value)).toList();
     }
     if (_json.containsKey("user")) {
       user = new User.fromJson(_json["user"]);
@@ -4484,6 +4528,9 @@ class About {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (teamDriveThemes != null) {
+      _json["teamDriveThemes"] = teamDriveThemes.map((value) => (value).toJson()).toList();
     }
     if (user != null) {
       _json["user"] = (user).toJson();
@@ -5645,8 +5692,8 @@ class CommentReplyList {
 }
 
 /**
- * Capabilities the current user has on the file. Each capability corresponds to
- * a fine-grained action that a user may take.
+ * Capabilities the current user has on this file. Each capability corresponds
+ * to a fine-grained action that a user may take.
  */
 class FileCapabilities {
   /**
@@ -5654,19 +5701,19 @@ class FileCapabilities {
    * false when the item is not a folder.
    */
   core.bool canAddChildren;
-  /** Whether the current user can comment on the file. */
+  /** Whether the current user can comment on this file. */
   core.bool canComment;
   /**
-   * Whether the file can be copied by the current user. For a Team Drive item,
-   * whether non-folder descendants of this item, or this item itself if it is
-   * not a folder, can be copied.
+   * Whether the current user can copy this file. For a Team Drive item, whether
+   * the current user can copy non-folder descendants of this item, or this item
+   * itself if it is not a folder.
    */
   core.bool canCopy;
-  /** Whether the file can be deleted by the current user. */
+  /** Whether the current user can delete this file. */
   core.bool canDelete;
-  /** Whether the file can be downloaded by the current user. */
+  /** Whether the current user can download this file. */
   core.bool canDownload;
-  /** Whether the file can be edited by the current user. */
+  /** Whether the current user can edit this file. */
   core.bool canEdit;
   /**
    * Whether the current user can list the children of this folder. This is
@@ -5686,14 +5733,14 @@ class FileCapabilities {
    */
   core.bool canMoveTeamDriveItem;
   /**
-   * Whether the current user has read access to the Revisions resource of the
-   * file. For a Team Drive item, whether revisions of non-folder descendants of
-   * this item, or this item itself if it is not a folder, can be read.
+   * Whether the current user can read the revisions resource of this file. For
+   * a Team Drive item, whether revisions of non-folder descendants of this
+   * item, or this item itself if it is not a folder, can be read.
    */
   core.bool canReadRevisions;
   /**
-   * Whether the current user has read access to the Team Drive to which this
-   * file belongs. Only populated for Team Drive files.
+   * Whether the current user can read the Team Drive to which this file
+   * belongs. Only populated for Team Drive files.
    */
   core.bool canReadTeamDrive;
   /**
@@ -5701,15 +5748,15 @@ class FileCapabilities {
    * always false when the item is not a folder.
    */
   core.bool canRemoveChildren;
-  /** Whether the file can be renamed by the current user. */
+  /** Whether the current user can rename this file. */
   core.bool canRename;
   /**
-   * Whether the file's sharing settings can be modified by the current user.
+   * Whether the current user can modify the sharing settings for this file.
    */
   core.bool canShare;
-  /** Whether the file can be trashed by the current user. */
+  /** Whether the current user can move this file to trash. */
   core.bool canTrash;
-  /** Whether the file can be restored from the trash by the current user. */
+  /** Whether the current user can restore this file from trash. */
   core.bool canUntrash;
 
   FileCapabilities();
@@ -6225,25 +6272,16 @@ class File {
   core.String alternateLink;
   /** Whether this file is in the Application Data folder. */
   core.bool appDataContents;
-  /**
-   * Whether the current user can comment on the file. Deprecated: use
-   * capabilities/canComment.
-   */
+  /** Deprecated: use capabilities/canComment. */
   core.bool canComment;
-  /**
-   * Whether the current user has read access to the Revisions resource of the
-   * file. Deprecated: use capabilities/canReadRevisions.
-   */
+  /** Deprecated: use capabilities/canReadRevisions. */
   core.bool canReadRevisions;
   /**
-   * Capabilities the current user has on the file. Each capability corresponds
+   * Capabilities the current user has on this file. Each capability corresponds
    * to a fine-grained action that a user may take.
    */
   FileCapabilities capabilities;
-  /**
-   * Whether the file can be copied by the current user. Deprecated: use
-   * capabilities/canCopy.
-   */
+  /** Deprecated: use capabilities/canCopy. */
   core.bool copyable;
   /** Create time for this file (formatted RFC 3339 timestamp). */
   core.DateTime createdDate;
@@ -6255,10 +6293,7 @@ class File {
   /** A short description of the file. */
   core.String description;
   core.String downloadUrl;
-  /**
-   * Whether the file can be edited by the current user. Deprecated: use
-   * capabilities/canEdit.
-   */
+  /** Deprecated: use capabilities/canEdit. */
   core.bool editable;
   /** A link for embedding the file. */
   core.String embedLink;
@@ -6403,10 +6438,7 @@ class File {
   core.String quotaBytesUsed;
   /** A link back to this file. */
   core.String selfLink;
-  /**
-   * Whether the file's sharing settings can be modified by the current user.
-   * Deprecated: use capabilities/canShare.
-   */
+  /** Deprecated: use capabilities/canShare. */
   core.bool shareable;
   /** Whether the file has been shared. Not populated for Team Drive files. */
   core.bool shared;
@@ -7187,6 +7219,11 @@ class Permission {
   /** The authkey parameter required for this permission. */
   core.String authKey;
   /**
+   * Whether the account of the permission has been deleted. This field only
+   * pertains to user and group permissions.
+   */
+  core.bool deleted;
+  /**
    * The domain name of the entity this permission refers to. This is an
    * output-only field which is present when the permission type is user, group
    * or domain.
@@ -7235,7 +7272,7 @@ class Permission {
   /** A link back to this permission. */
   core.String selfLink;
   /**
-   * Details of whether the Permissions on this Team Drive item are inherited or
+   * Details of whether the permissions on this Team Drive item are inherited or
    * directly on this item. This is an output-only field which is present only
    * for Team Drive items.
    */
@@ -7267,6 +7304,9 @@ class Permission {
     }
     if (_json.containsKey("authKey")) {
       authKey = _json["authKey"];
+    }
+    if (_json.containsKey("deleted")) {
+      deleted = _json["deleted"];
     }
     if (_json.containsKey("domain")) {
       domain = _json["domain"];
@@ -7319,6 +7359,9 @@ class Permission {
     }
     if (authKey != null) {
       _json["authKey"] = authKey;
+    }
+    if (deleted != null) {
+      _json["deleted"] = deleted;
     }
     if (domain != null) {
       _json["domain"] = domain;
@@ -7854,23 +7897,93 @@ class StartPageToken {
   }
 }
 
+/**
+ * An image file and cropping parameters from which a background image for this
+ * Team Drive is set. This is a write only field that can only be set on a
+ * drive.teamdrives.update request that does not set themeId. When specified,
+ * all fields of the backgroundImageFile must be set.
+ */
+class TeamDriveBackgroundImageFile {
+  /** The ID of an image file in Drive to use for the background image. */
+  core.String id;
+  /**
+   * The width of the cropped image in the closed range of 0 to 1, which is the
+   * width of the cropped image divided by the width of the entire image. The
+   * height is computed by applying a width to height aspect ratio of 80 to 9.
+   * The resulting image must be at least 1280 pixels wide and 144 pixels high.
+   */
+  core.double width;
+  /**
+   * The X coordinate of the upper left corner of the cropping area in the
+   * background image. This is a value in the closed range of 0 to 1 which is
+   * the horizontal distance from the left side of the entire image to the left
+   * side of the cropping area divided by the width of the entire image.
+   */
+  core.double xCoordinate;
+  /**
+   * The Y coordinate of the upper left corner of the cropping area in the
+   * background image. This is a value in the closed range of 0 to 1 which is
+   * the vertical distance from the top side of the entire image to the top side
+   * of the cropping area divided by the height of the entire image.
+   */
+  core.double yCoordinate;
+
+  TeamDriveBackgroundImageFile();
+
+  TeamDriveBackgroundImageFile.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+    if (_json.containsKey("xCoordinate")) {
+      xCoordinate = _json["xCoordinate"];
+    }
+    if (_json.containsKey("yCoordinate")) {
+      yCoordinate = _json["yCoordinate"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    if (xCoordinate != null) {
+      _json["xCoordinate"] = xCoordinate;
+    }
+    if (yCoordinate != null) {
+      _json["yCoordinate"] = yCoordinate;
+    }
+    return _json;
+  }
+}
+
 /** Capabilities the current user has on this Team Drive. */
 class TeamDriveCapabilities {
   /**
    * Whether the current user can add children to folders in this Team Drive.
    */
   core.bool canAddChildren;
+  /** Whether the current user can change the background of this Team Drive. */
+  core.bool canChangeTeamDriveBackground;
   /** Whether the current user can comment on files in this Team Drive. */
   core.bool canComment;
-  /** Whether files in this Team Drive can be copied by the current user. */
+  /** Whether the current user can copy files in this Team Drive. */
   core.bool canCopy;
-  /** Whether this Team Drive can be deleted by the current user. */
-  core.bool canDeleteTeamDrive;
   /**
-   * Whether files in this Team Drive can be downloaded by the current user.
+   * Whether the current user can delete this Team Drive. Attempting to delete
+   * the Team Drive may still fail if there are untrashed items inside the Team
+   * Drive.
    */
+  core.bool canDeleteTeamDrive;
+  /** Whether the current user can download files in this Team Drive. */
   core.bool canDownload;
-  /** Whether files in this Team Drive can be edited by the current user. */
+  /** Whether the current user can edit files in this Team Drive */
   core.bool canEdit;
   /**
    * Whether the current user can list the children of folders in this Team
@@ -7883,8 +7996,8 @@ class TeamDriveCapabilities {
    */
   core.bool canManageMembers;
   /**
-   * Whether the current user has read access to the Revisions resource of files
-   * in this Team Drive.
+   * Whether the current user can read the revisions resource of files in this
+   * Team Drive.
    */
   core.bool canReadRevisions;
   /**
@@ -7893,11 +8006,10 @@ class TeamDriveCapabilities {
    */
   core.bool canRemoveChildren;
   /**
-   * Whether files or folders in this Team Drive can be renamed by the current
-   * user.
+   * Whether the current user can rename files or folders in this Team Drive.
    */
   core.bool canRename;
-  /** Whether this Team Drive can be renamed by the current user. */
+  /** Whether the current user can rename this Team Drive. */
   core.bool canRenameTeamDrive;
   /**
    * Whether the current user can share files or folders in this Team Drive.
@@ -7909,6 +8021,9 @@ class TeamDriveCapabilities {
   TeamDriveCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey("canAddChildren")) {
       canAddChildren = _json["canAddChildren"];
+    }
+    if (_json.containsKey("canChangeTeamDriveBackground")) {
+      canChangeTeamDriveBackground = _json["canChangeTeamDriveBackground"];
     }
     if (_json.containsKey("canComment")) {
       canComment = _json["canComment"];
@@ -7953,6 +8068,9 @@ class TeamDriveCapabilities {
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
     }
+    if (canChangeTeamDriveBackground != null) {
+      _json["canChangeTeamDriveBackground"] = canChangeTeamDriveBackground;
+    }
     if (canComment != null) {
       _json["canComment"] = canComment;
     }
@@ -7995,8 +8113,22 @@ class TeamDriveCapabilities {
 
 /** Representation of a Team Drive. */
 class TeamDrive {
+  /**
+   * An image file and cropping parameters from which a background image for
+   * this Team Drive is set. This is a write only field that can only be set on
+   * a drive.teamdrives.update request that does not set themeId. When
+   * specified, all fields of the backgroundImageFile must be set.
+   */
+  TeamDriveBackgroundImageFile backgroundImageFile;
+  /** A short-lived link to this Team Drive's background image. */
+  core.String backgroundImageLink;
   /** Capabilities the current user has on this Team Drive. */
   TeamDriveCapabilities capabilities;
+  /**
+   * The color of this Team Drive as an RGB hex string. It can only be set on a
+   * drive.teamdrives.update request that does not set themeId.
+   */
+  core.String colorRgb;
   /**
    * The ID of this Team Drive which is also the ID of the top level folder for
    * this Team Drive.
@@ -8006,12 +8138,30 @@ class TeamDrive {
   core.String kind;
   /** The name of this Team Drive. */
   core.String name;
+  /**
+   * The ID of the theme from which the background image and color will be set.
+   * The set of possible teamDriveThemes can be retrieved from a drive.about.get
+   * response. When not specified on a drive.teamdrives.insert request, a random
+   * theme is chosen from which the background image and color are set. This is
+   * a write only field that can only be set on a request that does not set
+   * colorRgb or backgroundImageFile.
+   */
+  core.String themeId;
 
   TeamDrive();
 
   TeamDrive.fromJson(core.Map _json) {
+    if (_json.containsKey("backgroundImageFile")) {
+      backgroundImageFile = new TeamDriveBackgroundImageFile.fromJson(_json["backgroundImageFile"]);
+    }
+    if (_json.containsKey("backgroundImageLink")) {
+      backgroundImageLink = _json["backgroundImageLink"];
+    }
     if (_json.containsKey("capabilities")) {
       capabilities = new TeamDriveCapabilities.fromJson(_json["capabilities"]);
+    }
+    if (_json.containsKey("colorRgb")) {
+      colorRgb = _json["colorRgb"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -8022,12 +8172,24 @@ class TeamDrive {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("themeId")) {
+      themeId = _json["themeId"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (backgroundImageFile != null) {
+      _json["backgroundImageFile"] = (backgroundImageFile).toJson();
+    }
+    if (backgroundImageLink != null) {
+      _json["backgroundImageLink"] = backgroundImageLink;
+    }
     if (capabilities != null) {
       _json["capabilities"] = (capabilities).toJson();
+    }
+    if (colorRgb != null) {
+      _json["colorRgb"] = colorRgb;
     }
     if (id != null) {
       _json["id"] = id;
@@ -8037,6 +8199,9 @@ class TeamDrive {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (themeId != null) {
+      _json["themeId"] = themeId;
     }
     return _json;
   }

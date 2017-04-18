@@ -18,7 +18,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/e7L4gGXJzl8PkSEyyAcfyGJlqQA\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/yXklm7FmX0B5usOgdbt9pvbqhCA\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -340,7 +340,7 @@
             }
         }
     },
-    "revision": "20170308",
+    "revision": "20170413",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -1490,6 +1490,10 @@
                     "format": "double",
                     "type": "number"
                 },
+                "phoneNumber": {
+                    "description": "User's phone number.",
+                    "type": "string"
+                },
                 "photoUrl": {
                     "description": "The URL of the user profile photo.",
                     "type": "string"
@@ -1508,6 +1512,10 @@
                             },
                             "federatedId": {
                                 "description": "User's identifier at IDP.",
+                                "type": "string"
+                            },
+                            "phoneNumber": {
+                                "description": "User's phone number.",
                                 "type": "string"
                             },
                             "photoUrl": {

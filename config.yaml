@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.37.0
+    version: 0.38.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -105,7 +105,7 @@ packages:
     - surveys:v2  #
     - tagmanager:v1  # https://developers.google.com/tag-manager/
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
-    - tracing:v1  # https://cloud.google.com/trace/api/
+    - tracing:v2  # https://cloud.google.com/trace/api/
     - translate:v2  # https://developers.google.com/translate/
     - urlshortener:v1  # https://developers.google.com/url-shortener/
     - vision:v1  # https://cloud.google.com/vision/reference/rest/
@@ -116,7 +116,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.35.0
+    version: 0.36.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -133,8 +133,6 @@ packages:
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - dataproc:v1beta1 # https://cloud.google.com/dataproc/
-    - datastore:v1beta2  # https://developers.google.com/datastore/
-    - datastore:v1beta3  # https://developers.google.com/datastore/
     - dlp:v2beta1 # https://cloud.google.com/dlp/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - language:v1beta1  # https://cloud.google.com/natural-language/
@@ -168,7 +166,7 @@ skipped_apis:
 - compute:alpha # v1 included
 - compute:beta # v1 included
 - dataproc:v1alpha1 # v1beta1 included
-- datastore:v1beta1  # v1beta2 included
+- datastore:v1beta3  # v1 included
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included
 - genomics:v1alpha2 # v1 included

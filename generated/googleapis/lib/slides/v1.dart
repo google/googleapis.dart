@@ -460,10 +460,7 @@ class AutoText {
 class BatchUpdatePresentationRequest {
   /** A list of updates to apply to the presentation. */
   core.List<Request> requests;
-  /**
-   * Provides control over how write requests are executed, such as
-   * conditionally updating the presentation.
-   */
+  /** Provides control over how write requests are executed. */
   WriteControl writeControl;
 
   BatchUpdatePresentationRequest();
@@ -3217,9 +3214,11 @@ class Page {
    *
    * The format of the revision ID may change over time, so it should be treated
    * opaquely. A returned revision ID is only guaranteed to be valid for 24
-   * hours after it has been returned and cannot be shared across
-   * users. Callers can assume that if two revision IDs are equal then the
-   * presentation has not changed.
+   * hours after it has been returned and cannot be shared across users. If the
+   * revision ID is unchanged between calls, then the presentation has not
+   * changed. Conversely, a changed ID (for the same presentation and user)
+   * usually means the presentation has been updated; however, a changed ID can
+   * also be due to internal factors such as ID format changes.
    */
   core.String revisionId;
   /** Slide specific properties. Only set if page_type = SLIDE. */
@@ -3635,8 +3634,8 @@ class ParagraphStyle {
   core.String alignment;
   /**
    * The text direction of this paragraph. If unset, the value defaults to
-   * LEFT_TO_RIGHT
-   * since text direction is not inherited.
+   * LEFT_TO_RIGHT since
+   * text direction is not inherited.
    * Possible string values are:
    * - "TEXT_DIRECTION_UNSPECIFIED" : The text direction is inherited from the
    * parent.
@@ -3756,8 +3755,8 @@ class ParagraphStyle {
  */
 class Placeholder {
   /**
-   * The index of the placeholder. If the same placeholder types are the present
-   * in the same page, they would have different index values.
+   * The index of the placeholder. If the same placeholder types are present in
+   * the same page, they would have different index values.
    */
   core.int index;
   /**
@@ -3867,9 +3866,11 @@ class Presentation {
    *
    * The format of the revision ID may change over time, so it should be treated
    * opaquely. A returned revision ID is only guaranteed to be valid for 24
-   * hours after it has been returned and cannot be shared across users. Callers
-   * can assume that if two revision IDs are equal then the presentation has not
-   * changed.
+   * hours after it has been returned and cannot be shared across users. If the
+   * revision ID is unchanged between calls, then the presentation has not
+   * changed. Conversely, a changed ID (for the same presentation and user)
+   * usually means the presentation has been updated; however, a changed ID can
+   * also be due to internal factors such as ID format changes.
    */
   core.String revisionId;
   /**
@@ -7121,13 +7122,13 @@ class WeightedFontFamily {
   core.String fontFamily;
   /**
    * The rendered weight of the text. This field can have any value that is a
-   * multiple of 100 between 100 and 900, inclusive. This range corresponds to
-   * only the numerical values described in the "Cascading Style Sheets Level
-   * 2 Revision 1 (CSS 2.1) Specification",
-   * [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness). The
-   * non-numerical values in the specification are disallowed. Weights greater
-   * than or equal to 700 are considered bold, and weights less than 700 are
-   * not bold. The default value is `400` ("normal").
+   * multiple of `100` between `100` and `900`, inclusive. This range
+   * corresponds to the numerical values described in the CSS 2.1
+   * Specification, [section
+   * 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness),
+   * with non-numerical values disallowed. Weights greater than or equal to
+   * `700` are considered bold, and weights less than `700`are not bold. The
+   * default value is `400` ("normal").
    */
   core.int weight;
 

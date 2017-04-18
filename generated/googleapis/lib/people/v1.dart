@@ -193,7 +193,15 @@ class PeopleConnectionsResourceApi {
    * `people/me` is valid.
    * Value must have pattern "^people/[^/]+$".
    *
+   * [requestSyncToken] - Whether the response should include a sync token,
+   * which can be used to get
+   * all changes since the last request.
+   *
    * [pageToken] - The token of the page to be returned.
+   *
+   * [pageSize] - The number of connections to include in the response. Valid
+   * values are
+   * between 1 and 500, inclusive. Defaults to 100.
    *
    * [requestMask_includeField] - Comma-separated list of fields to be included
    * in the response. Omitting
@@ -202,10 +210,6 @@ class PeopleConnectionsResourceApi {
    * photo, and profile url.
    * Each path should start with `person.`: for example, `person.names` or
    * `person.photos`.
-   *
-   * [pageSize] - The number of connections to include in the response. Valid
-   * values are
-   * between 1 and 500, inclusive. Defaults to 100.
    *
    * [syncToken] - A sync token, returned by a previous call to
    * `people.connections.list`.
@@ -219,10 +223,6 @@ class PeopleConnectionsResourceApi {
    * - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
    * - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
    *
-   * [requestSyncToken] - Whether the response should include a sync token,
-   * which can be used to get
-   * all changes since the last request.
-   *
    * Completes with a [ListConnectionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -231,7 +231,7 @@ class PeopleConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String pageToken, core.String requestMask_includeField, core.int pageSize, core.String syncToken, core.String sortOrder, core.bool requestSyncToken}) {
+  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.bool requestSyncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField, core.String syncToken, core.String sortOrder}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -242,23 +242,23 @@ class PeopleConnectionsResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
+    if (requestSyncToken != null) {
+      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (requestMask_includeField != null) {
-      _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (requestMask_includeField != null) {
+      _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (requestSyncToken != null) {
-      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/connections';
@@ -1540,13 +1540,11 @@ class Organization {
 
 /**
  * Information about a person merged from various data sources such as the
- * authenticated user's contacts and profile data. Fields other than IDs,
- * metadata, and group memberships are user-edited.
+ * authenticated user's contacts and profile data.
  *
  * Most fields can have multiple items. The items in a field have no guaranteed
  * order, but each non-empty field is guaranteed to have exactly one field with
  * `metadata.primary` set to true.
- * NEXT_ID: 31
  */
 class Person {
   /** The person's street addresses. */

@@ -96,10 +96,6 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - Not used.
-   *
-   * [pageToken] - The standard list page token.
-   *
    * [pageSize] - The maximum number of operations to return. If unspecified,
    * defaults to
    * 50. The maximum value is 100.
@@ -126,6 +122,10 @@ class OperationsResourceApi {
    * * `serviceName={some-service}.googleapis.com AND (status=done OR
    * startTime>="2017-02-01")`
    *
+   * [name] - Not used.
+   *
+   * [pageToken] - The standard list page token.
+   *
    * Completes with a [ListOperationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -134,7 +134,7 @@ class OperationsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.String name, core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list({core.int pageSize, core.String filter, core.String name, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -142,17 +142,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (name != null) {
-      _queryParams["name"] = [name];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/operations';
@@ -577,8 +577,6 @@ class ServicesResourceApi {
    *
    * Request parameters:
    *
-   * [producerProjectId] - Include services produced by the specified project.
-   *
    * [consumerId] - Include services consumed by the specified consumer.
    *
    * The Google Service Management implementation accepts the following
@@ -591,6 +589,8 @@ class ServicesResourceApi {
    *
    * [pageSize] - Requested size of the next page of data.
    *
+   * [producerProjectId] - Include services produced by the specified project.
+   *
    * Completes with a [ListServicesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -599,7 +599,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list({core.String producerProjectId, core.String consumerId, core.String pageToken, core.int pageSize}) {
+  async.Future<ListServicesResponse> list({core.String consumerId, core.String pageToken, core.int pageSize, core.String producerProjectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -607,9 +607,6 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (producerProjectId != null) {
-      _queryParams["producerProjectId"] = [producerProjectId];
-    }
     if (consumerId != null) {
       _queryParams["consumerId"] = [consumerId];
     }
@@ -618,6 +615,9 @@ class ServicesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (producerProjectId != null) {
+      _queryParams["producerProjectId"] = [producerProjectId];
     }
 
     _url = 'v1/services';
@@ -1119,9 +1119,9 @@ class ServicesRolloutsResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
-   * [pageSize] - The max number of items to include in the response list.
-   *
    * [pageToken] - The token of the page to retrieve.
+   *
+   * [pageSize] - The max number of items to include in the response list.
    *
    * Completes with a [ListServiceRolloutsResponse].
    *
@@ -1131,7 +1131,7 @@ class ServicesRolloutsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServiceRolloutsResponse> list(core.String serviceName, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListServiceRolloutsResponse> list(core.String serviceName, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1142,11 +1142,11 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/rollouts';
@@ -1305,42 +1305,45 @@ class Api {
  * the union of the two AuditConfigs is used for that service: the log_types
  * specified in each AuditConfig are enabled, and the exempted_members in each
  * AuditConfig are exempted.
+ *
  * Example Policy with multiple AuditConfigs:
- * {
- *   "audit_configs": [
+ *
  *     {
- *       "service": "allServices"
- *       "audit_log_configs": [
+ *       "audit_configs": [
  *         {
- *           "log_type": "DATA_READ",
- *           "exempted_members": [
- *             "user:foo@gmail.com"
+ *           "service": "allServices"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *               "exempted_members": [
+ *                 "user:foo@gmail.com"
+ *               ]
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *             },
+ *             {
+ *               "log_type": "ADMIN_READ",
+ *             }
  *           ]
  *         },
  *         {
- *           "log_type": "DATA_WRITE",
- *         },
- *         {
- *           "log_type": "ADMIN_READ",
- *         }
- *       ]
- *     },
- *     {
- *       "service": "fooservice@googleapis.com"
- *       "audit_log_configs": [
- *         {
- *           "log_type": "DATA_READ",
- *         },
- *         {
- *           "log_type": "DATA_WRITE",
- *           "exempted_members": [
- *             "user:bar@gmail.com"
+ *           "service": "fooservice.googleapis.com"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *               "exempted_members": [
+ *                 "user:bar@gmail.com"
+ *               ]
+ *             }
  *           ]
  *         }
  *       ]
  *     }
- *   ]
- * }
+ *
  * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
  * logging. It also exempts foo@gmail.com from DATA_READ logging, and
  * bar@gmail.com from DATA_WRITE logging.
@@ -2874,6 +2877,14 @@ class Endpoint {
   core.List<core.String> features;
   /** The canonical name of this endpoint. */
   core.String name;
+  /**
+   * The specification of an Internet routable address of API frontend that will
+   * handle requests to this [API
+   * Endpoint](https://cloud.google.com/apis/design/glossary).
+   * It should be either a valid IPv4 address or a fully-qualified domain name.
+   * For example, "8.8.8.8" or "myservice.appspot.com".
+   */
+  core.String target;
 
   Endpoint();
 
@@ -2893,6 +2904,9 @@ class Endpoint {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
   }
 
   core.Map toJson() {
@@ -2911,6 +2925,9 @@ class Endpoint {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (target != null) {
+      _json["target"] = target;
     }
     return _json;
   }
@@ -3200,8 +3217,6 @@ class FlowOperationMetadata {
    * Must be equal to the "name" field for a FlowName enum.
    */
   core.String flowName;
-  /** Is the update for the operation persisted? */
-  core.bool isPersisted;
   /**
    * The full name of the resources that this flow is directly associated with.
    */
@@ -3221,9 +3236,6 @@ class FlowOperationMetadata {
     if (_json.containsKey("flowName")) {
       flowName = _json["flowName"];
     }
-    if (_json.containsKey("isPersisted")) {
-      isPersisted = _json["isPersisted"];
-    }
     if (_json.containsKey("resourceNames")) {
       resourceNames = _json["resourceNames"];
     }
@@ -3242,9 +3254,6 @@ class FlowOperationMetadata {
     }
     if (flowName != null) {
       _json["flowName"] = flowName;
-    }
-    if (isPersisted != null) {
-      _json["isPersisted"] = isPersisted;
     }
     if (resourceNames != null) {
       _json["resourceNames"] = resourceNames;
@@ -3378,6 +3387,15 @@ class GetIamPolicyRequest {
  */
 class Http {
   /**
+   * When set to true, URL path parmeters will be fully URI-decoded except in
+   * cases of single segment matches in reserved expansion, where "%2F" will be
+   * left encoded.
+   *
+   * The default behavior is to not decode RFC 6570 reserved characters in multi
+   * segment matches.
+   */
+  core.bool fullyDecodeReservedExpansion;
+  /**
    * A list of HTTP configuration rules that apply to individual API methods.
    *
    * **NOTE:** All service configuration rules follow "last one wins" order.
@@ -3387,6 +3405,9 @@ class Http {
   Http();
 
   Http.fromJson(core.Map _json) {
+    if (_json.containsKey("fullyDecodeReservedExpansion")) {
+      fullyDecodeReservedExpansion = _json["fullyDecodeReservedExpansion"];
+    }
     if (_json.containsKey("rules")) {
       rules = _json["rules"].map((value) => new HttpRule.fromJson(value)).toList();
     }
@@ -3394,6 +3415,9 @@ class Http {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (fullyDecodeReservedExpansion != null) {
+      _json["fullyDecodeReservedExpansion"] = fullyDecodeReservedExpansion;
+    }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
     }
@@ -4527,6 +4551,53 @@ class MetricDescriptor {
 }
 
 /**
+ * Bind API methods to metrics. Binding a method to a metric causes that
+ * metric's configured quota, billing, and monitoring behaviors to apply to the
+ * method call.
+ *
+ * Used by metric-based quotas only.
+ */
+class MetricRule {
+  /**
+   * Metrics to update when the selected methods are called, and the associated
+   * cost applied to each metric.
+   *
+   * The key of the map is the metric name, and the values are the amount
+   * increased for the metric against which the quota limits are defined.
+   * The value must not be negative.
+   */
+  core.Map<core.String, core.String> metricCosts;
+  /**
+   * Selects the methods to which this rule applies.
+   *
+   * Refer to selector for syntax details.
+   */
+  core.String selector;
+
+  MetricRule();
+
+  MetricRule.fromJson(core.Map _json) {
+    if (_json.containsKey("metricCosts")) {
+      metricCosts = _json["metricCosts"];
+    }
+    if (_json.containsKey("selector")) {
+      selector = _json["selector"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (metricCosts != null) {
+      _json["metricCosts"] = metricCosts;
+    }
+    if (selector != null) {
+      _json["selector"] = selector;
+    }
+    return _json;
+  }
+}
+
+/**
  * Declares an API to be included in this API. The including API must
  * redeclare all the methods from the included API, but documentation
  * and options are inherited as follows:
@@ -5259,6 +5330,328 @@ class Policy {
 }
 
 /**
+ * Quota configuration helps to achieve fairness and budgeting in service
+ * usage.
+ *
+ * The quota configuration works this way:
+ * - The service configuration defines a set of metrics.
+ * - For API calls, the quota.metric_rules maps methods to metrics with
+ *   corresponding costs.
+ * - The quota.limits defines limits on the metrics, which will be used for
+ *   quota checks at runtime.
+ *
+ * An example quota configuration in yaml format:
+ *
+ *    quota:
+ *
+ *      - name: apiWriteQpsPerProject
+ *        metric: library.googleapis.com/write_calls
+ *        unit: "1/min/{project}"  # rate limit for consumer projects
+ *        values:
+ *          STANDARD: 10000
+ *
+ *
+ *      # The metric rules bind all methods to the read_calls metric,
+ *      # except for the UpdateBook and DeleteBook methods. These two methods
+ *      # are mapped to the write_calls metric, with the UpdateBook method
+ *      # consuming at twice rate as the DeleteBook method.
+ *      metric_rules:
+ *      - selector: "*"
+ *        metric_costs:
+ *          library.googleapis.com/read_calls: 1
+ *      - selector: google.example.library.v1.LibraryService.UpdateBook
+ *        metric_costs:
+ *          library.googleapis.com/write_calls: 2
+ *      - selector: google.example.library.v1.LibraryService.DeleteBook
+ *        metric_costs:
+ *          library.googleapis.com/write_calls: 1
+ *
+ *  Corresponding Metric definition:
+ *
+ *      metrics:
+ *      - name: library.googleapis.com/read_calls
+ *        display_name: Read requests
+ *        metric_kind: DELTA
+ *        value_type: INT64
+ *
+ *      - name: library.googleapis.com/write_calls
+ *        display_name: Write requests
+ *        metric_kind: DELTA
+ *        value_type: INT64
+ */
+class Quota {
+  /**
+   * List of `QuotaLimit` definitions for the service.
+   *
+   * Used by metric-based quotas only.
+   */
+  core.List<QuotaLimit> limits;
+  /**
+   * List of `MetricRule` definitions, each one mapping a selected method to one
+   * or more metrics.
+   *
+   * Used by metric-based quotas only.
+   */
+  core.List<MetricRule> metricRules;
+
+  Quota();
+
+  Quota.fromJson(core.Map _json) {
+    if (_json.containsKey("limits")) {
+      limits = _json["limits"].map((value) => new QuotaLimit.fromJson(value)).toList();
+    }
+    if (_json.containsKey("metricRules")) {
+      metricRules = _json["metricRules"].map((value) => new MetricRule.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (limits != null) {
+      _json["limits"] = limits.map((value) => (value).toJson()).toList();
+    }
+    if (metricRules != null) {
+      _json["metricRules"] = metricRules.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * `QuotaLimit` defines a specific limit that applies over a specified duration
+ * for a limit type. There can be at most one limit for a duration and limit
+ * type combination defined within a `QuotaGroup`.
+ */
+class QuotaLimit {
+  /**
+   * Default number of tokens that can be consumed during the specified
+   * duration. This is the number of tokens assigned when a client
+   * application developer activates the service for his/her project.
+   *
+   * Specifying a value of 0 will block all requests. This can be used if you
+   * are provisioning quota to selected consumers and blocking others.
+   * Similarly, a value of -1 will indicate an unlimited quota. No other
+   * negative values are allowed.
+   *
+   * Used by group-based quotas only.
+   */
+  core.String defaultLimit;
+  /**
+   * Optional. User-visible, extended description for this quota limit.
+   * Should be used only when more context is needed to understand this limit
+   * than provided by the limit's display name (see: `display_name`).
+   */
+  core.String description;
+  /**
+   * User-visible display name for this limit.
+   * Optional. If not set, the UI will provide a default display name based on
+   * the quota configuration. This field can be used to override the default
+   * display name generated from the configuration.
+   */
+  core.String displayName;
+  /**
+   * Duration of this limit in textual notation. Example: "100s", "24h", "1d".
+   * For duration longer than a day, only multiple of days is supported. We
+   * support only "100s" and "1d" for now. Additional support will be added in
+   * the future. "0" indicates indefinite duration.
+   *
+   * Used by group-based quotas only.
+   */
+  core.String duration;
+  /**
+   * Free tier value displayed in the Developers Console for this limit.
+   * The free tier is the number of tokens that will be subtracted from the
+   * billed amount when billing is enabled.
+   * This field can only be set on a limit with duration "1d", in a billable
+   * group; it is invalid on any other limit. If this field is not set, it
+   * defaults to 0, indicating that there is no free tier for this service.
+   *
+   * Used by group-based quotas only.
+   */
+  core.String freeTier;
+  /**
+   * Maximum number of tokens that can be consumed during the specified
+   * duration. Client application developers can override the default limit up
+   * to this maximum. If specified, this value cannot be set to a value less
+   * than the default limit. If not specified, it is set to the default limit.
+   *
+   * To allow clients to apply overrides with no upper bound, set this to -1,
+   * indicating unlimited maximum quota.
+   *
+   * Used by group-based quotas only.
+   */
+  core.String maxLimit;
+  /**
+   * The name of the metric this quota limit applies to. The quota limits with
+   * the same metric will be checked together during runtime. The metric must be
+   * defined within the service config.
+   *
+   * Used by metric-based quotas only.
+   */
+  core.String metric;
+  /**
+   * Name of the quota limit. The name is used to refer to the limit when
+   * overriding the default limit on per-consumer basis.
+   *
+   * For group-based quota limits, the name must be unique within the quota
+   * group. If a name is not provided, it will be generated from the limit_by
+   * and duration fields.
+   *
+   * For metric-based quota limits, the name must be provided, and it must be
+   * unique within the service. The name can only include alphanumeric
+   * characters as well as '-'.
+   *
+   * The maximum length of the limit name is 64 characters.
+   *
+   * The name of a limit is used as a unique identifier for this limit.
+   * Therefore, once a limit has been put into use, its name should be
+   * immutable. You can use the display_name field to provide a user-friendly
+   * name for the limit. The display name can be evolved over time without
+   * affecting the identity of the limit.
+   */
+  core.String name;
+  /**
+   * Specify the unit of the quota limit. It uses the same syntax as
+   * Metric.unit. The supported unit kinds are determined by the quota
+   * backend system.
+   *
+   * The [Google Service Control](https://cloud.google.com/service-control)
+   * supports the following unit components:
+   * * One of the time intevals:
+   *   * "/min"  for quota every minute.
+   *   * "/d"  for quota every 24 hours, starting 00:00 US Pacific Time.
+   *   * Otherwise the quota won't be reset by time, such as storage limit.
+   * * One and only one of the granted containers:
+   *   * "/{organization}" quota for an organization.
+   *   * "/{project}" quota for a project.
+   *   * "/{folder}" quota for a folder.
+   *   * "/{resource}" quota for a universal resource.
+   * * Zero or more quota segmentation dimension. Not all combos are valid.
+   * * "/{region}" quota for every region. Not to be used with time intervals.
+   *   * Otherwise the resources granted on the target is not segmented.
+   *   * "/{zone}" quota for every zone. Not to be used with time intervals.
+   *   * Otherwise the resources granted on the target is not segmented.
+   *   * "/{resource}" quota for a resource associated with a project or org.
+   *
+   * Here are some examples:
+   * * "1/min/{project}" for quota per minute per project.
+   * * "1/min/{user}" for quota per minute per user.
+   * * "1/min/{organization}" for quota per minute per organization.
+   *
+   * Note: the order of unit components is insignificant.
+   * The "1" at the beginning is required to follow the metric unit syntax.
+   *
+   * Used by metric-based quotas only.
+   */
+  core.String unit;
+  /**
+   * Tiered limit values. Also allows for regional or zone overrides for these
+   * values if "/{region}" or "/{zone}" is specified in the unit field.
+   *
+   * Currently supported tiers from low to high:
+   * VERY_LOW, LOW, STANDARD, HIGH, VERY_HIGH
+   *
+   * To apply different limit values for users according to their tiers, specify
+   * the values for the tiers you want to differentiate. For example:
+   * {LOW:100, STANDARD:500, HIGH:1000, VERY_HIGH:5000}
+   *
+   * The limit value for each tier is optional except for the tier STANDARD.
+   * The limit value for an unspecified tier falls to the value of its next
+   * tier towards tier STANDARD. For the above example, the limit value for tier
+   * STANDARD is 500.
+   *
+   * To apply the same limit value for all users, just specify limit value for
+   * tier STANDARD. For example: {STANDARD:500}.
+   *
+   * To apply a regional overide for a tier, add a map entry with key
+   * "<TIER>/<region>", where <region> is a region name. Similarly, for a zone
+   * override, add a map entry with key "<TIER>/{zone}".
+   * Further, a wildcard can be used at the end of a zone name in order to
+   * specify zone level overrides. For example:
+   * LOW: 10, STANDARD: 50, HIGH: 100,
+   * LOW/us-central1: 20, STANDARD/us-central1: 60, HIGH/us-central1: 200,
+   * LOW/us-central1-*: 10, STANDARD/us-central1-*: 20, HIGH/us-central1-*: 80
+   *
+   * The regional overrides tier set for each region must be the same as
+   * the tier set for default limit values. Same rule applies for zone overrides
+   * tier as well.
+   *
+   * Used by metric-based quotas only.
+   */
+  core.Map<core.String, core.String> values;
+
+  QuotaLimit();
+
+  QuotaLimit.fromJson(core.Map _json) {
+    if (_json.containsKey("defaultLimit")) {
+      defaultLimit = _json["defaultLimit"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("freeTier")) {
+      freeTier = _json["freeTier"];
+    }
+    if (_json.containsKey("maxLimit")) {
+      maxLimit = _json["maxLimit"];
+    }
+    if (_json.containsKey("metric")) {
+      metric = _json["metric"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("unit")) {
+      unit = _json["unit"];
+    }
+    if (_json.containsKey("values")) {
+      values = _json["values"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (defaultLimit != null) {
+      _json["defaultLimit"] = defaultLimit;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (freeTier != null) {
+      _json["freeTier"] = freeTier;
+    }
+    if (maxLimit != null) {
+      _json["maxLimit"] = maxLimit;
+    }
+    if (metric != null) {
+      _json["metric"] = metric;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (unit != null) {
+      _json["unit"] = unit;
+    }
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+/**
  * A rollout resource that defines how service configuration versions are pushed
  * to control plane systems. Typically, you create a new version of the
  * service config, and then create a Rollout to push the service config.
@@ -5562,6 +5955,8 @@ class Service {
    * manage consumption of the service, etc.
    */
   core.String producerProjectId;
+  /** Quota configuration. */
+  Quota quota;
   /**
    * Output only. The source information for this configuration if available.
    */
@@ -5657,6 +6052,9 @@ class Service {
     if (_json.containsKey("producerProjectId")) {
       producerProjectId = _json["producerProjectId"];
     }
+    if (_json.containsKey("quota")) {
+      quota = new Quota.fromJson(_json["quota"]);
+    }
     if (_json.containsKey("sourceInfo")) {
       sourceInfo = new SourceInfo.fromJson(_json["sourceInfo"]);
     }
@@ -5741,6 +6139,9 @@ class Service {
     }
     if (producerProjectId != null) {
       _json["producerProjectId"] = producerProjectId;
+    }
+    if (quota != null) {
+      _json["quota"] = (quota).toJson();
     }
     if (sourceInfo != null) {
       _json["sourceInfo"] = (sourceInfo).toJson();

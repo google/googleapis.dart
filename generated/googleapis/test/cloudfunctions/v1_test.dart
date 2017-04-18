@@ -52,67 +52,16 @@ http.StreamedResponse stringResponse(
 }
 
 buildUnnamed97() {
-  var o = new core.Map<core.String, core.String>();
-  o["x"] = "foo";
-  o["y"] = "foo";
-  return o;
-}
-
-checkUnnamed97(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
-}
-
-buildUnnamed98() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed98(core.Map<core.String, core.Object> o) {
+checkUnnamed97(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
-}
-
-core.int buildCounterLocation = 0;
-buildLocation() {
-  var o = new api.Location();
-  buildCounterLocation++;
-  if (buildCounterLocation < 3) {
-    o.labels = buildUnnamed97();
-    o.locationId = "foo";
-    o.metadata = buildUnnamed98();
-    o.name = "foo";
-  }
-  buildCounterLocation--;
-  return o;
-}
-
-checkLocation(api.Location o) {
-  buildCounterLocation++;
-  if (buildCounterLocation < 3) {
-    checkUnnamed97(o.labels);
-    unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed98(o.metadata);
-    unittest.expect(o.name, unittest.equals('foo'));
-  }
-  buildCounterLocation--;
-}
-
-buildUnnamed99() {
-  var o = new core.Map<core.String, core.Object>();
-  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  return o;
-}
-
-checkUnnamed99(core.Map<core.String, core.Object> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
-  var casted4 = (o["y"]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
 }
 
 core.int buildCounterOperationMetadataV1Beta2 = 0;
@@ -120,7 +69,7 @@ buildOperationMetadataV1Beta2() {
   var o = new api.OperationMetadataV1Beta2();
   buildCounterOperationMetadataV1Beta2++;
   if (buildCounterOperationMetadataV1Beta2 < 3) {
-    o.request = buildUnnamed99();
+    o.request = buildUnnamed97();
     o.target = "foo";
     o.type = "foo";
   }
@@ -131,7 +80,7 @@ buildOperationMetadataV1Beta2() {
 checkOperationMetadataV1Beta2(api.OperationMetadataV1Beta2 o) {
   buildCounterOperationMetadataV1Beta2++;
   if (buildCounterOperationMetadataV1Beta2 < 3) {
-    checkUnnamed99(o.request);
+    checkUnnamed97(o.request);
     unittest.expect(o.target, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -140,70 +89,12 @@ checkOperationMetadataV1Beta2(api.OperationMetadataV1Beta2 o) {
 
 
 main() {
-  unittest.group("obj-schema-Location", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildLocation();
-      var od = new api.Location.fromJson(o.toJson());
-      checkLocation(od);
-    });
-  });
-
-
   unittest.group("obj-schema-OperationMetadataV1Beta2", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperationMetadataV1Beta2();
       var od = new api.OperationMetadataV1Beta2.fromJson(o.toJson());
       checkOperationMetadataV1Beta2(od);
     });
-  });
-
-
-  unittest.group("resource-ProjectsLocationsResourceApi", () {
-    unittest.test("method--get", () {
-
-      var mock = new HttpServerMock();
-      api.ProjectsLocationsResourceApi res = new api.CloudfunctionsApi(mock).projects.locations;
-      var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = {};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-
-
-        var h = {
-          "content-type" : "application/json; charset=utf-8",
-        };
-        var resp = convert.JSON.encode(buildLocation());
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.Location response) {
-        checkLocation(response);
-      })));
-    });
-
   });
 
 

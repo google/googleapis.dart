@@ -16,6 +16,38 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
@@ -23,11 +55,6 @@
         },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -41,6 +68,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -69,38 +101,6 @@
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -128,40 +128,9 @@
             }
         }
     },
-    "revision": "20170325",
+    "revision": "20170405",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
-        "RunMobileFriendlyTestRequest": {
-            "description": "Mobile-friendly test request.",
-            "id": "RunMobileFriendlyTestRequest",
-            "properties": {
-                "url": {
-                    "description": "URL for inspection.",
-                    "type": "string"
-                },
-                "requestScreenshot": {
-                    "description": "Whether or not screenshot is requested. Default is false.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "Image": {
-            "description": "Describe image data.",
-            "id": "Image",
-            "properties": {
-                "mimeType": {
-                    "description": "The mime-type of the image data.",
-                    "type": "string"
-                },
-                "data": {
-                    "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
-                    "format": "byte",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "MobileFriendlyIssue": {
             "description": "Mobile-friendly issue.",
             "id": "MobileFriendlyIssue",
@@ -279,6 +248,37 @@
                 "details": {
                     "description": "Error details if applicable.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Image": {
+            "description": "Describe image data.",
+            "id": "Image",
+            "properties": {
+                "mimeType": {
+                    "description": "The mime-type of the image data.",
+                    "type": "string"
+                },
+                "data": {
+                    "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RunMobileFriendlyTestRequest": {
+            "description": "Mobile-friendly test request.",
+            "id": "RunMobileFriendlyTestRequest",
+            "properties": {
+                "url": {
+                    "description": "URL for inspection.",
+                    "type": "string"
+                },
+                "requestScreenshot": {
+                    "description": "Whether or not screenshot is requested. Default is false.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

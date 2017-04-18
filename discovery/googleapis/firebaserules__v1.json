@@ -214,11 +214,6 @@
                                 "name"
                             ],
                             "parameters": {
-                                "filter": {
-                                    "description": "`Ruleset` filter. The list method supports filters with restrictions on\n`Ruleset.name`.\n\nFilters on `Ruleset.create_time` should use the `date` function which\nparses strings that conform to the RFC 3339 date/time specifications.\n\nExample: `create_time > date(\"2017-01-01\") AND name=UUID-*`",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "name": {
                                     "description": "Resource name for the project.\n\nFormat: `projects/{project_id}`",
                                     "location": "path",
@@ -236,6 +231,11 @@
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
+                                },
+                                "filter": {
+                                    "description": "`Ruleset` filter. The list method supports filters with restrictions on\n`Ruleset.name`.\n\nFilters on `Ruleset.create_time` should use the `date` function which\nparses strings that conform to the RFC 3339 date/time specifications.\n\nExample: `create_time > date(\"2017-01-01\") AND name=UUID-*`",
+                                    "location": "query",
+                                    "type": "string"
                                 }
                             },
                             "path": "v1/{+name}/rulesets",
@@ -280,6 +280,31 @@
                 },
                 "releases": {
                     "methods": {
+                        "delete": {
+                            "description": "Delete a `Release` by resource name.",
+                            "httpMethod": "DELETE",
+                            "id": "firebaserules.projects.releases.delete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Resource name for the `Release` to delete.\n\nFormat: `projects/{project_id}/releases/{release_id}`",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/releases/.+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
+                            ]
+                        },
                         "get": {
                             "description": "Get a `Release` by name.",
                             "httpMethod": "GET",
@@ -403,38 +428,13 @@
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/firebase"
                             ]
-                        },
-                        "delete": {
-                            "description": "Delete a `Release` by resource name.",
-                            "httpMethod": "DELETE",
-                            "id": "firebaserules.projects.releases.delete",
-                            "parameterOrder": [
-                                "name"
-                            ],
-                            "parameters": {
-                                "name": {
-                                    "description": "Resource name for the `Release` to delete.\n\nFormat: `projects/{project_id}/releases/{release_id}`",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/releases/.+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/{+name}",
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/firebase"
-                            ]
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20170314",
+    "revision": "20170403",
     "rootUrl": "https://firebaserules.googleapis.com/",
     "schemas": {
         "Source": {
@@ -487,10 +487,6 @@
             "description": "Issues include warnings, errors, and deprecation notices.",
             "id": "Issue",
             "properties": {
-                "sourcePosition": {
-                    "$ref": "SourcePosition",
-                    "description": "Position of the issue in the `Source`."
-                },
                 "severity": {
                     "description": "The severity of the issue.",
                     "enum": [
@@ -510,6 +506,10 @@
                 "description": {
                     "description": "Short error description.",
                     "type": "string"
+                },
+                "sourcePosition": {
+                    "$ref": "SourcePosition",
+                    "description": "Position of the issue in the `Source`."
                 }
             },
             "type": "object"
@@ -534,33 +534,10 @@
             },
             "type": "object"
         },
-        "ListReleasesResponse": {
-            "description": "The response for FirebaseRulesService.ListReleases.",
-            "id": "ListReleasesResponse",
-            "properties": {
-                "releases": {
-                    "description": "List of `Release` instances.",
-                    "items": {
-                        "$ref": "Release"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "File": {
             "description": "`File` containing source content.",
             "id": "File",
             "properties": {
-                "fingerprint": {
-                    "description": "Fingerprint (e.g. github sha) associated with the `File`.",
-                    "format": "byte",
-                    "type": "string"
-                },
                 "name": {
                     "description": "File name.",
                     "type": "string"
@@ -568,6 +545,29 @@
                 "content": {
                     "description": "Textual Content.",
                     "type": "string"
+                },
+                "fingerprint": {
+                    "description": "Fingerprint (e.g. github sha) associated with the `File`.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListReleasesResponse": {
+            "description": "The response for FirebaseRulesService.ListReleases.",
+            "id": "ListReleasesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
+                    "type": "string"
+                },
+                "releases": {
+                    "description": "List of `Release` instances.",
+                    "items": {
+                        "$ref": "Release"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -576,16 +576,16 @@
             "description": "Represents a service-defined function call that was invoked during test\nexecution.",
             "id": "FunctionCall",
             "properties": {
+                "function": {
+                    "description": "Name of the function invoked.",
+                    "type": "string"
+                },
                 "args": {
                     "description": "The arguments that were provided to the function.",
                     "items": {
                         "type": "any"
                     },
                     "type": "array"
-                },
-                "function": {
-                    "description": "Name of the function invoked.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -594,11 +594,6 @@
             "description": "`Release` is a named reference to a `Ruleset`. Once a `Release` refers to a\n`Ruleset`, rules-enabled services will be able to enforce the `Ruleset`.",
             "id": "Release",
             "properties": {
-                "createTime": {
-                    "description": "Time the release was created.\nOutput only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
                 "updateTime": {
                     "description": "Time the release was updated.\nOutput only.",
                     "format": "google-datetime",
@@ -611,6 +606,11 @@
                 "rulesetName": {
                     "description": "Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must\nexist the `Release` to be created.",
                     "type": "string"
+                },
+                "createTime": {
+                    "description": "Time the release was created.\nOutput only.",
+                    "format": "google-datetime",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -619,37 +619,19 @@
             "description": "The response for FirebaseRulesService.TestRuleset.",
             "id": "TestRulesetResponse",
             "properties": {
-                "testResults": {
-                    "description": "The set of test results given the test cases in the `TestSuite`.\nThe results will appear in the same order as the test cases appear in the\n`TestSuite`.",
-                    "items": {
-                        "$ref": "TestResult"
-                    },
-                    "type": "array"
-                },
                 "issues": {
                     "description": "Syntactic and semantic `Source` issues of varying severity. Issues of\n`ERROR` severity will prevent tests from executing.",
                     "items": {
                         "$ref": "Issue"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ListRulesetsResponse": {
-            "description": "The response for FirebaseRulesService.ListRulesets.",
-            "id": "ListRulesetsResponse",
-            "properties": {
-                "rulesets": {
-                    "description": "List of `Ruleset` instances.",
+                },
+                "testResults": {
+                    "description": "The set of test results given the test cases in the `TestSuite`.\nThe results will appear in the same order as the test cases appear in the\n`TestSuite`.",
                     "items": {
-                        "$ref": "Ruleset"
+                        "$ref": "TestResult"
                     },
                     "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -658,17 +640,6 @@
             "description": "Test result message containing the state of the test as well as a\ndescription and source position for test failures.",
             "id": "TestResult",
             "properties": {
-                "errorPosition": {
-                    "$ref": "SourcePosition",
-                    "description": "Position in the `Source` or `Ruleset` where the principle runtime error\noccurs.\n\nEvaluation of an expression may result in an error. Rules are deny by\ndefault, so a `DENY` expectation when an error is generated is valid.\nWhen there is a `DENY` with an error, the `SourcePosition` is returned.\n\nE.g. `error_position { line: 19 column: 37 }`"
-                },
-                "functionCalls": {
-                    "description": "The set of function calls made to service-defined methods.\n\nFunction calls are included in the order in which they are encountered\nduring evaluation, are provided for both mocked and unmocked functions,\nand included on the response regardless of the test `state`.",
-                    "items": {
-                        "$ref": "FunctionCall"
-                    },
-                    "type": "array"
-                },
                 "state": {
                     "description": "State of the test.",
                     "enum": [
@@ -687,6 +658,35 @@
                     "description": "Debug messages related to test execution issues encountered during\nevaluation.\n\nDebug messages may be related to too many or too few invocations of\nfunction mocks or to runtime errors that occur during evaluation.\n\nFor example: ```Unable to read variable [name: \"resource\"]```",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "errorPosition": {
+                    "$ref": "SourcePosition",
+                    "description": "Position in the `Source` or `Ruleset` where the principle runtime error\noccurs.\n\nEvaluation of an expression may result in an error. Rules are deny by\ndefault, so a `DENY` expectation when an error is generated is valid.\nWhen there is a `DENY` with an error, the `SourcePosition` is returned.\n\nE.g. `error_position { line: 19 column: 37 }`"
+                },
+                "functionCalls": {
+                    "description": "The set of function calls made to service-defined methods.\n\nFunction calls are included in the order in which they are encountered\nduring evaluation, are provided for both mocked and unmocked functions,\nand included on the response regardless of the test `state`.",
+                    "items": {
+                        "$ref": "FunctionCall"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListRulesetsResponse": {
+            "description": "The response for FirebaseRulesService.ListRulesets.",
+            "id": "ListRulesetsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
+                    "type": "string"
+                },
+                "rulesets": {
+                    "description": "List of `Ruleset` instances.",
+                    "items": {
+                        "$ref": "Ruleset"
                     },
                     "type": "array"
                 }

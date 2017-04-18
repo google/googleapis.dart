@@ -640,7 +640,6 @@ buildSurveysStartResponse() {
   buildCounterSurveysStartResponse++;
   if (buildCounterSurveysStartResponse < 3) {
     o.requestId = "foo";
-    o.resource = buildSurvey();
   }
   buildCounterSurveysStartResponse--;
   return o;
@@ -650,7 +649,6 @@ checkSurveysStartResponse(api.SurveysStartResponse o) {
   buildCounterSurveysStartResponse++;
   if (buildCounterSurveysStartResponse < 3) {
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkSurvey(o.resource);
   }
   buildCounterSurveysStartResponse--;
 }
@@ -661,7 +659,6 @@ buildSurveysStopResponse() {
   buildCounterSurveysStopResponse++;
   if (buildCounterSurveysStopResponse < 3) {
     o.requestId = "foo";
-    o.resource = buildSurvey();
   }
   buildCounterSurveysStopResponse--;
   return o;
@@ -671,7 +668,6 @@ checkSurveysStopResponse(api.SurveysStopResponse o) {
   buildCounterSurveysStopResponse++;
   if (buildCounterSurveysStopResponse < 3) {
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkSurvey(o.resource);
   }
   buildCounterSurveysStopResponse--;
 }

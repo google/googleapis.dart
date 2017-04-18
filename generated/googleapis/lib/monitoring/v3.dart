@@ -635,6 +635,12 @@ class ProjectsMetricDescriptorsResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [filter] - If this field is empty, all custom and system-defined metric
+   * descriptors are returned. Otherwise, the filter specifies which metric
+   * descriptors are to be returned. For example, the following filter matches
+   * all custom metrics:
+   * metric.type = starts_with("custom.googleapis.com/")
+   *
    * [pageToken] - If this field is not empty then it must contain the
    * nextPageToken value returned by a previous call to this method. Using this
    * field causes the method to return additional results from the previous
@@ -642,12 +648,6 @@ class ProjectsMetricDescriptorsResourceApi {
    *
    * [pageSize] - A positive number that is the maximum number of results to
    * return.
-   *
-   * [filter] - If this field is empty, all custom and system-defined metric
-   * descriptors are returned. Otherwise, the filter specifies which metric
-   * descriptors are to be returned. For example, the following filter matches
-   * all custom metrics:
-   * metric.type = starts_with("custom.googleapis.com/")
    *
    * Completes with a [ListMetricDescriptorsResponse].
    *
@@ -657,7 +657,7 @@ class ProjectsMetricDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListMetricDescriptorsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListMetricDescriptorsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -668,14 +668,14 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/metricDescriptors';
@@ -876,34 +876,6 @@ class ProjectsTimeSeriesResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [aggregation_groupByFields] - The set of fields to preserve when
-   * crossSeriesReducer is specified. The groupByFields determine how the time
-   * series are partitioned into subsets prior to applying the aggregation
-   * function. Each subset contains time series that have the same value for
-   * each of the grouping fields. Each individual time series is a member of
-   * exactly one subset. The crossSeriesReducer is applied to each subset of
-   * time series. It is not possible to reduce across different resource types,
-   * so this field implicitly contains resource.type. Fields not specified in
-   * groupByFields are aggregated away. If groupByFields is not specified and
-   * all the time series have the same resource type, then the time series are
-   * aggregated into a single output time series. If crossSeriesReducer is not
-   * defined, this field is ignored.
-   *
-   * [interval_endTime] - Required. The end of the time interval.
-   *
-   * [aggregation_alignmentPeriod] - The alignment period for per-time series
-   * alignment. If present, alignmentPeriod must be at least 60 seconds. After
-   * per-time series alignment, each time series will contain data points only
-   * on the period boundaries. If perSeriesAligner is not specified or equals
-   * ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
-   * and does not equal ALIGN_NONE, then this field must be defined; otherwise
-   * an error is returned.
-   *
-   * [pageSize] - A positive number that is the maximum number of results to
-   * return. When view field sets to FULL, it limits the number of Points server
-   * will return; if view field is HEADERS, it limits the number of TimeSeries
-   * server will return.
-   *
    * [orderBy] - Specifies the order in which the points of the time series
    * should be returned. By default, results are not ordered. Currently, this
    * field must be left blank.
@@ -978,6 +950,105 @@ class ProjectsTimeSeriesResourceApi {
    * - "FULL" : A FULL.
    * - "HEADERS" : A HEADERS.
    *
+   * [secondaryAggregation_crossSeriesReducer] - The approach to be used to
+   * combine time series. Not all reducer functions may be applied to all time
+   * series, depending on the metric type and the value type of the original
+   * time series. Reduction may change the metric type of value type of the time
+   * series.Time series data must be aligned in order to perform cross-time
+   * series reduction. If crossSeriesReducer is specified, then perSeriesAligner
+   * must be specified and not equal ALIGN_NONE and alignmentPeriod must be
+   * specified; otherwise, an error is returned.
+   * Possible string values are:
+   * - "REDUCE_NONE" : A REDUCE_NONE.
+   * - "REDUCE_MEAN" : A REDUCE_MEAN.
+   * - "REDUCE_MIN" : A REDUCE_MIN.
+   * - "REDUCE_MAX" : A REDUCE_MAX.
+   * - "REDUCE_SUM" : A REDUCE_SUM.
+   * - "REDUCE_STDDEV" : A REDUCE_STDDEV.
+   * - "REDUCE_COUNT" : A REDUCE_COUNT.
+   * - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
+   * - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
+   * - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
+   * - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
+   * - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
+   * - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
+   *
+   * [secondaryAggregation_groupByFields] - The set of fields to preserve when
+   * crossSeriesReducer is specified. The groupByFields determine how the time
+   * series are partitioned into subsets prior to applying the aggregation
+   * function. Each subset contains time series that have the same value for
+   * each of the grouping fields. Each individual time series is a member of
+   * exactly one subset. The crossSeriesReducer is applied to each subset of
+   * time series. It is not possible to reduce across different resource types,
+   * so this field implicitly contains resource.type. Fields not specified in
+   * groupByFields are aggregated away. If groupByFields is not specified and
+   * all the time series have the same resource type, then the time series are
+   * aggregated into a single output time series. If crossSeriesReducer is not
+   * defined, this field is ignored.
+   *
+   * [aggregation_groupByFields] - The set of fields to preserve when
+   * crossSeriesReducer is specified. The groupByFields determine how the time
+   * series are partitioned into subsets prior to applying the aggregation
+   * function. Each subset contains time series that have the same value for
+   * each of the grouping fields. Each individual time series is a member of
+   * exactly one subset. The crossSeriesReducer is applied to each subset of
+   * time series. It is not possible to reduce across different resource types,
+   * so this field implicitly contains resource.type. Fields not specified in
+   * groupByFields are aggregated away. If groupByFields is not specified and
+   * all the time series have the same resource type, then the time series are
+   * aggregated into a single output time series. If crossSeriesReducer is not
+   * defined, this field is ignored.
+   *
+   * [interval_endTime] - Required. The end of the time interval.
+   *
+   * [aggregation_alignmentPeriod] - The alignment period for per-time series
+   * alignment. If present, alignmentPeriod must be at least 60 seconds. After
+   * per-time series alignment, each time series will contain data points only
+   * on the period boundaries. If perSeriesAligner is not specified or equals
+   * ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
+   * and does not equal ALIGN_NONE, then this field must be defined; otherwise
+   * an error is returned.
+   *
+   * [secondaryAggregation_alignmentPeriod] - The alignment period for per-time
+   * series alignment. If present, alignmentPeriod must be at least 60 seconds.
+   * After per-time series alignment, each time series will contain data points
+   * only on the period boundaries. If perSeriesAligner is not specified or
+   * equals ALIGN_NONE, then this field is ignored. If perSeriesAligner is
+   * specified and does not equal ALIGN_NONE, then this field must be defined;
+   * otherwise an error is returned.
+   *
+   * [pageSize] - A positive number that is the maximum number of results to
+   * return. When view field sets to FULL, it limits the number of Points server
+   * will return; if view field is HEADERS, it limits the number of TimeSeries
+   * server will return.
+   *
+   * [secondaryAggregation_perSeriesAligner] - The approach to be used to align
+   * individual time series. Not all alignment functions may be applied to all
+   * time series, depending on the metric type and value type of the original
+   * time series. Alignment may change the metric type or the value type of the
+   * time series.Time series data must be aligned in order to perform cross-time
+   * series reduction. If crossSeriesReducer is specified, then perSeriesAligner
+   * must be specified and not equal ALIGN_NONE and alignmentPeriod must be
+   * specified; otherwise, an error is returned.
+   * Possible string values are:
+   * - "ALIGN_NONE" : A ALIGN_NONE.
+   * - "ALIGN_DELTA" : A ALIGN_DELTA.
+   * - "ALIGN_RATE" : A ALIGN_RATE.
+   * - "ALIGN_INTERPOLATE" : A ALIGN_INTERPOLATE.
+   * - "ALIGN_NEXT_OLDER" : A ALIGN_NEXT_OLDER.
+   * - "ALIGN_MIN" : A ALIGN_MIN.
+   * - "ALIGN_MAX" : A ALIGN_MAX.
+   * - "ALIGN_MEAN" : A ALIGN_MEAN.
+   * - "ALIGN_COUNT" : A ALIGN_COUNT.
+   * - "ALIGN_SUM" : A ALIGN_SUM.
+   * - "ALIGN_STDDEV" : A ALIGN_STDDEV.
+   * - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
+   * - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
+   * - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
+   * - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
+   * - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
+   * - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
+   *
    * Completes with a [ListTimeSeriesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -986,7 +1057,7 @@ class ProjectsTimeSeriesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTimeSeriesResponse> list(core.String name, {core.List<core.String> aggregation_groupByFields, core.String interval_endTime, core.String aggregation_alignmentPeriod, core.int pageSize, core.String orderBy, core.String aggregation_crossSeriesReducer, core.String filter, core.String pageToken, core.String aggregation_perSeriesAligner, core.String interval_startTime, core.String view}) {
+  async.Future<ListTimeSeriesResponse> list(core.String name, {core.String orderBy, core.String aggregation_crossSeriesReducer, core.String filter, core.String pageToken, core.String aggregation_perSeriesAligner, core.String interval_startTime, core.String view, core.String secondaryAggregation_crossSeriesReducer, core.List<core.String> secondaryAggregation_groupByFields, core.List<core.String> aggregation_groupByFields, core.String interval_endTime, core.String aggregation_alignmentPeriod, core.String secondaryAggregation_alignmentPeriod, core.int pageSize, core.String secondaryAggregation_perSeriesAligner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -996,18 +1067,6 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (aggregation_groupByFields != null) {
-      _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
-    }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
-    }
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams["aggregation.alignmentPeriod"] = [aggregation_alignmentPeriod];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -1029,6 +1088,30 @@ class ProjectsTimeSeriesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (secondaryAggregation_crossSeriesReducer != null) {
+      _queryParams["secondaryAggregation.crossSeriesReducer"] = [secondaryAggregation_crossSeriesReducer];
+    }
+    if (secondaryAggregation_groupByFields != null) {
+      _queryParams["secondaryAggregation.groupByFields"] = secondaryAggregation_groupByFields;
+    }
+    if (aggregation_groupByFields != null) {
+      _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
+    }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
+    if (aggregation_alignmentPeriod != null) {
+      _queryParams["aggregation.alignmentPeriod"] = [aggregation_alignmentPeriod];
+    }
+    if (secondaryAggregation_alignmentPeriod != null) {
+      _queryParams["secondaryAggregation.alignmentPeriod"] = [secondaryAggregation_alignmentPeriod];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (secondaryAggregation_perSeriesAligner != null) {
+      _queryParams["secondaryAggregation.perSeriesAligner"] = [secondaryAggregation_perSeriesAligner];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/timeSeries';
@@ -1934,7 +2017,7 @@ class ListMetricDescriptorsResponse {
   }
 }
 
-/** The ListMonitoredResourcDescriptors response. */
+/** The ListMonitoredResourceDescriptors response. */
 class ListMonitoredResourceDescriptorsResponse {
   /**
    * If there are more results than have been returned, then this field is set

@@ -30,7 +30,7 @@
     "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/f81k8b4sv9uLeywfoj2KpL2xcPg\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/f81k8b4sv9uLeywfoj2KpL2xcPg\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
