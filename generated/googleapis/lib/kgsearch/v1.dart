@@ -39,6 +39,14 @@ class EntitiesResourceApi {
    *
    * Request parameters:
    *
+   * [prefix] - Enables prefix match against names and aliases of entities
+   *
+   * [query] - The literal query string for search.
+   *
+   * [types] - Restricts returned entities with these types, e.g. Person
+   * (as defined in http://schema.org/Person). If multiple types are specified,
+   * returned entities will contain one or more of these types.
+   *
    * [indent] - Enables indenting of json results.
    *
    * [languages] - The list of language codes (defined in ISO 693) to run the
@@ -52,14 +60,6 @@ class EntitiesResourceApi {
    *
    * [limit] - Limits the number of entities to be returned.
    *
-   * [prefix] - Enables prefix match against names and aliases of entities
-   *
-   * [query] - The literal query string for search.
-   *
-   * [types] - Restricts returned entities with these types, e.g. Person
-   * (as defined in http://schema.org/Person). If multiple types are specified,
-   * returned entities will contain one or more of these types.
-   *
    * Completes with a [SearchResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -68,7 +68,7 @@ class EntitiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SearchResponse> search({core.bool indent, core.List<core.String> languages, core.List<core.String> ids, core.int limit, core.bool prefix, core.String query, core.List<core.String> types}) {
+  async.Future<SearchResponse> search({core.bool prefix, core.String query, core.List<core.String> types, core.bool indent, core.List<core.String> languages, core.List<core.String> ids, core.int limit}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -76,6 +76,15 @@ class EntitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (prefix != null) {
+      _queryParams["prefix"] = ["${prefix}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
+    if (types != null) {
+      _queryParams["types"] = types;
+    }
     if (indent != null) {
       _queryParams["indent"] = ["${indent}"];
     }
@@ -87,15 +96,6 @@ class EntitiesResourceApi {
     }
     if (limit != null) {
       _queryParams["limit"] = ["${limit}"];
-    }
-    if (prefix != null) {
-      _queryParams["prefix"] = ["${prefix}"];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
-    if (types != null) {
-      _queryParams["types"] = types;
     }
 
     _url = 'v1/entities:search';

@@ -82,6 +82,57 @@ class AccountsResourceApi {
   }
 
   /**
+   * Claims the website of a Merchant Center sub-account. This method can only
+   * be called for multi-client accounts.
+   *
+   * Request parameters:
+   *
+   * [merchantId] - The ID of the managing account.
+   *
+   * [accountId] - The ID of the account whose website is claimed.
+   *
+   * [overwrite] - Flag to remove any existing claim on the requested website by
+   * another account and replace it with a claim from this account.
+   *
+   * Completes with a [AccountsClaimWebsiteResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AccountsClaimWebsiteResponse> claimwebsite(core.String merchantId, core.String accountId, {core.bool overwrite}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (overwrite != null) {
+      _queryParams["overwrite"] = ["${overwrite}"];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/claimwebsite';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountsClaimWebsiteResponse.fromJson(data));
+  }
+
+  /**
    * Retrieves, inserts, updates, and deletes multiple Merchant Center
    * (sub-)accounts in a single request.
    *
@@ -2523,6 +2574,9 @@ class ProductstatusesResourceApi {
    *
    * Request parameters:
    *
+   * [includeAttributes] - Flag to include full product data in the results of
+   * this request. The default value is false.
+   *
    * Completes with a [ProductstatusesCustomBatchResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2531,7 +2585,7 @@ class ProductstatusesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ProductstatusesCustomBatchResponse> custombatch(ProductstatusesCustomBatchRequest request) {
+  async.Future<ProductstatusesCustomBatchResponse> custombatch(ProductstatusesCustomBatchRequest request, {core.bool includeAttributes}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2541,6 +2595,9 @@ class ProductstatusesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (includeAttributes != null) {
+      _queryParams["includeAttributes"] = ["${includeAttributes}"];
     }
 
     _url = 'productstatuses/batch';
@@ -2565,6 +2622,9 @@ class ProductstatusesResourceApi {
    *
    * [productId] - The ID of the product.
    *
+   * [includeAttributes] - Flag to include full product data in the result of
+   * this get request. The default value is false.
+   *
    * Completes with a [ProductStatus].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2573,7 +2633,7 @@ class ProductstatusesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ProductStatus> get(core.String merchantId, core.String productId) {
+  async.Future<ProductStatus> get(core.String merchantId, core.String productId, {core.bool includeAttributes}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2586,6 +2646,9 @@ class ProductstatusesResourceApi {
     }
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if (includeAttributes != null) {
+      _queryParams["includeAttributes"] = ["${includeAttributes}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/productstatuses/' + commons.Escaper.ecapeVariable('$productId');
@@ -2608,6 +2671,9 @@ class ProductstatusesResourceApi {
    *
    * [merchantId] - The ID of the managing account.
    *
+   * [includeAttributes] - Flag to include full product data in the results of
+   * the list request. The default value is false.
+   *
    * [includeInvalidInsertedItems] - Flag to include the invalid inserted items
    * in the result of the list request. By default the invalid items are not
    * shown (the default value is false).
@@ -2625,7 +2691,7 @@ class ProductstatusesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ProductstatusesListResponse> list(core.String merchantId, {core.bool includeInvalidInsertedItems, core.int maxResults, core.String pageToken}) {
+  async.Future<ProductstatusesListResponse> list(core.String merchantId, {core.bool includeAttributes, core.bool includeInvalidInsertedItems, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2635,6 +2701,9 @@ class ProductstatusesResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (includeAttributes != null) {
+      _queryParams["includeAttributes"] = ["${includeAttributes}"];
     }
     if (includeInvalidInsertedItems != null) {
       _queryParams["includeInvalidInsertedItems"] = ["${includeInvalidInsertedItems}"];
@@ -3156,6 +3225,8 @@ class AccountStatus {
    * "content#accountStatus".
    */
   core.String kind;
+  /** Whether the account's website is claimed or not. */
+  core.bool websiteClaimed;
 
   AccountStatus();
 
@@ -3169,6 +3240,9 @@ class AccountStatus {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("websiteClaimed")) {
+      websiteClaimed = _json["websiteClaimed"];
+    }
   }
 
   core.Map toJson() {
@@ -3181,6 +3255,9 @@ class AccountStatus {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (websiteClaimed != null) {
+      _json["websiteClaimed"] = websiteClaimed;
     }
     return _json;
   }
@@ -3510,6 +3587,30 @@ class AccountsAuthInfoResponse {
   }
 }
 
+class AccountsClaimWebsiteResponse {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "content#accountsClaimWebsiteResponse".
+   */
+  core.String kind;
+
+  AccountsClaimWebsiteResponse();
+
+  AccountsClaimWebsiteResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 class AccountsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   core.List<AccountsCustomBatchRequestEntry> entries;
@@ -3539,8 +3640,8 @@ class AccountsCustomBatchRequestEntry {
    */
   Account account;
   /**
-   * The ID of the account to get or delete. Only defined if the method is get
-   * or delete.
+   * The ID of the targeted account. Only defined if the method is get, delete
+   * or claimwebsite.
    */
   core.String accountId;
   /** An entry ID, unique within the batch request. */
@@ -3548,6 +3649,11 @@ class AccountsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   core.String merchantId;
   core.String method;
+  /**
+   * Only applicable if the method is claimwebsite. Indicates whether or not to
+   * take the claim from another account in case there is a conflict.
+   */
+  core.bool overwrite;
 
   AccountsCustomBatchRequestEntry();
 
@@ -3567,6 +3673,9 @@ class AccountsCustomBatchRequestEntry {
     if (_json.containsKey("method")) {
       method = _json["method"];
     }
+    if (_json.containsKey("overwrite")) {
+      overwrite = _json["overwrite"];
+    }
   }
 
   core.Map toJson() {
@@ -3585,6 +3694,9 @@ class AccountsCustomBatchRequestEntry {
     }
     if (method != null) {
       _json["method"] = method;
+    }
+    if (overwrite != null) {
+      _json["overwrite"] = overwrite;
     }
     return _json;
   }
@@ -3626,7 +3738,7 @@ class AccountsCustomBatchResponse {
 class AccountsCustomBatchResponseEntry {
   /**
    * The retrieved, created, or updated account. Not defined if the method was
-   * delete.
+   * delete or claimwebsite.
    */
   Account account;
   /** The ID of the request entry this entry responds to. */

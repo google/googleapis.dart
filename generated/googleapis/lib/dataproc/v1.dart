@@ -64,10 +64,10 @@ class ProjectsRegionsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * cluster belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the cluster belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
    * Completes with a [Operation].
@@ -113,13 +113,13 @@ class ProjectsRegionsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * cluster belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the cluster belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [clusterName] - Required The cluster name.
+   * [clusterName] - Required. The cluster name.
    *
    * Completes with a [Operation].
    *
@@ -167,13 +167,13 @@ class ProjectsRegionsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * cluster belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the cluster belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [clusterName] - Required The cluster name.
+   * [clusterName] - Required. The cluster name.
    *
    * Completes with a [Operation].
    *
@@ -221,13 +221,13 @@ class ProjectsRegionsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * cluster belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the cluster belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [clusterName] - Required The cluster name.
+   * [clusterName] - Required. The cluster name.
    *
    * Completes with a [Cluster].
    *
@@ -272,16 +272,18 @@ class ProjectsRegionsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * cluster belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the cluster belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [pageSize] - Optional The standard List page size.
+   * [pageToken] - Optional. The standard List page token.
    *
-   * [filter] - Optional A filter constraining the clusters to list. Filters are
-   * case-sensitive and have the following syntax:field = value AND field =
+   * [pageSize] - Optional. The standard List page size.
+   *
+   * [filter] - Optional. A filter constraining the clusters to list. Filters
+   * are case-sensitive and have the following syntax:field = value AND field =
    * value ...where field is one of status.state, clusterName, or labels.[KEY],
    * and [KEY] is a label key. value can be * to match all values. status.state
    * can be one of the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR,
@@ -292,8 +294,6 @@ class ProjectsRegionsClustersResourceApi {
    * implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
    * = mycluster AND labels.env = staging AND labels.starred = *
    *
-   * [pageToken] - Optional The standard List page token.
-   *
    * Completes with a [ListClustersResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -302,7 +302,7 @@ class ProjectsRegionsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,14 +316,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/clusters';
@@ -345,19 +345,19 @@ class ProjectsRegionsClustersResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project the
+   * [projectId] - Required. The ID of the Google Cloud Platform project the
    * cluster belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [clusterName] - Required The cluster name.
+   * [clusterName] - Required. The cluster name.
    *
-   * [updateMask] - Required Specifies the path, relative to
-   * <code>Cluster</code>, of the field to update. For example, to change the
-   * number of workers in a cluster to 5, the <code>update_mask</code> parameter
-   * would be specified as <code>config.worker_config.num_instances</code>, and
-   * the PATCH request body would specify the new value, as follows:
+   * [updateMask] - Required. Specifies the path, relative to Cluster, of the
+   * field to update. For example, to change the number of workers in a cluster
+   * to 5, the update_mask parameter would be specified as
+   * config.worker_config.num_instances, and the PATCH request body would
+   * specify the new value, as follows:
    * {
    *   "config":{
    *     "workerConfig":{
@@ -366,9 +366,9 @@ class ProjectsRegionsClustersResourceApi {
    *   }
    * }
    * Similarly, to change the number of preemptible workers in a cluster to 5,
-   * the <code>update_mask</code> parameter would be
-   * <code>config.secondary_worker_config.num_instances</code>, and the PATCH
-   * request body would be set as follows:
+   * the update_mask parameter would be
+   * config.secondary_worker_config.num_instances, and the PATCH request body
+   * would be set as follows:
    * {
    *   "config":{
    *     "secondaryWorkerConfig":{
@@ -376,10 +376,14 @@ class ProjectsRegionsClustersResourceApi {
    *     }
    *   }
    * }
-   * <strong>Note:</strong> Currently,
-   * <code>config.worker_config.num_instances</code> and
-   * <code>config.secondary_worker_config.num_instances</code> are the only
-   * fields that can be updated.
+   * <strong>Note:</strong> Currently, only the following fields can be
+   * updated:<table>  <tbody>  <tr>  <td><strong>Mask</strong></td>
+   * <td><strong>Purpose</strong></td>  </tr>  <tr>
+   * <td><strong><em>labels</em></strong></td>  <td>Update labels</td>  </tr>
+   * <tr>  <td><strong><em>config.worker_config.num_instances</em></strong></td>
+   * <td>Resize primary worker group</td>  </tr>  <tr>
+   * <td><strong><em>config.secondary_worker_config.num_instances</em></strong></td>
+   * <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>
    *
    * Completes with a [Operation].
    *
@@ -442,13 +446,13 @@ class ProjectsRegionsJobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * job belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the job belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [jobId] - Required The job ID.
+   * [jobId] - Required. The job ID.
    *
    * Completes with a [Job].
    *
@@ -497,13 +501,13 @@ class ProjectsRegionsJobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * job belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the job belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [jobId] - Required The job ID.
+   * [jobId] - Required. The job ID.
    *
    * Completes with a [Empty].
    *
@@ -548,13 +552,13 @@ class ProjectsRegionsJobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * job belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the job belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [jobId] - Required The job ID.
+   * [jobId] - Required. The job ID.
    *
    * Completes with a [Job].
    *
@@ -599,13 +603,13 @@ class ProjectsRegionsJobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * job belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the job belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [filter] - Optional A filter constraining the jobs to list. Filters are
+   * [filter] - Optional. A filter constraining the jobs to list. Filters are
    * case-sensitive and have the following syntax:field = value AND field =
    * value ...where field is status.state or labels.[KEY], and [KEY] is a label
    * key. value can be * to match all values. status.state can be either ACTIVE
@@ -614,19 +618,19 @@ class ProjectsRegionsJobsResourceApi {
    * filter:status.state = ACTIVE AND labels.env = staging AND labels.starred =
    * *
    *
-   * [jobStateMatcher] - Optional Specifies enumerated categories of jobs to
+   * [jobStateMatcher] - Optional. Specifies enumerated categories of jobs to
    * list (default = match ALL jobs).
    * Possible string values are:
    * - "ALL" : A ALL.
    * - "ACTIVE" : A ACTIVE.
    * - "NON_ACTIVE" : A NON_ACTIVE.
    *
-   * [pageToken] - Optional The page token, returned by a previous call, to
+   * [pageToken] - Optional. The page token, returned by a previous call, to
    * request the next page of results.
    *
-   * [pageSize] - Optional The number of results to return in each response.
+   * [pageSize] - Optional. The number of results to return in each response.
    *
-   * [clusterName] - Optional If set, the returned jobs list includes only jobs
+   * [clusterName] - Optional. If set, the returned jobs list includes only jobs
    * that were submitted to the named cluster.
    *
    * Completes with a [ListJobsResponse].
@@ -686,15 +690,15 @@ class ProjectsRegionsJobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * job belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the job belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [jobId] - Required The job ID.
+   * [jobId] - Required. The job ID.
    *
-   * [updateMask] - Required Specifies the path, relative to <code>Job</code>,
+   * [updateMask] - Required. Specifies the path, relative to <code>Job</code>,
    * of the field to update. For example, to update the labels of a Job the
    * <code>update_mask</code> parameter would be specified as
    * <code>labels</code>, and the PATCH request body would specify the new
@@ -752,10 +756,10 @@ class ProjectsRegionsJobsResourceApi {
    *
    * Request parameters:
    *
-   * [projectId] - Required The ID of the Google Cloud Platform project that the
-   * job belongs to.
+   * [projectId] - Required. The ID of the Google Cloud Platform project that
+   * the job belongs to.
    *
-   * [region] - Required The Cloud Dataproc region in which to handle the
+   * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
    * Completes with a [Job].
@@ -949,11 +953,11 @@ class ProjectsRegionsOperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
    *
+   * [pageSize] - The standard list page size.
+   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
-   *
-   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -963,7 +967,7 @@ class ProjectsRegionsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -974,14 +978,14 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1059,23 +1063,23 @@ class CancelJobRequest {
  */
 class Cluster {
   /**
-   * Required The cluster name. Cluster names within a project must be unique.
+   * Required. The cluster name. Cluster names within a project must be unique.
    * Names of deleted clusters can be reused.
    */
   core.String clusterName;
   /**
-   * Output-only A cluster UUID (Unique Universal Identifier). Cloud Dataproc
+   * Output-only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc
    * generates this value when it creates the cluster.
    */
   core.String clusterUuid;
   /**
-   * Required The cluster config. Note that Cloud Dataproc may set default
+   * Required. The cluster config. Note that Cloud Dataproc may set default
    * values, and values may change when clusters are updated.
    */
   ClusterConfig config;
   /**
-   * Optional The labels to associate with this cluster. Label keys must contain
-   * 1 to 63 characters, and must conform to RFC 1035
+   * Optional. The labels to associate with this cluster. Label keys must
+   * contain 1 to 63 characters, and must conform to RFC 1035
    * (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
    * present, must contain 1 to 63 characters, and must conform to RFC 1035
    * (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
@@ -1089,12 +1093,12 @@ class Cluster {
    */
   ClusterMetrics metrics;
   /**
-   * Required The Google Cloud Platform project ID that the cluster belongs to.
+   * Required. The Google Cloud Platform project ID that the cluster belongs to.
    */
   core.String projectId;
-  /** Output-only Cluster status. */
+  /** Output-only. Cluster status. */
   ClusterStatus status;
-  /** Output-only The previous cluster status. */
+  /** Output-only. The previous cluster status. */
   core.List<ClusterStatus> statusHistory;
 
   Cluster();
@@ -1159,7 +1163,7 @@ class Cluster {
 /** The cluster config. */
 class ClusterConfig {
   /**
-   * Optional A Google Cloud Storage staging bucket used for sharing generated
+   * Optional. A Google Cloud Storage staging bucket used for sharing generated
    * SSH keys and config. If you do not specify a staging bucket, Cloud Dataproc
    * will determine an appropriate Cloud Storage location (US, ASIA, or EU) for
    * your cluster's staging bucket according to the Google Compute Engine zone
@@ -1168,15 +1172,15 @@ class ClusterConfig {
    */
   core.String configBucket;
   /**
-   * Required The shared Google Compute Engine config settings for all instances
-   * in a cluster.
+   * Required. The shared Google Compute Engine config settings for all
+   * instances in a cluster.
    */
   GceClusterConfig gceClusterConfig;
   /**
-   * Optional Commands to execute on each node after config is completed. By
+   * Optional. Commands to execute on each node after config is completed. By
    * default, executables are run on master and all worker nodes. You can test a
-   * node's <code>role</code> metadata to run an executable on a master or
-   * worker node, as shown below using curl (you can also use wget):
+   * node's role metadata to run an executable on a master or worker node, as
+   * shown below using curl (you can also use wget):
    * ROLE=$(curl -H Metadata-Flavor:Google
    * http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)
    * if [[ "${ROLE}" == 'Master' ]]; then
@@ -1187,19 +1191,19 @@ class ClusterConfig {
    */
   core.List<NodeInitializationAction> initializationActions;
   /**
-   * Optional The Google Compute Engine config settings for the master instance
+   * Optional. The Google Compute Engine config settings for the master instance
    * in a cluster.
    */
   InstanceGroupConfig masterConfig;
   /**
-   * Optional The Google Compute Engine config settings for additional worker
+   * Optional. The Google Compute Engine config settings for additional worker
    * instances in a cluster.
    */
   InstanceGroupConfig secondaryWorkerConfig;
-  /** Optional The config settings for software inside the cluster. */
+  /** Optional. The config settings for software inside the cluster. */
   SoftwareConfig softwareConfig;
   /**
-   * Optional The Google Compute Engine config settings for worker instances in
+   * Optional. The Google Compute Engine config settings for worker instances in
    * a cluster.
    */
   InstanceGroupConfig workerConfig;
@@ -1293,21 +1297,21 @@ class ClusterMetrics {
 
 /** Metadata describing the operation. */
 class ClusterOperationMetadata {
-  /** Output-only Name of the cluster for the operation. */
+  /** Output-only. Name of the cluster for the operation. */
   core.String clusterName;
-  /** Output-only Cluster UUID for the operation. */
+  /** Output-only. Cluster UUID for the operation. */
   core.String clusterUuid;
-  /** Output-only Short description of operation. */
+  /** Output-only. Short description of operation. */
   core.String description;
-  /** Output-only Labels associated with the operation */
+  /** Output-only. Labels associated with the operation */
   core.Map<core.String, core.String> labels;
-  /** Output-only The operation type. */
+  /** Output-only. The operation type. */
   core.String operationType;
-  /** Output-only Current operation status. */
+  /** Output-only. Current operation status. */
   ClusterOperationStatus status;
-  /** Output-only The previous operation status. */
+  /** Output-only. The previous operation status. */
   core.List<ClusterOperationStatus> statusHistory;
-  /** Output-only Errors encountered during operation execution. */
+  /** Output-only. Errors encountered during operation execution. */
   core.List<core.String> warnings;
 
   ClusterOperationMetadata();
@@ -1371,12 +1375,12 @@ class ClusterOperationMetadata {
 
 /** The status of the operation. */
 class ClusterOperationStatus {
-  /** Output-onlyA message containing any operation metadata details. */
+  /** Output-only.A message containing any operation metadata details. */
   core.String details;
-  /** Output-only A message containing the detailed operation state. */
+  /** Output-only. A message containing the detailed operation state. */
   core.String innerState;
   /**
-   * Output-only A message containing the operation state.
+   * Output-only. A message containing the operation state.
    * Possible string values are:
    * - "UNKNOWN" : Unused.
    * - "PENDING" : The operation has been created.
@@ -1384,7 +1388,7 @@ class ClusterOperationStatus {
    * - "DONE" : The operation is done; either cancelled or completed.
    */
   core.String state;
-  /** Output-only The time this state was entered. */
+  /** Output-only. The time this state was entered. */
   core.String stateStartTime;
 
   ClusterOperationStatus();
@@ -1424,10 +1428,10 @@ class ClusterOperationStatus {
 
 /** The status of a cluster and its instances. */
 class ClusterStatus {
-  /** Output-only Optional details of cluster's state. */
+  /** Output-only. Optional details of cluster's state. */
   core.String detail;
   /**
-   * Output-only The cluster's state.
+   * Output-only. The cluster's state.
    * Possible string values are:
    * - "UNKNOWN" : The cluster state is unknown.
    * - "CREATING" : The cluster is being created and set up. It is not ready for
@@ -1440,10 +1444,10 @@ class ClusterStatus {
    * process jobs.
    */
   core.String state;
-  /** Output-only Time when this state was entered. */
+  /** Output-only. Time when this state was entered. */
   core.String stateStartTime;
   /**
-   * Output-only Additional state information that includes status reported by
+   * Output-only. Additional state information that includes status reported by
    * the agent.
    * Possible string values are:
    * - "UNSPECIFIED"
@@ -1532,7 +1536,7 @@ class DiagnoseClusterRequest {
 /** The location of diagnostic output. */
 class DiagnoseClusterResults {
   /**
-   * Output-only The Google Cloud Storage URI of the diagnostic output. The
+   * Output-only. The Google Cloud Storage URI of the diagnostic output. The
    * output report is a plain text file with a summary of collected diagnostics.
    */
   core.String outputUri;
@@ -1556,10 +1560,10 @@ class DiagnoseClusterResults {
 
 /** Specifies the config of disk options for a group of VM instances. */
 class DiskConfig {
-  /** Optional Size in GB of the boot disk (default is 500GB). */
+  /** Optional. Size in GB of the boot disk (default is 500GB). */
   core.int bootDiskSizeGb;
   /**
-   * Optional Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+   * Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
    * not attached, the boot disk is used to store runtime logs and HDFS
    * (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one
    * or more SSDs are attached, this runtime bulk data is spread across them,
@@ -1618,7 +1622,7 @@ class Empty {
  */
 class GceClusterConfig {
   /**
-   * Optional If true, all instances in the cluster will only have internal IP
+   * Optional. If true, all instances in the cluster will only have internal IP
    * addresses. By default, clusters are not restricted to internal IP
    * addresses, and will have ephemeral external IP addresses assigned to each
    * instance. This internal_ip_only restriction can only be enabled for
@@ -1633,7 +1637,7 @@ class GceClusterConfig {
    */
   core.Map<core.String, core.String> metadata;
   /**
-   * Optional The Google Compute Engine network to be used for machine
+   * Optional. The Google Compute Engine network to be used for machine
    * communications. Cannot be specified with subnetwork_uri. If neither
    * network_uri nor subnetwork_uri is specified, the "default" network of the
    * project is used, if it exists. Cannot be a "Custom Subnet Network" (see
@@ -1642,7 +1646,7 @@ class GceClusterConfig {
    */
   core.String networkUri;
   /**
-   * Optional The service account of the instances. Defaults to the default
+   * Optional. The service account of the instances. Defaults to the default
    * Google Compute Engine service account. Custom service accounts need
    * permissions equivalent to the folloing IAM roles:
    * roles/logging.logWriter
@@ -1653,7 +1657,7 @@ class GceClusterConfig {
    */
   core.String serviceAccount;
   /**
-   * Optional The URIs of service account scopes to be included in Google
+   * Optional. The URIs of service account scopes to be included in Google
    * Compute Engine instances. The following base set of scopes is always
    * included:
    * https://www.googleapis.com/auth/cloud.useraccounts.readonly
@@ -1667,7 +1671,7 @@ class GceClusterConfig {
    */
   core.List<core.String> serviceAccountScopes;
   /**
-   * Optional The Google Compute Engine subnetwork to be used for machine
+   * Optional. The Google Compute Engine subnetwork to be used for machine
    * communications. Cannot be specified with network_uri. Example:
    * https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0.
    */
@@ -1678,7 +1682,7 @@ class GceClusterConfig {
    */
   core.List<core.String> tags;
   /**
-   * Required The zone where the Google Compute Engine cluster will be located.
+   * Required. The zone where the Google Compute Engine cluster will be located.
    * Example:
    * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone].
    */
@@ -1751,29 +1755,29 @@ class GceClusterConfig {
  */
 class HadoopJob {
   /**
-   * Optional HCFS URIs of archives to be extracted in the working directory of
+   * Optional. HCFS URIs of archives to be extracted in the working directory of
    * Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz,
    * or .zip.
    */
   core.List<core.String> archiveUris;
   /**
-   * Optional The arguments to pass to the driver. Do not include arguments,
+   * Optional. The arguments to pass to the driver. Do not include arguments,
    * such as -libjars or -Dfoo=bar, that can be set as job properties, since a
    * collision may occur that causes an incorrect job submission.
    */
   core.List<core.String> args;
   /**
-   * Optional HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to
+   * Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to
    * the working directory of Hadoop drivers and distributed tasks. Useful for
    * naively parallel tasks.
    */
   core.List<core.String> fileUris;
   /**
-   * Optional Jar file URIs to add to the CLASSPATHs of the Hadoop driver and
+   * Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and
    * tasks.
    */
   core.List<core.String> jarFileUris;
-  /** Optional The runtime log config for job execution. */
+  /** Optional. The runtime log config for job execution. */
   LoggingConfig loggingConfig;
   /**
    * The name of the driver's main class. The jar file containing the class must
@@ -1788,7 +1792,7 @@ class HadoopJob {
    */
   core.String mainJarFileUri;
   /**
-   * Optional A mapping of property names to values, used to configure Hadoop.
+   * Optional. A mapping of property names to values, used to configure Hadoop.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in /etc/hadoop/conf / * -site and
    * classes in user code.
@@ -1860,18 +1864,18 @@ class HadoopJob {
  */
 class HiveJob {
   /**
-   * Optional Whether to continue executing queries if a query fails. The
+   * Optional. Whether to continue executing queries if a query fails. The
    * default value is false. Setting to true can be useful when executing
    * independent parallel queries.
    */
   core.bool continueOnFailure;
   /**
-   * Optional HCFS URIs of jar files to add to the CLASSPATH of the Hive server
+   * Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server
    * and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
    */
   core.List<core.String> jarFileUris;
   /**
-   * Optional A mapping of property names and values, used to configure Hive.
+   * Optional. A mapping of property names and values, used to configure Hive.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
    * /etc/hive/conf/hive-site.xml, and classes in user code.
@@ -1882,7 +1886,7 @@ class HiveJob {
   /** A list of queries. */
   QueryList queryList;
   /**
-   * Optional Mapping of query variable names to values (equivalent to the Hive
+   * Optional. Mapping of query variable names to values (equivalent to the Hive
    * command: SET name="value";).
    */
   core.Map<core.String, core.String> scriptVariables;
@@ -1935,46 +1939,47 @@ class HiveJob {
 }
 
 /**
- * Optional The config settings for Google Compute Engine resources in an
+ * Optional. The config settings for Google Compute Engine resources in an
  * instance group, such as a master or worker group.
  */
 class InstanceGroupConfig {
   /**
-   * Optional The Google Compute Engine accelerator configuration for these
+   * Optional. The Google Compute Engine accelerator configuration for these
    * instances.Beta Feature: This feature is still under development. It may be
    * changed before final release.
    */
   core.List<AcceleratorConfig> accelerators;
-  /** Optional Disk option config settings. */
+  /** Optional. Disk option config settings. */
   DiskConfig diskConfig;
   /**
-   * Output-only The Google Compute Engine image resource used for cluster
+   * Output-only. The Google Compute Engine image resource used for cluster
    * instances. Inferred from SoftwareConfig.image_version.
    */
   core.String imageUri;
   /**
-   * Optional The list of instance names. Cloud Dataproc derives the names from
+   * Optional. The list of instance names. Cloud Dataproc derives the names from
    * cluster_name, num_instances, and the instance group if not set by user
    * (recommended practice is to let Cloud Dataproc derive the name).
    */
   core.List<core.String> instanceNames;
   /**
-   * Optional Specifies that this instance group contains preemptible instances.
+   * Optional. Specifies that this instance group contains preemptible
+   * instances.
    */
   core.bool isPreemptible;
   /**
-   * Required The Google Compute Engine machine type used for cluster instances.
-   * Example:
+   * Required. The Google Compute Engine machine type used for cluster
+   * instances. Example:
    * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2.
    */
   core.String machineTypeUri;
   /**
-   * Output-only The config for Google Compute Engine Instance Group Manager
+   * Output-only. The config for Google Compute Engine Instance Group Manager
    * that manages this group. This is only used for preemptible instance groups.
    */
   ManagedGroupConfig managedGroupConfig;
   /**
-   * Required The number of VM instances in the instance group. For master
+   * Required. The number of VM instances in the instance group. For master
    * instance groups, must be set to 1.
    */
   core.int numInstances;
@@ -2041,13 +2046,13 @@ class InstanceGroupConfig {
 /** A Cloud Dataproc job resource. */
 class Job {
   /**
-   * Output-only If present, the location of miscellaneous control files which
+   * Output-only. If present, the location of miscellaneous control files which
    * may be used as part of job setup and handling. If not present, control
    * files may be placed in the same location as driver_output_uri.
    */
   core.String driverControlFilesUri;
   /**
-   * Output-only A URI pointing to the location of the stdout of the job's
+   * Output-only. A URI pointing to the location of the stdout of the job's
    * driver program.
    */
   core.String driverOutputResourceUri;
@@ -2056,7 +2061,7 @@ class Job {
   /** Job is a Hive job. */
   HiveJob hiveJob;
   /**
-   * Optional The labels to associate with this job. Label keys must contain 1
+   * Optional. The labels to associate with this job. Label keys must contain 1
    * to 63 characters, and must conform to RFC 1035
    * (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
    * present, must contain 1 to 63 characters, and must conform to RFC 1035
@@ -2067,34 +2072,34 @@ class Job {
   /** Job is a Pig job. */
   PigJob pigJob;
   /**
-   * Required Job information, including how, when, and where to run the job.
+   * Required. Job information, including how, when, and where to run the job.
    */
   JobPlacement placement;
   /** Job is a Pyspark job. */
   PySparkJob pysparkJob;
   /**
-   * Optional The fully qualified reference to the job, which can be used to
+   * Optional. The fully qualified reference to the job, which can be used to
    * obtain the equivalent REST path of the job resource. If this property is
    * not specified when a job is created, the server generates a
    * <code>job_id</code>.
    */
   JobReference reference;
-  /** Optional Job scheduling configuration. */
+  /** Optional. Job scheduling configuration. */
   JobScheduling scheduling;
   /** Job is a Spark job. */
   SparkJob sparkJob;
   /** Job is a SparkSql job. */
   SparkSqlJob sparkSqlJob;
   /**
-   * Output-only The job status. Additional application-specific status
+   * Output-only. The job status. Additional application-specific status
    * information may be contained in the <code>type_job</code> and
    * <code>yarn_applications</code> fields.
    */
   JobStatus status;
-  /** Output-only The previous job status. */
+  /** Output-only. The previous job status. */
   core.List<JobStatus> statusHistory;
   /**
-   * Output-only The collection of YARN applications spun up by this job.Beta
+   * Output-only. The collection of YARN applications spun up by this job.Beta
    * Feature: This report is available for testing purposes only. It may be
    * changed before final release.
    */
@@ -2203,11 +2208,11 @@ class Job {
 
 /** Cloud Dataproc job config. */
 class JobPlacement {
-  /** Required The name of the cluster where the job will be submitted. */
+  /** Required. The name of the cluster where the job will be submitted. */
   core.String clusterName;
   /**
-   * Output-only A cluster UUID generated by the Cloud Dataproc service when the
-   * job is submitted.
+   * Output-only. A cluster UUID generated by the Cloud Dataproc service when
+   * the job is submitted.
    */
   core.String clusterUuid;
 
@@ -2237,15 +2242,15 @@ class JobPlacement {
 /** Encapsulates the full scoping used to reference a job. */
 class JobReference {
   /**
-   * Optional The job ID, which must be unique within the project. The job ID is
-   * generated by the server upon job submission or provided by the user as a
+   * Optional. The job ID, which must be unique within the project. The job ID
+   * is generated by the server upon job submission or provided by the user as a
    * means to perform retries without creating duplicate jobs. The ID must
    * contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens
    * (-). The maximum length is 100 characters.
    */
   core.String jobId;
   /**
-   * Required The ID of the Google Cloud Platform project that the job belongs
+   * Required. The ID of the Google Cloud Platform project that the job belongs
    * to.
    */
   core.String projectId;
@@ -2279,7 +2284,7 @@ class JobReference {
  */
 class JobScheduling {
   /**
-   * Optional Maximum number of times per hour a driver may be restarted as a
+   * Optional. Maximum number of times per hour a driver may be restarted as a
    * result of driver terminating with non-zero code before job is reported
    * failed.A job may be reported as thrashing if driver exits with non-zero
    * code 4 times within 10 minute window.Maximum value is 10.
@@ -2306,12 +2311,12 @@ class JobScheduling {
 /** Cloud Dataproc job status. */
 class JobStatus {
   /**
-   * Output-only Optional job state details, such as an error description if the
-   * state is <code>ERROR</code>.
+   * Output-only. Optional job state details, such as an error description if
+   * the state is <code>ERROR</code>.
    */
   core.String details;
   /**
-   * Output-only A state message specifying the overall job state.
+   * Output-only. A state message specifying the overall job state.
    * Possible string values are:
    * - "STATE_UNSPECIFIED" : The job state is unknown.
    * - "PENDING" : The job is pending; it has been submitted, but is not yet
@@ -2329,11 +2334,11 @@ class JobStatus {
    * failure details for this attempt.Applies to restartable jobs only.
    */
   core.String state;
-  /** Output-only The time when this state was entered. */
+  /** Output-only. The time when this state was entered. */
   core.String stateStartTime;
   /**
-   * Output-only Additional state information, which includes status reported by
-   * the agent.
+   * Output-only. Additional state information, which includes status reported
+   * by the agent.
    * Possible string values are:
    * - "UNSPECIFIED"
    * - "SUBMITTED" : The Job is submitted to the agent.Applies to RUNNING state.
@@ -2384,12 +2389,12 @@ class JobStatus {
 
 /** The list of all clusters in a project. */
 class ListClustersResponse {
-  /** Output-only The clusters in the project. */
+  /** Output-only. The clusters in the project. */
   core.List<Cluster> clusters;
   /**
-   * Output-only This token is included in the response if there are more
+   * Output-only. This token is included in the response if there are more
    * results to fetch. To fetch additional results, provide this value as the
-   * page_token in a subsequent <code>ListClustersRequest</code>.
+   * page_token in a subsequent ListClustersRequest.
    */
   core.String nextPageToken;
 
@@ -2418,10 +2423,10 @@ class ListClustersResponse {
 
 /** A list of jobs in a project. */
 class ListJobsResponse {
-  /** Output-only Jobs list. */
+  /** Output-only. Jobs list. */
   core.List<Job> jobs;
   /**
-   * Optional This token is included in the response if there are more results
+   * Optional. This token is included in the response if there are more results
    * to fetch. To fetch additional results, provide this value as the page_token
    * in a subsequent <code>ListJobsRequest</code>.
    */
@@ -2508,11 +2513,11 @@ class LoggingConfig {
 
 /** Specifies the resources used to actively manage an instance group. */
 class ManagedGroupConfig {
-  /** Output-only The name of the Instance Group Manager for this group. */
+  /** Output-only. The name of the Instance Group Manager for this group. */
   core.String instanceGroupManagerName;
   /**
-   * Output-only The name of the Instance Template used for the Managed Instance
-   * Group.
+   * Output-only. The name of the Instance Template used for the Managed
+   * Instance Group.
    */
   core.String instanceTemplateName;
 
@@ -2544,10 +2549,10 @@ class ManagedGroupConfig {
  * period for executable completion.
  */
 class NodeInitializationAction {
-  /** Required Google Cloud Storage URI of executable file. */
+  /** Required. Google Cloud Storage URI of executable file. */
   core.String executableFile;
   /**
-   * Optional Amount of time executable has to complete. Default is 10 minutes.
+   * Optional. Amount of time executable has to complete. Default is 10 minutes.
    * Cluster creation fails with an explanatory error message (the name of the
    * executable that caused the error and the exceeded timeout period) if the
    * executable is not completed at end of the timeout period.
@@ -2845,20 +2850,20 @@ class OperationStatus {
  */
 class PigJob {
   /**
-   * Optional Whether to continue executing queries if a query fails. The
+   * Optional. Whether to continue executing queries if a query fails. The
    * default value is false. Setting to true can be useful when executing
    * independent parallel queries.
    */
   core.bool continueOnFailure;
   /**
-   * Optional HCFS URIs of jar files to add to the CLASSPATH of the Pig Client
+   * Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client
    * and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
    */
   core.List<core.String> jarFileUris;
-  /** Optional The runtime log config for job execution. */
+  /** Optional. The runtime log config for job execution. */
   LoggingConfig loggingConfig;
   /**
-   * Optional A mapping of property names to values, used to configure Pig.
+   * Optional. A mapping of property names to values, used to configure Pig.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
    * /etc/pig/conf/pig.properties, and classes in user code.
@@ -2869,7 +2874,7 @@ class PigJob {
   /** A list of queries. */
   QueryList queryList;
   /**
-   * Optional Mapping of query variable names to values (equivalent to the Pig
+   * Optional. Mapping of query variable names to values (equivalent to the Pig
    * command: name=[value]).
    */
   core.Map<core.String, core.String> scriptVariables;
@@ -2934,42 +2939,42 @@ class PigJob {
  */
 class PySparkJob {
   /**
-   * Optional HCFS URIs of archives to be extracted in the working directory of
+   * Optional. HCFS URIs of archives to be extracted in the working directory of
    * .jar, .tar, .tar.gz, .tgz, and .zip.
    */
   core.List<core.String> archiveUris;
   /**
-   * Optional The arguments to pass to the driver. Do not include arguments,
+   * Optional. The arguments to pass to the driver. Do not include arguments,
    * such as --conf, that can be set as job properties, since a collision may
    * occur that causes an incorrect job submission.
    */
   core.List<core.String> args;
   /**
-   * Optional HCFS URIs of files to be copied to the working directory of Python
-   * drivers and distributed tasks. Useful for naively parallel tasks.
+   * Optional. HCFS URIs of files to be copied to the working directory of
+   * Python drivers and distributed tasks. Useful for naively parallel tasks.
    */
   core.List<core.String> fileUris;
   /**
-   * Optional HCFS URIs of jar files to add to the CLASSPATHs of the Python
+   * Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python
    * driver and tasks.
    */
   core.List<core.String> jarFileUris;
-  /** Optional The runtime log config for job execution. */
+  /** Optional. The runtime log config for job execution. */
   LoggingConfig loggingConfig;
   /**
-   * Required The HCFS URI of the main Python file to use as the driver. Must be
-   * a .py file.
+   * Required. The HCFS URI of the main Python file to use as the driver. Must
+   * be a .py file.
    */
   core.String mainPythonFileUri;
   /**
-   * Optional A mapping of property names to values, used to configure PySpark.
+   * Optional. A mapping of property names to values, used to configure PySpark.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in
    * /etc/spark/conf/spark-defaults.conf and classes in user code.
    */
   core.Map<core.String, core.String> properties;
   /**
-   * Optional HCFS file URIs of Python files to pass to the PySpark framework.
+   * Optional. HCFS file URIs of Python files to pass to the PySpark framework.
    * Supported file types: .py, .egg, and .zip.
    */
   core.List<core.String> pythonFileUris;
@@ -3036,7 +3041,7 @@ class PySparkJob {
 /** A list of queries to run on a cluster. */
 class QueryList {
   /**
-   * Required The queries to execute. You do not need to terminate a query with
+   * Required. The queries to execute. You do not need to terminate a query with
    * a semicolon. Multiple queries can be specified in one string by separating
    * each with a semicolon. Here is an example of an Cloud Dataproc API snippet
    * that uses a QueryList to specify a HiveJob:
@@ -3072,22 +3077,24 @@ class QueryList {
 /** Specifies the selection and config of software inside the cluster. */
 class SoftwareConfig {
   /**
-   * Optional The version of software inside the cluster. It must match the
+   * Optional. The version of software inside the cluster. It must match the
    * regular expression [0-9]+\.[0-9]+. If unspecified, it defaults to the
    * latest version (see Cloud Dataproc Versioning).
    */
   core.String imageVersion;
   /**
-   * Optional The properties to set on daemon config files.Property keys are
+   * Optional. The properties to set on daemon config files.Property keys are
    * specified in prefix:property format, such as core:fs.defaultFS. The
    * following are supported prefixes and their mappings:
+   * capacity-scheduler: capacity-scheduler.xml
    * core: core-site.xml
+   * distcp: distcp-default.xml
    * hdfs: hdfs-site.xml
-   * mapred: mapred-site.xml
-   * yarn: yarn-site.xml
    * hive: hive-site.xml
+   * mapred: mapred-site.xml
    * pig: pig.properties
    * spark: spark-defaults.conf
+   * yarn: yarn-site.xml
    */
   core.Map<core.String, core.String> properties;
 
@@ -3120,28 +3127,28 @@ class SoftwareConfig {
  */
 class SparkJob {
   /**
-   * Optional HCFS URIs of archives to be extracted in the working directory of
+   * Optional. HCFS URIs of archives to be extracted in the working directory of
    * Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz,
    * and .zip.
    */
   core.List<core.String> archiveUris;
   /**
-   * Optional The arguments to pass to the driver. Do not include arguments,
+   * Optional. The arguments to pass to the driver. Do not include arguments,
    * such as --conf, that can be set as job properties, since a collision may
    * occur that causes an incorrect job submission.
    */
   core.List<core.String> args;
   /**
-   * Optional HCFS URIs of files to be copied to the working directory of Spark
+   * Optional. HCFS URIs of files to be copied to the working directory of Spark
    * drivers and distributed tasks. Useful for naively parallel tasks.
    */
   core.List<core.String> fileUris;
   /**
-   * Optional HCFS URIs of jar files to add to the CLASSPATHs of the Spark
+   * Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark
    * driver and tasks.
    */
   core.List<core.String> jarFileUris;
-  /** Optional The runtime log config for job execution. */
+  /** Optional. The runtime log config for job execution. */
   LoggingConfig loggingConfig;
   /**
    * The name of the driver's main class. The jar file that contains the class
@@ -3151,7 +3158,7 @@ class SparkJob {
   /** The HCFS URI of the jar file that contains the main class. */
   core.String mainJarFileUri;
   /**
-   * Optional A mapping of property names to values, used to configure Spark.
+   * Optional. A mapping of property names to values, used to configure Spark.
    * Properties that conflict with values set by the Cloud Dataproc API may be
    * overwritten. Can include properties set in
    * /etc/spark/conf/spark-defaults.conf and classes in user code.
@@ -3222,12 +3229,12 @@ class SparkJob {
  * (http://spark.apache.org/sql/) queries.
  */
 class SparkSqlJob {
-  /** Optional HCFS URIs of jar files to be added to the Spark CLASSPATH. */
+  /** Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH. */
   core.List<core.String> jarFileUris;
-  /** Optional The runtime log config for job execution. */
+  /** Optional. The runtime log config for job execution. */
   LoggingConfig loggingConfig;
   /**
-   * Optional A mapping of property names to values, used to configure Spark
+   * Optional. A mapping of property names to values, used to configure Spark
    * SQL's SparkConf. Properties that conflict with values set by the Cloud
    * Dataproc API may be overwritten.
    */
@@ -3237,8 +3244,8 @@ class SparkSqlJob {
   /** A list of queries. */
   QueryList queryList;
   /**
-   * Optional Mapping of query variable names to values (equivalent to the Spark
-   * SQL command: SET name="value";).
+   * Optional. Mapping of query variable names to values (equivalent to the
+   * Spark SQL command: SET name="value";).
    */
   core.Map<core.String, core.String> scriptVariables;
 
@@ -3302,7 +3309,7 @@ class SparkSqlJob {
  * localized user-facing error message is needed, put the localized message in
  * the error details or localize it in the client. The optional error details
  * may contain arbitrary information about the error. There is a predefined set
- * of error detail types in the package google.rpc which can be used for common
+ * of error detail types in the package google.rpc that can be used for common
  * error conditions.Language mappingThe Status message is the logical
  * representation of the error model, but it is not necessarily the actual wire
  * format. When the Status message is exposed in different client libraries and
@@ -3315,7 +3322,7 @@ class SparkSqlJob {
  * Partial errors. If a service needs to return partial errors to the client, it
  * may embed the Status in the normal response to indicate the partial errors.
  * Workflow errors. A typical workflow has multiple steps. Each step may have a
- * Status message for error reporting purpose.
+ * Status message for error reporting.
  * Batch operations. If a client uses batch request and batch response, the
  * Status message should be used directly inside batch response, one for each
  * error sub-response.
@@ -3374,7 +3381,7 @@ class Status {
 
 /** A request to submit a job. */
 class SubmitJobRequest {
-  /** Required The job resource. */
+  /** Required. The job resource. */
   Job job;
 
   SubmitJobRequest();
@@ -3401,12 +3408,12 @@ class SubmitJobRequest {
  * changed before final release.
  */
 class YarnApplication {
-  /** Required The application name. */
+  /** Required. The application name. */
   core.String name;
-  /** Required The numerical progress of the application, from 1 to 100. */
+  /** Required. The numerical progress of the application, from 1 to 100. */
   core.double progress;
   /**
-   * Required The application state.
+   * Required. The application state.
    * Possible string values are:
    * - "STATE_UNSPECIFIED" : Status is unspecified.
    * - "NEW" : Status is NEW.
@@ -3420,7 +3427,7 @@ class YarnApplication {
    */
   core.String state;
   /**
-   * Optional The HTTP URL of the ApplicationMaster, HistoryServer, or
+   * Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or
    * TimelineServer that provides application-specific information. The URL uses
    * the internal hostname, and requires a proxy server for resolution and,
    * possibly, access.

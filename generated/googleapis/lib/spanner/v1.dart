@@ -396,6 +396,14 @@ class ProjectsInstancesResourceApi {
    * requested. Values are of the form `projects/<project>`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - If non-empty, `page_token` should contain a
+   * next_page_token from a
+   * previous ListInstancesResponse.
+   *
+   * [pageSize] - Number of instances to be returned in the response. If 0 or
+   * less, defaults
+   * to the server's maximum allowed page size.
+   *
    * [filter] - An expression for filtering the results of the request. Filter
    * rules are
    * case insensitive. The fields eligible for filtering are:
@@ -417,14 +425,6 @@ class ProjectsInstancesResourceApi {
    *                                  it has the label "env" with its value
    *                                  containing "dev".
    *
-   * [pageToken] - If non-empty, `page_token` should contain a
-   * next_page_token from a
-   * previous ListInstancesResponse.
-   *
-   * [pageSize] - Number of instances to be returned in the response. If 0 or
-   * less, defaults
-   * to the server's maximum allowed page size.
-   *
    * Completes with a [ListInstancesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -433,7 +433,7 @@ class ProjectsInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstancesResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListInstancesResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -444,14 +444,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instances';
@@ -2055,48 +2055,51 @@ class ProjectsInstancesOperationsResourceApi {
  * Specifies the audit configuration for a service.
  * The configuration determines which permission types are logged, and what
  * identities, if any, are exempted from logging.
- * An AuditConifg must have one or more AuditLogConfigs.
+ * An AuditConfig must have one or more AuditLogConfigs.
  *
  * If there are AuditConfigs for both `allServices` and a specific service,
  * the union of the two AuditConfigs is used for that service: the log_types
  * specified in each AuditConfig are enabled, and the exempted_members in each
  * AuditConfig are exempted.
+ *
  * Example Policy with multiple AuditConfigs:
- * {
- *   "audit_configs": [
+ *
  *     {
- *       "service": "allServices"
- *       "audit_log_configs": [
+ *       "audit_configs": [
  *         {
- *           "log_type": "DATA_READ",
- *           "exempted_members": [
- *             "user:foo@gmail.com"
+ *           "service": "allServices"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *               "exempted_members": [
+ *                 "user:foo@gmail.com"
+ *               ]
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *             },
+ *             {
+ *               "log_type": "ADMIN_READ",
+ *             }
  *           ]
  *         },
  *         {
- *           "log_type": "DATA_WRITE",
- *         },
- *         {
- *           "log_type": "ADMIN_READ",
- *         }
- *       ]
- *     },
- *     {
- *       "service": "fooservice@googleapis.com"
- *       "audit_log_configs": [
- *         {
- *           "log_type": "DATA_READ",
- *         },
- *         {
- *           "log_type": "DATA_WRITE",
- *           "exempted_members": [
- *             "user:bar@gmail.com"
+ *           "service": "fooservice.googleapis.com"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *               "exempted_members": [
+ *                 "user:bar@gmail.com"
+ *               ]
+ *             }
  *           ]
  *         }
  *       ]
  *     }
- *   ]
- * }
+ *
  * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
  * logging. It also exempts foo@gmail.com from DATA_READ logging, and
  * bar@gmail.com from DATA_WRITE logging.
@@ -2110,7 +2113,7 @@ class AuditConfig {
   core.List<core.String> exemptedMembers;
   /**
    * Specifies a service that will be enabled for audit logging.
-   * For example, `resourcemanager`, `storage`, `compute`.
+   * For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
    * `allServices` is a special value that covers all services.
    */
   core.String service;
@@ -2611,6 +2614,8 @@ class CreateDatabaseRequest {
    * Required. A `CREATE DATABASE` statement, which specifies the ID of the
    * new database.  The database ID must conform to the regular expression
    * `a-z*[a-z0-9]` and be between 2 and 30 characters in length.
+   * If the database ID is a reserved word or if it contains a hyphen, the
+   * database ID must be enclosed in backticks (`` ` ``).
    */
   core.String createStatement;
   /**
@@ -3096,7 +3101,10 @@ class Instance {
    * segment of the name must be between 6 and 30 characters in length.
    */
   core.String name;
-  /** Required. The number of nodes allocated to this instance. */
+  /**
+   * Required. The number of nodes allocated to this instance. This may be zero
+   * in API responses for instances that are not yet in state `READY`.
+   */
   core.int nodeCount;
   /**
    * Output only. The current instance state. For
@@ -3548,31 +3556,7 @@ class ListOperationsResponse {
   }
 }
 
-/**
- * Specifies what kind of log the caller must write
- * Increment a streamz counter with the specified metric and field names.
- *
- * Metric names should start with a '/', generally be lowercase-only,
- * and end in "_count". Field names should not contain an initial slash.
- * The actual exported metric names will have "/iam/policy" prepended.
- *
- * Field names correspond to IAM request parameters and field values are
- * their respective values.
- *
- * At present the only supported field names are
- *    - "iam_principal", corresponding to IAMContext.principal;
- *    - "" (empty string), resulting in one aggretated counter with no field.
- *
- * Examples:
- *   counter { metric: "/debug_access_count"  field: "iam_principal" }
- *   ==> increment counter /iam/policy/backend_debug_access_count
- *                         {iam_principal=[value of IAMContext.principal]}
- *
- * At this time we do not support:
- * * multiple field names (though this may be supported in the future)
- * * decrementing the counter
- * * incrementing it by anything other than 1
- */
+/** Specifies what kind of log the caller must write */
 class LogConfig {
   /** Cloud audit options. */
   CloudAuditOptions cloudAudit;

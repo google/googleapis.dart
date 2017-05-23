@@ -288,6 +288,11 @@ class ProjectsJobsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Optional. A page token to request the next page of results.
+   *
+   * You get the token from the `next_page_token` field of the response from
+   * the previous call.
+   *
    * [pageSize] - Optional. The number of jobs to retrieve per "page" of
    * results. If there
    * are more remaining results than this number, the response message will
@@ -297,11 +302,6 @@ class ProjectsJobsResourceApi {
    *
    * [filter] - Optional. Specifies the subset of jobs to retrieve.
    *
-   * [pageToken] - Optional. A page token to request the next page of results.
-   *
-   * You get the token from the `next_page_token` field of the response from
-   * the previous call.
-   *
    * Completes with a [GoogleCloudMlV1ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -310,7 +310,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,14 +321,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -508,17 +508,17 @@ class ProjectsModelsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Optional. A page token to request the next page of results.
+   *
+   * You get the token from the `next_page_token` field of the response from
+   * the previous call.
+   *
    * [pageSize] - Optional. The number of models to retrieve per "page" of
    * results. If there
    * are more remaining results than this number, the response message will
    * contain a valid value in the `next_page_token` field.
    *
    * The default value is 20, and the maximum page size is 100.
-   *
-   * [pageToken] - Optional. A page token to request the next page of results.
-   *
-   * You get the token from the `next_page_token` field of the response from
-   * the previous call.
    *
    * Completes with a [GoogleCloudMlV1ListModelsResponse].
    *
@@ -528,7 +528,7 @@ class ProjectsModelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -539,11 +539,11 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
@@ -995,11 +995,11 @@ class ProjectsOperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageSize] - The standard list page size.
+   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
-   *
-   * [pageSize] - The standard list page size.
    *
    * Completes with a [GoogleLongrunningListOperationsResponse].
    *
@@ -1009,7 +1009,7 @@ class ProjectsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1020,14 +1020,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
@@ -2300,7 +2300,7 @@ class GoogleCloudMlV1TrainingInput {
    *   <dt>complex_model_m_gpu</dt>
    *   <dd>
    *   A machine equivalent to
-   *   <code suppresswarning="true">coplex_model_m</code> that also includes
+   *   <code suppresswarning="true">complex_model_m</code> that also includes
    *   four GPUs.
    *   </dd>
    * </dl>
@@ -3044,7 +3044,7 @@ class GoogleProtobufEmpty {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -3067,7 +3067,7 @@ class GoogleProtobufEmpty {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for

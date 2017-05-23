@@ -110,6 +110,63 @@ class ProjectsZonesClustersResourceApi {
       _requester = client;
 
   /**
+   * Completes master IP rotation.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> completeIpRotation(CompleteIPRotationRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + ':completeIpRotation';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Creates a cluster, consisting of the specified number and type of Google
    * Compute Engine instances.
    *
@@ -495,6 +552,63 @@ class ProjectsZonesClustersResourceApi {
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + ':setMasterAuth';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Start master IP rotation.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> startIpRotation(StartIPRotationRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + ':startIpRotation';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -1234,9 +1348,10 @@ class Cluster {
    */
   core.String expireTime;
   /**
-   * [Output only] The software version of the master endpoint and kubelets used
-   * in the cluster when it was first created. The version can be upgraded over
-   * time.
+   * The initial Kubernetes version for this cluster.  Valid versions are those
+   * found in validMasterVersions returned by getServerConfig.  The version can
+   * be upgraded over time; such upgrades are reflected in
+   * currentMasterVersion and currentNodeVersion.
    */
   core.String initialClusterVersion;
   /**
@@ -1331,7 +1446,7 @@ class Cluster {
    * The resource labels for the cluster to use to annotate any related GCE
    * resources.
    */
-  ResourceLabels resourceLabels;
+  core.Map<core.String, core.String> resourceLabels;
   /** [Output only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
@@ -1454,7 +1569,7 @@ class Cluster {
       nodePools = _json["nodePools"].map((value) => new NodePool.fromJson(value)).toList();
     }
     if (_json.containsKey("resourceLabels")) {
-      resourceLabels = new ResourceLabels.fromJson(_json["resourceLabels"]);
+      resourceLabels = _json["resourceLabels"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -1551,7 +1666,7 @@ class Cluster {
       _json["nodePools"] = nodePools.map((value) => (value).toJson()).toList();
     }
     if (resourceLabels != null) {
-      _json["resourceLabels"] = (resourceLabels).toJson();
+      _json["resourceLabels"] = resourceLabels;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -1692,6 +1807,22 @@ class ClusterUpdate {
   }
 }
 
+/**
+ * CompleteIPRotationRequest moves the cluster master back into single-IP mode.
+ */
+class CompleteIPRotationRequest {
+
+  CompleteIPRotationRequest();
+
+  CompleteIPRotationRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    return _json;
+  }
+}
+
 /** CreateClusterRequest creates a cluster. */
 class CreateClusterRequest {
   /**
@@ -1817,39 +1948,6 @@ class HttpLoadBalancing {
     var _json = new core.Map();
     if (disabled != null) {
       _json["disabled"] = disabled;
-    }
-    return _json;
-  }
-}
-
-/**
- * A label to be applied to Google Compute Engine resources. It must comply
- * with RFC1035 for each key and value.
- */
-class Item {
-  /** The Key for this label. */
-  core.String key;
-  /** The Value for this label. */
-  core.String value;
-
-  Item();
-
-  Item.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (key != null) {
-      _json["key"] = key;
-    }
-    if (value != null) {
-      _json["value"] = value;
     }
     return _json;
   }
@@ -2000,11 +2098,14 @@ class MasterAuth {
   /**
    * The password to use for HTTP basic authentication to the master endpoint.
    * Because the master endpoint is open to the Internet, you should create a
-   * strong password.
+   * strong password.  If a password is provided for cluster creation, username
+   * must be non-empty.
    */
   core.String password;
   /**
    * The username to use for HTTP basic authentication to the master endpoint.
+   * For clusters v1.6.0 and later, you can disable basic authentication by
+   * providing an empty username.
    */
   core.String username;
 
@@ -2560,33 +2661,6 @@ class Operation {
 }
 
 /**
- * The set of Google Compute Engine labels that will be applied to any
- * underlying resources that the Google Container Cluster creates or uses.
- * These are merely metadata on the resources, and do not change the behavior
- * of the cluster.
- */
-class ResourceLabels {
-  /** The list of labels. */
-  core.List<Item> items;
-
-  ResourceLabels();
-
-  ResourceLabels.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Item.fromJson(value)).toList();
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/**
  * RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed
  * NodePool upgrade. This will be an no-op if the last upgrade successfully
  * completed.
@@ -2674,7 +2748,7 @@ class SetLabelsRequest {
    */
   core.String labelFingerprint;
   /** The labels to set for that cluster. */
-  ResourceLabels resourceLabels;
+  core.Map<core.String, core.String> resourceLabels;
 
   SetLabelsRequest();
 
@@ -2683,7 +2757,7 @@ class SetLabelsRequest {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("resourceLabels")) {
-      resourceLabels = new ResourceLabels.fromJson(_json["resourceLabels"]);
+      resourceLabels = _json["resourceLabels"];
     }
   }
 
@@ -2693,7 +2767,7 @@ class SetLabelsRequest {
       _json["labelFingerprint"] = labelFingerprint;
     }
     if (resourceLabels != null) {
-      _json["resourceLabels"] = (resourceLabels).toJson();
+      _json["resourceLabels"] = resourceLabels;
     }
     return _json;
   }
@@ -2781,6 +2855,23 @@ class SetNodePoolManagementRequest {
     if (management != null) {
       _json["management"] = (management).toJson();
     }
+    return _json;
+  }
+}
+
+/**
+ * StartIPRotationRequest creates a new IP for the cluster and then performs
+ * a node upgrade on each node pool to point to the new IP.
+ */
+class StartIPRotationRequest {
+
+  StartIPRotationRequest();
+
+  StartIPRotationRequest.fromJson(core.Map _json) {
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
     return _json;
   }
 }

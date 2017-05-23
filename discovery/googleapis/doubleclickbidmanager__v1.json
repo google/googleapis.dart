@@ -1,4 +1,13 @@
 {
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/doubleclickbidmanager": {
+                    "description": "View and manage your reports in DoubleClick Bid Manager"
+                }
+            }
+        }
+    },
     "basePath": "/doubleclickbidmanager/v1/",
     "baseUrl": "https://www.googleapis.com/doubleclickbidmanager/v1/",
     "batchPath": "batch",
@@ -6,7 +15,7 @@
     "description": "API for viewing and managing your reports in DoubleClick Bid Manager.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/bid-manager/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/gruHatV5QkuL-Fye5CEQnrn6fLs\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/TpAruLLB982pPy6sW_n60NUC_v0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -78,7 +87,10 @@
                     },
                     "response": {
                         "$ref": "DownloadLineItemsResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 },
                 "uploadlineitems": {
                     "description": "Uploads line items in CSV format.",
@@ -90,7 +102,10 @@
                     },
                     "response": {
                         "$ref": "UploadLineItemsResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 }
             }
         },
@@ -106,7 +121,10 @@
                     },
                     "response": {
                         "$ref": "Query"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 },
                 "deletequery": {
                     "description": "Deletes a stored query as well as the associated stored reports.",
@@ -124,7 +142,10 @@
                             "type": "string"
                         }
                     },
-                    "path": "query/{queryId}"
+                    "path": "query/{queryId}",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 },
                 "getquery": {
                     "description": "Retrieves a stored query.",
@@ -145,7 +166,10 @@
                     "path": "query/{queryId}",
                     "response": {
                         "$ref": "Query"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 },
                 "listqueries": {
                     "description": "Retrieves stored queries.",
@@ -154,7 +178,10 @@
                     "path": "queries",
                     "response": {
                         "$ref": "ListQueriesResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 },
                 "runquery": {
                     "description": "Runs a stored query to generate a report.",
@@ -175,7 +202,10 @@
                     "path": "query/{queryId}",
                     "request": {
                         "$ref": "RunQueryRequest"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 }
             }
         },
@@ -200,7 +230,10 @@
                     "path": "queries/{queryId}/reports",
                     "response": {
                         "$ref": "ListReportsResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 }
             }
         },
@@ -216,7 +249,10 @@
                     },
                     "response": {
                         "$ref": "DownloadResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ]
                 }
             }
         }

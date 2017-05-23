@@ -700,10 +700,10 @@ class DetectedBreak {
    * - "SPACE" : Regular space.
    * - "SURE_SPACE" : Sure space (very wide).
    * - "EOL_SURE_SPACE" : Line-wrapping break.
-   * - "HYPHEN" : End-line hyphen that is not present in text; does
-   * - "LINE_BREAK" : not co-occur with SPACE, LEADER_SPACE, or
-   * LINE_BREAK.
-   * Line break that ends a paragraph.
+   * - "HYPHEN" : End-line hyphen that is not present in text; does not co-occur
+   * with
+   * `SPACE`, `LEADER_SPACE`, or `LINE_BREAK`.
+   * - "LINE_BREAK" : Line break that ends a paragraph.
    */
   core.String type;
 
@@ -1485,9 +1485,6 @@ class Landmark {
  *     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
  *     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
  *     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
- *
- * The code in logs/storage/validator/logs_validator_traits.cc treats this type
- * as if it were annotated as ST_LOCATION.
  */
 class LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -1874,7 +1871,7 @@ class SafeSearchAnnotation {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -1897,7 +1894,7 @@ class SafeSearchAnnotation {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for
@@ -2116,8 +2113,7 @@ class Vertex {
 class WebDetection {
   /**
    * Fully matching images from the Internet.
-   * They're definite neardups and most often a copy of the query image with
-   * merely a size change.
+   * Can include resized copies of the query image.
    */
   core.List<WebImage> fullMatchingImages;
   /** Web pages containing the matching images from the Internet. */

@@ -230,6 +230,13 @@ class ProjectsReposResourceApi {
    * `projects/<project>`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Resume listing repositories where a prior ListReposResponse
+   * left off. This is an opaque token that must be obtained from
+   * a recent, prior ListReposResponse's next_page_token field.
+   *
+   * [pageSize] - Maximum number of repositories to return; between 1 and 500.
+   * If not set or zero, defaults to 100 at the server.
+   *
    * Completes with a [ListReposResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -238,7 +245,7 @@ class ProjectsReposResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReposResponse> list(core.String name) {
+  async.Future<ListReposResponse> list(core.String name, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -248,6 +255,12 @@ class ProjectsReposResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/repos';
@@ -367,7 +380,7 @@ class ProjectsReposResourceApi {
  * Specifies the audit configuration for a service.
  * The configuration determines which permission types are logged, and what
  * identities, if any, are exempted from logging.
- * An AuditConifg must have one or more AuditLogConfigs.
+ * An AuditConfig must have one or more AuditLogConfigs.
  *
  * If there are AuditConfigs for both `allServices` and a specific service,
  * the union of the two AuditConfigs is used for that service: the log_types
@@ -770,12 +783,21 @@ class Empty {
 
 /** Response for ListRepos. */
 class ListReposResponse {
+  /**
+   * If non-empty, additional repositories exist within the project. These
+   * can be retrieved by including this value in the next ListReposRequest's
+   * page_token field.
+   */
+  core.String nextPageToken;
   /** The listed repos. */
   core.List<Repo> repos;
 
   ListReposResponse();
 
   ListReposResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
     if (_json.containsKey("repos")) {
       repos = _json["repos"].map((value) => new Repo.fromJson(value)).toList();
     }
@@ -783,6 +805,9 @@ class ListReposResponse {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
     if (repos != null) {
       _json["repos"] = repos.map((value) => (value).toJson()).toList();
     }
@@ -1014,7 +1039,10 @@ class Repo {
    * `projects/<project>/repos/<repo>`.
    */
   core.String name;
-  /** The size in bytes of the repo. */
+  /**
+   * The disk usage of the repo, in bytes.
+   * Only returned by GetRepo.
+   */
   core.String size;
   /** URL to clone the repository from Google Cloud Source Repositories. */
   core.String url;

@@ -94,7 +94,7 @@ Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Error Reporting API - clouderrorreporting v1beta1
 
-Stackdriver Error Reporting groups and counts similar errors from cloud services. The Stackdriver Error Reporting API provides a way to report new errors and read access to error groups and their associated errors.
+Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.
 
 
 Official API documentation: https://cloud.google.com/error-reporting/
@@ -143,7 +143,13 @@ Official API documentation: https://developers.google.com/cloud-dns
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Natural Language API - language v1beta1
 
-Google Cloud Natural Language API provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, and text annotations.
+Provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, entity sentiment analysis, and text annotations.
+
+Official API documentation: https://cloud.google.com/natural-language/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Natural Language API - language v1beta2
+
+Provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, entity sentiment analysis, and text annotations.
 
 Official API documentation: https://cloud.google.com/natural-language/
 
@@ -190,16 +196,15 @@ The Resource View API allows users to create and manage logical sets of Google C
 
 Official API documentation: https://developers.google.com/compute/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud RuntimeConfig API - runtimeconfig v1beta1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Runtime Configuration API - runtimeconfig v1beta1
 
-Provides capabilities for dynamic configuration and coordination for applications running on Google Cloud Platform.
-
+The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Speech API - speech v1beta1
 
-Google Cloud Speech API.
+Converts audio to text by applying powerful neural network models.
 
 Official API documentation: https://cloud.google.com/speech/
 
@@ -226,4 +231,10 @@ Official API documentation: https://developers.google.com/appengine/docs/python/
 Reads and publishes results from Firebase Test Lab.
 
 Official API documentation: https://firebase.google.com/docs/test-lab/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Video Intelligence API - videointelligence v1beta1
+
+Google Cloud Video Intelligence API.
+
+Official API documentation: https://cloud.google.com/video-intelligence/docs/
 

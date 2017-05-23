@@ -98,11 +98,11 @@ class ProjectsLocationsResourceApi {
    * [name] - The resource that owns the locations collection, if applicable.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - The standard list page token.
+   *
    * [pageSize] - The standard list page size.
    *
    * [filter] - The standard list filter.
-   *
-   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -112,7 +112,7 @@ class ProjectsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListLocationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,14 +123,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
@@ -1126,14 +1126,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
    *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListCryptoKeyVersionsResponse.next_page_token.
+   *
    * [pageSize] - Optional limit on the number of CryptoKeyVersions to
    * include in the response. Further CryptoKeyVersions can
    * subsequently be obtained by including the
    * ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
    * If unspecified, the server will pick an appropriate default.
-   *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListCryptoKeyVersionsResponse.next_page_token.
    *
    * Completes with a [ListCryptoKeyVersionsResponse].
    *
@@ -1143,7 +1143,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCryptoKeyVersionsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListCryptoKeyVersionsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1154,11 +1154,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeyVersions';
@@ -1293,7 +1293,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
  * Specifies the audit configuration for a service.
  * The configuration determines which permission types are logged, and what
  * identities, if any, are exempted from logging.
- * An AuditConifg must have one or more AuditLogConfigs.
+ * An AuditConfig must have one or more AuditLogConfigs.
  *
  * If there are AuditConfigs for both `allServices` and a specific service,
  * the union of the two AuditConfigs is used for that service: the log_types
@@ -1468,6 +1468,7 @@ class Binding {
    * * `group:{emailid}`: An email address that represents a Google group.
    *    For example, `admins@example.com`.
    *
+   *
    * * `domain:{domain}`: A Google Apps domain name that represents all the
    *    users of that domain. For example, `google.com` or `example.com`.
    */
@@ -1504,14 +1505,28 @@ class Binding {
 
 /** Write a Cloud Audit log */
 class CloudAuditOptions {
+  /**
+   * The log_name to populate in the Cloud Audit Record.
+   * Possible string values are:
+   * - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
+   * - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
+   * - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
+   */
+  core.String logName;
 
   CloudAuditOptions();
 
   CloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logName")) {
+      logName = _json["logName"];
+    }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (logName != null) {
+      _json["logName"] = logName;
+    }
     return _json;
   }
 }

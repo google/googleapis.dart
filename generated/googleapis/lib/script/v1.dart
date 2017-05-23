@@ -295,6 +295,79 @@ class ExecutionResponse {
 }
 
 /**
+ * A request to retrieve the results from a collection of requests,
+ * specified by the operation resource names.
+ */
+class JoinAsyncRequest {
+  /**
+   * List of operation resource names that we want to join,
+   * as returned from a call to RunAsync.
+   */
+  core.List<core.String> names;
+  /**
+   * The script id which specifies the script which all processes in the names
+   * field must be from.
+   */
+  core.String scriptId;
+  /** Timeout for information retrieval in milliseconds. */
+  core.String timeout;
+
+  JoinAsyncRequest();
+
+  JoinAsyncRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("names")) {
+      names = _json["names"];
+    }
+    if (_json.containsKey("scriptId")) {
+      scriptId = _json["scriptId"];
+    }
+    if (_json.containsKey("timeout")) {
+      timeout = _json["timeout"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (names != null) {
+      _json["names"] = names;
+    }
+    if (scriptId != null) {
+      _json["scriptId"] = scriptId;
+    }
+    if (timeout != null) {
+      _json["timeout"] = timeout;
+    }
+    return _json;
+  }
+}
+
+/** An object that provides the return value for the JoinAsync method. */
+class JoinAsyncResponse {
+  /**
+   * The return values for each script function, in a map of operation resource
+   * names to the Operation containing the result of the process. The response
+   * will contain either an error or the result of the script function.
+   */
+  core.Map<core.String, Operation> results;
+
+  JoinAsyncResponse();
+
+  JoinAsyncResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("results")) {
+      results = commons.mapMap(_json["results"], (item) => new Operation.fromJson(item));
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (results != null) {
+      _json["results"] = commons.mapMap(results, (item) => (item).toJson());
+    }
+    return _json;
+  }
+}
+
+/**
  * The response will not arrive until the function finishes executing. The
  * maximum runtime is listed in the guide to [limitations in Apps
  * Script](https://developers.google.com/apps-script/guides/services/quotas#current_limitations).

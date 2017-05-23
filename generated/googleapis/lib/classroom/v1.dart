@@ -40,6 +40,17 @@ class ClassroomApi {
    */
   static const ClassroomCourseworkStudentsReadonlyScope = "https://www.googleapis.com/auth/classroom.coursework.students.readonly";
 
+  /** View your Google Classroom guardians */
+  static const ClassroomGuardianlinksMeReadonlyScope = "https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly";
+
+  /**
+   * View and manage guardians for students in your Google Classroom classes
+   */
+  static const ClassroomGuardianlinksStudentsScope = "https://www.googleapis.com/auth/classroom.guardianlinks.students";
+
+  /** View guardians for students in your Google Classroom classes */
+  static const ClassroomGuardianlinksStudentsReadonlyScope = "https://www.googleapis.com/auth/classroom.guardianlinks.students.readonly";
+
   /** View the email addresses of people in your classes */
   static const ClassroomProfileEmailsScope = "https://www.googleapis.com/auth/classroom.profile.emails";
 
@@ -243,16 +254,6 @@ class CoursesResourceApi {
    *
    * Request parameters:
    *
-   * [courseStates] - Restricts returned courses to those in one of the
-   * specified states
-   * The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED.
-   *
-   * [pageSize] - Maximum number of items to return. Zero or unspecified
-   * indicates that the
-   * server may assign a maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
    * [teacherId] - Restricts returned courses to those having a teacher with the
    * specified
    * identifier. The identifier can be one of the following:
@@ -260,6 +261,10 @@ class CoursesResourceApi {
    * * the numeric identifier for the user
    * * the email address of the user
    * * the string literal `"me"`, indicating the requesting user
+   *
+   * [courseStates] - Restricts returned courses to those in one of the
+   * specified states
+   * The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED.
    *
    * [studentId] - Restricts returned courses to those having a student with the
    * specified
@@ -277,6 +282,12 @@ class CoursesResourceApi {
    * The list request must be
    * otherwise identical to the one that resulted in this token.
    *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the
+   * server may assign a maximum.
+   *
+   * The server may return fewer than the specified number of results.
+   *
    * Completes with a [ListCoursesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -285,7 +296,7 @@ class CoursesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCoursesResponse> list({core.List<core.String> courseStates, core.int pageSize, core.String teacherId, core.String studentId, core.String pageToken}) {
+  async.Future<ListCoursesResponse> list({core.String teacherId, core.List<core.String> courseStates, core.String studentId, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -293,20 +304,20 @@ class CoursesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (courseStates != null) {
-      _queryParams["courseStates"] = courseStates;
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (teacherId != null) {
       _queryParams["teacherId"] = [teacherId];
+    }
+    if (courseStates != null) {
+      _queryParams["courseStates"] = courseStates;
     }
     if (studentId != null) {
       _queryParams["studentId"] = [studentId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/courses';
@@ -585,12 +596,6 @@ class CoursesAliasesResourceApi {
    * This identifier can be either the Classroom-assigned identifier or an
    * alias.
    *
-   * [pageSize] - Maximum number of items to return. Zero or unspecified
-   * indicates that the
-   * server may assign a maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
    * [pageToken] - nextPageToken
    * value returned from a previous
    * list call,
@@ -598,6 +603,12 @@ class CoursesAliasesResourceApi {
    *
    * The list request
    * must be otherwise identical to the one that resulted in this token.
+   *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the
+   * server may assign a maximum.
+   *
+   * The server may return fewer than the specified number of results.
    *
    * Completes with a [ListCourseAliasesResponse].
    *
@@ -607,7 +618,7 @@ class CoursesAliasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCourseAliasesResponse> list(core.String courseId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListCourseAliasesResponse> list(core.String courseId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -618,11 +629,11 @@ class CoursesAliasesResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
@@ -843,16 +854,16 @@ class CoursesCourseWorkResourceApi {
    * This identifier can be either the Classroom-assigned identifier or an
    * alias.
    *
-   * [courseWorkStates] - Restriction on the work status to return. Only
-   * courseWork that matches
-   * is returned. If unspecified, items with a work status of `PUBLISHED`
-   * is returned.
-   *
    * [pageSize] - Maximum number of items to return. Zero or unspecified
    * indicates that the
    * server may assign a maximum.
    *
    * The server may return fewer than the specified number of results.
+   *
+   * [courseWorkStates] - Restriction on the work status to return. Only
+   * courseWork that matches
+   * is returned. If unspecified, items with a work status of `PUBLISHED`
+   * is returned.
    *
    * [orderBy] - Optional sort ordering for results. A comma-separated list of
    * fields with
@@ -877,7 +888,7 @@ class CoursesCourseWorkResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCourseWorkResponse> list(core.String courseId, {core.List<core.String> courseWorkStates, core.int pageSize, core.String orderBy, core.String pageToken}) {
+  async.Future<ListCourseWorkResponse> list(core.String courseId, {core.int pageSize, core.List<core.String> courseWorkStates, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -888,11 +899,11 @@ class CoursesCourseWorkResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (courseWorkStates != null) {
-      _queryParams["courseWorkStates"] = courseWorkStates;
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (courseWorkStates != null) {
+      _queryParams["courseWorkStates"] = courseWorkStates;
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -1097,6 +1108,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * This may be set to the string literal `"-"` to request student work for
    * all course work in the specified course.
    *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the
+   * server may assign a maximum.
+   *
+   * The server may return fewer than the specified number of results.
+   *
    * [states] - Requested submission states. If specified, returned student
    * submissions
    * match one of the specified submission states.
@@ -1109,12 +1126,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * * the numeric identifier for the user
    * * the email address of the user
    * * the string literal `"me"`, indicating the requesting user
-   *
-   * [pageSize] - Maximum number of items to return. Zero or unspecified
-   * indicates that the
-   * server may assign a maximum.
-   *
-   * The server may return fewer than the specified number of results.
    *
    * [late] - Requested lateness value. If specified, returned student
    * submissions are
@@ -1141,7 +1152,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListStudentSubmissionsResponse> list(core.String courseId, core.String courseWorkId, {core.List<core.String> states, core.String userId, core.int pageSize, core.String late, core.String pageToken}) {
+  async.Future<ListStudentSubmissionsResponse> list(core.String courseId, core.String courseWorkId, {core.int pageSize, core.List<core.String> states, core.String userId, core.String late, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1155,14 +1166,14 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (states != null) {
       _queryParams["states"] = states;
     }
     if (userId != null) {
       _queryParams["userId"] = [userId];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (late != null) {
       _queryParams["late"] = [late];
@@ -2032,10 +2043,6 @@ class CoursesTeachersResourceApi {
    * This identifier can be either the Classroom-assigned identifier or an
    * alias.
    *
-   * [pageSize] - Maximum number of items to return. Zero means no maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
    * [pageToken] - nextPageToken
    * value returned from a previous
    * list call, indicating that
@@ -2043,6 +2050,10 @@ class CoursesTeachersResourceApi {
    *
    * The list request must be
    * otherwise identical to the one that resulted in this token.
+   *
+   * [pageSize] - Maximum number of items to return. Zero means no maximum.
+   *
+   * The server may return fewer than the specified number of results.
    *
    * Completes with a [ListTeachersResponse].
    *
@@ -2052,7 +2063,7 @@ class CoursesTeachersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTeachersResponse> list(core.String courseId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListTeachersResponse> list(core.String courseId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2063,11 +2074,11 @@ class CoursesTeachersResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/teachers';
@@ -2296,14 +2307,6 @@ class InvitationsResourceApi {
    *
    * Request parameters:
    *
-   * [courseId] - Restricts returned invitations to those for a course with the
-   * specified
-   * identifier.
-   *
-   * [pageSize] - Maximum number of items to return. Zero means no maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
    * [userId] - Restricts returned invitations to those for a specific user. The
    * identifier
    * can be one of the following:
@@ -2320,6 +2323,14 @@ class InvitationsResourceApi {
    * The list request must be
    * otherwise identical to the one that resulted in this token.
    *
+   * [pageSize] - Maximum number of items to return. Zero means no maximum.
+   *
+   * The server may return fewer than the specified number of results.
+   *
+   * [courseId] - Restricts returned invitations to those for a course with the
+   * specified
+   * identifier.
+   *
    * Completes with a [ListInvitationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2328,7 +2339,7 @@ class InvitationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInvitationsResponse> list({core.String courseId, core.int pageSize, core.String userId, core.String pageToken}) {
+  async.Future<ListInvitationsResponse> list({core.String userId, core.String pageToken, core.int pageSize, core.String courseId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2336,17 +2347,17 @@ class InvitationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (courseId != null) {
-      _queryParams["courseId"] = [courseId];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (userId != null) {
       _queryParams["userId"] = [userId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (courseId != null) {
+      _queryParams["courseId"] = [courseId];
     }
 
     _url = 'v1/invitations';
@@ -2596,12 +2607,6 @@ class UserProfilesGuardianInvitationsResourceApi {
    *   all students that the requesting user is permitted to view guardian
    *   invitations.
    *
-   * [pageSize] - Maximum number of items to return. Zero or unspecified
-   * indicates that the
-   * server may assign a maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
    * [invitedEmailAddress] - If specified, only results with the specified
    * `invited_email_address`
    * will be returned.
@@ -2609,6 +2614,12 @@ class UserProfilesGuardianInvitationsResourceApi {
    * [states] - If specified, only results with the specified `state` values
    * will be
    * returned. Otherwise, results with a `state` of `PENDING` will be returned.
+   *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the
+   * server may assign a maximum.
+   *
+   * The server may return fewer than the specified number of results.
    *
    * [pageToken] - nextPageToken
    * value returned from a previous
@@ -2626,7 +2637,7 @@ class UserProfilesGuardianInvitationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGuardianInvitationsResponse> list(core.String studentId, {core.int pageSize, core.String invitedEmailAddress, core.List<core.String> states, core.String pageToken}) {
+  async.Future<ListGuardianInvitationsResponse> list(core.String studentId, {core.String invitedEmailAddress, core.List<core.String> states, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2637,14 +2648,14 @@ class UserProfilesGuardianInvitationsResourceApi {
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
     }
     if (states != null) {
       _queryParams["states"] = states;
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2913,17 +2924,6 @@ class UserProfilesGuardiansResourceApi {
    * * the string literal `"-"`, indicating that results should be returned for
    *   all students that the requesting user has access to view.
    *
-   * [pageSize] - Maximum number of items to return. Zero or unspecified
-   * indicates that the
-   * server may assign a maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
-   * [invitedEmailAddress] - Filter results by the email address that the
-   * original invitation was sent
-   * to, resulting in this guardian link.
-   * This filter can only be used by domain administrators.
-   *
    * [pageToken] - nextPageToken
    * value returned from a previous
    * list call,
@@ -2931,6 +2931,17 @@ class UserProfilesGuardiansResourceApi {
    *
    * The list request
    * must be otherwise identical to the one that resulted in this token.
+   *
+   * [invitedEmailAddress] - Filter results by the email address that the
+   * original invitation was sent
+   * to, resulting in this guardian link.
+   * This filter can only be used by domain administrators.
+   *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the
+   * server may assign a maximum.
+   *
+   * The server may return fewer than the specified number of results.
    *
    * Completes with a [ListGuardiansResponse].
    *
@@ -2940,7 +2951,7 @@ class UserProfilesGuardiansResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGuardiansResponse> list(core.String studentId, {core.int pageSize, core.String invitedEmailAddress, core.String pageToken}) {
+  async.Future<ListGuardiansResponse> list(core.String studentId, {core.String pageToken, core.String invitedEmailAddress, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2951,14 +2962,14 @@ class UserProfilesGuardiansResourceApi {
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardians';

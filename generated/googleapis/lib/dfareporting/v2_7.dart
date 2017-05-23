@@ -443,6 +443,7 @@ class AccountUserProfilesResourceApi {
    * [ids] - Select only user profiles with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -459,7 +460,7 @@ class AccountUserProfilesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -690,6 +691,7 @@ class AccountsResourceApi {
    * [ids] - Select only accounts with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -705,7 +707,7 @@ class AccountsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -998,6 +1000,7 @@ class AdsResourceApi {
    * [landingPageIds] - Select only ads with these landing page IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [overriddenEventTagId] - Select only ads with this event tag override ID.
    *
@@ -1022,7 +1025,7 @@ class AdsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -1380,6 +1383,7 @@ class AdvertiserGroupsResourceApi {
    * [ids] - Select only advertiser groups with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -1396,7 +1400,7 @@ class AdvertiserGroupsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -1662,6 +1666,7 @@ class AdvertisersResourceApi {
    * not belong to any advertiser group.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [onlyParent] - Select only advertisers which use another advertiser's
    * floodlight configuration.
@@ -1681,7 +1686,7 @@ class AdvertisersResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -1974,10 +1979,11 @@ class CampaignCreativeAssociationsResourceApi {
    * [campaignId] - Campaign ID in this association.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -2160,6 +2166,7 @@ class CampaignsResourceApi {
    * [ids] - Select only campaigns with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [overriddenEventTagId] - Select only campaigns that have overridden this
    * event tag ID.
@@ -2179,7 +2186,7 @@ class CampaignsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -2441,6 +2448,7 @@ class ChangeLogsResourceApi {
    * system), minute, second, and then the time zone offset.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [minChangeTime] - Select only change logs whose change time is before the
    * specified minChangeTime.The time should be formatted as an RFC3339
@@ -2874,6 +2882,7 @@ class ContentCategoriesResourceApi {
    * [ids] - Select only content categories with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -2890,7 +2899,7 @@ class ContentCategoriesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -3426,6 +3435,7 @@ class CreativeFieldValuesResourceApi {
    * [ids] - Select only creative field values with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -3437,7 +3447,7 @@ class CreativeFieldValuesResourceApi {
    * - "ID"
    * - "VALUE"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -3755,6 +3765,7 @@ class CreativeFieldsResourceApi {
    * [ids] - Select only creative fields with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -3772,7 +3783,7 @@ class CreativeFieldsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -4033,10 +4044,12 @@ class CreativeGroupsResourceApi {
    * advertisers.
    *
    * [groupNumber] - Select only creative groups that belong to this subgroup.
+   * Value must be between "1" and "2".
    *
    * [ids] - Select only creative groups with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -4054,7 +4067,7 @@ class CreativeGroupsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -4332,6 +4345,7 @@ class CreativesResourceApi {
    * [ids] - Select only creatives with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -4352,7 +4366,7 @@ class CreativesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -4667,6 +4681,7 @@ class DirectorySiteContactsResourceApi {
    * [ids] - Select only directory site contacts with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -4684,7 +4699,7 @@ class DirectorySiteContactsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -4866,6 +4881,7 @@ class DirectorySitesResourceApi {
    * [ids] - Select only directory sites with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -4884,7 +4900,7 @@ class DirectorySitesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -5335,7 +5351,7 @@ class EventTagsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -5506,7 +5522,8 @@ class FilesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves a report file by its report ID and file ID.
+   * Retrieves a report file by its report ID and file ID. This method supports
+   * media download.
    *
    * Request parameters:
    *
@@ -5576,8 +5593,7 @@ class FilesResourceApi {
    *
    * [pageToken] - The value of the nextToken from the previous result page.
    *
-   * [scope] - The scope that defines which results are returned, default is
-   * 'MINE'.
+   * [scope] - The scope that defines which results are returned.
    * Possible string values are:
    * - "ALL" : All files in account.
    * - "MINE" : My files.
@@ -5588,7 +5604,7 @@ class FilesResourceApi {
    * - "ID" : Sort by file ID.
    * - "LAST_MODIFIED_TIME" : Sort by 'lastmodifiedAt' field.
    *
-   * [sortOrder] - Order of sorted results, default is 'DESCENDING'.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING" : Ascending order.
    * - "DESCENDING" : Descending order.
@@ -5862,6 +5878,7 @@ class FloodlightActivitiesResourceApi {
    * non-empty result.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -5879,7 +5896,7 @@ class FloodlightActivitiesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -6171,6 +6188,7 @@ class FloodlightActivityGroupsResourceApi {
    * result.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -6189,7 +6207,7 @@ class FloodlightActivityGroupsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -6620,6 +6638,7 @@ class InventoryItemsResourceApi {
    * [inPlan] - Select only inventory items that are in plan.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [orderId] - Select only inventory items that belong to specified orders.
    *
@@ -6633,7 +6652,7 @@ class InventoryItemsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -7456,6 +7475,7 @@ class OrderDocumentsResourceApi {
    * [ids] - Select only order documents with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [orderId] - Select only order documents for specified orders.
    *
@@ -7477,7 +7497,7 @@ class OrderDocumentsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -7614,6 +7634,7 @@ class OrdersResourceApi {
    * [ids] - Select only orders with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -7631,7 +7652,7 @@ class OrdersResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -7819,6 +7840,7 @@ class PlacementGroupsResourceApi {
    * "yyyy-MM-dd".
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "800".
    *
    * [maxStartDate] - Select only placements or placement groups whose start
    * date is on or before the specified maxStartDate. The date should be
@@ -7866,7 +7888,7 @@ class PlacementGroupsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -8206,6 +8228,7 @@ class PlacementStrategiesResourceApi {
    * [ids] - Select only placement strategies with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -8223,7 +8246,7 @@ class PlacementStrategiesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -8562,6 +8585,7 @@ class PlacementsResourceApi {
    * "yyyy-MM-dd".
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [maxStartDate] - Select only placements or placement groups whose start
    * date is on or before the specified maxStartDate. The date should be
@@ -8604,7 +8628,7 @@ class PlacementsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -9051,6 +9075,7 @@ class ProjectsResourceApi {
    * [ids] - Select only projects with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -9066,7 +9091,7 @@ class ProjectsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -9433,6 +9458,7 @@ class RemarketingListsResourceApi {
    * floodlight activity ID.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [name] - Allows searching for objects by name or ID. Wildcards (*) are
    * allowed. For example, "remarketing list*2015" will return objects with
@@ -9449,7 +9475,7 @@ class RemarketingListsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -9761,8 +9787,7 @@ class ReportsResourceApi {
    *
    * [pageToken] - The value of the nextToken from the previous result page.
    *
-   * [scope] - The scope that defines which results are returned, default is
-   * 'MINE'.
+   * [scope] - The scope that defines which results are returned.
    * Possible string values are:
    * - "ALL" : All reports in account.
    * - "MINE" : My reports.
@@ -9773,7 +9798,7 @@ class ReportsResourceApi {
    * - "LAST_MODIFIED_TIME" : Sort by 'lastModifiedTime' field.
    * - "NAME" : Sort by name of reports.
    *
-   * [sortOrder] - Order of sorted results, default is 'DESCENDING'.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING" : Ascending order.
    * - "DESCENDING" : Descending order.
@@ -10037,7 +10062,7 @@ class ReportsFilesResourceApi {
       _requester = client;
 
   /**
-   * Retrieves a report file.
+   * Retrieves a report file. This method supports media download.
    *
    * Request parameters:
    *
@@ -10119,7 +10144,7 @@ class ReportsFilesResourceApi {
    * - "ID" : Sort by file ID.
    * - "LAST_MODIFIED_TIME" : Sort by 'lastmodifiedAt' field.
    *
-   * [sortOrder] - Order of sorted results, default is 'DESCENDING'.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING" : Ascending order.
    * - "DESCENDING" : Descending order.
@@ -10295,6 +10320,7 @@ class SitesResourceApi {
    * [ids] - Select only sites with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -10310,7 +10336,7 @@ class SitesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -10596,12 +10622,14 @@ class SizesResourceApi {
    * [profileId] - User profile ID associated with this request.
    *
    * [height] - Select only sizes with this height.
+   * Value must be between "0" and "32767".
    *
    * [iabStandard] - Select only IAB standard sizes.
    *
    * [ids] - Select only sizes with these IDs.
    *
    * [width] - Select only sizes with this width.
+   * Value must be between "0" and "32767".
    *
    * Completes with a [SizesListResponse].
    *
@@ -10754,6 +10782,7 @@ class SubaccountsResourceApi {
    * [ids] - Select only subaccounts with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -10770,7 +10799,7 @@ class SubaccountsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -10987,6 +11016,7 @@ class TargetableRemarketingListsResourceApi {
    * lists.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [name] - Allows searching for objects by name or ID. Wildcards (*) are
    * allowed. For example, "remarketing list*2015" will return objects with
@@ -11003,7 +11033,7 @@ class TargetableRemarketingListsResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -11172,6 +11202,7 @@ class TargetingTemplatesResourceApi {
    * [ids] - Select only targeting templates with these IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -11188,7 +11219,7 @@ class TargetingTemplatesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -11767,6 +11798,7 @@ class UserRolesResourceApi {
    * [ids] - Select only user roles with the specified IDs.
    *
    * [maxResults] - Maximum number of results to return.
+   * Value must be between "0" and "1000".
    *
    * [pageToken] - Value of the nextPageToken from the previous result page.
    *
@@ -11783,7 +11815,7 @@ class UserRolesResourceApi {
    * - "ID"
    * - "NAME"
    *
-   * [sortOrder] - Order of sorted results, default is ASCENDING.
+   * [sortOrder] - Order of sorted results.
    * Possible string values are:
    * - "ASCENDING"
    * - "DESCENDING"
@@ -12053,6 +12085,7 @@ class Account {
    * Maximum number of active ads allowed for this account.
    * Possible string values are:
    * - "ACTIVE_ADS_TIER_100K"
+   * - "ACTIVE_ADS_TIER_1M"
    * - "ACTIVE_ADS_TIER_200K"
    * - "ACTIVE_ADS_TIER_300K"
    * - "ACTIVE_ADS_TIER_40K"
@@ -12120,6 +12153,7 @@ class Account {
    * - "46" for AED
    * - "47" for BGN
    * - "48" for HRK
+   * - "49" for MXN
    */
   core.String currencyId;
   /** Default placement dimensions for this account. */
@@ -12154,7 +12188,10 @@ class Account {
    * - "zh-TW" (Chinese Traditional)
    */
   core.String locale;
-  /** Maximum image size allowed for this account. */
+  /**
+   * Maximum image size allowed for this account, in kilobytes. Value must be
+   * greater than or equal to 1.
+   */
   core.String maximumImageSize;
   /**
    * Name of this account. This is a required field, and must be less than 128
@@ -12171,8 +12208,8 @@ class Account {
   /** Share Path to Conversion reports with Twitter. */
   core.bool shareReportsWithTwitter;
   /**
-   * File size limit in kilobytes of Rich Media teaser creatives. Must be
-   * between 1 and 10240.
+   * File size limit in kilobytes of Rich Media teaser creatives. Acceptable
+   * values are 1 to 10240, inclusive.
    */
   core.String teaserSizeLimit;
 
@@ -12311,6 +12348,7 @@ class AccountActiveAdSummary {
    * Maximum number of active ads allowed for the account.
    * Possible string values are:
    * - "ACTIVE_ADS_TIER_100K"
+   * - "ACTIVE_ADS_TIER_1M"
    * - "ACTIVE_ADS_TIER_200K"
    * - "ACTIVE_ADS_TIER_300K"
    * - "ACTIVE_ADS_TIER_40K"
@@ -13793,9 +13831,9 @@ class AdvertisersListResponse {
 /** Audience Segment. */
 class AudienceSegment {
   /**
-   * Weight allocated to this segment. Must be between 1 and 1000. The weight
-   * assigned will be understood in proportion to the weights assigned to other
-   * segments in the same segment group.
+   * Weight allocated to this segment. The weight assigned will be understood in
+   * proportion to the weights assigned to other segments in the same segment
+   * group. Acceptable values are 1 to 1000, inclusive.
    */
   core.int allocation;
   /**
@@ -15488,8 +15526,8 @@ class ConversionsBatchInsertResponse {
    */
   core.String kind;
   /**
-   * The status of each conversion's insertion status. The status is returned in
-   * the same order that conversions are inserted.
+   * The insert status of each conversion. Statuses are returned in the same
+   * order that conversions are inserted.
    */
   core.List<ConversionStatus> status;
 
@@ -16512,7 +16550,8 @@ class CreativeAsset {
   core.List<core.String> companionCreativeIds;
   /**
    * Custom start time in seconds for making the asset visible. Applicable to
-   * the following creative types: all RICH_MEDIA.
+   * the following creative types: all RICH_MEDIA. Value must be greater than or
+   * equal to 0.
    */
   core.int customStartTimeValue;
   /**
@@ -16542,7 +16581,8 @@ class CreativeAsset {
   core.String displayType;
   /**
    * Duration in seconds for which an asset will be displayed. Applicable to the
-   * following creative types: INSTREAM_VIDEO and VPAID_LINEAR_VIDEO.
+   * following creative types: INSTREAM_VIDEO and VPAID_LINEAR_VIDEO. Value must
+   * be greater than or equal to 1.
    */
   core.int duration;
   /**
@@ -16651,11 +16691,11 @@ class CreativeAsset {
    */
   core.bool pushdown;
   /**
-   * Pushdown duration in seconds for an asset. Must be between 0 and 9.99.
-   * Applicable to the following creative types: all RICH_MEDIA.Additionally,
-   * only applicable when the asset pushdown field is true, the offsets are 0,
-   * the collapsedSize.width matches size.width, and the collapsedSize.height is
-   * less than size.height.
+   * Pushdown duration in seconds for an asset. Applicable to the following
+   * creative types: all RICH_MEDIA.Additionally, only applicable when the asset
+   * pushdown field is true, the offsets are 0, the collapsedSize.width matches
+   * size.width, and the collapsedSize.height is less than size.height.
+   * Acceptable values are 0 to 9.99, inclusive.
    */
   core.double pushdownDuration;
   /**
@@ -16748,10 +16788,11 @@ class CreativeAsset {
    */
   core.String windowMode;
   /**
-   * zIndex value of an asset. This is a read-only field. Applicable to the
-   * following creative types: all RICH_MEDIA.Additionally, only applicable to
-   * assets whose displayType is NOT one of the following types:
-   * ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY.
+   * zIndex value of an asset. Applicable to the following creative types: all
+   * RICH_MEDIA.Additionally, only applicable to assets whose displayType is NOT
+   * one of the following types: ASSET_DISPLAY_TYPE_INPAGE or
+   * ASSET_DISPLAY_TYPE_OVERLAY. Acceptable values are -999999999 to 999999999,
+   * inclusive.
    */
   core.int zIndex;
   /**
@@ -17284,6 +17325,7 @@ class CreativeAssignment {
   /**
    * Rich media exit overrides for this creative assignment.
    * Applicable when the creative type is any of the following:
+   * - DISPLAY
    * - RICH_MEDIA_INPAGE
    * - RICH_MEDIA_INPAGE_FLOATING
    * - RICH_MEDIA_IM_EXPAND
@@ -17292,14 +17334,14 @@ class CreativeAssignment {
    * - RICH_MEDIA_MOBILE_IN_APP
    * - RICH_MEDIA_MULTI_FLOATING
    * - RICH_MEDIA_PEEL_DOWN
-   * - ADVANCED_BANNER
    * - VPAID_LINEAR
    * - VPAID_NON_LINEAR
    */
   core.List<RichMediaExitOverride> richMediaExitOverrides;
   /**
    * Sequence number of the creative assignment, applicable when the rotation
-   * type is CREATIVE_ROTATION_TYPE_SEQUENTIAL.
+   * type is CREATIVE_ROTATION_TYPE_SEQUENTIAL. Acceptable values are 1 to
+   * 65535, inclusive.
    */
   core.int sequence;
   /**
@@ -17311,7 +17353,7 @@ class CreativeAssignment {
   core.DateTime startTime;
   /**
    * Weight of the creative assignment, applicable when the rotation type is
-   * CREATIVE_ROTATION_TYPE_RANDOM.
+   * CREATIVE_ROTATION_TYPE_RANDOM. Value must be greater than or equal to 1.
    */
   core.int weight;
 
@@ -17799,12 +17841,10 @@ class CreativeGroup {
    */
   DimensionValue advertiserIdDimensionValue;
   /**
-   * Subgroup of the creative group. Assign your creative groups to one of the
-   * following subgroups in order to filter or manage them more easily. This
-   * field is required on insertion and is read-only after insertion.
-   * Acceptable values are:
-   * - 1
-   * - 2
+   * Subgroup of the creative group. Assign your creative groups to a subgroup
+   * in order to filter or manage them more easily. This field is required on
+   * insertion and is read-only after insertion. Acceptable values are 1 to 2,
+   * inclusive.
    */
   core.int groupNumber;
   /** ID of this creative group. This is a read-only, auto-generated field. */
@@ -18504,13 +18544,12 @@ class DayPartTargeting {
    */
   core.List<core.String> daysOfWeek;
   /**
-   * Hours of the day when the ad will serve. Must be an integer between 0 and
-   * 23 (inclusive), where 0 is midnight to 1 AM, and 23 is 11 PM to midnight.
-   * Can be specified with days of week, in which case the ad would serve during
-   * these hours on the specified days. For example, if Monday, Wednesday,
-   * Friday are the days of week specified and 9-10am, 3-5pm (hours 9, 15, and
-   * 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at
-   * 9-10am and 3-5pm.
+   * Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23
+   * is 11 PM to midnight. Can be specified with days of week, in which case the
+   * ad would serve during these hours on the specified days. For example if
+   * Monday, Wednesday, Friday are the days of week specified and 9-10am, 3-5pm
+   * (hours 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays,
+   * and Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive.
    */
   core.List<core.int> hoursOfDay;
   /**
@@ -18605,7 +18644,7 @@ class DeliverySchedule {
    * Impression ratio for this ad. This ratio determines how often each ad is
    * served relative to the others. For example, if ad A has an impression ratio
    * of 1 and ad B has an impression ratio of 3, then DCM will serve ad B three
-   * times as often as ad A. Must be between 1 and 10.
+   * times as often as ad A. Acceptable values are 1 to 10, inclusive.
    */
   core.String impressionRatio;
   /**
@@ -18994,10 +19033,10 @@ class DirectorySite {
   core.bool active;
   /** Directory site contacts. */
   core.List<DirectorySiteContactAssignment> contactAssignments;
-  /** Country ID of this directory site. */
+  /** Country ID of this directory site. This is a read-only field. */
   core.String countryId;
   /**
-   * Currency ID of this directory site.
+   * Currency ID of this directory site. This is a read-only field.
    * Possible values are:
    * - "1" for USD
    * - "2" for GBP
@@ -19046,9 +19085,10 @@ class DirectorySite {
    * - "46" for AED
    * - "47" for BGN
    * - "48" for HRK
+   * - "49" for MXN
    */
   core.String currencyId;
-  /** Description of this directory site. */
+  /** Description of this directory site. This is a read-only field. */
   core.String description;
   /** ID of this directory site. This is a read-only, auto-generated field. */
   core.String id;
@@ -20288,7 +20328,9 @@ class FloodlightActivity {
    */
   DimensionValue advertiserIdDimensionValue;
   /**
-   * Code type used for cache busting in the generated tag.
+   * Code type used for cache busting in the generated tag. Applicable only when
+   * floodlightActivityGroupType is COUNTER and countingMethod is
+   * STANDARD_COUNTING or UNIQUE_COUNTING.
    * Possible string values are:
    * - "ACTIVE_SERVER_PAGE"
    * - "COLD_FUSION"
@@ -21218,12 +21260,12 @@ class FloodlightReportCompatibleFields {
 class FrequencyCap {
   /**
    * Duration of time, in seconds, for this frequency cap. The maximum duration
-   * is 90 days in seconds, or 7,776,000.
+   * is 90 days. Acceptable values are 1 to 7776000, inclusive.
    */
   core.String duration;
   /**
    * Number of times an individual user can be served the ad within the
-   * specified duration. The maximum allowed is 15.
+   * specified duration. Acceptable values are 1 to 15, inclusive.
    */
   core.String impressions;
 
@@ -22122,14 +22164,16 @@ class LookbackConfiguration {
    * Lookback window, in days, from the last time a given user clicked on one of
    * your ads. If you enter 0, clicks will not be considered as triggering
    * events for floodlight tracking. If you leave this field blank, the default
-   * value for your account will be used.
+   * value for your account will be used. Acceptable values are 0 to 90,
+   * inclusive.
    */
   core.int clickDuration;
   /**
    * Lookback window, in days, from the last time a given user viewed one of
    * your ads. If you enter 0, impressions will not be considered as triggering
    * events for floodlight tracking. If you leave this field blank, the default
-   * value for your account will be used.
+   * value for your account will be used. Acceptable values are 0 to 90,
+   * inclusive.
    */
   core.int postImpressionActivitiesDuration;
 
@@ -22712,9 +22756,9 @@ class OptimizationActivity {
    */
   DimensionValue floodlightActivityIdDimensionValue;
   /**
-   * Weight associated with this optimization. Must be greater than 1. The
-   * weight assigned will be understood in proportion to the weights assigned to
-   * the other optimization activities.
+   * Weight associated with this optimization. The weight assigned will be
+   * understood in proportion to the weights assigned to the other optimization
+   * activities. Value must be greater than or equal to 1.
    */
   core.int weight;
 
@@ -23478,6 +23522,8 @@ class Placement {
    * - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
    * - "PLACEMENT_TAG_CLICK_COMMANDS"
    * - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
+   * - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
+   * - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
    * - "PLACEMENT_TAG_TRACKING"
    * - "PLACEMENT_TAG_TRACKING_IFRAME"
    * - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
@@ -24841,7 +24887,10 @@ class PricingSchedulePricingPeriod {
   core.DateTime endDate;
   /** Comments for this pricing period. */
   core.String pricingComment;
-  /** Rate or cost of this pricing period. */
+  /**
+   * Rate or cost of this pricing period in nanos (i.e., multipled by
+   * 1000000000). Acceptable values are 0 to 1000000000000000000, inclusive.
+   */
   core.String rateOrCostNanos;
   /**
    * Pricing period start date. This date must be later than, or the same day
@@ -24849,7 +24898,10 @@ class PricingSchedulePricingPeriod {
    * date should not be set, as doing so will result in an error.
    */
   core.DateTime startDate;
-  /** Units of this pricing period. */
+  /**
+   * Units of this pricing period. Acceptable values are 0 to 10000000000,
+   * inclusive.
+   */
   core.String units;
 
   PricingSchedulePricingPeriod();
@@ -25408,7 +25460,7 @@ class RemarketingList {
   core.String kind;
   /**
    * Number of days that a user should remain in the remarketing list without an
-   * impression.
+   * impression. Acceptable values are 1 to 540, inclusive.
    */
   core.String lifeSpan;
   /** Rule used to populate the remarketing list with users. */
@@ -27147,7 +27199,7 @@ class SitesListResponse {
  * Represents the dimensions of ads, placements, creatives, or creative assets.
  */
 class Size {
-  /** Height of this size. */
+  /** Height of this size. Acceptable values are 0 to 32767, inclusive. */
   core.int height;
   /** IAB standard size. This is a read-only, auto-generated field. */
   core.bool iab;
@@ -27158,7 +27210,7 @@ class Size {
    * "dfareporting#size".
    */
   core.String kind;
-  /** Width of this size. */
+  /** Width of this size. Acceptable values are 0 to 32767, inclusive. */
   core.int width;
 
   Size();
@@ -27441,11 +27493,17 @@ class SubaccountsListResponse {
 
 /** Placement Tag Data */
 class TagData {
-  /** Ad associated with this placement tag. */
+  /**
+   * Ad associated with this placement tag. Applicable only when format is
+   * PLACEMENT_TAG_TRACKING.
+   */
   core.String adId;
   /** Tag string to record a click. */
   core.String clickTag;
-  /** Creative associated with this placement tag. */
+  /**
+   * Creative associated with this placement tag. Applicable only when format is
+   * PLACEMENT_TAG_TRACKING.
+   */
   core.String creativeId;
   /**
    * TagData tag format of this tag.
@@ -27456,6 +27514,7 @@ class TagData {
    * - "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
    * - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
    * - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
+   * - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
    * - "PLACEMENT_TAG_INTERNAL_REDIRECT"
    * - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
    * - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
@@ -28911,10 +28970,13 @@ class VideoFormatsListResponse {
 class VideoOffset {
   /**
    * Duration, as a percentage of video duration. Do not set when offsetSeconds
-   * is set.
+   * is set. Acceptable values are 0 to 100, inclusive.
    */
   core.int offsetPercentage;
-  /** Duration, in seconds. Do not set when offsetPercentage is set. */
+  /**
+   * Duration, in seconds. Do not set when offsetPercentage is set. Acceptable
+   * values are 0 to 86399, inclusive.
+   */
   core.int offsetSeconds;
 
   VideoOffset();

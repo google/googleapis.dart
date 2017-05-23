@@ -3642,7 +3642,7 @@ class GlobalForwardingRulesResourceApi {
       _requester = client;
 
   /**
-   * Deletes the specified ForwardingRule resource.
+   * Deletes the specified GlobalForwardingRule resource.
    *
    * Request parameters:
    *
@@ -3689,8 +3689,8 @@ class GlobalForwardingRulesResourceApi {
   }
 
   /**
-   * Returns the specified ForwardingRule resource. Get a list of available
-   * forwarding rules by making a list() request.
+   * Returns the specified GlobalForwardingRule resource. Get a list of
+   * available forwarding rules by making a list() request.
    *
    * Request parameters:
    *
@@ -3737,8 +3737,8 @@ class GlobalForwardingRulesResourceApi {
   }
 
   /**
-   * Creates a ForwardingRule resource in the specified project and region using
-   * the data included in the request.
+   * Creates a GlobalForwardingRule resource in the specified project using the
+   * data included in the request.
    *
    * [request] - The metadata request object.
    *
@@ -3784,8 +3784,8 @@ class GlobalForwardingRulesResourceApi {
   }
 
   /**
-   * Retrieves a list of ForwardingRule resources available to the specified
-   * project.
+   * Retrieves a list of GlobalForwardingRule resources available to the
+   * specified project.
    *
    * Request parameters:
    *
@@ -3884,8 +3884,8 @@ class GlobalForwardingRulesResourceApi {
   }
 
   /**
-   * Changes target URL for forwarding rule. The new target should be of the
-   * same type as the old target.
+   * Changes target URL for the GlobalForwardingRule resource. The new target
+   * should be of the same type as the old target.
    *
    * [request] - The metadata request object.
    *
@@ -7584,7 +7584,10 @@ class InstancesResourceApi {
   }
 
   /**
-   * Attaches a Disk resource to an instance.
+   * Attaches an existing Disk resource to an instance. You must first create
+   * the disk before you can attach it. It is not possible to create and attach
+   * a disk at the same time. For more information, read Adding a persistent
+   * disk to your instance.
    *
    * [request] - The metadata request object.
    *
@@ -13572,7 +13575,7 @@ class SubnetworksResourceApi {
 
   /**
    * Set whether VMs in this subnet can access Google services without assigning
-   * external IP addresses through Cloudpath.
+   * external IP addresses through Private Google Access.
    *
    * [request] - The metadata request object.
    *
@@ -18662,23 +18665,21 @@ class AutoscalingPolicyCpuUtilization {
 /** Custom utilization metric policy. */
 class AutoscalingPolicyCustomMetricUtilization {
   /**
-   * The identifier of the Stackdriver Monitoring metric. The metric cannot have
-   * negative values and should be a utilization metric, which means that the
-   * number of virtual machines handling requests should increase or decrease
-   * proportionally to the metric. The metric must also have a label of
-   * compute.googleapis.com/resource_id with the value of the instance's unique
-   * ID, although this alone does not guarantee that the metric is valid.
+   * The identifier (type) of the Stackdriver Monitoring metric. The metric
+   * cannot have negative values and should be a utilization metric, which means
+   * that the number of virtual machines handling requests should increase or
+   * decrease proportionally to the metric.
    *
-   * For example, the following is a valid metric:
-   * compute.googleapis.com/instance/network/received_bytes_count
-   * The following is not a valid metric because it does not increase or
-   * decrease based on usage:
-   * compute.googleapis.com/instance/cpu/reserved_cores
+   * The metric must have a value type of INT64 or DOUBLE.
    */
   core.String metric;
   /**
-   * Target value of the metric which autoscaler should maintain. Must be a
-   * positive value.
+   * The target value of the metric that autoscaler should maintain. This must
+   * be a positive value.
+   *
+   * For example, a good metric to use as a utilization_target is
+   * compute.googleapis.com/instance/network/received_bytes_count. The
+   * autoscaler will work to keep this value constant for each of the instances.
    */
   core.double utilizationTarget;
   /**
@@ -18817,7 +18818,7 @@ class Backend {
   core.int maxRate;
   /**
    * The max requests per second (RPS) that a single backend instance can
-   * handle.This is used to calculate the capacity of the group. Can be used in
+   * handle. This is used to calculate the capacity of the group. Can be used in
    * either balancing mode. For RATE mode, either maxRate or maxRatePerInstance
    * must be set.
    *
@@ -19100,6 +19101,7 @@ class BackendService {
    * specified instead.
    */
   core.List<core.String> healthChecks;
+  BackendServiceIAP iap;
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
    * defined by the server.
@@ -19219,6 +19221,9 @@ class BackendService {
     if (_json.containsKey("healthChecks")) {
       healthChecks = _json["healthChecks"];
     }
+    if (_json.containsKey("iap")) {
+      iap = new BackendServiceIAP.fromJson(_json["iap"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -19282,6 +19287,9 @@ class BackendService {
     }
     if (healthChecks != null) {
       _json["healthChecks"] = healthChecks;
+    }
+    if (iap != null) {
+      _json["iap"] = (iap).toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -19424,6 +19432,51 @@ class BackendServiceGroupHealth {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/** Identity-Aware Proxy */
+class BackendServiceIAP {
+  core.bool enabled;
+  core.String oauth2ClientId;
+  core.String oauth2ClientSecret;
+  /**
+   * [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+   */
+  core.String oauth2ClientSecretSha256;
+
+  BackendServiceIAP();
+
+  BackendServiceIAP.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("oauth2ClientId")) {
+      oauth2ClientId = _json["oauth2ClientId"];
+    }
+    if (_json.containsKey("oauth2ClientSecret")) {
+      oauth2ClientSecret = _json["oauth2ClientSecret"];
+    }
+    if (_json.containsKey("oauth2ClientSecretSha256")) {
+      oauth2ClientSecretSha256 = _json["oauth2ClientSecretSha256"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (oauth2ClientId != null) {
+      _json["oauth2ClientId"] = oauth2ClientId;
+    }
+    if (oauth2ClientSecret != null) {
+      _json["oauth2ClientSecret"] = oauth2ClientSecret;
+    }
+    if (oauth2ClientSecretSha256 != null) {
+      _json["oauth2ClientSecretSha256"] = oauth2ClientSecretSha256;
     }
     return _json;
   }
@@ -20949,7 +21002,7 @@ class Firewall {
    */
   core.String id;
   /**
-   * [Output Ony] Type of the resource. Always compute#firewall for firewall
+   * [Output Only] Type of the resource. Always compute#firewall for firewall
    * rules.
    */
   core.String kind;
@@ -21153,7 +21206,7 @@ class FirewallList {
 /**
  * A ForwardingRule resource. A ForwardingRule resource specifies which pool of
  * target virtual machines to forward a packet to if it matches the given
- * [IPAddress, IPProtocol, portRange] tuple.
+ * [IPAddress, IPProtocol, ports] tuple.
  */
 class ForwardingRule {
   /**
@@ -21241,16 +21294,26 @@ class ForwardingRule {
    */
   core.String network;
   /**
+   * This field is used along with the target field for TargetHttpProxy,
+   * TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
+   * TargetPool, TargetInstance.
+   *
    * Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
    * addressed to ports in the specified range will be forwarded to target.
    * Forwarding rules with the same [IPAddress, IPProtocol] pair must have
    * disjoint port ranges.
    *
-   * This field is not used for internal load balancing.
+   * Some types of forwarding target have constraints on the acceptable ports:
+   * - TargetHttpProxy: 80, 8080
+   * - TargetHttpsProxy: 443
+   * - TargetSslProxy: 443
+   * - TargetVpnGateway: 500, 4500
+   * -
    */
   core.String portRange;
   /**
-   * This field is not used for external load balancing.
+   * This field is used along with the backend_service field for internal load
+   * balancing.
    *
    * When the load balancing scheme is INTERNAL, a single port or a comma
    * separated list of ports can be configured. Only packets addressed to these
@@ -22712,10 +22775,10 @@ class Image {
   /**
    * A list of features to enable on the guest OS. Applicable for bootable
    * images only. Currently, only one feature can be enabled,
-   * VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own
-   * queue. For Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on
+   * VIRTIO_SCSI_MULTIQUEUE, which allows each virtual CPU to have its own
+   * queue. For Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on
    * images with driver version 1.2.0.1621 or higher. Linux images with kernel
-   * versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.
+   * versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
    *
    * For new Windows images, the server might also populate this field with the
    * value WINDOWS, to indicate that this is a Windows image. This value is
@@ -24040,8 +24103,8 @@ class InstanceGroupManagerList {
 
 class InstanceGroupManagersAbandonInstancesRequest {
   /**
-   * The URL for one or more instances to abandon from the managed instance
-   * group.
+   * The URLs of one or more instances to abandon. This can be a full URL or a
+   * partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
    */
   core.List<core.String> instances;
 
@@ -24064,8 +24127,8 @@ class InstanceGroupManagersAbandonInstancesRequest {
 
 class InstanceGroupManagersDeleteInstancesRequest {
   /**
-   * The list of instances to delete from this managed instance group. Specify
-   * one or more instance URLs.
+   * The URLs of one or more instances to delete. This can be a full URL or a
+   * partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
    */
   core.List<core.String> instances;
 
@@ -24108,7 +24171,10 @@ class InstanceGroupManagersListManagedInstancesResponse {
 }
 
 class InstanceGroupManagersRecreateInstancesRequest {
-  /** The URL for one or more instances to recreate. */
+  /**
+   * The URLs of one or more instances to recreate. This can be a full URL or a
+   * partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+   */
   core.List<core.String> instances;
 
   InstanceGroupManagersRecreateInstancesRequest();
@@ -27811,7 +27877,10 @@ class RegionInstanceGroupManagersListInstancesResponse {
 }
 
 class RegionInstanceGroupManagersRecreateRequest {
-  /** The URL for one or more instances to recreate. */
+  /**
+   * The URLs of one or more instances to recreate. This can be a full URL or a
+   * partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+   */
   core.List<core.String> instances;
 
   RegionInstanceGroupManagersRecreateRequest();
@@ -28897,6 +28966,8 @@ class RouterList {
 class RouterStatus {
   /** Best routes for this router's network. */
   core.List<Route> bestRoutes;
+  /** Best routes learned by this router. */
+  core.List<Route> bestRoutesForRouter;
   core.List<RouterStatusBgpPeerStatus> bgpPeerStatus;
   /** URI of the network to which this router belongs. */
   core.String network;
@@ -28906,6 +28977,9 @@ class RouterStatus {
   RouterStatus.fromJson(core.Map _json) {
     if (_json.containsKey("bestRoutes")) {
       bestRoutes = _json["bestRoutes"].map((value) => new Route.fromJson(value)).toList();
+    }
+    if (_json.containsKey("bestRoutesForRouter")) {
+      bestRoutesForRouter = _json["bestRoutesForRouter"].map((value) => new Route.fromJson(value)).toList();
     }
     if (_json.containsKey("bgpPeerStatus")) {
       bgpPeerStatus = _json["bgpPeerStatus"].map((value) => new RouterStatusBgpPeerStatus.fromJson(value)).toList();
@@ -28919,6 +28993,9 @@ class RouterStatus {
     var _json = new core.Map();
     if (bestRoutes != null) {
       _json["bestRoutes"] = bestRoutes.map((value) => (value).toJson()).toList();
+    }
+    if (bestRoutesForRouter != null) {
+      _json["bestRoutesForRouter"] = bestRoutesForRouter.map((value) => (value).toJson()).toList();
     }
     if (bgpPeerStatus != null) {
       _json["bgpPeerStatus"] = bgpPeerStatus.map((value) => (value).toJson()).toList();

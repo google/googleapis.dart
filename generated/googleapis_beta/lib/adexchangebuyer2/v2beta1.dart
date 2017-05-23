@@ -515,16 +515,16 @@ class AccountsClientsUsersResourceApi {
    * to list all the client users for all the clients
    * of a given sponsor buyer.
    *
+   * [pageSize] - Requested page size. The server may return fewer clients than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
    * ListClientUsersResponse.nextPageToken
    * returned from the previous call to the
    * accounts.clients.users.list method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer clients than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListClientUsersResponse].
    *
@@ -534,7 +534,7 @@ class AccountsClientsUsersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClientUsersResponse> list(core.String accountId, core.String clientAccountId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListClientUsersResponse> list(core.String accountId, core.String clientAccountId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -548,11 +548,11 @@ class AccountsClientsUsersResourceApi {
     if (clientAccountId == null) {
       throw new core.ArgumentError("Parameter clientAccountId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/clients/' + commons.Escaper.ecapeVariable('$clientAccountId') + '/users';

@@ -15,8 +15,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client runtimeconfig/v1beta1';
 
 /**
- * Provides capabilities for dynamic configuration and coordination for
- * applications running on Google Cloud Platform.
+ * The Runtime Configurator allows you to dynamically configure and expose
+ * variables through Google Cloud Platform. In addition, you can also set
+ * Watchers and Waiters that will watch for changes to your data and return
+ * based on certain conditions.
  */
 class RuntimeconfigApi {
   /** View and manage your data across Google Cloud Platform services */

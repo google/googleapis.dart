@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/4k7_mz3_hjiHB-sQeq0R5OymfdI\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/g_G3eD_OgD8-ScdUNw6NbiklXmE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -946,7 +946,7 @@
             }
         }
     },
-    "revision": "20170408",
+    "revision": "20170511",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -1749,7 +1749,7 @@
                     "type": "string"
                 },
                 "query": {
-                    "description": "[Required] BigQuery SQL query to execute.",
+                    "description": "[Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.",
                     "type": "string"
                 },
                 "queryParameters": {
@@ -2586,7 +2586,7 @@
             "id": "TableFieldSchema",
             "properties": {
                 "description": {
-                    "description": "[Optional] The field description. The maximum length is 16K characters.",
+                    "description": "[Optional] The field description. The maximum length is 512 characters.",
                     "type": "string"
                 },
                 "fields": {

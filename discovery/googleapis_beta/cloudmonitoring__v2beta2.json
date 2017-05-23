@@ -18,7 +18,7 @@
     "description": "Accesses Google Cloud Monitoring data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/monitoring/v2beta2/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/dLDZTdl1jn1shJ_QgCYpv_Kevvc\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/NOsFjtPY9zRzc3K9F8mQGuDeSj0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -411,7 +411,7 @@
             }
         }
     },
-    "revision": "20170323",
+    "revision": "20170501",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DeleteMetricDescriptorResponse": {

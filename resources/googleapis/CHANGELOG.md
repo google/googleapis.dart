@@ -1,26 +1,60 @@
 ## 0.39.0
 
-[api-new] tracing:v2
-[api] books:v1
-[api] compute:v1
-[api] container:v1
-[api] drive:v2
-[api] drive:v3
-[api] iam:v1
-[api] identitytoolkit:v3
-[api] logging:v2
-[api] servicemanagement:v1
-[api] serviceuser:v1
-[api] storage:v1
-[api-breaking] cloudfunctions:v1
-[api-breaking] cloudresourcemanager:v1
-[api-breaking] compute:v1
-[api-breaking] consumersurveys:v2
-[api-breaking] content:v2
-[api-breaking] servicemanagement:v1
-[api-breaking] storagetransfer:v1
-[api-breaking] surveys:v2
-[api-removed] tracingv1
+* [api-new] dfareporting:v2_8
+* [api-new] tagmanager:v2
+* [api-new] speech:v1
+* [api-new] bigquerydatatransfer:v1
+* [api] classroom:v1
+* [api] content:v2
+* [api] cloudkms:v1
+* [api] container:v1
+* [api] sourcerepo:v1
+* [api] serviceuser:v1
+* [api] storage:v1
+* [api] compute:v1
+* [api] drive:v3
+* [api] drive:v2
+* [api] tracing:v2
+* [api] adexchangebuyer:v1_4
+* [api] servicemanagement:v1
+* [api] cloudbuild:v1
+* [api] iam:v1
+* [api] sheets:v4
+* [api] logging:v2
+* [api] doubleclickbidmanager:v1
+* [api] androidenterprise:v1
+* [api] admin:directory_v1
+* [api] script:v1
+* [api] people:v1
+* [api-breaking] container:v1
+* [api-breaking] container:v1
+* [api-breaking] monitoring:v3
+* [api-breaking] tracing:v2
+* [api-breaking] tracing:v2
+
+## 0.38.0
+
+* [api-new] tracing:v2
+* [api] books:v1
+* [api] compute:v1
+* [api] container:v1
+* [api] drive:v2
+* [api] drive:v3
+* [api] iam:v1
+* [api] identitytoolkit:v3
+* [api] logging:v2
+* [api] servicemanagement:v1
+* [api] serviceuser:v1
+* [api] storage:v1
+* [api-breaking] cloudfunctions:v1
+* [api-breaking] cloudresourcemanager:v1
+* [api-breaking] compute:v1
+* [api-breaking] consumersurveys:v2
+* [api-breaking] content:v2
+* [api-breaking] servicemanagement:v1
+* [api-breaking] storagetransfer:v1
+* [api-breaking] surveys:v2
+* [api-removed] tracingv1
 
 ## 0.37.0
 

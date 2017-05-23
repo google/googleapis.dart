@@ -733,11 +733,6 @@ class ProjectsJobsResourceApi {
    * [projectId] - Required The ID of the Google Cloud Platform project that the
    * job belongs to.
    *
-   * [pageSize] - Optional The number of results to return in each response.
-   *
-   * [clusterName] - Optional If set, the returned jobs list includes only jobs
-   * that were submitted to the named cluster.
-   *
    * [filter] - Optional A filter constraining which jobs to list. Valid filters
    * contain job state and label terms such as: labels.key1 = val1 AND
    * (labels.k2 = val2 OR labels.k3 = val3)
@@ -752,6 +747,11 @@ class ProjectsJobsResourceApi {
    * [pageToken] - Optional The page token, returned by a previous call, to
    * request the next page of results.
    *
+   * [pageSize] - Optional The number of results to return in each response.
+   *
+   * [clusterName] - Optional If set, the returned jobs list includes only jobs
+   * that were submitted to the named cluster.
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -760,7 +760,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.int pageSize, core.String clusterName, core.String filter, core.String jobStateMatcher, core.String pageToken}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String filter, core.String jobStateMatcher, core.String pageToken, core.int pageSize, core.String clusterName}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -771,12 +771,6 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (clusterName != null) {
-      _queryParams["clusterName"] = [clusterName];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -785,6 +779,12 @@ class ProjectsJobsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (clusterName != null) {
+      _queryParams["clusterName"] = [clusterName];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -1206,21 +1206,21 @@ class ClusterMetrics {
 
 /** Metadata describing the operation. */
 class ClusterOperationMetadata {
-  /** Output-only Name of the cluster for the operation. */
+  /** Output-only. Name of the cluster for the operation. */
   core.String clusterName;
-  /** Output-only Cluster UUID for the operation. */
+  /** Output-only. Cluster UUID for the operation. */
   core.String clusterUuid;
-  /** Output-only Short description of operation. */
+  /** Output-only. Short description of operation. */
   core.String description;
-  /** Output-only Labels associated with the operation */
+  /** Output-only. Labels associated with the operation */
   core.Map<core.String, core.String> labels;
-  /** Output-only The operation type. */
+  /** Output-only. The operation type. */
   core.String operationType;
-  /** Output-only Current operation status. */
+  /** Output-only. Current operation status. */
   ClusterOperationStatus status;
-  /** Output-only The previous operation status. */
+  /** Output-only. The previous operation status. */
   core.List<ClusterOperationStatus> statusHistory;
-  /** Output-only Errors encountered during operation execution. */
+  /** Output-only. Errors encountered during operation execution. */
   core.List<core.String> warnings;
 
   ClusterOperationMetadata();
@@ -1284,12 +1284,12 @@ class ClusterOperationMetadata {
 
 /** The status of the operation. */
 class ClusterOperationStatus {
-  /** Output-onlyA message containing any operation metadata details. */
+  /** Output-only.A message containing any operation metadata details. */
   core.String details;
-  /** Output-only A message containing the detailed operation state. */
+  /** Output-only. A message containing the detailed operation state. */
   core.String innerState;
   /**
-   * Output-only A message containing the operation state.
+   * Output-only. A message containing the operation state.
    * Possible string values are:
    * - "UNKNOWN" : Unused.
    * - "PENDING" : The operation has been created.
@@ -1297,7 +1297,7 @@ class ClusterOperationStatus {
    * - "DONE" : The operation is done; either cancelled or completed.
    */
   core.String state;
-  /** Output-only The time this state was entered. */
+  /** Output-only. The time this state was entered. */
   core.String stateStartTime;
 
   ClusterOperationStatus();
@@ -1445,7 +1445,7 @@ class DiagnoseClusterRequest {
 /** The location of diagnostic output. */
 class DiagnoseClusterResults {
   /**
-   * Output-only The Google Cloud Storage URI of the diagnostic output. The
+   * Output-only. The Google Cloud Storage URI of the diagnostic output. The
    * output report is a plain text file with a summary of collected diagnostics.
    */
   core.String outputUri;
@@ -3155,7 +3155,7 @@ class SparkSqlJob {
  * localized user-facing error message is needed, put the localized message in
  * the error details or localize it in the client. The optional error details
  * may contain arbitrary information about the error. There is a predefined set
- * of error detail types in the package google.rpc which can be used for common
+ * of error detail types in the package google.rpc that can be used for common
  * error conditions.Language mappingThe Status message is the logical
  * representation of the error model, but it is not necessarily the actual wire
  * format. When the Status message is exposed in different client libraries and
@@ -3168,7 +3168,7 @@ class SparkSqlJob {
  * Partial errors. If a service needs to return partial errors to the client, it
  * may embed the Status in the normal response to indicate the partial errors.
  * Workflow errors. A typical workflow has multiple steps. Each step may have a
- * Status message for error reporting purpose.
+ * Status message for error reporting.
  * Batch operations. If a client uses batch request and batch response, the
  * Status message should be used directly inside batch response, one for each
  * error sub-response.

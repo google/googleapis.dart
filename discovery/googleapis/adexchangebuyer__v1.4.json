@@ -15,7 +15,7 @@
     "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/XJ8vjwOJUtuz-unNR2L_5stMJIc\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/XvWFbU-Khae3KqVnoqt96DoRPGo\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
         "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -1255,7 +1255,7 @@
             }
         }
     },
-    "revision": "20170215",
+    "revision": "20170504",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1267,7 +1267,7 @@
                     "items": {
                         "properties": {
                             "bidProtocol": {
-                                "description": "The protocol that the bidder endpoint is using. OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values:  \n- PROTOCOL_ADX \n- PROTOCOL_OPENRTB_2_2 \n- PROTOCOL_OPENRTB_2_3 \n- PROTOCOL_OPENRTB_2_4 \n- PROTOCOL_OPENRTB_PROTOBUF_2_3 \n- PROTOCOL_OPENRTB_PROTOBUF_2_4",
+                                "description": "The protocol that the bidder endpoint is using. OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values:  \n- PROTOCOL_ADX \n- PROTOCOL_OPENRTB_2_2 \n- PROTOCOL_OPENRTB_2_3 \n- PROTOCOL_OPENRTB_2_4 \n- PROTOCOL_OPENRTB_2_5 \n- PROTOCOL_OPENRTB_PROTOBUF_2_3 \n- PROTOCOL_OPENRTB_PROTOBUF_2_4 \n- PROTOCOL_OPENRTB_PROTOBUF_2_5",
                                 "type": "string"
                             },
                             "maximumQps": {
@@ -1879,7 +1879,7 @@
                     "type": "array"
                 },
                 "servingRestrictions": {
-                    "description": "The granular status of this ad in specific contexts. A context here relates to where something ultimately serves (for example, a physical location, a platform, an HTTPS vs HTTP request, or the type of auction). Read-only. This field should not be set in requests.",
+                    "description": "The granular status of this ad in specific contexts. A context here relates to where something ultimately serves (for example, a physical location, a platform, an HTTPS vs HTTP request, or the type of auction). Read-only. This field should not be set in requests. See the examples in the Creatives guide for more details.",
                     "items": {
                         "properties": {
                             "contexts": {
@@ -2154,7 +2154,7 @@
             "id": "DealTermsGuaranteedFixedPriceTermsBillingInfo",
             "properties": {
                 "currencyConversionTimeMs": {
-                    "description": "The timestamp (in ms since epoch) when the original reservation price for the deal was first converted to DFP currency. This is used to convert the contracted price into advertiser's currency without discrepancy.",
+                    "description": "The timestamp (in ms since epoch) when the original reservation price for the deal was first converted to DFP currency. This is used to convert the contracted price into buyer's currency without discrepancy.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -2493,6 +2493,10 @@
                 },
                 "isRfpTemplate": {
                     "description": "Indicates whether the current deal is a RFP template. RFP template is created by buyer and not based on seller created products.",
+                    "type": "boolean"
+                },
+                "isSetupComplete": {
+                    "description": "True, if the buyside inventory setup is complete for this deal. (readonly, except via OrderSetupCompleted action)",
                     "type": "boolean"
                 },
                 "kind": {
@@ -3052,12 +3056,16 @@
             "type": "object"
         },
         "PricePerBuyer": {
-            "description": "Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in an product can become [0,1] deals. To check if there is a PricePerBuyer for a particular buyer or buyer/advertiser pair, we look for the most specific matching rule - we first look for a rule matching the buyer and advertiser, next a rule with the buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set.",
+            "description": "Used to specify pricing rules for buyers. Each PricePerBuyer in a product can become [0,1] deals. To check if there is a PricePerBuyer for a particular buyer we look for the most specific matching rule - we first look for a rule matching the buyer and otherwise look for a matching rule where no buyer is set.",
             "id": "PricePerBuyer",
             "properties": {
                 "auctionTier": {
                     "description": "Optional access type for this buyer.",
                     "type": "string"
+                },
+                "billedBuyer": {
+                    "$ref": "Buyer",
+                    "description": "Reference to the buyer that will get billed."
                 },
                 "buyer": {
                     "$ref": "Buyer",
@@ -3087,6 +3095,14 @@
             "description": "A product is segment of inventory that a seller wishes to sell. It is associated with certain terms and targeting information which helps buyer know more about the inventory. Each field in a product can have one of the following setting:\n\n(readonly) - It is an error to try and set this field. (buyer-readonly) - Only the seller can set this field. (seller-readonly) - Only the buyer can set this field. (updatable) - The field is updatable at all times by either buyer or the seller.",
             "id": "Product",
             "properties": {
+                "billedBuyer": {
+                    "$ref": "Buyer",
+                    "description": "The billed buyer corresponding to the buyer that created the offer. (readonly, except on create)"
+                },
+                "buyer": {
+                    "$ref": "Buyer",
+                    "description": "The buyer that created the offer if this is a buyer initiated offer (readonly, except on create)"
+                },
                 "creationTimeMs": {
                     "description": "Creation time in ms. since epoch (readonly)",
                     "format": "int64",
@@ -3098,6 +3114,10 @@
                         "$ref": "ContactInformation"
                     },
                     "type": "array"
+                },
+                "creatorRole": {
+                    "description": "The role that created the offer. Set to BUYER for buyer initiated offers.",
+                    "type": "string"
                 },
                 "deliveryControl": {
                     "$ref": "DeliveryControl",
@@ -3248,7 +3268,7 @@
                     "type": "boolean"
                 },
                 "isSetupComplete": {
-                    "description": "True, if the buyside inventory setup is complete for this proposal. (readonly, except via OrderSetupCompleted action)",
+                    "description": "True, if the buyside inventory setup is complete for this proposal. (readonly, except via OrderSetupCompleted action) Deprecated in favor of deal level setup complete flag.",
                     "type": "boolean"
                 },
                 "kind": {
@@ -3517,6 +3537,10 @@
                 },
                 "creativeSizeType": {
                     "description": "The Creative size type.",
+                    "type": "string"
+                },
+                "nativeTemplate": {
+                    "description": "The native template for native ad.",
                     "type": "string"
                 },
                 "size": {

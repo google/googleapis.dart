@@ -5701,6 +5701,11 @@ class FileCapabilities {
    * false when the item is not a folder.
    */
   core.bool canAddChildren;
+  /**
+   * Whether the current user can change the restricted download label of this
+   * file.
+   */
+  core.bool canChangeRestrictedDownload;
   /** Whether the current user can comment on this file. */
   core.bool canComment;
   /**
@@ -5765,6 +5770,9 @@ class FileCapabilities {
     if (_json.containsKey("canAddChildren")) {
       canAddChildren = _json["canAddChildren"];
     }
+    if (_json.containsKey("canChangeRestrictedDownload")) {
+      canChangeRestrictedDownload = _json["canChangeRestrictedDownload"];
+    }
     if (_json.containsKey("canComment")) {
       canComment = _json["canComment"];
     }
@@ -5816,6 +5824,9 @@ class FileCapabilities {
     var _json = new core.Map();
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
+    }
+    if (canChangeRestrictedDownload != null) {
+      _json["canChangeRestrictedDownload"] = canChangeRestrictedDownload;
     }
     if (canComment != null) {
       _json["canComment"] = canComment;
@@ -6340,7 +6351,11 @@ class File {
    * is only populated for Team Drive files.
    */
   core.bool hasAugmentedPermissions;
-  /** Whether this file has a thumbnail. */
+  /**
+   * Whether this file has a thumbnail. This does not indicate whether the
+   * requesting app has access to the thumbnail. To check access, look for the
+   * presence of the thumbnailLink field.
+   */
   core.bool hasThumbnail;
   /**
    * The ID of the file's head revision. This field is only populated for files
@@ -7219,8 +7234,8 @@ class Permission {
   /** The authkey parameter required for this permission. */
   core.String authKey;
   /**
-   * Whether the account of the permission has been deleted. This field only
-   * pertains to user and group permissions.
+   * Whether the account associated with this permission has been deleted. This
+   * field only pertains to user and group permissions.
    */
   core.bool deleted;
   /**
@@ -7899,32 +7914,35 @@ class StartPageToken {
 
 /**
  * An image file and cropping parameters from which a background image for this
- * Team Drive is set. This is a write only field that can only be set on a
- * drive.teamdrives.update request that does not set themeId. When specified,
- * all fields of the backgroundImageFile must be set.
+ * Team Drive is set. This is a write only field; it can only be set on
+ * drive.teamdrives.update requests that don't set themeId. When specified, all
+ * fields of the backgroundImageFile must be set.
  */
 class TeamDriveBackgroundImageFile {
   /** The ID of an image file in Drive to use for the background image. */
   core.String id;
   /**
-   * The width of the cropped image in the closed range of 0 to 1, which is the
-   * width of the cropped image divided by the width of the entire image. The
-   * height is computed by applying a width to height aspect ratio of 80 to 9.
-   * The resulting image must be at least 1280 pixels wide and 144 pixels high.
+   * The width of the cropped image in the closed range of 0 to 1. This value
+   * represents the width of the cropped image divided by the width of the
+   * entire image. The height is computed by applying a width to height aspect
+   * ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and
+   * 144 pixels high.
    */
   core.double width;
   /**
    * The X coordinate of the upper left corner of the cropping area in the
-   * background image. This is a value in the closed range of 0 to 1 which is
-   * the horizontal distance from the left side of the entire image to the left
-   * side of the cropping area divided by the width of the entire image.
+   * background image. This is a value in the closed range of 0 to 1. This value
+   * represents the horizontal distance from the left side of the entire image
+   * to the left side of the cropping area divided by the width of the entire
+   * image.
    */
   core.double xCoordinate;
   /**
    * The Y coordinate of the upper left corner of the cropping area in the
-   * background image. This is a value in the closed range of 0 to 1 which is
-   * the vertical distance from the top side of the entire image to the top side
-   * of the cropping area divided by the height of the entire image.
+   * background image. This is a value in the closed range of 0 to 1. This value
+   * represents the vertical distance from the top side of the entire image to
+   * the top side of the cropping area divided by the height of the entire
+   * image.
    */
   core.double yCoordinate;
 
@@ -8115,9 +8133,9 @@ class TeamDriveCapabilities {
 class TeamDrive {
   /**
    * An image file and cropping parameters from which a background image for
-   * this Team Drive is set. This is a write only field that can only be set on
-   * a drive.teamdrives.update request that does not set themeId. When
-   * specified, all fields of the backgroundImageFile must be set.
+   * this Team Drive is set. This is a write only field; it can only be set on
+   * drive.teamdrives.update requests that don't set themeId. When specified,
+   * all fields of the backgroundImageFile must be set.
    */
   TeamDriveBackgroundImageFile backgroundImageFile;
   /** A short-lived link to this Team Drive's background image. */
@@ -8143,8 +8161,8 @@ class TeamDrive {
    * The set of possible teamDriveThemes can be retrieved from a drive.about.get
    * response. When not specified on a drive.teamdrives.insert request, a random
    * theme is chosen from which the background image and color are set. This is
-   * a write only field that can only be set on a request that does not set
-   * colorRgb or backgroundImageFile.
+   * a write-only field; it can only be set on requests that don't set colorRgb
+   * or backgroundImageFile.
    */
   core.String themeId;
 

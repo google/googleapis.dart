@@ -1,13 +1,26 @@
-## 1.36.0
+## 0.37.0
 
-[api] dataflow:v1b3
-[api] logging:v2beta1
-[api-breaking] cloudresourcemanager:v1beta1
-[api-breaking] runtimeconfig:v1beta1
-[api-removed] datastore:v1beta3
-[api-removed] datastore:v1beta2
+* [api-new] language:v1beta2
+* [api-new] videointelligence:v1beta1
+* [api] sqladmin:v1beta4
+* [api] clouderrorreporting:v1beta1
+* [api] dlp:v2beta1
+* [api] dataflow:v1b3
+* [api] logging:v2beta1
+* [api-breaking] dataflow:v1b3
+* [api-breaking] dataflow:v1b3
+* [api-breaking] dlp:v2beta1
 
-## 1.35.0
+## 0.36.0
+
+* [api] dataflow:v1b3
+* [api] logging:v2beta1
+* [api-breaking] cloudresourcemanager:v1beta1
+* [api-breaking] runtimeconfig:v1beta1
+* [api-removed] datastore:v1beta3
+* [api-removed] datastore:v1beta2
+
+## 0.35.0
 
 * [api-new] dlp:v2beta1
 * [api] appengine:v1beta4

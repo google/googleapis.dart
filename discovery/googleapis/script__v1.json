@@ -2,26 +2,17 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/groups": {
-                    "description": "View and manage your Google Groups"
-                },
-                "https://www.googleapis.com/auth/forms.currentonly": {
-                    "description": "View and manage forms that this application has been installed in"
-                },
-                "https://www.googleapis.com/auth/drive": {
-                    "description": "View and manage the files in your Google Drive"
-                },
-                "https://mail.google.com/": {
-                    "description": "Read, send, delete, and manage your email"
-                },
-                "https://www.googleapis.com/auth/spreadsheets": {
-                    "description": "View and manage your spreadsheets in Google Drive"
-                },
                 "https://www.googleapis.com/auth/admin.directory.group": {
                     "description": "View and manage the provisioning of groups on your domain"
                 },
                 "https://www.googleapis.com/auth/admin.directory.user": {
                     "description": "View and manage the provisioning of users on your domain"
+                },
+                "https://www.googleapis.com/auth/spreadsheets": {
+                    "description": "View and manage your spreadsheets in Google Drive"
+                },
+                "https://mail.google.com/": {
+                    "description": "Read, send, delete, and manage your email"
                 },
                 "https://www.googleapis.com/auth/forms": {
                     "description": "View and manage your forms in Google Drive"
@@ -34,6 +25,15 @@
                 },
                 "https://www.google.com/calendar/feeds": {
                     "description": "Manage your calendars"
+                },
+                "https://www.googleapis.com/auth/groups": {
+                    "description": "View and manage your Google Groups"
+                },
+                "https://www.googleapis.com/auth/forms.currentonly": {
+                    "description": "View and manage forms that this application has been installed in"
+                },
+                "https://www.googleapis.com/auth/drive": {
+                    "description": "View and manage the files in your Google Drive"
                 }
             }
         }
@@ -54,71 +54,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
-            "location": "query",
-            "type": "string"
-        },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
@@ -139,6 +74,71 @@
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -184,9 +184,85 @@
             }
         }
     },
-    "revision": "20170407",
+    "revision": "20170509",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
+        "Status": {
+            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's `error` field will contain this `Status` object.",
+            "id": "Status",
+            "properties": {
+                "code": {
+                    "description": "The status code. For this API, this value will always be 3, corresponding to an INVALID_ARGUMENT error.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
+                    "type": "string"
+                },
+                "details": {
+                    "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ExecutionRequest": {
+            "description": "A request to run the function in a script. The script is identified by the\nspecified `script_id`. Executing a function on a script returns results\nbased on the implementation of the script.",
+            "id": "ExecutionRequest",
+            "properties": {
+                "function": {
+                    "description": "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters.",
+                    "type": "string"
+                },
+                "devMode": {
+                    "description": "If `true` and the user is an owner of the script, the script runs at the\nmost recently saved version rather than the version deployed for use with\nthe Execution API. Optional; default is `false`.",
+                    "type": "boolean"
+                },
+                "parameters": {
+                    "description": "The parameters to be passed to the function being executed. The object type\nfor each parameter should match the expected type in Apps Script.\nParameters cannot be Apps Script-specific object types (such as a\n`Document` or a `Calendar`); they can only be primitive types such as\n`string`, `number`, `array`, `object`, or `boolean`. Optional.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
+                "sessionState": {
+                    "description": "For Android add-ons only. An ID that represents the user's current session\nin the Android app for Google Docs or Sheets, included as extra data in the\n[`Intent`](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound) script &mdash;\nthat is, it can access information like the user's current cursor position\n(in Docs) or selected cell (in Sheets). To retrieve the state, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "JoinAsyncRequest": {
+            "description": "A request to retrieve the results from a collection of requests,\nspecified by the operation resource names.",
+            "id": "JoinAsyncRequest",
+            "properties": {
+                "scriptId": {
+                    "description": "The script id which specifies the script which all processes in the names\nfield must be from.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "List of operation resource names that we want to join,\nas returned from a call to RunAsync.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "timeout": {
+                    "description": "Timeout for information retrieval in milliseconds.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ExecutionResponse": {
             "description": "An object that provides the return value of a function executed through the\nApps Script Execution API. If a\n`run` call succeeds and the\nscript function returns successfully, the response body's\n`response` field contains this\n`ExecutionResponse` object.",
             "id": "ExecutionResponse",
@@ -194,6 +270,20 @@
                 "result": {
                     "description": "The return value of the script function. The type matches the object type\nreturned in Apps Script. Functions called through the Execution API cannot\nreturn Apps Script-specific objects (such as a `Document` or a `Calendar`);\nthey can only return primitive types such as a `string`, `number`, `array`,\n`object`, or `boolean`.",
                     "type": "any"
+                }
+            },
+            "type": "object"
+        },
+        "JoinAsyncResponse": {
+            "description": "An object that provides the return value for the JoinAsync method.",
+            "id": "JoinAsyncResponse",
+            "properties": {
+                "results": {
+                    "additionalProperties": {
+                        "$ref": "Operation"
+                    },
+                    "description": "The return values for each script function, in a map of operation resource\nnames to the Operation containing the result of the process. The response\nwill contain either an error or the result of the script function.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -237,14 +327,14 @@
             "description": "A stack trace through the script that shows where the execution failed.",
             "id": "ScriptStackTraceElement",
             "properties": {
-                "function": {
-                    "description": "The name of the function that failed.",
-                    "type": "string"
-                },
                 "lineNumber": {
                     "description": "The line number where the script failed.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "function": {
+                    "description": "The name of the function that failed.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -253,6 +343,10 @@
             "description": "An object that provides information about the nature of an error in the Apps\nScript Execution API. If an\n`run` call succeeds but the\nscript function (or Apps Script itself) throws an exception, the response\nbody's `error` field contains a\n`Status` object. The `Status` object's `details` field\ncontains an array with a single one of these `ExecutionError` objects.",
             "id": "ExecutionError",
             "properties": {
+                "errorMessage": {
+                    "description": "The error message thrown by Apps Script, usually localized into the user's\nlanguage.",
+                    "type": "string"
+                },
                 "scriptStackTraceElements": {
                     "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
                     "items": {
@@ -263,63 +357,6 @@
                 "errorType": {
                     "description": "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included.",
                     "type": "string"
-                },
-                "errorMessage": {
-                    "description": "The error message thrown by Apps Script, usually localized into the user's\nlanguage.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Status": {
-            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's `error` field will contain this `Status` object.",
-            "id": "Status",
-            "properties": {
-                "message": {
-                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
-                    "type": "string"
-                },
-                "details": {
-                    "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
-                    "items": {
-                        "additionalProperties": {
-                            "description": "Properties of the object. Contains field @type with type URL.",
-                            "type": "any"
-                        },
-                        "type": "object"
-                    },
-                    "type": "array"
-                },
-                "code": {
-                    "description": "The status code. For this API, this value will always be 3, corresponding to an INVALID_ARGUMENT error.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "ExecutionRequest": {
-            "description": "A request to run the function in a script. The script is identified by the\nspecified `script_id`. Executing a function on a script returns results\nbased on the implementation of the script.",
-            "id": "ExecutionRequest",
-            "properties": {
-                "sessionState": {
-                    "description": "For Android add-ons only. An ID that represents the user's current session\nin the Android app for Google Docs or Sheets, included as extra data in the\n[`Intent`](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound) script &mdash;\nthat is, it can access information like the user's current cursor position\n(in Docs) or selected cell (in Sheets). To retrieve the state, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional.",
-                    "type": "string"
-                },
-                "function": {
-                    "description": "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters.",
-                    "type": "string"
-                },
-                "devMode": {
-                    "description": "If `true` and the user is an owner of the script, the script runs at the\nmost recently saved version rather than the version deployed for use with\nthe Execution API. Optional; default is `false`.",
-                    "type": "boolean"
-                },
-                "parameters": {
-                    "description": "The parameters to be passed to the function being executed. The object type\nfor each parameter should match the expected type in Apps Script.\nParameters cannot be Apps Script-specific object types (such as a\n`Document` or a `Calendar`); they can only be primitive types such as\n`string`, `number`, `array`, `object`, or `boolean`. Optional.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

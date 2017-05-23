@@ -175,14 +175,14 @@ class ProjectsJobsResourceApi {
    *
    * [jobId] - The job ID.
    *
-   * [location] - The location that contains this job.
-   *
    * [view] - The level of information requested in response.
    * Possible string values are:
    * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
    * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+   *
+   * [location] - The location that contains this job.
    *
    * Completes with a [Job].
    *
@@ -192,7 +192,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Job> get(core.String projectId, core.String jobId, {core.String location, core.String view}) {
+  async.Future<Job> get(core.String projectId, core.String jobId, {core.String view, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -206,11 +206,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId');
@@ -287,6 +287,14 @@ class ProjectsJobsResourceApi {
    *
    * [projectId] - The project which owns the jobs.
    *
+   * [view] - Level of information requested in response. Default is
+   * `JOB_VIEW_SUMMARY`.
+   * Possible string values are:
+   * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
+   * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
+   * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+   * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+   *
    * [filter] - The kind of filter to use.
    * Possible string values are:
    * - "UNKNOWN" : A UNKNOWN.
@@ -304,14 +312,6 @@ class ProjectsJobsResourceApi {
    * The actual number of jobs returned will be the lesser of max_responses
    * and an unspecified server-defined limit.
    *
-   * [view] - Level of information requested in response. Default is
-   * `JOB_VIEW_SUMMARY`.
-   * Possible string values are:
-   * - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
-   * - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
-   * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
-   * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
-   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -320,7 +320,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.String filter, core.String location, core.String pageToken, core.int pageSize, core.String view}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String view, core.String filter, core.String location, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -330,6 +330,9 @@ class ProjectsJobsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -342,9 +345,6 @@ class ProjectsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -538,25 +538,6 @@ class ProjectsJobsMessagesResourceApi {
    *
    * [jobId] - The job to get messages about.
    *
-   * [location] - The location which contains the job specified by job_id.
-   *
-   * [endTime] - Return only messages with timestamps < end_time. The default is
-   * now
-   * (i.e. return up to the latest messages available).
-   *
-   * [startTime] - If specified, return only messages with timestamps >=
-   * start_time.
-   * The default is the job creation time (i.e. beginning of messages).
-   *
-   * [pageToken] - If supplied, this should be the value of next_page_token
-   * returned
-   * by an earlier call. This will cause the next page of results to
-   * be returned.
-   *
-   * [pageSize] - If specified, determines the maximum number of messages to
-   * return.  If unspecified, the service may choose an appropriate
-   * default, or may return an arbitrarily large number of results.
-   *
    * [minimumImportance] - Filter to only get messages with importance >= level
    * Possible string values are:
    * - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
@@ -566,6 +547,25 @@ class ProjectsJobsMessagesResourceApi {
    * - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
    * - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
    *
+   * [endTime] - Return only messages with timestamps < end_time. The default is
+   * now
+   * (i.e. return up to the latest messages available).
+   *
+   * [location] - The location which contains the job specified by job_id.
+   *
+   * [pageToken] - If supplied, this should be the value of next_page_token
+   * returned
+   * by an earlier call. This will cause the next page of results to
+   * be returned.
+   *
+   * [startTime] - If specified, return only messages with timestamps >=
+   * start_time.
+   * The default is the job creation time (i.e. beginning of messages).
+   *
+   * [pageSize] - If specified, determines the maximum number of messages to
+   * return.  If unspecified, the service may choose an appropriate
+   * default, or may return an arbitrarily large number of results.
+   *
    * Completes with a [ListJobMessagesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -574,7 +574,7 @@ class ProjectsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String location, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String minimumImportance}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String minimumImportance, core.String endTime, core.String location, core.String pageToken, core.String startTime, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -588,23 +588,23 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
+    if (minimumImportance != null) {
+      _queryParams["minimumImportance"] = [minimumImportance];
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (minimumImportance != null) {
-      _queryParams["minimumImportance"] = [minimumImportance];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
@@ -1252,14 +1252,14 @@ class ProjectsLocationsJobsMessagesResourceApi {
    * now
    * (i.e. return up to the latest messages available).
    *
+   * [startTime] - If specified, return only messages with timestamps >=
+   * start_time.
+   * The default is the job creation time (i.e. beginning of messages).
+   *
    * [pageToken] - If supplied, this should be the value of next_page_token
    * returned
    * by an earlier call. This will cause the next page of results to
    * be returned.
-   *
-   * [startTime] - If specified, return only messages with timestamps >=
-   * start_time.
-   * The default is the job creation time (i.e. beginning of messages).
    *
    * [pageSize] - If specified, determines the maximum number of messages to
    * return.  If unspecified, the service may choose an appropriate
@@ -1282,7 +1282,7 @@ class ProjectsLocationsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String location, core.String jobId, {core.String endTime, core.String pageToken, core.String startTime, core.int pageSize, core.String minimumImportance}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String location, core.String jobId, {core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String minimumImportance}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1302,11 +1302,11 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1574,14 +1574,14 @@ class ProjectsLocationsTemplatesResourceApi {
    *
    * [location] - The location to which to direct the request.
    *
+   * [validateOnly] - If true, the request is validated but not actually
+   * executed.
+   * Defaults to false.
+   *
    * [gcsPath] - Required. A Cloud Storage path to the template from which to
    * create
    * the job.
    * Must be valid Cloud Storage URL, beginning with 'gs://'.
-   *
-   * [dryRun] - Whether or not the job should actually be executed after
-   * validating parameters. Defaults to false. Validation errors do
-   * not cause the HTTP request to fail if true.
    *
    * Completes with a [LaunchTemplateResponse].
    *
@@ -1591,7 +1591,7 @@ class ProjectsLocationsTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, core.String location, {core.String gcsPath, core.bool dryRun}) {
+  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, core.String location, {core.bool validateOnly, core.String gcsPath}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1608,11 +1608,11 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
-    }
-    if (dryRun != null) {
-      _queryParams["dryRun"] = ["${dryRun}"];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/templates:launch';
@@ -1750,16 +1750,16 @@ class ProjectsTemplatesResourceApi {
    * [projectId] - Required. The ID of the Cloud Platform project that the job
    * belongs to.
    *
+   * [location] - The location to which to direct the request.
+   *
+   * [validateOnly] - If true, the request is validated but not actually
+   * executed.
+   * Defaults to false.
+   *
    * [gcsPath] - Required. A Cloud Storage path to the template from which to
    * create
    * the job.
    * Must be valid Cloud Storage URL, beginning with 'gs://'.
-   *
-   * [dryRun] - Whether or not the job should actually be executed after
-   * validating parameters. Defaults to false. Validation errors do
-   * not cause the HTTP request to fail if true.
-   *
-   * [location] - The location to which to direct the request.
    *
    * Completes with a [LaunchTemplateResponse].
    *
@@ -1769,7 +1769,7 @@ class ProjectsTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, {core.String gcsPath, core.bool dryRun, core.String location}) {
+  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, {core.String location, core.bool validateOnly, core.String gcsPath}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1783,14 +1783,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (gcsPath != null) {
-      _queryParams["gcsPath"] = [gcsPath];
-    }
-    if (dryRun != null) {
-      _queryParams["dryRun"] = ["${dryRun}"];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/templates:launch';
@@ -2237,8 +2237,6 @@ class ComputationTopology {
   core.List<StateFamilyConfig> stateFamilies;
   /** The system stage name. */
   core.String systemStageName;
-  /** The user stage name. */
-  core.String userStageName;
 
   ComputationTopology();
 
@@ -2261,9 +2259,6 @@ class ComputationTopology {
     if (_json.containsKey("systemStageName")) {
       systemStageName = _json["systemStageName"];
     }
-    if (_json.containsKey("userStageName")) {
-      userStageName = _json["userStageName"];
-    }
   }
 
   core.Map toJson() {
@@ -2285,9 +2280,6 @@ class ComputationTopology {
     }
     if (systemStageName != null) {
       _json["systemStageName"] = systemStageName;
-    }
-    if (userStageName != null) {
-      _json["userStageName"] = userStageName;
     }
     return _json;
   }
@@ -3029,6 +3021,11 @@ class DisplayData {
 class DistributionUpdate {
   /** The count of the number of elements present in the distribution. */
   SplitInt64 count;
+  /**
+   * (Optional) Logarithmic histogram of values.
+   * Each log may be in no more than one bucket. Order does not matter.
+   */
+  core.List<LogBucket> logBuckets;
   /** The maximum value present in the distribution. */
   SplitInt64 max;
   /** The minimum value present in the distribution. */
@@ -3046,6 +3043,9 @@ class DistributionUpdate {
   DistributionUpdate.fromJson(core.Map _json) {
     if (_json.containsKey("count")) {
       count = new SplitInt64.fromJson(_json["count"]);
+    }
+    if (_json.containsKey("logBuckets")) {
+      logBuckets = _json["logBuckets"].map((value) => new LogBucket.fromJson(value)).toList();
     }
     if (_json.containsKey("max")) {
       max = new SplitInt64.fromJson(_json["max"]);
@@ -3065,6 +3065,9 @@ class DistributionUpdate {
     var _json = new core.Map();
     if (count != null) {
       _json["count"] = (count).toJson();
+    }
+    if (logBuckets != null) {
+      _json["logBuckets"] = logBuckets.map((value) => (value).toJson()).toList();
     }
     if (max != null) {
       _json["max"] = (max).toJson();
@@ -4705,6 +4708,45 @@ class ListJobsResponse {
   }
 }
 
+/** Bucket of values for Distribution's logarithmic histogram. */
+class LogBucket {
+  /** Number of values in this bucket. */
+  core.String count;
+  /**
+   * floor(log2(value)); defined to be zero for nonpositive values.
+   *   log(-1) = 0
+   *   log(0) = 0
+   *   log(1) = 0
+   *   log(2) = 1
+   *   log(3) = 1
+   *   log(4) = 2
+   *   log(5) = 2
+   */
+  core.int log;
+
+  LogBucket();
+
+  LogBucket.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("log")) {
+      log = _json["log"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (log != null) {
+      _json["log"] = log;
+    }
+    return _json;
+  }
+}
+
 /**
  * MapTask consists of an ordered set of instructions, each of which
  * describes one particular low-level operation for the worker to
@@ -4853,6 +4895,13 @@ class MetricUpdate {
    */
   core.bool cumulative;
   /**
+   * A struct value describing properties of a distribution of numeric values.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object distribution;
+  /**
    * Worker-computed aggregate value for internal use by the Dataflow
    * service.
    *
@@ -4862,7 +4911,7 @@ class MetricUpdate {
   core.Object internal;
   /**
    * Metric aggregation kind.  The possible metric aggregation kinds are
-   * "Sum", "Max", "Min", "Mean", "Set", "And", and "Or".
+   * "Sum", "Max", "Min", "Mean", "Set", "And", "Or", and "Distribution".
    * The specified aggregation kind is case-insensitive.
    *
    * If omitted, this is not an aggregated value but instead
@@ -4922,6 +4971,9 @@ class MetricUpdate {
     if (_json.containsKey("cumulative")) {
       cumulative = _json["cumulative"];
     }
+    if (_json.containsKey("distribution")) {
+      distribution = _json["distribution"];
+    }
     if (_json.containsKey("internal")) {
       internal = _json["internal"];
     }
@@ -4952,6 +5004,9 @@ class MetricUpdate {
     var _json = new core.Map();
     if (cumulative != null) {
       _json["cumulative"] = cumulative;
+    }
+    if (distribution != null) {
+      _json["distribution"] = distribution;
     }
     if (internal != null) {
       _json["internal"] = internal;
@@ -5847,6 +5902,11 @@ class RuntimeEnvironment {
    */
   core.bool bypassTempDirValidation;
   /**
+   * The machine type to use for the job. Defaults to the value from the
+   * template if not specified.
+   */
+  core.String machineType;
+  /**
    * The maximum number of Google Compute Engine instances to be made
    * available to your pipeline during execution, from 1 to 1000.
    */
@@ -5871,6 +5931,9 @@ class RuntimeEnvironment {
     if (_json.containsKey("bypassTempDirValidation")) {
       bypassTempDirValidation = _json["bypassTempDirValidation"];
     }
+    if (_json.containsKey("machineType")) {
+      machineType = _json["machineType"];
+    }
     if (_json.containsKey("maxWorkers")) {
       maxWorkers = _json["maxWorkers"];
     }
@@ -5889,6 +5952,9 @@ class RuntimeEnvironment {
     var _json = new core.Map();
     if (bypassTempDirValidation != null) {
       _json["bypassTempDirValidation"] = bypassTempDirValidation;
+    }
+    if (machineType != null) {
+      _json["machineType"] = machineType;
     }
     if (maxWorkers != null) {
       _json["maxWorkers"] = maxWorkers;
@@ -6864,7 +6930,7 @@ class StateFamilyConfig {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -6887,7 +6953,7 @@ class StateFamilyConfig {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for
@@ -7210,6 +7276,18 @@ class StreamingConfigTask {
   core.List<StreamingComputationConfig> streamingComputationConfigs;
   /** Map from user step names to state families. */
   core.Map<core.String, core.String> userStepToStateFamilyNameMap;
+  /**
+   * If present, the worker must use this endpoint to communicate with Windmill
+   * Service dispatchers, otherwise the worker must continue to use whatever
+   * endpoint it had been using.
+   */
+  core.String windmillServiceEndpoint;
+  /**
+   * If present, the worker must use this port to communicate with Windmill
+   * Service dispatchers. Only applicable when windmill_service_endpoint is
+   * specified.
+   */
+  core.String windmillServicePort;
 
   StreamingConfigTask();
 
@@ -7220,6 +7298,12 @@ class StreamingConfigTask {
     if (_json.containsKey("userStepToStateFamilyNameMap")) {
       userStepToStateFamilyNameMap = _json["userStepToStateFamilyNameMap"];
     }
+    if (_json.containsKey("windmillServiceEndpoint")) {
+      windmillServiceEndpoint = _json["windmillServiceEndpoint"];
+    }
+    if (_json.containsKey("windmillServicePort")) {
+      windmillServicePort = _json["windmillServicePort"];
+    }
   }
 
   core.Map toJson() {
@@ -7229,6 +7313,12 @@ class StreamingConfigTask {
     }
     if (userStepToStateFamilyNameMap != null) {
       _json["userStepToStateFamilyNameMap"] = userStepToStateFamilyNameMap;
+    }
+    if (windmillServiceEndpoint != null) {
+      _json["windmillServiceEndpoint"] = windmillServiceEndpoint;
+    }
+    if (windmillServicePort != null) {
+      _json["windmillServicePort"] = windmillServicePort;
     }
     return _json;
   }

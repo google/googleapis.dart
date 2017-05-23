@@ -969,7 +969,7 @@ class InstancesResourceApi {
    * [project] - Project ID of the project for which to list Cloud SQL
    * instances.
    *
-   * [filter] - A filter expression for filtering listed instances.
+   * [filter] - Reserved for future use.
    *
    * [maxResults] - The maximum number of results to return per response.
    *
@@ -3231,6 +3231,11 @@ class ImportContext {
    * CSV: The file contains CSV data.
    */
   core.String fileType;
+  /**
+   * The PostgreSQL user to use for this import operation. Defaults to
+   * cloudsqlsuperuser. Does not apply to MySQL instances.
+   */
+  core.String importUser;
   /** This is always sql#importContext. */
   core.String kind;
   /**
@@ -3252,6 +3257,9 @@ class ImportContext {
     if (_json.containsKey("fileType")) {
       fileType = _json["fileType"];
     }
+    if (_json.containsKey("importUser")) {
+      importUser = _json["importUser"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -3270,6 +3278,9 @@ class ImportContext {
     }
     if (fileType != null) {
       _json["fileType"] = fileType;
+    }
+    if (importUser != null) {
+      _json["importUser"] = importUser;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3545,11 +3556,11 @@ class IpMapping {
   }
 }
 
-/** User defined labels for Cloud SQL instances. */
+/** Reserved for future use. */
 class Labels {
-  /** The key of the label. */
+  /** Reserved for future use. */
   core.String key;
-  /** The value of the label. */
+  /** Reserved for future use. */
   core.String value;
 
   Labels();
@@ -3872,7 +3883,6 @@ class Operation {
   core.String status;
   /** Name of the database instance related to this operation. */
   core.String targetId;
-  /** The URI of the instance related to the operation. */
   core.String targetLink;
   /** The project ID of the target instance related to this operation. */
   core.String targetProject;
@@ -4235,7 +4245,7 @@ class Settings {
   IpConfiguration ipConfiguration;
   /** This is always sql#settings. */
   core.String kind;
-  /** User defined labels. */
+  /** Reserved for future use. */
   core.List<Labels> labels;
   /**
    * The location preference settings. This allows the instance to be located as
@@ -4270,7 +4280,7 @@ class Settings {
   core.String settingsVersion;
   /**
    * Configuration to increase storage size automatically. The default value is
-   * false. Applies only to Second Generation instances.
+   * true. Applies only to Second Generation instances.
    */
   core.bool storageAutoResize;
   /**

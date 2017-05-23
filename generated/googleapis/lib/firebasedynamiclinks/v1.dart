@@ -14,10 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client firebasedynamiclinks/v1';
 
-/**
- * Firebase Dynamic Links API enables third party developers to programmatically
- * create and manage Dynamic Links.
- */
+/** Programmatically creates and manages Firebase Dynamic Links. */
 class FirebasedynamiclinksApi {
   /** View and administer all your Firebase data and settings */
   static const FirebaseScope = "https://www.googleapis.com/auth/firebase";
@@ -258,18 +255,18 @@ class CreateShortDynamicLinkResponse {
 class DynamicLinkInfo {
   /**
    * Parameters used for tracking. See all tracking parameters in the
-   * [documentation](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-programmatically).
+   * [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
    */
   AnalyticsInfo analyticsInfo;
   /**
    * Android related information. See Android related parameters in the
-   * [documentation](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-programmatically).
+   * [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
    */
   AndroidInfo androidInfo;
   /**
    * Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
    * [Learn
-   * more](https://firebase.google.com/docs/dynamic-links/android#set-up-firebase-and-the-dynamic-links-sdk)
+   * more](https://firebase.google.com/docs/dynamic-links/android/receive)
    * on how to set up Dynamic Link domain associated with your Firebase project.
    *
    * Required.
@@ -277,14 +274,14 @@ class DynamicLinkInfo {
   core.String dynamicLinkDomain;
   /**
    * iOS related information. See iOS related parameters in the
-   * [documentation](https://firebase.google.com/docs/dynamic-links/ios#create-a-dynamic-link-programmatically).
+   * [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
    */
   IosInfo iosInfo;
   /**
    * The link your app will open, You can specify any URL your app can handle.
    * This link must be a well-formatted URL, be properly URL-encoded, and use
    * the HTTP or HTTPS scheme. See 'link' parameters in the
-   * [documentation](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-programmatically).
+   * [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
    *
    * Required.
    */

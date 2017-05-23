@@ -19,6 +19,12 @@ class SheetsApi {
   /** View and manage the files in your Google Drive */
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
+  /**
+   * View and manage Google Drive files and folders that you have opened or
+   * created with this app
+   */
+  static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
+
   /** View the files in your Google Drive */
   static const DriveReadonlyScope = "https://www.googleapis.com/auth/drive.readonly";
 
@@ -311,6 +317,17 @@ class SpreadsheetsValuesResourceApi {
    * [range] - The A1 notation of a range to search for a logical table of data.
    * Values will be appended after the last row of the table.
    *
+   * [insertDataOption] - How the input data should be inserted.
+   * Possible string values are:
+   * - "OVERWRITE" : A OVERWRITE.
+   * - "INSERT_ROWS" : A INSERT_ROWS.
+   *
+   * [valueInputOption] - How the input data should be interpreted.
+   * Possible string values are:
+   * - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
+   * - "RAW" : A RAW.
+   * - "USER_ENTERED" : A USER_ENTERED.
+   *
    * [responseDateTimeRenderOption] - Determines how dates, times, and durations
    * in the response should be
    * rendered. This is ignored if response_value_render_option is
@@ -333,17 +350,6 @@ class SpreadsheetsValuesResourceApi {
    * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
    * - "FORMULA" : A FORMULA.
    *
-   * [insertDataOption] - How the input data should be inserted.
-   * Possible string values are:
-   * - "OVERWRITE" : A OVERWRITE.
-   * - "INSERT_ROWS" : A INSERT_ROWS.
-   *
-   * [valueInputOption] - How the input data should be interpreted.
-   * Possible string values are:
-   * - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
-   * - "RAW" : A RAW.
-   * - "USER_ENTERED" : A USER_ENTERED.
-   *
    * Completes with a [AppendValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -352,7 +358,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseDateTimeRenderOption, core.bool includeValuesInResponse, core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption}) {
+  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String insertDataOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse, core.String responseValueRenderOption}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -369,6 +375,12 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (insertDataOption != null) {
+      _queryParams["insertDataOption"] = [insertDataOption];
+    }
+    if (valueInputOption != null) {
+      _queryParams["valueInputOption"] = [valueInputOption];
+    }
     if (responseDateTimeRenderOption != null) {
       _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
     }
@@ -377,12 +389,6 @@ class SpreadsheetsValuesResourceApi {
     }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
-    }
-    if (insertDataOption != null) {
-      _queryParams["insertDataOption"] = [insertDataOption];
-    }
-    if (valueInputOption != null) {
-      _queryParams["valueInputOption"] = [valueInputOption];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range') + ':append';
@@ -2002,7 +2008,8 @@ class BatchUpdateValuesRequest {
    * Determines how dates, times, and durations in the response should be
    * rendered. This is ignored if response_value_render_option is
    * FORMATTED_VALUE.
-   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+   * The default dateTime render option is
+   * DateTimeRenderOption.SERIAL_NUMBER.
    * Possible string values are:
    * - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
    * be output
@@ -2491,7 +2498,9 @@ class CellData {
   core.String formattedValue;
   /**
    * A hyperlink this cell points to, if any.
-   * This field is read-only.  (To set it, use a `=HYPERLINK` formula.)
+   * This field is read-only.  (To set it, use a `=HYPERLINK` formula
+   * in the userEnteredValue.formulaValue
+   * field.)
    */
   core.String hyperlink;
   /** Any note on the cell. */

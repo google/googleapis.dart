@@ -112,13 +112,22 @@ class ProjectsTracesResourceApi {
    * `projects/PROJECT_ID`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [startTime] - Start of the time interval (inclusive) during which the trace
+   * [filter] - An optional filter for the request.
+   * Example:
+   * `version_label_key:a some_label:some_label_key`
+   * returns traces from version `a` and has `some_label` with `some_label_key`.
+   *
+   * [endTime] - End of the time interval (inclusive) during which the trace
    * data was
    * collected from the application.
    *
    * [pageToken] - Token identifying the page of results to return. If provided,
    * use the
    * value of the `next_page_token` field from a previous request. Optional.
+   *
+   * [startTime] - Start of the time interval (inclusive) during which the trace
+   * data was
+   * collected from the application.
    *
    * [pageSize] - Maximum number of traces to return. If not specified or <= 0,
    * the
@@ -139,15 +148,6 @@ class ProjectsTracesResourceApi {
    *
    * Only one sort field is permitted.
    *
-   * [filter] - An optional filter for the request.
-   * Example:
-   * `version_label_key:a some_label:some_label_key`
-   * returns traces from version `a` and has `some_label` with `some_label_key`.
-   *
-   * [endTime] - End of the time interval (inclusive) during which the trace
-   * data was
-   * collected from the application.
-   *
    * Completes with a [ListTracesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -156,7 +156,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTracesResponse> list(core.String parent, {core.String startTime, core.String pageToken, core.int pageSize, core.String orderBy, core.String filter, core.String endTime}) {
+  async.Future<ListTracesResponse> list(core.String parent, {core.String filter, core.String endTime, core.String pageToken, core.String startTime, core.int pageSize, core.String orderBy}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -167,23 +167,23 @@ class ProjectsTracesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces';
@@ -317,35 +317,33 @@ class ProjectsTracesSpansResourceApi {
 class Annotation {
   /**
    * A set of attributes on the annotation. A maximum of 4 attributes are
-   * allowed per Annotation. The maximum key length is 128 bytes. The
-   * value can be a string (up to 256 bytes), integer, or boolean
-   * (true/false).
+   * allowed per Annotation.
    */
-  core.Map<core.String, AttributeValue> attributes;
+  Attributes attributes;
   /**
    * A user-supplied message describing the event. The maximum length for
-   * the description is 256 characters.
+   * the description is 256 bytes.
    */
-  core.String description;
+  TruncatableString description;
 
   Annotation();
 
   Annotation.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = commons.mapMap(_json["attributes"], (item) => new AttributeValue.fromJson(item));
+      attributes = new Attributes.fromJson(_json["attributes"]);
     }
     if (_json.containsKey("description")) {
-      description = _json["description"];
+      description = new TruncatableString.fromJson(_json["description"]);
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (attributes != null) {
-      _json["attributes"] = commons.mapMap(attributes, (item) => (item).toJson());
+      _json["attributes"] = (attributes).toJson();
     }
     if (description != null) {
-      _json["description"] = description;
+      _json["description"] = (description).toJson();
     }
     return _json;
   }
@@ -357,8 +355,8 @@ class AttributeValue {
   core.bool boolValue;
   /** An integer value. */
   core.String intValue;
-  /** A string value. */
-  core.String stringValue;
+  /** A string value (up to 256 bytes). */
+  TruncatableString stringValue;
 
   AttributeValue();
 
@@ -370,7 +368,7 @@ class AttributeValue {
       intValue = _json["intValue"];
     }
     if (_json.containsKey("stringValue")) {
-      stringValue = _json["stringValue"];
+      stringValue = new TruncatableString.fromJson(_json["stringValue"]);
     }
   }
 
@@ -383,7 +381,55 @@ class AttributeValue {
       _json["intValue"] = intValue;
     }
     if (stringValue != null) {
-      _json["stringValue"] = stringValue;
+      _json["stringValue"] = (stringValue).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Attributes of a span with a key:value format. */
+class Attributes {
+  /**
+   * The maximum key length is 128 bytes (attributes are dropped if the
+   * key size is larger than the maximum allowed). The value can be a string
+   * (up to 256 bytes), integer, or boolean (true/false). Some common pair
+   * examples:
+   *
+   *     "/instance_id": "my-instance"
+   *     "/zone": "us-central1-a"
+   *     "/grpc/peer_address": "ip:port" (dns, etc.)
+   *     "/grpc/deadline": "Duration"
+   *     "/http/user_agent"
+   *     "/http/request_bytes": 300
+   *     "/http/response_bytes": 1200
+   *     "/http/url": google.com/apis
+   *     "abc.com/myattribute": true
+   */
+  core.Map<core.String, AttributeValue> attributeMap;
+  /**
+   * The number of dropped attributes after the maximum size was enforced. If
+   * 0 then no attributes were dropped.
+   */
+  core.int droppedAttributesCount;
+
+  Attributes();
+
+  Attributes.fromJson(core.Map _json) {
+    if (_json.containsKey("attributeMap")) {
+      attributeMap = commons.mapMap(_json["attributeMap"], (item) => new AttributeValue.fromJson(item));
+    }
+    if (_json.containsKey("droppedAttributesCount")) {
+      droppedAttributesCount = _json["droppedAttributesCount"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (attributeMap != null) {
+      _json["attributeMap"] = commons.mapMap(attributeMap, (item) => (item).toJson());
+    }
+    if (droppedAttributesCount != null) {
+      _json["droppedAttributesCount"] = droppedAttributesCount;
     }
     return _json;
   }
@@ -493,6 +539,42 @@ class Link {
   }
 }
 
+/**
+ * A collection of links, which are references from this span to a span
+ * in the same or different trace.
+ */
+class Links {
+  /**
+   * The number of dropped links after the maximum size was enforced. If
+   * 0 then no links were dropped.
+   */
+  core.int droppedLinksCount;
+  /** A collection of links. */
+  core.List<Link> link;
+
+  Links();
+
+  Links.fromJson(core.Map _json) {
+    if (_json.containsKey("droppedLinksCount")) {
+      droppedLinksCount = _json["droppedLinksCount"];
+    }
+    if (_json.containsKey("link")) {
+      link = _json["link"].map((value) => new Link.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (droppedLinksCount != null) {
+      _json["droppedLinksCount"] = droppedLinksCount;
+    }
+    if (link != null) {
+      _json["link"] = link.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** The response message for the `ListSpans` method. */
 class ListSpansResponse {
   /**
@@ -567,31 +649,31 @@ class Module {
    * Build_id is a unique identifier for the module, usually a hash of its
    * contents (up to 128 characters).
    */
-  core.String buildId;
+  TruncatableString buildId;
   /**
    * E.g. main binary, kernel modules, and dynamic libraries
    * such as libc.so, sharedlib.so (up to 256 characters).
    */
-  core.String module;
+  TruncatableString module;
 
   Module();
 
   Module.fromJson(core.Map _json) {
     if (_json.containsKey("buildId")) {
-      buildId = _json["buildId"];
+      buildId = new TruncatableString.fromJson(_json["buildId"]);
     }
     if (_json.containsKey("module")) {
-      module = _json["module"];
+      module = new TruncatableString.fromJson(_json["module"]);
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (buildId != null) {
-      _json["buildId"] = buildId;
+      _json["buildId"] = (buildId).toJson();
     }
     if (module != null) {
-      _json["module"] = module;
+      _json["module"] = (module).toJson();
     }
     return _json;
   }
@@ -669,23 +751,10 @@ class NetworkEvent {
  */
 class Span {
   /**
-   * Attributes of a span with a key:value format. A maximum of 16 custom
-   * attributes are allowed per Span. The maximum key length is 128 bytes. The
-   * value can be a string (up to 256 bytes), integer, or boolean (true/false).
-   *
-   * Some common pair examples:
-   *
-   *     "/instance_id": "my-instance"
-   *     "/zone": "us-central1-a"
-   *     "/grpc/peer_address": "ip:port" (dns, etc.)
-   *     "/grpc/deadline": "Duration"
-   *     "/http/user_agent"
-   *     "/http/request_bytes": 300
-   *     "/http/response_bytes": 1200
-   *     "/http/url": google.com/apis
-   *     "abc.com/myattribute": true
+   * A set of attributes on the span. A maximum of 32 attributes are allowed per
+   * Span.
    */
-  core.Map<core.String, AttributeValue> attributes;
+  Attributes attributes;
   /**
    * Description of the operation in the span. It is sanitized and displayed in
    * the Stackdriver Trace tool in the
@@ -694,8 +763,9 @@ class Span {
    * name. For the same executable and the same call point, a best practice is
    * to use a consistent operation name, which makes it easier to correlate
    * cross-trace spans.
+   * The maximum length for the display_name is 128 bytes.
    */
-  core.String displayName;
+  TruncatableString displayName;
   /**
    * End time of the span.
    * On the client side, this is the local machine clock time at which the span
@@ -704,11 +774,8 @@ class Span {
    * running.
    */
   core.String endTime;
-  /**
-   * A collection of links, which are references from this span to a span
-   * in the same or different trace.
-   */
-  core.List<Link> links;
+  /** A maximum of 128 links are allowed per Span. */
+  Links links;
   /**
    * The resource name of Span in the format
    * `projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID`.
@@ -743,26 +810,24 @@ class Span {
   /** An optional final status for this span. */
   Status status;
   /**
-   * A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
-   * on the span, consisting of either user-supplied key:value pairs, or
-   * details of an RPC message sent/received on the network.
+   * A maximum of 32 annotations and 128 network events are allowed per Span.
    */
-  core.List<TimeEvent> timeEvents;
+  TimeEvents timeEvents;
 
   Span();
 
   Span.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = commons.mapMap(_json["attributes"], (item) => new AttributeValue.fromJson(item));
+      attributes = new Attributes.fromJson(_json["attributes"]);
     }
     if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
+      displayName = new TruncatableString.fromJson(_json["displayName"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("links")) {
-      links = _json["links"].map((value) => new Link.fromJson(value)).toList();
+      links = new Links.fromJson(_json["links"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -783,23 +848,23 @@ class Span {
       status = new Status.fromJson(_json["status"]);
     }
     if (_json.containsKey("timeEvents")) {
-      timeEvents = _json["timeEvents"].map((value) => new TimeEvent.fromJson(value)).toList();
+      timeEvents = new TimeEvents.fromJson(_json["timeEvents"]);
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
     if (attributes != null) {
-      _json["attributes"] = commons.mapMap(attributes, (item) => (item).toJson());
+      _json["attributes"] = (attributes).toJson();
     }
     if (displayName != null) {
-      _json["displayName"] = displayName;
+      _json["displayName"] = (displayName).toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
     if (links != null) {
-      _json["links"] = links.map((value) => (value).toJson()).toList();
+      _json["links"] = (links).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -820,7 +885,7 @@ class Span {
       _json["status"] = (status).toJson();
     }
     if (timeEvents != null) {
-      _json["timeEvents"] = timeEvents.map((value) => (value).toJson()).toList();
+      _json["timeEvents"] = (timeEvents).toJson();
     }
     return _json;
   }
@@ -834,12 +899,12 @@ class StackFrame {
    */
   core.String columnNumber;
   /** The filename of the file containing this frame (up to 256 characters). */
-  core.String fileName;
+  TruncatableString fileName;
   /**
    * The fully-qualified name that uniquely identifies this function or
    * method (up to 1024 characters).
    */
-  core.String functionName;
+  TruncatableString functionName;
   /** Line number of the frame. */
   core.String lineNumber;
   /** Binary module the code is loaded from. */
@@ -849,9 +914,9 @@ class StackFrame {
    * [mangled](http://www.avabodh.com/cxxin/namemangling.html). May be
    * fully-qualified (up to 1024 characters).
    */
-  core.String originalFunctionName;
+  TruncatableString originalFunctionName;
   /** The version of the deployed source code (up to 128 characters). */
-  core.String sourceVersion;
+  TruncatableString sourceVersion;
 
   StackFrame();
 
@@ -860,10 +925,10 @@ class StackFrame {
       columnNumber = _json["columnNumber"];
     }
     if (_json.containsKey("fileName")) {
-      fileName = _json["fileName"];
+      fileName = new TruncatableString.fromJson(_json["fileName"]);
     }
     if (_json.containsKey("functionName")) {
-      functionName = _json["functionName"];
+      functionName = new TruncatableString.fromJson(_json["functionName"]);
     }
     if (_json.containsKey("lineNumber")) {
       lineNumber = _json["lineNumber"];
@@ -872,10 +937,10 @@ class StackFrame {
       loadModule = new Module.fromJson(_json["loadModule"]);
     }
     if (_json.containsKey("originalFunctionName")) {
-      originalFunctionName = _json["originalFunctionName"];
+      originalFunctionName = new TruncatableString.fromJson(_json["originalFunctionName"]);
     }
     if (_json.containsKey("sourceVersion")) {
-      sourceVersion = _json["sourceVersion"];
+      sourceVersion = new TruncatableString.fromJson(_json["sourceVersion"]);
     }
   }
 
@@ -885,10 +950,10 @@ class StackFrame {
       _json["columnNumber"] = columnNumber;
     }
     if (fileName != null) {
-      _json["fileName"] = fileName;
+      _json["fileName"] = (fileName).toJson();
     }
     if (functionName != null) {
-      _json["functionName"] = functionName;
+      _json["functionName"] = (functionName).toJson();
     }
     if (lineNumber != null) {
       _json["lineNumber"] = lineNumber;
@@ -897,10 +962,43 @@ class StackFrame {
       _json["loadModule"] = (loadModule).toJson();
     }
     if (originalFunctionName != null) {
-      _json["originalFunctionName"] = originalFunctionName;
+      _json["originalFunctionName"] = (originalFunctionName).toJson();
     }
     if (sourceVersion != null) {
-      _json["sourceVersion"] = sourceVersion;
+      _json["sourceVersion"] = (sourceVersion).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Represents collection of StackFrames that can be truncated. */
+class StackFrames {
+  /**
+   * The number of dropped stack frames after the maximum size was enforced.
+   * If 0 then no frames were dropped.
+   */
+  core.int droppedFramesCount;
+  /** Stack frames in this stack trace. */
+  core.List<StackFrame> frame;
+
+  StackFrames();
+
+  StackFrames.fromJson(core.Map _json) {
+    if (_json.containsKey("droppedFramesCount")) {
+      droppedFramesCount = _json["droppedFramesCount"];
+    }
+    if (_json.containsKey("frame")) {
+      frame = _json["frame"].map((value) => new StackFrame.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (droppedFramesCount != null) {
+      _json["droppedFramesCount"] = droppedFramesCount;
+    }
+    if (frame != null) {
+      _json["frame"] = frame.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -909,7 +1007,7 @@ class StackFrame {
 /** StackTrace collected in a trace. */
 class StackTrace {
   /** Stack frames in this stack trace. A maximum of 128 frames are allowed. */
-  core.List<StackFrame> stackFrame;
+  StackFrames stackFrames;
   /**
    * The hash ID is used to conserve network bandwidth for duplicate
    * stack traces within a single trace.
@@ -926,8 +1024,8 @@ class StackTrace {
   StackTrace();
 
   StackTrace.fromJson(core.Map _json) {
-    if (_json.containsKey("stackFrame")) {
-      stackFrame = _json["stackFrame"].map((value) => new StackFrame.fromJson(value)).toList();
+    if (_json.containsKey("stackFrames")) {
+      stackFrames = new StackFrames.fromJson(_json["stackFrames"]);
     }
     if (_json.containsKey("stackTraceHashId")) {
       stackTraceHashId = _json["stackTraceHashId"];
@@ -936,8 +1034,8 @@ class StackTrace {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (stackFrame != null) {
-      _json["stackFrame"] = stackFrame.map((value) => (value).toJson()).toList();
+    if (stackFrames != null) {
+      _json["stackFrames"] = (stackFrames).toJson();
     }
     if (stackTraceHashId != null) {
       _json["stackTraceHashId"] = stackTraceHashId;
@@ -966,7 +1064,7 @@ class StackTrace {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -989,7 +1087,7 @@ class StackTrace {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for
@@ -1088,6 +1186,54 @@ class TimeEvent {
 }
 
 /**
+ * A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
+ * on the span, consisting of either user-supplied key:value pairs, or
+ * details of an RPC message sent/received on the network.
+ */
+class TimeEvents {
+  /**
+   * The number of dropped annotations after the maximum size was enforced. If
+   * 0 then no annotations were dropped.
+   */
+  core.int droppedAnnotationsCount;
+  /**
+   * The number of dropped network events after the maximum size was enforced.
+   * If 0 then no annotations were dropped.
+   */
+  core.int droppedNetworkEventsCount;
+  /** A collection of `TimeEvent`s. */
+  core.List<TimeEvent> timeEvent;
+
+  TimeEvents();
+
+  TimeEvents.fromJson(core.Map _json) {
+    if (_json.containsKey("droppedAnnotationsCount")) {
+      droppedAnnotationsCount = _json["droppedAnnotationsCount"];
+    }
+    if (_json.containsKey("droppedNetworkEventsCount")) {
+      droppedNetworkEventsCount = _json["droppedNetworkEventsCount"];
+    }
+    if (_json.containsKey("timeEvent")) {
+      timeEvent = _json["timeEvent"].map((value) => new TimeEvent.fromJson(value)).toList();
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (droppedAnnotationsCount != null) {
+      _json["droppedAnnotationsCount"] = droppedAnnotationsCount;
+    }
+    if (droppedNetworkEventsCount != null) {
+      _json["droppedNetworkEventsCount"] = droppedNetworkEventsCount;
+    }
+    if (timeEvent != null) {
+      _json["timeEvent"] = timeEvent.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
  * A trace describes how long it takes for an application to perform some
  * operations. It consists of a set of spans, each representing
  * an operation and including time information and operation details.
@@ -1113,6 +1259,42 @@ class Trace {
     var _json = new core.Map();
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/** Represents a string value that might be truncated. */
+class TruncatableString {
+  /**
+   * The number of characters truncated from the original string value. If 0 it
+   * means that the string value was not truncated.
+   */
+  core.int truncatedCharacterCount;
+  /**
+   * The truncated string value. E.g. for a string attribute this may have up to
+   * 256 bytes.
+   */
+  core.String value;
+
+  TruncatableString();
+
+  TruncatableString.fromJson(core.Map _json) {
+    if (_json.containsKey("truncatedCharacterCount")) {
+      truncatedCharacterCount = _json["truncatedCharacterCount"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (truncatedCharacterCount != null) {
+      _json["truncatedCharacterCount"] = truncatedCharacterCount;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }

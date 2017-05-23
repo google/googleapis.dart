@@ -264,7 +264,7 @@
             }
         }
     },
-    "revision": "20170210",
+    "revision": "20170504",
     "rootUrl": "https://cloudbilling.googleapis.com/",
     "schemas": {
         "ProjectBillingInfo": {

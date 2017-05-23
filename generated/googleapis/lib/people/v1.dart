@@ -62,7 +62,7 @@ class PeopleResourceApi {
       _requester = client;
 
   /**
-   * Provides information about a person resource for a resource name. Use
+   * Provides information about a person by specifying a resource name. Use
    * `people/me` to indicate the authenticated user.
    *
    * Request parameters:
@@ -76,13 +76,10 @@ class PeopleResourceApi {
    * [`people.connections.list`](/people/api/rest/v1/people.connections/list).
    * Value must have pattern "^people/[^/]+$".
    *
-   * [requestMask_includeField] - Comma-separated list of fields to be included
-   * in the response. Omitting
-   * this field will include all fields except for connections.list requests,
-   * which have a default mask that includes common fields like metadata, name,
-   * photo, and profile url.
-   * Each path should start with `person.`: for example, `person.names` or
-   * `person.photos`.
+   * [requestMask_includeField] - Required. Comma-separated list of person
+   * fields to be included in the
+   * response. Each path should start with `person.`: for example,
+   * `person.names` or `person.photos`.
    *
    * Completes with a [Person].
    *
@@ -126,13 +123,10 @@ class PeopleResourceApi {
    *
    * Request parameters:
    *
-   * [requestMask_includeField] - Comma-separated list of fields to be included
-   * in the response. Omitting
-   * this field will include all fields except for connections.list requests,
-   * which have a default mask that includes common fields like metadata, name,
-   * photo, and profile url.
-   * Each path should start with `person.`: for example, `person.names` or
-   * `person.photos`.
+   * [requestMask_includeField] - Required. Comma-separated list of person
+   * fields to be included in the
+   * response. Each path should start with `person.`: for example,
+   * `person.names` or `person.photos`.
    *
    * [resourceNames] - The resource name, such as one returned by
    * [`people.connections.list`](/people/api/rest/v1/people.connections/list),
@@ -193,24 +187,6 @@ class PeopleConnectionsResourceApi {
    * `people/me` is valid.
    * Value must have pattern "^people/[^/]+$".
    *
-   * [requestSyncToken] - Whether the response should include a sync token,
-   * which can be used to get
-   * all changes since the last request.
-   *
-   * [pageToken] - The token of the page to be returned.
-   *
-   * [pageSize] - The number of connections to include in the response. Valid
-   * values are
-   * between 1 and 500, inclusive. Defaults to 100.
-   *
-   * [requestMask_includeField] - Comma-separated list of fields to be included
-   * in the response. Omitting
-   * this field will include all fields except for connections.list requests,
-   * which have a default mask that includes common fields like metadata, name,
-   * photo, and profile url.
-   * Each path should start with `person.`: for example, `person.names` or
-   * `person.photos`.
-   *
    * [syncToken] - A sync token, returned by a previous call to
    * `people.connections.list`.
    * Only resources changed since the sync token was created will be returned.
@@ -223,6 +199,21 @@ class PeopleConnectionsResourceApi {
    * - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
    * - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
    *
+   * [requestSyncToken] - Whether the response should include a sync token,
+   * which can be used to get
+   * all changes since the last request.
+   *
+   * [pageToken] - The token of the page to be returned.
+   *
+   * [pageSize] - The number of connections to include in the response. Valid
+   * values are
+   * between 1 and 2000, inclusive. Defaults to 100.
+   *
+   * [requestMask_includeField] - Required. Comma-separated list of person
+   * fields to be included in the
+   * response. Each path should start with `person.`: for example,
+   * `person.names` or `person.photos`.
+   *
    * Completes with a [ListConnectionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -231,7 +222,7 @@ class PeopleConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.bool requestSyncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField, core.String syncToken, core.String sortOrder}) {
+  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String syncToken, core.String sortOrder, core.bool requestSyncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -241,6 +232,12 @@ class PeopleConnectionsResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if (requestSyncToken != null) {
       _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
@@ -253,12 +250,6 @@ class PeopleConnectionsResourceApi {
     }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/connections';
@@ -1070,7 +1061,12 @@ class ListConnectionsResponse {
   core.String nextPageToken;
   /** The token that can be used to retrieve changes since the last request. */
   core.String nextSyncToken;
-  /** The total number of people in the list without pagination. */
+  /** The total number of items in the list without pagination. */
+  core.int totalItems;
+  /**
+   * DEPRECATED(Please use total_items). The total number of people in the list
+   * without pagination.
+   */
   core.int totalPeople;
 
   ListConnectionsResponse();
@@ -1084,6 +1080,9 @@ class ListConnectionsResponse {
     }
     if (_json.containsKey("nextSyncToken")) {
       nextSyncToken = _json["nextSyncToken"];
+    }
+    if (_json.containsKey("totalItems")) {
+      totalItems = _json["totalItems"];
     }
     if (_json.containsKey("totalPeople")) {
       totalPeople = _json["totalPeople"];
@@ -1100,6 +1099,9 @@ class ListConnectionsResponse {
     }
     if (nextSyncToken != null) {
       _json["nextSyncToken"] = nextSyncToken;
+    }
+    if (totalItems != null) {
+      _json["totalItems"] = totalItems;
     }
     if (totalPeople != null) {
       _json["totalPeople"] = totalPeople;
@@ -1611,7 +1613,7 @@ class Person {
   core.List<Residence> residences;
   /**
    * The resource name for the person, assigned by the server. An ASCII string
-   * with a max length of 27 characters. Always starts with `people/`.
+   * with a max length of 27 characters, in the form of `people/<person_id>`.
    */
   core.String resourceName;
   /** The person's skills. */
@@ -1888,6 +1890,7 @@ class PersonMetadata {
 /** The response for a single person */
 class PersonResponse {
   /**
+   * DEPRECATED(Please use status instead).
    * [HTTP 1.1 status
    * code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
    */
@@ -1903,6 +1906,8 @@ class PersonResponse {
    * profile URL.
    */
   core.String requestedResourceName;
+  /** The status of the response. */
+  Status status;
 
   PersonResponse();
 
@@ -1916,6 +1921,9 @@ class PersonResponse {
     if (_json.containsKey("requestedResourceName")) {
       requestedResourceName = _json["requestedResourceName"];
     }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
   }
 
   core.Map toJson() {
@@ -1928,6 +1936,9 @@ class PersonResponse {
     }
     if (requestedResourceName != null) {
       _json["requestedResourceName"] = requestedResourceName;
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
     }
     return _json;
   }
@@ -2017,7 +2028,11 @@ class PhoneNumber {
 class Photo {
   /** Metadata about the photo. */
   FieldMetadata metadata;
-  /** The URL of the photo. */
+  /**
+   * The URL of the photo. You can change the desired size by appending a query
+   * parameter `sz=<size>` at the end of the url. Example:
+   * `https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50`
+   */
   core.String url;
 
   Photo();
@@ -2375,6 +2390,109 @@ class Source {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The `Status` type defines a logical error model that is suitable for
+ * different
+ * programming environments, including REST APIs and RPC APIs. It is used by
+ * [gRPC](https://github.com/grpc). The error model is designed to be:
+ *
+ * - Simple to use and understand for most users
+ * - Flexible enough to meet unexpected needs
+ *
+ * # Overview
+ *
+ * The `Status` message contains three pieces of data: error code, error
+ * message,
+ * and error details. The error code should be an enum value of
+ * google.rpc.Code, but it may accept additional error codes if needed.  The
+ * error message should be a developer-facing English message that helps
+ * developers *understand* and *resolve* the error. If a localized user-facing
+ * error message is needed, put the localized message in the error details or
+ * localize it in the client. The optional error details may contain arbitrary
+ * information about the error. There is a predefined set of error detail types
+ * in the package `google.rpc` that can be used for common error conditions.
+ *
+ * # Language mapping
+ *
+ * The `Status` message is the logical representation of the error model, but it
+ * is not necessarily the actual wire format. When the `Status` message is
+ * exposed in different client libraries and different wire protocols, it can be
+ * mapped differently. For example, it will likely be mapped to some exceptions
+ * in Java, but more likely mapped to some error codes in C.
+ *
+ * # Other uses
+ *
+ * The error model and the `Status` message can be used in a variety of
+ * environments, either with or without APIs, to provide a
+ * consistent developer experience across different environments.
+ *
+ * Example uses of this error model include:
+ *
+ * - Partial errors. If a service needs to return partial errors to the client,
+ *     it may embed the `Status` in the normal response to indicate the partial
+ *     errors.
+ *
+ * - Workflow errors. A typical workflow has multiple steps. Each step may
+ *     have a `Status` message for error reporting.
+ *
+ * - Batch operations. If a client uses batch request and batch response, the
+ *     `Status` message should be used directly inside batch response, one for
+ *     each error sub-response.
+ *
+ * - Asynchronous operations. If an API call embeds asynchronous operation
+ *     results in its response, the status of those operations should be
+ *     represented directly using the `Status` message.
+ *
+ * - Logging. If some API errors are stored in logs, the message `Status` could
+ * be used directly after any stripping needed for security/privacy reasons.
+ */
+class Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  core.int code;
+  /**
+   * A list of messages that carry the error details.  There will be a
+   * common set of message types for APIs to use.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> details;
+  /**
+   * A developer-facing error message, which should be in English. Any
+   * user-facing error message should be localized and sent in the
+   * google.rpc.Status.details field, or localized by the client.
+   */
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }

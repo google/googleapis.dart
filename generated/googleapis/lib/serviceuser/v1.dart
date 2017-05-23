@@ -600,6 +600,8 @@ class AuthenticationRule {
    * project.
    */
   core.bool allowWithoutCredential;
+  /** Configuration for custom authentication. */
+  CustomAuthRequirements customAuth;
   /** The requirements for OAuth credentials. */
   OAuthRequirements oauth;
   /** Requirements for additional authentication providers. */
@@ -617,6 +619,9 @@ class AuthenticationRule {
     if (_json.containsKey("allowWithoutCredential")) {
       allowWithoutCredential = _json["allowWithoutCredential"];
     }
+    if (_json.containsKey("customAuth")) {
+      customAuth = new CustomAuthRequirements.fromJson(_json["customAuth"]);
+    }
     if (_json.containsKey("oauth")) {
       oauth = new OAuthRequirements.fromJson(_json["oauth"]);
     }
@@ -632,6 +637,9 @@ class AuthenticationRule {
     var _json = new core.Map();
     if (allowWithoutCredential != null) {
       _json["allowWithoutCredential"] = allowWithoutCredential;
+    }
+    if (customAuth != null) {
+      _json["customAuth"] = (customAuth).toJson();
     }
     if (oauth != null) {
       _json["oauth"] = (oauth).toJson();
@@ -718,6 +726,11 @@ class BackendRule {
    */
   core.double deadline;
   /**
+   * Minimum deadline in seconds needed for this method. Calls having deadline
+   * value lower than this will be rejected.
+   */
+  core.double minDeadline;
+  /**
    * Selects the methods to which this rule applies.
    *
    * Refer to selector for syntax details.
@@ -733,6 +746,9 @@ class BackendRule {
     if (_json.containsKey("deadline")) {
       deadline = _json["deadline"];
     }
+    if (_json.containsKey("minDeadline")) {
+      minDeadline = _json["minDeadline"];
+    }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
@@ -745,6 +761,9 @@ class BackendRule {
     }
     if (deadline != null) {
       _json["deadline"] = deadline;
+    }
+    if (minDeadline != null) {
+      _json["minDeadline"] = minDeadline;
     }
     if (selector != null) {
       _json["selector"] = selector;
@@ -866,6 +885,32 @@ class Control {
     var _json = new core.Map();
     if (environment != null) {
       _json["environment"] = environment;
+    }
+    return _json;
+  }
+}
+
+/** Configuration for a custom authentication provider. */
+class CustomAuthRequirements {
+  /**
+   * A configuration string containing connection information for the
+   * authentication provider, typically formatted as a SmartService string
+   * (go/smartservice).
+   */
+  core.String provider;
+
+  CustomAuthRequirements();
+
+  CustomAuthRequirements.fromJson(core.Map _json) {
+    if (_json.containsKey("provider")) {
+      provider = _json["provider"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (provider != null) {
+      _json["provider"] = provider;
     }
     return _json;
   }
@@ -1231,7 +1276,12 @@ class Endpoint {
    * allowed to proceed.
    */
   core.bool allowCors;
-  /** The list of APIs served by this endpoint. */
+  /**
+   * The list of APIs served by this endpoint.
+   *
+   * If no APIs are specified this translates to "all APIs" exported by the
+   * service, as defined in the top-level service configuration.
+   */
   core.List<core.String> apis;
   /** The list of features enabled on this endpoint. */
   core.List<core.String> features;
@@ -1854,6 +1904,25 @@ class HttpRule {
    */
   core.String responseBody;
   /**
+   * Optional. The REST collection name is by default derived from the URL
+   * pattern. If specified, this field overrides the default collection name.
+   * Example:
+   *
+   *     rpc AddressesAggregatedList(AddressesAggregatedListRequest)
+   *         returns (AddressesAggregatedListResponse) {
+   *       option (google.api.http) = {
+   *         get: "/v1/projects/{project_id}/aggregated/addresses"
+   *         rest_collection: "projects.addresses"
+   *       };
+   *     }
+   *
+   * This method has the automatically derived collection name
+   * "projects.aggregated". Because, semantically, this rpc is actually an
+   * operation on the "projects.addresses" collection, the `rest_collection`
+   * field is configured to override the derived collection name.
+   */
+  core.String restCollection;
+  /**
    * Selects methods to which this rule applies.
    *
    * Refer to selector for syntax details.
@@ -1896,6 +1965,9 @@ class HttpRule {
     if (_json.containsKey("responseBody")) {
       responseBody = _json["responseBody"];
     }
+    if (_json.containsKey("restCollection")) {
+      restCollection = _json["restCollection"];
+    }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
@@ -1935,6 +2007,9 @@ class HttpRule {
     }
     if (responseBody != null) {
       _json["responseBody"] = responseBody;
+    }
+    if (restCollection != null) {
+      _json["restCollection"] = restCollection;
     }
     if (selector != null) {
       _json["selector"] = selector;
@@ -2202,53 +2277,120 @@ class LoggingDestination {
 }
 
 /**
+ * Defines the Media configuration for a service in case of a download.
  * Use this only for Scotty Requests. Do not use this for media support using
  * Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
  * your configuration for Bytestream methods.
  */
 class MediaDownload {
   /**
-   * DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+   * A boolean that determines whether a notification for the completion of a
+   * download should be sent to the backend.
+   */
+  core.bool completeNotification;
+  /**
+   * DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
    *
    * Specify name of the download service if one is used for download.
    */
   core.String downloadService;
+  /** Name of the Scotty dropzone to use for the current API. */
+  core.String dropzone;
   /** Whether download is enabled. */
   core.bool enabled;
+  /**
+   * Optional maximum acceptable size for direct download.
+   * The size is specified in bytes.
+   */
+  core.String maxDirectDownloadSize;
+  /**
+   * A boolean that determines if direct download from ESF should be used for
+   * download of this media.
+   */
+  core.bool useDirectDownload;
 
   MediaDownload();
 
   MediaDownload.fromJson(core.Map _json) {
+    if (_json.containsKey("completeNotification")) {
+      completeNotification = _json["completeNotification"];
+    }
     if (_json.containsKey("downloadService")) {
       downloadService = _json["downloadService"];
     }
+    if (_json.containsKey("dropzone")) {
+      dropzone = _json["dropzone"];
+    }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
+    }
+    if (_json.containsKey("maxDirectDownloadSize")) {
+      maxDirectDownloadSize = _json["maxDirectDownloadSize"];
+    }
+    if (_json.containsKey("useDirectDownload")) {
+      useDirectDownload = _json["useDirectDownload"];
     }
   }
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (completeNotification != null) {
+      _json["completeNotification"] = completeNotification;
+    }
     if (downloadService != null) {
       _json["downloadService"] = downloadService;
     }
+    if (dropzone != null) {
+      _json["dropzone"] = dropzone;
+    }
     if (enabled != null) {
       _json["enabled"] = enabled;
+    }
+    if (maxDirectDownloadSize != null) {
+      _json["maxDirectDownloadSize"] = maxDirectDownloadSize;
+    }
+    if (useDirectDownload != null) {
+      _json["useDirectDownload"] = useDirectDownload;
     }
     return _json;
   }
 }
 
 /**
+ * Defines the Media configuration for a service in case of an upload.
  * Use this only for Scotty Requests. Do not use this for media support using
  * Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
  * your configuration for Bytestream methods.
  */
 class MediaUpload {
+  /**
+   * A boolean that determines whether a notification for the completion of an
+   * upload should be sent to the backend. These notifications will not be seen
+   * by the client and will not consume quota.
+   */
+  core.bool completeNotification;
+  /** Name of the Scotty dropzone to use for the current API. */
+  core.String dropzone;
   /** Whether upload is enabled. */
   core.bool enabled;
   /**
-   * DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+   * Optional maximum acceptable size for an upload.
+   * The size is specified in bytes.
+   */
+  core.String maxSize;
+  /**
+   * An array of mimetype patterns. Esf will only accept uploads that match one
+   * of the given patterns.
+   */
+  core.List<core.String> mimeTypes;
+  /**
+   * Whether to receive a notification for progress changes of media upload.
+   */
+  core.bool progressNotification;
+  /** Whether to receive a notification on the start of media upload. */
+  core.bool startNotification;
+  /**
+   * DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
    *
    * Specify name of the upload service if one is used for upload.
    */
@@ -2257,8 +2399,26 @@ class MediaUpload {
   MediaUpload();
 
   MediaUpload.fromJson(core.Map _json) {
+    if (_json.containsKey("completeNotification")) {
+      completeNotification = _json["completeNotification"];
+    }
+    if (_json.containsKey("dropzone")) {
+      dropzone = _json["dropzone"];
+    }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
+    }
+    if (_json.containsKey("maxSize")) {
+      maxSize = _json["maxSize"];
+    }
+    if (_json.containsKey("mimeTypes")) {
+      mimeTypes = _json["mimeTypes"];
+    }
+    if (_json.containsKey("progressNotification")) {
+      progressNotification = _json["progressNotification"];
+    }
+    if (_json.containsKey("startNotification")) {
+      startNotification = _json["startNotification"];
     }
     if (_json.containsKey("uploadService")) {
       uploadService = _json["uploadService"];
@@ -2267,8 +2427,26 @@ class MediaUpload {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (completeNotification != null) {
+      _json["completeNotification"] = completeNotification;
+    }
+    if (dropzone != null) {
+      _json["dropzone"] = dropzone;
+    }
     if (enabled != null) {
       _json["enabled"] = enabled;
+    }
+    if (maxSize != null) {
+      _json["maxSize"] = maxSize;
+    }
+    if (mimeTypes != null) {
+      _json["mimeTypes"] = mimeTypes;
+    }
+    if (progressNotification != null) {
+      _json["progressNotification"] = progressNotification;
+    }
+    if (startNotification != null) {
+      _json["startNotification"] = startNotification;
     }
     if (uploadService != null) {
       _json["uploadService"] = uploadService;
@@ -3991,7 +4169,7 @@ class SourceInfo {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -4014,7 +4192,7 @@ class SourceInfo {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for
@@ -4085,7 +4263,9 @@ class Step {
    * - "DONE" : The operation or step has completed without errors.
    * - "NOT_STARTED" : The operation or step has not started yet.
    * - "IN_PROGRESS" : The operation or step is in progress.
-   * - "FAILED" : The operation or step has completed with errors.
+   * - "FAILED" : The operation or step has completed with errors. If the
+   * operation is
+   * rollbackable, the rollback completed with errors too.
    * - "CANCELLED" : The operation or step has completed with cancellation.
    */
   core.String status;

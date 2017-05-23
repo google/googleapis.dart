@@ -296,11 +296,11 @@ class AppsLocationsResourceApi {
    * [appsId] - Part of `name`. The resource that owns the locations collection,
    * if applicable.
    *
-   * [pageToken] - The standard list page token.
-   *
    * [pageSize] - The standard list page size.
    *
    * [filter] - The standard list filter.
+   *
+   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -310,7 +310,7 @@ class AppsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String appsId, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListLocationsResponse> list(core.String appsId, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,14 +321,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
@@ -408,11 +408,11 @@ class AppsOperationsResourceApi {
    *
    * [appsId] - Part of `name`. The name of the operation collection.
    *
+   * [pageSize] - The standard list page size.
+   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
-   *
-   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -422,7 +422,7 @@ class AppsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String appsId, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String appsId, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -433,14 +433,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
@@ -564,9 +564,9 @@ class AppsServicesResourceApi {
    * [appsId] - Part of `parent`. Name of the parent Application resource.
    * Example: apps/myapp.
    *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
    * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListServicesResponse].
    *
@@ -576,7 +576,7 @@ class AppsServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list(core.String appsId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListServicesResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -587,11 +587,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
@@ -618,6 +618,8 @@ class AppsServicesResourceApi {
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
+   * [updateMask] - Standard field mask for the set of fields to be updated.
+   *
    * [migrateTraffic] - Set to true to gradually shift traffic to one or more
    * versions that you specify. By default, traffic is shifted immediately. For
    * gradual traffic migration, the target versions must be located within
@@ -632,8 +634,6 @@ class AppsServicesResourceApi {
    * Splitting Traffic
    * (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
    *
-   * [updateMask] - Standard field mask for the set of fields to be updated.
-   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -642,7 +642,7 @@ class AppsServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Service request, core.String appsId, core.String servicesId, {core.bool migrateTraffic, core.String updateMask}) {
+  async.Future<Operation> patch(Service request, core.String appsId, core.String servicesId, {core.String updateMask, core.bool migrateTraffic}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -659,11 +659,11 @@ class AppsServicesResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (migrateTraffic != null) {
-      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (migrateTraffic != null) {
+      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId');
@@ -858,14 +858,14 @@ class AppsServicesVersionsResourceApi {
    *
    * [servicesId] - Part of `parent`. See documentation of `appsId`.
    *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
    * [pageSize] - Maximum results to return per page.
    *
    * [view] - Controls the set of fields returned in the List response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListVersionsResponse].
    *
@@ -875,7 +875,7 @@ class AppsServicesVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.String pageToken, core.int pageSize, core.String view}) {
+  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.int pageSize, core.String view, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -889,14 +889,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions';
@@ -1186,9 +1186,9 @@ class AppsServicesVersionsInstancesResourceApi {
    *
    * [versionsId] - Part of `parent`. See documentation of `appsId`.
    *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
    * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListInstancesResponse].
    *
@@ -1198,7 +1198,7 @@ class AppsServicesVersionsInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1215,11 +1215,11 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances';

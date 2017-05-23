@@ -51,40 +51,40 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1552() {
+buildUnnamed1623() {
   var o = new core.List<api.Method>();
   o.add(buildMethod());
   o.add(buildMethod());
   return o;
 }
 
-checkUnnamed1552(core.List<api.Method> o) {
+checkUnnamed1623(core.List<api.Method> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMethod(o[0]);
   checkMethod(o[1]);
 }
 
-buildUnnamed1553() {
+buildUnnamed1624() {
   var o = new core.List<api.Mixin>();
   o.add(buildMixin());
   o.add(buildMixin());
   return o;
 }
 
-checkUnnamed1553(core.List<api.Mixin> o) {
+checkUnnamed1624(core.List<api.Mixin> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMixin(o[0]);
   checkMixin(o[1]);
 }
 
-buildUnnamed1554() {
+buildUnnamed1625() {
   var o = new core.List<api.Option>();
   o.add(buildOption());
   o.add(buildOption());
   return o;
 }
 
-checkUnnamed1554(core.List<api.Option> o) {
+checkUnnamed1625(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOption(o[0]);
   checkOption(o[1]);
@@ -95,10 +95,10 @@ buildApi() {
   var o = new api.Api();
   buildCounterApi++;
   if (buildCounterApi < 3) {
-    o.methods = buildUnnamed1552();
-    o.mixins = buildUnnamed1553();
+    o.methods = buildUnnamed1623();
+    o.mixins = buildUnnamed1624();
     o.name = "foo";
-    o.options = buildUnnamed1554();
+    o.options = buildUnnamed1625();
     o.sourceContext = buildSourceContext();
     o.syntax = "foo";
     o.version = "foo";
@@ -110,10 +110,10 @@ buildApi() {
 checkApi(api.Api o) {
   buildCounterApi++;
   if (buildCounterApi < 3) {
-    checkUnnamed1552(o.methods);
-    checkUnnamed1553(o.mixins);
+    checkUnnamed1623(o.methods);
+    checkUnnamed1624(o.mixins);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1554(o.options);
+    checkUnnamed1625(o.options);
     checkSourceContext(o.sourceContext);
     unittest.expect(o.syntax, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals('foo'));
@@ -167,27 +167,27 @@ checkAuthRequirement(api.AuthRequirement o) {
   buildCounterAuthRequirement--;
 }
 
-buildUnnamed1555() {
+buildUnnamed1626() {
   var o = new core.List<api.AuthProvider>();
   o.add(buildAuthProvider());
   o.add(buildAuthProvider());
   return o;
 }
 
-checkUnnamed1555(core.List<api.AuthProvider> o) {
+checkUnnamed1626(core.List<api.AuthProvider> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthProvider(o[0]);
   checkAuthProvider(o[1]);
 }
 
-buildUnnamed1556() {
+buildUnnamed1627() {
   var o = new core.List<api.AuthenticationRule>();
   o.add(buildAuthenticationRule());
   o.add(buildAuthenticationRule());
   return o;
 }
 
-checkUnnamed1556(core.List<api.AuthenticationRule> o) {
+checkUnnamed1627(core.List<api.AuthenticationRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthenticationRule(o[0]);
   checkAuthenticationRule(o[1]);
@@ -198,8 +198,8 @@ buildAuthentication() {
   var o = new api.Authentication();
   buildCounterAuthentication++;
   if (buildCounterAuthentication < 3) {
-    o.providers = buildUnnamed1555();
-    o.rules = buildUnnamed1556();
+    o.providers = buildUnnamed1626();
+    o.rules = buildUnnamed1627();
   }
   buildCounterAuthentication--;
   return o;
@@ -208,20 +208,20 @@ buildAuthentication() {
 checkAuthentication(api.Authentication o) {
   buildCounterAuthentication++;
   if (buildCounterAuthentication < 3) {
-    checkUnnamed1555(o.providers);
-    checkUnnamed1556(o.rules);
+    checkUnnamed1626(o.providers);
+    checkUnnamed1627(o.rules);
   }
   buildCounterAuthentication--;
 }
 
-buildUnnamed1557() {
+buildUnnamed1628() {
   var o = new core.List<api.AuthRequirement>();
   o.add(buildAuthRequirement());
   o.add(buildAuthRequirement());
   return o;
 }
 
-checkUnnamed1557(core.List<api.AuthRequirement> o) {
+checkUnnamed1628(core.List<api.AuthRequirement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthRequirement(o[0]);
   checkAuthRequirement(o[1]);
@@ -233,8 +233,9 @@ buildAuthenticationRule() {
   buildCounterAuthenticationRule++;
   if (buildCounterAuthenticationRule < 3) {
     o.allowWithoutCredential = true;
+    o.customAuth = buildCustomAuthRequirements();
     o.oauth = buildOAuthRequirements();
-    o.requirements = buildUnnamed1557();
+    o.requirements = buildUnnamed1628();
     o.selector = "foo";
   }
   buildCounterAuthenticationRule--;
@@ -245,8 +246,9 @@ checkAuthenticationRule(api.AuthenticationRule o) {
   buildCounterAuthenticationRule++;
   if (buildCounterAuthenticationRule < 3) {
     unittest.expect(o.allowWithoutCredential, unittest.isTrue);
+    checkCustomAuthRequirements(o.customAuth);
     checkOAuthRequirements(o.oauth);
-    checkUnnamed1557(o.requirements);
+    checkUnnamed1628(o.requirements);
     unittest.expect(o.selector, unittest.equals('foo'));
   }
   buildCounterAuthenticationRule--;
@@ -271,14 +273,14 @@ checkAuthorizationConfig(api.AuthorizationConfig o) {
   buildCounterAuthorizationConfig--;
 }
 
-buildUnnamed1558() {
+buildUnnamed1629() {
   var o = new core.List<api.BackendRule>();
   o.add(buildBackendRule());
   o.add(buildBackendRule());
   return o;
 }
 
-checkUnnamed1558(core.List<api.BackendRule> o) {
+checkUnnamed1629(core.List<api.BackendRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackendRule(o[0]);
   checkBackendRule(o[1]);
@@ -289,7 +291,7 @@ buildBackend() {
   var o = new api.Backend();
   buildCounterBackend++;
   if (buildCounterBackend < 3) {
-    o.rules = buildUnnamed1558();
+    o.rules = buildUnnamed1629();
   }
   buildCounterBackend--;
   return o;
@@ -298,7 +300,7 @@ buildBackend() {
 checkBackend(api.Backend o) {
   buildCounterBackend++;
   if (buildCounterBackend < 3) {
-    checkUnnamed1558(o.rules);
+    checkUnnamed1629(o.rules);
   }
   buildCounterBackend--;
 }
@@ -310,6 +312,7 @@ buildBackendRule() {
   if (buildCounterBackendRule < 3) {
     o.address = "foo";
     o.deadline = 42.0;
+    o.minDeadline = 42.0;
     o.selector = "foo";
   }
   buildCounterBackendRule--;
@@ -321,19 +324,20 @@ checkBackendRule(api.BackendRule o) {
   if (buildCounterBackendRule < 3) {
     unittest.expect(o.address, unittest.equals('foo'));
     unittest.expect(o.deadline, unittest.equals(42.0));
+    unittest.expect(o.minDeadline, unittest.equals(42.0));
     unittest.expect(o.selector, unittest.equals('foo'));
   }
   buildCounterBackendRule--;
 }
 
-buildUnnamed1559() {
+buildUnnamed1630() {
   var o = new core.List<api.ContextRule>();
   o.add(buildContextRule());
   o.add(buildContextRule());
   return o;
 }
 
-checkUnnamed1559(core.List<api.ContextRule> o) {
+checkUnnamed1630(core.List<api.ContextRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContextRule(o[0]);
   checkContextRule(o[1]);
@@ -344,7 +348,7 @@ buildContext() {
   var o = new api.Context();
   buildCounterContext++;
   if (buildCounterContext < 3) {
-    o.rules = buildUnnamed1559();
+    o.rules = buildUnnamed1630();
   }
   buildCounterContext--;
   return o;
@@ -353,32 +357,32 @@ buildContext() {
 checkContext(api.Context o) {
   buildCounterContext++;
   if (buildCounterContext < 3) {
-    checkUnnamed1559(o.rules);
+    checkUnnamed1630(o.rules);
   }
   buildCounterContext--;
 }
 
-buildUnnamed1560() {
+buildUnnamed1631() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1560(core.List<core.String> o) {
+checkUnnamed1631(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1561() {
+buildUnnamed1632() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1561(core.List<core.String> o) {
+checkUnnamed1632(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -389,8 +393,8 @@ buildContextRule() {
   var o = new api.ContextRule();
   buildCounterContextRule++;
   if (buildCounterContextRule < 3) {
-    o.provided = buildUnnamed1560();
-    o.requested = buildUnnamed1561();
+    o.provided = buildUnnamed1631();
+    o.requested = buildUnnamed1632();
     o.selector = "foo";
   }
   buildCounterContextRule--;
@@ -400,8 +404,8 @@ buildContextRule() {
 checkContextRule(api.ContextRule o) {
   buildCounterContextRule++;
   if (buildCounterContextRule < 3) {
-    checkUnnamed1560(o.provided);
-    checkUnnamed1561(o.requested);
+    checkUnnamed1631(o.provided);
+    checkUnnamed1632(o.requested);
     unittest.expect(o.selector, unittest.equals('foo'));
   }
   buildCounterContextRule--;
@@ -426,27 +430,46 @@ checkControl(api.Control o) {
   buildCounterControl--;
 }
 
-buildUnnamed1562() {
+core.int buildCounterCustomAuthRequirements = 0;
+buildCustomAuthRequirements() {
+  var o = new api.CustomAuthRequirements();
+  buildCounterCustomAuthRequirements++;
+  if (buildCounterCustomAuthRequirements < 3) {
+    o.provider = "foo";
+  }
+  buildCounterCustomAuthRequirements--;
+  return o;
+}
+
+checkCustomAuthRequirements(api.CustomAuthRequirements o) {
+  buildCounterCustomAuthRequirements++;
+  if (buildCounterCustomAuthRequirements < 3) {
+    unittest.expect(o.provider, unittest.equals('foo'));
+  }
+  buildCounterCustomAuthRequirements--;
+}
+
+buildUnnamed1633() {
   var o = new core.List<api.CustomErrorRule>();
   o.add(buildCustomErrorRule());
   o.add(buildCustomErrorRule());
   return o;
 }
 
-checkUnnamed1562(core.List<api.CustomErrorRule> o) {
+checkUnnamed1633(core.List<api.CustomErrorRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomErrorRule(o[0]);
   checkCustomErrorRule(o[1]);
 }
 
-buildUnnamed1563() {
+buildUnnamed1634() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1563(core.List<core.String> o) {
+checkUnnamed1634(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -457,8 +480,8 @@ buildCustomError() {
   var o = new api.CustomError();
   buildCounterCustomError++;
   if (buildCounterCustomError < 3) {
-    o.rules = buildUnnamed1562();
-    o.types = buildUnnamed1563();
+    o.rules = buildUnnamed1633();
+    o.types = buildUnnamed1634();
   }
   buildCounterCustomError--;
   return o;
@@ -467,8 +490,8 @@ buildCustomError() {
 checkCustomError(api.CustomError o) {
   buildCounterCustomError++;
   if (buildCounterCustomError < 3) {
-    checkUnnamed1562(o.rules);
-    checkUnnamed1563(o.types);
+    checkUnnamed1633(o.rules);
+    checkUnnamed1634(o.types);
   }
   buildCounterCustomError--;
 }
@@ -532,27 +555,27 @@ checkDisableServiceRequest(api.DisableServiceRequest o) {
   buildCounterDisableServiceRequest--;
 }
 
-buildUnnamed1564() {
+buildUnnamed1635() {
   var o = new core.List<api.Page>();
   o.add(buildPage());
   o.add(buildPage());
   return o;
 }
 
-checkUnnamed1564(core.List<api.Page> o) {
+checkUnnamed1635(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPage(o[0]);
   checkPage(o[1]);
 }
 
-buildUnnamed1565() {
+buildUnnamed1636() {
   var o = new core.List<api.DocumentationRule>();
   o.add(buildDocumentationRule());
   o.add(buildDocumentationRule());
   return o;
 }
 
-checkUnnamed1565(core.List<api.DocumentationRule> o) {
+checkUnnamed1636(core.List<api.DocumentationRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDocumentationRule(o[0]);
   checkDocumentationRule(o[1]);
@@ -565,8 +588,8 @@ buildDocumentation() {
   if (buildCounterDocumentation < 3) {
     o.documentationRootUrl = "foo";
     o.overview = "foo";
-    o.pages = buildUnnamed1564();
-    o.rules = buildUnnamed1565();
+    o.pages = buildUnnamed1635();
+    o.rules = buildUnnamed1636();
     o.summary = "foo";
   }
   buildCounterDocumentation--;
@@ -578,8 +601,8 @@ checkDocumentation(api.Documentation o) {
   if (buildCounterDocumentation < 3) {
     unittest.expect(o.documentationRootUrl, unittest.equals('foo'));
     unittest.expect(o.overview, unittest.equals('foo'));
-    checkUnnamed1564(o.pages);
-    checkUnnamed1565(o.rules);
+    checkUnnamed1635(o.pages);
+    checkUnnamed1636(o.rules);
     unittest.expect(o.summary, unittest.equals('foo'));
   }
   buildCounterDocumentation--;
@@ -625,40 +648,40 @@ checkEnableServiceRequest(api.EnableServiceRequest o) {
   buildCounterEnableServiceRequest--;
 }
 
-buildUnnamed1566() {
+buildUnnamed1637() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1566(core.List<core.String> o) {
+checkUnnamed1637(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1567() {
+buildUnnamed1638() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1567(core.List<core.String> o) {
+checkUnnamed1638(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1568() {
+buildUnnamed1639() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1568(core.List<core.String> o) {
+checkUnnamed1639(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -669,10 +692,10 @@ buildEndpoint() {
   var o = new api.Endpoint();
   buildCounterEndpoint++;
   if (buildCounterEndpoint < 3) {
-    o.aliases = buildUnnamed1566();
+    o.aliases = buildUnnamed1637();
     o.allowCors = true;
-    o.apis = buildUnnamed1567();
-    o.features = buildUnnamed1568();
+    o.apis = buildUnnamed1638();
+    o.features = buildUnnamed1639();
     o.name = "foo";
     o.target = "foo";
   }
@@ -683,37 +706,37 @@ buildEndpoint() {
 checkEndpoint(api.Endpoint o) {
   buildCounterEndpoint++;
   if (buildCounterEndpoint < 3) {
-    checkUnnamed1566(o.aliases);
+    checkUnnamed1637(o.aliases);
     unittest.expect(o.allowCors, unittest.isTrue);
-    checkUnnamed1567(o.apis);
-    checkUnnamed1568(o.features);
+    checkUnnamed1638(o.apis);
+    checkUnnamed1639(o.features);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.target, unittest.equals('foo'));
   }
   buildCounterEndpoint--;
 }
 
-buildUnnamed1569() {
+buildUnnamed1640() {
   var o = new core.List<api.EnumValue>();
   o.add(buildEnumValue());
   o.add(buildEnumValue());
   return o;
 }
 
-checkUnnamed1569(core.List<api.EnumValue> o) {
+checkUnnamed1640(core.List<api.EnumValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnumValue(o[0]);
   checkEnumValue(o[1]);
 }
 
-buildUnnamed1570() {
+buildUnnamed1641() {
   var o = new core.List<api.Option>();
   o.add(buildOption());
   o.add(buildOption());
   return o;
 }
 
-checkUnnamed1570(core.List<api.Option> o) {
+checkUnnamed1641(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOption(o[0]);
   checkOption(o[1]);
@@ -724,9 +747,9 @@ buildEnum() {
   var o = new api.Enum();
   buildCounterEnum++;
   if (buildCounterEnum < 3) {
-    o.enumvalue = buildUnnamed1569();
+    o.enumvalue = buildUnnamed1640();
     o.name = "foo";
-    o.options = buildUnnamed1570();
+    o.options = buildUnnamed1641();
     o.sourceContext = buildSourceContext();
     o.syntax = "foo";
   }
@@ -737,23 +760,23 @@ buildEnum() {
 checkEnum(api.Enum o) {
   buildCounterEnum++;
   if (buildCounterEnum < 3) {
-    checkUnnamed1569(o.enumvalue);
+    checkUnnamed1640(o.enumvalue);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1570(o.options);
+    checkUnnamed1641(o.options);
     checkSourceContext(o.sourceContext);
     unittest.expect(o.syntax, unittest.equals('foo'));
   }
   buildCounterEnum--;
 }
 
-buildUnnamed1571() {
+buildUnnamed1642() {
   var o = new core.List<api.Option>();
   o.add(buildOption());
   o.add(buildOption());
   return o;
 }
 
-checkUnnamed1571(core.List<api.Option> o) {
+checkUnnamed1642(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOption(o[0]);
   checkOption(o[1]);
@@ -766,7 +789,7 @@ buildEnumValue() {
   if (buildCounterEnumValue < 3) {
     o.name = "foo";
     o.number = 42;
-    o.options = buildUnnamed1571();
+    o.options = buildUnnamed1642();
   }
   buildCounterEnumValue--;
   return o;
@@ -777,7 +800,7 @@ checkEnumValue(api.EnumValue o) {
   if (buildCounterEnumValue < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.number, unittest.equals(42));
-    checkUnnamed1571(o.options);
+    checkUnnamed1642(o.options);
   }
   buildCounterEnumValue--;
 }
@@ -801,14 +824,14 @@ checkExperimental(api.Experimental o) {
   buildCounterExperimental--;
 }
 
-buildUnnamed1572() {
+buildUnnamed1643() {
   var o = new core.List<api.Option>();
   o.add(buildOption());
   o.add(buildOption());
   return o;
 }
 
-checkUnnamed1572(core.List<api.Option> o) {
+checkUnnamed1643(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOption(o[0]);
   checkOption(o[1]);
@@ -826,7 +849,7 @@ buildField() {
     o.name = "foo";
     o.number = 42;
     o.oneofIndex = 42;
-    o.options = buildUnnamed1572();
+    o.options = buildUnnamed1643();
     o.packed = true;
     o.typeUrl = "foo";
   }
@@ -844,21 +867,21 @@ checkField(api.Field o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.number, unittest.equals(42));
     unittest.expect(o.oneofIndex, unittest.equals(42));
-    checkUnnamed1572(o.options);
+    checkUnnamed1643(o.options);
     unittest.expect(o.packed, unittest.isTrue);
     unittest.expect(o.typeUrl, unittest.equals('foo'));
   }
   buildCounterField--;
 }
 
-buildUnnamed1573() {
+buildUnnamed1644() {
   var o = new core.List<api.HttpRule>();
   o.add(buildHttpRule());
   o.add(buildHttpRule());
   return o;
 }
 
-checkUnnamed1573(core.List<api.HttpRule> o) {
+checkUnnamed1644(core.List<api.HttpRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHttpRule(o[0]);
   checkHttpRule(o[1]);
@@ -870,7 +893,7 @@ buildHttp() {
   buildCounterHttp++;
   if (buildCounterHttp < 3) {
     o.fullyDecodeReservedExpansion = true;
-    o.rules = buildUnnamed1573();
+    o.rules = buildUnnamed1644();
   }
   buildCounterHttp--;
   return o;
@@ -880,19 +903,19 @@ checkHttp(api.Http o) {
   buildCounterHttp++;
   if (buildCounterHttp < 3) {
     unittest.expect(o.fullyDecodeReservedExpansion, unittest.isTrue);
-    checkUnnamed1573(o.rules);
+    checkUnnamed1644(o.rules);
   }
   buildCounterHttp--;
 }
 
-buildUnnamed1574() {
+buildUnnamed1645() {
   var o = new core.List<api.HttpRule>();
   o.add(buildHttpRule());
   o.add(buildHttpRule());
   return o;
 }
 
-checkUnnamed1574(core.List<api.HttpRule> o) {
+checkUnnamed1645(core.List<api.HttpRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHttpRule(o[0]);
   checkHttpRule(o[1]);
@@ -903,7 +926,7 @@ buildHttpRule() {
   var o = new api.HttpRule();
   buildCounterHttpRule++;
   if (buildCounterHttpRule < 3) {
-    o.additionalBindings = buildUnnamed1574();
+    o.additionalBindings = buildUnnamed1645();
     o.body = "foo";
     o.custom = buildCustomHttpPattern();
     o.delete = "foo";
@@ -914,6 +937,7 @@ buildHttpRule() {
     o.post = "foo";
     o.put = "foo";
     o.responseBody = "foo";
+    o.restCollection = "foo";
     o.selector = "foo";
   }
   buildCounterHttpRule--;
@@ -923,7 +947,7 @@ buildHttpRule() {
 checkHttpRule(api.HttpRule o) {
   buildCounterHttpRule++;
   if (buildCounterHttpRule < 3) {
-    checkUnnamed1574(o.additionalBindings);
+    checkUnnamed1645(o.additionalBindings);
     unittest.expect(o.body, unittest.equals('foo'));
     checkCustomHttpPattern(o.custom);
     unittest.expect(o.delete, unittest.equals('foo'));
@@ -934,6 +958,7 @@ checkHttpRule(api.HttpRule o) {
     unittest.expect(o.post, unittest.equals('foo'));
     unittest.expect(o.put, unittest.equals('foo'));
     unittest.expect(o.responseBody, unittest.equals('foo'));
+    unittest.expect(o.restCollection, unittest.equals('foo'));
     unittest.expect(o.selector, unittest.equals('foo'));
   }
   buildCounterHttpRule--;
@@ -962,14 +987,14 @@ checkLabelDescriptor(api.LabelDescriptor o) {
   buildCounterLabelDescriptor--;
 }
 
-buildUnnamed1575() {
+buildUnnamed1646() {
   var o = new core.List<api.PublishedService>();
   o.add(buildPublishedService());
   o.add(buildPublishedService());
   return o;
 }
 
-checkUnnamed1575(core.List<api.PublishedService> o) {
+checkUnnamed1646(core.List<api.PublishedService> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublishedService(o[0]);
   checkPublishedService(o[1]);
@@ -981,7 +1006,7 @@ buildListEnabledServicesResponse() {
   buildCounterListEnabledServicesResponse++;
   if (buildCounterListEnabledServicesResponse < 3) {
     o.nextPageToken = "foo";
-    o.services = buildUnnamed1575();
+    o.services = buildUnnamed1646();
   }
   buildCounterListEnabledServicesResponse--;
   return o;
@@ -991,19 +1016,19 @@ checkListEnabledServicesResponse(api.ListEnabledServicesResponse o) {
   buildCounterListEnabledServicesResponse++;
   if (buildCounterListEnabledServicesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1575(o.services);
+    checkUnnamed1646(o.services);
   }
   buildCounterListEnabledServicesResponse--;
 }
 
-buildUnnamed1576() {
+buildUnnamed1647() {
   var o = new core.List<api.LabelDescriptor>();
   o.add(buildLabelDescriptor());
   o.add(buildLabelDescriptor());
   return o;
 }
 
-checkUnnamed1576(core.List<api.LabelDescriptor> o) {
+checkUnnamed1647(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelDescriptor(o[0]);
   checkLabelDescriptor(o[1]);
@@ -1016,7 +1041,7 @@ buildLogDescriptor() {
   if (buildCounterLogDescriptor < 3) {
     o.description = "foo";
     o.displayName = "foo";
-    o.labels = buildUnnamed1576();
+    o.labels = buildUnnamed1647();
     o.name = "foo";
   }
   buildCounterLogDescriptor--;
@@ -1028,33 +1053,33 @@ checkLogDescriptor(api.LogDescriptor o) {
   if (buildCounterLogDescriptor < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed1576(o.labels);
+    checkUnnamed1647(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterLogDescriptor--;
 }
 
-buildUnnamed1577() {
+buildUnnamed1648() {
   var o = new core.List<api.LoggingDestination>();
   o.add(buildLoggingDestination());
   o.add(buildLoggingDestination());
   return o;
 }
 
-checkUnnamed1577(core.List<api.LoggingDestination> o) {
+checkUnnamed1648(core.List<api.LoggingDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLoggingDestination(o[0]);
   checkLoggingDestination(o[1]);
 }
 
-buildUnnamed1578() {
+buildUnnamed1649() {
   var o = new core.List<api.LoggingDestination>();
   o.add(buildLoggingDestination());
   o.add(buildLoggingDestination());
   return o;
 }
 
-checkUnnamed1578(core.List<api.LoggingDestination> o) {
+checkUnnamed1649(core.List<api.LoggingDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLoggingDestination(o[0]);
   checkLoggingDestination(o[1]);
@@ -1065,8 +1090,8 @@ buildLogging() {
   var o = new api.Logging();
   buildCounterLogging++;
   if (buildCounterLogging < 3) {
-    o.consumerDestinations = buildUnnamed1577();
-    o.producerDestinations = buildUnnamed1578();
+    o.consumerDestinations = buildUnnamed1648();
+    o.producerDestinations = buildUnnamed1649();
   }
   buildCounterLogging--;
   return o;
@@ -1075,20 +1100,20 @@ buildLogging() {
 checkLogging(api.Logging o) {
   buildCounterLogging++;
   if (buildCounterLogging < 3) {
-    checkUnnamed1577(o.consumerDestinations);
-    checkUnnamed1578(o.producerDestinations);
+    checkUnnamed1648(o.consumerDestinations);
+    checkUnnamed1649(o.producerDestinations);
   }
   buildCounterLogging--;
 }
 
-buildUnnamed1579() {
+buildUnnamed1650() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1579(core.List<core.String> o) {
+checkUnnamed1650(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1099,7 +1124,7 @@ buildLoggingDestination() {
   var o = new api.LoggingDestination();
   buildCounterLoggingDestination++;
   if (buildCounterLoggingDestination < 3) {
-    o.logs = buildUnnamed1579();
+    o.logs = buildUnnamed1650();
     o.monitoredResource = "foo";
   }
   buildCounterLoggingDestination--;
@@ -1109,7 +1134,7 @@ buildLoggingDestination() {
 checkLoggingDestination(api.LoggingDestination o) {
   buildCounterLoggingDestination++;
   if (buildCounterLoggingDestination < 3) {
-    checkUnnamed1579(o.logs);
+    checkUnnamed1650(o.logs);
     unittest.expect(o.monitoredResource, unittest.equals('foo'));
   }
   buildCounterLoggingDestination--;
@@ -1120,8 +1145,12 @@ buildMediaDownload() {
   var o = new api.MediaDownload();
   buildCounterMediaDownload++;
   if (buildCounterMediaDownload < 3) {
+    o.completeNotification = true;
     o.downloadService = "foo";
+    o.dropzone = "foo";
     o.enabled = true;
+    o.maxDirectDownloadSize = "foo";
+    o.useDirectDownload = true;
   }
   buildCounterMediaDownload--;
   return o;
@@ -1130,10 +1159,27 @@ buildMediaDownload() {
 checkMediaDownload(api.MediaDownload o) {
   buildCounterMediaDownload++;
   if (buildCounterMediaDownload < 3) {
+    unittest.expect(o.completeNotification, unittest.isTrue);
     unittest.expect(o.downloadService, unittest.equals('foo'));
+    unittest.expect(o.dropzone, unittest.equals('foo'));
     unittest.expect(o.enabled, unittest.isTrue);
+    unittest.expect(o.maxDirectDownloadSize, unittest.equals('foo'));
+    unittest.expect(o.useDirectDownload, unittest.isTrue);
   }
   buildCounterMediaDownload--;
+}
+
+buildUnnamed1651() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1651(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterMediaUpload = 0;
@@ -1141,7 +1187,13 @@ buildMediaUpload() {
   var o = new api.MediaUpload();
   buildCounterMediaUpload++;
   if (buildCounterMediaUpload < 3) {
+    o.completeNotification = true;
+    o.dropzone = "foo";
     o.enabled = true;
+    o.maxSize = "foo";
+    o.mimeTypes = buildUnnamed1651();
+    o.progressNotification = true;
+    o.startNotification = true;
     o.uploadService = "foo";
   }
   buildCounterMediaUpload--;
@@ -1151,20 +1203,26 @@ buildMediaUpload() {
 checkMediaUpload(api.MediaUpload o) {
   buildCounterMediaUpload++;
   if (buildCounterMediaUpload < 3) {
+    unittest.expect(o.completeNotification, unittest.isTrue);
+    unittest.expect(o.dropzone, unittest.equals('foo'));
     unittest.expect(o.enabled, unittest.isTrue);
+    unittest.expect(o.maxSize, unittest.equals('foo'));
+    checkUnnamed1651(o.mimeTypes);
+    unittest.expect(o.progressNotification, unittest.isTrue);
+    unittest.expect(o.startNotification, unittest.isTrue);
     unittest.expect(o.uploadService, unittest.equals('foo'));
   }
   buildCounterMediaUpload--;
 }
 
-buildUnnamed1580() {
+buildUnnamed1652() {
   var o = new core.List<api.Option>();
   o.add(buildOption());
   o.add(buildOption());
   return o;
 }
 
-checkUnnamed1580(core.List<api.Option> o) {
+checkUnnamed1652(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOption(o[0]);
   checkOption(o[1]);
@@ -1176,7 +1234,7 @@ buildMethod() {
   buildCounterMethod++;
   if (buildCounterMethod < 3) {
     o.name = "foo";
-    o.options = buildUnnamed1580();
+    o.options = buildUnnamed1652();
     o.requestStreaming = true;
     o.requestTypeUrl = "foo";
     o.responseStreaming = true;
@@ -1191,7 +1249,7 @@ checkMethod(api.Method o) {
   buildCounterMethod++;
   if (buildCounterMethod < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1580(o.options);
+    checkUnnamed1652(o.options);
     unittest.expect(o.requestStreaming, unittest.isTrue);
     unittest.expect(o.requestTypeUrl, unittest.equals('foo'));
     unittest.expect(o.responseStreaming, unittest.isTrue);
@@ -1201,14 +1259,14 @@ checkMethod(api.Method o) {
   buildCounterMethod--;
 }
 
-buildUnnamed1581() {
+buildUnnamed1653() {
   var o = new core.List<api.LabelDescriptor>();
   o.add(buildLabelDescriptor());
   o.add(buildLabelDescriptor());
   return o;
 }
 
-checkUnnamed1581(core.List<api.LabelDescriptor> o) {
+checkUnnamed1653(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelDescriptor(o[0]);
   checkLabelDescriptor(o[1]);
@@ -1221,7 +1279,7 @@ buildMetricDescriptor() {
   if (buildCounterMetricDescriptor < 3) {
     o.description = "foo";
     o.displayName = "foo";
-    o.labels = buildUnnamed1581();
+    o.labels = buildUnnamed1653();
     o.metricKind = "foo";
     o.name = "foo";
     o.type = "foo";
@@ -1237,7 +1295,7 @@ checkMetricDescriptor(api.MetricDescriptor o) {
   if (buildCounterMetricDescriptor < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed1581(o.labels);
+    checkUnnamed1653(o.labels);
     unittest.expect(o.metricKind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -1247,14 +1305,14 @@ checkMetricDescriptor(api.MetricDescriptor o) {
   buildCounterMetricDescriptor--;
 }
 
-buildUnnamed1582() {
+buildUnnamed1654() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1582(core.Map<core.String, core.String> o) {
+checkUnnamed1654(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1265,7 +1323,7 @@ buildMetricRule() {
   var o = new api.MetricRule();
   buildCounterMetricRule++;
   if (buildCounterMetricRule < 3) {
-    o.metricCosts = buildUnnamed1582();
+    o.metricCosts = buildUnnamed1654();
     o.selector = "foo";
   }
   buildCounterMetricRule--;
@@ -1275,7 +1333,7 @@ buildMetricRule() {
 checkMetricRule(api.MetricRule o) {
   buildCounterMetricRule++;
   if (buildCounterMetricRule < 3) {
-    checkUnnamed1582(o.metricCosts);
+    checkUnnamed1654(o.metricCosts);
     unittest.expect(o.selector, unittest.equals('foo'));
   }
   buildCounterMetricRule--;
@@ -1302,14 +1360,14 @@ checkMixin(api.Mixin o) {
   buildCounterMixin--;
 }
 
-buildUnnamed1583() {
+buildUnnamed1655() {
   var o = new core.List<api.LabelDescriptor>();
   o.add(buildLabelDescriptor());
   o.add(buildLabelDescriptor());
   return o;
 }
 
-checkUnnamed1583(core.List<api.LabelDescriptor> o) {
+checkUnnamed1655(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabelDescriptor(o[0]);
   checkLabelDescriptor(o[1]);
@@ -1322,7 +1380,7 @@ buildMonitoredResourceDescriptor() {
   if (buildCounterMonitoredResourceDescriptor < 3) {
     o.description = "foo";
     o.displayName = "foo";
-    o.labels = buildUnnamed1583();
+    o.labels = buildUnnamed1655();
     o.name = "foo";
     o.type = "foo";
   }
@@ -1335,34 +1393,34 @@ checkMonitoredResourceDescriptor(api.MonitoredResourceDescriptor o) {
   if (buildCounterMonitoredResourceDescriptor < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed1583(o.labels);
+    checkUnnamed1655(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterMonitoredResourceDescriptor--;
 }
 
-buildUnnamed1584() {
+buildUnnamed1656() {
   var o = new core.List<api.MonitoringDestination>();
   o.add(buildMonitoringDestination());
   o.add(buildMonitoringDestination());
   return o;
 }
 
-checkUnnamed1584(core.List<api.MonitoringDestination> o) {
+checkUnnamed1656(core.List<api.MonitoringDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMonitoringDestination(o[0]);
   checkMonitoringDestination(o[1]);
 }
 
-buildUnnamed1585() {
+buildUnnamed1657() {
   var o = new core.List<api.MonitoringDestination>();
   o.add(buildMonitoringDestination());
   o.add(buildMonitoringDestination());
   return o;
 }
 
-checkUnnamed1585(core.List<api.MonitoringDestination> o) {
+checkUnnamed1657(core.List<api.MonitoringDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMonitoringDestination(o[0]);
   checkMonitoringDestination(o[1]);
@@ -1373,8 +1431,8 @@ buildMonitoring() {
   var o = new api.Monitoring();
   buildCounterMonitoring++;
   if (buildCounterMonitoring < 3) {
-    o.consumerDestinations = buildUnnamed1584();
-    o.producerDestinations = buildUnnamed1585();
+    o.consumerDestinations = buildUnnamed1656();
+    o.producerDestinations = buildUnnamed1657();
   }
   buildCounterMonitoring--;
   return o;
@@ -1383,20 +1441,20 @@ buildMonitoring() {
 checkMonitoring(api.Monitoring o) {
   buildCounterMonitoring++;
   if (buildCounterMonitoring < 3) {
-    checkUnnamed1584(o.consumerDestinations);
-    checkUnnamed1585(o.producerDestinations);
+    checkUnnamed1656(o.consumerDestinations);
+    checkUnnamed1657(o.producerDestinations);
   }
   buildCounterMonitoring--;
 }
 
-buildUnnamed1586() {
+buildUnnamed1658() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1586(core.List<core.String> o) {
+checkUnnamed1658(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1407,7 +1465,7 @@ buildMonitoringDestination() {
   var o = new api.MonitoringDestination();
   buildCounterMonitoringDestination++;
   if (buildCounterMonitoringDestination < 3) {
-    o.metrics = buildUnnamed1586();
+    o.metrics = buildUnnamed1658();
     o.monitoredResource = "foo";
   }
   buildCounterMonitoringDestination--;
@@ -1417,7 +1475,7 @@ buildMonitoringDestination() {
 checkMonitoringDestination(api.MonitoringDestination o) {
   buildCounterMonitoringDestination++;
   if (buildCounterMonitoringDestination < 3) {
-    checkUnnamed1586(o.metrics);
+    checkUnnamed1658(o.metrics);
     unittest.expect(o.monitoredResource, unittest.equals('foo'));
   }
   buildCounterMonitoringDestination--;
@@ -1442,27 +1500,27 @@ checkOAuthRequirements(api.OAuthRequirements o) {
   buildCounterOAuthRequirements--;
 }
 
-buildUnnamed1587() {
+buildUnnamed1659() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1587(core.Map<core.String, core.Object> o) {
+checkUnnamed1659(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1588() {
+buildUnnamed1660() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1588(core.Map<core.String, core.Object> o) {
+checkUnnamed1660(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o["y"]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
@@ -1475,9 +1533,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed1587();
+    o.metadata = buildUnnamed1659();
     o.name = "foo";
-    o.response = buildUnnamed1588();
+    o.response = buildUnnamed1660();
   }
   buildCounterOperation--;
   return o;
@@ -1488,34 +1546,34 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed1587(o.metadata);
+    checkUnnamed1659(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1588(o.response);
+    checkUnnamed1660(o.response);
   }
   buildCounterOperation--;
 }
 
-buildUnnamed1589() {
+buildUnnamed1661() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1589(core.List<core.String> o) {
+checkUnnamed1661(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1590() {
+buildUnnamed1662() {
   var o = new core.List<api.Step>();
   o.add(buildStep());
   o.add(buildStep());
   return o;
 }
 
-checkUnnamed1590(core.List<api.Step> o) {
+checkUnnamed1662(core.List<api.Step> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStep(o[0]);
   checkStep(o[1]);
@@ -1527,9 +1585,9 @@ buildOperationMetadata() {
   buildCounterOperationMetadata++;
   if (buildCounterOperationMetadata < 3) {
     o.progressPercentage = 42;
-    o.resourceNames = buildUnnamed1589();
+    o.resourceNames = buildUnnamed1661();
     o.startTime = "foo";
-    o.steps = buildUnnamed1590();
+    o.steps = buildUnnamed1662();
   }
   buildCounterOperationMetadata--;
   return o;
@@ -1539,21 +1597,21 @@ checkOperationMetadata(api.OperationMetadata o) {
   buildCounterOperationMetadata++;
   if (buildCounterOperationMetadata < 3) {
     unittest.expect(o.progressPercentage, unittest.equals(42));
-    checkUnnamed1589(o.resourceNames);
+    checkUnnamed1661(o.resourceNames);
     unittest.expect(o.startTime, unittest.equals('foo'));
-    checkUnnamed1590(o.steps);
+    checkUnnamed1662(o.steps);
   }
   buildCounterOperationMetadata--;
 }
 
-buildUnnamed1591() {
+buildUnnamed1663() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1591(core.Map<core.String, core.Object> o) {
+checkUnnamed1663(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
   var casted6 = (o["y"]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
@@ -1565,7 +1623,7 @@ buildOption() {
   buildCounterOption++;
   if (buildCounterOption < 3) {
     o.name = "foo";
-    o.value = buildUnnamed1591();
+    o.value = buildUnnamed1663();
   }
   buildCounterOption--;
   return o;
@@ -1575,19 +1633,19 @@ checkOption(api.Option o) {
   buildCounterOption++;
   if (buildCounterOption < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1591(o.value);
+    checkUnnamed1663(o.value);
   }
   buildCounterOption--;
 }
 
-buildUnnamed1592() {
+buildUnnamed1664() {
   var o = new core.List<api.Page>();
   o.add(buildPage());
   o.add(buildPage());
   return o;
 }
 
-checkUnnamed1592(core.List<api.Page> o) {
+checkUnnamed1664(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPage(o[0]);
   checkPage(o[1]);
@@ -1600,7 +1658,7 @@ buildPage() {
   if (buildCounterPage < 3) {
     o.content = "foo";
     o.name = "foo";
-    o.subpages = buildUnnamed1592();
+    o.subpages = buildUnnamed1664();
   }
   buildCounterPage--;
   return o;
@@ -1611,7 +1669,7 @@ checkPage(api.Page o) {
   if (buildCounterPage < 3) {
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1592(o.subpages);
+    checkUnnamed1664(o.subpages);
   }
   buildCounterPage--;
 }
@@ -1637,27 +1695,27 @@ checkPublishedService(api.PublishedService o) {
   buildCounterPublishedService--;
 }
 
-buildUnnamed1593() {
+buildUnnamed1665() {
   var o = new core.List<api.QuotaLimit>();
   o.add(buildQuotaLimit());
   o.add(buildQuotaLimit());
   return o;
 }
 
-checkUnnamed1593(core.List<api.QuotaLimit> o) {
+checkUnnamed1665(core.List<api.QuotaLimit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuotaLimit(o[0]);
   checkQuotaLimit(o[1]);
 }
 
-buildUnnamed1594() {
+buildUnnamed1666() {
   var o = new core.List<api.MetricRule>();
   o.add(buildMetricRule());
   o.add(buildMetricRule());
   return o;
 }
 
-checkUnnamed1594(core.List<api.MetricRule> o) {
+checkUnnamed1666(core.List<api.MetricRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricRule(o[0]);
   checkMetricRule(o[1]);
@@ -1668,8 +1726,8 @@ buildQuota() {
   var o = new api.Quota();
   buildCounterQuota++;
   if (buildCounterQuota < 3) {
-    o.limits = buildUnnamed1593();
-    o.metricRules = buildUnnamed1594();
+    o.limits = buildUnnamed1665();
+    o.metricRules = buildUnnamed1666();
   }
   buildCounterQuota--;
   return o;
@@ -1678,20 +1736,20 @@ buildQuota() {
 checkQuota(api.Quota o) {
   buildCounterQuota++;
   if (buildCounterQuota < 3) {
-    checkUnnamed1593(o.limits);
-    checkUnnamed1594(o.metricRules);
+    checkUnnamed1665(o.limits);
+    checkUnnamed1666(o.metricRules);
   }
   buildCounterQuota--;
 }
 
-buildUnnamed1595() {
+buildUnnamed1667() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1595(core.Map<core.String, core.String> o) {
+checkUnnamed1667(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1711,7 +1769,7 @@ buildQuotaLimit() {
     o.metric = "foo";
     o.name = "foo";
     o.unit = "foo";
-    o.values = buildUnnamed1595();
+    o.values = buildUnnamed1667();
   }
   buildCounterQuotaLimit--;
   return o;
@@ -1729,19 +1787,19 @@ checkQuotaLimit(api.QuotaLimit o) {
     unittest.expect(o.metric, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.unit, unittest.equals('foo'));
-    checkUnnamed1595(o.values);
+    checkUnnamed1667(o.values);
   }
   buildCounterQuotaLimit--;
 }
 
-buildUnnamed1596() {
+buildUnnamed1668() {
   var o = new core.List<api.PublishedService>();
   o.add(buildPublishedService());
   o.add(buildPublishedService());
   return o;
 }
 
-checkUnnamed1596(core.List<api.PublishedService> o) {
+checkUnnamed1668(core.List<api.PublishedService> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublishedService(o[0]);
   checkPublishedService(o[1]);
@@ -1753,7 +1811,7 @@ buildSearchServicesResponse() {
   buildCounterSearchServicesResponse++;
   if (buildCounterSearchServicesResponse < 3) {
     o.nextPageToken = "foo";
-    o.services = buildUnnamed1596();
+    o.services = buildUnnamed1668();
   }
   buildCounterSearchServicesResponse--;
   return o;
@@ -1763,110 +1821,110 @@ checkSearchServicesResponse(api.SearchServicesResponse o) {
   buildCounterSearchServicesResponse++;
   if (buildCounterSearchServicesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1596(o.services);
+    checkUnnamed1668(o.services);
   }
   buildCounterSearchServicesResponse--;
 }
 
-buildUnnamed1597() {
+buildUnnamed1669() {
   var o = new core.List<api.Api>();
   o.add(buildApi());
   o.add(buildApi());
   return o;
 }
 
-checkUnnamed1597(core.List<api.Api> o) {
+checkUnnamed1669(core.List<api.Api> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApi(o[0]);
   checkApi(o[1]);
 }
 
-buildUnnamed1598() {
+buildUnnamed1670() {
   var o = new core.List<api.Endpoint>();
   o.add(buildEndpoint());
   o.add(buildEndpoint());
   return o;
 }
 
-checkUnnamed1598(core.List<api.Endpoint> o) {
+checkUnnamed1670(core.List<api.Endpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEndpoint(o[0]);
   checkEndpoint(o[1]);
 }
 
-buildUnnamed1599() {
+buildUnnamed1671() {
   var o = new core.List<api.Enum>();
   o.add(buildEnum());
   o.add(buildEnum());
   return o;
 }
 
-checkUnnamed1599(core.List<api.Enum> o) {
+checkUnnamed1671(core.List<api.Enum> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnum(o[0]);
   checkEnum(o[1]);
 }
 
-buildUnnamed1600() {
+buildUnnamed1672() {
   var o = new core.List<api.LogDescriptor>();
   o.add(buildLogDescriptor());
   o.add(buildLogDescriptor());
   return o;
 }
 
-checkUnnamed1600(core.List<api.LogDescriptor> o) {
+checkUnnamed1672(core.List<api.LogDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogDescriptor(o[0]);
   checkLogDescriptor(o[1]);
 }
 
-buildUnnamed1601() {
+buildUnnamed1673() {
   var o = new core.List<api.MetricDescriptor>();
   o.add(buildMetricDescriptor());
   o.add(buildMetricDescriptor());
   return o;
 }
 
-checkUnnamed1601(core.List<api.MetricDescriptor> o) {
+checkUnnamed1673(core.List<api.MetricDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricDescriptor(o[0]);
   checkMetricDescriptor(o[1]);
 }
 
-buildUnnamed1602() {
+buildUnnamed1674() {
   var o = new core.List<api.MonitoredResourceDescriptor>();
   o.add(buildMonitoredResourceDescriptor());
   o.add(buildMonitoredResourceDescriptor());
   return o;
 }
 
-checkUnnamed1602(core.List<api.MonitoredResourceDescriptor> o) {
+checkUnnamed1674(core.List<api.MonitoredResourceDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMonitoredResourceDescriptor(o[0]);
   checkMonitoredResourceDescriptor(o[1]);
 }
 
-buildUnnamed1603() {
+buildUnnamed1675() {
   var o = new core.List<api.Type>();
   o.add(buildType());
   o.add(buildType());
   return o;
 }
 
-checkUnnamed1603(core.List<api.Type> o) {
+checkUnnamed1675(core.List<api.Type> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkType(o[0]);
   checkType(o[1]);
 }
 
-buildUnnamed1604() {
+buildUnnamed1676() {
   var o = new core.List<api.Type>();
   o.add(buildType());
   o.add(buildType());
   return o;
 }
 
-checkUnnamed1604(core.List<api.Type> o) {
+checkUnnamed1676(core.List<api.Type> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkType(o[0]);
   checkType(o[1]);
@@ -1877,7 +1935,7 @@ buildService() {
   var o = new api.Service();
   buildCounterService++;
   if (buildCounterService < 3) {
-    o.apis = buildUnnamed1597();
+    o.apis = buildUnnamed1669();
     o.authentication = buildAuthentication();
     o.backend = buildBackend();
     o.configVersion = 42;
@@ -1885,24 +1943,24 @@ buildService() {
     o.control = buildControl();
     o.customError = buildCustomError();
     o.documentation = buildDocumentation();
-    o.endpoints = buildUnnamed1598();
-    o.enums = buildUnnamed1599();
+    o.endpoints = buildUnnamed1670();
+    o.enums = buildUnnamed1671();
     o.experimental = buildExperimental();
     o.http = buildHttp();
     o.id = "foo";
     o.logging = buildLogging();
-    o.logs = buildUnnamed1600();
-    o.metrics = buildUnnamed1601();
-    o.monitoredResources = buildUnnamed1602();
+    o.logs = buildUnnamed1672();
+    o.metrics = buildUnnamed1673();
+    o.monitoredResources = buildUnnamed1674();
     o.monitoring = buildMonitoring();
     o.name = "foo";
     o.producerProjectId = "foo";
     o.quota = buildQuota();
     o.sourceInfo = buildSourceInfo();
     o.systemParameters = buildSystemParameters();
-    o.systemTypes = buildUnnamed1603();
+    o.systemTypes = buildUnnamed1675();
     o.title = "foo";
-    o.types = buildUnnamed1604();
+    o.types = buildUnnamed1676();
     o.usage = buildUsage();
     o.visibility = buildVisibility();
   }
@@ -1913,7 +1971,7 @@ buildService() {
 checkService(api.Service o) {
   buildCounterService++;
   if (buildCounterService < 3) {
-    checkUnnamed1597(o.apis);
+    checkUnnamed1669(o.apis);
     checkAuthentication(o.authentication);
     checkBackend(o.backend);
     unittest.expect(o.configVersion, unittest.equals(42));
@@ -1921,24 +1979,24 @@ checkService(api.Service o) {
     checkControl(o.control);
     checkCustomError(o.customError);
     checkDocumentation(o.documentation);
-    checkUnnamed1598(o.endpoints);
-    checkUnnamed1599(o.enums);
+    checkUnnamed1670(o.endpoints);
+    checkUnnamed1671(o.enums);
     checkExperimental(o.experimental);
     checkHttp(o.http);
     unittest.expect(o.id, unittest.equals('foo'));
     checkLogging(o.logging);
-    checkUnnamed1600(o.logs);
-    checkUnnamed1601(o.metrics);
-    checkUnnamed1602(o.monitoredResources);
+    checkUnnamed1672(o.logs);
+    checkUnnamed1673(o.metrics);
+    checkUnnamed1674(o.monitoredResources);
     checkMonitoring(o.monitoring);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.producerProjectId, unittest.equals('foo'));
     checkQuota(o.quota);
     checkSourceInfo(o.sourceInfo);
     checkSystemParameters(o.systemParameters);
-    checkUnnamed1603(o.systemTypes);
+    checkUnnamed1675(o.systemTypes);
     unittest.expect(o.title, unittest.equals('foo'));
-    checkUnnamed1604(o.types);
+    checkUnnamed1676(o.types);
     checkUsage(o.usage);
     checkVisibility(o.visibility);
   }
@@ -1964,30 +2022,30 @@ checkSourceContext(api.SourceContext o) {
   buildCounterSourceContext--;
 }
 
-buildUnnamed1605() {
+buildUnnamed1677() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1605(core.Map<core.String, core.Object> o) {
+checkUnnamed1677(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o["x"]) as core.Map; unittest.expect(casted7, unittest.hasLength(3)); unittest.expect(casted7["list"], unittest.equals([1, 2, 3])); unittest.expect(casted7["bool"], unittest.equals(true)); unittest.expect(casted7["string"], unittest.equals('foo')); 
   var casted8 = (o["y"]) as core.Map; unittest.expect(casted8, unittest.hasLength(3)); unittest.expect(casted8["list"], unittest.equals([1, 2, 3])); unittest.expect(casted8["bool"], unittest.equals(true)); unittest.expect(casted8["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1606() {
+buildUnnamed1678() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed1605());
-  o.add(buildUnnamed1605());
+  o.add(buildUnnamed1677());
+  o.add(buildUnnamed1677());
   return o;
 }
 
-checkUnnamed1606(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed1678(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1605(o[0]);
-  checkUnnamed1605(o[1]);
+  checkUnnamed1677(o[0]);
+  checkUnnamed1677(o[1]);
 }
 
 core.int buildCounterSourceInfo = 0;
@@ -1995,7 +2053,7 @@ buildSourceInfo() {
   var o = new api.SourceInfo();
   buildCounterSourceInfo++;
   if (buildCounterSourceInfo < 3) {
-    o.sourceFiles = buildUnnamed1606();
+    o.sourceFiles = buildUnnamed1678();
   }
   buildCounterSourceInfo--;
   return o;
@@ -2004,35 +2062,35 @@ buildSourceInfo() {
 checkSourceInfo(api.SourceInfo o) {
   buildCounterSourceInfo++;
   if (buildCounterSourceInfo < 3) {
-    checkUnnamed1606(o.sourceFiles);
+    checkUnnamed1678(o.sourceFiles);
   }
   buildCounterSourceInfo--;
 }
 
-buildUnnamed1607() {
+buildUnnamed1679() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1607(core.Map<core.String, core.Object> o) {
+checkUnnamed1679(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o["x"]) as core.Map; unittest.expect(casted9, unittest.hasLength(3)); unittest.expect(casted9["list"], unittest.equals([1, 2, 3])); unittest.expect(casted9["bool"], unittest.equals(true)); unittest.expect(casted9["string"], unittest.equals('foo')); 
   var casted10 = (o["y"]) as core.Map; unittest.expect(casted10, unittest.hasLength(3)); unittest.expect(casted10["list"], unittest.equals([1, 2, 3])); unittest.expect(casted10["bool"], unittest.equals(true)); unittest.expect(casted10["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1608() {
+buildUnnamed1680() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed1607());
-  o.add(buildUnnamed1607());
+  o.add(buildUnnamed1679());
+  o.add(buildUnnamed1679());
   return o;
 }
 
-checkUnnamed1608(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed1680(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1607(o[0]);
-  checkUnnamed1607(o[1]);
+  checkUnnamed1679(o[0]);
+  checkUnnamed1679(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2041,7 +2099,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed1608();
+    o.details = buildUnnamed1680();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -2052,7 +2110,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed1608(o.details);
+    checkUnnamed1680(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -2102,14 +2160,14 @@ checkSystemParameter(api.SystemParameter o) {
   buildCounterSystemParameter--;
 }
 
-buildUnnamed1609() {
+buildUnnamed1681() {
   var o = new core.List<api.SystemParameter>();
   o.add(buildSystemParameter());
   o.add(buildSystemParameter());
   return o;
 }
 
-checkUnnamed1609(core.List<api.SystemParameter> o) {
+checkUnnamed1681(core.List<api.SystemParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSystemParameter(o[0]);
   checkSystemParameter(o[1]);
@@ -2120,7 +2178,7 @@ buildSystemParameterRule() {
   var o = new api.SystemParameterRule();
   buildCounterSystemParameterRule++;
   if (buildCounterSystemParameterRule < 3) {
-    o.parameters = buildUnnamed1609();
+    o.parameters = buildUnnamed1681();
     o.selector = "foo";
   }
   buildCounterSystemParameterRule--;
@@ -2130,20 +2188,20 @@ buildSystemParameterRule() {
 checkSystemParameterRule(api.SystemParameterRule o) {
   buildCounterSystemParameterRule++;
   if (buildCounterSystemParameterRule < 3) {
-    checkUnnamed1609(o.parameters);
+    checkUnnamed1681(o.parameters);
     unittest.expect(o.selector, unittest.equals('foo'));
   }
   buildCounterSystemParameterRule--;
 }
 
-buildUnnamed1610() {
+buildUnnamed1682() {
   var o = new core.List<api.SystemParameterRule>();
   o.add(buildSystemParameterRule());
   o.add(buildSystemParameterRule());
   return o;
 }
 
-checkUnnamed1610(core.List<api.SystemParameterRule> o) {
+checkUnnamed1682(core.List<api.SystemParameterRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSystemParameterRule(o[0]);
   checkSystemParameterRule(o[1]);
@@ -2154,7 +2212,7 @@ buildSystemParameters() {
   var o = new api.SystemParameters();
   buildCounterSystemParameters++;
   if (buildCounterSystemParameters < 3) {
-    o.rules = buildUnnamed1610();
+    o.rules = buildUnnamed1682();
   }
   buildCounterSystemParameters--;
   return o;
@@ -2163,45 +2221,45 @@ buildSystemParameters() {
 checkSystemParameters(api.SystemParameters o) {
   buildCounterSystemParameters++;
   if (buildCounterSystemParameters < 3) {
-    checkUnnamed1610(o.rules);
+    checkUnnamed1682(o.rules);
   }
   buildCounterSystemParameters--;
 }
 
-buildUnnamed1611() {
+buildUnnamed1683() {
   var o = new core.List<api.Field>();
   o.add(buildField());
   o.add(buildField());
   return o;
 }
 
-checkUnnamed1611(core.List<api.Field> o) {
+checkUnnamed1683(core.List<api.Field> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkField(o[0]);
   checkField(o[1]);
 }
 
-buildUnnamed1612() {
+buildUnnamed1684() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1612(core.List<core.String> o) {
+checkUnnamed1684(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1613() {
+buildUnnamed1685() {
   var o = new core.List<api.Option>();
   o.add(buildOption());
   o.add(buildOption());
   return o;
 }
 
-checkUnnamed1613(core.List<api.Option> o) {
+checkUnnamed1685(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOption(o[0]);
   checkOption(o[1]);
@@ -2212,10 +2270,10 @@ buildType() {
   var o = new api.Type();
   buildCounterType++;
   if (buildCounterType < 3) {
-    o.fields = buildUnnamed1611();
+    o.fields = buildUnnamed1683();
     o.name = "foo";
-    o.oneofs = buildUnnamed1612();
-    o.options = buildUnnamed1613();
+    o.oneofs = buildUnnamed1684();
+    o.options = buildUnnamed1685();
     o.sourceContext = buildSourceContext();
     o.syntax = "foo";
   }
@@ -2226,37 +2284,37 @@ buildType() {
 checkType(api.Type o) {
   buildCounterType++;
   if (buildCounterType < 3) {
-    checkUnnamed1611(o.fields);
+    checkUnnamed1683(o.fields);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1612(o.oneofs);
-    checkUnnamed1613(o.options);
+    checkUnnamed1684(o.oneofs);
+    checkUnnamed1685(o.options);
     checkSourceContext(o.sourceContext);
     unittest.expect(o.syntax, unittest.equals('foo'));
   }
   buildCounterType--;
 }
 
-buildUnnamed1614() {
+buildUnnamed1686() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1614(core.List<core.String> o) {
+checkUnnamed1686(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1615() {
+buildUnnamed1687() {
   var o = new core.List<api.UsageRule>();
   o.add(buildUsageRule());
   o.add(buildUsageRule());
   return o;
 }
 
-checkUnnamed1615(core.List<api.UsageRule> o) {
+checkUnnamed1687(core.List<api.UsageRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageRule(o[0]);
   checkUsageRule(o[1]);
@@ -2268,8 +2326,8 @@ buildUsage() {
   buildCounterUsage++;
   if (buildCounterUsage < 3) {
     o.producerNotificationChannel = "foo";
-    o.requirements = buildUnnamed1614();
-    o.rules = buildUnnamed1615();
+    o.requirements = buildUnnamed1686();
+    o.rules = buildUnnamed1687();
   }
   buildCounterUsage--;
   return o;
@@ -2279,8 +2337,8 @@ checkUsage(api.Usage o) {
   buildCounterUsage++;
   if (buildCounterUsage < 3) {
     unittest.expect(o.producerNotificationChannel, unittest.equals('foo'));
-    checkUnnamed1614(o.requirements);
-    checkUnnamed1615(o.rules);
+    checkUnnamed1686(o.requirements);
+    checkUnnamed1687(o.rules);
   }
   buildCounterUsage--;
 }
@@ -2306,14 +2364,14 @@ checkUsageRule(api.UsageRule o) {
   buildCounterUsageRule--;
 }
 
-buildUnnamed1616() {
+buildUnnamed1688() {
   var o = new core.List<api.VisibilityRule>();
   o.add(buildVisibilityRule());
   o.add(buildVisibilityRule());
   return o;
 }
 
-checkUnnamed1616(core.List<api.VisibilityRule> o) {
+checkUnnamed1688(core.List<api.VisibilityRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVisibilityRule(o[0]);
   checkVisibilityRule(o[1]);
@@ -2324,7 +2382,7 @@ buildVisibility() {
   var o = new api.Visibility();
   buildCounterVisibility++;
   if (buildCounterVisibility < 3) {
-    o.rules = buildUnnamed1616();
+    o.rules = buildUnnamed1688();
   }
   buildCounterVisibility--;
   return o;
@@ -2333,7 +2391,7 @@ buildVisibility() {
 checkVisibility(api.Visibility o) {
   buildCounterVisibility++;
   if (buildCounterVisibility < 3) {
-    checkUnnamed1616(o.rules);
+    checkUnnamed1688(o.rules);
   }
   buildCounterVisibility--;
 }
@@ -2456,6 +2514,15 @@ main() {
       var o = buildControl();
       var od = new api.Control.fromJson(o.toJson());
       checkControl(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-CustomAuthRequirements", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCustomAuthRequirements();
+      var od = new api.CustomAuthRequirements.fromJson(o.toJson());
+      checkCustomAuthRequirements(od);
     });
   });
 

@@ -3094,7 +3094,10 @@ class JobConfigurationQuery {
    * INTERACTIVE and BATCH. The default value is INTERACTIVE.
    */
   core.String priority;
-  /** [Required] BigQuery SQL query to execute. */
+  /**
+   * [Required] SQL query text to execute. The useLegacySql field can be used to
+   * indicate whether the query uses legacy SQL or standard SQL.
+   */
   core.String query;
   /** Query parameters for standard SQL queries. */
   core.List<QueryParameter> queryParameters;
@@ -4933,7 +4936,7 @@ class TableDataList {
 
 class TableFieldSchema {
   /**
-   * [Optional] The field description. The maximum length is 16K characters.
+   * [Optional] The field description. The maximum length is 512 characters.
    */
   core.String description;
   /**

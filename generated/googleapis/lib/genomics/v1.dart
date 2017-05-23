@@ -1036,16 +1036,16 @@ class DatasetsResourceApi {
    *
    * Request parameters:
    *
+   * [pageSize] - The maximum number of results to return in a single page. If
+   * unspecified,
+   * defaults to 50. The maximum value is 1024.
+   *
    * [projectId] - Required. The Google Cloud project ID to list datasets for.
    *
    * [pageToken] - The continuation token, which is used to page through large
    * result sets.
    * To get the next page of results, set this parameter to the value of
    * `nextPageToken` from the previous response.
-   *
-   * [pageSize] - The maximum number of results to return in a single page. If
-   * unspecified,
-   * defaults to 50. The maximum value is 1024.
    *
    * Completes with a [ListDatasetsResponse].
    *
@@ -1055,7 +1055,7 @@ class DatasetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDatasetsResponse> list({core.String projectId, core.String pageToken, core.int pageSize}) {
+  async.Future<ListDatasetsResponse> list({core.int pageSize, core.String projectId, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1063,14 +1063,14 @@ class DatasetsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/datasets';
@@ -1410,12 +1410,6 @@ class OperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^operations$".
    *
-   * [pageToken] - The standard list page token.
-   *
-   * [pageSize] - The maximum number of results to return. If unspecified,
-   * defaults to
-   * 256. The maximum value is 2048.
-   *
    * [filter] - A string for filtering Operations.
    * The following filter fields are supported&#58;
    *
@@ -1436,6 +1430,12 @@ class OperationsResourceApi {
    * * `projectId = my-project AND labels.color = *`
    * * `projectId = my-project AND labels.color = red`
    *
+   * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The maximum number of results to return. If unspecified,
+   * defaults to
+   * 256. The maximum value is 2048.
+   *
    * Completes with a [ListOperationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1444,7 +1444,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1455,14 +1455,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1826,11 +1826,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * [readGroupSetId] - Required. The ID of the read group set over which
    * coverage is requested.
    *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets.
-   * To get the next page of results, set this parameter to the value of
-   * `nextPageToken` from the previous response.
-   *
    * [pageSize] - The maximum number of results to return in a single page. If
    * unspecified,
    * defaults to 1024. The maximum value is 2048.
@@ -1857,6 +1852,11 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * specified, `referenceName` must also be specified. If unset or 0, defaults
    * to the length of the reference.
    *
+   * [pageToken] - The continuation token, which is used to page through large
+   * result sets.
+   * To get the next page of results, set this parameter to the value of
+   * `nextPageToken` from the previous response.
+   *
    * Completes with a [ListCoverageBucketsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1865,7 +1865,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.String pageToken, core.int pageSize, core.String start, core.String targetBucketWidth, core.String referenceName, core.String end}) {
+  async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.int pageSize, core.String start, core.String targetBucketWidth, core.String referenceName, core.String end, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1875,9 +1875,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1893,6 +1890,9 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (end != null) {
       _queryParams["end"] = [end];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId') + '/coveragebuckets';
@@ -2104,11 +2104,6 @@ class ReferencesBasesResourceApi {
    *
    * [referenceId] - The ID of the reference.
    *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets.
-   * To get the next page of results, set this parameter to the value of
-   * `nextPageToken` from the previous response.
-   *
    * [pageSize] - The maximum number of bases to return in a single page. If
    * unspecified,
    * defaults to 200Kbp (kilo base pairs). The maximum value is 10Mbp (mega base
@@ -2120,6 +2115,11 @@ class ReferencesBasesResourceApi {
    * the length
    * of this reference.
    *
+   * [pageToken] - The continuation token, which is used to page through large
+   * result sets.
+   * To get the next page of results, set this parameter to the value of
+   * `nextPageToken` from the previous response.
+   *
    * Completes with a [ListBasesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2128,7 +2128,7 @@ class ReferencesBasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBasesResponse> list(core.String referenceId, {core.String pageToken, core.int pageSize, core.String start, core.String end}) {
+  async.Future<ListBasesResponse> list(core.String referenceId, {core.int pageSize, core.String start, core.String end, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2139,9 +2139,6 @@ class ReferencesBasesResourceApi {
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -2150,6 +2147,9 @@ class ReferencesBasesResourceApi {
     }
     if (end != null) {
       _queryParams["end"] = [end];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/references/' + commons.Escaper.ecapeVariable('$referenceId') + '/bases';
@@ -3346,6 +3346,7 @@ class Binding {
    *
    * * `group:{emailid}`: An email address that represents a Google group.
    *    For example, `admins@example.com`.
+   *
    *
    * * `domain:{domain}`: A Google Apps domain name that represents all the
    *    users of that domain. For example, `google.com` or `example.com`.
@@ -6870,7 +6871,7 @@ class SetIamPolicyRequest {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -6893,7 +6894,7 @@ class SetIamPolicyRequest {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for

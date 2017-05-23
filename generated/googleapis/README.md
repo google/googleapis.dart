@@ -70,7 +70,7 @@ package.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Accelerated Mobile Pages (AMP) URL API - acceleratedmobilepageurl v1
 
-This API contains a single method, batchGet. Call this method to retrieve the AMP URL (and equivalent AMP Cache URL) for given public URL(s).
+Retrieves the list of AMP URL (and equivalent AMP Cache URL) for a given list of public URL(s).
 
 
 Official API documentation: https://developers.google.com/amp/cache/
@@ -174,6 +174,12 @@ Official API documentation: https://developers.google.com/games/services/web/api
 #### ![Logo](https://www.google.com/images/icons/product/search-16.gif) BigQuery API - bigquery v2
 
 A data platform for customers to create, manage, share and query data.
+
+Official API documentation: https://cloud.google.com/bigquery/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) BigQuery Data Transfer Service API - bigquerydatatransfer v1
+
+Transfers data from partner SaaS applications to Google BigQuery on a scheduled, managed basis.
 
 Official API documentation: https://cloud.google.com/bigquery/
 
@@ -317,6 +323,12 @@ Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
 Official API documentation: https://developers.google.com/doubleclick-advertisers/
 
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.8
+
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/
+
 #### ![Logo](http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png) APIs Discovery Service - discovery v1
 
 Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.
@@ -355,7 +367,7 @@ Official API documentation: https://developers.google.com/drive/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Dynamic Links API - firebasedynamiclinks v1
 
-Firebase Dynamic Links API enables third party developers to programmatically create and manage Dynamic Links.
+Programmatically creates and manages Firebase Dynamic Links.
 
 Official API documentation: https://firebase.google.com/docs/dynamic-links/
 
@@ -446,7 +458,7 @@ Official API documentation: https://developers.google.com/knowledge-graph/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Natural Language API - language v1
 
-Google Cloud Natural Language API provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, and text annotations.
+Provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, entity sentiment analysis, and text annotations.
 
 Official API documentation: https://cloud.google.com/natural-language/
 
@@ -559,10 +571,9 @@ Creates and manages your customers and their subscriptions.
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud RuntimeConfig API - runtimeconfig v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Runtime Configuration API - runtimeconfig v1
 
-Provides capabilities for dynamic configuration and coordination for applications running on Google Cloud Platform.
-
+The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
@@ -624,13 +635,19 @@ Official API documentation: https://developers.google.com/slides/
 
 Access source code repositories hosted by Google.
 
-Official API documentation: https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
+Official API documentation: https://cloud.google.com/source-repositories/docs/apis
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Spanner API - spanner v1
 
 Cloud Spanner is a managed, mission-critical, globally consistent and scalable relational database service.
 
 Official API documentation: https://cloud.google.com/spanner/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Speech API - speech v1
+
+Converts audio to text by applying powerful neural network models.
+
+Official API documentation: https://cloud.google.com/speech/
 
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - storage v1
 
@@ -653,6 +670,12 @@ Creates and conducts surveys, lists the surveys that an authenticated user owns,
 Accesses Tag Manager accounts and containers.
 
 Official API documentation: https://developers.google.com/tag-manager/api/v1/
+
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Tag Manager API - tagmanager v2
+
+Accesses Tag Manager accounts and containers.
+
+Official API documentation: https://developers.google.com/tag-manager/api/v2/
 
 #### ![Logo](https://www.google.com/images/icons/product/tasks-16.png) Tasks API - tasks v1
 

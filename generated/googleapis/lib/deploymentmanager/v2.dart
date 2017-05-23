@@ -1342,7 +1342,7 @@ class TypesResourceApi {
 /**
  * Specifies the audit configuration for a service. The configuration determines
  * which permission types are logged, and what identities, if any, are exempted
- * from logging. An AuditConifg must have one or more AuditLogConfigs.
+ * from logging. An AuditConfig must have one or more AuditLogConfigs.
  *
  * If there are AuditConfigs for both `allServices` and a specific service, the
  * union of the two AuditConfigs is used for that service: the log_types

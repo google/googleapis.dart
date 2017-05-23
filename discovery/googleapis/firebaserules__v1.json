@@ -2,14 +2,14 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
-                },
                 "https://www.googleapis.com/auth/firebase": {
                     "description": "View and administer all your Firebase data and settings"
                 },
                 "https://www.googleapis.com/auth/firebase.readonly": {
                     "description": "View all your Firebase data and settings"
+                },
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
                 }
             }
         }
@@ -31,6 +31,22 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -52,6 +68,11 @@
             "location": "query",
             "type": "string"
         },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -62,11 +83,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -98,22 +114,6 @@
         },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         }
@@ -280,31 +280,6 @@
                 },
                 "releases": {
                     "methods": {
-                        "delete": {
-                            "description": "Delete a `Release` by resource name.",
-                            "httpMethod": "DELETE",
-                            "id": "firebaserules.projects.releases.delete",
-                            "parameterOrder": [
-                                "name"
-                            ],
-                            "parameters": {
-                                "name": {
-                                    "description": "Resource name for the `Release` to delete.\n\nFormat: `projects/{project_id}/releases/{release_id}`",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/releases/.+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/{+name}",
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/firebase"
-                            ]
-                        },
                         "get": {
                             "description": "Get a `Release` by name.",
                             "httpMethod": "GET",
@@ -428,15 +403,124 @@
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/firebase"
                             ]
+                        },
+                        "delete": {
+                            "description": "Delete a `Release` by resource name.",
+                            "httpMethod": "DELETE",
+                            "id": "firebaserules.projects.releases.delete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Resource name for the `Release` to delete.\n\nFormat: `projects/{project_id}/releases/{release_id}`",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/releases/.+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
+                            ]
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20170403",
+    "revision": "20170418",
     "rootUrl": "https://firebaserules.googleapis.com/",
     "schemas": {
+        "TestRulesetResponse": {
+            "description": "The response for FirebaseRulesService.TestRuleset.",
+            "id": "TestRulesetResponse",
+            "properties": {
+                "testResults": {
+                    "description": "The set of test results given the test cases in the `TestSuite`.\nThe results will appear in the same order as the test cases appear in the\n`TestSuite`.",
+                    "items": {
+                        "$ref": "TestResult"
+                    },
+                    "type": "array"
+                },
+                "issues": {
+                    "description": "Syntactic and semantic `Source` issues of varying severity. Issues of\n`ERROR` severity will prevent tests from executing.",
+                    "items": {
+                        "$ref": "Issue"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListRulesetsResponse": {
+            "description": "The response for FirebaseRulesService.ListRulesets.",
+            "id": "ListRulesetsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
+                    "type": "string"
+                },
+                "rulesets": {
+                    "description": "List of `Ruleset` instances.",
+                    "items": {
+                        "$ref": "Ruleset"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TestResult": {
+            "description": "Test result message containing the state of the test as well as a\ndescription and source position for test failures.",
+            "id": "TestResult",
+            "properties": {
+                "functionCalls": {
+                    "description": "The set of function calls made to service-defined methods.\n\nFunction calls are included in the order in which they are encountered\nduring evaluation, are provided for both mocked and unmocked functions,\nand included on the response regardless of the test `state`.",
+                    "items": {
+                        "$ref": "FunctionCall"
+                    },
+                    "type": "array"
+                },
+                "state": {
+                    "description": "State of the test.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "SUCCESS",
+                        "FAILURE"
+                    ],
+                    "enumDescriptions": [
+                        "Test state is not set.",
+                        "Test is a success.",
+                        "Test is a failure."
+                    ],
+                    "type": "string"
+                },
+                "debugMessages": {
+                    "description": "Debug messages related to test execution issues encountered during\nevaluation.\n\nDebug messages may be related to too many or too few invocations of\nfunction mocks or to runtime errors that occur during evaluation.\n\nFor example: ```Unable to read variable [name: \"resource\"]```",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "errorPosition": {
+                    "$ref": "SourcePosition",
+                    "description": "Position in the `Source` or `Ruleset` where the principle runtime error\noccurs.\n\nEvaluation of an expression may result in an error. Rules are deny by\ndefault, so a `DENY` expectation when an error is generated is valid.\nWhen there is a `DENY` with an error, the `SourcePosition` is returned.\n\nE.g. `error_position { line: 19 column: 37 }`"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
         "Source": {
             "description": "`Source` is one or more `File` messages comprising a logical set of rules.",
             "id": "Source",
@@ -455,11 +539,6 @@
             "description": "Position in the `Source` content including its line, column number, and an\nindex of the `File` in the `Source` message. Used for debug purposes.",
             "id": "SourcePosition",
             "properties": {
-                "line": {
-                    "description": "Line number of the source fragment. 1-based.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "column": {
                     "description": "First column on the source line associated with the source fragment.",
                     "format": "int32",
@@ -468,6 +547,11 @@
                 "fileName": {
                     "description": "Name of the `File`.",
                     "type": "string"
+                },
+                "line": {
+                    "description": "Line number of the source fragment. 1-based.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -487,6 +571,10 @@
             "description": "Issues include warnings, errors, and deprecation notices.",
             "id": "Issue",
             "properties": {
+                "sourcePosition": {
+                    "$ref": "SourcePosition",
+                    "description": "Position of the issue in the `Source`."
+                },
                 "severity": {
                     "description": "The severity of the issue.",
                     "enum": [
@@ -506,10 +594,6 @@
                 "description": {
                     "description": "Short error description.",
                     "type": "string"
-                },
-                "sourcePosition": {
-                    "$ref": "SourcePosition",
-                    "description": "Position of the issue in the `Source`."
                 }
             },
             "type": "object"
@@ -518,10 +602,6 @@
             "description": "`Ruleset` is an immutable copy of `Source` with a globally unique identifier\nand a creation time.",
             "id": "Ruleset",
             "properties": {
-                "name": {
-                    "description": "Name of the `Ruleset`. The ruleset_id is auto generated by the service.\nFormat: `projects/{project_id}/rulesets/{ruleset_id}`\nOutput only.",
-                    "type": "string"
-                },
                 "source": {
                     "$ref": "Source",
                     "description": "`Source` for the `Ruleset`."
@@ -529,6 +609,46 @@
                 "createTime": {
                     "description": "Time the `Ruleset` was created.\nOutput only.",
                     "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the `Ruleset`. The ruleset_id is auto generated by the service.\nFormat: `projects/{project_id}/rulesets/{ruleset_id}`\nOutput only.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FunctionCall": {
+            "description": "Represents a service-defined function call that was invoked during test\nexecution.",
+            "id": "FunctionCall",
+            "properties": {
+                "args": {
+                    "description": "The arguments that were provided to the function.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
+                "function": {
+                    "description": "Name of the function invoked.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListReleasesResponse": {
+            "description": "The response for FirebaseRulesService.ListReleases.",
+            "id": "ListReleasesResponse",
+            "properties": {
+                "releases": {
+                    "description": "List of `Release` instances.",
+                    "items": {
+                        "$ref": "Release"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
                     "type": "string"
                 }
             },
@@ -550,42 +670,6 @@
                     "description": "Fingerprint (e.g. github sha) associated with the `File`.",
                     "format": "byte",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListReleasesResponse": {
-            "description": "The response for FirebaseRulesService.ListReleases.",
-            "id": "ListReleasesResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
-                    "type": "string"
-                },
-                "releases": {
-                    "description": "List of `Release` instances.",
-                    "items": {
-                        "$ref": "Release"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "FunctionCall": {
-            "description": "Represents a service-defined function call that was invoked during test\nexecution.",
-            "id": "FunctionCall",
-            "properties": {
-                "function": {
-                    "description": "Name of the function invoked.",
-                    "type": "string"
-                },
-                "args": {
-                    "description": "The arguments that were provided to the function.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -613,90 +697,6 @@
                     "type": "string"
                 }
             },
-            "type": "object"
-        },
-        "TestRulesetResponse": {
-            "description": "The response for FirebaseRulesService.TestRuleset.",
-            "id": "TestRulesetResponse",
-            "properties": {
-                "issues": {
-                    "description": "Syntactic and semantic `Source` issues of varying severity. Issues of\n`ERROR` severity will prevent tests from executing.",
-                    "items": {
-                        "$ref": "Issue"
-                    },
-                    "type": "array"
-                },
-                "testResults": {
-                    "description": "The set of test results given the test cases in the `TestSuite`.\nThe results will appear in the same order as the test cases appear in the\n`TestSuite`.",
-                    "items": {
-                        "$ref": "TestResult"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "TestResult": {
-            "description": "Test result message containing the state of the test as well as a\ndescription and source position for test failures.",
-            "id": "TestResult",
-            "properties": {
-                "state": {
-                    "description": "State of the test.",
-                    "enum": [
-                        "STATE_UNSPECIFIED",
-                        "SUCCESS",
-                        "FAILURE"
-                    ],
-                    "enumDescriptions": [
-                        "Test state is not set.",
-                        "Test is a success.",
-                        "Test is a failure."
-                    ],
-                    "type": "string"
-                },
-                "debugMessages": {
-                    "description": "Debug messages related to test execution issues encountered during\nevaluation.\n\nDebug messages may be related to too many or too few invocations of\nfunction mocks or to runtime errors that occur during evaluation.\n\nFor example: ```Unable to read variable [name: \"resource\"]```",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "errorPosition": {
-                    "$ref": "SourcePosition",
-                    "description": "Position in the `Source` or `Ruleset` where the principle runtime error\noccurs.\n\nEvaluation of an expression may result in an error. Rules are deny by\ndefault, so a `DENY` expectation when an error is generated is valid.\nWhen there is a `DENY` with an error, the `SourcePosition` is returned.\n\nE.g. `error_position { line: 19 column: 37 }`"
-                },
-                "functionCalls": {
-                    "description": "The set of function calls made to service-defined methods.\n\nFunction calls are included in the order in which they are encountered\nduring evaluation, are provided for both mocked and unmocked functions,\nand included on the response regardless of the test `state`.",
-                    "items": {
-                        "$ref": "FunctionCall"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ListRulesetsResponse": {
-            "description": "The response for FirebaseRulesService.ListRulesets.",
-            "id": "ListRulesetsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
-                    "type": "string"
-                },
-                "rulesets": {
-                    "description": "List of `Ruleset` instances.",
-                    "items": {
-                        "$ref": "Ruleset"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
             "type": "object"
         }
     },

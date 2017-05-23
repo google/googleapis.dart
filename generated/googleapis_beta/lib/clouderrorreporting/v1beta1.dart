@@ -15,9 +15,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client clouderrorreporting/v1beta1';
 
 /**
- * Stackdriver Error Reporting groups and counts similar errors from cloud
- * services. The Stackdriver Error Reporting API provides a way to report new
- * errors and read access to error groups and their associated errors.
+ * Groups and counts similar errors from cloud services and applications,
+ * reports new errors, and provides access to error groups and their associated
+ * errors.
  */
 class ClouderrorreportingApi {
   /** View and manage your data across Google Cloud Platform services */
@@ -110,18 +110,6 @@ class ProjectsEventsResourceApi {
    * Example: `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response.
-   *
-   * [serviceFilter_service] - [Optional] The exact value to match against
-   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
-   *
-   * [pageSize] - [Optional] The maximum number of results to return per
-   * response.
-   *
-   * [serviceFilter_version] - [Optional] The exact value to match against
-   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-   *
    * [serviceFilter_resourceType] - [Optional] The exact value to match against
    * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
    *
@@ -136,6 +124,18 @@ class ProjectsEventsResourceApi {
    *
    * [groupId] - [Required] The group for which events shall be returned.
    *
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response.
+   *
+   * [serviceFilter_service] - [Optional] The exact value to match against
+   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+   *
+   * [pageSize] - [Optional] The maximum number of results to return per
+   * response.
+   *
+   * [serviceFilter_version] - [Optional] The exact value to match against
+   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+   *
    * Completes with a [ListEventsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -144,7 +144,7 @@ class ProjectsEventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListEventsResponse> list(core.String projectName, {core.String pageToken, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId}) {
+  async.Future<ListEventsResponse> list(core.String projectName, {core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId, core.String pageToken, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +154,15 @@ class ProjectsEventsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
+    }
+    if (serviceFilter_resourceType != null) {
+      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
+    }
+    if (timeRange_period != null) {
+      _queryParams["timeRange.period"] = [timeRange_period];
+    }
+    if (groupId != null) {
+      _queryParams["groupId"] = [groupId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -166,15 +175,6 @@ class ProjectsEventsResourceApi {
     }
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
-    }
-    if (serviceFilter_resourceType != null) {
-      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
-    }
-    if (timeRange_period != null) {
-      _queryParams["timeRange.period"] = [timeRange_period];
-    }
-    if (groupId != null) {
-      _queryParams["groupId"] = [groupId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/events';
@@ -270,12 +270,12 @@ class ProjectsGroupStatsResourceApi {
    * Example: <code>projects/my-project-123</code>.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [serviceFilter_resourceType] - [Optional] The exact value to match against
-   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
-   *
    * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
    * if rounded
    * alignment is chosen. Default is 00:00 UTC.
+   *
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
    *
    * [timedCountDuration] - [Optional] The preferred duration for a single
    * returned `TimedCount`.
@@ -313,9 +313,6 @@ class ProjectsGroupStatsResourceApi {
    * response.
    * Default is 20.
    *
-   * [serviceFilter_version] - [Optional] The exact value to match against
-   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-   *
    * [order] - [Optional] The sort order in which the results are returned.
    * Default is `COUNT_DESC`.
    * Possible string values are:
@@ -325,6 +322,9 @@ class ProjectsGroupStatsResourceApi {
    * - "CREATED_DESC" : A CREATED_DESC.
    * - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
    *
+   * [serviceFilter_version] - [Optional] The exact value to match against
+   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+   *
    * Completes with a [ListGroupStatsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -333,7 +333,7 @@ class ProjectsGroupStatsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String serviceFilter_resourceType, core.String alignmentTime, core.String timedCountDuration, core.String pageToken, core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version, core.String order}) {
+  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String alignmentTime, core.String serviceFilter_resourceType, core.String timedCountDuration, core.String pageToken, core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String order, core.String serviceFilter_version}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,11 +344,11 @@ class ProjectsGroupStatsResourceApi {
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
     }
-    if (serviceFilter_resourceType != null) {
-      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
-    }
     if (alignmentTime != null) {
       _queryParams["alignmentTime"] = [alignmentTime];
+    }
+    if (serviceFilter_resourceType != null) {
+      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
     if (timedCountDuration != null) {
       _queryParams["timedCountDuration"] = [timedCountDuration];
@@ -371,11 +371,11 @@ class ProjectsGroupStatsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (serviceFilter_version != null) {
-      _queryParams["serviceFilter.version"] = [serviceFilter_version];
-    }
     if (order != null) {
       _queryParams["order"] = [order];
+    }
+    if (serviceFilter_version != null) {
+      _queryParams["serviceFilter.version"] = [serviceFilter_version];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/groupStats';
@@ -533,6 +533,11 @@ class ErrorContext {
    */
   SourceLocation reportLocation;
   /**
+   * Source code that was used to build the executable which has
+   * caused the given error message.
+   */
+  core.List<SourceReference> sourceReferences;
+  /**
    * The user who caused or was affected by the crash.
    * This can be a user ID, an email address, or an arbitrary token that
    * uniquely identifies the user.
@@ -553,6 +558,9 @@ class ErrorContext {
     if (_json.containsKey("reportLocation")) {
       reportLocation = new SourceLocation.fromJson(_json["reportLocation"]);
     }
+    if (_json.containsKey("sourceReferences")) {
+      sourceReferences = _json["sourceReferences"].map((value) => new SourceReference.fromJson(value)).toList();
+    }
     if (_json.containsKey("user")) {
       user = _json["user"];
     }
@@ -565,6 +573,9 @@ class ErrorContext {
     }
     if (reportLocation != null) {
       _json["reportLocation"] = (reportLocation).toJson();
+    }
+    if (sourceReferences != null) {
+      _json["sourceReferences"] = sourceReferences.map((value) => (value).toJson()).toList();
     }
     if (user != null) {
       _json["user"] = user;
@@ -1160,6 +1171,45 @@ class SourceLocation {
     }
     if (lineNumber != null) {
       _json["lineNumber"] = lineNumber;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A reference to a particular snapshot of the source tree used to build and
+ * deploy an application.
+ */
+class SourceReference {
+  /**
+   * Optional. A URI string identifying the repository.
+   * Example: "https://github.com/GoogleCloudPlatform/kubernetes.git"
+   */
+  core.String repository;
+  /**
+   * The canonical and persistent identifier of the deployed revision.
+   * Example (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b"
+   */
+  core.String revisionId;
+
+  SourceReference();
+
+  SourceReference.fromJson(core.Map _json) {
+    if (_json.containsKey("repository")) {
+      repository = _json["repository"];
+    }
+    if (_json.containsKey("revisionId")) {
+      revisionId = _json["revisionId"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (repository != null) {
+      _json["repository"] = repository;
+    }
+    if (revisionId != null) {
+      _json["revisionId"] = revisionId;
     }
     return _json;
   }

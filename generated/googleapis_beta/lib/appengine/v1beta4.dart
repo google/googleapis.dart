@@ -258,11 +258,11 @@ class AppsLocationsResourceApi {
    * [appsId] - Part of `name`. The resource that owns the locations collection,
    * if applicable.
    *
+   * [filter] - The standard list filter.
+   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -272,7 +272,7 @@ class AppsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String appsId, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListLocationsResponse> list(core.String appsId, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -283,14 +283,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
@@ -1149,11 +1149,11 @@ class AppsOperationsResourceApi {
    *
    * [appsId] - Part of `name`. The name of the operation collection.
    *
-   * [filter] - The standard list filter.
-   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -1163,7 +1163,7 @@ class AppsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String appsId, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String appsId, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1174,14 +1174,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta4/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';

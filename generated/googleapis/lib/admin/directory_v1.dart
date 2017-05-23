@@ -330,9 +330,9 @@ class ChromeosdevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
-   * [resourceId] - Immutable id of Chrome OS Device
+   * [resourceId] - Immutable ID of Chrome OS Device
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -377,9 +377,9 @@ class ChromeosdevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
-   * [deviceId] - Immutable id of Chrome OS Device
+   * [deviceId] - Immutable ID of Chrome OS Device
    *
    * [projection] - Restrict information returned to a set of selected fields.
    * Possible string values are:
@@ -430,7 +430,7 @@ class ChromeosdevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [maxResults] - Maximum number of results to return. Default is 100
    *
@@ -519,9 +519,9 @@ class ChromeosdevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
-   * [deviceId] - Immutable id of Chrome OS Device
+   * [deviceId] - Immutable ID of Chrome OS Device
    *
    * [projection] - Restrict information returned to a set of selected fields.
    * Possible string values are:
@@ -577,9 +577,9 @@ class ChromeosdevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
-   * [deviceId] - Immutable id of Chrome OS Device
+   * [deviceId] - Immutable ID of Chrome OS Device
    *
    * [projection] - Restrict information returned to a set of selected fields.
    * Possible string values are:
@@ -778,7 +778,7 @@ class DomainAliasesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [domainAliasName] - Name of domain alias to be retrieved.
    *
@@ -822,7 +822,7 @@ class DomainAliasesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [domainAliasName] - Name of domain alias to be retrieved.
    *
@@ -868,7 +868,7 @@ class DomainAliasesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * Completes with a [DomainAlias].
    *
@@ -910,7 +910,7 @@ class DomainAliasesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [parentDomainName] - Name of the parent domain for which domain aliases are
    * to be fetched.
@@ -964,7 +964,7 @@ class DomainsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [domainName] - Name of domain to be deleted
    *
@@ -1008,7 +1008,7 @@ class DomainsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [domainName] - Name of domain to be retrieved
    *
@@ -1054,7 +1054,7 @@ class DomainsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * Completes with a [Domains].
    *
@@ -1096,7 +1096,7 @@ class DomainsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * Completes with a [Domains2].
    *
@@ -1263,9 +1263,8 @@ class GroupsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account. In case of
-   * multi-domain, to fetch all groups for a customer, fill this field instead
-   * of domain.
+   * [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+   * to fetch all groups for a customer, fill this field instead of domain.
    *
    * [domain] - Name of the domain. Fill this field to get groups from only this
    * domain. To return all groups in a multi-domain fill customer field instead.
@@ -1862,9 +1861,9 @@ class MobiledevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
-   * [resourceId] - Immutable id of Mobile Device
+   * [resourceId] - Immutable ID of Mobile Device
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -1909,9 +1908,9 @@ class MobiledevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
-   * [resourceId] - Immutable id of Mobile Device
+   * [resourceId] - Immutable ID of Mobile Device
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
@@ -1953,9 +1952,9 @@ class MobiledevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
-   * [resourceId] - Immutable id of Mobile Device
+   * [resourceId] - Immutable ID of Mobile Device
    *
    * [projection] - Restrict information returned to a set of selected fields.
    * Possible string values are:
@@ -2006,7 +2005,7 @@ class MobiledevicesResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [maxResults] - Maximum number of results to return. Default is 100
    *
@@ -2102,7 +2101,7 @@ class NotificationsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account. The
+   * [customer] - The unique ID for the customer's G Suite account. The
    * customerId is also returned as part of the Users resource.
    *
    * [notificationId] - The unique ID of the notification.
@@ -2147,7 +2146,7 @@ class NotificationsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account. The
+   * [customer] - The unique ID for the customer's G Suite account. The
    * customerId is also returned as part of the Users resource.
    *
    * [notificationId] - The unique ID of the notification.
@@ -2192,7 +2191,7 @@ class NotificationsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account.
+   * [customer] - The unique ID for the customer's G Suite account.
    *
    * [language] - The ISO 639-1 code of the language notifications are returned
    * in. The default is English (en).
@@ -2250,7 +2249,7 @@ class NotificationsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account.
+   * [customer] - The unique ID for the customer's G Suite account.
    *
    * [notificationId] - The unique ID of the notification.
    *
@@ -2299,7 +2298,7 @@ class NotificationsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account.
+   * [customer] - The unique ID for the customer's G Suite account.
    *
    * [notificationId] - The unique ID of the notification.
    *
@@ -2355,7 +2354,7 @@ class OrgunitsResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [orgUnitPath] - Full path of the organization unit or its Id
    *
@@ -2399,7 +2398,7 @@ class OrgunitsResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [orgUnitPath] - Full path of the organization unit or its Id
    *
@@ -2445,7 +2444,7 @@ class OrgunitsResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * Completes with a [OrgUnit].
    *
@@ -2487,7 +2486,7 @@ class OrgunitsResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [orgUnitPath] - the URL-encoded organization unit's path or its Id
    *
@@ -2541,7 +2540,7 @@ class OrgunitsResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [orgUnitPath] - Full path of the organization unit or its Id
    *
@@ -2590,7 +2589,7 @@ class OrgunitsResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [orgUnitPath] - Full path of the organization unit or its Id
    *
@@ -2646,7 +2645,7 @@ class PrivilegesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * Completes with a [Privileges].
    *
@@ -2704,9 +2703,9 @@ class ResourcesCalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account. As an account
-   * administrator, you can also use the my_customer alias to represent your
-   * account's customer ID.
+   * [customer] - The unique ID for the customer's G Suite account. As an
+   * account administrator, you can also use the my_customer alias to represent
+   * your account's customer ID.
    *
    * [calendarResourceId] - The unique ID of the calendar resource to delete.
    *
@@ -2750,9 +2749,9 @@ class ResourcesCalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account. As an account
-   * administrator, you can also use the my_customer alias to represent your
-   * account's customer ID.
+   * [customer] - The unique ID for the customer's G Suite account. As an
+   * account administrator, you can also use the my_customer alias to represent
+   * your account's customer ID.
    *
    * [calendarResourceId] - The unique ID of the calendar resource to retrieve.
    *
@@ -2798,9 +2797,9 @@ class ResourcesCalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account. As an account
-   * administrator, you can also use the my_customer alias to represent your
-   * account's customer ID.
+   * [customer] - The unique ID for the customer's G Suite account. As an
+   * account administrator, you can also use the my_customer alias to represent
+   * your account's customer ID.
    *
    * Completes with a [CalendarResource].
    *
@@ -2842,9 +2841,9 @@ class ResourcesCalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account. As an account
-   * administrator, you can also use the my_customer alias to represent your
-   * account's customer ID.
+   * [customer] - The unique ID for the customer's G Suite account. As an
+   * account administrator, you can also use the my_customer alias to represent
+   * your account's customer ID.
    *
    * [maxResults] - Maximum number of results to return.
    * Value must be between "1" and "500".
@@ -2896,9 +2895,9 @@ class ResourcesCalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account. As an account
-   * administrator, you can also use the my_customer alias to represent your
-   * account's customer ID.
+   * [customer] - The unique ID for the customer's G Suite account. As an
+   * account administrator, you can also use the my_customer alias to represent
+   * your account's customer ID.
    *
    * [calendarResourceId] - The unique ID of the calendar resource to update.
    *
@@ -2947,9 +2946,9 @@ class ResourcesCalendarsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - The unique ID for the customer's Google account. As an account
-   * administrator, you can also use the my_customer alias to represent your
-   * account's customer ID.
+   * [customer] - The unique ID for the customer's G Suite account. As an
+   * account administrator, you can also use the my_customer alias to represent
+   * your account's customer ID.
    *
    * [calendarResourceId] - The unique ID of the calendar resource to update.
    *
@@ -3005,7 +3004,7 @@ class RoleAssignmentsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [roleAssignmentId] - Immutable ID of the role assignment.
    *
@@ -3049,7 +3048,7 @@ class RoleAssignmentsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [roleAssignmentId] - Immutable ID of the role assignment.
    *
@@ -3095,7 +3094,7 @@ class RoleAssignmentsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * Completes with a [RoleAssignment].
    *
@@ -3137,7 +3136,7 @@ class RoleAssignmentsResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [maxResults] - Maximum number of results to return.
    * Value must be between "1" and "200".
@@ -3209,7 +3208,7 @@ class RolesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [roleId] - Immutable ID of the role.
    *
@@ -3253,7 +3252,7 @@ class RolesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [roleId] - Immutable ID of the role.
    *
@@ -3299,7 +3298,7 @@ class RolesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * Completes with a [Role].
    *
@@ -3341,7 +3340,7 @@ class RolesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable id of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [maxResults] - Maximum number of results to return.
    * Value must be between "1" and "100".
@@ -3393,7 +3392,7 @@ class RolesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [roleId] - Immutable ID of the role.
    *
@@ -3442,7 +3441,7 @@ class RolesResourceApi {
    *
    * Request parameters:
    *
-   * [customer] - Immutable ID of the Google Apps account.
+   * [customer] - Immutable ID of the G Suite account.
    *
    * [roleId] - Immutable ID of the role.
    *
@@ -3498,7 +3497,7 @@ class SchemasResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [schemaKey] - Name or immutable Id of the schema
    *
@@ -3542,7 +3541,7 @@ class SchemasResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [schemaKey] - Name or immutable Id of the schema
    *
@@ -3588,7 +3587,7 @@ class SchemasResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * Completes with a [Schema].
    *
@@ -3630,7 +3629,7 @@ class SchemasResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * Completes with a [Schemas].
    *
@@ -3671,7 +3670,7 @@ class SchemasResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [schemaKey] - Name or immutable Id of the schema.
    *
@@ -3720,7 +3719,7 @@ class SchemasResourceApi {
    *
    * Request parameters:
    *
-   * [customerId] - Immutable id of the Google Apps account
+   * [customerId] - Immutable ID of the G Suite account
    *
    * [schemaKey] - Name or immutable Id of the schema.
    *
@@ -4064,9 +4063,8 @@ class UsersResourceApi {
    * [customFieldMask] - Comma-separated list of schema names. All fields from
    * these schemas are fetched. This should only be set when projection=custom.
    *
-   * [customer] - Immutable id of the Google Apps account. In case of
-   * multi-domain, to fetch all users for a customer, fill this field instead of
-   * domain.
+   * [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+   * to fetch all users for a customer, fill this field instead of domain.
    *
    * [domain] - Name of the domain. Fill this field to get users from only this
    * domain. To return all users in a multi-domain fill customer field instead.
@@ -4369,9 +4367,8 @@ class UsersResourceApi {
    * [customFieldMask] - Comma-separated list of schema names. All fields from
    * these schemas are fetched. This should only be set when projection=custom.
    *
-   * [customer] - Immutable id of the Google Apps account. In case of
-   * multi-domain, to fetch all users for a customer, fill this field instead of
-   * domain.
+   * [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+   * to fetch all users for a customer, fill this field instead of domain.
    *
    * [domain] - Name of the domain. Fill this field to get users from only this
    * domain. To return all users in a multi-domain fill customer field instead.
@@ -5522,7 +5519,7 @@ class ChromeOsDevice {
   core.DateTime lastEnrollmentTime;
   /**
    * Date and time the device was last synchronized with the policy settings in
-   * the Google Apps administrator control panel (Read-only)
+   * the G Suite administrator control panel (Read-only)
    */
   core.DateTime lastSync;
   /** Chromebook Mac Address on wifi network interface (Read-only) */
@@ -5815,7 +5812,7 @@ class Customer {
   core.String customerDomain;
   /** ETag of the resource. */
   core.String etag;
-  /** The unique ID for the customer's Google account. (Readonly) */
+  /** The unique ID for the customer's G Suite account. (Readonly) */
   core.String id;
   /** Identifies the resource as a customer. Value: admin#directory#customer */
   core.String kind;
@@ -6548,7 +6545,7 @@ class MobileDevice {
   core.String etag;
   /**
    * Date and time the device was first synchronized with the policy settings in
-   * the Google Apps administrator control panel (Read-only)
+   * the G Suite administrator control panel (Read-only)
    */
   core.DateTime firstSync;
   /** Mobile Device Hardware (Read-only) */
@@ -6563,7 +6560,7 @@ class MobileDevice {
   core.String kind;
   /**
    * Date and time the device was last synchronized with the policy settings in
-   * the Google Apps administrator control panel (Read-only)
+   * the G Suite administrator control panel (Read-only)
    */
   core.DateTime lastSync;
   /**
@@ -7954,7 +7951,7 @@ class User {
   core.List<core.String> aliases;
   /** Boolean indicating if the user should change password in next login */
   core.bool changePasswordAtNextLogin;
-  /** User's Google account creation time. (Read-only) */
+  /** User's G Suite account creation time. (Read-only) */
   core.DateTime creationTime;
   /** Custom fields of the user. */
   core.Map<core.String, UserCustomProperties> customSchemas;
@@ -8006,6 +8003,13 @@ class User {
   core.String kind;
   /** User's last login time. (Read-only) */
   core.DateTime lastLoginTime;
+  /**
+   *
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object locations;
   /** User's name */
   UserName name;
   /** List of non editable aliases (Read-only) */
@@ -8146,6 +8150,9 @@ class User {
     if (_json.containsKey("lastLoginTime")) {
       lastLoginTime = core.DateTime.parse(_json["lastLoginTime"]);
     }
+    if (_json.containsKey("locations")) {
+      locations = _json["locations"];
+    }
     if (_json.containsKey("name")) {
       name = new UserName.fromJson(_json["name"]);
     }
@@ -8266,6 +8273,9 @@ class User {
     }
     if (lastLoginTime != null) {
       _json["lastLoginTime"] = (lastLoginTime).toIso8601String();
+    }
+    if (locations != null) {
+      _json["locations"] = locations;
     }
     if (name != null) {
       _json["name"] = (name).toJson();
@@ -8688,6 +8698,89 @@ class UserIm {
   }
 }
 
+/** JSON template for a location entry. */
+class UserLocation {
+  /**
+   * Textual location. This is most useful for display purposes to concisely
+   * describe the location. E.g. "Mountain View, CA", "Near Seattle",
+   * "US-NYC-9TH 9A209A".
+   */
+  core.String area;
+  /** Building Identifier. */
+  core.String buildingId;
+  /** Custom Type. */
+  core.String customType;
+  /** Most specific textual code of individual desk location. */
+  core.String deskCode;
+  /** Floor name/number. */
+  core.String floorName;
+  /**
+   * Floor Section. More specific location within the floor. E.g. if a floor is
+   * divided into sections "A", "B", and "C", this field would identify one of
+   * those values.
+   */
+  core.String floorSection;
+  /**
+   * Each entry can have a type which indicates standard types of that entry.
+   * For example location could be of types default and desk. In addition to
+   * standard type, an entry can have a custom type and can give it any name.
+   * Such types should have "custom" as type and also have a customType value.
+   */
+  core.String type;
+
+  UserLocation();
+
+  UserLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("area")) {
+      area = _json["area"];
+    }
+    if (_json.containsKey("buildingId")) {
+      buildingId = _json["buildingId"];
+    }
+    if (_json.containsKey("customType")) {
+      customType = _json["customType"];
+    }
+    if (_json.containsKey("deskCode")) {
+      deskCode = _json["deskCode"];
+    }
+    if (_json.containsKey("floorName")) {
+      floorName = _json["floorName"];
+    }
+    if (_json.containsKey("floorSection")) {
+      floorSection = _json["floorSection"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (area != null) {
+      _json["area"] = area;
+    }
+    if (buildingId != null) {
+      _json["buildingId"] = buildingId;
+    }
+    if (customType != null) {
+      _json["customType"] = customType;
+    }
+    if (deskCode != null) {
+      _json["deskCode"] = deskCode;
+    }
+    if (floorName != null) {
+      _json["floorName"] = floorName;
+    }
+    if (floorSection != null) {
+      _json["floorSection"] = floorSection;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /**
  * JSON request template for setting/revoking admin status of a user in
  * Directory API.
@@ -9003,7 +9096,7 @@ class UserPhoto {
  * go/fbs-posix.
  */
 class UserPosixAccount {
-  /** The GECOS (user information) entry for this account. */
+  /** The GECOS (user information) for this account. */
   core.String gecos;
   /** The default group ID. */
   core.int gid;
@@ -9015,7 +9108,7 @@ class UserPosixAccount {
   core.String shell;
   /** System identifier for which account Username or Uid apply to. */
   core.String systemId;
-  /** The user ID. */
+  /** The POSIX compliant user ID. */
   core.int uid;
   /** The username of the account. */
   core.String username;

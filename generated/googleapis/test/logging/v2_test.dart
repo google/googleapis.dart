@@ -412,6 +412,7 @@ buildLogEntry() {
     o.logName = "foo";
     o.operation = buildLogEntryOperation();
     o.protoPayload = buildUnnamed207();
+    o.receiveTimestamp = "foo";
     o.resource = buildMonitoredResource();
     o.severity = "foo";
     o.sourceLocation = buildLogEntrySourceLocation();
@@ -433,6 +434,7 @@ checkLogEntry(api.LogEntry o) {
     unittest.expect(o.logName, unittest.equals('foo'));
     checkLogEntryOperation(o.operation);
     checkUnnamed207(o.protoPayload);
+    unittest.expect(o.receiveTimestamp, unittest.equals('foo'));
     checkMonitoredResource(o.resource);
     unittest.expect(o.severity, unittest.equals('foo'));
     checkLogEntrySourceLocation(o.sourceLocation);

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.38.0
+    version: 0.39.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -25,6 +25,7 @@ packages:
     - appsactivity:v1  # https://developers.google.com/google-apps/activity/
     - appstate:v1  # https://developers.google.com/games/services/web/api/states
     - bigquery:v2  # https://developers.google.com/bigquery/
+    - bigquerydatatransfer:v1  # https://cloud.google.com/bigquery/transfer/
     - blogger:v3  # https://developers.google.com/blogger/
     - books:v1  # https://developers.google.com/books/
     - calendar:v3  # https://developers.google.com/google-apps/calendar/
@@ -48,6 +49,7 @@ packages:
     - deploymentmanager:v2
     - dfareporting:v2.6  # https://developers.google.com/doubleclick-advertisers/reporting/
     - dfareporting:v2.7  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v2.8  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
@@ -100,10 +102,12 @@ packages:
     - slides:v1  # https://developers.google.com/slides/
     - sourcerepo:v1  # https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
     - spanner:v1  # https://cloud.google.com/spanner/docs/
+    - speech:v1  # https://cloud.google.com/speech/
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
     - storage:v1  # https://developers.google.com/storage/
     - surveys:v2  #
     - tagmanager:v1  # https://developers.google.com/tag-manager/
+    - tagmanager:v2  # https://developers.google.com/tag-manager/
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
     - tracing:v2  # https://cloud.google.com/trace/api/
     - translate:v2  # https://developers.google.com/translate/
@@ -116,7 +120,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.36.0
+    version: 0.37.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -136,6 +140,7 @@ packages:
     - dlp:v2beta1 # https://cloud.google.com/dlp/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - language:v1beta1  # https://cloud.google.com/natural-language/
+    - language:v1beta2  # https://cloud.google.com/natural-language/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
@@ -149,6 +154,7 @@ packages:
     - sqladmin:v1beta4  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
     - toolresults:v1beta3  # https://developers.google.com/cloud-test-lab/
+    - videointelligence:v1beta1  # https://cloud.google.com/video-intelligence/
 
 skipped_apis:
 - adexchangebuyer:v1.2  # v1.3 included

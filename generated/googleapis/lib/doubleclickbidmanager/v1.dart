@@ -16,6 +16,9 @@ const core.String USER_AGENT = 'dart-api-client doubleclickbidmanager/v1';
 
 /** API for viewing and managing your reports in DoubleClick Bid Manager. */
 class DoubleclickbidmanagerApi {
+  /** View and manage your reports in DoubleClick Bid Manager */
+  static const DoubleclickbidmanagerScope = "https://www.googleapis.com/auth/doubleclickbidmanager";
+
 
   final commons.ApiRequester _requester;
 

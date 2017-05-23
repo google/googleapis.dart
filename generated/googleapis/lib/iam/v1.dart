@@ -241,14 +241,14 @@ class ProjectsServiceAccountsResourceApi {
    * accounts, such as `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - Optional pagination token returned in an earlier
-   * ListServiceAccountsResponse.next_page_token.
-   *
    * [pageSize] - Optional limit on the number of service accounts to include in
    * the
    * response. Further accounts can subsequently be obtained by including the
    * ListServiceAccountsResponse.next_page_token
    * in a subsequent request.
+   *
+   * [pageToken] - Optional pagination token returned in an earlier
+   * ListServiceAccountsResponse.next_page_token.
    *
    * Completes with a [ListServiceAccountsResponse].
    *
@@ -258,7 +258,7 @@ class ProjectsServiceAccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListServiceAccountsResponse> list(core.String name, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListServiceAccountsResponse> list(core.String name, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -269,11 +269,11 @@ class ProjectsServiceAccountsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/serviceAccounts';
@@ -861,6 +861,7 @@ class Binding {
    * * `group:{emailid}`: An email address that represents a Google group.
    *    For example, `admins@example.com`.
    *
+   *
    * * `domain:{domain}`: A Google Apps domain name that represents all the
    *    users of that domain. For example, `google.com` or `example.com`.
    */
@@ -953,6 +954,7 @@ class BindingDelta {
 
 /** The service account key create request. */
 class CreateServiceAccountKeyRequest {
+  core.bool includePublicKeyData;
   /**
    * Which type of key and algorithm to use for the key.
    * The default is currently a 2K RSA key.  However this may change in the
@@ -979,6 +981,9 @@ class CreateServiceAccountKeyRequest {
   CreateServiceAccountKeyRequest();
 
   CreateServiceAccountKeyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("includePublicKeyData")) {
+      includePublicKeyData = _json["includePublicKeyData"];
+    }
     if (_json.containsKey("keyAlgorithm")) {
       keyAlgorithm = _json["keyAlgorithm"];
     }
@@ -989,6 +994,9 @@ class CreateServiceAccountKeyRequest {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (includePublicKeyData != null) {
+      _json["includePublicKeyData"] = includePublicKeyData;
+    }
     if (keyAlgorithm != null) {
       _json["keyAlgorithm"] = keyAlgorithm;
     }

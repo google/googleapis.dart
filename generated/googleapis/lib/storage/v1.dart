@@ -68,13 +68,16 @@ class BucketAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String bucket, core.String entity) {
+  async.Future delete(core.String bucket, core.String entity, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -87,6 +90,9 @@ class BucketAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = null;
@@ -114,6 +120,9 @@ class BucketAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [BucketAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -122,7 +131,7 @@ class BucketAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BucketAccessControl> get(core.String bucket, core.String entity) {
+  async.Future<BucketAccessControl> get(core.String bucket, core.String entity, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -135,6 +144,9 @@ class BucketAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
@@ -158,6 +170,9 @@ class BucketAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [BucketAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -166,7 +181,7 @@ class BucketAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BucketAccessControl> insert(BucketAccessControl request, core.String bucket) {
+  async.Future<BucketAccessControl> insert(BucketAccessControl request, core.String bucket, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -179,6 +194,9 @@ class BucketAccessControlsResourceApi {
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
@@ -200,6 +218,9 @@ class BucketAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [BucketAccessControls].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -208,7 +229,7 @@ class BucketAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BucketAccessControls> list(core.String bucket) {
+  async.Future<BucketAccessControls> list(core.String bucket, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -218,6 +239,9 @@ class BucketAccessControlsResourceApi {
 
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
@@ -246,6 +270,9 @@ class BucketAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [BucketAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -254,7 +281,7 @@ class BucketAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BucketAccessControl> patch(BucketAccessControl request, core.String bucket, core.String entity) {
+  async.Future<BucketAccessControl> patch(BucketAccessControl request, core.String bucket, core.String entity, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -270,6 +297,9 @@ class BucketAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
@@ -297,6 +327,9 @@ class BucketAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [BucketAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -305,7 +338,7 @@ class BucketAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BucketAccessControl> update(BucketAccessControl request, core.String bucket, core.String entity) {
+  async.Future<BucketAccessControl> update(BucketAccessControl request, core.String bucket, core.String entity, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,6 +354,9 @@ class BucketAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
@@ -357,13 +393,16 @@ class BucketsResourceApi {
    * [ifMetagenerationNotMatch] - If set, only deletes the bucket if its
    * metageneration does not match this value.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch}) {
+  async.Future delete(core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -379,6 +418,9 @@ class BucketsResourceApi {
     }
     if (ifMetagenerationNotMatch != null) {
       _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = null;
@@ -415,6 +457,9 @@ class BucketsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Bucket].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -423,7 +468,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Bucket> get(core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String projection}) {
+  async.Future<Bucket> get(core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String projection, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -442,6 +487,9 @@ class BucketsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
@@ -463,6 +511,9 @@ class BucketsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Policy].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -471,7 +522,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Policy> getIamPolicy(core.String bucket) {
+  async.Future<Policy> getIamPolicy(core.String bucket, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -481,6 +532,9 @@ class BucketsResourceApi {
 
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
@@ -699,6 +753,9 @@ class BucketsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Bucket].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -707,7 +764,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Bucket> patch(Bucket request, core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String predefinedDefaultObjectAcl, core.String projection}) {
+  async.Future<Bucket> patch(Bucket request, core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String predefinedDefaultObjectAcl, core.String projection, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -736,6 +793,9 @@ class BucketsResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
@@ -758,6 +818,9 @@ class BucketsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Policy].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -766,7 +829,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Policy> setIamPolicy(Policy request, core.String bucket) {
+  async.Future<Policy> setIamPolicy(Policy request, core.String bucket, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -779,6 +842,9 @@ class BucketsResourceApi {
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
@@ -803,6 +869,9 @@ class BucketsResourceApi {
    *
    * [permissions] - Permissions to test.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [TestIamPermissionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -811,7 +880,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String bucket, core.List<core.String> permissions) {
+  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String bucket, core.List<core.String> permissions, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -826,6 +895,9 @@ class BucketsResourceApi {
       throw new core.ArgumentError("Parameter permissions is required.");
     }
     _queryParams["permissions"] = permissions;
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam/testPermissions';
 
@@ -889,6 +961,9 @@ class BucketsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Bucket].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -897,7 +972,7 @@ class BucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Bucket> update(Bucket request, core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String predefinedDefaultObjectAcl, core.String projection}) {
+  async.Future<Bucket> update(Bucket request, core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String predefinedDefaultObjectAcl, core.String projection, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -925,6 +1000,9 @@ class BucketsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
@@ -1008,13 +1086,16 @@ class DefaultObjectAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String bucket, core.String entity) {
+  async.Future delete(core.String bucket, core.String entity, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1027,6 +1108,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = null;
@@ -1055,6 +1139,9 @@ class DefaultObjectAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1063,7 +1150,7 @@ class DefaultObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControl> get(core.String bucket, core.String entity) {
+  async.Future<ObjectAccessControl> get(core.String bucket, core.String entity, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1076,6 +1163,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + commons.Escaper.ecapeVariable('$entity');
@@ -1099,6 +1189,9 @@ class DefaultObjectAccessControlsResourceApi {
    *
    * [bucket] - Name of a bucket.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1107,7 +1200,7 @@ class DefaultObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControl> insert(ObjectAccessControl request, core.String bucket) {
+  async.Future<ObjectAccessControl> insert(ObjectAccessControl request, core.String bucket, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1120,6 +1213,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
@@ -1147,6 +1243,9 @@ class DefaultObjectAccessControlsResourceApi {
    * [ifMetagenerationNotMatch] - If present, only return default ACL listing if
    * the bucket's current metageneration does not match the given value.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControls].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1155,7 +1254,7 @@ class DefaultObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControls> list(core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch}) {
+  async.Future<ObjectAccessControls> list(core.String bucket, {core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1171,6 +1270,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (ifMetagenerationNotMatch != null) {
       _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
@@ -1199,6 +1301,9 @@ class DefaultObjectAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1207,7 +1312,7 @@ class DefaultObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControl> patch(ObjectAccessControl request, core.String bucket, core.String entity) {
+  async.Future<ObjectAccessControl> patch(ObjectAccessControl request, core.String bucket, core.String entity, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1223,6 +1328,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + commons.Escaper.ecapeVariable('$entity');
@@ -1250,6 +1358,9 @@ class DefaultObjectAccessControlsResourceApi {
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1258,7 +1369,7 @@ class DefaultObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControl> update(ObjectAccessControl request, core.String bucket, core.String entity) {
+  async.Future<ObjectAccessControl> update(ObjectAccessControl request, core.String bucket, core.String entity, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1274,6 +1385,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl/' + commons.Escaper.ecapeVariable('$entity');
@@ -1306,13 +1420,16 @@ class NotificationsResourceApi {
    *
    * [notification] - ID of the notification to delete.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String bucket, core.String notification) {
+  async.Future delete(core.String bucket, core.String notification, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1325,6 +1442,9 @@ class NotificationsResourceApi {
     }
     if (notification == null) {
       throw new core.ArgumentError("Parameter notification is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = null;
@@ -1350,6 +1470,9 @@ class NotificationsResourceApi {
    *
    * [notification] - Notification ID
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Notification].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1358,7 +1481,7 @@ class NotificationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Notification> get(core.String bucket, core.String notification) {
+  async.Future<Notification> get(core.String bucket, core.String notification, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1371,6 +1494,9 @@ class NotificationsResourceApi {
     }
     if (notification == null) {
       throw new core.ArgumentError("Parameter notification is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/notificationConfigs/' + commons.Escaper.ecapeVariable('$notification');
@@ -1394,6 +1520,9 @@ class NotificationsResourceApi {
    *
    * [bucket] - The parent bucket of the notification.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Notification].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1402,7 +1531,7 @@ class NotificationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Notification> insert(Notification request, core.String bucket) {
+  async.Future<Notification> insert(Notification request, core.String bucket, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1415,6 +1544,9 @@ class NotificationsResourceApi {
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/notificationConfigs';
@@ -1436,6 +1568,9 @@ class NotificationsResourceApi {
    *
    * [bucket] - Name of a GCS bucket.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Notifications].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1444,7 +1579,7 @@ class NotificationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Notifications> list(core.String bucket) {
+  async.Future<Notifications> list(core.String bucket, {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1454,6 +1589,9 @@ class NotificationsResourceApi {
 
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/notificationConfigs';
@@ -1495,13 +1633,16 @@ class ObjectAccessControlsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String bucket, core.String object, core.String entity, {core.String generation}) {
+  async.Future delete(core.String bucket, core.String object, core.String entity, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1520,6 +1661,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = null;
@@ -1553,6 +1697,9 @@ class ObjectAccessControlsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1561,7 +1708,7 @@ class ObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControl> get(core.String bucket, core.String object, core.String entity, {core.String generation}) {
+  async.Future<ObjectAccessControl> get(core.String bucket, core.String object, core.String entity, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1580,6 +1727,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
@@ -1609,6 +1759,9 @@ class ObjectAccessControlsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1617,7 +1770,7 @@ class ObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControl> insert(ObjectAccessControl request, core.String bucket, core.String object, {core.String generation}) {
+  async.Future<ObjectAccessControl> insert(ObjectAccessControl request, core.String bucket, core.String object, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1636,6 +1789,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl';
@@ -1663,6 +1819,9 @@ class ObjectAccessControlsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControls].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1671,7 +1830,7 @@ class ObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControls> list(core.String bucket, core.String object, {core.String generation}) {
+  async.Future<ObjectAccessControls> list(core.String bucket, core.String object, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1687,6 +1846,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl';
@@ -1721,6 +1883,9 @@ class ObjectAccessControlsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1729,7 +1894,7 @@ class ObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControl> patch(ObjectAccessControl request, core.String bucket, core.String object, core.String entity, {core.String generation}) {
+  async.Future<ObjectAccessControl> patch(ObjectAccessControl request, core.String bucket, core.String object, core.String entity, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1751,6 +1916,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
@@ -1784,6 +1952,9 @@ class ObjectAccessControlsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [ObjectAccessControl].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1792,7 +1963,7 @@ class ObjectAccessControlsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ObjectAccessControl> update(ObjectAccessControl request, core.String bucket, core.String object, core.String entity, {core.String generation}) {
+  async.Future<ObjectAccessControl> update(ObjectAccessControl request, core.String bucket, core.String object, core.String entity, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1814,6 +1985,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/acl/' + commons.Escaper.ecapeVariable('$entity');
@@ -1871,6 +2045,9 @@ class ObjectsResourceApi {
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * object's current metageneration matches the given value.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
@@ -1887,7 +2064,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future compose(ComposeRequest request, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifMetagenerationMatch, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future compose(ComposeRequest request, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifMetagenerationMatch, core.String userProject, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1912,6 +2089,9 @@ class ObjectsResourceApi {
     }
     if (ifMetagenerationMatch != null) {
       _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = downloadOptions;
@@ -2004,6 +2184,9 @@ class ObjectsResourceApi {
    * [sourceGeneration] - If present, selects a specific revision of the source
    * object (as opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
@@ -2020,7 +2203,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future copy(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String projection, core.String sourceGeneration, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future copy(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String projection, core.String sourceGeneration, core.String userProject, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2076,6 +2259,9 @@ class ObjectsResourceApi {
     if (sourceGeneration != null) {
       _queryParams["sourceGeneration"] = [sourceGeneration];
     }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
 
     _downloadOptions = downloadOptions;
 
@@ -2122,13 +2308,16 @@ class ObjectsResourceApi {
    * [ifMetagenerationNotMatch] - Makes the operation conditional on whether the
    * object's current metageneration does not match the given value.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
    * error.
    *
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future delete(core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch}) {
+  async.Future delete(core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2156,6 +2345,9 @@ class ObjectsResourceApi {
     }
     if (ifMetagenerationNotMatch != null) {
       _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = null;
@@ -2202,6 +2394,9 @@ class ObjectsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit the owner, acl property.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
@@ -2218,7 +2413,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future get(core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String projection, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future get(core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String projection, core.String userProject, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2249,6 +2444,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = downloadOptions;
@@ -2283,6 +2481,9 @@ class ObjectsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Policy].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2291,7 +2492,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Policy> getIamPolicy(core.String bucket, core.String object, {core.String generation}) {
+  async.Future<Policy> getIamPolicy(core.String bucket, core.String object, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2307,6 +2508,9 @@ class ObjectsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/iam';
@@ -2374,6 +2578,9 @@ class ObjectsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit the owner, acl property.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * [uploadMedia] - The media to upload.
    *
    * [uploadOptions] - Options for the media upload. Streaming Media without the
@@ -2395,7 +2602,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future insert(Object request, core.String bucket, {core.String contentEncoding, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String name, core.String predefinedAcl, core.String projection, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future insert(Object request, core.String bucket, {core.String contentEncoding, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String name, core.String predefinedAcl, core.String projection, core.String userProject, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2432,6 +2639,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
 
@@ -2491,6 +2701,9 @@ class ObjectsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit the owner, acl property.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * [versions] - If true, lists all versions of an object as distinct results.
    * The default is false. For more information, see Object Versioning.
    *
@@ -2502,7 +2715,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Objects> list(core.String bucket, {core.String delimiter, core.int maxResults, core.String pageToken, core.String prefix, core.String projection, core.bool versions}) {
+  async.Future<Objects> list(core.String bucket, {core.String delimiter, core.int maxResults, core.String pageToken, core.String prefix, core.String projection, core.String userProject, core.bool versions}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2527,6 +2740,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
     if (versions != null) {
       _queryParams["versions"] = ["${versions}"];
@@ -2590,6 +2806,9 @@ class ObjectsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit the owner, acl property.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Object].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2598,7 +2817,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Object> patch(Object request, core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection}) {
+  async.Future<Object> patch(Object request, core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2635,6 +2854,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object');
@@ -2733,6 +2955,9 @@ class ObjectsResourceApi {
    * [sourceGeneration] - If present, selects a specific revision of the source
    * object (as opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [RewriteResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2741,7 +2966,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<RewriteResponse> rewrite(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String maxBytesRewrittenPerCall, core.String projection, core.String rewriteToken, core.String sourceGeneration}) {
+  async.Future<RewriteResponse> rewrite(Object request, core.String sourceBucket, core.String sourceObject, core.String destinationBucket, core.String destinationObject, {core.String destinationPredefinedAcl, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String ifSourceGenerationMatch, core.String ifSourceGenerationNotMatch, core.String ifSourceMetagenerationMatch, core.String ifSourceMetagenerationNotMatch, core.String maxBytesRewrittenPerCall, core.String projection, core.String rewriteToken, core.String sourceGeneration, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2803,6 +3028,9 @@ class ObjectsResourceApi {
     if (sourceGeneration != null) {
       _queryParams["sourceGeneration"] = [sourceGeneration];
     }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$sourceBucket') + '/o/' + commons.Escaper.ecapeVariable('$sourceObject') + '/rewriteTo/b/' + commons.Escaper.ecapeVariable('$destinationBucket') + '/o/' + commons.Escaper.ecapeVariable('$destinationObject');
 
@@ -2831,6 +3059,9 @@ class ObjectsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [Policy].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2839,7 +3070,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Policy> setIamPolicy(Policy request, core.String bucket, core.String object, {core.String generation}) {
+  async.Future<Policy> setIamPolicy(Policy request, core.String bucket, core.String object, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2858,6 +3089,9 @@ class ObjectsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/iam';
@@ -2888,6 +3122,9 @@ class ObjectsResourceApi {
    * [generation] - If present, selects a specific revision of this object (as
    * opposed to the latest version, the default).
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * Completes with a [TestIamPermissionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2896,7 +3133,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String bucket, core.String object, core.List<core.String> permissions, {core.String generation}) {
+  async.Future<TestIamPermissionsResponse> testIamPermissions(core.String bucket, core.String object, core.List<core.String> permissions, {core.String generation, core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2916,6 +3153,9 @@ class ObjectsResourceApi {
     _queryParams["permissions"] = permissions;
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/' + commons.Escaper.ecapeVariable('$object') + '/iam/testPermissions';
@@ -2976,6 +3216,9 @@ class ObjectsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit the owner, acl property.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * [downloadOptions] - Options for downloading. A download can be either a
    * Metadata (default) or Media download. Partial Media downloads are possible
    * as well.
@@ -2992,7 +3235,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future update(Object request, core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  async.Future update(Object request, core.String bucket, core.String object, {core.String generation, core.String ifGenerationMatch, core.String ifGenerationNotMatch, core.String ifMetagenerationMatch, core.String ifMetagenerationNotMatch, core.String predefinedAcl, core.String projection, core.String userProject, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3029,6 +3272,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _downloadOptions = downloadOptions;
@@ -3080,6 +3326,9 @@ class ObjectsResourceApi {
    * - "full" : Include all properties.
    * - "noAcl" : Omit the owner, acl property.
    *
+   * [userProject] - The project number to be billed for this request, for
+   * Requester Pays buckets.
+   *
    * [versions] - If true, lists all versions of an object as distinct results.
    * The default is false. For more information, see Object Versioning.
    *
@@ -3091,7 +3340,7 @@ class ObjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Channel> watchAll(Channel request, core.String bucket, {core.String delimiter, core.int maxResults, core.String pageToken, core.String prefix, core.String projection, core.bool versions}) {
+  async.Future<Channel> watchAll(Channel request, core.String bucket, {core.String delimiter, core.int maxResults, core.String pageToken, core.String prefix, core.String projection, core.String userProject, core.bool versions}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3119,6 +3368,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
     if (versions != null) {
       _queryParams["versions"] = ["${versions}"];
@@ -3197,6 +3449,28 @@ class ProjectsServiceAccountResourceApi {
 }
 
 
+
+/** The bucket's billing configuration. */
+class BucketBilling {
+  /** When set to true, bucket is requester pays. */
+  core.bool requesterPays;
+
+  BucketBilling();
+
+  BucketBilling.fromJson(core.Map _json) {
+    if (_json.containsKey("requesterPays")) {
+      requesterPays = _json["requesterPays"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (requesterPays != null) {
+      _json["requesterPays"] = requesterPays;
+    }
+    return _json;
+  }
+}
 
 class BucketCors {
   /**
@@ -3555,6 +3829,8 @@ class BucketWebsite {
 class Bucket {
   /** Access controls on the bucket. */
   core.List<BucketAccessControl> acl;
+  /** The bucket's billing configuration. */
+  BucketBilling billing;
   /** The bucket's Cross-Origin Resource Sharing (CORS) configuration. */
   core.List<BucketCors> cors;
   /**
@@ -3629,6 +3905,9 @@ class Bucket {
     if (_json.containsKey("acl")) {
       acl = _json["acl"].map((value) => new BucketAccessControl.fromJson(value)).toList();
     }
+    if (_json.containsKey("billing")) {
+      billing = new BucketBilling.fromJson(_json["billing"]);
+    }
     if (_json.containsKey("cors")) {
       cors = _json["cors"].map((value) => new BucketCors.fromJson(value)).toList();
     }
@@ -3692,6 +3971,9 @@ class Bucket {
     var _json = new core.Map();
     if (acl != null) {
       _json["acl"] = acl.map((value) => (value).toJson()).toList();
+    }
+    if (billing != null) {
+      _json["billing"] = (billing).toJson();
     }
     if (cors != null) {
       _json["cors"] = cors.map((value) => (value).toJson()).toList();

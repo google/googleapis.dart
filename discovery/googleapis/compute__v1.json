@@ -29,7 +29,7 @@
     "description": "Creates and runs virtual machines on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Jd_rZl9yiuNZcWvcgDDlnKBhwlY\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/0lLIb0a2O5fm-bLW1ABv4G_BX-0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -2277,7 +2277,7 @@
         "globalForwardingRules": {
             "methods": {
                 "delete": {
-                    "description": "Deletes the specified ForwardingRule resource.",
+                    "description": "Deletes the specified GlobalForwardingRule resource.",
                     "httpMethod": "DELETE",
                     "id": "compute.globalForwardingRules.delete",
                     "parameterOrder": [
@@ -2310,7 +2310,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Returns the specified ForwardingRule resource. Get a list of available forwarding rules by making a list() request.",
+                    "description": "Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by making a list() request.",
                     "httpMethod": "GET",
                     "id": "compute.globalForwardingRules.get",
                     "parameterOrder": [
@@ -2344,7 +2344,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Creates a ForwardingRule resource in the specified project and region using the data included in the request.",
+                    "description": "Creates a GlobalForwardingRule resource in the specified project using the data included in the request.",
                     "httpMethod": "POST",
                     "id": "compute.globalForwardingRules.insert",
                     "parameterOrder": [
@@ -2372,7 +2372,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieves a list of ForwardingRule resources available to the specified project.",
+                    "description": "Retrieves a list of GlobalForwardingRule resources available to the specified project.",
                     "httpMethod": "GET",
                     "id": "compute.globalForwardingRules.list",
                     "parameterOrder": [
@@ -2421,7 +2421,7 @@
                     ]
                 },
                 "setTarget": {
-                    "description": "Changes target URL for forwarding rule. The new target should be of the same type as the old target.",
+                    "description": "Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type as the old target.",
                     "httpMethod": "POST",
                     "id": "compute.globalForwardingRules.setTarget",
                     "parameterOrder": [
@@ -4713,7 +4713,7 @@
                     ]
                 },
                 "attachDisk": {
-                    "description": "Attaches a Disk resource to an instance.",
+                    "description": "Attaches an existing Disk resource to an instance. You must first create the disk before you can attach it. It is not possible to create and attach a disk at the same time. For more information, read Adding a persistent disk to your instance.",
                     "httpMethod": "POST",
                     "id": "compute.instances.attachDisk",
                     "parameterOrder": [
@@ -8651,7 +8651,7 @@
                     ]
                 },
                 "setPrivateIpGoogleAccess": {
-                    "description": "Set whether VMs in this subnet can access Google services without assigning external IP addresses through Cloudpath.",
+                    "description": "Set whether VMs in this subnet can access Google services without assigning external IP addresses through Private Google Access.",
                     "httpMethod": "POST",
                     "id": "compute.subnetworks.setPrivateIpGoogleAccess",
                     "parameterOrder": [
@@ -11065,7 +11065,7 @@
             }
         }
     },
-    "revision": "20170329",
+    "revision": "20170426",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessConfig": {
@@ -11674,11 +11674,11 @@
             "id": "AutoscalingPolicyCustomMetricUtilization",
             "properties": {
                 "metric": {
-                    "description": "The identifier of the Stackdriver Monitoring metric. The metric cannot have negative values and should be a utilization metric, which means that the number of virtual machines handling requests should increase or decrease proportionally to the metric. The metric must also have a label of compute.googleapis.com/resource_id with the value of the instance's unique ID, although this alone does not guarantee that the metric is valid.\n\nFor example, the following is a valid metric:\ncompute.googleapis.com/instance/network/received_bytes_count\nThe following is not a valid metric because it does not increase or decrease based on usage:\ncompute.googleapis.com/instance/cpu/reserved_cores",
+                    "description": "The identifier (type) of the Stackdriver Monitoring metric. The metric cannot have negative values and should be a utilization metric, which means that the number of virtual machines handling requests should increase or decrease proportionally to the metric.\n\nThe metric must have a value type of INT64 or DOUBLE.",
                     "type": "string"
                 },
                 "utilizationTarget": {
-                    "description": "Target value of the metric which autoscaler should maintain. Must be a positive value.",
+                    "description": "The target value of the metric that autoscaler should maintain. This must be a positive value.\n\nFor example, a good metric to use as a utilization_target is compute.googleapis.com/instance/network/received_bytes_count. The autoscaler will work to keep this value constant for each of the instances.",
                     "format": "double",
                     "type": "number"
                 },
@@ -11758,7 +11758,7 @@
                     "type": "integer"
                 },
                 "maxRatePerInstance": {
-                    "description": "The max requests per second (RPS) that a single backend instance can handle.This is used to calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be set.\n\nThis cannot be used for internal load balancing.",
+                    "description": "The max requests per second (RPS) that a single backend instance can handle. This is used to calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be set.\n\nThis cannot be used for internal load balancing.",
                     "format": "float",
                     "type": "number"
                 },
@@ -11889,6 +11889,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "iap": {
+                    "$ref": "BackendServiceIAP"
                 },
                 "id": {
                     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
@@ -12034,6 +12037,26 @@
                 "kind": {
                     "default": "compute#backendServiceGroupHealth",
                     "description": "[Output Only] Type of resource. Always compute#backendServiceGroupHealth for the health of backend services.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BackendServiceIAP": {
+            "description": "Identity-Aware Proxy",
+            "id": "BackendServiceIAP",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "oauth2ClientId": {
+                    "type": "string"
+                },
+                "oauth2ClientSecret": {
+                    "type": "string"
+                },
+                "oauth2ClientSecretSha256": {
+                    "description": "[Output Only] SHA256 hash value for the field oauth2_client_secret above.",
                     "type": "string"
                 }
             },
@@ -12801,7 +12824,7 @@
                 },
                 "kind": {
                     "default": "compute#firewall",
-                    "description": "[Output Ony] Type of the resource. Always compute#firewall for firewall rules.",
+                    "description": "[Output Only] Type of the resource. Always compute#firewall for firewall rules.",
                     "type": "string"
                 },
                 "name": {
@@ -12879,7 +12902,7 @@
             "type": "object"
         },
         "ForwardingRule": {
-            "description": "A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple.",
+            "description": "A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple.",
             "id": "ForwardingRule",
             "properties": {
                 "IPAddress": {
@@ -12952,11 +12975,11 @@
                     "type": "string"
                 },
                 "portRange": {
-                    "description": "Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.\n\nThis field is not used for internal load balancing.",
+                    "description": "This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.\n\nApplicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.\n\nSome types of forwarding target have constraints on the acceptable ports:  \n- TargetHttpProxy: 80, 8080 \n- TargetHttpsProxy: 443 \n- TargetSslProxy: 443 \n- TargetVpnGateway: 500, 4500\n-",
                     "type": "string"
                 },
                 "ports": {
-                    "description": "This field is not used for external load balancing.\n\nWhen the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be configured. Only packets addressed to these ports will be forwarded to the backends configured with this forwarding rule.\n\nYou may specify a maximum of up to 5 ports.",
+                    "description": "This field is used along with the backend_service field for internal load balancing.\n\nWhen the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be configured. Only packets addressed to these ports will be forwarded to the backends configured with this forwarding rule.\n\nYou may specify a maximum of up to 5 ports.",
                     "items": {
                         "type": "string"
                     },
@@ -13621,7 +13644,7 @@
                     "type": "string"
                 },
                 "guestOsFeatures": {
-                    "description": "A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only one feature can be enabled, VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.\n\nFor new Windows images, the server might also populate this field with the value WINDOWS, to indicate that this is a Windows image. This value is purely informational and does not enable or disable any features.",
+                    "description": "A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.1621 or higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.\n\nFor new Windows images, the server might also populate this field with the value WINDOWS, to indicate that this is a Windows image. This value is purely informational and does not enable or disable any features.",
                     "items": {
                         "$ref": "GuestOsFeature"
                     },
@@ -14258,7 +14281,7 @@
             "id": "InstanceGroupManagersAbandonInstancesRequest",
             "properties": {
                 "instances": {
-                    "description": "The URL for one or more instances to abandon from the managed instance group.",
+                    "description": "The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].",
                     "items": {
                         "type": "string"
                     },
@@ -14271,7 +14294,7 @@
             "id": "InstanceGroupManagersDeleteInstancesRequest",
             "properties": {
                 "instances": {
-                    "description": "The list of instances to delete from this managed instance group. Specify one or more instance URLs.",
+                    "description": "The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].",
                     "items": {
                         "type": "string"
                     },
@@ -14297,7 +14320,7 @@
             "id": "InstanceGroupManagersRecreateInstancesRequest",
             "properties": {
                 "instances": {
-                    "description": "The URL for one or more instances to recreate.",
+                    "description": "The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].",
                     "items": {
                         "type": "string"
                     },
@@ -16233,7 +16256,7 @@
             "id": "RegionInstanceGroupManagersRecreateRequest",
             "properties": {
                 "instances": {
-                    "description": "The URL for one or more instances to recreate.",
+                    "description": "The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].",
                     "items": {
                         "type": "string"
                     },
@@ -16785,6 +16808,13 @@
             "properties": {
                 "bestRoutes": {
                     "description": "Best routes for this router's network.",
+                    "items": {
+                        "$ref": "Route"
+                    },
+                    "type": "array"
+                },
+                "bestRoutesForRouter": {
+                    "description": "Best routes learned by this router.",
                     "items": {
                         "$ref": "Route"
                     },

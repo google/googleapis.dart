@@ -12,7 +12,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.13.0"
+    version: "1.13.3"
   charcode:
     description:
       name: charcode
@@ -24,13 +24,13 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.13.0"
+    version: "1.14.1"
   discoveryapis_generator:
     description:
       name: discoveryapis_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.0+1"
+    version: "0.8.0+2"
   http:
     description:
       name: http
@@ -54,19 +54,19 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.1"
+    version: "1.4.0"
   stack_trace:
     description:
       name: stack_trace
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.7.0"
+    version: "1.7.3"
   string_scanner:
     description:
       name: string_scanner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   typed_data:
     description:
       name: typed_data
@@ -80,4 +80,4 @@ packages:
     source: hosted
     version: "2.1.12"
 sdks:
-  dart: ">=1.21.0 <2.0.0"
+  dart: ">=1.22.0 <2.0.0"

@@ -48,13 +48,18 @@
             "location": "query",
             "type": "boolean"
         },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -68,11 +73,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -128,7 +128,7 @@
             }
         }
     },
-    "revision": "20170405",
+    "revision": "20170520",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "MobileFriendlyIssue": {
@@ -164,16 +164,16 @@
             "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
             "id": "RunMobileFriendlyTestResponse",
             "properties": {
-                "testStatus": {
-                    "$ref": "TestStatus",
-                    "description": "Final state of the test, can be either complete or an error."
-                },
                 "resourceIssues": {
                     "description": "Information about embedded resources issues.",
                     "items": {
                         "$ref": "ResourceIssue"
                     },
                     "type": "array"
+                },
+                "testStatus": {
+                    "$ref": "TestStatus",
+                    "description": "Final state of the test, can be either complete or an error."
                 },
                 "mobileFriendliness": {
                     "description": "Test verdict, whether the page is mobile friendly or not.",
@@ -229,6 +229,10 @@
             "description": "Final state of the test, including error details if necessary.",
             "id": "TestStatus",
             "properties": {
+                "details": {
+                    "description": "Error details if applicable.",
+                    "type": "string"
+                },
                 "status": {
                     "description": "Status of the test.",
                     "enum": [
@@ -243,10 +247,6 @@
                         "Inspection terminated in an error state. This indicates a problem in\nGoogle's infrastructure, not a user error. Please try again later.",
                         "Google can not access the URL because of a user error such as a robots.txt\nblockage, a 403 or 500 code etc. Please make sure that the URL provided is\naccessible by Googlebot and is not password protected."
                     ],
-                    "type": "string"
-                },
-                "details": {
-                    "description": "Error details if applicable.",
                     "type": "string"
                 }
             },
@@ -272,13 +272,13 @@
             "description": "Mobile-friendly test request.",
             "id": "RunMobileFriendlyTestRequest",
             "properties": {
-                "url": {
-                    "description": "URL for inspection.",
-                    "type": "string"
-                },
                 "requestScreenshot": {
                     "description": "Whether or not screenshot is requested. Default is false.",
                     "type": "boolean"
+                },
+                "url": {
+                    "description": "URL for inspection.",
+                    "type": "string"
                 }
             },
             "type": "object"

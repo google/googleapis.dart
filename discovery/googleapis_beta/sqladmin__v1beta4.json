@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/HY0tRuJ-vWPnM8lK2hqBBFUYsUk\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Euc4LCSjh6fw7Ncb7AG5gCqXa7Y\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -718,7 +718,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "A filter expression for filtering listed instances.",
+                            "description": "Reserved for future use.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1490,7 +1490,7 @@
             }
         }
     },
-    "revision": "20170217",
+    "revision": "20170522",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2059,6 +2059,10 @@
                     "description": "The file type for the specified uri.\nSQL: The file contains SQL statements.\nCSV: The file contains CSV data.",
                     "type": "string"
                 },
+                "importUser": {
+                    "description": "The PostgreSQL user to use for this import operation. Defaults to cloudsqlsuperuser. Does not apply to MySQL instances.",
+                    "type": "string"
+                },
                 "kind": {
                     "default": "sql#importContext",
                     "description": "This is always sql#importContext.",
@@ -2203,15 +2207,15 @@
             "type": "object"
         },
         "Labels": {
-            "description": "User defined labels for Cloud SQL instances.",
+            "description": "Reserved for future use.",
             "id": "Labels",
             "properties": {
                 "key": {
-                    "description": "The key of the label.",
+                    "description": "Reserved for future use.",
                     "type": "string"
                 },
                 "value": {
-                    "description": "The value of the label.",
+                    "description": "Reserved for future use.",
                     "type": "string"
                 }
             },
@@ -2389,7 +2393,6 @@
                     "type": "string"
                 },
                 "targetLink": {
-                    "description": "The URI of the instance related to the operation.",
                     "type": "string"
                 },
                 "targetProject": {
@@ -2568,7 +2571,7 @@
                     "type": "string"
                 },
                 "labels": {
-                    "description": "User defined labels.",
+                    "description": "Reserved for future use.",
                     "items": {
                         "$ref": "Labels"
                     },
@@ -2601,7 +2604,7 @@
                     "type": "string"
                 },
                 "storageAutoResize": {
-                    "description": "Configuration to increase storage size automatically. The default value is false. Applies only to Second Generation instances.",
+                    "description": "Configuration to increase storage size automatically. The default value is true. Applies only to Second Generation instances.",
                     "type": "boolean"
                 },
                 "storageAutoResizeLimit": {

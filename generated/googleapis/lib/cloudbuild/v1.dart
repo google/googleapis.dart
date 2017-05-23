@@ -144,11 +144,11 @@ class OperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^operations$".
    *
-   * [filter] - The standard list filter.
-   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -158,7 +158,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -169,14 +169,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -365,11 +365,11 @@ class ProjectsBuildsResourceApi {
    *
    * [projectId] - ID of the project.
    *
+   * [filter] - The raw filter text to constrain the results.
+   *
    * [pageToken] - Token to provide to skip to a particular spot in the list.
    *
    * [pageSize] - Number of results to return in the list.
-   *
-   * [filter] - The raw filter text to constrain the results.
    *
    * Completes with a [ListBuildsResponse].
    *
@@ -379,7 +379,7 @@ class ProjectsBuildsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBuildsResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListBuildsResponse> list(core.String projectId, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -390,14 +390,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/builds';
@@ -769,6 +769,8 @@ class Build {
   core.List<BuildStep> steps;
   /** Substitutions data for Build resource. */
   core.Map<core.String, core.String> substitutions;
+  /** Tags for annotation of a Build. These are not docker tags. */
+  core.List<core.String> tags;
   /**
    * Amount of time that this build should be allowed to run, to second
    * granularity. If this amount of time elapses, work on the build will cease
@@ -832,6 +834,9 @@ class Build {
     if (_json.containsKey("substitutions")) {
       substitutions = _json["substitutions"];
     }
+    if (_json.containsKey("tags")) {
+      tags = _json["tags"];
+    }
     if (_json.containsKey("timeout")) {
       timeout = _json["timeout"];
     }
@@ -889,6 +894,9 @@ class Build {
     }
     if (substitutions != null) {
       _json["substitutions"] = substitutions;
+    }
+    if (tags != null) {
+      _json["tags"] = tags;
     }
     if (timeout != null) {
       _json["timeout"] = timeout;
@@ -1691,7 +1699,7 @@ class SourceProvenance {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -1714,7 +1722,7 @@ class SourceProvenance {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for

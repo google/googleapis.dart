@@ -300,6 +300,7 @@ buildListReposResponse() {
   var o = new api.ListReposResponse();
   buildCounterListReposResponse++;
   if (buildCounterListReposResponse < 3) {
+    o.nextPageToken = "foo";
     o.repos = buildUnnamed441();
   }
   buildCounterListReposResponse--;
@@ -309,6 +310,7 @@ buildListReposResponse() {
 checkListReposResponse(api.ListReposResponse o) {
   buildCounterListReposResponse++;
   if (buildCounterListReposResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkUnnamed441(o.repos);
   }
   buildCounterListReposResponse--;
@@ -979,6 +981,8 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsReposResourceApi res = new api.SourcerepoApi(mock).projects.repos;
       var arg_name = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       mock.register(unittest.expectAsync((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1006,6 +1010,8 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
@@ -1014,7 +1020,7 @@ main() {
         var resp = convert.JSON.encode(buildListReposResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name).then(unittest.expectAsync(((api.ListReposResponse response) {
+      res.list(arg_name, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListReposResponse response) {
         checkListReposResponse(response);
       })));
     });

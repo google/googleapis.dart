@@ -1921,8 +1921,10 @@ class AccountBidderLocation {
    * - PROTOCOL_OPENRTB_2_2
    * - PROTOCOL_OPENRTB_2_3
    * - PROTOCOL_OPENRTB_2_4
+   * - PROTOCOL_OPENRTB_2_5
    * - PROTOCOL_OPENRTB_PROTOBUF_2_3
    * - PROTOCOL_OPENRTB_PROTOBUF_2_4
+   * - PROTOCOL_OPENRTB_PROTOBUF_2_5
    */
   core.String bidProtocol;
   /** The maximum queries per second the Ad Exchange will send. */
@@ -3097,7 +3099,8 @@ class Creative {
    * The granular status of this ad in specific contexts. A context here relates
    * to where something ultimately serves (for example, a physical location, a
    * platform, an HTTPS vs HTTP request, or the type of auction). Read-only.
-   * This field should not be set in requests.
+   * This field should not be set in requests. See the examples in the Creatives
+   * guide for more details.
    */
   core.List<CreativeServingRestrictions> servingRestrictions;
   /**
@@ -3675,7 +3678,7 @@ class DealTermsGuaranteedFixedPriceTermsBillingInfo {
   /**
    * The timestamp (in ms since epoch) when the original reservation price for
    * the deal was first converted to DFP currency. This is used to convert the
-   * contracted price into advertiser's currency without discrepancy.
+   * contracted price into buyer's currency without discrepancy.
    */
   core.String currencyConversionTimeMs;
   /**
@@ -4276,6 +4279,11 @@ class MarketplaceDeal {
    */
   core.bool isRfpTemplate;
   /**
+   * True, if the buyside inventory setup is complete for this deal. (readonly,
+   * except via OrderSetupCompleted action)
+   */
+  core.bool isSetupComplete;
+  /**
    * Identifies what kind of resource this is. Value: the fixed string
    * "adexchangebuyer#marketplaceDeal".
    */
@@ -4356,6 +4364,9 @@ class MarketplaceDeal {
     if (_json.containsKey("isRfpTemplate")) {
       isRfpTemplate = _json["isRfpTemplate"];
     }
+    if (_json.containsKey("isSetupComplete")) {
+      isSetupComplete = _json["isSetupComplete"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -4431,6 +4442,9 @@ class MarketplaceDeal {
     }
     if (isRfpTemplate != null) {
       _json["isRfpTemplate"] = isRfpTemplate;
+    }
+    if (isSetupComplete != null) {
+      _json["isSetupComplete"] = isSetupComplete;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5390,16 +5404,17 @@ class Price {
 }
 
 /**
- * Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in
- * an product can become [0,1] deals. To check if there is a PricePerBuyer for a
- * particular buyer or buyer/advertiser pair, we look for the most specific
- * matching rule - we first look for a rule matching the buyer and advertiser,
- * next a rule with the buyer but an empty advertiser list, and otherwise look
- * for a matching rule where no buyer is set.
+ * Used to specify pricing rules for buyers. Each PricePerBuyer in a product can
+ * become [0,1] deals. To check if there is a PricePerBuyer for a particular
+ * buyer we look for the most specific matching rule - we first look for a rule
+ * matching the buyer and otherwise look for a matching rule where no buyer is
+ * set.
  */
 class PricePerBuyer {
   /** Optional access type for this buyer. */
   core.String auctionTier;
+  /** Reference to the buyer that will get billed. */
+  Buyer billedBuyer;
   /**
    * The buyer who will pay this price. If unset, all buyers can pay this price
    * (if the advertisers match, and there's no more specific rule matching the
@@ -5415,6 +5430,9 @@ class PricePerBuyer {
     if (_json.containsKey("auctionTier")) {
       auctionTier = _json["auctionTier"];
     }
+    if (_json.containsKey("billedBuyer")) {
+      billedBuyer = new Buyer.fromJson(_json["billedBuyer"]);
+    }
     if (_json.containsKey("buyer")) {
       buyer = new Buyer.fromJson(_json["buyer"]);
     }
@@ -5427,6 +5445,9 @@ class PricePerBuyer {
     var _json = new core.Map();
     if (auctionTier != null) {
       _json["auctionTier"] = auctionTier;
+    }
+    if (billedBuyer != null) {
+      _json["billedBuyer"] = (billedBuyer).toJson();
     }
     if (buyer != null) {
       _json["buyer"] = (buyer).toJson();
@@ -5484,6 +5505,16 @@ class PrivateData {
  * buyer or the seller.
  */
 class Product {
+  /**
+   * The billed buyer corresponding to the buyer that created the offer.
+   * (readonly, except on create)
+   */
+  Buyer billedBuyer;
+  /**
+   * The buyer that created the offer if this is a buyer initiated offer
+   * (readonly, except on create)
+   */
+  Buyer buyer;
   /** Creation time in ms. since epoch (readonly) */
   core.String creationTimeMs;
   /**
@@ -5491,6 +5522,10 @@ class Product {
    * (buyer-readonly)
    */
   core.List<ContactInformation> creatorContacts;
+  /**
+   * The role that created the offer. Set to BUYER for buyer initiated offers.
+   */
+  core.String creatorRole;
   /**
    * The set of fields around delivery control that are interesting for a buyer
    * to see but are non-negotiable. These are set by the publisher. This message
@@ -5580,11 +5615,20 @@ class Product {
   Product();
 
   Product.fromJson(core.Map _json) {
+    if (_json.containsKey("billedBuyer")) {
+      billedBuyer = new Buyer.fromJson(_json["billedBuyer"]);
+    }
+    if (_json.containsKey("buyer")) {
+      buyer = new Buyer.fromJson(_json["buyer"]);
+    }
     if (_json.containsKey("creationTimeMs")) {
       creationTimeMs = _json["creationTimeMs"];
     }
     if (_json.containsKey("creatorContacts")) {
       creatorContacts = _json["creatorContacts"].map((value) => new ContactInformation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("creatorRole")) {
+      creatorRole = _json["creatorRole"];
     }
     if (_json.containsKey("deliveryControl")) {
       deliveryControl = new DeliveryControl.fromJson(_json["deliveryControl"]);
@@ -5656,11 +5700,20 @@ class Product {
 
   core.Map toJson() {
     var _json = new core.Map();
+    if (billedBuyer != null) {
+      _json["billedBuyer"] = (billedBuyer).toJson();
+    }
+    if (buyer != null) {
+      _json["buyer"] = (buyer).toJson();
+    }
     if (creationTimeMs != null) {
       _json["creationTimeMs"] = creationTimeMs;
     }
     if (creatorContacts != null) {
       _json["creatorContacts"] = creatorContacts.map((value) => (value).toJson()).toList();
+    }
+    if (creatorRole != null) {
+      _json["creatorRole"] = creatorRole;
     }
     if (deliveryControl != null) {
       _json["deliveryControl"] = (deliveryControl).toJson();
@@ -5775,7 +5828,8 @@ class Proposal {
   core.bool isRenegotiating;
   /**
    * True, if the buyside inventory setup is complete for this proposal.
-   * (readonly, except via OrderSetupCompleted action)
+   * (readonly, except via OrderSetupCompleted action) Deprecated in favor of
+   * deal level setup complete flag.
    */
   core.bool isSetupComplete;
   /**
@@ -6339,6 +6393,8 @@ class TargetingValueCreativeSize {
   core.List<TargetingValueSize> companionSizes;
   /** The Creative size type. */
   core.String creativeSizeType;
+  /** The native template for native ad. */
+  core.String nativeTemplate;
   /**
    * For regular or video creative size type, specifies the size of the
    * creative.
@@ -6356,6 +6412,9 @@ class TargetingValueCreativeSize {
     if (_json.containsKey("creativeSizeType")) {
       creativeSizeType = _json["creativeSizeType"];
     }
+    if (_json.containsKey("nativeTemplate")) {
+      nativeTemplate = _json["nativeTemplate"];
+    }
     if (_json.containsKey("size")) {
       size = new TargetingValueSize.fromJson(_json["size"]);
     }
@@ -6371,6 +6430,9 @@ class TargetingValueCreativeSize {
     }
     if (creativeSizeType != null) {
       _json["creativeSizeType"] = creativeSizeType;
+    }
+    if (nativeTemplate != null) {
+      _json["nativeTemplate"] = nativeTemplate;
     }
     if (size != null) {
       _json["size"] = (size).toJson();

@@ -398,13 +398,22 @@ class InspectResultsFindingsResourceApi {
    * Should be in the format of `inspect/results/{id}.
    * Value must have pattern "^inspect/results/[^/]+$".
    *
+   * [pageSize] - Maximum number of results to return.
+   * If 0, the implementation select a reasonable value.
+   *
+   * [filter] - Restrict findings to items that match. Supports info_type and
+   * likelihood.
+   * <p>Examples:<br/>
+   * <li>info_type=EMAIL_ADDRESS
+   * <li>info_type=PHONE_NUMBER,EMAIL_ADDRESS
+   * <li>likelihood=VERY_LIKELY
+   * <li>likelihood=VERY_LIKELY,LIKELY
+   * <li>info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY
+   *
    * [pageToken] - The value returned by the last `ListInspectFindingsResponse`;
    * indicates
    * that this is a continuation of a prior `ListInspectFindings` call, and that
    * the system should return the next page of data.
-   *
-   * [pageSize] - Maximum number of results to return.
-   * If 0, the implementation will select a reasonable value.
    *
    * Completes with a [ListInspectFindingsResponse].
    *
@@ -414,7 +423,7 @@ class InspectResultsFindingsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInspectFindingsResponse> list(core.String name, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListInspectFindingsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -425,11 +434,14 @@ class InspectResultsFindingsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/findings';
@@ -656,6 +668,28 @@ class CloudStorageOptions {
   }
 }
 
+/** A location in Cloud Storage. */
+class CloudStoragePath {
+  /** The url, in the format of `gs://bucket/<path>`. */
+  core.String path;
+
+  CloudStoragePath();
+
+  CloudStoragePath.fromJson(core.Map _json) {
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (path != null) {
+      _json["path"] = path;
+    }
+    return _json;
+  }
+}
+
 /** Container structure for the content to inspect. */
 class ContentItem {
   /** Content data to inspect or redact. */
@@ -712,6 +746,23 @@ class ContentItem {
 class CreateInspectOperationRequest {
   /** Configuration for the inspector. */
   InspectConfig inspectConfig;
+  /**
+   * Optional location to store findings. The bucket must already exist and
+   * the Google APIs service account for DLP must have write permission to
+   * write to the given bucket.
+   * <p>Results are split over multiple csv files with each file name matching
+   * the pattern "[operation_id]_[count].csv", for example
+   * `3094877188788974909_1.csv`. The `operation_id` matches the
+   * identifier for the Operation, and the `count` is a counter used for
+   * tracking the number of files written. <p>The CSV file(s) contain the
+   * following columns regardless of storage type scanned: <li>id <li>info_type
+   * <li>likelihood <li>byte size of finding <li>quote <li>time_stamp<br/>
+   * <p>For Cloud Storage the next columns are: <li>file_path
+   * <li>start_offset<br/>
+   * <p>For Cloud Datastore the next columns are: <li>project_id
+   * <li>namespace_id <li>path <li>column_name <li>offset
+   */
+  OutputStorageConfig outputConfig;
   /** Specification of the data set to process. */
   StorageConfig storageConfig;
 
@@ -720,6 +771,9 @@ class CreateInspectOperationRequest {
   CreateInspectOperationRequest.fromJson(core.Map _json) {
     if (_json.containsKey("inspectConfig")) {
       inspectConfig = new InspectConfig.fromJson(_json["inspectConfig"]);
+    }
+    if (_json.containsKey("outputConfig")) {
+      outputConfig = new OutputStorageConfig.fromJson(_json["outputConfig"]);
     }
     if (_json.containsKey("storageConfig")) {
       storageConfig = new StorageConfig.fromJson(_json["storageConfig"]);
@@ -730,6 +784,9 @@ class CreateInspectOperationRequest {
     var _json = new core.Map();
     if (inspectConfig != null) {
       _json["inspectConfig"] = (inspectConfig).toJson();
+    }
+    if (outputConfig != null) {
+      _json["outputConfig"] = (outputConfig).toJson();
     }
     if (storageConfig != null) {
       _json["storageConfig"] = (storageConfig).toJson();
@@ -853,7 +910,7 @@ class FieldId {
 /** Set of files to scan. */
 class FileSet {
   /**
-   * The url, in the format gs://<bucket>/<path>. Trailing wildcard in the
+   * The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the
    * path is allowed.
    */
   core.String url;
@@ -887,7 +944,7 @@ class Finding {
    * Estimate of how likely it is that the info_type is correct.
    * Possible string values are:
    * - "LIKELIHOOD_UNSPECIFIED" : Default value; information with all
-   * likelihoods will be included.
+   * likelihoods is included.
    * - "VERY_UNLIKELY" : Few matching elements.
    * - "UNLIKELY"
    * - "POSSIBLE" : Some matching elements.
@@ -1056,8 +1113,8 @@ class InspectConfig {
   /** When true, exclude type information of the findings. */
   core.bool excludeTypes;
   /**
-   * When true, a contextual quote from the data that triggered a finding will
-   * be included in the response; see Finding.quote.
+   * When true, a contextual quote from the data that triggered a finding is
+   * included in the response; see Finding.quote.
    */
   core.bool includeQuote;
   /**
@@ -1072,7 +1129,7 @@ class InspectConfig {
    * Only return findings equal or above this threshold.
    * Possible string values are:
    * - "LIKELIHOOD_UNSPECIFIED" : Default value; information with all
-   * likelihoods will be included.
+   * likelihoods is included.
    * - "VERY_UNLIKELY" : Few matching elements.
    * - "UNLIKELY"
    * - "POSSIBLE" : Some matching elements.
@@ -1159,7 +1216,7 @@ class InspectContentRequest {
 /** Results of inspecting a list of items. */
 class InspectContentResponse {
   /**
-   * Each content_item from the request will have a result in this list, in the
+   * Each content_item from the request has a result in this list, in the
    * same order as the request.
    */
   core.List<InspectResult> results;
@@ -1527,6 +1584,28 @@ class Operation {
   }
 }
 
+/** Cloud repository for storing output. */
+class OutputStorageConfig {
+  /** The path to a Google Cloud Storage location to store output. */
+  CloudStoragePath storagePath;
+
+  OutputStorageConfig();
+
+  OutputStorageConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("storagePath")) {
+      storagePath = new CloudStoragePath.fromJson(_json["storagePath"]);
+    }
+  }
+
+  core.Map toJson() {
+    var _json = new core.Map();
+    if (storagePath != null) {
+      _json["storagePath"] = (storagePath).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * Datastore partition ID.
  * A partition ID identifies a grouping of entities. The grouping is always
@@ -1536,11 +1615,6 @@ class Operation {
  * project ID and namespace ID.
  */
 class PartitionId {
-  /**
-   * If not empty, the ID of the database to which the entities
-   * belong.
-   */
-  core.String databaseId;
   /** If not empty, the ID of the namespace to which the entities belong. */
   core.String namespaceId;
   /** The ID of the project to which the entities belong. */
@@ -1549,9 +1623,6 @@ class PartitionId {
   PartitionId();
 
   PartitionId.fromJson(core.Map _json) {
-    if (_json.containsKey("databaseId")) {
-      databaseId = _json["databaseId"];
-    }
     if (_json.containsKey("namespaceId")) {
       namespaceId = _json["namespaceId"];
     }
@@ -1562,9 +1633,6 @@ class PartitionId {
 
   core.Map toJson() {
     var _json = new core.Map();
-    if (databaseId != null) {
-      _json["databaseId"] = databaseId;
-    }
     if (namespaceId != null) {
       _json["namespaceId"] = namespaceId;
     }
@@ -1778,7 +1846,7 @@ class RedactContentRequest {
   }
 }
 
-/** Results of deidentifying a list of items. */
+/** Results of redacting a list of items. */
 class RedactContentResponse {
   /** The redacted content. */
   core.List<ContentItem> items;
@@ -1803,8 +1871,8 @@ class RedactContentResponse {
 class ReplaceConfig {
   /**
    * Type of information to replace. Only one ReplaceConfig per info_type
-   * should be provided. If ReplaceConfig does not have an info_type, we'll
-   * match it against all info_types that are found but not specified in
+   * should be provided. If ReplaceConfig does not have an info_type, the DLP
+   * API matches it against all info_types that are found but not specified in
    * another ReplaceConfig.
    */
   InfoType infoType;
@@ -1854,7 +1922,7 @@ class ReplaceConfig {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -1877,7 +1945,7 @@ class ReplaceConfig {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for

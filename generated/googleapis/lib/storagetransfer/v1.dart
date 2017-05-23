@@ -190,8 +190,6 @@ class TransferJobsResourceApi {
    *
    * Request parameters:
    *
-   * [pageToken] - The list page token.
-   *
    * [pageSize] - The list page size. The max allowed value is 256.
    *
    * [filter] - A list of query parameters specified as JSON text in the form of
@@ -204,6 +202,8 @@ class TransferJobsResourceApi {
    * and `job_statuses` are optional.  The valid values for `job_statuses` are
    * case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
    *
+   * [pageToken] - The list page token.
+   *
    * Completes with a [ListTransferJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -212,7 +212,7 @@ class TransferJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferJobsResponse> list({core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListTransferJobsResponse> list({core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -220,14 +220,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/transferJobs';
@@ -1421,7 +1421,7 @@ class Schedule {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -1444,7 +1444,7 @@ class Schedule {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for
