@@ -170,6 +170,7 @@ class ApiRequester {
       }
       containsQueryParameter = true;
     }
+
     queryParams.forEach((String key, List<String> values) {
       for (var value in values) {
         addQueryParameter(key, value);
