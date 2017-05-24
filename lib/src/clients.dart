@@ -639,7 +639,7 @@ class ResumableMediaUploader {
   }
 
   Stream<List<int>> _listOfBytes2Stream(List<List<int>> listOfBytes) {
-    var controller = new StreamController();
+    var controller = new StreamController<List<int>>();
     for (var array in listOfBytes) {
       controller.add(array);
     }
@@ -866,10 +866,10 @@ Future<http.StreamedResponse> _validateResponse(
     if (stringStream != null) {
       return stringStream.transform(JSON.decoder).first.then((json) {
         if (json is Map && json['error'] is Map) {
-          Map error = json['error'];
-          var code = error['code'];
-          var message = error['message'];
-          var errors = [];
+          final Map error = json['error'];
+          final code = error['code'];
+          final message = error['message'];
+          var errors = <client_requests.ApiRequestErrorDetail>[];
           if (error.containsKey('errors') && error['errors'] is List) {
             errors = error['errors']
                 .map((Map json) =>
@@ -906,16 +906,12 @@ Stream<String> _decodeStreamAsText(http.StreamedResponse response) {
 
 /// Creates a new [Map] and inserts all entries of [source] into it,
 /// optionally calling [convert] on the values.
-Map mapMap(Map source, [Object convert(Object source) = null]) {
+Map<String, T> mapMap<F, T>(Map<String, F> source, T convert(F source)) {
   assert(source != null);
-  var result = new collection.LinkedHashMap();
-  source.forEach((String key, value) {
-    assert(key != null);
-    if (convert == null) {
-      result[key] = value;
-    } else {
-      result[key] = convert(value);
-    }
+  assert(convert != null);
+  final Map<String, T> result = new collection.LinkedHashMap<String, T>();
+  source.forEach((String key, F value) {
+    result[key] = convert(value);
   });
   return result;
 }

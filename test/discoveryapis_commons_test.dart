@@ -49,19 +49,20 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(int status, Map headers, String body) {
-  var stream = new Stream.fromIterable([UTF8.encode(body)]);
+http.StreamedResponse stringResponse(
+    int status, Map<String, String> headers, String body) {
+  var stream = new Stream<List<int>>.fromIterable([UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
 http.StreamedResponse binaryResponse(
     int status, Map<String, String> headers, List<int> bytes) {
-  var stream = new Stream.fromIterable([bytes]);
+  var stream = new Stream<List<int>>.fromIterable([bytes]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
 Stream<List<int>> byteStream(String s) {
-  var bodyController = new StreamController();
+  var bodyController = new StreamController<List<int>>();
   bodyController.add(UTF8.encode(s));
   bodyController.close();
   return bodyController.stream;
@@ -103,7 +104,8 @@ main() {
             'i': 42,
           };
 
-      var mod = mapMap(newTestMap(), (x) => '$x foobar');
+      final mod =
+          mapMap<dynamic, String>(newTestMap(), (dynamic x) => '$x foobar');
       expect(mod, hasLength(2));
       expect(mod['s'], equals('string foobar'));
       expect(mod['i'], equals('42 foobar'));
@@ -272,7 +274,7 @@ main() {
       expect(DownloadOptions.FullMedia.isMetadataDownload, isFalse);
 
       // Tests for [Media]
-      var stream = new StreamController().stream;
+      var stream = new StreamController<List<int>>().stream;
       expect(() => new Media(null, 0, contentType: 'foobar'),
           throwsA(isArgumentError));
       expect(() => new Media(stream, 0, contentType: null),
@@ -459,8 +461,8 @@ main() {
       // Tests for media uploads
 
       group('media-upload', () {
-        Stream streamFromByteArrays(byteArrays) {
-          var controller = new StreamController();
+        Stream<List<int>> streamFromByteArrays(byteArrays) {
+          var controller = new StreamController<List<int>>();
           for (var array in byteArrays) {
             controller.add(array);
           }
@@ -582,11 +584,12 @@ main() {
                 'content-length': '0',
                 'content-type': 'application/json; charset=utf-8',
                 'x-upload-content-type': 'foobar',
-              }..addAll(stream
-                  ? {}
-                  : {
-                      'x-upload-content-length': '$totalLength',
-                    }),
+              }
+                ..addAll(stream
+                    ? {}
+                    : {
+                        'x-upload-content-length': '$totalLength',
+                      }),
               'response':
                   stringResponse(200, {'location': 'http://upload.com/'}, '')
             });
@@ -614,12 +617,12 @@ main() {
 
                 var response;
                 if (successfullResponse) {
-                  var headers = isLast
+                  final headers = isLast
                       ? {'content-type': 'application/json; charset=utf-8'}
                       : {'range': firstRange};
                   response = stringResponse(isLast ? 200 : 308, headers, '');
                 } else {
-                  var headers = {};
+                  final headers = <String, String>{};
                   response = stringResponse(503, headers, '');
                 }
 
@@ -640,7 +643,7 @@ main() {
           }
 
           List<List<int>> makeParts(List<int> bytes, List<int> splits) {
-            var parts = [];
+            var parts = <List<int>>[];
             int lastEnd = 0;
             for (int i = 0; i < splits.length; i++) {
               parts.add(bytes.sublist(lastEnd, splits[i]));
@@ -649,14 +652,15 @@ main() {
             return parts;
           }
 
-          runTest(int chunkSizeInBlocks, int length, List splits, bool stream,
+          runTest(
+              int chunkSizeInBlocks, int length, List<int> splits, bool stream,
               {int numberOfServerErrors: 0,
               resumableOptions,
               int expectedErrorStatus,
               int messagesNrOfFailure}) {
             int chunkSize = chunkSizeInBlocks * 256 * 1024;
 
-            var bytes = new List.generate(length, (i) => i % 256);
+            var bytes = new List<int>.generate(length, (i) => i % 256);
             var parts = makeParts(bytes, splits);
 
             // Simulation of our server

@@ -1,3 +1,7 @@
+## 0.1.4
+
+- Make package strong-mode clean.
+
 ## 0.1.3+1
 
 - Removed `pkg/crypto` dependency and upgrade Dart dependency to >=1.13.
