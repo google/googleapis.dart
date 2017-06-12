@@ -573,8 +573,8 @@ class FieldMask {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
     }
@@ -616,8 +616,8 @@ class MobileAppPanel {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (country != null) {
       _json["country"] = country;
     }
@@ -668,8 +668,8 @@ class MobileAppPanelsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -705,8 +705,8 @@ class PageInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (resultPerPage != null) {
       _json["resultPerPage"] = resultPerPage;
     }
@@ -731,8 +731,8 @@ class ResultsGetRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (resultMask != null) {
       _json["resultMask"] = (resultMask).toJson();
     }
@@ -755,8 +755,8 @@ class ResultsMask {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
     }
@@ -825,8 +825,8 @@ class Survey {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (audience != null) {
       _json["audience"] = (audience).toJson();
     }
@@ -899,8 +899,8 @@ class SurveyAudience {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ages != null) {
       _json["ages"] = ages;
     }
@@ -949,8 +949,8 @@ class SurveyCost {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (costPerResponseNanos != null) {
       _json["costPerResponseNanos"] = costPerResponseNanos;
     }
@@ -1046,8 +1046,8 @@ class SurveyQuestion {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (answerOrder != null) {
       _json["answerOrder"] = answerOrder;
     }
@@ -1132,8 +1132,8 @@ class SurveyQuestionImage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (altText != null) {
       _json["altText"] = altText;
     }
@@ -1162,8 +1162,8 @@ class SurveyRejection {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (explanation != null) {
       _json["explanation"] = explanation;
     }
@@ -1189,8 +1189,8 @@ class SurveyResults {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (status != null) {
       _json["status"] = status;
     }
@@ -1216,8 +1216,8 @@ class SurveysDeleteResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (requestId != null) {
       _json["requestId"] = requestId;
     }
@@ -1253,8 +1253,8 @@ class SurveysListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -1286,8 +1286,8 @@ class SurveysStartRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxCostPerResponseNanos != null) {
       _json["maxCostPerResponseNanos"] = maxCostPerResponseNanos;
     }
@@ -1310,8 +1310,8 @@ class SurveysStartResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (requestId != null) {
       _json["requestId"] = requestId;
     }
@@ -1334,8 +1334,8 @@ class SurveysStopResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (requestId != null) {
       _json["requestId"] = requestId;
     }
@@ -1358,8 +1358,8 @@ class TokenPagination {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }

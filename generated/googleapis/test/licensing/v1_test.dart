@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/licensing/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -103,14 +103,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed1956() {
+buildUnnamed1966() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed1956(core.List<api.LicenseAssignment> o) {
+checkUnnamed1966(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -122,7 +122,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed1956();
+    o.items = buildUnnamed1966();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -134,7 +134,7 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1956(o.items);
+    checkUnnamed1966(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -178,7 +178,7 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -210,7 +210,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync((_) {}));
+      res.delete(arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -220,7 +220,7 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -252,7 +252,7 @@ main() {
         var resp = convert.JSON.encode(buildLicenseAssignment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync(((api.LicenseAssignment response) {
+      res.get(arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
     });
@@ -264,7 +264,7 @@ main() {
       var arg_request = buildLicenseAssignmentInsert();
       var arg_productId = "foo";
       var arg_skuId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LicenseAssignmentInsert.fromJson(json);
         checkLicenseAssignmentInsert(obj);
 
@@ -299,7 +299,7 @@ main() {
         var resp = convert.JSON.encode(buildLicenseAssignment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_productId, arg_skuId).then(unittest.expectAsync(((api.LicenseAssignment response) {
+      res.insert(arg_request, arg_productId, arg_skuId).then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
     });
@@ -312,7 +312,7 @@ main() {
       var arg_customerId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -347,7 +347,7 @@ main() {
         var resp = convert.JSON.encode(buildLicenseAssignmentList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listForProduct(arg_productId, arg_customerId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.LicenseAssignmentList response) {
+      res.listForProduct(arg_productId, arg_customerId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
         checkLicenseAssignmentList(response);
       })));
     });
@@ -361,7 +361,7 @@ main() {
       var arg_customerId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -396,7 +396,7 @@ main() {
         var resp = convert.JSON.encode(buildLicenseAssignmentList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listForProductAndSku(arg_productId, arg_skuId, arg_customerId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.LicenseAssignmentList response) {
+      res.listForProductAndSku(arg_productId, arg_skuId, arg_customerId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
         checkLicenseAssignmentList(response);
       })));
     });
@@ -409,7 +409,7 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LicenseAssignment.fromJson(json);
         checkLicenseAssignment(obj);
 
@@ -444,7 +444,7 @@ main() {
         var resp = convert.JSON.encode(buildLicenseAssignment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync(((api.LicenseAssignment response) {
+      res.patch(arg_request, arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
     });
@@ -457,7 +457,7 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LicenseAssignment.fromJson(json);
         checkLicenseAssignment(obj);
 
@@ -492,7 +492,7 @@ main() {
         var resp = convert.JSON.encode(buildLicenseAssignment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync(((api.LicenseAssignment response) {
+      res.update(arg_request, arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
     });

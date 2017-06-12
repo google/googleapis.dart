@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/tasks/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -74,14 +74,14 @@ checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-buildUnnamed3088() {
+buildUnnamed2559() {
   var o = new core.List<api.TaskLinks>();
   o.add(buildTaskLinks());
   o.add(buildTaskLinks());
   return o;
 }
 
-checkUnnamed3088(core.List<api.TaskLinks> o) {
+checkUnnamed2559(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskLinks(o[0]);
   checkTaskLinks(o[1]);
@@ -99,7 +99,7 @@ buildTask() {
     o.hidden = true;
     o.id = "foo";
     o.kind = "foo";
-    o.links = buildUnnamed3088();
+    o.links = buildUnnamed2559();
     o.notes = "foo";
     o.parent = "foo";
     o.position = "foo";
@@ -122,7 +122,7 @@ checkTask(api.Task o) {
     unittest.expect(o.hidden, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3088(o.links);
+    checkUnnamed2559(o.links);
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals('foo'));
@@ -163,14 +163,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed3089() {
+buildUnnamed2560() {
   var o = new core.List<api.TaskList>();
   o.add(buildTaskList());
   o.add(buildTaskList());
   return o;
 }
 
-checkUnnamed3089(core.List<api.TaskList> o) {
+checkUnnamed2560(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskList(o[0]);
   checkTaskList(o[1]);
@@ -182,7 +182,7 @@ buildTaskLists() {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed3089();
+    o.items = buildUnnamed2560();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -194,21 +194,21 @@ checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3089(o.items);
+    checkUnnamed2560(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterTaskLists--;
 }
 
-buildUnnamed3090() {
+buildUnnamed2561() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed3090(core.List<api.Task> o) {
+checkUnnamed2561(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -220,7 +220,7 @@ buildTasks() {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed3090();
+    o.items = buildUnnamed2561();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -232,7 +232,7 @@ checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3090(o.items);
+    checkUnnamed2561(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -292,7 +292,7 @@ main() {
       var mock = new HttpServerMock();
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_tasklist = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -331,7 +331,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tasklist).then(unittest.expectAsync((_) {}));
+      res.delete(arg_tasklist).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -339,7 +339,7 @@ main() {
       var mock = new HttpServerMock();
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_tasklist = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -378,7 +378,7 @@ main() {
         var resp = convert.JSON.encode(buildTaskList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tasklist).then(unittest.expectAsync(((api.TaskList response) {
+      res.get(arg_tasklist).then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
     });
@@ -388,7 +388,7 @@ main() {
       var mock = new HttpServerMock();
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TaskList.fromJson(json);
         checkTaskList(obj);
 
@@ -427,7 +427,7 @@ main() {
         var resp = convert.JSON.encode(buildTaskList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request).then(unittest.expectAsync(((api.TaskList response) {
+      res.insert(arg_request).then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
     });
@@ -438,7 +438,7 @@ main() {
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_maxResults = "foo";
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -476,7 +476,7 @@ main() {
         var resp = convert.JSON.encode(buildTaskLists());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.TaskLists response) {
+      res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.TaskLists response) {
         checkTaskLists(response);
       })));
     });
@@ -487,7 +487,7 @@ main() {
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
       var arg_tasklist = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TaskList.fromJson(json);
         checkTaskList(obj);
 
@@ -529,7 +529,7 @@ main() {
         var resp = convert.JSON.encode(buildTaskList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tasklist).then(unittest.expectAsync(((api.TaskList response) {
+      res.patch(arg_request, arg_tasklist).then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
     });
@@ -540,7 +540,7 @@ main() {
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
       var arg_tasklist = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TaskList.fromJson(json);
         checkTaskList(obj);
 
@@ -582,7 +582,7 @@ main() {
         var resp = convert.JSON.encode(buildTaskList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tasklist).then(unittest.expectAsync(((api.TaskList response) {
+      res.update(arg_request, arg_tasklist).then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
     });
@@ -596,7 +596,7 @@ main() {
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -639,7 +639,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.clear(arg_tasklist).then(unittest.expectAsync((_) {}));
+      res.clear(arg_tasklist).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--delete", () {
@@ -648,7 +648,7 @@ main() {
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
       var arg_task = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -694,7 +694,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tasklist, arg_task).then(unittest.expectAsync((_) {}));
+      res.delete(arg_tasklist, arg_task).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -703,7 +703,7 @@ main() {
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
       var arg_task = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -749,7 +749,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tasklist, arg_task).then(unittest.expectAsync(((api.Task response) {
+      res.get(arg_tasklist, arg_task).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
@@ -762,7 +762,7 @@ main() {
       var arg_tasklist = "foo";
       var arg_parent = "foo";
       var arg_previous = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
 
@@ -810,7 +810,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_tasklist, parent: arg_parent, previous: arg_previous).then(unittest.expectAsync(((api.Task response) {
+      res.insert(arg_request, arg_tasklist, parent: arg_parent, previous: arg_previous).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
@@ -830,7 +830,7 @@ main() {
       var arg_showDeleted = true;
       var arg_showHidden = true;
       var arg_updatedMin = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -883,7 +883,7 @@ main() {
         var resp = convert.JSON.encode(buildTasks());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tasklist, completedMax: arg_completedMax, completedMin: arg_completedMin, dueMax: arg_dueMax, dueMin: arg_dueMin, maxResults: arg_maxResults, pageToken: arg_pageToken, showCompleted: arg_showCompleted, showDeleted: arg_showDeleted, showHidden: arg_showHidden, updatedMin: arg_updatedMin).then(unittest.expectAsync(((api.Tasks response) {
+      res.list(arg_tasklist, completedMax: arg_completedMax, completedMin: arg_completedMin, dueMax: arg_dueMax, dueMin: arg_dueMin, maxResults: arg_maxResults, pageToken: arg_pageToken, showCompleted: arg_showCompleted, showDeleted: arg_showDeleted, showHidden: arg_showHidden, updatedMin: arg_updatedMin).then(unittest.expectAsync1(((api.Tasks response) {
         checkTasks(response);
       })));
     });
@@ -896,7 +896,7 @@ main() {
       var arg_task = "foo";
       var arg_parent = "foo";
       var arg_previous = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -948,7 +948,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.move(arg_tasklist, arg_task, parent: arg_parent, previous: arg_previous).then(unittest.expectAsync(((api.Task response) {
+      res.move(arg_tasklist, arg_task, parent: arg_parent, previous: arg_previous).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
@@ -960,7 +960,7 @@ main() {
       var arg_request = buildTask();
       var arg_tasklist = "foo";
       var arg_task = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
 
@@ -1009,7 +1009,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tasklist, arg_task).then(unittest.expectAsync(((api.Task response) {
+      res.patch(arg_request, arg_tasklist, arg_task).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
@@ -1021,7 +1021,7 @@ main() {
       var arg_request = buildTask();
       var arg_tasklist = "foo";
       var arg_task = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
 
@@ -1070,7 +1070,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tasklist, arg_task).then(unittest.expectAsync(((api.Task response) {
+      res.update(arg_request, arg_tasklist, arg_task).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });

@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/searchconsole/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -150,27 +150,27 @@ checkRunMobileFriendlyTestRequest(api.RunMobileFriendlyTestRequest o) {
   buildCounterRunMobileFriendlyTestRequest--;
 }
 
-buildUnnamed1150() {
+buildUnnamed1157() {
   var o = new core.List<api.MobileFriendlyIssue>();
   o.add(buildMobileFriendlyIssue());
   o.add(buildMobileFriendlyIssue());
   return o;
 }
 
-checkUnnamed1150(core.List<api.MobileFriendlyIssue> o) {
+checkUnnamed1157(core.List<api.MobileFriendlyIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileFriendlyIssue(o[0]);
   checkMobileFriendlyIssue(o[1]);
 }
 
-buildUnnamed1151() {
+buildUnnamed1158() {
   var o = new core.List<api.ResourceIssue>();
   o.add(buildResourceIssue());
   o.add(buildResourceIssue());
   return o;
 }
 
-checkUnnamed1151(core.List<api.ResourceIssue> o) {
+checkUnnamed1158(core.List<api.ResourceIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceIssue(o[0]);
   checkResourceIssue(o[1]);
@@ -182,8 +182,8 @@ buildRunMobileFriendlyTestResponse() {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     o.mobileFriendliness = "foo";
-    o.mobileFriendlyIssues = buildUnnamed1150();
-    o.resourceIssues = buildUnnamed1151();
+    o.mobileFriendlyIssues = buildUnnamed1157();
+    o.resourceIssues = buildUnnamed1158();
     o.screenshot = buildImage();
     o.testStatus = buildTestStatus();
   }
@@ -195,8 +195,8 @@ checkRunMobileFriendlyTestResponse(api.RunMobileFriendlyTestResponse o) {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     unittest.expect(o.mobileFriendliness, unittest.equals('foo'));
-    checkUnnamed1150(o.mobileFriendlyIssues);
-    checkUnnamed1151(o.resourceIssues);
+    checkUnnamed1157(o.mobileFriendlyIssues);
+    checkUnnamed1158(o.resourceIssues);
     checkImage(o.screenshot);
     checkTestStatus(o.testStatus);
   }
@@ -295,7 +295,7 @@ main() {
       var mock = new HttpServerMock();
       api.UrlTestingToolsMobileFriendlyTestResourceApi res = new api.SearchconsoleApi(mock).urlTestingTools.mobileFriendlyTest;
       var arg_request = buildRunMobileFriendlyTestRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RunMobileFriendlyTestRequest.fromJson(json);
         checkRunMobileFriendlyTestRequest(obj);
 
@@ -332,7 +332,7 @@ main() {
         var resp = convert.JSON.encode(buildRunMobileFriendlyTestResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.run(arg_request).then(unittest.expectAsync(((api.RunMobileFriendlyTestResponse response) {
+      res.run(arg_request).then(unittest.expectAsync1(((api.RunMobileFriendlyTestResponse response) {
         checkRunMobileFriendlyTestResponse(response);
       })));
     });

@@ -179,18 +179,23 @@ class OperationsResourceApi {
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns `UNIMPLEMENTED`.
    *
-   * NOTE: the `name` binding below allows API services to override the binding
-   * to use different resource name schemes, such as `users / * /operations`.
+   * NOTE: the `name` binding allows API services to override the binding
+   * to use different resource name schemes, such as `users / * /operations`. To
+   * override the binding, API services can add a binding such as
+   * `"/v1/{name=users / * }/operations"` to their service configuration.
+   * For backwards compatibility, the default name includes the operations
+   * collection id, however overriding users must ensure the name binding
+   * is the parent resource, without the operations collection id.
    *
    * Request parameters:
+   *
+   * [name] - The name of the operation's parent resource.
+   *
+   * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
    *
    * [filter] - The standard list filter.
-   *
-   * [name] - The name of the operation collection.
-   *
-   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -200,7 +205,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.int pageSize, core.String filter, core.String name, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list({core.String name, core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -208,17 +213,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/operations';
@@ -336,8 +341,8 @@ class CancelOperationRequest {
   CancelOperationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -360,8 +365,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -384,8 +389,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -420,8 +425,8 @@ class LongRunningRecognizeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (audio != null) {
       _json["audio"] = (audio).toJson();
     }
@@ -496,8 +501,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -558,8 +563,8 @@ class RecognitionAudio {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
     }
@@ -674,8 +679,8 @@ class RecognitionConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (encoding != null) {
       _json["encoding"] = encoding;
     }
@@ -719,8 +724,8 @@ class RecognizeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (audio != null) {
       _json["audio"] = (audio).toJson();
     }
@@ -751,8 +756,8 @@ class RecognizeResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (results != null) {
       _json["results"] = results.map((value) => (value).toJson()).toList();
     }
@@ -783,8 +788,8 @@ class SpeechContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (phrases != null) {
       _json["phrases"] = phrases;
     }
@@ -820,8 +825,8 @@ class SpeechRecognitionAlternative {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -850,8 +855,8 @@ class SpeechRecognitionResult {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternatives != null) {
       _json["alternatives"] = alternatives.map((value) => (value).toJson()).toList();
     }
@@ -947,8 +952,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }

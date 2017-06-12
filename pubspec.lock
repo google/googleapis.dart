@@ -30,13 +30,13 @@ packages:
       name: discoveryapis_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.0+2"
+    version: "0.9.0"
   http:
     description:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.3+9"
+    version: "0.11.3+13"
   http_parser:
     description:
       name: http_parser
@@ -48,7 +48,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.1"
+    version: "1.4.2"
   source_span:
     description:
       name: source_span
@@ -80,4 +80,4 @@ packages:
     source: hosted
     version: "2.1.12"
 sdks:
-  dart: ">=1.22.0 <2.0.0"
+  dart: ">=1.23.0-dev.0.0 <2.0.0"

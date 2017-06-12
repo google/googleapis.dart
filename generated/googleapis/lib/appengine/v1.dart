@@ -296,11 +296,11 @@ class AppsLocationsResourceApi {
    * [appsId] - Part of `name`. The resource that owns the locations collection,
    * if applicable.
    *
-   * [pageSize] - The standard list page size.
-   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -310,7 +310,7 @@ class AppsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String appsId, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListLocationsResponse> list(core.String appsId, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,14 +321,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
@@ -401,12 +401,17 @@ class AppsOperationsResourceApi {
   /**
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
-   * binding below allows API services to override the binding to use different
-   * resource name schemes, such as users / * /operations.
+   * binding allows API services to override the binding to use different
+   * resource name schemes, such as users / * /operations. To override the
+   * binding, API services can add a binding such as "/v1/{name=users / *
+   * }/operations" to their service configuration. For backwards compatibility,
+   * the default name includes the operations collection id, however overriding
+   * users must ensure the name binding is the parent resource, without the
+   * operations collection id.
    *
    * Request parameters:
    *
-   * [appsId] - Part of `name`. The name of the operation collection.
+   * [appsId] - Part of `name`. The name of the operation's parent resource.
    *
    * [pageSize] - The standard list page size.
    *
@@ -564,9 +569,9 @@ class AppsServicesResourceApi {
    * [appsId] - Part of `parent`. Name of the parent Application resource.
    * Example: apps/myapp.
    *
-   * [pageSize] - Maximum results to return per page.
-   *
    * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * [pageSize] - Maximum results to return per page.
    *
    * Completes with a [ListServicesResponse].
    *
@@ -576,7 +581,7 @@ class AppsServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListServicesResponse> list(core.String appsId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -587,11 +592,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
@@ -1186,9 +1191,9 @@ class AppsServicesVersionsInstancesResourceApi {
    *
    * [versionsId] - Part of `parent`. See documentation of `appsId`.
    *
-   * [pageSize] - Maximum results to return per page.
-   *
    * [pageToken] - Continuation token for fetching the next page of results.
+   *
+   * [pageSize] - Maximum results to return per page.
    *
    * Completes with a [ListInstancesResponse].
    *
@@ -1198,7 +1203,7 @@ class AppsServicesVersionsInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListInstancesResponse> list(core.String appsId, core.String servicesId, core.String versionsId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1215,11 +1220,11 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions/' + commons.Escaper.ecapeVariable('$versionsId') + '/instances';
@@ -1312,8 +1317,8 @@ class ApiConfigHandler {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (authFailAction != null) {
       _json["authFailAction"] = authFailAction;
     }
@@ -1346,8 +1351,8 @@ class ApiEndpointHandler {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (scriptPath != null) {
       _json["scriptPath"] = scriptPath;
     }
@@ -1357,7 +1362,7 @@ class ApiEndpointHandler {
 
 /**
  * An Application resource contains the top-level configuration of an App Engine
- * application.
+ * application. Next tag: 19
  */
 class Application {
   /**
@@ -1465,8 +1470,8 @@ class Application {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (authDomain != null) {
       _json["authDomain"] = authDomain;
     }
@@ -1600,8 +1605,8 @@ class AutomaticScaling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (coolDownPeriod != null) {
       _json["coolDownPeriod"] = coolDownPeriod;
     }
@@ -1668,8 +1673,8 @@ class BasicScaling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (idleTimeout != null) {
       _json["idleTimeout"] = idleTimeout;
     }
@@ -1701,8 +1706,8 @@ class ContainerInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (image != null) {
       _json["image"] = image;
     }
@@ -1731,8 +1736,8 @@ class CpuUtilization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aggregationWindowLength != null) {
       _json["aggregationWindowLength"] = aggregationWindowLength;
     }
@@ -1763,8 +1768,8 @@ class DebugInstanceRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sshKey != null) {
       _json["sshKey"] = sshKey;
     }
@@ -1795,20 +1800,20 @@ class Deployment {
       container = new ContainerInfo.fromJson(_json["container"]);
     }
     if (_json.containsKey("files")) {
-      files = commons.mapMap(_json["files"], (item) => new FileInfo.fromJson(item));
+      files = commons.mapMap<core.Map<core.String, core.Object>, FileInfo>(_json["files"], (core.Map<core.String, core.Object> item) => new FileInfo.fromJson(item));
     }
     if (_json.containsKey("zip")) {
       zip = new ZipInfo.fromJson(_json["zip"]);
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (container != null) {
       _json["container"] = (container).toJson();
     }
     if (files != null) {
-      _json["files"] = commons.mapMap(files, (item) => (item).toJson());
+      _json["files"] = commons.mapMap<FileInfo, core.Map<core.String, core.Object>>(files, (FileInfo item) => (item).toJson());
     }
     if (zip != null) {
       _json["zip"] = (zip).toJson();
@@ -1845,8 +1850,8 @@ class DiskUtilization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (targetReadBytesPerSecond != null) {
       _json["targetReadBytesPerSecond"] = targetReadBytesPerSecond;
     }
@@ -1893,8 +1898,8 @@ class EndpointsApiService {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (configId != null) {
       _json["configId"] = configId;
     }
@@ -1937,8 +1942,8 @@ class ErrorHandler {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -1984,8 +1989,8 @@ class FileInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
     }
@@ -2058,8 +2063,8 @@ class HealthCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (checkInterval != null) {
       _json["checkInterval"] = checkInterval;
     }
@@ -2122,8 +2127,8 @@ class IdentityAwareProxy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -2261,8 +2266,8 @@ class Instance {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (appEngineRelease != null) {
       _json["appEngineRelease"] = appEngineRelease;
     }
@@ -2333,8 +2338,8 @@ class Library {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2363,8 +2368,8 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances.map((value) => (value).toJson()).toList();
     }
@@ -2393,8 +2398,8 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (locations != null) {
       _json["locations"] = locations.map((value) => (value).toJson()).toList();
     }
@@ -2423,8 +2428,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2453,8 +2458,8 @@ class ListServicesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2483,8 +2488,8 @@ class ListVersionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2550,8 +2555,8 @@ class LivenessCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (checkInterval != null) {
       _json["checkInterval"] = checkInterval;
     }
@@ -2617,8 +2622,8 @@ class Location {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -2659,8 +2664,8 @@ class LocationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (flexibleEnvironmentAvailable != null) {
       _json["flexibleEnvironmentAvailable"] = flexibleEnvironmentAvailable;
     }
@@ -2692,8 +2697,8 @@ class ManualScaling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -2750,8 +2755,8 @@ class Network {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (forwardedPorts != null) {
       _json["forwardedPorts"] = forwardedPorts;
     }
@@ -2796,8 +2801,8 @@ class NetworkUtilization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (targetReceivedBytesPerSecond != null) {
       _json["targetReceivedBytesPerSecond"] = targetReceivedBytesPerSecond;
     }
@@ -2877,8 +2882,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -2945,8 +2950,8 @@ class OperationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3008,8 +3013,8 @@ class OperationMetadataExperimental {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3081,8 +3086,87 @@ class OperationMetadataV1 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (ephemeralMessage != null) {
+      _json["ephemeralMessage"] = ephemeralMessage;
+    }
+    if (insertTime != null) {
+      _json["insertTime"] = insertTime;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    if (user != null) {
+      _json["user"] = user;
+    }
+    if (warning != null) {
+      _json["warning"] = warning;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for the given google.longrunning.Operation. */
+class OperationMetadataV1Alpha {
+  /** Time that this operation completed.@OutputOnly */
+  core.String endTime;
+  /**
+   * Ephemeral message that may change every time the operation is polled.
+   * @OutputOnly
+   */
+  core.String ephemeralMessage;
+  /** Time that this operation was created.@OutputOnly */
+  core.String insertTime;
+  /**
+   * API method that initiated this operation. Example:
+   * google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly
+   */
+  core.String method;
+  /**
+   * Name of the resource that this operation is acting on. Example:
+   * apps/myapp/services/default.@OutputOnly
+   */
+  core.String target;
+  /** User who requested this operation.@OutputOnly */
+  core.String user;
+  /** Durable messages that persist on every operation poll. @OutputOnly */
+  core.List<core.String> warning;
+
+  OperationMetadataV1Alpha();
+
+  OperationMetadataV1Alpha.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("ephemeralMessage")) {
+      ephemeralMessage = _json["ephemeralMessage"];
+    }
+    if (_json.containsKey("insertTime")) {
+      insertTime = _json["insertTime"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+    if (_json.containsKey("user")) {
+      user = _json["user"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = _json["warning"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3160,8 +3244,8 @@ class OperationMetadataV1Beta {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3226,8 +3310,8 @@ class OperationMetadataV1Beta5 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3293,8 +3377,8 @@ class ReadinessCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (checkInterval != null) {
       _json["checkInterval"] = checkInterval;
     }
@@ -3325,8 +3409,8 @@ class RepairApplicationRequest {
   RepairApplicationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3349,8 +3433,8 @@ class RequestUtilization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (targetConcurrentRequests != null) {
       _json["targetConcurrentRequests"] = targetConcurrentRequests;
     }
@@ -3389,8 +3473,8 @@ class Resources {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cpu != null) {
       _json["cpu"] = cpu;
     }
@@ -3420,8 +3504,8 @@ class ScriptHandler {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (scriptPath != null) {
       _json["scriptPath"] = scriptPath;
     }
@@ -3468,8 +3552,8 @@ class Service {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -3554,8 +3638,8 @@ class StaticFilesHandler {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (applicationReadable != null) {
       _json["applicationReadable"] = applicationReadable;
     }
@@ -3594,7 +3678,7 @@ class StaticFilesHandler {
  * localized user-facing error message is needed, put the localized message in
  * the error details or localize it in the client. The optional error details
  * may contain arbitrary information about the error. There is a predefined set
- * of error detail types in the package google.rpc which can be used for common
+ * of error detail types in the package google.rpc that can be used for common
  * error conditions.Language mappingThe Status message is the logical
  * representation of the error model, but it is not necessarily the actual wire
  * format. When the Status message is exposed in different client libraries and
@@ -3607,7 +3691,7 @@ class StaticFilesHandler {
  * Partial errors. If a service needs to return partial errors to the client, it
  * may embed the Status in the normal response to indicate the partial errors.
  * Workflow errors. A typical workflow has multiple steps. Each step may have a
- * Status message for error reporting purpose.
+ * Status message for error reporting.
  * Batch operations. If a client uses batch request and batch response, the
  * Status message should be used directly inside batch response, one for each
  * error sub-response.
@@ -3649,8 +3733,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -3706,8 +3790,8 @@ class TrafficSplit {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allocations != null) {
       _json["allocations"] = allocations;
     }
@@ -3751,8 +3835,8 @@ class UrlDispatchRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (domain != null) {
       _json["domain"] = domain;
     }
@@ -3870,8 +3954,8 @@ class UrlMap {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (apiEndpoint != null) {
       _json["apiEndpoint"] = (apiEndpoint).toJson();
     }
@@ -4041,6 +4125,12 @@ class Version {
   /** Desired runtime. Example: python27. */
   core.String runtime;
   /**
+   * The version of the API in the given runtime environment. Please see the
+   * app.yaml reference for valid values at
+   * https://cloud.google.com/appengine/docs/standard/<language>/config/appref
+   */
+  core.String runtimeApiVersion;
+  /**
    * Current serving status of this version. Only the versions with a SERVING
    * status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
    * invalid value. Defaults to SERVING.
@@ -4146,6 +4236,9 @@ class Version {
     if (_json.containsKey("runtime")) {
       runtime = _json["runtime"];
     }
+    if (_json.containsKey("runtimeApiVersion")) {
+      runtimeApiVersion = _json["runtimeApiVersion"];
+    }
     if (_json.containsKey("servingStatus")) {
       servingStatus = _json["servingStatus"];
     }
@@ -4160,8 +4253,8 @@ class Version {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (apiConfig != null) {
       _json["apiConfig"] = (apiConfig).toJson();
     }
@@ -4243,6 +4336,9 @@ class Version {
     if (runtime != null) {
       _json["runtime"] = runtime;
     }
+    if (runtimeApiVersion != null) {
+      _json["runtimeApiVersion"] = runtimeApiVersion;
+    }
     if (servingStatus != null) {
       _json["servingStatus"] = servingStatus;
     }
@@ -4284,8 +4380,8 @@ class Volume {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -4325,8 +4421,8 @@ class ZipInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filesCount != null) {
       _json["filesCount"] = filesCount;
     }

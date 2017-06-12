@@ -631,8 +631,8 @@ class Availability {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
@@ -884,8 +884,8 @@ class Conversion {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (adGroupId != null) {
       _json["adGroupId"] = adGroupId;
     }
@@ -1010,8 +1010,8 @@ class ConversionList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (conversion != null) {
       _json["conversion"] = conversion.map((value) => (value).toJson()).toList();
     }
@@ -1040,8 +1040,8 @@ class CustomDimension {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1070,8 +1070,8 @@ class CustomMetric {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1099,8 +1099,8 @@ class ReportFiles {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (byteCount != null) {
       _json["byteCount"] = byteCount;
     }
@@ -1190,8 +1190,8 @@ class Report {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (files != null) {
       _json["files"] = files.map((value) => (value).toJson()).toList();
     }
@@ -1323,8 +1323,8 @@ class ReportApiColumnSpec {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columnName != null) {
       _json["columnName"] = columnName;
     }
@@ -1392,8 +1392,8 @@ class ReportRequestFilters {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (column != null) {
       _json["column"] = (column).toJson();
     }
@@ -1427,8 +1427,8 @@ class ReportRequestOrderBy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (column != null) {
       _json["column"] = (column).toJson();
     }
@@ -1486,8 +1486,8 @@ class ReportRequestReportScope {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (adGroupId != null) {
       _json["adGroupId"] = adGroupId;
     }
@@ -1550,8 +1550,8 @@ class ReportRequestTimeRange {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (changedAttributesSinceTimestamp != null) {
       _json["changedAttributesSinceTimestamp"] = (changedAttributesSinceTimestamp).toIso8601String();
     }
@@ -1695,8 +1695,8 @@ class ReportRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns.map((value) => (value).toJson()).toList();
     }
@@ -1761,8 +1761,8 @@ class ReportRow
     });
   }
 
-  core.Map toJson() {
-    var _json = {};
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = <core.String, core.Object>{};
     this.forEach((core.String key, value) {
       _json[key] = value;
     });
@@ -1811,8 +1811,8 @@ class SavedColumn {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1852,8 +1852,8 @@ class SavedColumnList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -1877,8 +1877,8 @@ class UpdateAvailabilityRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (availabilities != null) {
       _json["availabilities"] = availabilities.map((value) => (value).toJson()).toList();
     }
@@ -1899,8 +1899,8 @@ class UpdateAvailabilityResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (availabilities != null) {
       _json["availabilities"] = availabilities.map((value) => (value).toJson()).toList();
     }

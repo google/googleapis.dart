@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/fusiontables/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -132,14 +132,14 @@ checkColumn(api.Column o) {
   buildCounterColumn--;
 }
 
-buildUnnamed3034() {
+buildUnnamed2504() {
   var o = new core.List<api.Column>();
   o.add(buildColumn());
   o.add(buildColumn());
   return o;
 }
 
-checkUnnamed3034(core.List<api.Column> o) {
+checkUnnamed2504(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumn(o[0]);
   checkColumn(o[1]);
@@ -150,7 +150,7 @@ buildColumnList() {
   var o = new api.ColumnList();
   buildCounterColumnList++;
   if (buildCounterColumnList < 3) {
-    o.items = buildUnnamed3034();
+    o.items = buildUnnamed2504();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -162,7 +162,7 @@ buildColumnList() {
 checkColumnList(api.ColumnList o) {
   buildCounterColumnList++;
   if (buildCounterColumnList < 3) {
-    checkUnnamed3034(o.items);
+    checkUnnamed2504(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -170,14 +170,14 @@ checkColumnList(api.ColumnList o) {
   buildCounterColumnList--;
 }
 
-buildUnnamed3035() {
+buildUnnamed2505() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed3035(core.List<core.Object> o) {
+checkUnnamed2505(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
@@ -188,7 +188,7 @@ buildGeometry() {
   var o = new api.Geometry();
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    o.geometries = buildUnnamed3035();
+    o.geometries = buildUnnamed2505();
     o.geometry = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
     o.type = "foo";
   }
@@ -199,7 +199,7 @@ buildGeometry() {
 checkGeometry(api.Geometry o) {
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    checkUnnamed3035(o.geometries);
+    checkUnnamed2505(o.geometries);
     var casted3 = (o.geometry) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -227,30 +227,30 @@ checkImport(api.Import o) {
   buildCounterImport--;
 }
 
-buildUnnamed3036() {
+buildUnnamed2506() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed3036(core.List<core.double> o) {
+checkUnnamed2506(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed3037() {
+buildUnnamed2507() {
   var o = new core.List<core.List<core.double>>();
-  o.add(buildUnnamed3036());
-  o.add(buildUnnamed3036());
+  o.add(buildUnnamed2506());
+  o.add(buildUnnamed2506());
   return o;
 }
 
-checkUnnamed3037(core.List<core.List<core.double>> o) {
+checkUnnamed2507(core.List<core.List<core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3036(o[0]);
-  checkUnnamed3036(o[1]);
+  checkUnnamed2506(o[0]);
+  checkUnnamed2506(o[1]);
 }
 
 core.int buildCounterLine = 0;
@@ -258,7 +258,7 @@ buildLine() {
   var o = new api.Line();
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    o.coordinates = buildUnnamed3037();
+    o.coordinates = buildUnnamed2507();
     o.type = "foo";
   }
   buildCounterLine--;
@@ -268,7 +268,7 @@ buildLine() {
 checkLine(api.Line o) {
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    checkUnnamed3037(o.coordinates);
+    checkUnnamed2507(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterLine--;
@@ -301,14 +301,14 @@ checkLineStyle(api.LineStyle o) {
   buildCounterLineStyle--;
 }
 
-buildUnnamed3038() {
+buildUnnamed2508() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed3038(core.List<core.double> o) {
+checkUnnamed2508(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -319,7 +319,7 @@ buildPoint() {
   var o = new api.Point();
   buildCounterPoint++;
   if (buildCounterPoint < 3) {
-    o.coordinates = buildUnnamed3038();
+    o.coordinates = buildUnnamed2508();
     o.type = "foo";
   }
   buildCounterPoint--;
@@ -329,7 +329,7 @@ buildPoint() {
 checkPoint(api.Point o) {
   buildCounterPoint++;
   if (buildCounterPoint < 3) {
-    checkUnnamed3038(o.coordinates);
+    checkUnnamed2508(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPoint--;
@@ -356,43 +356,43 @@ checkPointStyle(api.PointStyle o) {
   buildCounterPointStyle--;
 }
 
-buildUnnamed3039() {
+buildUnnamed2509() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed3039(core.List<core.double> o) {
+checkUnnamed2509(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed3040() {
+buildUnnamed2510() {
   var o = new core.List<core.List<core.double>>();
-  o.add(buildUnnamed3039());
-  o.add(buildUnnamed3039());
+  o.add(buildUnnamed2509());
+  o.add(buildUnnamed2509());
   return o;
 }
 
-checkUnnamed3040(core.List<core.List<core.double>> o) {
+checkUnnamed2510(core.List<core.List<core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3039(o[0]);
-  checkUnnamed3039(o[1]);
+  checkUnnamed2509(o[0]);
+  checkUnnamed2509(o[1]);
 }
 
-buildUnnamed3041() {
+buildUnnamed2511() {
   var o = new core.List<core.List<core.List<core.double>>>();
-  o.add(buildUnnamed3040());
-  o.add(buildUnnamed3040());
+  o.add(buildUnnamed2510());
+  o.add(buildUnnamed2510());
   return o;
 }
 
-checkUnnamed3041(core.List<core.List<core.List<core.double>>> o) {
+checkUnnamed2511(core.List<core.List<core.List<core.double>>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3040(o[0]);
-  checkUnnamed3040(o[1]);
+  checkUnnamed2510(o[0]);
+  checkUnnamed2510(o[1]);
 }
 
 core.int buildCounterPolygon = 0;
@@ -400,7 +400,7 @@ buildPolygon() {
   var o = new api.Polygon();
   buildCounterPolygon++;
   if (buildCounterPolygon < 3) {
-    o.coordinates = buildUnnamed3041();
+    o.coordinates = buildUnnamed2511();
     o.type = "foo";
   }
   buildCounterPolygon--;
@@ -410,7 +410,7 @@ buildPolygon() {
 checkPolygon(api.Polygon o) {
   buildCounterPolygon++;
   if (buildCounterPolygon < 3) {
-    checkUnnamed3041(o.coordinates);
+    checkUnnamed2511(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPolygon--;
@@ -449,43 +449,43 @@ checkPolygonStyle(api.PolygonStyle o) {
   buildCounterPolygonStyle--;
 }
 
-buildUnnamed3042() {
+buildUnnamed2512() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3042(core.List<core.String> o) {
+checkUnnamed2512(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3043() {
+buildUnnamed2513() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed3043(core.List<core.Object> o) {
+checkUnnamed2513(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted4 = (o[0]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
   var casted5 = (o[1]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed3044() {
+buildUnnamed2514() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed3043());
-  o.add(buildUnnamed3043());
+  o.add(buildUnnamed2513());
+  o.add(buildUnnamed2513());
   return o;
 }
 
-checkUnnamed3044(core.List<core.List<core.Object>> o) {
+checkUnnamed2514(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3043(o[0]);
-  checkUnnamed3043(o[1]);
+  checkUnnamed2513(o[0]);
+  checkUnnamed2513(o[1]);
 }
 
 core.int buildCounterSqlresponse = 0;
@@ -493,9 +493,9 @@ buildSqlresponse() {
   var o = new api.Sqlresponse();
   buildCounterSqlresponse++;
   if (buildCounterSqlresponse < 3) {
-    o.columns = buildUnnamed3042();
+    o.columns = buildUnnamed2512();
     o.kind = "foo";
-    o.rows = buildUnnamed3044();
+    o.rows = buildUnnamed2514();
   }
   buildCounterSqlresponse--;
   return o;
@@ -504,21 +504,21 @@ buildSqlresponse() {
 checkSqlresponse(api.Sqlresponse o) {
   buildCounterSqlresponse++;
   if (buildCounterSqlresponse < 3) {
-    checkUnnamed3042(o.columns);
+    checkUnnamed2512(o.columns);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3044(o.rows);
+    checkUnnamed2514(o.rows);
   }
   buildCounterSqlresponse--;
 }
 
-buildUnnamed3045() {
+buildUnnamed2515() {
   var o = new core.List<api.Bucket>();
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-checkUnnamed3045(core.List<api.Bucket> o) {
+checkUnnamed2515(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -545,14 +545,14 @@ checkStyleFunctionGradientColors(api.StyleFunctionGradientColors o) {
   buildCounterStyleFunctionGradientColors--;
 }
 
-buildUnnamed3046() {
+buildUnnamed2516() {
   var o = new core.List<api.StyleFunctionGradientColors>();
   o.add(buildStyleFunctionGradientColors());
   o.add(buildStyleFunctionGradientColors());
   return o;
 }
 
-checkUnnamed3046(core.List<api.StyleFunctionGradientColors> o) {
+checkUnnamed2516(core.List<api.StyleFunctionGradientColors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStyleFunctionGradientColors(o[0]);
   checkStyleFunctionGradientColors(o[1]);
@@ -563,7 +563,7 @@ buildStyleFunctionGradient() {
   var o = new api.StyleFunctionGradient();
   buildCounterStyleFunctionGradient++;
   if (buildCounterStyleFunctionGradient < 3) {
-    o.colors = buildUnnamed3046();
+    o.colors = buildUnnamed2516();
     o.max = 42.0;
     o.min = 42.0;
   }
@@ -574,7 +574,7 @@ buildStyleFunctionGradient() {
 checkStyleFunctionGradient(api.StyleFunctionGradient o) {
   buildCounterStyleFunctionGradient++;
   if (buildCounterStyleFunctionGradient < 3) {
-    checkUnnamed3046(o.colors);
+    checkUnnamed2516(o.colors);
     unittest.expect(o.max, unittest.equals(42.0));
     unittest.expect(o.min, unittest.equals(42.0));
   }
@@ -586,7 +586,7 @@ buildStyleFunction() {
   var o = new api.StyleFunction();
   buildCounterStyleFunction++;
   if (buildCounterStyleFunction < 3) {
-    o.buckets = buildUnnamed3045();
+    o.buckets = buildUnnamed2515();
     o.columnName = "foo";
     o.gradient = buildStyleFunctionGradient();
     o.kind = "foo";
@@ -598,7 +598,7 @@ buildStyleFunction() {
 checkStyleFunction(api.StyleFunction o) {
   buildCounterStyleFunction++;
   if (buildCounterStyleFunction < 3) {
-    checkUnnamed3045(o.buckets);
+    checkUnnamed2515(o.buckets);
     unittest.expect(o.columnName, unittest.equals('foo'));
     checkStyleFunctionGradient(o.gradient);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -637,14 +637,14 @@ checkStyleSetting(api.StyleSetting o) {
   buildCounterStyleSetting--;
 }
 
-buildUnnamed3047() {
+buildUnnamed2517() {
   var o = new core.List<api.StyleSetting>();
   o.add(buildStyleSetting());
   o.add(buildStyleSetting());
   return o;
 }
 
-checkUnnamed3047(core.List<api.StyleSetting> o) {
+checkUnnamed2517(core.List<api.StyleSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStyleSetting(o[0]);
   checkStyleSetting(o[1]);
@@ -655,7 +655,7 @@ buildStyleSettingList() {
   var o = new api.StyleSettingList();
   buildCounterStyleSettingList++;
   if (buildCounterStyleSettingList < 3) {
-    o.items = buildUnnamed3047();
+    o.items = buildUnnamed2517();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -667,7 +667,7 @@ buildStyleSettingList() {
 checkStyleSettingList(api.StyleSettingList o) {
   buildCounterStyleSettingList++;
   if (buildCounterStyleSettingList < 3) {
-    checkUnnamed3047(o.items);
+    checkUnnamed2517(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -675,27 +675,27 @@ checkStyleSettingList(api.StyleSettingList o) {
   buildCounterStyleSettingList--;
 }
 
-buildUnnamed3048() {
+buildUnnamed2518() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3048(core.List<core.String> o) {
+checkUnnamed2518(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3049() {
+buildUnnamed2519() {
   var o = new core.List<api.Column>();
   o.add(buildColumn());
   o.add(buildColumn());
   return o;
 }
 
-checkUnnamed3049(core.List<api.Column> o) {
+checkUnnamed2519(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumn(o[0]);
   checkColumn(o[1]);
@@ -708,8 +708,8 @@ buildTable() {
   if (buildCounterTable < 3) {
     o.attribution = "foo";
     o.attributionLink = "foo";
-    o.baseTableIds = buildUnnamed3048();
-    o.columns = buildUnnamed3049();
+    o.baseTableIds = buildUnnamed2518();
+    o.columns = buildUnnamed2519();
     o.description = "foo";
     o.isExportable = true;
     o.kind = "foo";
@@ -726,8 +726,8 @@ checkTable(api.Table o) {
   if (buildCounterTable < 3) {
     unittest.expect(o.attribution, unittest.equals('foo'));
     unittest.expect(o.attributionLink, unittest.equals('foo'));
-    checkUnnamed3048(o.baseTableIds);
-    checkUnnamed3049(o.columns);
+    checkUnnamed2518(o.baseTableIds);
+    checkUnnamed2519(o.columns);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.isExportable, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -738,14 +738,14 @@ checkTable(api.Table o) {
   buildCounterTable--;
 }
 
-buildUnnamed3050() {
+buildUnnamed2520() {
   var o = new core.List<api.Table>();
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-checkUnnamed3050(core.List<api.Table> o) {
+checkUnnamed2520(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0]);
   checkTable(o[1]);
@@ -756,7 +756,7 @@ buildTableList() {
   var o = new api.TableList();
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    o.items = buildUnnamed3050();
+    o.items = buildUnnamed2520();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -767,7 +767,7 @@ buildTableList() {
 checkTableList(api.TableList o) {
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    checkUnnamed3050(o.items);
+    checkUnnamed2520(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -801,14 +801,14 @@ checkTask(api.Task o) {
   buildCounterTask--;
 }
 
-buildUnnamed3051() {
+buildUnnamed2521() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed3051(core.List<api.Task> o) {
+checkUnnamed2521(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -819,7 +819,7 @@ buildTaskList() {
   var o = new api.TaskList();
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
-    o.items = buildUnnamed3051();
+    o.items = buildUnnamed2521();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -831,7 +831,7 @@ buildTaskList() {
 checkTaskList(api.TaskList o) {
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
-    checkUnnamed3051(o.items);
+    checkUnnamed2521(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -839,14 +839,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed3052() {
+buildUnnamed2522() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3052(core.List<core.String> o) {
+checkUnnamed2522(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -857,7 +857,7 @@ buildTemplate() {
   var o = new api.Template();
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
-    o.automaticColumnNames = buildUnnamed3052();
+    o.automaticColumnNames = buildUnnamed2522();
     o.body = "foo";
     o.kind = "foo";
     o.name = "foo";
@@ -871,7 +871,7 @@ buildTemplate() {
 checkTemplate(api.Template o) {
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
-    checkUnnamed3052(o.automaticColumnNames);
+    checkUnnamed2522(o.automaticColumnNames);
     unittest.expect(o.body, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -881,14 +881,14 @@ checkTemplate(api.Template o) {
   buildCounterTemplate--;
 }
 
-buildUnnamed3053() {
+buildUnnamed2523() {
   var o = new core.List<api.Template>();
   o.add(buildTemplate());
   o.add(buildTemplate());
   return o;
 }
 
-checkUnnamed3053(core.List<api.Template> o) {
+checkUnnamed2523(core.List<api.Template> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTemplate(o[0]);
   checkTemplate(o[1]);
@@ -899,7 +899,7 @@ buildTemplateList() {
   var o = new api.TemplateList();
   buildCounterTemplateList++;
   if (buildCounterTemplateList < 3) {
-    o.items = buildUnnamed3053();
+    o.items = buildUnnamed2523();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -911,7 +911,7 @@ buildTemplateList() {
 checkTemplateList(api.TemplateList o) {
   buildCounterTemplateList++;
   if (buildCounterTemplateList < 3) {
-    checkUnnamed3053(o.items);
+    checkUnnamed2523(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -1144,7 +1144,7 @@ main() {
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_tableId = "foo";
       var arg_columnId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1190,7 +1190,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tableId, arg_columnId).then(unittest.expectAsync((_) {}));
+      res.delete(arg_tableId, arg_columnId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -1199,7 +1199,7 @@ main() {
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_tableId = "foo";
       var arg_columnId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1245,7 +1245,7 @@ main() {
         var resp = convert.JSON.encode(buildColumn());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId, arg_columnId).then(unittest.expectAsync(((api.Column response) {
+      res.get(arg_tableId, arg_columnId).then(unittest.expectAsync1(((api.Column response) {
         checkColumn(response);
       })));
     });
@@ -1256,7 +1256,7 @@ main() {
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_request = buildColumn();
       var arg_tableId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Column.fromJson(json);
         checkColumn(obj);
 
@@ -1302,7 +1302,7 @@ main() {
         var resp = convert.JSON.encode(buildColumn());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_tableId).then(unittest.expectAsync(((api.Column response) {
+      res.insert(arg_request, arg_tableId).then(unittest.expectAsync1(((api.Column response) {
         checkColumn(response);
       })));
     });
@@ -1314,7 +1314,7 @@ main() {
       var arg_tableId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1359,7 +1359,7 @@ main() {
         var resp = convert.JSON.encode(buildColumnList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ColumnList response) {
+      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ColumnList response) {
         checkColumnList(response);
       })));
     });
@@ -1371,7 +1371,7 @@ main() {
       var arg_request = buildColumn();
       var arg_tableId = "foo";
       var arg_columnId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Column.fromJson(json);
         checkColumn(obj);
 
@@ -1420,7 +1420,7 @@ main() {
         var resp = convert.JSON.encode(buildColumn());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tableId, arg_columnId).then(unittest.expectAsync(((api.Column response) {
+      res.patch(arg_request, arg_tableId, arg_columnId).then(unittest.expectAsync1(((api.Column response) {
         checkColumn(response);
       })));
     });
@@ -1432,7 +1432,7 @@ main() {
       var arg_request = buildColumn();
       var arg_tableId = "foo";
       var arg_columnId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Column.fromJson(json);
         checkColumn(obj);
 
@@ -1481,7 +1481,7 @@ main() {
         var resp = convert.JSON.encode(buildColumn());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tableId, arg_columnId).then(unittest.expectAsync(((api.Column response) {
+      res.update(arg_request, arg_tableId, arg_columnId).then(unittest.expectAsync1(((api.Column response) {
         checkColumn(response);
       })));
     });
@@ -1499,7 +1499,7 @@ main() {
       var arg_sql_1 = "foo";
       var arg_hdrs = true;
       var arg_typed = true;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1538,7 +1538,7 @@ main() {
         var resp = convert.JSON.encode(buildSqlresponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.sql(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed).then(unittest.expectAsync(((api.Sqlresponse response) {
+      res.sql(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed).then(unittest.expectAsync1(((api.Sqlresponse response) {
         checkSqlresponse(response);
       })));
     });
@@ -1552,7 +1552,7 @@ main() {
       var arg_sql_1 = "foo";
       var arg_hdrs = true;
       var arg_typed = true;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1591,7 +1591,7 @@ main() {
         var resp = convert.JSON.encode(buildSqlresponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.sqlGet(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed).then(unittest.expectAsync(((api.Sqlresponse response) {
+      res.sqlGet(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed).then(unittest.expectAsync1(((api.Sqlresponse response) {
         checkSqlresponse(response);
       })));
     });
@@ -1606,7 +1606,7 @@ main() {
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_tableId = "foo";
       var arg_styleId = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1652,7 +1652,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tableId, arg_styleId).then(unittest.expectAsync((_) {}));
+      res.delete(arg_tableId, arg_styleId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -1661,7 +1661,7 @@ main() {
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_tableId = "foo";
       var arg_styleId = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1707,7 +1707,7 @@ main() {
         var resp = convert.JSON.encode(buildStyleSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId, arg_styleId).then(unittest.expectAsync(((api.StyleSetting response) {
+      res.get(arg_tableId, arg_styleId).then(unittest.expectAsync1(((api.StyleSetting response) {
         checkStyleSetting(response);
       })));
     });
@@ -1718,7 +1718,7 @@ main() {
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_request = buildStyleSetting();
       var arg_tableId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.StyleSetting.fromJson(json);
         checkStyleSetting(obj);
 
@@ -1764,7 +1764,7 @@ main() {
         var resp = convert.JSON.encode(buildStyleSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_tableId).then(unittest.expectAsync(((api.StyleSetting response) {
+      res.insert(arg_request, arg_tableId).then(unittest.expectAsync1(((api.StyleSetting response) {
         checkStyleSetting(response);
       })));
     });
@@ -1776,7 +1776,7 @@ main() {
       var arg_tableId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1821,7 +1821,7 @@ main() {
         var resp = convert.JSON.encode(buildStyleSettingList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.StyleSettingList response) {
+      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.StyleSettingList response) {
         checkStyleSettingList(response);
       })));
     });
@@ -1833,7 +1833,7 @@ main() {
       var arg_request = buildStyleSetting();
       var arg_tableId = "foo";
       var arg_styleId = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.StyleSetting.fromJson(json);
         checkStyleSetting(obj);
 
@@ -1882,7 +1882,7 @@ main() {
         var resp = convert.JSON.encode(buildStyleSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tableId, arg_styleId).then(unittest.expectAsync(((api.StyleSetting response) {
+      res.patch(arg_request, arg_tableId, arg_styleId).then(unittest.expectAsync1(((api.StyleSetting response) {
         checkStyleSetting(response);
       })));
     });
@@ -1894,7 +1894,7 @@ main() {
       var arg_request = buildStyleSetting();
       var arg_tableId = "foo";
       var arg_styleId = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.StyleSetting.fromJson(json);
         checkStyleSetting(obj);
 
@@ -1943,7 +1943,7 @@ main() {
         var resp = convert.JSON.encode(buildStyleSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tableId, arg_styleId).then(unittest.expectAsync(((api.StyleSetting response) {
+      res.update(arg_request, arg_tableId, arg_styleId).then(unittest.expectAsync1(((api.StyleSetting response) {
         checkStyleSetting(response);
       })));
     });
@@ -1958,7 +1958,7 @@ main() {
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
       var arg_copyPresentation = true;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2002,7 +2002,7 @@ main() {
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.copy(arg_tableId, copyPresentation: arg_copyPresentation).then(unittest.expectAsync(((api.Table response) {
+      res.copy(arg_tableId, copyPresentation: arg_copyPresentation).then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
@@ -2012,7 +2012,7 @@ main() {
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2051,7 +2051,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tableId).then(unittest.expectAsync((_) {}));
+      res.delete(arg_tableId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -2059,7 +2059,7 @@ main() {
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2098,7 +2098,7 @@ main() {
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId).then(unittest.expectAsync(((api.Table response) {
+      res.get(arg_tableId).then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
@@ -2115,7 +2115,7 @@ main() {
       var arg_endLine = 42;
       var arg_isStrict = true;
       var arg_startLine = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2163,7 +2163,7 @@ main() {
         var resp = convert.JSON.encode(buildImport());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.importRows(arg_tableId, delimiter: arg_delimiter, encoding: arg_encoding, endLine: arg_endLine, isStrict: arg_isStrict, startLine: arg_startLine).then(unittest.expectAsync(((api.Import response) {
+      res.importRows(arg_tableId, delimiter: arg_delimiter, encoding: arg_encoding, endLine: arg_endLine, isStrict: arg_isStrict, startLine: arg_startLine).then(unittest.expectAsync1(((api.Import response) {
         checkImport(response);
       })));
     });
@@ -2177,7 +2177,7 @@ main() {
       var arg_name = "foo";
       var arg_delimiter = "foo";
       var arg_encoding = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2216,7 +2216,7 @@ main() {
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.importTable(arg_name, delimiter: arg_delimiter, encoding: arg_encoding).then(unittest.expectAsync(((api.Table response) {
+      res.importTable(arg_name, delimiter: arg_delimiter, encoding: arg_encoding).then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
@@ -2226,7 +2226,7 @@ main() {
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_request = buildTable();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Table.fromJson(json);
         checkTable(obj);
 
@@ -2265,7 +2265,7 @@ main() {
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request).then(unittest.expectAsync(((api.Table response) {
+      res.insert(arg_request).then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
@@ -2276,7 +2276,7 @@ main() {
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2314,7 +2314,7 @@ main() {
         var resp = convert.JSON.encode(buildTableList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.TableList response) {
+      res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.TableList response) {
         checkTableList(response);
       })));
     });
@@ -2326,7 +2326,7 @@ main() {
       var arg_request = buildTable();
       var arg_tableId = "foo";
       var arg_replaceViewDefinition = true;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Table.fromJson(json);
         checkTable(obj);
 
@@ -2369,7 +2369,7 @@ main() {
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tableId, replaceViewDefinition: arg_replaceViewDefinition).then(unittest.expectAsync(((api.Table response) {
+      res.patch(arg_request, arg_tableId, replaceViewDefinition: arg_replaceViewDefinition).then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
@@ -2381,7 +2381,7 @@ main() {
       var arg_request = buildTable();
       var arg_tableId = "foo";
       var arg_replaceViewDefinition = true;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Table.fromJson(json);
         checkTable(obj);
 
@@ -2424,7 +2424,7 @@ main() {
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tableId, replaceViewDefinition: arg_replaceViewDefinition).then(unittest.expectAsync(((api.Table response) {
+      res.update(arg_request, arg_tableId, replaceViewDefinition: arg_replaceViewDefinition).then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
@@ -2439,7 +2439,7 @@ main() {
       api.TaskResourceApi res = new api.FusiontablesApi(mock).task;
       var arg_tableId = "foo";
       var arg_taskId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2485,7 +2485,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tableId, arg_taskId).then(unittest.expectAsync((_) {}));
+      res.delete(arg_tableId, arg_taskId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -2494,7 +2494,7 @@ main() {
       api.TaskResourceApi res = new api.FusiontablesApi(mock).task;
       var arg_tableId = "foo";
       var arg_taskId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2540,7 +2540,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId, arg_taskId).then(unittest.expectAsync(((api.Task response) {
+      res.get(arg_tableId, arg_taskId).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
@@ -2553,7 +2553,7 @@ main() {
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_startIndex = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2599,7 +2599,7 @@ main() {
         var resp = convert.JSON.encode(buildTaskList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken, startIndex: arg_startIndex).then(unittest.expectAsync(((api.TaskList response) {
+      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken, startIndex: arg_startIndex).then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
     });
@@ -2614,7 +2614,7 @@ main() {
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_tableId = "foo";
       var arg_templateId = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2660,7 +2660,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tableId, arg_templateId).then(unittest.expectAsync((_) {}));
+      res.delete(arg_tableId, arg_templateId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -2669,7 +2669,7 @@ main() {
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_tableId = "foo";
       var arg_templateId = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2715,7 +2715,7 @@ main() {
         var resp = convert.JSON.encode(buildTemplate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId, arg_templateId).then(unittest.expectAsync(((api.Template response) {
+      res.get(arg_tableId, arg_templateId).then(unittest.expectAsync1(((api.Template response) {
         checkTemplate(response);
       })));
     });
@@ -2726,7 +2726,7 @@ main() {
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_request = buildTemplate();
       var arg_tableId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Template.fromJson(json);
         checkTemplate(obj);
 
@@ -2772,7 +2772,7 @@ main() {
         var resp = convert.JSON.encode(buildTemplate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_tableId).then(unittest.expectAsync(((api.Template response) {
+      res.insert(arg_request, arg_tableId).then(unittest.expectAsync1(((api.Template response) {
         checkTemplate(response);
       })));
     });
@@ -2784,7 +2784,7 @@ main() {
       var arg_tableId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2829,7 +2829,7 @@ main() {
         var resp = convert.JSON.encode(buildTemplateList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.TemplateList response) {
+      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.TemplateList response) {
         checkTemplateList(response);
       })));
     });
@@ -2841,7 +2841,7 @@ main() {
       var arg_request = buildTemplate();
       var arg_tableId = "foo";
       var arg_templateId = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Template.fromJson(json);
         checkTemplate(obj);
 
@@ -2890,7 +2890,7 @@ main() {
         var resp = convert.JSON.encode(buildTemplate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tableId, arg_templateId).then(unittest.expectAsync(((api.Template response) {
+      res.patch(arg_request, arg_tableId, arg_templateId).then(unittest.expectAsync1(((api.Template response) {
         checkTemplate(response);
       })));
     });
@@ -2902,7 +2902,7 @@ main() {
       var arg_request = buildTemplate();
       var arg_tableId = "foo";
       var arg_templateId = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Template.fromJson(json);
         checkTemplate(obj);
 
@@ -2951,7 +2951,7 @@ main() {
         var resp = convert.JSON.encode(buildTemplate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tableId, arg_templateId).then(unittest.expectAsync(((api.Template response) {
+      res.update(arg_request, arg_tableId, arg_templateId).then(unittest.expectAsync1(((api.Template response) {
         checkTemplate(response);
       })));
     });

@@ -323,8 +323,8 @@ class Application {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -370,8 +370,8 @@ class ApplicationDataTransfer {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (applicationId != null) {
       _json["applicationId"] = applicationId;
     }
@@ -406,8 +406,8 @@ class ApplicationTransferParam {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -451,8 +451,8 @@ class ApplicationsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (applications != null) {
       _json["applications"] = applications.map((value) => (value).toJson()).toList();
     }
@@ -522,8 +522,8 @@ class DataTransfer {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (applicationDataTransfers != null) {
       _json["applicationDataTransfers"] = applicationDataTransfers.map((value) => (value).toJson()).toList();
     }
@@ -582,8 +582,8 @@ class DataTransfersListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataTransfers != null) {
       _json["dataTransfers"] = dataTransfers.map((value) => (value).toJson()).toList();
     }

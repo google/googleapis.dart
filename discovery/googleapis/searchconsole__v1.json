@@ -16,27 +16,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -101,6 +80,27 @@
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -128,9 +128,78 @@
             }
         }
     },
-    "revision": "20170520",
+    "revision": "20170610",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
+        "BlockedResource": {
+            "description": "Blocked resource.",
+            "id": "BlockedResource",
+            "properties": {
+                "url": {
+                    "description": "URL of the blocked resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TestStatus": {
+            "description": "Final state of the test, including error details if necessary.",
+            "id": "TestStatus",
+            "properties": {
+                "status": {
+                    "description": "Status of the test.",
+                    "enum": [
+                        "TEST_STATUS_UNSPECIFIED",
+                        "COMPLETE",
+                        "INTERNAL_ERROR",
+                        "PAGE_UNREACHABLE"
+                    ],
+                    "enumDescriptions": [
+                        "Internal error when running this test. Please try running the test again.",
+                        "Inspection has completed without errors.",
+                        "Inspection terminated in an error state. This indicates a problem in\nGoogle's infrastructure, not a user error. Please try again later.",
+                        "Google can not access the URL because of a user error such as a robots.txt\nblockage, a 403 or 500 code etc. Please make sure that the URL provided is\naccessible by Googlebot and is not password protected."
+                    ],
+                    "type": "string"
+                },
+                "details": {
+                    "description": "Error details if applicable.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RunMobileFriendlyTestRequest": {
+            "description": "Mobile-friendly test request.",
+            "id": "RunMobileFriendlyTestRequest",
+            "properties": {
+                "url": {
+                    "description": "URL for inspection.",
+                    "type": "string"
+                },
+                "requestScreenshot": {
+                    "description": "Whether or not screenshot is requested. Default is false.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Image": {
+            "description": "Describe image data.",
+            "id": "Image",
+            "properties": {
+                "mimeType": {
+                    "description": "The mime-type of the image data.",
+                    "type": "string"
+                },
+                "data": {
+                    "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "MobileFriendlyIssue": {
             "description": "Mobile-friendly issue.",
             "id": "MobileFriendlyIssue",
@@ -164,17 +233,6 @@
             "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
             "id": "RunMobileFriendlyTestResponse",
             "properties": {
-                "resourceIssues": {
-                    "description": "Information about embedded resources issues.",
-                    "items": {
-                        "$ref": "ResourceIssue"
-                    },
-                    "type": "array"
-                },
-                "testStatus": {
-                    "$ref": "TestStatus",
-                    "description": "Final state of the test, can be either complete or an error."
-                },
                 "mobileFriendliness": {
                     "description": "Test verdict, whether the page is mobile friendly or not.",
                     "enum": [
@@ -199,6 +257,17 @@
                 "screenshot": {
                     "$ref": "Image",
                     "description": "Screenshot of the requested URL."
+                },
+                "resourceIssues": {
+                    "description": "Information about embedded resources issues.",
+                    "items": {
+                        "$ref": "ResourceIssue"
+                    },
+                    "type": "array"
+                },
+                "testStatus": {
+                    "$ref": "TestStatus",
+                    "description": "Final state of the test, can be either complete or an error."
                 }
             },
             "type": "object"
@@ -210,75 +279,6 @@
                 "blockedResource": {
                     "$ref": "BlockedResource",
                     "description": "Describes a blocked resource issue."
-                }
-            },
-            "type": "object"
-        },
-        "BlockedResource": {
-            "description": "Blocked resource.",
-            "id": "BlockedResource",
-            "properties": {
-                "url": {
-                    "description": "URL of the blocked resource.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TestStatus": {
-            "description": "Final state of the test, including error details if necessary.",
-            "id": "TestStatus",
-            "properties": {
-                "details": {
-                    "description": "Error details if applicable.",
-                    "type": "string"
-                },
-                "status": {
-                    "description": "Status of the test.",
-                    "enum": [
-                        "TEST_STATUS_UNSPECIFIED",
-                        "COMPLETE",
-                        "INTERNAL_ERROR",
-                        "PAGE_UNREACHABLE"
-                    ],
-                    "enumDescriptions": [
-                        "Internal error when running this test. Please try running the test again.",
-                        "Inspection has completed without errors.",
-                        "Inspection terminated in an error state. This indicates a problem in\nGoogle's infrastructure, not a user error. Please try again later.",
-                        "Google can not access the URL because of a user error such as a robots.txt\nblockage, a 403 or 500 code etc. Please make sure that the URL provided is\naccessible by Googlebot and is not password protected."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Image": {
-            "description": "Describe image data.",
-            "id": "Image",
-            "properties": {
-                "mimeType": {
-                    "description": "The mime-type of the image data.",
-                    "type": "string"
-                },
-                "data": {
-                    "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
-                    "format": "byte",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RunMobileFriendlyTestRequest": {
-            "description": "Mobile-friendly test request.",
-            "id": "RunMobileFriendlyTestRequest",
-            "properties": {
-                "requestScreenshot": {
-                    "description": "Whether or not screenshot is requested. Default is false.",
-                    "type": "boolean"
-                },
-                "url": {
-                    "description": "URL for inspection.",
-                    "type": "string"
                 }
             },
             "type": "object"

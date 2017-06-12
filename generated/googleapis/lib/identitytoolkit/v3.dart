@@ -751,8 +751,8 @@ class CreateAuthUriResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allProviders != null) {
       _json["allProviders"] = allProviders;
     }
@@ -794,8 +794,8 @@ class DeleteAccountResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -829,8 +829,8 @@ class DownloadAccountResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -882,8 +882,8 @@ class EmailTemplate {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (body != null) {
       _json["body"] = body;
     }
@@ -924,8 +924,8 @@ class GetAccountInfoResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -962,8 +962,8 @@ class GetOobConfirmationCodeResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (email != null) {
       _json["email"] = email;
     }
@@ -1003,8 +1003,8 @@ class GetRecaptchaParamResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1125,8 +1125,8 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (appId != null) {
       _json["appId"] = appId;
     }
@@ -1199,8 +1199,8 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -1251,8 +1251,8 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -1300,8 +1300,8 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -1385,8 +1385,8 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowPasswordUser != null) {
       _json["allowPasswordUser"] = allowPasswordUser;
     }
@@ -1440,8 +1440,8 @@ class IdentitytoolkitRelyingpartyGetPublicKeysResponse
     });
   }
 
-  core.Map toJson() {
-    var _json = {};
+  core.Map<core.String, core.String> toJson() {
+    final core.Map<core.String, core.String> _json = <core.String, core.String>{};
     this.forEach((core.String key, value) {
       _json[key] = value;
     });
@@ -1492,8 +1492,8 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (email != null) {
       _json["email"] = email;
     }
@@ -1626,8 +1626,8 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (captchaChallenge != null) {
       _json["captchaChallenge"] = captchaChallenge;
     }
@@ -1761,8 +1761,8 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowPasswordUser != null) {
       _json["allowPasswordUser"] = allowPasswordUser;
     }
@@ -1813,8 +1813,8 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -1840,8 +1840,8 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
     }
@@ -1865,8 +1865,8 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (localId != null) {
       _json["localId"] = localId;
     }
@@ -1941,8 +1941,8 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (captchaChallenge != null) {
       _json["captchaChallenge"] = captchaChallenge;
     }
@@ -2061,8 +2061,8 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowOverwrite != null) {
       _json["allowOverwrite"] = allowOverwrite;
     }
@@ -2178,8 +2178,8 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoCreate != null) {
       _json["autoCreate"] = autoCreate;
     }
@@ -2248,8 +2248,8 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -2325,8 +2325,8 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (captchaChallenge != null) {
       _json["captchaChallenge"] = captchaChallenge;
     }
@@ -2399,8 +2399,8 @@ class IdpConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -2517,8 +2517,8 @@ class Relyingparty {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (androidInstallApp != null) {
       _json["androidInstallApp"] = androidInstallApp;
     }
@@ -2599,8 +2599,8 @@ class ResetPasswordResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (email != null) {
       _json["email"] = email;
     }
@@ -2648,8 +2648,8 @@ class SetAccountInfoResponseProviderUserInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2744,8 +2744,8 @@ class SetAccountInfoResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2835,8 +2835,8 @@ class SignupNewUserResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2879,8 +2879,8 @@ class UploadAccountResponseError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (index != null) {
       _json["index"] = index;
     }
@@ -2909,8 +2909,8 @@ class UploadAccountResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (error != null) {
       _json["error"] = error.map((value) => (value).toJson()).toList();
     }
@@ -2972,8 +2972,8 @@ class UserInfoProviderUserInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3114,8 +3114,8 @@ class UserInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
     }
@@ -3412,8 +3412,8 @@ class VerifyAssertionResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -3566,8 +3566,8 @@ class VerifyCustomTokenResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (expiresIn != null) {
       _json["expiresIn"] = expiresIn;
     }
@@ -3661,8 +3661,8 @@ class VerifyPasswordResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

@@ -538,8 +538,8 @@ class Task {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enqueueTimestamp != null) {
       _json["enqueueTimestamp"] = enqueueTimestamp;
     }
@@ -600,8 +600,8 @@ class TaskQueueAcl {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (adminEmails != null) {
       _json["adminEmails"] = adminEmails;
     }
@@ -645,8 +645,8 @@ class TaskQueueStats {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (leasedLastHour != null) {
       _json["leasedLastHour"] = leasedLastHour;
     }
@@ -698,8 +698,8 @@ class TaskQueue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (acl != null) {
       _json["acl"] = (acl).toJson();
     }
@@ -736,8 +736,8 @@ class Tasks {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -765,8 +765,8 @@ class Tasks2 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }

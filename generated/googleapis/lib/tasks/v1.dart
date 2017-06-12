@@ -767,8 +767,8 @@ class TaskLinks {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -886,8 +886,8 @@ class Task {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (completed != null) {
       _json["completed"] = (completed).toIso8601String();
     }
@@ -977,8 +977,8 @@ class TaskList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -1028,8 +1028,8 @@ class TaskLists {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -1073,8 +1073,8 @@ class Tasks {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }

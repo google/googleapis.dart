@@ -138,8 +138,8 @@ class Webfont {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (category != null) {
       _json["category"] = category;
     }
@@ -187,8 +187,8 @@ class WebfontList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }

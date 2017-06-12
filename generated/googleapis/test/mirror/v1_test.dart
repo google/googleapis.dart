@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/mirror/v1.dart' as api;
 
@@ -46,45 +46,45 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1399() {
+buildUnnamed1406() {
   var o = new core.List<api.AuthToken>();
   o.add(buildAuthToken());
   o.add(buildAuthToken());
   return o;
 }
 
-checkUnnamed1399(core.List<api.AuthToken> o) {
+checkUnnamed1406(core.List<api.AuthToken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthToken(o[0]);
   checkAuthToken(o[1]);
 }
 
-buildUnnamed1400() {
+buildUnnamed1407() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1400(core.List<core.String> o) {
+checkUnnamed1407(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1401() {
+buildUnnamed1408() {
   var o = new core.List<api.UserData>();
   o.add(buildUserData());
   o.add(buildUserData());
   return o;
 }
 
-checkUnnamed1401(core.List<api.UserData> o) {
+checkUnnamed1408(core.List<api.UserData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserData(o[0]);
   checkUserData(o[1]);
@@ -95,10 +95,10 @@ buildAccount() {
   var o = new api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    o.authTokens = buildUnnamed1399();
-    o.features = buildUnnamed1400();
+    o.authTokens = buildUnnamed1406();
+    o.features = buildUnnamed1407();
     o.password = "foo";
-    o.userData = buildUnnamed1401();
+    o.userData = buildUnnamed1408();
   }
   buildCounterAccount--;
   return o;
@@ -107,10 +107,10 @@ buildAccount() {
 checkAccount(api.Account o) {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    checkUnnamed1399(o.authTokens);
-    checkUnnamed1400(o.features);
+    checkUnnamed1406(o.authTokens);
+    checkUnnamed1407(o.features);
     unittest.expect(o.password, unittest.equals('foo'));
-    checkUnnamed1401(o.userData);
+    checkUnnamed1408(o.userData);
   }
   buildCounterAccount--;
 }
@@ -140,14 +140,14 @@ checkAttachment(api.Attachment o) {
   buildCounterAttachment--;
 }
 
-buildUnnamed1402() {
+buildUnnamed1409() {
   var o = new core.List<api.Attachment>();
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-checkUnnamed1402(core.List<api.Attachment> o) {
+checkUnnamed1409(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -158,7 +158,7 @@ buildAttachmentsListResponse() {
   var o = new api.AttachmentsListResponse();
   buildCounterAttachmentsListResponse++;
   if (buildCounterAttachmentsListResponse < 3) {
-    o.items = buildUnnamed1402();
+    o.items = buildUnnamed1409();
     o.kind = "foo";
   }
   buildCounterAttachmentsListResponse--;
@@ -168,7 +168,7 @@ buildAttachmentsListResponse() {
 checkAttachmentsListResponse(api.AttachmentsListResponse o) {
   buildCounterAttachmentsListResponse++;
   if (buildCounterAttachmentsListResponse < 3) {
-    checkUnnamed1402(o.items);
+    checkUnnamed1409(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAttachmentsListResponse--;
@@ -214,53 +214,53 @@ checkCommand(api.Command o) {
   buildCounterCommand--;
 }
 
-buildUnnamed1403() {
+buildUnnamed1410() {
   var o = new core.List<api.Command>();
   o.add(buildCommand());
   o.add(buildCommand());
   return o;
 }
 
-checkUnnamed1403(core.List<api.Command> o) {
+checkUnnamed1410(core.List<api.Command> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommand(o[0]);
   checkCommand(o[1]);
 }
 
-buildUnnamed1404() {
+buildUnnamed1411() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1404(core.List<core.String> o) {
+checkUnnamed1411(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1405() {
+buildUnnamed1412() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1405(core.List<core.String> o) {
+checkUnnamed1412(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1406() {
+buildUnnamed1413() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1406(core.List<core.String> o) {
+checkUnnamed1413(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -271,15 +271,15 @@ buildContact() {
   var o = new api.Contact();
   buildCounterContact++;
   if (buildCounterContact < 3) {
-    o.acceptCommands = buildUnnamed1403();
-    o.acceptTypes = buildUnnamed1404();
+    o.acceptCommands = buildUnnamed1410();
+    o.acceptTypes = buildUnnamed1411();
     o.displayName = "foo";
     o.id = "foo";
-    o.imageUrls = buildUnnamed1405();
+    o.imageUrls = buildUnnamed1412();
     o.kind = "foo";
     o.phoneNumber = "foo";
     o.priority = 42;
-    o.sharingFeatures = buildUnnamed1406();
+    o.sharingFeatures = buildUnnamed1413();
     o.source = "foo";
     o.speakableName = "foo";
     o.type = "foo";
@@ -291,15 +291,15 @@ buildContact() {
 checkContact(api.Contact o) {
   buildCounterContact++;
   if (buildCounterContact < 3) {
-    checkUnnamed1403(o.acceptCommands);
-    checkUnnamed1404(o.acceptTypes);
+    checkUnnamed1410(o.acceptCommands);
+    checkUnnamed1411(o.acceptTypes);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1405(o.imageUrls);
+    checkUnnamed1412(o.imageUrls);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.phoneNumber, unittest.equals('foo'));
     unittest.expect(o.priority, unittest.equals(42));
-    checkUnnamed1406(o.sharingFeatures);
+    checkUnnamed1413(o.sharingFeatures);
     unittest.expect(o.source, unittest.equals('foo'));
     unittest.expect(o.speakableName, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -307,14 +307,14 @@ checkContact(api.Contact o) {
   buildCounterContact--;
 }
 
-buildUnnamed1407() {
+buildUnnamed1414() {
   var o = new core.List<api.Contact>();
   o.add(buildContact());
   o.add(buildContact());
   return o;
 }
 
-checkUnnamed1407(core.List<api.Contact> o) {
+checkUnnamed1414(core.List<api.Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContact(o[0]);
   checkContact(o[1]);
@@ -325,7 +325,7 @@ buildContactsListResponse() {
   var o = new api.ContactsListResponse();
   buildCounterContactsListResponse++;
   if (buildCounterContactsListResponse < 3) {
-    o.items = buildUnnamed1407();
+    o.items = buildUnnamed1414();
     o.kind = "foo";
   }
   buildCounterContactsListResponse--;
@@ -335,7 +335,7 @@ buildContactsListResponse() {
 checkContactsListResponse(api.ContactsListResponse o) {
   buildCounterContactsListResponse++;
   if (buildCounterContactsListResponse < 3) {
-    checkUnnamed1407(o.items);
+    checkUnnamed1414(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterContactsListResponse--;
@@ -374,14 +374,14 @@ checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-buildUnnamed1408() {
+buildUnnamed1415() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed1408(core.List<api.Location> o) {
+checkUnnamed1415(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -392,7 +392,7 @@ buildLocationsListResponse() {
   var o = new api.LocationsListResponse();
   buildCounterLocationsListResponse++;
   if (buildCounterLocationsListResponse < 3) {
-    o.items = buildUnnamed1408();
+    o.items = buildUnnamed1415();
     o.kind = "foo";
   }
   buildCounterLocationsListResponse--;
@@ -402,20 +402,20 @@ buildLocationsListResponse() {
 checkLocationsListResponse(api.LocationsListResponse o) {
   buildCounterLocationsListResponse++;
   if (buildCounterLocationsListResponse < 3) {
-    checkUnnamed1408(o.items);
+    checkUnnamed1415(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterLocationsListResponse--;
 }
 
-buildUnnamed1409() {
+buildUnnamed1416() {
   var o = new core.List<api.MenuValue>();
   o.add(buildMenuValue());
   o.add(buildMenuValue());
   return o;
 }
 
-checkUnnamed1409(core.List<api.MenuValue> o) {
+checkUnnamed1416(core.List<api.MenuValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMenuValue(o[0]);
   checkMenuValue(o[1]);
@@ -431,7 +431,7 @@ buildMenuItem() {
     o.id = "foo";
     o.payload = "foo";
     o.removeWhenSelected = true;
-    o.values = buildUnnamed1409();
+    o.values = buildUnnamed1416();
   }
   buildCounterMenuItem--;
   return o;
@@ -445,7 +445,7 @@ checkMenuItem(api.MenuItem o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.payload, unittest.equals('foo'));
     unittest.expect(o.removeWhenSelected, unittest.isTrue);
-    checkUnnamed1409(o.values);
+    checkUnnamed1416(o.values);
   }
   buildCounterMenuItem--;
 }
@@ -473,14 +473,14 @@ checkMenuValue(api.MenuValue o) {
   buildCounterMenuValue--;
 }
 
-buildUnnamed1410() {
+buildUnnamed1417() {
   var o = new core.List<api.UserAction>();
   o.add(buildUserAction());
   o.add(buildUserAction());
   return o;
 }
 
-checkUnnamed1410(core.List<api.UserAction> o) {
+checkUnnamed1417(core.List<api.UserAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAction(o[0]);
   checkUserAction(o[1]);
@@ -494,7 +494,7 @@ buildNotification() {
     o.collection = "foo";
     o.itemId = "foo";
     o.operation = "foo";
-    o.userActions = buildUnnamed1410();
+    o.userActions = buildUnnamed1417();
     o.userToken = "foo";
     o.verifyToken = "foo";
   }
@@ -508,7 +508,7 @@ checkNotification(api.Notification o) {
     unittest.expect(o.collection, unittest.equals('foo'));
     unittest.expect(o.itemId, unittest.equals('foo'));
     unittest.expect(o.operation, unittest.equals('foo'));
-    checkUnnamed1410(o.userActions);
+    checkUnnamed1417(o.userActions);
     unittest.expect(o.userToken, unittest.equals('foo'));
     unittest.expect(o.verifyToken, unittest.equals('foo'));
   }
@@ -559,14 +559,14 @@ checkSetting(api.Setting o) {
   buildCounterSetting--;
 }
 
-buildUnnamed1411() {
+buildUnnamed1418() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1411(core.List<core.String> o) {
+checkUnnamed1418(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -582,7 +582,7 @@ buildSubscription() {
     o.id = "foo";
     o.kind = "foo";
     o.notification = buildNotification();
-    o.operation = buildUnnamed1411();
+    o.operation = buildUnnamed1418();
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
     o.userToken = "foo";
     o.verifyToken = "foo";
@@ -599,7 +599,7 @@ checkSubscription(api.Subscription o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkNotification(o.notification);
-    checkUnnamed1411(o.operation);
+    checkUnnamed1418(o.operation);
     unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.userToken, unittest.equals('foo'));
     unittest.expect(o.verifyToken, unittest.equals('foo'));
@@ -607,14 +607,14 @@ checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-buildUnnamed1412() {
+buildUnnamed1419() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed1412(core.List<api.Subscription> o) {
+checkUnnamed1419(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -625,7 +625,7 @@ buildSubscriptionsListResponse() {
   var o = new api.SubscriptionsListResponse();
   buildCounterSubscriptionsListResponse++;
   if (buildCounterSubscriptionsListResponse < 3) {
-    o.items = buildUnnamed1412();
+    o.items = buildUnnamed1419();
     o.kind = "foo";
   }
   buildCounterSubscriptionsListResponse--;
@@ -635,46 +635,46 @@ buildSubscriptionsListResponse() {
 checkSubscriptionsListResponse(api.SubscriptionsListResponse o) {
   buildCounterSubscriptionsListResponse++;
   if (buildCounterSubscriptionsListResponse < 3) {
-    checkUnnamed1412(o.items);
+    checkUnnamed1419(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterSubscriptionsListResponse--;
 }
 
-buildUnnamed1413() {
+buildUnnamed1420() {
   var o = new core.List<api.Attachment>();
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-checkUnnamed1413(core.List<api.Attachment> o) {
+checkUnnamed1420(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
 }
 
-buildUnnamed1414() {
+buildUnnamed1421() {
   var o = new core.List<api.MenuItem>();
   o.add(buildMenuItem());
   o.add(buildMenuItem());
   return o;
 }
 
-checkUnnamed1414(core.List<api.MenuItem> o) {
+checkUnnamed1421(core.List<api.MenuItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMenuItem(o[0]);
   checkMenuItem(o[1]);
 }
 
-buildUnnamed1415() {
+buildUnnamed1422() {
   var o = new core.List<api.Contact>();
   o.add(buildContact());
   o.add(buildContact());
   return o;
 }
 
-checkUnnamed1415(core.List<api.Contact> o) {
+checkUnnamed1422(core.List<api.Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContact(o[0]);
   checkContact(o[1]);
@@ -685,7 +685,7 @@ buildTimelineItem() {
   var o = new api.TimelineItem();
   buildCounterTimelineItem++;
   if (buildCounterTimelineItem < 3) {
-    o.attachments = buildUnnamed1413();
+    o.attachments = buildUnnamed1420();
     o.bundleId = "foo";
     o.canonicalUrl = "foo";
     o.created = core.DateTime.parse("2002-02-27T14:01:02");
@@ -700,10 +700,10 @@ buildTimelineItem() {
     o.isPinned = true;
     o.kind = "foo";
     o.location = buildLocation();
-    o.menuItems = buildUnnamed1414();
+    o.menuItems = buildUnnamed1421();
     o.notification = buildNotificationConfig();
     o.pinScore = 42;
-    o.recipients = buildUnnamed1415();
+    o.recipients = buildUnnamed1422();
     o.selfLink = "foo";
     o.sourceItemId = "foo";
     o.speakableText = "foo";
@@ -719,7 +719,7 @@ buildTimelineItem() {
 checkTimelineItem(api.TimelineItem o) {
   buildCounterTimelineItem++;
   if (buildCounterTimelineItem < 3) {
-    checkUnnamed1413(o.attachments);
+    checkUnnamed1420(o.attachments);
     unittest.expect(o.bundleId, unittest.equals('foo'));
     unittest.expect(o.canonicalUrl, unittest.equals('foo'));
     unittest.expect(o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -734,10 +734,10 @@ checkTimelineItem(api.TimelineItem o) {
     unittest.expect(o.isPinned, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkLocation(o.location);
-    checkUnnamed1414(o.menuItems);
+    checkUnnamed1421(o.menuItems);
     checkNotificationConfig(o.notification);
     unittest.expect(o.pinScore, unittest.equals(42));
-    checkUnnamed1415(o.recipients);
+    checkUnnamed1422(o.recipients);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.sourceItemId, unittest.equals('foo'));
     unittest.expect(o.speakableText, unittest.equals('foo'));
@@ -749,14 +749,14 @@ checkTimelineItem(api.TimelineItem o) {
   buildCounterTimelineItem--;
 }
 
-buildUnnamed1416() {
+buildUnnamed1423() {
   var o = new core.List<api.TimelineItem>();
   o.add(buildTimelineItem());
   o.add(buildTimelineItem());
   return o;
 }
 
-checkUnnamed1416(core.List<api.TimelineItem> o) {
+checkUnnamed1423(core.List<api.TimelineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimelineItem(o[0]);
   checkTimelineItem(o[1]);
@@ -767,7 +767,7 @@ buildTimelineListResponse() {
   var o = new api.TimelineListResponse();
   buildCounterTimelineListResponse++;
   if (buildCounterTimelineListResponse < 3) {
-    o.items = buildUnnamed1416();
+    o.items = buildUnnamed1423();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -778,7 +778,7 @@ buildTimelineListResponse() {
 checkTimelineListResponse(api.TimelineListResponse o) {
   buildCounterTimelineListResponse++;
   if (buildCounterTimelineListResponse < 3) {
-    checkUnnamed1416(o.items);
+    checkUnnamed1423(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1018,7 +1018,7 @@ main() {
       var arg_userToken = "foo";
       var arg_accountType = "foo";
       var arg_accountName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Account.fromJson(json);
         checkAccount(obj);
 
@@ -1074,7 +1074,7 @@ main() {
         var resp = convert.JSON.encode(buildAccount());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_userToken, arg_accountType, arg_accountName).then(unittest.expectAsync(((api.Account response) {
+      res.insert(arg_request, arg_userToken, arg_accountType, arg_accountName).then(unittest.expectAsync1(((api.Account response) {
         checkAccount(response);
       })));
     });
@@ -1088,7 +1088,7 @@ main() {
       var mock = new HttpServerMock();
       api.ContactsResourceApi res = new api.MirrorApi(mock).contacts;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1127,7 +1127,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_id).then(unittest.expectAsync((_) {}));
+      res.delete(arg_id).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -1135,7 +1135,7 @@ main() {
       var mock = new HttpServerMock();
       api.ContactsResourceApi res = new api.MirrorApi(mock).contacts;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1174,7 +1174,7 @@ main() {
         var resp = convert.JSON.encode(buildContact());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_id).then(unittest.expectAsync(((api.Contact response) {
+      res.get(arg_id).then(unittest.expectAsync1(((api.Contact response) {
         checkContact(response);
       })));
     });
@@ -1184,7 +1184,7 @@ main() {
       var mock = new HttpServerMock();
       api.ContactsResourceApi res = new api.MirrorApi(mock).contacts;
       var arg_request = buildContact();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Contact.fromJson(json);
         checkContact(obj);
 
@@ -1223,7 +1223,7 @@ main() {
         var resp = convert.JSON.encode(buildContact());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request).then(unittest.expectAsync(((api.Contact response) {
+      res.insert(arg_request).then(unittest.expectAsync1(((api.Contact response) {
         checkContact(response);
       })));
     });
@@ -1232,7 +1232,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.ContactsResourceApi res = new api.MirrorApi(mock).contacts;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1268,7 +1268,7 @@ main() {
         var resp = convert.JSON.encode(buildContactsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync(((api.ContactsListResponse response) {
+      res.list().then(unittest.expectAsync1(((api.ContactsListResponse response) {
         checkContactsListResponse(response);
       })));
     });
@@ -1279,7 +1279,7 @@ main() {
       api.ContactsResourceApi res = new api.MirrorApi(mock).contacts;
       var arg_request = buildContact();
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Contact.fromJson(json);
         checkContact(obj);
 
@@ -1321,7 +1321,7 @@ main() {
         var resp = convert.JSON.encode(buildContact());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_id).then(unittest.expectAsync(((api.Contact response) {
+      res.patch(arg_request, arg_id).then(unittest.expectAsync1(((api.Contact response) {
         checkContact(response);
       })));
     });
@@ -1332,7 +1332,7 @@ main() {
       api.ContactsResourceApi res = new api.MirrorApi(mock).contacts;
       var arg_request = buildContact();
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Contact.fromJson(json);
         checkContact(obj);
 
@@ -1374,7 +1374,7 @@ main() {
         var resp = convert.JSON.encode(buildContact());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_id).then(unittest.expectAsync(((api.Contact response) {
+      res.update(arg_request, arg_id).then(unittest.expectAsync1(((api.Contact response) {
         checkContact(response);
       })));
     });
@@ -1388,7 +1388,7 @@ main() {
       var mock = new HttpServerMock();
       api.LocationsResourceApi res = new api.MirrorApi(mock).locations;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1427,7 +1427,7 @@ main() {
         var resp = convert.JSON.encode(buildLocation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_id).then(unittest.expectAsync(((api.Location response) {
+      res.get(arg_id).then(unittest.expectAsync1(((api.Location response) {
         checkLocation(response);
       })));
     });
@@ -1436,7 +1436,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.LocationsResourceApi res = new api.MirrorApi(mock).locations;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1472,7 +1472,7 @@ main() {
         var resp = convert.JSON.encode(buildLocationsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync(((api.LocationsListResponse response) {
+      res.list().then(unittest.expectAsync1(((api.LocationsListResponse response) {
         checkLocationsListResponse(response);
       })));
     });
@@ -1486,7 +1486,7 @@ main() {
       var mock = new HttpServerMock();
       api.SettingsResourceApi res = new api.MirrorApi(mock).settings;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1525,7 +1525,7 @@ main() {
         var resp = convert.JSON.encode(buildSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_id).then(unittest.expectAsync(((api.Setting response) {
+      res.get(arg_id).then(unittest.expectAsync1(((api.Setting response) {
         checkSetting(response);
       })));
     });
@@ -1539,7 +1539,7 @@ main() {
       var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.MirrorApi(mock).subscriptions;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1578,7 +1578,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_id).then(unittest.expectAsync((_) {}));
+      res.delete(arg_id).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--insert", () {
@@ -1586,7 +1586,7 @@ main() {
       var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.MirrorApi(mock).subscriptions;
       var arg_request = buildSubscription();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Subscription.fromJson(json);
         checkSubscription(obj);
 
@@ -1625,7 +1625,7 @@ main() {
         var resp = convert.JSON.encode(buildSubscription());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request).then(unittest.expectAsync(((api.Subscription response) {
+      res.insert(arg_request).then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
     });
@@ -1634,7 +1634,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.SubscriptionsResourceApi res = new api.MirrorApi(mock).subscriptions;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1670,7 +1670,7 @@ main() {
         var resp = convert.JSON.encode(buildSubscriptionsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync(((api.SubscriptionsListResponse response) {
+      res.list().then(unittest.expectAsync1(((api.SubscriptionsListResponse response) {
         checkSubscriptionsListResponse(response);
       })));
     });
@@ -1681,7 +1681,7 @@ main() {
       api.SubscriptionsResourceApi res = new api.MirrorApi(mock).subscriptions;
       var arg_request = buildSubscription();
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Subscription.fromJson(json);
         checkSubscription(obj);
 
@@ -1723,7 +1723,7 @@ main() {
         var resp = convert.JSON.encode(buildSubscription());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_id).then(unittest.expectAsync(((api.Subscription response) {
+      res.update(arg_request, arg_id).then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
     });
@@ -1737,7 +1737,7 @@ main() {
       var mock = new HttpServerMock();
       api.TimelineResourceApi res = new api.MirrorApi(mock).timeline;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1776,7 +1776,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_id).then(unittest.expectAsync((_) {}));
+      res.delete(arg_id).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -1784,7 +1784,7 @@ main() {
       var mock = new HttpServerMock();
       api.TimelineResourceApi res = new api.MirrorApi(mock).timeline;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1823,7 +1823,7 @@ main() {
         var resp = convert.JSON.encode(buildTimelineItem());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_id).then(unittest.expectAsync(((api.TimelineItem response) {
+      res.get(arg_id).then(unittest.expectAsync1(((api.TimelineItem response) {
         checkTimelineItem(response);
       })));
     });
@@ -1835,7 +1835,7 @@ main() {
       var mock = new HttpServerMock();
       api.TimelineResourceApi res = new api.MirrorApi(mock).timeline;
       var arg_request = buildTimelineItem();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TimelineItem.fromJson(json);
         checkTimelineItem(obj);
 
@@ -1874,7 +1874,7 @@ main() {
         var resp = convert.JSON.encode(buildTimelineItem());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request).then(unittest.expectAsync(((api.TimelineItem response) {
+      res.insert(arg_request).then(unittest.expectAsync1(((api.TimelineItem response) {
         checkTimelineItem(response);
       })));
     });
@@ -1890,7 +1890,7 @@ main() {
       var arg_pageToken = "foo";
       var arg_pinnedOnly = true;
       var arg_sourceItemId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1933,7 +1933,7 @@ main() {
         var resp = convert.JSON.encode(buildTimelineListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(bundleId: arg_bundleId, includeDeleted: arg_includeDeleted, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken, pinnedOnly: arg_pinnedOnly, sourceItemId: arg_sourceItemId).then(unittest.expectAsync(((api.TimelineListResponse response) {
+      res.list(bundleId: arg_bundleId, includeDeleted: arg_includeDeleted, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken, pinnedOnly: arg_pinnedOnly, sourceItemId: arg_sourceItemId).then(unittest.expectAsync1(((api.TimelineListResponse response) {
         checkTimelineListResponse(response);
       })));
     });
@@ -1944,7 +1944,7 @@ main() {
       api.TimelineResourceApi res = new api.MirrorApi(mock).timeline;
       var arg_request = buildTimelineItem();
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TimelineItem.fromJson(json);
         checkTimelineItem(obj);
 
@@ -1986,7 +1986,7 @@ main() {
         var resp = convert.JSON.encode(buildTimelineItem());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_id).then(unittest.expectAsync(((api.TimelineItem response) {
+      res.patch(arg_request, arg_id).then(unittest.expectAsync1(((api.TimelineItem response) {
         checkTimelineItem(response);
       })));
     });
@@ -1999,7 +1999,7 @@ main() {
       api.TimelineResourceApi res = new api.MirrorApi(mock).timeline;
       var arg_request = buildTimelineItem();
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TimelineItem.fromJson(json);
         checkTimelineItem(obj);
 
@@ -2041,7 +2041,7 @@ main() {
         var resp = convert.JSON.encode(buildTimelineItem());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_id).then(unittest.expectAsync(((api.TimelineItem response) {
+      res.update(arg_request, arg_id).then(unittest.expectAsync1(((api.TimelineItem response) {
         checkTimelineItem(response);
       })));
     });
@@ -2056,7 +2056,7 @@ main() {
       api.TimelineAttachmentsResourceApi res = new api.MirrorApi(mock).timeline.attachments;
       var arg_itemId = "foo";
       var arg_attachmentId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2102,7 +2102,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_itemId, arg_attachmentId).then(unittest.expectAsync((_) {}));
+      res.delete(arg_itemId, arg_attachmentId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -2113,7 +2113,7 @@ main() {
       api.TimelineAttachmentsResourceApi res = new api.MirrorApi(mock).timeline.attachments;
       var arg_itemId = "foo";
       var arg_attachmentId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2159,7 +2159,7 @@ main() {
         var resp = convert.JSON.encode(buildAttachment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_itemId, arg_attachmentId).then(unittest.expectAsync(((api.Attachment response) {
+      res.get(arg_itemId, arg_attachmentId).then(unittest.expectAsync1(((api.Attachment response) {
         checkAttachment(response);
       })));
     });
@@ -2171,7 +2171,7 @@ main() {
       var mock = new HttpServerMock();
       api.TimelineAttachmentsResourceApi res = new api.MirrorApi(mock).timeline.attachments;
       var arg_itemId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2214,7 +2214,7 @@ main() {
         var resp = convert.JSON.encode(buildAttachment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_itemId).then(unittest.expectAsync(((api.Attachment response) {
+      res.insert(arg_itemId).then(unittest.expectAsync1(((api.Attachment response) {
         checkAttachment(response);
       })));
     });
@@ -2224,7 +2224,7 @@ main() {
       var mock = new HttpServerMock();
       api.TimelineAttachmentsResourceApi res = new api.MirrorApi(mock).timeline.attachments;
       var arg_itemId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2267,7 +2267,7 @@ main() {
         var resp = convert.JSON.encode(buildAttachmentsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_itemId).then(unittest.expectAsync(((api.AttachmentsListResponse response) {
+      res.list(arg_itemId).then(unittest.expectAsync1(((api.AttachmentsListResponse response) {
         checkAttachmentsListResponse(response);
       })));
     });

@@ -2683,8 +2683,8 @@ class Account {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -2716,8 +2716,8 @@ class AccountAccess {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permission != null) {
       _json["permission"] = permission;
     }
@@ -2768,8 +2768,8 @@ class Condition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (parameter != null) {
       _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
     }
@@ -2856,8 +2856,8 @@ class Container {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -2916,8 +2916,8 @@ class ContainerAccess {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (containerId != null) {
       _json["containerId"] = containerId;
     }
@@ -3011,8 +3011,8 @@ class ContainerVersion {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -3119,8 +3119,8 @@ class ContainerVersionHeader {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -3181,8 +3181,8 @@ class CreateContainerVersionRequestVersionOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -3214,8 +3214,8 @@ class CreateContainerVersionResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (compilerError != null) {
       _json["compilerError"] = compilerError;
     }
@@ -3313,8 +3313,8 @@ class Environment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -3391,8 +3391,8 @@ class Folder {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -3435,8 +3435,8 @@ class FolderEntities {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (tag != null) {
       _json["tag"] = tag.map((value) => (value).toJson()).toList();
     }
@@ -3463,8 +3463,8 @@ class ListAccountUsersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (userAccess != null) {
       _json["userAccess"] = userAccess.map((value) => (value).toJson()).toList();
     }
@@ -3485,8 +3485,8 @@ class ListAccountsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accounts != null) {
       _json["accounts"] = accounts.map((value) => (value).toJson()).toList();
     }
@@ -3512,8 +3512,8 @@ class ListContainerVersionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (containerVersion != null) {
       _json["containerVersion"] = containerVersion.map((value) => (value).toJson()).toList();
     }
@@ -3537,8 +3537,8 @@ class ListContainersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (containers != null) {
       _json["containers"] = containers.map((value) => (value).toJson()).toList();
     }
@@ -3559,8 +3559,8 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (environments != null) {
       _json["environments"] = environments.map((value) => (value).toJson()).toList();
     }
@@ -3581,8 +3581,8 @@ class ListFoldersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (folders != null) {
       _json["folders"] = folders.map((value) => (value).toJson()).toList();
     }
@@ -3603,8 +3603,8 @@ class ListTagsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (tags != null) {
       _json["tags"] = tags.map((value) => (value).toJson()).toList();
     }
@@ -3625,8 +3625,8 @@ class ListTriggersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (triggers != null) {
       _json["triggers"] = triggers.map((value) => (value).toJson()).toList();
     }
@@ -3647,8 +3647,8 @@ class ListVariablesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (variables != null) {
       _json["variables"] = variables.map((value) => (value).toJson()).toList();
     }
@@ -3740,8 +3740,8 @@ class Macro {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -3838,8 +3838,8 @@ class Parameter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -3877,8 +3877,8 @@ class PublishContainerVersionResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (compilerError != null) {
       _json["compilerError"] = compilerError;
     }
@@ -3937,8 +3937,8 @@ class Rule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -3984,8 +3984,8 @@ class SetupTag {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (stopOnSetupFailure != null) {
       _json["stopOnSetupFailure"] = stopOnSetupFailure;
     }
@@ -4132,8 +4132,8 @@ class Tag {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -4219,8 +4219,8 @@ class TeardownTag {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (stopTeardownOnFailure != null) {
       _json["stopTeardownOnFailure"] = stopTeardownOnFailure;
     }
@@ -4390,8 +4390,8 @@ class Trigger {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -4486,8 +4486,8 @@ class UserAccess {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountAccess != null) {
       _json["accountAccess"] = (accountAccess).toJson();
     }
@@ -4591,8 +4591,8 @@ class Variable {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }

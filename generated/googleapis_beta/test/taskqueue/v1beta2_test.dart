@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis_beta/taskqueue/v1beta2.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -84,40 +84,40 @@ checkTask(api.Task o) {
   buildCounterTask--;
 }
 
-buildUnnamed3713() {
+buildUnnamed3187() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3713(core.List<core.String> o) {
+checkUnnamed3187(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3714() {
+buildUnnamed3188() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3714(core.List<core.String> o) {
+checkUnnamed3188(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3715() {
+buildUnnamed3189() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3715(core.List<core.String> o) {
+checkUnnamed3189(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -128,9 +128,9 @@ buildTaskQueueAcl() {
   var o = new api.TaskQueueAcl();
   buildCounterTaskQueueAcl++;
   if (buildCounterTaskQueueAcl < 3) {
-    o.adminEmails = buildUnnamed3713();
-    o.consumerEmails = buildUnnamed3714();
-    o.producerEmails = buildUnnamed3715();
+    o.adminEmails = buildUnnamed3187();
+    o.consumerEmails = buildUnnamed3188();
+    o.producerEmails = buildUnnamed3189();
   }
   buildCounterTaskQueueAcl--;
   return o;
@@ -139,9 +139,9 @@ buildTaskQueueAcl() {
 checkTaskQueueAcl(api.TaskQueueAcl o) {
   buildCounterTaskQueueAcl++;
   if (buildCounterTaskQueueAcl < 3) {
-    checkUnnamed3713(o.adminEmails);
-    checkUnnamed3714(o.consumerEmails);
-    checkUnnamed3715(o.producerEmails);
+    checkUnnamed3187(o.adminEmails);
+    checkUnnamed3188(o.consumerEmails);
+    checkUnnamed3189(o.producerEmails);
   }
   buildCounterTaskQueueAcl--;
 }
@@ -198,14 +198,14 @@ checkTaskQueue(api.TaskQueue o) {
   buildCounterTaskQueue--;
 }
 
-buildUnnamed3716() {
+buildUnnamed3190() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed3716(core.List<api.Task> o) {
+checkUnnamed3190(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -216,7 +216,7 @@ buildTasks() {
   var o = new api.Tasks();
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
-    o.items = buildUnnamed3716();
+    o.items = buildUnnamed3190();
     o.kind = "foo";
   }
   buildCounterTasks--;
@@ -226,20 +226,20 @@ buildTasks() {
 checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
-    checkUnnamed3716(o.items);
+    checkUnnamed3190(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTasks--;
 }
 
-buildUnnamed3717() {
+buildUnnamed3191() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed3717(core.List<api.Task> o) {
+checkUnnamed3191(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -250,7 +250,7 @@ buildTasks2() {
   var o = new api.Tasks2();
   buildCounterTasks2++;
   if (buildCounterTasks2 < 3) {
-    o.items = buildUnnamed3717();
+    o.items = buildUnnamed3191();
     o.kind = "foo";
   }
   buildCounterTasks2--;
@@ -260,7 +260,7 @@ buildTasks2() {
 checkTasks2(api.Tasks2 o) {
   buildCounterTasks2++;
   if (buildCounterTasks2 < 3) {
-    checkUnnamed3717(o.items);
+    checkUnnamed3191(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTasks2--;
@@ -330,7 +330,7 @@ main() {
       var arg_project = "foo";
       var arg_taskqueue = "foo";
       var arg_getStats = true;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -363,7 +363,7 @@ main() {
         var resp = convert.JSON.encode(buildTaskQueue());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_taskqueue, getStats: arg_getStats).then(unittest.expectAsync(((api.TaskQueue response) {
+      res.get(arg_project, arg_taskqueue, getStats: arg_getStats).then(unittest.expectAsync1(((api.TaskQueue response) {
         checkTaskQueue(response);
       })));
     });
@@ -379,7 +379,7 @@ main() {
       var arg_project = "foo";
       var arg_taskqueue = "foo";
       var arg_task = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -411,7 +411,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_project, arg_taskqueue, arg_task).then(unittest.expectAsync((_) {}));
+      res.delete(arg_project, arg_taskqueue, arg_task).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -421,7 +421,7 @@ main() {
       var arg_project = "foo";
       var arg_taskqueue = "foo";
       var arg_task = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -453,7 +453,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_taskqueue, arg_task).then(unittest.expectAsync(((api.Task response) {
+      res.get(arg_project, arg_taskqueue, arg_task).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
@@ -465,7 +465,7 @@ main() {
       var arg_request = buildTask();
       var arg_project = "foo";
       var arg_taskqueue = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
 
@@ -500,7 +500,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_project, arg_taskqueue).then(unittest.expectAsync(((api.Task response) {
+      res.insert(arg_request, arg_project, arg_taskqueue).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
@@ -515,7 +515,7 @@ main() {
       var arg_leaseSecs = 42;
       var arg_groupByTag = true;
       var arg_tag = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -551,7 +551,7 @@ main() {
         var resp = convert.JSON.encode(buildTasks());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.lease(arg_project, arg_taskqueue, arg_numTasks, arg_leaseSecs, groupByTag: arg_groupByTag, tag: arg_tag).then(unittest.expectAsync(((api.Tasks response) {
+      res.lease(arg_project, arg_taskqueue, arg_numTasks, arg_leaseSecs, groupByTag: arg_groupByTag, tag: arg_tag).then(unittest.expectAsync1(((api.Tasks response) {
         checkTasks(response);
       })));
     });
@@ -562,7 +562,7 @@ main() {
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
       var arg_taskqueue = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -594,7 +594,7 @@ main() {
         var resp = convert.JSON.encode(buildTasks2());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_taskqueue).then(unittest.expectAsync(((api.Tasks2 response) {
+      res.list(arg_project, arg_taskqueue).then(unittest.expectAsync1(((api.Tasks2 response) {
         checkTasks2(response);
       })));
     });
@@ -608,7 +608,7 @@ main() {
       var arg_taskqueue = "foo";
       var arg_task = "foo";
       var arg_newLeaseSeconds = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
 
@@ -644,7 +644,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_project, arg_taskqueue, arg_task, arg_newLeaseSeconds).then(unittest.expectAsync(((api.Task response) {
+      res.patch(arg_request, arg_project, arg_taskqueue, arg_task, arg_newLeaseSeconds).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
@@ -658,7 +658,7 @@ main() {
       var arg_taskqueue = "foo";
       var arg_task = "foo";
       var arg_newLeaseSeconds = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
 
@@ -694,7 +694,7 @@ main() {
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_project, arg_taskqueue, arg_task, arg_newLeaseSeconds).then(unittest.expectAsync(((api.Task response) {
+      res.update(arg_request, arg_project, arg_taskqueue, arg_task, arg_newLeaseSeconds).then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });

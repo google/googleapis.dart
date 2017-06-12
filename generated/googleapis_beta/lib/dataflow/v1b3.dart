@@ -22,6 +22,9 @@ class DataflowApi {
   /** View and manage your Google Compute Engine resources */
   static const ComputeScope = "https://www.googleapis.com/auth/compute";
 
+  /** View your Google Compute Engine resources */
+  static const ComputeReadonlyScope = "https://www.googleapis.com/auth/compute.readonly";
+
   /** View your email address */
   static const UserinfoEmailScope = "https://www.googleapis.com/auth/userinfo.email";
 
@@ -234,10 +237,10 @@ class ProjectsJobsResourceApi {
    *
    * [jobId] - The job to get messages for.
    *
-   * [location] - The location which contains the job specified by job_id.
-   *
    * [startTime] - Return only metric data that has changed since this time.
    * Default is to return all information about all metrics for the job.
+   *
+   * [location] - The location which contains the job specified by job_id.
    *
    * Completes with a [JobMetrics].
    *
@@ -247,7 +250,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId, {core.String location, core.String startTime}) {
+  async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId, {core.String startTime, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -261,11 +264,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/metrics';
@@ -287,6 +290,16 @@ class ProjectsJobsResourceApi {
    *
    * [projectId] - The project which owns the jobs.
    *
+   * [location] - The location that contains this job.
+   *
+   * [pageToken] - Set this to the 'next_page_token' field of a previous
+   * response
+   * to request additional results in a long list.
+   *
+   * [pageSize] - If there are many jobs, limit response to at most this many.
+   * The actual number of jobs returned will be the lesser of max_responses
+   * and an unspecified server-defined limit.
+   *
    * [view] - Level of information requested in response. Default is
    * `JOB_VIEW_SUMMARY`.
    * Possible string values are:
@@ -302,16 +315,6 @@ class ProjectsJobsResourceApi {
    * - "TERMINATED" : A TERMINATED.
    * - "ACTIVE" : A ACTIVE.
    *
-   * [location] - The location that contains this job.
-   *
-   * [pageToken] - Set this to the 'next_page_token' field of a previous
-   * response
-   * to request additional results in a long list.
-   *
-   * [pageSize] - If there are many jobs, limit response to at most this many.
-   * The actual number of jobs returned will be the lesser of max_responses
-   * and an unspecified server-defined limit.
-   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -320,7 +323,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.String view, core.String filter, core.String location, core.String pageToken, core.int pageSize}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String location, core.String pageToken, core.int pageSize, core.String view, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -331,12 +334,6 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
@@ -345,6 +342,12 @@ class ProjectsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -538,6 +541,10 @@ class ProjectsJobsMessagesResourceApi {
    *
    * [jobId] - The job to get messages about.
    *
+   * [pageSize] - If specified, determines the maximum number of messages to
+   * return.  If unspecified, the service may choose an appropriate
+   * default, or may return an arbitrarily large number of results.
+   *
    * [minimumImportance] - Filter to only get messages with importance >= level
    * Possible string values are:
    * - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
@@ -547,24 +554,20 @@ class ProjectsJobsMessagesResourceApi {
    * - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
    * - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
    *
+   * [location] - The location which contains the job specified by job_id.
+   *
    * [endTime] - Return only messages with timestamps < end_time. The default is
    * now
    * (i.e. return up to the latest messages available).
-   *
-   * [location] - The location which contains the job specified by job_id.
-   *
-   * [pageToken] - If supplied, this should be the value of next_page_token
-   * returned
-   * by an earlier call. This will cause the next page of results to
-   * be returned.
    *
    * [startTime] - If specified, return only messages with timestamps >=
    * start_time.
    * The default is the job creation time (i.e. beginning of messages).
    *
-   * [pageSize] - If specified, determines the maximum number of messages to
-   * return.  If unspecified, the service may choose an appropriate
-   * default, or may return an arbitrarily large number of results.
+   * [pageToken] - If supplied, this should be the value of next_page_token
+   * returned
+   * by an earlier call. This will cause the next page of results to
+   * be returned.
    *
    * Completes with a [ListJobMessagesResponse].
    *
@@ -574,7 +577,7 @@ class ProjectsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.String minimumImportance, core.String endTime, core.String location, core.String pageToken, core.String startTime, core.int pageSize}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String jobId, {core.int pageSize, core.String minimumImportance, core.String location, core.String endTime, core.String startTime, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -588,23 +591,23 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (minimumImportance != null) {
       _queryParams["minimumImportance"] = [minimumImportance];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
     }
     if (location != null) {
       _queryParams["location"] = [location];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
@@ -987,13 +990,6 @@ class ProjectsLocationsJobsResourceApi {
    *
    * [location] - The location that contains this job.
    *
-   * [filter] - The kind of filter to use.
-   * Possible string values are:
-   * - "UNKNOWN" : A UNKNOWN.
-   * - "ALL" : A ALL.
-   * - "TERMINATED" : A TERMINATED.
-   * - "ACTIVE" : A ACTIVE.
-   *
    * [pageToken] - Set this to the 'next_page_token' field of a previous
    * response
    * to request additional results in a long list.
@@ -1010,6 +1006,13 @@ class ProjectsLocationsJobsResourceApi {
    * - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
    * - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
    *
+   * [filter] - The kind of filter to use.
+   * Possible string values are:
+   * - "UNKNOWN" : A UNKNOWN.
+   * - "ALL" : A ALL.
+   * - "TERMINATED" : A TERMINATED.
+   * - "ACTIVE" : A ACTIVE.
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1018,7 +1021,7 @@ class ProjectsLocationsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, core.String location, {core.String filter, core.String pageToken, core.int pageSize, core.String view}) {
+  async.Future<ListJobsResponse> list(core.String projectId, core.String location, {core.String pageToken, core.int pageSize, core.String view, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1032,9 +1035,6 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1043,6 +1043,9 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs';
@@ -1248,10 +1251,6 @@ class ProjectsLocationsJobsMessagesResourceApi {
    *
    * [jobId] - The job to get messages about.
    *
-   * [endTime] - Return only messages with timestamps < end_time. The default is
-   * now
-   * (i.e. return up to the latest messages available).
-   *
    * [startTime] - If specified, return only messages with timestamps >=
    * start_time.
    * The default is the job creation time (i.e. beginning of messages).
@@ -1274,6 +1273,10 @@ class ProjectsLocationsJobsMessagesResourceApi {
    * - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
    * - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
    *
+   * [endTime] - Return only messages with timestamps < end_time. The default is
+   * now
+   * (i.e. return up to the latest messages available).
+   *
    * Completes with a [ListJobMessagesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1282,7 +1285,7 @@ class ProjectsLocationsJobsMessagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String location, core.String jobId, {core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String minimumImportance}) {
+  async.Future<ListJobMessagesResponse> list(core.String projectId, core.String location, core.String jobId, {core.String startTime, core.String pageToken, core.int pageSize, core.String minimumImportance, core.String endTime}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1299,9 +1302,6 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
@@ -1313,6 +1313,9 @@ class ProjectsLocationsJobsMessagesResourceApi {
     }
     if (minimumImportance != null) {
       _queryParams["minimumImportance"] = [minimumImportance];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/messages';
@@ -1574,14 +1577,14 @@ class ProjectsLocationsTemplatesResourceApi {
    *
    * [location] - The location to which to direct the request.
    *
-   * [validateOnly] - If true, the request is validated but not actually
-   * executed.
-   * Defaults to false.
-   *
    * [gcsPath] - Required. A Cloud Storage path to the template from which to
    * create
    * the job.
    * Must be valid Cloud Storage URL, beginning with 'gs://'.
+   *
+   * [validateOnly] - If true, the request is validated but not actually
+   * executed.
+   * Defaults to false.
    *
    * Completes with a [LaunchTemplateResponse].
    *
@@ -1591,7 +1594,7 @@ class ProjectsLocationsTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, core.String location, {core.bool validateOnly, core.String gcsPath}) {
+  async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request, core.String projectId, core.String location, {core.String gcsPath, core.bool validateOnly}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1608,11 +1611,11 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (validateOnly != null) {
-      _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/locations/' + commons.Escaper.ecapeVariable('$location') + '/templates:launch';
@@ -1689,6 +1692,8 @@ class ProjectsTemplatesResourceApi {
    * [projectId] - Required. The ID of the Cloud Platform project that the job
    * belongs to.
    *
+   * [location] - The location to which to direct the request.
+   *
    * [view] - The view to retrieve. Defaults to METADATA_ONLY.
    * Possible string values are:
    * - "METADATA_ONLY" : A METADATA_ONLY.
@@ -1696,8 +1701,6 @@ class ProjectsTemplatesResourceApi {
    * [gcsPath] - Required. A Cloud Storage path to the template from which to
    * create the job.
    * Must be a valid Cloud Storage URL, beginning with `gs://`.
-   *
-   * [location] - The location to which to direct the request.
    *
    * Completes with a [GetTemplateResponse].
    *
@@ -1707,7 +1710,7 @@ class ProjectsTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetTemplateResponse> get(core.String projectId, {core.String view, core.String gcsPath, core.String location}) {
+  async.Future<GetTemplateResponse> get(core.String projectId, {core.String location, core.String view, core.String gcsPath}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1718,14 +1721,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/templates:get';
@@ -1834,8 +1837,8 @@ class ApproximateProgress {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (percentComplete != null) {
       _json["percentComplete"] = percentComplete;
     }
@@ -1913,8 +1916,8 @@ class ApproximateReportedProgress {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (consumedParallelism != null) {
       _json["consumedParallelism"] = (consumedParallelism).toJson();
     }
@@ -1954,8 +1957,8 @@ class ApproximateSplitRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fractionConsumed != null) {
       _json["fractionConsumed"] = fractionConsumed;
     }
@@ -2031,8 +2034,8 @@ class AutoscalingEvent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentNumWorkers != null) {
       _json["currentNumWorkers"] = currentNumWorkers;
     }
@@ -2078,8 +2081,8 @@ class AutoscalingSettings {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -2119,8 +2122,8 @@ class CPUTime {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rate != null) {
       _json["rate"] = rate;
     }
@@ -2165,8 +2168,8 @@ class ComponentSource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2208,8 +2211,8 @@ class ComponentTransform {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2261,8 +2264,8 @@ class ComputationTopology {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (computationId != null) {
       _json["computationId"] = computationId;
     }
@@ -2307,8 +2310,8 @@ class ConcatPosition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (index != null) {
       _json["index"] = index;
     }
@@ -2375,8 +2378,8 @@ class CounterMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2464,8 +2467,8 @@ class CounterStructuredName {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (componentStepName != null) {
       _json["componentStepName"] = componentStepName;
     }
@@ -2515,8 +2518,8 @@ class CounterStructuredNameAndMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -2619,8 +2622,8 @@ class CounterUpdate {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boolean != null) {
       _json["boolean"] = boolean;
     }
@@ -2704,8 +2707,8 @@ class CreateJobFromTemplateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (environment != null) {
       _json["environment"] = (environment).toJson();
     }
@@ -2738,8 +2741,8 @@ class CustomSourceLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (stateful != null) {
       _json["stateful"] = stateful;
     }
@@ -2773,8 +2776,8 @@ class DataDiskAssignment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataDisks != null) {
       _json["dataDisks"] = dataDisks;
     }
@@ -2819,8 +2822,8 @@ class DerivedSource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (derivationMode != null) {
       _json["derivationMode"] = derivationMode;
     }
@@ -2876,8 +2879,8 @@ class Disk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (diskType != null) {
       _json["diskType"] = diskType;
     }
@@ -2975,8 +2978,8 @@ class DisplayData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -3061,8 +3064,8 @@ class DistributionUpdate {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = (count).toJson();
     }
@@ -3114,8 +3117,8 @@ class DynamicSourceSplit {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (primary != null) {
       _json["primary"] = (primary).toJson();
     }
@@ -3238,8 +3241,8 @@ class Environment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusterManagerApiService != null) {
       _json["clusterManagerApiService"] = clusterManagerApiService;
     }
@@ -3347,8 +3350,8 @@ class ExecutionStageState {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentStateTime != null) {
       _json["currentStateTime"] = currentStateTime;
     }
@@ -3425,8 +3428,8 @@ class ExecutionStageSummary {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (componentSource != null) {
       _json["componentSource"] = componentSource.map((value) => (value).toJson()).toList();
     }
@@ -3465,8 +3468,8 @@ class FailedLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -3489,8 +3492,8 @@ class FlattenInstruction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inputs != null) {
       _json["inputs"] = inputs.map((value) => (value).toJson()).toList();
     }
@@ -3511,8 +3514,8 @@ class FloatingPointList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (elements != null) {
       _json["elements"] = elements;
     }
@@ -3538,8 +3541,8 @@ class FloatingPointMean {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = (count).toJson();
     }
@@ -3576,8 +3579,8 @@ class GetDebugConfigRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (componentId != null) {
       _json["componentId"] = componentId;
     }
@@ -3604,8 +3607,8 @@ class GetDebugConfigResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (config != null) {
       _json["config"] = config;
     }
@@ -3637,8 +3640,8 @@ class GetTemplateResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -3675,8 +3678,8 @@ class InstructionInput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (outputNum != null) {
       _json["outputNum"] = outputNum;
     }
@@ -3742,8 +3745,8 @@ class InstructionOutput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (codec != null) {
       _json["codec"] = codec;
     }
@@ -3779,8 +3782,8 @@ class IntegerList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (elements != null) {
       _json["elements"] = elements.map((value) => (value).toJson()).toList();
     }
@@ -3806,8 +3809,8 @@ class IntegerMean {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = (count).toJson();
     }
@@ -4122,8 +4125,8 @@ class Job {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientRequestId != null) {
       _json["clientRequestId"] = clientRequestId;
     }
@@ -4200,14 +4203,14 @@ class JobExecutionInfo {
 
   JobExecutionInfo.fromJson(core.Map _json) {
     if (_json.containsKey("stages")) {
-      stages = commons.mapMap(_json["stages"], (item) => new JobExecutionStageInfo.fromJson(item));
+      stages = commons.mapMap<core.Map<core.String, core.Object>, JobExecutionStageInfo>(_json["stages"], (core.Map<core.String, core.Object> item) => new JobExecutionStageInfo.fromJson(item));
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (stages != null) {
-      _json["stages"] = commons.mapMap(stages, (item) => (item).toJson());
+      _json["stages"] = commons.mapMap<JobExecutionStageInfo, core.Map<core.String, core.Object>>(stages, (JobExecutionStageInfo item) => (item).toJson());
     }
     return _json;
   }
@@ -4233,8 +4236,8 @@ class JobExecutionStageInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (stepName != null) {
       _json["stepName"] = stepName;
     }
@@ -4303,8 +4306,8 @@ class JobMessage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -4347,8 +4350,8 @@ class JobMetrics {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metricTime != null) {
       _json["metricTime"] = metricTime;
     }
@@ -4392,8 +4395,8 @@ class KeyRangeDataDiskAssignment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataDisk != null) {
       _json["dataDisk"] = dataDisk;
     }
@@ -4455,8 +4458,8 @@ class KeyRangeLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataDisk != null) {
       _json["dataDisk"] = dataDisk;
     }
@@ -4499,8 +4502,8 @@ class LaunchTemplateParameters {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (environment != null) {
       _json["environment"] = (environment).toJson();
     }
@@ -4530,8 +4533,8 @@ class LaunchTemplateResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (job != null) {
       _json["job"] = (job).toJson();
     }
@@ -4583,8 +4586,8 @@ class LeaseWorkItemRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentWorkerTime != null) {
       _json["currentWorkerTime"] = currentWorkerTime;
     }
@@ -4620,8 +4623,8 @@ class LeaseWorkItemResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (workItems != null) {
       _json["workItems"] = workItems.map((value) => (value).toJson()).toList();
     }
@@ -4652,8 +4655,8 @@ class ListJobMessagesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoscalingEvents != null) {
       _json["autoscalingEvents"] = autoscalingEvents.map((value) => (value).toJson()).toList();
     }
@@ -4693,8 +4696,8 @@ class ListJobsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (failedLocation != null) {
       _json["failedLocation"] = failedLocation.map((value) => (value).toJson()).toList();
     }
@@ -4735,8 +4738,8 @@ class LogBucket {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -4783,8 +4786,8 @@ class MapTask {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instructions != null) {
       _json["instructions"] = instructions.map((value) => (value).toJson()).toList();
     }
@@ -4822,8 +4825,8 @@ class MetricShortId {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metricIndex != null) {
       _json["metricIndex"] = metricIndex;
     }
@@ -4870,8 +4873,8 @@ class MetricStructuredName {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (context != null) {
       _json["context"] = context;
     }
@@ -5000,8 +5003,8 @@ class MetricUpdate {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cumulative != null) {
       _json["cumulative"] = cumulative;
     }
@@ -5054,8 +5057,8 @@ class MountedDataDisk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataDisk != null) {
       _json["dataDisk"] = dataDisk;
     }
@@ -5079,8 +5082,8 @@ class MultiOutputInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (tag != null) {
       _json["tag"] = tag;
     }
@@ -5121,8 +5124,8 @@ class NameAndKind {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -5168,8 +5171,8 @@ class Package {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (location != null) {
       _json["location"] = location;
     }
@@ -5223,8 +5226,8 @@ class ParDoInstruction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (input != null) {
       _json["input"] = (input).toJson();
     }
@@ -5300,8 +5303,8 @@ class ParallelInstruction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (flatten != null) {
       _json["flatten"] = (flatten).toJson();
     }
@@ -5356,8 +5359,8 @@ class Parameter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -5401,8 +5404,8 @@ class ParameterMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (helpText != null) {
       _json["helpText"] = helpText;
     }
@@ -5479,8 +5482,8 @@ class PartialGroupByKeyInstruction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (input != null) {
       _json["input"] = (input).toJson();
     }
@@ -5532,8 +5535,8 @@ class PipelineDescription {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayData != null) {
       _json["displayData"] = displayData.map((value) => (value).toJson()).toList();
     }
@@ -5595,8 +5598,8 @@ class Position {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (byteOffset != null) {
       _json["byteOffset"] = byteOffset;
     }
@@ -5680,8 +5683,8 @@ class PubsubLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dropLateData != null) {
       _json["dropLateData"] = dropLateData;
     }
@@ -5723,8 +5726,8 @@ class ReadInstruction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (source != null) {
       _json["source"] = (source).toJson();
     }
@@ -5769,8 +5772,8 @@ class ReportWorkItemStatusRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentWorkerTime != null) {
       _json["currentWorkerTime"] = currentWorkerTime;
     }
@@ -5805,8 +5808,8 @@ class ReportWorkItemStatusResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (workItemServiceStates != null) {
       _json["workItemServiceStates"] = workItemServiceStates.map((value) => (value).toJson()).toList();
     }
@@ -5842,8 +5845,8 @@ class ReportedParallelism {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (isInfinite != null) {
       _json["isInfinite"] = isInfinite;
     }
@@ -5871,8 +5874,8 @@ class ResourceUtilizationReport {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cpuTime != null) {
       _json["cpuTime"] = cpuTime.map((value) => (value).toJson()).toList();
     }
@@ -5888,8 +5891,8 @@ class ResourceUtilizationReportResponse {
   ResourceUtilizationReportResponse.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -5948,8 +5951,8 @@ class RuntimeEnvironment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bypassTempDirValidation != null) {
       _json["bypassTempDirValidation"] = bypassTempDirValidation;
     }
@@ -6000,8 +6003,8 @@ class SendDebugCaptureRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (componentId != null) {
       _json["componentId"] = componentId;
     }
@@ -6029,8 +6032,8 @@ class SendDebugCaptureResponse {
   SendDebugCaptureResponse.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -6053,8 +6056,8 @@ class SendWorkerMessagesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (location != null) {
       _json["location"] = location;
     }
@@ -6078,8 +6081,8 @@ class SendWorkerMessagesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (workerMessageResponses != null) {
       _json["workerMessageResponses"] = workerMessageResponses.map((value) => (value).toJson()).toList();
     }
@@ -6136,8 +6139,8 @@ class SeqMapTask {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inputs != null) {
       _json["inputs"] = inputs.map((value) => (value).toJson()).toList();
     }
@@ -6178,8 +6181,8 @@ class SeqMapTaskOutputInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sink != null) {
       _json["sink"] = (sink).toJson();
     }
@@ -6208,8 +6211,8 @@ class ShellTask {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (command != null) {
       _json["command"] = command;
     }
@@ -6256,8 +6259,8 @@ class SideInputInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6299,8 +6302,8 @@ class Sink {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (codec != null) {
       _json["codec"] = codec;
     }
@@ -6392,8 +6395,8 @@ class Source {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (baseSpecs != null) {
       _json["baseSpecs"] = baseSpecs;
     }
@@ -6441,8 +6444,8 @@ class SourceFork {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (primary != null) {
       _json["primary"] = (primary).toJson();
     }
@@ -6472,8 +6475,8 @@ class SourceGetMetadataRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (source != null) {
       _json["source"] = (source).toJson();
     }
@@ -6494,8 +6497,8 @@ class SourceGetMetadataResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -6539,8 +6542,8 @@ class SourceMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (estimatedSizeBytes != null) {
       _json["estimatedSizeBytes"] = estimatedSizeBytes;
     }
@@ -6575,8 +6578,8 @@ class SourceOperationRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (getMetadata != null) {
       _json["getMetadata"] = (getMetadata).toJson();
     }
@@ -6609,8 +6612,8 @@ class SourceOperationResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (getMetadata != null) {
       _json["getMetadata"] = (getMetadata).toJson();
     }
@@ -6645,8 +6648,8 @@ class SourceSplitOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (desiredBundleSizeBytes != null) {
       _json["desiredBundleSizeBytes"] = desiredBundleSizeBytes;
     }
@@ -6690,8 +6693,8 @@ class SourceSplitRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (options != null) {
       _json["options"] = (options).toJson();
     }
@@ -6742,8 +6745,8 @@ class SourceSplitResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bundles != null) {
       _json["bundles"] = bundles.map((value) => (value).toJson()).toList();
     }
@@ -6786,8 +6789,8 @@ class SourceSplitShard {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (derivationMode != null) {
       _json["derivationMode"] = derivationMode;
     }
@@ -6819,8 +6822,8 @@ class SplitInt64 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (highBits != null) {
       _json["highBits"] = highBits;
     }
@@ -6862,8 +6865,8 @@ class StageSource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -6898,8 +6901,8 @@ class StateFamilyConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (isRead != null) {
       _json["isRead"] = isRead;
     }
@@ -6998,8 +7001,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -7072,8 +7075,8 @@ class Step {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -7121,8 +7124,8 @@ class StreamLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (customSourceLocation != null) {
       _json["customSourceLocation"] = (customSourceLocation).toJson();
     }
@@ -7167,8 +7170,8 @@ class StreamingComputationConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (computationId != null) {
       _json["computationId"] = computationId;
     }
@@ -7206,8 +7209,8 @@ class StreamingComputationRanges {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (computationId != null) {
       _json["computationId"] = computationId;
     }
@@ -7253,8 +7256,8 @@ class StreamingComputationTask {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (computationRanges != null) {
       _json["computationRanges"] = computationRanges.map((value) => (value).toJson()).toList();
     }
@@ -7306,8 +7309,8 @@ class StreamingConfigTask {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (streamingComputationConfigs != null) {
       _json["streamingComputationConfigs"] = streamingComputationConfigs.map((value) => (value).toJson()).toList();
     }
@@ -7358,8 +7361,8 @@ class StreamingSetupTask {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (drain != null) {
       _json["drain"] = drain;
     }
@@ -7396,8 +7399,8 @@ class StreamingSideInputLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (stateFamily != null) {
       _json["stateFamily"] = stateFamily;
     }
@@ -7427,8 +7430,8 @@ class StreamingStageLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (streamId != null) {
       _json["streamId"] = streamId;
     }
@@ -7449,8 +7452,8 @@ class StringList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (elements != null) {
       _json["elements"] = elements;
     }
@@ -7488,8 +7491,8 @@ class StructuredMessage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (messageKey != null) {
       _json["messageKey"] = messageKey;
     }
@@ -7646,8 +7649,8 @@ class TaskRunnerSettings {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alsologtostderr != null) {
       _json["alsologtostderr"] = alsologtostderr;
     }
@@ -7711,13 +7714,6 @@ class TaskRunnerSettings {
 
 /** Metadata describing a template. */
 class TemplateMetadata {
-  /**
-   * If true, will bypass the validation that the temp directory is
-   * writable. This should only be used with templates for pipelines
-   * that are guaranteed not to need to write to the temp directory,
-   * which is subject to change based on the optimizer.
-   */
-  core.bool bypassTempDirValidation;
   /** Optional. A description of the template. */
   core.String description;
   /** Required. The name of the template. */
@@ -7728,9 +7724,6 @@ class TemplateMetadata {
   TemplateMetadata();
 
   TemplateMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("bypassTempDirValidation")) {
-      bypassTempDirValidation = _json["bypassTempDirValidation"];
-    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -7742,11 +7735,8 @@ class TemplateMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (bypassTempDirValidation != null) {
-      _json["bypassTempDirValidation"] = bypassTempDirValidation;
-    }
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -7796,8 +7786,8 @@ class TopologyConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (computations != null) {
       _json["computations"] = computations.map((value) => (value).toJson()).toList();
     }
@@ -7869,8 +7859,8 @@ class TransformSummary {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayData != null) {
       _json["displayData"] = displayData.map((value) => (value).toJson()).toList();
     }
@@ -7982,8 +7972,8 @@ class WorkItem {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (configuration != null) {
       _json["configuration"] = configuration;
     }
@@ -8104,8 +8094,8 @@ class WorkItemServiceState {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (harnessData != null) {
       _json["harnessData"] = harnessData;
     }
@@ -8258,8 +8248,8 @@ class WorkItemStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (completed != null) {
       _json["completed"] = completed;
     }
@@ -8349,8 +8339,8 @@ class WorkerHealthReport {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pods != null) {
       _json["pods"] = pods;
     }
@@ -8389,8 +8379,8 @@ class WorkerHealthReportResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (reportInterval != null) {
       _json["reportInterval"] = reportInterval;
     }
@@ -8442,8 +8432,8 @@ class WorkerMessage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -8526,8 +8516,8 @@ class WorkerMessageCode {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -8559,8 +8549,8 @@ class WorkerMessageResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (workerHealthReportResponse != null) {
       _json["workerHealthReportResponse"] = (workerHealthReportResponse).toJson();
     }
@@ -8781,8 +8771,8 @@ class WorkerPool {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoscalingSettings != null) {
       _json["autoscalingSettings"] = (autoscalingSettings).toJson();
     }
@@ -8914,8 +8904,8 @@ class WorkerSettings {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (baseUrl != null) {
       _json["baseUrl"] = baseUrl;
     }
@@ -8959,8 +8949,8 @@ class WriteInstruction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (input != null) {
       _json["input"] = (input).toJson();
     }

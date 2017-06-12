@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/prediction/v1_6.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -72,14 +72,14 @@ checkAnalyzeDataDescriptionFeaturesCategoricalValues(api.AnalyzeDataDescriptionF
   buildCounterAnalyzeDataDescriptionFeaturesCategoricalValues--;
 }
 
-buildUnnamed1738() {
+buildUnnamed1748() {
   var o = new core.List<api.AnalyzeDataDescriptionFeaturesCategoricalValues>();
   o.add(buildAnalyzeDataDescriptionFeaturesCategoricalValues());
   o.add(buildAnalyzeDataDescriptionFeaturesCategoricalValues());
   return o;
 }
 
-checkUnnamed1738(core.List<api.AnalyzeDataDescriptionFeaturesCategoricalValues> o) {
+checkUnnamed1748(core.List<api.AnalyzeDataDescriptionFeaturesCategoricalValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnalyzeDataDescriptionFeaturesCategoricalValues(o[0]);
   checkAnalyzeDataDescriptionFeaturesCategoricalValues(o[1]);
@@ -91,7 +91,7 @@ buildAnalyzeDataDescriptionFeaturesCategorical() {
   buildCounterAnalyzeDataDescriptionFeaturesCategorical++;
   if (buildCounterAnalyzeDataDescriptionFeaturesCategorical < 3) {
     o.count = "foo";
-    o.values = buildUnnamed1738();
+    o.values = buildUnnamed1748();
   }
   buildCounterAnalyzeDataDescriptionFeaturesCategorical--;
   return o;
@@ -101,7 +101,7 @@ checkAnalyzeDataDescriptionFeaturesCategorical(api.AnalyzeDataDescriptionFeature
   buildCounterAnalyzeDataDescriptionFeaturesCategorical++;
   if (buildCounterAnalyzeDataDescriptionFeaturesCategorical < 3) {
     unittest.expect(o.count, unittest.equals('foo'));
-    checkUnnamed1738(o.values);
+    checkUnnamed1748(o.values);
   }
   buildCounterAnalyzeDataDescriptionFeaturesCategorical--;
 }
@@ -173,14 +173,14 @@ checkAnalyzeDataDescriptionFeatures(api.AnalyzeDataDescriptionFeatures o) {
   buildCounterAnalyzeDataDescriptionFeatures--;
 }
 
-buildUnnamed1739() {
+buildUnnamed1749() {
   var o = new core.List<api.AnalyzeDataDescriptionFeatures>();
   o.add(buildAnalyzeDataDescriptionFeatures());
   o.add(buildAnalyzeDataDescriptionFeatures());
   return o;
 }
 
-checkUnnamed1739(core.List<api.AnalyzeDataDescriptionFeatures> o) {
+checkUnnamed1749(core.List<api.AnalyzeDataDescriptionFeatures> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnalyzeDataDescriptionFeatures(o[0]);
   checkAnalyzeDataDescriptionFeatures(o[1]);
@@ -230,14 +230,14 @@ checkAnalyzeDataDescriptionOutputFeatureText(api.AnalyzeDataDescriptionOutputFea
   buildCounterAnalyzeDataDescriptionOutputFeatureText--;
 }
 
-buildUnnamed1740() {
+buildUnnamed1750() {
   var o = new core.List<api.AnalyzeDataDescriptionOutputFeatureText>();
   o.add(buildAnalyzeDataDescriptionOutputFeatureText());
   o.add(buildAnalyzeDataDescriptionOutputFeatureText());
   return o;
 }
 
-checkUnnamed1740(core.List<api.AnalyzeDataDescriptionOutputFeatureText> o) {
+checkUnnamed1750(core.List<api.AnalyzeDataDescriptionOutputFeatureText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnalyzeDataDescriptionOutputFeatureText(o[0]);
   checkAnalyzeDataDescriptionOutputFeatureText(o[1]);
@@ -249,7 +249,7 @@ buildAnalyzeDataDescriptionOutputFeature() {
   buildCounterAnalyzeDataDescriptionOutputFeature++;
   if (buildCounterAnalyzeDataDescriptionOutputFeature < 3) {
     o.numeric = buildAnalyzeDataDescriptionOutputFeatureNumeric();
-    o.text = buildUnnamed1740();
+    o.text = buildUnnamed1750();
   }
   buildCounterAnalyzeDataDescriptionOutputFeature--;
   return o;
@@ -259,7 +259,7 @@ checkAnalyzeDataDescriptionOutputFeature(api.AnalyzeDataDescriptionOutputFeature
   buildCounterAnalyzeDataDescriptionOutputFeature++;
   if (buildCounterAnalyzeDataDescriptionOutputFeature < 3) {
     checkAnalyzeDataDescriptionOutputFeatureNumeric(o.numeric);
-    checkUnnamed1740(o.text);
+    checkUnnamed1750(o.text);
   }
   buildCounterAnalyzeDataDescriptionOutputFeature--;
 }
@@ -269,7 +269,7 @@ buildAnalyzeDataDescription() {
   var o = new api.AnalyzeDataDescription();
   buildCounterAnalyzeDataDescription++;
   if (buildCounterAnalyzeDataDescription < 3) {
-    o.features = buildUnnamed1739();
+    o.features = buildUnnamed1749();
     o.outputFeature = buildAnalyzeDataDescriptionOutputFeature();
   }
   buildCounterAnalyzeDataDescription--;
@@ -279,72 +279,72 @@ buildAnalyzeDataDescription() {
 checkAnalyzeDataDescription(api.AnalyzeDataDescription o) {
   buildCounterAnalyzeDataDescription++;
   if (buildCounterAnalyzeDataDescription < 3) {
-    checkUnnamed1739(o.features);
+    checkUnnamed1749(o.features);
     checkAnalyzeDataDescriptionOutputFeature(o.outputFeature);
   }
   buildCounterAnalyzeDataDescription--;
 }
 
-buildUnnamed1741() {
+buildUnnamed1751() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1741(core.Map<core.String, core.String> o) {
+checkUnnamed1751(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1742() {
+buildUnnamed1752() {
   var o = new core.List<core.Map<core.String, core.String>>();
-  o.add(buildUnnamed1741());
-  o.add(buildUnnamed1741());
+  o.add(buildUnnamed1751());
+  o.add(buildUnnamed1751());
   return o;
 }
 
-checkUnnamed1742(core.List<core.Map<core.String, core.String>> o) {
+checkUnnamed1752(core.List<core.Map<core.String, core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1741(o[0]);
-  checkUnnamed1741(o[1]);
+  checkUnnamed1751(o[0]);
+  checkUnnamed1751(o[1]);
 }
 
-buildUnnamed1743() {
+buildUnnamed1753() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1743(core.Map<core.String, core.String> o) {
+checkUnnamed1753(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1744() {
+buildUnnamed1754() {
   var o = new core.Map<core.String, core.Map<core.String, core.String>>();
-  o["x"] = buildUnnamed1743();
-  o["y"] = buildUnnamed1743();
+  o["x"] = buildUnnamed1753();
+  o["y"] = buildUnnamed1753();
   return o;
 }
 
-checkUnnamed1744(core.Map<core.String, core.Map<core.String, core.String>> o) {
+checkUnnamed1754(core.Map<core.String, core.Map<core.String, core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1743(o["x"]);
-  checkUnnamed1743(o["y"]);
+  checkUnnamed1753(o["x"]);
+  checkUnnamed1753(o["y"]);
 }
 
-buildUnnamed1745() {
+buildUnnamed1755() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1745(core.Map<core.String, core.String> o) {
+checkUnnamed1755(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -355,8 +355,8 @@ buildAnalyzeModelDescription() {
   var o = new api.AnalyzeModelDescription();
   buildCounterAnalyzeModelDescription++;
   if (buildCounterAnalyzeModelDescription < 3) {
-    o.confusionMatrix = buildUnnamed1744();
-    o.confusionMatrixRowTotals = buildUnnamed1745();
+    o.confusionMatrix = buildUnnamed1754();
+    o.confusionMatrixRowTotals = buildUnnamed1755();
     o.modelinfo = buildInsert2();
   }
   buildCounterAnalyzeModelDescription--;
@@ -366,8 +366,8 @@ buildAnalyzeModelDescription() {
 checkAnalyzeModelDescription(api.AnalyzeModelDescription o) {
   buildCounterAnalyzeModelDescription++;
   if (buildCounterAnalyzeModelDescription < 3) {
-    checkUnnamed1744(o.confusionMatrix);
-    checkUnnamed1745(o.confusionMatrixRowTotals);
+    checkUnnamed1754(o.confusionMatrix);
+    checkUnnamed1755(o.confusionMatrixRowTotals);
     checkInsert2(o.modelinfo);
   }
   buildCounterAnalyzeModelDescription--;
@@ -379,7 +379,7 @@ buildAnalyze() {
   buildCounterAnalyze++;
   if (buildCounterAnalyze < 3) {
     o.dataDescription = buildAnalyzeDataDescription();
-    o.errors = buildUnnamed1742();
+    o.errors = buildUnnamed1752();
     o.id = "foo";
     o.kind = "foo";
     o.modelDescription = buildAnalyzeModelDescription();
@@ -393,7 +393,7 @@ checkAnalyze(api.Analyze o) {
   buildCounterAnalyze++;
   if (buildCounterAnalyze < 3) {
     checkAnalyzeDataDescription(o.dataDescription);
-    checkUnnamed1742(o.errors);
+    checkUnnamed1752(o.errors);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkAnalyzeModelDescription(o.modelDescription);
@@ -402,14 +402,14 @@ checkAnalyze(api.Analyze o) {
   buildCounterAnalyze--;
 }
 
-buildUnnamed1746() {
+buildUnnamed1756() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed1746(core.List<core.Object> o) {
+checkUnnamed1756(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
@@ -420,7 +420,7 @@ buildInputInput() {
   var o = new api.InputInput();
   buildCounterInputInput++;
   if (buildCounterInputInput < 3) {
-    o.csvInstance = buildUnnamed1746();
+    o.csvInstance = buildUnnamed1756();
   }
   buildCounterInputInput--;
   return o;
@@ -429,7 +429,7 @@ buildInputInput() {
 checkInputInput(api.InputInput o) {
   buildCounterInputInput++;
   if (buildCounterInputInput < 3) {
-    checkUnnamed1746(o.csvInstance);
+    checkUnnamed1756(o.csvInstance);
   }
   buildCounterInputInput--;
 }
@@ -453,14 +453,14 @@ checkInput(api.Input o) {
   buildCounterInput--;
 }
 
-buildUnnamed1747() {
+buildUnnamed1757() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed1747(core.List<core.Object> o) {
+checkUnnamed1757(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o[0]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o[1]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
@@ -471,7 +471,7 @@ buildInsertTrainingInstances() {
   var o = new api.InsertTrainingInstances();
   buildCounterInsertTrainingInstances++;
   if (buildCounterInsertTrainingInstances < 3) {
-    o.csvInstance = buildUnnamed1747();
+    o.csvInstance = buildUnnamed1757();
     o.output = "foo";
   }
   buildCounterInsertTrainingInstances--;
@@ -481,49 +481,49 @@ buildInsertTrainingInstances() {
 checkInsertTrainingInstances(api.InsertTrainingInstances o) {
   buildCounterInsertTrainingInstances++;
   if (buildCounterInsertTrainingInstances < 3) {
-    checkUnnamed1747(o.csvInstance);
+    checkUnnamed1757(o.csvInstance);
     unittest.expect(o.output, unittest.equals('foo'));
   }
   buildCounterInsertTrainingInstances--;
 }
 
-buildUnnamed1748() {
+buildUnnamed1758() {
   var o = new core.List<api.InsertTrainingInstances>();
   o.add(buildInsertTrainingInstances());
   o.add(buildInsertTrainingInstances());
   return o;
 }
 
-checkUnnamed1748(core.List<api.InsertTrainingInstances> o) {
+checkUnnamed1758(core.List<api.InsertTrainingInstances> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInsertTrainingInstances(o[0]);
   checkInsertTrainingInstances(o[1]);
 }
 
-buildUnnamed1749() {
+buildUnnamed1759() {
   var o = new core.Map<core.String, core.double>();
   o["x"] = 42.0;
   o["y"] = 42.0;
   return o;
 }
 
-checkUnnamed1749(core.Map<core.String, core.double> o) {
+checkUnnamed1759(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals(42.0));
   unittest.expect(o["y"], unittest.equals(42.0));
 }
 
-buildUnnamed1750() {
+buildUnnamed1760() {
   var o = new core.List<core.Map<core.String, core.double>>();
-  o.add(buildUnnamed1749());
-  o.add(buildUnnamed1749());
+  o.add(buildUnnamed1759());
+  o.add(buildUnnamed1759());
   return o;
 }
 
-checkUnnamed1750(core.List<core.Map<core.String, core.double>> o) {
+checkUnnamed1760(core.List<core.Map<core.String, core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1749(o[0]);
-  checkUnnamed1749(o[1]);
+  checkUnnamed1759(o[0]);
+  checkUnnamed1759(o[1]);
 }
 
 core.int buildCounterInsert = 0;
@@ -537,8 +537,8 @@ buildInsert() {
     o.storageDataLocation = "foo";
     o.storagePMMLLocation = "foo";
     o.storagePMMLModelLocation = "foo";
-    o.trainingInstances = buildUnnamed1748();
-    o.utility = buildUnnamed1750();
+    o.trainingInstances = buildUnnamed1758();
+    o.utility = buildUnnamed1760();
   }
   buildCounterInsert--;
   return o;
@@ -553,8 +553,8 @@ checkInsert(api.Insert o) {
     unittest.expect(o.storageDataLocation, unittest.equals('foo'));
     unittest.expect(o.storagePMMLLocation, unittest.equals('foo'));
     unittest.expect(o.storagePMMLModelLocation, unittest.equals('foo'));
-    checkUnnamed1748(o.trainingInstances);
-    checkUnnamed1750(o.utility);
+    checkUnnamed1758(o.trainingInstances);
+    checkUnnamed1760(o.utility);
   }
   buildCounterInsert--;
 }
@@ -627,14 +627,14 @@ checkInsert2(api.Insert2 o) {
   buildCounterInsert2--;
 }
 
-buildUnnamed1751() {
+buildUnnamed1761() {
   var o = new core.List<api.Insert2>();
   o.add(buildInsert2());
   o.add(buildInsert2());
   return o;
 }
 
-checkUnnamed1751(core.List<api.Insert2> o) {
+checkUnnamed1761(core.List<api.Insert2> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInsert2(o[0]);
   checkInsert2(o[1]);
@@ -645,7 +645,7 @@ buildList() {
   var o = new api.List();
   buildCounterList++;
   if (buildCounterList < 3) {
-    o.items = buildUnnamed1751();
+    o.items = buildUnnamed1761();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -657,7 +657,7 @@ buildList() {
 checkList(api.List o) {
   buildCounterList++;
   if (buildCounterList < 3) {
-    checkUnnamed1751(o.items);
+    checkUnnamed1761(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -686,14 +686,14 @@ checkOutputOutputMulti(api.OutputOutputMulti o) {
   buildCounterOutputOutputMulti--;
 }
 
-buildUnnamed1752() {
+buildUnnamed1762() {
   var o = new core.List<api.OutputOutputMulti>();
   o.add(buildOutputOutputMulti());
   o.add(buildOutputOutputMulti());
   return o;
 }
 
-checkUnnamed1752(core.List<api.OutputOutputMulti> o) {
+checkUnnamed1762(core.List<api.OutputOutputMulti> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOutputOutputMulti(o[0]);
   checkOutputOutputMulti(o[1]);
@@ -707,7 +707,7 @@ buildOutput() {
     o.id = "foo";
     o.kind = "foo";
     o.outputLabel = "foo";
-    o.outputMulti = buildUnnamed1752();
+    o.outputMulti = buildUnnamed1762();
     o.outputValue = "foo";
     o.selfLink = "foo";
   }
@@ -721,21 +721,21 @@ checkOutput(api.Output o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.outputLabel, unittest.equals('foo'));
-    checkUnnamed1752(o.outputMulti);
+    checkUnnamed1762(o.outputMulti);
     unittest.expect(o.outputValue, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
   buildCounterOutput--;
 }
 
-buildUnnamed1753() {
+buildUnnamed1763() {
   var o = new core.List<core.Object>();
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
   return o;
 }
 
-checkUnnamed1753(core.List<core.Object> o) {
+checkUnnamed1763(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o[0]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
   var casted6 = (o[1]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
@@ -746,7 +746,7 @@ buildUpdate() {
   var o = new api.Update();
   buildCounterUpdate++;
   if (buildCounterUpdate < 3) {
-    o.csvInstance = buildUnnamed1753();
+    o.csvInstance = buildUnnamed1763();
     o.output = "foo";
   }
   buildCounterUpdate--;
@@ -756,7 +756,7 @@ buildUpdate() {
 checkUpdate(api.Update o) {
   buildCounterUpdate++;
   if (buildCounterUpdate < 3) {
-    checkUnnamed1753(o.csvInstance);
+    checkUnnamed1763(o.csvInstance);
     unittest.expect(o.output, unittest.equals('foo'));
   }
   buildCounterUpdate--;
@@ -961,7 +961,7 @@ main() {
       var arg_request = buildInput();
       var arg_project = "foo";
       var arg_hostedModelName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Input.fromJson(json);
         checkInput(obj);
 
@@ -996,7 +996,7 @@ main() {
         var resp = convert.JSON.encode(buildOutput());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.predict(arg_request, arg_project, arg_hostedModelName).then(unittest.expectAsync(((api.Output response) {
+      res.predict(arg_request, arg_project, arg_hostedModelName).then(unittest.expectAsync1(((api.Output response) {
         checkOutput(response);
       })));
     });
@@ -1011,7 +1011,7 @@ main() {
       api.TrainedmodelsResourceApi res = new api.PredictionApi(mock).trainedmodels;
       var arg_project = "foo";
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1043,7 +1043,7 @@ main() {
         var resp = convert.JSON.encode(buildAnalyze());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.analyze(arg_project, arg_id).then(unittest.expectAsync(((api.Analyze response) {
+      res.analyze(arg_project, arg_id).then(unittest.expectAsync1(((api.Analyze response) {
         checkAnalyze(response);
       })));
     });
@@ -1054,7 +1054,7 @@ main() {
       api.TrainedmodelsResourceApi res = new api.PredictionApi(mock).trainedmodels;
       var arg_project = "foo";
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1086,7 +1086,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_project, arg_id).then(unittest.expectAsync((_) {}));
+      res.delete(arg_project, arg_id).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -1095,7 +1095,7 @@ main() {
       api.TrainedmodelsResourceApi res = new api.PredictionApi(mock).trainedmodels;
       var arg_project = "foo";
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1127,7 +1127,7 @@ main() {
         var resp = convert.JSON.encode(buildInsert2());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_id).then(unittest.expectAsync(((api.Insert2 response) {
+      res.get(arg_project, arg_id).then(unittest.expectAsync1(((api.Insert2 response) {
         checkInsert2(response);
       })));
     });
@@ -1138,7 +1138,7 @@ main() {
       api.TrainedmodelsResourceApi res = new api.PredictionApi(mock).trainedmodels;
       var arg_request = buildInsert();
       var arg_project = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Insert.fromJson(json);
         checkInsert(obj);
 
@@ -1173,7 +1173,7 @@ main() {
         var resp = convert.JSON.encode(buildInsert2());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_project).then(unittest.expectAsync(((api.Insert2 response) {
+      res.insert(arg_request, arg_project).then(unittest.expectAsync1(((api.Insert2 response) {
         checkInsert2(response);
       })));
     });
@@ -1185,7 +1185,7 @@ main() {
       var arg_project = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1219,7 +1219,7 @@ main() {
         var resp = convert.JSON.encode(buildList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.List response) {
+      res.list(arg_project, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.List response) {
         checkList(response);
       })));
     });
@@ -1231,7 +1231,7 @@ main() {
       var arg_request = buildInput();
       var arg_project = "foo";
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Input.fromJson(json);
         checkInput(obj);
 
@@ -1266,7 +1266,7 @@ main() {
         var resp = convert.JSON.encode(buildOutput());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.predict(arg_request, arg_project, arg_id).then(unittest.expectAsync(((api.Output response) {
+      res.predict(arg_request, arg_project, arg_id).then(unittest.expectAsync1(((api.Output response) {
         checkOutput(response);
       })));
     });
@@ -1278,7 +1278,7 @@ main() {
       var arg_request = buildUpdate();
       var arg_project = "foo";
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Update.fromJson(json);
         checkUpdate(obj);
 
@@ -1313,7 +1313,7 @@ main() {
         var resp = convert.JSON.encode(buildInsert2());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_project, arg_id).then(unittest.expectAsync(((api.Insert2 response) {
+      res.update(arg_request, arg_project, arg_id).then(unittest.expectAsync1(((api.Insert2 response) {
         checkInsert2(response);
       })));
     });

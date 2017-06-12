@@ -465,8 +465,8 @@ class LicenseAssignment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etags != null) {
       _json["etags"] = etags;
     }
@@ -508,8 +508,8 @@ class LicenseAssignmentInsert {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (userId != null) {
       _json["userId"] = userId;
     }
@@ -548,8 +548,8 @@ class LicenseAssignmentList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }

@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/sourcerepo/v1.dart' as api;
 
@@ -46,32 +46,32 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed436() {
+buildUnnamed440() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed436(core.List<api.AuditLogConfig> o) {
+checkUnnamed440(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
 }
 
-buildUnnamed437() {
+buildUnnamed441() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed437(core.List<core.String> o) {
+checkUnnamed441(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -82,8 +82,8 @@ buildAuditConfig() {
   var o = new api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed436();
-    o.exemptedMembers = buildUnnamed437();
+    o.auditLogConfigs = buildUnnamed440();
+    o.exemptedMembers = buildUnnamed441();
     o.service = "foo";
   }
   buildCounterAuditConfig--;
@@ -93,21 +93,21 @@ buildAuditConfig() {
 checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed436(o.auditLogConfigs);
-    checkUnnamed437(o.exemptedMembers);
+    checkUnnamed440(o.auditLogConfigs);
+    checkUnnamed441(o.exemptedMembers);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-buildUnnamed438() {
+buildUnnamed442() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed438(core.List<core.String> o) {
+checkUnnamed442(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -118,7 +118,7 @@ buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed438();
+    o.exemptedMembers = buildUnnamed442();
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -128,20 +128,20 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed438(o.exemptedMembers);
+    checkUnnamed442(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
 }
 
-buildUnnamed439() {
+buildUnnamed443() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed439(core.List<core.String> o) {
+checkUnnamed443(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -152,7 +152,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed439();
+    o.members = buildUnnamed443();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -162,7 +162,7 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed439(o.members);
+    checkUnnamed443(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -173,6 +173,7 @@ buildCloudAuditOptions() {
   var o = new api.CloudAuditOptions();
   buildCounterCloudAuditOptions++;
   if (buildCounterCloudAuditOptions < 3) {
+    o.logName = "foo";
   }
   buildCounterCloudAuditOptions--;
   return o;
@@ -181,18 +182,19 @@ buildCloudAuditOptions() {
 checkCloudAuditOptions(api.CloudAuditOptions o) {
   buildCounterCloudAuditOptions++;
   if (buildCounterCloudAuditOptions < 3) {
+    unittest.expect(o.logName, unittest.equals('foo'));
   }
   buildCounterCloudAuditOptions--;
 }
 
-buildUnnamed440() {
+buildUnnamed444() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed440(core.List<core.String> o) {
+checkUnnamed444(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -208,7 +210,7 @@ buildCondition() {
     o.svc = "foo";
     o.sys = "foo";
     o.value = "foo";
-    o.values = buildUnnamed440();
+    o.values = buildUnnamed444();
   }
   buildCounterCondition--;
   return o;
@@ -222,7 +224,7 @@ checkCondition(api.Condition o) {
     unittest.expect(o.svc, unittest.equals('foo'));
     unittest.expect(o.sys, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
-    checkUnnamed440(o.values);
+    checkUnnamed444(o.values);
   }
   buildCounterCondition--;
 }
@@ -282,14 +284,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed441() {
+buildUnnamed445() {
   var o = new core.List<api.Repo>();
   o.add(buildRepo());
   o.add(buildRepo());
   return o;
 }
 
-checkUnnamed441(core.List<api.Repo> o) {
+checkUnnamed445(core.List<api.Repo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRepo(o[0]);
   checkRepo(o[1]);
@@ -301,7 +303,7 @@ buildListReposResponse() {
   buildCounterListReposResponse++;
   if (buildCounterListReposResponse < 3) {
     o.nextPageToken = "foo";
-    o.repos = buildUnnamed441();
+    o.repos = buildUnnamed445();
   }
   buildCounterListReposResponse--;
   return o;
@@ -311,7 +313,7 @@ checkListReposResponse(api.ListReposResponse o) {
   buildCounterListReposResponse++;
   if (buildCounterListReposResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed441(o.repos);
+    checkUnnamed445(o.repos);
   }
   buildCounterListReposResponse--;
 }
@@ -362,40 +364,40 @@ checkMirrorConfig(api.MirrorConfig o) {
   buildCounterMirrorConfig--;
 }
 
-buildUnnamed442() {
+buildUnnamed446() {
   var o = new core.List<api.AuditConfig>();
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-checkUnnamed442(core.List<api.AuditConfig> o) {
+checkUnnamed446(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-buildUnnamed443() {
+buildUnnamed447() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed443(core.List<api.Binding> o) {
+checkUnnamed447(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
 }
 
-buildUnnamed444() {
+buildUnnamed448() {
   var o = new core.List<api.Rule>();
   o.add(buildRule());
   o.add(buildRule());
   return o;
 }
 
-checkUnnamed444(core.List<api.Rule> o) {
+checkUnnamed448(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRule(o[0]);
   checkRule(o[1]);
@@ -406,11 +408,11 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed442();
-    o.bindings = buildUnnamed443();
+    o.auditConfigs = buildUnnamed446();
+    o.bindings = buildUnnamed447();
     o.etag = "foo";
     o.iamOwned = true;
-    o.rules = buildUnnamed444();
+    o.rules = buildUnnamed448();
     o.version = 42;
   }
   buildCounterPolicy--;
@@ -420,11 +422,11 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed442(o.auditConfigs);
-    checkUnnamed443(o.bindings);
+    checkUnnamed446(o.auditConfigs);
+    checkUnnamed447(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.iamOwned, unittest.isTrue);
-    checkUnnamed444(o.rules);
+    checkUnnamed448(o.rules);
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
@@ -455,66 +457,66 @@ checkRepo(api.Repo o) {
   buildCounterRepo--;
 }
 
-buildUnnamed445() {
+buildUnnamed449() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed445(core.List<api.Condition> o) {
+checkUnnamed449(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed446() {
+buildUnnamed450() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed446(core.List<core.String> o) {
+checkUnnamed450(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed447() {
+buildUnnamed451() {
   var o = new core.List<api.LogConfig>();
   o.add(buildLogConfig());
   o.add(buildLogConfig());
   return o;
 }
 
-checkUnnamed447(core.List<api.LogConfig> o) {
+checkUnnamed451(core.List<api.LogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogConfig(o[0]);
   checkLogConfig(o[1]);
 }
 
-buildUnnamed448() {
+buildUnnamed452() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed448(core.List<core.String> o) {
+checkUnnamed452(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed449() {
+buildUnnamed453() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed449(core.List<core.String> o) {
+checkUnnamed453(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -526,12 +528,12 @@ buildRule() {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     o.action = "foo";
-    o.conditions = buildUnnamed445();
+    o.conditions = buildUnnamed449();
     o.description = "foo";
-    o.in_ = buildUnnamed446();
-    o.logConfig = buildUnnamed447();
-    o.notIn = buildUnnamed448();
-    o.permissions = buildUnnamed449();
+    o.in_ = buildUnnamed450();
+    o.logConfig = buildUnnamed451();
+    o.notIn = buildUnnamed452();
+    o.permissions = buildUnnamed453();
   }
   buildCounterRule--;
   return o;
@@ -541,12 +543,12 @@ checkRule(api.Rule o) {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
-    checkUnnamed445(o.conditions);
+    checkUnnamed449(o.conditions);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed446(o.in_);
-    checkUnnamed447(o.logConfig);
-    checkUnnamed448(o.notIn);
-    checkUnnamed449(o.permissions);
+    checkUnnamed450(o.in_);
+    checkUnnamed451(o.logConfig);
+    checkUnnamed452(o.notIn);
+    checkUnnamed453(o.permissions);
   }
   buildCounterRule--;
 }
@@ -572,14 +574,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed450() {
+buildUnnamed454() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed450(core.List<core.String> o) {
+checkUnnamed454(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -590,7 +592,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed450();
+    o.permissions = buildUnnamed454();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -599,19 +601,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed450(o.permissions);
+    checkUnnamed454(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed451() {
+buildUnnamed455() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed451(core.List<core.String> o) {
+checkUnnamed455(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -622,7 +624,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed451();
+    o.permissions = buildUnnamed455();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -631,7 +633,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed451(o.permissions);
+    checkUnnamed455(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -798,7 +800,7 @@ main() {
       api.ProjectsReposResourceApi res = new api.SourcerepoApi(mock).projects.repos;
       var arg_request = buildRepo();
       var arg_parent = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Repo.fromJson(json);
         checkRepo(obj);
 
@@ -836,7 +838,7 @@ main() {
         var resp = convert.JSON.encode(buildRepo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_parent).then(unittest.expectAsync(((api.Repo response) {
+      res.create(arg_request, arg_parent).then(unittest.expectAsync1(((api.Repo response) {
         checkRepo(response);
       })));
     });
@@ -846,7 +848,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsReposResourceApi res = new api.SourcerepoApi(mock).projects.repos;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -881,7 +883,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(unittest.expectAsync(((api.Empty response) {
+      res.delete(arg_name).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -891,7 +893,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsReposResourceApi res = new api.SourcerepoApi(mock).projects.repos;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -926,7 +928,7 @@ main() {
         var resp = convert.JSON.encode(buildRepo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.Repo response) {
+      res.get(arg_name).then(unittest.expectAsync1(((api.Repo response) {
         checkRepo(response);
       })));
     });
@@ -936,7 +938,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsReposResourceApi res = new api.SourcerepoApi(mock).projects.repos;
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -971,7 +973,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.getIamPolicy(arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -983,7 +985,7 @@ main() {
       var arg_name = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1020,7 +1022,7 @@ main() {
         var resp = convert.JSON.encode(buildListReposResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListReposResponse response) {
+      res.list(arg_name, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.ListReposResponse response) {
         checkListReposResponse(response);
       })));
     });
@@ -1031,7 +1033,7 @@ main() {
       api.ProjectsReposResourceApi res = new api.SourcerepoApi(mock).projects.repos;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
@@ -1069,7 +1071,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -1080,7 +1082,7 @@ main() {
       api.ProjectsReposResourceApi res = new api.SourcerepoApi(mock).projects.repos;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
@@ -1118,7 +1120,7 @@ main() {
         var resp = convert.JSON.encode(buildTestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync(((api.TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
         checkTestIamPermissionsResponse(response);
       })));
     });

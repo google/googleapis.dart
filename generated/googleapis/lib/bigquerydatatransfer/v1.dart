@@ -36,6 +36,7 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsDataSourcesResourceApi get dataSources => new ProjectsDataSourcesResourceApi(_requester);
+  ProjectsLocationsResourceApi get locations => new ProjectsLocationsResourceApi(_requester);
   ProjectsTransferConfigsResourceApi get transferConfigs => new ProjectsTransferConfigsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : 
@@ -297,6 +298,873 @@ class ProjectsDataSourcesResourceApi {
 }
 
 
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataSourcesResourceApi get dataSources => new ProjectsLocationsDataSourcesResourceApi(_requester);
+  ProjectsLocationsTransferConfigsResourceApi get transferConfigs => new ProjectsLocationsTransferConfigsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns true if data transfer is enabled for a project.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The name of the project resource in the form:
+   * `projects/{project_id}`
+   * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+   *
+   * Completes with a [IsEnabledResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<IsEnabledResponse> isEnabled(IsEnabledRequest request, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':isEnabled';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new IsEnabledResponse.fromJson(data));
+  }
+
+  /**
+   * Enables or disables data transfer for a project. This
+   * method requires the additional scope of
+   * 'https://www.googleapis.com/auth/cloudplatformprojects'
+   * to manage the cloud project permissions.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The name of the project resource in the form:
+   * `projects/{project_id}`
+   * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> setEnabled(SetEnabledRequest request, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setEnabled';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+}
+
+
+class ProjectsLocationsDataSourcesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataSourcesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns true if valid credentials exist for the given data source and
+   * requesting user.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The data source in the form:
+   * `projects/{project_id}/dataSources/{data_source_id}`
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
+   *
+   * Completes with a [CheckValidCredsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CheckValidCredsResponse> checkValidCreds(CheckValidCredsRequest request, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':checkValidCreds';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CheckValidCredsResponse.fromJson(data));
+  }
+
+  /**
+   * Retrieves a supported data source and returns its settings,
+   * which can be used for UI rendering.
+   *
+   * Request parameters:
+   *
+   * [name] - The field will contain name of the resource requested, for
+   * example:
+   * `projects/{project_id}/dataSources/{data_source_id}`
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
+   *
+   * Completes with a [DataSource].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<DataSource> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DataSource.fromJson(data));
+  }
+
+  /**
+   * Lists supported data sources and returns their settings,
+   * which can be used for UI rendering.
+   *
+   * Request parameters:
+   *
+   * [parent] - The BigQuery project id for which data sources should be
+   * returned.
+   * Must be in the form: `projects/{project_id}`
+   * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+   *
+   * [pageToken] - Pagination token, which can be used to request a specific
+   * page
+   * of `ListDataSourcesRequest` list results. For multiple-page
+   * results, `ListDataSourcesResponse` outputs
+   * a `next_page` token, which can be used as the
+   * `page_token` value to request the next page of list results.
+   *
+   * [pageSize] - Page size. The default page size is the maximum value of 1000
+   * results.
+   *
+   * Completes with a [ListDataSourcesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListDataSourcesResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dataSources';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListDataSourcesResponse.fromJson(data));
+  }
+
+}
+
+
+class ProjectsLocationsTransferConfigsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTransferConfigsRunsResourceApi get runs => new ProjectsLocationsTransferConfigsRunsResourceApi(_requester);
+
+  ProjectsLocationsTransferConfigsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a new data transfer configuration.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [parent] - The BigQuery project id where the transfer configuration should
+   * be created.
+   * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+   *
+   * [authorizationCode] - Optional OAuth2 authorization code to use with this
+   * transfer configuration.
+   * This is required if new credentials are needed, as indicated by
+   * `CheckValidCreds`.
+   * In order to obtain authorization_code, please make a
+   * request to
+   * https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
+   *
+   * * client_id should be OAuth client_id of BigQuery DTS API for the given
+   *   data source returned by ListDataSources method.
+   * * data_source_scopes are the scopes returned by ListDataSources method.
+   * * redirect_uri is an optional parameter. If not specified, then
+   *   authorization code is posted to the opener of authorization flow window.
+   *   Otherwise it will be sent to the redirect uri. A special value of
+   *   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
+   *   returned in the title bar of the browser, with the page text prompting
+   *   the user to copy the code and paste it in the application.
+   *
+   * Completes with a [TransferConfig].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TransferConfig> create(TransferConfig request, core.String parent, {core.String authorizationCode}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferConfigs';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TransferConfig.fromJson(data));
+  }
+
+  /**
+   * Deletes a data transfer configuration,
+   * including any associated transfer runs and logs.
+   *
+   * Request parameters:
+   *
+   * [name] - The field will contain name of the resource requested, for
+   * example:
+   * `projects/{project_id}/transferConfigs/{config_id}`
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Returns information about a data transfer config.
+   *
+   * Request parameters:
+   *
+   * [name] - The field will contain name of the resource requested, for
+   * example:
+   * `projects/{project_id}/transferConfigs/{config_id}`
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+   *
+   * Completes with a [TransferConfig].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TransferConfig> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TransferConfig.fromJson(data));
+  }
+
+  /**
+   * Returns information about all data transfers in the project.
+   *
+   * Request parameters:
+   *
+   * [parent] - The BigQuery project id for which data sources
+   * should be returned: `projects/{project_id}`.
+   * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+   *
+   * [pageToken] - Pagination token, which can be used to request a specific
+   * page
+   * of `ListTransfersRequest` list results. For multiple-page
+   * results, `ListTransfersResponse` outputs
+   * a `next_page` token, which can be used as the
+   * `page_token` value to request the next page of list results.
+   *
+   * [pageSize] - Page size. The default page size is the maximum value of 1000
+   * results.
+   *
+   * [dataSourceIds] - When specified, only configurations of requested data
+   * sources are returned.
+   *
+   * Completes with a [ListTransferConfigsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> dataSourceIds}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferConfigs';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListTransferConfigsResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a data transfer configuration.
+   * All fields must be set, even if they are not updated.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the transfer run.
+   * Transfer run names have the form
+   * `projects/{project_id}/transferConfigs/{config_id}`.
+   * Where `config_id` is usually a uuid, even though it is not
+   * guaranteed or required. The name is ignored when creating a transfer run.
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+   *
+   * [authorizationCode] - Optional OAuth2 authorization code to use with this
+   * transfer configuration.
+   * If it is provided, the transfer configuration will be associated with the
+   * gaia id of the authorizing user.
+   * In order to obtain authorization_code, please make a
+   * request to
+   * https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
+   *
+   * * client_id should be OAuth client_id of BigQuery DTS API for the given
+   *   data source returned by ListDataSources method.
+   * * data_source_scopes are the scopes returned by ListDataSources method.
+   * * redirect_uri is an optional parameter. If not specified, then
+   *   authorization code is posted to the opener of authorization flow window.
+   *   Otherwise it will be sent to the redirect uri. A special value of
+   *   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
+   *   returned in the title bar of the browser, with the page text prompting
+   *   the user to copy the code and paste it in the application.
+   *
+   * [updateMask] - Required list of fields to be updated in this request.
+   *
+   * Completes with a [TransferConfig].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TransferConfig> patch(TransferConfig request, core.String name, {core.String authorizationCode, core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TransferConfig.fromJson(data));
+  }
+
+  /**
+   * Creates transfer runs for a time range [range_start_time, range_end_time].
+   * For each date - or whatever granularity the data source supports - in the
+   * range, one transfer run is created.
+   * Note that runs are created per UTC time in the time range.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [parent] - Transfer configuration name in the form:
+   * `projects/{project_id}/transferConfigs/{config_id}`.
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+   *
+   * Completes with a [ScheduleTransferRunsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ScheduleTransferRunsResponse> scheduleRuns(ScheduleTransferRunsRequest request, core.String parent) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':scheduleRuns';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ScheduleTransferRunsResponse.fromJson(data));
+  }
+
+}
+
+
+class ProjectsLocationsTransferConfigsRunsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi get transferLogs => new ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi(_requester);
+
+  ProjectsLocationsTransferConfigsRunsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified transfer run.
+   *
+   * Request parameters:
+   *
+   * [name] - The field will contain name of the resource requested, for
+   * example:
+   * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Returns information about the particular transfer run.
+   *
+   * Request parameters:
+   *
+   * [name] - The field will contain name of the resource requested, for
+   * example:
+   * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+   *
+   * Completes with a [TransferRun].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TransferRun> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TransferRun.fromJson(data));
+  }
+
+  /**
+   * Returns information about running and completed jobs.
+   *
+   * Request parameters:
+   *
+   * [parent] - Name of transfer configuration for which transfer runs should be
+   * retrieved.
+   * Format of transfer configuration resource name is:
+   * `projects/{project_id}/transferConfigs/{config_id}`.
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+   *
+   * [pageToken] - Pagination token, which can be used to request a specific
+   * page
+   * of `ListTransferRunsRequest` list results. For multiple-page
+   * results, `ListTransferRunsResponse` outputs
+   * a `next_page` token, which can be used as the
+   * `page_token` value to request the next page of list results.
+   *
+   * [statuses] - When specified, only transfer runs with requested statuses are
+   * returned.
+   *
+   * [pageSize] - Page size. The default page size is the maximum value of 1000
+   * results.
+   *
+   * [runAttempt] - Indicates how run attempts are to be pulled.
+   * Possible string values are:
+   * - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
+   * - "LATEST" : A LATEST.
+   *
+   * Completes with a [ListTransferRunsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListTransferRunsResponse> list(core.String parent, {core.String pageToken, core.List<core.String> statuses, core.int pageSize, core.String runAttempt}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (statuses != null) {
+      _queryParams["statuses"] = statuses;
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListTransferRunsResponse.fromJson(data));
+  }
+
+}
+
+
+class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Returns user facing log messages for the data transfer run.
+   *
+   * Request parameters:
+   *
+   * [parent] - Transfer run name in the form:
+   * `projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.
+   * Value must have pattern
+   * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+   *
+   * [pageToken] - Pagination token, which can be used to request a specific
+   * page
+   * of `ListTransferLogsRequest` list results. For multiple-page
+   * results, `ListTransferLogsResponse` outputs
+   * a `next_page` token, which can be used as the
+   * `page_token` value to request the next page of list results.
+   *
+   * [pageSize] - Page size. The default page size is the maximum value of 1000
+   * results.
+   *
+   * [messageTypes] - Message types to return. If not populated - INFO, WARNING
+   * and ERROR
+   * messages are returned.
+   *
+   * Completes with a [ListTransferLogsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListTransferLogsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> messageTypes}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (messageTypes != null) {
+      _queryParams["messageTypes"] = messageTypes;
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferLogs';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListTransferLogsResponse.fromJson(data));
+  }
+
+}
+
+
 class ProjectsTransferConfigsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -466,9 +1334,6 @@ class ProjectsTransferConfigsResourceApi {
    * should be returned: `projects/{project_id}`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [dataSourceIds] - When specified, only configurations of requested data
-   * sources are returned.
-   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransfersRequest` list results. For multiple-page
@@ -479,6 +1344,9 @@ class ProjectsTransferConfigsResourceApi {
    * [pageSize] - Page size. The default page size is the maximum value of 1000
    * results.
    *
+   * [dataSourceIds] - When specified, only configurations of requested data
+   * sources are returned.
+   *
    * Completes with a [ListTransferConfigsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -487,7 +1355,7 @@ class ProjectsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.List<core.String> dataSourceIds, core.String pageToken, core.int pageSize}) {
+  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> dataSourceIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -498,14 +1366,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferConfigs';
@@ -834,10 +1702,6 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
    *
-   * [messageTypes] - Message types to return. If not populated - INFO, WARNING
-   * and ERROR
-   * messages are returned.
-   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransferLogsRequest` list results. For multiple-page
@@ -848,6 +1712,10 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
    * [pageSize] - Page size. The default page size is the maximum value of 1000
    * results.
    *
+   * [messageTypes] - Message types to return. If not populated - INFO, WARNING
+   * and ERROR
+   * messages are returned.
+   *
    * Completes with a [ListTransferLogsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -856,7 +1724,7 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferLogsResponse> list(core.String parent, {core.List<core.String> messageTypes, core.String pageToken, core.int pageSize}) {
+  async.Future<ListTransferLogsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> messageTypes}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -867,14 +1735,14 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (messageTypes != null) {
-      _queryParams["messageTypes"] = messageTypes;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (messageTypes != null) {
+      _queryParams["messageTypes"] = messageTypes;
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferLogs';
@@ -908,8 +1776,8 @@ class CheckValidCredsRequest {
   CheckValidCredsRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -927,8 +1795,8 @@ class CheckValidCredsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (hasValidCreds != null) {
       _json["hasValidCreds"] = hasValidCreds;
     }
@@ -1099,8 +1967,8 @@ class DataSource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (authorizationType != null) {
       _json["authorizationType"] = authorizationType;
     }
@@ -1263,8 +2131,8 @@ class DataSourceParameter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowedValues != null) {
       _json["allowedValues"] = allowedValues;
     }
@@ -1332,8 +2200,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1346,8 +2214,8 @@ class IsEnabledRequest {
   IsEnabledRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1365,8 +2233,8 @@ class IsEnabledResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -1398,8 +2266,8 @@ class ListDataSourcesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataSources != null) {
       _json["dataSources"] = dataSources.map((value) => (value).toJson()).toList();
     }
@@ -1437,8 +2305,8 @@ class ListTransferConfigsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1476,8 +2344,8 @@ class ListTransferLogsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1515,8 +2383,8 @@ class ListTransferRunsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1545,8 +2413,8 @@ class ScheduleTransferRunsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rangeEndTime != null) {
       _json["rangeEndTime"] = rangeEndTime;
     }
@@ -1570,8 +2438,8 @@ class ScheduleTransferRunsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createdRuns != null) {
       _json["createdRuns"] = createdRuns.map((value) => (value).toJson()).toList();
     }
@@ -1594,8 +2462,8 @@ class SetEnabledRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -1684,13 +2552,6 @@ class TransferConfig {
    * @OutputOnly
    */
   core.String updateTime;
-  /**
-   * GaiaID of the user on whose behalf transfer is done. Applicable only
-   * to data sources that do not support service accounts. When set to 0,
-   * the data source service account credentials are used.
-   * @OutputOnly
-   */
-  core.String userId;
 
   TransferConfig();
 
@@ -1728,13 +2589,10 @@ class TransferConfig {
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
-    }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataRefreshWindowDays != null) {
       _json["dataRefreshWindowDays"] = dataRefreshWindowDays;
     }
@@ -1767,9 +2625,6 @@ class TransferConfig {
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
-    }
-    if (userId != null) {
-      _json["userId"] = userId;
     }
     return _json;
   }
@@ -1805,8 +2660,8 @@ class TransferMessage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (messageText != null) {
       _json["messageText"] = messageText;
     }
@@ -1890,11 +2745,6 @@ class TransferRun {
    * @OutputOnly
    */
   core.String updateTime;
-  /**
-   * The user id for this transfer run.
-   * @OutputOnly
-   */
-  core.String userId;
 
   TransferRun();
 
@@ -1932,13 +2782,10 @@ class TransferRun {
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
-    }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
@@ -1971,9 +2818,6 @@ class TransferRun {
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
-    }
-    if (userId != null) {
-      _json["userId"] = userId;
     }
     return _json;
   }

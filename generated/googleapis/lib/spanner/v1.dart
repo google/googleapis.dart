@@ -396,14 +396,6 @@ class ProjectsInstancesResourceApi {
    * requested. Values are of the form `projects/<project>`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - If non-empty, `page_token` should contain a
-   * next_page_token from a
-   * previous ListInstancesResponse.
-   *
-   * [pageSize] - Number of instances to be returned in the response. If 0 or
-   * less, defaults
-   * to the server's maximum allowed page size.
-   *
    * [filter] - An expression for filtering the results of the request. Filter
    * rules are
    * case insensitive. The fields eligible for filtering are:
@@ -425,6 +417,14 @@ class ProjectsInstancesResourceApi {
    *                                  it has the label "env" with its value
    *                                  containing "dev".
    *
+   * [pageToken] - If non-empty, `page_token` should contain a
+   * next_page_token from a
+   * previous ListInstancesResponse.
+   *
+   * [pageSize] - Number of instances to be returned in the response. If 0 or
+   * less, defaults
+   * to the server's maximum allowed page size.
+   *
    * Completes with a [ListInstancesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -433,7 +433,7 @@ class ProjectsInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstancesResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListInstancesResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -444,14 +444,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instances';
@@ -1271,11 +1271,11 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$".
    *
+   * [filter] - The standard list filter.
+   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -1285,7 +1285,7 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1296,14 +1296,14 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2000,11 +2000,11 @@ class ProjectsInstancesOperationsResourceApi {
    * [name] - The name of the operation collection.
    * Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
    *
+   * [pageSize] - The standard list page size.
+   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
-   *
-   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -2014,7 +2014,7 @@ class ProjectsInstancesOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2025,14 +2025,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2132,8 +2132,8 @@ class AuditConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] = auditLogConfigs.map((value) => (value).toJson()).toList();
     }
@@ -2196,8 +2196,8 @@ class AuditLogConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -2221,8 +2221,8 @@ class BeginTransactionRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (options != null) {
       _json["options"] = (options).toJson();
     }
@@ -2274,8 +2274,8 @@ class Binding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -2326,8 +2326,8 @@ class ChildLink {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (childIndex != null) {
       _json["childIndex"] = childIndex;
     }
@@ -2349,8 +2349,8 @@ class CloudAuditOptions {
   CloudAuditOptions.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2399,8 +2399,8 @@ class CommitRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (mutations != null) {
       _json["mutations"] = mutations.map((value) => (value).toJson()).toList();
     }
@@ -2427,8 +2427,8 @@ class CommitResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (commitTimestamp != null) {
       _json["commitTimestamp"] = commitTimestamp;
     }
@@ -2529,8 +2529,8 @@ class Condition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (iam != null) {
       _json["iam"] = iam;
     }
@@ -2571,8 +2571,8 @@ class CounterOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (field != null) {
       _json["field"] = field;
     }
@@ -2599,8 +2599,8 @@ class CreateDatabaseMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (database != null) {
       _json["database"] = database;
     }
@@ -2637,8 +2637,8 @@ class CreateDatabaseRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createStatement != null) {
       _json["createStatement"] = createStatement;
     }
@@ -2688,8 +2688,8 @@ class CreateInstanceMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cancelTime != null) {
       _json["cancelTime"] = cancelTime;
     }
@@ -2731,8 +2731,8 @@ class CreateInstanceRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instance != null) {
       _json["instance"] = (instance).toJson();
     }
@@ -2751,8 +2751,8 @@ class DataAccessOptions {
   DataAccessOptions.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2789,8 +2789,8 @@ class Database {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2819,8 +2819,8 @@ class Delete {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keySet != null) {
       _json["keySet"] = (keySet).toJson();
     }
@@ -2849,8 +2849,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2934,7 +2934,7 @@ class ExecuteSqlRequest {
 
   ExecuteSqlRequest.fromJson(core.Map _json) {
     if (_json.containsKey("paramTypes")) {
-      paramTypes = commons.mapMap(_json["paramTypes"], (item) => new Type.fromJson(item));
+      paramTypes = commons.mapMap<core.Map<core.String, core.Object>, Type>(_json["paramTypes"], (core.Map<core.String, core.Object> item) => new Type.fromJson(item));
     }
     if (_json.containsKey("params")) {
       params = _json["params"];
@@ -2953,10 +2953,10 @@ class ExecuteSqlRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (paramTypes != null) {
-      _json["paramTypes"] = commons.mapMap(paramTypes, (item) => (item).toJson());
+      _json["paramTypes"] = commons.mapMap<Type, core.Map<core.String, core.Object>>(paramTypes, (Type item) => (item).toJson());
     }
     if (params != null) {
       _json["params"] = params;
@@ -3003,8 +3003,8 @@ class Field {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -3031,8 +3031,8 @@ class GetDatabaseDdlResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (statements != null) {
       _json["statements"] = statements;
     }
@@ -3048,8 +3048,8 @@ class GetIamPolicyRequest {
   GetIamPolicyRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3145,8 +3145,8 @@ class Instance {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (config != null) {
       _json["config"] = config;
     }
@@ -3194,8 +3194,8 @@ class InstanceConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3345,8 +3345,8 @@ class KeyRange {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endClosed != null) {
       _json["endClosed"] = endClosed;
     }
@@ -3409,8 +3409,8 @@ class KeySet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (all != null) {
       _json["all"] = all;
     }
@@ -3446,8 +3446,8 @@ class ListDatabasesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (databases != null) {
       _json["databases"] = databases.map((value) => (value).toJson()).toList();
     }
@@ -3480,8 +3480,8 @@ class ListInstanceConfigsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceConfigs != null) {
       _json["instanceConfigs"] = instanceConfigs.map((value) => (value).toJson()).toList();
     }
@@ -3514,8 +3514,8 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances.map((value) => (value).toJson()).toList();
     }
@@ -3544,8 +3544,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -3579,8 +3579,8 @@ class LogConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cloudAudit != null) {
       _json["cloudAudit"] = (cloudAudit).toJson();
     }
@@ -3649,8 +3649,8 @@ class Mutation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (delete != null) {
       _json["delete"] = (delete).toJson();
     }
@@ -3734,8 +3734,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -3894,8 +3894,8 @@ class PartialResultSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (chunkedValue != null) {
       _json["chunkedValue"] = chunkedValue;
     }
@@ -3995,8 +3995,8 @@ class PlanNode {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (childLinks != null) {
       _json["childLinks"] = childLinks.map((value) => (value).toJson()).toList();
     }
@@ -4123,8 +4123,8 @@ class Policy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auditConfigs != null) {
       _json["auditConfigs"] = auditConfigs.map((value) => (value).toJson()).toList();
     }
@@ -4164,8 +4164,8 @@ class QueryPlan {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (planNodes != null) {
       _json["planNodes"] = planNodes.map((value) => (value).toJson()).toList();
     }
@@ -4261,8 +4261,8 @@ class ReadOnly {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (exactStaleness != null) {
       _json["exactStaleness"] = exactStaleness;
     }
@@ -4369,8 +4369,8 @@ class ReadRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns;
     }
@@ -4404,8 +4404,8 @@ class ReadWrite {
   ReadWrite.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -4450,8 +4450,8 @@ class ResultSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -4495,8 +4495,8 @@ class ResultSetMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rowType != null) {
       _json["rowType"] = (rowType).toJson();
     }
@@ -4538,8 +4538,8 @@ class ResultSetStats {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (queryPlan != null) {
       _json["queryPlan"] = (queryPlan).toJson();
     }
@@ -4570,8 +4570,8 @@ class RollbackRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (transactionId != null) {
       _json["transactionId"] = transactionId;
     }
@@ -4650,8 +4650,8 @@ class Rule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -4690,8 +4690,8 @@ class Session {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -4728,8 +4728,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -4767,8 +4767,8 @@ class ShortRepresentation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -4867,8 +4867,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -4902,8 +4902,8 @@ class StructType {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
     }
@@ -4928,8 +4928,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -4953,8 +4953,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -5000,8 +5000,8 @@ class Transaction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -5260,8 +5260,8 @@ class TransactionOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (readOnly != null) {
       _json["readOnly"] = (readOnly).toJson();
     }
@@ -5316,8 +5316,8 @@ class TransactionSelector {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (begin != null) {
       _json["begin"] = (begin).toJson();
     }
@@ -5383,8 +5383,8 @@ class Type {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (arrayElementType != null) {
       _json["arrayElementType"] = (arrayElementType).toJson();
     }
@@ -5431,8 +5431,8 @@ class UpdateDatabaseDdlMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (commitTimestamps != null) {
       _json["commitTimestamps"] = commitTimestamps;
     }
@@ -5501,8 +5501,8 @@ class UpdateDatabaseDdlRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
@@ -5551,8 +5551,8 @@ class UpdateInstanceMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cancelTime != null) {
       _json["cancelTime"] = cancelTime;
     }
@@ -5600,8 +5600,8 @@ class UpdateInstanceRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fieldMask != null) {
       _json["fieldMask"] = fieldMask;
     }
@@ -5656,8 +5656,8 @@ class Write {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns;
     }

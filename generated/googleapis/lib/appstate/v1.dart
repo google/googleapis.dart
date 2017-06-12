@@ -299,8 +299,8 @@ class GetResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentStateVersion != null) {
       _json["currentStateVersion"] = currentStateVersion;
     }
@@ -343,8 +343,8 @@ class ListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -379,8 +379,8 @@ class UpdateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (data != null) {
       _json["data"] = data;
     }
@@ -417,8 +417,8 @@ class WriteResult {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentStateVersion != null) {
       _json["currentStateVersion"] = currentStateVersion;
     }

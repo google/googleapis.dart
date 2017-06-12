@@ -923,11 +923,6 @@ class BeaconsAttachmentsResourceApi {
    * Required.
    * Value must have pattern "^beacons/[^/]+$".
    *
-   * [namespacedType] - Specifies the namespace and type of attachment to
-   * include in response in
-   * <var>namespace/type</var> format. Accepts `* / * ` to specify
-   * "all types in all namespaces".
-   *
    * [projectId] - The project id to list beacon attachments under. This field
    * can be
    * used when "*" is specified to mean all attachment namespaces. Projects
@@ -935,6 +930,11 @@ class BeaconsAttachmentsResourceApi {
    * specified and the projectId string is empty, then the project
    * making the request is used.
    * Optional.
+   *
+   * [namespacedType] - Specifies the namespace and type of attachment to
+   * include in response in
+   * <var>namespace/type</var> format. Accepts `* / * ` to specify
+   * "all types in all namespaces".
    *
    * Completes with a [ListBeaconAttachmentsResponse].
    *
@@ -944,7 +944,7 @@ class BeaconsAttachmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName, {core.String namespacedType, core.String projectId}) {
+  async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName, {core.String projectId, core.String namespacedType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -955,11 +955,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (namespacedType != null) {
-      _queryParams["namespacedType"] = [namespacedType];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (namespacedType != null) {
+      _queryParams["namespacedType"] = [namespacedType];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/attachments';
@@ -998,6 +998,10 @@ class BeaconsDiagnosticsResourceApi {
    * [beaconName] - Beacon that the diagnostics are for.
    * Value must have pattern "^beacons/[^/]+$".
    *
+   * [pageToken] - Requests results that occur after the `page_token`, obtained
+   * from the
+   * response to a previous request. Optional.
+   *
    * [pageSize] - Specifies the maximum number of results to return. Defaults to
    * 10. Maximum 1000. Optional.
    *
@@ -1014,10 +1018,6 @@ class BeaconsDiagnosticsResourceApi {
    * then the project making the request will be used for looking up
    * diagnostic records. Optional.
    *
-   * [pageToken] - Requests results that occur after the `page_token`, obtained
-   * from the
-   * response to a previous request. Optional.
-   *
    * Completes with a [ListDiagnosticsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1026,7 +1026,7 @@ class BeaconsDiagnosticsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDiagnosticsResponse> list(core.String beaconName, {core.int pageSize, core.String alertFilter, core.String projectId, core.String pageToken}) {
+  async.Future<ListDiagnosticsResponse> list(core.String beaconName, {core.String pageToken, core.int pageSize, core.String alertFilter, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1037,6 +1037,9 @@ class BeaconsDiagnosticsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -1045,9 +1048,6 @@ class BeaconsDiagnosticsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/diagnostics';
@@ -1272,8 +1272,8 @@ class AdvertisedId {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1317,8 +1317,8 @@ class AttachmentInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (data != null) {
       _json["data"] = data;
     }
@@ -1475,8 +1475,8 @@ class Beacon {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (advertisedId != null) {
       _json["advertisedId"] = (advertisedId).toJson();
     }
@@ -1567,8 +1567,8 @@ class BeaconAttachment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attachmentName != null) {
       _json["attachmentName"] = attachmentName;
     }
@@ -1614,8 +1614,8 @@ class BeaconInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (advertisedId != null) {
       _json["advertisedId"] = (advertisedId).toJson();
     }
@@ -1666,8 +1666,8 @@ class Date {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -1694,8 +1694,8 @@ class DeleteAttachmentsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (numDeleted != null) {
       _json["numDeleted"] = numDeleted;
     }
@@ -1733,8 +1733,8 @@ class Diagnostics {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alerts != null) {
       _json["alerts"] = alerts;
     }
@@ -1766,8 +1766,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1894,8 +1894,8 @@ class EphemeralIdRegistration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (beaconEcdhPublicKey != null) {
       _json["beaconEcdhPublicKey"] = beaconEcdhPublicKey;
     }
@@ -1964,8 +1964,8 @@ class EphemeralIdRegistrationParams {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxRotationPeriodExponent != null) {
       _json["maxRotationPeriodExponent"] = maxRotationPeriodExponent;
     }
@@ -2010,8 +2010,8 @@ class GetInfoForObservedBeaconsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (namespacedTypes != null) {
       _json["namespacedTypes"] = namespacedTypes;
     }
@@ -2041,8 +2041,8 @@ class GetInfoForObservedBeaconsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (beacons != null) {
       _json["beacons"] = beacons.map((value) => (value).toJson()).toList();
     }
@@ -2066,8 +2066,8 @@ class IndoorLevel {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2133,8 +2133,8 @@ class LatLng {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -2160,8 +2160,8 @@ class ListBeaconAttachmentsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attachments != null) {
       _json["attachments"] = attachments.map((value) => (value).toJson()).toList();
     }
@@ -2198,8 +2198,8 @@ class ListBeaconsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (beacons != null) {
       _json["beacons"] = beacons.map((value) => (value).toJson()).toList();
     }
@@ -2234,8 +2234,8 @@ class ListDiagnosticsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (diagnostics != null) {
       _json["diagnostics"] = diagnostics.map((value) => (value).toJson()).toList();
     }
@@ -2261,8 +2261,8 @@ class ListNamespacesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (namespaces != null) {
       _json["namespaces"] = namespaces.map((value) => (value).toJson()).toList();
     }
@@ -2302,8 +2302,8 @@ class Namespace {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (namespaceName != null) {
       _json["namespaceName"] = namespaceName;
     }
@@ -2355,8 +2355,8 @@ class Observation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (advertisedId != null) {
       _json["advertisedId"] = (advertisedId).toJson();
     }

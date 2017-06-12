@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/gamesmanagement/v1management.dart' as api;
 
@@ -46,19 +46,19 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed675() {
+buildUnnamed680() {
   var o = new core.List<api.AchievementResetResponse>();
   o.add(buildAchievementResetResponse());
   o.add(buildAchievementResetResponse());
   return o;
 }
 
-checkUnnamed675(core.List<api.AchievementResetResponse> o) {
+checkUnnamed680(core.List<api.AchievementResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementResetResponse(o[0]);
   checkAchievementResetResponse(o[1]);
@@ -70,7 +70,7 @@ buildAchievementResetAllResponse() {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     o.kind = "foo";
-    o.results = buildUnnamed675();
+    o.results = buildUnnamed680();
   }
   buildCounterAchievementResetAllResponse--;
   return o;
@@ -80,19 +80,19 @@ checkAchievementResetAllResponse(api.AchievementResetAllResponse o) {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed675(o.results);
+    checkUnnamed680(o.results);
   }
   buildCounterAchievementResetAllResponse--;
 }
 
-buildUnnamed676() {
+buildUnnamed681() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed676(core.List<core.String> o) {
+checkUnnamed681(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -103,7 +103,7 @@ buildAchievementResetMultipleForAllRequest() {
   var o = new api.AchievementResetMultipleForAllRequest();
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
-    o.achievementIds = buildUnnamed676();
+    o.achievementIds = buildUnnamed681();
     o.kind = "foo";
   }
   buildCounterAchievementResetMultipleForAllRequest--;
@@ -113,7 +113,7 @@ buildAchievementResetMultipleForAllRequest() {
 checkAchievementResetMultipleForAllRequest(api.AchievementResetMultipleForAllRequest o) {
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
-    checkUnnamed676(o.achievementIds);
+    checkUnnamed681(o.achievementIds);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAchievementResetMultipleForAllRequest--;
@@ -144,14 +144,14 @@ checkAchievementResetResponse(api.AchievementResetResponse o) {
   buildCounterAchievementResetResponse--;
 }
 
-buildUnnamed677() {
+buildUnnamed682() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed677(core.List<core.String> o) {
+checkUnnamed682(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -162,7 +162,7 @@ buildEventsResetMultipleForAllRequest() {
   var o = new api.EventsResetMultipleForAllRequest();
   buildCounterEventsResetMultipleForAllRequest++;
   if (buildCounterEventsResetMultipleForAllRequest < 3) {
-    o.eventIds = buildUnnamed677();
+    o.eventIds = buildUnnamed682();
     o.kind = "foo";
   }
   buildCounterEventsResetMultipleForAllRequest--;
@@ -172,7 +172,7 @@ buildEventsResetMultipleForAllRequest() {
 checkEventsResetMultipleForAllRequest(api.EventsResetMultipleForAllRequest o) {
   buildCounterEventsResetMultipleForAllRequest++;
   if (buildCounterEventsResetMultipleForAllRequest < 3) {
-    checkUnnamed677(o.eventIds);
+    checkUnnamed682(o.eventIds);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterEventsResetMultipleForAllRequest--;
@@ -270,14 +270,14 @@ checkHiddenPlayer(api.HiddenPlayer o) {
   buildCounterHiddenPlayer--;
 }
 
-buildUnnamed678() {
+buildUnnamed683() {
   var o = new core.List<api.HiddenPlayer>();
   o.add(buildHiddenPlayer());
   o.add(buildHiddenPlayer());
   return o;
 }
 
-checkUnnamed678(core.List<api.HiddenPlayer> o) {
+checkUnnamed683(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHiddenPlayer(o[0]);
   checkHiddenPlayer(o[1]);
@@ -288,7 +288,7 @@ buildHiddenPlayerList() {
   var o = new api.HiddenPlayerList();
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    o.items = buildUnnamed678();
+    o.items = buildUnnamed683();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -299,7 +299,7 @@ buildHiddenPlayerList() {
 checkHiddenPlayerList(api.HiddenPlayerList o) {
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    checkUnnamed678(o.items);
+    checkUnnamed683(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -368,14 +368,14 @@ checkPlayer(api.Player o) {
   buildCounterPlayer--;
 }
 
-buildUnnamed679() {
+buildUnnamed684() {
   var o = new core.List<api.PlayerScoreResetResponse>();
   o.add(buildPlayerScoreResetResponse());
   o.add(buildPlayerScoreResetResponse());
   return o;
 }
 
-checkUnnamed679(core.List<api.PlayerScoreResetResponse> o) {
+checkUnnamed684(core.List<api.PlayerScoreResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScoreResetResponse(o[0]);
   checkPlayerScoreResetResponse(o[1]);
@@ -387,7 +387,7 @@ buildPlayerScoreResetAllResponse() {
   buildCounterPlayerScoreResetAllResponse++;
   if (buildCounterPlayerScoreResetAllResponse < 3) {
     o.kind = "foo";
-    o.results = buildUnnamed679();
+    o.results = buildUnnamed684();
   }
   buildCounterPlayerScoreResetAllResponse--;
   return o;
@@ -397,19 +397,19 @@ checkPlayerScoreResetAllResponse(api.PlayerScoreResetAllResponse o) {
   buildCounterPlayerScoreResetAllResponse++;
   if (buildCounterPlayerScoreResetAllResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed679(o.results);
+    checkUnnamed684(o.results);
   }
   buildCounterPlayerScoreResetAllResponse--;
 }
 
-buildUnnamed680() {
+buildUnnamed685() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed680(core.List<core.String> o) {
+checkUnnamed685(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -422,7 +422,7 @@ buildPlayerScoreResetResponse() {
   if (buildCounterPlayerScoreResetResponse < 3) {
     o.definitionId = "foo";
     o.kind = "foo";
-    o.resetScoreTimeSpans = buildUnnamed680();
+    o.resetScoreTimeSpans = buildUnnamed685();
   }
   buildCounterPlayerScoreResetResponse--;
   return o;
@@ -433,7 +433,7 @@ checkPlayerScoreResetResponse(api.PlayerScoreResetResponse o) {
   if (buildCounterPlayerScoreResetResponse < 3) {
     unittest.expect(o.definitionId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed680(o.resetScoreTimeSpans);
+    checkUnnamed685(o.resetScoreTimeSpans);
   }
   buildCounterPlayerScoreResetResponse--;
 }
@@ -459,14 +459,14 @@ checkProfileSettings(api.ProfileSettings o) {
   buildCounterProfileSettings--;
 }
 
-buildUnnamed681() {
+buildUnnamed686() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed681(core.List<core.String> o) {
+checkUnnamed686(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -478,7 +478,7 @@ buildQuestsResetMultipleForAllRequest() {
   buildCounterQuestsResetMultipleForAllRequest++;
   if (buildCounterQuestsResetMultipleForAllRequest < 3) {
     o.kind = "foo";
-    o.questIds = buildUnnamed681();
+    o.questIds = buildUnnamed686();
   }
   buildCounterQuestsResetMultipleForAllRequest--;
   return o;
@@ -488,19 +488,19 @@ checkQuestsResetMultipleForAllRequest(api.QuestsResetMultipleForAllRequest o) {
   buildCounterQuestsResetMultipleForAllRequest++;
   if (buildCounterQuestsResetMultipleForAllRequest < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed681(o.questIds);
+    checkUnnamed686(o.questIds);
   }
   buildCounterQuestsResetMultipleForAllRequest--;
 }
 
-buildUnnamed682() {
+buildUnnamed687() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed682(core.List<core.String> o) {
+checkUnnamed687(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -512,7 +512,7 @@ buildScoresResetMultipleForAllRequest() {
   buildCounterScoresResetMultipleForAllRequest++;
   if (buildCounterScoresResetMultipleForAllRequest < 3) {
     o.kind = "foo";
-    o.leaderboardIds = buildUnnamed682();
+    o.leaderboardIds = buildUnnamed687();
   }
   buildCounterScoresResetMultipleForAllRequest--;
   return o;
@@ -522,7 +522,7 @@ checkScoresResetMultipleForAllRequest(api.ScoresResetMultipleForAllRequest o) {
   buildCounterScoresResetMultipleForAllRequest++;
   if (buildCounterScoresResetMultipleForAllRequest < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed682(o.leaderboardIds);
+    checkUnnamed687(o.leaderboardIds);
   }
   buildCounterScoresResetMultipleForAllRequest--;
 }
@@ -679,7 +679,7 @@ main() {
       var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
       var arg_achievementId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -722,7 +722,7 @@ main() {
         var resp = convert.JSON.encode(buildAchievementResetResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reset(arg_achievementId).then(unittest.expectAsync(((api.AchievementResetResponse response) {
+      res.reset(arg_achievementId).then(unittest.expectAsync1(((api.AchievementResetResponse response) {
         checkAchievementResetResponse(response);
       })));
     });
@@ -731,7 +731,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -767,7 +767,7 @@ main() {
         var resp = convert.JSON.encode(buildAchievementResetAllResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAll().then(unittest.expectAsync(((api.AchievementResetAllResponse response) {
+      res.resetAll().then(unittest.expectAsync1(((api.AchievementResetAllResponse response) {
         checkAchievementResetAllResponse(response);
       })));
     });
@@ -776,7 +776,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -812,7 +812,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAllForAllPlayers().then(unittest.expectAsync((_) {}));
+      res.resetAllForAllPlayers().then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetForAllPlayers", () {
@@ -820,7 +820,7 @@ main() {
       var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
       var arg_achievementId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -863,7 +863,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetForAllPlayers(arg_achievementId).then(unittest.expectAsync((_) {}));
+      res.resetForAllPlayers(arg_achievementId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetMultipleForAllPlayers", () {
@@ -871,7 +871,7 @@ main() {
       var mock = new HttpServerMock();
       api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
       var arg_request = buildAchievementResetMultipleForAllRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.AchievementResetMultipleForAllRequest.fromJson(json);
         checkAchievementResetMultipleForAllRequest(obj);
 
@@ -910,7 +910,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync((_) {}));
+      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync1((_) {}));
     });
 
   });
@@ -924,7 +924,7 @@ main() {
       var arg_applicationId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -969,7 +969,7 @@ main() {
         var resp = convert.JSON.encode(buildHiddenPlayerList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listHidden(arg_applicationId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.HiddenPlayerList response) {
+      res.listHidden(arg_applicationId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.HiddenPlayerList response) {
         checkHiddenPlayerList(response);
       })));
     });
@@ -983,7 +983,7 @@ main() {
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
       var arg_eventId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1026,14 +1026,14 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reset(arg_eventId).then(unittest.expectAsync((_) {}));
+      res.reset(arg_eventId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetAll", () {
 
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1069,14 +1069,14 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAll().then(unittest.expectAsync((_) {}));
+      res.resetAll().then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetAllForAllPlayers", () {
 
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1112,7 +1112,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAllForAllPlayers().then(unittest.expectAsync((_) {}));
+      res.resetAllForAllPlayers().then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetForAllPlayers", () {
@@ -1120,7 +1120,7 @@ main() {
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
       var arg_eventId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1163,7 +1163,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetForAllPlayers(arg_eventId).then(unittest.expectAsync((_) {}));
+      res.resetForAllPlayers(arg_eventId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetMultipleForAllPlayers", () {
@@ -1171,7 +1171,7 @@ main() {
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
       var arg_request = buildEventsResetMultipleForAllRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.EventsResetMultipleForAllRequest.fromJson(json);
         checkEventsResetMultipleForAllRequest(obj);
 
@@ -1210,7 +1210,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync((_) {}));
+      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync1((_) {}));
     });
 
   });
@@ -1223,7 +1223,7 @@ main() {
       api.PlayersResourceApi res = new api.GamesManagementApi(mock).players;
       var arg_applicationId = "foo";
       var arg_playerId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1269,7 +1269,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.hide(arg_applicationId, arg_playerId).then(unittest.expectAsync((_) {}));
+      res.hide(arg_applicationId, arg_playerId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--unhide", () {
@@ -1278,7 +1278,7 @@ main() {
       api.PlayersResourceApi res = new api.GamesManagementApi(mock).players;
       var arg_applicationId = "foo";
       var arg_playerId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1324,7 +1324,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.unhide(arg_applicationId, arg_playerId).then(unittest.expectAsync((_) {}));
+      res.unhide(arg_applicationId, arg_playerId).then(unittest.expectAsync1((_) {}));
     });
 
   });
@@ -1336,7 +1336,7 @@ main() {
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
       var arg_questId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1379,14 +1379,14 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reset(arg_questId).then(unittest.expectAsync((_) {}));
+      res.reset(arg_questId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetAll", () {
 
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1422,14 +1422,14 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAll().then(unittest.expectAsync((_) {}));
+      res.resetAll().then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetAllForAllPlayers", () {
 
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1465,7 +1465,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAllForAllPlayers().then(unittest.expectAsync((_) {}));
+      res.resetAllForAllPlayers().then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetForAllPlayers", () {
@@ -1473,7 +1473,7 @@ main() {
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
       var arg_questId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1516,7 +1516,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetForAllPlayers(arg_questId).then(unittest.expectAsync((_) {}));
+      res.resetForAllPlayers(arg_questId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetMultipleForAllPlayers", () {
@@ -1524,7 +1524,7 @@ main() {
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
       var arg_request = buildQuestsResetMultipleForAllRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.QuestsResetMultipleForAllRequest.fromJson(json);
         checkQuestsResetMultipleForAllRequest(obj);
 
@@ -1563,7 +1563,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync((_) {}));
+      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync1((_) {}));
     });
 
   });
@@ -1574,7 +1574,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesManagementApi(mock).rooms;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1610,14 +1610,14 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reset().then(unittest.expectAsync((_) {}));
+      res.reset().then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetForAllPlayers", () {
 
       var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesManagementApi(mock).rooms;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1653,7 +1653,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetForAllPlayers().then(unittest.expectAsync((_) {}));
+      res.resetForAllPlayers().then(unittest.expectAsync1((_) {}));
     });
 
   });
@@ -1665,7 +1665,7 @@ main() {
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
       var arg_leaderboardId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1708,7 +1708,7 @@ main() {
         var resp = convert.JSON.encode(buildPlayerScoreResetResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reset(arg_leaderboardId).then(unittest.expectAsync(((api.PlayerScoreResetResponse response) {
+      res.reset(arg_leaderboardId).then(unittest.expectAsync1(((api.PlayerScoreResetResponse response) {
         checkPlayerScoreResetResponse(response);
       })));
     });
@@ -1717,7 +1717,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1753,7 +1753,7 @@ main() {
         var resp = convert.JSON.encode(buildPlayerScoreResetAllResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAll().then(unittest.expectAsync(((api.PlayerScoreResetAllResponse response) {
+      res.resetAll().then(unittest.expectAsync1(((api.PlayerScoreResetAllResponse response) {
         checkPlayerScoreResetAllResponse(response);
       })));
     });
@@ -1762,7 +1762,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1798,7 +1798,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAllForAllPlayers().then(unittest.expectAsync((_) {}));
+      res.resetAllForAllPlayers().then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetForAllPlayers", () {
@@ -1806,7 +1806,7 @@ main() {
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
       var arg_leaderboardId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1849,7 +1849,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetForAllPlayers(arg_leaderboardId).then(unittest.expectAsync((_) {}));
+      res.resetForAllPlayers(arg_leaderboardId).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetMultipleForAllPlayers", () {
@@ -1857,7 +1857,7 @@ main() {
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
       var arg_request = buildScoresResetMultipleForAllRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ScoresResetMultipleForAllRequest.fromJson(json);
         checkScoresResetMultipleForAllRequest(obj);
 
@@ -1896,7 +1896,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync((_) {}));
+      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync1((_) {}));
     });
 
   });
@@ -1907,7 +1907,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesManagementApi(mock).turnBasedMatches;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1943,14 +1943,14 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reset().then(unittest.expectAsync((_) {}));
+      res.reset().then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetForAllPlayers", () {
 
       var mock = new HttpServerMock();
       api.TurnBasedMatchesResourceApi res = new api.GamesManagementApi(mock).turnBasedMatches;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1986,7 +1986,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetForAllPlayers().then(unittest.expectAsync((_) {}));
+      res.resetForAllPlayers().then(unittest.expectAsync1((_) {}));
     });
 
   });

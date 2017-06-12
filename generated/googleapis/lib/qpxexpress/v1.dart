@@ -103,8 +103,8 @@ class AircraftData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -155,8 +155,8 @@ class AirportData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (city != null) {
       _json["city"] = city;
     }
@@ -209,8 +209,8 @@ class BagDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (commercialName != null) {
       _json["commercialName"] = commercialName;
     }
@@ -262,8 +262,8 @@ class CarrierData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -314,8 +314,8 @@ class CityData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -380,8 +380,8 @@ class Data {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aircraft != null) {
       _json["aircraft"] = aircraft.map((value) => (value).toJson()).toList();
     }
@@ -460,8 +460,8 @@ class FareInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (basisCode != null) {
       _json["basisCode"] = basisCode;
     }
@@ -512,8 +512,8 @@ class FlightInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (carrier != null) {
       _json["carrier"] = carrier;
     }
@@ -568,8 +568,8 @@ class FreeBaggageAllowance {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bagDescriptor != null) {
       _json["bagDescriptor"] = bagDescriptor.map((value) => (value).toJson()).toList();
     }
@@ -716,8 +716,8 @@ class LegInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aircraft != null) {
       _json["aircraft"] = aircraft;
     }
@@ -821,8 +821,8 @@ class PassengerCounts {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (adultCount != null) {
       _json["adultCount"] = adultCount;
     }
@@ -944,8 +944,8 @@ class PricingInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (baseFareTotal != null) {
       _json["baseFareTotal"] = baseFareTotal;
     }
@@ -1075,8 +1075,8 @@ class SegmentInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bookingCode != null) {
       _json["bookingCode"] = bookingCode;
     }
@@ -1148,8 +1148,8 @@ class SegmentPricing {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fareId != null) {
       _json["fareId"] = fareId;
     }
@@ -1203,8 +1203,8 @@ class SliceInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (duration != null) {
       _json["duration"] = duration;
     }
@@ -1303,8 +1303,8 @@ class SliceInput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alliance != null) {
       _json["alliance"] = alliance;
     }
@@ -1368,8 +1368,8 @@ class TaxData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1427,8 +1427,8 @@ class TaxInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (chargeType != null) {
       _json["chargeType"] = chargeType;
     }
@@ -1478,8 +1478,8 @@ class TimeOfDayRange {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (earliestTime != null) {
       _json["earliestTime"] = earliestTime;
     }
@@ -1532,8 +1532,8 @@ class TripOption {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1610,8 +1610,8 @@ class TripOptionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxPrice != null) {
       _json["maxPrice"] = maxPrice;
     }
@@ -1668,8 +1668,8 @@ class TripOptionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (data != null) {
       _json["data"] = (data).toJson();
     }
@@ -1702,8 +1702,8 @@ class TripsSearchRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (request != null) {
       _json["request"] = (request).toJson();
     }
@@ -1732,8 +1732,8 @@ class TripsSearchResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }

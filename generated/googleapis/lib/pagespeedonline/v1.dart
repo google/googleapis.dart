@@ -134,8 +134,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksHeaderArgs {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -168,8 +168,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksHeader {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (args != null) {
       _json["args"] = args.map((value) => (value).toJson()).toList();
     }
@@ -200,8 +200,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetailsArgs {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -233,8 +233,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsDetails {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (args != null) {
       _json["args"] = args.map((value) => (value).toJson()).toList();
     }
@@ -265,8 +265,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResultArgs {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -301,8 +301,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrlsResult {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (args != null) {
       _json["args"] = args.map((value) => (value).toJson()).toList();
     }
@@ -336,8 +336,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocksUrls {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (details != null) {
       _json["details"] = details.map((value) => (value).toJson()).toList();
     }
@@ -368,8 +368,8 @@ class ResultFormattedResultsRuleResultsValueUrlBlocks {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -417,8 +417,8 @@ class ResultFormattedResultsRuleResultsValue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (localizedRuleName != null) {
       _json["localizedRuleName"] = localizedRuleName;
     }
@@ -452,17 +452,17 @@ class ResultFormattedResults {
       locale = _json["locale"];
     }
     if (_json.containsKey("ruleResults")) {
-      ruleResults = commons.mapMap(_json["ruleResults"], (item) => new ResultFormattedResultsRuleResultsValue.fromJson(item));
+      ruleResults = commons.mapMap<core.Map<core.String, core.Object>, ResultFormattedResultsRuleResultsValue>(_json["ruleResults"], (core.Map<core.String, core.Object> item) => new ResultFormattedResultsRuleResultsValue.fromJson(item));
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (locale != null) {
       _json["locale"] = locale;
     }
     if (ruleResults != null) {
-      _json["ruleResults"] = commons.mapMap(ruleResults, (item) => (item).toJson());
+      _json["ruleResults"] = commons.mapMap<ResultFormattedResultsRuleResultsValue, core.Map<core.String, core.Object>>(ruleResults, (ResultFormattedResultsRuleResultsValue item) => (item).toJson());
     }
     return _json;
   }
@@ -550,8 +550,8 @@ class ResultPageStats {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cssResponseBytes != null) {
       _json["cssResponseBytes"] = cssResponseBytes;
     }
@@ -630,8 +630,8 @@ class ResultScreenshot {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (data != null) {
       _json["data"] = data;
     }
@@ -666,8 +666,8 @@ class ResultVersion {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (major != null) {
       _json["major"] = major;
     }
@@ -754,8 +754,8 @@ class Result {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (formattedResults != null) {
       _json["formattedResults"] = (formattedResults).toJson();
     }

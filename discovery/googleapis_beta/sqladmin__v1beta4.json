@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Euc4LCSjh6fw7Ncb7AG5gCqXa7Y\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/XsY4JGYlYgyTyxbJioMS7bSip2s\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -718,7 +718,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "Reserved for future use.",
+                            "description": "An expression for filtering the results of the request, such as by name or label.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1490,7 +1490,7 @@
             }
         }
     },
-    "revision": "20170522",
+    "revision": "20170606",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2206,21 +2206,6 @@
             },
             "type": "object"
         },
-        "Labels": {
-            "description": "Reserved for future use.",
-            "id": "Labels",
-            "properties": {
-                "key": {
-                    "description": "Reserved for future use.",
-                    "type": "string"
-                },
-                "value": {
-                    "description": "Reserved for future use.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "LocationPreference": {
             "description": "Preferred location. This specifies where a Cloud SQL instance should preferably be located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.",
             "id": "LocationPreference",
@@ -2570,13 +2555,6 @@
                     "description": "This is always sql#settings.",
                     "type": "string"
                 },
-                "labels": {
-                    "description": "Reserved for future use.",
-                    "items": {
-                        "$ref": "Labels"
-                    },
-                    "type": "array"
-                },
                 "locationPreference": {
                     "$ref": "LocationPreference",
                     "description": "The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or GCE zone for better performance. App Engine co-location is only applicable to First Generation instances."
@@ -2621,6 +2599,14 @@
                     },
                     "description": "The tier of service for this instance, for example D1, D2. For more information, see pricing.",
                     "type": "string"
+                },
+                "userLabels": {
+                    "additionalProperties": {
+                        "description": "An individual label entry, composed of a key and a value.",
+                        "type": "string"
+                    },
+                    "description": "User-provided labels, represented as a dictionary where each label is a single key value pair.",
+                    "type": "object"
                 }
             },
             "type": "object"

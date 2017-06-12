@@ -1205,8 +1205,8 @@ class AchievementResetAllResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1238,8 +1238,8 @@ class AchievementResetMultipleForAllRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (achievementIds != null) {
       _json["achievement_ids"] = achievementIds;
     }
@@ -1288,8 +1288,8 @@ class AchievementResetResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentState != null) {
       _json["currentState"] = currentState;
     }
@@ -1327,8 +1327,8 @@ class EventsResetMultipleForAllRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (eventIds != null) {
       _json["event_ids"] = eventIds;
     }
@@ -1365,8 +1365,8 @@ class GamesPlayedResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoMatched != null) {
       _json["autoMatched"] = autoMatched;
     }
@@ -1413,8 +1413,8 @@ class GamesPlayerExperienceInfoResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentExperiencePoints != null) {
       _json["currentExperiencePoints"] = currentExperiencePoints;
     }
@@ -1454,8 +1454,8 @@ class GamesPlayerLevelResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (level != null) {
       _json["level"] = level;
     }
@@ -1495,8 +1495,8 @@ class HiddenPlayer {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (hiddenTimeMillis != null) {
       _json["hiddenTimeMillis"] = hiddenTimeMillis;
     }
@@ -1536,8 +1536,8 @@ class HiddenPlayerList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -1578,8 +1578,8 @@ class PlayerName {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (familyName != null) {
       _json["familyName"] = familyName;
     }
@@ -1678,8 +1678,8 @@ class Player {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (avatarImageUrl != null) {
       _json["avatarImageUrl"] = avatarImageUrl;
     }
@@ -1741,8 +1741,8 @@ class PlayerScoreResetAllResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1785,8 +1785,8 @@ class PlayerScoreResetResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (definitionId != null) {
       _json["definitionId"] = definitionId;
     }
@@ -1824,8 +1824,8 @@ class ProfileSettings {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1857,8 +1857,8 @@ class QuestsResetMultipleForAllRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1890,8 +1890,8 @@ class ScoresResetMultipleForAllRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }

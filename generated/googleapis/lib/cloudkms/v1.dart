@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client cloudkms/v1';
 
 /**
- * Manages encryption for your cloud services the same way you do on-premise.
+ * Manages encryption for your cloud services the same way you do on-premises.
  * You can generate, use, rotate, and destroy AES256 encryption keys.
  */
 class CloudkmsApi {
@@ -98,11 +98,11 @@ class ProjectsLocationsResourceApi {
    * [name] - The resource that owns the locations collection, if applicable.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - The standard list page token.
-   *
    * [pageSize] - The standard list page size.
    *
    * [filter] - The standard list filter.
+   *
+   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -112,7 +112,7 @@ class ProjectsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListLocationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,14 +123,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
@@ -516,7 +516,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   }
 
   /**
-   * Decrypt data that was protected by Encrypt.
+   * Decrypts data that was protected by Encrypt.
    *
    * [request] - The metadata request object.
    *
@@ -564,7 +564,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   }
 
   /**
-   * Encrypt data, so that it can only be recovered by a call to Decrypt.
+   * Encrypts data, so that it can only be recovered by a call to Decrypt.
    *
    * [request] - The metadata request object.
    *
@@ -710,13 +710,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * `projects / * /locations / * /keyRings / * `.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
    *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListCryptoKeysResponse.next_page_token.
-   *
    * [pageSize] - Optional limit on the number of CryptoKeys to include in the
    * response.  Further CryptoKeys can subsequently be obtained by
    * including the ListCryptoKeysResponse.next_page_token in a subsequent
    * request.  If unspecified, the server will pick an appropriate default.
+   *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListCryptoKeysResponse.next_page_token.
    *
    * Completes with a [ListCryptoKeysResponse].
    *
@@ -726,7 +726,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -737,11 +737,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeys';
@@ -1370,8 +1370,8 @@ class AuditConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] = auditLogConfigs.map((value) => (value).toJson()).toList();
     }
@@ -1434,8 +1434,8 @@ class AuditLogConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -1448,6 +1448,14 @@ class AuditLogConfig {
 
 /** Associates `members` with a `role`. */
 class Binding {
+  /**
+   * The condition that is associated with this binding.
+   * NOTE: an unsatisfied condition will not allow user access via current
+   * binding. Different bindings, including their conditions, are examined
+   * independently.
+   * This field is GOOGLE_INTERNAL.
+   */
+  Expr condition;
   /**
    * Specifies the identities requesting access for a Cloud Platform resource.
    * `members` can have the following values:
@@ -1483,6 +1491,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = _json["members"];
     }
@@ -1491,8 +1502,11 @@ class Binding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -1522,8 +1536,8 @@ class CloudAuditOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (logName != null) {
       _json["logName"] = logName;
     }
@@ -1549,7 +1563,6 @@ class Condition {
    * member of the specified group. Approvers can only grant additional
    * access, and are thus only used in a strictly positive context
    * (e.g. ALLOW/IN or DENY/NOT_IN).
-   * See: go/rpc-security-policy-dynamicauth.
    * - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
    * with this request.
    * String values should match enum names from tech.iam.JustificationType,
@@ -1617,8 +1630,8 @@ class Condition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (iam != null) {
       _json["iam"] = iam;
     }
@@ -1659,8 +1672,8 @@ class CounterOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (field != null) {
       _json["field"] = field;
     }
@@ -1748,8 +1761,8 @@ class CryptoKey {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1841,8 +1854,8 @@ class CryptoKeyVersion {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1870,8 +1883,8 @@ class DataAccessOptions {
   DataAccessOptions.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1914,8 +1927,8 @@ class DecryptRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (additionalAuthenticatedData != null) {
       _json["additionalAuthenticatedData"] = additionalAuthenticatedData;
     }
@@ -1946,8 +1959,8 @@ class DecryptResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (plaintext != null) {
       _json["plaintext"] = plaintext;
     }
@@ -1963,8 +1976,8 @@ class DestroyCryptoKeyVersionRequest {
   DestroyCryptoKeyVersionRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2005,8 +2018,8 @@ class EncryptRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (additionalAuthenticatedData != null) {
       _json["additionalAuthenticatedData"] = additionalAuthenticatedData;
     }
@@ -2042,13 +2055,81 @@ class EncryptResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ciphertext != null) {
       _json["ciphertext"] = ciphertext;
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents an expression text. Example:
+ *
+ *     title: "User account presence"
+ *     description: "Determines whether the request has a user account"
+ *     expression: "size(request.user) > 0"
+ */
+class Expr {
+  /**
+   * An optional description of the expression. This is a longer text which
+   * describes the expression, e.g. when hovered over it in a UI.
+   */
+  core.String description;
+  /**
+   * Textual representation of an expression in
+   * [Common Expression Language](http://go/api-expr) syntax.
+   *
+   * The application context of the containing message determines which
+   * well-known feature set of CEL is supported.
+   */
+  core.String expression;
+  /**
+   * An optional string indicating the location of the expression for error
+   * reporting, e.g. a file name and a position in the file.
+   */
+  core.String location;
+  /**
+   * An optional title for the expression, i.e. a short string describing
+   * its purpose. This can be used e.g. in UIs which allow to enter the
+   * expression.
+   */
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }
@@ -2075,8 +2156,8 @@ class KeyRing {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -2117,8 +2198,8 @@ class ListCryptoKeyVersionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cryptoKeyVersions != null) {
       _json["cryptoKeyVersions"] = cryptoKeyVersions.map((value) => (value).toJson()).toList();
     }
@@ -2158,8 +2239,8 @@ class ListCryptoKeysResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cryptoKeys != null) {
       _json["cryptoKeys"] = cryptoKeys.map((value) => (value).toJson()).toList();
     }
@@ -2199,8 +2280,8 @@ class ListKeyRingsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keyRings != null) {
       _json["keyRings"] = keyRings.map((value) => (value).toJson()).toList();
     }
@@ -2232,8 +2313,8 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (locations != null) {
       _json["locations"] = locations.map((value) => (value).toJson()).toList();
     }
@@ -2285,8 +2366,8 @@ class Location {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -2326,8 +2407,8 @@ class LogConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cloudAudit != null) {
       _json["cloudAudit"] = (cloudAudit).toJson();
     }
@@ -2379,7 +2460,6 @@ class Policy {
   core.List<AuditConfig> auditConfigs;
   /**
    * Associates a list of `members` to a `role`.
-   * Multiple `bindings` must not be specified for the same `role`.
    * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;
@@ -2442,8 +2522,8 @@ class Policy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auditConfigs != null) {
       _json["auditConfigs"] = auditConfigs.map((value) => (value).toJson()).toList();
     }
@@ -2474,8 +2554,8 @@ class RestoreCryptoKeyVersionRequest {
   RestoreCryptoKeyVersionRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2551,8 +2631,8 @@ class Rule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -2607,8 +2687,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -2637,8 +2717,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2662,8 +2742,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2684,8 +2764,8 @@ class UpdateCryptoKeyPrimaryVersionRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cryptoKeyVersionId != null) {
       _json["cryptoKeyVersionId"] = cryptoKeyVersionId;
     }

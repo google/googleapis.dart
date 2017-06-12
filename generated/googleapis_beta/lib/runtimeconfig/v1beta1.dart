@@ -1271,6 +1271,7 @@ class Binding {
    * * `group:{emailid}`: An email address that represents a Google group.
    *    For example, `admins@example.com`.
    *
+   *
    * * `domain:{domain}`: A Google Apps domain name that represents all the
    *    users of that domain. For example, `google.com` or `example.com`.
    */
@@ -1293,8 +1294,8 @@ class Binding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -1341,8 +1342,8 @@ class Cardinality {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (number != null) {
       _json["number"] = number;
     }
@@ -1371,8 +1372,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1390,8 +1391,8 @@ class EndCondition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cardinality != null) {
       _json["cardinality"] = (cardinality).toJson();
     }
@@ -1429,8 +1430,8 @@ class ListConfigsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (configs != null) {
       _json["configs"] = configs.map((value) => (value).toJson()).toList();
     }
@@ -1468,8 +1469,8 @@ class ListVariablesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1507,8 +1508,8 @@ class ListWaitersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1583,8 +1584,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -1681,8 +1682,8 @@ class Policy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -1730,8 +1731,8 @@ class RuntimeConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -1760,8 +1761,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -1789,7 +1790,7 @@ class SetIamPolicyRequest {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -1812,7 +1813,7 @@ class SetIamPolicyRequest {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for
@@ -1857,8 +1858,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -1890,8 +1891,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -1915,8 +1916,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2006,8 +2007,8 @@ class Variable {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2129,8 +2130,8 @@ class Waiter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -2176,8 +2177,8 @@ class WatchVariableRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (newerThan != null) {
       _json["newerThan"] = newerThan;
     }

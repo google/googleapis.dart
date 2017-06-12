@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/HjapmkPPa8mIdGN85nrk4HlNMhc\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/H5YhW5iEVazbhdl_Q6rJjNpepCc\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -3019,7 +3019,7 @@
             }
         }
     },
-    "revision": "20170512",
+    "revision": "20170605",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -4520,7 +4520,7 @@
                     "type": "array"
                 },
                 "authKey": {
-                    "description": "The authkey parameter required for this permission.",
+                    "description": "Deprecated.",
                     "type": "string"
                 },
                 "deleted": {

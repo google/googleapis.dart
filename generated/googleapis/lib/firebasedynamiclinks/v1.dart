@@ -23,6 +23,7 @@ class FirebasedynamiclinksApi {
   final commons.ApiRequester _requester;
 
   ShortLinksResourceApi get shortLinks => new ShortLinksResourceApi(_requester);
+  V1ResourceApi get v1 => new V1ResourceApi(_requester);
 
   FirebasedynamiclinksApi(http.Client client, {core.String rootUrl: "https://firebasedynamiclinks.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -85,6 +86,61 @@ class ShortLinksResourceApi {
 }
 
 
+class V1ResourceApi {
+  final commons.ApiRequester _requester;
+
+  V1ResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Fetches analytics stats of a short Dynamic Link for a given
+   * duration. Metrics include number of clicks, redirects, installs,
+   * app first opens, and app reopens.
+   *
+   * Request parameters:
+   *
+   * [dynamicLink] - Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
+   *
+   * [durationDays] - The span of time requested in days.
+   *
+   * Completes with a [DynamicLinkStats].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<DynamicLinkStats> getLinkStats(core.String dynamicLink, {core.String durationDays}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (dynamicLink == null) {
+      throw new core.ArgumentError("Parameter dynamicLink is required.");
+    }
+    if (durationDays != null) {
+      _queryParams["durationDays"] = [durationDays];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariable('$dynamicLink') + '/linkStats';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DynamicLinkStats.fromJson(data));
+  }
+
+}
+
+
 
 /** Tracking parameters supported by Dynamic Link. */
 class AnalyticsInfo {
@@ -104,8 +160,8 @@ class AnalyticsInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (googlePlayAnalytics != null) {
       _json["googlePlayAnalytics"] = (googlePlayAnalytics).toJson();
     }
@@ -147,8 +203,8 @@ class AndroidInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (androidFallbackLink != null) {
       _json["androidFallbackLink"] = androidFallbackLink;
     }
@@ -198,8 +254,8 @@ class CreateShortDynamicLinkRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dynamicLinkInfo != null) {
       _json["dynamicLinkInfo"] = (dynamicLinkInfo).toJson();
     }
@@ -236,8 +292,8 @@ class CreateShortDynamicLinkResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (previewLink != null) {
       _json["previewLink"] = previewLink;
     }
@@ -246,6 +302,69 @@ class CreateShortDynamicLinkResponse {
     }
     if (warning != null) {
       _json["warning"] = warning.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Dynamic Link event stat. */
+class DynamicLinkEventStat {
+  /** The number of times this event occurred. */
+  core.String count;
+  /**
+   * Link event.
+   * Possible string values are:
+   * - "DYNAMIC_LINK_EVENT_UNSPECIFIED" : Unspecified type.
+   * - "CLICK" : Indicates that an FDL is clicked by users.
+   * - "REDIRECT" : Indicates that an FDL redirects users to fallback link.
+   * - "APP_INSTALL" : Indicates that an FDL triggers an app install from Play
+   * store, currently
+   * it's impossible to get stats from App store.
+   * - "APP_FIRST_OPEN" : Indicates that the app is opened for the first time
+   * after an install
+   * triggered by FDLs
+   * - "APP_RE_OPEN" : Indicates that the app is opened via an FDL for non-first
+   * time.
+   */
+  core.String event;
+  /**
+   * Requested platform.
+   * Possible string values are:
+   * - "DYNAMIC_LINK_PLATFORM_UNSPECIFIED" : Unspecified platform.
+   * - "ANDROID" : Represents Android platform.
+   * All apps and browsers on Android are classfied in this category.
+   * - "IOS" : Represents iOS platform.
+   * All apps and browsers on iOS are classfied in this category.
+   * - "DESKTOP" : Represents desktop.
+   * Note: other platforms like Windows, Blackberry, Amazon fall into this
+   * category.
+   */
+  core.String platform;
+
+  DynamicLinkEventStat();
+
+  DynamicLinkEventStat.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("event")) {
+      event = _json["event"];
+    }
+    if (_json.containsKey("platform")) {
+      platform = _json["platform"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (event != null) {
+      _json["event"] = event;
+    }
+    if (platform != null) {
+      _json["platform"] = platform;
     }
     return _json;
   }
@@ -320,8 +439,8 @@ class DynamicLinkInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (analyticsInfo != null) {
       _json["analyticsInfo"] = (analyticsInfo).toJson();
     }
@@ -342,6 +461,28 @@ class DynamicLinkInfo {
     }
     if (socialMetaTagInfo != null) {
       _json["socialMetaTagInfo"] = (socialMetaTagInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Analytics stats of a Dynamic Link for a given timeframe. */
+class DynamicLinkStats {
+  /** Dynamic Link event stats. */
+  core.List<DynamicLinkEventStat> linkEventStats;
+
+  DynamicLinkStats();
+
+  DynamicLinkStats.fromJson(core.Map _json) {
+    if (_json.containsKey("linkEventStats")) {
+      linkEventStats = _json["linkEventStats"].map((value) => new DynamicLinkEventStat.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (linkEventStats != null) {
+      _json["linkEventStats"] = linkEventStats.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -414,8 +555,8 @@ class DynamicLinkWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (warningCode != null) {
       _json["warningCode"] = warningCode;
     }
@@ -484,8 +625,8 @@ class GooglePlayAnalytics {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (gclid != null) {
       _json["gclid"] = gclid;
     }
@@ -542,8 +683,8 @@ class ITunesConnectAnalytics {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (at != null) {
       _json["at"] = at;
     }
@@ -602,8 +743,8 @@ class IosInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (iosAppStoreId != null) {
       _json["iosAppStoreId"] = iosAppStoreId;
     }
@@ -642,8 +783,8 @@ class NavigationInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enableForcedRedirect != null) {
       _json["enableForcedRedirect"] = enableForcedRedirect;
     }
@@ -677,8 +818,8 @@ class SocialMetaTagInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (socialDescription != null) {
       _json["socialDescription"] = socialDescription;
     }
@@ -720,8 +861,8 @@ class Suffix {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (option != null) {
       _json["option"] = option;
     }

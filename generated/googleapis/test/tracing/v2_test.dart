@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/tracing/v2.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -95,14 +95,14 @@ checkAttributeValue(api.AttributeValue o) {
   buildCounterAttributeValue--;
 }
 
-buildUnnamed1729() {
+buildUnnamed1739() {
   var o = new core.Map<core.String, api.AttributeValue>();
   o["x"] = buildAttributeValue();
   o["y"] = buildAttributeValue();
   return o;
 }
 
-checkUnnamed1729(core.Map<core.String, api.AttributeValue> o) {
+checkUnnamed1739(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttributeValue(o["x"]);
   checkAttributeValue(o["y"]);
@@ -113,7 +113,7 @@ buildAttributes() {
   var o = new api.Attributes();
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
-    o.attributeMap = buildUnnamed1729();
+    o.attributeMap = buildUnnamed1739();
     o.droppedAttributesCount = 42;
   }
   buildCounterAttributes--;
@@ -123,20 +123,20 @@ buildAttributes() {
 checkAttributes(api.Attributes o) {
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
-    checkUnnamed1729(o.attributeMap);
+    checkUnnamed1739(o.attributeMap);
     unittest.expect(o.droppedAttributesCount, unittest.equals(42));
   }
   buildCounterAttributes--;
 }
 
-buildUnnamed1730() {
+buildUnnamed1740() {
   var o = new core.List<api.Span>();
   o.add(buildSpan());
   o.add(buildSpan());
   return o;
 }
 
-checkUnnamed1730(core.List<api.Span> o) {
+checkUnnamed1740(core.List<api.Span> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpan(o[0]);
   checkSpan(o[1]);
@@ -147,7 +147,7 @@ buildBatchWriteSpansRequest() {
   var o = new api.BatchWriteSpansRequest();
   buildCounterBatchWriteSpansRequest++;
   if (buildCounterBatchWriteSpansRequest < 3) {
-    o.spans = buildUnnamed1730();
+    o.spans = buildUnnamed1740();
   }
   buildCounterBatchWriteSpansRequest--;
   return o;
@@ -156,7 +156,7 @@ buildBatchWriteSpansRequest() {
 checkBatchWriteSpansRequest(api.BatchWriteSpansRequest o) {
   buildCounterBatchWriteSpansRequest++;
   if (buildCounterBatchWriteSpansRequest < 3) {
-    checkUnnamed1730(o.spans);
+    checkUnnamed1740(o.spans);
   }
   buildCounterBatchWriteSpansRequest--;
 }
@@ -201,14 +201,14 @@ checkLink(api.Link o) {
   buildCounterLink--;
 }
 
-buildUnnamed1731() {
+buildUnnamed1741() {
   var o = new core.List<api.Link>();
   o.add(buildLink());
   o.add(buildLink());
   return o;
 }
 
-checkUnnamed1731(core.List<api.Link> o) {
+checkUnnamed1741(core.List<api.Link> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLink(o[0]);
   checkLink(o[1]);
@@ -220,7 +220,7 @@ buildLinks() {
   buildCounterLinks++;
   if (buildCounterLinks < 3) {
     o.droppedLinksCount = 42;
-    o.link = buildUnnamed1731();
+    o.link = buildUnnamed1741();
   }
   buildCounterLinks--;
   return o;
@@ -230,19 +230,19 @@ checkLinks(api.Links o) {
   buildCounterLinks++;
   if (buildCounterLinks < 3) {
     unittest.expect(o.droppedLinksCount, unittest.equals(42));
-    checkUnnamed1731(o.link);
+    checkUnnamed1741(o.link);
   }
   buildCounterLinks--;
 }
 
-buildUnnamed1732() {
+buildUnnamed1742() {
   var o = new core.List<api.Span>();
   o.add(buildSpan());
   o.add(buildSpan());
   return o;
 }
 
-checkUnnamed1732(core.List<api.Span> o) {
+checkUnnamed1742(core.List<api.Span> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpan(o[0]);
   checkSpan(o[1]);
@@ -254,7 +254,7 @@ buildListSpansResponse() {
   buildCounterListSpansResponse++;
   if (buildCounterListSpansResponse < 3) {
     o.nextPageToken = "foo";
-    o.spans = buildUnnamed1732();
+    o.spans = buildUnnamed1742();
   }
   buildCounterListSpansResponse--;
   return o;
@@ -264,19 +264,19 @@ checkListSpansResponse(api.ListSpansResponse o) {
   buildCounterListSpansResponse++;
   if (buildCounterListSpansResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1732(o.spans);
+    checkUnnamed1742(o.spans);
   }
   buildCounterListSpansResponse--;
 }
 
-buildUnnamed1733() {
+buildUnnamed1743() {
   var o = new core.List<api.Trace>();
   o.add(buildTrace());
   o.add(buildTrace());
   return o;
 }
 
-checkUnnamed1733(core.List<api.Trace> o) {
+checkUnnamed1743(core.List<api.Trace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrace(o[0]);
   checkTrace(o[1]);
@@ -288,7 +288,7 @@ buildListTracesResponse() {
   buildCounterListTracesResponse++;
   if (buildCounterListTracesResponse < 3) {
     o.nextPageToken = "foo";
-    o.traces = buildUnnamed1733();
+    o.traces = buildUnnamed1743();
   }
   buildCounterListTracesResponse--;
   return o;
@@ -298,7 +298,7 @@ checkListTracesResponse(api.ListTracesResponse o) {
   buildCounterListTracesResponse++;
   if (buildCounterListTracesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1733(o.traces);
+    checkUnnamed1743(o.traces);
   }
   buildCounterListTracesResponse--;
 }
@@ -419,14 +419,14 @@ checkStackFrame(api.StackFrame o) {
   buildCounterStackFrame--;
 }
 
-buildUnnamed1734() {
+buildUnnamed1744() {
   var o = new core.List<api.StackFrame>();
   o.add(buildStackFrame());
   o.add(buildStackFrame());
   return o;
 }
 
-checkUnnamed1734(core.List<api.StackFrame> o) {
+checkUnnamed1744(core.List<api.StackFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackFrame(o[0]);
   checkStackFrame(o[1]);
@@ -438,7 +438,7 @@ buildStackFrames() {
   buildCounterStackFrames++;
   if (buildCounterStackFrames < 3) {
     o.droppedFramesCount = 42;
-    o.frame = buildUnnamed1734();
+    o.frame = buildUnnamed1744();
   }
   buildCounterStackFrames--;
   return o;
@@ -448,7 +448,7 @@ checkStackFrames(api.StackFrames o) {
   buildCounterStackFrames++;
   if (buildCounterStackFrames < 3) {
     unittest.expect(o.droppedFramesCount, unittest.equals(42));
-    checkUnnamed1734(o.frame);
+    checkUnnamed1744(o.frame);
   }
   buildCounterStackFrames--;
 }
@@ -474,30 +474,30 @@ checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace--;
 }
 
-buildUnnamed1735() {
+buildUnnamed1745() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1735(core.Map<core.String, core.Object> o) {
+checkUnnamed1745(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1736() {
+buildUnnamed1746() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed1735());
-  o.add(buildUnnamed1735());
+  o.add(buildUnnamed1745());
+  o.add(buildUnnamed1745());
   return o;
 }
 
-checkUnnamed1736(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed1746(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1735(o[0]);
-  checkUnnamed1735(o[1]);
+  checkUnnamed1745(o[0]);
+  checkUnnamed1745(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -506,7 +506,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed1736();
+    o.details = buildUnnamed1746();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -517,7 +517,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed1736(o.details);
+    checkUnnamed1746(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -546,14 +546,14 @@ checkTimeEvent(api.TimeEvent o) {
   buildCounterTimeEvent--;
 }
 
-buildUnnamed1737() {
+buildUnnamed1747() {
   var o = new core.List<api.TimeEvent>();
   o.add(buildTimeEvent());
   o.add(buildTimeEvent());
   return o;
 }
 
-checkUnnamed1737(core.List<api.TimeEvent> o) {
+checkUnnamed1747(core.List<api.TimeEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeEvent(o[0]);
   checkTimeEvent(o[1]);
@@ -566,7 +566,7 @@ buildTimeEvents() {
   if (buildCounterTimeEvents < 3) {
     o.droppedAnnotationsCount = 42;
     o.droppedNetworkEventsCount = 42;
-    o.timeEvent = buildUnnamed1737();
+    o.timeEvent = buildUnnamed1747();
   }
   buildCounterTimeEvents--;
   return o;
@@ -577,7 +577,7 @@ checkTimeEvents(api.TimeEvents o) {
   if (buildCounterTimeEvents < 3) {
     unittest.expect(o.droppedAnnotationsCount, unittest.equals(42));
     unittest.expect(o.droppedNetworkEventsCount, unittest.equals(42));
-    checkUnnamed1737(o.timeEvent);
+    checkUnnamed1747(o.timeEvent);
   }
   buildCounterTimeEvents--;
 }
@@ -811,7 +811,7 @@ main() {
       api.ProjectsTracesResourceApi res = new api.TracingApi(mock).projects.traces;
       var arg_request = buildBatchWriteSpansRequest();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.BatchWriteSpansRequest.fromJson(json);
         checkBatchWriteSpansRequest(obj);
 
@@ -849,7 +849,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.batchWrite(arg_request, arg_name).then(unittest.expectAsync(((api.Empty response) {
+      res.batchWrite(arg_request, arg_name).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -859,13 +859,13 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsTracesResourceApi res = new api.TracingApi(mock).projects.traces;
       var arg_parent = "foo";
+      var arg_orderBy = "foo";
       var arg_filter = "foo";
       var arg_endTime = "foo";
       var arg_pageToken = "foo";
       var arg_startTime = "foo";
       var arg_pageSize = 42;
-      var arg_orderBy = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -892,12 +892,12 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
 
 
         var h = {
@@ -906,7 +906,7 @@ main() {
         var resp = convert.JSON.encode(buildListTracesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, filter: arg_filter, endTime: arg_endTime, pageToken: arg_pageToken, startTime: arg_startTime, pageSize: arg_pageSize, orderBy: arg_orderBy).then(unittest.expectAsync(((api.ListTracesResponse response) {
+      res.list(arg_parent, orderBy: arg_orderBy, filter: arg_filter, endTime: arg_endTime, pageToken: arg_pageToken, startTime: arg_startTime, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.ListTracesResponse response) {
         checkListTracesResponse(response);
       })));
     });
@@ -917,7 +917,7 @@ main() {
       api.ProjectsTracesResourceApi res = new api.TracingApi(mock).projects.traces;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -953,7 +953,7 @@ main() {
         var resp = convert.JSON.encode(buildListSpansResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listSpans(arg_parent, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListSpansResponse response) {
+      res.listSpans(arg_parent, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListSpansResponse response) {
         checkListSpansResponse(response);
       })));
     });
@@ -968,7 +968,7 @@ main() {
       api.ProjectsTracesSpansResourceApi res = new api.TracingApi(mock).projects.traces.spans;
       var arg_request = buildSpan();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Span.fromJson(json);
         checkSpan(obj);
 
@@ -1006,7 +1006,7 @@ main() {
         var resp = convert.JSON.encode(buildSpan());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_name).then(unittest.expectAsync(((api.Span response) {
+      res.create(arg_request, arg_name).then(unittest.expectAsync1(((api.Span response) {
         checkSpan(response);
       })));
     });

@@ -241,7 +241,7 @@ Official API documentation: https://cloud.google.com/functions
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Key Management Service (KMS) API - cloudkms v1
 
-Manages encryption for your cloud services the same way you do on-premise. You can generate, use, rotate, and destroy AES256 encryption keys.
+Manages encryption for your cloud services the same way you do on-premises. You can generate, use, rotate, and destroy AES256 encryption keys.
 
 Official API documentation: https://cloud.google.com/kms/
 
@@ -288,7 +288,7 @@ Official API documentation: https://developers.google.com/shopping-content
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) CustomSearch API - customsearch v1
 
-Lets you search over a website or collection of websites
+Searches over a website or collection of websites
 
 Official API documentation: https://developers.google.com/custom-search/v1/using_rest
 
@@ -310,18 +310,6 @@ Official API documentation: https://cloud.google.com/datastore/
 Declares, configures, and deploys complex solutions on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/deployment-manager/
-
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.6
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/
-
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.7
-
-Manages your DoubleClick Campaign Manager ad campaigns and reports.
-
-Official API documentation: https://developers.google.com/doubleclick-advertisers/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.8
 
@@ -426,7 +414,7 @@ Access Gmail mailboxes including sending user email.
 
 Official API documentation: https://developers.google.com/gmail/api/
 
-#### ![Logo](http://www.google.com/images/icons/product/discussions-16.gif) Groups Migration API - groupsmigration v1
+#### ![Logo](https://www.google.com/images/icons/product/discussions-16.gif) Groups Migration API - groupsmigration v1
 
 Groups Migration Api.
 
@@ -690,11 +678,12 @@ Send and retrieve trace data from Google Stackdriver Trace.
 
 Official API documentation: https://cloud.google.com/trace
 
-#### ![Logo](https://www.google.com/images/icons/product/translate-16.png) Translate API - translate v2
+#### ![Logo](https://www.google.com/images/icons/product/translate-16.png) Google Cloud Translation API - translate v2
 
-Translates text from one language to another.
+The Google Cloud Translation API lets websites and programs integrate with
+    Google Translate programmatically.
 
-Official API documentation: https://developers.google.com/translate/v2/using_rest
+Official API documentation: https://code.google.com/apis/language/translate/v2/getting_started.html
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) URL Shortener API - urlshortener v1
 

@@ -108,8 +108,8 @@ class AnnotateImageRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (features != null) {
       _json["features"] = features.map((value) => (value).toJson()).toList();
     }
@@ -195,8 +195,8 @@ class AnnotateImageResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cropHintsAnnotation != null) {
       _json["cropHintsAnnotation"] = (cropHintsAnnotation).toJson();
     }
@@ -249,8 +249,8 @@ class BatchAnnotateImagesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (requests != null) {
       _json["requests"] = requests.map((value) => (value).toJson()).toList();
     }
@@ -271,8 +271,8 @@ class BatchAnnotateImagesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (responses != null) {
       _json["responses"] = responses.map((value) => (value).toJson()).toList();
     }
@@ -333,8 +333,8 @@ class Block {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (blockType != null) {
       _json["blockType"] = blockType;
     }
@@ -364,8 +364,8 @@ class BoundingPoly {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (vertices != null) {
       _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
     }
@@ -528,8 +528,8 @@ class Color {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alpha != null) {
       _json["alpha"] = alpha;
     }
@@ -575,8 +575,8 @@ class ColorInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (color != null) {
       _json["color"] = (color).toJson();
     }
@@ -621,8 +621,8 @@ class CropHint {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boundingPoly != null) {
       _json["boundingPoly"] = (boundingPoly).toJson();
     }
@@ -651,8 +651,8 @@ class CropHintsAnnotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cropHints != null) {
       _json["cropHints"] = cropHints.map((value) => (value).toJson()).toList();
     }
@@ -680,8 +680,8 @@ class CropHintsParams {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aspectRatios != null) {
       _json["aspectRatios"] = aspectRatios;
     }
@@ -718,8 +718,8 @@ class DetectedBreak {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (isPrefix != null) {
       _json["isPrefix"] = isPrefix;
     }
@@ -752,8 +752,8 @@ class DetectedLanguage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -777,8 +777,8 @@ class DominantColorsAnnotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (colors != null) {
       _json["colors"] = colors.map((value) => (value).toJson()).toList();
     }
@@ -789,10 +789,8 @@ class DominantColorsAnnotation {
 /** Set of detected entity features. */
 class EntityAnnotation {
   /**
-   * Image region to which this entity belongs. Currently not produced
-   * for `LABEL_DETECTION` features. For `TEXT_DETECTION` (OCR), `boundingPoly`s
-   * are produced for the entire text detected in an image region, followed by
-   * `boundingPoly`s for each word within the detected text.
+   * Image region to which this entity belongs. Not produced
+   * for `LABEL_DETECTION` features.
    */
   BoundingPoly boundingPoly;
   /**
@@ -871,8 +869,8 @@ class EntityAnnotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boundingPoly != null) {
       _json["boundingPoly"] = (boundingPoly).toJson();
     }
@@ -1104,8 +1102,8 @@ class FaceAnnotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (angerLikelihood != null) {
       _json["angerLikelihood"] = angerLikelihood;
     }
@@ -1196,8 +1194,8 @@ class Feature {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxResults != null) {
       _json["maxResults"] = maxResults;
     }
@@ -1241,8 +1239,8 @@ class Image {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
     }
@@ -1285,8 +1283,8 @@ class ImageContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cropHintsParams != null) {
       _json["cropHintsParams"] = (cropHintsParams).toJson();
     }
@@ -1313,8 +1311,8 @@ class ImageProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dominantColors != null) {
       _json["dominantColors"] = (dominantColors).toJson();
     }
@@ -1358,8 +1356,8 @@ class ImageSource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (gcsImageUri != null) {
       _json["gcsImageUri"] = gcsImageUri;
     }
@@ -1433,8 +1431,8 @@ class Landmark {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (position != null) {
       _json["position"] = (position).toJson();
     }
@@ -1503,8 +1501,8 @@ class LatLng {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -1533,8 +1531,8 @@ class LatLongRect {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxLatLng != null) {
       _json["maxLatLng"] = (maxLatLng).toJson();
     }
@@ -1558,8 +1556,8 @@ class LocationInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (latLng != null) {
       _json["latLng"] = (latLng).toJson();
     }
@@ -1595,8 +1593,8 @@ class Page {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (blocks != null) {
       _json["blocks"] = blocks.map((value) => (value).toJson()).toList();
     }
@@ -1652,8 +1650,8 @@ class Paragraph {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boundingBox != null) {
       _json["boundingBox"] = (boundingBox).toJson();
     }
@@ -1694,8 +1692,8 @@ class Position {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (x != null) {
       _json["x"] = x;
     }
@@ -1732,8 +1730,8 @@ class Property {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1833,8 +1831,8 @@ class SafeSearchAnnotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (adult != null) {
       _json["adult"] = adult;
     }
@@ -1939,8 +1937,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -1993,8 +1991,8 @@ class Symbol {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boundingBox != null) {
       _json["boundingBox"] = (boundingBox).toJson();
     }
@@ -2034,8 +2032,8 @@ class TextAnnotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pages != null) {
       _json["pages"] = pages.map((value) => (value).toJson()).toList();
     }
@@ -2064,8 +2062,8 @@ class TextProperty {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (detectedBreak != null) {
       _json["detectedBreak"] = (detectedBreak).toJson();
     }
@@ -2097,8 +2095,8 @@ class Vertex {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (x != null) {
       _json["x"] = x;
     }
@@ -2149,8 +2147,8 @@ class WebDetection {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] = fullMatchingImages.map((value) => (value).toJson()).toList();
     }
@@ -2196,8 +2194,8 @@ class WebEntity {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2232,8 +2230,8 @@ class WebImage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (score != null) {
       _json["score"] = score;
     }
@@ -2265,8 +2263,8 @@ class WebPage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (score != null) {
       _json["score"] = score;
     }
@@ -2319,8 +2317,8 @@ class Word {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boundingBox != null) {
       _json["boundingBox"] = (boundingBox).toJson();
     }

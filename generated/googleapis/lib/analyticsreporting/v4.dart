@@ -131,8 +131,8 @@ class Cohort {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dateRange != null) {
       _json["dateRange"] = (dateRange).toJson();
     }
@@ -210,8 +210,8 @@ class CohortGroup {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cohorts != null) {
       _json["cohorts"] = cohorts.map((value) => (value).toJson()).toList();
     }
@@ -240,8 +240,8 @@ class ColumnHeader {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dimensions != null) {
       _json["dimensions"] = dimensions;
     }
@@ -274,8 +274,8 @@ class DateRange {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endDate != null) {
       _json["endDate"] = endDate;
     }
@@ -307,8 +307,8 @@ class DateRangeValues {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pivotValueRegions != null) {
       _json["pivotValueRegions"] = pivotValueRegions.map((value) => (value).toJson()).toList();
     }
@@ -374,8 +374,8 @@ class Dimension {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (histogramBuckets != null) {
       _json["histogramBuckets"] = histogramBuckets;
     }
@@ -468,8 +468,8 @@ class DimensionFilter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (caseSensitive != null) {
       _json["caseSensitive"] = caseSensitive;
     }
@@ -520,8 +520,8 @@ class DimensionFilterClause {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filters != null) {
       _json["filters"] = filters.map((value) => (value).toJson()).toList();
     }
@@ -558,8 +558,8 @@ class DynamicSegment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -590,8 +590,8 @@ class GetReportsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (reportRequests != null) {
       _json["reportRequests"] = reportRequests.map((value) => (value).toJson()).toList();
     }
@@ -615,8 +615,8 @@ class GetReportsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (reports != null) {
       _json["reports"] = reports.map((value) => (value).toJson()).toList();
     }
@@ -676,8 +676,8 @@ class Metric {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alias != null) {
       _json["alias"] = alias;
     }
@@ -742,8 +742,8 @@ class MetricFilter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (comparisonValue != null) {
       _json["comparisonValue"] = comparisonValue;
     }
@@ -791,8 +791,8 @@ class MetricFilterClause {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filters != null) {
       _json["filters"] = filters.map((value) => (value).toJson()).toList();
     }
@@ -821,8 +821,8 @@ class MetricHeader {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metricHeaderEntries != null) {
       _json["metricHeaderEntries"] = metricHeaderEntries.map((value) => (value).toJson()).toList();
     }
@@ -860,8 +860,8 @@ class MetricHeaderEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -888,8 +888,8 @@ class OrFiltersForSegment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (segmentFilterClauses != null) {
       _json["segmentFilterClauses"] = segmentFilterClauses.map((value) => (value).toJson()).toList();
     }
@@ -958,8 +958,8 @@ class OrderBy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fieldName != null) {
       _json["fieldName"] = fieldName;
     }
@@ -1042,8 +1042,8 @@ class Pivot {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dimensionFilterClauses != null) {
       _json["dimensionFilterClauses"] = dimensionFilterClauses.map((value) => (value).toJson()).toList();
     }
@@ -1081,8 +1081,8 @@ class PivotHeader {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pivotHeaderEntries != null) {
       _json["pivotHeaderEntries"] = pivotHeaderEntries.map((value) => (value).toJson()).toList();
     }
@@ -1119,8 +1119,8 @@ class PivotHeaderEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dimensionNames != null) {
       _json["dimensionNames"] = dimensionNames;
     }
@@ -1147,8 +1147,8 @@ class PivotValueRegion {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (values != null) {
       _json["values"] = values;
     }
@@ -1179,8 +1179,8 @@ class Report {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columnHeader != null) {
       _json["columnHeader"] = (columnHeader).toJson();
     }
@@ -1286,8 +1286,8 @@ class ReportData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataLastRefreshed != null) {
       _json["dataLastRefreshed"] = dataLastRefreshed;
     }
@@ -1512,8 +1512,8 @@ class ReportRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cohortGroup != null) {
       _json["cohortGroup"] = (cohortGroup).toJson();
     }
@@ -1587,8 +1587,8 @@ class ReportRow {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dimensions != null) {
       _json["dimensions"] = dimensions;
     }
@@ -1623,8 +1623,8 @@ class Segment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dynamicSegment != null) {
       _json["dynamicSegment"] = (dynamicSegment).toJson();
     }
@@ -1654,8 +1654,8 @@ class SegmentDefinition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (segmentFilters != null) {
       _json["segmentFilters"] = segmentFilters.map((value) => (value).toJson()).toList();
     }
@@ -1744,8 +1744,8 @@ class SegmentDimensionFilter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (caseSensitive != null) {
       _json["caseSensitive"] = caseSensitive;
     }
@@ -1823,8 +1823,8 @@ class SegmentFilter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (not != null) {
       _json["not"] = not;
     }
@@ -1864,8 +1864,8 @@ class SegmentFilterClause {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dimensionFilter != null) {
       _json["dimensionFilter"] = (dimensionFilter).toJson();
     }
@@ -1945,8 +1945,8 @@ class SegmentMetricFilter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (comparisonValue != null) {
       _json["comparisonValue"] = comparisonValue;
     }
@@ -1997,8 +1997,8 @@ class SegmentSequenceStep {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (matchType != null) {
       _json["matchType"] = matchType;
     }
@@ -2034,8 +2034,8 @@ class SequenceSegment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (firstStepShouldMatchFirstHit != null) {
       _json["firstStepShouldMatchFirstHit"] = firstStepShouldMatchFirstHit;
     }
@@ -2065,8 +2065,8 @@ class SimpleSegment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (orFiltersForSegment != null) {
       _json["orFiltersForSegment"] = orFiltersForSegment.map((value) => (value).toJson()).toList();
     }

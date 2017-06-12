@@ -426,13 +426,20 @@ class TransferOperationsResourceApi {
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns `UNIMPLEMENTED`.
    *
-   * NOTE: the `name` binding below allows API services to override the binding
-   * to use different resource name schemes, such as `users / * /operations`.
+   * NOTE: the `name` binding allows API services to override the binding
+   * to use different resource name schemes, such as `users / * /operations`. To
+   * override the binding, API services can add a binding such as
+   * `"/v1/{name=users / * }/operations"` to their service configuration.
+   * For backwards compatibility, the default name includes the operations
+   * collection id, however overriding users must ensure the name binding
+   * is the parent resource, without the operations collection id.
    *
    * Request parameters:
    *
    * [name] - The value `transferOperations`.
    * Value must have pattern "^transferOperations$".
+   *
+   * [pageSize] - The list page size. The max allowed value is 256.
    *
    * [filter] - A list of query parameters specified as JSON text in the form of
    * {\"project_id\" : \"my_project_id\", \"job_names\" : [\"jobid1\",
@@ -444,8 +451,6 @@ class TransferOperationsResourceApi {
    *
    * [pageToken] - The list page token.
    *
-   * [pageSize] - The list page size. The max allowed value is 256.
-   *
    * Completes with a [ListOperationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -454,7 +459,7 @@ class TransferOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -465,14 +470,14 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -611,8 +616,8 @@ class AwsAccessKey {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accessKeyId != null) {
       _json["accessKeyId"] = accessKeyId;
     }
@@ -654,8 +659,8 @@ class AwsS3Data {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (awsAccessKey != null) {
       _json["awsAccessKey"] = (awsAccessKey).toJson();
     }
@@ -703,8 +708,8 @@ class Date {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -736,8 +741,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -764,8 +769,8 @@ class ErrorLogEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorDetails != null) {
       _json["errorDetails"] = errorDetails;
     }
@@ -940,8 +945,8 @@ class ErrorSummary {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -977,8 +982,8 @@ class GcsData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
@@ -999,8 +1004,8 @@ class GoogleServiceAccount {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountEmail != null) {
       _json["accountEmail"] = accountEmail;
     }
@@ -1070,8 +1075,8 @@ class HttpData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (listUrl != null) {
       _json["listUrl"] = listUrl;
     }
@@ -1097,8 +1102,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1127,8 +1132,8 @@ class ListTransferJobsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1218,8 +1223,8 @@ class ObjectConditions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (excludePrefixes != null) {
       _json["excludePrefixes"] = excludePrefixes;
     }
@@ -1297,8 +1302,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -1326,8 +1331,8 @@ class PauseTransferOperationRequest {
   PauseTransferOperationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1340,8 +1345,8 @@ class ResumeTransferOperationRequest {
   ResumeTransferOperationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1386,8 +1391,8 @@ class Schedule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (scheduleEndDate != null) {
       _json["scheduleEndDate"] = (scheduleEndDate).toJson();
     }
@@ -1489,8 +1494,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -1542,8 +1547,8 @@ class TimeOfDay {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (hours != null) {
       _json["hours"] = hours;
     }
@@ -1664,8 +1669,8 @@ class TransferCounters {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bytesCopiedToSink != null) {
       _json["bytesCopiedToSink"] = bytesCopiedToSink;
     }
@@ -1807,8 +1812,8 @@ class TransferJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -1909,8 +1914,8 @@ class TransferOperation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (counters != null) {
       _json["counters"] = (counters).toJson();
     }
@@ -1971,8 +1976,8 @@ class TransferOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deleteObjectsFromSourceAfterTransfer != null) {
       _json["deleteObjectsFromSourceAfterTransfer"] = deleteObjectsFromSourceAfterTransfer;
     }
@@ -2032,8 +2037,8 @@ class TransferSpec {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (awsS3DataSource != null) {
       _json["awsS3DataSource"] = (awsS3DataSource).toJson();
     }
@@ -2092,8 +2097,8 @@ class UpdateTransferJobRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (projectId != null) {
       _json["projectId"] = projectId;
     }

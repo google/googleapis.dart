@@ -38,6 +38,7 @@ class AccountsResourceApi {
 
   AccountsClientsResourceApi get clients => new AccountsClientsResourceApi(_requester);
   AccountsCreativesResourceApi get creatives => new AccountsCreativesResourceApi(_requester);
+  AccountsFilterSetsResourceApi get filterSets => new AccountsFilterSetsResourceApi(_requester);
 
   AccountsResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -515,16 +516,16 @@ class AccountsClientsUsersResourceApi {
    * to list all the client users for all the clients
    * of a given sponsor buyer.
    *
-   * [pageSize] - Requested page size. The server may return fewer clients than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
-   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
    * ListClientUsersResponse.nextPageToken
    * returned from the previous call to the
    * accounts.clients.users.list method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer clients than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListClientUsersResponse].
    *
@@ -534,7 +535,7 @@ class AccountsClientsUsersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClientUsersResponse> list(core.String accountId, core.String clientAccountId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListClientUsersResponse> list(core.String accountId, core.String clientAccountId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -548,11 +549,11 @@ class AccountsClientsUsersResourceApi {
     if (clientAccountId == null) {
       throw new core.ArgumentError("Parameter clientAccountId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/clients/' + commons.Escaper.ecapeVariable('$clientAccountId') + '/users';
@@ -1165,6 +1166,1094 @@ class AccountsCreativesDealAssociationsResourceApi {
 }
 
 
+class AccountsFilterSetsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsBidMetricsResourceApi get bidMetrics => new AccountsFilterSetsBidMetricsResourceApi(_requester);
+  AccountsFilterSetsBidResponseErrorsResourceApi get bidResponseErrors => new AccountsFilterSetsBidResponseErrorsResourceApi(_requester);
+  AccountsFilterSetsBidResponsesWithoutBidsResourceApi get bidResponsesWithoutBids => new AccountsFilterSetsBidResponsesWithoutBidsResourceApi(_requester);
+  AccountsFilterSetsFilteredBidRequestsResourceApi get filteredBidRequests => new AccountsFilterSetsFilteredBidRequestsResourceApi(_requester);
+  AccountsFilterSetsFilteredBidsResourceApi get filteredBids => new AccountsFilterSetsFilteredBidsResourceApi(_requester);
+  AccountsFilterSetsFilteredImpressionsResourceApi get filteredImpressions => new AccountsFilterSetsFilteredImpressionsResourceApi(_requester);
+  AccountsFilterSetsImpressionMetricsResourceApi get impressionMetrics => new AccountsFilterSetsImpressionMetricsResourceApi(_requester);
+  AccountsFilterSetsLosingBidsResourceApi get losingBids => new AccountsFilterSetsLosingBidsResourceApi(_requester);
+
+  AccountsFilterSetsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates the specified filter set for the account with the given account ID.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [isTransient] - Whether the filter set is transient, or should be persisted
+   * indefinitely.
+   * By default, filter sets are not transient.
+   * If transient, it will be available for at least 1 hour after creation.
+   *
+   * Completes with a [FilterSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<FilterSet> create(FilterSet request, core.String accountId, {core.bool isTransient}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (isTransient != null) {
+      _queryParams["isTransient"] = ["${isTransient}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FilterSet.fromJson(data));
+  }
+
+  /**
+   * Deletes the requested filter set from the account with the given account
+   * ID.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to delete.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String accountId, core.String filterSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Retrieves the requested filter set for the account with the given account
+   * ID.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to get.
+   *
+   * Completes with a [FilterSet].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<FilterSet> get(core.String accountId, core.String filterSetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new FilterSet.fromJson(data));
+  }
+
+  /**
+   * Lists all filter sets for the account with the given account ID.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListFilterSetsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.rtbBreakout.filterSets.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListFilterSetsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListFilterSetsResponse> list(core.String accountId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListFilterSetsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsBidMetricsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsBidMetricsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists all metrics that are measured in terms of number of bids.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListBidMetricsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.bidMetrics.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListBidMetricsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListBidMetricsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/bidMetrics';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBidMetricsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsBidResponseErrorsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsBidResponseErrorsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all errors that occurred in bid responses, with the number of bid
+   * responses affected for each reason.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListBidResponseErrorsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.bidResponseErrors.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListBidResponseErrorsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListBidResponseErrorsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/bidResponseErrors';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBidResponseErrorsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsBidResponsesWithoutBidsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all reasons for which bid responses were considered to have no
+   * applicable bids, with the number of bid responses affected for each reason.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListBidResponsesWithoutBidsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.bidResponsesWithoutBids.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListBidResponsesWithoutBidsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListBidResponsesWithoutBidsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/bidResponsesWithoutBids';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBidResponsesWithoutBidsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsFilteredBidRequestsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsFilteredBidRequestsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all reasons that caused a bid request not to be sent for an
+   * impression, with the number of bid requests not sent for each reason.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListFilteredBidRequestsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.filteredBidRequests.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListFilteredBidRequestsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListFilteredBidRequestsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBidRequests';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListFilteredBidRequestsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsFilteredBidsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsFilteredBidsCreativesResourceApi get creatives => new AccountsFilterSetsFilteredBidsCreativesResourceApi(_requester);
+  AccountsFilterSetsFilteredBidsDetailsResourceApi get details => new AccountsFilterSetsFilteredBidsDetailsResourceApi(_requester);
+
+  AccountsFilterSetsFilteredBidsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all reasons for which bids were filtered, with the number of bids
+   * filtered for each reason.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListFilteredBidsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.filteredBids.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListFilteredBidsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListFilteredBidsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBids';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListFilteredBidsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsFilteredBidsCreativesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi get details => new AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi(_requester);
+
+  AccountsFilterSetsFilteredBidsCreativesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all creatives associated with a specific reason for which bids were
+   * filtered, with the number of bids filtered for each creative.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [creativeStatusId] - The ID of the creative status for which to retrieve a
+   * breakdown by
+   * creative.
+   * See
+   * [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListCreativeStatusBreakdownByCreativeResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.filteredBids.creatives.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListCreativeStatusBreakdownByCreativeResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(core.String accountId, core.String filterSetId, core.int creativeStatusId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (creativeStatusId == null) {
+      throw new core.ArgumentError("Parameter creativeStatusId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBids/' + commons.Escaper.ecapeVariable('$creativeStatusId') + '/creatives';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListCreativeStatusBreakdownByCreativeResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all details associated with a specific reason for which bids were
+   * filtered and a specific creative that was filtered for that reason, with
+   * the number of bids filtered for each detail.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [creativeStatusId] - The ID of the creative status for which to retrieve a
+   * breakdown by detail.
+   * See
+   * [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+   *
+   * [creativeId] - The creative ID for which to retrieve a breakdown by detail.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListCreativeStatusAndCreativeBreakdownByDetailResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.filteredBids.creatives.details.list
+   * method.
+   *
+   * Completes with a [ListCreativeStatusAndCreativeBreakdownByDetailResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListCreativeStatusAndCreativeBreakdownByDetailResponse> list(core.String accountId, core.String filterSetId, core.int creativeStatusId, core.String creativeId, {core.int pageSize, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (creativeStatusId == null) {
+      throw new core.ArgumentError("Parameter creativeStatusId is required.");
+    }
+    if (creativeId == null) {
+      throw new core.ArgumentError("Parameter creativeId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBids/' + commons.Escaper.ecapeVariable('$creativeStatusId') + '/creatives/' + commons.Escaper.ecapeVariable('$creativeId') + '/details';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListCreativeStatusAndCreativeBreakdownByDetailResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsFilteredBidsDetailsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsFilteredBidsDetailsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all details associated with a specific reason for which bids were
+   * filtered, with the number of bids filtered for each detail.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [creativeStatusId] - The ID of the creative status for which to retrieve a
+   * breakdown by detail.
+   * See
+   * [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListCreativeStatusBreakdownByDetailResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.filteredBids.details.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListCreativeStatusBreakdownByDetailResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListCreativeStatusBreakdownByDetailResponse> list(core.String accountId, core.String filterSetId, core.int creativeStatusId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (creativeStatusId == null) {
+      throw new core.ArgumentError("Parameter creativeStatusId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBids/' + commons.Escaper.ecapeVariable('$creativeStatusId') + '/details';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListCreativeStatusBreakdownByDetailResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsFilteredImpressionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsFilteredImpressionsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all reasons that caused an impression to be filtered (i.e. not
+   * considered as an inventory match), with the number of impressions that were
+   * filtered for each reason.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListFilteredImpressionsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.filteredImpressions.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListFilteredImpressionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListFilteredImpressionsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredImpressions';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListFilteredImpressionsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsImpressionMetricsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsImpressionMetricsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists all metrics that are measured in terms of number of impressions.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListImpressionMetricsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.impressionMetrics.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListImpressionMetricsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListImpressionMetricsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/impressionMetrics';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListImpressionMetricsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsLosingBidsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsLosingBidsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all reasons for which bids lost in the auction, with the number of
+   * bids that lost for each reason.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListLosingBidsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.losingBids.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListLosingBidsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListLosingBidsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/losingBids';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLosingBidsResponse.fromJson(data));
+  }
+
+}
+
+
+
+/**
+ * An absolute date range, specified by its start date and end date.
+ * The supported range of dates begins 30 days before today and ends today.
+ * Validity checked upon filter set creation. If a filter set with an absolute
+ * date range is run at a later date more than 30 days after start_date, it will
+ * fail.
+ */
+class AbsoluteDateRange {
+  /**
+   * The end date of the range (inclusive).
+   * Must be within the 30 days leading up to current date, and must be equal to
+   * or after start_date.
+   */
+  Date endDate;
+  /**
+   * The start date of the range (inclusive).
+   * Must be within the 30 days leading up to current date, and must be equal to
+   * or before end_date.
+   */
+  Date startDate;
+
+  AbsoluteDateRange();
+
+  AbsoluteDateRange.fromJson(core.Map _json) {
+    if (_json.containsKey("endDate")) {
+      endDate = new Date.fromJson(_json["endDate"]);
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = new Date.fromJson(_json["startDate"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (endDate != null) {
+      _json["endDate"] = (endDate).toJson();
+    }
+    if (startDate != null) {
+      _json["startDate"] = (startDate).toJson();
+    }
+    return _json;
+  }
+}
 
 /** A request for associating a deal and a creative. */
 class AddDealAssociationRequest {
@@ -1179,8 +2268,8 @@ class AddDealAssociationRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (association != null) {
       _json["association"] = (association).toJson();
     }
@@ -1201,8 +2290,8 @@ class AppContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (appTypes != null) {
       _json["appTypes"] = appTypes;
     }
@@ -1223,10 +2312,192 @@ class AuctionContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auctionTypes != null) {
       _json["auctionTypes"] = auctionTypes;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The set of metrics that are measured in numbers of bids, representing how
+ * many bids with the specified dimension values were considered eligible at
+ * each stage of the bidding funnel;
+ */
+class BidMetricsRow {
+  /** The number of bids that Ad Exchange received from the buyer. */
+  MetricValue bids;
+  /** The number of bids that were permitted to compete in the auction. */
+  MetricValue bidsInAuction;
+  /** The number of bids for which the buyer was billed. */
+  MetricValue billedImpressions;
+  /** The number of bids that won an impression. */
+  MetricValue impressionsWon;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+  /**
+   * The number of bids for which the corresponding impression was viewable (as
+   * defined by Active View).
+   */
+  MetricValue viewableImpressions;
+
+  BidMetricsRow();
+
+  BidMetricsRow.fromJson(core.Map _json) {
+    if (_json.containsKey("bids")) {
+      bids = new MetricValue.fromJson(_json["bids"]);
+    }
+    if (_json.containsKey("bidsInAuction")) {
+      bidsInAuction = new MetricValue.fromJson(_json["bidsInAuction"]);
+    }
+    if (_json.containsKey("billedImpressions")) {
+      billedImpressions = new MetricValue.fromJson(_json["billedImpressions"]);
+    }
+    if (_json.containsKey("impressionsWon")) {
+      impressionsWon = new MetricValue.fromJson(_json["impressionsWon"]);
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+    if (_json.containsKey("viewableImpressions")) {
+      viewableImpressions = new MetricValue.fromJson(_json["viewableImpressions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (bids != null) {
+      _json["bids"] = (bids).toJson();
+    }
+    if (bidsInAuction != null) {
+      _json["bidsInAuction"] = (bidsInAuction).toJson();
+    }
+    if (billedImpressions != null) {
+      _json["billedImpressions"] = (billedImpressions).toJson();
+    }
+    if (impressionsWon != null) {
+      _json["impressionsWon"] = (impressionsWon).toJson();
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
+    }
+    if (viewableImpressions != null) {
+      _json["viewableImpressions"] = (viewableImpressions).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * The number of impressions with the specified dimension values that were
+ * considered to have no applicable bids, as described by the specified status.
+ */
+class BidResponseWithoutBidsStatusRow {
+  /**
+   * The number of impressions for which there was a bid response with the
+   * specified status.
+   */
+  MetricValue impressionCount;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+  /**
+   * The status that caused the bid response to be considered to have no
+   * applicable bids.
+   * Possible string values are:
+   * - "STATUS_UNSPECIFIED" : A placeholder for an undefined status.
+   * This value will never be returned in responses.
+   * - "RESPONSES_WITHOUT_BIDS" : The response had no bids.
+   * - "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT" : The response had no bids for the
+   * specified account, though it may have
+   * included bids on behalf of other accounts.
+   * - "RESPONSES_WITHOUT_BIDS_FOR_DEAL" : The response had no bids for the
+   * specified deal, though it may have
+   * included bids on other deals on behalf of the account to which the deal
+   * belongs.
+   */
+  core.String status;
+
+  BidResponseWithoutBidsStatusRow();
+
+  BidResponseWithoutBidsStatusRow.fromJson(core.Map _json) {
+    if (_json.containsKey("impressionCount")) {
+      impressionCount = new MetricValue.fromJson(_json["impressionCount"]);
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (impressionCount != null) {
+      _json["impressionCount"] = (impressionCount).toJson();
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The number of impressions with the specified dimension values where the
+ * corresponding bid request or bid response was not successful, as described by
+ * the specified callout status.
+ */
+class CalloutStatusRow {
+  /**
+   * The ID of the callout status.
+   * See
+   * [callout-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/callout-status-codes).
+   */
+  core.int calloutStatusId;
+  /**
+   * The number of impressions for which there was a bid request or bid response
+   * with the specified callout status.
+   */
+  MetricValue impressionCount;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+
+  CalloutStatusRow();
+
+  CalloutStatusRow.fromJson(core.Map _json) {
+    if (_json.containsKey("calloutStatusId")) {
+      calloutStatusId = _json["calloutStatusId"];
+    }
+    if (_json.containsKey("impressionCount")) {
+      impressionCount = new MetricValue.fromJson(_json["impressionCount"]);
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (calloutStatusId != null) {
+      _json["calloutStatusId"] = calloutStatusId;
+    }
+    if (impressionCount != null) {
+      _json["impressionCount"] = (impressionCount).toJson();
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
     }
     return _json;
   }
@@ -1353,8 +2624,8 @@ class Client {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientAccountId != null) {
       _json["clientAccountId"] = clientAccountId;
     }
@@ -1444,8 +2715,8 @@ class ClientUser {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientAccountId != null) {
       _json["clientAccountId"] = clientAccountId;
     }
@@ -1500,8 +2771,8 @@ class ClientUserInvitation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientAccountId != null) {
       _json["clientAccountId"] = clientAccountId;
     }
@@ -1573,8 +2844,8 @@ class Correction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contexts != null) {
       _json["contexts"] = contexts.map((value) => (value).toJson()).toList();
     }
@@ -1796,8 +3067,8 @@ class Creative {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -1900,8 +3171,8 @@ class CreativeDealAssociation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -1910,6 +3181,54 @@ class CreativeDealAssociation {
     }
     if (dealsId != null) {
       _json["dealsId"] = dealsId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The number of bids with the specified dimension values that did not win the
+ * auction (either were filtered pre-auction or lost the auction), as described
+ * by the specified creative status.
+ */
+class CreativeStatusRow {
+  /** The number of bids with the specified status. */
+  MetricValue bidCount;
+  /**
+   * The ID of the creative status.
+   * See
+   * [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+   */
+  core.int creativeStatusId;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+
+  CreativeStatusRow();
+
+  CreativeStatusRow.fromJson(core.Map _json) {
+    if (_json.containsKey("bidCount")) {
+      bidCount = new MetricValue.fromJson(_json["bidCount"]);
+    }
+    if (_json.containsKey("creativeStatusId")) {
+      creativeStatusId = _json["creativeStatusId"];
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (bidCount != null) {
+      _json["bidCount"] = (bidCount).toJson();
+    }
+    if (creativeStatusId != null) {
+      _json["creativeStatusId"] = creativeStatusId;
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
     }
     return _json;
   }
@@ -1952,8 +3271,8 @@ class Date {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -2134,8 +3453,8 @@ class Disapproval {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (details != null) {
       _json["details"] = details;
     }
@@ -2164,8 +3483,276 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/**
+ * A set of filters that is applied to a request for data.
+ * Within a filter set, an AND operation is performed across the filters
+ * represented by each field. An OR operation is performed across the filters
+ * represented by the multiple values of a repeated field. E.g.
+ * "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR
+ * seller_network_id=56)"
+ */
+class FilterSet {
+  /**
+   * An absolute date range, defined by a start date and an end date.
+   * Interpreted relative to Pacific time zone.
+   */
+  AbsoluteDateRange absoluteDateRange;
+  /** The ID of the buyer account on which to filter; optional. */
+  core.String buyerAccountId;
+  /** The ID of the creative on which to filter; optional. */
+  core.String creativeId;
+  /** The ID of the deal on which to filter; optional. */
+  core.String dealId;
+  /**
+   * The environment on which to filter; optional.
+   * Possible string values are:
+   * - "ENVIRONMENT_UNSPECIFIED" : A placeholder for an undefined environment;
+   * indicates that no environment
+   * filter will be applied.
+   * - "WEB" : The ad impression appears on the web.
+   * - "APP" : The ad impression appears in an app.
+   */
+  core.String environment;
+  /**
+   * The ID of the filter set; unique within the account of the filter set
+   * owner.
+   * The value of this field is ignored in create operations.
+   */
+  core.String filterSetId;
+  /**
+   * The format on which to filter; optional.
+   * Possible string values are:
+   * - "FORMAT_UNSPECIFIED" : A placeholder for an undefined format; indicates
+   * that no format filter
+   * will be applied.
+   * - "DISPLAY" : The ad impression is display format (i.e. an image).
+   * - "VIDEO" : The ad impression is video format.
+   */
+  core.String format;
+  /**
+   * The account ID of the buyer who owns this filter set.
+   * The value of this field is ignored in create operations.
+   */
+  core.String ownerAccountId;
+  /**
+   * The list of platforms on which to filter; may be empty. The filters
+   * represented by multiple platforms are ORed together (i.e. if non-empty,
+   * results must match any one of the platforms).
+   */
+  core.List<core.String> platforms;
+  /**
+   * An open-ended realtime time range, defined by the aggregation start
+   * timestamp.
+   */
+  RealtimeTimeRange realtimeTimeRange;
+  /**
+   * A relative date range, defined by an offset from today and a duration.
+   * Interpreted relative to Pacific time zone.
+   */
+  RelativeDateRange relativeDateRange;
+  /**
+   * The list of IDs of the seller (publisher) networks on which to filter;
+   * may be empty. The filters represented by multiple seller network IDs are
+   * ORed together (i.e. if non-empty, results must match any one of the
+   * publisher networks).
+   * See
+   * [seller-network-ids](https://developers.google.com/ad-exchange/rtb/downloads/seller-network-ids)
+   * file for the set of existing seller network IDs.
+   */
+  core.List<core.int> sellerNetworkIds;
+  /**
+   * The granularity of time intervals if a time series breakdown is desired;
+   * optional.
+   * Possible string values are:
+   * - "INTERVAL_UNSPECIFIED" : A placeholder for an unspecified interval; no
+   * time series is applied.
+   * All rows in response will contain data for the entire requested time range.
+   * - "HOURLY" : Indicates that data will be broken down by the hour.
+   * - "DAILY" : Indicates that data will be broken down by the day.
+   */
+  core.String timeSeriesGranularity;
+
+  FilterSet();
+
+  FilterSet.fromJson(core.Map _json) {
+    if (_json.containsKey("absoluteDateRange")) {
+      absoluteDateRange = new AbsoluteDateRange.fromJson(_json["absoluteDateRange"]);
+    }
+    if (_json.containsKey("buyerAccountId")) {
+      buyerAccountId = _json["buyerAccountId"];
+    }
+    if (_json.containsKey("creativeId")) {
+      creativeId = _json["creativeId"];
+    }
+    if (_json.containsKey("dealId")) {
+      dealId = _json["dealId"];
+    }
+    if (_json.containsKey("environment")) {
+      environment = _json["environment"];
+    }
+    if (_json.containsKey("filterSetId")) {
+      filterSetId = _json["filterSetId"];
+    }
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
+    if (_json.containsKey("ownerAccountId")) {
+      ownerAccountId = _json["ownerAccountId"];
+    }
+    if (_json.containsKey("platforms")) {
+      platforms = _json["platforms"];
+    }
+    if (_json.containsKey("realtimeTimeRange")) {
+      realtimeTimeRange = new RealtimeTimeRange.fromJson(_json["realtimeTimeRange"]);
+    }
+    if (_json.containsKey("relativeDateRange")) {
+      relativeDateRange = new RelativeDateRange.fromJson(_json["relativeDateRange"]);
+    }
+    if (_json.containsKey("sellerNetworkIds")) {
+      sellerNetworkIds = _json["sellerNetworkIds"];
+    }
+    if (_json.containsKey("timeSeriesGranularity")) {
+      timeSeriesGranularity = _json["timeSeriesGranularity"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (absoluteDateRange != null) {
+      _json["absoluteDateRange"] = (absoluteDateRange).toJson();
+    }
+    if (buyerAccountId != null) {
+      _json["buyerAccountId"] = buyerAccountId;
+    }
+    if (creativeId != null) {
+      _json["creativeId"] = creativeId;
+    }
+    if (dealId != null) {
+      _json["dealId"] = dealId;
+    }
+    if (environment != null) {
+      _json["environment"] = environment;
+    }
+    if (filterSetId != null) {
+      _json["filterSetId"] = filterSetId;
+    }
+    if (format != null) {
+      _json["format"] = format;
+    }
+    if (ownerAccountId != null) {
+      _json["ownerAccountId"] = ownerAccountId;
+    }
+    if (platforms != null) {
+      _json["platforms"] = platforms;
+    }
+    if (realtimeTimeRange != null) {
+      _json["realtimeTimeRange"] = (realtimeTimeRange).toJson();
+    }
+    if (relativeDateRange != null) {
+      _json["relativeDateRange"] = (relativeDateRange).toJson();
+    }
+    if (sellerNetworkIds != null) {
+      _json["sellerNetworkIds"] = sellerNetworkIds;
+    }
+    if (timeSeriesGranularity != null) {
+      _json["timeSeriesGranularity"] = timeSeriesGranularity;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The number of filtered bids with the specified dimension values that have the
+ * specified creative.
+ */
+class FilteredBidCreativeRow {
+  /** The number of bids with the specified creative. */
+  MetricValue bidCount;
+  /** The ID of the creative. */
+  core.String creativeId;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+
+  FilteredBidCreativeRow();
+
+  FilteredBidCreativeRow.fromJson(core.Map _json) {
+    if (_json.containsKey("bidCount")) {
+      bidCount = new MetricValue.fromJson(_json["bidCount"]);
+    }
+    if (_json.containsKey("creativeId")) {
+      creativeId = _json["creativeId"];
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (bidCount != null) {
+      _json["bidCount"] = (bidCount).toJson();
+    }
+    if (creativeId != null) {
+      _json["creativeId"] = creativeId;
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * The number of filtered bids with the specified dimension values, among those
+ * filtered due to the requested filtering reason (i.e. creative status), that
+ * have the specified detail.
+ */
+class FilteredBidDetailRow {
+  /** The number of bids with the specified detail. */
+  MetricValue bidCount;
+  /**
+   * The ID of the detail. The associated value can be looked up in the
+   * dictionary file corresponding to the DetailType in the response message.
+   */
+  core.int detailId;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+
+  FilteredBidDetailRow();
+
+  FilteredBidDetailRow.fromJson(core.Map _json) {
+    if (_json.containsKey("bidCount")) {
+      bidCount = new MetricValue.fromJson(_json["bidCount"]);
+    }
+    if (_json.containsKey("detailId")) {
+      detailId = _json["detailId"];
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (bidCount != null) {
+      _json["bidCount"] = (bidCount).toJson();
+    }
+    if (detailId != null) {
+      _json["detailId"] = detailId;
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
+    }
     return _json;
   }
 }
@@ -2196,8 +3783,8 @@ class FilteringStats {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (date != null) {
       _json["date"] = (date).toJson();
     }
@@ -2231,8 +3818,8 @@ class HtmlContent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (height != null) {
       _json["height"] = height;
     }
@@ -2272,8 +3859,8 @@ class Image {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (height != null) {
       _json["height"] = height;
     }
@@ -2282,6 +3869,265 @@ class Image {
     }
     if (width != null) {
       _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The set of metrics that are measured in numbers of impressions, representing
+ * how many impressions with the specified dimension values were considered
+ * eligible at each stage of the bidding funnel.
+ */
+class ImpressionMetricsRow {
+  /**
+   * The number of impressions available to the buyer on Ad Exchange.
+   * In some cases this value may be unavailable.
+   */
+  MetricValue availableImpressions;
+  /**
+   * The number of impressions for which Ad Exchange sent the buyer a bid
+   * request.
+   */
+  MetricValue bidRequests;
+  /**
+   * The number of impressions that match the buyer's inventory pretargeting.
+   */
+  MetricValue inventoryMatches;
+  /**
+   * The number of impressions for which Ad Exchange received a response from
+   * the buyer that contained at least one applicable bid.
+   */
+  MetricValue responsesWithBids;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+  /**
+   * The number of impressions for which the buyer successfully sent a response
+   * to Ad Exchange.
+   */
+  MetricValue successfulResponses;
+
+  ImpressionMetricsRow();
+
+  ImpressionMetricsRow.fromJson(core.Map _json) {
+    if (_json.containsKey("availableImpressions")) {
+      availableImpressions = new MetricValue.fromJson(_json["availableImpressions"]);
+    }
+    if (_json.containsKey("bidRequests")) {
+      bidRequests = new MetricValue.fromJson(_json["bidRequests"]);
+    }
+    if (_json.containsKey("inventoryMatches")) {
+      inventoryMatches = new MetricValue.fromJson(_json["inventoryMatches"]);
+    }
+    if (_json.containsKey("responsesWithBids")) {
+      responsesWithBids = new MetricValue.fromJson(_json["responsesWithBids"]);
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+    if (_json.containsKey("successfulResponses")) {
+      successfulResponses = new MetricValue.fromJson(_json["successfulResponses"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (availableImpressions != null) {
+      _json["availableImpressions"] = (availableImpressions).toJson();
+    }
+    if (bidRequests != null) {
+      _json["bidRequests"] = (bidRequests).toJson();
+    }
+    if (inventoryMatches != null) {
+      _json["inventoryMatches"] = (inventoryMatches).toJson();
+    }
+    if (responsesWithBids != null) {
+      _json["responsesWithBids"] = (responsesWithBids).toJson();
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
+    }
+    if (successfulResponses != null) {
+      _json["successfulResponses"] = (successfulResponses).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * The number of impressions with the specified dimension values that were
+ * filtered due to the specified filtering status.
+ */
+class ImpressionStatusRow {
+  /**
+   * The number of impressions that were filtered with the specified status.
+   */
+  MetricValue impressionCount;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+  /**
+   * The status for which impressions were filtered.
+   * Possible string values are:
+   * - "STATUS_UNSPECIFIED" : A placeholder for an undefined status.
+   * This value will never be returned in responses.
+   * - "PRETARGETING_CONFIGURATIONS" : The impression was filtered because it
+   * did not match the buyer's
+   * pretargeting configurations.
+   */
+  core.String status;
+
+  ImpressionStatusRow();
+
+  ImpressionStatusRow.fromJson(core.Map _json) {
+    if (_json.containsKey("impressionCount")) {
+      impressionCount = new MetricValue.fromJson(_json["impressionCount"]);
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (impressionCount != null) {
+      _json["impressionCount"] = (impressionCount).toJson();
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing the metrics that are measured in number of bids.
+ */
+class ListBidMetricsResponse {
+  /** List of rows, each containing a set of bid metrics. */
+  core.List<BidMetricsRow> bidMetricsRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListBidMetricsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.bidMetrics.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListBidMetricsResponse();
+
+  ListBidMetricsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("bidMetricsRows")) {
+      bidMetricsRows = _json["bidMetricsRows"].map((value) => new BidMetricsRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (bidMetricsRows != null) {
+      _json["bidMetricsRows"] = bidMetricsRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all reasons that bid responses resulted in an
+ * error.
+ */
+class ListBidResponseErrorsResponse {
+  /**
+   * List of rows, with counts of bid responses aggregated by callout status.
+   */
+  core.List<CalloutStatusRow> calloutStatusRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListBidResponseErrorsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.bidResponseErrors.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListBidResponseErrorsResponse();
+
+  ListBidResponseErrorsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("calloutStatusRows")) {
+      calloutStatusRows = _json["calloutStatusRows"].map((value) => new CalloutStatusRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (calloutStatusRows != null) {
+      _json["calloutStatusRows"] = calloutStatusRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all reasons that bid responses were considered
+ * to have no applicable bids.
+ */
+class ListBidResponsesWithoutBidsResponse {
+  /**
+   * List of rows, with counts of bid responses without bids aggregated by
+   * status.
+   */
+  core.List<BidResponseWithoutBidsStatusRow> bidResponseWithoutBidsStatusRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListBidResponsesWithoutBidsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.bidResponsesWithoutBids.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListBidResponsesWithoutBidsResponse();
+
+  ListBidResponsesWithoutBidsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("bidResponseWithoutBidsStatusRows")) {
+      bidResponseWithoutBidsStatusRows = _json["bidResponseWithoutBidsStatusRows"].map((value) => new BidResponseWithoutBidsStatusRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (bidResponseWithoutBidsStatusRows != null) {
+      _json["bidResponseWithoutBidsStatusRows"] = bidResponseWithoutBidsStatusRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }
@@ -2312,8 +4158,8 @@ class ListClientUserInvitationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (invitations != null) {
       _json["invitations"] = invitations.map((value) => (value).toJson()).toList();
     }
@@ -2349,8 +4195,8 @@ class ListClientUsersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2385,10 +4231,187 @@ class ListClientsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clients != null) {
       _json["clients"] = clients.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all details associated with a given filtered bid
+ * reason and a given creative.
+ */
+class ListCreativeStatusAndCreativeBreakdownByDetailResponse {
+  /**
+   * The type of detail that the detail IDs represent.
+   * Possible string values are:
+   * - "TYPE_UNSPECIFIED" : A placeholder for an undefined status.
+   * This value will never be returned in responses.
+   * - "CREATIVE_ATTRIBUTE" : Indicates that the detail ID refers to a creative
+   * attribute; see
+   * [publisher-excludable-creative-attributes](https://developers.google.com/ad-exchange/rtb/downloads/publisher-excludable-creative-attributes).
+   * - "VENDOR" : Indicates that the detail ID refers to a vendor; see
+   * [vendors](https://developers.google.com/ad-exchange/rtb/downloads/vendors).
+   * - "SENSITIVE_CATEGORY" : Indicates that the detail ID refers to a sensitive
+   * category; see
+   * [ad-sensitive-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-sensitive-categories).
+   * - "PRODUCT_CATEGORY" : Indicates that the detail ID refers to a product
+   * category; see
+   * [ad-product-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-product-categories).
+   */
+  core.String detailType;
+  /**
+   * List of rows, with counts of bids with a given creative status and
+   * creative, aggregated by detail.
+   */
+  core.List<FilteredBidDetailRow> filteredBidDetailRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListCreativeStatusAndCreativeBreakdownByDetailRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.filteredBids.creatives.details.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListCreativeStatusAndCreativeBreakdownByDetailResponse();
+
+  ListCreativeStatusAndCreativeBreakdownByDetailResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("detailType")) {
+      detailType = _json["detailType"];
+    }
+    if (_json.containsKey("filteredBidDetailRows")) {
+      filteredBidDetailRows = _json["filteredBidDetailRows"].map((value) => new FilteredBidDetailRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (detailType != null) {
+      _json["detailType"] = detailType;
+    }
+    if (filteredBidDetailRows != null) {
+      _json["filteredBidDetailRows"] = filteredBidDetailRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all creatives associated with a given filtered
+ * bid reason.
+ */
+class ListCreativeStatusBreakdownByCreativeResponse {
+  /**
+   * List of rows, with counts of bids with a given creative status aggregated
+   * by creative.
+   */
+  core.List<FilteredBidCreativeRow> filteredBidCreativeRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListCreativeStatusBreakdownByCreativeRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.filteredBids.creatives.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListCreativeStatusBreakdownByCreativeResponse();
+
+  ListCreativeStatusBreakdownByCreativeResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("filteredBidCreativeRows")) {
+      filteredBidCreativeRows = _json["filteredBidCreativeRows"].map((value) => new FilteredBidCreativeRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (filteredBidCreativeRows != null) {
+      _json["filteredBidCreativeRows"] = filteredBidCreativeRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all details associated with a given filtered bid
+ * reason.
+ */
+class ListCreativeStatusBreakdownByDetailResponse {
+  /**
+   * The type of detail that the detail IDs represent.
+   * Possible string values are:
+   * - "TYPE_UNSPECIFIED" : A placeholder for an undefined status.
+   * This value will never be returned in responses.
+   * - "CREATIVE_ATTRIBUTE" : Indicates that the detail ID refers to a creative
+   * attribute; see
+   * [publisher-excludable-creative-attributes](https://developers.google.com/ad-exchange/rtb/downloads/publisher-excludable-creative-attributes).
+   * - "VENDOR" : Indicates that the detail ID refers to a vendor; see
+   * [vendors](https://developers.google.com/ad-exchange/rtb/downloads/vendors).
+   * - "SENSITIVE_CATEGORY" : Indicates that the detail ID refers to a sensitive
+   * category; see
+   * [ad-sensitive-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-sensitive-categories).
+   * - "PRODUCT_CATEGORY" : Indicates that the detail ID refers to a product
+   * category; see
+   * [ad-product-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-product-categories).
+   */
+  core.String detailType;
+  /**
+   * List of rows, with counts of bids with a given creative status aggregated
+   * by detail.
+   */
+  core.List<FilteredBidDetailRow> filteredBidDetailRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListCreativeStatusBreakdownByDetailRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.filteredBids.details.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListCreativeStatusBreakdownByDetailResponse();
+
+  ListCreativeStatusBreakdownByDetailResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("detailType")) {
+      detailType = _json["detailType"];
+    }
+    if (_json.containsKey("filteredBidDetailRows")) {
+      filteredBidDetailRows = _json["filteredBidDetailRows"].map((value) => new FilteredBidDetailRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (detailType != null) {
+      _json["detailType"] = detailType;
+    }
+    if (filteredBidDetailRows != null) {
+      _json["filteredBidDetailRows"] = filteredBidDetailRows.map((value) => (value).toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2421,8 +4444,8 @@ class ListCreativesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creatives != null) {
       _json["creatives"] = creatives.map((value) => (value).toJson()).toList();
     }
@@ -2457,10 +4480,255 @@ class ListDealAssociationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (associations != null) {
       _json["associations"] = associations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** Response message for listing filter sets. */
+class ListFilterSetsResponse {
+  /** The filter sets belonging to the buyer. */
+  core.List<FilterSet> filterSets;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListFilterSetsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListFilterSetsResponse();
+
+  ListFilterSetsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("filterSets")) {
+      filterSets = _json["filterSets"].map((value) => new FilterSet.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (filterSets != null) {
+      _json["filterSets"] = filterSets.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all reasons that bid requests were filtered and
+ * not sent to the buyer.
+ */
+class ListFilteredBidRequestsResponse {
+  /**
+   * List of rows, with counts of filtered bid requests aggregated by callout
+   * status.
+   */
+  core.List<CalloutStatusRow> calloutStatusRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListFilteredBidRequestsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.filteredBidRequests.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListFilteredBidRequestsResponse();
+
+  ListFilteredBidRequestsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("calloutStatusRows")) {
+      calloutStatusRows = _json["calloutStatusRows"].map((value) => new CalloutStatusRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (calloutStatusRows != null) {
+      _json["calloutStatusRows"] = calloutStatusRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all reasons that bids were filtered from the
+ * auction.
+ */
+class ListFilteredBidsResponse {
+  /**
+   * List of rows, with counts of filtered bids aggregated by filtering reason
+   * (i.e. creative status).
+   */
+  core.List<CreativeStatusRow> creativeStatusRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListFilteredBidsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.filteredBids.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListFilteredBidsResponse();
+
+  ListFilteredBidsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeStatusRows")) {
+      creativeStatusRows = _json["creativeStatusRows"].map((value) => new CreativeStatusRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (creativeStatusRows != null) {
+      _json["creativeStatusRows"] = creativeStatusRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all reasons that impressions were filtered (i.e.
+ * not considered as an inventory match) for the buyer.
+ */
+class ListFilteredImpressionsResponse {
+  /**
+   * List of rows, with counts of filtered impressions aggregated by status.
+   */
+  core.List<ImpressionStatusRow> impressionsStatusRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListFilteredImpressionsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.filteredImpressions.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListFilteredImpressionsResponse();
+
+  ListFilteredImpressionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("impressionsStatusRows")) {
+      impressionsStatusRows = _json["impressionsStatusRows"].map((value) => new ImpressionStatusRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (impressionsStatusRows != null) {
+      _json["impressionsStatusRows"] = impressionsStatusRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing the metrics that are measured in number of
+ * impressions.
+ */
+class ListImpressionMetricsResponse {
+  /** List of rows, each containing a set of impression metrics. */
+  core.List<ImpressionMetricsRow> impressionMetricsRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListImpressionMetricsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.impressionMetrics.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListImpressionMetricsResponse();
+
+  ListImpressionMetricsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("impressionMetricsRows")) {
+      impressionMetricsRows = _json["impressionMetricsRows"].map((value) => new ImpressionMetricsRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (impressionMetricsRows != null) {
+      _json["impressionMetricsRows"] = impressionMetricsRows.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** Response message for listing all reasons that bids lost in the auction. */
+class ListLosingBidsResponse {
+  /**
+   * List of rows, with counts of losing bids aggregated by loss reason (i.e.
+   * creative status).
+   */
+  core.List<CreativeStatusRow> creativeStatusRows;
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListLosingBidsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.losingBids.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+
+  ListLosingBidsResponse();
+
+  ListLosingBidsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeStatusRows")) {
+      creativeStatusRows = _json["creativeStatusRows"].map((value) => new CreativeStatusRow.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (creativeStatusRows != null) {
+      _json["creativeStatusRows"] = creativeStatusRows.map((value) => (value).toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2487,10 +4755,52 @@ class LocationContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (geoCriteriaIds != null) {
       _json["geoCriteriaIds"] = geoCriteriaIds;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A metric value, with an expected value and a variance; represents a count
+ * that may be either exact or estimated (i.e. when sampled).
+ */
+class MetricValue {
+  /** The expected value of the metric. */
+  core.String value;
+  /**
+   * The variance (i.e. square of the standard deviation) of the metric value.
+   * If value is exact, variance is 0.
+   * Can be used to calculate margin of error as a percentage of value, using
+   * the following formula, where Z is the standard constant that depends on the
+   * desired size of the confidence interval (e.g. for 90% confidence interval,
+   * use Z = 1.645):
+   *
+   *   marginOfError = 100 * Z * sqrt(variance) / value
+   */
+  core.String variance;
+
+  MetricValue();
+
+  MetricValue.fromJson(core.Map _json) {
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+    if (_json.containsKey("variance")) {
+      variance = _json["variance"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (value != null) {
+      _json["value"] = value;
+    }
+    if (variance != null) {
+      _json["variance"] = variance;
     }
     return _json;
   }
@@ -2571,8 +4881,8 @@ class NativeContent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (advertiserName != null) {
       _json["advertiserName"] = advertiserName;
     }
@@ -2629,10 +4939,36 @@ class PlatformContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (platforms != null) {
       _json["platforms"] = platforms;
+    }
+    return _json;
+  }
+}
+
+/**
+ * An open-ended realtime time range specified by the start timestamp.
+ * For filter sets that specify a realtime time range RTB metrics continue to
+ * be aggregated throughout the lifetime of the filter set.
+ */
+class RealtimeTimeRange {
+  /** The start timestamp of the real-time RTB metrics aggregation. */
+  core.String startTimestamp;
+
+  RealtimeTimeRange();
+
+  RealtimeTimeRange.fromJson(core.Map _json) {
+    if (_json.containsKey("startTimestamp")) {
+      startTimestamp = _json["startTimestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (startTimestamp != null) {
+      _json["startTimestamp"] = startTimestamp;
     }
     return _json;
   }
@@ -2663,13 +4999,56 @@ class Reason {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
     if (status != null) {
       _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A relative date range, specified by an offset and a duration.
+ * The supported range of dates begins 30 days before today and ends today.
+ * I.e. the limits for these values are:
+ * offset_days >= 0
+ * duration_days >= 1
+ * offset_days + duration_days <= 30
+ */
+class RelativeDateRange {
+  /**
+   * The number of days in the requested date range. E.g. for a range spanning
+   * today, 1. For a range spanning the last 7 days, 7.
+   */
+  core.int durationDays;
+  /**
+   * The end date of the filter set, specified as the number of days before
+   * today. E.g. for a range where the last date is today, 0.
+   */
+  core.int offsetDays;
+
+  RelativeDateRange();
+
+  RelativeDateRange.fromJson(core.Map _json) {
+    if (_json.containsKey("durationDays")) {
+      durationDays = _json["durationDays"];
+    }
+    if (_json.containsKey("offsetDays")) {
+      offsetDays = _json["offsetDays"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (durationDays != null) {
+      _json["durationDays"] = durationDays;
+    }
+    if (offsetDays != null) {
+      _json["offsetDays"] = offsetDays;
     }
     return _json;
   }
@@ -2688,10 +5067,35 @@ class RemoveDealAssociationRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (association != null) {
       _json["association"] = (association).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * A response may include multiple rows, breaking down along various dimensions.
+ * Encapsulates the values of all dimensions for a given row.
+ */
+class RowDimensions {
+  /** The time interval that this row represents. */
+  TimeInterval timeInterval;
+
+  RowDimensions();
+
+  RowDimensions.fromJson(core.Map _json) {
+    if (_json.containsKey("timeInterval")) {
+      timeInterval = new TimeInterval.fromJson(_json["timeInterval"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (timeInterval != null) {
+      _json["timeInterval"] = (timeInterval).toJson();
     }
     return _json;
   }
@@ -2710,8 +5114,8 @@ class SecurityContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (securities != null) {
       _json["securities"] = securities;
     }
@@ -2764,8 +5168,8 @@ class ServingContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (all != null) {
       _json["all"] = all;
     }
@@ -2829,8 +5233,8 @@ class ServingRestriction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contexts != null) {
       _json["contexts"] = contexts.map((value) => (value).toJson()).toList();
     }
@@ -2852,8 +5256,55 @@ class StopWatchingCreativeRequest {
   StopWatchingCreativeRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/**
+ * An interval of time, with an absolute start and end.
+ * This is included in the response, for several reasons:
+ * 1) The request may have specified start or end times relative to the time the
+ *    request was sent; the response indicates the corresponding absolute time
+ *    interval.
+ * 2) The request may have specified an end time past the latest time for which
+ *    data was available (e.g. if requesting data for the today); the response
+ *    indicates the latest time for which data was actually returned.
+ * 3) The response data for a single request may be broken down into multiple
+ *    time intervals, if a time series was requested.
+ */
+class TimeInterval {
+  /**
+   * The timestamp marking the end of the range (exclusive) for which data is
+   * included.
+   */
+  core.String endTime;
+  /**
+   * The timestamp marking the start of the range (inclusive) for which data is
+   * included.
+   */
+  core.String startTime;
+
+  TimeInterval();
+
+  TimeInterval.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
     return _json;
   }
 }
@@ -2871,8 +5322,8 @@ class VideoContent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (videoUrl != null) {
       _json["videoUrl"] = videoUrl;
     }
@@ -2899,8 +5350,8 @@ class WatchCreativeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (topic != null) {
       _json["topic"] = topic;
     }

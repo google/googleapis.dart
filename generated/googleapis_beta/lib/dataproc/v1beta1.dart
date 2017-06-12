@@ -179,7 +179,7 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the operation collection.
+   * [name] - The name of the operation's parent resource.
    * Value must have pattern "^operations$".
    *
    * [filter] - The standard list filter.
@@ -935,8 +935,8 @@ class AcceleratorConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (acceleratorCount != null) {
       _json["acceleratorCount"] = acceleratorCount;
     }
@@ -955,8 +955,8 @@ class CancelJobRequest {
   CancelJobRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -969,8 +969,8 @@ class CancelOperationRequest {
   CancelOperationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1044,8 +1044,8 @@ class Cluster {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusterName != null) {
       _json["clusterName"] = clusterName;
     }
@@ -1147,8 +1147,8 @@ class ClusterConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (configurationBucket != null) {
       _json["configurationBucket"] = configurationBucket;
     }
@@ -1192,8 +1192,8 @@ class ClusterMetrics {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (hdfsMetrics != null) {
       _json["hdfsMetrics"] = hdfsMetrics;
     }
@@ -1252,8 +1252,8 @@ class ClusterOperationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusterName != null) {
       _json["clusterName"] = clusterName;
     }
@@ -1317,8 +1317,8 @@ class ClusterOperationStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (details != null) {
       _json["details"] = details;
     }
@@ -1385,8 +1385,8 @@ class ClusterStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (detail != null) {
       _json["detail"] = detail;
     }
@@ -1419,8 +1419,8 @@ class DiagnoseClusterOutputLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (outputUri != null) {
       _json["outputUri"] = outputUri;
     }
@@ -1436,8 +1436,8 @@ class DiagnoseClusterRequest {
   DiagnoseClusterRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1458,8 +1458,8 @@ class DiagnoseClusterResults {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (outputUri != null) {
       _json["outputUri"] = outputUri;
     }
@@ -1491,8 +1491,8 @@ class DiskConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bootDiskSizeGb != null) {
       _json["bootDiskSizeGb"] = bootDiskSizeGb;
     }
@@ -1519,8 +1519,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1619,8 +1619,8 @@ class GceClusterConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (internalIpOnly != null) {
       _json["internalIpOnly"] = internalIpOnly;
     }
@@ -1725,8 +1725,8 @@ class HadoopJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (archiveUris != null) {
       _json["archiveUris"] = archiveUris;
     }
@@ -1808,8 +1808,8 @@ class HiveJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (continueOnFailure != null) {
       _json["continueOnFailure"] = continueOnFailure;
     }
@@ -1903,8 +1903,8 @@ class InstanceGroupConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accelerators != null) {
       _json["accelerators"] = accelerators.map((value) => (value).toJson()).toList();
     }
@@ -2066,8 +2066,8 @@ class Job {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (driverControlFilesUri != null) {
       _json["driverControlFilesUri"] = driverControlFilesUri;
     }
@@ -2147,8 +2147,8 @@ class JobPlacement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusterName != null) {
       _json["clusterName"] = clusterName;
     }
@@ -2186,8 +2186,8 @@ class JobReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (jobId != null) {
       _json["jobId"] = jobId;
     }
@@ -2219,8 +2219,8 @@ class JobScheduling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxFailuresPerHour != null) {
       _json["maxFailuresPerHour"] = maxFailuresPerHour;
     }
@@ -2289,8 +2289,8 @@ class JobStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (details != null) {
       _json["details"] = details;
     }
@@ -2325,8 +2325,8 @@ class ListClustersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusters != null) {
       _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
     }
@@ -2359,8 +2359,8 @@ class ListJobsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (jobs != null) {
       _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
     }
@@ -2389,8 +2389,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2418,8 +2418,8 @@ class LoggingConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (driverLogLevels != null) {
       _json["driverLogLevels"] = driverLogLevels;
     }
@@ -2448,8 +2448,8 @@ class ManagedGroupConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceGroupManagerName != null) {
       _json["instanceGroupManagerName"] = instanceGroupManagerName;
     }
@@ -2486,8 +2486,8 @@ class NodeInitializationAction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (executableFile != null) {
       _json["executableFile"] = executableFile;
     }
@@ -2561,8 +2561,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -2625,8 +2625,8 @@ class OperationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusterName != null) {
       _json["clusterName"] = clusterName;
     }
@@ -2687,8 +2687,8 @@ class OperationStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (details != null) {
       _json["details"] = details;
     }
@@ -2763,8 +2763,8 @@ class PigJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (continueOnFailure != null) {
       _json["continueOnFailure"] = continueOnFailure;
     }
@@ -2862,8 +2862,8 @@ class PySparkJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (archiveUris != null) {
       _json["archiveUris"] = archiveUris;
     }
@@ -2919,8 +2919,8 @@ class QueryList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (queries != null) {
       _json["queries"] = queries;
     }
@@ -2958,8 +2958,8 @@ class SoftwareConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (imageVersion != null) {
       _json["imageVersion"] = imageVersion;
     }
@@ -3043,8 +3043,8 @@ class SparkJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (archiveUris != null) {
       _json["archiveUris"] = archiveUris;
     }
@@ -3118,8 +3118,8 @@ class SparkSqlJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (jarFileUris != null) {
       _json["jarFileUris"] = jarFileUris;
     }
@@ -3210,8 +3210,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -3238,8 +3238,8 @@ class SubmitJobRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (job != null) {
       _json["job"] = (job).toJson();
     }
@@ -3295,8 +3295,8 @@ class YarnApplication {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }

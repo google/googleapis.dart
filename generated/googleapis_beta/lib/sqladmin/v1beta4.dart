@@ -969,7 +969,8 @@ class InstancesResourceApi {
    * [project] - Project ID of the project for which to list Cloud SQL
    * instances.
    *
-   * [filter] - Reserved for future use.
+   * [filter] - An expression for filtering the results of the request, such as
+   * by name or label.
    *
    * [maxResults] - The maximum number of results to return per response.
    *
@@ -2115,8 +2116,8 @@ class AclEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (expirationTime != null) {
       _json["expirationTime"] = (expirationTime).toIso8601String();
     }
@@ -2167,8 +2168,8 @@ class BackupConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (binaryLogEnabled != null) {
       _json["binaryLogEnabled"] = binaryLogEnabled;
     }
@@ -2271,8 +2272,8 @@ class BackupRun {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2341,8 +2342,8 @@ class BackupRunsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -2379,8 +2380,8 @@ class BinLogCoordinates {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (binLogFileName != null) {
       _json["binLogFileName"] = binLogFileName;
     }
@@ -2421,8 +2422,8 @@ class CloneContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (binLogCoordinates != null) {
       _json["binLogCoordinates"] = (binLogCoordinates).toJson();
     }
@@ -2492,8 +2493,8 @@ class Database {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (charset != null) {
       _json["charset"] = charset;
     }
@@ -2549,8 +2550,8 @@ class DatabaseFlags {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2591,8 +2592,8 @@ class DatabaseInstanceFailoverReplica {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (available != null) {
       _json["available"] = available;
     }
@@ -2787,8 +2788,8 @@ class DatabaseInstance {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (backendType != null) {
       _json["backendType"] = backendType;
     }
@@ -2883,8 +2884,8 @@ class DatabasesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -2908,8 +2909,8 @@ class ExportContextCsvExportOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (selectQuery != null) {
       _json["selectQuery"] = selectQuery;
     }
@@ -2938,8 +2939,8 @@ class ExportContextSqlExportOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (schemaOnly != null) {
       _json["schemaOnly"] = schemaOnly;
     }
@@ -3003,8 +3004,8 @@ class ExportContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (csvExportOptions != null) {
       _json["csvExportOptions"] = (csvExportOptions).toJson();
     }
@@ -3048,8 +3049,8 @@ class FailoverContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3121,8 +3122,8 @@ class Flag {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowedStringValues != null) {
       _json["allowedStringValues"] = allowedStringValues;
     }
@@ -3169,8 +3170,8 @@ class FlagsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -3202,8 +3203,8 @@ class ImportContextCsvImportOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns;
     }
@@ -3268,8 +3269,8 @@ class ImportContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (csvImportOptions != null) {
       _json["csvImportOptions"] = (csvImportOptions).toJson();
     }
@@ -3305,8 +3306,8 @@ class InstancesCloneRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cloneContext != null) {
       _json["cloneContext"] = (cloneContext).toJson();
     }
@@ -3327,8 +3328,8 @@ class InstancesExportRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (exportContext != null) {
       _json["exportContext"] = (exportContext).toJson();
     }
@@ -3349,8 +3350,8 @@ class InstancesFailoverRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (failoverContext != null) {
       _json["failoverContext"] = (failoverContext).toJson();
     }
@@ -3371,8 +3372,8 @@ class InstancesImportRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (importContext != null) {
       _json["importContext"] = (importContext).toJson();
     }
@@ -3406,8 +3407,8 @@ class InstancesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -3434,8 +3435,8 @@ class InstancesRestoreBackupRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (restoreBackupContext != null) {
       _json["restoreBackupContext"] = (restoreBackupContext).toJson();
     }
@@ -3456,8 +3457,8 @@ class InstancesTruncateLogRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (truncateLogContext != null) {
       _json["truncateLogContext"] = (truncateLogContext).toJson();
     }
@@ -3495,8 +3496,8 @@ class IpConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (authorizedNetworks != null) {
       _json["authorizedNetworks"] = authorizedNetworks.map((value) => (value).toJson()).toList();
     }
@@ -3541,8 +3542,8 @@ class IpMapping {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ipAddress != null) {
       _json["ipAddress"] = ipAddress;
     }
@@ -3551,36 +3552,6 @@ class IpMapping {
     }
     if (type != null) {
       _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-/** Reserved for future use. */
-class Labels {
-  /** Reserved for future use. */
-  core.String key;
-  /** Reserved for future use. */
-  core.String value;
-
-  Labels();
-
-  Labels.fromJson(core.Map _json) {
-    if (_json.containsKey("key")) {
-      key = _json["key"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (key != null) {
-      _json["key"] = key;
-    }
-    if (value != null) {
-      _json["value"] = value;
     }
     return _json;
   }
@@ -3620,8 +3591,8 @@ class LocationPreference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (followGaeApplication != null) {
       _json["followGaeApplication"] = followGaeApplication;
     }
@@ -3665,8 +3636,8 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -3760,8 +3731,8 @@ class MySqlReplicaConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (caCertificate != null) {
       _json["caCertificate"] = caCertificate;
     }
@@ -3817,8 +3788,8 @@ class OnPremisesConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (hostPort != null) {
       _json["hostPort"] = hostPort;
     }
@@ -3939,8 +3910,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = (endTime).toIso8601String();
     }
@@ -4013,8 +3984,8 @@ class OperationError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -4046,8 +4017,8 @@ class OperationErrors {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errors != null) {
       _json["errors"] = errors.map((value) => (value).toJson()).toList();
     }
@@ -4084,8 +4055,8 @@ class OperationsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -4136,8 +4107,8 @@ class ReplicaConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (failoverTarget != null) {
       _json["failoverTarget"] = failoverTarget;
     }
@@ -4174,8 +4145,8 @@ class RestoreBackupContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (backupRunId != null) {
       _json["backupRunId"] = backupRunId;
     }
@@ -4245,8 +4216,6 @@ class Settings {
   IpConfiguration ipConfiguration;
   /** This is always sql#settings. */
   core.String kind;
-  /** Reserved for future use. */
-  core.List<Labels> labels;
   /**
    * The location preference settings. This allows the instance to be located as
    * near as possible to either an App Engine app or GCE zone for better
@@ -4294,6 +4263,11 @@ class Settings {
    * information, see pricing.
    */
   core.String tier;
+  /**
+   * User-provided labels, represented as a dictionary where each label is a
+   * single key value pair.
+   */
+  core.Map<core.String, core.String> userLabels;
 
   Settings();
 
@@ -4331,9 +4305,6 @@ class Settings {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
-    if (_json.containsKey("labels")) {
-      labels = _json["labels"].map((value) => new Labels.fromJson(value)).toList();
-    }
     if (_json.containsKey("locationPreference")) {
       locationPreference = new LocationPreference.fromJson(_json["locationPreference"]);
     }
@@ -4358,10 +4329,13 @@ class Settings {
     if (_json.containsKey("tier")) {
       tier = _json["tier"];
     }
+    if (_json.containsKey("userLabels")) {
+      userLabels = _json["userLabels"];
+    }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (activationPolicy != null) {
       _json["activationPolicy"] = activationPolicy;
     }
@@ -4395,9 +4369,6 @@ class Settings {
     if (kind != null) {
       _json["kind"] = kind;
     }
-    if (labels != null) {
-      _json["labels"] = labels.map((value) => (value).toJson()).toList();
-    }
     if (locationPreference != null) {
       _json["locationPreference"] = (locationPreference).toJson();
     }
@@ -4421,6 +4392,9 @@ class Settings {
     }
     if (tier != null) {
       _json["tier"] = tier;
+    }
+    if (userLabels != null) {
+      _json["userLabels"] = userLabels;
     }
     return _json;
   }
@@ -4485,8 +4459,8 @@ class SslCert {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cert != null) {
       _json["cert"] = cert;
     }
@@ -4539,8 +4513,8 @@ class SslCertDetail {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (certInfo != null) {
       _json["certInfo"] = (certInfo).toJson();
     }
@@ -4564,8 +4538,8 @@ class SslCertsCreateEphemeralRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (publicKey != null) {
       _json["public_key"] = publicKey;
     }
@@ -4590,8 +4564,8 @@ class SslCertsInsertRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (commonName != null) {
       _json["commonName"] = commonName;
     }
@@ -4634,8 +4608,8 @@ class SslCertsInsertResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientCert != null) {
       _json["clientCert"] = (clientCert).toJson();
     }
@@ -4670,8 +4644,8 @@ class SslCertsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -4718,8 +4692,8 @@ class Tier {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (DiskQuota != null) {
       _json["DiskQuota"] = DiskQuota;
     }
@@ -4757,8 +4731,8 @@ class TiersListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -4790,8 +4764,8 @@ class TruncateLogContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4859,8 +4833,8 @@ class User {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -4913,8 +4887,8 @@ class UsersListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }

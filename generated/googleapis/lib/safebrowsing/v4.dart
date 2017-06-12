@@ -105,11 +105,11 @@ class EncodedUpdatesResourceApi {
    *
    * [encodedRequest] - A serialized FetchThreatListUpdatesRequest proto.
    *
+   * [clientVersion] - The version of the client implementation.
+   *
    * [clientId] - A client ID that uniquely identifies the client implementation
    * of the Safe
    * Browsing API.
-   *
-   * [clientVersion] - The version of the client implementation.
    *
    * Completes with a [FetchThreatListUpdatesResponse].
    *
@@ -119,7 +119,7 @@ class EncodedUpdatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest, {core.String clientId, core.String clientVersion}) {
+  async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest, {core.String clientVersion, core.String clientId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -130,11 +130,11 @@ class EncodedUpdatesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientId != null) {
-      _queryParams["clientId"] = [clientId];
-    }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if (clientId != null) {
+      _queryParams["clientId"] = [clientId];
     }
 
     _url = 'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');
@@ -364,8 +364,8 @@ class Checksum {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sha256 != null) {
       _json["sha256"] = sha256;
     }
@@ -394,8 +394,8 @@ class ClientInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -446,8 +446,8 @@ class Constraints {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxDatabaseEntries != null) {
       _json["maxDatabaseEntries"] = maxDatabaseEntries;
     }
@@ -487,8 +487,8 @@ class FetchThreatListUpdatesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (client != null) {
       _json["client"] = (client).toJson();
     }
@@ -519,8 +519,8 @@ class FetchThreatListUpdatesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (listUpdateResponses != null) {
       _json["listUpdateResponses"] = listUpdateResponses.map((value) => (value).toJson()).toList();
     }
@@ -562,8 +562,8 @@ class FindFullHashesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (apiClient != null) {
       _json["apiClient"] = (apiClient).toJson();
     }
@@ -609,8 +609,8 @@ class FindFullHashesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (matches != null) {
       _json["matches"] = matches.map((value) => (value).toJson()).toList();
     }
@@ -642,8 +642,8 @@ class FindThreatMatchesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (client != null) {
       _json["client"] = (client).toJson();
     }
@@ -666,8 +666,8 @@ class FindThreatMatchesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (matches != null) {
       _json["matches"] = matches.map((value) => (value).toJson()).toList();
     }
@@ -687,8 +687,8 @@ class ListThreatListsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (threatLists != null) {
       _json["threatLists"] = threatLists.map((value) => (value).toJson()).toList();
     }
@@ -747,6 +747,7 @@ class ListUpdateRequest {
    * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
    * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
    * threat type.
+   * - "MALICIOUS_BINARY" : Malicious binary threat type.
    */
   core.String threatType;
 
@@ -770,8 +771,8 @@ class ListUpdateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (constraints != null) {
       _json["constraints"] = (constraints).toJson();
     }
@@ -868,6 +869,7 @@ class ListUpdateResponse {
    * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
    * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
    * threat type.
+   * - "MALICIOUS_BINARY" : Malicious binary threat type.
    */
   core.String threatType;
 
@@ -900,8 +902,8 @@ class ListUpdateResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (additions != null) {
       _json["additions"] = additions.map((value) => (value).toJson()).toList();
     }
@@ -964,8 +966,8 @@ class MetadataEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -1016,8 +1018,8 @@ class RawHashes {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (prefixSize != null) {
       _json["prefixSize"] = prefixSize;
     }
@@ -1041,8 +1043,8 @@ class RawIndices {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (indices != null) {
       _json["indices"] = indices;
     }
@@ -1098,8 +1100,8 @@ class RiceDeltaEncoding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (encodedData != null) {
       _json["encodedData"] = encodedData;
     }
@@ -1163,8 +1165,8 @@ class ThreatEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (digest != null) {
       _json["digest"] = digest;
     }
@@ -1194,8 +1196,8 @@ class ThreatEntryMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (entries != null) {
       _json["entries"] = entries.map((value) => (value).toJson()).toList();
     }
@@ -1254,8 +1256,8 @@ class ThreatEntrySet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (compressionType != null) {
       _json["compressionType"] = compressionType;
     }
@@ -1306,8 +1308,8 @@ class ThreatInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (platformTypes != null) {
       _json["platformTypes"] = platformTypes;
     }
@@ -1365,6 +1367,7 @@ class ThreatListDescriptor {
    * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
    * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
    * threat type.
+   * - "MALICIOUS_BINARY" : Malicious binary threat type.
    */
   core.String threatType;
 
@@ -1382,8 +1385,8 @@ class ThreatListDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (platformType != null) {
       _json["platformType"] = platformType;
     }
@@ -1443,6 +1446,7 @@ class ThreatMatch {
    * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
    * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
    * threat type.
+   * - "MALICIOUS_BINARY" : Malicious binary threat type.
    */
   core.String threatType;
 
@@ -1469,8 +1473,8 @@ class ThreatMatch {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cacheDuration != null) {
       _json["cacheDuration"] = cacheDuration;
     }

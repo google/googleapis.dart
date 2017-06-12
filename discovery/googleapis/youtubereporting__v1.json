@@ -28,16 +28,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -72,13 +62,13 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -113,6 +103,16 @@
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -157,15 +157,15 @@
                         "jobId"
                     ],
                     "parameters": {
-                        "onBehalfOfContentOwner": {
-                            "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "jobId": {
                             "description": "The ID of the job to delete.",
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "onBehalfOfContentOwner": {
+                            "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -184,11 +184,6 @@
                     "id": "youtubereporting.jobs.list",
                     "parameterOrder": [],
                     "parameters": {
-                        "onBehalfOfContentOwner": {
-                            "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "pageToken": {
                             "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportTypesResponse.next_page_token\nreturned in response to the previous call to the `ListJobs` method.",
                             "location": "query",
@@ -204,6 +199,11 @@
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
+                        },
+                        "onBehalfOfContentOwner": {
+                            "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+                            "location": "query",
+                            "type": "string"
                         }
                     },
                     "path": "v1/jobs",
@@ -280,6 +280,12 @@
                                 "jobId"
                             ],
                             "parameters": {
+                                "startTimeBefore": {
+                                    "description": "If set, only reports whose start time is smaller than the specified\ndate/time are returned.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "jobId": {
                                     "description": "The ID of the job.",
                                     "location": "path",
@@ -292,14 +298,14 @@
                                     "location": "query",
                                     "type": "string"
                                 },
-                                "pageToken": {
-                                    "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportsResponse.next_page_token\nreturned in response to the previous call to the `ListReports` method.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "startTimeAtOrAfter": {
                                     "description": "If set, only reports whose start time is greater than or equal the\nspecified date/time are returned.",
                                     "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportsResponse.next_page_token\nreturned in response to the previous call to the `ListReports` method.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -311,12 +317,6 @@
                                 },
                                 "onBehalfOfContentOwner": {
                                     "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "startTimeBefore": {
-                                    "description": "If set, only reports whose start time is smaller than the specified\ndate/time are returned.",
-                                    "format": "google-datetime",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -339,12 +339,6 @@
                                 "reportId"
                             ],
                             "parameters": {
-                                "reportId": {
-                                    "description": "The ID of the report to retrieve.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
                                 "jobId": {
                                     "description": "The ID of the job.",
                                     "location": "path",
@@ -354,6 +348,12 @@
                                 "onBehalfOfContentOwner": {
                                     "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
                                     "location": "query",
+                                    "type": "string"
+                                },
+                                "reportId": {
+                                    "description": "The ID of the report to retrieve.",
+                                    "location": "path",
+                                    "required": true,
                                     "type": "string"
                                 }
                             },
@@ -412,78 +412,9 @@
             }
         }
     },
-    "revision": "20170522",
+    "revision": "20170611",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "schemas": {
-        "ListJobsResponse": {
-            "description": "Response message for ReportingService.ListJobs.",
-            "id": "ListJobsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token to retrieve next page of results.\nPass this value in the\nListJobsRequest.page_token\nfield in the subsequent call to `ListJobs` method to retrieve the next\npage of results.",
-                    "type": "string"
-                },
-                "jobs": {
-                    "description": "The list of jobs.",
-                    "items": {
-                        "$ref": "Job"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Job": {
-            "description": "A job creating reports of a specific type.",
-            "id": "Job",
-            "properties": {
-                "id": {
-                    "description": "The server-generated ID of the job (max. 40 characters).",
-                    "type": "string"
-                },
-                "systemManaged": {
-                    "description": "True if this a system-managed job that cannot be modified by the user;\notherwise false.",
-                    "type": "boolean"
-                },
-                "createTime": {
-                    "description": "The creation date/time of the job.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "reportTypeId": {
-                    "description": "The type of reports this job creates. Corresponds to the ID of a\nReportType.",
-                    "type": "string"
-                },
-                "expireTime": {
-                    "description": "The date/time when this job will expire/expired. After a job expired, no\nnew reports are generated.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The name of the job (max. 100 characters).",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListReportsResponse": {
-            "description": "Response message for ReportingService.ListReports.",
-            "id": "ListReportsResponse",
-            "properties": {
-                "reports": {
-                    "description": "The list of report types.",
-                    "items": {
-                        "$ref": "Report"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "A token to retrieve next page of results.\nPass this value in the\nListReportsRequest.page_token\nfield in the subsequent call to `ListReports` method to retrieve the next\npage of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Media": {
             "description": "Media resource.",
             "id": "Media",
@@ -541,6 +472,14 @@
             "description": "A report's metadata including the URL from which the report itself can be\ndownloaded.",
             "id": "Report",
             "properties": {
+                "jobId": {
+                    "description": "The ID of the job that created this report.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The server-generated ID of the report.",
+                    "type": "string"
+                },
                 "jobExpireTime": {
                     "description": "The date/time when the job this report belongs to will expire/expired.",
                     "format": "google-datetime",
@@ -564,14 +503,6 @@
                     "description": "The date/time when this report was created.",
                     "format": "google-datetime",
                     "type": "string"
-                },
-                "jobId": {
-                    "description": "The ID of the job that created this report.",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "The server-generated ID of the report.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -580,6 +511,75 @@
             "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
             "id": "Empty",
             "properties": {},
+            "type": "object"
+        },
+        "ListJobsResponse": {
+            "description": "Response message for ReportingService.ListJobs.",
+            "id": "ListJobsResponse",
+            "properties": {
+                "jobs": {
+                    "description": "The list of jobs.",
+                    "items": {
+                        "$ref": "Job"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve next page of results.\nPass this value in the\nListJobsRequest.page_token\nfield in the subsequent call to `ListJobs` method to retrieve the next\npage of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Job": {
+            "description": "A job creating reports of a specific type.",
+            "id": "Job",
+            "properties": {
+                "id": {
+                    "description": "The server-generated ID of the job (max. 40 characters).",
+                    "type": "string"
+                },
+                "systemManaged": {
+                    "description": "True if this a system-managed job that cannot be modified by the user;\notherwise false.",
+                    "type": "boolean"
+                },
+                "createTime": {
+                    "description": "The creation date/time of the job.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "reportTypeId": {
+                    "description": "The type of reports this job creates. Corresponds to the ID of a\nReportType.",
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "The date/time when this job will expire/expired. After a job expired, no\nnew reports are generated.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the job (max. 100 characters).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListReportsResponse": {
+            "description": "Response message for ReportingService.ListReports.",
+            "id": "ListReportsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve next page of results.\nPass this value in the\nListReportsRequest.page_token\nfield in the subsequent call to `ListReports` method to retrieve the next\npage of results.",
+                    "type": "string"
+                },
+                "reports": {
+                    "description": "The list of report types.",
+                    "items": {
+                        "$ref": "Report"
+                    },
+                    "type": "array"
+                }
+            },
             "type": "object"
         }
     },

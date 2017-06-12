@@ -1,3 +1,29 @@
+## 0.40.0
+
+* [api] appengine:v1
+* [api] bigquerydatatransfer:v1
+* [api] classroom:v1
+* [api] cloudkms:v1
+* [api] compute:v1
+* [api] content:v2
+* [api] firebasedynamiclinks:v1
+* [api] firebaserules:v1
+* [api] ml:v1
+* [api] partners:v2
+* [api] servicemanagement:v1
+* [api] serviceuser:v1
+* [api] sheets:v4
+* [api] slides:v1
+* [api] sourcerepo:v1
+* [api] storage:v1
+* [api] translate:v2
+* [api-breaking] bigquerydatatransfer:v1
+* [api-breaking] customsearch:v1
+* [api-breaking] customsearch:v1
+* [api-breaking] dataproc:v1
+* [api-removed] dfareporting:v2_6
+* [api-removed] dfareporting:v2_7
+
 ## 0.39.0
 
 * [api-new] dfareporting:v2_8

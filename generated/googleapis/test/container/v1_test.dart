@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/container/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -110,53 +110,53 @@ checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-buildUnnamed1710() {
+buildUnnamed1720() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1710(core.List<core.String> o) {
+checkUnnamed1720(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1711() {
+buildUnnamed1721() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1711(core.List<core.String> o) {
+checkUnnamed1721(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1712() {
+buildUnnamed1722() {
   var o = new core.List<api.NodePool>();
   o.add(buildNodePool());
   o.add(buildNodePool());
   return o;
 }
 
-checkUnnamed1712(core.List<api.NodePool> o) {
+checkUnnamed1722(core.List<api.NodePool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNodePool(o[0]);
   checkNodePool(o[1]);
 }
 
-buildUnnamed1713() {
+buildUnnamed1723() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1713(core.Map<core.String, core.String> o) {
+checkUnnamed1723(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -179,10 +179,10 @@ buildCluster() {
     o.expireTime = "foo";
     o.initialClusterVersion = "foo";
     o.initialNodeCount = 42;
-    o.instanceGroupUrls = buildUnnamed1710();
+    o.instanceGroupUrls = buildUnnamed1720();
     o.labelFingerprint = "foo";
     o.legacyAbac = buildLegacyAbac();
-    o.locations = buildUnnamed1711();
+    o.locations = buildUnnamed1721();
     o.loggingService = "foo";
     o.masterAuth = buildMasterAuth();
     o.monitoringService = "foo";
@@ -190,8 +190,8 @@ buildCluster() {
     o.network = "foo";
     o.nodeConfig = buildNodeConfig();
     o.nodeIpv4CidrSize = 42;
-    o.nodePools = buildUnnamed1712();
-    o.resourceLabels = buildUnnamed1713();
+    o.nodePools = buildUnnamed1722();
+    o.resourceLabels = buildUnnamed1723();
     o.selfLink = "foo";
     o.servicesIpv4Cidr = "foo";
     o.status = "foo";
@@ -218,10 +218,10 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.expireTime, unittest.equals('foo'));
     unittest.expect(o.initialClusterVersion, unittest.equals('foo'));
     unittest.expect(o.initialNodeCount, unittest.equals(42));
-    checkUnnamed1710(o.instanceGroupUrls);
+    checkUnnamed1720(o.instanceGroupUrls);
     unittest.expect(o.labelFingerprint, unittest.equals('foo'));
     checkLegacyAbac(o.legacyAbac);
-    checkUnnamed1711(o.locations);
+    checkUnnamed1721(o.locations);
     unittest.expect(o.loggingService, unittest.equals('foo'));
     checkMasterAuth(o.masterAuth);
     unittest.expect(o.monitoringService, unittest.equals('foo'));
@@ -229,8 +229,8 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.network, unittest.equals('foo'));
     checkNodeConfig(o.nodeConfig);
     unittest.expect(o.nodeIpv4CidrSize, unittest.equals(42));
-    checkUnnamed1712(o.nodePools);
-    checkUnnamed1713(o.resourceLabels);
+    checkUnnamed1722(o.nodePools);
+    checkUnnamed1723(o.resourceLabels);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.servicesIpv4Cidr, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -241,14 +241,14 @@ checkCluster(api.Cluster o) {
   buildCounterCluster--;
 }
 
-buildUnnamed1714() {
+buildUnnamed1724() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1714(core.List<core.String> o) {
+checkUnnamed1724(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -261,7 +261,7 @@ buildClusterUpdate() {
   if (buildCounterClusterUpdate < 3) {
     o.desiredAddonsConfig = buildAddonsConfig();
     o.desiredImageType = "foo";
-    o.desiredLocations = buildUnnamed1714();
+    o.desiredLocations = buildUnnamed1724();
     o.desiredMasterVersion = "foo";
     o.desiredMonitoringService = "foo";
     o.desiredNodePoolAutoscaling = buildNodePoolAutoscaling();
@@ -277,7 +277,7 @@ checkClusterUpdate(api.ClusterUpdate o) {
   if (buildCounterClusterUpdate < 3) {
     checkAddonsConfig(o.desiredAddonsConfig);
     unittest.expect(o.desiredImageType, unittest.equals('foo'));
-    checkUnnamed1714(o.desiredLocations);
+    checkUnnamed1724(o.desiredLocations);
     unittest.expect(o.desiredMasterVersion, unittest.equals('foo'));
     unittest.expect(o.desiredMonitoringService, unittest.equals('foo'));
     checkNodePoolAutoscaling(o.desiredNodePoolAutoscaling);
@@ -416,27 +416,27 @@ checkLegacyAbac(api.LegacyAbac o) {
   buildCounterLegacyAbac--;
 }
 
-buildUnnamed1715() {
+buildUnnamed1725() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1715(core.List<api.Cluster> o) {
+checkUnnamed1725(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
 }
 
-buildUnnamed1716() {
+buildUnnamed1726() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1716(core.List<core.String> o) {
+checkUnnamed1726(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -447,8 +447,8 @@ buildListClustersResponse() {
   var o = new api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1715();
-    o.missingZones = buildUnnamed1716();
+    o.clusters = buildUnnamed1725();
+    o.missingZones = buildUnnamed1726();
   }
   buildCounterListClustersResponse--;
   return o;
@@ -457,20 +457,20 @@ buildListClustersResponse() {
 checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1715(o.clusters);
-    checkUnnamed1716(o.missingZones);
+    checkUnnamed1725(o.clusters);
+    checkUnnamed1726(o.missingZones);
   }
   buildCounterListClustersResponse--;
 }
 
-buildUnnamed1717() {
+buildUnnamed1727() {
   var o = new core.List<api.NodePool>();
   o.add(buildNodePool());
   o.add(buildNodePool());
   return o;
 }
 
-checkUnnamed1717(core.List<api.NodePool> o) {
+checkUnnamed1727(core.List<api.NodePool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNodePool(o[0]);
   checkNodePool(o[1]);
@@ -481,7 +481,7 @@ buildListNodePoolsResponse() {
   var o = new api.ListNodePoolsResponse();
   buildCounterListNodePoolsResponse++;
   if (buildCounterListNodePoolsResponse < 3) {
-    o.nodePools = buildUnnamed1717();
+    o.nodePools = buildUnnamed1727();
   }
   buildCounterListNodePoolsResponse--;
   return o;
@@ -490,32 +490,32 @@ buildListNodePoolsResponse() {
 checkListNodePoolsResponse(api.ListNodePoolsResponse o) {
   buildCounterListNodePoolsResponse++;
   if (buildCounterListNodePoolsResponse < 3) {
-    checkUnnamed1717(o.nodePools);
+    checkUnnamed1727(o.nodePools);
   }
   buildCounterListNodePoolsResponse--;
 }
 
-buildUnnamed1718() {
+buildUnnamed1728() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1718(core.List<core.String> o) {
+checkUnnamed1728(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1719() {
+buildUnnamed1729() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1719(core.List<api.Operation> o) {
+checkUnnamed1729(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -526,8 +526,8 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.missingZones = buildUnnamed1718();
-    o.operations = buildUnnamed1719();
+    o.missingZones = buildUnnamed1728();
+    o.operations = buildUnnamed1729();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -536,8 +536,8 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1718(o.missingZones);
-    checkUnnamed1719(o.operations);
+    checkUnnamed1728(o.missingZones);
+    checkUnnamed1729(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -569,53 +569,53 @@ checkMasterAuth(api.MasterAuth o) {
   buildCounterMasterAuth--;
 }
 
-buildUnnamed1720() {
+buildUnnamed1730() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1720(core.Map<core.String, core.String> o) {
+checkUnnamed1730(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1721() {
+buildUnnamed1731() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1721(core.Map<core.String, core.String> o) {
+checkUnnamed1731(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1722() {
+buildUnnamed1732() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1722(core.List<core.String> o) {
+checkUnnamed1732(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1723() {
+buildUnnamed1733() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1723(core.List<core.String> o) {
+checkUnnamed1733(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -628,14 +628,14 @@ buildNodeConfig() {
   if (buildCounterNodeConfig < 3) {
     o.diskSizeGb = 42;
     o.imageType = "foo";
-    o.labels = buildUnnamed1720();
+    o.labels = buildUnnamed1730();
     o.localSsdCount = 42;
     o.machineType = "foo";
-    o.metadata = buildUnnamed1721();
-    o.oauthScopes = buildUnnamed1722();
+    o.metadata = buildUnnamed1731();
+    o.oauthScopes = buildUnnamed1732();
     o.preemptible = true;
     o.serviceAccount = "foo";
-    o.tags = buildUnnamed1723();
+    o.tags = buildUnnamed1733();
   }
   buildCounterNodeConfig--;
   return o;
@@ -646,14 +646,14 @@ checkNodeConfig(api.NodeConfig o) {
   if (buildCounterNodeConfig < 3) {
     unittest.expect(o.diskSizeGb, unittest.equals(42));
     unittest.expect(o.imageType, unittest.equals('foo'));
-    checkUnnamed1720(o.labels);
+    checkUnnamed1730(o.labels);
     unittest.expect(o.localSsdCount, unittest.equals(42));
     unittest.expect(o.machineType, unittest.equals('foo'));
-    checkUnnamed1721(o.metadata);
-    checkUnnamed1722(o.oauthScopes);
+    checkUnnamed1731(o.metadata);
+    checkUnnamed1732(o.oauthScopes);
     unittest.expect(o.preemptible, unittest.isTrue);
     unittest.expect(o.serviceAccount, unittest.equals('foo'));
-    checkUnnamed1723(o.tags);
+    checkUnnamed1733(o.tags);
   }
   buildCounterNodeConfig--;
 }
@@ -681,14 +681,14 @@ checkNodeManagement(api.NodeManagement o) {
   buildCounterNodeManagement--;
 }
 
-buildUnnamed1724() {
+buildUnnamed1734() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1724(core.List<core.String> o) {
+checkUnnamed1734(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -702,7 +702,7 @@ buildNodePool() {
     o.autoscaling = buildNodePoolAutoscaling();
     o.config = buildNodeConfig();
     o.initialNodeCount = 42;
-    o.instanceGroupUrls = buildUnnamed1724();
+    o.instanceGroupUrls = buildUnnamed1734();
     o.management = buildNodeManagement();
     o.name = "foo";
     o.selfLink = "foo";
@@ -720,7 +720,7 @@ checkNodePool(api.NodePool o) {
     checkNodePoolAutoscaling(o.autoscaling);
     checkNodeConfig(o.config);
     unittest.expect(o.initialNodeCount, unittest.equals(42));
-    checkUnnamed1724(o.instanceGroupUrls);
+    checkUnnamed1734(o.instanceGroupUrls);
     checkNodeManagement(o.management);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -804,40 +804,40 @@ checkRollbackNodePoolUpgradeRequest(api.RollbackNodePoolUpgradeRequest o) {
   buildCounterRollbackNodePoolUpgradeRequest--;
 }
 
-buildUnnamed1725() {
+buildUnnamed1735() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1725(core.List<core.String> o) {
+checkUnnamed1735(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1726() {
+buildUnnamed1736() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1726(core.List<core.String> o) {
+checkUnnamed1736(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1727() {
+buildUnnamed1737() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1727(core.List<core.String> o) {
+checkUnnamed1737(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -850,9 +850,9 @@ buildServerConfig() {
   if (buildCounterServerConfig < 3) {
     o.defaultClusterVersion = "foo";
     o.defaultImageType = "foo";
-    o.validImageTypes = buildUnnamed1725();
-    o.validMasterVersions = buildUnnamed1726();
-    o.validNodeVersions = buildUnnamed1727();
+    o.validImageTypes = buildUnnamed1735();
+    o.validMasterVersions = buildUnnamed1736();
+    o.validNodeVersions = buildUnnamed1737();
   }
   buildCounterServerConfig--;
   return o;
@@ -863,21 +863,21 @@ checkServerConfig(api.ServerConfig o) {
   if (buildCounterServerConfig < 3) {
     unittest.expect(o.defaultClusterVersion, unittest.equals('foo'));
     unittest.expect(o.defaultImageType, unittest.equals('foo'));
-    checkUnnamed1725(o.validImageTypes);
-    checkUnnamed1726(o.validMasterVersions);
-    checkUnnamed1727(o.validNodeVersions);
+    checkUnnamed1735(o.validImageTypes);
+    checkUnnamed1736(o.validMasterVersions);
+    checkUnnamed1737(o.validNodeVersions);
   }
   buildCounterServerConfig--;
 }
 
-buildUnnamed1728() {
+buildUnnamed1738() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1728(core.Map<core.String, core.String> o) {
+checkUnnamed1738(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -889,7 +889,7 @@ buildSetLabelsRequest() {
   buildCounterSetLabelsRequest++;
   if (buildCounterSetLabelsRequest < 3) {
     o.labelFingerprint = "foo";
-    o.resourceLabels = buildUnnamed1728();
+    o.resourceLabels = buildUnnamed1738();
   }
   buildCounterSetLabelsRequest--;
   return o;
@@ -899,7 +899,7 @@ checkSetLabelsRequest(api.SetLabelsRequest o) {
   buildCounterSetLabelsRequest++;
   if (buildCounterSetLabelsRequest < 3) {
     unittest.expect(o.labelFingerprint, unittest.equals('foo'));
-    checkUnnamed1728(o.resourceLabels);
+    checkUnnamed1738(o.resourceLabels);
   }
   buildCounterSetLabelsRequest--;
 }
@@ -1269,7 +1269,7 @@ main() {
       api.ProjectsZonesResourceApi res = new api.ContainerApi(mock).projects.zones;
       var arg_projectId = "foo";
       var arg_zone = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1317,7 +1317,7 @@ main() {
         var resp = convert.JSON.encode(buildServerConfig());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getServerconfig(arg_projectId, arg_zone).then(unittest.expectAsync(((api.ServerConfig response) {
+      res.getServerconfig(arg_projectId, arg_zone).then(unittest.expectAsync1(((api.ServerConfig response) {
         checkServerConfig(response);
       })));
     });
@@ -1334,7 +1334,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CompleteIPRotationRequest.fromJson(json);
         checkCompleteIPRotationRequest(obj);
 
@@ -1392,7 +1392,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.completeIpRotation(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
+      res.completeIpRotation(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1404,7 +1404,7 @@ main() {
       var arg_request = buildCreateClusterRequest();
       var arg_projectId = "foo";
       var arg_zone = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CreateClusterRequest.fromJson(json);
         checkCreateClusterRequest(obj);
 
@@ -1455,7 +1455,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_projectId, arg_zone).then(unittest.expectAsync(((api.Operation response) {
+      res.create(arg_request, arg_projectId, arg_zone).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1467,7 +1467,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1518,7 +1518,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
+      res.delete(arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1530,7 +1530,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1581,7 +1581,7 @@ main() {
         var resp = convert.JSON.encode(buildCluster());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Cluster response) {
+      res.get(arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Cluster response) {
         checkCluster(response);
       })));
     });
@@ -1594,7 +1594,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetLegacyAbacRequest.fromJson(json);
         checkSetLegacyAbacRequest(obj);
 
@@ -1652,7 +1652,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.legacyAbac(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
+      res.legacyAbac(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1663,7 +1663,7 @@ main() {
       api.ProjectsZonesClustersResourceApi res = new api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = "foo";
       var arg_zone = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1711,7 +1711,7 @@ main() {
         var resp = convert.JSON.encode(buildListClustersResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_projectId, arg_zone).then(unittest.expectAsync(((api.ListClustersResponse response) {
+      res.list(arg_projectId, arg_zone).then(unittest.expectAsync1(((api.ListClustersResponse response) {
         checkListClustersResponse(response);
       })));
     });
@@ -1724,7 +1724,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetLabelsRequest.fromJson(json);
         checkSetLabelsRequest(obj);
 
@@ -1782,7 +1782,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resourceLabels(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
+      res.resourceLabels(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1795,7 +1795,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetMasterAuthRequest.fromJson(json);
         checkSetMasterAuthRequest(obj);
 
@@ -1853,7 +1853,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setMasterAuth(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
+      res.setMasterAuth(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1866,7 +1866,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.StartIPRotationRequest.fromJson(json);
         checkStartIPRotationRequest(obj);
 
@@ -1924,7 +1924,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.startIpRotation(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
+      res.startIpRotation(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1937,7 +1937,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateClusterRequest.fromJson(json);
         checkUpdateClusterRequest(obj);
 
@@ -1991,7 +1991,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
+      res.update(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -2008,7 +2008,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CreateNodePoolRequest.fromJson(json);
         checkCreateNodePoolRequest(obj);
 
@@ -2066,7 +2066,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.Operation response) {
+      res.create(arg_request, arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -2079,7 +2079,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2137,7 +2137,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId).then(unittest.expectAsync(((api.Operation response) {
+      res.delete(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -2150,7 +2150,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2208,7 +2208,7 @@ main() {
         var resp = convert.JSON.encode(buildNodePool());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId).then(unittest.expectAsync(((api.NodePool response) {
+      res.get(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId).then(unittest.expectAsync1(((api.NodePool response) {
         checkNodePool(response);
       })));
     });
@@ -2220,7 +2220,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2275,7 +2275,7 @@ main() {
         var resp = convert.JSON.encode(buildListNodePoolsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync(((api.ListNodePoolsResponse response) {
+      res.list(arg_projectId, arg_zone, arg_clusterId).then(unittest.expectAsync1(((api.ListNodePoolsResponse response) {
         checkListNodePoolsResponse(response);
       })));
     });
@@ -2289,7 +2289,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RollbackNodePoolUpgradeRequest.fromJson(json);
         checkRollbackNodePoolUpgradeRequest(obj);
 
@@ -2354,7 +2354,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.rollback(arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId).then(unittest.expectAsync(((api.Operation response) {
+      res.rollback(arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -2368,7 +2368,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetNodePoolManagementRequest.fromJson(json);
         checkSetNodePoolManagementRequest(obj);
 
@@ -2433,7 +2433,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setManagement(arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId).then(unittest.expectAsync(((api.Operation response) {
+      res.setManagement(arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -2450,7 +2450,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_operationId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CancelOperationRequest.fromJson(json);
         checkCancelOperationRequest(obj);
 
@@ -2508,7 +2508,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.cancel(arg_request, arg_projectId, arg_zone, arg_operationId).then(unittest.expectAsync(((api.Empty response) {
+      res.cancel(arg_request, arg_projectId, arg_zone, arg_operationId).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -2520,7 +2520,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_operationId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2571,7 +2571,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_projectId, arg_zone, arg_operationId).then(unittest.expectAsync(((api.Operation response) {
+      res.get(arg_projectId, arg_zone, arg_operationId).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -2582,7 +2582,7 @@ main() {
       api.ProjectsZonesOperationsResourceApi res = new api.ContainerApi(mock).projects.zones.operations;
       var arg_projectId = "foo";
       var arg_zone = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2630,7 +2630,7 @@ main() {
         var resp = convert.JSON.encode(buildListOperationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_projectId, arg_zone).then(unittest.expectAsync(((api.ListOperationsResponse response) {
+      res.list(arg_projectId, arg_zone).then(unittest.expectAsync1(((api.ListOperationsResponse response) {
         checkListOperationsResponse(response);
       })));
     });

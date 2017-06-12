@@ -288,6 +288,8 @@ class ProjectsJobsResourceApi {
    * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [filter] - Optional. Specifies the subset of jobs to retrieve.
+   *
    * [pageToken] - Optional. A page token to request the next page of results.
    *
    * You get the token from the `next_page_token` field of the response from
@@ -300,8 +302,6 @@ class ProjectsJobsResourceApi {
    *
    * The default value is 20, and the maximum page size is 100.
    *
-   * [filter] - Optional. Specifies the subset of jobs to retrieve.
-   *
    * Completes with a [GoogleCloudMlV1ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -310,7 +310,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,14 +321,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -733,17 +733,17 @@ class ProjectsModelsVersionsResourceApi {
    * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+$".
    *
+   * [pageToken] - Optional. A page token to request the next page of results.
+   *
+   * You get the token from the `next_page_token` field of the response from
+   * the previous call.
+   *
    * [pageSize] - Optional. The number of versions to retrieve per "page" of
    * results. If
    * there are more remaining results than this number, the response message
    * will contain a valid value in the `next_page_token` field.
    *
    * The default value is 20, and the maximum page size is 100.
-   *
-   * [pageToken] - Optional. A page token to request the next page of results.
-   *
-   * You get the token from the `next_page_token` field of the response from
-   * the previous call.
    *
    * Completes with a [GoogleCloudMlV1ListVersionsResponse].
    *
@@ -753,7 +753,7 @@ class ProjectsModelsVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -764,11 +764,11 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
@@ -987,19 +987,24 @@ class ProjectsOperationsResourceApi {
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns `UNIMPLEMENTED`.
    *
-   * NOTE: the `name` binding below allows API services to override the binding
-   * to use different resource name schemes, such as `users / * /operations`.
+   * NOTE: the `name` binding allows API services to override the binding
+   * to use different resource name schemes, such as `users / * /operations`. To
+   * override the binding, API services can add a binding such as
+   * `"/v1/{name=users / * }/operations"` to their service configuration.
+   * For backwards compatibility, the default name includes the operations
+   * collection id, however overriding users must ensure the name binding
+   * is the parent resource, without the operations collection id.
    *
    * Request parameters:
    *
-   * [name] - The name of the operation collection.
+   * [name] - The name of the operation's parent resource.
    * Value must have pattern "^projects/[^/]+$".
-   *
-   * [pageSize] - The standard list page size.
    *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [GoogleLongrunningListOperationsResponse].
    *
@@ -1009,7 +1014,7 @@ class ProjectsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1020,14 +1025,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
@@ -1100,6 +1105,14 @@ class GoogleApiHttpBody {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
+  /**
+   * Application specific response metadata. Must be set in the first response
+   * for streaming APIs.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> extensions;
 
   GoogleApiHttpBody();
 
@@ -1110,15 +1123,21 @@ class GoogleApiHttpBody {
     if (_json.containsKey("data")) {
       data = _json["data"];
     }
+    if (_json.containsKey("extensions")) {
+      extensions = _json["extensions"];
+    }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
     if (data != null) {
       _json["data"] = data;
+    }
+    if (extensions != null) {
+      _json["extensions"] = extensions;
     }
     return _json;
   }
@@ -1142,13 +1161,54 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectiveValue != null) {
       _json["objectiveValue"] = objectiveValue;
     }
     if (trainingStep != null) {
       _json["trainingStep"] = trainingStep;
+    }
+    return _json;
+  }
+}
+
+/** Options for automatically scaling a model. */
+class GoogleCloudMlV1AutomaticScaling {
+  /**
+   * Optional. The minimum number of nodes to allocate for this model. These
+   * nodes are always up, starting from the time the model is deployed, so the
+   * cost of operating this model will be at least
+   * `rate` * `min_nodes` * number of hours since last billing cycle,
+   * where `rate` is the cost per node-hour as documented in
+   * [pricing](https://cloud.google.com/ml-engine/pricing#prediction_pricing),
+   * even if no predictions are performed. There is additional cost for each
+   * prediction performed.
+   *
+   * Unlike manual scaling, if the load gets too heavy for the nodes
+   * that are up, the service will automatically add nodes to handle the
+   * increased load as well as scale back as traffic drops, always maintaining
+   * at least `min_nodes`. You will be charged for the time in which additional
+   * nodes are used.
+   *
+   * If not specified, `min_nodes` defaults to 0, in which case, when traffic
+   * to a model stops (and after a cool-down period), nodes will be shut down
+   * and no charges will be incurred until traffic to the model resumes.
+   */
+  core.int minNodes;
+
+  GoogleCloudMlV1AutomaticScaling();
+
+  GoogleCloudMlV1AutomaticScaling.fromJson(core.Map _json) {
+    if (_json.containsKey("minNodes")) {
+      minNodes = _json["minNodes"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (minNodes != null) {
+      _json["minNodes"] = minNodes;
     }
     return _json;
   }
@@ -1162,8 +1222,8 @@ class GoogleCloudMlV1CancelJobRequest {
   GoogleCloudMlV1CancelJobRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1186,8 +1246,8 @@ class GoogleCloudMlV1GetConfigResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
     }
@@ -1231,8 +1291,8 @@ class GoogleCloudMlV1HyperparameterOutput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allMetrics != null) {
       _json["allMetrics"] = allMetrics.map((value) => (value).toJson()).toList();
     }
@@ -1313,8 +1373,8 @@ class GoogleCloudMlV1HyperparameterSpec {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (goal != null) {
       _json["goal"] = goal;
     }
@@ -1407,8 +1467,8 @@ class GoogleCloudMlV1Job {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1464,8 +1524,8 @@ class GoogleCloudMlV1ListJobsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (jobs != null) {
       _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
     }
@@ -1497,8 +1557,8 @@ class GoogleCloudMlV1ListModelsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (models != null) {
       _json["models"] = models.map((value) => (value).toJson()).toList();
     }
@@ -1530,8 +1590,8 @@ class GoogleCloudMlV1ListVersionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1547,8 +1607,8 @@ class GoogleCloudMlV1ManualScaling {
   /**
    * The number of nodes to allocate for this model. These nodes are always up,
    * starting from the time the model is deployed, so the cost of operating
-   * this model will be proportional to nodes * number of hours since
-   * deployment.
+   * this model will be proportional to `nodes` * number of hours since
+   * last billing cycle plus the cost for each prediction performed.
    */
   core.int nodes;
 
@@ -1560,8 +1620,8 @@ class GoogleCloudMlV1ManualScaling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nodes != null) {
       _json["nodes"] = nodes;
     }
@@ -1631,8 +1691,8 @@ class GoogleCloudMlV1Model {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (defaultVersion != null) {
       _json["defaultVersion"] = (defaultVersion).toJson();
     }
@@ -1702,8 +1762,8 @@ class GoogleCloudMlV1OperationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1820,8 +1880,8 @@ class GoogleCloudMlV1ParameterSpec {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (categoricalValues != null) {
       _json["categoricalValues"] = categoricalValues;
     }
@@ -2050,8 +2110,8 @@ class GoogleCloudMlV1PredictRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (httpBody != null) {
       _json["httpBody"] = (httpBody).toJson();
     }
@@ -2148,8 +2208,8 @@ class GoogleCloudMlV1PredictionInput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataFormat != null) {
       _json["dataFormat"] = dataFormat;
     }
@@ -2211,8 +2271,8 @@ class GoogleCloudMlV1PredictionOutput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorCount != null) {
       _json["errorCount"] = errorCount;
     }
@@ -2237,8 +2297,8 @@ class GoogleCloudMlV1SetDefaultVersionRequest {
   GoogleCloudMlV1SetDefaultVersionRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2444,8 +2504,8 @@ class GoogleCloudMlV1TrainingInput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (args != null) {
       _json["args"] = args;
     }
@@ -2523,8 +2583,8 @@ class GoogleCloudMlV1TrainingOutput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (completedTrialCount != null) {
       _json["completedTrialCount"] = completedTrialCount;
     }
@@ -2550,6 +2610,13 @@ class GoogleCloudMlV1TrainingOutput {
  * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
  */
 class GoogleCloudMlV1Version {
+  /**
+   * Automatically scale the number of nodes used to serve the model in
+   * response to increases and decreases in traffic. Care should be
+   * taken to ramp up traffic according to the model's ability to scale
+   * or you will start seeing increases in latency and 429 response codes.
+   */
+  GoogleCloudMlV1AutomaticScaling automaticScaling;
   /** Output only. The time the version was created. */
   core.String createTime;
   /**
@@ -2582,12 +2649,12 @@ class GoogleCloudMlV1Version {
   /** Output only. The time the version was last used for prediction. */
   core.String lastUseTime;
   /**
-   * Optional. Manually select the number of nodes to use for serving the
-   * model. If unset (i.e., by default), the number of nodes used to serve
-   * the model automatically scales with traffic. However, care should be
-   * taken to ramp up traffic according to the model's ability to scale. If
-   * your model needs to handle bursts of traffic beyond it's ability to
-   * scale, it is recommended you set this field appropriately.
+   * Manually select the number of nodes to use for serving the
+   * model. You should generally use `automatic_scaling` with an appropriate
+   * `min_nodes` instead, but this option is available if you want more
+   * predictable billing. Beware that latency and error rates will increase
+   * if the traffic exceeds that capability of the system to serve it based
+   * on the selected number of nodes.
    */
   GoogleCloudMlV1ManualScaling manualScaling;
   /**
@@ -2605,6 +2672,9 @@ class GoogleCloudMlV1Version {
   GoogleCloudMlV1Version();
 
   GoogleCloudMlV1Version.fromJson(core.Map _json) {
+    if (_json.containsKey("automaticScaling")) {
+      automaticScaling = new GoogleCloudMlV1AutomaticScaling.fromJson(_json["automaticScaling"]);
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -2631,8 +2701,11 @@ class GoogleCloudMlV1Version {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (automaticScaling != null) {
+      _json["automaticScaling"] = (automaticScaling).toJson();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -2661,13 +2734,54 @@ class GoogleCloudMlV1Version {
   }
 }
 
+/** Options for automatically scaling a model. */
+class GoogleCloudMlV1beta1AutomaticScaling {
+  /**
+   * Optional. The minimum number of nodes to allocate for this model. These
+   * nodes are always up, starting from the time the model is deployed, so the
+   * cost of operating this model will be at least
+   * `rate` * `min_nodes` * number of hours since last billing cycle,
+   * where `rate` is the cost per node-hour as documented in
+   * [pricing](https://cloud.google.com/ml-engine/pricing#prediction_pricing),
+   * even if no predictions are performed. There is additional cost for each
+   * prediction performed.
+   *
+   * Unlike manual scaling, if the load gets too heavy for the nodes
+   * that are up, the service will automatically add nodes to handle the
+   * increased load as well as scale back as traffic drops, always maintaining
+   * at least `min_nodes`. You will be charged for the time in which additional
+   * nodes are used.
+   *
+   * If not specified, `min_nodes` defaults to 0, in which case, when traffic
+   * to a model stops (and after a cool-down period), nodes will be shut down
+   * and no charges will be incurred until traffic to the model resumes.
+   */
+  core.int minNodes;
+
+  GoogleCloudMlV1beta1AutomaticScaling();
+
+  GoogleCloudMlV1beta1AutomaticScaling.fromJson(core.Map _json) {
+    if (_json.containsKey("minNodes")) {
+      minNodes = _json["minNodes"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (minNodes != null) {
+      _json["minNodes"] = minNodes;
+    }
+    return _json;
+  }
+}
+
 /** Options for manually scaling a model. */
 class GoogleCloudMlV1beta1ManualScaling {
   /**
    * The number of nodes to allocate for this model. These nodes are always up,
    * starting from the time the model is deployed, so the cost of operating
-   * this model will be proportional to nodes * number of hours since
-   * deployment.
+   * this model will be proportional to `nodes` * number of hours since
+   * last billing cycle.
    */
   core.int nodes;
 
@@ -2679,8 +2793,8 @@ class GoogleCloudMlV1beta1ManualScaling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nodes != null) {
       _json["nodes"] = nodes;
     }
@@ -2738,8 +2852,8 @@ class GoogleCloudMlV1beta1OperationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -2774,6 +2888,13 @@ class GoogleCloudMlV1beta1OperationMetadata {
  * [projects.models.versions.list](/ml-engine/reference/rest/v1beta1/projects.models.versions/list).
  */
 class GoogleCloudMlV1beta1Version {
+  /**
+   * Automatically scale the number of nodes used to serve the model in
+   * response to increases and decreases in traffic. Care should be
+   * taken to ramp up traffic according to the model's ability to scale
+   * or you will start seeing increases in latency and 429 response codes.
+   */
+  GoogleCloudMlV1beta1AutomaticScaling automaticScaling;
   /** Output only. The time the version was created. */
   core.String createTime;
   /**
@@ -2806,12 +2927,12 @@ class GoogleCloudMlV1beta1Version {
   /** Output only. The time the version was last used for prediction. */
   core.String lastUseTime;
   /**
-   * Optional. Manually select the number of nodes to use for serving the
-   * model. If unset (i.e., by default), the number of nodes used to serve
-   * the model automatically scales with traffic. However, care should be
-   * taken to ramp up traffic according to the model's ability to scale. If
-   * your model needs to handle bursts of traffic beyond it's ability to
-   * scale, it is recommended you set this field appropriately.
+   * Manually select the number of nodes to use for serving the
+   * model. You should generally use `automatic_scaling` with an appropriate
+   * `min_nodes` instead, but this option is available if you want predictable
+   * billing. Beware that latency and error rates will increase if the
+   * traffic exceeds that capability of the system to serve it based on
+   * the selected number of nodes.
    */
   GoogleCloudMlV1beta1ManualScaling manualScaling;
   /**
@@ -2829,6 +2950,9 @@ class GoogleCloudMlV1beta1Version {
   GoogleCloudMlV1beta1Version();
 
   GoogleCloudMlV1beta1Version.fromJson(core.Map _json) {
+    if (_json.containsKey("automaticScaling")) {
+      automaticScaling = new GoogleCloudMlV1beta1AutomaticScaling.fromJson(_json["automaticScaling"]);
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -2855,8 +2979,11 @@ class GoogleCloudMlV1beta1Version {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (automaticScaling != null) {
+      _json["automaticScaling"] = (automaticScaling).toJson();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -2903,8 +3030,8 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2979,8 +3106,8 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -3018,8 +3145,8 @@ class GoogleProtobufEmpty {
   GoogleProtobufEmpty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3112,8 +3239,8 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }

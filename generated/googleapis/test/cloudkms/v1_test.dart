@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/cloudkms/v1.dart' as api;
 
@@ -46,32 +46,32 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1301() {
+buildUnnamed1308() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed1301(core.List<api.AuditLogConfig> o) {
+checkUnnamed1308(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
 }
 
-buildUnnamed1302() {
+buildUnnamed1309() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1302(core.List<core.String> o) {
+checkUnnamed1309(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -82,8 +82,8 @@ buildAuditConfig() {
   var o = new api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed1301();
-    o.exemptedMembers = buildUnnamed1302();
+    o.auditLogConfigs = buildUnnamed1308();
+    o.exemptedMembers = buildUnnamed1309();
     o.service = "foo";
   }
   buildCounterAuditConfig--;
@@ -93,21 +93,21 @@ buildAuditConfig() {
 checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed1301(o.auditLogConfigs);
-    checkUnnamed1302(o.exemptedMembers);
+    checkUnnamed1308(o.auditLogConfigs);
+    checkUnnamed1309(o.exemptedMembers);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-buildUnnamed1303() {
+buildUnnamed1310() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1303(core.List<core.String> o) {
+checkUnnamed1310(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -118,7 +118,7 @@ buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed1303();
+    o.exemptedMembers = buildUnnamed1310();
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -128,20 +128,20 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed1303(o.exemptedMembers);
+    checkUnnamed1310(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
 }
 
-buildUnnamed1304() {
+buildUnnamed1311() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1304(core.List<core.String> o) {
+checkUnnamed1311(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -152,7 +152,8 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed1304();
+    o.condition = buildExpr();
+    o.members = buildUnnamed1311();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -162,7 +163,8 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed1304(o.members);
+    checkExpr(o.condition);
+    checkUnnamed1311(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -187,14 +189,14 @@ checkCloudAuditOptions(api.CloudAuditOptions o) {
   buildCounterCloudAuditOptions--;
 }
 
-buildUnnamed1305() {
+buildUnnamed1312() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1305(core.List<core.String> o) {
+checkUnnamed1312(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -210,7 +212,7 @@ buildCondition() {
     o.svc = "foo";
     o.sys = "foo";
     o.value = "foo";
-    o.values = buildUnnamed1305();
+    o.values = buildUnnamed1312();
   }
   buildCounterCondition--;
   return o;
@@ -224,7 +226,7 @@ checkCondition(api.Condition o) {
     unittest.expect(o.svc, unittest.equals('foo'));
     unittest.expect(o.sys, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
-    checkUnnamed1305(o.values);
+    checkUnnamed1312(o.values);
   }
   buildCounterCondition--;
 }
@@ -422,6 +424,31 @@ checkEncryptResponse(api.EncryptResponse o) {
   buildCounterEncryptResponse--;
 }
 
+core.int buildCounterExpr = 0;
+buildExpr() {
+  var o = new api.Expr();
+  buildCounterExpr++;
+  if (buildCounterExpr < 3) {
+    o.description = "foo";
+    o.expression = "foo";
+    o.location = "foo";
+    o.title = "foo";
+  }
+  buildCounterExpr--;
+  return o;
+}
+
+checkExpr(api.Expr o) {
+  buildCounterExpr++;
+  if (buildCounterExpr < 3) {
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.expression, unittest.equals('foo'));
+    unittest.expect(o.location, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterExpr--;
+}
+
 core.int buildCounterKeyRing = 0;
 buildKeyRing() {
   var o = new api.KeyRing();
@@ -443,14 +470,14 @@ checkKeyRing(api.KeyRing o) {
   buildCounterKeyRing--;
 }
 
-buildUnnamed1306() {
+buildUnnamed1313() {
   var o = new core.List<api.CryptoKeyVersion>();
   o.add(buildCryptoKeyVersion());
   o.add(buildCryptoKeyVersion());
   return o;
 }
 
-checkUnnamed1306(core.List<api.CryptoKeyVersion> o) {
+checkUnnamed1313(core.List<api.CryptoKeyVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCryptoKeyVersion(o[0]);
   checkCryptoKeyVersion(o[1]);
@@ -461,7 +488,7 @@ buildListCryptoKeyVersionsResponse() {
   var o = new api.ListCryptoKeyVersionsResponse();
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
-    o.cryptoKeyVersions = buildUnnamed1306();
+    o.cryptoKeyVersions = buildUnnamed1313();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -472,21 +499,21 @@ buildListCryptoKeyVersionsResponse() {
 checkListCryptoKeyVersionsResponse(api.ListCryptoKeyVersionsResponse o) {
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
-    checkUnnamed1306(o.cryptoKeyVersions);
+    checkUnnamed1313(o.cryptoKeyVersions);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListCryptoKeyVersionsResponse--;
 }
 
-buildUnnamed1307() {
+buildUnnamed1314() {
   var o = new core.List<api.CryptoKey>();
   o.add(buildCryptoKey());
   o.add(buildCryptoKey());
   return o;
 }
 
-checkUnnamed1307(core.List<api.CryptoKey> o) {
+checkUnnamed1314(core.List<api.CryptoKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCryptoKey(o[0]);
   checkCryptoKey(o[1]);
@@ -497,7 +524,7 @@ buildListCryptoKeysResponse() {
   var o = new api.ListCryptoKeysResponse();
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
-    o.cryptoKeys = buildUnnamed1307();
+    o.cryptoKeys = buildUnnamed1314();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -508,21 +535,21 @@ buildListCryptoKeysResponse() {
 checkListCryptoKeysResponse(api.ListCryptoKeysResponse o) {
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
-    checkUnnamed1307(o.cryptoKeys);
+    checkUnnamed1314(o.cryptoKeys);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListCryptoKeysResponse--;
 }
 
-buildUnnamed1308() {
+buildUnnamed1315() {
   var o = new core.List<api.KeyRing>();
   o.add(buildKeyRing());
   o.add(buildKeyRing());
   return o;
 }
 
-checkUnnamed1308(core.List<api.KeyRing> o) {
+checkUnnamed1315(core.List<api.KeyRing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKeyRing(o[0]);
   checkKeyRing(o[1]);
@@ -533,7 +560,7 @@ buildListKeyRingsResponse() {
   var o = new api.ListKeyRingsResponse();
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
-    o.keyRings = buildUnnamed1308();
+    o.keyRings = buildUnnamed1315();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -544,21 +571,21 @@ buildListKeyRingsResponse() {
 checkListKeyRingsResponse(api.ListKeyRingsResponse o) {
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
-    checkUnnamed1308(o.keyRings);
+    checkUnnamed1315(o.keyRings);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListKeyRingsResponse--;
 }
 
-buildUnnamed1309() {
+buildUnnamed1316() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed1309(core.List<api.Location> o) {
+checkUnnamed1316(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -569,7 +596,7 @@ buildListLocationsResponse() {
   var o = new api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed1309();
+    o.locations = buildUnnamed1316();
     o.nextPageToken = "foo";
   }
   buildCounterListLocationsResponse--;
@@ -579,33 +606,33 @@ buildListLocationsResponse() {
 checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed1309(o.locations);
+    checkUnnamed1316(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-buildUnnamed1310() {
+buildUnnamed1317() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1310(core.Map<core.String, core.String> o) {
+checkUnnamed1317(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1311() {
+buildUnnamed1318() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1311(core.Map<core.String, core.Object> o) {
+checkUnnamed1318(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
@@ -616,9 +643,9 @@ buildLocation() {
   var o = new api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.labels = buildUnnamed1310();
+    o.labels = buildUnnamed1317();
     o.locationId = "foo";
-    o.metadata = buildUnnamed1311();
+    o.metadata = buildUnnamed1318();
     o.name = "foo";
   }
   buildCounterLocation--;
@@ -628,9 +655,9 @@ buildLocation() {
 checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    checkUnnamed1310(o.labels);
+    checkUnnamed1317(o.labels);
     unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed1311(o.metadata);
+    checkUnnamed1318(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterLocation--;
@@ -659,40 +686,40 @@ checkLogConfig(api.LogConfig o) {
   buildCounterLogConfig--;
 }
 
-buildUnnamed1312() {
+buildUnnamed1319() {
   var o = new core.List<api.AuditConfig>();
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-checkUnnamed1312(core.List<api.AuditConfig> o) {
+checkUnnamed1319(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-buildUnnamed1313() {
+buildUnnamed1320() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed1313(core.List<api.Binding> o) {
+checkUnnamed1320(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
 }
 
-buildUnnamed1314() {
+buildUnnamed1321() {
   var o = new core.List<api.Rule>();
   o.add(buildRule());
   o.add(buildRule());
   return o;
 }
 
-checkUnnamed1314(core.List<api.Rule> o) {
+checkUnnamed1321(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRule(o[0]);
   checkRule(o[1]);
@@ -703,11 +730,11 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed1312();
-    o.bindings = buildUnnamed1313();
+    o.auditConfigs = buildUnnamed1319();
+    o.bindings = buildUnnamed1320();
     o.etag = "foo";
     o.iamOwned = true;
-    o.rules = buildUnnamed1314();
+    o.rules = buildUnnamed1321();
     o.version = 42;
   }
   buildCounterPolicy--;
@@ -717,11 +744,11 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1312(o.auditConfigs);
-    checkUnnamed1313(o.bindings);
+    checkUnnamed1319(o.auditConfigs);
+    checkUnnamed1320(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.iamOwned, unittest.isTrue);
-    checkUnnamed1314(o.rules);
+    checkUnnamed1321(o.rules);
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
@@ -744,66 +771,66 @@ checkRestoreCryptoKeyVersionRequest(api.RestoreCryptoKeyVersionRequest o) {
   buildCounterRestoreCryptoKeyVersionRequest--;
 }
 
-buildUnnamed1315() {
+buildUnnamed1322() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed1315(core.List<api.Condition> o) {
+checkUnnamed1322(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed1316() {
+buildUnnamed1323() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1316(core.List<core.String> o) {
+checkUnnamed1323(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1317() {
+buildUnnamed1324() {
   var o = new core.List<api.LogConfig>();
   o.add(buildLogConfig());
   o.add(buildLogConfig());
   return o;
 }
 
-checkUnnamed1317(core.List<api.LogConfig> o) {
+checkUnnamed1324(core.List<api.LogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogConfig(o[0]);
   checkLogConfig(o[1]);
 }
 
-buildUnnamed1318() {
+buildUnnamed1325() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1318(core.List<core.String> o) {
+checkUnnamed1325(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1319() {
+buildUnnamed1326() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1319(core.List<core.String> o) {
+checkUnnamed1326(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -815,12 +842,12 @@ buildRule() {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     o.action = "foo";
-    o.conditions = buildUnnamed1315();
+    o.conditions = buildUnnamed1322();
     o.description = "foo";
-    o.in_ = buildUnnamed1316();
-    o.logConfig = buildUnnamed1317();
-    o.notIn = buildUnnamed1318();
-    o.permissions = buildUnnamed1319();
+    o.in_ = buildUnnamed1323();
+    o.logConfig = buildUnnamed1324();
+    o.notIn = buildUnnamed1325();
+    o.permissions = buildUnnamed1326();
   }
   buildCounterRule--;
   return o;
@@ -830,12 +857,12 @@ checkRule(api.Rule o) {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
-    checkUnnamed1315(o.conditions);
+    checkUnnamed1322(o.conditions);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1316(o.in_);
-    checkUnnamed1317(o.logConfig);
-    checkUnnamed1318(o.notIn);
-    checkUnnamed1319(o.permissions);
+    checkUnnamed1323(o.in_);
+    checkUnnamed1324(o.logConfig);
+    checkUnnamed1325(o.notIn);
+    checkUnnamed1326(o.permissions);
   }
   buildCounterRule--;
 }
@@ -861,14 +888,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed1320() {
+buildUnnamed1327() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1320(core.List<core.String> o) {
+checkUnnamed1327(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -879,7 +906,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed1320();
+    o.permissions = buildUnnamed1327();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -888,19 +915,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed1320(o.permissions);
+    checkUnnamed1327(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed1321() {
+buildUnnamed1328() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1321(core.List<core.String> o) {
+checkUnnamed1328(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -911,7 +938,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed1321();
+    o.permissions = buildUnnamed1328();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -920,7 +947,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed1321(o.permissions);
+    checkUnnamed1328(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1072,6 +1099,15 @@ main() {
   });
 
 
+  unittest.group("obj-schema-Expr", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildExpr();
+      var od = new api.Expr.fromJson(o.toJson());
+      checkExpr(od);
+    });
+  });
+
+
   unittest.group("obj-schema-KeyRing", () {
     unittest.test("to-json--from-json", () {
       var o = buildKeyRing();
@@ -1204,7 +1240,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsLocationsResourceApi res = new api.CloudkmsApi(mock).projects.locations;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1239,7 +1275,7 @@ main() {
         var resp = convert.JSON.encode(buildLocation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.Location response) {
+      res.get(arg_name).then(unittest.expectAsync1(((api.Location response) {
         checkLocation(response);
       })));
     });
@@ -1249,10 +1285,10 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsLocationsResourceApi res = new api.CloudkmsApi(mock).projects.locations;
       var arg_name = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_filter = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      var arg_pageToken = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1279,9 +1315,9 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
         var h = {
@@ -1290,7 +1326,7 @@ main() {
         var resp = convert.JSON.encode(buildListLocationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageToken: arg_pageToken, pageSize: arg_pageSize, filter: arg_filter).then(unittest.expectAsync(((api.ListLocationsResponse response) {
+      res.list(arg_name, pageSize: arg_pageSize, filter: arg_filter, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListLocationsResponse response) {
         checkListLocationsResponse(response);
       })));
     });
@@ -1306,7 +1342,7 @@ main() {
       var arg_request = buildKeyRing();
       var arg_parent = "foo";
       var arg_keyRingId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.KeyRing.fromJson(json);
         checkKeyRing(obj);
 
@@ -1345,7 +1381,7 @@ main() {
         var resp = convert.JSON.encode(buildKeyRing());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_parent, keyRingId: arg_keyRingId).then(unittest.expectAsync(((api.KeyRing response) {
+      res.create(arg_request, arg_parent, keyRingId: arg_keyRingId).then(unittest.expectAsync1(((api.KeyRing response) {
         checkKeyRing(response);
       })));
     });
@@ -1355,7 +1391,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsLocationsKeyRingsResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1390,7 +1426,7 @@ main() {
         var resp = convert.JSON.encode(buildKeyRing());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.KeyRing response) {
+      res.get(arg_name).then(unittest.expectAsync1(((api.KeyRing response) {
         checkKeyRing(response);
       })));
     });
@@ -1400,7 +1436,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsLocationsKeyRingsResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1435,7 +1471,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.getIamPolicy(arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -1447,7 +1483,7 @@ main() {
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1484,7 +1520,7 @@ main() {
         var resp = convert.JSON.encode(buildListKeyRingsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListKeyRingsResponse response) {
+      res.list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.ListKeyRingsResponse response) {
         checkListKeyRingsResponse(response);
       })));
     });
@@ -1495,7 +1531,7 @@ main() {
       api.ProjectsLocationsKeyRingsResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
@@ -1533,7 +1569,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -1544,7 +1580,7 @@ main() {
       api.ProjectsLocationsKeyRingsResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
@@ -1582,7 +1618,7 @@ main() {
         var resp = convert.JSON.encode(buildTestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync(((api.TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
         checkTestIamPermissionsResponse(response);
       })));
     });
@@ -1598,7 +1634,7 @@ main() {
       var arg_request = buildCryptoKey();
       var arg_parent = "foo";
       var arg_cryptoKeyId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CryptoKey.fromJson(json);
         checkCryptoKey(obj);
 
@@ -1637,7 +1673,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_parent, cryptoKeyId: arg_cryptoKeyId).then(unittest.expectAsync(((api.CryptoKey response) {
+      res.create(arg_request, arg_parent, cryptoKeyId: arg_cryptoKeyId).then(unittest.expectAsync1(((api.CryptoKey response) {
         checkCryptoKey(response);
       })));
     });
@@ -1648,7 +1684,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildDecryptRequest();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.DecryptRequest.fromJson(json);
         checkDecryptRequest(obj);
 
@@ -1686,7 +1722,7 @@ main() {
         var resp = convert.JSON.encode(buildDecryptResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.decrypt(arg_request, arg_name).then(unittest.expectAsync(((api.DecryptResponse response) {
+      res.decrypt(arg_request, arg_name).then(unittest.expectAsync1(((api.DecryptResponse response) {
         checkDecryptResponse(response);
       })));
     });
@@ -1697,7 +1733,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildEncryptRequest();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.EncryptRequest.fromJson(json);
         checkEncryptRequest(obj);
 
@@ -1735,7 +1771,7 @@ main() {
         var resp = convert.JSON.encode(buildEncryptResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.encrypt(arg_request, arg_name).then(unittest.expectAsync(((api.EncryptResponse response) {
+      res.encrypt(arg_request, arg_name).then(unittest.expectAsync1(((api.EncryptResponse response) {
         checkEncryptResponse(response);
       })));
     });
@@ -1745,7 +1781,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1780,7 +1816,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.CryptoKey response) {
+      res.get(arg_name).then(unittest.expectAsync1(((api.CryptoKey response) {
         checkCryptoKey(response);
       })));
     });
@@ -1790,7 +1826,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1825,7 +1861,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.getIamPolicy(arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -1835,9 +1871,9 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      var arg_pageToken = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1864,8 +1900,8 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
 
         var h = {
@@ -1874,7 +1910,7 @@ main() {
         var resp = convert.JSON.encode(buildListCryptoKeysResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListCryptoKeysResponse response) {
+      res.list(arg_parent, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListCryptoKeysResponse response) {
         checkListCryptoKeysResponse(response);
       })));
     });
@@ -1886,7 +1922,7 @@ main() {
       var arg_request = buildCryptoKey();
       var arg_name = "foo";
       var arg_updateMask = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CryptoKey.fromJson(json);
         checkCryptoKey(obj);
 
@@ -1925,7 +1961,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(unittest.expectAsync(((api.CryptoKey response) {
+      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(unittest.expectAsync1(((api.CryptoKey response) {
         checkCryptoKey(response);
       })));
     });
@@ -1936,7 +1972,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
@@ -1974,7 +2010,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -1985,7 +2021,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
@@ -2023,7 +2059,7 @@ main() {
         var resp = convert.JSON.encode(buildTestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync(((api.TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
         checkTestIamPermissionsResponse(response);
       })));
     });
@@ -2034,7 +2070,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildUpdateCryptoKeyPrimaryVersionRequest();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(json);
         checkUpdateCryptoKeyPrimaryVersionRequest(obj);
 
@@ -2072,7 +2108,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.updatePrimaryVersion(arg_request, arg_name).then(unittest.expectAsync(((api.CryptoKey response) {
+      res.updatePrimaryVersion(arg_request, arg_name).then(unittest.expectAsync1(((api.CryptoKey response) {
         checkCryptoKey(response);
       })));
     });
@@ -2087,7 +2123,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       var arg_request = buildCryptoKeyVersion();
       var arg_parent = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CryptoKeyVersion.fromJson(json);
         checkCryptoKeyVersion(obj);
 
@@ -2125,7 +2161,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKeyVersion());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_parent).then(unittest.expectAsync(((api.CryptoKeyVersion response) {
+      res.create(arg_request, arg_parent).then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
         checkCryptoKeyVersion(response);
       })));
     });
@@ -2136,7 +2172,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       var arg_request = buildDestroyCryptoKeyVersionRequest();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.DestroyCryptoKeyVersionRequest.fromJson(json);
         checkDestroyCryptoKeyVersionRequest(obj);
 
@@ -2174,7 +2210,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKeyVersion());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.destroy(arg_request, arg_name).then(unittest.expectAsync(((api.CryptoKeyVersion response) {
+      res.destroy(arg_request, arg_name).then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
         checkCryptoKeyVersion(response);
       })));
     });
@@ -2184,7 +2220,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2219,7 +2255,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKeyVersion());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.CryptoKeyVersion response) {
+      res.get(arg_name).then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
         checkCryptoKeyVersion(response);
       })));
     });
@@ -2231,7 +2267,7 @@ main() {
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2268,7 +2304,7 @@ main() {
         var resp = convert.JSON.encode(buildListCryptoKeyVersionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListCryptoKeyVersionsResponse response) {
+      res.list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.ListCryptoKeyVersionsResponse response) {
         checkListCryptoKeyVersionsResponse(response);
       })));
     });
@@ -2280,7 +2316,7 @@ main() {
       var arg_request = buildCryptoKeyVersion();
       var arg_name = "foo";
       var arg_updateMask = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CryptoKeyVersion.fromJson(json);
         checkCryptoKeyVersion(obj);
 
@@ -2319,7 +2355,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKeyVersion());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(unittest.expectAsync(((api.CryptoKeyVersion response) {
+      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
         checkCryptoKeyVersion(response);
       })));
     });
@@ -2330,7 +2366,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res = new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
       var arg_request = buildRestoreCryptoKeyVersionRequest();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RestoreCryptoKeyVersionRequest.fromJson(json);
         checkRestoreCryptoKeyVersionRequest(obj);
 
@@ -2368,7 +2404,7 @@ main() {
         var resp = convert.JSON.encode(buildCryptoKeyVersion());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.restore(arg_request, arg_name).then(unittest.expectAsync(((api.CryptoKeyVersion response) {
+      res.restore(arg_request, arg_name).then(unittest.expectAsync1(((api.CryptoKeyVersion response) {
         checkCryptoKeyVersion(response);
       })));
     });

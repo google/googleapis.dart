@@ -187,6 +187,15 @@ class PeopleConnectionsResourceApi {
    * `people/me` is valid.
    * Value must have pattern "^people/[^/]+$".
    *
+   * [requestMask_includeField] - Required. Comma-separated list of person
+   * fields to be included in the
+   * response. Each path should start with `person.`: for example,
+   * `person.names` or `person.photos`.
+   *
+   * [pageSize] - The number of connections to include in the response. Valid
+   * values are
+   * between 1 and 2000, inclusive. Defaults to 100.
+   *
    * [syncToken] - A sync token, returned by a previous call to
    * `people.connections.list`.
    * Only resources changed since the sync token was created will be returned.
@@ -205,15 +214,6 @@ class PeopleConnectionsResourceApi {
    *
    * [pageToken] - The token of the page to be returned.
    *
-   * [pageSize] - The number of connections to include in the response. Valid
-   * values are
-   * between 1 and 2000, inclusive. Defaults to 100.
-   *
-   * [requestMask_includeField] - Required. Comma-separated list of person
-   * fields to be included in the
-   * response. Each path should start with `person.`: for example,
-   * `person.names` or `person.photos`.
-   *
    * Completes with a [ListConnectionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -222,7 +222,7 @@ class PeopleConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String syncToken, core.String sortOrder, core.bool requestSyncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField}) {
+  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String requestMask_includeField, core.int pageSize, core.String syncToken, core.String sortOrder, core.bool requestSyncToken, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -232,6 +232,12 @@ class PeopleConnectionsResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (requestMask_includeField != null) {
+      _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
@@ -244,12 +250,6 @@ class PeopleConnectionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (requestMask_includeField != null) {
-      _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/connections';
@@ -357,8 +357,8 @@ class Address {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (city != null) {
       _json["city"] = city;
     }
@@ -424,8 +424,8 @@ class AgeRangeType {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ageRange != null) {
       _json["ageRange"] = ageRange;
     }
@@ -465,8 +465,8 @@ class Biography {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -507,8 +507,8 @@ class Birthday {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (date != null) {
       _json["date"] = (date).toJson();
     }
@@ -540,8 +540,8 @@ class BraggingRights {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -573,8 +573,8 @@ class ContactGroupMembership {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contactGroupId != null) {
       _json["contactGroupId"] = contactGroupId;
     }
@@ -611,8 +611,8 @@ class CoverPhoto {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (default_ != null) {
       _json["default"] = default_;
     }
@@ -664,8 +664,8 @@ class Date {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -692,8 +692,8 @@ class DomainMembership {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inViewerDomain != null) {
       _json["inViewerDomain"] = inViewerDomain;
     }
@@ -744,8 +744,8 @@ class EmailAddress {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -802,8 +802,8 @@ class Event {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (date != null) {
       _json["date"] = (date).toJson();
     }
@@ -850,8 +850,8 @@ class FieldMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (primary != null) {
       _json["primary"] = primary;
     }
@@ -900,8 +900,8 @@ class Gender {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (formattedValue != null) {
       _json["formattedValue"] = formattedValue;
     }
@@ -927,8 +927,8 @@ class GetPeopleResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (responses != null) {
       _json["responses"] = responses.map((value) => (value).toJson()).toList();
     }
@@ -1000,8 +1000,8 @@ class ImClient {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (formattedProtocol != null) {
       _json["formattedProtocol"] = formattedProtocol;
     }
@@ -1042,8 +1042,8 @@ class Interest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -1089,8 +1089,8 @@ class ListConnectionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (connections != null) {
       _json["connections"] = connections.map((value) => (value).toJson()).toList();
     }
@@ -1131,8 +1131,8 @@ class Locale {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -1166,8 +1166,8 @@ class Membership {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contactGroupMembership != null) {
       _json["contactGroupMembership"] = (contactGroupMembership).toJson();
     }
@@ -1266,8 +1266,8 @@ class Name {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -1348,8 +1348,8 @@ class Nickname {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -1381,8 +1381,8 @@ class Occupation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -1492,8 +1492,8 @@ class Organization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (current != null) {
       _json["current"] = current;
     }
@@ -1718,8 +1718,8 @@ class Person {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (addresses != null) {
       _json["addresses"] = addresses.map((value) => (value).toJson()).toList();
     }
@@ -1866,8 +1866,8 @@ class PersonMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deleted != null) {
       _json["deleted"] = deleted;
     }
@@ -1926,8 +1926,8 @@ class PersonResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (httpStatusCode != null) {
       _json["httpStatusCode"] = httpStatusCode;
     }
@@ -2000,8 +2000,8 @@ class PhoneNumber {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (canonicalForm != null) {
       _json["canonicalForm"] = canonicalForm;
     }
@@ -2046,8 +2046,8 @@ class Photo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -2077,8 +2077,8 @@ class ProfileMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectType != null) {
       _json["objectType"] = objectType;
     }
@@ -2136,8 +2136,8 @@ class Relation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
@@ -2190,8 +2190,8 @@ class RelationshipInterest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (formattedValue != null) {
       _json["formattedValue"] = formattedValue;
     }
@@ -2244,8 +2244,8 @@ class RelationshipStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (formattedValue != null) {
       _json["formattedValue"] = formattedValue;
     }
@@ -2285,8 +2285,8 @@ class Residence {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (current != null) {
       _json["current"] = current;
     }
@@ -2318,8 +2318,8 @@ class Skill {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -2377,8 +2377,8 @@ class Source {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -2483,8 +2483,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -2516,8 +2516,8 @@ class Tagline {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -2572,8 +2572,8 @@ class Url {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }

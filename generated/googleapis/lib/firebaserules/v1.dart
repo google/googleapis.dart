@@ -292,6 +292,14 @@ class ProjectsReleasesResourceApi {
    * Format: `projects/{project_id}`
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Next page token for the next batch of `Release` instances.
+   *
+   * [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
+   * Note: `page_size` is just a hint and the service may choose to load fewer
+   * than `page_size` results due to the size of the output. To traverse all of
+   * the releases, the caller should iterate until the `page_token` on the
+   * response is empty.
+   *
    * [filter] - `Release` filter. The list method supports filters with
    * restrictions on the
    * `Release.name`, `Release.ruleset_name`, and `Release.test_suite_name`.
@@ -318,14 +326,6 @@ class ProjectsReleasesResourceApi {
    * relative to the project. Fully qualified prefixed may also be used. e.g.
    * `test_suite_name=projects/foo/testsuites/uuid1`
    *
-   * [pageToken] - Next page token for the next batch of `Release` instances.
-   *
-   * [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
-   * Note: `page_size` is just a hint and the service may choose to load fewer
-   * than `page_size` results due to the size of the output. To traverse all of
-   * the releases, the caller should iterate until the `page_token` on the
-   * response is empty.
-   *
    * Completes with a [ListReleasesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -334,7 +334,7 @@ class ProjectsReleasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReleasesResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListReleasesResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -345,14 +345,14 @@ class ProjectsReleasesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
@@ -662,6 +662,41 @@ class ProjectsRulesetsResourceApi {
 
 
 
+/** Arg matchers for the mock function. */
+class Arg {
+  /** Argument matches any value provided. */
+  Empty anyValue;
+  /**
+   * Argument exactly matches value provided.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object exactValue;
+
+  Arg();
+
+  Arg.fromJson(core.Map _json) {
+    if (_json.containsKey("anyValue")) {
+      anyValue = new Empty.fromJson(_json["anyValue"]);
+    }
+    if (_json.containsKey("exactValue")) {
+      exactValue = _json["exactValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (anyValue != null) {
+      _json["anyValue"] = (anyValue).toJson();
+    }
+    if (exactValue != null) {
+      _json["exactValue"] = exactValue;
+    }
+    return _json;
+  }
+}
+
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
  * empty messages in your APIs. A typical example is to use it as the request
@@ -680,8 +715,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -716,8 +751,8 @@ class File {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
     }
@@ -757,13 +792,70 @@ class FunctionCall {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (args != null) {
       _json["args"] = args;
     }
     if (function != null) {
       _json["function"] = function;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Mock function definition.
+ *
+ * Mocks must refer to a function declared by the target service. The type of
+ * the function args and result will be inferred at test time. If either the
+ * arg or result values are not compatible with function type declaration, the
+ * request will be considered invalid.
+ *
+ * More than one `FunctionMock` may be provided for a given function name so
+ * long as the `Arg` matchers are distinct. There may be only one function
+ * for a given overload where all `Arg` values are `Arg.any_value`.
+ */
+class FunctionMock {
+  /**
+   * The list of `Arg` values to match. The order in which the arguments are
+   * provided is the order in which they must appear in the function
+   * invocation.
+   */
+  core.List<Arg> args;
+  /**
+   * The name of the function.
+   *
+   * The function name must match one provided by a service declaration.
+   */
+  core.String function;
+  /** The mock result of the function call. */
+  Result result;
+
+  FunctionMock();
+
+  FunctionMock.fromJson(core.Map _json) {
+    if (_json.containsKey("args")) {
+      args = _json["args"].map((value) => new Arg.fromJson(value)).toList();
+    }
+    if (_json.containsKey("function")) {
+      function = _json["function"];
+    }
+    if (_json.containsKey("result")) {
+      result = new Result.fromJson(_json["result"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (args != null) {
+      _json["args"] = args.map((value) => (value).toJson()).toList();
+    }
+    if (function != null) {
+      _json["function"] = function;
+    }
+    if (result != null) {
+      _json["result"] = (result).toJson();
     }
     return _json;
   }
@@ -802,8 +894,8 @@ class Issue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -838,8 +930,8 @@ class ListReleasesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -871,8 +963,8 @@ class ListRulesetsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -948,8 +1040,8 @@ class Release {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -961,6 +1053,42 @@ class Release {
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/** Possible result values from the function mock invocation. */
+class Result {
+  /** The result is undefined, meaning the result could not be computed. */
+  Empty undefined;
+  /**
+   * The result is an actual value. The type of the value must match that
+   * of the type declared by the service.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object value;
+
+  Result();
+
+  Result.fromJson(core.Map _json) {
+    if (_json.containsKey("undefined")) {
+      undefined = new Empty.fromJson(_json["undefined"]);
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (undefined != null) {
+      _json["undefined"] = (undefined).toJson();
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -999,8 +1127,8 @@ class Ruleset {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1029,8 +1157,8 @@ class Source {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (files != null) {
       _json["files"] = files.map((value) => (value).toJson()).toList();
     }
@@ -1064,8 +1192,8 @@ class SourcePosition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (column != null) {
       _json["column"] = column;
     }
@@ -1074,6 +1202,103 @@ class SourcePosition {
     }
     if (line != null) {
       _json["line"] = line;
+    }
+    return _json;
+  }
+}
+
+/**
+ * `TestCase` messages provide the request context and an expectation as to
+ * whether the given context will be allowed or denied. Test cases may specify
+ * the `request`, `resource`, and `function_mocks` to mock a function call to
+ * a service-provided function.
+ *
+ * The `request` object represents context present at request-time.
+ *
+ * The `resource` is the value of the target resource as it appears in
+ * persistent storage before the request is executed.
+ */
+class TestCase {
+  /**
+   * Test expectation.
+   * Possible string values are:
+   * - "EXPECTATION_UNSPECIFIED" : Unspecified expectation.
+   * - "ALLOW" : Expect an allowed result.
+   * - "DENY" : Expect a denied result.
+   */
+  core.String expectation;
+  /**
+   * Optional function mocks for service-defined functions. If not set, any
+   * service defined function is expected to return an error, which may or may
+   * not influence the test outcome.
+   */
+  core.List<FunctionMock> functionMocks;
+  /**
+   * Request context.
+   *
+   * The exact format of the request context is service-dependent. See the
+   * appropriate service documentation for information about the supported
+   * fields and types on the request. Minimally, all services support the
+   * following fields and types:
+   *
+   * Request field  | Type
+   * ---------------|-----------------
+   * auth.uid       | `string`
+   * auth.token     | `map<string, string>`
+   * headers        | `map<string, string>`
+   * method         | `string`
+   * params         | `map<string, string>`
+   * path           | `string`
+   * time           | `google.protobuf.Timestamp`
+   *
+   * If the request value is not well-formed for the service, the request will
+   * be rejected as an invalid argument.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object request;
+  /**
+   * Optional resource value as it appears in persistent storage before the
+   * request is fulfilled.
+   *
+   * The resource type depends on the `request.path` value.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object resource;
+
+  TestCase();
+
+  TestCase.fromJson(core.Map _json) {
+    if (_json.containsKey("expectation")) {
+      expectation = _json["expectation"];
+    }
+    if (_json.containsKey("functionMocks")) {
+      functionMocks = _json["functionMocks"].map((value) => new FunctionMock.fromJson(value)).toList();
+    }
+    if (_json.containsKey("request")) {
+      request = _json["request"];
+    }
+    if (_json.containsKey("resource")) {
+      resource = _json["resource"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (expectation != null) {
+      _json["expectation"] = expectation;
+    }
+    if (functionMocks != null) {
+      _json["functionMocks"] = functionMocks.map((value) => (value).toJson()).toList();
+    }
+    if (request != null) {
+      _json["request"] = request;
+    }
+    if (resource != null) {
+      _json["resource"] = resource;
     }
     return _json;
   }
@@ -1139,8 +1364,8 @@ class TestResult {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (debugMessages != null) {
       _json["debugMessages"] = debugMessages;
     }
@@ -1165,6 +1390,8 @@ class TestRulesetRequest {
    * This field must not be set when the resource name refers to a `Ruleset`.
    */
   Source source;
+  /** Inline `TestSuite` to run. */
+  TestSuite testSuite;
 
   TestRulesetRequest();
 
@@ -1172,12 +1399,18 @@ class TestRulesetRequest {
     if (_json.containsKey("source")) {
       source = new Source.fromJson(_json["source"]);
     }
+    if (_json.containsKey("testSuite")) {
+      testSuite = new TestSuite.fromJson(_json["testSuite"]);
+    }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (source != null) {
       _json["source"] = (source).toJson();
+    }
+    if (testSuite != null) {
+      _json["testSuite"] = (testSuite).toJson();
     }
     return _json;
   }
@@ -1208,13 +1441,40 @@ class TestRulesetResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (issues != null) {
       _json["issues"] = issues.map((value) => (value).toJson()).toList();
     }
     if (testResults != null) {
       _json["testResults"] = testResults.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * `TestSuite` is a collection of `TestCase` instances that validate the logical
+ * correctness of a `Ruleset`. The `TestSuite` may be referenced in-line within
+ * a `TestRuleset` invocation or as part of a `Release` object as a pre-release
+ * check.
+ */
+class TestSuite {
+  /** Collection of test cases associated with the `TestSuite`. */
+  core.List<TestCase> testCases;
+
+  TestSuite();
+
+  TestSuite.fromJson(core.Map _json) {
+    if (_json.containsKey("testCases")) {
+      testCases = _json["testCases"].map((value) => new TestCase.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (testCases != null) {
+      _json["testCases"] = testCases.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

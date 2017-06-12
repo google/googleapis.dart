@@ -1,11 +1,23 @@
 {
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/cloud-translation": {
+                    "description": "Translate text from one language to another using Google Translate"
+                }
+            }
+        }
+    },
     "basePath": "/language/translate/",
-    "baseUrl": "https://www.googleapis.com/language/translate/",
-    "batchPath": "batch",
-    "description": "Translates text from one language to another.",
+    "baseUrl": "https://translation.googleapis.com/language/translate/",
+    "batchPath": "batch/translate",
+    "canonicalName": "Translate",
+    "description": "The Google Cloud Translation API lets websites and programs integrate with\n    Google Translate programmatically.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/translate/v2/using_rest",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/6s__cFeA5l1i01rONlu3TmUQEHs\"",
+    "documentationLink": "https://code.google.com/apis/language/translate/v2/getting_started.html",
     "features": [
         "dataWrapper"
     ],
@@ -19,30 +31,8 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "alt": {
-            "default": "json",
-            "description": "Data format for the response.",
-            "enum": [
-                "json"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -52,68 +42,88 @@
             "location": "query",
             "type": "boolean"
         },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
             "location": "query",
             "type": "string"
         },
-        "userIp": {
-            "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
-        "detections": {
-            "methods": {
-                "list": {
-                    "description": "Detect the language of text.",
-                    "httpMethod": "GET",
-                    "id": "language.detections.list",
-                    "parameterOrder": [
-                        "q"
-                    ],
-                    "parameters": {
-                        "q": {
-                            "description": "The text to detect",
-                            "location": "query",
-                            "repeated": true,
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v2/detect",
-                    "response": {
-                        "$ref": "DetectionsListResponse"
-                    }
-                }
-            }
-        },
-        "languages": {
-            "methods": {
-                "list": {
-                    "description": "List the source/target languages supported by the API",
-                    "httpMethod": "GET",
-                    "id": "language.languages.list",
-                    "parameters": {
-                        "target": {
-                            "description": "the language and collation in which the localized results should be returned",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v2/languages",
-                    "response": {
-                        "$ref": "LanguagesListResponse"
-                    }
-                }
-            }
-        },
         "translations": {
             "methods": {
                 "list": {
-                    "description": "Returns text translations from one language to another.",
+                    "description": "Translates input text, returning translated text.",
                     "httpMethod": "GET",
                     "id": "language.translations.list",
                     "parameterOrder": [
@@ -121,14 +131,32 @@
                         "target"
                     ],
                     "parameters": {
+                        "q": {
+                            "description": "The input text to translate. Repeat this parameter to perform translation\noperations on multiple text inputs.",
+                            "location": "query",
+                            "repeated": true,
+                            "required": true,
+                            "type": "string"
+                        },
+                        "source": {
+                            "description": "The language of the source text, set to one of the language codes listed in\nLanguage Support. If the source language is not specified, the API will\nattempt to identify the source language automatically and return it within\nthe response.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "cid": {
                             "description": "The customization id for translate",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
                         },
+                        "target": {
+                            "description": "The language to use for translation of the input text, set to one of the\nlanguage codes listed in Language Support.",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
                         "format": {
-                            "description": "The format of the text",
+                            "description": "The format of the source text, in either HTML (default) or plain-text. A\nvalue of \"html\" indicates HTML and a value of \"text\" indicates plain-text.",
                             "enum": [
                                 "html",
                                 "text"
@@ -140,36 +168,135 @@
                             "location": "query",
                             "type": "string"
                         },
-                        "q": {
-                            "description": "The text to translate",
+                        "model": {
+                            "description": "The `model` type requested for this translation. Valid values are\nlisted in public documentation.",
                             "location": "query",
-                            "repeated": true,
-                            "required": true,
-                            "type": "string"
-                        },
-                        "source": {
-                            "description": "The source language of the text",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "target": {
-                            "description": "The target language into which the text should be translated",
-                            "location": "query",
-                            "required": true,
                             "type": "string"
                         }
                     },
                     "path": "v2",
                     "response": {
                         "$ref": "TranslationsListResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-translation",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "translate": {
+                    "description": "Translates input text, returning translated text.",
+                    "httpMethod": "POST",
+                    "id": "language.translations.translate",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v2",
+                    "request": {
+                        "$ref": "TranslateTextRequest"
+                    },
+                    "response": {
+                        "$ref": "TranslationsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-translation",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                }
+            }
+        },
+        "detections": {
+            "methods": {
+                "list": {
+                    "description": "Detects the language of text within a request.",
+                    "httpMethod": "GET",
+                    "id": "language.detections.list",
+                    "parameterOrder": [
+                        "q"
+                    ],
+                    "parameters": {
+                        "q": {
+                            "description": "The input text upon which to perform language detection. Repeat this\nparameter to perform language detection on multiple text inputs.",
+                            "location": "query",
+                            "repeated": true,
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v2/detect",
+                    "response": {
+                        "$ref": "DetectionsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-translation",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "detect": {
+                    "description": "Detects the language of text within a request.",
+                    "httpMethod": "POST",
+                    "id": "language.detections.detect",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v2/detect",
+                    "request": {
+                        "$ref": "DetectLanguageRequest"
+                    },
+                    "response": {
+                        "$ref": "DetectionsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-translation",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                }
+            }
+        },
+        "languages": {
+            "methods": {
+                "list": {
+                    "description": "Returns a list of supported languages for translation.",
+                    "httpMethod": "GET",
+                    "id": "language.languages.list",
+                    "parameters": {
+                        "target": {
+                            "description": "The language to use to return localized, human readable names of supported\nlanguages.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "model": {
+                            "description": "The model type for which supported languages should be returned.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v2/languages",
+                    "response": {
+                        "$ref": "LanguagesListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-translation",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         }
     },
-    "revision": "20160627",
-    "rootUrl": "https://www.googleapis.com/",
+    "revision": "20170525",
+    "rootUrl": "https://translation.googleapis.com/",
     "schemas": {
+        "LanguagesResource": {
+            "id": "LanguagesResource",
+            "properties": {
+                "language": {
+                    "description": "Supported language code, generally consisting of its ISO 639-1\nidentifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including\nlanguage + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human readable name of the language localized to the target language.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DetectionsListResponse": {
             "id": "DetectionsListResponse",
             "properties": {
@@ -183,28 +310,16 @@
             },
             "type": "object"
         },
-        "DetectionsResource": {
-            "description": "An array of languages which we detect for the given text The most likely language list first.",
-            "id": "DetectionsResource",
-            "items": {
-                "properties": {
-                    "confidence": {
-                        "description": "The confidence of the detection resul of this language.",
-                        "format": "float",
-                        "type": "number"
-                    },
-                    "isReliable": {
-                        "description": "A boolean to indicate is the language detection result reliable.",
-                        "type": "boolean"
-                    },
-                    "language": {
-                        "description": "The language we detect",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
+        "GetSupportedLanguagesRequest": {
+            "description": "The request message for discovering supported languages.",
+            "id": "GetSupportedLanguagesRequest",
+            "properties": {
+                "target": {
+                    "description": "The language to use to return localized, human readable names of supported\nlanguages.",
+                    "type": "string"
+                }
             },
-            "type": "array"
+            "type": "object"
         },
         "LanguagesListResponse": {
             "id": "LanguagesListResponse",
@@ -219,21 +334,49 @@
             },
             "type": "object"
         },
-        "LanguagesResource": {
-            "id": "LanguagesResource",
+        "TranslationsResource": {
+            "id": "TranslationsResource",
             "properties": {
-                "language": {
-                    "description": "The language code.",
+                "translatedText": {
+                    "description": "Text translated into the target language.",
                     "type": "string"
                 },
-                "name": {
-                    "description": "The localized name of the language if target parameter is given.",
+                "detectedSourceLanguage": {
+                    "description": "The source language of the initial request, detected automatically, if\nno source language was passed within the initial request. If the\nsource language was passed, auto-detection of the language will not\noccur and this field will be empty.",
+                    "type": "string"
+                },
+                "model": {
+                    "description": "The `model` type used for this translation. Valid values are\nlisted in public documentation. Can be different from requested `model`.\nPresent only if specific model type was explicitly requested.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
+        "DetectionsResource": {
+            "description": "An array of languages which we detect for the given text The most likely language list first.",
+            "id": "DetectionsResource",
+            "items": {
+                "properties": {
+                    "confidence": {
+                        "description": "The confidence of the detection result of this language.",
+                        "format": "float",
+                        "type": "number"
+                    },
+                    "isReliable": {
+                        "description": "A boolean to indicate is the language detection result reliable.",
+                        "type": "boolean"
+                    },
+                    "language": {
+                        "description": "The language we detected.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array"
+        },
         "TranslationsListResponse": {
+            "description": "The main language translation response message.",
             "id": "TranslationsListResponse",
             "properties": {
                 "translations": {
@@ -246,22 +389,52 @@
             },
             "type": "object"
         },
-        "TranslationsResource": {
-            "id": "TranslationsResource",
+        "TranslateTextRequest": {
+            "description": "The main translation request message for the Cloud Translation API.",
+            "id": "TranslateTextRequest",
             "properties": {
-                "detectedSourceLanguage": {
-                    "description": "Detected source language if source parameter is unspecified.",
+                "target": {
+                    "description": "The language to use for translation of the input text, set to one of the\nlanguage codes listed in Language Support.",
                     "type": "string"
                 },
-                "translatedText": {
-                    "description": "The translation.",
+                "q": {
+                    "description": "The input text to translate. Repeat this parameter to perform translation\noperations on multiple text inputs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "format": {
+                    "description": "The format of the source text, in either HTML (default) or plain-text. A\nvalue of \"html\" indicates HTML and a value of \"text\" indicates plain-text.",
                     "type": "string"
+                },
+                "source": {
+                    "description": "The language of the source text, set to one of the language codes listed in\nLanguage Support. If the source language is not specified, the API will\nattempt to identify the source language automatically and return it within\nthe response.",
+                    "type": "string"
+                },
+                "model": {
+                    "description": "The `model` type requested for this translation. Valid values are\nlisted in public documentation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DetectLanguageRequest": {
+            "description": "The request message for language detection.",
+            "id": "DetectLanguageRequest",
+            "properties": {
+                "q": {
+                    "description": "The input text upon which to perform language detection. Repeat this\nparameter to perform language detection on multiple text inputs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
         }
     },
     "servicePath": "language/translate/",
-    "title": "Translate API",
+    "title": "Google Cloud Translation API",
     "version": "v2"
 }

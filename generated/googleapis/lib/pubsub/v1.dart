@@ -1230,8 +1230,8 @@ class AcknowledgeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ackIds != null) {
       _json["ackIds"] = ackIds;
     }
@@ -1283,8 +1283,8 @@ class Binding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -1313,8 +1313,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1341,8 +1341,8 @@ class ListSubscriptionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1375,8 +1375,8 @@ class ListTopicSubscriptionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1408,8 +1408,8 @@ class ListTopicsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1446,8 +1446,8 @@ class ModifyAckDeadlineRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ackDeadlineSeconds != null) {
       _json["ackDeadlineSeconds"] = ackDeadlineSeconds;
     }
@@ -1478,8 +1478,8 @@ class ModifyPushConfigRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pushConfig != null) {
       _json["pushConfig"] = (pushConfig).toJson();
     }
@@ -1564,8 +1564,8 @@ class Policy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -1592,8 +1592,8 @@ class PublishRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (messages != null) {
       _json["messages"] = messages.map((value) => (value).toJson()).toList();
     }
@@ -1618,8 +1618,8 @@ class PublishResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (messageIds != null) {
       _json["messageIds"] = messageIds;
     }
@@ -1674,8 +1674,8 @@ class PubsubMessage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attributes != null) {
       _json["attributes"] = attributes;
     }
@@ -1720,8 +1720,8 @@ class PullRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxMessages != null) {
       _json["maxMessages"] = maxMessages;
     }
@@ -1750,8 +1750,8 @@ class PullResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (receivedMessages != null) {
       _json["receivedMessages"] = receivedMessages.map((value) => (value).toJson()).toList();
     }
@@ -1802,8 +1802,8 @@ class PushConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attributes != null) {
       _json["attributes"] = attributes;
     }
@@ -1832,8 +1832,8 @@ class ReceivedMessage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ackId != null) {
       _json["ackId"] = ackId;
     }
@@ -1862,8 +1862,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -1935,8 +1935,8 @@ class Subscription {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ackDeadlineSeconds != null) {
       _json["ackDeadlineSeconds"] = ackDeadlineSeconds;
     }
@@ -1971,8 +1971,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -1996,8 +1996,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2025,8 +2025,8 @@ class Topic {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }

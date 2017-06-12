@@ -356,8 +356,8 @@ class Api {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (methods != null) {
       _json["methods"] = methods.map((value) => (value).toJson()).toList();
     }
@@ -454,8 +454,8 @@ class AuthProvider {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (audiences != null) {
       _json["audiences"] = audiences;
     }
@@ -517,8 +517,8 @@ class AuthRequirement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (audiences != null) {
       _json["audiences"] = audiences;
     }
@@ -566,8 +566,8 @@ class Authentication {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (providers != null) {
       _json["providers"] = providers.map((value) => (value).toJson()).toList();
     }
@@ -633,8 +633,8 @@ class AuthenticationRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowWithoutCredential != null) {
       _json["allowWithoutCredential"] = allowWithoutCredential;
     }
@@ -681,8 +681,8 @@ class AuthorizationConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (provider != null) {
       _json["provider"] = provider;
     }
@@ -707,8 +707,8 @@ class Backend {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
     }
@@ -754,8 +754,8 @@ class BackendRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = address;
     }
@@ -807,8 +807,8 @@ class Context {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
     }
@@ -846,8 +846,8 @@ class ContextRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (provided != null) {
       _json["provided"] = provided;
     }
@@ -881,8 +881,8 @@ class Control {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (environment != null) {
       _json["environment"] = environment;
     }
@@ -907,8 +907,8 @@ class CustomAuthRequirements {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (provider != null) {
       _json["provider"] = provider;
     }
@@ -951,8 +951,8 @@ class CustomError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
     }
@@ -988,8 +988,8 @@ class CustomErrorRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (isErrorType != null) {
       _json["isErrorType"] = isErrorType;
     }
@@ -1018,8 +1018,8 @@ class CustomHttpPattern {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1038,8 +1038,8 @@ class DisableServiceRequest {
   DisableServiceRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1156,8 +1156,8 @@ class Documentation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (documentationRootUrl != null) {
       _json["documentationRootUrl"] = documentationRootUrl;
     }
@@ -1211,8 +1211,8 @@ class DocumentationRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deprecationDescription != null) {
       _json["deprecationDescription"] = deprecationDescription;
     }
@@ -1234,8 +1234,8 @@ class EnableServiceRequest {
   EnableServiceRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1319,8 +1319,8 @@ class Endpoint {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aliases != null) {
       _json["aliases"] = aliases;
     }
@@ -1381,8 +1381,8 @@ class Enum {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enumvalue != null) {
       _json["enumvalue"] = enumvalue.map((value) => (value).toJson()).toList();
     }
@@ -1425,8 +1425,8 @@ class EnumValue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1456,8 +1456,8 @@ class Experimental {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (authorization != null) {
       _json["authorization"] = (authorization).toJson();
     }
@@ -1560,8 +1560,8 @@ class Field {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cardinality != null) {
       _json["cardinality"] = cardinality;
     }
@@ -1597,7 +1597,7 @@ class Field {
 }
 
 /**
- * Defines the HTTP configuration for a service. It contains a list of
+ * Defines the HTTP configuration for an API service. It contains a list of
  * HttpRule, each specifying the mapping of an RPC method
  * to one or more HTTP REST API methods.
  */
@@ -1629,8 +1629,8 @@ class Http {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fullyDecodeReservedExpansion != null) {
       _json["fullyDecodeReservedExpansion"] = fullyDecodeReservedExpansion;
     }
@@ -1643,11 +1643,11 @@ class Http {
 
 /**
  * `HttpRule` defines the mapping of an RPC method to one or more HTTP
- * REST APIs.  The mapping determines what portions of the request
- * message are populated from the path, query parameters, or body of
- * the HTTP request.  The mapping is typically specified as an
- * `google.api.http` annotation, see "google/api/annotations.proto"
- * for details.
+ * REST API methods. The mapping specifies how different portions of the RPC
+ * request message are mapped to URL path, URL query parameters, and
+ * HTTP request body. The mapping is typically specified as an
+ * `google.api.http` annotation on the RPC method,
+ * see "google/api/annotations.proto" for details.
  *
  * The mapping consists of a field specifying the path template and
  * method kind.  The path template can refer to fields in the request
@@ -1696,6 +1696,11 @@ class Http {
  * parameters. Assume the following definition of the request message:
  *
  *
+ *     service Messaging {
+ *       rpc GetMessage(GetMessageRequest) returns (Message) {
+ *         option (google.api.http).get = "/v1/messages/{message_id}";
+ *       }
+ *     }
  *     message GetMessageRequest {
  *       message SubMessage {
  *         string subfield = 1;
@@ -1813,7 +1818,7 @@ class Http {
  * to the request message are as follows:
  *
  * 1. The `body` field specifies either `*` or a field path, or is
- *    omitted. If omitted, it assumes there is no HTTP body.
+ *    omitted. If omitted, it indicates there is no HTTP request body.
  * 2. Leaf fields (recursive expansion of nested messages in the
  *    request) can be classified into three types:
  *     (a) Matched in the URL template.
@@ -1832,29 +1837,34 @@ class Http {
  *     FieldPath = IDENT { "." IDENT } ;
  *     Verb     = ":" LITERAL ;
  *
- * The syntax `*` matches a single path segment. It follows the semantics of
- * [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
- * Expansion.
+ * The syntax `*` matches a single path segment. The syntax `**` matches zero
+ * or more path segments, which must be the last part of the path except the
+ * `Verb`. The syntax `LITERAL` matches literal text in the path.
  *
- * The syntax `**` matches zero or more path segments. It follows the semantics
- * of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.3 Reserved
- * Expansion. NOTE: it must be the last segment in the path except the Verb.
- *
- * The syntax `LITERAL` matches literal text in the URL path.
- *
- * The syntax `Variable` matches the entire path as specified by its template;
- * this nested template must not contain further variables. If a variable
+ * The syntax `Variable` matches part of the URL path as specified by its
+ * template. A variable template must not contain other variables. If a variable
  * matches a single path segment, its template may be omitted, e.g. `{var}`
  * is equivalent to `{var=*}`.
  *
+ * If a variable contains exactly one path segment, such as `"{var}"` or
+ * `"{var=*}"`, when such a variable is expanded into a URL path, all characters
+ * except `[-_.~0-9a-zA-Z]` are percent-encoded. Such variables show up in the
+ * Discovery Document as `{var}`.
+ *
+ * If a variable contains one or more path segments, such as `"{var=foo / * }"`
+ * or `"{var=**}"`, when such a variable is expanded into a URL path, all
+ * characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. Such variables
+ * show up in the Discovery Document as `{+var}`.
+ *
+ * NOTE: While the single segment variable matches the semantics of
+ * [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2
+ * Simple String Expansion, the multi segment variable **does not** match
+ * RFC 6570 Reserved Expansion. The reason is that the Reserved Expansion
+ * does not expand special characters like `?` and `#`, which would lead
+ * to invalid URLs.
+ *
  * NOTE: the field paths in variables and in the `body` must not refer to
  * repeated fields or map fields.
- *
- * Use CustomHttpPattern to specify any HTTP method that is not included in the
- * `pattern` field, such as HEAD, or "*" to leave the HTTP method unspecified
- * for
- * a given URL path rule. The wild-card rule is useful for services that provide
- * content to Web (HTML) clients.
  */
 class HttpRule {
   /**
@@ -1870,7 +1880,12 @@ class HttpRule {
    * present at the top-level of request message type.
    */
   core.String body;
-  /** Custom pattern is used for defining custom verbs. */
+  /**
+   * The custom pattern is used for specifying an HTTP method that is not
+   * included in the `pattern` field, such as HEAD, or "*" to leave the
+   * HTTP method unspecified for this rule. The wild-card rule is useful
+   * for services that provide content to Web (HTML) clients.
+   */
   CustomHttpPattern custom;
   /** Used for deleting a resource. */
   core.String delete;
@@ -1923,6 +1938,24 @@ class HttpRule {
    */
   core.String restCollection;
   /**
+   * Optional. The rest method name is by default derived from the URL
+   * pattern. If specified, this field overrides the default method name.
+   * Example:
+   *
+   *     rpc CreateResource(CreateResourceRequest)
+   *         returns (CreateResourceResponse) {
+   *       option (google.api.http) = {
+   *         post: "/v1/resources",
+   *         body: "resource",
+   *         rest_method_name: "insert"
+   *       };
+   *     }
+   *
+   * This method has the automatically derived rest method name "create", but
+   *  for backwards compatability with apiary, it is specified as insert.
+   */
+  core.String restMethodName;
+  /**
    * Selects methods to which this rule applies.
    *
    * Refer to selector for syntax details.
@@ -1968,13 +2001,16 @@ class HttpRule {
     if (_json.containsKey("restCollection")) {
       restCollection = _json["restCollection"];
     }
+    if (_json.containsKey("restMethodName")) {
+      restMethodName = _json["restMethodName"];
+    }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (additionalBindings != null) {
       _json["additionalBindings"] = additionalBindings.map((value) => (value).toJson()).toList();
     }
@@ -2010,6 +2046,9 @@ class HttpRule {
     }
     if (restCollection != null) {
       _json["restCollection"] = restCollection;
+    }
+    if (restMethodName != null) {
+      _json["restMethodName"] = restMethodName;
     }
     if (selector != null) {
       _json["selector"] = selector;
@@ -2047,8 +2086,8 @@ class LabelDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2083,8 +2122,8 @@ class ListEnabledServicesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2147,8 +2186,8 @@ class LogDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2223,8 +2262,8 @@ class Logging {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (consumerDestinations != null) {
       _json["consumerDestinations"] = consumerDestinations.map((value) => (value).toJson()).toList();
     }
@@ -2264,8 +2303,8 @@ class LoggingDestination {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (logs != null) {
       _json["logs"] = logs;
     }
@@ -2332,8 +2371,8 @@ class MediaDownload {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (completeNotification != null) {
       _json["completeNotification"] = completeNotification;
     }
@@ -2425,8 +2464,8 @@ class MediaUpload {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (completeNotification != null) {
       _json["completeNotification"] = completeNotification;
     }
@@ -2503,8 +2542,8 @@ class Method {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2701,8 +2740,8 @@ class MetricDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2733,10 +2772,7 @@ class MetricDescriptor {
 
 /**
  * Bind API methods to metrics. Binding a method to a metric causes that
- * metric's configured quota, billing, and monitoring behaviors to apply to the
- * method call.
- *
- * Used by metric-based quotas only.
+ * metric's configured quota behaviors to apply to the method call.
  */
 class MetricRule {
   /**
@@ -2766,8 +2802,8 @@ class MetricRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metricCosts != null) {
       _json["metricCosts"] = metricCosts;
     }
@@ -2877,8 +2913,8 @@ class Mixin {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2955,8 +2991,8 @@ class MonitoredResourceDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -3042,8 +3078,8 @@ class Monitoring {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (consumerDestinations != null) {
       _json["consumerDestinations"] = consumerDestinations.map((value) => (value).toJson()).toList();
     }
@@ -3081,8 +3117,8 @@ class MonitoringDestination {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metrics != null) {
       _json["metrics"] = metrics;
     }
@@ -3133,8 +3169,8 @@ class OAuthRequirements {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (canonicalScopes != null) {
       _json["canonicalScopes"] = canonicalScopes;
     }
@@ -3206,8 +3242,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -3258,8 +3294,8 @@ class OperationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (progressPercentage != null) {
       _json["progressPercentage"] = progressPercentage;
     }
@@ -3310,8 +3346,8 @@ class Option {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -3370,8 +3406,8 @@ class Page {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
     }
@@ -3411,8 +3447,8 @@ class PublishedService {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -3474,17 +3510,11 @@ class PublishedService {
  *        value_type: INT64
  */
 class Quota {
-  /**
-   * List of `QuotaLimit` definitions for the service.
-   *
-   * Used by metric-based quotas only.
-   */
+  /** List of `QuotaLimit` definitions for the service. */
   core.List<QuotaLimit> limits;
   /**
    * List of `MetricRule` definitions, each one mapping a selected method to one
    * or more metrics.
-   *
-   * Used by metric-based quotas only.
    */
   core.List<MetricRule> metricRules;
 
@@ -3499,8 +3529,8 @@ class Quota {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (limits != null) {
       _json["limits"] = limits.map((value) => (value).toJson()).toList();
     }
@@ -3587,10 +3617,6 @@ class QuotaLimit {
    * Name of the quota limit. The name is used to refer to the limit when
    * overriding the default limit on per-consumer basis.
    *
-   * For group-based quota limits, the name must be unique within the quota
-   * group. If a name is not provided, it will be generated from the limit_by
-   * and duration fields.
-   *
    * For metric-based quota limits, the name must be provided, and it must be
    * unique within the service. The name can only include alphanumeric
    * characters as well as '-'.
@@ -3616,21 +3642,10 @@ class QuotaLimit {
    *   * "/d"  for quota every 24 hours, starting 00:00 US Pacific Time.
    *   * Otherwise the quota won't be reset by time, such as storage limit.
    * * One and only one of the granted containers:
-   *   * "/{organization}" quota for an organization.
-   *   * "/{project}" quota for a project.
-   *   * "/{folder}" quota for a folder.
-   *   * "/{resource}" quota for a universal resource.
-   * * Zero or more quota segmentation dimension. Not all combos are valid.
-   * * "/{region}" quota for every region. Not to be used with time intervals.
-   *   * Otherwise the resources granted on the target is not segmented.
-   *   * "/{zone}" quota for every zone. Not to be used with time intervals.
-   *   * Otherwise the resources granted on the target is not segmented.
-   *   * "/{resource}" quota for a resource associated with a project or org.
+   *   * "/{project}" quota for a project
    *
    * Here are some examples:
    * * "1/min/{project}" for quota per minute per project.
-   * * "1/min/{user}" for quota per minute per user.
-   * * "1/min/{organization}" for quota per minute per organization.
    *
    * Note: the order of unit components is insignificant.
    * The "1" at the beginning is required to follow the metric unit syntax.
@@ -3638,40 +3653,7 @@ class QuotaLimit {
    * Used by metric-based quotas only.
    */
   core.String unit;
-  /**
-   * Tiered limit values. Also allows for regional or zone overrides for these
-   * values if "/{region}" or "/{zone}" is specified in the unit field.
-   *
-   * Currently supported tiers from low to high:
-   * VERY_LOW, LOW, STANDARD, HIGH, VERY_HIGH
-   *
-   * To apply different limit values for users according to their tiers, specify
-   * the values for the tiers you want to differentiate. For example:
-   * {LOW:100, STANDARD:500, HIGH:1000, VERY_HIGH:5000}
-   *
-   * The limit value for each tier is optional except for the tier STANDARD.
-   * The limit value for an unspecified tier falls to the value of its next
-   * tier towards tier STANDARD. For the above example, the limit value for tier
-   * STANDARD is 500.
-   *
-   * To apply the same limit value for all users, just specify limit value for
-   * tier STANDARD. For example: {STANDARD:500}.
-   *
-   * To apply a regional overide for a tier, add a map entry with key
-   * "<TIER>/<region>", where <region> is a region name. Similarly, for a zone
-   * override, add a map entry with key "<TIER>/{zone}".
-   * Further, a wildcard can be used at the end of a zone name in order to
-   * specify zone level overrides. For example:
-   * LOW: 10, STANDARD: 50, HIGH: 100,
-   * LOW/us-central1: 20, STANDARD/us-central1: 60, HIGH/us-central1: 200,
-   * LOW/us-central1-*: 10, STANDARD/us-central1-*: 20, HIGH/us-central1-*: 80
-   *
-   * The regional overrides tier set for each region must be the same as
-   * the tier set for default limit values. Same rule applies for zone overrides
-   * tier as well.
-   *
-   * Used by metric-based quotas only.
-   */
+  /** Tiered limit values, currently only STANDARD is supported. */
   core.Map<core.String, core.String> values;
 
   QuotaLimit();
@@ -3709,8 +3691,8 @@ class QuotaLimit {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (defaultLimit != null) {
       _json["defaultLimit"] = defaultLimit;
     }
@@ -3766,8 +3748,8 @@ class SearchServicesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -3875,11 +3857,7 @@ class Service {
    * e.g. `calendar.googleapis.com`.
    */
   core.String name;
-  /**
-   * The id of the Google developer project that owns the service.
-   * Members of this project can manage the service configuration,
-   * manage consumption of the service, etc.
-   */
+  /** The Google project that owns this service. */
   core.String producerProjectId;
   /** Quota configuration. */
   Quota quota;
@@ -3897,7 +3875,7 @@ class Service {
    * to define system APIs in ESF.
    */
   core.List<Type> systemTypes;
-  /** The product title associated with this service. */
+  /** The product title for this service. */
   core.String title;
   /**
    * A list of all proto message types included in this API service.
@@ -4004,8 +3982,8 @@ class Service {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (apis != null) {
       _json["apis"] = apis.map((value) => (value).toJson()).toList();
     }
@@ -4113,8 +4091,8 @@ class SourceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fileName != null) {
       _json["fileName"] = fileName;
     }
@@ -4140,8 +4118,8 @@ class SourceInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sourceFiles != null) {
       _json["sourceFiles"] = sourceFiles;
     }
@@ -4237,8 +4215,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -4281,8 +4259,8 @@ class Step {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -4328,8 +4306,8 @@ class SystemParameter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (httpHeader != null) {
       _json["httpHeader"] = httpHeader;
     }
@@ -4375,8 +4353,8 @@ class SystemParameterRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (parameters != null) {
       _json["parameters"] = parameters.map((value) => (value).toJson()).toList();
     }
@@ -4437,8 +4415,8 @@ class SystemParameters {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
     }
@@ -4489,8 +4467,8 @@ class Type {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
     }
@@ -4553,8 +4531,8 @@ class Usage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (producerNotificationChannel != null) {
       _json["producerNotificationChannel"] = producerNotificationChannel;
     }
@@ -4617,8 +4595,8 @@ class UsageRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowUnregisteredCalls != null) {
       _json["allowUnregisteredCalls"] = allowUnregisteredCalls;
     }
@@ -4669,8 +4647,8 @@ class Visibility {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
     }
@@ -4719,8 +4697,8 @@ class VisibilityRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (restriction != null) {
       _json["restriction"] = restriction;
     }

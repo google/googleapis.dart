@@ -244,8 +244,8 @@ class JwkKeys {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alg != null) {
       _json["alg"] = alg;
     }
@@ -279,8 +279,8 @@ class Jwk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -349,8 +349,8 @@ class Tokeninfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accessType != null) {
       _json["access_type"] = accessType;
     }
@@ -447,8 +447,8 @@ class Userinfoplus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (email != null) {
       _json["email"] = email;
     }

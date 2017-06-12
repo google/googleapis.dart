@@ -163,8 +163,8 @@ class ExecutionError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
@@ -238,8 +238,8 @@ class ExecutionRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (devMode != null) {
       _json["devMode"] = devMode;
     }
@@ -285,8 +285,8 @@ class ExecutionResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (result != null) {
       _json["result"] = result;
     }
@@ -326,8 +326,8 @@ class JoinAsyncRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (names != null) {
       _json["names"] = names;
     }
@@ -354,14 +354,14 @@ class JoinAsyncResponse {
 
   JoinAsyncResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
-      results = commons.mapMap(_json["results"], (item) => new Operation.fromJson(item));
+      results = commons.mapMap<core.Map<core.String, core.Object>, Operation>(_json["results"], (core.Map<core.String, core.Object> item) => new Operation.fromJson(item));
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (results != null) {
-      _json["results"] = commons.mapMap(results, (item) => (item).toJson());
+      _json["results"] = commons.mapMap<Operation, core.Map<core.String, core.Object>>(results, (Operation item) => (item).toJson());
     }
     return _json;
   }
@@ -434,8 +434,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -473,8 +473,8 @@ class ScriptStackTraceElement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (function != null) {
       _json["function"] = function;
     }
@@ -526,8 +526,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }

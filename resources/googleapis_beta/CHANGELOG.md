@@ -1,3 +1,14 @@
+## 0.38.0
+
+* [api] sqladmin:v1beta4
+* [api] adexchangebuyer2:v2beta1
+* [api] dataflow:v1b3
+* [api] appengine:v1beta
+* [api] appengine:v1beta4
+* [api] appengine:v1beta5
+* [api-breaking] sqladmin:v1beta4
+* [api-breaking] dataflow:v1b3
+
 ## 0.37.0
 
 * [api-new] language:v1beta2

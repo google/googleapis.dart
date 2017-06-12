@@ -1651,12 +1651,13 @@ class ProjectsResourceApi {
    * + Membership changes that leave the project without any owners that have
    * accepted the Terms of Service (ToS) will be rejected.
    *
-   * + There must be at least one owner who has accepted the Terms of
-   * Service (ToS) agreement in the policy. Calling `setIamPolicy()` to
-   * remove the last ToS-accepted owner from the policy will fail. This
-   * restriction also applies to legacy projects that no longer have owners
-   * who have accepted the ToS. Edits to IAM policies will be rejected until
-   * the lack of a ToS-accepting owner is rectified.
+   * + If the project is not part of an organization, there must be at least
+   * one owner who has accepted the Terms of Service (ToS) agreement in the
+   * policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner
+   * from the policy will fail. This restriction also applies to legacy
+   * projects that no longer have owners who have accepted the ToS. Edits to
+   * IAM policies will be rejected until the lack of a ToS-accepting owner is
+   * rectified.
    *
    * + Calling this method requires enabling the App Engine Admin API.
    *
@@ -1921,8 +1922,8 @@ class Ancestor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (resourceId != null) {
       _json["resourceId"] = (resourceId).toJson();
     }
@@ -2007,8 +2008,8 @@ class AuditConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] = auditLogConfigs.map((value) => (value).toJson()).toList();
     }
@@ -2068,8 +2069,8 @@ class AuditLogConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -2125,8 +2126,8 @@ class Binding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -2151,8 +2152,8 @@ class BooleanConstraint {
   BooleanConstraint.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2218,8 +2219,8 @@ class BooleanPolicy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enforced != null) {
       _json["enforced"] = enforced;
     }
@@ -2255,8 +2256,8 @@ class ClearOrgPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (constraint != null) {
       _json["constraint"] = constraint;
     }
@@ -2347,8 +2348,8 @@ class Constraint {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (booleanConstraint != null) {
       _json["booleanConstraint"] = (booleanConstraint).toJson();
     }
@@ -2392,8 +2393,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2438,8 +2439,8 @@ class FolderOperation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (destinationParent != null) {
       _json["destinationParent"] = destinationParent;
     }
@@ -2493,8 +2494,8 @@ class FolderOperationError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorMessageId != null) {
       _json["errorMessageId"] = errorMessageId;
     }
@@ -2514,8 +2515,8 @@ class GetAncestryRequest {
   GetAncestryRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2537,8 +2538,8 @@ class GetAncestryResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ancestor != null) {
       _json["ancestor"] = ancestor.map((value) => (value).toJson()).toList();
     }
@@ -2559,8 +2560,8 @@ class GetEffectiveOrgPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (constraint != null) {
       _json["constraint"] = constraint;
     }
@@ -2576,8 +2577,8 @@ class GetIamPolicyRequest {
   GetIamPolicyRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2595,8 +2596,8 @@ class GetOrgPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (constraint != null) {
       _json["constraint"] = constraint;
     }
@@ -2673,8 +2674,8 @@ class Lien {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -2725,8 +2726,8 @@ class ListAvailableOrgPolicyConstraintsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageSize != null) {
       _json["pageSize"] = pageSize;
     }
@@ -2762,8 +2763,8 @@ class ListAvailableOrgPolicyConstraintsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (constraints != null) {
       _json["constraints"] = constraints.map((value) => (value).toJson()).toList();
     }
@@ -2793,8 +2794,8 @@ class ListConstraint {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (suggestedValue != null) {
       _json["suggestedValue"] = suggestedValue;
     }
@@ -2823,8 +2824,8 @@ class ListLiensResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (liens != null) {
       _json["liens"] = liens.map((value) => (value).toJson()).toList();
     }
@@ -2860,8 +2861,8 @@ class ListOrgPoliciesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageSize != null) {
       _json["pageSize"] = pageSize;
     }
@@ -2899,8 +2900,8 @@ class ListOrgPoliciesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2934,8 +2935,8 @@ class ListPolicy {
    */
   core.String allValues;
   /**
-   * List of values allowed  at this resource. an only be set if no values are
-   * set for `denied_values` and `all_values` is set to
+   * List of values allowed  at this resource. Can only be set if no values
+   * are set for `denied_values` and `all_values` is set to
    * `ALL_VALUES_UNSPECIFIED`.
    */
   core.List<core.String> allowedValues;
@@ -3058,8 +3059,8 @@ class ListPolicy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allValues != null) {
       _json["allValues"] = allValues;
     }
@@ -3120,8 +3121,8 @@ class ListProjectsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -3196,8 +3197,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -3299,8 +3300,8 @@ class OrgPolicy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (booleanPolicy != null) {
       _json["booleanPolicy"] = (booleanPolicy).toJson();
     }
@@ -3387,8 +3388,8 @@ class Organization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -3426,8 +3427,8 @@ class OrganizationOwner {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (directoryCustomerId != null) {
       _json["directoryCustomerId"] = directoryCustomerId;
     }
@@ -3473,7 +3474,6 @@ class Policy {
   core.List<AuditConfig> auditConfigs;
   /**
    * Associates a list of `members` to a `role`.
-   * Multiple `bindings` must not be specified for the same `role`.
    * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;
@@ -3517,8 +3517,8 @@ class Policy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auditConfigs != null) {
       _json["auditConfigs"] = auditConfigs.map((value) => (value).toJson()).toList();
     }
@@ -3648,8 +3648,8 @@ class Project {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3706,8 +3706,8 @@ class ProjectCreationStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3750,8 +3750,8 @@ class ResourceId {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -3783,8 +3783,8 @@ class RestoreDefault {
   RestoreDefault.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3834,8 +3834,8 @@ class SearchOrganizationsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filter != null) {
       _json["filter"] = filter;
     }
@@ -3876,8 +3876,8 @@ class SearchOrganizationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -3917,8 +3917,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -3942,8 +3942,8 @@ class SetOrgPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -4039,8 +4039,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -4072,8 +4072,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -4097,8 +4097,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -4117,8 +4117,8 @@ class UndeleteProjectRequest {
   UndeleteProjectRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }

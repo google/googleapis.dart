@@ -453,8 +453,8 @@ class AnalyzeDataDescriptionFeaturesCategoricalValues {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -483,8 +483,8 @@ class AnalyzeDataDescriptionFeaturesCategorical {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -518,8 +518,8 @@ class AnalyzeDataDescriptionFeaturesNumeric {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -546,8 +546,8 @@ class AnalyzeDataDescriptionFeaturesText {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -582,8 +582,8 @@ class AnalyzeDataDescriptionFeatures {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (categorical != null) {
       _json["categorical"] = (categorical).toJson();
     }
@@ -623,8 +623,8 @@ class AnalyzeDataDescriptionOutputFeatureNumeric {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -655,8 +655,8 @@ class AnalyzeDataDescriptionOutputFeatureText {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -685,8 +685,8 @@ class AnalyzeDataDescriptionOutputFeature {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (numeric != null) {
       _json["numeric"] = (numeric).toJson();
     }
@@ -715,8 +715,8 @@ class AnalyzeDataDescription {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (features != null) {
       _json["features"] = features.map((value) => (value).toJson()).toList();
     }
@@ -757,8 +757,8 @@ class AnalyzeModelDescription {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (confusionMatrix != null) {
       _json["confusionMatrix"] = confusionMatrix;
     }
@@ -809,8 +809,8 @@ class Analyze {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataDescription != null) {
       _json["dataDescription"] = (dataDescription).toJson();
     }
@@ -851,8 +851,8 @@ class InputInput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (csvInstance != null) {
       _json["csvInstance"] = csvInstance;
     }
@@ -872,8 +872,8 @@ class Input {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (input != null) {
       _json["input"] = (input).toJson();
     }
@@ -903,8 +903,8 @@ class InsertTrainingInstances {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (csvInstance != null) {
       _json["csvInstance"] = csvInstance;
     }
@@ -965,8 +965,8 @@ class Insert {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1046,8 +1046,8 @@ class Insert2ModelInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (classWeightedAccuracy != null) {
       _json["classWeightedAccuracy"] = classWeightedAccuracy;
     }
@@ -1135,8 +1135,8 @@ class Insert2 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (created != null) {
       _json["created"] = (created).toIso8601String();
     }
@@ -1201,8 +1201,8 @@ class List {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -1236,8 +1236,8 @@ class OutputOutputMulti {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (label != null) {
       _json["label"] = label;
     }
@@ -1288,8 +1288,8 @@ class Output {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1334,8 +1334,8 @@ class Update {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (csvInstance != null) {
       _json["csvInstance"] = csvInstance;
     }

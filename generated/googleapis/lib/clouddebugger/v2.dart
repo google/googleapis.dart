@@ -130,6 +130,11 @@ class ControllerDebuggeesBreakpointsResourceApi {
    *
    * [debuggeeId] - Identifies the debuggee.
    *
+   * [waitToken] - A wait token that, if specified, blocks the method call until
+   * the list
+   * of active breakpoints has changed, or a server selected timeout has
+   * expired.  The value should be set from the last returned response.
+   *
    * [successOnTimeout] - If set to `true`, returns `google.rpc.Code.OK` status
    * and sets the
    * `wait_expired` response field to `true` when the server-selected timeout
@@ -137,11 +142,6 @@ class ControllerDebuggeesBreakpointsResourceApi {
    *
    * If set to `false`, returns `google.rpc.Code.ABORTED` status when the
    * server-selected timeout has expired (deprecated).
-   *
-   * [waitToken] - A wait token that, if specified, blocks the method call until
-   * the list
-   * of active breakpoints has changed, or a server selected timeout has
-   * expired.  The value should be set from the last returned response.
    *
    * Completes with a [ListActiveBreakpointsResponse].
    *
@@ -151,7 +151,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId, {core.bool successOnTimeout, core.String waitToken}) {
+  async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId, {core.String waitToken, core.bool successOnTimeout}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -162,11 +162,11 @@ class ControllerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
-    if (successOnTimeout != null) {
-      _queryParams["successOnTimeout"] = ["${successOnTimeout}"];
-    }
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
+    }
+    if (successOnTimeout != null) {
+      _queryParams["successOnTimeout"] = ["${successOnTimeout}"];
     }
 
     _url = 'v2/controller/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints';
@@ -264,15 +264,15 @@ class DebuggerDebuggeesResourceApi {
    *
    * Request parameters:
    *
-   * [project] - Project number of a Google Cloud project whose debuggees to
-   * list.
-   *
    * [clientVersion] - The client version making the call.
    * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * [includeInactive] - When set to `true`, the result includes all debuggees.
    * Otherwise, the
    * result includes only debuggees that are active.
+   *
+   * [project] - Project number of a Google Cloud project whose debuggees to
+   * list.
    *
    * Completes with a [ListDebuggeesResponse].
    *
@@ -282,7 +282,7 @@ class DebuggerDebuggeesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDebuggeesResponse> list({core.String project, core.String clientVersion, core.bool includeInactive}) {
+  async.Future<ListDebuggeesResponse> list({core.String clientVersion, core.bool includeInactive, core.String project}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -290,14 +290,14 @@ class DebuggerDebuggeesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (project != null) {
-      _queryParams["project"] = [project];
-    }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
     }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
+    if (project != null) {
+      _queryParams["project"] = [project];
     }
 
     _url = 'v2/debugger/debuggees';
@@ -428,8 +428,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    *
    * [debuggeeId] - ID of the debuggee whose breakpoints to list.
    *
-   * [clientVersion] - The client version making the call.
-   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
+   * [waitToken] - A wait token that, if specified, blocks the call until the
+   * breakpoints
+   * list has changed, or a server selected timeout has expired.  The value
+   * should be set from the last response. The error code
+   * `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
+   * should be called again with the same `wait_token`.
    *
    * [action_value] - Only breakpoints with the specified action will pass the
    * filter.
@@ -437,24 +441,20 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * - "CAPTURE" : A CAPTURE.
    * - "LOG" : A LOG.
    *
-   * [includeAllUsers] - When set to `true`, the response includes the list of
-   * breakpoints set by
-   * any user. Otherwise, it includes only breakpoints set by the caller.
+   * [clientVersion] - The client version making the call.
+   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * [includeInactive] - When set to `true`, the response includes active and
    * inactive
    * breakpoints. Otherwise, it includes only active breakpoints.
    *
+   * [includeAllUsers] - When set to `true`, the response includes the list of
+   * breakpoints set by
+   * any user. Otherwise, it includes only breakpoints set by the caller.
+   *
    * [stripResults] - This field is deprecated. The following fields are always
    * stripped out of
    * the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
-   *
-   * [waitToken] - A wait token that, if specified, blocks the call until the
-   * breakpoints
-   * list has changed, or a server selected timeout has expired.  The value
-   * should be set from the last response. The error code
-   * `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
-   * should be called again with the same `wait_token`.
    *
    * Completes with a [ListBreakpointsResponse].
    *
@@ -464,7 +464,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.String clientVersion, core.String action_value, core.bool includeAllUsers, core.bool includeInactive, core.bool stripResults, core.String waitToken}) {
+  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.String waitToken, core.String action_value, core.String clientVersion, core.bool includeInactive, core.bool includeAllUsers, core.bool stripResults}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -475,23 +475,23 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
+    if (waitToken != null) {
+      _queryParams["waitToken"] = [waitToken];
     }
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
     }
-    if (includeAllUsers != null) {
-      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
+    if (includeAllUsers != null) {
+      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    }
     if (stripResults != null) {
       _queryParams["stripResults"] = ["${stripResults}"];
-    }
-    if (waitToken != null) {
-      _queryParams["waitToken"] = [waitToken];
     }
 
     _url = 'v2/debugger/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints';
@@ -588,8 +588,8 @@ class AliasContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -767,8 +767,8 @@ class Breakpoint {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -852,8 +852,8 @@ class CloudRepoSourceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aliasContext != null) {
       _json["aliasContext"] = (aliasContext).toJson();
     }
@@ -895,8 +895,8 @@ class CloudWorkspaceId {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -930,8 +930,8 @@ class CloudWorkspaceSourceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (snapshotId != null) {
       _json["snapshotId"] = snapshotId;
     }
@@ -1055,8 +1055,8 @@ class Debuggee {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (agentVersion != null) {
       _json["agentVersion"] = agentVersion;
     }
@@ -1112,8 +1112,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1139,8 +1139,8 @@ class ExtendedSourceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (context != null) {
       _json["context"] = (context).toJson();
     }
@@ -1179,8 +1179,8 @@ class FormatMessage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (format != null) {
       _json["format"] = format;
     }
@@ -1228,8 +1228,8 @@ class GerritSourceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aliasContext != null) {
       _json["aliasContext"] = (aliasContext).toJson();
     }
@@ -1265,8 +1265,8 @@ class GetBreakpointResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (breakpoint != null) {
       _json["breakpoint"] = (breakpoint).toJson();
     }
@@ -1298,8 +1298,8 @@ class GitSourceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (revisionId != null) {
       _json["revisionId"] = revisionId;
     }
@@ -1342,8 +1342,8 @@ class ListActiveBreakpointsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (breakpoints != null) {
       _json["breakpoints"] = breakpoints.map((value) => (value).toJson()).toList();
     }
@@ -1383,8 +1383,8 @@ class ListBreakpointsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (breakpoints != null) {
       _json["breakpoints"] = breakpoints.map((value) => (value).toJson()).toList();
     }
@@ -1414,8 +1414,8 @@ class ListDebuggeesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (debuggees != null) {
       _json["debuggees"] = debuggees.map((value) => (value).toJson()).toList();
     }
@@ -1444,8 +1444,8 @@ class ProjectRepoId {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -1473,8 +1473,8 @@ class RegisterDebuggeeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (debuggee != null) {
       _json["debuggee"] = (debuggee).toJson();
     }
@@ -1498,8 +1498,8 @@ class RegisterDebuggeeResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (debuggee != null) {
       _json["debuggee"] = (debuggee).toJson();
     }
@@ -1525,8 +1525,8 @@ class RepoId {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (projectRepoId != null) {
       _json["projectRepoId"] = (projectRepoId).toJson();
     }
@@ -1553,8 +1553,8 @@ class SetBreakpointResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (breakpoint != null) {
       _json["breakpoint"] = (breakpoint).toJson();
     }
@@ -1593,8 +1593,8 @@ class SourceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cloudRepo != null) {
       _json["cloudRepo"] = (cloudRepo).toJson();
     }
@@ -1631,8 +1631,8 @@ class SourceLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (line != null) {
       _json["line"] = line;
     }
@@ -1677,8 +1677,8 @@ class StackFrame {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (arguments != null) {
       _json["arguments"] = arguments.map((value) => (value).toJson()).toList();
     }
@@ -1739,8 +1739,8 @@ class StatusMessage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = (description).toJson();
     }
@@ -1770,8 +1770,8 @@ class UpdateActiveBreakpointRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (breakpoint != null) {
       _json["breakpoint"] = (breakpoint).toJson();
     }
@@ -1790,8 +1790,8 @@ class UpdateActiveBreakpointResponse {
   UpdateActiveBreakpointResponse.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1973,8 +1973,8 @@ class Variable {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members.map((value) => (value).toJson()).toList();
     }

@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis_beta/replicapoolupdater/v1beta1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -74,14 +74,14 @@ checkInstanceUpdateErrorErrors(api.InstanceUpdateErrorErrors o) {
   buildCounterInstanceUpdateErrorErrors--;
 }
 
-buildUnnamed3680() {
+buildUnnamed3154() {
   var o = new core.List<api.InstanceUpdateErrorErrors>();
   o.add(buildInstanceUpdateErrorErrors());
   o.add(buildInstanceUpdateErrorErrors());
   return o;
 }
 
-checkUnnamed3680(core.List<api.InstanceUpdateErrorErrors> o) {
+checkUnnamed3154(core.List<api.InstanceUpdateErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdateErrorErrors(o[0]);
   checkInstanceUpdateErrorErrors(o[1]);
@@ -92,7 +92,7 @@ buildInstanceUpdateError() {
   var o = new api.InstanceUpdateError();
   buildCounterInstanceUpdateError++;
   if (buildCounterInstanceUpdateError < 3) {
-    o.errors = buildUnnamed3680();
+    o.errors = buildUnnamed3154();
   }
   buildCounterInstanceUpdateError--;
   return o;
@@ -101,7 +101,7 @@ buildInstanceUpdateError() {
 checkInstanceUpdateError(api.InstanceUpdateError o) {
   buildCounterInstanceUpdateError++;
   if (buildCounterInstanceUpdateError < 3) {
-    checkUnnamed3680(o.errors);
+    checkUnnamed3154(o.errors);
   }
   buildCounterInstanceUpdateError--;
 }
@@ -129,14 +129,14 @@ checkInstanceUpdate(api.InstanceUpdate o) {
   buildCounterInstanceUpdate--;
 }
 
-buildUnnamed3681() {
+buildUnnamed3155() {
   var o = new core.List<api.InstanceUpdate>();
   o.add(buildInstanceUpdate());
   o.add(buildInstanceUpdate());
   return o;
 }
 
-checkUnnamed3681(core.List<api.InstanceUpdate> o) {
+checkUnnamed3155(core.List<api.InstanceUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceUpdate(o[0]);
   checkInstanceUpdate(o[1]);
@@ -147,7 +147,7 @@ buildInstanceUpdateList() {
   var o = new api.InstanceUpdateList();
   buildCounterInstanceUpdateList++;
   if (buildCounterInstanceUpdateList < 3) {
-    o.items = buildUnnamed3681();
+    o.items = buildUnnamed3155();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -159,7 +159,7 @@ buildInstanceUpdateList() {
 checkInstanceUpdateList(api.InstanceUpdateList o) {
   buildCounterInstanceUpdateList++;
   if (buildCounterInstanceUpdateList < 3) {
-    checkUnnamed3681(o.items);
+    checkUnnamed3155(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -190,14 +190,14 @@ checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors--;
 }
 
-buildUnnamed3682() {
+buildUnnamed3156() {
   var o = new core.List<api.OperationErrorErrors>();
   o.add(buildOperationErrorErrors());
   o.add(buildOperationErrorErrors());
   return o;
 }
 
-checkUnnamed3682(core.List<api.OperationErrorErrors> o) {
+checkUnnamed3156(core.List<api.OperationErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationErrorErrors(o[0]);
   checkOperationErrorErrors(o[1]);
@@ -208,7 +208,7 @@ buildOperationError() {
   var o = new api.OperationError();
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    o.errors = buildUnnamed3682();
+    o.errors = buildUnnamed3156();
   }
   buildCounterOperationError--;
   return o;
@@ -217,7 +217,7 @@ buildOperationError() {
 checkOperationError(api.OperationError o) {
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    checkUnnamed3682(o.errors);
+    checkUnnamed3156(o.errors);
   }
   buildCounterOperationError--;
 }
@@ -243,14 +243,14 @@ checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData--;
 }
 
-buildUnnamed3683() {
+buildUnnamed3157() {
   var o = new core.List<api.OperationWarningsData>();
   o.add(buildOperationWarningsData());
   o.add(buildOperationWarningsData());
   return o;
 }
 
-checkUnnamed3683(core.List<api.OperationWarningsData> o) {
+checkUnnamed3157(core.List<api.OperationWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarningsData(o[0]);
   checkOperationWarningsData(o[1]);
@@ -262,7 +262,7 @@ buildOperationWarnings() {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed3683();
+    o.data = buildUnnamed3157();
     o.message = "foo";
   }
   buildCounterOperationWarnings--;
@@ -273,20 +273,20 @@ checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed3683(o.data);
+    checkUnnamed3157(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterOperationWarnings--;
 }
 
-buildUnnamed3684() {
+buildUnnamed3158() {
   var o = new core.List<api.OperationWarnings>();
   o.add(buildOperationWarnings());
   o.add(buildOperationWarnings());
   return o;
 }
 
-checkUnnamed3684(core.List<api.OperationWarnings> o) {
+checkUnnamed3158(core.List<api.OperationWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarnings(o[0]);
   checkOperationWarnings(o[1]);
@@ -317,7 +317,7 @@ buildOperation() {
     o.targetId = "foo";
     o.targetLink = "foo";
     o.user = "foo";
-    o.warnings = buildUnnamed3684();
+    o.warnings = buildUnnamed3158();
     o.zone = "foo";
   }
   buildCounterOperation--;
@@ -347,20 +347,20 @@ checkOperation(api.Operation o) {
     unittest.expect(o.targetId, unittest.equals('foo'));
     unittest.expect(o.targetLink, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
-    checkUnnamed3684(o.warnings);
+    checkUnnamed3158(o.warnings);
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterOperation--;
 }
 
-buildUnnamed3685() {
+buildUnnamed3159() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed3685(core.List<api.Operation> o) {
+checkUnnamed3159(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -372,7 +372,7 @@ buildOperationList() {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     o.id = "foo";
-    o.items = buildUnnamed3685();
+    o.items = buildUnnamed3159();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -385,7 +385,7 @@ checkOperationList(api.OperationList o) {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3685(o.items);
+    checkUnnamed3159(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -416,14 +416,14 @@ checkRollingUpdateErrorErrors(api.RollingUpdateErrorErrors o) {
   buildCounterRollingUpdateErrorErrors--;
 }
 
-buildUnnamed3686() {
+buildUnnamed3160() {
   var o = new core.List<api.RollingUpdateErrorErrors>();
   o.add(buildRollingUpdateErrorErrors());
   o.add(buildRollingUpdateErrorErrors());
   return o;
 }
 
-checkUnnamed3686(core.List<api.RollingUpdateErrorErrors> o) {
+checkUnnamed3160(core.List<api.RollingUpdateErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRollingUpdateErrorErrors(o[0]);
   checkRollingUpdateErrorErrors(o[1]);
@@ -434,7 +434,7 @@ buildRollingUpdateError() {
   var o = new api.RollingUpdateError();
   buildCounterRollingUpdateError++;
   if (buildCounterRollingUpdateError < 3) {
-    o.errors = buildUnnamed3686();
+    o.errors = buildUnnamed3160();
   }
   buildCounterRollingUpdateError--;
   return o;
@@ -443,7 +443,7 @@ buildRollingUpdateError() {
 checkRollingUpdateError(api.RollingUpdateError o) {
   buildCounterRollingUpdateError++;
   if (buildCounterRollingUpdateError < 3) {
-    checkUnnamed3686(o.errors);
+    checkUnnamed3160(o.errors);
   }
   buildCounterRollingUpdateError--;
 }
@@ -524,14 +524,14 @@ checkRollingUpdate(api.RollingUpdate o) {
   buildCounterRollingUpdate--;
 }
 
-buildUnnamed3687() {
+buildUnnamed3161() {
   var o = new core.List<api.RollingUpdate>();
   o.add(buildRollingUpdate());
   o.add(buildRollingUpdate());
   return o;
 }
 
-checkUnnamed3687(core.List<api.RollingUpdate> o) {
+checkUnnamed3161(core.List<api.RollingUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRollingUpdate(o[0]);
   checkRollingUpdate(o[1]);
@@ -542,7 +542,7 @@ buildRollingUpdateList() {
   var o = new api.RollingUpdateList();
   buildCounterRollingUpdateList++;
   if (buildCounterRollingUpdateList < 3) {
-    o.items = buildUnnamed3687();
+    o.items = buildUnnamed3161();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -554,7 +554,7 @@ buildRollingUpdateList() {
 checkRollingUpdateList(api.RollingUpdateList o) {
   buildCounterRollingUpdateList++;
   if (buildCounterRollingUpdateList < 3) {
-    checkUnnamed3687(o.items);
+    checkUnnamed3161(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -707,7 +707,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_rollingUpdate = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -739,7 +739,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.cancel(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.Operation response) {
+      res.cancel(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -751,7 +751,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_rollingUpdate = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -783,7 +783,7 @@ main() {
         var resp = convert.JSON.encode(buildRollingUpdate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.RollingUpdate response) {
+      res.get(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync1(((api.RollingUpdate response) {
         checkRollingUpdate(response);
       })));
     });
@@ -795,7 +795,7 @@ main() {
       var arg_request = buildRollingUpdate();
       var arg_project = "foo";
       var arg_zone = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RollingUpdate.fromJson(json);
         checkRollingUpdate(obj);
 
@@ -830,7 +830,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_project, arg_zone).then(unittest.expectAsync(((api.Operation response) {
+      res.insert(arg_request, arg_project, arg_zone).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -844,7 +844,7 @@ main() {
       var arg_filter = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -879,7 +879,7 @@ main() {
         var resp = convert.JSON.encode(buildRollingUpdateList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.RollingUpdateList response) {
+      res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.RollingUpdateList response) {
         checkRollingUpdateList(response);
       })));
     });
@@ -894,7 +894,7 @@ main() {
       var arg_filter = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -929,7 +929,7 @@ main() {
         var resp = convert.JSON.encode(buildInstanceUpdateList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listInstanceUpdates(arg_project, arg_zone, arg_rollingUpdate, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.InstanceUpdateList response) {
+      res.listInstanceUpdates(arg_project, arg_zone, arg_rollingUpdate, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.InstanceUpdateList response) {
         checkInstanceUpdateList(response);
       })));
     });
@@ -941,7 +941,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_rollingUpdate = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -973,7 +973,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.pause(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.Operation response) {
+      res.pause(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -985,7 +985,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_rollingUpdate = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1017,7 +1017,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resume(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.Operation response) {
+      res.resume(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1029,7 +1029,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_rollingUpdate = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1061,7 +1061,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.rollback(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync(((api.Operation response) {
+      res.rollback(arg_project, arg_zone, arg_rollingUpdate).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1077,7 +1077,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_operation = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1109,7 +1109,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_zone, arg_operation).then(unittest.expectAsync(((api.Operation response) {
+      res.get(arg_project, arg_zone, arg_operation).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1123,7 +1123,7 @@ main() {
       var arg_filter = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1158,7 +1158,7 @@ main() {
         var resp = convert.JSON.encode(buildOperationList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.OperationList response) {
+      res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.OperationList response) {
         checkOperationList(response);
       })));
     });

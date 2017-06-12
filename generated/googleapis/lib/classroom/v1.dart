@@ -254,18 +254,6 @@ class CoursesResourceApi {
    *
    * Request parameters:
    *
-   * [teacherId] - Restricts returned courses to those having a teacher with the
-   * specified
-   * identifier. The identifier can be one of the following:
-   *
-   * * the numeric identifier for the user
-   * * the email address of the user
-   * * the string literal `"me"`, indicating the requesting user
-   *
-   * [courseStates] - Restricts returned courses to those in one of the
-   * specified states
-   * The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED.
-   *
    * [studentId] - Restricts returned courses to those having a student with the
    * specified
    * identifier. The identifier can be one of the following:
@@ -288,6 +276,18 @@ class CoursesResourceApi {
    *
    * The server may return fewer than the specified number of results.
    *
+   * [teacherId] - Restricts returned courses to those having a teacher with the
+   * specified
+   * identifier. The identifier can be one of the following:
+   *
+   * * the numeric identifier for the user
+   * * the email address of the user
+   * * the string literal `"me"`, indicating the requesting user
+   *
+   * [courseStates] - Restricts returned courses to those in one of the
+   * specified states
+   * The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED.
+   *
    * Completes with a [ListCoursesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -296,7 +296,7 @@ class CoursesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCoursesResponse> list({core.String teacherId, core.List<core.String> courseStates, core.String studentId, core.String pageToken, core.int pageSize}) {
+  async.Future<ListCoursesResponse> list({core.String studentId, core.String pageToken, core.int pageSize, core.String teacherId, core.List<core.String> courseStates}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -304,12 +304,6 @@ class CoursesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (teacherId != null) {
-      _queryParams["teacherId"] = [teacherId];
-    }
-    if (courseStates != null) {
-      _queryParams["courseStates"] = courseStates;
-    }
     if (studentId != null) {
       _queryParams["studentId"] = [studentId];
     }
@@ -318,6 +312,12 @@ class CoursesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (teacherId != null) {
+      _queryParams["teacherId"] = [teacherId];
+    }
+    if (courseStates != null) {
+      _queryParams["courseStates"] = courseStates;
     }
 
     _url = 'v1/courses';
@@ -1108,6 +1108,23 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * This may be set to the string literal `"-"` to request student work for
    * all course work in the specified course.
    *
+   * [late] - Requested lateness value. If specified, returned student
+   * submissions are
+   * restricted by the requested value.
+   * If unspecified, submissions are returned regardless of `late` value.
+   * Possible string values are:
+   * - "LATE_VALUES_UNSPECIFIED" : A LATE_VALUES_UNSPECIFIED.
+   * - "LATE_ONLY" : A LATE_ONLY.
+   * - "NOT_LATE_ONLY" : A NOT_LATE_ONLY.
+   *
+   * [pageToken] - nextPageToken
+   * value returned from a previous
+   * list call,
+   * indicating that the subsequent page of results should be returned.
+   *
+   * The list request
+   * must be otherwise identical to the one that resulted in this token.
+   *
    * [pageSize] - Maximum number of items to return. Zero or unspecified
    * indicates that the
    * server may assign a maximum.
@@ -1127,23 +1144,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * * the email address of the user
    * * the string literal `"me"`, indicating the requesting user
    *
-   * [late] - Requested lateness value. If specified, returned student
-   * submissions are
-   * restricted by the requested value.
-   * If unspecified, submissions are returned regardless of `late` value.
-   * Possible string values are:
-   * - "LATE_VALUES_UNSPECIFIED" : A LATE_VALUES_UNSPECIFIED.
-   * - "LATE_ONLY" : A LATE_ONLY.
-   * - "NOT_LATE_ONLY" : A NOT_LATE_ONLY.
-   *
-   * [pageToken] - nextPageToken
-   * value returned from a previous
-   * list call,
-   * indicating that the subsequent page of results should be returned.
-   *
-   * The list request
-   * must be otherwise identical to the one that resulted in this token.
-   *
    * Completes with a [ListStudentSubmissionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1152,7 +1152,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListStudentSubmissionsResponse> list(core.String courseId, core.String courseWorkId, {core.int pageSize, core.List<core.String> states, core.String userId, core.String late, core.String pageToken}) {
+  async.Future<ListStudentSubmissionsResponse> list(core.String courseId, core.String courseWorkId, {core.String late, core.String pageToken, core.int pageSize, core.List<core.String> states, core.String userId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1166,6 +1166,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
+    if (late != null) {
+      _queryParams["late"] = [late];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -1174,12 +1180,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (userId != null) {
       _queryParams["userId"] = [userId];
-    }
-    if (late != null) {
-      _queryParams["late"] = [late];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/courseWork/' + commons.Escaper.ecapeVariable('$courseWorkId') + '/studentSubmissions';
@@ -2607,6 +2607,14 @@ class UserProfilesGuardianInvitationsResourceApi {
    *   all students that the requesting user is permitted to view guardian
    *   invitations.
    *
+   * [pageToken] - nextPageToken
+   * value returned from a previous
+   * list call,
+   * indicating that the subsequent page of results should be returned.
+   *
+   * The list request
+   * must be otherwise identical to the one that resulted in this token.
+   *
    * [invitedEmailAddress] - If specified, only results with the specified
    * `invited_email_address`
    * will be returned.
@@ -2621,14 +2629,6 @@ class UserProfilesGuardianInvitationsResourceApi {
    *
    * The server may return fewer than the specified number of results.
    *
-   * [pageToken] - nextPageToken
-   * value returned from a previous
-   * list call,
-   * indicating that the subsequent page of results should be returned.
-   *
-   * The list request
-   * must be otherwise identical to the one that resulted in this token.
-   *
    * Completes with a [ListGuardianInvitationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2637,7 +2637,7 @@ class UserProfilesGuardianInvitationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGuardianInvitationsResponse> list(core.String studentId, {core.String invitedEmailAddress, core.List<core.String> states, core.int pageSize, core.String pageToken}) {
+  async.Future<ListGuardianInvitationsResponse> list(core.String studentId, {core.String pageToken, core.String invitedEmailAddress, core.List<core.String> states, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2648,6 +2648,9 @@ class UserProfilesGuardianInvitationsResourceApi {
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
     }
@@ -2656,9 +2659,6 @@ class UserProfilesGuardianInvitationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardianInvitations';
@@ -3004,8 +3004,8 @@ class Assignment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (studentWorkFolder != null) {
       _json["studentWorkFolder"] = (studentWorkFolder).toJson();
     }
@@ -3035,8 +3035,8 @@ class AssignmentSubmission {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attachments != null) {
       _json["attachments"] = attachments.map((value) => (value).toJson()).toList();
     }
@@ -3076,8 +3076,8 @@ class Attachment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (driveFile != null) {
       _json["driveFile"] = (driveFile).toJson();
     }
@@ -3102,6 +3102,13 @@ class Course {
    * Read-only.
    */
   core.String alternateLink;
+  /**
+   * The Calendar ID for a calendar that all course members can see, to which
+   * Classroom adds events for course work and announcements in the course.
+   *
+   * Read-only.
+   */
+  core.String calendarId;
   /**
    * The email address of a Google group containing all members of the course.
    * This group does not accept email and can only be used for permissions.
@@ -3262,6 +3269,9 @@ class Course {
     if (_json.containsKey("alternateLink")) {
       alternateLink = _json["alternateLink"];
     }
+    if (_json.containsKey("calendarId")) {
+      calendarId = _json["calendarId"];
+    }
     if (_json.containsKey("courseGroupEmail")) {
       courseGroupEmail = _json["courseGroupEmail"];
     }
@@ -3312,10 +3322,13 @@ class Course {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateLink != null) {
       _json["alternateLink"] = alternateLink;
+    }
+    if (calendarId != null) {
+      _json["calendarId"] = calendarId;
     }
     if (courseGroupEmail != null) {
       _json["courseGroupEmail"] = courseGroupEmail;
@@ -3407,8 +3420,8 @@ class CourseAlias {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alias != null) {
       _json["alias"] = alias;
     }
@@ -3444,8 +3457,8 @@ class CourseMaterial {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (driveFile != null) {
       _json["driveFile"] = (driveFile).toJson();
     }
@@ -3484,8 +3497,8 @@ class CourseMaterialSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (materials != null) {
       _json["materials"] = materials.map((value) => (value).toJson()).toList();
     }
@@ -3578,6 +3591,8 @@ class CourseWork {
    * set otherwise.
    */
   MultipleChoiceQuestion multipleChoiceQuestion;
+  /** Optional timestamp when this course work is scheduled to be published. */
+  core.String scheduledTime;
   /**
    * Status of this course work.
    * If unspecified, the default state is `DRAFT`.
@@ -3670,6 +3685,9 @@ class CourseWork {
     if (_json.containsKey("multipleChoiceQuestion")) {
       multipleChoiceQuestion = new MultipleChoiceQuestion.fromJson(_json["multipleChoiceQuestion"]);
     }
+    if (_json.containsKey("scheduledTime")) {
+      scheduledTime = _json["scheduledTime"];
+    }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
@@ -3687,8 +3705,8 @@ class CourseWork {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateLink != null) {
       _json["alternateLink"] = alternateLink;
     }
@@ -3724,6 +3742,9 @@ class CourseWork {
     }
     if (multipleChoiceQuestion != null) {
       _json["multipleChoiceQuestion"] = (multipleChoiceQuestion).toJson();
+    }
+    if (scheduledTime != null) {
+      _json["scheduledTime"] = scheduledTime;
     }
     if (state != null) {
       _json["state"] = state;
@@ -3781,8 +3802,8 @@ class Date {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -3836,8 +3857,8 @@ class DriveFile {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateLink != null) {
       _json["alternateLink"] = alternateLink;
     }
@@ -3885,8 +3906,8 @@ class DriveFolder {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateLink != null) {
       _json["alternateLink"] = alternateLink;
     }
@@ -3918,8 +3939,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3966,8 +3987,8 @@ class Form {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (formUrl != null) {
       _json["formUrl"] = formUrl;
     }
@@ -4004,8 +4025,8 @@ class GlobalPermission {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permission != null) {
       _json["permission"] = permission;
     }
@@ -4047,8 +4068,8 @@ class Guardian {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (guardianId != null) {
       _json["guardianId"] = guardianId;
     }
@@ -4120,8 +4141,8 @@ class GuardianInvitation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -4189,8 +4210,8 @@ class Invitation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (courseId != null) {
       _json["courseId"] = courseId;
     }
@@ -4241,8 +4262,8 @@ class Link {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (thumbnailUrl != null) {
       _json["thumbnailUrl"] = thumbnailUrl;
     }
@@ -4277,8 +4298,8 @@ class ListCourseAliasesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aliases != null) {
       _json["aliases"] = aliases.map((value) => (value).toJson()).toList();
     }
@@ -4310,8 +4331,8 @@ class ListCourseWorkResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (courseWork != null) {
       _json["courseWork"] = courseWork.map((value) => (value).toJson()).toList();
     }
@@ -4343,8 +4364,8 @@ class ListCoursesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (courses != null) {
       _json["courses"] = courses.map((value) => (value).toJson()).toList();
     }
@@ -4376,8 +4397,8 @@ class ListGuardianInvitationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (guardianInvitations != null) {
       _json["guardianInvitations"] = guardianInvitations.map((value) => (value).toJson()).toList();
     }
@@ -4412,8 +4433,8 @@ class ListGuardiansResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (guardians != null) {
       _json["guardians"] = guardians.map((value) => (value).toJson()).toList();
     }
@@ -4445,8 +4466,8 @@ class ListInvitationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (invitations != null) {
       _json["invitations"] = invitations.map((value) => (value).toJson()).toList();
     }
@@ -4478,8 +4499,8 @@ class ListStudentSubmissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -4511,8 +4532,8 @@ class ListStudentsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -4544,8 +4565,8 @@ class ListTeachersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -4591,8 +4612,8 @@ class Material {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (driveFile != null) {
       _json["driveFile"] = (driveFile).toJson();
     }
@@ -4627,8 +4648,8 @@ class ModifyAttachmentsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (addAttachments != null) {
       _json["addAttachments"] = addAttachments.map((value) => (value).toJson()).toList();
     }
@@ -4649,8 +4670,8 @@ class MultipleChoiceQuestion {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (choices != null) {
       _json["choices"] = choices;
     }
@@ -4671,8 +4692,8 @@ class MultipleChoiceSubmission {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (answer != null) {
       _json["answer"] = answer;
     }
@@ -4716,8 +4737,8 @@ class Name {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (familyName != null) {
       _json["familyName"] = familyName;
     }
@@ -4739,8 +4760,8 @@ class ReclaimStudentSubmissionRequest {
   ReclaimStudentSubmissionRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -4753,8 +4774,8 @@ class ReturnStudentSubmissionRequest {
   ReturnStudentSubmissionRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -4785,8 +4806,8 @@ class SharedDriveFile {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (driveFile != null) {
       _json["driveFile"] = (driveFile).toJson();
     }
@@ -4810,8 +4831,8 @@ class ShortAnswerSubmission {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (answer != null) {
       _json["answer"] = answer;
     }
@@ -4869,8 +4890,8 @@ class Student {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (courseId != null) {
       _json["courseId"] = courseId;
     }
@@ -5059,8 +5080,8 @@ class StudentSubmission {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateLink != null) {
       _json["alternateLink"] = alternateLink;
     }
@@ -5153,8 +5174,8 @@ class Teacher {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (courseId != null) {
       _json["courseId"] = courseId;
     }
@@ -5206,8 +5227,8 @@ class TimeOfDay {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (hours != null) {
       _json["hours"] = hours;
     }
@@ -5232,8 +5253,8 @@ class TurnInStudentSubmissionRequest {
   TurnInStudentSubmissionRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -5270,6 +5291,12 @@ class UserProfile {
    * Read-only.
    */
   core.String photoUrl;
+  /**
+   * Whether or not the user is a verified teacher
+   *
+   * Read-only
+   */
+  core.bool verifiedTeacher;
 
   UserProfile();
 
@@ -5289,10 +5316,13 @@ class UserProfile {
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
     }
+    if (_json.containsKey("verifiedTeacher")) {
+      verifiedTeacher = _json["verifiedTeacher"];
+    }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (emailAddress != null) {
       _json["emailAddress"] = emailAddress;
     }
@@ -5307,6 +5337,9 @@ class UserProfile {
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;
+    }
+    if (verifiedTeacher != null) {
+      _json["verifiedTeacher"] = verifiedTeacher;
     }
     return _json;
   }
@@ -5352,8 +5385,8 @@ class YouTubeVideo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateLink != null) {
       _json["alternateLink"] = alternateLink;
     }

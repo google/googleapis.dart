@@ -1407,7 +1407,7 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the operation collection.
+   * [name] - The name of the operation's parent resource.
    * Value must have pattern "^operations$".
    *
    * [filter] - A string for filtering Operations.
@@ -1826,6 +1826,16 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * [readGroupSetId] - Required. The ID of the read group set over which
    * coverage is requested.
    *
+   * [end] - The end position of the range on the reference, 0-based exclusive.
+   * If
+   * specified, `referenceName` must also be specified. If unset or 0, defaults
+   * to the length of the reference.
+   *
+   * [pageToken] - The continuation token, which is used to page through large
+   * result sets.
+   * To get the next page of results, set this parameter to the value of
+   * `nextPageToken` from the previous response.
+   *
    * [pageSize] - The maximum number of results to return in a single page. If
    * unspecified,
    * defaults to 1024. The maximum value is 2048.
@@ -1847,16 +1857,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * set associated
    * with this query. Optional.
    *
-   * [end] - The end position of the range on the reference, 0-based exclusive.
-   * If
-   * specified, `referenceName` must also be specified. If unset or 0, defaults
-   * to the length of the reference.
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets.
-   * To get the next page of results, set this parameter to the value of
-   * `nextPageToken` from the previous response.
-   *
    * Completes with a [ListCoverageBucketsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1865,7 +1865,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.int pageSize, core.String start, core.String targetBucketWidth, core.String referenceName, core.String end, core.String pageToken}) {
+  async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.String end, core.String pageToken, core.int pageSize, core.String start, core.String targetBucketWidth, core.String referenceName}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1875,6 +1875,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
+    }
+    if (end != null) {
+      _queryParams["end"] = [end];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1887,12 +1893,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (referenceName != null) {
       _queryParams["referenceName"] = [referenceName];
-    }
-    if (end != null) {
-      _queryParams["end"] = [end];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId') + '/coveragebuckets';
@@ -3114,8 +3114,8 @@ class Annotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotationSetId != null) {
       _json["annotationSetId"] = annotationSetId;
     }
@@ -3234,8 +3234,8 @@ class AnnotationSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -3289,8 +3289,8 @@ class BatchCreateAnnotationsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotations != null) {
       _json["annotations"] = annotations.map((value) => (value).toJson()).toList();
     }
@@ -3316,8 +3316,8 @@ class BatchCreateAnnotationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (entries != null) {
       _json["entries"] = entries.map((value) => (value).toJson()).toList();
     }
@@ -3370,8 +3370,8 @@ class Binding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -3438,8 +3438,8 @@ class CallSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (created != null) {
       _json["created"] = created;
     }
@@ -3470,8 +3470,8 @@ class CancelOperationRequest {
   CancelOperationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3552,8 +3552,8 @@ class CigarUnit {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operation != null) {
       _json["operation"] = operation;
     }
@@ -3600,8 +3600,8 @@ class ClinicalCondition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (conceptId != null) {
       _json["conceptId"] = conceptId;
     }
@@ -3643,8 +3643,8 @@ class CodingSequence {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (end != null) {
       _json["end"] = end;
     }
@@ -3686,8 +3686,8 @@ class ComputeEngine {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (diskNames != null) {
       _json["diskNames"] = diskNames;
     }
@@ -3728,8 +3728,8 @@ class CoverageBucket {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (meanCoverage != null) {
       _json["meanCoverage"] = meanCoverage;
     }
@@ -3773,8 +3773,8 @@ class Dataset {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3809,8 +3809,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3832,8 +3832,8 @@ class Entry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotation != null) {
       _json["annotation"] = (annotation).toJson();
     }
@@ -3888,8 +3888,8 @@ class Exon {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (end != null) {
       _json["end"] = end;
     }
@@ -3942,8 +3942,8 @@ class Experiment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instrumentModel != null) {
       _json["instrumentModel"] = instrumentModel;
     }
@@ -3994,8 +3994,8 @@ class ExportReadGroupSetRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (exportUri != null) {
       _json["exportUri"] = exportUri;
     }
@@ -4061,8 +4061,8 @@ class ExportVariantSetRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bigqueryDataset != null) {
       _json["bigqueryDataset"] = bigqueryDataset;
     }
@@ -4099,8 +4099,8 @@ class ExternalId {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -4119,8 +4119,8 @@ class GetIamPolicyRequest {
   GetIamPolicyRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -4190,8 +4190,8 @@ class ImportReadGroupSetsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -4221,8 +4221,8 @@ class ImportReadGroupSetsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (readGroupSetIds != null) {
       _json["readGroupSetIds"] = readGroupSetIds;
     }
@@ -4295,8 +4295,8 @@ class ImportVariantsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (format != null) {
       _json["format"] = format;
     }
@@ -4329,8 +4329,8 @@ class ImportVariantsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (callSetIds != null) {
       _json["callSetIds"] = callSetIds;
     }
@@ -4373,8 +4373,8 @@ class LinearAlignment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cigar != null) {
       _json["cigar"] = cigar.map((value) => (value).toJson()).toList();
     }
@@ -4418,8 +4418,8 @@ class ListBasesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -4469,8 +4469,8 @@ class ListCoverageBucketsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bucketWidth != null) {
       _json["bucketWidth"] = bucketWidth;
     }
@@ -4506,8 +4506,8 @@ class ListDatasetsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasets != null) {
       _json["datasets"] = datasets.map((value) => (value).toJson()).toList();
     }
@@ -4536,8 +4536,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -4573,8 +4573,8 @@ class MergeVariantsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (infoMergeConfig != null) {
       _json["infoMergeConfig"] = infoMergeConfig;
     }
@@ -4645,8 +4645,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -4692,8 +4692,8 @@ class OperationEvent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -4782,8 +4782,8 @@ class OperationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -4851,7 +4851,6 @@ class OperationMetadata {
 class Policy {
   /**
    * Associates a list of `members` to a `role`.
-   * Multiple `bindings` must not be specified for the same `role`.
    * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;
@@ -4892,8 +4891,8 @@ class Policy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -4940,8 +4939,8 @@ class Position {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (position != null) {
       _json["position"] = position;
     }
@@ -4993,8 +4992,8 @@ class Program {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (commandLine != null) {
       _json["commandLine"] = commandLine;
     }
@@ -5040,8 +5039,8 @@ class Range {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (end != null) {
       _json["end"] = end;
     }
@@ -5299,8 +5298,8 @@ class Read {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alignedQuality != null) {
       _json["alignedQuality"] = alignedQuality;
     }
@@ -5436,8 +5435,8 @@ class ReadGroup {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -5544,8 +5543,8 @@ class ReadGroupSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -5634,8 +5633,8 @@ class Reference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -5685,8 +5684,8 @@ class ReferenceBound {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (referenceName != null) {
       _json["referenceName"] = referenceName;
     }
@@ -5774,8 +5773,8 @@ class ReferenceSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (assemblyId != null) {
       _json["assemblyId"] = assemblyId;
     }
@@ -5821,8 +5820,8 @@ class RuntimeMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (computeEngine != null) {
       _json["computeEngine"] = (computeEngine).toJson();
     }
@@ -5886,8 +5885,8 @@ class SearchAnnotationSetsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetIds != null) {
       _json["datasetIds"] = datasetIds;
     }
@@ -5931,8 +5930,8 @@ class SearchAnnotationSetsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotationSets != null) {
       _json["annotationSets"] = annotationSets.map((value) => (value).toJson()).toList();
     }
@@ -6010,8 +6009,8 @@ class SearchAnnotationsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotationSetIds != null) {
       _json["annotationSetIds"] = annotationSetIds;
     }
@@ -6058,8 +6057,8 @@ class SearchAnnotationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotations != null) {
       _json["annotations"] = annotations.map((value) => (value).toJson()).toList();
     }
@@ -6111,8 +6110,8 @@ class SearchCallSetsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -6151,8 +6150,8 @@ class SearchCallSetsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (callSets != null) {
       _json["callSets"] = callSets.map((value) => (value).toJson()).toList();
     }
@@ -6204,8 +6203,8 @@ class SearchReadGroupSetsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetIds != null) {
       _json["datasetIds"] = datasetIds;
     }
@@ -6244,8 +6243,8 @@ class SearchReadGroupSetsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -6325,8 +6324,8 @@ class SearchReadsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (end != null) {
       _json["end"] = end;
     }
@@ -6379,8 +6378,8 @@ class SearchReadsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alignments != null) {
       _json["alignments"] = alignments.map((value) => (value).toJson()).toList();
     }
@@ -6441,8 +6440,8 @@ class SearchReferenceSetsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accessions != null) {
       _json["accessions"] = accessions;
     }
@@ -6483,8 +6482,8 @@ class SearchReferenceSetsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -6542,8 +6541,8 @@ class SearchReferencesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accessions != null) {
       _json["accessions"] = accessions;
     }
@@ -6584,8 +6583,8 @@ class SearchReferencesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -6629,8 +6628,8 @@ class SearchVariantSetsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetIds != null) {
       _json["datasetIds"] = datasetIds;
     }
@@ -6666,8 +6665,8 @@ class SearchVariantSetsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -6757,8 +6756,8 @@ class SearchVariantsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (callSetIds != null) {
       _json["callSetIds"] = callSetIds;
     }
@@ -6812,8 +6811,8 @@ class SearchVariantsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -6842,8 +6841,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -6939,8 +6938,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -6979,8 +6978,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -7004,8 +7003,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -7070,8 +7069,8 @@ class Transcript {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (codingSequence != null) {
       _json["codingSequence"] = (codingSequence).toJson();
     }
@@ -7092,8 +7091,8 @@ class UndeleteDatasetRequest {
   UndeleteDatasetRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -7213,8 +7212,8 @@ class Variant {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateBases != null) {
       _json["alternateBases"] = alternateBases;
     }
@@ -7381,8 +7380,8 @@ class VariantAnnotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateBases != null) {
       _json["alternateBases"] = alternateBases;
     }
@@ -7483,8 +7482,8 @@ class VariantCall {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (callSetId != null) {
       _json["callSetId"] = callSetId;
     }
@@ -7570,8 +7569,8 @@ class VariantSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -7668,8 +7667,8 @@ class VariantSetMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }

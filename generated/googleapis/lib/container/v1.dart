@@ -1230,8 +1230,8 @@ class AddonsConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (horizontalPodAutoscaling != null) {
       _json["horizontalPodAutoscaling"] = (horizontalPodAutoscaling).toJson();
     }
@@ -1270,8 +1270,8 @@ class AutoUpgradeOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoUpgradeStartTime != null) {
       _json["autoUpgradeStartTime"] = autoUpgradeStartTime;
     }
@@ -1290,8 +1290,8 @@ class CancelOperationRequest {
   CancelOperationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1443,8 +1443,8 @@ class Cluster {
    */
   core.List<NodePool> nodePools;
   /**
-   * The resource labels for the cluster to use to annotate any related GCE
-   * resources.
+   * The resource labels for the cluster to use to annotate any related
+   * Google Compute Engine resources.
    */
   core.Map<core.String, core.String> resourceLabels;
   /** [Output only] Server-defined URL for the resource. */
@@ -1591,8 +1591,8 @@ class Cluster {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (addonsConfig != null) {
       _json["addonsConfig"] = (addonsConfig).toJson();
     }
@@ -1777,8 +1777,8 @@ class ClusterUpdate {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (desiredAddonsConfig != null) {
       _json["desiredAddonsConfig"] = (desiredAddonsConfig).toJson();
     }
@@ -1817,8 +1817,8 @@ class CompleteIPRotationRequest {
   CompleteIPRotationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1839,8 +1839,8 @@ class CreateClusterRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cluster != null) {
       _json["cluster"] = (cluster).toJson();
     }
@@ -1861,8 +1861,8 @@ class CreateNodePoolRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nodePool != null) {
       _json["nodePool"] = (nodePool).toJson();
     }
@@ -1888,8 +1888,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1915,8 +1915,8 @@ class HorizontalPodAutoscaling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -1944,8 +1944,8 @@ class HttpLoadBalancing {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -1974,8 +1974,8 @@ class LegacyAbac {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -2007,8 +2007,8 @@ class ListClustersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusters != null) {
       _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
     }
@@ -2032,8 +2032,8 @@ class ListNodePoolsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nodePools != null) {
       _json["nodePools"] = nodePools.map((value) => (value).toJson()).toList();
     }
@@ -2062,8 +2062,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (missingZones != null) {
       _json["missingZones"] = missingZones;
     }
@@ -2129,8 +2129,8 @@ class MasterAuth {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientCertificate != null) {
       _json["clientCertificate"] = clientCertificate;
     }
@@ -2229,7 +2229,7 @@ class NodeConfig {
   /**
    * Whether the nodes are created as preemptible VM instances. See:
    * https://cloud.google.com/compute/docs/instances/preemptible for more
-   * inforamtion about preemptible VM instances.
+   * information about preemptible VM instances.
    */
   core.bool preemptible;
   /**
@@ -2280,8 +2280,8 @@ class NodeConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
     }
@@ -2351,8 +2351,8 @@ class NodeManagement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoRepair != null) {
       _json["autoRepair"] = autoRepair;
     }
@@ -2467,8 +2467,8 @@ class NodePool {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoscaling != null) {
       _json["autoscaling"] = (autoscaling).toJson();
     }
@@ -2535,8 +2535,8 @@ class NodePoolAutoscaling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -2630,8 +2630,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (detail != null) {
       _json["detail"] = detail;
     }
@@ -2672,8 +2672,8 @@ class RollbackNodePoolUpgradeRequest {
   RollbackNodePoolUpgradeRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2711,8 +2711,8 @@ class ServerConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (defaultClusterVersion != null) {
       _json["defaultClusterVersion"] = defaultClusterVersion;
     }
@@ -2761,8 +2761,8 @@ class SetLabelsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (labelFingerprint != null) {
       _json["labelFingerprint"] = labelFingerprint;
     }
@@ -2789,8 +2789,8 @@ class SetLegacyAbacRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -2822,8 +2822,8 @@ class SetMasterAuthRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -2850,8 +2850,8 @@ class SetNodePoolManagementRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (management != null) {
       _json["management"] = (management).toJson();
     }
@@ -2870,8 +2870,8 @@ class StartIPRotationRequest {
   StartIPRotationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2889,8 +2889,8 @@ class UpdateClusterRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (update != null) {
       _json["update"] = (update).toJson();
     }

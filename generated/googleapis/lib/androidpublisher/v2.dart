@@ -3392,8 +3392,8 @@ class Apk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (binary != null) {
       _json["binary"] = (binary).toJson();
     }
@@ -3420,8 +3420,8 @@ class ApkBinary {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sha1 != null) {
       _json["sha1"] = sha1;
     }
@@ -3446,8 +3446,8 @@ class ApkListing {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (language != null) {
       _json["language"] = language;
     }
@@ -3477,8 +3477,8 @@ class ApkListingsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3501,8 +3501,8 @@ class ApksAddExternallyHostedRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (externallyHostedApk != null) {
       _json["externallyHostedApk"] = (externallyHostedApk).toJson();
     }
@@ -3522,8 +3522,8 @@ class ApksAddExternallyHostedResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (externallyHostedApk != null) {
       _json["externallyHostedApk"] = (externallyHostedApk).toJson();
     }
@@ -3550,8 +3550,8 @@ class ApksListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (apks != null) {
       _json["apks"] = apks.map((value) => (value).toJson()).toList();
     }
@@ -3589,8 +3589,8 @@ class AppDetails {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contactEmail != null) {
       _json["contactEmail"] = contactEmail;
     }
@@ -3631,8 +3631,8 @@ class AppEdit {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (expiryTimeSeconds != null) {
       _json["expiryTimeSeconds"] = expiryTimeSeconds;
     }
@@ -3660,8 +3660,8 @@ class Comment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (developerComment != null) {
       _json["developerComment"] = (developerComment).toJson();
     }
@@ -3685,8 +3685,8 @@ class DeobfuscationFile {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (symbolType != null) {
       _json["symbolType"] = symbolType;
     }
@@ -3705,8 +3705,8 @@ class DeobfuscationFilesUploadResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deobfuscationFile != null) {
       _json["deobfuscationFile"] = (deobfuscationFile).toJson();
     }
@@ -3731,8 +3731,8 @@ class DeveloperComment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (lastModified != null) {
       _json["lastModified"] = (lastModified).toJson();
     }
@@ -3805,8 +3805,8 @@ class DeviceMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cpuMake != null) {
       _json["cpuMake"] = cpuMake;
     }
@@ -3883,8 +3883,8 @@ class Entitlement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3920,8 +3920,8 @@ class EntitlementsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -3959,8 +3959,8 @@ class ExpansionFile {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fileSize != null) {
       _json["fileSize"] = fileSize;
     }
@@ -3982,8 +3982,8 @@ class ExpansionFilesUploadResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (expansionFile != null) {
       _json["expansionFile"] = (expansionFile).toJson();
     }
@@ -4087,8 +4087,8 @@ class ExternallyHostedApk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (applicationLabel != null) {
       _json["applicationLabel"] = applicationLabel;
     }
@@ -4158,8 +4158,8 @@ class ExternallyHostedApkUsesPermission {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxSdkVersion != null) {
       _json["maxSdkVersion"] = maxSdkVersion;
     }
@@ -4192,8 +4192,8 @@ class Image {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -4218,8 +4218,8 @@ class ImagesDeleteAllResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deleted != null) {
       _json["deleted"] = deleted.map((value) => (value).toJson()).toList();
     }
@@ -4238,8 +4238,8 @@ class ImagesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (images != null) {
       _json["images"] = images.map((value) => (value).toJson()).toList();
     }
@@ -4258,8 +4258,8 @@ class ImagesUploadResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (image != null) {
       _json["image"] = (image).toJson();
     }
@@ -4320,13 +4320,13 @@ class InAppProduct {
       defaultPrice = new Price.fromJson(_json["defaultPrice"]);
     }
     if (_json.containsKey("listings")) {
-      listings = commons.mapMap(_json["listings"], (item) => new InAppProductListing.fromJson(item));
+      listings = commons.mapMap<core.Map<core.String, core.Object>, InAppProductListing>(_json["listings"], (core.Map<core.String, core.Object> item) => new InAppProductListing.fromJson(item));
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
     }
     if (_json.containsKey("prices")) {
-      prices = commons.mapMap(_json["prices"], (item) => new Price.fromJson(item));
+      prices = commons.mapMap<core.Map<core.String, core.Object>, Price>(_json["prices"], (core.Map<core.String, core.Object> item) => new Price.fromJson(item));
     }
     if (_json.containsKey("purchaseType")) {
       purchaseType = _json["purchaseType"];
@@ -4348,8 +4348,8 @@ class InAppProduct {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (defaultLanguage != null) {
       _json["defaultLanguage"] = defaultLanguage;
     }
@@ -4357,13 +4357,13 @@ class InAppProduct {
       _json["defaultPrice"] = (defaultPrice).toJson();
     }
     if (listings != null) {
-      _json["listings"] = commons.mapMap(listings, (item) => (item).toJson());
+      _json["listings"] = commons.mapMap<InAppProductListing, core.Map<core.String, core.Object>>(listings, (InAppProductListing item) => (item).toJson());
     }
     if (packageName != null) {
       _json["packageName"] = packageName;
     }
     if (prices != null) {
-      _json["prices"] = commons.mapMap(prices, (item) => (item).toJson());
+      _json["prices"] = commons.mapMap<Price, core.Map<core.String, core.Object>>(prices, (Price item) => (item).toJson());
     }
     if (purchaseType != null) {
       _json["purchaseType"] = purchaseType;
@@ -4402,8 +4402,8 @@ class InAppProductListing {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -4425,8 +4425,8 @@ class InappproductsBatchRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (entrys != null) {
       _json["entrys"] = entrys.map((value) => (value).toJson()).toList();
     }
@@ -4457,8 +4457,8 @@ class InappproductsBatchRequestEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (batchId != null) {
       _json["batchId"] = batchId;
     }
@@ -4494,8 +4494,8 @@ class InappproductsBatchResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (entrys != null) {
       _json["entrys"] = entrys.map((value) => (value).toJson()).toList();
     }
@@ -4525,8 +4525,8 @@ class InappproductsBatchResponseEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (batchId != null) {
       _json["batchId"] = batchId;
     }
@@ -4551,8 +4551,8 @@ class InappproductsInsertRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = (inappproduct).toJson();
     }
@@ -4571,8 +4571,8 @@ class InappproductsInsertResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = (inappproduct).toJson();
     }
@@ -4607,8 +4607,8 @@ class InappproductsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = inappproduct.map((value) => (value).toJson()).toList();
     }
@@ -4636,8 +4636,8 @@ class InappproductsUpdateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = (inappproduct).toJson();
     }
@@ -4656,8 +4656,8 @@ class InappproductsUpdateResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = (inappproduct).toJson();
     }
@@ -4702,8 +4702,8 @@ class Listing {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fullDescription != null) {
       _json["fullDescription"] = fullDescription;
     }
@@ -4742,8 +4742,8 @@ class ListingsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4774,8 +4774,8 @@ class MonthDay {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -4805,8 +4805,8 @@ class PageInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (resultPerPage != null) {
       _json["resultPerPage"] = resultPerPage;
     }
@@ -4839,8 +4839,8 @@ class Price {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currency != null) {
       _json["currency"] = currency;
     }
@@ -4904,8 +4904,8 @@ class ProductPurchase {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (consumptionState != null) {
       _json["consumptionState"] = consumptionState;
     }
@@ -4947,8 +4947,8 @@ class Prorate {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (defaultPrice != null) {
       _json["defaultPrice"] = (defaultPrice).toJson();
     }
@@ -4981,8 +4981,8 @@ class Review {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (authorName != null) {
       _json["authorName"] = authorName;
     }
@@ -5013,8 +5013,8 @@ class ReviewReplyResult {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (lastEdited != null) {
       _json["lastEdited"] = (lastEdited).toJson();
     }
@@ -5044,8 +5044,8 @@ class ReviewsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -5074,8 +5074,8 @@ class ReviewsReplyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (replyText != null) {
       _json["replyText"] = replyText;
     }
@@ -5094,8 +5094,8 @@ class ReviewsReplyResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (result != null) {
       _json["result"] = (result).toJson();
     }
@@ -5130,8 +5130,8 @@ class Season {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (end != null) {
       _json["end"] = (end).toJson();
     }
@@ -5174,8 +5174,8 @@ class SubscriptionDeferralInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (desiredExpiryTimeMillis != null) {
       _json["desiredExpiryTimeMillis"] = desiredExpiryTimeMillis;
     }
@@ -5292,8 +5292,8 @@ class SubscriptionPurchase {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoRenewing != null) {
       _json["autoRenewing"] = autoRenewing;
     }
@@ -5345,8 +5345,8 @@ class SubscriptionPurchasesDeferRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deferralInfo != null) {
       _json["deferralInfo"] = (deferralInfo).toJson();
     }
@@ -5368,8 +5368,8 @@ class SubscriptionPurchasesDeferResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (newExpiryTimeMillis != null) {
       _json["newExpiryTimeMillis"] = newExpiryTimeMillis;
     }
@@ -5392,8 +5392,8 @@ class Testers {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (googleGroups != null) {
       _json["googleGroups"] = googleGroups;
     }
@@ -5419,8 +5419,8 @@ class Timestamp {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nanos != null) {
       _json["nanos"] = nanos;
     }
@@ -5446,8 +5446,8 @@ class TokenPagination {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -5477,8 +5477,8 @@ class Track {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (track != null) {
       _json["track"] = track;
     }
@@ -5511,8 +5511,8 @@ class TracksListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -5612,8 +5612,8 @@ class UserComment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (androidOsVersion != null) {
       _json["androidOsVersion"] = androidOsVersion;
     }
@@ -5697,8 +5697,8 @@ class VoidedPurchase {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -5734,8 +5734,8 @@ class VoidedPurchasesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }

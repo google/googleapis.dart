@@ -430,8 +430,8 @@ class Attributes {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (additionalImageLink != null) {
       _json["additionalImageLink"] = additionalImageLink.map((value) => (value).toJson()).toList();
     }
@@ -553,8 +553,8 @@ class Capacity {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (unit != null) {
       _json["unit"] = unit;
     }
@@ -586,8 +586,8 @@ class Count {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (unit != null) {
       _json["unit"] = unit;
     }
@@ -624,8 +624,8 @@ class FeatureDescription {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (headline != null) {
       _json["headline"] = headline;
     }
@@ -691,8 +691,8 @@ class Image {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
     }
@@ -759,8 +759,8 @@ class Issue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attribute != null) {
       _json["attribute"] = attribute;
     }
@@ -797,8 +797,8 @@ class ListProductsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -827,8 +827,8 @@ class Price {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (amount != null) {
       _json["amount"] = amount;
     }
@@ -945,8 +945,8 @@ class Product {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contentLanguage != null) {
       _json["contentLanguage"] = contentLanguage;
     }
@@ -1009,8 +1009,8 @@ class ProductDetail {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attributeName != null) {
       _json["attributeName"] = attributeName;
     }

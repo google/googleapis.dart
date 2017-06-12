@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis_beta/replicapool/v1beta2.dart' as api;
 
@@ -46,32 +46,32 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3817() {
+buildUnnamed3291() {
   var o = new core.List<api.ReplicaPoolAutoHealingPolicy>();
   o.add(buildReplicaPoolAutoHealingPolicy());
   o.add(buildReplicaPoolAutoHealingPolicy());
   return o;
 }
 
-checkUnnamed3817(core.List<api.ReplicaPoolAutoHealingPolicy> o) {
+checkUnnamed3291(core.List<api.ReplicaPoolAutoHealingPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReplicaPoolAutoHealingPolicy(o[0]);
   checkReplicaPoolAutoHealingPolicy(o[1]);
 }
 
-buildUnnamed3818() {
+buildUnnamed3292() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3818(core.List<core.String> o) {
+checkUnnamed3292(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -82,7 +82,7 @@ buildInstanceGroupManager() {
   var o = new api.InstanceGroupManager();
   buildCounterInstanceGroupManager++;
   if (buildCounterInstanceGroupManager < 3) {
-    o.autoHealingPolicies = buildUnnamed3817();
+    o.autoHealingPolicies = buildUnnamed3291();
     o.baseInstanceName = "foo";
     o.creationTimestamp = "foo";
     o.currentSize = 42;
@@ -94,7 +94,7 @@ buildInstanceGroupManager() {
     o.kind = "foo";
     o.name = "foo";
     o.selfLink = "foo";
-    o.targetPools = buildUnnamed3818();
+    o.targetPools = buildUnnamed3292();
     o.targetSize = 42;
   }
   buildCounterInstanceGroupManager--;
@@ -104,7 +104,7 @@ buildInstanceGroupManager() {
 checkInstanceGroupManager(api.InstanceGroupManager o) {
   buildCounterInstanceGroupManager++;
   if (buildCounterInstanceGroupManager < 3) {
-    checkUnnamed3817(o.autoHealingPolicies);
+    checkUnnamed3291(o.autoHealingPolicies);
     unittest.expect(o.baseInstanceName, unittest.equals('foo'));
     unittest.expect(o.creationTimestamp, unittest.equals('foo'));
     unittest.expect(o.currentSize, unittest.equals(42));
@@ -116,20 +116,20 @@ checkInstanceGroupManager(api.InstanceGroupManager o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
-    checkUnnamed3818(o.targetPools);
+    checkUnnamed3292(o.targetPools);
     unittest.expect(o.targetSize, unittest.equals(42));
   }
   buildCounterInstanceGroupManager--;
 }
 
-buildUnnamed3819() {
+buildUnnamed3293() {
   var o = new core.List<api.InstanceGroupManager>();
   o.add(buildInstanceGroupManager());
   o.add(buildInstanceGroupManager());
   return o;
 }
 
-checkUnnamed3819(core.List<api.InstanceGroupManager> o) {
+checkUnnamed3293(core.List<api.InstanceGroupManager> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceGroupManager(o[0]);
   checkInstanceGroupManager(o[1]);
@@ -141,7 +141,7 @@ buildInstanceGroupManagerList() {
   buildCounterInstanceGroupManagerList++;
   if (buildCounterInstanceGroupManagerList < 3) {
     o.id = "foo";
-    o.items = buildUnnamed3819();
+    o.items = buildUnnamed3293();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -154,7 +154,7 @@ checkInstanceGroupManagerList(api.InstanceGroupManagerList o) {
   buildCounterInstanceGroupManagerList++;
   if (buildCounterInstanceGroupManagerList < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3819(o.items);
+    checkUnnamed3293(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -162,14 +162,14 @@ checkInstanceGroupManagerList(api.InstanceGroupManagerList o) {
   buildCounterInstanceGroupManagerList--;
 }
 
-buildUnnamed3820() {
+buildUnnamed3294() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3820(core.List<core.String> o) {
+checkUnnamed3294(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -180,7 +180,7 @@ buildInstanceGroupManagersAbandonInstancesRequest() {
   var o = new api.InstanceGroupManagersAbandonInstancesRequest();
   buildCounterInstanceGroupManagersAbandonInstancesRequest++;
   if (buildCounterInstanceGroupManagersAbandonInstancesRequest < 3) {
-    o.instances = buildUnnamed3820();
+    o.instances = buildUnnamed3294();
   }
   buildCounterInstanceGroupManagersAbandonInstancesRequest--;
   return o;
@@ -189,19 +189,19 @@ buildInstanceGroupManagersAbandonInstancesRequest() {
 checkInstanceGroupManagersAbandonInstancesRequest(api.InstanceGroupManagersAbandonInstancesRequest o) {
   buildCounterInstanceGroupManagersAbandonInstancesRequest++;
   if (buildCounterInstanceGroupManagersAbandonInstancesRequest < 3) {
-    checkUnnamed3820(o.instances);
+    checkUnnamed3294(o.instances);
   }
   buildCounterInstanceGroupManagersAbandonInstancesRequest--;
 }
 
-buildUnnamed3821() {
+buildUnnamed3295() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3821(core.List<core.String> o) {
+checkUnnamed3295(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -212,7 +212,7 @@ buildInstanceGroupManagersDeleteInstancesRequest() {
   var o = new api.InstanceGroupManagersDeleteInstancesRequest();
   buildCounterInstanceGroupManagersDeleteInstancesRequest++;
   if (buildCounterInstanceGroupManagersDeleteInstancesRequest < 3) {
-    o.instances = buildUnnamed3821();
+    o.instances = buildUnnamed3295();
   }
   buildCounterInstanceGroupManagersDeleteInstancesRequest--;
   return o;
@@ -221,19 +221,19 @@ buildInstanceGroupManagersDeleteInstancesRequest() {
 checkInstanceGroupManagersDeleteInstancesRequest(api.InstanceGroupManagersDeleteInstancesRequest o) {
   buildCounterInstanceGroupManagersDeleteInstancesRequest++;
   if (buildCounterInstanceGroupManagersDeleteInstancesRequest < 3) {
-    checkUnnamed3821(o.instances);
+    checkUnnamed3295(o.instances);
   }
   buildCounterInstanceGroupManagersDeleteInstancesRequest--;
 }
 
-buildUnnamed3822() {
+buildUnnamed3296() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3822(core.List<core.String> o) {
+checkUnnamed3296(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -244,7 +244,7 @@ buildInstanceGroupManagersRecreateInstancesRequest() {
   var o = new api.InstanceGroupManagersRecreateInstancesRequest();
   buildCounterInstanceGroupManagersRecreateInstancesRequest++;
   if (buildCounterInstanceGroupManagersRecreateInstancesRequest < 3) {
-    o.instances = buildUnnamed3822();
+    o.instances = buildUnnamed3296();
   }
   buildCounterInstanceGroupManagersRecreateInstancesRequest--;
   return o;
@@ -253,7 +253,7 @@ buildInstanceGroupManagersRecreateInstancesRequest() {
 checkInstanceGroupManagersRecreateInstancesRequest(api.InstanceGroupManagersRecreateInstancesRequest o) {
   buildCounterInstanceGroupManagersRecreateInstancesRequest++;
   if (buildCounterInstanceGroupManagersRecreateInstancesRequest < 3) {
-    checkUnnamed3822(o.instances);
+    checkUnnamed3296(o.instances);
   }
   buildCounterInstanceGroupManagersRecreateInstancesRequest--;
 }
@@ -277,14 +277,14 @@ checkInstanceGroupManagersSetInstanceTemplateRequest(api.InstanceGroupManagersSe
   buildCounterInstanceGroupManagersSetInstanceTemplateRequest--;
 }
 
-buildUnnamed3823() {
+buildUnnamed3297() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3823(core.List<core.String> o) {
+checkUnnamed3297(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -296,7 +296,7 @@ buildInstanceGroupManagersSetTargetPoolsRequest() {
   buildCounterInstanceGroupManagersSetTargetPoolsRequest++;
   if (buildCounterInstanceGroupManagersSetTargetPoolsRequest < 3) {
     o.fingerprint = "foo";
-    o.targetPools = buildUnnamed3823();
+    o.targetPools = buildUnnamed3297();
   }
   buildCounterInstanceGroupManagersSetTargetPoolsRequest--;
   return o;
@@ -306,7 +306,7 @@ checkInstanceGroupManagersSetTargetPoolsRequest(api.InstanceGroupManagersSetTarg
   buildCounterInstanceGroupManagersSetTargetPoolsRequest++;
   if (buildCounterInstanceGroupManagersSetTargetPoolsRequest < 3) {
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkUnnamed3823(o.targetPools);
+    checkUnnamed3297(o.targetPools);
   }
   buildCounterInstanceGroupManagersSetTargetPoolsRequest--;
 }
@@ -334,14 +334,14 @@ checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors--;
 }
 
-buildUnnamed3824() {
+buildUnnamed3298() {
   var o = new core.List<api.OperationErrorErrors>();
   o.add(buildOperationErrorErrors());
   o.add(buildOperationErrorErrors());
   return o;
 }
 
-checkUnnamed3824(core.List<api.OperationErrorErrors> o) {
+checkUnnamed3298(core.List<api.OperationErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationErrorErrors(o[0]);
   checkOperationErrorErrors(o[1]);
@@ -352,7 +352,7 @@ buildOperationError() {
   var o = new api.OperationError();
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    o.errors = buildUnnamed3824();
+    o.errors = buildUnnamed3298();
   }
   buildCounterOperationError--;
   return o;
@@ -361,7 +361,7 @@ buildOperationError() {
 checkOperationError(api.OperationError o) {
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    checkUnnamed3824(o.errors);
+    checkUnnamed3298(o.errors);
   }
   buildCounterOperationError--;
 }
@@ -387,14 +387,14 @@ checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData--;
 }
 
-buildUnnamed3825() {
+buildUnnamed3299() {
   var o = new core.List<api.OperationWarningsData>();
   o.add(buildOperationWarningsData());
   o.add(buildOperationWarningsData());
   return o;
 }
 
-checkUnnamed3825(core.List<api.OperationWarningsData> o) {
+checkUnnamed3299(core.List<api.OperationWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarningsData(o[0]);
   checkOperationWarningsData(o[1]);
@@ -406,7 +406,7 @@ buildOperationWarnings() {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed3825();
+    o.data = buildUnnamed3299();
     o.message = "foo";
   }
   buildCounterOperationWarnings--;
@@ -417,20 +417,20 @@ checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed3825(o.data);
+    checkUnnamed3299(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterOperationWarnings--;
 }
 
-buildUnnamed3826() {
+buildUnnamed3300() {
   var o = new core.List<api.OperationWarnings>();
   o.add(buildOperationWarnings());
   o.add(buildOperationWarnings());
   return o;
 }
 
-checkUnnamed3826(core.List<api.OperationWarnings> o) {
+checkUnnamed3300(core.List<api.OperationWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarnings(o[0]);
   checkOperationWarnings(o[1]);
@@ -461,7 +461,7 @@ buildOperation() {
     o.targetId = "foo";
     o.targetLink = "foo";
     o.user = "foo";
-    o.warnings = buildUnnamed3826();
+    o.warnings = buildUnnamed3300();
     o.zone = "foo";
   }
   buildCounterOperation--;
@@ -491,20 +491,20 @@ checkOperation(api.Operation o) {
     unittest.expect(o.targetId, unittest.equals('foo'));
     unittest.expect(o.targetLink, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
-    checkUnnamed3826(o.warnings);
+    checkUnnamed3300(o.warnings);
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterOperation--;
 }
 
-buildUnnamed3827() {
+buildUnnamed3301() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed3827(core.List<api.Operation> o) {
+checkUnnamed3301(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -516,7 +516,7 @@ buildOperationList() {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     o.id = "foo";
-    o.items = buildUnnamed3827();
+    o.items = buildUnnamed3301();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -529,7 +529,7 @@ checkOperationList(api.OperationList o) {
   buildCounterOperationList++;
   if (buildCounterOperationList < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3827(o.items);
+    checkUnnamed3301(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -695,7 +695,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstanceGroupManagersAbandonInstancesRequest.fromJson(json);
         checkInstanceGroupManagersAbandonInstancesRequest(obj);
 
@@ -730,7 +730,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.abandonInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
+      res.abandonInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -742,7 +742,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -774,7 +774,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
+      res.delete(arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -787,7 +787,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstanceGroupManagersDeleteInstancesRequest.fromJson(json);
         checkInstanceGroupManagersDeleteInstancesRequest(obj);
 
@@ -822,7 +822,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.deleteInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
+      res.deleteInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -834,7 +834,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -866,7 +866,7 @@ main() {
         var resp = convert.JSON.encode(buildInstanceGroupManager());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.InstanceGroupManager response) {
+      res.get(arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync1(((api.InstanceGroupManager response) {
         checkInstanceGroupManager(response);
       })));
     });
@@ -879,7 +879,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_size = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstanceGroupManager.fromJson(json);
         checkInstanceGroupManager(obj);
 
@@ -915,7 +915,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_project, arg_zone, arg_size).then(unittest.expectAsync(((api.Operation response) {
+      res.insert(arg_request, arg_project, arg_zone, arg_size).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -929,7 +929,7 @@ main() {
       var arg_filter = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -964,7 +964,7 @@ main() {
         var resp = convert.JSON.encode(buildInstanceGroupManagerList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.InstanceGroupManagerList response) {
+      res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.InstanceGroupManagerList response) {
         checkInstanceGroupManagerList(response);
       })));
     });
@@ -977,7 +977,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstanceGroupManagersRecreateInstancesRequest.fromJson(json);
         checkInstanceGroupManagersRecreateInstancesRequest(obj);
 
@@ -1012,7 +1012,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.recreateInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
+      res.recreateInstances(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1025,7 +1025,7 @@ main() {
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
       var arg_size = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1058,7 +1058,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resize(arg_project, arg_zone, arg_instanceGroupManager, arg_size).then(unittest.expectAsync(((api.Operation response) {
+      res.resize(arg_project, arg_zone, arg_instanceGroupManager, arg_size).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1071,7 +1071,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstanceGroupManagersSetInstanceTemplateRequest.fromJson(json);
         checkInstanceGroupManagersSetInstanceTemplateRequest(obj);
 
@@ -1106,7 +1106,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setInstanceTemplate(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
+      res.setInstanceTemplate(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1119,7 +1119,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_instanceGroupManager = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstanceGroupManagersSetTargetPoolsRequest.fromJson(json);
         checkInstanceGroupManagersSetTargetPoolsRequest(obj);
 
@@ -1154,7 +1154,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setTargetPools(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync(((api.Operation response) {
+      res.setTargetPools(arg_request, arg_project, arg_zone, arg_instanceGroupManager).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1170,7 +1170,7 @@ main() {
       var arg_project = "foo";
       var arg_zone = "foo";
       var arg_operation = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1202,7 +1202,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_zone, arg_operation).then(unittest.expectAsync(((api.Operation response) {
+      res.get(arg_project, arg_zone, arg_operation).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1216,7 +1216,7 @@ main() {
       var arg_filter = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1251,7 +1251,7 @@ main() {
         var resp = convert.JSON.encode(buildOperationList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync(((api.OperationList response) {
+      res.list(arg_project, arg_zone, filter: arg_filter, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.OperationList response) {
         checkOperationList(response);
       })));
     });

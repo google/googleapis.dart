@@ -427,7 +427,6 @@ class DownloadLineItemsRequest {
    * will be returned. Default to EWF.
    * Possible string values are:
    * - "EWF"
-   * - "SDF"
    */
   core.String fileSpec;
   /**
@@ -467,8 +466,8 @@ class DownloadLineItemsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fileSpec != null) {
       _json["fileSpec"] = fileSpec;
     }
@@ -501,8 +500,8 @@ class DownloadLineItemsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (lineItems != null) {
       _json["lineItems"] = lineItems;
     }
@@ -555,8 +554,8 @@ class DownloadRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fileTypes != null) {
       _json["fileTypes"] = fileTypes;
     }
@@ -601,8 +600,8 @@ class DownloadResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (adGroups != null) {
       _json["adGroups"] = adGroups;
     }
@@ -633,6 +632,7 @@ class FilterPair {
    * - "FILTER_AGE"
    * - "FILTER_BRANDSAFE_CHANNEL_ID"
    * - "FILTER_BROWSER"
+   * - "FILTER_BUDGET_SEGMENT_DESCRIPTION"
    * - "FILTER_CAMPAIGN_DAILY_FREQUENCY"
    * - "FILTER_CARRIER"
    * - "FILTER_CHANNEL_ID"
@@ -757,8 +757,8 @@ class FilterPair {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -790,8 +790,8 @@ class ListQueriesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -823,8 +823,8 @@ class ListReportsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -902,8 +902,8 @@ class Parameters {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filters != null) {
       _json["filters"] = filters.map((value) => (value).toJson()).toList();
     }
@@ -984,8 +984,8 @@ class Query {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1121,8 +1121,8 @@ class QueryMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataRange != null) {
       _json["dataRange"] = dataRange;
     }
@@ -1203,8 +1203,8 @@ class QuerySchedule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTimeMs != null) {
       _json["endTimeMs"] = endTimeMs;
     }
@@ -1244,8 +1244,8 @@ class Report {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = (key).toJson();
     }
@@ -1293,8 +1293,8 @@ class ReportFailure {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -1320,8 +1320,8 @@ class ReportKey {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (queryId != null) {
       _json["queryId"] = queryId;
     }
@@ -1363,8 +1363,8 @@ class ReportMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (googleCloudStoragePath != null) {
       _json["googleCloudStoragePath"] = googleCloudStoragePath;
     }
@@ -1421,8 +1421,8 @@ class ReportStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (failure != null) {
       _json["failure"] = (failure).toJson();
     }
@@ -1477,8 +1477,8 @@ class RowStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (changed != null) {
       _json["changed"] = changed;
     }
@@ -1561,8 +1561,8 @@ class RunQueryRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataRange != null) {
       _json["dataRange"] = dataRange;
     }
@@ -1612,8 +1612,8 @@ class UploadLineItemsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dryRun != null) {
       _json["dryRun"] = dryRun;
     }
@@ -1640,8 +1640,8 @@ class UploadLineItemsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (uploadStatus != null) {
       _json["uploadStatus"] = (uploadStatus).toJson();
     }
@@ -1667,8 +1667,8 @@ class UploadStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errors != null) {
       _json["errors"] = errors;
     }

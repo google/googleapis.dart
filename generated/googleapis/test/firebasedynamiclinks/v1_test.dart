@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/firebasedynamiclinks/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -120,14 +120,14 @@ checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-buildUnnamed2044() {
+buildUnnamed2054() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed2044(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed2054(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -140,7 +140,7 @@ buildCreateShortDynamicLinkResponse() {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     o.previewLink = "foo";
     o.shortLink = "foo";
-    o.warning = buildUnnamed2044();
+    o.warning = buildUnnamed2054();
   }
   buildCounterCreateShortDynamicLinkResponse--;
   return o;
@@ -151,9 +151,32 @@ checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     unittest.expect(o.previewLink, unittest.equals('foo'));
     unittest.expect(o.shortLink, unittest.equals('foo'));
-    checkUnnamed2044(o.warning);
+    checkUnnamed2054(o.warning);
   }
   buildCounterCreateShortDynamicLinkResponse--;
+}
+
+core.int buildCounterDynamicLinkEventStat = 0;
+buildDynamicLinkEventStat() {
+  var o = new api.DynamicLinkEventStat();
+  buildCounterDynamicLinkEventStat++;
+  if (buildCounterDynamicLinkEventStat < 3) {
+    o.count = "foo";
+    o.event = "foo";
+    o.platform = "foo";
+  }
+  buildCounterDynamicLinkEventStat--;
+  return o;
+}
+
+checkDynamicLinkEventStat(api.DynamicLinkEventStat o) {
+  buildCounterDynamicLinkEventStat++;
+  if (buildCounterDynamicLinkEventStat < 3) {
+    unittest.expect(o.count, unittest.equals('foo'));
+    unittest.expect(o.event, unittest.equals('foo'));
+    unittest.expect(o.platform, unittest.equals('foo'));
+  }
+  buildCounterDynamicLinkEventStat--;
 }
 
 core.int buildCounterDynamicLinkInfo = 0;
@@ -185,6 +208,38 @@ checkDynamicLinkInfo(api.DynamicLinkInfo o) {
     checkSocialMetaTagInfo(o.socialMetaTagInfo);
   }
   buildCounterDynamicLinkInfo--;
+}
+
+buildUnnamed2055() {
+  var o = new core.List<api.DynamicLinkEventStat>();
+  o.add(buildDynamicLinkEventStat());
+  o.add(buildDynamicLinkEventStat());
+  return o;
+}
+
+checkUnnamed2055(core.List<api.DynamicLinkEventStat> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDynamicLinkEventStat(o[0]);
+  checkDynamicLinkEventStat(o[1]);
+}
+
+core.int buildCounterDynamicLinkStats = 0;
+buildDynamicLinkStats() {
+  var o = new api.DynamicLinkStats();
+  buildCounterDynamicLinkStats++;
+  if (buildCounterDynamicLinkStats < 3) {
+    o.linkEventStats = buildUnnamed2055();
+  }
+  buildCounterDynamicLinkStats--;
+  return o;
+}
+
+checkDynamicLinkStats(api.DynamicLinkStats o) {
+  buildCounterDynamicLinkStats++;
+  if (buildCounterDynamicLinkStats < 3) {
+    checkUnnamed2055(o.linkEventStats);
+  }
+  buildCounterDynamicLinkStats--;
 }
 
 core.int buildCounterDynamicLinkWarning = 0;
@@ -390,11 +445,29 @@ main() {
   });
 
 
+  unittest.group("obj-schema-DynamicLinkEventStat", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDynamicLinkEventStat();
+      var od = new api.DynamicLinkEventStat.fromJson(o.toJson());
+      checkDynamicLinkEventStat(od);
+    });
+  });
+
+
   unittest.group("obj-schema-DynamicLinkInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildDynamicLinkInfo();
       var od = new api.DynamicLinkInfo.fromJson(o.toJson());
       checkDynamicLinkInfo(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-DynamicLinkStats", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDynamicLinkStats();
+      var od = new api.DynamicLinkStats.fromJson(o.toJson());
+      checkDynamicLinkStats(od);
     });
   });
 
@@ -468,7 +541,7 @@ main() {
       var mock = new HttpServerMock();
       api.ShortLinksResourceApi res = new api.FirebasedynamiclinksApi(mock).shortLinks;
       var arg_request = buildCreateShortDynamicLinkRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CreateShortDynamicLinkRequest.fromJson(json);
         checkCreateShortDynamicLinkRequest(obj);
 
@@ -505,8 +578,65 @@ main() {
         var resp = convert.JSON.encode(buildCreateShortDynamicLinkResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request).then(unittest.expectAsync(((api.CreateShortDynamicLinkResponse response) {
+      res.create(arg_request).then(unittest.expectAsync1(((api.CreateShortDynamicLinkResponse response) {
         checkCreateShortDynamicLinkResponse(response);
+      })));
+    });
+
+  });
+
+
+  unittest.group("resource-V1ResourceApi", () {
+    unittest.test("method--getLinkStats", () {
+
+      var mock = new HttpServerMock();
+      api.V1ResourceApi res = new api.FirebasedynamiclinksApi(mock).v1;
+      var arg_dynamicLink = "foo";
+      var arg_durationDays = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        index = path.indexOf("/linkStats", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_dynamicLink"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/linkStats"));
+        pathOffset += 10;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["durationDays"].first, unittest.equals(arg_durationDays));
+
+
+        var h = {
+          "content-type" : "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildDynamicLinkStats());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.getLinkStats(arg_dynamicLink, durationDays: arg_durationDays).then(unittest.expectAsync1(((api.DynamicLinkStats response) {
+        checkDynamicLinkStats(response);
       })));
     });
 

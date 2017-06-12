@@ -105,8 +105,8 @@ class AmpUrl {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ampUrl != null) {
       _json["ampUrl"] = ampUrl;
     }
@@ -164,8 +164,8 @@ class AmpUrlError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -215,8 +215,8 @@ class BatchGetAmpUrlsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (lookupStrategy != null) {
       _json["lookupStrategy"] = lookupStrategy;
     }
@@ -250,8 +250,8 @@ class BatchGetAmpUrlsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ampUrls != null) {
       _json["ampUrls"] = ampUrls.map((value) => (value).toJson()).toList();
     }

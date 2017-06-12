@@ -270,13 +270,6 @@ class ProjectsGroupStatsResourceApi {
    * Example: <code>projects/my-project-123</code>.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
-   * if rounded
-   * alignment is chosen. Default is 00:00 UTC.
-   *
-   * [serviceFilter_resourceType] - [Optional] The exact value to match against
-   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
-   *
    * [timedCountDuration] - [Optional] The preferred duration for a single
    * returned `TimedCount`.
    * If not set, no timed counts are returned.
@@ -325,6 +318,13 @@ class ProjectsGroupStatsResourceApi {
    * [serviceFilter_version] - [Optional] The exact value to match against
    * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
    *
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   *
+   * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
+   * if rounded
+   * alignment is chosen. Default is 00:00 UTC.
+   *
    * Completes with a [ListGroupStatsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -333,7 +333,7 @@ class ProjectsGroupStatsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String alignmentTime, core.String serviceFilter_resourceType, core.String timedCountDuration, core.String pageToken, core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String order, core.String serviceFilter_version}) {
+  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String timedCountDuration, core.String pageToken, core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String order, core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String alignmentTime}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -343,12 +343,6 @@ class ProjectsGroupStatsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (alignmentTime != null) {
-      _queryParams["alignmentTime"] = [alignmentTime];
-    }
-    if (serviceFilter_resourceType != null) {
-      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
     if (timedCountDuration != null) {
       _queryParams["timedCountDuration"] = [timedCountDuration];
@@ -376,6 +370,12 @@ class ProjectsGroupStatsResourceApi {
     }
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
+    }
+    if (serviceFilter_resourceType != null) {
+      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
+    }
+    if (alignmentTime != null) {
+      _queryParams["alignmentTime"] = [alignmentTime];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/groupStats';
@@ -505,8 +505,8 @@ class DeleteEventsResponse {
   DeleteEventsResponse.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -566,8 +566,8 @@ class ErrorContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (httpRequest != null) {
       _json["httpRequest"] = (httpRequest).toJson();
     }
@@ -616,8 +616,8 @@ class ErrorEvent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (context != null) {
       _json["context"] = (context).toJson();
     }
@@ -663,8 +663,8 @@ class ErrorGroup {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (groupId != null) {
       _json["groupId"] = groupId;
     }
@@ -778,8 +778,8 @@ class ErrorGroupStats {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (affectedServices != null) {
       _json["affectedServices"] = affectedServices.map((value) => (value).toJson()).toList();
     }
@@ -859,8 +859,8 @@ class HttpRequestContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (method != null) {
       _json["method"] = method;
     }
@@ -912,8 +912,8 @@ class ListEventsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorEvents != null) {
       _json["errorEvents"] = errorEvents.map((value) => (value).toJson()).toList();
     }
@@ -959,8 +959,8 @@ class ListGroupStatsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorGroupStats != null) {
       _json["errorGroupStats"] = errorGroupStats.map((value) => (value).toJson()).toList();
     }
@@ -985,8 +985,8 @@ class ReportErrorEventResponse {
   ReportErrorEventResponse.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1048,8 +1048,8 @@ class ReportedErrorEvent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (context != null) {
       _json["context"] = (context).toJson();
     }
@@ -1111,8 +1111,8 @@ class ServiceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (resourceType != null) {
       _json["resourceType"] = resourceType;
     }
@@ -1161,8 +1161,8 @@ class SourceLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filePath != null) {
       _json["filePath"] = filePath;
     }
@@ -1203,8 +1203,8 @@ class SourceReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (repository != null) {
       _json["repository"] = repository;
     }
@@ -1242,8 +1242,8 @@ class TimedCount {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -1273,8 +1273,8 @@ class TrackingIssue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (url != null) {
       _json["url"] = url;
     }

@@ -415,6 +415,15 @@ class ProjectsGroupsMembersResourceApi {
    * "projects/{project_id_or_number}/groups/{group_id}".
    * Value must have pattern "^projects/[^/]+/groups/[^/]+$".
    *
+   * [pageSize] - A positive number that is the maximum number of results to
+   * return.
+   *
+   * [interval_startTime] - Optional. The beginning of the time interval. The
+   * default value for the start time is the end time. The start time must not
+   * be later than the end time.
+   *
+   * [interval_endTime] - Required. The end of the time interval.
+   *
    * [filter] - An optional list filter describing the members to be returned.
    * The filter may reference the type, labels, and metadata of monitored
    * resources that comprise the group. For example, to return only resources
@@ -426,15 +435,6 @@ class ProjectsGroupsMembersResourceApi {
    * field causes the method to return additional results from the previous
    * method call.
    *
-   * [interval_startTime] - Optional. The beginning of the time interval. The
-   * default value for the start time is the end time. The start time must not
-   * be later than the end time.
-   *
-   * [pageSize] - A positive number that is the maximum number of results to
-   * return.
-   *
-   * [interval_endTime] - Required. The end of the time interval.
-   *
    * Completes with a [ListGroupMembersResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -443,7 +443,7 @@ class ProjectsGroupsMembersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupMembersResponse> list(core.String name, {core.String filter, core.String pageToken, core.String interval_startTime, core.int pageSize, core.String interval_endTime}) {
+  async.Future<ListGroupMembersResponse> list(core.String name, {core.int pageSize, core.String interval_startTime, core.String interval_endTime, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -454,20 +454,20 @@ class ProjectsGroupsMembersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
+    }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/members';
@@ -635,9 +635,6 @@ class ProjectsMetricDescriptorsResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - A positive number that is the maximum number of results to
-   * return.
-   *
    * [filter] - If this field is empty, all custom and system-defined metric
    * descriptors are returned. Otherwise, the filter specifies which metric
    * descriptors are to be returned. For example, the following filter matches
@@ -649,6 +646,9 @@ class ProjectsMetricDescriptorsResourceApi {
    * field causes the method to return additional results from the previous
    * method call.
    *
+   * [pageSize] - A positive number that is the maximum number of results to
+   * return.
+   *
    * Completes with a [ListMetricDescriptorsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -657,7 +657,7 @@ class ProjectsMetricDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListMetricDescriptorsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListMetricDescriptorsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -668,14 +668,14 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/metricDescriptors';
@@ -753,9 +753,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - A positive number that is the maximum number of results to
-   * return.
-   *
    * [filter] - An optional filter describing the descriptors to be returned.
    * The filter can reference the descriptor's type and labels. For example, the
    * following filter returns only Google Compute Engine descriptors that have
@@ -767,6 +764,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
    * field causes the method to return additional results from the previous
    * method call.
    *
+   * [pageSize] - A positive number that is the maximum number of results to
+   * return.
+   *
    * Completes with a [ListMonitoredResourceDescriptorsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -775,7 +775,7 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -786,14 +786,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/monitoredResourceDescriptors';
@@ -1084,8 +1084,8 @@ class BucketOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (explicitBuckets != null) {
       _json["explicitBuckets"] = (explicitBuckets).toJson();
     }
@@ -1131,7 +1131,7 @@ class CollectdPayload {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = commons.mapMap(_json["metadata"], (item) => new TypedValue.fromJson(item));
+      metadata = commons.mapMap<core.Map<core.String, core.Object>, TypedValue>(_json["metadata"], (core.Map<core.String, core.Object> item) => new TypedValue.fromJson(item));
     }
     if (_json.containsKey("plugin")) {
       plugin = _json["plugin"];
@@ -1153,13 +1153,13 @@ class CollectdPayload {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
     if (metadata != null) {
-      _json["metadata"] = commons.mapMap(metadata, (item) => (item).toJson());
+      _json["metadata"] = commons.mapMap<TypedValue, core.Map<core.String, core.Object>>(metadata, (TypedValue item) => (item).toJson());
     }
     if (plugin != null) {
       _json["plugin"] = plugin;
@@ -1222,8 +1222,8 @@ class CollectdValue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataSourceName != null) {
       _json["dataSourceName"] = dataSourceName;
     }
@@ -1267,8 +1267,8 @@ class CreateCollectdTimeSeriesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (collectdPayloads != null) {
       _json["collectdPayloads"] = collectdPayloads.map((value) => (value).toJson()).toList();
     }
@@ -1301,8 +1301,8 @@ class CreateTimeSeriesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (timeSeries != null) {
       _json["timeSeries"] = timeSeries.map((value) => (value).toJson()).toList();
     }
@@ -1390,8 +1390,8 @@ class Distribution {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bucketCounts != null) {
       _json["bucketCounts"] = bucketCounts;
     }
@@ -1430,8 +1430,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1456,8 +1456,8 @@ class Explicit {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bounds != null) {
       _json["bounds"] = bounds;
     }
@@ -1495,8 +1495,8 @@ class Exponential {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (growthFactor != null) {
       _json["growthFactor"] = growthFactor;
     }
@@ -1605,8 +1605,8 @@ class Field {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cardinality != null) {
       _json["cardinality"] = cardinality;
     }
@@ -1711,8 +1711,8 @@ class Group {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -1761,8 +1761,8 @@ class LabelDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -1806,8 +1806,8 @@ class Linear {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (numFiniteBuckets != null) {
       _json["numFiniteBuckets"] = numFiniteBuckets;
     }
@@ -1848,8 +1848,8 @@ class ListGroupMembersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members.map((value) => (value).toJson()).toList();
     }
@@ -1885,8 +1885,8 @@ class ListGroupsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (group != null) {
       _json["group"] = group.map((value) => (value).toJson()).toList();
     }
@@ -1922,8 +1922,8 @@ class ListMetricDescriptorsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metricDescriptors != null) {
       _json["metricDescriptors"] = metricDescriptors.map((value) => (value).toJson()).toList();
     }
@@ -1959,8 +1959,8 @@ class ListMonitoredResourceDescriptorsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1993,8 +1993,8 @@ class ListTimeSeriesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2032,8 +2032,8 @@ class Metric {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -2195,8 +2195,8 @@ class MetricDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2264,8 +2264,8 @@ class MonitoredResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -2340,8 +2340,8 @@ class MonitoredResourceDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2395,8 +2395,8 @@ class Option {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2434,8 +2434,8 @@ class Point {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (interval != null) {
       _json["interval"] = (interval).toJson();
     }
@@ -2464,8 +2464,8 @@ class Range {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (max != null) {
       _json["max"] = max;
     }
@@ -2495,8 +2495,8 @@ class SourceContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fileName != null) {
       _json["fileName"] = fileName;
     }
@@ -2530,8 +2530,8 @@ class TimeInterval {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -2627,8 +2627,8 @@ class TimeSeries {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metric != null) {
       _json["metric"] = (metric).toJson();
     }
@@ -2691,8 +2691,8 @@ class Type {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
     }
@@ -2754,8 +2754,8 @@ class TypedValue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }

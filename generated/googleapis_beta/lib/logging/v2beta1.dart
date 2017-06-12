@@ -1085,7 +1085,8 @@ class ProjectsSinksResourceApi {
    * there is no change to the sink's writer_identity.
    * If the old value is false and the new value is true, then writer_identity
    * is changed to a unique service account.
-   * It is an error if the old value is true and the new value is false.
+   * It is an error if the old value is true and the new value is set to false
+   * or defaulted to false.
    *
    * Completes with a [LogSink].
    *
@@ -1145,8 +1146,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1270,8 +1271,8 @@ class HttpRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cacheFillBytes != null) {
       _json["cacheFillBytes"] = cacheFillBytes;
     }
@@ -1347,8 +1348,8 @@ class LabelDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -1436,8 +1437,8 @@ class ListLogEntriesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filter != null) {
       _json["filter"] = filter;
     }
@@ -1488,8 +1489,8 @@ class ListLogEntriesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (entries != null) {
       _json["entries"] = entries.map((value) => (value).toJson()).toList();
     }
@@ -1522,8 +1523,8 @@ class ListLogMetricsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metrics != null) {
       _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
     }
@@ -1559,8 +1560,8 @@ class ListLogsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (logNames != null) {
       _json["logNames"] = logNames;
     }
@@ -1593,8 +1594,8 @@ class ListMonitoredResourceDescriptorsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1627,8 +1628,8 @@ class ListSinksResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1796,8 +1797,8 @@ class LogEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (httpRequest != null) {
       _json["httpRequest"] = (httpRequest).toJson();
     }
@@ -1886,8 +1887,8 @@ class LogEntryOperation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (first != null) {
       _json["first"] = first;
     }
@@ -1942,8 +1943,8 @@ class LogEntrySourceLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (file != null) {
       _json["file"] = file;
     }
@@ -1999,8 +2000,8 @@ class LogLine {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (logMessage != null) {
       _json["logMessage"] = logMessage;
     }
@@ -2073,8 +2074,8 @@ class LogMetric {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2206,8 +2207,8 @@ class LogSink {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (destination != null) {
       _json["destination"] = destination;
     }
@@ -2275,8 +2276,8 @@ class MonitoredResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -2351,8 +2352,8 @@ class MonitoredResourceDescriptor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2573,8 +2574,8 @@ class RequestLog {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (appEngineRelease != null) {
       _json["appEngineRelease"] = appEngineRelease;
     }
@@ -2707,8 +2708,8 @@ class SourceLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (file != null) {
       _json["file"] = file;
     }
@@ -2749,8 +2750,8 @@ class SourceReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (repository != null) {
       _json["repository"] = repository;
     }
@@ -2834,8 +2835,8 @@ class WriteLogEntriesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (entries != null) {
       _json["entries"] = entries.map((value) => (value).toJson()).toList();
     }
@@ -2863,8 +2864,8 @@ class WriteLogEntriesResponse {
   WriteLogEntriesResponse.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }

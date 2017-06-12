@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/cloudresourcemanager/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -70,14 +70,14 @@ checkAncestor(api.Ancestor o) {
   buildCounterAncestor--;
 }
 
-buildUnnamed1689() {
+buildUnnamed1699() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed1689(core.List<api.AuditLogConfig> o) {
+checkUnnamed1699(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
@@ -88,7 +88,7 @@ buildAuditConfig() {
   var o = new api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed1689();
+    o.auditLogConfigs = buildUnnamed1699();
     o.service = "foo";
   }
   buildCounterAuditConfig--;
@@ -98,20 +98,20 @@ buildAuditConfig() {
 checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed1689(o.auditLogConfigs);
+    checkUnnamed1699(o.auditLogConfigs);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-buildUnnamed1690() {
+buildUnnamed1700() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1690(core.List<core.String> o) {
+checkUnnamed1700(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -122,7 +122,7 @@ buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed1690();
+    o.exemptedMembers = buildUnnamed1700();
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -132,20 +132,20 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed1690(o.exemptedMembers);
+    checkUnnamed1700(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
 }
 
-buildUnnamed1691() {
+buildUnnamed1701() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1691(core.List<core.String> o) {
+checkUnnamed1701(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -156,7 +156,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed1691();
+    o.members = buildUnnamed1701();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -166,7 +166,7 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed1691(o.members);
+    checkUnnamed1701(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -338,14 +338,14 @@ checkGetAncestryRequest(api.GetAncestryRequest o) {
   buildCounterGetAncestryRequest--;
 }
 
-buildUnnamed1692() {
+buildUnnamed1702() {
   var o = new core.List<api.Ancestor>();
   o.add(buildAncestor());
   o.add(buildAncestor());
   return o;
 }
 
-checkUnnamed1692(core.List<api.Ancestor> o) {
+checkUnnamed1702(core.List<api.Ancestor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAncestor(o[0]);
   checkAncestor(o[1]);
@@ -356,7 +356,7 @@ buildGetAncestryResponse() {
   var o = new api.GetAncestryResponse();
   buildCounterGetAncestryResponse++;
   if (buildCounterGetAncestryResponse < 3) {
-    o.ancestor = buildUnnamed1692();
+    o.ancestor = buildUnnamed1702();
   }
   buildCounterGetAncestryResponse--;
   return o;
@@ -365,7 +365,7 @@ buildGetAncestryResponse() {
 checkGetAncestryResponse(api.GetAncestryResponse o) {
   buildCounterGetAncestryResponse++;
   if (buildCounterGetAncestryResponse < 3) {
-    checkUnnamed1692(o.ancestor);
+    checkUnnamed1702(o.ancestor);
   }
   buildCounterGetAncestryResponse--;
 }
@@ -425,14 +425,14 @@ checkGetOrgPolicyRequest(api.GetOrgPolicyRequest o) {
   buildCounterGetOrgPolicyRequest--;
 }
 
-buildUnnamed1693() {
+buildUnnamed1703() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1693(core.List<core.String> o) {
+checkUnnamed1703(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -448,7 +448,7 @@ buildLien() {
     o.origin = "foo";
     o.parent = "foo";
     o.reason = "foo";
-    o.restrictions = buildUnnamed1693();
+    o.restrictions = buildUnnamed1703();
   }
   buildCounterLien--;
   return o;
@@ -462,7 +462,7 @@ checkLien(api.Lien o) {
     unittest.expect(o.origin, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.reason, unittest.equals('foo'));
-    checkUnnamed1693(o.restrictions);
+    checkUnnamed1703(o.restrictions);
   }
   buildCounterLien--;
 }
@@ -488,14 +488,14 @@ checkListAvailableOrgPolicyConstraintsRequest(api.ListAvailableOrgPolicyConstrai
   buildCounterListAvailableOrgPolicyConstraintsRequest--;
 }
 
-buildUnnamed1694() {
+buildUnnamed1704() {
   var o = new core.List<api.Constraint>();
   o.add(buildConstraint());
   o.add(buildConstraint());
   return o;
 }
 
-checkUnnamed1694(core.List<api.Constraint> o) {
+checkUnnamed1704(core.List<api.Constraint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConstraint(o[0]);
   checkConstraint(o[1]);
@@ -506,7 +506,7 @@ buildListAvailableOrgPolicyConstraintsResponse() {
   var o = new api.ListAvailableOrgPolicyConstraintsResponse();
   buildCounterListAvailableOrgPolicyConstraintsResponse++;
   if (buildCounterListAvailableOrgPolicyConstraintsResponse < 3) {
-    o.constraints = buildUnnamed1694();
+    o.constraints = buildUnnamed1704();
     o.nextPageToken = "foo";
   }
   buildCounterListAvailableOrgPolicyConstraintsResponse--;
@@ -516,7 +516,7 @@ buildListAvailableOrgPolicyConstraintsResponse() {
 checkListAvailableOrgPolicyConstraintsResponse(api.ListAvailableOrgPolicyConstraintsResponse o) {
   buildCounterListAvailableOrgPolicyConstraintsResponse++;
   if (buildCounterListAvailableOrgPolicyConstraintsResponse < 3) {
-    checkUnnamed1694(o.constraints);
+    checkUnnamed1704(o.constraints);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAvailableOrgPolicyConstraintsResponse--;
@@ -541,14 +541,14 @@ checkListConstraint(api.ListConstraint o) {
   buildCounterListConstraint--;
 }
 
-buildUnnamed1695() {
+buildUnnamed1705() {
   var o = new core.List<api.Lien>();
   o.add(buildLien());
   o.add(buildLien());
   return o;
 }
 
-checkUnnamed1695(core.List<api.Lien> o) {
+checkUnnamed1705(core.List<api.Lien> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLien(o[0]);
   checkLien(o[1]);
@@ -559,7 +559,7 @@ buildListLiensResponse() {
   var o = new api.ListLiensResponse();
   buildCounterListLiensResponse++;
   if (buildCounterListLiensResponse < 3) {
-    o.liens = buildUnnamed1695();
+    o.liens = buildUnnamed1705();
     o.nextPageToken = "foo";
   }
   buildCounterListLiensResponse--;
@@ -569,7 +569,7 @@ buildListLiensResponse() {
 checkListLiensResponse(api.ListLiensResponse o) {
   buildCounterListLiensResponse++;
   if (buildCounterListLiensResponse < 3) {
-    checkUnnamed1695(o.liens);
+    checkUnnamed1705(o.liens);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLiensResponse--;
@@ -596,14 +596,14 @@ checkListOrgPoliciesRequest(api.ListOrgPoliciesRequest o) {
   buildCounterListOrgPoliciesRequest--;
 }
 
-buildUnnamed1696() {
+buildUnnamed1706() {
   var o = new core.List<api.OrgPolicy>();
   o.add(buildOrgPolicy());
   o.add(buildOrgPolicy());
   return o;
 }
 
-checkUnnamed1696(core.List<api.OrgPolicy> o) {
+checkUnnamed1706(core.List<api.OrgPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrgPolicy(o[0]);
   checkOrgPolicy(o[1]);
@@ -615,7 +615,7 @@ buildListOrgPoliciesResponse() {
   buildCounterListOrgPoliciesResponse++;
   if (buildCounterListOrgPoliciesResponse < 3) {
     o.nextPageToken = "foo";
-    o.policies = buildUnnamed1696();
+    o.policies = buildUnnamed1706();
   }
   buildCounterListOrgPoliciesResponse--;
   return o;
@@ -625,32 +625,32 @@ checkListOrgPoliciesResponse(api.ListOrgPoliciesResponse o) {
   buildCounterListOrgPoliciesResponse++;
   if (buildCounterListOrgPoliciesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1696(o.policies);
+    checkUnnamed1706(o.policies);
   }
   buildCounterListOrgPoliciesResponse--;
 }
 
-buildUnnamed1697() {
+buildUnnamed1707() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1697(core.List<core.String> o) {
+checkUnnamed1707(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1698() {
+buildUnnamed1708() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1698(core.List<core.String> o) {
+checkUnnamed1708(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -662,8 +662,8 @@ buildListPolicy() {
   buildCounterListPolicy++;
   if (buildCounterListPolicy < 3) {
     o.allValues = "foo";
-    o.allowedValues = buildUnnamed1697();
-    o.deniedValues = buildUnnamed1698();
+    o.allowedValues = buildUnnamed1707();
+    o.deniedValues = buildUnnamed1708();
     o.inheritFromParent = true;
     o.suggestedValue = "foo";
   }
@@ -675,22 +675,22 @@ checkListPolicy(api.ListPolicy o) {
   buildCounterListPolicy++;
   if (buildCounterListPolicy < 3) {
     unittest.expect(o.allValues, unittest.equals('foo'));
-    checkUnnamed1697(o.allowedValues);
-    checkUnnamed1698(o.deniedValues);
+    checkUnnamed1707(o.allowedValues);
+    checkUnnamed1708(o.deniedValues);
     unittest.expect(o.inheritFromParent, unittest.isTrue);
     unittest.expect(o.suggestedValue, unittest.equals('foo'));
   }
   buildCounterListPolicy--;
 }
 
-buildUnnamed1699() {
+buildUnnamed1709() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed1699(core.List<api.Project> o) {
+checkUnnamed1709(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -702,7 +702,7 @@ buildListProjectsResponse() {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     o.nextPageToken = "foo";
-    o.projects = buildUnnamed1699();
+    o.projects = buildUnnamed1709();
   }
   buildCounterListProjectsResponse--;
   return o;
@@ -712,32 +712,32 @@ checkListProjectsResponse(api.ListProjectsResponse o) {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1699(o.projects);
+    checkUnnamed1709(o.projects);
   }
   buildCounterListProjectsResponse--;
 }
 
-buildUnnamed1700() {
+buildUnnamed1710() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1700(core.Map<core.String, core.Object> o) {
+checkUnnamed1710(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1701() {
+buildUnnamed1711() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1701(core.Map<core.String, core.Object> o) {
+checkUnnamed1711(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o["y"]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
@@ -750,9 +750,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed1700();
+    o.metadata = buildUnnamed1710();
     o.name = "foo";
-    o.response = buildUnnamed1701();
+    o.response = buildUnnamed1711();
   }
   buildCounterOperation--;
   return o;
@@ -763,9 +763,9 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed1700(o.metadata);
+    checkUnnamed1710(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1701(o.response);
+    checkUnnamed1711(o.response);
   }
   buildCounterOperation--;
 }
@@ -847,27 +847,27 @@ checkOrganizationOwner(api.OrganizationOwner o) {
   buildCounterOrganizationOwner--;
 }
 
-buildUnnamed1702() {
+buildUnnamed1712() {
   var o = new core.List<api.AuditConfig>();
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-checkUnnamed1702(core.List<api.AuditConfig> o) {
+checkUnnamed1712(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-buildUnnamed1703() {
+buildUnnamed1713() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed1703(core.List<api.Binding> o) {
+checkUnnamed1713(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -878,8 +878,8 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed1702();
-    o.bindings = buildUnnamed1703();
+    o.auditConfigs = buildUnnamed1712();
+    o.bindings = buildUnnamed1713();
     o.etag = "foo";
     o.version = 42;
   }
@@ -890,22 +890,22 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1702(o.auditConfigs);
-    checkUnnamed1703(o.bindings);
+    checkUnnamed1712(o.auditConfigs);
+    checkUnnamed1713(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed1704() {
+buildUnnamed1714() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1704(core.Map<core.String, core.String> o) {
+checkUnnamed1714(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -917,7 +917,7 @@ buildProject() {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed1704();
+    o.labels = buildUnnamed1714();
     o.lifecycleState = "foo";
     o.name = "foo";
     o.parent = buildResourceId();
@@ -932,7 +932,7 @@ checkProject(api.Project o) {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed1704(o.labels);
+    checkUnnamed1714(o.labels);
     unittest.expect(o.lifecycleState, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkResourceId(o.parent);
@@ -1026,14 +1026,14 @@ checkSearchOrganizationsRequest(api.SearchOrganizationsRequest o) {
   buildCounterSearchOrganizationsRequest--;
 }
 
-buildUnnamed1705() {
+buildUnnamed1715() {
   var o = new core.List<api.Organization>();
   o.add(buildOrganization());
   o.add(buildOrganization());
   return o;
 }
 
-checkUnnamed1705(core.List<api.Organization> o) {
+checkUnnamed1715(core.List<api.Organization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrganization(o[0]);
   checkOrganization(o[1]);
@@ -1045,7 +1045,7 @@ buildSearchOrganizationsResponse() {
   buildCounterSearchOrganizationsResponse++;
   if (buildCounterSearchOrganizationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.organizations = buildUnnamed1705();
+    o.organizations = buildUnnamed1715();
   }
   buildCounterSearchOrganizationsResponse--;
   return o;
@@ -1055,7 +1055,7 @@ checkSearchOrganizationsResponse(api.SearchOrganizationsResponse o) {
   buildCounterSearchOrganizationsResponse++;
   if (buildCounterSearchOrganizationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1705(o.organizations);
+    checkUnnamed1715(o.organizations);
   }
   buildCounterSearchOrganizationsResponse--;
 }
@@ -1100,30 +1100,30 @@ checkSetOrgPolicyRequest(api.SetOrgPolicyRequest o) {
   buildCounterSetOrgPolicyRequest--;
 }
 
-buildUnnamed1706() {
+buildUnnamed1716() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1706(core.Map<core.String, core.Object> o) {
+checkUnnamed1716(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
   var casted6 = (o["y"]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1707() {
+buildUnnamed1717() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed1706());
-  o.add(buildUnnamed1706());
+  o.add(buildUnnamed1716());
+  o.add(buildUnnamed1716());
   return o;
 }
 
-checkUnnamed1707(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed1717(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1706(o[0]);
-  checkUnnamed1706(o[1]);
+  checkUnnamed1716(o[0]);
+  checkUnnamed1716(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1132,7 +1132,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed1707();
+    o.details = buildUnnamed1717();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -1143,20 +1143,20 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed1707(o.details);
+    checkUnnamed1717(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-buildUnnamed1708() {
+buildUnnamed1718() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1708(core.List<core.String> o) {
+checkUnnamed1718(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1167,7 +1167,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed1708();
+    o.permissions = buildUnnamed1718();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1176,19 +1176,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed1708(o.permissions);
+    checkUnnamed1718(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed1709() {
+buildUnnamed1719() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1709(core.List<core.String> o) {
+checkUnnamed1719(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1199,7 +1199,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed1709();
+    o.permissions = buildUnnamed1719();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1208,7 +1208,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed1709(o.permissions);
+    checkUnnamed1719(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1617,7 +1617,7 @@ main() {
       api.FoldersResourceApi res = new api.CloudresourcemanagerApi(mock).folders;
       var arg_request = buildClearOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ClearOrgPolicyRequest.fromJson(json);
         checkClearOrgPolicyRequest(obj);
 
@@ -1655,7 +1655,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.clearOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Empty response) {
+      res.clearOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -1666,7 +1666,7 @@ main() {
       api.FoldersResourceApi res = new api.CloudresourcemanagerApi(mock).folders;
       var arg_request = buildGetEffectiveOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetEffectiveOrgPolicyRequest.fromJson(json);
         checkGetEffectiveOrgPolicyRequest(obj);
 
@@ -1704,7 +1704,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getEffectiveOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.getEffectiveOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -1715,7 +1715,7 @@ main() {
       api.FoldersResourceApi res = new api.CloudresourcemanagerApi(mock).folders;
       var arg_request = buildGetOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetOrgPolicyRequest.fromJson(json);
         checkGetOrgPolicyRequest(obj);
 
@@ -1753,7 +1753,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.getOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -1764,7 +1764,7 @@ main() {
       api.FoldersResourceApi res = new api.CloudresourcemanagerApi(mock).folders;
       var arg_request = buildListAvailableOrgPolicyConstraintsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ListAvailableOrgPolicyConstraintsRequest.fromJson(json);
         checkListAvailableOrgPolicyConstraintsRequest(obj);
 
@@ -1802,7 +1802,7 @@ main() {
         var resp = convert.JSON.encode(buildListAvailableOrgPolicyConstraintsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listAvailableOrgPolicyConstraints(arg_request, arg_resource).then(unittest.expectAsync(((api.ListAvailableOrgPolicyConstraintsResponse response) {
+      res.listAvailableOrgPolicyConstraints(arg_request, arg_resource).then(unittest.expectAsync1(((api.ListAvailableOrgPolicyConstraintsResponse response) {
         checkListAvailableOrgPolicyConstraintsResponse(response);
       })));
     });
@@ -1813,7 +1813,7 @@ main() {
       api.FoldersResourceApi res = new api.CloudresourcemanagerApi(mock).folders;
       var arg_request = buildListOrgPoliciesRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ListOrgPoliciesRequest.fromJson(json);
         checkListOrgPoliciesRequest(obj);
 
@@ -1851,7 +1851,7 @@ main() {
         var resp = convert.JSON.encode(buildListOrgPoliciesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listOrgPolicies(arg_request, arg_resource).then(unittest.expectAsync(((api.ListOrgPoliciesResponse response) {
+      res.listOrgPolicies(arg_request, arg_resource).then(unittest.expectAsync1(((api.ListOrgPoliciesResponse response) {
         checkListOrgPoliciesResponse(response);
       })));
     });
@@ -1862,7 +1862,7 @@ main() {
       api.FoldersResourceApi res = new api.CloudresourcemanagerApi(mock).folders;
       var arg_request = buildSetOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetOrgPolicyRequest.fromJson(json);
         checkSetOrgPolicyRequest(obj);
 
@@ -1900,7 +1900,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.setOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -1914,7 +1914,7 @@ main() {
       var mock = new HttpServerMock();
       api.LiensResourceApi res = new api.CloudresourcemanagerApi(mock).liens;
       var arg_request = buildLien();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Lien.fromJson(json);
         checkLien(obj);
 
@@ -1951,7 +1951,7 @@ main() {
         var resp = convert.JSON.encode(buildLien());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request).then(unittest.expectAsync(((api.Lien response) {
+      res.create(arg_request).then(unittest.expectAsync1(((api.Lien response) {
         checkLien(response);
       })));
     });
@@ -1961,7 +1961,7 @@ main() {
       var mock = new HttpServerMock();
       api.LiensResourceApi res = new api.CloudresourcemanagerApi(mock).liens;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1996,7 +1996,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(unittest.expectAsync(((api.Empty response) {
+      res.delete(arg_name).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -2008,7 +2008,7 @@ main() {
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_parent = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2045,7 +2045,7 @@ main() {
         var resp = convert.JSON.encode(buildListLiensResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageToken: arg_pageToken, pageSize: arg_pageSize, parent: arg_parent).then(unittest.expectAsync(((api.ListLiensResponse response) {
+      res.list(pageToken: arg_pageToken, pageSize: arg_pageSize, parent: arg_parent).then(unittest.expectAsync1(((api.ListLiensResponse response) {
         checkListLiensResponse(response);
       })));
     });
@@ -2059,7 +2059,7 @@ main() {
       var mock = new HttpServerMock();
       api.OperationsResourceApi res = new api.CloudresourcemanagerApi(mock).operations;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2094,7 +2094,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.Operation response) {
+      res.get(arg_name).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -2109,7 +2109,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildClearOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ClearOrgPolicyRequest.fromJson(json);
         checkClearOrgPolicyRequest(obj);
 
@@ -2147,7 +2147,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.clearOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Empty response) {
+      res.clearOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -2157,7 +2157,7 @@ main() {
       var mock = new HttpServerMock();
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2192,7 +2192,7 @@ main() {
         var resp = convert.JSON.encode(buildOrganization());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.Organization response) {
+      res.get(arg_name).then(unittest.expectAsync1(((api.Organization response) {
         checkOrganization(response);
       })));
     });
@@ -2203,7 +2203,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildGetEffectiveOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetEffectiveOrgPolicyRequest.fromJson(json);
         checkGetEffectiveOrgPolicyRequest(obj);
 
@@ -2241,7 +2241,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getEffectiveOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.getEffectiveOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -2252,7 +2252,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
@@ -2290,7 +2290,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -2301,7 +2301,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildGetOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetOrgPolicyRequest.fromJson(json);
         checkGetOrgPolicyRequest(obj);
 
@@ -2339,7 +2339,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.getOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -2350,7 +2350,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildListAvailableOrgPolicyConstraintsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ListAvailableOrgPolicyConstraintsRequest.fromJson(json);
         checkListAvailableOrgPolicyConstraintsRequest(obj);
 
@@ -2388,7 +2388,7 @@ main() {
         var resp = convert.JSON.encode(buildListAvailableOrgPolicyConstraintsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listAvailableOrgPolicyConstraints(arg_request, arg_resource).then(unittest.expectAsync(((api.ListAvailableOrgPolicyConstraintsResponse response) {
+      res.listAvailableOrgPolicyConstraints(arg_request, arg_resource).then(unittest.expectAsync1(((api.ListAvailableOrgPolicyConstraintsResponse response) {
         checkListAvailableOrgPolicyConstraintsResponse(response);
       })));
     });
@@ -2399,7 +2399,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildListOrgPoliciesRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ListOrgPoliciesRequest.fromJson(json);
         checkListOrgPoliciesRequest(obj);
 
@@ -2437,7 +2437,7 @@ main() {
         var resp = convert.JSON.encode(buildListOrgPoliciesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listOrgPolicies(arg_request, arg_resource).then(unittest.expectAsync(((api.ListOrgPoliciesResponse response) {
+      res.listOrgPolicies(arg_request, arg_resource).then(unittest.expectAsync1(((api.ListOrgPoliciesResponse response) {
         checkListOrgPoliciesResponse(response);
       })));
     });
@@ -2447,7 +2447,7 @@ main() {
       var mock = new HttpServerMock();
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildSearchOrganizationsRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SearchOrganizationsRequest.fromJson(json);
         checkSearchOrganizationsRequest(obj);
 
@@ -2484,7 +2484,7 @@ main() {
         var resp = convert.JSON.encode(buildSearchOrganizationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.search(arg_request).then(unittest.expectAsync(((api.SearchOrganizationsResponse response) {
+      res.search(arg_request).then(unittest.expectAsync1(((api.SearchOrganizationsResponse response) {
         checkSearchOrganizationsResponse(response);
       })));
     });
@@ -2495,7 +2495,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
@@ -2533,7 +2533,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -2544,7 +2544,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildSetOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetOrgPolicyRequest.fromJson(json);
         checkSetOrgPolicyRequest(obj);
 
@@ -2582,7 +2582,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.setOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -2593,7 +2593,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
@@ -2631,7 +2631,7 @@ main() {
         var resp = convert.JSON.encode(buildTestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync(((api.TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
         checkTestIamPermissionsResponse(response);
       })));
     });
@@ -2646,7 +2646,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildClearOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ClearOrgPolicyRequest.fromJson(json);
         checkClearOrgPolicyRequest(obj);
 
@@ -2684,7 +2684,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.clearOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Empty response) {
+      res.clearOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -2694,7 +2694,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildProject();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Project.fromJson(json);
         checkProject(obj);
 
@@ -2731,7 +2731,7 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request).then(unittest.expectAsync(((api.Operation response) {
+      res.create(arg_request).then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -2741,7 +2741,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2778,7 +2778,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_projectId).then(unittest.expectAsync(((api.Empty response) {
+      res.delete(arg_projectId).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -2788,7 +2788,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -2825,7 +2825,7 @@ main() {
         var resp = convert.JSON.encode(buildProject());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_projectId).then(unittest.expectAsync(((api.Project response) {
+      res.get(arg_projectId).then(unittest.expectAsync1(((api.Project response) {
         checkProject(response);
       })));
     });
@@ -2836,7 +2836,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildGetAncestryRequest();
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetAncestryRequest.fromJson(json);
         checkGetAncestryRequest(obj);
 
@@ -2880,7 +2880,7 @@ main() {
         var resp = convert.JSON.encode(buildGetAncestryResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getAncestry(arg_request, arg_projectId).then(unittest.expectAsync(((api.GetAncestryResponse response) {
+      res.getAncestry(arg_request, arg_projectId).then(unittest.expectAsync1(((api.GetAncestryResponse response) {
         checkGetAncestryResponse(response);
       })));
     });
@@ -2891,7 +2891,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildGetEffectiveOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetEffectiveOrgPolicyRequest.fromJson(json);
         checkGetEffectiveOrgPolicyRequest(obj);
 
@@ -2929,7 +2929,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getEffectiveOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.getEffectiveOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -2940,7 +2940,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
@@ -2984,7 +2984,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -2995,7 +2995,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildGetOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetOrgPolicyRequest.fromJson(json);
         checkGetOrgPolicyRequest(obj);
 
@@ -3033,7 +3033,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.getOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -3045,7 +3045,7 @@ main() {
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_filter = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -3082,7 +3082,7 @@ main() {
         var resp = convert.JSON.encode(buildListProjectsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageToken: arg_pageToken, pageSize: arg_pageSize, filter: arg_filter).then(unittest.expectAsync(((api.ListProjectsResponse response) {
+      res.list(pageToken: arg_pageToken, pageSize: arg_pageSize, filter: arg_filter).then(unittest.expectAsync1(((api.ListProjectsResponse response) {
         checkListProjectsResponse(response);
       })));
     });
@@ -3093,7 +3093,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildListAvailableOrgPolicyConstraintsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ListAvailableOrgPolicyConstraintsRequest.fromJson(json);
         checkListAvailableOrgPolicyConstraintsRequest(obj);
 
@@ -3131,7 +3131,7 @@ main() {
         var resp = convert.JSON.encode(buildListAvailableOrgPolicyConstraintsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listAvailableOrgPolicyConstraints(arg_request, arg_resource).then(unittest.expectAsync(((api.ListAvailableOrgPolicyConstraintsResponse response) {
+      res.listAvailableOrgPolicyConstraints(arg_request, arg_resource).then(unittest.expectAsync1(((api.ListAvailableOrgPolicyConstraintsResponse response) {
         checkListAvailableOrgPolicyConstraintsResponse(response);
       })));
     });
@@ -3142,7 +3142,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildListOrgPoliciesRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ListOrgPoliciesRequest.fromJson(json);
         checkListOrgPoliciesRequest(obj);
 
@@ -3180,7 +3180,7 @@ main() {
         var resp = convert.JSON.encode(buildListOrgPoliciesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listOrgPolicies(arg_request, arg_resource).then(unittest.expectAsync(((api.ListOrgPoliciesResponse response) {
+      res.listOrgPolicies(arg_request, arg_resource).then(unittest.expectAsync1(((api.ListOrgPoliciesResponse response) {
         checkListOrgPoliciesResponse(response);
       })));
     });
@@ -3191,7 +3191,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
@@ -3235,7 +3235,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -3246,7 +3246,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildSetOrgPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetOrgPolicyRequest.fromJson(json);
         checkSetOrgPolicyRequest(obj);
 
@@ -3284,7 +3284,7 @@ main() {
         var resp = convert.JSON.encode(buildOrgPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.OrgPolicy response) {
+      res.setOrgPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.OrgPolicy response) {
         checkOrgPolicy(response);
       })));
     });
@@ -3295,7 +3295,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
@@ -3339,7 +3339,7 @@ main() {
         var resp = convert.JSON.encode(buildTestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync(((api.TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
         checkTestIamPermissionsResponse(response);
       })));
     });
@@ -3350,7 +3350,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildUndeleteProjectRequest();
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UndeleteProjectRequest.fromJson(json);
         checkUndeleteProjectRequest(obj);
 
@@ -3394,7 +3394,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.undelete(arg_request, arg_projectId).then(unittest.expectAsync(((api.Empty response) {
+      res.undelete(arg_request, arg_projectId).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -3405,7 +3405,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildProject();
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Project.fromJson(json);
         checkProject(obj);
 
@@ -3445,7 +3445,7 @@ main() {
         var resp = convert.JSON.encode(buildProject());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_projectId).then(unittest.expectAsync(((api.Project response) {
+      res.update(arg_request, arg_projectId).then(unittest.expectAsync1(((api.Project response) {
         checkProject(response);
       })));
     });

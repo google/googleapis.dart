@@ -66,8 +66,8 @@ class OperationMetadataV1Beta2 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (request != null) {
       _json["request"] = request;
     }

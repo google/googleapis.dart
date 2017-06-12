@@ -76,6 +76,7 @@ class ComputeApi {
   TargetInstancesResourceApi get targetInstances => new TargetInstancesResourceApi(_requester);
   TargetPoolsResourceApi get targetPools => new TargetPoolsResourceApi(_requester);
   TargetSslProxiesResourceApi get targetSslProxies => new TargetSslProxiesResourceApi(_requester);
+  TargetTcpProxiesResourceApi get targetTcpProxies => new TargetTcpProxiesResourceApi(_requester);
   TargetVpnGatewaysResourceApi get targetVpnGateways => new TargetVpnGatewaysResourceApi(_requester);
   UrlMapsResourceApi get urlMaps => new UrlMapsResourceApi(_requester);
   VpnTunnelsResourceApi get vpnTunnels => new VpnTunnelsResourceApi(_requester);
@@ -102,9 +103,9 @@ class AddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -115,7 +116,7 @@ class AddressesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -363,9 +364,9 @@ class AddressesResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -376,7 +377,7 @@ class AddressesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -474,9 +475,9 @@ class AutoscalersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -487,7 +488,7 @@ class AutoscalersResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -736,9 +737,9 @@ class AutoscalersResourceApi {
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -749,7 +750,7 @@ class AutoscalersResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -1108,9 +1109,9 @@ class BackendBucketsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -1121,7 +1122,7 @@ class BackendBucketsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -1323,9 +1324,9 @@ class BackendServicesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -1336,7 +1337,7 @@ class BackendServicesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -1620,9 +1621,9 @@ class BackendServicesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -1633,7 +1634,7 @@ class BackendServicesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -1838,9 +1839,9 @@ class DiskTypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -1851,7 +1852,7 @@ class DiskTypesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -1994,9 +1995,9 @@ class DiskTypesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -2007,7 +2008,7 @@ class DiskTypesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -2105,9 +2106,9 @@ class DisksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -2118,7 +2119,7 @@ class DisksResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -2440,9 +2441,9 @@ class DisksResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -2453,7 +2454,7 @@ class DisksResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -2580,6 +2581,65 @@ class DisksResourceApi {
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk') + '/resize';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets the labels on a disk. To learn more about labels, read the Labeling
+   * Resources documentation.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [resource] - Name of the resource for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setLabels(ZoneSetLabelsRequest request, core.String project, core.String zone, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$resource') + '/setLabels';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -2750,9 +2810,9 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -2763,7 +2823,7 @@ class FirewallsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -2967,9 +3027,9 @@ class ForwardingRulesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -2980,7 +3040,7 @@ class ForwardingRulesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -3229,9 +3289,9 @@ class ForwardingRulesResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -3242,7 +3302,7 @@ class ForwardingRulesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -3542,9 +3602,9 @@ class GlobalAddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -3555,7 +3615,7 @@ class GlobalAddressesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -3793,9 +3853,9 @@ class GlobalForwardingRulesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -3806,7 +3866,7 @@ class GlobalForwardingRulesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -3955,9 +4015,9 @@ class GlobalOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -3968,7 +4028,7 @@ class GlobalOperationsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -4150,9 +4210,9 @@ class GlobalOperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -4163,7 +4223,7 @@ class GlobalOperationsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -4401,9 +4461,9 @@ class HealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -4414,7 +4474,7 @@ class HealthChecksResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -4758,9 +4818,9 @@ class HttpHealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -4771,7 +4831,7 @@ class HttpHealthChecksResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -5115,9 +5175,9 @@ class HttpsHealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -5128,7 +5188,7 @@ class HttpsHealthChecksResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -5578,9 +5638,9 @@ class ImagesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -5591,7 +5651,7 @@ class ImagesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -5668,6 +5728,59 @@ class ImagesResourceApi {
     return _response.then((data) => new ImageList.fromJson(data));
   }
 
+  /**
+   * Sets the labels on an image. To learn more about labels, read the Labeling
+   * Resources documentation.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [resource] - Name of the resource for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setLabels(GlobalSetLabelsRequest request, core.String project, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$resource') + '/setLabels';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
 }
 
 
@@ -5686,6 +5799,10 @@ class InstanceGroupManagersResourceApi {
    * is marked as DONE when the action is scheduled even if the instances have
    * not yet been removed from the group. You must separately verify the status
    * of the abandoning action with the listmanagedinstances method.
+   *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration has elapsed before the VM instance is removed or deleted.
    *
    * You can specify a maximum of 1000 instances with this method per request.
    *
@@ -5751,9 +5868,9 @@ class InstanceGroupManagersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -5764,7 +5881,7 @@ class InstanceGroupManagersResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -5903,6 +6020,10 @@ class InstanceGroupManagersResourceApi {
    * still being deleted. You must separately verify the status of the deleting
    * action with the listmanagedinstances method.
    *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration has elapsed before the VM instance is removed or deleted.
+   *
    * You can specify a maximum of 1000 instances with this method per request.
    *
    * [request] - The metadata request object.
@@ -6018,7 +6139,8 @@ class InstanceGroupManagersResourceApi {
    * in the group have not yet been created. You must separately verify the
    * status of the individual instances with the listmanagedinstances method.
    *
-   * A managed instance group can have up to 1000 VM instances per group.
+   * A managed instance group can have up to 1000 VM instances per group. Please
+   * contact Cloud Support if you need an increase in this limit.
    *
    * [request] - The metadata request object.
    *
@@ -6081,9 +6203,9 @@ class InstanceGroupManagersResourceApi {
    *
    * [zone] - The name of the zone where the managed instance group is located.
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -6094,7 +6216,7 @@ class InstanceGroupManagersResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -6257,6 +6379,10 @@ class InstanceGroupManagersResourceApi {
    * been recreated. You must separately verify the status of the recreating
    * action with the listmanagedinstances method.
    *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration has elapsed before the VM instance is removed or deleted.
+   *
    * You can specify a maximum of 1000 instances with this method per request.
    *
    * [request] - The metadata request object.
@@ -6319,6 +6445,10 @@ class InstanceGroupManagersResourceApi {
    * when the resize actions are scheduled even if the group has not yet added
    * or deleted any instances. You must separately verify the status of the
    * creating or deleting actions with the listmanagedinstances method.
+   *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration has elapsed before the VM instance is removed or deleted.
    *
    * Request parameters:
    *
@@ -6572,9 +6702,9 @@ class InstanceGroupsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -6585,7 +6715,7 @@ class InstanceGroupsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -6831,9 +6961,9 @@ class InstanceGroupsResourceApi {
    *
    * [zone] - The name of the zone where the instance group is located.
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -6844,7 +6974,7 @@ class InstanceGroupsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -6940,9 +7070,9 @@ class InstanceGroupsResourceApi {
    * [instanceGroup] - The name of the instance group from which you want to
    * generate a list of included instances.
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -6953,7 +7083,7 @@ class InstanceGroupsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -7042,6 +7172,10 @@ class InstanceGroupsResourceApi {
   /**
    * Removes one or more instances from the specified instance group, but does
    * not delete those instances.
+   *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration before the VM instance is removed or deleted.
    *
    * [request] - The metadata request object.
    *
@@ -7320,9 +7454,9 @@ class InstanceTemplatesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -7333,7 +7467,7 @@ class InstanceTemplatesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -7493,9 +7627,9 @@ class InstancesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -7506,7 +7640,7 @@ class InstancesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -8009,9 +8143,9 @@ class InstancesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -8022,7 +8156,7 @@ class InstancesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -8212,6 +8346,65 @@ class InstancesResourceApi {
     _queryParams["deviceName"] = [deviceName];
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setDiskAutoDelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets labels on an instance. To learn more about labels, read the Labeling
+   * Resources documentation.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [instance] - Name of the instance scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setLabels(InstancesSetLabelsRequest request, core.String project, core.String zone, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setLabels';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -8762,9 +8955,9 @@ class MachineTypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -8775,7 +8968,7 @@ class MachineTypesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -8918,9 +9111,9 @@ class MachineTypesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -8931,7 +9124,7 @@ class MachineTypesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -9019,6 +9212,58 @@ class NetworksResourceApi {
 
   NetworksResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Adds a peering to the specified network.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [network] - Name of the network resource to add peering to.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> addPeering(NetworksAddPeeringRequest request, core.String project, core.String network) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (network == null) {
+      throw new core.ArgumentError("Parameter network is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network') + '/addPeering';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 
   /**
    * Deletes the specified network.
@@ -9171,9 +9416,9 @@ class NetworksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -9184,7 +9429,7 @@ class NetworksResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -9262,6 +9507,58 @@ class NetworksResourceApi {
   }
 
   /**
+   * Removes a peering from the specified network.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [network] - Name of the network resource to remove peering from.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> removePeering(NetworksRemovePeeringRequest request, core.String project, core.String network) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (network == null) {
+      throw new core.ArgumentError("Parameter network is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network') + '/removePeering';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Switches the network mode from auto subnet mode to custom subnet mode.
    *
    * Request parameters:
@@ -9318,6 +9615,182 @@ class ProjectsResourceApi {
       _requester = client;
 
   /**
+   * Disable this project as an XPN host project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> disableXpnHost(core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnHost';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Disable an XPN resource associated with this host project.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> disableXpnResource(ProjectsDisableXpnResourceRequest request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnResource';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Enable this project as an XPN host project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> enableXpnHost(core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnHost';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Enable XPN resource (a.k.a service project or service folder in the future)
+   * for a host project, so that subnetworks in the host project can be used by
+   * instances in the service project or folder.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> enableXpnResource(ProjectsEnableXpnResourceRequest request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnResource';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Returns the specified Project resource.
    *
    * Request parameters:
@@ -9356,6 +9829,175 @@ class ProjectsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Project.fromJson(data));
+  }
+
+  /**
+   * Get the XPN host project that this project links to. May be empty if no
+   * link exists.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Project].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Project> getXpnHost(core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Project.fromJson(data));
+  }
+
+  /**
+   * Get XPN resources associated with this host project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - null
+   *
+   * [maxResults] - null
+   *
+   * [orderBy] - null
+   *
+   * [pageToken] - null
+   *
+   * Completes with a [ProjectsGetXpnResources].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ProjectsGetXpnResources> getXpnResources(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["order_by"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/getXpnResources';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProjectsGetXpnResources.fromJson(data));
+  }
+
+  /**
+   * List all XPN host projects visible to the user in an organization.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - null
+   *
+   * [maxResults] - null
+   *
+   * [orderBy] - null
+   *
+   * [pageToken] - null
+   *
+   * Completes with a [XpnHostList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<XpnHostList> listXpnHosts(ProjectsListXpnHostsRequest request, core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["order_by"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/listXpnHosts';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new XpnHostList.fromJson(data));
   }
 
   /**
@@ -9726,9 +10368,9 @@ class RegionAutoscalersResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -9739,7 +10381,7 @@ class RegionAutoscalersResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -10179,9 +10821,9 @@ class RegionBackendServicesResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -10192,7 +10834,7 @@ class RegionBackendServicesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -10413,6 +11055,10 @@ class RegionInstanceGroupManagersResourceApi {
    * not yet been removed from the group. You must separately verify the status
    * of the abandoning action with the listmanagedinstances method.
    *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration has elapsed before the VM instance is removed or deleted.
+   *
    * You can specify a maximum of 1000 instances with this method per request.
    *
    * [request] - The metadata request object.
@@ -10528,6 +11174,10 @@ class RegionInstanceGroupManagersResourceApi {
    * is marked as DONE when the action is scheduled even if the instances are
    * still being deleted. You must separately verify the status of the deleting
    * action with the listmanagedinstances method.
+   *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration has elapsed before the VM instance is removed or deleted.
    *
    * You can specify a maximum of 1000 instances with this method per request.
    *
@@ -10705,9 +11355,9 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [region] - Name of the region scoping this request.
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -10718,7 +11368,7 @@ class RegionInstanceGroupManagersResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -10879,6 +11529,10 @@ class RegionInstanceGroupManagersResourceApi {
    * been recreated. You must separately verify the status of the recreating
    * action with the listmanagedinstances method.
    *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration has elapsed before the VM instance is removed or deleted.
+   *
    * You can specify a maximum of 1000 instances with this method per request.
    *
    * [request] - The metadata request object.
@@ -10942,6 +11596,10 @@ class RegionInstanceGroupManagersResourceApi {
    * DONE when the resize actions are scheduled even if the group has not yet
    * added or deleted any instances. You must separately verify the status of
    * the creating or deleting actions with the listmanagedinstances method.
+   *
+   * If the group is part of a backend service that has enabled connection
+   * draining, it can take up to 60 seconds after the connection draining
+   * duration has elapsed before the VM instance is removed or deleted.
    *
    * Request parameters:
    *
@@ -11184,9 +11842,9 @@ class RegionInstanceGroupsResourceApi {
    *
    * [region] - Name of the region scoping this request.
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -11197,7 +11855,7 @@ class RegionInstanceGroupsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -11295,9 +11953,9 @@ class RegionInstanceGroupsResourceApi {
    * [instanceGroup] - Name of the regional instance group for which we want to
    * list the instances.
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -11308,7 +11966,7 @@ class RegionInstanceGroupsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -11579,9 +12237,9 @@ class RegionOperationsResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -11592,7 +12250,7 @@ class RegionOperationsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -11738,9 +12396,9 @@ class RegionsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -11751,7 +12409,7 @@ class RegionsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -11846,9 +12504,9 @@ class RoutersResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -11859,7 +12517,7 @@ class RoutersResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -12161,9 +12819,9 @@ class RoutersResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -12174,7 +12832,7 @@ class RoutersResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -12591,9 +13249,9 @@ class RoutesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -12604,7 +13262,7 @@ class RoutesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -12801,9 +13459,9 @@ class SnapshotsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -12814,7 +13472,7 @@ class SnapshotsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -12889,6 +13547,59 @@ class SnapshotsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new SnapshotList.fromJson(data));
+  }
+
+  /**
+   * Sets the labels on a snapshot. To learn more about labels, read the
+   * Labeling Resources documentation.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [resource] - Name of the resource for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setLabels(GlobalSetLabelsRequest request, core.String project, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots/' + commons.Escaper.ecapeVariable('$resource') + '/setLabels';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
 }
@@ -13052,9 +13763,9 @@ class SslCertificatesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -13065,7 +13776,7 @@ class SslCertificatesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -13160,9 +13871,9 @@ class SubnetworksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -13173,7 +13884,7 @@ class SubnetworksResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -13480,9 +14191,9 @@ class SubnetworksResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -13493,7 +14204,7 @@ class SubnetworksResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -13793,9 +14504,9 @@ class TargetHttpProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -13806,7 +14517,7 @@ class TargetHttpProxiesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -14096,9 +14807,9 @@ class TargetHttpsProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -14109,7 +14820,7 @@ class TargetHttpsProxiesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -14310,9 +15021,9 @@ class TargetInstancesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -14323,7 +15034,7 @@ class TargetInstancesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -14573,9 +15284,9 @@ class TargetInstancesResourceApi {
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -14586,7 +15297,7 @@ class TargetInstancesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -14800,9 +15511,9 @@ class TargetPoolsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -14813,7 +15524,7 @@ class TargetPoolsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -15123,9 +15834,9 @@ class TargetPoolsResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -15136,7 +15847,7 @@ class TargetPoolsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -15556,9 +16267,9 @@ class TargetSslProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -15569,7 +16280,7 @@ class TargetSslProxiesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -15808,6 +16519,363 @@ class TargetSslProxiesResourceApi {
 }
 
 
+class TargetTcpProxiesResourceApi {
+  final commons.ApiRequester _requester;
+
+  TargetTcpProxiesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Deletes the specified TargetTcpProxy resource.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetTcpProxy] - Name of the TargetTcpProxy resource to delete.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> delete(core.String project, core.String targetTcpProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetTcpProxy == null) {
+      throw new core.ArgumentError("Parameter targetTcpProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies/' + commons.Escaper.ecapeVariable('$targetTcpProxy');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified TargetTcpProxy resource. Get a list of available
+   * target TCP proxies by making a list() request.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetTcpProxy] - Name of the TargetTcpProxy resource to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [TargetTcpProxy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TargetTcpProxy> get(core.String project, core.String targetTcpProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetTcpProxy == null) {
+      throw new core.ArgumentError("Parameter targetTcpProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies/' + commons.Escaper.ecapeVariable('$targetTcpProxy');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetTcpProxy.fromJson(data));
+  }
+
+  /**
+   * Creates a TargetTcpProxy resource in the specified project using the data
+   * included in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(TargetTcpProxy request, core.String project) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of TargetTcpProxy resources available to the specified
+   * project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [TargetTcpProxyList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TargetTcpProxyList> list(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetTcpProxyList.fromJson(data));
+  }
+
+  /**
+   * Changes the BackendService for TargetTcpProxy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetTcpProxy] - Name of the TargetTcpProxy resource whose BackendService
+   * resource is to be set.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setBackendService(TargetTcpProxiesSetBackendServiceRequest request, core.String project, core.String targetTcpProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetTcpProxy == null) {
+      throw new core.ArgumentError("Parameter targetTcpProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies/' + commons.Escaper.ecapeVariable('$targetTcpProxy') + '/setBackendService';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Changes the ProxyHeaderType for TargetTcpProxy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [targetTcpProxy] - Name of the TargetTcpProxy resource whose ProxyHeader is
+   * to be set.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setProxyHeader(TargetTcpProxiesSetProxyHeaderRequest request, core.String project, core.String targetTcpProxy) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetTcpProxy == null) {
+      throw new core.ArgumentError("Parameter targetTcpProxy is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies/' + commons.Escaper.ecapeVariable('$targetTcpProxy') + '/setProxyHeader';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
 class TargetVpnGatewaysResourceApi {
   final commons.ApiRequester _requester;
 
@@ -15823,9 +16891,9 @@ class TargetVpnGatewaysResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -15836,7 +16904,7 @@ class TargetVpnGatewaysResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -16086,9 +17154,9 @@ class TargetVpnGatewaysResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -16099,7 +17167,7 @@ class TargetVpnGatewaysResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -16392,9 +17460,9 @@ class UrlMapsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -16405,7 +17473,7 @@ class UrlMapsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -16660,9 +17728,9 @@ class VpnTunnelsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -16673,7 +17741,7 @@ class VpnTunnelsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -16923,9 +17991,9 @@ class VpnTunnelsResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -16936,7 +18004,7 @@ class VpnTunnelsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -17144,9 +18212,9 @@ class ZoneOperationsResourceApi {
    * [zone] - Name of the zone for request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -17157,7 +18225,7 @@ class ZoneOperationsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -17303,9 +18371,9 @@ class ZonesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -17316,7 +18384,7 @@ class ZonesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -17445,8 +18513,8 @@ class AccessConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -17479,6 +18547,15 @@ class Address {
    * defined by the server.
    */
   core.String id;
+  /**
+   * The IP Version that will be used by this address. Valid options are IPV4 or
+   * IPV6. This can only be specified for a global address.
+   * Possible string values are:
+   * - "IPV4"
+   * - "IPV6"
+   * - "UNSPECIFIED_VERSION"
+   */
+  core.String ipVersion;
   /**
    * [Output Only] Type of the resource. Always compute#address for addresses.
    */
@@ -17528,6 +18605,9 @@ class Address {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("ipVersion")) {
+      ipVersion = _json["ipVersion"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -17548,8 +18628,8 @@ class Address {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = address;
     }
@@ -17561,6 +18641,9 @@ class Address {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (ipVersion != null) {
+      _json["ipVersion"] = ipVersion;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17614,7 +18697,7 @@ class AddressAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new AddressesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, AddressesScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new AddressesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -17627,13 +18710,13 @@ class AddressAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<AddressesScopedList, core.Map<core.String, core.Object>>(items, (AddressesScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17693,8 +18776,8 @@ class AddressList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -17739,8 +18822,8 @@ class AddressesScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -17802,8 +18885,8 @@ class AddressesScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -17837,8 +18920,8 @@ class AddressesScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (addresses != null) {
       _json["addresses"] = addresses.map((value) => (value).toJson()).toList();
     }
@@ -17997,8 +19080,8 @@ class AttachedDisk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoDelete != null) {
       _json["autoDelete"] = autoDelete;
     }
@@ -18129,8 +19212,8 @@ class AttachedDiskInitializeParams {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (diskName != null) {
       _json["diskName"] = diskName;
     }
@@ -18243,8 +19326,8 @@ class Autoscaler {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoscalingPolicy != null) {
       _json["autoscalingPolicy"] = (autoscalingPolicy).toJson();
     }
@@ -18310,7 +19393,7 @@ class AutoscalerAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new AutoscalersScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, AutoscalersScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new AutoscalersScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -18323,13 +19406,13 @@ class AutoscalerAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<AutoscalersScopedList, core.Map<core.String, core.Object>>(items, (AutoscalersScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -18389,8 +19472,8 @@ class AutoscalerList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -18435,8 +19518,8 @@ class AutoscalersScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -18498,8 +19581,8 @@ class AutoscalersScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -18533,8 +19616,8 @@ class AutoscalersScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoscalers != null) {
       _json["autoscalers"] = autoscalers.map((value) => (value).toJson()).toList();
     }
@@ -18604,8 +19687,8 @@ class AutoscalingPolicy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (coolDownPeriodSec != null) {
       _json["coolDownPeriodSec"] = coolDownPeriodSec;
     }
@@ -18653,8 +19736,8 @@ class AutoscalingPolicyCpuUtilization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (utilizationTarget != null) {
       _json["utilizationTarget"] = utilizationTarget;
     }
@@ -18707,8 +19790,8 @@ class AutoscalingPolicyCustomMetricUtilization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metric != null) {
       _json["metric"] = metric;
     }
@@ -18739,8 +19822,8 @@ class AutoscalingPolicyLoadBalancingUtilization {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (utilizationTarget != null) {
       _json["utilizationTarget"] = utilizationTarget;
     }
@@ -18866,8 +19949,8 @@ class Backend {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (balancingMode != null) {
       _json["balancingMode"] = balancingMode;
     }
@@ -18960,8 +20043,8 @@ class BackendBucket {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
@@ -19025,8 +20108,8 @@ class BackendBucketList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -19259,8 +20342,8 @@ class BackendService {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (affinityCookieTtlSec != null) {
       _json["affinityCookieTtlSec"] = affinityCookieTtlSec;
     }
@@ -19350,7 +20433,7 @@ class BackendServiceAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new BackendServicesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, BackendServicesScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new BackendServicesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -19363,13 +20446,13 @@ class BackendServiceAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<BackendServicesScopedList, core.Map<core.String, core.Object>>(items, (BackendServicesScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -19397,8 +20480,8 @@ class BackendServiceCdnPolicy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cacheKeyPolicy != null) {
       _json["cacheKeyPolicy"] = (cacheKeyPolicy).toJson();
     }
@@ -19425,8 +20508,8 @@ class BackendServiceGroupHealth {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (healthStatus != null) {
       _json["healthStatus"] = healthStatus.map((value) => (value).toJson()).toList();
     }
@@ -19464,8 +20547,8 @@ class BackendServiceIAP {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -19526,8 +20609,8 @@ class BackendServiceList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -19572,8 +20655,8 @@ class BackendServicesScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -19635,8 +20718,8 @@ class BackendServicesScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -19670,8 +20753,8 @@ class BackendServicesScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (backendServices != null) {
       _json["backendServices"] = backendServices.map((value) => (value).toJson()).toList();
     }
@@ -19701,8 +20784,8 @@ class CacheInvalidationRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (host != null) {
       _json["host"] = host;
     }
@@ -19764,8 +20847,8 @@ class CacheKeyPolicy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (includeHost != null) {
       _json["includeHost"] = includeHost;
     }
@@ -19801,8 +20884,8 @@ class ConnectionDraining {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (drainingTimeoutSec != null) {
       _json["drainingTimeoutSec"] = drainingTimeoutSec;
     }
@@ -19834,8 +20917,8 @@ class CustomerEncryptionKey {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rawKey != null) {
       _json["rawKey"] = rawKey;
     }
@@ -19869,8 +20952,8 @@ class CustomerEncryptionKeyProtectedDisk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (diskEncryptionKey != null) {
       _json["diskEncryptionKey"] = (diskEncryptionKey).toJson();
     }
@@ -19940,8 +21023,8 @@ class DeprecationStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deleted != null) {
       _json["deleted"] = deleted;
     }
@@ -19992,6 +21075,28 @@ class Disk {
   core.String id;
   /** [Output Only] Type of the resource. Always compute#disk for disks. */
   core.String kind;
+  /**
+   * A fingerprint for the labels being applied to this disk, which is
+   * essentially a hash of the labels set used for optimistic locking. The
+   * fingerprint is initially generated by Compute Engine and changes after
+   * every request to modify or update labels. You must always provide an
+   * up-to-date fingerprint hash in order to update or change labels.
+   *
+   * To see the latest fingerprint, make a get() request to retrieve a disk.
+   */
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes {
+    return convert.BASE64.decode(labelFingerprint);
+  }
+
+  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
+   * Labels to apply to this disk. These can be later modified by the setLabels
+   * method.
+   */
+  core.Map<core.String, core.String> labels;
   /** [Output Only] Last attach timestamp in RFC3339 text format. */
   core.String lastAttachTimestamp;
   /** [Output Only] Last detach timestamp in RFC3339 text format. */
@@ -20124,6 +21229,12 @@ class Disk {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labelFingerprint")) {
+      labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("lastAttachTimestamp")) {
       lastAttachTimestamp = _json["lastAttachTimestamp"];
     }
@@ -20177,8 +21288,8 @@ class Disk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -20193,6 +21304,12 @@ class Disk {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labelFingerprint != null) {
+      _json["labelFingerprint"] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (lastAttachTimestamp != null) {
       _json["lastAttachTimestamp"] = lastAttachTimestamp;
@@ -20281,7 +21398,7 @@ class DiskAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new DisksScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, DisksScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new DisksScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -20294,13 +21411,13 @@ class DiskAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<DisksScopedList, core.Map<core.String, core.Object>>(items, (DisksScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -20358,8 +21475,8 @@ class DiskList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -20409,8 +21526,8 @@ class DiskMoveRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (destinationZone != null) {
       _json["destinationZone"] = destinationZone;
     }
@@ -20487,8 +21604,8 @@ class DiskType {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -20551,7 +21668,7 @@ class DiskTypeAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new DiskTypesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, DiskTypesScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new DiskTypesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -20564,13 +21681,13 @@ class DiskTypeAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<DiskTypesScopedList, core.Map<core.String, core.Object>>(items, (DiskTypesScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -20629,8 +21746,8 @@ class DiskTypeList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -20675,8 +21792,8 @@ class DiskTypesScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -20738,8 +21855,8 @@ class DiskTypesScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -20773,8 +21890,8 @@ class DiskTypesScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (diskTypes != null) {
       _json["diskTypes"] = diskTypes.map((value) => (value).toJson()).toList();
     }
@@ -20797,8 +21914,8 @@ class DisksResizeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sizeGb != null) {
       _json["sizeGb"] = sizeGb;
     }
@@ -20831,8 +21948,8 @@ class DisksScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -20894,8 +22011,8 @@ class DisksScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -20929,8 +22046,8 @@ class DisksScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (disks != null) {
       _json["disks"] = disks.map((value) => (value).toJson()).toList();
     }
@@ -20970,8 +22087,8 @@ class FirewallAllowed {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (IPProtocol != null) {
       _json["IPProtocol"] = IPProtocol;
     }
@@ -21098,8 +22215,8 @@ class Firewall {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowed != null) {
       _json["allowed"] = allowed.map((value) => (value).toJson()).toList();
     }
@@ -21182,8 +22299,8 @@ class FirewallList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -21214,15 +22331,16 @@ class ForwardingRule {
    *
    * For global forwarding rules, the address must be a global IP. For regional
    * forwarding rules, the address must live in the same region as the
-   * forwarding rule. By default, this field is empty and an ephemeral IP from
-   * the same scope (global or regional) will be assigned.
+   * forwarding rule. By default, this field is empty and an ephemeral IPv4
+   * address from the same scope (global or regional) will be assigned. A
+   * regional forwarding rule supports IPv4 only. A global forwarding rule
+   * supports either IPv4 or IPv6.
    *
    * When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
    * address belonging to the network/subnetwork configured for the forwarding
    * rule. A reserved address cannot be used. If the field is empty, the IP
    * address will be automatically allocated from the internal IP range of the
-   * subnetwork or network configured for this forwarding rule. Only IPv4 is
-   * supported.
+   * subnetwork or network configured for this forwarding rule.
    */
   core.String IPAddress;
   /**
@@ -21258,6 +22376,15 @@ class ForwardingRule {
    * defined by the server.
    */
   core.String id;
+  /**
+   * The IP Version that will be used by this forwarding rule. Valid options are
+   * IPV4 or IPV6. This can only be specified for a global forwarding rule.
+   * Possible string values are:
+   * - "IPV4"
+   * - "IPV6"
+   * - "UNSPECIFIED_VERSION"
+   */
+  core.String ipVersion;
   /**
    * [Output Only] Type of the resource. Always compute#forwardingRule for
    * Forwarding Rule resources.
@@ -21306,7 +22433,8 @@ class ForwardingRule {
    * Some types of forwarding target have constraints on the acceptable ports:
    * - TargetHttpProxy: 80, 8080
    * - TargetHttpsProxy: 443
-   * - TargetSslProxy: 443
+   * - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995
+   * - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995
    * - TargetVpnGateway: 500, 4500
    * -
    */
@@ -21373,6 +22501,9 @@ class ForwardingRule {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
+    if (_json.containsKey("ipVersion")) {
+      ipVersion = _json["ipVersion"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -21405,8 +22536,8 @@ class ForwardingRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (IPAddress != null) {
       _json["IPAddress"] = IPAddress;
     }
@@ -21424,6 +22555,9 @@ class ForwardingRule {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (ipVersion != null) {
+      _json["ipVersion"] = ipVersion;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -21490,7 +22624,7 @@ class ForwardingRuleAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new ForwardingRulesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, ForwardingRulesScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new ForwardingRulesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -21503,13 +22637,13 @@ class ForwardingRuleAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<ForwardingRulesScopedList, core.Map<core.String, core.Object>>(items, (ForwardingRulesScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -21563,8 +22697,8 @@ class ForwardingRuleList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -21609,8 +22743,8 @@ class ForwardingRulesScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -21672,8 +22806,8 @@ class ForwardingRulesScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -21707,13 +22841,63 @@ class ForwardingRulesScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (forwardingRules != null) {
       _json["forwardingRules"] = forwardingRules.map((value) => (value).toJson()).toList();
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class GlobalSetLabelsRequest {
+  /**
+   * The fingerprint of the previous set of labels for this resource, used to
+   * detect conflicts. The fingerprint is initially generated by Compute Engine
+   * and changes after every request to modify or update labels. You must always
+   * provide an up-to-date fingerprint hash when updating or changing labels.
+   * Make a get() request to the resource to get the latest fingerprint.
+   */
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes {
+    return convert.BASE64.decode(labelFingerprint);
+  }
+
+  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
+   * A list of labels to apply for this resource. Each label key & value must
+   * comply with RFC1035. Specifically, the name must be 1-63 characters long
+   * and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the
+   * first character must be a lowercase letter, and all following characters
+   * must be a dash, lowercase letter, or digit, except the last character,
+   * which cannot be a dash. For example, "webserver-frontend": "images". A
+   * label value can also be empty (e.g. "my-label": "").
+   */
+  core.Map<core.String, core.String> labels;
+
+  GlobalSetLabelsRequest();
+
+  GlobalSetLabelsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("labelFingerprint")) {
+      labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (labelFingerprint != null) {
+      _json["labelFingerprint"] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     return _json;
   }
@@ -21742,8 +22926,8 @@ class GuestOsFeature {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -21801,8 +22985,8 @@ class HTTPHealthCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (host != null) {
       _json["host"] = host;
     }
@@ -21872,8 +23056,8 @@ class HTTPSHealthCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (host != null) {
       _json["host"] = host;
     }
@@ -22013,8 +23197,8 @@ class HealthCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (checkIntervalSec != null) {
       _json["checkIntervalSec"] = checkIntervalSec;
     }
@@ -22106,8 +23290,8 @@ class HealthCheckList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -22146,8 +23330,8 @@ class HealthCheckReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (healthCheck != null) {
       _json["healthCheck"] = healthCheck;
     }
@@ -22187,8 +23371,8 @@ class HealthStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (healthState != null) {
       _json["healthState"] = healthState;
     }
@@ -22241,8 +23425,8 @@ class HostRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -22371,8 +23555,8 @@ class HttpHealthCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (checkIntervalSec != null) {
       _json["checkIntervalSec"] = checkIntervalSec;
     }
@@ -22457,8 +23641,8 @@ class HttpHealthCheckList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -22591,8 +23775,8 @@ class HttpsHealthCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (checkIntervalSec != null) {
       _json["checkIntervalSec"] = checkIntervalSec;
     }
@@ -22677,8 +23861,8 @@ class HttpsHealthCheckList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -22733,8 +23917,8 @@ class ImageRawDisk {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (containerType != null) {
       _json["containerType"] = containerType;
     }
@@ -22807,6 +23991,28 @@ class Image {
   CustomerEncryptionKey imageEncryptionKey;
   /** [Output Only] Type of the resource. Always compute#image for images. */
   core.String kind;
+  /**
+   * A fingerprint for the labels being applied to this image, which is
+   * essentially a hash of the labels used for optimistic locking. The
+   * fingerprint is initially generated by Compute Engine and changes after
+   * every request to modify or update labels. You must always provide an
+   * up-to-date fingerprint hash in order to update or change labels.
+   *
+   * To see the latest fingerprint, make a get() request to retrieve an image.
+   */
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes {
+    return convert.BASE64.decode(labelFingerprint);
+  }
+
+  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
+   * Labels to apply to this image. These can be later modified by the setLabels
+   * method.
+   */
+  core.Map<core.String, core.String> labels;
   /** Any applicable license URI. */
   core.List<core.String> licenses;
   /**
@@ -22897,6 +24103,12 @@ class Image {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labelFingerprint")) {
+      labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("licenses")) {
       licenses = _json["licenses"];
     }
@@ -22926,8 +24138,8 @@ class Image {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (archiveSizeBytes != null) {
       _json["archiveSizeBytes"] = archiveSizeBytes;
     }
@@ -22957,6 +24169,12 @@ class Image {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labelFingerprint != null) {
+      _json["labelFingerprint"] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (licenses != null) {
       _json["licenses"] = licenses;
@@ -23031,8 +24249,8 @@ class ImageList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -23084,6 +24302,28 @@ class Instance {
    * [Output Only] Type of the resource. Always compute#instance for instances.
    */
   core.String kind;
+  /**
+   * A fingerprint for this request, which is essentially a hash of the
+   * metadata's contents and used for optimistic locking. The fingerprint is
+   * initially generated by Compute Engine and changes after every request to
+   * modify or update metadata. You must always provide an up-to-date
+   * fingerprint hash in order to update or change metadata.
+   *
+   * To see the latest fingerprint, make get() request to the instance.
+   */
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes {
+    return convert.BASE64.decode(labelFingerprint);
+  }
+
+  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
+   * Labels to apply to this instance. These can be later modified by the
+   * setLabels method.
+   */
+  core.Map<core.String, core.String> labels;
   /**
    * Full or partial URL of the machine type resource to use for this instance,
    * in the format: zones/zone/machineTypes/machine-type. This is provided by
@@ -23141,6 +24381,11 @@ class Instance {
    */
   core.List<ServiceAccount> serviceAccounts;
   /**
+   * [Output Only] Whether a VM has been restricted for start because Compute
+   * Engine has detected suspicious activity.
+   */
+  core.bool startRestricted;
+  /**
    * [Output Only] The status of the instance. One of the following values:
    * PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
    * TERMINATED.
@@ -23191,6 +24436,12 @@ class Instance {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labelFingerprint")) {
+      labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
     }
@@ -23212,6 +24463,9 @@ class Instance {
     if (_json.containsKey("serviceAccounts")) {
       serviceAccounts = _json["serviceAccounts"].map((value) => new ServiceAccount.fromJson(value)).toList();
     }
+    if (_json.containsKey("startRestricted")) {
+      startRestricted = _json["startRestricted"];
+    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
@@ -23226,8 +24480,8 @@ class Instance {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (canIpForward != null) {
       _json["canIpForward"] = canIpForward;
     }
@@ -23249,6 +24503,12 @@ class Instance {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (labelFingerprint != null) {
+      _json["labelFingerprint"] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (machineType != null) {
       _json["machineType"] = machineType;
     }
@@ -23269,6 +24529,9 @@ class Instance {
     }
     if (serviceAccounts != null) {
       _json["serviceAccounts"] = serviceAccounts.map((value) => (value).toJson()).toList();
+    }
+    if (startRestricted != null) {
+      _json["startRestricted"] = startRestricted;
     }
     if (status != null) {
       _json["status"] = status;
@@ -23317,7 +24580,7 @@ class InstanceAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new InstancesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, InstancesScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new InstancesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -23330,13 +24593,13 @@ class InstanceAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<InstancesScopedList, core.Map<core.String, core.Object>>(items, (InstancesScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -23471,8 +24734,8 @@ class InstanceGroup {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -23551,7 +24814,7 @@ class InstanceGroupAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new InstanceGroupsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, InstanceGroupsScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new InstanceGroupsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -23564,13 +24827,13 @@ class InstanceGroupAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<InstanceGroupsScopedList, core.Map<core.String, core.Object>>(items, (InstanceGroupsScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -23633,8 +24896,8 @@ class InstanceGroupList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -23799,8 +25062,8 @@ class InstanceGroupManager {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (baseInstanceName != null) {
       _json["baseInstanceName"] = baseInstanceName;
     }
@@ -23936,8 +25199,8 @@ class InstanceGroupManagerActionsSummary {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (abandoning != null) {
       _json["abandoning"] = abandoning;
     }
@@ -24001,7 +25264,7 @@ class InstanceGroupManagerAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new InstanceGroupManagersScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, InstanceGroupManagersScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new InstanceGroupManagersScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -24014,13 +25277,13 @@ class InstanceGroupManagerAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<InstanceGroupManagersScopedList, core.Map<core.String, core.Object>>(items, (InstanceGroupManagersScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -24080,8 +25343,8 @@ class InstanceGroupManagerList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -24116,8 +25379,8 @@ class InstanceGroupManagersAbandonInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -24140,8 +25403,8 @@ class InstanceGroupManagersDeleteInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -24161,8 +25424,8 @@ class InstanceGroupManagersListManagedInstancesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (managedInstances != null) {
       _json["managedInstances"] = managedInstances.map((value) => (value).toJson()).toList();
     }
@@ -24185,8 +25448,8 @@ class InstanceGroupManagersRecreateInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -24219,8 +25482,8 @@ class InstanceGroupManagersScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -24282,8 +25545,8 @@ class InstanceGroupManagersScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -24320,8 +25583,8 @@ class InstanceGroupManagersScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceGroupManagers != null) {
       _json["instanceGroupManagers"] = instanceGroupManagers.map((value) => (value).toJson()).toList();
     }
@@ -24348,8 +25611,8 @@ class InstanceGroupManagersSetInstanceTemplateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceTemplate != null) {
       _json["instanceTemplate"] = instanceTemplate;
     }
@@ -24392,8 +25655,8 @@ class InstanceGroupManagersSetTargetPoolsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
@@ -24416,8 +25679,8 @@ class InstanceGroupsAddInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances.map((value) => (value).toJson()).toList();
     }
@@ -24476,8 +25739,8 @@ class InstanceGroupsListInstances {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -24516,8 +25779,8 @@ class InstanceGroupsListInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceState != null) {
       _json["instanceState"] = instanceState;
     }
@@ -24537,8 +25800,8 @@ class InstanceGroupsRemoveInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances.map((value) => (value).toJson()).toList();
     }
@@ -24571,8 +25834,8 @@ class InstanceGroupsScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -24634,8 +25897,8 @@ class InstanceGroupsScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -24671,8 +25934,8 @@ class InstanceGroupsScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceGroups != null) {
       _json["instanceGroups"] = instanceGroups.map((value) => (value).toJson()).toList();
     }
@@ -24714,8 +25977,8 @@ class InstanceGroupsSetNamedPortsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
@@ -24771,8 +26034,8 @@ class InstanceList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -24822,8 +26085,8 @@ class InstanceMoveRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (destinationZone != null) {
       _json["destinationZone"] = destinationZone;
     }
@@ -24841,7 +26104,7 @@ class InstanceProperties {
    * destination IP addresses other than their own. If these instances will be
    * used as an IP gateway or it will be set as the next-hop in a Route
    * resource, specify true. If unsure, leave this set to false. See the Enable
-   * IP forwarding for instances documentation for more information.
+   * IP forwarding documentation for more information.
    */
   core.bool canIpForward;
   /**
@@ -24854,6 +26117,8 @@ class InstanceProperties {
    * from this template.
    */
   core.List<AttachedDisk> disks;
+  /** Labels to apply to instances that are created from this template. */
+  core.Map<core.String, core.String> labels;
   /**
    * The machine type to use for instances that are created from this template.
    */
@@ -24898,6 +26163,9 @@ class InstanceProperties {
     if (_json.containsKey("disks")) {
       disks = _json["disks"].map((value) => new AttachedDisk.fromJson(value)).toList();
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
     }
@@ -24918,8 +26186,8 @@ class InstanceProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (canIpForward != null) {
       _json["canIpForward"] = canIpForward;
     }
@@ -24928,6 +26196,9 @@ class InstanceProperties {
     }
     if (disks != null) {
       _json["disks"] = disks.map((value) => (value).toJson()).toList();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (machineType != null) {
       _json["machineType"] = machineType;
@@ -24963,8 +26234,8 @@ class InstanceReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instance != null) {
       _json["instance"] = instance;
     }
@@ -25038,8 +26309,8 @@ class InstanceTemplate {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -25113,8 +26384,8 @@ class InstanceTemplateList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -25167,8 +26438,8 @@ class InstanceWithNamedPorts {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instance != null) {
       _json["instance"] = instance;
     }
@@ -25207,8 +26478,8 @@ class InstancesScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -25270,8 +26541,8 @@ class InstancesScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -25305,13 +26576,52 @@ class InstancesScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances.map((value) => (value).toJson()).toList();
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class InstancesSetLabelsRequest {
+  /**
+   * Fingerprint of the previous set of labels for this resource, used to
+   * prevent conflicts. Provide the latest fingerprint value when making a
+   * request to add or change labels.
+   */
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes {
+    return convert.BASE64.decode(labelFingerprint);
+  }
+
+  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  core.Map<core.String, core.String> labels;
+
+  InstancesSetLabelsRequest();
+
+  InstancesSetLabelsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("labelFingerprint")) {
+      labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (labelFingerprint != null) {
+      _json["labelFingerprint"] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     return _json;
   }
@@ -25333,8 +26643,8 @@ class InstancesSetMachineTypeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (machineType != null) {
       _json["machineType"] = machineType;
     }
@@ -25359,8 +26669,8 @@ class InstancesSetServiceAccountRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (email != null) {
       _json["email"] = email;
     }
@@ -25392,8 +26702,8 @@ class InstancesStartWithEncryptionKeyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (disks != null) {
       _json["disks"] = disks.map((value) => (value).toJson()).toList();
     }
@@ -25404,8 +26714,8 @@ class InstancesStartWithEncryptionKeyRequest {
 /** A license resource. */
 class License {
   /**
-   * [Output Only] If true, the customer will be charged license fee for running
-   * software that contains this license on an instance.
+   * [Output Only] Deprecated. This field no longer reflects whether a license
+   * charges a usage fee.
    */
   core.bool chargesUseFee;
   /** [Output Only] Type of resource. Always compute#license for licenses. */
@@ -25435,8 +26745,8 @@ class License {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (chargesUseFee != null) {
       _json["chargesUseFee"] = chargesUseFee;
     }
@@ -25465,8 +26775,8 @@ class MachineTypeScratchDisks {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (diskGb != null) {
       _json["diskGb"] = diskGb;
     }
@@ -25580,8 +26890,8 @@ class MachineType {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -25662,7 +26972,7 @@ class MachineTypeAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new MachineTypesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, MachineTypesScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new MachineTypesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -25675,13 +26985,13 @@ class MachineTypeAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<MachineTypesScopedList, core.Map<core.String, core.Object>>(items, (MachineTypesScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -25741,8 +27051,8 @@ class MachineTypeList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -25787,8 +27097,8 @@ class MachineTypesScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -25850,8 +27160,8 @@ class MachineTypesScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -25885,8 +27195,8 @@ class MachineTypesScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (machineTypes != null) {
       _json["machineTypes"] = machineTypes.map((value) => (value).toJson()).toList();
     }
@@ -25981,8 +27291,8 @@ class ManagedInstance {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currentAction != null) {
       _json["currentAction"] = currentAction;
     }
@@ -26027,8 +27337,8 @@ class ManagedInstanceLastAttemptErrorsErrors {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -26061,8 +27371,8 @@ class ManagedInstanceLastAttemptErrors {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errors != null) {
       _json["errors"] = errors.map((value) => (value).toJson()).toList();
     }
@@ -26085,8 +27395,8 @@ class ManagedInstanceLastAttempt {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errors != null) {
       _json["errors"] = (errors).toJson();
     }
@@ -26121,8 +27431,8 @@ class MetadataItems {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -26174,8 +27484,8 @@ class Metadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
@@ -26210,8 +27520,8 @@ class NamedPort {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -26273,6 +27583,8 @@ class Network {
    * dash.
    */
   core.String name;
+  /** [Output Only] List of network peerings for the resource. */
+  core.List<NetworkPeering> peerings;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
@@ -26308,6 +27620,9 @@ class Network {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("peerings")) {
+      peerings = _json["peerings"].map((value) => new NetworkPeering.fromJson(value)).toList();
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -26316,8 +27631,8 @@ class Network {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (IPv4Range != null) {
       _json["IPv4Range"] = IPv4Range;
     }
@@ -26341,6 +27656,9 @@ class Network {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (peerings != null) {
+      _json["peerings"] = peerings.map((value) => (value).toJson()).toList();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -26430,8 +27748,8 @@ class NetworkInterface {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accessConfigs != null) {
       _json["accessConfigs"] = accessConfigs.map((value) => (value).toJson()).toList();
     }
@@ -26499,8 +27817,8 @@ class NetworkList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -26515,6 +27833,149 @@ class NetworkList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A network peering attached to a network resource. The message includes the
+ * peering name, peer network, peering state, and a flag indicating whether
+ * Google Compute Engine should automatically create routes for the peering.
+ */
+class NetworkPeering {
+  /**
+   * Whether full mesh connectivity is created and managed automatically. When
+   * it is set to true, Google Compute Engine will automatically create and
+   * manage the routes between two networks when the state is ACTIVE. Otherwise,
+   * user needs to create routes manually to route packets to peer network.
+   */
+  core.bool autoCreateRoutes;
+  /**
+   * Name of this peering. Provided by the client when the peering is created.
+   * The name must comply with RFC1035. Specifically, the name must be 1-63
+   * characters long and match regular expression [a-z]([-a-z0-9]*[a-z0-9])?
+   * which means the first character must be a lowercase letter, and all the
+   * following characters must be a dash, lowercase letter, or digit, except the
+   * last character, which cannot be a dash.
+   */
+  core.String name;
+  /**
+   * The URL of the peer network. It can be either full URL or partial URL. The
+   * peer network may belong to a different project. If the partial URL does not
+   * contain project, it is assumed that the peer network is in the same project
+   * as the current network.
+   */
+  core.String network;
+  /**
+   * [Output Only] State for the peering.
+   * Possible string values are:
+   * - "ACTIVE"
+   * - "INACTIVE"
+   */
+  core.String state;
+  /** [Output Only] Details about the current state of the peering. */
+  core.String stateDetails;
+
+  NetworkPeering();
+
+  NetworkPeering.fromJson(core.Map _json) {
+    if (_json.containsKey("autoCreateRoutes")) {
+      autoCreateRoutes = _json["autoCreateRoutes"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("stateDetails")) {
+      stateDetails = _json["stateDetails"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (autoCreateRoutes != null) {
+      _json["autoCreateRoutes"] = autoCreateRoutes;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (stateDetails != null) {
+      _json["stateDetails"] = stateDetails;
+    }
+    return _json;
+  }
+}
+
+class NetworksAddPeeringRequest {
+  /** Whether Google Compute Engine manages the routes automatically. */
+  core.bool autoCreateRoutes;
+  /** Name of the peering, which should conform to RFC1035. */
+  core.String name;
+  /**
+   * URL of the peer network. It can be either full URL or partial URL. The peer
+   * network may belong to a different project. If the partial URL does not
+   * contain project, it is assumed that the peer network is in the same project
+   * as the current network.
+   */
+  core.String peerNetwork;
+
+  NetworksAddPeeringRequest();
+
+  NetworksAddPeeringRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("autoCreateRoutes")) {
+      autoCreateRoutes = _json["autoCreateRoutes"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("peerNetwork")) {
+      peerNetwork = _json["peerNetwork"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (autoCreateRoutes != null) {
+      _json["autoCreateRoutes"] = autoCreateRoutes;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (peerNetwork != null) {
+      _json["peerNetwork"] = peerNetwork;
+    }
+    return _json;
+  }
+}
+
+class NetworksRemovePeeringRequest {
+  /** Name of the peering, which should conform to RFC1035. */
+  core.String name;
+
+  NetworksRemovePeeringRequest();
+
+  NetworksRemovePeeringRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -26545,8 +28006,8 @@ class OperationErrorErrors {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -26579,8 +28040,8 @@ class OperationError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errors != null) {
       _json["errors"] = errors.map((value) => (value).toJson()).toList();
     }
@@ -26613,8 +28074,8 @@ class OperationWarningsData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -26672,8 +28133,8 @@ class OperationWarnings {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -26876,8 +28337,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clientOperationId != null) {
       _json["clientOperationId"] = clientOperationId;
     }
@@ -26982,7 +28443,7 @@ class OperationAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new OperationsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, OperationsScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new OperationsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -26995,13 +28456,13 @@ class OperationAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<OperationsScopedList, core.Map<core.String, core.Object>>(items, (OperationsScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -27061,8 +28522,8 @@ class OperationList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -27107,8 +28568,8 @@ class OperationsScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -27170,8 +28631,8 @@ class OperationsScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -27205,8 +28666,8 @@ class OperationsScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operations != null) {
       _json["operations"] = operations.map((value) => (value).toJson()).toList();
     }
@@ -27261,8 +28722,8 @@ class PathMatcher {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (defaultService != null) {
       _json["defaultService"] = defaultService;
     }
@@ -27305,8 +28766,8 @@ class PathRule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (paths != null) {
       _json["paths"] = paths;
     }
@@ -27361,6 +28822,14 @@ class Project {
    * bucket where they are stored.
    */
   UsageExportLocation usageExportLocation;
+  /**
+   * [Output Only] The role this project has in a Cross Project Network (XPN)
+   * configuration. Currently only HOST projects are differentiated.
+   * Possible string values are:
+   * - "HOST"
+   * - "UNSPECIFIED_XPN_PROJECT_STATUS"
+   */
+  core.String xpnProjectStatus;
 
   Project();
 
@@ -27398,10 +28867,13 @@ class Project {
     if (_json.containsKey("usageExportLocation")) {
       usageExportLocation = new UsageExportLocation.fromJson(_json["usageExportLocation"]);
     }
+    if (_json.containsKey("xpnProjectStatus")) {
+      xpnProjectStatus = _json["xpnProjectStatus"];
+    }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (commonInstanceMetadata != null) {
       _json["commonInstanceMetadata"] = (commonInstanceMetadata).toJson();
     }
@@ -27435,6 +28907,122 @@ class Project {
     if (usageExportLocation != null) {
       _json["usageExportLocation"] = (usageExportLocation).toJson();
     }
+    if (xpnProjectStatus != null) {
+      _json["xpnProjectStatus"] = xpnProjectStatus;
+    }
+    return _json;
+  }
+}
+
+class ProjectsDisableXpnResourceRequest {
+  /** XPN resource ID. */
+  XpnResourceId xpnResource;
+
+  ProjectsDisableXpnResourceRequest();
+
+  ProjectsDisableXpnResourceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("xpnResource")) {
+      xpnResource = new XpnResourceId.fromJson(_json["xpnResource"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (xpnResource != null) {
+      _json["xpnResource"] = (xpnResource).toJson();
+    }
+    return _json;
+  }
+}
+
+class ProjectsEnableXpnResourceRequest {
+  /** XPN resource ID. */
+  XpnResourceId xpnResource;
+
+  ProjectsEnableXpnResourceRequest();
+
+  ProjectsEnableXpnResourceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("xpnResource")) {
+      xpnResource = new XpnResourceId.fromJson(_json["xpnResource"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (xpnResource != null) {
+      _json["xpnResource"] = (xpnResource).toJson();
+    }
+    return _json;
+  }
+}
+
+class ProjectsGetXpnResources {
+  /**
+   * [Output Only] Type of resource. Always compute#projectsGetXpnResources for
+   * lists of XPN resources.
+   */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** XPN resources attached to this project as their XPN host. */
+  core.List<XpnResourceId> resources;
+
+  ProjectsGetXpnResources();
+
+  ProjectsGetXpnResources.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("resources")) {
+      resources = _json["resources"].map((value) => new XpnResourceId.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ProjectsListXpnHostsRequest {
+  /**
+   * Optional organization ID managed by Cloud Resource Manager, for which to
+   * list XPN host projects. If not specified, the organization will be inferred
+   * from the project.
+   */
+  core.String organization;
+
+  ProjectsListXpnHostsRequest();
+
+  ProjectsListXpnHostsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("organization")) {
+      organization = _json["organization"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (organization != null) {
+      _json["organization"] = organization;
+    }
     return _json;
   }
 }
@@ -27463,6 +29051,7 @@ class Quota {
    * - "IN_USE_ADDRESSES"
    * - "LOCAL_SSD_TOTAL_GB"
    * - "NETWORKS"
+   * - "NVIDIA_K80_GPUS"
    * - "PREEMPTIBLE_CPUS"
    * - "REGIONAL_AUTOSCALERS"
    * - "REGIONAL_INSTANCE_GROUP_MANAGERS"
@@ -27500,8 +29089,8 @@ class Quota {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (limit != null) {
       _json["limit"] = limit;
     }
@@ -27584,8 +29173,8 @@ class Region {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -27656,8 +29245,8 @@ class RegionAutoscalerList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -27722,8 +29311,8 @@ class RegionInstanceGroupList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -27786,8 +29375,8 @@ class RegionInstanceGroupManagerList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -27822,8 +29411,8 @@ class RegionInstanceGroupManagersAbandonInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -27846,8 +29435,8 @@ class RegionInstanceGroupManagersDeleteInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -27867,8 +29456,8 @@ class RegionInstanceGroupManagersListInstancesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (managedInstances != null) {
       _json["managedInstances"] = managedInstances.map((value) => (value).toJson()).toList();
     }
@@ -27891,8 +29480,8 @@ class RegionInstanceGroupManagersRecreateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -27932,8 +29521,8 @@ class RegionInstanceGroupManagersSetTargetPoolsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
@@ -27959,8 +29548,8 @@ class RegionInstanceGroupManagersSetTemplateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceTemplate != null) {
       _json["instanceTemplate"] = instanceTemplate;
     }
@@ -28011,8 +29600,8 @@ class RegionInstanceGroupsListInstances {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -28059,8 +29648,8 @@ class RegionInstanceGroupsListInstancesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceState != null) {
       _json["instanceState"] = instanceState;
     }
@@ -28102,8 +29691,8 @@ class RegionInstanceGroupsSetNamedPortsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
@@ -28159,8 +29748,8 @@ class RegionList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -28194,8 +29783,8 @@ class ResourceGroupReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (group != null) {
       _json["group"] = group;
     }
@@ -28228,8 +29817,8 @@ class RouteWarningsData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -28287,8 +29876,8 @@ class RouteWarnings {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -28307,7 +29896,7 @@ class RouteWarnings {
  * handled by the network. Routes are associated with instances by tags and the
  * set of routes for a particular instance is called its routing table.
  *
- * For each packet leaving a instance, the system searches that instance's
+ * For each packet leaving an instance, the system searches that instance's
  * routing table for a single best matching route. Routes match packets by
  * destination IP address, preferring smaller or more specific ranges over
  * larger ones. If there is a tie, the system selects the route with the
@@ -28374,6 +29963,11 @@ class Route {
   core.String nextHopIp;
   /** The URL of the local network if it should handle matching packets. */
   core.String nextHopNetwork;
+  /**
+   * [Output Only] The network peering name that should handle matching packets,
+   * which should conform to RFC1035.
+   */
+  core.String nextHopPeering;
   /** The URL to a VpnTunnel that should handle matching packets. */
   core.String nextHopVpnTunnel;
   /**
@@ -28429,6 +30023,9 @@ class Route {
     if (_json.containsKey("nextHopNetwork")) {
       nextHopNetwork = _json["nextHopNetwork"];
     }
+    if (_json.containsKey("nextHopPeering")) {
+      nextHopPeering = _json["nextHopPeering"];
+    }
     if (_json.containsKey("nextHopVpnTunnel")) {
       nextHopVpnTunnel = _json["nextHopVpnTunnel"];
     }
@@ -28446,8 +30043,8 @@ class Route {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -28480,6 +30077,9 @@ class Route {
     }
     if (nextHopNetwork != null) {
       _json["nextHopNetwork"] = nextHopNetwork;
+    }
+    if (nextHopPeering != null) {
+      _json["nextHopPeering"] = nextHopPeering;
     }
     if (nextHopVpnTunnel != null) {
       _json["nextHopVpnTunnel"] = nextHopVpnTunnel;
@@ -28541,8 +30141,8 @@ class RouteList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -28647,8 +30247,8 @@ class Router {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bgp != null) {
       _json["bgp"] = (bgp).toJson();
     }
@@ -28715,7 +30315,7 @@ class RouterAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new RoutersScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, RoutersScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new RoutersScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -28728,13 +30328,13 @@ class RouterAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<RoutersScopedList, core.Map<core.String, core.Object>>(items, (RoutersScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -28765,8 +30365,8 @@ class RouterBgp {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (asn != null) {
       _json["asn"] = asn;
     }
@@ -28827,8 +30427,8 @@ class RouterBgpPeer {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (advertisedRoutePriority != null) {
       _json["advertisedRoutePriority"] = advertisedRoutePriority;
     }
@@ -28885,8 +30485,8 @@ class RouterInterface {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ipRange != null) {
       _json["ipRange"] = ipRange;
     }
@@ -28942,8 +30542,8 @@ class RouterList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -28989,8 +30589,8 @@ class RouterStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bestRoutes != null) {
       _json["bestRoutes"] = bestRoutes.map((value) => (value).toJson()).toList();
     }
@@ -29073,8 +30673,8 @@ class RouterStatusBgpPeerStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (advertisedRoutes != null) {
       _json["advertisedRoutes"] = advertisedRoutes.map((value) => (value).toJson()).toList();
     }
@@ -29125,8 +30725,8 @@ class RouterStatusResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -29149,8 +30749,8 @@ class RoutersPreviewResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (resource != null) {
       _json["resource"] = (resource).toJson();
     }
@@ -29183,8 +30783,8 @@ class RoutersScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -29246,8 +30846,8 @@ class RoutersScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -29281,8 +30881,8 @@ class RoutersScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (routers != null) {
       _json["routers"] = routers.map((value) => (value).toJson()).toList();
     }
@@ -29346,8 +30946,8 @@ class SSLHealthCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (port != null) {
       _json["port"] = port;
     }
@@ -29410,8 +31010,8 @@ class Scheduling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (automaticRestart != null) {
       _json["automaticRestart"] = automaticRestart;
     }
@@ -29469,8 +31069,8 @@ class SerialPortOutput {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contents != null) {
       _json["contents"] = contents;
     }
@@ -29508,8 +31108,8 @@ class ServiceAccount {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (email != null) {
       _json["email"] = email;
     }
@@ -29541,6 +31141,28 @@ class Snapshot {
    * resources.
    */
   core.String kind;
+  /**
+   * A fingerprint for the labels being applied to this snapshot, which is
+   * essentially a hash of the labels set used for optimistic locking. The
+   * fingerprint is initially generated by Compute Engine and changes after
+   * every request to modify or update labels. You must always provide an
+   * up-to-date fingerprint hash in order to update or change labels.
+   *
+   * To see the latest fingerprint, make a get() request to retrieve a snapshot.
+   */
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes {
+    return convert.BASE64.decode(labelFingerprint);
+  }
+
+  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
+   * Labels to apply to this snapshot. These can be later modified by the
+   * setLabels method. Label values may be empty.
+   */
+  core.Map<core.String, core.String> labels;
   /**
    * [Output Only] A list of public visible licenses that apply to this
    * snapshot. This can be because the original image had licenses attached
@@ -29634,6 +31256,12 @@ class Snapshot {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labelFingerprint")) {
+      labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("licenses")) {
       licenses = _json["licenses"];
     }
@@ -29666,8 +31294,8 @@ class Snapshot {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -29682,6 +31310,12 @@ class Snapshot {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labelFingerprint != null) {
+      _json["labelFingerprint"] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (licenses != null) {
       _json["licenses"] = licenses;
@@ -29759,8 +31393,8 @@ class SnapshotList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -29856,8 +31490,8 @@ class SslCertificate {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (certificate != null) {
       _json["certificate"] = certificate;
     }
@@ -29927,8 +31561,8 @@ class SslCertificateList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -29954,12 +31588,13 @@ class Subnetwork {
   core.String creationTimestamp;
   /**
    * An optional description of this resource. Provide this property when you
-   * create the resource.
+   * create the resource. This field can be set only at resource creation time.
    */
   core.String description;
   /**
    * [Output Only] The gateway address for default routes to reach destination
-   * addresses outside this subnetwork.
+   * addresses outside this subnetwork. This field can be set only at resource
+   * creation time.
    */
   core.String gatewayAddress;
   /**
@@ -29971,7 +31606,8 @@ class Subnetwork {
    * The range of internal addresses that are owned by this subnetwork. Provide
    * this property when you create the subnetwork. For example, 10.0.0.0/8 or
    * 192.168.0.0/16. Ranges must be unique and non-overlapping within a network.
-   * Only IPv4 is supported.
+   * Only IPv4 is supported. This field can be set only at resource creation
+   * time.
    */
   core.String ipCidrRange;
   /**
@@ -29992,15 +31628,20 @@ class Subnetwork {
   /**
    * The URL of the network to which this subnetwork belongs, provided by the
    * client when initially creating the subnetwork. Only networks that are in
-   * the distributed mode can have subnetworks.
+   * the distributed mode can have subnetworks. This field can be set only at
+   * resource creation time.
    */
   core.String network;
   /**
    * Whether the VMs in this subnet can access Google services without assigned
-   * external IP addresses.
+   * external IP addresses. This field can be both set at resource creation time
+   * and updated using setPrivateIpGoogleAccess.
    */
   core.bool privateIpGoogleAccess;
-  /** URL of the region where the Subnetwork resides. */
+  /**
+   * URL of the region where the Subnetwork resides. This field can be set only
+   * at resource creation time.
+   */
   core.String region;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
@@ -30043,8 +31684,8 @@ class Subnetwork {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -30113,7 +31754,7 @@ class SubnetworkAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new SubnetworksScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, SubnetworksScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new SubnetworksScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -30126,13 +31767,13 @@ class SubnetworkAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<SubnetworksScopedList, core.Map<core.String, core.Object>>(items, (SubnetworksScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -30192,8 +31833,8 @@ class SubnetworkList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -30230,8 +31871,8 @@ class SubnetworksExpandIpCidrRangeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ipCidrRange != null) {
       _json["ipCidrRange"] = ipCidrRange;
     }
@@ -30264,8 +31905,8 @@ class SubnetworksScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -30326,8 +31967,8 @@ class SubnetworksScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -30360,8 +32001,8 @@ class SubnetworksScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (subnetworks != null) {
       _json["subnetworks"] = subnetworks.map((value) => (value).toJson()).toList();
     }
@@ -30383,8 +32024,8 @@ class SubnetworksSetPrivateIpGoogleAccessRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (privateIpGoogleAccess != null) {
       _json["privateIpGoogleAccess"] = privateIpGoogleAccess;
     }
@@ -30445,8 +32086,8 @@ class TCPHealthCheck {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (port != null) {
       _json["port"] = port;
     }
@@ -30502,8 +32143,8 @@ class Tags {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
@@ -30577,8 +32218,8 @@ class TargetHttpProxy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -30649,8 +32290,8 @@ class TargetHttpProxyList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -30685,8 +32326,8 @@ class TargetHttpsProxiesSetSslCertificatesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sslCertificates != null) {
       _json["sslCertificates"] = sslCertificates;
     }
@@ -30770,8 +32411,8 @@ class TargetHttpsProxy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -30845,8 +32486,8 @@ class TargetHttpsProxyList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -30953,8 +32594,8 @@ class TargetInstance {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -31013,7 +32654,7 @@ class TargetInstanceAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new TargetInstancesScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, TargetInstancesScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new TargetInstancesScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -31026,13 +32667,13 @@ class TargetInstanceAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<TargetInstancesScopedList, core.Map<core.String, core.Object>>(items, (TargetInstancesScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -31089,8 +32730,8 @@ class TargetInstanceList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -31135,8 +32776,8 @@ class TargetInstancesScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -31198,8 +32839,8 @@ class TargetInstancesScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -31233,8 +32874,8 @@ class TargetInstancesScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (targetInstances != null) {
       _json["targetInstances"] = targetInstances.map((value) => (value).toJson()).toList();
     }
@@ -31385,8 +33026,8 @@ class TargetPool {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (backupPool != null) {
       _json["backupPool"] = backupPool;
     }
@@ -31457,7 +33098,7 @@ class TargetPoolAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new TargetPoolsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, TargetPoolsScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new TargetPoolsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -31470,13 +33111,13 @@ class TargetPoolAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<TargetPoolsScopedList, core.Map<core.String, core.Object>>(items, (TargetPoolsScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -31510,8 +33151,8 @@ class TargetPoolInstanceHealth {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (healthStatus != null) {
       _json["healthStatus"] = healthStatus.map((value) => (value).toJson()).toList();
     }
@@ -31566,8 +33207,8 @@ class TargetPoolList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -31599,8 +33240,8 @@ class TargetPoolsAddHealthCheckRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (healthChecks != null) {
       _json["healthChecks"] = healthChecks.map((value) => (value).toJson()).toList();
     }
@@ -31627,8 +33268,8 @@ class TargetPoolsAddInstanceRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances.map((value) => (value).toJson()).toList();
     }
@@ -31655,8 +33296,8 @@ class TargetPoolsRemoveHealthCheckRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (healthChecks != null) {
       _json["healthChecks"] = healthChecks.map((value) => (value).toJson()).toList();
     }
@@ -31676,8 +33317,8 @@ class TargetPoolsRemoveInstanceRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instances != null) {
       _json["instances"] = instances.map((value) => (value).toJson()).toList();
     }
@@ -31710,8 +33351,8 @@ class TargetPoolsScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -31773,8 +33414,8 @@ class TargetPoolsScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -31808,8 +33449,8 @@ class TargetPoolsScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (targetPools != null) {
       _json["targetPools"] = targetPools.map((value) => (value).toJson()).toList();
     }
@@ -31831,8 +33472,8 @@ class TargetReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (target != null) {
       _json["target"] = target;
     }
@@ -31852,8 +33493,8 @@ class TargetSslProxiesSetBackendServiceRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (service != null) {
       _json["service"] = service;
     }
@@ -31879,8 +33520,8 @@ class TargetSslProxiesSetProxyHeaderRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (proxyHeader != null) {
       _json["proxyHeader"] = proxyHeader;
     }
@@ -31903,8 +33544,8 @@ class TargetSslProxiesSetSslCertificatesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sslCertificates != null) {
       _json["sslCertificates"] = sslCertificates;
     }
@@ -31991,8 +33632,8 @@ class TargetSslProxy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -32066,8 +33707,220 @@ class TargetSslProxyList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class TargetTcpProxiesSetBackendServiceRequest {
+  /** The URL of the new BackendService resource for the targetTcpProxy. */
+  core.String service;
+
+  TargetTcpProxiesSetBackendServiceRequest();
+
+  TargetTcpProxiesSetBackendServiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+class TargetTcpProxiesSetProxyHeaderRequest {
+  /**
+   * The new type of proxy header to append before sending data to the backend.
+   * NONE or PROXY_V1 are allowed.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+
+  TargetTcpProxiesSetProxyHeaderRequest();
+
+  TargetTcpProxiesSetProxyHeaderRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    return _json;
+  }
+}
+
+/** A TargetTcpProxy resource. This resource defines a TCP proxy. */
+class TargetTcpProxy {
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
+  core.String description;
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /**
+   * [Output Only] Type of the resource. Always compute#targetTcpProxy for
+   * target TCP proxies.
+   */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /**
+   * Specifies the type of proxy header to append before sending data to the
+   * backend, either NONE or PROXY_V1. The default is NONE.
+   * Possible string values are:
+   * - "NONE"
+   * - "PROXY_V1"
+   */
+  core.String proxyHeader;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+  /** URL to the BackendService resource. */
+  core.String service;
+
+  TargetTcpProxy();
+
+  TargetTcpProxy.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of TargetTcpProxy resources. */
+class TargetTcpProxyList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A list of TargetTcpProxy resources. */
+  core.List<TargetTcpProxy> items;
+  /** Type of resource. */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  TargetTcpProxyList();
+
+  TargetTcpProxyList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new TargetTcpProxy.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -32184,8 +34037,8 @@ class TargetVpnGateway {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -32254,7 +34107,7 @@ class TargetVpnGatewayAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new TargetVpnGatewaysScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, TargetVpnGatewaysScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new TargetVpnGatewaysScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -32267,13 +34120,13 @@ class TargetVpnGatewayAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<TargetVpnGatewaysScopedList, core.Map<core.String, core.Object>>(items, (TargetVpnGatewaysScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -32333,8 +34186,8 @@ class TargetVpnGatewayList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -32379,8 +34232,8 @@ class TargetVpnGatewaysScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -32442,8 +34295,8 @@ class TargetVpnGatewaysScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -32477,8 +34330,8 @@ class TargetVpnGatewaysScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (targetVpnGateways != null) {
       _json["targetVpnGateways"] = targetVpnGateways.map((value) => (value).toJson()).toList();
     }
@@ -32512,8 +34365,8 @@ class TestFailure {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (actualService != null) {
       _json["actualService"] = actualService;
     }
@@ -32628,8 +34481,8 @@ class UrlMap {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -32706,8 +34559,8 @@ class UrlMapList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -32738,8 +34591,8 @@ class UrlMapReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (urlMap != null) {
       _json["urlMap"] = urlMap;
     }
@@ -32775,8 +34628,8 @@ class UrlMapTest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -32825,8 +34678,8 @@ class UrlMapValidationResult {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (loadErrors != null) {
       _json["loadErrors"] = loadErrors;
     }
@@ -32855,8 +34708,8 @@ class UrlMapsValidateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (resource != null) {
       _json["resource"] = (resource).toJson();
     }
@@ -32875,8 +34728,8 @@ class UrlMapsValidateResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (result != null) {
       _json["result"] = (result).toJson();
     }
@@ -32918,8 +34771,8 @@ class UsageExportLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
@@ -33070,8 +34923,8 @@ class VpnTunnel {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -33157,7 +35010,7 @@ class VpnTunnelAggregatedList {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = commons.mapMap(_json["items"], (item) => new VpnTunnelsScopedList.fromJson(item));
+      items = commons.mapMap<core.Map<core.String, core.Object>, VpnTunnelsScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new VpnTunnelsScopedList.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -33170,13 +35023,13 @@ class VpnTunnelAggregatedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = commons.mapMap(items, (item) => (item).toJson());
+      _json["items"] = commons.mapMap<VpnTunnelsScopedList, core.Map<core.String, core.Object>>(items, (VpnTunnelsScopedList item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -33235,8 +35088,8 @@ class VpnTunnelList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -33281,8 +35134,8 @@ class VpnTunnelsScopedListWarningData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -33344,8 +35197,8 @@ class VpnTunnelsScopedListWarning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -33379,13 +35232,116 @@ class VpnTunnelsScopedList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (vpnTunnels != null) {
       _json["vpnTunnels"] = vpnTunnels.map((value) => (value).toJson()).toList();
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class XpnHostList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** [Output Only] A list of XPN host project URLs. */
+  core.List<Project> items;
+  /**
+   * [Output Only] Type of resource. Always compute#xpnHostList for lists of XPN
+   * hosts.
+   */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  XpnHostList();
+
+  XpnHostList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Project.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** XpnResourceId */
+class XpnResourceId {
+  /**
+   * The ID of the XPN resource. In the case of projects, this field matches the
+   * project's name, not the canonical ID.
+   */
+  core.String id;
+  /**
+   * The type of the XPN resource.
+   * Possible string values are:
+   * - "PROJECT"
+   * - "XPN_RESOURCE_TYPE_UNSPECIFIED"
+   */
+  core.String type;
+
+  XpnResourceId();
+
+  XpnResourceId.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -33452,8 +35408,8 @@ class Zone {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -33526,8 +35482,8 @@ class ZoneList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -33542,6 +35498,48 @@ class ZoneList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class ZoneSetLabelsRequest {
+  /**
+   * The fingerprint of the previous set of labels for this resource, used to
+   * detect conflicts. The fingerprint is initially generated by Compute Engine
+   * and changes after every request to modify or update labels. You must always
+   * provide an up-to-date fingerprint hash in order to update or change labels.
+   * Make a get() request to the resource to get the latest fingerprint.
+   */
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes {
+    return convert.BASE64.decode(labelFingerprint);
+  }
+
+  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /** The labels to set for this resource. */
+  core.Map<core.String, core.String> labels;
+
+  ZoneSetLabelsRequest();
+
+  ZoneSetLabelsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("labelFingerprint")) {
+      labelFingerprint = _json["labelFingerprint"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (labelFingerprint != null) {
+      _json["labelFingerprint"] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     return _json;
   }

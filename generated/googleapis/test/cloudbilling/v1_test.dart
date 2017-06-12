@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/cloudbilling/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -74,14 +74,14 @@ checkBillingAccount(api.BillingAccount o) {
   buildCounterBillingAccount--;
 }
 
-buildUnnamed37() {
+buildUnnamed39() {
   var o = new core.List<api.BillingAccount>();
   o.add(buildBillingAccount());
   o.add(buildBillingAccount());
   return o;
 }
 
-checkUnnamed37(core.List<api.BillingAccount> o) {
+checkUnnamed39(core.List<api.BillingAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBillingAccount(o[0]);
   checkBillingAccount(o[1]);
@@ -92,7 +92,7 @@ buildListBillingAccountsResponse() {
   var o = new api.ListBillingAccountsResponse();
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    o.billingAccounts = buildUnnamed37();
+    o.billingAccounts = buildUnnamed39();
     o.nextPageToken = "foo";
   }
   buildCounterListBillingAccountsResponse--;
@@ -102,20 +102,20 @@ buildListBillingAccountsResponse() {
 checkListBillingAccountsResponse(api.ListBillingAccountsResponse o) {
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    checkUnnamed37(o.billingAccounts);
+    checkUnnamed39(o.billingAccounts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListBillingAccountsResponse--;
 }
 
-buildUnnamed38() {
+buildUnnamed40() {
   var o = new core.List<api.ProjectBillingInfo>();
   o.add(buildProjectBillingInfo());
   o.add(buildProjectBillingInfo());
   return o;
 }
 
-checkUnnamed38(core.List<api.ProjectBillingInfo> o) {
+checkUnnamed40(core.List<api.ProjectBillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProjectBillingInfo(o[0]);
   checkProjectBillingInfo(o[1]);
@@ -127,7 +127,7 @@ buildListProjectBillingInfoResponse() {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     o.nextPageToken = "foo";
-    o.projectBillingInfo = buildUnnamed38();
+    o.projectBillingInfo = buildUnnamed40();
   }
   buildCounterListProjectBillingInfoResponse--;
   return o;
@@ -137,7 +137,7 @@ checkListProjectBillingInfoResponse(api.ListProjectBillingInfoResponse o) {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed38(o.projectBillingInfo);
+    checkUnnamed40(o.projectBillingInfo);
   }
   buildCounterListProjectBillingInfoResponse--;
 }
@@ -211,7 +211,7 @@ main() {
       var mock = new HttpServerMock();
       api.BillingAccountsResourceApi res = new api.CloudbillingApi(mock).billingAccounts;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -246,7 +246,7 @@ main() {
         var resp = convert.JSON.encode(buildBillingAccount());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync(((api.BillingAccount response) {
+      res.get(arg_name).then(unittest.expectAsync1(((api.BillingAccount response) {
         checkBillingAccount(response);
       })));
     });
@@ -257,7 +257,7 @@ main() {
       api.BillingAccountsResourceApi res = new api.CloudbillingApi(mock).billingAccounts;
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -293,7 +293,7 @@ main() {
         var resp = convert.JSON.encode(buildListBillingAccountsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListBillingAccountsResponse response) {
+      res.list(pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListBillingAccountsResponse response) {
         checkListBillingAccountsResponse(response);
       })));
     });
@@ -309,7 +309,7 @@ main() {
       var arg_name = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -346,7 +346,7 @@ main() {
         var resp = convert.JSON.encode(buildListProjectBillingInfoResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListProjectBillingInfoResponse response) {
+      res.list(arg_name, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListProjectBillingInfoResponse response) {
         checkListProjectBillingInfoResponse(response);
       })));
     });
@@ -360,7 +360,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudbillingApi(mock).projects;
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -395,7 +395,7 @@ main() {
         var resp = convert.JSON.encode(buildProjectBillingInfo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getBillingInfo(arg_name).then(unittest.expectAsync(((api.ProjectBillingInfo response) {
+      res.getBillingInfo(arg_name).then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
         checkProjectBillingInfo(response);
       })));
     });
@@ -406,7 +406,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudbillingApi(mock).projects;
       var arg_request = buildProjectBillingInfo();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ProjectBillingInfo.fromJson(json);
         checkProjectBillingInfo(obj);
 
@@ -444,7 +444,7 @@ main() {
         var resp = convert.JSON.encode(buildProjectBillingInfo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.updateBillingInfo(arg_request, arg_name).then(unittest.expectAsync(((api.ProjectBillingInfo response) {
+      res.updateBillingInfo(arg_request, arg_name).then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
         checkProjectBillingInfo(response);
       })));
     });

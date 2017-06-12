@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/servicecontrol/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -74,27 +74,27 @@ checkAllocateQuotaRequest(api.AllocateQuotaRequest o) {
   buildCounterAllocateQuotaRequest--;
 }
 
-buildUnnamed1546() {
+buildUnnamed1553() {
   var o = new core.List<api.QuotaError>();
   o.add(buildQuotaError());
   o.add(buildQuotaError());
   return o;
 }
 
-checkUnnamed1546(core.List<api.QuotaError> o) {
+checkUnnamed1553(core.List<api.QuotaError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuotaError(o[0]);
   checkQuotaError(o[1]);
 }
 
-buildUnnamed1547() {
+buildUnnamed1554() {
   var o = new core.List<api.MetricValueSet>();
   o.add(buildMetricValueSet());
   o.add(buildMetricValueSet());
   return o;
 }
 
-checkUnnamed1547(core.List<api.MetricValueSet> o) {
+checkUnnamed1554(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricValueSet(o[0]);
   checkMetricValueSet(o[1]);
@@ -105,9 +105,9 @@ buildAllocateQuotaResponse() {
   var o = new api.AllocateQuotaResponse();
   buildCounterAllocateQuotaResponse++;
   if (buildCounterAllocateQuotaResponse < 3) {
-    o.allocateErrors = buildUnnamed1546();
+    o.allocateErrors = buildUnnamed1553();
     o.operationId = "foo";
-    o.quotaMetrics = buildUnnamed1547();
+    o.quotaMetrics = buildUnnamed1554();
     o.serviceConfigId = "foo";
   }
   buildCounterAllocateQuotaResponse--;
@@ -117,61 +117,61 @@ buildAllocateQuotaResponse() {
 checkAllocateQuotaResponse(api.AllocateQuotaResponse o) {
   buildCounterAllocateQuotaResponse++;
   if (buildCounterAllocateQuotaResponse < 3) {
-    checkUnnamed1546(o.allocateErrors);
+    checkUnnamed1553(o.allocateErrors);
     unittest.expect(o.operationId, unittest.equals('foo'));
-    checkUnnamed1547(o.quotaMetrics);
+    checkUnnamed1554(o.quotaMetrics);
     unittest.expect(o.serviceConfigId, unittest.equals('foo'));
   }
   buildCounterAllocateQuotaResponse--;
 }
 
-buildUnnamed1548() {
+buildUnnamed1555() {
   var o = new core.List<api.AuthorizationInfo>();
   o.add(buildAuthorizationInfo());
   o.add(buildAuthorizationInfo());
   return o;
 }
 
-checkUnnamed1548(core.List<api.AuthorizationInfo> o) {
+checkUnnamed1555(core.List<api.AuthorizationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthorizationInfo(o[0]);
   checkAuthorizationInfo(o[1]);
 }
 
-buildUnnamed1549() {
+buildUnnamed1556() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1549(core.Map<core.String, core.Object> o) {
+checkUnnamed1556(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1550() {
+buildUnnamed1557() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1550(core.Map<core.String, core.Object> o) {
+checkUnnamed1557(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o["y"]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1551() {
+buildUnnamed1558() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1551(core.Map<core.String, core.Object> o) {
+checkUnnamed1558(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
   var casted6 = (o["y"]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
@@ -183,14 +183,14 @@ buildAuditLog() {
   buildCounterAuditLog++;
   if (buildCounterAuditLog < 3) {
     o.authenticationInfo = buildAuthenticationInfo();
-    o.authorizationInfo = buildUnnamed1548();
+    o.authorizationInfo = buildUnnamed1555();
     o.methodName = "foo";
     o.numResponseItems = "foo";
-    o.request = buildUnnamed1549();
+    o.request = buildUnnamed1556();
     o.requestMetadata = buildRequestMetadata();
     o.resourceName = "foo";
-    o.response = buildUnnamed1550();
-    o.serviceData = buildUnnamed1551();
+    o.response = buildUnnamed1557();
+    o.serviceData = buildUnnamed1558();
     o.serviceName = "foo";
     o.status = buildStatus();
   }
@@ -202,14 +202,14 @@ checkAuditLog(api.AuditLog o) {
   buildCounterAuditLog++;
   if (buildCounterAuditLog < 3) {
     checkAuthenticationInfo(o.authenticationInfo);
-    checkUnnamed1548(o.authorizationInfo);
+    checkUnnamed1555(o.authorizationInfo);
     unittest.expect(o.methodName, unittest.equals('foo'));
     unittest.expect(o.numResponseItems, unittest.equals('foo'));
-    checkUnnamed1549(o.request);
+    checkUnnamed1556(o.request);
     checkRequestMetadata(o.requestMetadata);
     unittest.expect(o.resourceName, unittest.equals('foo'));
-    checkUnnamed1550(o.response);
-    checkUnnamed1551(o.serviceData);
+    checkUnnamed1557(o.response);
+    checkUnnamed1558(o.serviceData);
     unittest.expect(o.serviceName, unittest.equals('foo'));
     checkStatus(o.status);
   }
@@ -281,14 +281,14 @@ checkCheckError(api.CheckError o) {
   buildCounterCheckError--;
 }
 
-buildUnnamed1552() {
+buildUnnamed1559() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1552(core.List<core.String> o) {
+checkUnnamed1559(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -299,7 +299,7 @@ buildCheckInfo() {
   var o = new api.CheckInfo();
   buildCounterCheckInfo++;
   if (buildCounterCheckInfo < 3) {
-    o.unusedArguments = buildUnnamed1552();
+    o.unusedArguments = buildUnnamed1559();
   }
   buildCounterCheckInfo--;
   return o;
@@ -308,7 +308,7 @@ buildCheckInfo() {
 checkCheckInfo(api.CheckInfo o) {
   buildCounterCheckInfo++;
   if (buildCounterCheckInfo < 3) {
-    checkUnnamed1552(o.unusedArguments);
+    checkUnnamed1559(o.unusedArguments);
   }
   buildCounterCheckInfo--;
 }
@@ -338,14 +338,14 @@ checkCheckRequest(api.CheckRequest o) {
   buildCounterCheckRequest--;
 }
 
-buildUnnamed1553() {
+buildUnnamed1560() {
   var o = new core.List<api.CheckError>();
   o.add(buildCheckError());
   o.add(buildCheckError());
   return o;
 }
 
-checkUnnamed1553(core.List<api.CheckError> o) {
+checkUnnamed1560(core.List<api.CheckError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCheckError(o[0]);
   checkCheckError(o[1]);
@@ -356,7 +356,7 @@ buildCheckResponse() {
   var o = new api.CheckResponse();
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
-    o.checkErrors = buildUnnamed1553();
+    o.checkErrors = buildUnnamed1560();
     o.checkInfo = buildCheckInfo();
     o.operationId = "foo";
     o.quotaInfo = buildQuotaInfo();
@@ -369,7 +369,7 @@ buildCheckResponse() {
 checkCheckResponse(api.CheckResponse o) {
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
-    checkUnnamed1553(o.checkErrors);
+    checkUnnamed1560(o.checkErrors);
     checkCheckInfo(o.checkInfo);
     unittest.expect(o.operationId, unittest.equals('foo'));
     checkQuotaInfo(o.quotaInfo);
@@ -378,14 +378,14 @@ checkCheckResponse(api.CheckResponse o) {
   buildCounterCheckResponse--;
 }
 
-buildUnnamed1554() {
+buildUnnamed1561() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1554(core.List<core.String> o) {
+checkUnnamed1561(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -396,7 +396,7 @@ buildDistribution() {
   var o = new api.Distribution();
   buildCounterDistribution++;
   if (buildCounterDistribution < 3) {
-    o.bucketCounts = buildUnnamed1554();
+    o.bucketCounts = buildUnnamed1561();
     o.count = "foo";
     o.explicitBuckets = buildExplicitBuckets();
     o.exponentialBuckets = buildExponentialBuckets();
@@ -413,7 +413,7 @@ buildDistribution() {
 checkDistribution(api.Distribution o) {
   buildCounterDistribution++;
   if (buildCounterDistribution < 3) {
-    checkUnnamed1554(o.bucketCounts);
+    checkUnnamed1561(o.bucketCounts);
     unittest.expect(o.count, unittest.equals('foo'));
     checkExplicitBuckets(o.explicitBuckets);
     checkExponentialBuckets(o.exponentialBuckets);
@@ -447,27 +447,27 @@ checkEndReconciliationRequest(api.EndReconciliationRequest o) {
   buildCounterEndReconciliationRequest--;
 }
 
-buildUnnamed1555() {
+buildUnnamed1562() {
   var o = new core.List<api.MetricValueSet>();
   o.add(buildMetricValueSet());
   o.add(buildMetricValueSet());
   return o;
 }
 
-checkUnnamed1555(core.List<api.MetricValueSet> o) {
+checkUnnamed1562(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricValueSet(o[0]);
   checkMetricValueSet(o[1]);
 }
 
-buildUnnamed1556() {
+buildUnnamed1563() {
   var o = new core.List<api.QuotaError>();
   o.add(buildQuotaError());
   o.add(buildQuotaError());
   return o;
 }
 
-checkUnnamed1556(core.List<api.QuotaError> o) {
+checkUnnamed1563(core.List<api.QuotaError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuotaError(o[0]);
   checkQuotaError(o[1]);
@@ -479,8 +479,8 @@ buildEndReconciliationResponse() {
   buildCounterEndReconciliationResponse++;
   if (buildCounterEndReconciliationResponse < 3) {
     o.operationId = "foo";
-    o.quotaMetrics = buildUnnamed1555();
-    o.reconciliationErrors = buildUnnamed1556();
+    o.quotaMetrics = buildUnnamed1562();
+    o.reconciliationErrors = buildUnnamed1563();
     o.serviceConfigId = "foo";
   }
   buildCounterEndReconciliationResponse--;
@@ -491,21 +491,21 @@ checkEndReconciliationResponse(api.EndReconciliationResponse o) {
   buildCounterEndReconciliationResponse++;
   if (buildCounterEndReconciliationResponse < 3) {
     unittest.expect(o.operationId, unittest.equals('foo'));
-    checkUnnamed1555(o.quotaMetrics);
-    checkUnnamed1556(o.reconciliationErrors);
+    checkUnnamed1562(o.quotaMetrics);
+    checkUnnamed1563(o.reconciliationErrors);
     unittest.expect(o.serviceConfigId, unittest.equals('foo'));
   }
   buildCounterEndReconciliationResponse--;
 }
 
-buildUnnamed1557() {
+buildUnnamed1564() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed1557(core.List<core.double> o) {
+checkUnnamed1564(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -516,7 +516,7 @@ buildExplicitBuckets() {
   var o = new api.ExplicitBuckets();
   buildCounterExplicitBuckets++;
   if (buildCounterExplicitBuckets < 3) {
-    o.bounds = buildUnnamed1557();
+    o.bounds = buildUnnamed1564();
   }
   buildCounterExplicitBuckets--;
   return o;
@@ -525,7 +525,7 @@ buildExplicitBuckets() {
 checkExplicitBuckets(api.ExplicitBuckets o) {
   buildCounterExplicitBuckets++;
   if (buildCounterExplicitBuckets < 3) {
-    checkUnnamed1557(o.bounds);
+    checkUnnamed1564(o.bounds);
   }
   buildCounterExplicitBuckets--;
 }
@@ -576,40 +576,40 @@ checkLinearBuckets(api.LinearBuckets o) {
   buildCounterLinearBuckets--;
 }
 
-buildUnnamed1558() {
+buildUnnamed1565() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1558(core.Map<core.String, core.String> o) {
+checkUnnamed1565(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1559() {
+buildUnnamed1566() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1559(core.Map<core.String, core.Object> o) {
+checkUnnamed1566(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o["x"]) as core.Map; unittest.expect(casted7, unittest.hasLength(3)); unittest.expect(casted7["list"], unittest.equals([1, 2, 3])); unittest.expect(casted7["bool"], unittest.equals(true)); unittest.expect(casted7["string"], unittest.equals('foo')); 
   var casted8 = (o["y"]) as core.Map; unittest.expect(casted8, unittest.hasLength(3)); unittest.expect(casted8["list"], unittest.equals([1, 2, 3])); unittest.expect(casted8["bool"], unittest.equals(true)); unittest.expect(casted8["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1560() {
+buildUnnamed1567() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1560(core.Map<core.String, core.Object> o) {
+checkUnnamed1567(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o["x"]) as core.Map; unittest.expect(casted9, unittest.hasLength(3)); unittest.expect(casted9["list"], unittest.equals([1, 2, 3])); unittest.expect(casted9["bool"], unittest.equals(true)); unittest.expect(casted9["string"], unittest.equals('foo')); 
   var casted10 = (o["y"]) as core.Map; unittest.expect(casted10, unittest.hasLength(3)); unittest.expect(casted10["list"], unittest.equals([1, 2, 3])); unittest.expect(casted10["bool"], unittest.equals(true)); unittest.expect(casted10["string"], unittest.equals('foo')); 
@@ -621,11 +621,11 @@ buildLogEntry() {
   buildCounterLogEntry++;
   if (buildCounterLogEntry < 3) {
     o.insertId = "foo";
-    o.labels = buildUnnamed1558();
+    o.labels = buildUnnamed1565();
     o.name = "foo";
-    o.protoPayload = buildUnnamed1559();
+    o.protoPayload = buildUnnamed1566();
     o.severity = "foo";
-    o.structPayload = buildUnnamed1560();
+    o.structPayload = buildUnnamed1567();
     o.textPayload = "foo";
     o.timestamp = "foo";
   }
@@ -637,25 +637,25 @@ checkLogEntry(api.LogEntry o) {
   buildCounterLogEntry++;
   if (buildCounterLogEntry < 3) {
     unittest.expect(o.insertId, unittest.equals('foo'));
-    checkUnnamed1558(o.labels);
+    checkUnnamed1565(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1559(o.protoPayload);
+    checkUnnamed1566(o.protoPayload);
     unittest.expect(o.severity, unittest.equals('foo'));
-    checkUnnamed1560(o.structPayload);
+    checkUnnamed1567(o.structPayload);
     unittest.expect(o.textPayload, unittest.equals('foo'));
     unittest.expect(o.timestamp, unittest.equals('foo'));
   }
   buildCounterLogEntry--;
 }
 
-buildUnnamed1561() {
+buildUnnamed1568() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1561(core.Map<core.String, core.String> o) {
+checkUnnamed1568(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -671,7 +671,7 @@ buildMetricValue() {
     o.doubleValue = 42.0;
     o.endTime = "foo";
     o.int64Value = "foo";
-    o.labels = buildUnnamed1561();
+    o.labels = buildUnnamed1568();
     o.moneyValue = buildMoney();
     o.startTime = "foo";
     o.stringValue = "foo";
@@ -688,7 +688,7 @@ checkMetricValue(api.MetricValue o) {
     unittest.expect(o.doubleValue, unittest.equals(42.0));
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.int64Value, unittest.equals('foo'));
-    checkUnnamed1561(o.labels);
+    checkUnnamed1568(o.labels);
     checkMoney(o.moneyValue);
     unittest.expect(o.startTime, unittest.equals('foo'));
     unittest.expect(o.stringValue, unittest.equals('foo'));
@@ -696,14 +696,14 @@ checkMetricValue(api.MetricValue o) {
   buildCounterMetricValue--;
 }
 
-buildUnnamed1562() {
+buildUnnamed1569() {
   var o = new core.List<api.MetricValue>();
   o.add(buildMetricValue());
   o.add(buildMetricValue());
   return o;
 }
 
-checkUnnamed1562(core.List<api.MetricValue> o) {
+checkUnnamed1569(core.List<api.MetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricValue(o[0]);
   checkMetricValue(o[1]);
@@ -715,7 +715,7 @@ buildMetricValueSet() {
   buildCounterMetricValueSet++;
   if (buildCounterMetricValueSet < 3) {
     o.metricName = "foo";
-    o.metricValues = buildUnnamed1562();
+    o.metricValues = buildUnnamed1569();
   }
   buildCounterMetricValueSet--;
   return o;
@@ -725,7 +725,7 @@ checkMetricValueSet(api.MetricValueSet o) {
   buildCounterMetricValueSet++;
   if (buildCounterMetricValueSet < 3) {
     unittest.expect(o.metricName, unittest.equals('foo'));
-    checkUnnamed1562(o.metricValues);
+    checkUnnamed1569(o.metricValues);
   }
   buildCounterMetricValueSet--;
 }
@@ -753,53 +753,53 @@ checkMoney(api.Money o) {
   buildCounterMoney--;
 }
 
-buildUnnamed1563() {
+buildUnnamed1570() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1563(core.Map<core.String, core.String> o) {
+checkUnnamed1570(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1564() {
+buildUnnamed1571() {
   var o = new core.List<api.LogEntry>();
   o.add(buildLogEntry());
   o.add(buildLogEntry());
   return o;
 }
 
-checkUnnamed1564(core.List<api.LogEntry> o) {
+checkUnnamed1571(core.List<api.LogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogEntry(o[0]);
   checkLogEntry(o[1]);
 }
 
-buildUnnamed1565() {
+buildUnnamed1572() {
   var o = new core.List<api.MetricValueSet>();
   o.add(buildMetricValueSet());
   o.add(buildMetricValueSet());
   return o;
 }
 
-checkUnnamed1565(core.List<api.MetricValueSet> o) {
+checkUnnamed1572(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricValueSet(o[0]);
   checkMetricValueSet(o[1]);
 }
 
-buildUnnamed1566() {
+buildUnnamed1573() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1566(core.Map<core.String, core.String> o) {
+checkUnnamed1573(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -813,15 +813,15 @@ buildOperation() {
     o.consumerId = "foo";
     o.endTime = "foo";
     o.importance = "foo";
-    o.labels = buildUnnamed1563();
-    o.logEntries = buildUnnamed1564();
-    o.metricValueSets = buildUnnamed1565();
+    o.labels = buildUnnamed1570();
+    o.logEntries = buildUnnamed1571();
+    o.metricValueSets = buildUnnamed1572();
     o.operationId = "foo";
     o.operationName = "foo";
     o.quotaProperties = buildQuotaProperties();
     o.resourceContainer = "foo";
     o.startTime = "foo";
-    o.userLabels = buildUnnamed1566();
+    o.userLabels = buildUnnamed1573();
   }
   buildCounterOperation--;
   return o;
@@ -833,15 +833,15 @@ checkOperation(api.Operation o) {
     unittest.expect(o.consumerId, unittest.equals('foo'));
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.importance, unittest.equals('foo'));
-    checkUnnamed1563(o.labels);
-    checkUnnamed1564(o.logEntries);
-    checkUnnamed1565(o.metricValueSets);
+    checkUnnamed1570(o.labels);
+    checkUnnamed1571(o.logEntries);
+    checkUnnamed1572(o.metricValueSets);
     unittest.expect(o.operationId, unittest.equals('foo'));
     unittest.expect(o.operationName, unittest.equals('foo'));
     checkQuotaProperties(o.quotaProperties);
     unittest.expect(o.resourceContainer, unittest.equals('foo'));
     unittest.expect(o.startTime, unittest.equals('foo'));
-    checkUnnamed1566(o.userLabels);
+    checkUnnamed1573(o.userLabels);
   }
   buildCounterOperation--;
 }
@@ -869,40 +869,40 @@ checkQuotaError(api.QuotaError o) {
   buildCounterQuotaError--;
 }
 
-buildUnnamed1567() {
+buildUnnamed1574() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1567(core.List<core.String> o) {
+checkUnnamed1574(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1568() {
+buildUnnamed1575() {
   var o = new core.Map<core.String, core.int>();
   o["x"] = 42;
   o["y"] = 42;
   return o;
 }
 
-checkUnnamed1568(core.Map<core.String, core.int> o) {
+checkUnnamed1575(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals(42));
   unittest.expect(o["y"], unittest.equals(42));
 }
 
-buildUnnamed1569() {
+buildUnnamed1576() {
   var o = new core.List<api.MetricValueSet>();
   o.add(buildMetricValueSet());
   o.add(buildMetricValueSet());
   return o;
 }
 
-checkUnnamed1569(core.List<api.MetricValueSet> o) {
+checkUnnamed1576(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricValueSet(o[0]);
   checkMetricValueSet(o[1]);
@@ -913,9 +913,9 @@ buildQuotaInfo() {
   var o = new api.QuotaInfo();
   buildCounterQuotaInfo++;
   if (buildCounterQuotaInfo < 3) {
-    o.limitExceeded = buildUnnamed1567();
-    o.quotaConsumed = buildUnnamed1568();
-    o.quotaMetrics = buildUnnamed1569();
+    o.limitExceeded = buildUnnamed1574();
+    o.quotaConsumed = buildUnnamed1575();
+    o.quotaMetrics = buildUnnamed1576();
   }
   buildCounterQuotaInfo--;
   return o;
@@ -924,34 +924,34 @@ buildQuotaInfo() {
 checkQuotaInfo(api.QuotaInfo o) {
   buildCounterQuotaInfo++;
   if (buildCounterQuotaInfo < 3) {
-    checkUnnamed1567(o.limitExceeded);
-    checkUnnamed1568(o.quotaConsumed);
-    checkUnnamed1569(o.quotaMetrics);
+    checkUnnamed1574(o.limitExceeded);
+    checkUnnamed1575(o.quotaConsumed);
+    checkUnnamed1576(o.quotaMetrics);
   }
   buildCounterQuotaInfo--;
 }
 
-buildUnnamed1570() {
+buildUnnamed1577() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1570(core.Map<core.String, core.String> o) {
+checkUnnamed1577(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1571() {
+buildUnnamed1578() {
   var o = new core.List<api.MetricValueSet>();
   o.add(buildMetricValueSet());
   o.add(buildMetricValueSet());
   return o;
 }
 
-checkUnnamed1571(core.List<api.MetricValueSet> o) {
+checkUnnamed1578(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricValueSet(o[0]);
   checkMetricValueSet(o[1]);
@@ -963,10 +963,10 @@ buildQuotaOperation() {
   buildCounterQuotaOperation++;
   if (buildCounterQuotaOperation < 3) {
     o.consumerId = "foo";
-    o.labels = buildUnnamed1570();
+    o.labels = buildUnnamed1577();
     o.methodName = "foo";
     o.operationId = "foo";
-    o.quotaMetrics = buildUnnamed1571();
+    o.quotaMetrics = buildUnnamed1578();
     o.quotaMode = "foo";
   }
   buildCounterQuotaOperation--;
@@ -977,23 +977,23 @@ checkQuotaOperation(api.QuotaOperation o) {
   buildCounterQuotaOperation++;
   if (buildCounterQuotaOperation < 3) {
     unittest.expect(o.consumerId, unittest.equals('foo'));
-    checkUnnamed1570(o.labels);
+    checkUnnamed1577(o.labels);
     unittest.expect(o.methodName, unittest.equals('foo'));
     unittest.expect(o.operationId, unittest.equals('foo'));
-    checkUnnamed1571(o.quotaMetrics);
+    checkUnnamed1578(o.quotaMetrics);
     unittest.expect(o.quotaMode, unittest.equals('foo'));
   }
   buildCounterQuotaOperation--;
 }
 
-buildUnnamed1572() {
+buildUnnamed1579() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1572(core.Map<core.String, core.String> o) {
+checkUnnamed1579(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1004,7 +1004,7 @@ buildQuotaProperties() {
   var o = new api.QuotaProperties();
   buildCounterQuotaProperties++;
   if (buildCounterQuotaProperties < 3) {
-    o.limitByIds = buildUnnamed1572();
+    o.limitByIds = buildUnnamed1579();
     o.quotaMode = "foo";
   }
   buildCounterQuotaProperties--;
@@ -1014,7 +1014,7 @@ buildQuotaProperties() {
 checkQuotaProperties(api.QuotaProperties o) {
   buildCounterQuotaProperties++;
   if (buildCounterQuotaProperties < 3) {
-    checkUnnamed1572(o.limitByIds);
+    checkUnnamed1579(o.limitByIds);
     unittest.expect(o.quotaMode, unittest.equals('foo'));
   }
   buildCounterQuotaProperties--;
@@ -1041,27 +1041,27 @@ checkReleaseQuotaRequest(api.ReleaseQuotaRequest o) {
   buildCounterReleaseQuotaRequest--;
 }
 
-buildUnnamed1573() {
+buildUnnamed1580() {
   var o = new core.List<api.MetricValueSet>();
   o.add(buildMetricValueSet());
   o.add(buildMetricValueSet());
   return o;
 }
 
-checkUnnamed1573(core.List<api.MetricValueSet> o) {
+checkUnnamed1580(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricValueSet(o[0]);
   checkMetricValueSet(o[1]);
 }
 
-buildUnnamed1574() {
+buildUnnamed1581() {
   var o = new core.List<api.QuotaError>();
   o.add(buildQuotaError());
   o.add(buildQuotaError());
   return o;
 }
 
-checkUnnamed1574(core.List<api.QuotaError> o) {
+checkUnnamed1581(core.List<api.QuotaError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuotaError(o[0]);
   checkQuotaError(o[1]);
@@ -1073,8 +1073,8 @@ buildReleaseQuotaResponse() {
   buildCounterReleaseQuotaResponse++;
   if (buildCounterReleaseQuotaResponse < 3) {
     o.operationId = "foo";
-    o.quotaMetrics = buildUnnamed1573();
-    o.releaseErrors = buildUnnamed1574();
+    o.quotaMetrics = buildUnnamed1580();
+    o.releaseErrors = buildUnnamed1581();
     o.serviceConfigId = "foo";
   }
   buildCounterReleaseQuotaResponse--;
@@ -1085,8 +1085,8 @@ checkReleaseQuotaResponse(api.ReleaseQuotaResponse o) {
   buildCounterReleaseQuotaResponse++;
   if (buildCounterReleaseQuotaResponse < 3) {
     unittest.expect(o.operationId, unittest.equals('foo'));
-    checkUnnamed1573(o.quotaMetrics);
-    checkUnnamed1574(o.releaseErrors);
+    checkUnnamed1580(o.quotaMetrics);
+    checkUnnamed1581(o.releaseErrors);
     unittest.expect(o.serviceConfigId, unittest.equals('foo'));
   }
   buildCounterReleaseQuotaResponse--;
@@ -1134,14 +1134,14 @@ checkReportInfo(api.ReportInfo o) {
   buildCounterReportInfo--;
 }
 
-buildUnnamed1575() {
+buildUnnamed1582() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1575(core.List<api.Operation> o) {
+checkUnnamed1582(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -1152,7 +1152,7 @@ buildReportRequest() {
   var o = new api.ReportRequest();
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    o.operations = buildUnnamed1575();
+    o.operations = buildUnnamed1582();
     o.serviceConfigId = "foo";
   }
   buildCounterReportRequest--;
@@ -1162,33 +1162,33 @@ buildReportRequest() {
 checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    checkUnnamed1575(o.operations);
+    checkUnnamed1582(o.operations);
     unittest.expect(o.serviceConfigId, unittest.equals('foo'));
   }
   buildCounterReportRequest--;
 }
 
-buildUnnamed1576() {
+buildUnnamed1583() {
   var o = new core.List<api.ReportError>();
   o.add(buildReportError());
   o.add(buildReportError());
   return o;
 }
 
-checkUnnamed1576(core.List<api.ReportError> o) {
+checkUnnamed1583(core.List<api.ReportError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportError(o[0]);
   checkReportError(o[1]);
 }
 
-buildUnnamed1577() {
+buildUnnamed1584() {
   var o = new core.List<api.ReportInfo>();
   o.add(buildReportInfo());
   o.add(buildReportInfo());
   return o;
 }
 
-checkUnnamed1577(core.List<api.ReportInfo> o) {
+checkUnnamed1584(core.List<api.ReportInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportInfo(o[0]);
   checkReportInfo(o[1]);
@@ -1199,8 +1199,8 @@ buildReportResponse() {
   var o = new api.ReportResponse();
   buildCounterReportResponse++;
   if (buildCounterReportResponse < 3) {
-    o.reportErrors = buildUnnamed1576();
-    o.reportInfos = buildUnnamed1577();
+    o.reportErrors = buildUnnamed1583();
+    o.reportInfos = buildUnnamed1584();
     o.serviceConfigId = "foo";
   }
   buildCounterReportResponse--;
@@ -1210,8 +1210,8 @@ buildReportResponse() {
 checkReportResponse(api.ReportResponse o) {
   buildCounterReportResponse++;
   if (buildCounterReportResponse < 3) {
-    checkUnnamed1576(o.reportErrors);
-    checkUnnamed1577(o.reportInfos);
+    checkUnnamed1583(o.reportErrors);
+    checkUnnamed1584(o.reportInfos);
     unittest.expect(o.serviceConfigId, unittest.equals('foo'));
   }
   buildCounterReportResponse--;
@@ -1259,27 +1259,27 @@ checkStartReconciliationRequest(api.StartReconciliationRequest o) {
   buildCounterStartReconciliationRequest--;
 }
 
-buildUnnamed1578() {
+buildUnnamed1585() {
   var o = new core.List<api.MetricValueSet>();
   o.add(buildMetricValueSet());
   o.add(buildMetricValueSet());
   return o;
 }
 
-checkUnnamed1578(core.List<api.MetricValueSet> o) {
+checkUnnamed1585(core.List<api.MetricValueSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricValueSet(o[0]);
   checkMetricValueSet(o[1]);
 }
 
-buildUnnamed1579() {
+buildUnnamed1586() {
   var o = new core.List<api.QuotaError>();
   o.add(buildQuotaError());
   o.add(buildQuotaError());
   return o;
 }
 
-checkUnnamed1579(core.List<api.QuotaError> o) {
+checkUnnamed1586(core.List<api.QuotaError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuotaError(o[0]);
   checkQuotaError(o[1]);
@@ -1291,8 +1291,8 @@ buildStartReconciliationResponse() {
   buildCounterStartReconciliationResponse++;
   if (buildCounterStartReconciliationResponse < 3) {
     o.operationId = "foo";
-    o.quotaMetrics = buildUnnamed1578();
-    o.reconciliationErrors = buildUnnamed1579();
+    o.quotaMetrics = buildUnnamed1585();
+    o.reconciliationErrors = buildUnnamed1586();
     o.serviceConfigId = "foo";
   }
   buildCounterStartReconciliationResponse--;
@@ -1303,37 +1303,37 @@ checkStartReconciliationResponse(api.StartReconciliationResponse o) {
   buildCounterStartReconciliationResponse++;
   if (buildCounterStartReconciliationResponse < 3) {
     unittest.expect(o.operationId, unittest.equals('foo'));
-    checkUnnamed1578(o.quotaMetrics);
-    checkUnnamed1579(o.reconciliationErrors);
+    checkUnnamed1585(o.quotaMetrics);
+    checkUnnamed1586(o.reconciliationErrors);
     unittest.expect(o.serviceConfigId, unittest.equals('foo'));
   }
   buildCounterStartReconciliationResponse--;
 }
 
-buildUnnamed1580() {
+buildUnnamed1587() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed1580(core.Map<core.String, core.Object> o) {
+checkUnnamed1587(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o["x"]) as core.Map; unittest.expect(casted11, unittest.hasLength(3)); unittest.expect(casted11["list"], unittest.equals([1, 2, 3])); unittest.expect(casted11["bool"], unittest.equals(true)); unittest.expect(casted11["string"], unittest.equals('foo')); 
   var casted12 = (o["y"]) as core.Map; unittest.expect(casted12, unittest.hasLength(3)); unittest.expect(casted12["list"], unittest.equals([1, 2, 3])); unittest.expect(casted12["bool"], unittest.equals(true)); unittest.expect(casted12["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed1581() {
+buildUnnamed1588() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed1580());
-  o.add(buildUnnamed1580());
+  o.add(buildUnnamed1587());
+  o.add(buildUnnamed1587());
   return o;
 }
 
-checkUnnamed1581(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed1588(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1580(o[0]);
-  checkUnnamed1580(o[1]);
+  checkUnnamed1587(o[0]);
+  checkUnnamed1587(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1342,7 +1342,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed1581();
+    o.details = buildUnnamed1588();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -1353,7 +1353,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed1581(o.details);
+    checkUnnamed1588(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -1674,7 +1674,7 @@ main() {
       api.ServicesResourceApi res = new api.ServicecontrolApi(mock).services;
       var arg_request = buildAllocateQuotaRequest();
       var arg_serviceName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.AllocateQuotaRequest.fromJson(json);
         checkAllocateQuotaRequest(obj);
 
@@ -1718,7 +1718,7 @@ main() {
         var resp = convert.JSON.encode(buildAllocateQuotaResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.allocateQuota(arg_request, arg_serviceName).then(unittest.expectAsync(((api.AllocateQuotaResponse response) {
+      res.allocateQuota(arg_request, arg_serviceName).then(unittest.expectAsync1(((api.AllocateQuotaResponse response) {
         checkAllocateQuotaResponse(response);
       })));
     });
@@ -1729,7 +1729,7 @@ main() {
       api.ServicesResourceApi res = new api.ServicecontrolApi(mock).services;
       var arg_request = buildCheckRequest();
       var arg_serviceName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CheckRequest.fromJson(json);
         checkCheckRequest(obj);
 
@@ -1773,7 +1773,7 @@ main() {
         var resp = convert.JSON.encode(buildCheckResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.check(arg_request, arg_serviceName).then(unittest.expectAsync(((api.CheckResponse response) {
+      res.check(arg_request, arg_serviceName).then(unittest.expectAsync1(((api.CheckResponse response) {
         checkCheckResponse(response);
       })));
     });
@@ -1784,7 +1784,7 @@ main() {
       api.ServicesResourceApi res = new api.ServicecontrolApi(mock).services;
       var arg_request = buildEndReconciliationRequest();
       var arg_serviceName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.EndReconciliationRequest.fromJson(json);
         checkEndReconciliationRequest(obj);
 
@@ -1828,7 +1828,7 @@ main() {
         var resp = convert.JSON.encode(buildEndReconciliationResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.endReconciliation(arg_request, arg_serviceName).then(unittest.expectAsync(((api.EndReconciliationResponse response) {
+      res.endReconciliation(arg_request, arg_serviceName).then(unittest.expectAsync1(((api.EndReconciliationResponse response) {
         checkEndReconciliationResponse(response);
       })));
     });
@@ -1839,7 +1839,7 @@ main() {
       api.ServicesResourceApi res = new api.ServicecontrolApi(mock).services;
       var arg_request = buildReleaseQuotaRequest();
       var arg_serviceName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ReleaseQuotaRequest.fromJson(json);
         checkReleaseQuotaRequest(obj);
 
@@ -1883,7 +1883,7 @@ main() {
         var resp = convert.JSON.encode(buildReleaseQuotaResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.releaseQuota(arg_request, arg_serviceName).then(unittest.expectAsync(((api.ReleaseQuotaResponse response) {
+      res.releaseQuota(arg_request, arg_serviceName).then(unittest.expectAsync1(((api.ReleaseQuotaResponse response) {
         checkReleaseQuotaResponse(response);
       })));
     });
@@ -1894,7 +1894,7 @@ main() {
       api.ServicesResourceApi res = new api.ServicecontrolApi(mock).services;
       var arg_request = buildReportRequest();
       var arg_serviceName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ReportRequest.fromJson(json);
         checkReportRequest(obj);
 
@@ -1938,7 +1938,7 @@ main() {
         var resp = convert.JSON.encode(buildReportResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.report(arg_request, arg_serviceName).then(unittest.expectAsync(((api.ReportResponse response) {
+      res.report(arg_request, arg_serviceName).then(unittest.expectAsync1(((api.ReportResponse response) {
         checkReportResponse(response);
       })));
     });
@@ -1949,7 +1949,7 @@ main() {
       api.ServicesResourceApi res = new api.ServicecontrolApi(mock).services;
       var arg_request = buildStartReconciliationRequest();
       var arg_serviceName = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.StartReconciliationRequest.fromJson(json);
         checkStartReconciliationRequest(obj);
 
@@ -1993,7 +1993,7 @@ main() {
         var resp = convert.JSON.encode(buildStartReconciliationResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.startReconciliation(arg_request, arg_serviceName).then(unittest.expectAsync(((api.StartReconciliationResponse response) {
+      res.startReconciliation(arg_request, arg_serviceName).then(unittest.expectAsync1(((api.StartReconciliationResponse response) {
         checkStartReconciliationResponse(response);
       })));
     });

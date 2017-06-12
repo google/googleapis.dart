@@ -385,8 +385,8 @@ class AffineTransform {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (scaleX != null) {
       _json["scaleX"] = scaleX;
     }
@@ -441,8 +441,8 @@ class AutoText {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
     }
@@ -474,8 +474,8 @@ class BatchUpdatePresentationRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (requests != null) {
       _json["requests"] = requests.map((value) => (value).toJson()).toList();
     }
@@ -507,8 +507,8 @@ class BatchUpdatePresentationResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (presentationId != null) {
       _json["presentationId"] = presentationId;
     }
@@ -547,8 +547,8 @@ class Bullet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bulletStyle != null) {
       _json["bulletStyle"] = (bulletStyle).toJson();
     }
@@ -578,8 +578,8 @@ class ColorScheme {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (colors != null) {
       _json["colors"] = colors.map((value) => (value).toJson()).toList();
     }
@@ -616,8 +616,8 @@ class ColorStop {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alpha != null) {
       _json["alpha"] = alpha;
     }
@@ -679,8 +679,8 @@ class CreateImageRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (elementProperties != null) {
       _json["elementProperties"] = (elementProperties).toJson();
     }
@@ -707,8 +707,8 @@ class CreateImageResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -758,8 +758,8 @@ class CreateLineRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (elementProperties != null) {
       _json["elementProperties"] = (elementProperties).toJson();
     }
@@ -786,8 +786,8 @@ class CreateLineResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -892,8 +892,8 @@ class CreateParagraphBulletsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bulletPreset != null) {
       _json["bulletPreset"] = bulletPreset;
     }
@@ -1260,8 +1260,8 @@ class CreateShapeRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (elementProperties != null) {
       _json["elementProperties"] = (elementProperties).toJson();
     }
@@ -1288,8 +1288,8 @@ class CreateShapeResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -1360,8 +1360,8 @@ class CreateSheetsChartRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (chartId != null) {
       _json["chartId"] = chartId;
     }
@@ -1394,8 +1394,8 @@ class CreateSheetsChartResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -1464,8 +1464,8 @@ class CreateSlideRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (insertionIndex != null) {
       _json["insertionIndex"] = insertionIndex;
     }
@@ -1495,8 +1495,8 @@ class CreateSlideResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -1551,8 +1551,8 @@ class CreateTableRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns;
     }
@@ -1582,8 +1582,8 @@ class CreateTableResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -1640,8 +1640,8 @@ class CreateVideoRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (elementProperties != null) {
       _json["elementProperties"] = (elementProperties).toJson();
     }
@@ -1671,8 +1671,8 @@ class CreateVideoResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -1753,8 +1753,8 @@ class CropProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (angle != null) {
       _json["angle"] = angle;
     }
@@ -1799,8 +1799,8 @@ class DeleteObjectRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -1845,8 +1845,8 @@ class DeleteParagraphBulletsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -1884,8 +1884,8 @@ class DeleteTableColumnRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -1920,8 +1920,8 @@ class DeleteTableRowRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -1975,8 +1975,8 @@ class DeleteTextRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -2016,8 +2016,8 @@ class Dimension {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (magnitude != null) {
       _json["magnitude"] = magnitude;
     }
@@ -2071,8 +2071,8 @@ class DuplicateObjectRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -2096,8 +2096,8 @@ class DuplicateObjectResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -2123,8 +2123,8 @@ class Group {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (children != null) {
       _json["children"] = children.map((value) => (value).toJson()).toList();
     }
@@ -2158,8 +2158,8 @@ class Image {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contentUrl != null) {
       _json["contentUrl"] = contentUrl;
     }
@@ -2237,8 +2237,8 @@ class ImageProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (brightness != null) {
       _json["brightness"] = brightness;
     }
@@ -2310,8 +2310,8 @@ class InsertTableColumnsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -2367,8 +2367,8 @@ class InsertTableRowsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -2440,8 +2440,8 @@ class InsertTextRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -2504,8 +2504,8 @@ class LayoutPlaceholderIdMapping {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (layoutPlaceholder != null) {
       _json["layoutPlaceholder"] = (layoutPlaceholder).toJson();
     }
@@ -2545,8 +2545,8 @@ class LayoutProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2600,8 +2600,8 @@ class LayoutReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (layoutId != null) {
       _json["layoutId"] = layoutId;
     }
@@ -2664,8 +2664,8 @@ class Line {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (lineProperties != null) {
       _json["lineProperties"] = (lineProperties).toJson();
     }
@@ -2689,8 +2689,8 @@ class LineFill {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (solidFill != null) {
       _json["solidFill"] = (solidFill).toJson();
     }
@@ -2802,8 +2802,8 @@ class LineProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dashStyle != null) {
       _json["dashStyle"] = dashStyle;
     }
@@ -2869,8 +2869,8 @@ class Link {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageObjectId != null) {
       _json["pageObjectId"] = pageObjectId;
     }
@@ -2909,17 +2909,17 @@ class List {
       listId = _json["listId"];
     }
     if (_json.containsKey("nestingLevel")) {
-      nestingLevel = commons.mapMap(_json["nestingLevel"], (item) => new NestingLevel.fromJson(item));
+      nestingLevel = commons.mapMap<core.Map<core.String, core.Object>, NestingLevel>(_json["nestingLevel"], (core.Map<core.String, core.Object> item) => new NestingLevel.fromJson(item));
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (listId != null) {
       _json["listId"] = listId;
     }
     if (nestingLevel != null) {
-      _json["nestingLevel"] = commons.mapMap(nestingLevel, (item) => (item).toJson());
+      _json["nestingLevel"] = commons.mapMap<NestingLevel, core.Map<core.String, core.Object>>(nestingLevel, (NestingLevel item) => (item).toJson());
     }
     return _json;
   }
@@ -2941,8 +2941,8 @@ class NestingLevel {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bulletStyle != null) {
       _json["bulletStyle"] = (bulletStyle).toJson();
     }
@@ -2973,8 +2973,8 @@ class NotesProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (speakerNotesObjectId != null) {
       _json["speakerNotesObjectId"] = speakerNotesObjectId;
     }
@@ -3022,8 +3022,8 @@ class OpaqueColor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rgbColor != null) {
       _json["rgbColor"] = (rgbColor).toJson();
     }
@@ -3050,8 +3050,8 @@ class OptionalColor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (opaqueColor != null) {
       _json["opaqueColor"] = (opaqueColor).toJson();
     }
@@ -3140,8 +3140,8 @@ class Outline {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dashStyle != null) {
       _json["dashStyle"] = dashStyle;
     }
@@ -3171,8 +3171,8 @@ class OutlineFill {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (solidFill != null) {
       _json["solidFill"] = (solidFill).toJson();
     }
@@ -3253,8 +3253,8 @@ class Page {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (layoutProperties != null) {
       _json["layoutProperties"] = (layoutProperties).toJson();
     }
@@ -3331,8 +3331,8 @@ class PageBackgroundFill {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (propertyState != null) {
       _json["propertyState"] = propertyState;
     }
@@ -3432,8 +3432,8 @@ class PageElement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -3507,8 +3507,8 @@ class PageElementProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (pageObjectId != null) {
       _json["pageObjectId"] = pageObjectId;
     }
@@ -3555,8 +3555,8 @@ class PageProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (colorScheme != null) {
       _json["colorScheme"] = (colorScheme).toJson();
     }
@@ -3588,8 +3588,8 @@ class ParagraphMarker {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bullet != null) {
       _json["bullet"] = (bullet).toJson();
     }
@@ -3717,8 +3717,8 @@ class ParagraphStyle {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alignment != null) {
       _json["alignment"] = alignment;
     }
@@ -3802,8 +3802,8 @@ class Placeholder {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (index != null) {
       _json["index"] = index;
     }
@@ -3913,8 +3913,8 @@ class Presentation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (layouts != null) {
       _json["layouts"] = layouts.map((value) => (value).toJson()).toList();
     }
@@ -3991,8 +3991,8 @@ class Range {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endIndex != null) {
       _json["endIndex"] = endIndex;
     }
@@ -4106,8 +4106,8 @@ class Recolor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -4137,8 +4137,8 @@ class RefreshSheetsChartRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectId != null) {
       _json["objectId"] = objectId;
     }
@@ -4165,6 +4165,15 @@ class ReplaceAllShapesWithImageRequest {
    */
   core.String imageUrl;
   /**
+   * If non-empty, limits the matches to page elements only on the given pages.
+   *
+   * Returns a 400 bad request error if given the page object ID of a
+   * notes page or a
+   * notes master, or if a
+   * page with that object ID doesn't exist in the presentation.
+   */
+  core.List<core.String> pageObjectIds;
+  /**
    * The replace method.
    * Possible string values are:
    * - "CENTER_INSIDE" : Scales and centers the image to fit within the bounds
@@ -4188,18 +4197,24 @@ class ReplaceAllShapesWithImageRequest {
     if (_json.containsKey("imageUrl")) {
       imageUrl = _json["imageUrl"];
     }
+    if (_json.containsKey("pageObjectIds")) {
+      pageObjectIds = _json["pageObjectIds"];
+    }
     if (_json.containsKey("replaceMethod")) {
       replaceMethod = _json["replaceMethod"];
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (containsText != null) {
       _json["containsText"] = (containsText).toJson();
     }
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
+    }
+    if (pageObjectIds != null) {
+      _json["pageObjectIds"] = pageObjectIds;
     }
     if (replaceMethod != null) {
       _json["replaceMethod"] = replaceMethod;
@@ -4221,8 +4236,8 @@ class ReplaceAllShapesWithImageResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (occurrencesChanged != null) {
       _json["occurrencesChanged"] = occurrencesChanged;
     }
@@ -4258,6 +4273,15 @@ class ReplaceAllShapesWithSheetsChartRequest {
    * see a link to the spreadsheet.
    */
   core.String linkingMode;
+  /**
+   * If non-empty, limits the matches to page elements only on the given pages.
+   *
+   * Returns a 400 bad request error if given the page object ID of a
+   * notes page or a
+   * notes master, or if a
+   * page with that object ID doesn't exist in the presentation.
+   */
+  core.List<core.String> pageObjectIds;
   /** The ID of the Google Sheets spreadsheet that contains the chart. */
   core.String spreadsheetId;
 
@@ -4273,13 +4297,16 @@ class ReplaceAllShapesWithSheetsChartRequest {
     if (_json.containsKey("linkingMode")) {
       linkingMode = _json["linkingMode"];
     }
+    if (_json.containsKey("pageObjectIds")) {
+      pageObjectIds = _json["pageObjectIds"];
+    }
     if (_json.containsKey("spreadsheetId")) {
       spreadsheetId = _json["spreadsheetId"];
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (chartId != null) {
       _json["chartId"] = chartId;
     }
@@ -4288,6 +4315,9 @@ class ReplaceAllShapesWithSheetsChartRequest {
     }
     if (linkingMode != null) {
       _json["linkingMode"] = linkingMode;
+    }
+    if (pageObjectIds != null) {
+      _json["pageObjectIds"] = pageObjectIds;
     }
     if (spreadsheetId != null) {
       _json["spreadsheetId"] = spreadsheetId;
@@ -4309,8 +4339,8 @@ class ReplaceAllShapesWithSheetsChartResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (occurrencesChanged != null) {
       _json["occurrencesChanged"] = occurrencesChanged;
     }
@@ -4322,6 +4352,14 @@ class ReplaceAllShapesWithSheetsChartResponse {
 class ReplaceAllTextRequest {
   /** Finds text in a shape matching this substring. */
   SubstringMatchCriteria containsText;
+  /**
+   * If non-empty, limits the matches to page elements only on the given pages.
+   *
+   * Returns a 400 bad request error if given the page object ID of a
+   * notes master,
+   * or if a page with that object ID doesn't exist in the presentation.
+   */
+  core.List<core.String> pageObjectIds;
   /** The text that will replace the matched text. */
   core.String replaceText;
 
@@ -4331,15 +4369,21 @@ class ReplaceAllTextRequest {
     if (_json.containsKey("containsText")) {
       containsText = new SubstringMatchCriteria.fromJson(_json["containsText"]);
     }
+    if (_json.containsKey("pageObjectIds")) {
+      pageObjectIds = _json["pageObjectIds"];
+    }
     if (_json.containsKey("replaceText")) {
       replaceText = _json["replaceText"];
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (containsText != null) {
       _json["containsText"] = (containsText).toJson();
+    }
+    if (pageObjectIds != null) {
+      _json["pageObjectIds"] = pageObjectIds;
     }
     if (replaceText != null) {
       _json["replaceText"] = replaceText;
@@ -4361,8 +4405,8 @@ class ReplaceAllTextResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (occurrencesChanged != null) {
       _json["occurrencesChanged"] = occurrencesChanged;
     }
@@ -4533,8 +4577,8 @@ class Request {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createImage != null) {
       _json["createImage"] = (createImage).toJson();
     }
@@ -4701,8 +4745,8 @@ class Response {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createImage != null) {
       _json["createImage"] = (createImage).toJson();
     }
@@ -4763,8 +4807,8 @@ class RgbColor {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (blue != null) {
       _json["blue"] = blue;
     }
@@ -4883,8 +4927,8 @@ class Shadow {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alignment != null) {
       _json["alignment"] = alignment;
     }
@@ -5268,8 +5312,8 @@ class Shape {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (placeholder != null) {
       _json["placeholder"] = (placeholder).toJson();
     }
@@ -5329,8 +5373,8 @@ class ShapeBackgroundFill {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (propertyState != null) {
       _json["propertyState"] = propertyState;
     }
@@ -5395,8 +5439,8 @@ class ShapeProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (link != null) {
       _json["link"] = (link).toJson();
     }
@@ -5454,8 +5498,8 @@ class SheetsChart {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (chartId != null) {
       _json["chartId"] = chartId;
     }
@@ -5485,8 +5529,8 @@ class SheetsChartProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (chartImageProperties != null) {
       _json["chartImageProperties"] = (chartImageProperties).toJson();
     }
@@ -5512,8 +5556,8 @@ class Size {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (height != null) {
       _json["height"] = (height).toJson();
     }
@@ -5560,8 +5604,8 @@ class SlideProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (layoutObjectId != null) {
       _json["layoutObjectId"] = layoutObjectId;
     }
@@ -5607,8 +5651,8 @@ class SolidFill {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alpha != null) {
       _json["alpha"] = alpha;
     }
@@ -5654,8 +5698,8 @@ class StretchedPictureFill {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contentUrl != null) {
       _json["contentUrl"] = contentUrl;
     }
@@ -5689,8 +5733,8 @@ class SubstringMatchCriteria {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (matchCase != null) {
       _json["matchCase"] = matchCase;
     }
@@ -5738,8 +5782,8 @@ class Table {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns;
     }
@@ -5789,8 +5833,8 @@ class TableCell {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columnSpan != null) {
       _json["columnSpan"] = columnSpan;
     }
@@ -5853,8 +5897,8 @@ class TableCellBackgroundFill {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (propertyState != null) {
       _json["propertyState"] = propertyState;
     }
@@ -5883,8 +5927,8 @@ class TableCellLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columnIndex != null) {
       _json["columnIndex"] = columnIndex;
     }
@@ -5911,8 +5955,8 @@ class TableCellProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (tableCellBackgroundFill != null) {
       _json["tableCellBackgroundFill"] = (tableCellBackgroundFill).toJson();
     }
@@ -5933,8 +5977,8 @@ class TableColumnProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columnWidth != null) {
       _json["columnWidth"] = (columnWidth).toJson();
     }
@@ -5981,8 +6025,8 @@ class TableRange {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columnSpan != null) {
       _json["columnSpan"] = columnSpan;
     }
@@ -6021,8 +6065,8 @@ class TableRow {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (rowHeight != null) {
       _json["rowHeight"] = (rowHeight).toJson();
     }
@@ -6050,17 +6094,17 @@ class TextContent {
 
   TextContent.fromJson(core.Map _json) {
     if (_json.containsKey("lists")) {
-      lists = commons.mapMap(_json["lists"], (item) => new List.fromJson(item));
+      lists = commons.mapMap<core.Map<core.String, core.Object>, List>(_json["lists"], (core.Map<core.String, core.Object> item) => new List.fromJson(item));
     }
     if (_json.containsKey("textElements")) {
       textElements = _json["textElements"].map((value) => new TextElement.fromJson(value)).toList();
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (lists != null) {
-      _json["lists"] = commons.mapMap(lists, (item) => (item).toJson());
+      _json["lists"] = commons.mapMap<List, core.Map<core.String, core.Object>>(lists, (List item) => (item).toJson());
     }
     if (textElements != null) {
       _json["textElements"] = textElements.map((value) => (value).toJson()).toList();
@@ -6128,8 +6172,8 @@ class TextElement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autoText != null) {
       _json["autoText"] = (autoText).toJson();
     }
@@ -6170,8 +6214,8 @@ class TextRun {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
     }
@@ -6351,8 +6395,8 @@ class TextStyle {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (backgroundColor != null) {
       _json["backgroundColor"] = (backgroundColor).toJson();
     }
@@ -6433,8 +6477,8 @@ class ThemeColorPair {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (color != null) {
       _json["color"] = (color).toJson();
     }
@@ -6477,8 +6521,8 @@ class Thumbnail {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contentUrl != null) {
       _json["contentUrl"] = contentUrl;
     }
@@ -6527,8 +6571,8 @@ class UpdateImagePropertiesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields;
     }
@@ -6577,8 +6621,8 @@ class UpdateLinePropertiesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields;
     }
@@ -6624,8 +6668,8 @@ class UpdatePageElementTransformRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (applyMode != null) {
       _json["applyMode"] = applyMode;
     }
@@ -6674,8 +6718,8 @@ class UpdatePagePropertiesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields;
     }
@@ -6741,8 +6785,8 @@ class UpdateParagraphStyleRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -6797,8 +6841,8 @@ class UpdateShapePropertiesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields;
     }
@@ -6838,8 +6882,8 @@ class UpdateSlidesPositionRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (insertionIndex != null) {
       _json["insertionIndex"] = insertionIndex;
     }
@@ -6894,8 +6938,8 @@ class UpdateTableCellPropertiesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields;
     }
@@ -6979,8 +7023,8 @@ class UpdateTextStyleRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cellLocation != null) {
       _json["cellLocation"] = (cellLocation).toJson();
     }
@@ -7035,8 +7079,8 @@ class UpdateVideoPropertiesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields;
     }
@@ -7089,8 +7133,8 @@ class Video {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -7123,8 +7167,8 @@ class VideoProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (outline != null) {
       _json["outline"] = (outline).toJson();
     }
@@ -7165,8 +7209,8 @@ class WeightedFontFamily {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fontFamily != null) {
       _json["fontFamily"] = fontFamily;
     }
@@ -7193,8 +7237,8 @@ class WordArt {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (renderedText != null) {
       _json["renderedText"] = renderedText;
     }
@@ -7220,8 +7264,8 @@ class WriteControl {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (requiredRevisionId != null) {
       _json["requiredRevisionId"] = requiredRevisionId;
     }

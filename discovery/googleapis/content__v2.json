@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/BclkybusasZymwfyrM_IDMj_UwU\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/fm1Ebpn2uSmJ0EpVKtApoUWYOV4\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -642,7 +642,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes a datafeed from your Merchant Center account. This method can only be called for non-multi-client accounts.",
+                    "description": "Deletes a datafeed configuration from your Merchant Center account. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "DELETE",
                     "id": "content.datafeeds.delete",
                     "parameterOrder": [
@@ -674,7 +674,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieves a datafeed from your Merchant Center account. This method can only be called for non-multi-client accounts.",
+                    "description": "Retrieves a datafeed configuration from your Merchant Center account. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "GET",
                     "id": "content.datafeeds.get",
                     "parameterOrder": [
@@ -704,7 +704,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Registers a datafeed with your Merchant Center account. This method can only be called for non-multi-client accounts.",
+                    "description": "Registers a datafeed configuration with your Merchant Center account. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "POST",
                     "id": "content.datafeeds.insert",
                     "parameterOrder": [
@@ -770,7 +770,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-client accounts. This method supports patch semantics.",
+                    "description": "Updates a datafeed configuration of your Merchant Center account. This method can only be called for non-multi-client accounts. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "content.datafeeds.patch",
                     "parameterOrder": [
@@ -808,7 +808,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-client accounts.",
+                    "description": "Updates a datafeed configuration of your Merchant Center account. This method can only be called for non-multi-client accounts.",
                     "httpMethod": "PUT",
                     "id": "content.datafeeds.update",
                     "parameterOrder": [
@@ -2018,7 +2018,7 @@
             }
         }
     },
-    "revision": "20170519",
+    "revision": "20170531",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2689,7 +2689,7 @@
             "type": "object"
         },
         "Datafeed": {
-            "description": "Datafeed data.",
+            "description": "Datafeed configuration data.",
             "id": "Datafeed",
             "properties": {
                 "attributeLanguage": {
@@ -5040,6 +5040,16 @@
                 },
                 "material": {
                     "description": "The material of which the item is made.",
+                    "type": "string"
+                },
+                "maxHandlingTime": {
+                    "description": "Maximal product handling time (in business days).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "minHandlingTime": {
+                    "description": "Minimal product handling time (in business days).",
+                    "format": "int64",
                     "type": "string"
                 },
                 "mobileLink": {

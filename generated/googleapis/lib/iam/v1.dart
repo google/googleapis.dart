@@ -241,14 +241,14 @@ class ProjectsServiceAccountsResourceApi {
    * accounts, such as `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Optional pagination token returned in an earlier
+   * ListServiceAccountsResponse.next_page_token.
+   *
    * [pageSize] - Optional limit on the number of service accounts to include in
    * the
    * response. Further accounts can subsequently be obtained by including the
    * ListServiceAccountsResponse.next_page_token
    * in a subsequent request.
-   *
-   * [pageToken] - Optional pagination token returned in an earlier
-   * ListServiceAccountsResponse.next_page_token.
    *
    * Completes with a [ListServiceAccountsResponse].
    *
@@ -258,7 +258,7 @@ class ProjectsServiceAccountsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListServiceAccountsResponse> list(core.String name, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListServiceAccountsResponse> list(core.String name, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -269,11 +269,11 @@ class ProjectsServiceAccountsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/serviceAccounts';
@@ -830,8 +830,8 @@ class AuditData {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policyDelta != null) {
       _json["policyDelta"] = (policyDelta).toJson();
     }
@@ -884,8 +884,8 @@ class Binding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -937,8 +937,8 @@ class BindingDelta {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -992,8 +992,8 @@ class CreateServiceAccountKeyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (includePublicKeyData != null) {
       _json["includePublicKeyData"] = includePublicKeyData;
     }
@@ -1034,8 +1034,8 @@ class CreateServiceAccountRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -1064,8 +1064,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1083,8 +1083,8 @@ class ListServiceAccountKeysResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -1114,8 +1114,8 @@ class ListServiceAccountsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accounts != null) {
       _json["accounts"] = accounts.map((value) => (value).toJson()).toList();
     }
@@ -1203,8 +1203,8 @@ class Policy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -1231,8 +1231,8 @@ class PolicyDelta {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bindingDeltas != null) {
       _json["bindingDeltas"] = bindingDeltas.map((value) => (value).toJson()).toList();
     }
@@ -1272,8 +1272,8 @@ class QueryGrantableRolesRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fullResourceName != null) {
       _json["fullResourceName"] = fullResourceName;
     }
@@ -1308,8 +1308,8 @@ class QueryGrantableRolesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1354,8 +1354,8 @@ class Role {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -1454,8 +1454,8 @@ class ServiceAccount {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -1583,8 +1583,8 @@ class ServiceAccountKey {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keyAlgorithm != null) {
       _json["keyAlgorithm"] = keyAlgorithm;
     }
@@ -1628,8 +1628,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -1657,8 +1657,8 @@ class SignBlobRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bytesToSign != null) {
       _json["bytesToSign"] = bytesToSign;
     }
@@ -1691,8 +1691,8 @@ class SignBlobResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keyId != null) {
       _json["keyId"] = keyId;
     }
@@ -1716,8 +1716,8 @@ class SignJwtRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (payload != null) {
       _json["payload"] = payload;
     }
@@ -1743,8 +1743,8 @@ class SignJwtResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keyId != null) {
       _json["keyId"] = keyId;
     }
@@ -1773,8 +1773,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -1798,8 +1798,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }

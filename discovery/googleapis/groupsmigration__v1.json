@@ -15,10 +15,10 @@
     "description": "Groups Migration Api.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/groups-migration/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/HWdr3QolTxcnkwueTlDTCxOXBdE\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/VuTEwIALyLFp_kdXuKsAPvednIM\"",
     "icons": {
-        "x16": "http://www.google.com/images/icons/product/discussions-16.gif",
-        "x32": "http://www.google.com/images/icons/product/discussions-32.gif"
+        "x16": "https://www.google.com/images/icons/product/discussions-16.gif",
+        "x32": "https://www.google.com/images/icons/product/discussions-32.gif"
     },
     "id": "groupsmigration:v1",
     "kind": "discovery#restDescription",
@@ -117,7 +117,7 @@
             }
         }
     },
-    "revision": "20140416",
+    "revision": "20170607",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Groups": {

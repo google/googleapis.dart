@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/siteverification/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -114,14 +114,14 @@ checkSiteVerificationWebResourceGettokenResponse(api.SiteVerificationWebResource
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-buildUnnamed109() {
+buildUnnamed111() {
   var o = new core.List<api.SiteVerificationWebResourceResource>();
   o.add(buildSiteVerificationWebResourceResource());
   o.add(buildSiteVerificationWebResourceResource());
   return o;
 }
 
-checkUnnamed109(core.List<api.SiteVerificationWebResourceResource> o) {
+checkUnnamed111(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteVerificationWebResourceResource(o[0]);
   checkSiteVerificationWebResourceResource(o[1]);
@@ -132,7 +132,7 @@ buildSiteVerificationWebResourceListResponse() {
   var o = new api.SiteVerificationWebResourceListResponse();
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    o.items = buildUnnamed109();
+    o.items = buildUnnamed111();
   }
   buildCounterSiteVerificationWebResourceListResponse--;
   return o;
@@ -141,19 +141,19 @@ buildSiteVerificationWebResourceListResponse() {
 checkSiteVerificationWebResourceListResponse(api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed109(o.items);
+    checkUnnamed111(o.items);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-buildUnnamed110() {
+buildUnnamed112() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed110(core.List<core.String> o) {
+checkUnnamed112(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -186,7 +186,7 @@ buildSiteVerificationWebResourceResource() {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     o.id = "foo";
-    o.owners = buildUnnamed110();
+    o.owners = buildUnnamed112();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -197,7 +197,7 @@ checkSiteVerificationWebResourceResource(api.SiteVerificationWebResourceResource
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed110(o.owners);
+    checkUnnamed112(o.owners);
     checkSiteVerificationWebResourceResourceSite(o.site);
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -265,7 +265,7 @@ main() {
       var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -304,7 +304,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_id).then(unittest.expectAsync((_) {}));
+      res.delete(arg_id).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -312,7 +312,7 @@ main() {
       var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -351,7 +351,7 @@ main() {
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_id).then(unittest.expectAsync(((api.SiteVerificationWebResourceResource response) {
+      res.get(arg_id).then(unittest.expectAsync1(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });
@@ -361,7 +361,7 @@ main() {
       var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceGettokenRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SiteVerificationWebResourceGettokenRequest.fromJson(json);
         checkSiteVerificationWebResourceGettokenRequest(obj);
 
@@ -400,7 +400,7 @@ main() {
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceGettokenResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getToken(arg_request).then(unittest.expectAsync(((api.SiteVerificationWebResourceGettokenResponse response) {
+      res.getToken(arg_request).then(unittest.expectAsync1(((api.SiteVerificationWebResourceGettokenResponse response) {
         checkSiteVerificationWebResourceGettokenResponse(response);
       })));
     });
@@ -411,7 +411,7 @@ main() {
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_verificationMethod = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
 
@@ -451,7 +451,7 @@ main() {
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_verificationMethod).then(unittest.expectAsync(((api.SiteVerificationWebResourceResource response) {
+      res.insert(arg_request, arg_verificationMethod).then(unittest.expectAsync1(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });
@@ -460,7 +460,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -496,7 +496,7 @@ main() {
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync(((api.SiteVerificationWebResourceListResponse response) {
+      res.list().then(unittest.expectAsync1(((api.SiteVerificationWebResourceListResponse response) {
         checkSiteVerificationWebResourceListResponse(response);
       })));
     });
@@ -507,7 +507,7 @@ main() {
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
 
@@ -549,7 +549,7 @@ main() {
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_id).then(unittest.expectAsync(((api.SiteVerificationWebResourceResource response) {
+      res.patch(arg_request, arg_id).then(unittest.expectAsync1(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });
@@ -560,7 +560,7 @@ main() {
       api.WebResourceResourceApi res = new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_id = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
 
@@ -602,7 +602,7 @@ main() {
         var resp = convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_id).then(unittest.expectAsync(((api.SiteVerificationWebResourceResource response) {
+      res.update(arg_request, arg_id).then(unittest.expectAsync1(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });

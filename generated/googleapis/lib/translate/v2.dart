@@ -15,8 +15,17 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client translate/v2';
 
-/** Translates text from one language to another. */
+/**
+ * The Google Cloud Translation API lets websites and programs integrate with
+ *     Google Translate programmatically.
+ */
 class TranslateApi {
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
+  /** Translate text from one language to another using Google Translate */
+  static const CloudTranslationScope = "https://www.googleapis.com/auth/cloud-translation";
+
 
   final commons.ApiRequester _requester;
 
@@ -24,7 +33,7 @@ class TranslateApi {
   LanguagesResourceApi get languages => new LanguagesResourceApi(_requester);
   TranslationsResourceApi get translations => new TranslationsResourceApi(_requester);
 
-  TranslateApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "language/translate/"}) :
+  TranslateApi(http.Client client, {core.String rootUrl: "https://translation.googleapis.com/", core.String servicePath: "language/translate/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
@@ -36,11 +45,51 @@ class DetectionsResourceApi {
       _requester = client;
 
   /**
-   * Detect the language of text.
+   * Detects the language of text within a request.
+   *
+   * [request] - The metadata request object.
    *
    * Request parameters:
    *
-   * [q] - The text to detect
+   * Completes with a [DetectionsListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<DetectionsListResponse> detect(DetectLanguageRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v2/detect';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new DetectionsListResponse.fromJson(data));
+  }
+
+  /**
+   * Detects the language of text within a request.
+   *
+   * Request parameters:
+   *
+   * [q] - The input text upon which to perform language detection. Repeat this
+   * parameter to perform language detection on multiple text inputs.
    *
    * Completes with a [DetectionsListResponse].
    *
@@ -85,12 +134,15 @@ class LanguagesResourceApi {
       _requester = client;
 
   /**
-   * List the source/target languages supported by the API
+   * Returns a list of supported languages for translation.
    *
    * Request parameters:
    *
-   * [target] - the language and collation in which the localized results should
-   * be returned
+   * [target] - The language to use to return localized, human readable names of
+   * supported
+   * languages.
+   *
+   * [model] - The model type for which supported languages should be returned.
    *
    * Completes with a [LanguagesListResponse].
    *
@@ -100,7 +152,7 @@ class LanguagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LanguagesListResponse> list({core.String target}) {
+  async.Future<LanguagesListResponse> list({core.String target, core.String model}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -110,6 +162,9 @@ class LanguagesResourceApi {
 
     if (target != null) {
       _queryParams["target"] = [target];
+    }
+    if (model != null) {
+      _queryParams["model"] = [model];
     }
 
     _url = 'v2/languages';
@@ -134,22 +189,35 @@ class TranslationsResourceApi {
       _requester = client;
 
   /**
-   * Returns text translations from one language to another.
+   * Translates input text, returning translated text.
    *
    * Request parameters:
    *
-   * [q] - The text to translate
+   * [q] - The input text to translate. Repeat this parameter to perform
+   * translation
+   * operations on multiple text inputs.
    *
-   * [target] - The target language into which the text should be translated
+   * [target] - The language to use for translation of the input text, set to
+   * one of the
+   * language codes listed in Language Support.
+   *
+   * [source] - The language of the source text, set to one of the language
+   * codes listed in
+   * Language Support. If the source language is not specified, the API will
+   * attempt to identify the source language automatically and return it within
+   * the response.
    *
    * [cid] - The customization id for translate
    *
-   * [format] - The format of the text
+   * [format] - The format of the source text, in either HTML (default) or
+   * plain-text. A
+   * value of "html" indicates HTML and a value of "text" indicates plain-text.
    * Possible string values are:
    * - "html" : Specifies the input is in HTML
    * - "text" : Specifies the input is in plain textual format
    *
-   * [source] - The source language of the text
+   * [model] - The `model` type requested for this translation. Valid values are
+   * listed in public documentation.
    *
    * Completes with a [TranslationsListResponse].
    *
@@ -159,7 +227,7 @@ class TranslationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TranslationsListResponse> list(core.List<core.String> q, core.String target, {core.List<core.String> cid, core.String format, core.String source}) {
+  async.Future<TranslationsListResponse> list(core.List<core.String> q, core.String target, {core.String source, core.List<core.String> cid, core.String format, core.String model}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -175,14 +243,17 @@ class TranslationsResourceApi {
       throw new core.ArgumentError("Parameter target is required.");
     }
     _queryParams["target"] = [target];
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
     if (cid != null) {
       _queryParams["cid"] = cid;
     }
     if (format != null) {
       _queryParams["format"] = [format];
     }
-    if (source != null) {
-      _queryParams["source"] = [source];
+    if (model != null) {
+      _queryParams["model"] = [model];
     }
 
     _url = 'v2';
@@ -197,9 +268,73 @@ class TranslationsResourceApi {
     return _response.then((data) => new TranslationsListResponse.fromJson(data));
   }
 
+  /**
+   * Translates input text, returning translated text.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [TranslationsListResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<TranslationsListResponse> translate(TranslateTextRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v2';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new TranslationsListResponse.fromJson(data));
+  }
+
 }
 
 
+
+/** The request message for language detection. */
+class DetectLanguageRequest {
+  /**
+   * The input text upon which to perform language detection. Repeat this
+   * parameter to perform language detection on multiple text inputs.
+   */
+  core.List<core.String> q;
+
+  DetectLanguageRequest();
+
+  DetectLanguageRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("q")) {
+      q = _json["q"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (q != null) {
+      _json["q"] = q;
+    }
+    return _json;
+  }
+}
 
 class DetectionsListResponse {
   /** A detections contains detection results of several text */
@@ -213,8 +348,8 @@ class DetectionsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (detections != null) {
       _json["detections"] = detections.map((value) => (value).toJson()).toList();
     }
@@ -223,11 +358,11 @@ class DetectionsListResponse {
 }
 
 class DetectionsResourceElement {
-  /** The confidence of the detection resul of this language. */
+  /** The confidence of the detection result of this language. */
   core.double confidence;
   /** A boolean to indicate is the language detection result reliable. */
   core.bool isReliable;
-  /** The language we detect */
+  /** The language we detected. */
   core.String language;
 
   DetectionsResourceElement();
@@ -244,8 +379,8 @@ class DetectionsResourceElement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -272,7 +407,7 @@ class DetectionsResource
   DetectionsResource.fromJson(core.List json)
       : _inner = json.map((value) => new DetectionsResourceElement.fromJson(value)).toList();
 
-  core.List toJson() {
+  core.List<core.Map<core.String, core.Object>> toJson() {
     return _inner.map((value) => (value).toJson()).toList();
   }
 
@@ -286,6 +421,31 @@ class DetectionsResource
 
   void set length(core.int newLength) {
     _inner.length = newLength;
+  }
+}
+
+/** The request message for discovering supported languages. */
+class GetSupportedLanguagesRequest {
+  /**
+   * The language to use to return localized, human readable names of supported
+   * languages.
+   */
+  core.String target;
+
+  GetSupportedLanguagesRequest();
+
+  GetSupportedLanguagesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (target != null) {
+      _json["target"] = target;
+    }
+    return _json;
   }
 }
 
@@ -306,8 +466,8 @@ class LanguagesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (languages != null) {
       _json["languages"] = languages.map((value) => (value).toJson()).toList();
     }
@@ -316,9 +476,13 @@ class LanguagesListResponse {
 }
 
 class LanguagesResource {
-  /** The language code. */
+  /**
+   * Supported language code, generally consisting of its ISO 639-1
+   * identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including
+   * language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')
+   */
   core.String language;
-  /** The localized name of the language if target parameter is given. */
+  /** Human readable name of the language localized to the target language. */
   core.String name;
 
   LanguagesResource();
@@ -332,8 +496,8 @@ class LanguagesResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (language != null) {
       _json["language"] = language;
     }
@@ -344,6 +508,78 @@ class LanguagesResource {
   }
 }
 
+/** The main translation request message for the Cloud Translation API. */
+class TranslateTextRequest {
+  /**
+   * The format of the source text, in either HTML (default) or plain-text. A
+   * value of "html" indicates HTML and a value of "text" indicates plain-text.
+   */
+  core.String format;
+  /**
+   * The `model` type requested for this translation. Valid values are
+   * listed in public documentation.
+   */
+  core.String model;
+  /**
+   * The input text to translate. Repeat this parameter to perform translation
+   * operations on multiple text inputs.
+   */
+  core.List<core.String> q;
+  /**
+   * The language of the source text, set to one of the language codes listed in
+   * Language Support. If the source language is not specified, the API will
+   * attempt to identify the source language automatically and return it within
+   * the response.
+   */
+  core.String source;
+  /**
+   * The language to use for translation of the input text, set to one of the
+   * language codes listed in Language Support.
+   */
+  core.String target;
+
+  TranslateTextRequest();
+
+  TranslateTextRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
+    if (_json.containsKey("model")) {
+      model = _json["model"];
+    }
+    if (_json.containsKey("q")) {
+      q = _json["q"];
+    }
+    if (_json.containsKey("source")) {
+      source = _json["source"];
+    }
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (format != null) {
+      _json["format"] = format;
+    }
+    if (model != null) {
+      _json["model"] = model;
+    }
+    if (q != null) {
+      _json["q"] = q;
+    }
+    if (source != null) {
+      _json["source"] = source;
+    }
+    if (target != null) {
+      _json["target"] = target;
+    }
+    return _json;
+  }
+}
+
+/** The main language translation response message. */
 class TranslationsListResponse {
   /** Translations contains list of translation results of given text */
   core.List<TranslationsResource> translations;
@@ -356,8 +592,8 @@ class TranslationsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (translations != null) {
       _json["translations"] = translations.map((value) => (value).toJson()).toList();
     }
@@ -366,9 +602,20 @@ class TranslationsListResponse {
 }
 
 class TranslationsResource {
-  /** Detected source language if source parameter is unspecified. */
+  /**
+   * The source language of the initial request, detected automatically, if
+   * no source language was passed within the initial request. If the
+   * source language was passed, auto-detection of the language will not
+   * occur and this field will be empty.
+   */
   core.String detectedSourceLanguage;
-  /** The translation. */
+  /**
+   * The `model` type used for this translation. Valid values are
+   * listed in public documentation. Can be different from requested `model`.
+   * Present only if specific model type was explicitly requested.
+   */
+  core.String model;
+  /** Text translated into the target language. */
   core.String translatedText;
 
   TranslationsResource();
@@ -377,15 +624,21 @@ class TranslationsResource {
     if (_json.containsKey("detectedSourceLanguage")) {
       detectedSourceLanguage = _json["detectedSourceLanguage"];
     }
+    if (_json.containsKey("model")) {
+      model = _json["model"];
+    }
     if (_json.containsKey("translatedText")) {
       translatedText = _json["translatedText"];
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (detectedSourceLanguage != null) {
       _json["detectedSourceLanguage"] = detectedSourceLanguage;
+    }
+    if (model != null) {
+      _json["model"] = model;
     }
     if (translatedText != null) {
       _json["translatedText"] = translatedText;

@@ -278,10 +278,6 @@ class ProjectsRegionsClustersResourceApi {
    * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
-   * [pageToken] - Optional. The standard List page token.
-   *
-   * [pageSize] - Optional. The standard List page size.
-   *
    * [filter] - Optional. A filter constraining the clusters to list. Filters
    * are case-sensitive and have the following syntax:field = value AND field =
    * value ...where field is one of status.state, clusterName, or labels.[KEY],
@@ -294,6 +290,10 @@ class ProjectsRegionsClustersResourceApi {
    * implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
    * = mycluster AND labels.env = staging AND labels.starred = *
    *
+   * [pageToken] - Optional. The standard List page token.
+   *
+   * [pageSize] - Optional. The standard List page size.
+   *
    * Completes with a [ListClustersResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -302,7 +302,7 @@ class ProjectsRegionsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,14 +316,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/clusters';
@@ -945,19 +945,24 @@ class ProjectsRegionsOperationsResourceApi {
   /**
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
-   * binding below allows API services to override the binding to use different
-   * resource name schemes, such as users / * /operations.
+   * binding allows API services to override the binding to use different
+   * resource name schemes, such as users / * /operations. To override the
+   * binding, API services can add a binding such as "/v1/{name=users / *
+   * }/operations" to their service configuration. For backwards compatibility,
+   * the default name includes the operations collection id, however overriding
+   * users must ensure the name binding is the parent resource, without the
+   * operations collection id.
    *
    * Request parameters:
    *
-   * [name] - The name of the operation collection.
+   * [name] - The name of the operation's parent resource.
    * Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
+   *
+   * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
    *
    * [filter] - The standard list filter.
-   *
-   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -967,7 +972,7 @@ class ProjectsRegionsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -978,14 +983,14 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1031,8 +1036,8 @@ class AcceleratorConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (acceleratorCount != null) {
       _json["acceleratorCount"] = acceleratorCount;
     }
@@ -1051,8 +1056,8 @@ class CancelJobRequest {
   CancelJobRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1130,8 +1135,8 @@ class Cluster {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusterName != null) {
       _json["clusterName"] = clusterName;
     }
@@ -1234,8 +1239,8 @@ class ClusterConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (configBucket != null) {
       _json["configBucket"] = configBucket;
     }
@@ -1283,8 +1288,8 @@ class ClusterMetrics {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (hdfsMetrics != null) {
       _json["hdfsMetrics"] = hdfsMetrics;
     }
@@ -1343,8 +1348,8 @@ class ClusterOperationMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusterName != null) {
       _json["clusterName"] = clusterName;
     }
@@ -1408,8 +1413,8 @@ class ClusterOperationStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (details != null) {
       _json["details"] = details;
     }
@@ -1476,8 +1481,8 @@ class ClusterStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (detail != null) {
       _json["detail"] = detail;
     }
@@ -1494,31 +1499,6 @@ class ClusterStatus {
   }
 }
 
-/** The location where output from diagnostic command can be found. */
-class DiagnoseClusterOutputLocation {
-  /**
-   * Output-only The Google Cloud Storage URI of the diagnostic output. This
-   * will be a plain text file with summary of collected diagnostics.
-   */
-  core.String outputUri;
-
-  DiagnoseClusterOutputLocation();
-
-  DiagnoseClusterOutputLocation.fromJson(core.Map _json) {
-    if (_json.containsKey("outputUri")) {
-      outputUri = _json["outputUri"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (outputUri != null) {
-      _json["outputUri"] = outputUri;
-    }
-    return _json;
-  }
-}
-
 /** A request to collect cluster diagnostic information. */
 class DiagnoseClusterRequest {
 
@@ -1527,8 +1507,8 @@ class DiagnoseClusterRequest {
   DiagnoseClusterRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1549,8 +1529,8 @@ class DiagnoseClusterResults {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (outputUri != null) {
       _json["outputUri"] = outputUri;
     }
@@ -1582,8 +1562,8 @@ class DiskConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bootDiskSizeGb != null) {
       _json["bootDiskSizeGb"] = bootDiskSizeGb;
     }
@@ -1610,8 +1590,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1717,8 +1697,8 @@ class GceClusterConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (internalIpOnly != null) {
       _json["internalIpOnly"] = internalIpOnly;
     }
@@ -1828,8 +1808,8 @@ class HadoopJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (archiveUris != null) {
       _json["archiveUris"] = archiveUris;
     }
@@ -1914,8 +1894,8 @@ class HiveJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (continueOnFailure != null) {
       _json["continueOnFailure"] = continueOnFailure;
     }
@@ -2013,8 +1993,8 @@ class InstanceGroupConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accelerators != null) {
       _json["accelerators"] = accelerators.map((value) => (value).toJson()).toList();
     }
@@ -2155,8 +2135,8 @@ class Job {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (driverControlFilesUri != null) {
       _json["driverControlFilesUri"] = driverControlFilesUri;
     }
@@ -2227,8 +2207,8 @@ class JobPlacement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusterName != null) {
       _json["clusterName"] = clusterName;
     }
@@ -2266,8 +2246,8 @@ class JobReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (jobId != null) {
       _json["jobId"] = jobId;
     }
@@ -2299,8 +2279,8 @@ class JobScheduling {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (maxFailuresPerHour != null) {
       _json["maxFailuresPerHour"] = maxFailuresPerHour;
     }
@@ -2369,8 +2349,8 @@ class JobStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (details != null) {
       _json["details"] = details;
     }
@@ -2409,8 +2389,8 @@ class ListClustersResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clusters != null) {
       _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
     }
@@ -2443,8 +2423,8 @@ class ListJobsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (jobs != null) {
       _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
     }
@@ -2473,8 +2453,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2502,8 +2482,8 @@ class LoggingConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (driverLogLevels != null) {
       _json["driverLogLevels"] = driverLogLevels;
     }
@@ -2532,8 +2512,8 @@ class ManagedGroupConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (instanceGroupManagerName != null) {
       _json["instanceGroupManagerName"] = instanceGroupManagerName;
     }
@@ -2570,8 +2550,8 @@ class NodeInitializationAction {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (executableFile != null) {
       _json["executableFile"] = executableFile;
     }
@@ -2645,8 +2625,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -2661,184 +2641,6 @@ class Operation {
     }
     if (response != null) {
       _json["response"] = response;
-    }
-    return _json;
-  }
-}
-
-/** Metadata describing the operation. */
-class OperationMetadata {
-  /** Name of the cluster for the operation. */
-  core.String clusterName;
-  /** Cluster UUId for the operation. */
-  core.String clusterUuid;
-  /** Output-only Short description of operation. */
-  core.String description;
-  /** A message containing any operation metadata details. */
-  core.String details;
-  /** The time that the operation completed. */
-  core.String endTime;
-  /** A message containing the detailed operation state. */
-  core.String innerState;
-  /** The time that the operation was requested. */
-  core.String insertTime;
-  /** Output-only The operation type. */
-  core.String operationType;
-  /** The time that the operation was started by the server. */
-  core.String startTime;
-  /**
-   * A message containing the operation state.
-   * Possible string values are:
-   * - "UNKNOWN" : Unused.
-   * - "PENDING" : The operation has been created.
-   * - "RUNNING" : The operation is currently running.
-   * - "DONE" : The operation is done, either cancelled or completed.
-   */
-  core.String state;
-  /** Output-only Current operation status. */
-  OperationStatus status;
-  /** Output-only Previous operation status. */
-  core.List<OperationStatus> statusHistory;
-  /** Output-only Errors encountered during operation execution. */
-  core.List<core.String> warnings;
-
-  OperationMetadata();
-
-  OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("clusterName")) {
-      clusterName = _json["clusterName"];
-    }
-    if (_json.containsKey("clusterUuid")) {
-      clusterUuid = _json["clusterUuid"];
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("details")) {
-      details = _json["details"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("innerState")) {
-      innerState = _json["innerState"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
-    if (_json.containsKey("operationType")) {
-      operationType = _json["operationType"];
-    }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("status")) {
-      status = new OperationStatus.fromJson(_json["status"]);
-    }
-    if (_json.containsKey("statusHistory")) {
-      statusHistory = _json["statusHistory"].map((value) => new OperationStatus.fromJson(value)).toList();
-    }
-    if (_json.containsKey("warnings")) {
-      warnings = _json["warnings"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (clusterName != null) {
-      _json["clusterName"] = clusterName;
-    }
-    if (clusterUuid != null) {
-      _json["clusterUuid"] = clusterUuid;
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (details != null) {
-      _json["details"] = details;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (innerState != null) {
-      _json["innerState"] = innerState;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
-    if (operationType != null) {
-      _json["operationType"] = operationType;
-    }
-    if (startTime != null) {
-      _json["startTime"] = startTime;
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    if (status != null) {
-      _json["status"] = (status).toJson();
-    }
-    if (statusHistory != null) {
-      _json["statusHistory"] = statusHistory.map((value) => (value).toJson()).toList();
-    }
-    if (warnings != null) {
-      _json["warnings"] = warnings;
-    }
-    return _json;
-  }
-}
-
-/** The status of the operation. */
-class OperationStatus {
-  /** A message containing any operation metadata details. */
-  core.String details;
-  /** A message containing the detailed operation state. */
-  core.String innerState;
-  /**
-   * A message containing the operation state.
-   * Possible string values are:
-   * - "UNKNOWN" : Unused.
-   * - "PENDING" : The operation has been created.
-   * - "RUNNING" : The operation is running.
-   * - "DONE" : The operation is done; either cancelled or completed.
-   */
-  core.String state;
-  /** The time this state was entered. */
-  core.String stateStartTime;
-
-  OperationStatus();
-
-  OperationStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("details")) {
-      details = _json["details"];
-    }
-    if (_json.containsKey("innerState")) {
-      innerState = _json["innerState"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("stateStartTime")) {
-      stateStartTime = _json["stateStartTime"];
-    }
-  }
-
-  core.Map toJson() {
-    var _json = new core.Map();
-    if (details != null) {
-      _json["details"] = details;
-    }
-    if (innerState != null) {
-      _json["innerState"] = innerState;
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    if (stateStartTime != null) {
-      _json["stateStartTime"] = stateStartTime;
     }
     return _json;
   }
@@ -2905,8 +2707,8 @@ class PigJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (continueOnFailure != null) {
       _json["continueOnFailure"] = continueOnFailure;
     }
@@ -3008,8 +2810,8 @@ class PySparkJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (archiveUris != null) {
       _json["archiveUris"] = archiveUris;
     }
@@ -3065,8 +2867,8 @@ class QueryList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (queries != null) {
       _json["queries"] = queries;
     }
@@ -3109,8 +2911,8 @@ class SoftwareConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (imageVersion != null) {
       _json["imageVersion"] = imageVersion;
     }
@@ -3194,8 +2996,8 @@ class SparkJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (archiveUris != null) {
       _json["archiveUris"] = archiveUris;
     }
@@ -3272,8 +3074,8 @@ class SparkSqlJob {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (jarFileUris != null) {
       _json["jarFileUris"] = jarFileUris;
     }
@@ -3364,8 +3166,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -3392,8 +3194,8 @@ class SubmitJobRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (job != null) {
       _json["job"] = (job).toJson();
     }
@@ -3451,8 +3253,8 @@ class YarnApplication {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }

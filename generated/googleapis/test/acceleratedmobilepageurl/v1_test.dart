@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/acceleratedmobilepageurl/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -97,14 +97,14 @@ checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError--;
 }
 
-buildUnnamed1172() {
+buildUnnamed1179() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1172(core.List<core.String> o) {
+checkUnnamed1179(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -116,7 +116,7 @@ buildBatchGetAmpUrlsRequest() {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     o.lookupStrategy = "foo";
-    o.urls = buildUnnamed1172();
+    o.urls = buildUnnamed1179();
   }
   buildCounterBatchGetAmpUrlsRequest--;
   return o;
@@ -126,32 +126,32 @@ checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     unittest.expect(o.lookupStrategy, unittest.equals('foo'));
-    checkUnnamed1172(o.urls);
+    checkUnnamed1179(o.urls);
   }
   buildCounterBatchGetAmpUrlsRequest--;
 }
 
-buildUnnamed1173() {
+buildUnnamed1180() {
   var o = new core.List<api.AmpUrl>();
   o.add(buildAmpUrl());
   o.add(buildAmpUrl());
   return o;
 }
 
-checkUnnamed1173(core.List<api.AmpUrl> o) {
+checkUnnamed1180(core.List<api.AmpUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrl(o[0]);
   checkAmpUrl(o[1]);
 }
 
-buildUnnamed1174() {
+buildUnnamed1181() {
   var o = new core.List<api.AmpUrlError>();
   o.add(buildAmpUrlError());
   o.add(buildAmpUrlError());
   return o;
 }
 
-checkUnnamed1174(core.List<api.AmpUrlError> o) {
+checkUnnamed1181(core.List<api.AmpUrlError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrlError(o[0]);
   checkAmpUrlError(o[1]);
@@ -162,8 +162,8 @@ buildBatchGetAmpUrlsResponse() {
   var o = new api.BatchGetAmpUrlsResponse();
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    o.ampUrls = buildUnnamed1173();
-    o.urlErrors = buildUnnamed1174();
+    o.ampUrls = buildUnnamed1180();
+    o.urlErrors = buildUnnamed1181();
   }
   buildCounterBatchGetAmpUrlsResponse--;
   return o;
@@ -172,8 +172,8 @@ buildBatchGetAmpUrlsResponse() {
 checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    checkUnnamed1173(o.ampUrls);
-    checkUnnamed1174(o.urlErrors);
+    checkUnnamed1180(o.ampUrls);
+    checkUnnamed1181(o.urlErrors);
   }
   buildCounterBatchGetAmpUrlsResponse--;
 }
@@ -222,7 +222,7 @@ main() {
       var mock = new HttpServerMock();
       api.AmpUrlsResourceApi res = new api.AcceleratedmobilepageurlApi(mock).ampUrls;
       var arg_request = buildBatchGetAmpUrlsRequest();
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.BatchGetAmpUrlsRequest.fromJson(json);
         checkBatchGetAmpUrlsRequest(obj);
 
@@ -259,7 +259,7 @@ main() {
         var resp = convert.JSON.encode(buildBatchGetAmpUrlsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.batchGet(arg_request).then(unittest.expectAsync(((api.BatchGetAmpUrlsResponse response) {
+      res.batchGet(arg_request).then(unittest.expectAsync1(((api.BatchGetAmpUrlsResponse response) {
         checkBatchGetAmpUrlsResponse(response);
       })));
     });

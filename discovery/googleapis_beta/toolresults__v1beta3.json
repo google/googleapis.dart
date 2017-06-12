@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Firebase Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://firebase.google.com/docs/test-lab/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/rgh1OlPQXrIEyZGL6dxY7ZMki7E\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/FDX3xIy-YNyTr7nvjDbYZ0L8B80\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1082,7 +1082,7 @@
             }
         }
     },
-    "revision": "20170522",
+    "revision": "20170609",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Any": {
@@ -1124,6 +1124,7 @@
                 },
                 "perfUnit": {
                     "enum": [
+                        "byte",
                         "bytesPerSecond",
                         "framesPerSecond",
                         "kibibyte",
@@ -1131,6 +1132,7 @@
                         "perfUnitUnspecified"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

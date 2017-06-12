@@ -112,6 +112,20 @@ class ProjectsTracesResourceApi {
    * `projects/PROJECT_ID`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [orderBy] - Field used to sort the returned traces. Optional.
+   * Can be one of the following:
+   *
+   * *   `trace_id`
+   * *   `name` (`name` field of root span in the trace)
+   * *   `duration` (difference between `end_time` and `start_time` fields of
+   *      the root span)
+   * *   `start` (`start_time` field of the root span)
+   *
+   * Descending order can be specified by appending `desc` to the sort field
+   * (for example, `name desc`).
+   *
+   * Only one sort field is permitted.
+   *
    * [filter] - An optional filter for the request.
    * Example:
    * `version_label_key:a some_label:some_label_key`
@@ -134,20 +148,6 @@ class ProjectsTracesResourceApi {
    * implementation selects a reasonable value. The implementation may
    * return fewer traces than the requested page size. Optional.
    *
-   * [orderBy] - Field used to sort the returned traces. Optional.
-   * Can be one of the following:
-   *
-   * *   `trace_id`
-   * *   `name` (`name` field of root span in the trace)
-   * *   `duration` (difference between `end_time` and `start_time` fields of
-   *      the root span)
-   * *   `start` (`start_time` field of the root span)
-   *
-   * Descending order can be specified by appending `desc` to the sort field
-   * (for example, `name desc`).
-   *
-   * Only one sort field is permitted.
-   *
    * Completes with a [ListTracesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -156,7 +156,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTracesResponse> list(core.String parent, {core.String filter, core.String endTime, core.String pageToken, core.String startTime, core.int pageSize, core.String orderBy}) {
+  async.Future<ListTracesResponse> list(core.String parent, {core.String orderBy, core.String filter, core.String endTime, core.String pageToken, core.String startTime, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -166,6 +166,9 @@ class ProjectsTracesResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -181,9 +184,6 @@ class ProjectsTracesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces';
@@ -337,8 +337,8 @@ class Annotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attributes != null) {
       _json["attributes"] = (attributes).toJson();
     }
@@ -372,8 +372,8 @@ class AttributeValue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -416,17 +416,17 @@ class Attributes {
 
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey("attributeMap")) {
-      attributeMap = commons.mapMap(_json["attributeMap"], (item) => new AttributeValue.fromJson(item));
+      attributeMap = commons.mapMap<core.Map<core.String, core.Object>, AttributeValue>(_json["attributeMap"], (core.Map<core.String, core.Object> item) => new AttributeValue.fromJson(item));
     }
     if (_json.containsKey("droppedAttributesCount")) {
       droppedAttributesCount = _json["droppedAttributesCount"];
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attributeMap != null) {
-      _json["attributeMap"] = commons.mapMap(attributeMap, (item) => (item).toJson());
+      _json["attributeMap"] = commons.mapMap<AttributeValue, core.Map<core.String, core.Object>>(attributeMap, (AttributeValue item) => (item).toJson());
     }
     if (droppedAttributesCount != null) {
       _json["droppedAttributesCount"] = droppedAttributesCount;
@@ -448,8 +448,8 @@ class BatchWriteSpansRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (spans != null) {
       _json["spans"] = spans.map((value) => (value).toJson()).toList();
     }
@@ -475,8 +475,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -524,8 +524,8 @@ class Link {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (spanId != null) {
       _json["spanId"] = spanId;
     }
@@ -563,8 +563,8 @@ class Links {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (droppedLinksCount != null) {
       _json["droppedLinksCount"] = droppedLinksCount;
     }
@@ -597,8 +597,8 @@ class ListSpansResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -631,8 +631,8 @@ class ListTracesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -667,8 +667,8 @@ class Module {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (buildId != null) {
       _json["buildId"] = (buildId).toJson();
     }
@@ -723,8 +723,8 @@ class NetworkEvent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (messageId != null) {
       _json["messageId"] = messageId;
     }
@@ -852,8 +852,8 @@ class Span {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (attributes != null) {
       _json["attributes"] = (attributes).toJson();
     }
@@ -944,8 +944,8 @@ class StackFrame {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columnNumber != null) {
       _json["columnNumber"] = columnNumber;
     }
@@ -992,8 +992,8 @@ class StackFrames {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (droppedFramesCount != null) {
       _json["droppedFramesCount"] = droppedFramesCount;
     }
@@ -1013,7 +1013,7 @@ class StackTrace {
    * stack traces within a single trace.
    *
    * Often multiple spans will have identical stack traces.
-   * The first occurance of a stack trace should contain both the
+   * The first occurrence of a stack trace should contain both the
    * `stackFrame` content and a value in `stackTraceHashId`.
    *
    * Subsequent spans within the same request can refer
@@ -1032,8 +1032,8 @@ class StackTrace {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (stackFrames != null) {
       _json["stackFrames"] = (stackFrames).toJson();
     }
@@ -1132,8 +1132,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -1170,8 +1170,8 @@ class TimeEvent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotation != null) {
       _json["annotation"] = (annotation).toJson();
     }
@@ -1218,8 +1218,8 @@ class TimeEvents {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (droppedAnnotationsCount != null) {
       _json["droppedAnnotationsCount"] = droppedAnnotationsCount;
     }
@@ -1255,8 +1255,8 @@ class Trace {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1288,8 +1288,8 @@ class TruncatableString {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (truncatedCharacterCount != null) {
       _json["truncatedCharacterCount"] = truncatedCharacterCount;
     }

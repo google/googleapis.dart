@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/appstate/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -76,14 +76,14 @@ checkGetResponse(api.GetResponse o) {
   buildCounterGetResponse--;
 }
 
-buildUnnamed2888() {
+buildUnnamed2358() {
   var o = new core.List<api.GetResponse>();
   o.add(buildGetResponse());
   o.add(buildGetResponse());
   return o;
 }
 
-checkUnnamed2888(core.List<api.GetResponse> o) {
+checkUnnamed2358(core.List<api.GetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGetResponse(o[0]);
   checkGetResponse(o[1]);
@@ -94,7 +94,7 @@ buildListResponse() {
   var o = new api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    o.items = buildUnnamed2888();
+    o.items = buildUnnamed2358();
     o.kind = "foo";
     o.maximumKeyCount = 42;
   }
@@ -105,7 +105,7 @@ buildListResponse() {
 checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    checkUnnamed2888(o.items);
+    checkUnnamed2358(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maximumKeyCount, unittest.equals(42));
   }
@@ -201,7 +201,7 @@ main() {
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
       var arg_currentDataVersion = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -245,7 +245,7 @@ main() {
         var resp = convert.JSON.encode(buildWriteResult());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.clear(arg_stateKey, currentDataVersion: arg_currentDataVersion).then(unittest.expectAsync(((api.WriteResult response) {
+      res.clear(arg_stateKey, currentDataVersion: arg_currentDataVersion).then(unittest.expectAsync1(((api.WriteResult response) {
         checkWriteResult(response);
       })));
     });
@@ -255,7 +255,7 @@ main() {
       var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -294,7 +294,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_stateKey).then(unittest.expectAsync((_) {}));
+      res.delete(arg_stateKey).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -302,7 +302,7 @@ main() {
       var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -341,7 +341,7 @@ main() {
         var resp = convert.JSON.encode(buildGetResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_stateKey).then(unittest.expectAsync(((api.GetResponse response) {
+      res.get(arg_stateKey).then(unittest.expectAsync1(((api.GetResponse response) {
         checkGetResponse(response);
       })));
     });
@@ -351,7 +351,7 @@ main() {
       var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_includeData = true;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -388,7 +388,7 @@ main() {
         var resp = convert.JSON.encode(buildListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(includeData: arg_includeData).then(unittest.expectAsync(((api.ListResponse response) {
+      res.list(includeData: arg_includeData).then(unittest.expectAsync1(((api.ListResponse response) {
         checkListResponse(response);
       })));
     });
@@ -400,7 +400,7 @@ main() {
       var arg_request = buildUpdateRequest();
       var arg_stateKey = 42;
       var arg_currentStateVersion = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateRequest.fromJson(json);
         checkUpdateRequest(obj);
 
@@ -443,7 +443,7 @@ main() {
         var resp = convert.JSON.encode(buildWriteResult());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_stateKey, currentStateVersion: arg_currentStateVersion).then(unittest.expectAsync(((api.WriteResult response) {
+      res.update(arg_request, arg_stateKey, currentStateVersion: arg_currentStateVersion).then(unittest.expectAsync1(((api.WriteResult response) {
         checkWriteResult(response);
       })));
     });

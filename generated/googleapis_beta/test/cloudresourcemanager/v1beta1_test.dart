@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis_beta/cloudresourcemanager/v1beta1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -70,14 +70,14 @@ checkAncestor(api.Ancestor o) {
   buildCounterAncestor--;
 }
 
-buildUnnamed3795() {
+buildUnnamed3269() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed3795(core.List<api.AuditLogConfig> o) {
+checkUnnamed3269(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
@@ -88,7 +88,7 @@ buildAuditConfig() {
   var o = new api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed3795();
+    o.auditLogConfigs = buildUnnamed3269();
     o.service = "foo";
   }
   buildCounterAuditConfig--;
@@ -98,20 +98,20 @@ buildAuditConfig() {
 checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed3795(o.auditLogConfigs);
+    checkUnnamed3269(o.auditLogConfigs);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-buildUnnamed3796() {
+buildUnnamed3270() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3796(core.List<core.String> o) {
+checkUnnamed3270(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -122,7 +122,7 @@ buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed3796();
+    o.exemptedMembers = buildUnnamed3270();
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -132,20 +132,20 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed3796(o.exemptedMembers);
+    checkUnnamed3270(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
 }
 
-buildUnnamed3797() {
+buildUnnamed3271() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3797(core.List<core.String> o) {
+checkUnnamed3271(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -156,7 +156,7 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    o.members = buildUnnamed3797();
+    o.members = buildUnnamed3271();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -166,7 +166,7 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkUnnamed3797(o.members);
+    checkUnnamed3271(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -250,14 +250,14 @@ checkGetAncestryRequest(api.GetAncestryRequest o) {
   buildCounterGetAncestryRequest--;
 }
 
-buildUnnamed3798() {
+buildUnnamed3272() {
   var o = new core.List<api.Ancestor>();
   o.add(buildAncestor());
   o.add(buildAncestor());
   return o;
 }
 
-checkUnnamed3798(core.List<api.Ancestor> o) {
+checkUnnamed3272(core.List<api.Ancestor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAncestor(o[0]);
   checkAncestor(o[1]);
@@ -268,7 +268,7 @@ buildGetAncestryResponse() {
   var o = new api.GetAncestryResponse();
   buildCounterGetAncestryResponse++;
   if (buildCounterGetAncestryResponse < 3) {
-    o.ancestor = buildUnnamed3798();
+    o.ancestor = buildUnnamed3272();
   }
   buildCounterGetAncestryResponse--;
   return o;
@@ -277,7 +277,7 @@ buildGetAncestryResponse() {
 checkGetAncestryResponse(api.GetAncestryResponse o) {
   buildCounterGetAncestryResponse++;
   if (buildCounterGetAncestryResponse < 3) {
-    checkUnnamed3798(o.ancestor);
+    checkUnnamed3272(o.ancestor);
   }
   buildCounterGetAncestryResponse--;
 }
@@ -299,14 +299,14 @@ checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest--;
 }
 
-buildUnnamed3799() {
+buildUnnamed3273() {
   var o = new core.List<api.Organization>();
   o.add(buildOrganization());
   o.add(buildOrganization());
   return o;
 }
 
-checkUnnamed3799(core.List<api.Organization> o) {
+checkUnnamed3273(core.List<api.Organization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrganization(o[0]);
   checkOrganization(o[1]);
@@ -318,7 +318,7 @@ buildListOrganizationsResponse() {
   buildCounterListOrganizationsResponse++;
   if (buildCounterListOrganizationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.organizations = buildUnnamed3799();
+    o.organizations = buildUnnamed3273();
   }
   buildCounterListOrganizationsResponse--;
   return o;
@@ -328,19 +328,19 @@ checkListOrganizationsResponse(api.ListOrganizationsResponse o) {
   buildCounterListOrganizationsResponse++;
   if (buildCounterListOrganizationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3799(o.organizations);
+    checkUnnamed3273(o.organizations);
   }
   buildCounterListOrganizationsResponse--;
 }
 
-buildUnnamed3800() {
+buildUnnamed3274() {
   var o = new core.List<api.Project>();
   o.add(buildProject());
   o.add(buildProject());
   return o;
 }
 
-checkUnnamed3800(core.List<api.Project> o) {
+checkUnnamed3274(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -352,7 +352,7 @@ buildListProjectsResponse() {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     o.nextPageToken = "foo";
-    o.projects = buildUnnamed3800();
+    o.projects = buildUnnamed3274();
   }
   buildCounterListProjectsResponse--;
   return o;
@@ -362,7 +362,7 @@ checkListProjectsResponse(api.ListProjectsResponse o) {
   buildCounterListProjectsResponse++;
   if (buildCounterListProjectsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3800(o.projects);
+    checkUnnamed3274(o.projects);
   }
   buildCounterListProjectsResponse--;
 }
@@ -415,27 +415,27 @@ checkOrganizationOwner(api.OrganizationOwner o) {
   buildCounterOrganizationOwner--;
 }
 
-buildUnnamed3801() {
+buildUnnamed3275() {
   var o = new core.List<api.AuditConfig>();
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-checkUnnamed3801(core.List<api.AuditConfig> o) {
+checkUnnamed3275(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-buildUnnamed3802() {
+buildUnnamed3276() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed3802(core.List<api.Binding> o) {
+checkUnnamed3276(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -446,8 +446,8 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed3801();
-    o.bindings = buildUnnamed3802();
+    o.auditConfigs = buildUnnamed3275();
+    o.bindings = buildUnnamed3276();
     o.etag = "foo";
     o.version = 42;
   }
@@ -458,22 +458,22 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3801(o.auditConfigs);
-    checkUnnamed3802(o.bindings);
+    checkUnnamed3275(o.auditConfigs);
+    checkUnnamed3276(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed3803() {
+buildUnnamed3277() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3803(core.Map<core.String, core.String> o) {
+checkUnnamed3277(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -485,7 +485,7 @@ buildProject() {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed3803();
+    o.labels = buildUnnamed3277();
     o.lifecycleState = "foo";
     o.name = "foo";
     o.parent = buildResourceId();
@@ -500,7 +500,7 @@ checkProject(api.Project o) {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed3803(o.labels);
+    checkUnnamed3277(o.labels);
     unittest.expect(o.lifecycleState, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkResourceId(o.parent);
@@ -575,14 +575,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed3804() {
+buildUnnamed3278() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3804(core.List<core.String> o) {
+checkUnnamed3278(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -593,7 +593,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3804();
+    o.permissions = buildUnnamed3278();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -602,19 +602,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3804(o.permissions);
+    checkUnnamed3278(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed3805() {
+buildUnnamed3279() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3805(core.List<core.String> o) {
+checkUnnamed3279(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -625,7 +625,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3805();
+    o.permissions = buildUnnamed3279();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -634,7 +634,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3805(o.permissions);
+    checkUnnamed3279(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -863,7 +863,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_name = "foo";
       var arg_organizationId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -899,7 +899,7 @@ main() {
         var resp = convert.JSON.encode(buildOrganization());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name, organizationId: arg_organizationId).then(unittest.expectAsync(((api.Organization response) {
+      res.get(arg_name, organizationId: arg_organizationId).then(unittest.expectAsync1(((api.Organization response) {
         checkOrganization(response);
       })));
     });
@@ -910,7 +910,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
@@ -948,7 +948,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -960,7 +960,7 @@ main() {
       var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -997,7 +997,7 @@ main() {
         var resp = convert.JSON.encode(buildListOrganizationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(filter: arg_filter, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync(((api.ListOrganizationsResponse response) {
+      res.list(filter: arg_filter, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.ListOrganizationsResponse response) {
         checkListOrganizationsResponse(response);
       })));
     });
@@ -1008,7 +1008,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
@@ -1046,7 +1046,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -1057,7 +1057,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
@@ -1095,7 +1095,7 @@ main() {
         var resp = convert.JSON.encode(buildTestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync(((api.TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
         checkTestIamPermissionsResponse(response);
       })));
     });
@@ -1106,7 +1106,7 @@ main() {
       api.OrganizationsResourceApi res = new api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildOrganization();
       var arg_name = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Organization.fromJson(json);
         checkOrganization(obj);
 
@@ -1144,7 +1144,7 @@ main() {
         var resp = convert.JSON.encode(buildOrganization());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_name).then(unittest.expectAsync(((api.Organization response) {
+      res.update(arg_request, arg_name).then(unittest.expectAsync1(((api.Organization response) {
         checkOrganization(response);
       })));
     });
@@ -1159,7 +1159,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildProject();
       var arg_useLegacyStack = true;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Project.fromJson(json);
         checkProject(obj);
 
@@ -1197,7 +1197,7 @@ main() {
         var resp = convert.JSON.encode(buildProject());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, useLegacyStack: arg_useLegacyStack).then(unittest.expectAsync(((api.Project response) {
+      res.create(arg_request, useLegacyStack: arg_useLegacyStack).then(unittest.expectAsync1(((api.Project response) {
         checkProject(response);
       })));
     });
@@ -1207,7 +1207,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1244,7 +1244,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_projectId).then(unittest.expectAsync(((api.Empty response) {
+      res.delete(arg_projectId).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -1254,7 +1254,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1291,7 +1291,7 @@ main() {
         var resp = convert.JSON.encode(buildProject());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_projectId).then(unittest.expectAsync(((api.Project response) {
+      res.get(arg_projectId).then(unittest.expectAsync1(((api.Project response) {
         checkProject(response);
       })));
     });
@@ -1302,7 +1302,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildGetAncestryRequest();
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetAncestryRequest.fromJson(json);
         checkGetAncestryRequest(obj);
 
@@ -1346,7 +1346,7 @@ main() {
         var resp = convert.JSON.encode(buildGetAncestryResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getAncestry(arg_request, arg_projectId).then(unittest.expectAsync(((api.GetAncestryResponse response) {
+      res.getAncestry(arg_request, arg_projectId).then(unittest.expectAsync1(((api.GetAncestryResponse response) {
         checkGetAncestryResponse(response);
       })));
     });
@@ -1357,7 +1357,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
@@ -1401,7 +1401,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.getIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -1410,10 +1410,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
-      var arg_pageSize = 42;
       var arg_filter = "foo";
       var arg_pageToken = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      var arg_pageSize = 42;
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1439,9 +1439,9 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
@@ -1450,7 +1450,7 @@ main() {
         var resp = convert.JSON.encode(buildListProjectsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageSize: arg_pageSize, filter: arg_filter, pageToken: arg_pageToken).then(unittest.expectAsync(((api.ListProjectsResponse response) {
+      res.list(filter: arg_filter, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.ListProjectsResponse response) {
         checkListProjectsResponse(response);
       })));
     });
@@ -1461,7 +1461,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
@@ -1505,7 +1505,7 @@ main() {
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync(((api.Policy response) {
+      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
@@ -1516,7 +1516,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
@@ -1560,7 +1560,7 @@ main() {
         var resp = convert.JSON.encode(buildTestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync(((api.TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.TestIamPermissionsResponse response) {
         checkTestIamPermissionsResponse(response);
       })));
     });
@@ -1571,7 +1571,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildUndeleteProjectRequest();
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UndeleteProjectRequest.fromJson(json);
         checkUndeleteProjectRequest(obj);
 
@@ -1615,7 +1615,7 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.undelete(arg_request, arg_projectId).then(unittest.expectAsync(((api.Empty response) {
+      res.undelete(arg_request, arg_projectId).then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -1626,7 +1626,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildProject();
       var arg_projectId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Project.fromJson(json);
         checkProject(obj);
 
@@ -1666,7 +1666,7 @@ main() {
         var resp = convert.JSON.encode(buildProject());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_projectId).then(unittest.expectAsync(((api.Project response) {
+      res.update(arg_request, arg_projectId).then(unittest.expectAsync1(((api.Project response) {
         checkProject(response);
       })));
     });

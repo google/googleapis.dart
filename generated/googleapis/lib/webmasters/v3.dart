@@ -790,8 +790,8 @@ class ApiDataRow {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (clicks != null) {
       _json["clicks"] = clicks;
     }
@@ -830,8 +830,8 @@ class ApiDimensionFilter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dimension != null) {
       _json["dimension"] = dimension;
     }
@@ -860,8 +860,8 @@ class ApiDimensionFilterGroup {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filters != null) {
       _json["filters"] = filters.map((value) => (value).toJson()).toList();
     }
@@ -958,8 +958,8 @@ class SearchAnalyticsQueryRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aggregationType != null) {
       _json["aggregationType"] = aggregationType;
     }
@@ -1012,8 +1012,8 @@ class SearchAnalyticsQueryResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (responseAggregationType != null) {
       _json["responseAggregationType"] = responseAggregationType;
     }
@@ -1039,8 +1039,8 @@ class SitemapsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sitemap != null) {
       _json["sitemap"] = sitemap.map((value) => (value).toJson()).toList();
     }
@@ -1064,8 +1064,8 @@ class SitesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (siteEntry != null) {
       _json["siteEntry"] = siteEntry.map((value) => (value).toJson()).toList();
     }
@@ -1093,8 +1093,8 @@ class UrlCrawlErrorCount {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -1134,8 +1134,8 @@ class UrlCrawlErrorCountsPerType {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (category != null) {
       _json["category"] = category;
     }
@@ -1168,8 +1168,8 @@ class UrlCrawlErrorsCountsQueryResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (countPerTypes != null) {
       _json["countPerTypes"] = countPerTypes.map((value) => (value).toJson()).toList();
     }
@@ -1210,8 +1210,8 @@ class UrlCrawlErrorsSample {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (firstDetected != null) {
       _json["first_detected"] = (firstDetected).toIso8601String();
     }
@@ -1244,8 +1244,8 @@ class UrlCrawlErrorsSamplesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (urlCrawlErrorSample != null) {
       _json["urlCrawlErrorSample"] = urlCrawlErrorSample.map((value) => (value).toJson()).toList();
     }
@@ -1271,8 +1271,8 @@ class UrlSampleDetails {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (containingSitemaps != null) {
       _json["containingSitemaps"] = containingSitemaps;
     }
@@ -1304,8 +1304,8 @@ class WmxSite {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissionLevel != null) {
       _json["permissionLevel"] = permissionLevel;
     }
@@ -1383,8 +1383,8 @@ class WmxSitemap {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contents != null) {
       _json["contents"] = contents.map((value) => (value).toJson()).toList();
     }
@@ -1442,8 +1442,8 @@ class WmxSitemapContent {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (indexed != null) {
       _json["indexed"] = indexed;
     }

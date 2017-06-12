@@ -1027,8 +1027,8 @@ class Change {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (additions != null) {
       _json["additions"] = additions.map((value) => (value).toJson()).toList();
     }
@@ -1095,8 +1095,8 @@ class ChangesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (changes != null) {
       _json["changes"] = changes.map((value) => (value).toJson()).toList();
     }
@@ -1220,8 +1220,8 @@ class DnsKey {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -1285,8 +1285,8 @@ class DnsKeyDigest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (digest != null) {
       _json["digest"] = digest;
     }
@@ -1348,8 +1348,8 @@ class DnsKeySpec {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -1404,8 +1404,8 @@ class DnsKeysListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dnsKeys != null) {
       _json["dnsKeys"] = dnsKeys.map((value) => (value).toJson()).toList();
     }
@@ -1501,8 +1501,8 @@ class ManagedZone {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -1579,8 +1579,8 @@ class ManagedZoneDnsSecConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (defaultKeySpecs != null) {
       _json["defaultKeySpecs"] = defaultKeySpecs.map((value) => (value).toJson()).toList();
     }
@@ -1634,8 +1634,8 @@ class ManagedZoneOperationsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -1663,8 +1663,8 @@ class ManagedZonesDeleteResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -1709,8 +1709,8 @@ class ManagedZonesListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -1804,8 +1804,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dnsKeyContext != null) {
       _json["dnsKeyContext"] = (dnsKeyContext).toJson();
     }
@@ -1851,8 +1851,8 @@ class OperationDnsKeyContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (newValue != null) {
       _json["newValue"] = (newValue).toJson();
     }
@@ -1880,8 +1880,8 @@ class OperationManagedZoneContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (newValue != null) {
       _json["newValue"] = (newValue).toJson();
     }
@@ -1930,8 +1930,8 @@ class Project {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -2012,8 +2012,8 @@ class Quota {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dnsKeysPerManagedZone != null) {
       _json["dnsKeysPerManagedZone"] = dnsKeysPerManagedZone;
     }
@@ -2091,8 +2091,8 @@ class ResourceRecordSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -2152,8 +2152,8 @@ class ResourceRecordSetsListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -2187,8 +2187,8 @@ class ResponseHeader {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operationId != null) {
       _json["operationId"] = operationId;
     }

@@ -19,6 +19,12 @@ class SourcerepoApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /** View the contents of your source code repositories */
+  static const SourceReadOnlyScope = "https://www.googleapis.com/auth/source.read_only";
+
+  /** Manage the contents of your source code repositories */
+  static const SourceReadWriteScope = "https://www.googleapis.com/auth/source.read_write";
+
 
   final commons.ApiRequester _requester;
 
@@ -46,7 +52,7 @@ class ProjectsReposResourceApi {
       _requester = client;
 
   /**
-   * Creates a repo in the given project with the given name..
+   * Creates a repo in the given project with the given name.
    *
    * If the named repository already exists, `CreateRepo` returns
    * `ALREADY_EXISTS`.
@@ -221,7 +227,8 @@ class ProjectsReposResourceApi {
   }
 
   /**
-   * Returns all repos belonging to a project.
+   * Returns all repos belonging to a project. The sizes of the repos are
+   * not set by ListRepos.  To get the size of a repo, use GetRepo.
    *
    * Request parameters:
    *
@@ -457,8 +464,8 @@ class AuditConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] = auditLogConfigs.map((value) => (value).toJson()).toList();
     }
@@ -521,8 +528,8 @@ class AuditLogConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -555,6 +562,7 @@ class Binding {
    * * `group:{emailid}`: An email address that represents a Google group.
    *    For example, `admins@example.com`.
    *
+   *
    * * `domain:{domain}`: A Google Apps domain name that represents all the
    *    users of that domain. For example, `google.com` or `example.com`.
    */
@@ -577,8 +585,8 @@ class Binding {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -591,14 +599,28 @@ class Binding {
 
 /** Write a Cloud Audit log */
 class CloudAuditOptions {
+  /**
+   * The log_name to populate in the Cloud Audit Record.
+   * Possible string values are:
+   * - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
+   * - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
+   * - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
+   */
+  core.String logName;
 
   CloudAuditOptions();
 
   CloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logName")) {
+      logName = _json["logName"];
+    }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (logName != null) {
+      _json["logName"] = logName;
+    }
     return _json;
   }
 }
@@ -689,8 +711,8 @@ class Condition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (iam != null) {
       _json["iam"] = iam;
     }
@@ -731,8 +753,8 @@ class CounterOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (field != null) {
       _json["field"] = field;
     }
@@ -751,8 +773,8 @@ class DataAccessOptions {
   DataAccessOptions.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -775,13 +797,15 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/** Response for ListRepos. */
+/**
+ * Response for ListRepos.  The size is not set in the returned repositories.
+ */
 class ListReposResponse {
   /**
    * If non-empty, additional repositories exist within the project. These
@@ -803,8 +827,8 @@ class ListReposResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -838,8 +862,8 @@ class LogConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cloudAudit != null) {
       _json["cloudAudit"] = (cloudAudit).toJson();
     }
@@ -888,8 +912,8 @@ class MirrorConfig {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deployKeyId != null) {
       _json["deployKeyId"] = deployKeyId;
     }
@@ -1004,8 +1028,8 @@ class Policy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (auditConfigs != null) {
       _json["auditConfigs"] = auditConfigs.map((value) => (value).toJson()).toList();
     }
@@ -1036,7 +1060,8 @@ class Repo {
   MirrorConfig mirrorConfig;
   /**
    * Resource name of the repository, of the form
-   * `projects/<project>/repos/<repo>`.
+   * `projects/<project>/repos/<repo>`.  The repo name may contain slashes.
+   * eg, `projects/myproject/repos/name/with/slash`
    */
   core.String name;
   /**
@@ -1064,8 +1089,8 @@ class Repo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (mirrorConfig != null) {
       _json["mirrorConfig"] = (mirrorConfig).toJson();
     }
@@ -1153,8 +1178,8 @@ class Rule {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -1209,8 +1234,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -1239,8 +1264,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -1264,8 +1289,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }

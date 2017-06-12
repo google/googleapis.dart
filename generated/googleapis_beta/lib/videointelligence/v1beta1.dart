@@ -98,8 +98,8 @@ class GoogleCloudVideointelligenceV1beta1AnnotateVideoProgress {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotationProgress != null) {
       _json["annotationProgress"] = annotationProgress.map((value) => (value).toJson()).toList();
     }
@@ -170,8 +170,8 @@ class GoogleCloudVideointelligenceV1beta1AnnotateVideoRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (features != null) {
       _json["features"] = features;
     }
@@ -211,8 +211,8 @@ class GoogleCloudVideointelligenceV1beta1AnnotateVideoResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (annotationResults != null) {
       _json["annotationResults"] = annotationResults.map((value) => (value).toJson()).toList();
     }
@@ -243,8 +243,8 @@ class GoogleCloudVideointelligenceV1beta1LabelAnnotation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -297,8 +297,8 @@ class GoogleCloudVideointelligenceV1beta1LabelLocation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -346,8 +346,8 @@ class GoogleCloudVideointelligenceV1beta1VideoAnnotationProgress {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inputUri != null) {
       _json["inputUri"] = inputUri;
     }
@@ -398,8 +398,8 @@ class GoogleCloudVideointelligenceV1beta1VideoAnnotationResults {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (error != null) {
       _json["error"] = (error).toJson();
     }
@@ -463,8 +463,8 @@ class GoogleCloudVideointelligenceV1beta1VideoContext {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (labelDetectionMode != null) {
       _json["labelDetectionMode"] = labelDetectionMode;
     }
@@ -499,8 +499,8 @@ class GoogleCloudVideointelligenceV1beta1VideoSegment {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTimeOffset != null) {
       _json["endTimeOffset"] = endTimeOffset;
     }
@@ -575,8 +575,8 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -684,8 +684,8 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }

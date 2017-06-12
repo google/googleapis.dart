@@ -327,8 +327,8 @@ class AllocateIdsRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -352,8 +352,8 @@ class AllocateIdsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -378,8 +378,8 @@ class ArrayValue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (values != null) {
       _json["values"] = values.map((value) => (value).toJson()).toList();
     }
@@ -395,8 +395,8 @@ class BeginTransactionRequest {
   BeginTransactionRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -421,8 +421,8 @@ class BeginTransactionResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (transaction != null) {
       _json["transaction"] = transaction;
     }
@@ -488,8 +488,8 @@ class CommitRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (mode != null) {
       _json["mode"] = mode;
     }
@@ -527,8 +527,8 @@ class CommitResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (indexUpdates != null) {
       _json["indexUpdates"] = indexUpdates;
     }
@@ -565,8 +565,8 @@ class CompositeFilter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (filters != null) {
       _json["filters"] = filters.map((value) => (value).toJson()).toList();
     }
@@ -611,17 +611,17 @@ class Entity {
       key = new Key.fromJson(_json["key"]);
     }
     if (_json.containsKey("properties")) {
-      properties = commons.mapMap(_json["properties"], (item) => new Value.fromJson(item));
+      properties = commons.mapMap<core.Map<core.String, core.Object>, Value>(_json["properties"], (core.Map<core.String, core.Object> item) => new Value.fromJson(item));
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = (key).toJson();
     }
     if (properties != null) {
-      _json["properties"] = commons.mapMap(properties, (item) => (item).toJson());
+      _json["properties"] = commons.mapMap<Value, core.Map<core.String, core.Object>>(properties, (Value item) => (item).toJson());
     }
     return _json;
   }
@@ -670,8 +670,8 @@ class EntityResult {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cursor != null) {
       _json["cursor"] = cursor;
     }
@@ -703,8 +703,8 @@ class Filter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (compositeFilter != null) {
       _json["compositeFilter"] = (compositeFilter).toJson();
     }
@@ -756,7 +756,7 @@ class GqlQuery {
       allowLiterals = _json["allowLiterals"];
     }
     if (_json.containsKey("namedBindings")) {
-      namedBindings = commons.mapMap(_json["namedBindings"], (item) => new GqlQueryParameter.fromJson(item));
+      namedBindings = commons.mapMap<core.Map<core.String, core.Object>, GqlQueryParameter>(_json["namedBindings"], (core.Map<core.String, core.Object> item) => new GqlQueryParameter.fromJson(item));
     }
     if (_json.containsKey("positionalBindings")) {
       positionalBindings = _json["positionalBindings"].map((value) => new GqlQueryParameter.fromJson(value)).toList();
@@ -766,13 +766,13 @@ class GqlQuery {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowLiterals != null) {
       _json["allowLiterals"] = allowLiterals;
     }
     if (namedBindings != null) {
-      _json["namedBindings"] = commons.mapMap(namedBindings, (item) => (item).toJson());
+      _json["namedBindings"] = commons.mapMap<GqlQueryParameter, core.Map<core.String, core.Object>>(namedBindings, (GqlQueryParameter item) => (item).toJson());
     }
     if (positionalBindings != null) {
       _json["positionalBindings"] = positionalBindings.map((value) => (value).toJson()).toList();
@@ -812,8 +812,8 @@ class GqlQueryParameter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cursor != null) {
       _json["cursor"] = cursor;
     }
@@ -868,8 +868,8 @@ class Key {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (partitionId != null) {
       _json["partitionId"] = (partitionId).toJson();
     }
@@ -893,8 +893,8 @@ class KindExpression {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -960,8 +960,8 @@ class LatLng {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -990,8 +990,8 @@ class LookupRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -1037,8 +1037,8 @@ class LookupResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deferred != null) {
       _json["deferred"] = deferred.map((value) => (value).toJson()).toList();
     }
@@ -1100,8 +1100,8 @@ class Mutation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (baseVersion != null) {
       _json["baseVersion"] = baseVersion;
     }
@@ -1156,8 +1156,8 @@ class MutationResult {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (conflictDetected != null) {
       _json["conflictDetected"] = conflictDetected;
     }
@@ -1210,8 +1210,8 @@ class PartitionId {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (namespaceId != null) {
       _json["namespaceId"] = namespaceId;
     }
@@ -1264,8 +1264,8 @@ class PathElement {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1292,8 +1292,8 @@ class Projection {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (property != null) {
       _json["property"] = (property).toJson();
     }
@@ -1334,8 +1334,8 @@ class PropertyFilter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (op != null) {
       _json["op"] = op;
     }
@@ -1373,8 +1373,8 @@ class PropertyOrder {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (direction != null) {
       _json["direction"] = direction;
     }
@@ -1401,8 +1401,8 @@ class PropertyReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1504,8 +1504,8 @@ class Query {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (distinctOn != null) {
       _json["distinctOn"] = distinctOn.map((value) => (value).toJson()).toList();
     }
@@ -1629,8 +1629,8 @@ class QueryResultBatch {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endCursor != null) {
       _json["endCursor"] = endCursor;
     }
@@ -1693,8 +1693,8 @@ class ReadOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (readConsistency != null) {
       _json["readConsistency"] = readConsistency;
     }
@@ -1728,8 +1728,8 @@ class RollbackRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (transaction != null) {
       _json["transaction"] = transaction;
     }
@@ -1748,8 +1748,8 @@ class RollbackResponse {
   RollbackResponse.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1787,8 +1787,8 @@ class RunQueryRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (gqlQuery != null) {
       _json["gqlQuery"] = (gqlQuery).toJson();
     }
@@ -1823,8 +1823,8 @@ class RunQueryResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (batch != null) {
       _json["batch"] = (batch).toJson();
     }
@@ -1952,8 +1952,8 @@ class Value {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (arrayValue != null) {
       _json["arrayValue"] = (arrayValue).toJson();
     }

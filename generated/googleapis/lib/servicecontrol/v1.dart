@@ -461,8 +461,8 @@ class AllocateQuotaRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allocateOperation != null) {
       _json["allocateOperation"] = (allocateOperation).toJson();
     }
@@ -526,8 +526,8 @@ class AllocateQuotaResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allocateErrors != null) {
       _json["allocateErrors"] = allocateErrors.map((value) => (value).toJson()).toList();
     }
@@ -657,8 +657,8 @@ class AuditLog {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (authenticationInfo != null) {
       _json["authenticationInfo"] = (authenticationInfo).toJson();
     }
@@ -717,8 +717,8 @@ class AuthenticationInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (authoritySelector != null) {
       _json["authoritySelector"] = authoritySelector;
     }
@@ -759,8 +759,8 @@ class AuthorizationInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (granted != null) {
       _json["granted"] = granted;
     }
@@ -859,8 +859,8 @@ class CheckError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -887,8 +887,8 @@ class CheckInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (unusedArguments != null) {
       _json["unusedArguments"] = unusedArguments;
     }
@@ -935,8 +935,8 @@ class CheckRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operation != null) {
       _json["operation"] = (operation).toJson();
     }
@@ -997,8 +997,8 @@ class CheckResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (checkErrors != null) {
       _json["checkErrors"] = checkErrors.map((value) => (value).toJson()).toList();
     }
@@ -1100,8 +1100,8 @@ class Distribution {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bucketCounts != null) {
       _json["bucketCounts"] = bucketCounts;
     }
@@ -1154,8 +1154,8 @@ class EndReconciliationRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (reconciliationOperation != null) {
       _json["reconciliationOperation"] = (reconciliationOperation).toJson();
     }
@@ -1217,8 +1217,8 @@ class EndReconciliationResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
@@ -1264,8 +1264,8 @@ class ExplicitBuckets {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bounds != null) {
       _json["bounds"] = bounds;
     }
@@ -1310,8 +1310,8 @@ class ExponentialBuckets {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (growthFactor != null) {
       _json["growthFactor"] = growthFactor;
     }
@@ -1361,8 +1361,8 @@ class LinearBuckets {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (numFiniteBuckets != null) {
       _json["numFiniteBuckets"] = numFiniteBuckets;
     }
@@ -1465,8 +1465,8 @@ class LogEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (insertId != null) {
       _json["insertId"] = insertId;
     }
@@ -1560,8 +1560,8 @@ class MetricValue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -1615,8 +1615,8 @@ class MetricValueSet {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (metricName != null) {
       _json["metricName"] = metricName;
     }
@@ -1660,8 +1660,8 @@ class Money {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -1820,8 +1820,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (consumerId != null) {
       _json["consumerId"] = consumerId;
     }
@@ -1869,23 +1869,11 @@ class QuotaError {
    * - "UNSPECIFIED" : This is never used.
    * - "RESOURCE_EXHAUSTED" : Quota allocation failed.
    * Same as google.rpc.Code.RESOURCE_EXHAUSTED.
-   * - "PROJECT_SUSPENDED" : Consumer project has been suspended.
-   * - "SERVICE_NOT_ENABLED" : Consumer has not enabled the service.
-   * - "BILLING_NOT_ACTIVE" : Consumer cannot access the service because billing
-   * is disabled.
+   * - "BILLING_NOT_ACTIVE" : Consumer cannot access the service because the
+   * service requires active
+   * billing.
    * - "PROJECT_DELETED" : Consumer's project has been marked as deleted (soft
    * deletion).
-   * - "PROJECT_INVALID" : Consumer's project number or ID does not represent a
-   * valid project.
-   * - "IP_ADDRESS_BLOCKED" : IP address of the consumer is invalid for the
-   * specific consumer
-   * project.
-   * - "REFERER_BLOCKED" : Referer address of the consumer request is invalid
-   * for the specific
-   * consumer project.
-   * - "CLIENT_APP_BLOCKED" : Client application of the consumer request is
-   * invalid for the
-   * specific consumer project.
    * - "API_KEY_INVALID" : Specified API key is invalid.
    * - "API_KEY_EXPIRED" : Specified API Key has expired.
    * - "SPATULA_HEADER_INVALID" : Consumer's spatula header is invalid.
@@ -1924,8 +1912,8 @@ class QuotaError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -1988,8 +1976,8 @@ class QuotaInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (limitExceeded != null) {
       _json["limitExceeded"] = limitExceeded;
     }
@@ -2108,8 +2096,8 @@ class QuotaOperation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (consumerId != null) {
       _json["consumerId"] = consumerId;
     }
@@ -2180,8 +2168,8 @@ class QuotaProperties {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (limitByIds != null) {
       _json["limitByIds"] = limitByIds;
     }
@@ -2214,8 +2202,8 @@ class ReleaseQuotaRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (releaseOperation != null) {
       _json["releaseOperation"] = (releaseOperation).toJson();
     }
@@ -2272,8 +2260,8 @@ class ReleaseQuotaResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
@@ -2308,8 +2296,8 @@ class ReportError {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
@@ -2337,8 +2325,8 @@ class ReportInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
@@ -2384,8 +2372,8 @@ class ReportRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operations != null) {
       _json["operations"] = operations.map((value) => (value).toJson()).toList();
     }
@@ -2443,8 +2431,8 @@ class ReportResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (reportErrors != null) {
       _json["reportErrors"] = reportErrors.map((value) => (value).toJson()).toList();
     }
@@ -2474,6 +2462,8 @@ class RequestMetadata {
    * +   `AppEngine-Google; (+http://code.google.com/appengine; appid:
    * s~my-project`:
    *     The request was made from the `my-project` App Engine app.
+   *
+   * NOLINT
    */
   core.String callerSuppliedUserAgent;
 
@@ -2488,8 +2478,8 @@ class RequestMetadata {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (callerIp != null) {
       _json["callerIp"] = callerIp;
     }
@@ -2521,8 +2511,8 @@ class StartReconciliationRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (reconciliationOperation != null) {
       _json["reconciliationOperation"] = (reconciliationOperation).toJson();
     }
@@ -2574,8 +2564,8 @@ class StartReconciliationResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
@@ -2680,8 +2670,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }

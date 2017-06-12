@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/groupsmigration/v1.dart' as api;
 
@@ -46,7 +46,7 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -91,7 +91,7 @@ main() {
       var mock = new HttpServerMock();
       api.ArchiveResourceApi res = new api.GroupsmigrationApi(mock).archive;
       var arg_groupId = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -123,7 +123,7 @@ main() {
         var resp = convert.JSON.encode(buildGroups());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_groupId).then(unittest.expectAsync(((api.Groups response) {
+      res.insert(arg_groupId).then(unittest.expectAsync1(((api.Groups response) {
         checkGroups(response);
       })));
     });

@@ -1315,8 +1315,8 @@ class BigtableColumn {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (encoding != null) {
       _json["encoding"] = encoding;
     }
@@ -1395,8 +1395,8 @@ class BigtableColumnFamily {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns.map((value) => (value).toJson()).toList();
     }
@@ -1456,8 +1456,8 @@ class BigtableOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (columnFamilies != null) {
       _json["columnFamilies"] = columnFamilies.map((value) => (value).toJson()).toList();
     }
@@ -1540,8 +1540,8 @@ class CsvOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowJaggedRows != null) {
       _json["allowJaggedRows"] = allowJaggedRows;
     }
@@ -1622,8 +1622,8 @@ class DatasetAccess {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (domain != null) {
       _json["domain"] = domain;
     }
@@ -1759,8 +1759,8 @@ class Dataset {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (access != null) {
       _json["access"] = access.map((value) => (value).toJson()).toList();
     }
@@ -1845,8 +1845,8 @@ class DatasetListDatasets {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetReference != null) {
       _json["datasetReference"] = (datasetReference).toJson();
     }
@@ -1907,8 +1907,8 @@ class DatasetList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasets != null) {
       _json["datasets"] = datasets.map((value) => (value).toJson()).toList();
     }
@@ -1946,8 +1946,8 @@ class DatasetReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -1988,8 +1988,8 @@ class ErrorProto {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (debugInfo != null) {
       _json["debugInfo"] = debugInfo;
     }
@@ -2090,8 +2090,8 @@ class ExplainQueryStage {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (computeRatioAvg != null) {
       _json["computeRatioAvg"] = computeRatioAvg;
     }
@@ -2155,8 +2155,8 @@ class ExplainQueryStep {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -2266,8 +2266,8 @@ class ExternalDataConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (autodetect != null) {
       _json["autodetect"] = autodetect;
     }
@@ -2306,9 +2306,10 @@ class GetQueryResultsResponse {
   /** Whether the query result was fetched from the query cache. */
   core.bool cacheHit;
   /**
-   * [Output-only] All errors and warnings encountered during the running of the
-   * job. Errors here do not necessarily mean that the job has completed or was
-   * unsuccessful.
+   * [Output-only] The first errors or warnings encountered during the running
+   * of the job. The final message includes the number of errors that caused the
+   * process to stop. Errors here do not necessarily mean that the job has
+   * completed or was unsuccessful.
    */
   core.List<ErrorProto> errors;
   /** A hash of this response. */
@@ -2398,8 +2399,8 @@ class GetQueryResultsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
     }
@@ -2464,8 +2465,8 @@ class GoogleSheetsOptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (skipLeadingRows != null) {
       _json["skipLeadingRows"] = skipLeadingRows;
     }
@@ -2531,8 +2532,8 @@ class Job {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (configuration != null) {
       _json["configuration"] = (configuration).toJson();
     }
@@ -2581,8 +2582,8 @@ class JobCancelResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (job != null) {
       _json["job"] = (job).toJson();
     }
@@ -2642,8 +2643,8 @@ class JobConfiguration {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (copy != null) {
       _json["copy"] = (copy).toJson();
     }
@@ -2728,8 +2729,8 @@ class JobConfigurationExtract {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (compression != null) {
       _json["compression"] = compression;
     }
@@ -2970,8 +2971,8 @@ class JobConfigurationLoad {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowJaggedRows != null) {
       _json["allowJaggedRows"] = allowJaggedRows;
     }
@@ -3041,7 +3042,9 @@ class JobConfigurationQuery {
    * [Optional] If true and query uses legacy SQL dialect, allows the query to
    * produce arbitrarily large result tables at a slight cost in performance.
    * Requires destinationTable to be set. For standard SQL queries, this flag is
-   * ignored and large results are always allowed.
+   * ignored and large results are always allowed. However, you must still set
+   * destinationTable when result size exceeds the allowed maximum response
+   * size.
    */
   core.bool allowLargeResults;
   /**
@@ -3060,7 +3063,9 @@ class JobConfigurationQuery {
   DatasetReference defaultDataset;
   /**
    * [Optional] Describes the table where the query results should be stored. If
-   * not present, a new table will be created to store the results.
+   * not present, a new table will be created to store the results. This
+   * property must be set for large results that exceed the maximum response
+   * size.
    */
   TableReference destinationTable;
   /**
@@ -3195,7 +3200,7 @@ class JobConfigurationQuery {
       schemaUpdateOptions = _json["schemaUpdateOptions"];
     }
     if (_json.containsKey("tableDefinitions")) {
-      tableDefinitions = commons.mapMap(_json["tableDefinitions"], (item) => new ExternalDataConfiguration.fromJson(item));
+      tableDefinitions = commons.mapMap<core.Map<core.String, core.Object>, ExternalDataConfiguration>(_json["tableDefinitions"], (core.Map<core.String, core.Object> item) => new ExternalDataConfiguration.fromJson(item));
     }
     if (_json.containsKey("useLegacySql")) {
       useLegacySql = _json["useLegacySql"];
@@ -3211,8 +3216,8 @@ class JobConfigurationQuery {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowLargeResults != null) {
       _json["allowLargeResults"] = allowLargeResults;
     }
@@ -3253,7 +3258,7 @@ class JobConfigurationQuery {
       _json["schemaUpdateOptions"] = schemaUpdateOptions;
     }
     if (tableDefinitions != null) {
-      _json["tableDefinitions"] = commons.mapMap(tableDefinitions, (item) => (item).toJson());
+      _json["tableDefinitions"] = commons.mapMap<ExternalDataConfiguration, core.Map<core.String, core.Object>>(tableDefinitions, (ExternalDataConfiguration item) => (item).toJson());
     }
     if (useLegacySql != null) {
       _json["useLegacySql"] = useLegacySql;
@@ -3320,8 +3325,8 @@ class JobConfigurationTableCopy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (createDisposition != null) {
       _json["createDisposition"] = createDisposition;
     }
@@ -3399,8 +3404,8 @@ class JobListJobs {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (configuration != null) {
       _json["configuration"] = (configuration).toJson();
     }
@@ -3459,8 +3464,8 @@ class JobList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -3498,8 +3503,8 @@ class JobReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (jobId != null) {
       _json["jobId"] = jobId;
     }
@@ -3565,8 +3570,8 @@ class JobStatistics {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -3663,8 +3668,8 @@ class JobStatistics2 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (billingTier != null) {
       _json["billingTier"] = billingTier;
     }
@@ -3732,8 +3737,8 @@ class JobStatistics3 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inputFileBytes != null) {
       _json["inputFileBytes"] = inputFileBytes;
     }
@@ -3766,8 +3771,8 @@ class JobStatistics4 {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (destinationUriFileCounts != null) {
       _json["destinationUriFileCounts"] = destinationUriFileCounts;
     }
@@ -3782,8 +3787,9 @@ class JobStatus {
    */
   ErrorProto errorResult;
   /**
-   * [Output-only] All errors encountered during the running of the job. Errors
-   * here do not necessarily mean that the job has completed or was
+   * [Output-only] The first errors encountered during the running of the job.
+   * The final message includes the number of errors that caused the process to
+   * stop. Errors here do not necessarily mean that the job has completed or was
    * unsuccessful.
    */
   core.List<ErrorProto> errors;
@@ -3804,8 +3810,8 @@ class JobStatus {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errorResult != null) {
       _json["errorResult"] = (errorResult).toJson();
     }
@@ -3832,8 +3838,8 @@ class JsonObject
     });
   }
 
-  core.Map toJson() {
-    var _json = {};
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = <core.String, core.Object>{};
     this.forEach((core.String key, value) {
       _json[key] = value;
     });
@@ -3888,8 +3894,8 @@ class ProjectListProjects {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (friendlyName != null) {
       _json["friendlyName"] = friendlyName;
     }
@@ -3941,8 +3947,8 @@ class ProjectList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -3977,8 +3983,8 @@ class ProjectReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -4011,8 +4017,8 @@ class QueryParameter {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -4048,8 +4054,8 @@ class QueryParameterTypeStructTypes {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -4088,8 +4094,8 @@ class QueryParameterType {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (arrayType != null) {
       _json["arrayType"] = (arrayType).toJson();
     }
@@ -4121,20 +4127,20 @@ class QueryParameterValue {
       arrayValues = _json["arrayValues"].map((value) => new QueryParameterValue.fromJson(value)).toList();
     }
     if (_json.containsKey("structValues")) {
-      structValues = commons.mapMap(_json["structValues"], (item) => new QueryParameterValue.fromJson(item));
+      structValues = commons.mapMap<core.Map<core.String, core.Object>, QueryParameterValue>(_json["structValues"], (core.Map<core.String, core.Object> item) => new QueryParameterValue.fromJson(item));
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (arrayValues != null) {
       _json["arrayValues"] = arrayValues.map((value) => (value).toJson()).toList();
     }
     if (structValues != null) {
-      _json["structValues"] = commons.mapMap(structValues, (item) => (item).toJson());
+      _json["structValues"] = commons.mapMap<QueryParameterValue, core.Map<core.String, core.Object>>(structValues, (QueryParameterValue item) => (item).toJson());
     }
     if (value != null) {
       _json["value"] = value;
@@ -4246,8 +4252,8 @@ class QueryRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (defaultDataset != null) {
       _json["defaultDataset"] = (defaultDataset).toJson();
     }
@@ -4289,9 +4295,10 @@ class QueryResponse {
   /** Whether the query result was fetched from the query cache. */
   core.bool cacheHit;
   /**
-   * [Output-only] All errors and warnings encountered during the running of the
-   * job. Errors here do not necessarily mean that the job has completed or was
-   * unsuccessful.
+   * [Output-only] The first errors or warnings encountered during the running
+   * of the job. The final message includes the number of errors that caused the
+   * process to stop. Errors here do not necessarily mean that the job has
+   * completed or was unsuccessful.
    */
   core.List<ErrorProto> errors;
   /**
@@ -4378,8 +4385,8 @@ class QueryResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
     }
@@ -4449,8 +4456,8 @@ class Streamingbuffer {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (estimatedBytes != null) {
       _json["estimatedBytes"] = estimatedBytes;
     }
@@ -4621,8 +4628,8 @@ class Table {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -4707,8 +4714,8 @@ class TableCell {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (v != null) {
       _json["v"] = v;
     }
@@ -4739,8 +4746,8 @@ class TableDataInsertAllRequestRows {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (insertId != null) {
       _json["insertId"] = insertId;
     }
@@ -4798,8 +4805,8 @@ class TableDataInsertAllRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (ignoreUnknownValues != null) {
       _json["ignoreUnknownValues"] = ignoreUnknownValues;
     }
@@ -4836,8 +4843,8 @@ class TableDataInsertAllResponseInsertErrors {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (errors != null) {
       _json["errors"] = errors.map((value) => (value).toJson()).toList();
     }
@@ -4865,8 +4872,8 @@ class TableDataInsertAllResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (insertErrors != null) {
       _json["insertErrors"] = insertErrors.map((value) => (value).toJson()).toList();
     }
@@ -4913,8 +4920,8 @@ class TableDataList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -4936,7 +4943,7 @@ class TableDataList {
 
 class TableFieldSchema {
   /**
-   * [Optional] The field description. The maximum length is 512 characters.
+   * [Optional] The field description. The maximum length is 1,024 characters.
    */
   core.String description;
   /**
@@ -4984,8 +4991,8 @@ class TableFieldSchema {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -5020,8 +5027,8 @@ class TableListTablesView {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (useLegacySql != null) {
       _json["useLegacySql"] = useLegacySql;
     }
@@ -5074,8 +5081,8 @@ class TableListTables {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (friendlyName != null) {
       _json["friendlyName"] = friendlyName;
     }
@@ -5133,8 +5140,8 @@ class TableList {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -5180,8 +5187,8 @@ class TableReference {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -5210,8 +5217,8 @@ class TableRow {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (f != null) {
       _json["f"] = f.map((value) => (value).toJson()).toList();
     }
@@ -5231,8 +5238,8 @@ class TableSchema {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
     }
@@ -5263,8 +5270,8 @@ class TimePartitioning {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (expirationMs != null) {
       _json["expirationMs"] = expirationMs;
     }
@@ -5299,8 +5306,8 @@ class UserDefinedFunctionResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inlineCode != null) {
       _json["inlineCode"] = inlineCode;
     }
@@ -5338,8 +5345,8 @@ class ViewDefinition {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (query != null) {
       _json["query"] = query;
     }

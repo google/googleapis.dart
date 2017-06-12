@@ -351,8 +351,8 @@ class SiteVerificationWebResourceGettokenRequestSite {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (identifier != null) {
       _json["identifier"] = identifier;
     }
@@ -383,8 +383,8 @@ class SiteVerificationWebResourceGettokenRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (site != null) {
       _json["site"] = (site).toJson();
     }
@@ -421,8 +421,8 @@ class SiteVerificationWebResourceGettokenResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (method != null) {
       _json["method"] = method;
     }
@@ -445,8 +445,8 @@ class SiteVerificationWebResourceListResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -475,8 +475,8 @@ class SiteVerificationWebResourceResourceSite {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (identifier != null) {
       _json["identifier"] = identifier;
     }
@@ -512,8 +512,8 @@ class SiteVerificationWebResourceResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }

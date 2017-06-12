@@ -7,7 +7,7 @@ import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart' as http_testing;
-import 'package:unittest/unittest.dart' as unittest;
+import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/webmasters/v3.dart' as api;
 
@@ -46,19 +46,19 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map headers, core.String body) {
+    core.int status, core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed606() {
+buildUnnamed611() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed606(core.List<core.String> o) {
+checkUnnamed611(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -72,7 +72,7 @@ buildApiDataRow() {
     o.clicks = 42.0;
     o.ctr = 42.0;
     o.impressions = 42.0;
-    o.keys = buildUnnamed606();
+    o.keys = buildUnnamed611();
     o.position = 42.0;
   }
   buildCounterApiDataRow--;
@@ -85,7 +85,7 @@ checkApiDataRow(api.ApiDataRow o) {
     unittest.expect(o.clicks, unittest.equals(42.0));
     unittest.expect(o.ctr, unittest.equals(42.0));
     unittest.expect(o.impressions, unittest.equals(42.0));
-    checkUnnamed606(o.keys);
+    checkUnnamed611(o.keys);
     unittest.expect(o.position, unittest.equals(42.0));
   }
   buildCounterApiDataRow--;
@@ -114,14 +114,14 @@ checkApiDimensionFilter(api.ApiDimensionFilter o) {
   buildCounterApiDimensionFilter--;
 }
 
-buildUnnamed607() {
+buildUnnamed612() {
   var o = new core.List<api.ApiDimensionFilter>();
   o.add(buildApiDimensionFilter());
   o.add(buildApiDimensionFilter());
   return o;
 }
 
-checkUnnamed607(core.List<api.ApiDimensionFilter> o) {
+checkUnnamed612(core.List<api.ApiDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDimensionFilter(o[0]);
   checkApiDimensionFilter(o[1]);
@@ -132,7 +132,7 @@ buildApiDimensionFilterGroup() {
   var o = new api.ApiDimensionFilterGroup();
   buildCounterApiDimensionFilterGroup++;
   if (buildCounterApiDimensionFilterGroup < 3) {
-    o.filters = buildUnnamed607();
+    o.filters = buildUnnamed612();
     o.groupType = "foo";
   }
   buildCounterApiDimensionFilterGroup--;
@@ -142,33 +142,33 @@ buildApiDimensionFilterGroup() {
 checkApiDimensionFilterGroup(api.ApiDimensionFilterGroup o) {
   buildCounterApiDimensionFilterGroup++;
   if (buildCounterApiDimensionFilterGroup < 3) {
-    checkUnnamed607(o.filters);
+    checkUnnamed612(o.filters);
     unittest.expect(o.groupType, unittest.equals('foo'));
   }
   buildCounterApiDimensionFilterGroup--;
 }
 
-buildUnnamed608() {
+buildUnnamed613() {
   var o = new core.List<api.ApiDimensionFilterGroup>();
   o.add(buildApiDimensionFilterGroup());
   o.add(buildApiDimensionFilterGroup());
   return o;
 }
 
-checkUnnamed608(core.List<api.ApiDimensionFilterGroup> o) {
+checkUnnamed613(core.List<api.ApiDimensionFilterGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDimensionFilterGroup(o[0]);
   checkApiDimensionFilterGroup(o[1]);
 }
 
-buildUnnamed609() {
+buildUnnamed614() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed609(core.List<core.String> o) {
+checkUnnamed614(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -180,8 +180,8 @@ buildSearchAnalyticsQueryRequest() {
   buildCounterSearchAnalyticsQueryRequest++;
   if (buildCounterSearchAnalyticsQueryRequest < 3) {
     o.aggregationType = "foo";
-    o.dimensionFilterGroups = buildUnnamed608();
-    o.dimensions = buildUnnamed609();
+    o.dimensionFilterGroups = buildUnnamed613();
+    o.dimensions = buildUnnamed614();
     o.endDate = "foo";
     o.rowLimit = 42;
     o.searchType = "foo";
@@ -196,8 +196,8 @@ checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
   buildCounterSearchAnalyticsQueryRequest++;
   if (buildCounterSearchAnalyticsQueryRequest < 3) {
     unittest.expect(o.aggregationType, unittest.equals('foo'));
-    checkUnnamed608(o.dimensionFilterGroups);
-    checkUnnamed609(o.dimensions);
+    checkUnnamed613(o.dimensionFilterGroups);
+    checkUnnamed614(o.dimensions);
     unittest.expect(o.endDate, unittest.equals('foo'));
     unittest.expect(o.rowLimit, unittest.equals(42));
     unittest.expect(o.searchType, unittest.equals('foo'));
@@ -207,14 +207,14 @@ checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
   buildCounterSearchAnalyticsQueryRequest--;
 }
 
-buildUnnamed610() {
+buildUnnamed615() {
   var o = new core.List<api.ApiDataRow>();
   o.add(buildApiDataRow());
   o.add(buildApiDataRow());
   return o;
 }
 
-checkUnnamed610(core.List<api.ApiDataRow> o) {
+checkUnnamed615(core.List<api.ApiDataRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDataRow(o[0]);
   checkApiDataRow(o[1]);
@@ -226,7 +226,7 @@ buildSearchAnalyticsQueryResponse() {
   buildCounterSearchAnalyticsQueryResponse++;
   if (buildCounterSearchAnalyticsQueryResponse < 3) {
     o.responseAggregationType = "foo";
-    o.rows = buildUnnamed610();
+    o.rows = buildUnnamed615();
   }
   buildCounterSearchAnalyticsQueryResponse--;
   return o;
@@ -236,19 +236,19 @@ checkSearchAnalyticsQueryResponse(api.SearchAnalyticsQueryResponse o) {
   buildCounterSearchAnalyticsQueryResponse++;
   if (buildCounterSearchAnalyticsQueryResponse < 3) {
     unittest.expect(o.responseAggregationType, unittest.equals('foo'));
-    checkUnnamed610(o.rows);
+    checkUnnamed615(o.rows);
   }
   buildCounterSearchAnalyticsQueryResponse--;
 }
 
-buildUnnamed611() {
+buildUnnamed616() {
   var o = new core.List<api.WmxSitemap>();
   o.add(buildWmxSitemap());
   o.add(buildWmxSitemap());
   return o;
 }
 
-checkUnnamed611(core.List<api.WmxSitemap> o) {
+checkUnnamed616(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemap(o[0]);
   checkWmxSitemap(o[1]);
@@ -259,7 +259,7 @@ buildSitemapsListResponse() {
   var o = new api.SitemapsListResponse();
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    o.sitemap = buildUnnamed611();
+    o.sitemap = buildUnnamed616();
   }
   buildCounterSitemapsListResponse--;
   return o;
@@ -268,19 +268,19 @@ buildSitemapsListResponse() {
 checkSitemapsListResponse(api.SitemapsListResponse o) {
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    checkUnnamed611(o.sitemap);
+    checkUnnamed616(o.sitemap);
   }
   buildCounterSitemapsListResponse--;
 }
 
-buildUnnamed612() {
+buildUnnamed617() {
   var o = new core.List<api.WmxSite>();
   o.add(buildWmxSite());
   o.add(buildWmxSite());
   return o;
 }
 
-checkUnnamed612(core.List<api.WmxSite> o) {
+checkUnnamed617(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSite(o[0]);
   checkWmxSite(o[1]);
@@ -291,7 +291,7 @@ buildSitesListResponse() {
   var o = new api.SitesListResponse();
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    o.siteEntry = buildUnnamed612();
+    o.siteEntry = buildUnnamed617();
   }
   buildCounterSitesListResponse--;
   return o;
@@ -300,7 +300,7 @@ buildSitesListResponse() {
 checkSitesListResponse(api.SitesListResponse o) {
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    checkUnnamed612(o.siteEntry);
+    checkUnnamed617(o.siteEntry);
   }
   buildCounterSitesListResponse--;
 }
@@ -326,14 +326,14 @@ checkUrlCrawlErrorCount(api.UrlCrawlErrorCount o) {
   buildCounterUrlCrawlErrorCount--;
 }
 
-buildUnnamed613() {
+buildUnnamed618() {
   var o = new core.List<api.UrlCrawlErrorCount>();
   o.add(buildUrlCrawlErrorCount());
   o.add(buildUrlCrawlErrorCount());
   return o;
 }
 
-checkUnnamed613(core.List<api.UrlCrawlErrorCount> o) {
+checkUnnamed618(core.List<api.UrlCrawlErrorCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCount(o[0]);
   checkUrlCrawlErrorCount(o[1]);
@@ -345,7 +345,7 @@ buildUrlCrawlErrorCountsPerType() {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     o.category = "foo";
-    o.entries = buildUnnamed613();
+    o.entries = buildUnnamed618();
     o.platform = "foo";
   }
   buildCounterUrlCrawlErrorCountsPerType--;
@@ -356,20 +356,20 @@ checkUrlCrawlErrorCountsPerType(api.UrlCrawlErrorCountsPerType o) {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
-    checkUnnamed613(o.entries);
+    checkUnnamed618(o.entries);
     unittest.expect(o.platform, unittest.equals('foo'));
   }
   buildCounterUrlCrawlErrorCountsPerType--;
 }
 
-buildUnnamed614() {
+buildUnnamed619() {
   var o = new core.List<api.UrlCrawlErrorCountsPerType>();
   o.add(buildUrlCrawlErrorCountsPerType());
   o.add(buildUrlCrawlErrorCountsPerType());
   return o;
 }
 
-checkUnnamed614(core.List<api.UrlCrawlErrorCountsPerType> o) {
+checkUnnamed619(core.List<api.UrlCrawlErrorCountsPerType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCountsPerType(o[0]);
   checkUrlCrawlErrorCountsPerType(o[1]);
@@ -380,7 +380,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
   var o = new api.UrlCrawlErrorsCountsQueryResponse();
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    o.countPerTypes = buildUnnamed614();
+    o.countPerTypes = buildUnnamed619();
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
   return o;
@@ -389,7 +389,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
 checkUrlCrawlErrorsCountsQueryResponse(api.UrlCrawlErrorsCountsQueryResponse o) {
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    checkUnnamed614(o.countPerTypes);
+    checkUnnamed619(o.countPerTypes);
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
 }
@@ -421,14 +421,14 @@ checkUrlCrawlErrorsSample(api.UrlCrawlErrorsSample o) {
   buildCounterUrlCrawlErrorsSample--;
 }
 
-buildUnnamed615() {
+buildUnnamed620() {
   var o = new core.List<api.UrlCrawlErrorsSample>();
   o.add(buildUrlCrawlErrorsSample());
   o.add(buildUrlCrawlErrorsSample());
   return o;
 }
 
-checkUnnamed615(core.List<api.UrlCrawlErrorsSample> o) {
+checkUnnamed620(core.List<api.UrlCrawlErrorsSample> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorsSample(o[0]);
   checkUrlCrawlErrorsSample(o[1]);
@@ -439,7 +439,7 @@ buildUrlCrawlErrorsSamplesListResponse() {
   var o = new api.UrlCrawlErrorsSamplesListResponse();
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    o.urlCrawlErrorSample = buildUnnamed615();
+    o.urlCrawlErrorSample = buildUnnamed620();
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
   return o;
@@ -448,32 +448,32 @@ buildUrlCrawlErrorsSamplesListResponse() {
 checkUrlCrawlErrorsSamplesListResponse(api.UrlCrawlErrorsSamplesListResponse o) {
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    checkUnnamed615(o.urlCrawlErrorSample);
+    checkUnnamed620(o.urlCrawlErrorSample);
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
 }
 
-buildUnnamed616() {
+buildUnnamed621() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed616(core.List<core.String> o) {
+checkUnnamed621(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed617() {
+buildUnnamed622() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed617(core.List<core.String> o) {
+checkUnnamed622(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -484,8 +484,8 @@ buildUrlSampleDetails() {
   var o = new api.UrlSampleDetails();
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    o.containingSitemaps = buildUnnamed616();
-    o.linkedFromUrls = buildUnnamed617();
+    o.containingSitemaps = buildUnnamed621();
+    o.linkedFromUrls = buildUnnamed622();
   }
   buildCounterUrlSampleDetails--;
   return o;
@@ -494,8 +494,8 @@ buildUrlSampleDetails() {
 checkUrlSampleDetails(api.UrlSampleDetails o) {
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    checkUnnamed616(o.containingSitemaps);
-    checkUnnamed617(o.linkedFromUrls);
+    checkUnnamed621(o.containingSitemaps);
+    checkUnnamed622(o.linkedFromUrls);
   }
   buildCounterUrlSampleDetails--;
 }
@@ -521,14 +521,14 @@ checkWmxSite(api.WmxSite o) {
   buildCounterWmxSite--;
 }
 
-buildUnnamed618() {
+buildUnnamed623() {
   var o = new core.List<api.WmxSitemapContent>();
   o.add(buildWmxSitemapContent());
   o.add(buildWmxSitemapContent());
   return o;
 }
 
-checkUnnamed618(core.List<api.WmxSitemapContent> o) {
+checkUnnamed623(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemapContent(o[0]);
   checkWmxSitemapContent(o[1]);
@@ -539,7 +539,7 @@ buildWmxSitemap() {
   var o = new api.WmxSitemap();
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    o.contents = buildUnnamed618();
+    o.contents = buildUnnamed623();
     o.errors = "foo";
     o.isPending = true;
     o.isSitemapsIndex = true;
@@ -556,7 +556,7 @@ buildWmxSitemap() {
 checkWmxSitemap(api.WmxSitemap o) {
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    checkUnnamed618(o.contents);
+    checkUnnamed623(o.contents);
     unittest.expect(o.errors, unittest.equals('foo'));
     unittest.expect(o.isPending, unittest.isTrue);
     unittest.expect(o.isSitemapsIndex, unittest.isTrue);
@@ -745,7 +745,7 @@ main() {
       api.SearchanalyticsResourceApi res = new api.WebmastersApi(mock).searchanalytics;
       var arg_request = buildSearchAnalyticsQueryRequest();
       var arg_siteUrl = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SearchAnalyticsQueryRequest.fromJson(json);
         checkSearchAnalyticsQueryRequest(obj);
 
@@ -791,7 +791,7 @@ main() {
         var resp = convert.JSON.encode(buildSearchAnalyticsQueryResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.query(arg_request, arg_siteUrl).then(unittest.expectAsync(((api.SearchAnalyticsQueryResponse response) {
+      res.query(arg_request, arg_siteUrl).then(unittest.expectAsync1(((api.SearchAnalyticsQueryResponse response) {
         checkSearchAnalyticsQueryResponse(response);
       })));
     });
@@ -806,7 +806,7 @@ main() {
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -852,7 +852,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_siteUrl, arg_feedpath).then(unittest.expectAsync((_) {}));
+      res.delete(arg_siteUrl, arg_feedpath).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -861,7 +861,7 @@ main() {
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -907,7 +907,7 @@ main() {
         var resp = convert.JSON.encode(buildWmxSitemap());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_siteUrl, arg_feedpath).then(unittest.expectAsync(((api.WmxSitemap response) {
+      res.get(arg_siteUrl, arg_feedpath).then(unittest.expectAsync1(((api.WmxSitemap response) {
         checkWmxSitemap(response);
       })));
     });
@@ -918,7 +918,7 @@ main() {
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_sitemapIndex = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -962,7 +962,7 @@ main() {
         var resp = convert.JSON.encode(buildSitemapsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_siteUrl, sitemapIndex: arg_sitemapIndex).then(unittest.expectAsync(((api.SitemapsListResponse response) {
+      res.list(arg_siteUrl, sitemapIndex: arg_sitemapIndex).then(unittest.expectAsync1(((api.SitemapsListResponse response) {
         checkSitemapsListResponse(response);
       })));
     });
@@ -973,7 +973,7 @@ main() {
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1019,7 +1019,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.submit(arg_siteUrl, arg_feedpath).then(unittest.expectAsync((_) {}));
+      res.submit(arg_siteUrl, arg_feedpath).then(unittest.expectAsync1((_) {}));
     });
 
   });
@@ -1031,7 +1031,7 @@ main() {
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1070,7 +1070,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.add(arg_siteUrl).then(unittest.expectAsync((_) {}));
+      res.add(arg_siteUrl).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--delete", () {
@@ -1078,7 +1078,7 @@ main() {
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1117,7 +1117,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_siteUrl).then(unittest.expectAsync((_) {}));
+      res.delete(arg_siteUrl).then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -1125,7 +1125,7 @@ main() {
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1164,7 +1164,7 @@ main() {
         var resp = convert.JSON.encode(buildWmxSite());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_siteUrl).then(unittest.expectAsync(((api.WmxSite response) {
+      res.get(arg_siteUrl).then(unittest.expectAsync1(((api.WmxSite response) {
         checkWmxSite(response);
       })));
     });
@@ -1173,7 +1173,7 @@ main() {
 
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1209,7 +1209,7 @@ main() {
         var resp = convert.JSON.encode(buildSitesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync(((api.SitesListResponse response) {
+      res.list().then(unittest.expectAsync1(((api.SitesListResponse response) {
         checkSitesListResponse(response);
       })));
     });
@@ -1226,7 +1226,7 @@ main() {
       var arg_category = "foo";
       var arg_latestCountsOnly = true;
       var arg_platform = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1272,7 +1272,7 @@ main() {
         var resp = convert.JSON.encode(buildUrlCrawlErrorsCountsQueryResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.query(arg_siteUrl, category: arg_category, latestCountsOnly: arg_latestCountsOnly, platform: arg_platform).then(unittest.expectAsync(((api.UrlCrawlErrorsCountsQueryResponse response) {
+      res.query(arg_siteUrl, category: arg_category, latestCountsOnly: arg_latestCountsOnly, platform: arg_platform).then(unittest.expectAsync1(((api.UrlCrawlErrorsCountsQueryResponse response) {
         checkUrlCrawlErrorsCountsQueryResponse(response);
       })));
     });
@@ -1289,7 +1289,7 @@ main() {
       var arg_url = "foo";
       var arg_category = "foo";
       var arg_platform = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1337,7 +1337,7 @@ main() {
         var resp = convert.JSON.encode(buildUrlCrawlErrorsSample());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_siteUrl, arg_url, arg_category, arg_platform).then(unittest.expectAsync(((api.UrlCrawlErrorsSample response) {
+      res.get(arg_siteUrl, arg_url, arg_category, arg_platform).then(unittest.expectAsync1(((api.UrlCrawlErrorsSample response) {
         checkUrlCrawlErrorsSample(response);
       })));
     });
@@ -1349,7 +1349,7 @@ main() {
       var arg_siteUrl = "foo";
       var arg_category = "foo";
       var arg_platform = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1394,7 +1394,7 @@ main() {
         var resp = convert.JSON.encode(buildUrlCrawlErrorsSamplesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_siteUrl, arg_category, arg_platform).then(unittest.expectAsync(((api.UrlCrawlErrorsSamplesListResponse response) {
+      res.list(arg_siteUrl, arg_category, arg_platform).then(unittest.expectAsync1(((api.UrlCrawlErrorsSamplesListResponse response) {
         checkUrlCrawlErrorsSamplesListResponse(response);
       })));
     });
@@ -1407,7 +1407,7 @@ main() {
       var arg_url = "foo";
       var arg_category = "foo";
       var arg_platform = "foo";
-      mock.register(unittest.expectAsync((http.BaseRequest req, json) {
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
@@ -1455,7 +1455,7 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.markAsFixed(arg_siteUrl, arg_url, arg_category, arg_platform).then(unittest.expectAsync((_) {}));
+      res.markAsFixed(arg_siteUrl, arg_url, arg_category, arg_platform).then(unittest.expectAsync1((_) {}));
     });
 
   });

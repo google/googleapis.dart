@@ -17,7 +17,7 @@
     "description": "Manipulates events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/2lA7PDfBLSRcPUfw7VoE4FMZQd0\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/euj94Rd_zZNye-Ex23VYZId4hug\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -1022,7 +1022,7 @@
                         },
                         "maxResults": {
                             "default": "250",
-                            "description": "Maximum number of events returned on one result page. By default the value is 250 events. The page size can never be larger than 2500 events. Optional.",
+                            "description": "Maximum number of events returned on one result page. The number of events in the resulting page may be less than this value, or none at all, even if there are more events matching the query. Incomplete pages can be detected by a non-empty nextPageToken field in the response. By default the value is 250 events. The page size can never be larger than 2500 events. Optional.",
                             "format": "int32",
                             "location": "query",
                             "minimum": "1",
@@ -1337,7 +1337,7 @@
                         },
                         "maxResults": {
                             "default": "250",
-                            "description": "Maximum number of events returned on one result page. By default the value is 250 events. The page size can never be larger than 2500 events. Optional.",
+                            "description": "Maximum number of events returned on one result page. The number of events in the resulting page may be less than this value, or none at all, even if there are more events matching the query. Incomplete pages can be detected by a non-empty nextPageToken field in the response. By default the value is 250 events. The page size can never be larger than 2500 events. Optional.",
                             "format": "int32",
                             "location": "query",
                             "minimum": "1",
@@ -1557,7 +1557,7 @@
             }
         }
     },
-    "revision": "20170516",
+    "revision": "20170528",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

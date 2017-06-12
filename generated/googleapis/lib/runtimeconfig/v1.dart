@@ -144,12 +144,17 @@ class OperationsResourceApi {
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns `UNIMPLEMENTED`.
    *
-   * NOTE: the `name` binding below allows API services to override the binding
-   * to use different resource name schemes, such as `users / * /operations`.
+   * NOTE: the `name` binding allows API services to override the binding
+   * to use different resource name schemes, such as `users / * /operations`. To
+   * override the binding, API services can add a binding such as
+   * `"/v1/{name=users / * }/operations"` to their service configuration.
+   * For backwards compatibility, the default name includes the operations
+   * collection id, however overriding users must ensure the name binding
+   * is the parent resource, without the operations collection id.
    *
    * Request parameters:
    *
-   * [name] - The name of the operation collection.
+   * [name] - The name of the operation's parent resource.
    * Value must have pattern "^operations$".
    *
    * [filter] - The standard list filter.
@@ -211,8 +216,8 @@ class CancelOperationRequest {
   CancelOperationRequest.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -235,8 +240,8 @@ class Empty {
   Empty.fromJson(core.Map _json) {
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -259,8 +264,8 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -335,8 +340,8 @@ class Operation {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -376,7 +381,7 @@ class Operation {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -399,7 +404,7 @@ class Operation {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for
@@ -444,8 +449,8 @@ class Status {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }

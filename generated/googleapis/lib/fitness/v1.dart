@@ -920,8 +920,8 @@ class AggregateBucket {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (activity != null) {
       _json["activity"] = activity;
     }
@@ -971,8 +971,8 @@ class AggregateBy {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
@@ -1065,8 +1065,8 @@ class AggregateRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (aggregateBy != null) {
       _json["aggregateBy"] = aggregateBy.map((value) => (value).toJson()).toList();
     }
@@ -1107,8 +1107,8 @@ class AggregateResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (bucket != null) {
       _json["bucket"] = bucket.map((value) => (value).toJson()).toList();
     }
@@ -1156,8 +1156,8 @@ class Application {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (detailsUrl != null) {
       _json["detailsUrl"] = detailsUrl;
     }
@@ -1198,8 +1198,8 @@ class BucketByActivity {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (activityDataSourceId != null) {
       _json["activityDataSourceId"] = activityDataSourceId;
     }
@@ -1225,8 +1225,8 @@ class BucketBySession {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (minDurationMillis != null) {
       _json["minDurationMillis"] = minDurationMillis;
     }
@@ -1254,8 +1254,8 @@ class BucketByTime {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (durationMillis != null) {
       _json["durationMillis"] = durationMillis;
     }
@@ -1293,8 +1293,8 @@ class BucketByTimePeriod {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (timeZoneId != null) {
       _json["timeZoneId"] = timeZoneId;
     }
@@ -1392,8 +1392,8 @@ class DataPoint {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (computationTimeMillis != null) {
       _json["computationTimeMillis"] = computationTimeMillis;
     }
@@ -1537,8 +1537,8 @@ class DataSource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (application != null) {
       _json["application"] = (application).toJson();
     }
@@ -1587,8 +1587,8 @@ class DataType {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (field != null) {
       _json["field"] = field.map((value) => (value).toJson()).toList();
     }
@@ -1642,8 +1642,8 @@ class DataTypeField {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (format != null) {
       _json["format"] = format;
     }
@@ -1715,8 +1715,8 @@ class Dataset {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
@@ -1797,8 +1797,8 @@ class Device {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (manufacturer != null) {
       _json["manufacturer"] = manufacturer;
     }
@@ -1830,8 +1830,8 @@ class ListDataSourcesResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataSource != null) {
       _json["dataSource"] = dataSource.map((value) => (value).toJson()).toList();
     }
@@ -1877,8 +1877,8 @@ class ListSessionsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (deletedSession != null) {
       _json["deletedSession"] = deletedSession.map((value) => (value).toJson()).toList();
     }
@@ -1912,8 +1912,8 @@ class MapValue {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fpVal != null) {
       _json["fpVal"] = fpVal;
     }
@@ -1986,8 +1986,8 @@ class Session {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (activeTimeMillis != null) {
       _json["activeTimeMillis"] = activeTimeMillis;
     }
@@ -2061,8 +2061,8 @@ class Value {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (fpVal != null) {
       _json["fpVal"] = fpVal;
     }
@@ -2094,8 +2094,8 @@ class ValueMapValEntry {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }

@@ -256,7 +256,7 @@ class Groups {
   /**
    * Permissions to post messages to the group. Possible values are:
    * NONE_CAN_POST ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST
-   * ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST
+   * ALL_OWNERS_CAN_POST ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST
    */
   core.String whoCanPostMessage;
   /**
@@ -368,8 +368,8 @@ class Groups {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (allowExternalMembers != null) {
       _json["allowExternalMembers"] = allowExternalMembers;
     }

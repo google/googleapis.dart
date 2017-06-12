@@ -1031,8 +1031,8 @@ class Address {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (addressLine1 != null) {
       _json["addressLine1"] = addressLine1;
     }
@@ -1130,8 +1130,8 @@ class ChangePlanRequest {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dealCode != null) {
       _json["dealCode"] = dealCode;
     }
@@ -1223,8 +1223,8 @@ class Customer {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (alternateEmail != null) {
       _json["alternateEmail"] = alternateEmail;
     }
@@ -1278,8 +1278,8 @@ class RenewalSettings {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1308,8 +1308,8 @@ class ResellernotifyGetwatchdetailsResponse {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (serviceAccountEmailAddresses != null) {
       _json["serviceAccountEmailAddresses"] = serviceAccountEmailAddresses;
     }
@@ -1333,8 +1333,8 @@ class ResellernotifyResource {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (topicName != null) {
       _json["topicName"] = topicName;
     }
@@ -1410,8 +1410,8 @@ class Seats {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1454,8 +1454,8 @@ class SubscriptionPlanCommitmentInterval {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -1515,8 +1515,8 @@ class SubscriptionPlan {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (commitmentInterval != null) {
       _json["commitmentInterval"] = (commitmentInterval).toJson();
     }
@@ -1559,8 +1559,8 @@ class SubscriptionTransferInfo {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (minimumTransferableSeats != null) {
       _json["minimumTransferableSeats"] = minimumTransferableSeats;
     }
@@ -1599,8 +1599,8 @@ class SubscriptionTrialSettings {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (isInTrial != null) {
       _json["isInTrial"] = isInTrial;
     }
@@ -1782,8 +1782,8 @@ class Subscription {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (billingMethod != null) {
       _json["billingMethod"] = billingMethod;
     }
@@ -1871,8 +1871,8 @@ class Subscriptions {
     }
   }
 
-  core.Map toJson() {
-    var _json = new core.Map();
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
