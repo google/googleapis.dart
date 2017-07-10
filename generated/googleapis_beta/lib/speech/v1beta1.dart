@@ -184,13 +184,13 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [filter] - The standard list filter.
+   * [pageSize] - The standard list page size.
    *
-   * [name] - The name of the operation's parent resource.
+   * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
    *
-   * [pageSize] - The standard list page size.
+   * [name] - The name of the operation's parent resource.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -200,7 +200,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.String filter, core.String name, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list({core.int pageSize, core.String filter, core.String pageToken, core.String name}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -208,17 +208,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (name != null) {
-      _queryParams["name"] = [name];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
 
     _url = 'v1beta1/operations';

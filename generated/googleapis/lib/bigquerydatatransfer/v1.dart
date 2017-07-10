@@ -22,6 +22,12 @@ class BigquerydatatransferApi {
   /** View and manage your data in Google BigQuery */
   static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
 
+  /** View and manage your data across Google Cloud Platform services */
+  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+
+  /** View your data across Google Cloud Platform services */
+  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
 
   final commons.ApiRequester _requester;
 
@@ -582,6 +588,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
    *
    * [parent] - The BigQuery project id where the transfer configuration should
    * be created.
+   * Must be in the format /projects/{project_id}/locations/{location_id}
+   * or
+   * /projects/{project_id}/locations/-
+   * In case when '-' is specified as location_id, location is infered from
+   * the destination dataset region.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
    *
    * [authorizationCode] - Optional OAuth2 authorization code to use with this
@@ -736,6 +747,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * should be returned: `projects/{project_id}`.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
    *
+   * [dataSourceIds] - When specified, only configurations of requested data
+   * sources are returned.
+   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransfersRequest` list results. For multiple-page
@@ -746,9 +760,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * [pageSize] - Page size. The default page size is the maximum value of 1000
    * results.
    *
-   * [dataSourceIds] - When specified, only configurations of requested data
-   * sources are returned.
-   *
    * Completes with a [ListTransferConfigsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -757,7 +768,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> dataSourceIds}) {
+  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.List<core.String> dataSourceIds, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -768,14 +779,14 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferConfigs';
@@ -1033,11 +1044,11 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
    * a `next_page` token, which can be used as the
    * `page_token` value to request the next page of list results.
    *
-   * [statuses] - When specified, only transfer runs with requested statuses are
-   * returned.
-   *
    * [pageSize] - Page size. The default page size is the maximum value of 1000
    * results.
+   *
+   * [statuses] - When specified, only transfer runs with requested statuses are
+   * returned.
    *
    * [runAttempt] - Indicates how run attempts are to be pulled.
    * Possible string values are:
@@ -1052,7 +1063,7 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferRunsResponse> list(core.String parent, {core.String pageToken, core.List<core.String> statuses, core.int pageSize, core.String runAttempt}) {
+  async.Future<ListTransferRunsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> statuses, core.String runAttempt}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1066,11 +1077,11 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (statuses != null) {
-      _queryParams["statuses"] = statuses;
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (statuses != null) {
+      _queryParams["statuses"] = statuses;
     }
     if (runAttempt != null) {
       _queryParams["runAttempt"] = [runAttempt];
@@ -1107,6 +1118,10 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
    *
+   * [messageTypes] - Message types to return. If not populated - INFO, WARNING
+   * and ERROR
+   * messages are returned.
+   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransferLogsRequest` list results. For multiple-page
@@ -1117,10 +1132,6 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
    * [pageSize] - Page size. The default page size is the maximum value of 1000
    * results.
    *
-   * [messageTypes] - Message types to return. If not populated - INFO, WARNING
-   * and ERROR
-   * messages are returned.
-   *
    * Completes with a [ListTransferLogsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1129,7 +1140,7 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferLogsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> messageTypes}) {
+  async.Future<ListTransferLogsResponse> list(core.String parent, {core.List<core.String> messageTypes, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1140,14 +1151,14 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (messageTypes != null) {
+      _queryParams["messageTypes"] = messageTypes;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (messageTypes != null) {
-      _queryParams["messageTypes"] = messageTypes;
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferLogs';
@@ -1182,6 +1193,11 @@ class ProjectsTransferConfigsResourceApi {
    *
    * [parent] - The BigQuery project id where the transfer configuration should
    * be created.
+   * Must be in the format /projects/{project_id}/locations/{location_id}
+   * or
+   * /projects/{project_id}/locations/-
+   * In case when '-' is specified as location_id, location is infered from
+   * the destination dataset region.
    * Value must have pattern "^projects/[^/]+$".
    *
    * [authorizationCode] - Optional OAuth2 authorization code to use with this
@@ -1334,6 +1350,9 @@ class ProjectsTransferConfigsResourceApi {
    * should be returned: `projects/{project_id}`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [dataSourceIds] - When specified, only configurations of requested data
+   * sources are returned.
+   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransfersRequest` list results. For multiple-page
@@ -1344,9 +1363,6 @@ class ProjectsTransferConfigsResourceApi {
    * [pageSize] - Page size. The default page size is the maximum value of 1000
    * results.
    *
-   * [dataSourceIds] - When specified, only configurations of requested data
-   * sources are returned.
-   *
    * Completes with a [ListTransferConfigsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1355,7 +1371,7 @@ class ProjectsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> dataSourceIds}) {
+  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.List<core.String> dataSourceIds, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1366,14 +1382,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferConfigs';
@@ -1403,8 +1419,6 @@ class ProjectsTransferConfigsResourceApi {
    * guaranteed or required. The name is ignored when creating a transfer run.
    * Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
    *
-   * [updateMask] - Required list of fields to be updated in this request.
-   *
    * [authorizationCode] - Optional OAuth2 authorization code to use with this
    * transfer configuration.
    * If it is provided, the transfer configuration will be associated with the
@@ -1423,6 +1437,8 @@ class ProjectsTransferConfigsResourceApi {
    *   returned in the title bar of the browser, with the page text prompting
    *   the user to copy the code and paste it in the application.
    *
+   * [updateMask] - Required list of fields to be updated in this request.
+   *
    * Completes with a [TransferConfig].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1431,7 +1447,7 @@ class ProjectsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TransferConfig> patch(TransferConfig request, core.String name, {core.String updateMask, core.String authorizationCode}) {
+  async.Future<TransferConfig> patch(TransferConfig request, core.String name, {core.String authorizationCode, core.String updateMask}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1445,11 +1461,11 @@ class ProjectsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1621,6 +1637,11 @@ class ProjectsTransferConfigsRunsResourceApi {
    * `projects/{project_id}/transferConfigs/{config_id}`.
    * Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
    *
+   * [runAttempt] - Indicates how run attempts are to be pulled.
+   * Possible string values are:
+   * - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
+   * - "LATEST" : A LATEST.
+   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransferRunsRequest` list results. For multiple-page
@@ -1628,16 +1649,11 @@ class ProjectsTransferConfigsRunsResourceApi {
    * a `next_page` token, which can be used as the
    * `page_token` value to request the next page of list results.
    *
-   * [statuses] - When specified, only transfer runs with requested statuses are
-   * returned.
-   *
    * [pageSize] - Page size. The default page size is the maximum value of 1000
    * results.
    *
-   * [runAttempt] - Indicates how run attempts are to be pulled.
-   * Possible string values are:
-   * - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
-   * - "LATEST" : A LATEST.
+   * [statuses] - When specified, only transfer runs with requested statuses are
+   * returned.
    *
    * Completes with a [ListTransferRunsResponse].
    *
@@ -1647,7 +1663,7 @@ class ProjectsTransferConfigsRunsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferRunsResponse> list(core.String parent, {core.String pageToken, core.List<core.String> statuses, core.int pageSize, core.String runAttempt}) {
+  async.Future<ListTransferRunsResponse> list(core.String parent, {core.String runAttempt, core.String pageToken, core.int pageSize, core.List<core.String> statuses}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1658,17 +1674,17 @@ class ProjectsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (statuses != null) {
-      _queryParams["statuses"] = statuses;
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (runAttempt != null) {
-      _queryParams["runAttempt"] = [runAttempt];
+    if (statuses != null) {
+      _queryParams["statuses"] = statuses;
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';
@@ -2491,6 +2507,12 @@ class TransferConfig {
   core.int dataRefreshWindowDays;
   /** Data source id. Cannot be changed once data transfer is created. */
   core.String dataSourceId;
+  /**
+   * Region in which BigQuery dataset is located. Currently possible values are:
+   * "US" and "EU".
+   * @OutputOnly
+   */
+  core.String datasetRegion;
   /** The BigQuery target dataset id. */
   core.String destinationDatasetId;
   /**
@@ -2552,6 +2574,13 @@ class TransferConfig {
    * @OutputOnly
    */
   core.String updateTime;
+  /**
+   * GaiaID of the user on whose behalf transfer is done. Applicable only
+   * to data sources that do not support service accounts. When set to 0,
+   * the data source service account credentials are used.
+   * @OutputOnly
+   */
+  core.String userId;
 
   TransferConfig();
 
@@ -2561,6 +2590,9 @@ class TransferConfig {
     }
     if (_json.containsKey("dataSourceId")) {
       dataSourceId = _json["dataSourceId"];
+    }
+    if (_json.containsKey("datasetRegion")) {
+      datasetRegion = _json["datasetRegion"];
     }
     if (_json.containsKey("destinationDatasetId")) {
       destinationDatasetId = _json["destinationDatasetId"];
@@ -2589,6 +2621,9 @@ class TransferConfig {
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
+    if (_json.containsKey("userId")) {
+      userId = _json["userId"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2598,6 +2633,9 @@ class TransferConfig {
     }
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
+    }
+    if (datasetRegion != null) {
+      _json["datasetRegion"] = datasetRegion;
     }
     if (destinationDatasetId != null) {
       _json["destinationDatasetId"] = destinationDatasetId;
@@ -2625,6 +2663,9 @@ class TransferConfig {
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
+    }
+    if (userId != null) {
+      _json["userId"] = userId;
     }
     return _json;
   }
@@ -2682,6 +2723,12 @@ class TransferRun {
    * @OutputOnly
    */
   core.String dataSourceId;
+  /**
+   * Region in which BigQuery dataset is located. Currently possible values are:
+   * "US" and "EU".
+   * @OutputOnly
+   */
+  core.String datasetRegion;
   /** The BigQuery target dataset id. */
   core.String destinationDatasetId;
   /**
@@ -2693,7 +2740,7 @@ class TransferRun {
   /**
    * The resource name of the transfer run.
    * Transfer run names have the form
-   * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`.
+   * `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.
    * The name is ignored when creating a transfer run.
    */
   core.String name;
@@ -2745,12 +2792,20 @@ class TransferRun {
    * @OutputOnly
    */
   core.String updateTime;
+  /**
+   * The user id for this transfer run.
+   * @OutputOnly
+   */
+  core.String userId;
 
   TransferRun();
 
   TransferRun.fromJson(core.Map _json) {
     if (_json.containsKey("dataSourceId")) {
       dataSourceId = _json["dataSourceId"];
+    }
+    if (_json.containsKey("datasetRegion")) {
+      datasetRegion = _json["datasetRegion"];
     }
     if (_json.containsKey("destinationDatasetId")) {
       destinationDatasetId = _json["destinationDatasetId"];
@@ -2782,12 +2837,18 @@ class TransferRun {
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
+    if (_json.containsKey("userId")) {
+      userId = _json["userId"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
+    }
+    if (datasetRegion != null) {
+      _json["datasetRegion"] = datasetRegion;
     }
     if (destinationDatasetId != null) {
       _json["destinationDatasetId"] = destinationDatasetId;
@@ -2818,6 +2879,9 @@ class TransferRun {
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
+    }
+    if (userId != null) {
+      _json["userId"] = userId;
     }
     return _json;
   }

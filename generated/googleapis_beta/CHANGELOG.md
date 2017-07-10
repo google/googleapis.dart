@@ -1,3 +1,8 @@
+## 0.38.1
+
+* [api-new] oslogin:v1alpha
+* [api-new] toolresults:v1beta3firstparty
+
 ## 0.38.0
 
 * [api] sqladmin:v1beta4

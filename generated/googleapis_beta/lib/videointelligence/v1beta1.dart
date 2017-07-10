@@ -86,6 +86,344 @@ class VideosResourceApi {
  * field of the `Operation` returned by the `GetOperation`
  * call of the `google::longrunning::Operations` service.
  */
+class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
+  /** Progress metadata for all videos specified in `AnnotateVideoRequest`. */
+  core.List<GoogleCloudVideointelligenceV1VideoAnnotationProgress> annotationProgress;
+
+  GoogleCloudVideointelligenceV1AnnotateVideoProgress();
+
+  GoogleCloudVideointelligenceV1AnnotateVideoProgress.fromJson(core.Map _json) {
+    if (_json.containsKey("annotationProgress")) {
+      annotationProgress = _json["annotationProgress"].map((value) => new GoogleCloudVideointelligenceV1VideoAnnotationProgress.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (annotationProgress != null) {
+      _json["annotationProgress"] = annotationProgress.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Video annotation response. Included in the `response`
+ * field of the `Operation` returned by the `GetOperation`
+ * call of the `google::longrunning::Operations` service.
+ */
+class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
+  /** Annotation results for all videos specified in `AnnotateVideoRequest`. */
+  core.List<GoogleCloudVideointelligenceV1VideoAnnotationResults> annotationResults;
+
+  GoogleCloudVideointelligenceV1AnnotateVideoResponse();
+
+  GoogleCloudVideointelligenceV1AnnotateVideoResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("annotationResults")) {
+      annotationResults = _json["annotationResults"].map((value) => new GoogleCloudVideointelligenceV1VideoAnnotationResults.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (annotationResults != null) {
+      _json["annotationResults"] = annotationResults.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Label annotation. */
+class GoogleCloudVideointelligenceV1LabelAnnotation {
+  /** Textual description, e.g. `Fixed-gear bicycle`. */
+  core.String description;
+  /** Language code for `description` in BCP-47 format. */
+  core.String languageCode;
+  /** Where the label was detected and with what confidence. */
+  core.List<GoogleCloudVideointelligenceV1LabelLocation> locations;
+
+  GoogleCloudVideointelligenceV1LabelAnnotation();
+
+  GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("locations")) {
+      locations = _json["locations"].map((value) => new GoogleCloudVideointelligenceV1LabelLocation.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Label location. */
+class GoogleCloudVideointelligenceV1LabelLocation {
+  /** Confidence that the label is accurate. Range: [0, 1]. */
+  core.double confidence;
+  /**
+   * Label level.
+   * Possible string values are:
+   * - "LABEL_LEVEL_UNSPECIFIED" : Unspecified.
+   * - "VIDEO_LEVEL" : Video-level. Corresponds to the whole video.
+   * - "SEGMENT_LEVEL" : Segment-level. Corresponds to one of
+   * `AnnotateSpec.segments`.
+   * - "SHOT_LEVEL" : Shot-level. Corresponds to a single shot (i.e. a series of
+   * frames
+   * without a major camera position or background change).
+   * - "FRAME_LEVEL" : Frame-level. Corresponds to a single video frame.
+   */
+  core.String level;
+  /**
+   * Video segment. Unset for video-level labels.
+   * Set to a frame timestamp for frame-level labels.
+   * Otherwise, corresponds to one of `AnnotateSpec.segments`
+   * (if specified) or to shot boundaries (if requested).
+   */
+  GoogleCloudVideointelligenceV1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1LabelLocation();
+
+  GoogleCloudVideointelligenceV1LabelLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
+    }
+    if (_json.containsKey("level")) {
+      level = _json["level"];
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (level != null) {
+      _json["level"] = level;
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Safe search annotation (based on per-frame visual signals only).
+ * If no unsafe content has been detected in a frame, no annotations
+ * are present for that frame.
+ */
+class GoogleCloudVideointelligenceV1SafeSearchAnnotation {
+  /**
+   * Likelihood of adult content.
+   * Possible string values are:
+   * - "UNKNOWN" : Unknown likelihood.
+   * - "VERY_UNLIKELY" : Very unlikely.
+   * - "UNLIKELY" : Unlikely.
+   * - "POSSIBLE" : Possible.
+   * - "LIKELY" : Likely.
+   * - "VERY_LIKELY" : Very likely.
+   */
+  core.String adult;
+  /**
+   * Time-offset, relative to the beginning of the video,
+   * corresponding to the video frame for this annotation.
+   */
+  core.String time;
+
+  GoogleCloudVideointelligenceV1SafeSearchAnnotation();
+
+  GoogleCloudVideointelligenceV1SafeSearchAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("adult")) {
+      adult = _json["adult"];
+    }
+    if (_json.containsKey("time")) {
+      time = _json["time"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (adult != null) {
+      _json["adult"] = adult;
+    }
+    if (time != null) {
+      _json["time"] = time;
+    }
+    return _json;
+  }
+}
+
+/** Annotation progress for a single video. */
+class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
+  /**
+   * Video file location in
+   * [Google Cloud Storage](https://cloud.google.com/storage/).
+   */
+  core.String inputUri;
+  /**
+   * Approximate percentage processed thus far.
+   * Guaranteed to be 100 when fully processed.
+   */
+  core.int progressPercent;
+  /** Time when the request was received. */
+  core.String startTime;
+  /** Time of the most recent update. */
+  core.String updateTime;
+
+  GoogleCloudVideointelligenceV1VideoAnnotationProgress();
+
+  GoogleCloudVideointelligenceV1VideoAnnotationProgress.fromJson(core.Map _json) {
+    if (_json.containsKey("inputUri")) {
+      inputUri = _json["inputUri"];
+    }
+    if (_json.containsKey("progressPercent")) {
+      progressPercent = _json["progressPercent"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (inputUri != null) {
+      _json["inputUri"] = inputUri;
+    }
+    if (progressPercent != null) {
+      _json["progressPercent"] = progressPercent;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/** Annotation results for a single video. */
+class GoogleCloudVideointelligenceV1VideoAnnotationResults {
+  /**
+   * If set, indicates an error. Note that for a single `AnnotateVideoRequest`
+   * some videos may succeed and some may fail.
+   */
+  GoogleRpcStatus error;
+  /**
+   * Video file location in
+   * [Google Cloud Storage](https://cloud.google.com/storage/).
+   */
+  core.String inputUri;
+  /** Label annotations. There is exactly one element for each unique label. */
+  core.List<GoogleCloudVideointelligenceV1LabelAnnotation> labelAnnotations;
+  /** Safe search annotations. */
+  core.List<GoogleCloudVideointelligenceV1SafeSearchAnnotation> safeSearchAnnotations;
+  /** Shot annotations. Each shot is represented as a video segment. */
+  core.List<GoogleCloudVideointelligenceV1VideoSegment> shotAnnotations;
+
+  GoogleCloudVideointelligenceV1VideoAnnotationResults();
+
+  GoogleCloudVideointelligenceV1VideoAnnotationResults.fromJson(core.Map _json) {
+    if (_json.containsKey("error")) {
+      error = new GoogleRpcStatus.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("inputUri")) {
+      inputUri = _json["inputUri"];
+    }
+    if (_json.containsKey("labelAnnotations")) {
+      labelAnnotations = _json["labelAnnotations"].map((value) => new GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("safeSearchAnnotations")) {
+      safeSearchAnnotations = _json["safeSearchAnnotations"].map((value) => new GoogleCloudVideointelligenceV1SafeSearchAnnotation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("shotAnnotations")) {
+      shotAnnotations = _json["shotAnnotations"].map((value) => new GoogleCloudVideointelligenceV1VideoSegment.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (inputUri != null) {
+      _json["inputUri"] = inputUri;
+    }
+    if (labelAnnotations != null) {
+      _json["labelAnnotations"] = labelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (safeSearchAnnotations != null) {
+      _json["safeSearchAnnotations"] = safeSearchAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotAnnotations != null) {
+      _json["shotAnnotations"] = shotAnnotations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Video segment. */
+class GoogleCloudVideointelligenceV1VideoSegment {
+  /**
+   * Time-offset, relative to the beginning of the video,
+   * corresponding to the end of the segment (inclusive).
+   */
+  core.String endTime;
+  /**
+   * Time-offset, relative to the beginning of the video,
+   * corresponding to the start of the segment (inclusive).
+   */
+  core.String startTime;
+
+  GoogleCloudVideointelligenceV1VideoSegment();
+
+  GoogleCloudVideointelligenceV1VideoSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Video annotation progress. Included in the `metadata`
+ * field of the `Operation` returned by the `GetOperation`
+ * call of the `google::longrunning::Operations` service.
+ */
 class GoogleCloudVideointelligenceV1beta1AnnotateVideoProgress {
   /** Progress metadata for all videos specified in `AnnotateVideoRequest`. */
   core.List<GoogleCloudVideointelligenceV1beta1VideoAnnotationProgress> annotationProgress;

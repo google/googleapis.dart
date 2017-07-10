@@ -46,10 +46,356 @@ class PeopleApi {
 
   final commons.ApiRequester _requester;
 
+  ContactGroupsResourceApi get contactGroups => new ContactGroupsResourceApi(_requester);
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
   PeopleApi(http.Client client, {core.String rootUrl: "https://people.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class ContactGroupsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ContactGroupsMembersResourceApi get members => new ContactGroupsMembersResourceApi(_requester);
+
+  ContactGroupsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Get a list of contact groups owned by the authenticated user by specifying
+   * a list of contact group resource names.
+   *
+   * Request parameters:
+   *
+   * [maxMembers] - Specifies the maximum number of members to return for each
+   * group.
+   *
+   * [resourceNames] - The resource names of the contact groups to get.
+   *
+   * Completes with a [BatchGetContactGroupsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<BatchGetContactGroupsResponse> batchGet({core.int maxMembers, core.List<core.String> resourceNames}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (maxMembers != null) {
+      _queryParams["maxMembers"] = ["${maxMembers}"];
+    }
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
+    }
+
+    _url = 'v1/contactGroups:batchGet';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new BatchGetContactGroupsResponse.fromJson(data));
+  }
+
+  /**
+   * Create a new contact group owned by the authenticated user.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [ContactGroup].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ContactGroup> create(CreateContactGroupRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/contactGroups';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ContactGroup.fromJson(data));
+  }
+
+  /**
+   * Delete an existing contact group owned by the authenticated user by
+   * specifying a contact group resource name.
+   *
+   * Request parameters:
+   *
+   * [resourceName] - The resource name of the contact group to delete.
+   * Value must have pattern "^contactGroups/[^/]+$".
+   *
+   * [deleteContacts] - Set to true to also delete the contacts in the specified
+   * group.
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String resourceName, {core.bool deleteContacts}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (deleteContacts != null) {
+      _queryParams["deleteContacts"] = ["${deleteContacts}"];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Get a specific contact group owned by the authenticated user by specifying
+   * a contact group resource name.
+   *
+   * Request parameters:
+   *
+   * [resourceName] - The resource name of the contact group to get.
+   * Value must have pattern "^contactGroups/[^/]+$".
+   *
+   * [maxMembers] - Specifies the maximum number of members to return.
+   *
+   * Completes with a [ContactGroup].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ContactGroup> get(core.String resourceName, {core.int maxMembers}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (maxMembers != null) {
+      _queryParams["maxMembers"] = ["${maxMembers}"];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ContactGroup.fromJson(data));
+  }
+
+  /**
+   * List all contact groups owned by the authenticated user. Members of the
+   * contact groups are not populated.
+   *
+   * Request parameters:
+   *
+   * [syncToken] - A sync token, returned by a previous call to
+   * `contactgroups.list`.
+   * Only resources changed since the sync token was created will be returned.
+   *
+   * [pageToken] - The next_page_token value returned from a previous call to
+   * [ListContactGroups](/people/api/rest/v1/contactgroups/list).
+   * Requests the next page of resources.
+   *
+   * [pageSize] - The maximum number of resources to return.
+   *
+   * Completes with a [ListContactGroupsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListContactGroupsResponse> list({core.String syncToken, core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1/contactGroups';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListContactGroupsResponse.fromJson(data));
+  }
+
+  /**
+   * Update the name of an existing contact group owned by the authenticated
+   * user.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resourceName] - The resource name for the contact group, assigned by the
+   * server. An ASCII
+   * string, in the form of `contactGroups/<contact_group_id>`.
+   * Value must have pattern "^contactGroups/[^/]+$".
+   *
+   * Completes with a [ContactGroup].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ContactGroup> update(UpdateContactGroupRequest request, core.String resourceName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ContactGroup.fromJson(data));
+  }
+
+}
+
+
+class ContactGroupsMembersResourceApi {
+  final commons.ApiRequester _requester;
+
+  ContactGroupsMembersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Modify the members of a contact group owned by the authenticated user.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resourceName] - The resource name of the contact group to modify.
+   * Value must have pattern "^contactGroups/[^/]+$".
+   *
+   * Completes with a [ModifyContactGroupMembersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ModifyContactGroupMembersResponse> modify(ModifyContactGroupMembersRequest request, core.String resourceName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/members:modify';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ModifyContactGroupMembersResponse.fromJson(data));
+  }
+
 }
 
 
@@ -62,8 +408,94 @@ class PeopleResourceApi {
       _requester = client;
 
   /**
+   * Create a new contact and return the person resource for that contact.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [parent] - The resource name of the owning person resource.
+   *
+   * Completes with a [Person].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Person> createContact(Person request, {core.String parent}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
+
+    _url = 'v1/people:createContact';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Person.fromJson(data));
+  }
+
+  /**
+   * Delete a contact person. Any non-contact data will not be deleted.
+   *
+   * Request parameters:
+   *
+   * [resourceName] - The resource name of the contact to delete.
+   * Value must have pattern "^people/[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> deleteContact(core.String resourceName) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + ':deleteContact';
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
    * Provides information about a person by specifying a resource name. Use
    * `people/me` to indicate the authenticated user.
+   * <br>
+   * The request throws a 400 error if 'personFields' is not specified.
    *
    * Request parameters:
    *
@@ -71,12 +503,45 @@ class PeopleResourceApi {
    * about.
    *
    * - To get information about the authenticated user, specify `people/me`.
-   * - To get information about any user, specify the resource name that
-   *   identifies the user, such as the resource names returned by
+   * - To get information about a google account, specify `people/<account_id>`.
+   * - To get information about a contact, specify the resource name that
+   *   identifies the contact as returned by
    * [`people.connections.list`](/people/api/rest/v1/people.connections/list).
    * Value must have pattern "^people/[^/]+$".
    *
-   * [requestMask_includeField] - Required. Comma-separated list of person
+   * [personFields] - **Required.** A field mask to restrict which fields on the
+   * person are
+   * returned. Valid values are:
+   *
+   * * addresses
+   * * ageRanges
+   * * biographies
+   * * birthdays
+   * * braggingRights
+   * * coverPhotos
+   * * emailAddresses
+   * * events
+   * * genders
+   * * imClients
+   * * interests
+   * * locales
+   * * memberships
+   * * metadata
+   * * names
+   * * nicknames
+   * * occupations
+   * * organizations
+   * * phoneNumbers
+   * * photos
+   * * relations
+   * * relationshipInterests
+   * * relationshipStatuses
+   * * residences
+   * * skills
+   * * taglines
+   * * urls
+   *
+   * [requestMask_includeField] - **Required.** Comma-separated list of person
    * fields to be included in the
    * response. Each path should start with `person.`: for example,
    * `person.names` or `person.photos`.
@@ -89,7 +554,7 @@ class PeopleResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Person> get(core.String resourceName, {core.String requestMask_includeField}) {
+  async.Future<Person> get(core.String resourceName, {core.String personFields, core.String requestMask_includeField}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -99,6 +564,9 @@ class PeopleResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
     }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
@@ -120,10 +588,12 @@ class PeopleResourceApi {
    * Provides information about a list of specific people by specifying a list
    * of requested resource names. Use `people/me` to indicate the authenticated
    * user.
+   * <br>
+   * The request throws a 400 error if 'personFields' is not specified.
    *
    * Request parameters:
    *
-   * [requestMask_includeField] - Required. Comma-separated list of person
+   * [requestMask_includeField] - **Required.** Comma-separated list of person
    * fields to be included in the
    * response. Each path should start with `person.`: for example,
    * `person.names` or `person.photos`.
@@ -133,6 +603,38 @@ class PeopleResourceApi {
    * of one of the people to provide information about. You can include this
    * parameter up to 50 times in one request.
    *
+   * [personFields] - **Required.** A field mask to restrict which fields on
+   * each person are
+   * returned. Valid values are:
+   *
+   * * addresses
+   * * ageRanges
+   * * biographies
+   * * birthdays
+   * * braggingRights
+   * * coverPhotos
+   * * emailAddresses
+   * * events
+   * * genders
+   * * imClients
+   * * interests
+   * * locales
+   * * memberships
+   * * metadata
+   * * names
+   * * nicknames
+   * * occupations
+   * * organizations
+   * * phoneNumbers
+   * * photos
+   * * relations
+   * * relationshipInterests
+   * * relationshipStatuses
+   * * residences
+   * * skills
+   * * taglines
+   * * urls
+   *
    * Completes with a [GetPeopleResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -141,7 +643,7 @@ class PeopleResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetPeopleResponse> getBatchGet({core.String requestMask_includeField, core.List<core.String> resourceNames}) {
+  async.Future<GetPeopleResponse> getBatchGet({core.String requestMask_includeField, core.List<core.String> resourceNames, core.String personFields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +656,9 @@ class PeopleResourceApi {
     }
     if (resourceNames != null) {
       _queryParams["resourceNames"] = resourceNames;
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
     }
 
     _url = 'v1/people:batchGet';
@@ -168,6 +673,91 @@ class PeopleResourceApi {
     return _response.then((data) => new GetPeopleResponse.fromJson(data));
   }
 
+  /**
+   * Update contact data for an existing contact person. Any non-contact data
+   * will not be modified.
+   *
+   * The request throws a 400 error if `updatePersonFields` is not specified.
+   * <br>
+   * The request throws a 400 error if `person.metadata.sources` is not
+   * specified for the contact to be updated.
+   * <br>
+   * The request throws a 412 error if `person.metadata.sources.etag` is
+   * different than the contact's etag, which indicates the contact has changed
+   * since its data was read. Clients should get the latest person and re-apply
+   * their updates to the latest person.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resourceName] - The resource name for the person, assigned by the server.
+   * An ASCII string
+   * with a max length of 27 characters, in the form of `people/<person_id>`.
+   * Value must have pattern "^people/[^/]+$".
+   *
+   * [updatePersonFields] - **Required.** A field mask to restrict which fields
+   * on the person are
+   * updated. Valid values are:
+   *
+   * * addresses
+   * * biographies
+   * * birthdays
+   * * braggingRights
+   * * emailAddresses
+   * * events
+   * * genders
+   * * imClients
+   * * interests
+   * * locales
+   * * names
+   * * nicknames
+   * * occupations
+   * * organizations
+   * * phoneNumbers
+   * * relations
+   * * residences
+   * * skills
+   * * urls
+   *
+   * Completes with a [Person].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Person> updateContact(Person request, core.String resourceName, {core.String updatePersonFields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (updatePersonFields != null) {
+      _queryParams["updatePersonFields"] = [updatePersonFields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + ':updateContact';
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Person.fromJson(data));
+  }
+
 }
 
 
@@ -179,7 +769,9 @@ class PeopleConnectionsResourceApi {
 
   /**
    * Provides a list of the authenticated user's contacts merged with any
-   * linked profiles.
+   * connected profiles.
+   * <br>
+   * The request throws a 400 error if 'personFields' is not specified.
    *
    * Request parameters:
    *
@@ -187,18 +779,41 @@ class PeopleConnectionsResourceApi {
    * `people/me` is valid.
    * Value must have pattern "^people/[^/]+$".
    *
-   * [requestMask_includeField] - Required. Comma-separated list of person
-   * fields to be included in the
-   * response. Each path should start with `person.`: for example,
-   * `person.names` or `person.photos`.
-   *
-   * [pageSize] - The number of connections to include in the response. Valid
-   * values are
-   * between 1 and 2000, inclusive. Defaults to 100.
-   *
    * [syncToken] - A sync token, returned by a previous call to
    * `people.connections.list`.
    * Only resources changed since the sync token was created will be returned.
+   *
+   * [personFields] - **Required.** A field mask to restrict which fields on
+   * each person are
+   * returned. Valid values are:
+   *
+   * * addresses
+   * * ageRanges
+   * * biographies
+   * * birthdays
+   * * braggingRights
+   * * coverPhotos
+   * * emailAddresses
+   * * events
+   * * genders
+   * * imClients
+   * * interests
+   * * locales
+   * * memberships
+   * * metadata
+   * * names
+   * * nicknames
+   * * occupations
+   * * organizations
+   * * phoneNumbers
+   * * photos
+   * * relations
+   * * relationshipInterests
+   * * relationshipStatuses
+   * * residences
+   * * skills
+   * * taglines
+   * * urls
    *
    * [sortOrder] - The order in which the connections should be sorted. Defaults
    * to
@@ -214,6 +829,15 @@ class PeopleConnectionsResourceApi {
    *
    * [pageToken] - The token of the page to be returned.
    *
+   * [pageSize] - The number of connections to include in the response. Valid
+   * values are
+   * between 1 and 2000, inclusive. Defaults to 100.
+   *
+   * [requestMask_includeField] - **Required.** Comma-separated list of person
+   * fields to be included in the
+   * response. Each path should start with `person.`: for example,
+   * `person.names` or `person.photos`.
+   *
    * Completes with a [ListConnectionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -222,7 +846,7 @@ class PeopleConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String requestMask_includeField, core.int pageSize, core.String syncToken, core.String sortOrder, core.bool requestSyncToken, core.String pageToken}) {
+  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String syncToken, core.String personFields, core.String sortOrder, core.bool requestSyncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -233,14 +857,11 @@ class PeopleConnectionsResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
-    if (requestMask_includeField != null) {
-      _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
@@ -250,6 +871,12 @@ class PeopleConnectionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (requestMask_includeField != null) {
+      _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/connections';
@@ -436,6 +1063,28 @@ class AgeRangeType {
   }
 }
 
+/** The response to a batch get contact groups request. */
+class BatchGetContactGroupsResponse {
+  /** The list of responses for each requested contact group resource. */
+  core.List<ContactGroupResponse> responses;
+
+  BatchGetContactGroupsResponse();
+
+  BatchGetContactGroupsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("responses")) {
+      responses = _json["responses"].map((value) => new ContactGroupResponse.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (responses != null) {
+      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** A person's short biography. */
 class Biography {
   /**
@@ -552,6 +1201,111 @@ class BraggingRights {
   }
 }
 
+/** A contact group. */
+class ContactGroup {
+  /**
+   * The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
+   * resource. Used for web cache validation.
+   */
+  core.String etag;
+  /**
+   * The read-only name translated and formatted in the viewer's account locale
+   * or the `Accept-Language` HTTP header locale for system groups names.
+   * Group names set by the owner are the same as name.
+   */
+  core.String formattedName;
+  /**
+   * The read-only contact group type.
+   * Possible string values are:
+   * - "GROUP_TYPE_UNSPECIFIED" : Unspecified.
+   * - "USER_CONTACT_GROUP" : User defined contact group.
+   * - "SYSTEM_CONTACT_GROUP" : System defined contact group.
+   */
+  core.String groupType;
+  /**
+   * The total number of contacts in the group irrespective of max members in
+   * specified in the request.
+   */
+  core.int memberCount;
+  /**
+   * The list of contact person resource names that are members of the contact
+   * group. The field is not populated for LIST requests and can only be updated
+   * through the
+   * [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).
+   */
+  core.List<core.String> memberResourceNames;
+  /** Metadata about the contact group. */
+  ContactGroupMetadata metadata;
+  /**
+   * The contact group name set by the group owner or a system provided name
+   * for system groups.
+   */
+  core.String name;
+  /**
+   * The resource name for the contact group, assigned by the server. An ASCII
+   * string, in the form of `contactGroups/<contact_group_id>`.
+   */
+  core.String resourceName;
+
+  ContactGroup();
+
+  ContactGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("formattedName")) {
+      formattedName = _json["formattedName"];
+    }
+    if (_json.containsKey("groupType")) {
+      groupType = _json["groupType"];
+    }
+    if (_json.containsKey("memberCount")) {
+      memberCount = _json["memberCount"];
+    }
+    if (_json.containsKey("memberResourceNames")) {
+      memberResourceNames = _json["memberResourceNames"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new ContactGroupMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (formattedName != null) {
+      _json["formattedName"] = formattedName;
+    }
+    if (groupType != null) {
+      _json["groupType"] = groupType;
+    }
+    if (memberCount != null) {
+      _json["memberCount"] = memberCount;
+    }
+    if (memberResourceNames != null) {
+      _json["memberResourceNames"] = memberResourceNames;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    return _json;
+  }
+}
+
 /** A Google contact group membership. */
 class ContactGroupMembership {
   /**
@@ -577,6 +1331,78 @@ class ContactGroupMembership {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (contactGroupId != null) {
       _json["contactGroupId"] = contactGroupId;
+    }
+    return _json;
+  }
+}
+
+/** The read-only metadata about a contact group. */
+class ContactGroupMetadata {
+  /**
+   * True if the contact group resource has been deleted. Populated only for
+   * [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests
+   * that include a sync token.
+   */
+  core.bool deleted;
+  /** The time the group was last updated. */
+  core.String updateTime;
+
+  ContactGroupMetadata();
+
+  ContactGroupMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("deleted")) {
+      deleted = _json["deleted"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (deleted != null) {
+      _json["deleted"] = deleted;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/** The response for a specific contact group. */
+class ContactGroupResponse {
+  /** The contact group. */
+  ContactGroup contactGroup;
+  /** The original requested resource name. */
+  core.String requestedResourceName;
+  /** The status of the response. */
+  Status status;
+
+  ContactGroupResponse();
+
+  ContactGroupResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("contactGroup")) {
+      contactGroup = new ContactGroup.fromJson(_json["contactGroup"]);
+    }
+    if (_json.containsKey("requestedResourceName")) {
+      requestedResourceName = _json["requestedResourceName"];
+    }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (contactGroup != null) {
+      _json["contactGroup"] = (contactGroup).toJson();
+    }
+    if (requestedResourceName != null) {
+      _json["requestedResourceName"] = requestedResourceName;
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
     }
     return _json;
   }
@@ -621,6 +1447,28 @@ class CoverPhoto {
     }
     if (url != null) {
       _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/** A request to create a new contact group. */
+class CreateContactGroupRequest {
+  /** The contact group to create. */
+  ContactGroup contactGroup;
+
+  CreateContactGroupRequest();
+
+  CreateContactGroupRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contactGroup")) {
+      contactGroup = new ContactGroup.fromJson(_json["contactGroup"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (contactGroup != null) {
+      _json["contactGroup"] = (contactGroup).toJson();
     }
     return _json;
   }
@@ -761,6 +1609,30 @@ class EmailAddress {
     if (value != null) {
       _json["value"] = value;
     }
+    return _json;
+  }
+}
+
+/**
+ * A generic empty message that you can re-use to avoid defining duplicated
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
+ */
+class Empty {
+
+  Empty();
+
+  Empty.fromJson(core.Map _json) {
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1064,8 +1936,8 @@ class ListConnectionsResponse {
   /** The total number of items in the list without pagination. */
   core.int totalItems;
   /**
-   * DEPRECATED(Please use total_items). The total number of people in the list
-   * without pagination.
+   * **DEPRECATED** (Please use totalItems)
+   * The total number of people in the list without pagination.
    */
   core.int totalPeople;
 
@@ -1105,6 +1977,55 @@ class ListConnectionsResponse {
     }
     if (totalPeople != null) {
       _json["totalPeople"] = totalPeople;
+    }
+    return _json;
+  }
+}
+
+/** The response to a list contact groups request. */
+class ListContactGroupsResponse {
+  /**
+   * The list of contact groups. Members of the contact groups are not
+   * populated.
+   */
+  core.List<ContactGroup> contactGroups;
+  /** The token that can be used to retrieve the next page of results. */
+  core.String nextPageToken;
+  /** The token that can be used to retrieve changes since the last request. */
+  core.String nextSyncToken;
+  /** The total number of items in the list without pagination. */
+  core.int totalItems;
+
+  ListContactGroupsResponse();
+
+  ListContactGroupsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("contactGroups")) {
+      contactGroups = _json["contactGroups"].map((value) => new ContactGroup.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("nextSyncToken")) {
+      nextSyncToken = _json["nextSyncToken"];
+    }
+    if (_json.containsKey("totalItems")) {
+      totalItems = _json["totalItems"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (contactGroups != null) {
+      _json["contactGroups"] = contactGroups.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (nextSyncToken != null) {
+      _json["nextSyncToken"] = nextSyncToken;
+    }
+    if (totalItems != null) {
+      _json["totalItems"] = totalItems;
     }
     return _json;
   }
@@ -1176,6 +2097,64 @@ class Membership {
     }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
+    }
+    return _json;
+  }
+}
+
+/** A request to modify an existing contact group's members. */
+class ModifyContactGroupMembersRequest {
+  /**
+   * The resource names of the contact people to add in the form of in the form
+   * `people/<person_id>`.
+   */
+  core.List<core.String> resourceNamesToAdd;
+  /**
+   * The resource names of the contact people to remove in the form of in the
+   * form of `people/<person_id>`.
+   */
+  core.List<core.String> resourceNamesToRemove;
+
+  ModifyContactGroupMembersRequest();
+
+  ModifyContactGroupMembersRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceNamesToAdd")) {
+      resourceNamesToAdd = _json["resourceNamesToAdd"];
+    }
+    if (_json.containsKey("resourceNamesToRemove")) {
+      resourceNamesToRemove = _json["resourceNamesToRemove"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (resourceNamesToAdd != null) {
+      _json["resourceNamesToAdd"] = resourceNamesToAdd;
+    }
+    if (resourceNamesToRemove != null) {
+      _json["resourceNamesToRemove"] = resourceNamesToRemove;
+    }
+    return _json;
+  }
+}
+
+/** The response to a modify contact group members request. */
+class ModifyContactGroupMembersResponse {
+  /** The contact people resource names that were not found. */
+  core.List<core.String> notFoundResourceNames;
+
+  ModifyContactGroupMembersResponse();
+
+  ModifyContactGroupMembersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("notFoundResourceNames")) {
+      notFoundResourceNames = _json["notFoundResourceNames"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (notFoundResourceNames != null) {
+      _json["notFoundResourceNames"] = notFoundResourceNames;
     }
     return _json;
   }
@@ -1552,7 +2531,9 @@ class Person {
   /** The person's street addresses. */
   core.List<Address> addresses;
   /**
-   * DEPRECATED(Please read person.age_ranges instead). The person's age range.
+   * **DEPRECATED** (Please use `person.ageRanges` instead)**
+   *
+   * The person's read-only age range.
    * Possible string values are:
    * - "AGE_RANGE_UNSPECIFIED" : Unspecified.
    * - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
@@ -1560,7 +2541,7 @@ class Person {
    * - "TWENTY_ONE_OR_OLDER" : Twenty-one and older.
    */
   core.String ageRange;
-  /** The person's age ranges. */
+  /** The person's read-only age ranges. */
   core.List<AgeRangeType> ageRanges;
   /** The person's biographies. */
   core.List<Biography> biographies;
@@ -1568,7 +2549,7 @@ class Person {
   core.List<Birthday> birthdays;
   /** The person's bragging rights. */
   core.List<BraggingRights> braggingRights;
-  /** The person's cover photos. */
+  /** The person's read-only cover photos. */
   core.List<CoverPhoto> coverPhotos;
   /** The person's email addresses. */
   core.List<EmailAddress> emailAddresses;
@@ -1587,9 +2568,9 @@ class Person {
   core.List<Interest> interests;
   /** The person's locale preferences. */
   core.List<Locale> locales;
-  /** The person's group memberships. */
+  /** The person's read-only group memberships. */
   core.List<Membership> memberships;
-  /** Metadata about the person. */
+  /** Read-only metadata about the person. */
   PersonMetadata metadata;
   /** The person's names. */
   core.List<Name> names;
@@ -1601,13 +2582,13 @@ class Person {
   core.List<Organization> organizations;
   /** The person's phone numbers. */
   core.List<PhoneNumber> phoneNumbers;
-  /** The person's photos. */
+  /** The person's read-only photos. */
   core.List<Photo> photos;
   /** The person's relations. */
   core.List<Relation> relations;
-  /** The kind of relationship the person is looking for. */
+  /** The person's read-only relationship interests. */
   core.List<RelationshipInterest> relationshipInterests;
-  /** The person's relationship statuses. */
+  /** The person's read-only relationship statuses. */
   core.List<RelationshipStatus> relationshipStatuses;
   /** The person's residences. */
   core.List<Residence> residences;
@@ -1618,7 +2599,7 @@ class Person {
   core.String resourceName;
   /** The person's skills. */
   core.List<Skill> skills;
-  /** The person's taglines. */
+  /** The person's read-only taglines. */
   core.List<Tagline> taglines;
   /** The person's associated URLs. */
   core.List<Url> urls;
@@ -1825,7 +2806,9 @@ class PersonMetadata {
   /** Resource names of people linked to this resource. */
   core.List<core.String> linkedPeopleResourceNames;
   /**
-   * DEPRECATED(Please read person.metadata.sources.profile_metadata instead).
+   * **DEPRECATED** (Please use
+   * `person.metadata.sources.profileMetadata.objectType` instead)
+   *
    * The type of the person object.
    * Possible string values are:
    * - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
@@ -1890,9 +2873,10 @@ class PersonMetadata {
 /** The response for a single person */
 class PersonResponse {
   /**
-   * DEPRECATED(Please use status instead).
-   * [HTTP 1.1 status
-   * code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+   * **DEPRECATED** (Please use status instead)
+   *
+   * [HTTP 1.1 status code]
+   * (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
    */
   core.int httpStatusCode;
   /** The person. */
@@ -1954,7 +2938,7 @@ class PhoneNumber {
   core.String canonicalForm;
   /**
    * The read-only type of the phone number translated and formatted in the
-   * viewer's account locale or the the `Accept-Language` HTTP header locale.
+   * viewer's account locale or the `Accept-Language` HTTP header locale.
    */
   core.String formattedType;
   /** Metadata about the phone number. */
@@ -2068,6 +3052,8 @@ class ProfileMetadata {
    * - "PAGE" : [Google+ Page.](http://www.google.com/+/brands/)
    */
   core.String objectType;
+  /** The user types. */
+  core.List<core.String> userTypes;
 
   ProfileMetadata();
 
@@ -2075,12 +3061,18 @@ class ProfileMetadata {
     if (_json.containsKey("objectType")) {
       objectType = _json["objectType"];
     }
+    if (_json.containsKey("userTypes")) {
+      userTypes = _json["userTypes"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (objectType != null) {
       _json["objectType"] = objectType;
+    }
+    if (userTypes != null) {
+      _json["userTypes"] = userTypes;
     }
     return _json;
   }
@@ -2349,16 +3341,18 @@ class Source {
    * - "ACCOUNT" : [Google Account](https://accounts.google.com).
    * - "PROFILE" : [Google profile](https://profiles.google.com). You can view
    * the
-   * profile at https://profiles.google.com/<id> where <id> is the source
-   * id.
+   * profile at https://profiles.google.com/<var>id</var> where
+   * <var>id</var> is the source id.
    * - "DOMAIN_PROFILE" : [Google Apps domain
    * profile](https://admin.google.com).
    * - "CONTACT" : [Google contact](https://contacts.google.com). You can view
    * the
-   * contact at https://contact.google.com/<id> where <id> is the source
-   * id.
+   * contact at https://contact.google.com/<var>id</var> where <var>id</var>
+   * is the source id.
    */
   core.String type;
+  /** Last update timestamp of this source. */
+  core.String updateTime;
 
   Source();
 
@@ -2375,6 +3369,9 @@ class Source {
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2390,6 +3387,9 @@ class Source {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }
@@ -2455,8 +3455,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2523,6 +3523,30 @@ class Tagline {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A request to update an existing contact group. Only the name can be updated.
+ */
+class UpdateContactGroupRequest {
+  /** The contact group to update. */
+  ContactGroup contactGroup;
+
+  UpdateContactGroupRequest();
+
+  UpdateContactGroupRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("contactGroup")) {
+      contactGroup = new ContactGroup.fromJson(_json["contactGroup"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (contactGroup != null) {
+      _json["contactGroup"] = (contactGroup).toJson();
     }
     return _json;
   }

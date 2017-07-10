@@ -427,6 +427,10 @@ class BeaconsResourceApi {
    * [pageToken] - A pagination token obtained from a previous request to list
    * beacons.
    *
+   * [pageSize] - The maximum number of records to return for this request, up
+   * to a
+   * server-defined upper limit.
+   *
    * [q] - Filter query string that supports the following field filters:
    *
    * * **description:`"<string>"`**
@@ -496,10 +500,6 @@ class BeaconsResourceApi {
    * `GET
    * /v1beta1/beacons?q=status:active%20lat:51.123%20lng:-1.095%20radius:1000`
    *
-   * [pageSize] - The maximum number of records to return for this request, up
-   * to a
-   * server-defined upper limit.
-   *
    * [projectId] - The project id to list beacons under. If not present then the
    * project
    * credential that made the request is used as the project.
@@ -513,7 +513,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBeaconsResponse> list({core.String pageToken, core.String q, core.int pageSize, core.String projectId}) {
+  async.Future<ListBeaconsResponse> list({core.String pageToken, core.int pageSize, core.String q, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -524,11 +524,11 @@ class BeaconsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (q != null) {
-      _queryParams["q"] = [q];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (q != null) {
+      _queryParams["q"] = [q];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -1002,9 +1002,6 @@ class BeaconsDiagnosticsResourceApi {
    * from the
    * response to a previous request. Optional.
    *
-   * [pageSize] - Specifies the maximum number of results to return. Defaults to
-   * 10. Maximum 1000. Optional.
-   *
    * [alertFilter] - Requests only beacons that have the given alert. For
    * example, to find
    * beacons that have low batteries use `alert_filter=LOW_BATTERY`.
@@ -1012,6 +1009,9 @@ class BeaconsDiagnosticsResourceApi {
    * - "ALERT_UNSPECIFIED" : A ALERT_UNSPECIFIED.
    * - "WRONG_LOCATION" : A WRONG_LOCATION.
    * - "LOW_BATTERY" : A LOW_BATTERY.
+   *
+   * [pageSize] - Specifies the maximum number of results to return. Defaults to
+   * 10. Maximum 1000. Optional.
    *
    * [projectId] - Requests only diagnostic records for the given project id. If
    * not set,
@@ -1026,7 +1026,7 @@ class BeaconsDiagnosticsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDiagnosticsResponse> list(core.String beaconName, {core.String pageToken, core.int pageSize, core.String alertFilter, core.String projectId}) {
+  async.Future<ListDiagnosticsResponse> list(core.String beaconName, {core.String pageToken, core.String alertFilter, core.int pageSize, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1040,11 +1040,11 @@ class BeaconsDiagnosticsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (alertFilter != null) {
       _queryParams["alertFilter"] = [alertFilter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];

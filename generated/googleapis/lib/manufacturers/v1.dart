@@ -46,8 +46,70 @@ class AccountsProductsResourceApi {
       _requester = client;
 
   /**
+   * Deletes the product from a Manufacturer Center account.
+   *
+   * Request parameters:
+   *
+   * [parent] - Parent ID in the format `accounts/{account_id}`.
+   *
+   * `account_id` - The ID of the Manufacturer Center account.
+   * Value must have pattern "^accounts/[^/]+$".
+   *
+   * [name] - Name in the format
+   * `{target_country}:{content_language}:{product_id}`.
+   *
+   * `target_country`   - The target country of the product as a CLDR territory
+   *                      code (for example, US).
+   *
+   * `content_language` - The content language of the product as a two-letter
+   *                      ISO 639-1 language code (for example, en).
+   *
+   * `product_id`     -   The ID of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#id.
+   * Value must have pattern "^[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String parent, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
    * Gets the product from a Manufacturer Center account, including product
    * issues.
+   *
+   * A recently updated product takes some time to be processed before any
+   * changes are visible. While some issues may be available once the product
+   * has been processed, other issues may take days to appear.
    *
    * Request parameters:
    *
@@ -156,6 +218,80 @@ class AccountsProductsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListProductsResponse.fromJson(data));
+  }
+
+  /**
+   * Inserts or updates the product in a Manufacturer Center account.
+   *
+   * The checks at upload time are minimal. All required attributes need to be
+   * present for a product to be valid. Issues may show up later
+   * after the API has accepted an update for a product and it is possible to
+   * overwrite an existing valid product with an invalid product. To detect
+   * this, you should retrieve the product and check it for issues once the
+   * updated version is available.
+   *
+   * Inserted or updated products first need to be processed before they can be
+   * retrieved. Until then, new products will be unavailable, and retrieval
+   * of updated products will return the original state of the product.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [parent] - Parent ID in the format `accounts/{account_id}`.
+   *
+   * `account_id` - The ID of the Manufacturer Center account.
+   * Value must have pattern "^accounts/[^/]+$".
+   *
+   * [name] - Name in the format
+   * `{target_country}:{content_language}:{product_id}`.
+   *
+   * `target_country`   - The target country of the product as a CLDR territory
+   *                      code (for example, US).
+   *
+   * `content_language` - The content language of the product as a two-letter
+   *                      ISO 639-1 language code (for example, en).
+   *
+   * `product_id`     -   The ID of the product. For more information, see
+   * https://support.google.com/manufacturers/answer/6124116#id.
+   * Value must have pattern "^[^/]+$".
+   *
+   * Completes with a [Product].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Product> update(Product request, core.String parent, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Product.fromJson(data));
   }
 
 }
@@ -594,6 +730,30 @@ class Count {
     if (value != null) {
       _json["value"] = value;
     }
+    return _json;
+  }
+}
+
+/**
+ * A generic empty message that you can re-use to avoid defining duplicated
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
+ */
+class Empty {
+
+  Empty();
+
+  Empty.fromJson(core.Map _json) {
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     return _json;
   }
 }

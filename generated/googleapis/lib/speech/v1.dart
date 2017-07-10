@@ -189,13 +189,13 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the operation's parent resource.
+   * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
    *
-   * [pageSize] - The standard list page size.
+   * [name] - The name of the operation's parent resource.
    *
-   * [filter] - The standard list filter.
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -205,7 +205,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.String name, core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list({core.String filter, core.String pageToken, core.String name, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -213,17 +213,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (name != null) {
-      _queryParams["name"] = [name];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (name != null) {
+      _queryParams["name"] = [name];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/operations';
@@ -804,8 +804,7 @@ class SpeechRecognitionAlternative {
    * indicates an estimated greater likelihood that the recognized words are
    * correct. This field is typically provided only for the top hypothesis, and
    * only for `is_final=true` results. Clients should not rely on the
-   * `confidence` field as it is not guaranteed to be accurate, or even set, in
-   * any of the results.
+   * `confidence` field as it is not guaranteed to be accurate or consistent.
    * The default of 0.0 is a sentinel value indicating `confidence` was not set.
    */
   core.double confidence;

@@ -105,11 +105,11 @@ class EncodedUpdatesResourceApi {
    *
    * [encodedRequest] - A serialized FetchThreatListUpdatesRequest proto.
    *
-   * [clientVersion] - The version of the client implementation.
-   *
    * [clientId] - A client ID that uniquely identifies the client implementation
    * of the Safe
    * Browsing API.
+   *
+   * [clientVersion] - The version of the client implementation.
    *
    * Completes with a [FetchThreatListUpdatesResponse].
    *
@@ -119,7 +119,7 @@ class EncodedUpdatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest, {core.String clientVersion, core.String clientId}) {
+  async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest, {core.String clientId, core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -130,11 +130,11 @@ class EncodedUpdatesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
     if (clientId != null) {
       _queryParams["clientId"] = [clientId];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');

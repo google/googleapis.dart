@@ -326,9 +326,9 @@ class DeploymentsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -339,7 +339,7 @@ class DeploymentsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -814,9 +814,9 @@ class ManifestsResourceApi {
    * [deployment] - The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -827,7 +827,7 @@ class ManifestsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -971,9 +971,9 @@ class OperationsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -984,7 +984,7 @@ class OperationsResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -1134,9 +1134,9 @@ class ResourcesResourceApi {
    * [deployment] - The name of the deployment for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -1147,7 +1147,7 @@ class ResourcesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -1245,9 +1245,9 @@ class TypesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [filter] - Sets a filter expression for filtering listed resources, in the
-   * form filter={expression}. Your {expression} must be in the format:
-   * field_name comparison_string literal_string.
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
    *
    * The field_name is the name of the field you want to compare. Only atomic
    * field types are supported (string, number, boolean). The comparison_string
@@ -1258,7 +1258,7 @@ class TypesResourceApi {
    * The literal value must match the entire field.
    *
    * For example, to filter for instances that do not have a name of
-   * example-instance, you would use filter=name ne example-instance.
+   * example-instance, you would use name ne example-instance.
    *
    * You can filter on nested fields. For example, you could filter on instances
    * that have set the scheduling.automaticRestart field to true. Use filtering
@@ -1446,6 +1446,13 @@ class AuditLogConfig {
 /** Associates `members` with a `role`. */
 class Binding {
   /**
+   * The condition that is associated with this binding. NOTE: an unsatisfied
+   * condition will not allow user access via current binding. Different
+   * bindings, including their conditions, are examined independently. This
+   * field is GOOGLE_INTERNAL.
+   */
+  Expr condition;
+  /**
    * Specifies the identities requesting access for a Cloud Platform resource.
    * `members` can have the following values:
    *
@@ -1466,6 +1473,8 @@ class Binding {
    * * `group:{emailid}`: An email address that represents a Google group. For
    * example, `admins@example.com`.
    *
+   *
+   *
    * * `domain:{domain}`: A Google Apps domain name that represents all the
    * users of that domain. For example, `google.com` or `example.com`.
    */
@@ -1479,6 +1488,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = _json["members"];
     }
@@ -1489,6 +1501,9 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -1950,6 +1965,72 @@ class DeploymentsStopRequest {
   }
 }
 
+/**
+ * Represents an expression text. Example:
+ *
+ * title: "User account presence" description: "Determines whether the request
+ * has a user account" expression: "size(request.user) > 0"
+ */
+class Expr {
+  /**
+   * An optional description of the expression. This is a longer text which
+   * describes the expression, e.g. when hovered over it in a UI.
+   */
+  core.String description;
+  /**
+   * Textual representation of an expression in Common Expression Language
+   * syntax.
+   *
+   * The application context of the containing message determines which
+   * well-known feature set of CEL is supported.
+   */
+  core.String expression;
+  /**
+   * An optional string indicating the location of the expression for error
+   * reporting, e.g. a file name and a position in the file.
+   */
+  core.String location;
+  /**
+   * An optional title for the expression, i.e. a short string describing its
+   * purpose. This can be used e.g. in UIs which allow to enter the expression.
+   */
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
 class ImportFile {
   /** The contents of the file. */
   core.String content;
@@ -1981,12 +2062,17 @@ class ImportFile {
 
 /** Specifies what kind of log the caller must write */
 class LogConfig {
+  /** Cloud audit options. */
+  LogConfigCloudAuditOptions cloudAudit;
   /** Counter options. */
   LogConfigCounterOptions counter;
 
   LogConfig();
 
   LogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudAudit")) {
+      cloudAudit = new LogConfigCloudAuditOptions.fromJson(_json["cloudAudit"]);
+    }
     if (_json.containsKey("counter")) {
       counter = new LogConfigCounterOptions.fromJson(_json["counter"]);
     }
@@ -1994,8 +2080,33 @@ class LogConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (cloudAudit != null) {
+      _json["cloudAudit"] = (cloudAudit).toJson();
+    }
     if (counter != null) {
       _json["counter"] = (counter).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Write a Cloud Audit log */
+class LogConfigCloudAuditOptions {
+  /** The log_name to populate in the Cloud Audit Record. */
+  core.String logName;
+
+  LogConfigCloudAuditOptions();
+
+  LogConfigCloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logName")) {
+      logName = _json["logName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (logName != null) {
+      _json["logName"] = logName;
     }
     return _json;
   }
@@ -2616,9 +2727,8 @@ class Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   core.List<AuditConfig> auditConfigs;
   /**
-   * Associates a list of `members` to a `role`. Multiple `bindings` must not be
-   * specified for the same `role`. `bindings` with no members will result in an
-   * error.
+   * Associates a list of `members` to a `role`. `bindings` with no members will
+   * result in an error.
    */
   core.List<Binding> bindings;
   /**

@@ -56,7 +56,7 @@ class ActivitiesResourceApi {
    * [applicationName] - Application name for which the events are to be
    * retrieved.
    * Value must have pattern
-   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)".
+   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -157,7 +157,7 @@ class ActivitiesResourceApi {
    * [applicationName] - Application name for which the events are to be
    * retrieved.
    * Value must have pattern
-   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)".
+   * "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)".
    *
    * [actorIpAddress] - IP Address of host where the event was performed.
    * Supports both IPv4 and IPv6 addresses.
@@ -322,7 +322,7 @@ class CustomerUsageReportsResourceApi {
    * [parameters] - Represents the application name, parameter name pairs to
    * fetch in csv as app_name1:param_name1, app_name2:param_name2.
    * Value must have pattern
-   * "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
+   * "(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
    *
    * Completes with a [UsageReports].
    *

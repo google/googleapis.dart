@@ -110,6 +110,63 @@ class ProjectsZonesClustersResourceApi {
       _requester = client;
 
   /**
+   * Sets the addons of a specific cluster.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster to upgrade.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> addons(SetAddonsConfigRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/addons';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Completes master IP rotation.
    *
    * [request] - The metadata request object.
@@ -448,6 +505,234 @@ class ProjectsZonesClustersResourceApi {
   }
 
   /**
+   * Sets the locations of a specific cluster.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster to upgrade.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> locations(SetLocationsRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/locations';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets the logging service of a specific cluster.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster to upgrade.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> logging(SetLoggingServiceRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/logging';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates the master of a specific cluster.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster to upgrade.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> master(UpdateMasterRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/master';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Sets the monitoring service of a specific cluster.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster to upgrade.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> monitoring(SetMonitoringServiceRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/monitoring';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Sets labels on a cluster.
    *
    * [request] - The metadata request object.
@@ -552,6 +837,63 @@ class ProjectsZonesClustersResourceApi {
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + ':setMasterAuth';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Enables/Disables Network Policy for a cluster.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://developers.google.com/console/help/new/#projectnumber).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setNetworkPolicy(SetNetworkPolicyRequest request, core.String projectId, core.String zone, core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + ':setNetworkPolicy';
 
     var _response = _requester.request(_url,
                                        "POST",
@@ -685,6 +1027,68 @@ class ProjectsZonesClustersNodePoolsResourceApi {
 
   ProjectsZonesClustersNodePoolsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+
+  /**
+   * Sets the autoscaling settings of a specific node pool.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster to upgrade.
+   *
+   * [nodePoolId] - The name of the node pool to upgrade.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> autoscaling(SetNodePoolAutoscalingRequest request, core.String projectId, core.String zone, core.String clusterId, core.String nodePoolId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (nodePoolId == null) {
+      throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools/' + commons.Escaper.ecapeVariable('$nodePoolId') + '/autoscaling';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 
   /**
    * Creates a node pool for a cluster.
@@ -1034,6 +1438,130 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /**
+   * Sets the size of a specific node pool.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster to update.
+   *
+   * [nodePoolId] - The name of the node pool to update.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setSize(SetNodePoolSizeRequest request, core.String projectId, core.String zone, core.String clusterId, core.String nodePoolId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (nodePoolId == null) {
+      throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools/' + commons.Escaper.ecapeVariable('$nodePoolId') + '/setSize';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates the version and/or image type of a specific node pool.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [projectId] - The Google Developers Console [project ID or project
+   * number](https://support.google.com/cloud/answer/6158840).
+   *
+   * [zone] - The name of the Google Compute Engine
+   * [zone](/compute/docs/zones#available) in which the cluster
+   * resides.
+   *
+   * [clusterId] - The name of the cluster to upgrade.
+   *
+   * [nodePoolId] - The name of the node pool to upgrade.
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> update(UpdateNodePoolRequest request, core.String projectId, core.String zone, core.String clusterId, core.String nodePoolId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if (nodePoolId == null) {
+      throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+
+    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/clusters/' + commons.Escaper.ecapeVariable('$clusterId') + '/nodePools/' + commons.Escaper.ecapeVariable('$nodePoolId') + '/update';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
 }
 
 
@@ -1296,6 +1824,28 @@ class CancelOperationRequest {
   }
 }
 
+/** Configuration for client certificates on the cluster. */
+class ClientCertificateConfig {
+  /** Issue a client certificate. */
+  core.bool issueClientCertificate;
+
+  ClientCertificateConfig();
+
+  ClientCertificateConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("issueClientCertificate")) {
+      issueClientCertificate = _json["issueClientCertificate"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (issueClientCertificate != null) {
+      _json["issueClientCertificate"] = issueClientCertificate;
+    }
+    return _json;
+  }
+}
+
 /** A Google Container Engine cluster. */
 class Cluster {
   /** Configurations for the various addons available to run in the cluster. */
@@ -1371,6 +1921,8 @@ class Cluster {
    * cluster.
    */
   core.List<core.String> instanceGroupUrls;
+  /** Configuration for cluster IP allocation. */
+  IPAllocationPolicy ipAllocationPolicy;
   /** The fingerprint of the set of labels for this cluster. */
   core.String labelFingerprint;
   /** Configuration for the legacy ABAC authorization mode. */
@@ -1417,6 +1969,8 @@ class Cluster {
    * will be used.
    */
   core.String network;
+  /** Configuration options for the NetworkPolicy feature. */
+  NetworkPolicy networkPolicy;
   /**
    * Parameters used in creating the cluster's nodes.
    * See `nodeConfig` for the description of its properties.
@@ -1535,6 +2089,9 @@ class Cluster {
     if (_json.containsKey("instanceGroupUrls")) {
       instanceGroupUrls = _json["instanceGroupUrls"];
     }
+    if (_json.containsKey("ipAllocationPolicy")) {
+      ipAllocationPolicy = new IPAllocationPolicy.fromJson(_json["ipAllocationPolicy"]);
+    }
     if (_json.containsKey("labelFingerprint")) {
       labelFingerprint = _json["labelFingerprint"];
     }
@@ -1558,6 +2115,9 @@ class Cluster {
     }
     if (_json.containsKey("network")) {
       network = _json["network"];
+    }
+    if (_json.containsKey("networkPolicy")) {
+      networkPolicy = new NetworkPolicy.fromJson(_json["networkPolicy"]);
     }
     if (_json.containsKey("nodeConfig")) {
       nodeConfig = new NodeConfig.fromJson(_json["nodeConfig"]);
@@ -1632,6 +2192,9 @@ class Cluster {
     if (instanceGroupUrls != null) {
       _json["instanceGroupUrls"] = instanceGroupUrls;
     }
+    if (ipAllocationPolicy != null) {
+      _json["ipAllocationPolicy"] = (ipAllocationPolicy).toJson();
+    }
     if (labelFingerprint != null) {
       _json["labelFingerprint"] = labelFingerprint;
     }
@@ -1655,6 +2218,9 @@ class Cluster {
     }
     if (network != null) {
       _json["network"] = network;
+    }
+    if (networkPolicy != null) {
+      _json["networkPolicy"] = (networkPolicy).toJson();
     }
     if (nodeConfig != null) {
       _json["nodeConfig"] = (nodeConfig).toJson();
@@ -1953,6 +2519,123 @@ class HttpLoadBalancing {
   }
 }
 
+/** Configuration for controlling how IPs are allocated in the cluster. */
+class IPAllocationPolicy {
+  /**
+   * The IP address range for the cluster pod IPs. If this field is set, then
+   * `cluster.cluster_ipv4_cidr` must be left blank.
+   *
+   * This field is only applicable when `use_ip_aliases` is true.
+   *
+   * Set to blank to have a range will be chosen with the default size.
+   *
+   * Set to /netmask (e.g. `/14`) to have a range be chosen with a specific
+   * netmask.
+   *
+   * Set to a
+   * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+   * notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+   * `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+   * to use.
+   */
+  core.String clusterIpv4Cidr;
+  /**
+   * Whether a new subnetwork will be created automatically for the cluster.
+   *
+   * This field is only applicable when `use_ip_aliases` is true.
+   */
+  core.bool createSubnetwork;
+  /**
+   * The IP address range of the instance IPs in this cluster.
+   *
+   * This is applicable only if `create_subnetwork` is true.
+   *
+   * Set to blank to have a range will be chosen with the default size.
+   *
+   * Set to /netmask (e.g. `/14`) to have a range be chosen with a specific
+   * netmask.
+   *
+   * Set to a
+   * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+   * notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+   * `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+   * to use.
+   */
+  core.String nodeIpv4Cidr;
+  /**
+   * The IP address range of the services IPs in this cluster. If blank, a range
+   * will be automatically chosen with the default size.
+   *
+   * This field is only applicable when `use_ip_aliases` is true.
+   *
+   * Set to blank to have a range will be chosen with the default size.
+   *
+   * Set to /netmask (e.g. `/14`) to have a range be chosen with a specific
+   * netmask.
+   *
+   * Set to a
+   * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+   * notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+   * `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+   * to use.
+   */
+  core.String servicesIpv4Cidr;
+  /**
+   * A custom subnetwork name to be used if `create_subnetwork` is true.  If
+   * this field is empty, then an automatic name will choosen for the new
+   * subnetwork.
+   */
+  core.String subnetworkName;
+  /** Whether alias IPs will be used for pod IPs in the cluster. */
+  core.bool useIpAliases;
+
+  IPAllocationPolicy();
+
+  IPAllocationPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterIpv4Cidr")) {
+      clusterIpv4Cidr = _json["clusterIpv4Cidr"];
+    }
+    if (_json.containsKey("createSubnetwork")) {
+      createSubnetwork = _json["createSubnetwork"];
+    }
+    if (_json.containsKey("nodeIpv4Cidr")) {
+      nodeIpv4Cidr = _json["nodeIpv4Cidr"];
+    }
+    if (_json.containsKey("servicesIpv4Cidr")) {
+      servicesIpv4Cidr = _json["servicesIpv4Cidr"];
+    }
+    if (_json.containsKey("subnetworkName")) {
+      subnetworkName = _json["subnetworkName"];
+    }
+    if (_json.containsKey("useIpAliases")) {
+      useIpAliases = _json["useIpAliases"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (clusterIpv4Cidr != null) {
+      _json["clusterIpv4Cidr"] = clusterIpv4Cidr;
+    }
+    if (createSubnetwork != null) {
+      _json["createSubnetwork"] = createSubnetwork;
+    }
+    if (nodeIpv4Cidr != null) {
+      _json["nodeIpv4Cidr"] = nodeIpv4Cidr;
+    }
+    if (servicesIpv4Cidr != null) {
+      _json["servicesIpv4Cidr"] = servicesIpv4Cidr;
+    }
+    if (subnetworkName != null) {
+      _json["subnetworkName"] = subnetworkName;
+    }
+    if (useIpAliases != null) {
+      _json["useIpAliases"] = useIpAliases;
+    }
+    return _json;
+  }
+}
+
 /**
  * Configuration for the legacy Attribute Based Access Control authorization
  * mode.
@@ -2086,6 +2769,11 @@ class MasterAuth {
    */
   core.String clientCertificate;
   /**
+   * Configuration for client certificate authentication on the cluster.  If no
+   * configuration is specified, a client certificate is issued.
+   */
+  ClientCertificateConfig clientCertificateConfig;
+  /**
    * [Output only] Base64-encoded private key used by clients to authenticate
    * to the cluster endpoint.
    */
@@ -2115,6 +2803,9 @@ class MasterAuth {
     if (_json.containsKey("clientCertificate")) {
       clientCertificate = _json["clientCertificate"];
     }
+    if (_json.containsKey("clientCertificateConfig")) {
+      clientCertificateConfig = new ClientCertificateConfig.fromJson(_json["clientCertificateConfig"]);
+    }
     if (_json.containsKey("clientKey")) {
       clientKey = _json["clientKey"];
     }
@@ -2134,6 +2825,9 @@ class MasterAuth {
     if (clientCertificate != null) {
       _json["clientCertificate"] = clientCertificate;
     }
+    if (clientCertificateConfig != null) {
+      _json["clientCertificateConfig"] = (clientCertificateConfig).toJson();
+    }
     if (clientKey != null) {
       _json["clientKey"] = clientKey;
     }
@@ -2145,6 +2839,44 @@ class MasterAuth {
     }
     if (username != null) {
       _json["username"] = username;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Configuration options for the NetworkPolicy feature.
+ * https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
+ */
+class NetworkPolicy {
+  /** Whether network policy is enabled on the cluster. */
+  core.bool enabled;
+  /**
+   * The selected network policy provider.
+   * Possible string values are:
+   * - "UNKNOWN" : Not set
+   * - "CALICO" : Tigera (Calico Felix).
+   */
+  core.String provider;
+
+  NetworkPolicy();
+
+  NetworkPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("provider")) {
+      provider = _json["provider"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (provider != null) {
+      _json["provider"] = provider;
     }
     return _json;
   }
@@ -2576,6 +3308,8 @@ class Operation {
    * - "AUTO_UPGRADE_NODES" : Automatic node upgrade.
    * - "SET_LABELS" : Set labels.
    * - "SET_MASTER_AUTH" : Set/generate master auth materials
+   * - "SET_NODE_POOL_SIZE" : Set node pool size.
+   * - "SET_NETWORK_POLICY" : Updates network policy for a cluster.
    */
   core.String operationType;
   /** Server-defined URL for the resource. */
@@ -2732,6 +3466,31 @@ class ServerConfig {
   }
 }
 
+/** SetAddonsConfigRequest sets the addons associated with the cluster. */
+class SetAddonsConfigRequest {
+  /**
+   * The desired configurations for the various addons available to run in the
+   * cluster.
+   */
+  AddonsConfig addonsConfig;
+
+  SetAddonsConfigRequest();
+
+  SetAddonsConfigRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("addonsConfig")) {
+      addonsConfig = new AddonsConfig.fromJson(_json["addonsConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (addonsConfig != null) {
+      _json["addonsConfig"] = (addonsConfig).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * SetLabelsRequest sets the Google Cloud Platform labels on a Google Container
  * Engine cluster, which will in turn set them for Google Compute Engine
@@ -2798,6 +3557,64 @@ class SetLegacyAbacRequest {
   }
 }
 
+/** SetLocationsRequest sets the locations of the cluster. */
+class SetLocationsRequest {
+  /**
+   * The desired list of Google Compute Engine
+   * [locations](/compute/docs/zones#available) in which the cluster's nodes
+   * should be located. Changing the locations a cluster is in will result
+   * in nodes being either created or removed from the cluster, depending on
+   * whether locations are being added or removed.
+   *
+   * This list must always include the cluster's primary zone.
+   */
+  core.List<core.String> locations;
+
+  SetLocationsRequest();
+
+  SetLocationsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("locations")) {
+      locations = _json["locations"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (locations != null) {
+      _json["locations"] = locations;
+    }
+    return _json;
+  }
+}
+
+/** SetLoggingServiceRequest sets the logging service of a cluster. */
+class SetLoggingServiceRequest {
+  /**
+   * The logging service the cluster should use to write metrics.
+   * Currently available options:
+   *
+   * * "logging.googleapis.com" - the Google Cloud Logging service
+   * * "none" - no metrics will be exported from the cluster
+   */
+  core.String loggingService;
+
+  SetLoggingServiceRequest();
+
+  SetLoggingServiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("loggingService")) {
+      loggingService = _json["loggingService"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (loggingService != null) {
+      _json["loggingService"] = loggingService;
+    }
+    return _json;
+  }
+}
+
 /** SetMasterAuthRequest updates the admin password of a cluster. */
 class SetMasterAuthRequest {
   /**
@@ -2834,6 +3651,80 @@ class SetMasterAuthRequest {
   }
 }
 
+/** SetMonitoringServiceRequest sets the monitoring service of a cluster. */
+class SetMonitoringServiceRequest {
+  /**
+   * The monitoring service the cluster should use to write metrics.
+   * Currently available options:
+   *
+   * * "monitoring.googleapis.com" - the Google Cloud Monitoring service
+   * * "none" - no metrics will be exported from the cluster
+   */
+  core.String monitoringService;
+
+  SetMonitoringServiceRequest();
+
+  SetMonitoringServiceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("monitoringService")) {
+      monitoringService = _json["monitoringService"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (monitoringService != null) {
+      _json["monitoringService"] = monitoringService;
+    }
+    return _json;
+  }
+}
+
+/** SetNetworkPolicyRequest enables/disables network policy for a cluster. */
+class SetNetworkPolicyRequest {
+  /** Configuration options for the NetworkPolicy feature. */
+  NetworkPolicy networkPolicy;
+
+  SetNetworkPolicyRequest();
+
+  SetNetworkPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("networkPolicy")) {
+      networkPolicy = new NetworkPolicy.fromJson(_json["networkPolicy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (networkPolicy != null) {
+      _json["networkPolicy"] = (networkPolicy).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * SetNodePoolAutoscalingRequest sets the autoscaler settings of a node pool.
+ */
+class SetNodePoolAutoscalingRequest {
+  /** Autoscaling configuration for the node pool. */
+  NodePoolAutoscaling autoscaling;
+
+  SetNodePoolAutoscalingRequest();
+
+  SetNodePoolAutoscalingRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("autoscaling")) {
+      autoscaling = new NodePoolAutoscaling.fromJson(_json["autoscaling"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (autoscaling != null) {
+      _json["autoscaling"] = (autoscaling).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * SetNodePoolManagementRequest sets the node management properties of a node
  * pool.
@@ -2854,6 +3745,31 @@ class SetNodePoolManagementRequest {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (management != null) {
       _json["management"] = (management).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * SetNodePoolSizeRequest sets the size a node
+ * pool.
+ */
+class SetNodePoolSizeRequest {
+  /** The desired node count for the pool. */
+  core.int nodeCount;
+
+  SetNodePoolSizeRequest();
+
+  SetNodePoolSizeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("nodeCount")) {
+      nodeCount = _json["nodeCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (nodeCount != null) {
+      _json["nodeCount"] = nodeCount;
     }
     return _json;
   }
@@ -2893,6 +3809,66 @@ class UpdateClusterRequest {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (update != null) {
       _json["update"] = (update).toJson();
+    }
+    return _json;
+  }
+}
+
+/** UpdateMasterRequest updates the master of the cluster. */
+class UpdateMasterRequest {
+  /**
+   * The Kubernetes version to change the master to. The only valid value is the
+   * latest supported version. Use "-" to have the server automatically select
+   * the latest version.
+   */
+  core.String masterVersion;
+
+  UpdateMasterRequest();
+
+  UpdateMasterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("masterVersion")) {
+      masterVersion = _json["masterVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (masterVersion != null) {
+      _json["masterVersion"] = masterVersion;
+    }
+    return _json;
+  }
+}
+
+/** UpdateNodePoolRequests update a node pool's image and/or version. */
+class UpdateNodePoolRequest {
+  /** The desired image type for the node pool. */
+  core.String imageType;
+  /**
+   * The Kubernetes version to change the nodes to (typically an
+   * upgrade). Use `-` to upgrade to the latest version supported by
+   * the server.
+   */
+  core.String nodeVersion;
+
+  UpdateNodePoolRequest();
+
+  UpdateNodePoolRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("imageType")) {
+      imageType = _json["imageType"];
+    }
+    if (_json.containsKey("nodeVersion")) {
+      nodeVersion = _json["nodeVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (imageType != null) {
+      _json["imageType"] = imageType;
+    }
+    if (nodeVersion != null) {
+      _json["nodeVersion"] = nodeVersion;
     }
     return _json;
   }

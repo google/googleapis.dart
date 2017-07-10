@@ -370,11 +370,11 @@ class ProjectsBuildsResourceApi {
    *
    * [projectId] - ID of the project.
    *
-   * [filter] - The raw filter text to constrain the results.
-   *
    * [pageToken] - Token to provide to skip to a particular spot in the list.
    *
    * [pageSize] - Number of results to return in the list.
+   *
+   * [filter] - The raw filter text to constrain the results.
    *
    * Completes with a [ListBuildsResponse].
    *
@@ -384,7 +384,7 @@ class ProjectsBuildsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBuildsResponse> list(core.String projectId, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListBuildsResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -395,14 +395,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/builds';
@@ -943,6 +943,15 @@ class BuildOptions {
   core.String requestedVerifyOption;
   /** Requested hash for SourceProvenance. */
   core.List<core.String> sourceProvenanceHash;
+  /**
+   * SubstitutionOption to allow unmatch substitutions.
+   * Possible string values are:
+   * - "MUST_MATCH" : Fails the build if error in substitutions checks, like
+   * missing
+   * a substitution in the template or in the map.
+   * - "ALLOW_LOOSE" : Do not fail the build if error in substitutions checks.
+   */
+  core.String substitutionOption;
 
   BuildOptions();
 
@@ -953,6 +962,9 @@ class BuildOptions {
     if (_json.containsKey("sourceProvenanceHash")) {
       sourceProvenanceHash = _json["sourceProvenanceHash"];
     }
+    if (_json.containsKey("substitutionOption")) {
+      substitutionOption = _json["substitutionOption"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -962,6 +974,9 @@ class BuildOptions {
     }
     if (sourceProvenanceHash != null) {
       _json["sourceProvenanceHash"] = sourceProvenanceHash;
+    }
+    if (substitutionOption != null) {
+      _json["substitutionOption"] = substitutionOption;
     }
     return _json;
   }
@@ -1744,8 +1759,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

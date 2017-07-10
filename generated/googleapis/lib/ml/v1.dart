@@ -48,8 +48,6 @@ class ProjectsResourceApi {
    * Request parameters:
    *
    * [name] - Required. The project name.
-   *
-   * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [GoogleCloudMlV1GetConfigResponse].
@@ -95,7 +93,7 @@ class ProjectsResourceApi {
    *
    * [name] - Required. The resource name of a model or a version.
    *
-   * Authorization: requires `Viewer` role on the parent project.
+   * Authorization: requires the `predict` permission on the specified resource.
    * Value must have pattern "^projects/.+$".
    *
    * Completes with a [GoogleApiHttpBody].
@@ -150,8 +148,6 @@ class ProjectsJobsResourceApi {
    * Request parameters:
    *
    * [name] - Required. The name of the job to cancel.
-   *
-   * Authorization: requires `Editor` role on the parent project.
    * Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
    *
    * Completes with a [GoogleProtobufEmpty].
@@ -197,8 +193,6 @@ class ProjectsJobsResourceApi {
    * Request parameters:
    *
    * [parent] - Required. The project name.
-   *
-   * Authorization: requires `Editor` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [GoogleCloudMlV1Job].
@@ -242,8 +236,6 @@ class ProjectsJobsResourceApi {
    * Request parameters:
    *
    * [name] - Required. The name of the job to get the description of.
-   *
-   * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
    *
    * Completes with a [GoogleCloudMlV1Job].
@@ -284,11 +276,7 @@ class ProjectsJobsResourceApi {
    * Request parameters:
    *
    * [parent] - Required. The name of the project for which to list jobs.
-   *
-   * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
-   *
-   * [filter] - Optional. Specifies the subset of jobs to retrieve.
    *
    * [pageToken] - Optional. A page token to request the next page of results.
    *
@@ -302,6 +290,8 @@ class ProjectsJobsResourceApi {
    *
    * The default value is 20, and the maximum page size is 100.
    *
+   * [filter] - Optional. Specifies the subset of jobs to retrieve.
+   *
    * Completes with a [GoogleCloudMlV1ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -310,7 +300,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,14 +311,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -366,8 +356,6 @@ class ProjectsModelsResourceApi {
    * Request parameters:
    *
    * [parent] - Required. The project name.
-   *
-   * Authorization: requires `Editor` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
    * Completes with a [GoogleCloudMlV1Model].
@@ -415,8 +403,6 @@ class ProjectsModelsResourceApi {
    * Request parameters:
    *
    * [name] - Required. The name of the model.
-   *
-   * Authorization: requires `Editor` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+$".
    *
    * Completes with a [GoogleLongrunningOperation].
@@ -459,8 +445,6 @@ class ProjectsModelsResourceApi {
    * Request parameters:
    *
    * [name] - Required. The name of the model.
-   *
-   * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+$".
    *
    * Completes with a [GoogleCloudMlV1Model].
@@ -496,6 +480,50 @@ class ProjectsModelsResourceApi {
   }
 
   /**
+   * Gets the access control policy for a resource.
+   * Returns an empty policy if the resource exists and does not have a policy
+   * set.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested.
+   * See the operation documentation for the appropriate value for this field.
+   * Value must have pattern "^projects/[^/]+/models/[^/]+$".
+   *
+   * Completes with a [GoogleIamV1Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+  }
+
+  /**
    * Lists the models in a project.
    *
    * Each project can contain multiple models, and each model can have multiple
@@ -504,8 +532,6 @@ class ProjectsModelsResourceApi {
    * Request parameters:
    *
    * [parent] - Required. The name of the project whose models are to be listed.
-   *
-   * Authorization: requires `Viewer` role on the specified project.
    * Value must have pattern "^projects/[^/]+$".
    *
    * [pageToken] - Optional. A page token to request the next page of results.
@@ -558,6 +584,107 @@ class ProjectsModelsResourceApi {
     return _response.then((data) => new GoogleCloudMlV1ListModelsResponse.fromJson(data));
   }
 
+  /**
+   * Sets the access control policy on the specified resource. Replaces any
+   * existing policy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified.
+   * See the operation documentation for the appropriate value for this field.
+   * Value must have pattern "^projects/[^/]+/models/[^/]+$".
+   *
+   * Completes with a [GoogleIamV1Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GoogleIamV1Policy> setIamPolicy(GoogleIamV1SetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+  }
+
+  /**
+   * Returns permissions that a caller has on the specified resource.
+   * If the resource does not exist, this will return an empty set of
+   * permissions, not a NOT_FOUND error.
+   *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested.
+   * See the operation documentation for the appropriate value for this field.
+   * Value must have pattern "^projects/[^/]+/models/[^/]+$".
+   *
+   * Completes with a [GoogleIamV1TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(GoogleIamV1TestIamPermissionsRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleIamV1TestIamPermissionsResponse.fromJson(data));
+  }
+
 }
 
 
@@ -582,8 +709,6 @@ class ProjectsModelsVersionsResourceApi {
    * Request parameters:
    *
    * [parent] - Required. The name of the model.
-   *
-   * Authorization: requires `Editor` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+$".
    *
    * Completes with a [GoogleLongrunningOperation].
@@ -636,8 +761,6 @@ class ProjectsModelsVersionsResourceApi {
    * the
    * versions of a model by calling
    * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
-   *
-   * Authorization: requires `Editor` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
    *
    * Completes with a [GoogleLongrunningOperation].
@@ -683,8 +806,6 @@ class ProjectsModelsVersionsResourceApi {
    * Request parameters:
    *
    * [name] - Required. The name of the version.
-   *
-   * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
    *
    * Completes with a [GoogleCloudMlV1Version].
@@ -729,8 +850,6 @@ class ProjectsModelsVersionsResourceApi {
    * Request parameters:
    *
    * [parent] - Required. The name of the model for which to list the version.
-   *
-   * Authorization: requires `Viewer` role on the parent project.
    * Value must have pattern "^projects/[^/]+/models/[^/]+$".
    *
    * [pageToken] - Optional. A page token to request the next page of results.
@@ -802,7 +921,8 @@ class ProjectsModelsVersionsResourceApi {
    * can get the names of all the versions of a model by calling
    * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
    *
-   * Authorization: requires `Editor` role on the parent project.
+   * Authorization: `ml.models.update` permission is required on the parent
+   * model.
    * Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
    *
    * Completes with a [GoogleCloudMlV1Version].
@@ -2638,6 +2758,8 @@ class GoogleCloudMlV1Version {
    * Optional. The description specified for the version when it was created.
    */
   core.String description;
+  /** Output only. The details of a failure or a cancellation. */
+  core.String errorMessage;
   /**
    * Output only. If true, this version will be used to handle prediction
    * requests that do not specify a version.
@@ -2668,6 +2790,16 @@ class GoogleCloudMlV1Version {
    * If not set, Google Cloud ML will choose a version.
    */
   core.String runtimeVersion;
+  /**
+   * Output only. The state of a version.
+   * Possible string values are:
+   * - "UNKNOWN" : The version state is unspecified.
+   * - "READY" : The version is ready for prediction.
+   * - "CREATING" : The version is still in the process of creation.
+   * - "FAILED" : The version failed to be created, possibly cancelled.
+   * `error_message` should contain the details of the failure.
+   */
+  core.String state;
 
   GoogleCloudMlV1Version();
 
@@ -2684,6 +2816,9 @@ class GoogleCloudMlV1Version {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("errorMessage")) {
+      errorMessage = _json["errorMessage"];
+    }
     if (_json.containsKey("isDefault")) {
       isDefault = _json["isDefault"];
     }
@@ -2698,6 +2833,9 @@ class GoogleCloudMlV1Version {
     }
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
     }
   }
 
@@ -2715,6 +2853,9 @@ class GoogleCloudMlV1Version {
     if (description != null) {
       _json["description"] = description;
     }
+    if (errorMessage != null) {
+      _json["errorMessage"] = errorMessage;
+    }
     if (isDefault != null) {
       _json["isDefault"] = isDefault;
     }
@@ -2729,6 +2870,9 @@ class GoogleCloudMlV1Version {
     }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }
@@ -2916,6 +3060,8 @@ class GoogleCloudMlV1beta1Version {
    * Optional. The description specified for the version when it was created.
    */
   core.String description;
+  /** Output only. The details of a failure or a cancellation. */
+  core.String errorMessage;
   /**
    * Output only. If true, this version will be used to handle prediction
    * requests that do not specify a version.
@@ -2946,6 +3092,16 @@ class GoogleCloudMlV1beta1Version {
    * If not set, Google Cloud ML will choose a version.
    */
   core.String runtimeVersion;
+  /**
+   * Output only. The state of a version.
+   * Possible string values are:
+   * - "UNKNOWN" : / The version state is unspecified.
+   * - "READY" : The version is ready for prediction.
+   * - "CREATING" : The version is still in the process of creation.
+   * - "FAILED" : The version failed to be created, possibly cancelled.
+   * `error_message` should contain the details of the failure.
+   */
+  core.String state;
 
   GoogleCloudMlV1beta1Version();
 
@@ -2962,6 +3118,9 @@ class GoogleCloudMlV1beta1Version {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("errorMessage")) {
+      errorMessage = _json["errorMessage"];
+    }
     if (_json.containsKey("isDefault")) {
       isDefault = _json["isDefault"];
     }
@@ -2976,6 +3135,9 @@ class GoogleCloudMlV1beta1Version {
     }
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
     }
   }
 
@@ -2993,6 +3155,9 @@ class GoogleCloudMlV1beta1Version {
     if (description != null) {
       _json["description"] = description;
     }
+    if (errorMessage != null) {
+      _json["errorMessage"] = errorMessage;
+    }
     if (isDefault != null) {
       _json["isDefault"] = isDefault;
     }
@@ -3007,6 +3172,795 @@ class GoogleCloudMlV1beta1Version {
     }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/** Write a Cloud Audit log */
+class GoogleIamV1LogConfigCloudAuditOptions {
+  /**
+   * The log_name to populate in the Cloud Audit Record.
+   * Possible string values are:
+   * - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
+   * - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
+   * - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
+   */
+  core.String logName;
+
+  GoogleIamV1LogConfigCloudAuditOptions();
+
+  GoogleIamV1LogConfigCloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logName")) {
+      logName = _json["logName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (logName != null) {
+      _json["logName"] = logName;
+    }
+    return _json;
+  }
+}
+
+/** Options for counters */
+class GoogleIamV1LogConfigCounterOptions {
+  /** The field value to attribute. */
+  core.String field;
+  /** The metric to update. */
+  core.String metric;
+
+  GoogleIamV1LogConfigCounterOptions();
+
+  GoogleIamV1LogConfigCounterOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = _json["field"];
+    }
+    if (_json.containsKey("metric")) {
+      metric = _json["metric"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (field != null) {
+      _json["field"] = field;
+    }
+    if (metric != null) {
+      _json["metric"] = metric;
+    }
+    return _json;
+  }
+}
+
+/** Write a Data Access (Gin) log */
+class GoogleIamV1LogConfigDataAccessOptions {
+
+  GoogleIamV1LogConfigDataAccessOptions();
+
+  GoogleIamV1LogConfigDataAccessOptions.fromJson(core.Map _json) {
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/**
+ * Specifies the audit configuration for a service.
+ * The configuration determines which permission types are logged, and what
+ * identities, if any, are exempted from logging.
+ * An AuditConfig must have one or more AuditLogConfigs.
+ *
+ * If there are AuditConfigs for both `allServices` and a specific service,
+ * the union of the two AuditConfigs is used for that service: the log_types
+ * specified in each AuditConfig are enabled, and the exempted_members in each
+ * AuditConfig are exempted.
+ *
+ * Example Policy with multiple AuditConfigs:
+ *
+ *     {
+ *       "audit_configs": [
+ *         {
+ *           "service": "allServices"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *               "exempted_members": [
+ *                 "user:foo@gmail.com"
+ *               ]
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *             },
+ *             {
+ *               "log_type": "ADMIN_READ",
+ *             }
+ *           ]
+ *         },
+ *         {
+ *           "service": "fooservice.googleapis.com"
+ *           "audit_log_configs": [
+ *             {
+ *               "log_type": "DATA_READ",
+ *             },
+ *             {
+ *               "log_type": "DATA_WRITE",
+ *               "exempted_members": [
+ *                 "user:bar@gmail.com"
+ *               ]
+ *             }
+ *           ]
+ *         }
+ *       ]
+ *     }
+ *
+ * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+ * logging. It also exempts foo@gmail.com from DATA_READ logging, and
+ * bar@gmail.com from DATA_WRITE logging.
+ */
+class GoogleIamV1AuditConfig {
+  /**
+   * The configuration for logging of each type of permission.
+   * Next ID: 4
+   */
+  core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
+  core.List<core.String> exemptedMembers;
+  /**
+   * Specifies a service that will be enabled for audit logging.
+   * For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+   * `allServices` is a special value that covers all services.
+   */
+  core.String service;
+
+  GoogleIamV1AuditConfig();
+
+  GoogleIamV1AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = _json["auditLogConfigs"].map((value) => new GoogleIamV1AuditLogConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers = _json["exemptedMembers"];
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] = auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Provides the configuration for logging a type of permissions.
+ * Example:
+ *
+ *     {
+ *       "audit_log_configs": [
+ *         {
+ *           "log_type": "DATA_READ",
+ *           "exempted_members": [
+ *             "user:foo@gmail.com"
+ *           ]
+ *         },
+ *         {
+ *           "log_type": "DATA_WRITE",
+ *         }
+ *       ]
+ *     }
+ *
+ * This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+ * foo@gmail.com from DATA_READ logging.
+ */
+class GoogleIamV1AuditLogConfig {
+  /**
+   * Specifies the identities that do not cause logging for this type of
+   * permission.
+   * Follows the same format of Binding.members.
+   */
+  core.List<core.String> exemptedMembers;
+  /**
+   * The log type that this config enables.
+   * Possible string values are:
+   * - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+   * - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+   * - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+   * - "DATA_READ" : Data reads. Example: CloudSQL Users list
+   */
+  core.String logType;
+
+  GoogleIamV1AuditLogConfig();
+
+  GoogleIamV1AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers = _json["exemptedMembers"];
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
+    }
+    return _json;
+  }
+}
+
+/** Associates `members` with a `role`. */
+class GoogleIamV1Binding {
+  /**
+   * The condition that is associated with this binding.
+   * NOTE: an unsatisfied condition will not allow user access via current
+   * binding. Different bindings, including their conditions, are examined
+   * independently.
+   * This field is GOOGLE_INTERNAL.
+   */
+  GoogleTypeExpr condition;
+  /**
+   * Specifies the identities requesting access for a Cloud Platform resource.
+   * `members` can have the following values:
+   *
+   * * `allUsers`: A special identifier that represents anyone who is
+   *    on the internet; with or without a Google account.
+   *
+   * * `allAuthenticatedUsers`: A special identifier that represents anyone
+   *    who is authenticated with a Google account or a service account.
+   *
+   * * `user:{emailid}`: An email address that represents a specific Google
+   *    account. For example, `alice@gmail.com` or `joe@example.com`.
+   *
+   *
+   * * `serviceAccount:{emailid}`: An email address that represents a service
+   *    account. For example, `my-other-app@appspot.gserviceaccount.com`.
+   *
+   * * `group:{emailid}`: An email address that represents a Google group.
+   *    For example, `admins@example.com`.
+   *
+   *
+   * * `domain:{domain}`: A Google Apps domain name that represents all the
+   *    users of that domain. For example, `google.com` or `example.com`.
+   */
+  core.List<core.String> members;
+  /**
+   * Role that is assigned to `members`.
+   * For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+   * Required
+   */
+  core.String role;
+
+  GoogleIamV1Binding();
+
+  GoogleIamV1Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new GoogleTypeExpr.fromJson(_json["condition"]);
+    }
+    if (_json.containsKey("members")) {
+      members = _json["members"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
+    if (members != null) {
+      _json["members"] = members;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    return _json;
+  }
+}
+
+/** A condition to be met. */
+class GoogleIamV1Condition {
+  /**
+   * Trusted attributes supplied by the IAM system.
+   * Possible string values are:
+   * - "NO_ATTR" : Default non-attribute.
+   * - "AUTHORITY" : Either principal or (if present) authority selector.
+   * - "ATTRIBUTION" : The principal (even if an authority selector is present),
+   * which
+   * must only be used for attribution, not authorization.
+   * - "APPROVER" : An approver (distinct from the requester) that has
+   * authorized this
+   * request.
+   * When used with IN, the condition indicates that one of the approvers
+   * associated with the request matches the specified principal, or is a
+   * member of the specified group. Approvers can only grant additional
+   * access, and are thus only used in a strictly positive context
+   * (e.g. ALLOW/IN or DENY/NOT_IN).
+   * - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
+   * with this request.
+   * String values should match enum names from tech.iam.JustificationType,
+   * e.g. "MANUAL_STRING". It is not permitted to grant access based on
+   * the *absence* of a justification, so justification conditions can only
+   * be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+   *
+   * Multiple justifications, e.g., a Buganizer ID and a manually-entered
+   * reason, are normal and supported.
+   */
+  core.String iam;
+  /**
+   * An operator to apply the subject with.
+   * Possible string values are:
+   * - "NO_OP" : Default no-op.
+   * - "EQUALS" : DEPRECATED. Use IN instead.
+   * - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
+   * - "IN" : The condition is true if the subject (or any element of it if it
+   * is
+   * a set) matches any of the supplied values.
+   * - "NOT_IN" : The condition is true if the subject (or every element of it
+   * if it is
+   * a set) matches none of the supplied values.
+   * - "DISCHARGED" : Subject is discharged
+   */
+  core.String op;
+  /** Trusted attributes discharged by the service. */
+  core.String svc;
+  /**
+   * Trusted attributes supplied by any service that owns resources and uses
+   * the IAM system for access control.
+   * Possible string values are:
+   * - "NO_ATTR" : Default non-attribute type
+   * - "REGION" : Region of the resource
+   * - "SERVICE" : Service name
+   * - "NAME" : Resource name
+   * - "IP" : IP address of the caller
+   */
+  core.String sys;
+  /** DEPRECATED. Use 'values' instead. */
+  core.String value;
+  /** The objects of the condition. This is mutually exclusive with 'value'. */
+  core.List<core.String> values;
+
+  GoogleIamV1Condition();
+
+  GoogleIamV1Condition.fromJson(core.Map _json) {
+    if (_json.containsKey("iam")) {
+      iam = _json["iam"];
+    }
+    if (_json.containsKey("op")) {
+      op = _json["op"];
+    }
+    if (_json.containsKey("svc")) {
+      svc = _json["svc"];
+    }
+    if (_json.containsKey("sys")) {
+      sys = _json["sys"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+    if (_json.containsKey("values")) {
+      values = _json["values"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (iam != null) {
+      _json["iam"] = iam;
+    }
+    if (op != null) {
+      _json["op"] = op;
+    }
+    if (svc != null) {
+      _json["svc"] = svc;
+    }
+    if (sys != null) {
+      _json["sys"] = sys;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Specifies what kind of log the caller must write
+ * Increment a streamz counter with the specified metric and field names.
+ *
+ * Metric names should start with a '/', generally be lowercase-only,
+ * and end in "_count". Field names should not contain an initial slash.
+ * The actual exported metric names will have "/iam/policy" prepended.
+ *
+ * Field names correspond to IAM request parameters and field values are
+ * their respective values.
+ *
+ * At present the only supported field names are
+ *    - "iam_principal", corresponding to IAMContext.principal;
+ *    - "" (empty string), resulting in one aggretated counter with no field.
+ *
+ * Examples:
+ *   counter { metric: "/debug_access_count"  field: "iam_principal" }
+ *   ==> increment counter /iam/policy/backend_debug_access_count
+ *                         {iam_principal=[value of IAMContext.principal]}
+ *
+ * At this time we do not support:
+ * * multiple field names (though this may be supported in the future)
+ * * decrementing the counter
+ * * incrementing it by anything other than 1
+ */
+class GoogleIamV1LogConfig {
+  /** Cloud audit options. */
+  GoogleIamV1LogConfigCloudAuditOptions cloudAudit;
+  /** Counter options. */
+  GoogleIamV1LogConfigCounterOptions counter;
+  /** Data access options. */
+  GoogleIamV1LogConfigDataAccessOptions dataAccess;
+
+  GoogleIamV1LogConfig();
+
+  GoogleIamV1LogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudAudit")) {
+      cloudAudit = new GoogleIamV1LogConfigCloudAuditOptions.fromJson(_json["cloudAudit"]);
+    }
+    if (_json.containsKey("counter")) {
+      counter = new GoogleIamV1LogConfigCounterOptions.fromJson(_json["counter"]);
+    }
+    if (_json.containsKey("dataAccess")) {
+      dataAccess = new GoogleIamV1LogConfigDataAccessOptions.fromJson(_json["dataAccess"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (cloudAudit != null) {
+      _json["cloudAudit"] = (cloudAudit).toJson();
+    }
+    if (counter != null) {
+      _json["counter"] = (counter).toJson();
+    }
+    if (dataAccess != null) {
+      _json["dataAccess"] = (dataAccess).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Defines an Identity and Access Management (IAM) policy. It is used to
+ * specify access control policies for Cloud Platform resources.
+ *
+ *
+ * A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+ * `members` to a `role`, where the members can be user accounts, Google groups,
+ * Google domains, and service accounts. A `role` is a named list of permissions
+ * defined by IAM.
+ *
+ * **Example**
+ *
+ *     {
+ *       "bindings": [
+ *         {
+ *           "role": "roles/owner",
+ *           "members": [
+ *             "user:mike@example.com",
+ *             "group:admins@example.com",
+ *             "domain:google.com",
+ *             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+ *           ]
+ *         },
+ *         {
+ *           "role": "roles/viewer",
+ *           "members": ["user:sean@example.com"]
+ *         }
+ *       ]
+ *     }
+ *
+ * For a description of IAM and its features, see the
+ * [IAM developer's guide](https://cloud.google.com/iam).
+ */
+class GoogleIamV1Policy {
+  /** Specifies cloud audit logging configuration for this policy. */
+  core.List<GoogleIamV1AuditConfig> auditConfigs;
+  /**
+   * Associates a list of `members` to a `role`.
+   * `bindings` with no members will result in an error.
+   */
+  core.List<GoogleIamV1Binding> bindings;
+  /**
+   * `etag` is used for optimistic concurrency control as a way to help
+   * prevent simultaneous updates of a policy from overwriting each other.
+   * It is strongly suggested that systems make use of the `etag` in the
+   * read-modify-write cycle to perform policy updates in order to avoid race
+   * conditions: An `etag` is returned in the response to `getIamPolicy`, and
+   * systems are expected to put that etag in the request to `setIamPolicy` to
+   * ensure that their change will be applied to the same version of the policy.
+   *
+   * If no `etag` is provided in the call to `setIamPolicy`, then the existing
+   * policy is overwritten blindly.
+   */
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.BASE64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  core.bool iamOwned;
+  /**
+   * If more than one rule is specified, the rules are applied in the following
+   * manner:
+   * - All matching LOG rules are always applied.
+   * - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
+   *   Logging will be applied if one or more matching rule requires logging.
+   * - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
+   *   granted.
+   *   Logging will be applied if one or more matching rule requires logging.
+   * - Otherwise, if no rule applies, permission is denied.
+   */
+  core.List<GoogleIamV1Rule> rules;
+  /** Version of the `Policy`. The default version is 0. */
+  core.int version;
+
+  GoogleIamV1Policy();
+
+  GoogleIamV1Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("auditConfigs")) {
+      auditConfigs = _json["auditConfigs"].map((value) => new GoogleIamV1AuditConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("bindings")) {
+      bindings = _json["bindings"].map((value) => new GoogleIamV1Binding.fromJson(value)).toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("iamOwned")) {
+      iamOwned = _json["iamOwned"];
+    }
+    if (_json.containsKey("rules")) {
+      rules = _json["rules"].map((value) => new GoogleIamV1Rule.fromJson(value)).toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (auditConfigs != null) {
+      _json["auditConfigs"] = auditConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (iamOwned != null) {
+      _json["iamOwned"] = iamOwned;
+    }
+    if (rules != null) {
+      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/** A rule to be applied in a Policy. */
+class GoogleIamV1Rule {
+  /**
+   * Required
+   * Possible string values are:
+   * - "NO_ACTION" : Default no action.
+   * - "ALLOW" : Matching 'Entries' grant access.
+   * - "ALLOW_WITH_LOG" : Matching 'Entries' grant access and the caller
+   * promises to log
+   * the request per the returned log_configs.
+   * - "DENY" : Matching 'Entries' deny access.
+   * - "DENY_WITH_LOG" : Matching 'Entries' deny access and the caller promises
+   * to log
+   * the request per the returned log_configs.
+   * - "LOG" : Matching 'Entries' tell IAM.Check callers to generate logs.
+   */
+  core.String action;
+  /** Additional restrictions that must be met */
+  core.List<GoogleIamV1Condition> conditions;
+  /** Human-readable description of the rule. */
+  core.String description;
+  /**
+   * If one or more 'in' clauses are specified, the rule matches if
+   * the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+   */
+  core.List<core.String> in_;
+  /**
+   * The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
+   * that match the LOG action.
+   */
+  core.List<GoogleIamV1LogConfig> logConfig;
+  /**
+   * If one or more 'not_in' clauses are specified, the rule matches
+   * if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+   * The format for in and not_in entries is the same as for members in a
+   * Binding (see google/iam/v1/policy.proto).
+   */
+  core.List<core.String> notIn;
+  /**
+   * A permission is a string of form '<service>.<resource type>.<verb>'
+   * (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
+   * and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
+   */
+  core.List<core.String> permissions;
+
+  GoogleIamV1Rule();
+
+  GoogleIamV1Rule.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("conditions")) {
+      conditions = _json["conditions"].map((value) => new GoogleIamV1Condition.fromJson(value)).toList();
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("in")) {
+      in_ = _json["in"];
+    }
+    if (_json.containsKey("logConfig")) {
+      logConfig = _json["logConfig"].map((value) => new GoogleIamV1LogConfig.fromJson(value)).toList();
+    }
+    if (_json.containsKey("notIn")) {
+      notIn = _json["notIn"];
+    }
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (conditions != null) {
+      _json["conditions"] = conditions.map((value) => (value).toJson()).toList();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (in_ != null) {
+      _json["in"] = in_;
+    }
+    if (logConfig != null) {
+      _json["logConfig"] = logConfig.map((value) => (value).toJson()).toList();
+    }
+    if (notIn != null) {
+      _json["notIn"] = notIn;
+    }
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+/** Request message for `SetIamPolicy` method. */
+class GoogleIamV1SetIamPolicyRequest {
+  /**
+   * REQUIRED: The complete policy to be applied to the `resource`. The size of
+   * the policy is limited to a few 10s of KB. An empty policy is a
+   * valid policy but certain Cloud Platform services (such as Projects)
+   * might reject them.
+   */
+  GoogleIamV1Policy policy;
+  /**
+   * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+   * the fields in the mask will be modified. If no mask is provided, the
+   * following default mask is used:
+   * paths: "bindings, etag"
+   * This field is only used by Cloud IAM.
+   */
+  core.String updateMask;
+
+  GoogleIamV1SetIamPolicyRequest();
+
+  GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("policy")) {
+      policy = new GoogleIamV1Policy.fromJson(_json["policy"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
+/** Request message for `TestIamPermissions` method. */
+class GoogleIamV1TestIamPermissionsRequest {
+  /**
+   * The set of permissions to check for the `resource`. Permissions with
+   * wildcards (such as '*' or 'storage.*') are not allowed. For more
+   * information see
+   * [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+   */
+  core.List<core.String> permissions;
+
+  GoogleIamV1TestIamPermissionsRequest();
+
+  GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+/** Response message for `TestIamPermissions` method. */
+class GoogleIamV1TestIamPermissionsResponse {
+  /**
+   * A subset of `TestPermissionsRequest.permissions` that the caller is
+   * allowed.
+   */
+  core.List<core.String> permissions;
+
+  GoogleIamV1TestIamPermissionsResponse();
+
+  GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
     }
     return _json;
   }
@@ -3249,6 +4203,74 @@ class GoogleRpcStatus {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents an expression text. Example:
+ *
+ *     title: "User account presence"
+ *     description: "Determines whether the request has a user account"
+ *     expression: "size(request.user) > 0"
+ */
+class GoogleTypeExpr {
+  /**
+   * An optional description of the expression. This is a longer text which
+   * describes the expression, e.g. when hovered over it in a UI.
+   */
+  core.String description;
+  /**
+   * Textual representation of an expression in
+   * Common Expression Language syntax.
+   *
+   * The application context of the containing message determines which
+   * well-known feature set of CEL is supported.
+   */
+  core.String expression;
+  /**
+   * An optional string indicating the location of the expression for error
+   * reporting, e.g. a file name and a position in the file.
+   */
+  core.String location;
+  /**
+   * An optional title for the expression, i.e. a short string describing
+   * its purpose. This can be used e.g. in UIs which allow to enter the
+   * expression.
+   */
+  core.String title;
+
+  GoogleTypeExpr();
+
+  GoogleTypeExpr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }

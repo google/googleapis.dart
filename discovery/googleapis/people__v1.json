@@ -2,15 +2,6 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/user.emails.read": {
-                    "description": "View your email addresses"
-                },
-                "https://www.googleapis.com/auth/contacts": {
-                    "description": "Manage your contacts"
-                },
-                "https://www.googleapis.com/auth/user.addresses.read": {
-                    "description": "View your street addresses"
-                },
                 "https://www.googleapis.com/auth/user.phonenumbers.read": {
                     "description": "View your phone numbers"
                 },
@@ -28,6 +19,15 @@
                 },
                 "https://www.googleapis.com/auth/userinfo.profile": {
                     "description": "View your basic profile info"
+                },
+                "https://www.googleapis.com/auth/user.emails.read": {
+                    "description": "View your email addresses"
+                },
+                "https://www.googleapis.com/auth/contacts": {
+                    "description": "Manage your contacts"
+                },
+                "https://www.googleapis.com/auth/user.addresses.read": {
+                    "description": "View your street addresses"
                 }
             }
         }
@@ -49,6 +49,66 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -74,80 +134,221 @@
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
+        "contactGroups": {
+            "methods": {
+                "list": {
+                    "description": "List all contact groups owned by the authenticated user. Members of the\ncontact groups are not populated.",
+                    "httpMethod": "GET",
+                    "id": "people.contactGroups.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "syncToken": {
+                            "description": "A sync token, returned by a previous call to `contactgroups.list`.\nOnly resources changed since the sync token was created will be returned.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "The next_page_token value returned from a previous call to\n[ListContactGroups](/people/api/rest/v1/contactgroups/list).\nRequests the next page of resources.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The maximum number of resources to return.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        }
+                    },
+                    "path": "v1/contactGroups",
+                    "response": {
+                        "$ref": "ListContactGroupsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts",
+                        "https://www.googleapis.com/auth/contacts.readonly"
+                    ]
+                },
+                "create": {
+                    "description": "Create a new contact group owned by the authenticated user.",
+                    "httpMethod": "POST",
+                    "id": "people.contactGroups.create",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/contactGroups",
+                    "request": {
+                        "$ref": "CreateContactGroupRequest"
+                    },
+                    "response": {
+                        "$ref": "ContactGroup"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts"
+                    ]
+                },
+                "get": {
+                    "description": "Get a specific contact group owned by the authenticated user by specifying\na contact group resource name.",
+                    "httpMethod": "GET",
+                    "id": "people.contactGroups.get",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "maxMembers": {
+                            "description": "Specifies the maximum number of members to return.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "resourceName": {
+                            "description": "The resource name of the contact group to get.",
+                            "location": "path",
+                            "pattern": "^contactGroups/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resourceName}",
+                    "response": {
+                        "$ref": "ContactGroup"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts",
+                        "https://www.googleapis.com/auth/contacts.readonly"
+                    ]
+                },
+                "update": {
+                    "description": "Update the name of an existing contact group owned by the authenticated\nuser.",
+                    "httpMethod": "PUT",
+                    "id": "people.contactGroups.update",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "resourceName": {
+                            "description": "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/<contact_group_id>`.",
+                            "location": "path",
+                            "pattern": "^contactGroups/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resourceName}",
+                    "request": {
+                        "$ref": "UpdateContactGroupRequest"
+                    },
+                    "response": {
+                        "$ref": "ContactGroup"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts"
+                    ]
+                },
+                "batchGet": {
+                    "description": "Get a list of contact groups owned by the authenticated user by specifying\na list of contact group resource names.",
+                    "httpMethod": "GET",
+                    "id": "people.contactGroups.batchGet",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "maxMembers": {
+                            "description": "Specifies the maximum number of members to return for each group.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "resourceNames": {
+                            "description": "The resource names of the contact groups to get.",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/contactGroups:batchGet",
+                    "response": {
+                        "$ref": "BatchGetContactGroupsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts",
+                        "https://www.googleapis.com/auth/contacts.readonly"
+                    ]
+                },
+                "delete": {
+                    "description": "Delete an existing contact group owned by the authenticated user by\nspecifying a contact group resource name.",
+                    "httpMethod": "DELETE",
+                    "id": "people.contactGroups.delete",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "deleteContacts": {
+                            "description": "Set to true to also delete the contacts in the specified group.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "resourceName": {
+                            "description": "The resource name of the contact group to delete.",
+                            "location": "path",
+                            "pattern": "^contactGroups/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resourceName}",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts"
+                    ]
+                }
+            },
+            "resources": {
+                "members": {
+                    "methods": {
+                        "modify": {
+                            "description": "Modify the members of a contact group owned by the authenticated user.",
+                            "httpMethod": "POST",
+                            "id": "people.contactGroups.members.modify",
+                            "parameterOrder": [
+                                "resourceName"
+                            ],
+                            "parameters": {
+                                "resourceName": {
+                                    "description": "The resource name of the contact group to modify.",
+                                    "location": "path",
+                                    "pattern": "^contactGroups/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+resourceName}/members:modify",
+                            "request": {
+                                "$ref": "ModifyContactGroupMembersRequest"
+                            },
+                            "response": {
+                                "$ref": "ModifyContactGroupMembersResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/contacts"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "people": {
             "methods": {
                 "getBatchGet": {
-                    "description": "Provides information about a list of specific people by specifying a list\nof requested resource names. Use `people/me` to indicate the authenticated\nuser.",
+                    "description": "Provides information about a list of specific people by specifying a list\nof requested resource names. Use `people/me` to indicate the authenticated\nuser.\n<br>\nThe request throws a 400 error if 'personFields' is not specified.",
                     "httpMethod": "GET",
                     "id": "people.people.getBatchGet",
                     "parameterOrder": [],
                     "parameters": {
                         "requestMask.includeField": {
-                            "description": "Required. Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`.",
+                            "description": "**Required.** Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`.",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -156,6 +357,12 @@
                             "description": "The resource name, such as one returned by\n[`people.connections.list`](/people/api/rest/v1/people.connections/list),\nof one of the people to provide information about. You can include this\nparameter up to 50 times in one request.",
                             "location": "query",
                             "repeated": true,
+                            "type": "string"
+                        },
+                        "personFields": {
+                            "description": "**Required.** A field mask to restrict which fields on each person are\nreturned. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* skills\n* taglines\n* urls",
+                            "format": "google-fieldmask",
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -176,22 +383,28 @@
                     ]
                 },
                 "get": {
-                    "description": "Provides information about a person by specifying a resource name. Use\n`people/me` to indicate the authenticated user.",
+                    "description": "Provides information about a person by specifying a resource name. Use\n`people/me` to indicate the authenticated user.\n<br>\nThe request throws a 400 error if 'personFields' is not specified.",
                     "httpMethod": "GET",
                     "id": "people.people.get",
                     "parameterOrder": [
                         "resourceName"
                     ],
                     "parameters": {
+                        "personFields": {
+                            "description": "**Required.** A field mask to restrict which fields on the person are\nreturned. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* skills\n* taglines\n* urls",
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "resourceName": {
-                            "description": "The resource name of the person to provide information about.\n\n- To get information about the authenticated user, specify `people/me`.\n- To get information about any user, specify the resource name that\n  identifies the user, such as the resource names returned by\n  [`people.connections.list`](/people/api/rest/v1/people.connections/list).",
+                            "description": "The resource name of the person to provide information about.\n\n- To get information about the authenticated user, specify `people/me`.\n- To get information about a google account, specify `people/<account_id>`.\n- To get information about a contact, specify the resource name that\n  identifies the contact as returned by\n[`people.connections.list`](/people/api/rest/v1/people.connections/list).",
                             "location": "path",
                             "pattern": "^people/[^/]+$",
                             "required": true,
                             "type": "string"
                         },
                         "requestMask.includeField": {
-                            "description": "Required. Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`.",
+                            "description": "**Required.** Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`.",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -212,33 +425,107 @@
                         "https://www.googleapis.com/auth/userinfo.email",
                         "https://www.googleapis.com/auth/userinfo.profile"
                     ]
+                },
+                "updateContact": {
+                    "description": "Update contact data for an existing contact person. Any non-contact data\nwill not be modified.\n\nThe request throws a 400 error if `updatePersonFields` is not specified.\n<br>\nThe request throws a 400 error if `person.metadata.sources` is not\nspecified for the contact to be updated.\n<br>\nThe request throws a 412 error if `person.metadata.sources.etag` is\ndifferent than the contact's etag, which indicates the contact has changed\nsince its data was read. Clients should get the latest person and re-apply\ntheir updates to the latest person.",
+                    "httpMethod": "PATCH",
+                    "id": "people.people.updateContact",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "resourceName": {
+                            "description": "The resource name for the person, assigned by the server. An ASCII string\nwith a max length of 27 characters, in the form of `people/<person_id>`.",
+                            "location": "path",
+                            "pattern": "^people/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "updatePersonFields": {
+                            "description": "**Required.** A field mask to restrict which fields on the person are\nupdated. Valid values are:\n\n* addresses\n* biographies\n* birthdays\n* braggingRights\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* relations\n* residences\n* skills\n* urls",
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resourceName}:updateContact",
+                    "request": {
+                        "$ref": "Person"
+                    },
+                    "response": {
+                        "$ref": "Person"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts"
+                    ]
+                },
+                "createContact": {
+                    "description": "Create a new contact and return the person resource for that contact.",
+                    "httpMethod": "POST",
+                    "id": "people.people.createContact",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "parent": {
+                            "description": "The resource name of the owning person resource.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/people:createContact",
+                    "request": {
+                        "$ref": "Person"
+                    },
+                    "response": {
+                        "$ref": "Person"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts"
+                    ]
+                },
+                "deleteContact": {
+                    "description": "Delete a contact person. Any non-contact data will not be deleted.",
+                    "httpMethod": "DELETE",
+                    "id": "people.people.deleteContact",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "resourceName": {
+                            "description": "The resource name of the contact to delete.",
+                            "location": "path",
+                            "pattern": "^people/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resourceName}:deleteContact",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts"
+                    ]
                 }
             },
             "resources": {
                 "connections": {
                     "methods": {
                         "list": {
-                            "description": "Provides a list of the authenticated user's contacts merged with any\nlinked profiles.",
+                            "description": "Provides a list of the authenticated user's contacts merged with any\nconnected profiles.\n<br>\nThe request throws a 400 error if 'personFields' is not specified.",
                             "httpMethod": "GET",
                             "id": "people.people.connections.list",
                             "parameterOrder": [
                                 "resourceName"
                             ],
                             "parameters": {
-                                "requestMask.includeField": {
-                                    "description": "Required. Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`.",
-                                    "format": "google-fieldmask",
+                                "syncToken": {
+                                    "description": "A sync token, returned by a previous call to `people.connections.list`.\nOnly resources changed since the sync token was created will be returned.",
                                     "location": "query",
                                     "type": "string"
                                 },
-                                "pageSize": {
-                                    "description": "The number of connections to include in the response. Valid values are\nbetween 1 and 2000, inclusive. Defaults to 100.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                },
-                                "syncToken": {
-                                    "description": "A sync token, returned by a previous call to `people.connections.list`.\nOnly resources changed since the sync token was created will be returned.",
+                                "personFields": {
+                                    "description": "**Required.** A field mask to restrict which fields on each person are\nreturned. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* skills\n* taglines\n* urls",
+                                    "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -257,6 +544,11 @@
                                     "location": "query",
                                     "type": "boolean"
                                 },
+                                "pageToken": {
+                                    "description": "The token of the page to be returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "resourceName": {
                                     "description": "The resource name to return connections for. Only `people/me` is valid.",
                                     "location": "path",
@@ -264,8 +556,15 @@
                                     "required": true,
                                     "type": "string"
                                 },
-                                "pageToken": {
-                                    "description": "The token of the page to be returned.",
+                                "pageSize": {
+                                    "description": "The number of connections to include in the response. Valid values are\nbetween 1 and 2000, inclusive. Defaults to 100.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "requestMask.includeField": {
+                                    "description": "**Required.** Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`.",
+                                    "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -284,424 +583,17 @@
             }
         }
     },
-    "revision": "20170608",
+    "revision": "20170706",
     "rootUrl": "https://people.googleapis.com/",
     "schemas": {
-        "CoverPhoto": {
-            "description": "A person's read-only cover photo. A large image shown on the person's\nprofile page that represents who they are or what they care about.",
-            "id": "CoverPhoto",
-            "properties": {
-                "default": {
-                    "description": "True if the cover photo is the default cover photo;\nfalse if the cover photo is a user-provided cover photo.",
-                    "type": "boolean"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the cover photo."
-                },
-                "url": {
-                    "description": "The URL of the cover photo.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Interest": {
-            "description": "One of the person's interests.",
-            "id": "Interest",
-            "properties": {
-                "value": {
-                    "description": "The interest; for example, `stargazing`.",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the interest."
-                }
-            },
-            "type": "object"
-        },
-        "ImClient": {
-            "description": "A person's instant messaging client.",
-            "id": "ImClient",
-            "properties": {
-                "formattedProtocol": {
-                    "description": "The read-only protocol of the IM client formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale.",
-                    "type": "string"
-                },
-                "formattedType": {
-                    "description": "The read-only type of the IM client translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the IM client."
-                },
-                "type": {
-                    "description": "The type of the IM client. The type can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `home`\n* `work`\n* `other`",
-                    "type": "string"
-                },
-                "protocol": {
-                    "description": "The protocol of the IM client. The protocol can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `aim`\n* `msn`\n* `yahoo`\n* `skype`\n* `qq`\n* `googleTalk`\n* `icq`\n* `jabber`\n* `netMeeting`",
-                    "type": "string"
-                },
-                "username": {
-                    "description": "The user name used in the IM client.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Nickname": {
-            "description": "A person's nickname.",
-            "id": "Nickname",
-            "properties": {
-                "type": {
-                    "description": "The type of the nickname.",
-                    "enum": [
-                        "DEFAULT",
-                        "MAIDEN_NAME",
-                        "INITIALS",
-                        "GPLUS",
-                        "OTHER_NAME"
-                    ],
-                    "enumDescriptions": [
-                        "Generic nickname.",
-                        "Maiden name or birth family name. Used when the person's family name has\nchanged as a result of marriage.",
-                        "Initials.",
-                        "Google+ profile nickname.",
-                        "A professional affiliation or other name; for example, `Dr. Smith.`"
-                    ],
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the nickname."
-                },
-                "value": {
-                    "description": "The nickname.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "EmailAddress": {
-            "description": "A person's email address.",
-            "id": "EmailAddress",
-            "properties": {
-                "displayName": {
-                    "description": "The display name of the email.",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "The type of the email address. The type can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `home`\n* `work`\n* `other`",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the email address."
-                },
-                "value": {
-                    "description": "The email address.",
-                    "type": "string"
-                },
-                "formattedType": {
-                    "description": "The read-only type of the email address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Skill": {
-            "description": "A skill that the person has.",
-            "id": "Skill",
-            "properties": {
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the skill."
-                },
-                "value": {
-                    "description": "The skill; for example, `underwater basket weaving`.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DomainMembership": {
-            "description": "A Google Apps Domain membership.",
-            "id": "DomainMembership",
-            "properties": {
-                "inViewerDomain": {
-                    "description": "True if the person is in the viewer's Google Apps domain.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "Membership": {
-            "description": "A person's read-only membership in a group.",
-            "id": "Membership",
-            "properties": {
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the membership."
-                },
-                "domainMembership": {
-                    "$ref": "DomainMembership",
-                    "description": "The domain membership."
-                },
-                "contactGroupMembership": {
-                    "$ref": "ContactGroupMembership",
-                    "description": "The contact group membership."
-                }
-            },
-            "type": "object"
-        },
-        "RelationshipStatus": {
-            "description": "A person's read-only relationship status.",
-            "id": "RelationshipStatus",
-            "properties": {
-                "formattedValue": {
-                    "description": "The read-only value of the relationship status translated and formatted in\nthe viewer's account locale or the `Accept-Language` HTTP header locale.",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the relationship status."
-                },
-                "value": {
-                    "description": "The relationship status. The value can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `single`\n* `inARelationship`\n* `engaged`\n* `married`\n* `itsComplicated`\n* `openRelationship`\n* `widowed`\n* `inDomesticPartnership`\n* `inCivilUnion`",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Date": {
-            "description": "Represents a whole calendar date, for example a date of birth. The time\nof day and time zone are either specified elsewhere or are not\nsignificant. The date is relative to the\n[Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar).\nThe day may be 0 to represent a year and month where the day is not\nsignificant. The year may be 0 to represent a month and day independent\nof year; for example, anniversary date.",
-            "id": "Date",
-            "properties": {
-                "day": {
-                    "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year/month where the day is not significant.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "year": {
-                    "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "month": {
-                    "description": "Month of year. Must be from 1 to 12.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "Tagline": {
-            "description": "A read-only brief one-line description of the person.",
-            "id": "Tagline",
-            "properties": {
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the tagline."
-                },
-                "value": {
-                    "description": "The tagline.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Name": {
-            "description": "A person's name. If the name is a mononym, the family name is empty.",
-            "id": "Name",
-            "properties": {
-                "honorificPrefix": {
-                    "description": "The honorific prefixes, such as `Mrs.` or `Dr.`",
-                    "type": "string"
-                },
-                "phoneticHonorificSuffix": {
-                    "description": "The honorific suffixes spelled as they sound.",
-                    "type": "string"
-                },
-                "givenName": {
-                    "description": "The given name.",
-                    "type": "string"
-                },
-                "middleName": {
-                    "description": "The middle name(s).",
-                    "type": "string"
-                },
-                "phoneticHonorificPrefix": {
-                    "description": "The honorific prefixes spelled as they sound.",
-                    "type": "string"
-                },
-                "phoneticGivenName": {
-                    "description": "The given name spelled as it sounds.",
-                    "type": "string"
-                },
-                "phoneticFamilyName": {
-                    "description": "The family name spelled as it sounds.",
-                    "type": "string"
-                },
-                "familyName": {
-                    "description": "The family name.",
-                    "type": "string"
-                },
-                "phoneticMiddleName": {
-                    "description": "The middle name(s) spelled as they sound.",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the name."
-                },
-                "phoneticFullName": {
-                    "description": "The full name spelled as it sounds.",
-                    "type": "string"
-                },
-                "displayNameLastFirst": {
-                    "description": "The read-only display name with the last name first formatted according to\nthe locale specified by the viewer's account or the\n<code>Accept-Language</code> HTTP header.",
-                    "type": "string"
-                },
-                "displayName": {
-                    "description": "The read-only display name formatted according to the locale specified by\nthe viewer's account or the <code>Accept-Language</code> HTTP header.",
-                    "type": "string"
-                },
-                "honorificSuffix": {
-                    "description": "The honorific suffixes, such as `Jr.`",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "BraggingRights": {
-            "description": "A person's bragging rights.",
-            "id": "BraggingRights",
-            "properties": {
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the bragging rights."
-                },
-                "value": {
-                    "description": "The bragging rights; for example, `climbed mount everest`.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Locale": {
-            "description": "A person's locale preference.",
-            "id": "Locale",
-            "properties": {
-                "value": {
-                    "description": "The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47)\nlanguage tag representing the locale.",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the locale."
-                }
-            },
-            "type": "object"
-        },
-        "Organization": {
-            "description": "A person's past or current organization. Overlapping date ranges are\npermitted.",
-            "id": "Organization",
-            "properties": {
-                "symbol": {
-                    "description": "The symbol associated with the organization; for example, a stock ticker\nsymbol, abbreviation, or acronym.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The name of the organization.",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the organization."
-                },
-                "location": {
-                    "description": "The location of the organization office the person works at.",
-                    "type": "string"
-                },
-                "title": {
-                    "description": "The person's job title at the organization.",
-                    "type": "string"
-                },
-                "current": {
-                    "description": "True if the organization is the person's current organization;\nfalse if the organization is a past organization.",
-                    "type": "boolean"
-                },
-                "startDate": {
-                    "$ref": "Date",
-                    "description": "The start date when the person joined the organization."
-                },
-                "formattedType": {
-                    "description": "The read-only type of the organization translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
-                    "type": "string"
-                },
-                "domain": {
-                    "description": "The domain name associated with the organization; for example, `google.com`.",
-                    "type": "string"
-                },
-                "department": {
-                    "description": "The person's department at the organization.",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "The type of the organization. The type can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `work`\n* `school`",
-                    "type": "string"
-                },
-                "phoneticName": {
-                    "description": "The phonetic name of the organization.",
-                    "type": "string"
-                },
-                "jobDescription": {
-                    "description": "The person's job description at the organization.",
-                    "type": "string"
-                },
-                "endDate": {
-                    "$ref": "Date",
-                    "description": "The end date when the person left the organization."
-                }
-            },
-            "type": "object"
-        },
-        "Biography": {
-            "description": "A person's short biography.",
-            "id": "Biography",
-            "properties": {
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the biography."
-                },
-                "value": {
-                    "description": "The short biography.",
-                    "type": "string"
-                },
-                "contentType": {
-                    "description": "The content type of the biography.",
-                    "enum": [
-                        "CONTENT_TYPE_UNSPECIFIED",
-                        "TEXT_PLAIN",
-                        "TEXT_HTML"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified.",
-                        "Plain text.",
-                        "HTML text."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "AgeRangeType": {
             "description": "A person's age range.",
             "id": "AgeRangeType",
             "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the age range."
+                },
                 "ageRange": {
                     "description": "The age range.",
                     "enum": [
@@ -717,29 +609,33 @@
                         "Twenty-one and older."
                     ],
                     "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the age range."
                 }
             },
             "type": "object"
         },
-        "FieldMetadata": {
-            "description": "Metadata about a field.",
-            "id": "FieldMetadata",
+        "ListContactGroupsResponse": {
+            "description": "The response to a list contact groups request.",
+            "id": "ListContactGroupsResponse",
             "properties": {
-                "primary": {
-                    "description": "True if the field is the primary field; false if the field is a secondary\nfield.",
-                    "type": "boolean"
+                "contactGroups": {
+                    "description": "The list of contact groups. Members of the contact groups are not\npopulated.",
+                    "items": {
+                        "$ref": "ContactGroup"
+                    },
+                    "type": "array"
                 },
-                "source": {
-                    "$ref": "Source",
-                    "description": "The source of the field."
+                "nextPageToken": {
+                    "description": "The token that can be used to retrieve the next page of results.",
+                    "type": "string"
                 },
-                "verified": {
-                    "description": "True if the field is verified; false if the field is unverified. A\nverified field is typically a name, email address, phone number, or\nwebsite that has been confirmed to be owned by the person.",
-                    "type": "boolean"
+                "nextSyncToken": {
+                    "description": "The token that can be used to retrieve changes since the last request.",
+                    "type": "string"
+                },
+                "totalItems": {
+                    "description": "The total number of items in the list without pagination.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -748,15 +644,6 @@
             "description": "The response for a single person",
             "id": "PersonResponse",
             "properties": {
-                "httpStatusCode": {
-                    "description": "DEPRECATED(Please use status instead).\n[HTTP 1.1 status\ncode](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "requestedResourceName": {
-                    "description": "The original requested resource name. May be different than the resource\nname on the returned person.\n\nThe resource name can change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or a\nprofile URL.",
-                    "type": "string"
-                },
                 "person": {
                     "$ref": "Person",
                     "description": "The person."
@@ -764,61 +651,14 @@
                 "status": {
                     "$ref": "Status",
                     "description": "The status of the response."
-                }
-            },
-            "type": "object"
-        },
-        "RelationshipInterest": {
-            "description": "A person's read-only relationship interest .",
-            "id": "RelationshipInterest",
-            "properties": {
-                "value": {
-                    "description": "The kind of relationship the person is looking for. The value can be custom\nor predefined. Possible values include, but are not limited to, the\nfollowing values:\n\n* `friend`\n* `date`\n* `relationship`\n* `networking`",
-                    "type": "string"
                 },
-                "formattedValue": {
-                    "description": "The value of the relationship interest translated and formatted in the\nviewer's account locale or the locale specified in the Accept-Language\nHTTP header.",
-                    "type": "string"
+                "httpStatusCode": {
+                    "description": "**DEPRECATED** (Please use status instead)\n\n[HTTP 1.1 status code]\n(http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).",
+                    "format": "int32",
+                    "type": "integer"
                 },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the relationship interest."
-                }
-            },
-            "type": "object"
-        },
-        "Source": {
-            "description": "The source of a field.",
-            "id": "Source",
-            "properties": {
-                "etag": {
-                    "description": "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nsource. Used for web cache validation. Only populated in\nperson.metadata.sources.",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "The unique identifier within the source type generated by the server.",
-                    "type": "string"
-                },
-                "profileMetadata": {
-                    "$ref": "ProfileMetadata",
-                    "description": "Metadata about a source of type PROFILE."
-                },
-                "type": {
-                    "description": "The source type.",
-                    "enum": [
-                        "SOURCE_TYPE_UNSPECIFIED",
-                        "ACCOUNT",
-                        "PROFILE",
-                        "DOMAIN_PROFILE",
-                        "CONTACT"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified.",
-                        "[Google Account](https://accounts.google.com).",
-                        "[Google profile](https://profiles.google.com). You can view the\nprofile at https://profiles.google.com/<id> where <id> is the source\nid.",
-                        "[Google Apps domain profile](https://admin.google.com).",
-                        "[Google contact](https://contacts.google.com). You can view the\ncontact at https://contact.google.com/<id> where <id> is the source\nid."
-                    ],
+                "requestedResourceName": {
+                    "description": "The original requested resource name. May be different than the resource\nname on the returned person.\n\nThe resource name can change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or a\nprofile URL.",
                     "type": "string"
                 }
             },
@@ -862,149 +702,63 @@
             },
             "type": "object"
         },
+        "ContactGroup": {
+            "description": "A contact group.",
+            "id": "ContactGroup",
+            "properties": {
+                "memberResourceNames": {
+                    "description": "The list of contact person resource names that are members of the contact\ngroup. The field is not populated for LIST requests and can only be updated\nthrough the\n[ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "The contact group name set by the group owner or a system provided name\nfor system groups.",
+                    "type": "string"
+                },
+                "memberCount": {
+                    "description": "The total number of contacts in the group irrespective of max members in\nspecified in the request.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "metadata": {
+                    "$ref": "ContactGroupMetadata",
+                    "description": "Metadata about the contact group."
+                },
+                "resourceName": {
+                    "description": "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/<contact_group_id>`.",
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nresource. Used for web cache validation.",
+                    "type": "string"
+                },
+                "formattedName": {
+                    "description": "The read-only name translated and formatted in the viewer's account locale\nor the `Accept-Language` HTTP header locale for system groups names.\nGroup names set by the owner are the same as name.",
+                    "type": "string"
+                },
+                "groupType": {
+                    "description": "The read-only contact group type.",
+                    "enum": [
+                        "GROUP_TYPE_UNSPECIFIED",
+                        "USER_CONTACT_GROUP",
+                        "SYSTEM_CONTACT_GROUP"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "User defined contact group.",
+                        "System defined contact group."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Person": {
             "description": "Information about a person merged from various data sources such as the\nauthenticated user's contacts and profile data.\n\nMost fields can have multiple items. The items in a field have no guaranteed\norder, but each non-empty field is guaranteed to have exactly one field with\n`metadata.primary` set to true.",
             "id": "Person",
             "properties": {
-                "resourceName": {
-                    "description": "The resource name for the person, assigned by the server. An ASCII string\nwith a max length of 27 characters, in the form of `people/<person_id>`.",
-                    "type": "string"
-                },
-                "interests": {
-                    "description": "The person's interests.",
-                    "items": {
-                        "$ref": "Interest"
-                    },
-                    "type": "array"
-                },
-                "biographies": {
-                    "description": "The person's biographies.",
-                    "items": {
-                        "$ref": "Biography"
-                    },
-                    "type": "array"
-                },
-                "skills": {
-                    "description": "The person's skills.",
-                    "items": {
-                        "$ref": "Skill"
-                    },
-                    "type": "array"
-                },
-                "relationshipStatuses": {
-                    "description": "The person's relationship statuses.",
-                    "items": {
-                        "$ref": "RelationshipStatus"
-                    },
-                    "type": "array"
-                },
-                "photos": {
-                    "description": "The person's photos.",
-                    "items": {
-                        "$ref": "Photo"
-                    },
-                    "type": "array"
-                },
-                "ageRange": {
-                    "description": "DEPRECATED(Please read person.age_ranges instead). The person's age range.",
-                    "enum": [
-                        "AGE_RANGE_UNSPECIFIED",
-                        "LESS_THAN_EIGHTEEN",
-                        "EIGHTEEN_TO_TWENTY",
-                        "TWENTY_ONE_OR_OLDER"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified.",
-                        "Younger than eighteen.",
-                        "Between eighteen and twenty.",
-                        "Twenty-one and older."
-                    ],
-                    "type": "string"
-                },
-                "taglines": {
-                    "description": "The person's taglines.",
-                    "items": {
-                        "$ref": "Tagline"
-                    },
-                    "type": "array"
-                },
-                "ageRanges": {
-                    "description": "The person's age ranges.",
-                    "items": {
-                        "$ref": "AgeRangeType"
-                    },
-                    "type": "array"
-                },
-                "addresses": {
-                    "description": "The person's street addresses.",
-                    "items": {
-                        "$ref": "Address"
-                    },
-                    "type": "array"
-                },
-                "events": {
-                    "description": "The person's events.",
-                    "items": {
-                        "$ref": "Event"
-                    },
-                    "type": "array"
-                },
-                "memberships": {
-                    "description": "The person's group memberships.",
-                    "items": {
-                        "$ref": "Membership"
-                    },
-                    "type": "array"
-                },
-                "phoneNumbers": {
-                    "description": "The person's phone numbers.",
-                    "items": {
-                        "$ref": "PhoneNumber"
-                    },
-                    "type": "array"
-                },
-                "coverPhotos": {
-                    "description": "The person's cover photos.",
-                    "items": {
-                        "$ref": "CoverPhoto"
-                    },
-                    "type": "array"
-                },
-                "imClients": {
-                    "description": "The person's instant messaging clients.",
-                    "items": {
-                        "$ref": "ImClient"
-                    },
-                    "type": "array"
-                },
-                "birthdays": {
-                    "description": "The person's birthdays.",
-                    "items": {
-                        "$ref": "Birthday"
-                    },
-                    "type": "array"
-                },
-                "locales": {
-                    "description": "The person's locale preferences.",
-                    "items": {
-                        "$ref": "Locale"
-                    },
-                    "type": "array"
-                },
-                "relationshipInterests": {
-                    "description": "The kind of relationship the person is looking for.",
-                    "items": {
-                        "$ref": "RelationshipInterest"
-                    },
-                    "type": "array"
-                },
-                "urls": {
-                    "description": "The person's associated URLs.",
-                    "items": {
-                        "$ref": "Url"
-                    },
-                    "type": "array"
-                },
                 "nicknames": {
                     "description": "The person's nicknames.",
                     "items": {
@@ -1060,7 +814,7 @@
                 },
                 "metadata": {
                     "$ref": "PersonMetadata",
-                    "description": "Metadata about the person."
+                    "description": "Read-only metadata about the person."
                 },
                 "residences": {
                     "description": "The person's residences.",
@@ -1075,6 +829,626 @@
                         "$ref": "Gender"
                     },
                     "type": "array"
+                },
+                "interests": {
+                    "description": "The person's interests.",
+                    "items": {
+                        "$ref": "Interest"
+                    },
+                    "type": "array"
+                },
+                "resourceName": {
+                    "description": "The resource name for the person, assigned by the server. An ASCII string\nwith a max length of 27 characters, in the form of `people/<person_id>`.",
+                    "type": "string"
+                },
+                "biographies": {
+                    "description": "The person's biographies.",
+                    "items": {
+                        "$ref": "Biography"
+                    },
+                    "type": "array"
+                },
+                "skills": {
+                    "description": "The person's skills.",
+                    "items": {
+                        "$ref": "Skill"
+                    },
+                    "type": "array"
+                },
+                "relationshipStatuses": {
+                    "description": "The person's read-only relationship statuses.",
+                    "items": {
+                        "$ref": "RelationshipStatus"
+                    },
+                    "type": "array"
+                },
+                "photos": {
+                    "description": "The person's read-only photos.",
+                    "items": {
+                        "$ref": "Photo"
+                    },
+                    "type": "array"
+                },
+                "ageRange": {
+                    "description": "**DEPRECATED** (Please use `person.ageRanges` instead)**\n\nThe person's read-only age range.",
+                    "enum": [
+                        "AGE_RANGE_UNSPECIFIED",
+                        "LESS_THAN_EIGHTEEN",
+                        "EIGHTEEN_TO_TWENTY",
+                        "TWENTY_ONE_OR_OLDER"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Younger than eighteen.",
+                        "Between eighteen and twenty.",
+                        "Twenty-one and older."
+                    ],
+                    "type": "string"
+                },
+                "taglines": {
+                    "description": "The person's read-only taglines.",
+                    "items": {
+                        "$ref": "Tagline"
+                    },
+                    "type": "array"
+                },
+                "ageRanges": {
+                    "description": "The person's read-only age ranges.",
+                    "items": {
+                        "$ref": "AgeRangeType"
+                    },
+                    "type": "array"
+                },
+                "addresses": {
+                    "description": "The person's street addresses.",
+                    "items": {
+                        "$ref": "Address"
+                    },
+                    "type": "array"
+                },
+                "events": {
+                    "description": "The person's events.",
+                    "items": {
+                        "$ref": "Event"
+                    },
+                    "type": "array"
+                },
+                "memberships": {
+                    "description": "The person's read-only group memberships.",
+                    "items": {
+                        "$ref": "Membership"
+                    },
+                    "type": "array"
+                },
+                "phoneNumbers": {
+                    "description": "The person's phone numbers.",
+                    "items": {
+                        "$ref": "PhoneNumber"
+                    },
+                    "type": "array"
+                },
+                "coverPhotos": {
+                    "description": "The person's read-only cover photos.",
+                    "items": {
+                        "$ref": "CoverPhoto"
+                    },
+                    "type": "array"
+                },
+                "imClients": {
+                    "description": "The person's instant messaging clients.",
+                    "items": {
+                        "$ref": "ImClient"
+                    },
+                    "type": "array"
+                },
+                "birthdays": {
+                    "description": "The person's birthdays.",
+                    "items": {
+                        "$ref": "Birthday"
+                    },
+                    "type": "array"
+                },
+                "locales": {
+                    "description": "The person's locale preferences.",
+                    "items": {
+                        "$ref": "Locale"
+                    },
+                    "type": "array"
+                },
+                "relationshipInterests": {
+                    "description": "The person's read-only relationship interests.",
+                    "items": {
+                        "$ref": "RelationshipInterest"
+                    },
+                    "type": "array"
+                },
+                "urls": {
+                    "description": "The person's associated URLs.",
+                    "items": {
+                        "$ref": "Url"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateContactGroupRequest": {
+            "description": "A request to update an existing contact group. Only the name can be updated.",
+            "id": "UpdateContactGroupRequest",
+            "properties": {
+                "contactGroup": {
+                    "$ref": "ContactGroup",
+                    "description": "The contact group to update."
+                }
+            },
+            "type": "object"
+        },
+        "ContactGroupMetadata": {
+            "description": "The read-only metadata about a contact group.",
+            "id": "ContactGroupMetadata",
+            "properties": {
+                "updateTime": {
+                    "description": "The time the group was last updated.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "deleted": {
+                    "description": "True if the contact group resource has been deleted. Populated only for\n[`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests\nthat include a sync token.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Residence": {
+            "description": "A person's past or current residence.",
+            "id": "Residence",
+            "properties": {
+                "current": {
+                    "description": "True if the residence is the person's current residence;\nfalse if the residence is a past residence.",
+                    "type": "boolean"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the residence."
+                },
+                "value": {
+                    "description": "The address of the residence.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Event": {
+            "description": "An event related to the person.",
+            "id": "Event",
+            "properties": {
+                "type": {
+                    "description": "The type of the event. The type can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `anniversary`\n* `other`",
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the event."
+                },
+                "date": {
+                    "$ref": "Date",
+                    "description": "The date of the event."
+                },
+                "formattedType": {
+                    "description": "The read-only type of the event translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ModifyContactGroupMembersResponse": {
+            "description": "The response to a modify contact group members request.",
+            "id": "ModifyContactGroupMembersResponse",
+            "properties": {
+                "notFoundResourceNames": {
+                    "description": "The contact people resource names that were not found.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ProfileMetadata": {
+            "description": "The read-only metadata about a profile.",
+            "id": "ProfileMetadata",
+            "properties": {
+                "objectType": {
+                    "description": "The profile object type.",
+                    "enum": [
+                        "OBJECT_TYPE_UNSPECIFIED",
+                        "PERSON",
+                        "PAGE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Person.",
+                        "[Google+ Page.](http://www.google.com/+/brands/)"
+                    ],
+                    "type": "string"
+                },
+                "userTypes": {
+                    "description": "The user types.",
+                    "enumDescriptions": [
+                        "The user type is not known.",
+                        "The user is a Google user.",
+                        "The user is a Google+ user.",
+                        "The user is a Google Apps for Work user."
+                    ],
+                    "items": {
+                        "enum": [
+                            "USER_TYPE_UNKNOWN",
+                            "GOOGLE_USER",
+                            "GPLUS_USER",
+                            "GOOGLE_APPS_USER"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Gender": {
+            "description": "A person's gender.",
+            "id": "Gender",
+            "properties": {
+                "value": {
+                    "description": "The gender for the person. The gender can be custom or predefined.\nPossible values include, but are not limited to, the\nfollowing:\n\n* `male`\n* `female`\n* `other`\n* `unknown`",
+                    "type": "string"
+                },
+                "formattedValue": {
+                    "description": "The read-only value of the gender translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale.",
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the gender."
+                }
+            },
+            "type": "object"
+        },
+        "CoverPhoto": {
+            "description": "A person's read-only cover photo. A large image shown on the person's\nprofile page that represents who they are or what they care about.",
+            "id": "CoverPhoto",
+            "properties": {
+                "url": {
+                    "description": "The URL of the cover photo.",
+                    "type": "string"
+                },
+                "default": {
+                    "description": "True if the cover photo is the default cover photo;\nfalse if the cover photo is a user-provided cover photo.",
+                    "type": "boolean"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the cover photo."
+                }
+            },
+            "type": "object"
+        },
+        "Interest": {
+            "description": "One of the person's interests.",
+            "id": "Interest",
+            "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the interest."
+                },
+                "value": {
+                    "description": "The interest; for example, `stargazing`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EmailAddress": {
+            "description": "A person's email address.",
+            "id": "EmailAddress",
+            "properties": {
+                "displayName": {
+                    "description": "The display name of the email.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the email address. The type can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `home`\n* `work`\n* `other`",
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the email address."
+                },
+                "value": {
+                    "description": "The email address.",
+                    "type": "string"
+                },
+                "formattedType": {
+                    "description": "The read-only type of the email address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Nickname": {
+            "description": "A person's nickname.",
+            "id": "Nickname",
+            "properties": {
+                "type": {
+                    "description": "The type of the nickname.",
+                    "enum": [
+                        "DEFAULT",
+                        "MAIDEN_NAME",
+                        "INITIALS",
+                        "GPLUS",
+                        "OTHER_NAME"
+                    ],
+                    "enumDescriptions": [
+                        "Generic nickname.",
+                        "Maiden name or birth family name. Used when the person's family name has\nchanged as a result of marriage.",
+                        "Initials.",
+                        "Google+ profile nickname.",
+                        "A professional affiliation or other name; for example, `Dr. Smith.`"
+                    ],
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the nickname."
+                },
+                "value": {
+                    "description": "The nickname.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Skill": {
+            "description": "A skill that the person has.",
+            "id": "Skill",
+            "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the skill."
+                },
+                "value": {
+                    "description": "The skill; for example, `underwater basket weaving`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Tagline": {
+            "description": "A read-only brief one-line description of the person.",
+            "id": "Tagline",
+            "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the tagline."
+                },
+                "value": {
+                    "description": "The tagline.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Date": {
+            "description": "Represents a whole calendar date, for example a date of birth. The time\nof day and time zone are either specified elsewhere or are not\nsignificant. The date is relative to the\n[Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar).\nThe day may be 0 to represent a year and month where the day is not\nsignificant. The year may be 0 to represent a month and day independent\nof year; for example, anniversary date.",
+            "id": "Date",
+            "properties": {
+                "day": {
+                    "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year/month where the day is not significant.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "year": {
+                    "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "month": {
+                    "description": "Month of year. Must be from 1 to 12.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Name": {
+            "description": "A person's name. If the name is a mononym, the family name is empty.",
+            "id": "Name",
+            "properties": {
+                "honorificPrefix": {
+                    "description": "The honorific prefixes, such as `Mrs.` or `Dr.`",
+                    "type": "string"
+                },
+                "phoneticHonorificSuffix": {
+                    "description": "The honorific suffixes spelled as they sound.",
+                    "type": "string"
+                },
+                "givenName": {
+                    "description": "The given name.",
+                    "type": "string"
+                },
+                "middleName": {
+                    "description": "The middle name(s).",
+                    "type": "string"
+                },
+                "phoneticHonorificPrefix": {
+                    "description": "The honorific prefixes spelled as they sound.",
+                    "type": "string"
+                },
+                "phoneticGivenName": {
+                    "description": "The given name spelled as it sounds.",
+                    "type": "string"
+                },
+                "phoneticFamilyName": {
+                    "description": "The family name spelled as it sounds.",
+                    "type": "string"
+                },
+                "familyName": {
+                    "description": "The family name.",
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the name."
+                },
+                "phoneticMiddleName": {
+                    "description": "The middle name(s) spelled as they sound.",
+                    "type": "string"
+                },
+                "phoneticFullName": {
+                    "description": "The full name spelled as it sounds.",
+                    "type": "string"
+                },
+                "displayNameLastFirst": {
+                    "description": "The read-only display name with the last name first formatted according to\nthe locale specified by the viewer's account or the\n<code>Accept-Language</code> HTTP header.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The read-only display name formatted according to the locale specified by\nthe viewer's account or the <code>Accept-Language</code> HTTP header.",
+                    "type": "string"
+                },
+                "honorificSuffix": {
+                    "description": "The honorific suffixes, such as `Jr.`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Locale": {
+            "description": "A person's locale preference.",
+            "id": "Locale",
+            "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the locale."
+                },
+                "value": {
+                    "description": "The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47)\nlanguage tag representing the locale.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "Biography": {
+            "description": "A person's short biography.",
+            "id": "Biography",
+            "properties": {
+                "contentType": {
+                    "description": "The content type of the biography.",
+                    "enum": [
+                        "CONTENT_TYPE_UNSPECIFIED",
+                        "TEXT_PLAIN",
+                        "TEXT_HTML"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Plain text.",
+                        "HTML text."
+                    ],
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the biography."
+                },
+                "value": {
+                    "description": "The short biography.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FieldMetadata": {
+            "description": "Metadata about a field.",
+            "id": "FieldMetadata",
+            "properties": {
+                "source": {
+                    "$ref": "Source",
+                    "description": "The source of the field."
+                },
+                "verified": {
+                    "description": "True if the field is verified; false if the field is unverified. A\nverified field is typically a name, email address, phone number, or\nwebsite that has been confirmed to be owned by the person.",
+                    "type": "boolean"
+                },
+                "primary": {
+                    "description": "True if the field is the primary field; false if the field is a secondary\nfield.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Source": {
+            "description": "The source of a field.",
+            "id": "Source",
+            "properties": {
+                "etag": {
+                    "description": "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nsource. Used for web cache validation. Only populated in\nperson.metadata.sources.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The unique identifier within the source type generated by the server.",
+                    "type": "string"
+                },
+                "profileMetadata": {
+                    "$ref": "ProfileMetadata",
+                    "description": "Metadata about a source of type PROFILE."
+                },
+                "updateTime": {
+                    "description": "Last update timestamp of this source.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The source type.",
+                    "enum": [
+                        "SOURCE_TYPE_UNSPECIFIED",
+                        "ACCOUNT",
+                        "PROFILE",
+                        "DOMAIN_PROFILE",
+                        "CONTACT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "[Google Account](https://accounts.google.com).",
+                        "[Google profile](https://profiles.google.com). You can view the\nprofile at https://profiles.google.com/<var>id</var> where\n<var>id</var> is the source id.",
+                        "[Google Apps domain profile](https://admin.google.com).",
+                        "[Google contact](https://contacts.google.com). You can view the\ncontact at https://contact.google.com/<var>id</var> where <var>id</var>\nis the source id."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RelationshipInterest": {
+            "description": "A person's read-only relationship interest .",
+            "id": "RelationshipInterest",
+            "properties": {
+                "formattedValue": {
+                    "description": "The value of the relationship interest translated and formatted in the\nviewer's account locale or the locale specified in the Accept-Language\nHTTP header.",
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the relationship interest."
+                },
+                "value": {
+                    "description": "The kind of relationship the person is looking for. The value can be custom\nor predefined. Possible values include, but are not limited to, the\nfollowing values:\n\n* `friend`\n* `date`\n* `relationship`\n* `networking`",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1096,13 +1470,13 @@
             "description": "A person's read-only photo. A picture shown next to the person's name to\nhelp others recognize the person.",
             "id": "Photo",
             "properties": {
-                "url": {
-                    "description": "The URL of the photo. You can change the desired size by appending a query\nparameter `sz=<size>` at the end of the url. Example:\n`https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50`",
-                    "type": "string"
-                },
                 "metadata": {
                     "$ref": "FieldMetadata",
                     "description": "Metadata about the photo."
+                },
+                "url": {
+                    "description": "The URL of the photo. You can change the desired size by appending a query\nparameter `sz=<size>` at the end of the url. Example:\n`https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50`",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1124,7 +1498,7 @@
                     "type": "string"
                 },
                 "formattedType": {
-                    "description": "The read-only type of the phone number translated and formatted in the\nviewer's account locale or the the `Accept-Language` HTTP header locale.",
+                    "description": "The read-only type of the phone number translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
                     "type": "string"
                 },
                 "canonicalForm": {
@@ -1158,7 +1532,7 @@
                     "type": "array"
                 },
                 "totalPeople": {
-                    "description": "DEPRECATED(Please use total_items). The total number of people in the list\nwithout pagination.",
+                    "description": "**DEPRECATED** (Please use totalItems)\nThe total number of people in the list without pagination.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -1169,6 +1543,10 @@
             "description": "A person's birthday. At least one of the `date` and `text` fields are\nspecified. The `date` and `text` fields typically represent the same\ndate, but are not guaranteed to.",
             "id": "Birthday",
             "properties": {
+                "date": {
+                    "$ref": "Date",
+                    "description": "The date of the birthday."
+                },
                 "text": {
                     "description": "A free-form string representing the user's birthday.",
                     "type": "string"
@@ -1176,10 +1554,17 @@
                 "metadata": {
                     "$ref": "FieldMetadata",
                     "description": "Metadata about the birthday."
-                },
-                "date": {
-                    "$ref": "Date",
-                    "description": "The date of the birthday."
+                }
+            },
+            "type": "object"
+        },
+        "CreateContactGroupRequest": {
+            "description": "A request to create a new contact group.",
+            "id": "CreateContactGroupRequest",
+            "properties": {
+                "contactGroup": {
+                    "$ref": "ContactGroup",
+                    "description": "The contact group to create."
                 }
             },
             "type": "object"
@@ -1188,18 +1573,6 @@
             "description": "A person's physical address. May be a P.O. box or street address. All fields\nare optional.",
             "id": "Address",
             "properties": {
-                "region": {
-                    "description": "The region of the address; for example, the state or province.",
-                    "type": "string"
-                },
-                "streetAddress": {
-                    "description": "The street address.",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the address."
-                },
                 "countryCode": {
                     "description": "The [ISO 3166-1 alpha-2](http://www.iso.org/iso/country_codes.htm) country\ncode of the address.",
                     "type": "string"
@@ -1235,25 +1608,18 @@
                 "postalCode": {
                     "description": "The postal code of the address.",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Residence": {
-            "description": "A person's past or current residence.",
-            "id": "Residence",
-            "properties": {
-                "current": {
-                    "description": "True if the residence is the person's current residence;\nfalse if the residence is a past residence.",
-                    "type": "boolean"
+                },
+                "region": {
+                    "description": "The region of the address; for example, the state or province.",
+                    "type": "string"
+                },
+                "streetAddress": {
+                    "description": "The street address.",
+                    "type": "string"
                 },
                 "metadata": {
                     "$ref": "FieldMetadata",
-                    "description": "Metadata about the residence."
-                },
-                "value": {
-                    "description": "The address of the residence.",
-                    "type": "string"
+                    "description": "Metadata about the address."
                 }
             },
             "type": "object"
@@ -1272,7 +1638,7 @@
                     "type": "string"
                 },
                 "details": {
-                    "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use.",
+                    "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
                     "items": {
                         "additionalProperties": {
                             "description": "Properties of the object. Contains field @type with type URL.",
@@ -1300,26 +1666,8 @@
             "description": "The read-only metadata about a person.",
             "id": "PersonMetadata",
             "properties": {
-                "previousResourceNames": {
-                    "description": "Any former resource names this person has had. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token.\n\nThe resource name may change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or\nprofile URL.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "sources": {
-                    "description": "The sources of data for the person.",
-                    "items": {
-                        "$ref": "Source"
-                    },
-                    "type": "array"
-                },
-                "deleted": {
-                    "description": "True if the person resource has been deleted. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token.",
-                    "type": "boolean"
-                },
                 "objectType": {
-                    "description": "DEPRECATED(Please read person.metadata.sources.profile_metadata instead).\nThe type of the person object.",
+                    "description": "**DEPRECATED** (Please use\n`person.metadata.sources.profileMetadata.objectType` instead)\n\nThe type of the person object.",
                     "enum": [
                         "OBJECT_TYPE_UNSPECIFIED",
                         "PERSON",
@@ -1338,68 +1686,63 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "previousResourceNames": {
+                    "description": "Any former resource names this person has had. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token.\n\nThe resource name may change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or\nprofile URL.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sources": {
+                    "description": "The sources of data for the person.",
+                    "items": {
+                        "$ref": "Source"
+                    },
+                    "type": "array"
+                },
+                "deleted": {
+                    "description": "True if the person resource has been deleted. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
         },
-        "Event": {
-            "description": "An event related to the person.",
-            "id": "Event",
+        "ModifyContactGroupMembersRequest": {
+            "description": "A request to modify an existing contact group's members.",
+            "id": "ModifyContactGroupMembersRequest",
             "properties": {
-                "formattedType": {
-                    "description": "The read-only type of the event translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
-                    "type": "string"
+                "resourceNamesToRemove": {
+                    "description": "The resource names of the contact people to remove in the form of in the\nform of `people/<person_id>`.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
-                "type": {
-                    "description": "The type of the event. The type can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `anniversary`\n* `other`",
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the event."
-                },
-                "date": {
-                    "$ref": "Date",
-                    "description": "The date of the event."
+                "resourceNamesToAdd": {
+                    "description": "The resource names of the contact people to add in the form of in the form\n`people/<person_id>`.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
         },
-        "ProfileMetadata": {
-            "description": "The read-only metadata about a profile.",
-            "id": "ProfileMetadata",
+        "ContactGroupResponse": {
+            "description": "The response for a specific contact group.",
+            "id": "ContactGroupResponse",
             "properties": {
-                "objectType": {
-                    "description": "The profile object type.",
-                    "enum": [
-                        "OBJECT_TYPE_UNSPECIFIED",
-                        "PERSON",
-                        "PAGE"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified.",
-                        "Person.",
-                        "[Google+ Page.](http://www.google.com/+/brands/)"
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Gender": {
-            "description": "A person's gender.",
-            "id": "Gender",
-            "properties": {
-                "formattedValue": {
-                    "description": "The read-only value of the gender translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale.",
-                    "type": "string"
+                "contactGroup": {
+                    "$ref": "ContactGroup",
+                    "description": "The contact group."
                 },
-                "metadata": {
-                    "$ref": "FieldMetadata",
-                    "description": "Metadata about the gender."
+                "status": {
+                    "$ref": "Status",
+                    "description": "The status of the response."
                 },
-                "value": {
-                    "description": "The gender for the person. The gender can be custom or predefined.\nPossible values include, but are not limited to, the\nfollowing:\n\n* `male`\n* `female`\n* `other`\n* `unknown`",
+                "requestedResourceName": {
+                    "description": "The original requested resource name.",
                     "type": "string"
                 }
             },
@@ -1423,6 +1766,178 @@
                 },
                 "formattedType": {
                     "description": "The read-only type of the URL translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ImClient": {
+            "description": "A person's instant messaging client.",
+            "id": "ImClient",
+            "properties": {
+                "formattedProtocol": {
+                    "description": "The read-only protocol of the IM client formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale.",
+                    "type": "string"
+                },
+                "formattedType": {
+                    "description": "The read-only type of the IM client translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the IM client."
+                },
+                "type": {
+                    "description": "The type of the IM client. The type can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `home`\n* `work`\n* `other`",
+                    "type": "string"
+                },
+                "protocol": {
+                    "description": "The protocol of the IM client. The protocol can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `aim`\n* `msn`\n* `yahoo`\n* `skype`\n* `qq`\n* `googleTalk`\n* `icq`\n* `jabber`\n* `netMeeting`",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "The user name used in the IM client.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DomainMembership": {
+            "description": "A Google Apps Domain membership.",
+            "id": "DomainMembership",
+            "properties": {
+                "inViewerDomain": {
+                    "description": "True if the person is in the viewer's Google Apps domain.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Membership": {
+            "description": "A person's read-only membership in a group.",
+            "id": "Membership",
+            "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the membership."
+                },
+                "domainMembership": {
+                    "$ref": "DomainMembership",
+                    "description": "The domain membership."
+                },
+                "contactGroupMembership": {
+                    "$ref": "ContactGroupMembership",
+                    "description": "The contact group membership."
+                }
+            },
+            "type": "object"
+        },
+        "BatchGetContactGroupsResponse": {
+            "description": "The response to a batch get contact groups request.",
+            "id": "BatchGetContactGroupsResponse",
+            "properties": {
+                "responses": {
+                    "description": "The list of responses for each requested contact group resource.",
+                    "items": {
+                        "$ref": "ContactGroupResponse"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RelationshipStatus": {
+            "description": "A person's read-only relationship status.",
+            "id": "RelationshipStatus",
+            "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the relationship status."
+                },
+                "value": {
+                    "description": "The relationship status. The value can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `single`\n* `inARelationship`\n* `engaged`\n* `married`\n* `itsComplicated`\n* `openRelationship`\n* `widowed`\n* `inDomesticPartnership`\n* `inCivilUnion`",
+                    "type": "string"
+                },
+                "formattedValue": {
+                    "description": "The read-only value of the relationship status translated and formatted in\nthe viewer's account locale or the `Accept-Language` HTTP header locale.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BraggingRights": {
+            "description": "A person's bragging rights.",
+            "id": "BraggingRights",
+            "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the bragging rights."
+                },
+                "value": {
+                    "description": "The bragging rights; for example, `climbed mount everest`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Organization": {
+            "description": "A person's past or current organization. Overlapping date ranges are\npermitted.",
+            "id": "Organization",
+            "properties": {
+                "endDate": {
+                    "$ref": "Date",
+                    "description": "The end date when the person left the organization."
+                },
+                "symbol": {
+                    "description": "The symbol associated with the organization; for example, a stock ticker\nsymbol, abbreviation, or acronym.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the organization.",
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata",
+                    "description": "Metadata about the organization."
+                },
+                "location": {
+                    "description": "The location of the organization office the person works at.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The person's job title at the organization.",
+                    "type": "string"
+                },
+                "current": {
+                    "description": "True if the organization is the person's current organization;\nfalse if the organization is a past organization.",
+                    "type": "boolean"
+                },
+                "formattedType": {
+                    "description": "The read-only type of the organization translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale.",
+                    "type": "string"
+                },
+                "startDate": {
+                    "$ref": "Date",
+                    "description": "The start date when the person joined the organization."
+                },
+                "domain": {
+                    "description": "The domain name associated with the organization; for example, `google.com`.",
+                    "type": "string"
+                },
+                "department": {
+                    "description": "The person's department at the organization.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the organization. The type can be custom or predefined.\nPossible values include, but are not limited to, the following:\n\n* `work`\n* `school`",
+                    "type": "string"
+                },
+                "phoneticName": {
+                    "description": "The phonetic name of the organization.",
+                    "type": "string"
+                },
+                "jobDescription": {
+                    "description": "The person's job description at the organization.",
                     "type": "string"
                 }
             },

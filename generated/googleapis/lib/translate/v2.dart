@@ -138,11 +138,11 @@ class LanguagesResourceApi {
    *
    * Request parameters:
    *
+   * [model] - The model type for which supported languages should be returned.
+   *
    * [target] - The language to use to return localized, human readable names of
    * supported
    * languages.
-   *
-   * [model] - The model type for which supported languages should be returned.
    *
    * Completes with a [LanguagesListResponse].
    *
@@ -152,7 +152,7 @@ class LanguagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<LanguagesListResponse> list({core.String target, core.String model}) {
+  async.Future<LanguagesListResponse> list({core.String model, core.String target}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -160,11 +160,11 @@ class LanguagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (target != null) {
-      _queryParams["target"] = [target];
-    }
     if (model != null) {
       _queryParams["model"] = [model];
+    }
+    if (target != null) {
+      _queryParams["target"] = [target];
     }
 
     _url = 'v2/languages';
@@ -201,6 +201,9 @@ class TranslationsResourceApi {
    * one of the
    * language codes listed in Language Support.
    *
+   * [model] - The `model` type requested for this translation. Valid values are
+   * listed in public documentation.
+   *
    * [source] - The language of the source text, set to one of the language
    * codes listed in
    * Language Support. If the source language is not specified, the API will
@@ -216,9 +219,6 @@ class TranslationsResourceApi {
    * - "html" : Specifies the input is in HTML
    * - "text" : Specifies the input is in plain textual format
    *
-   * [model] - The `model` type requested for this translation. Valid values are
-   * listed in public documentation.
-   *
    * Completes with a [TranslationsListResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -227,7 +227,7 @@ class TranslationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TranslationsListResponse> list(core.List<core.String> q, core.String target, {core.String source, core.List<core.String> cid, core.String format, core.String model}) {
+  async.Future<TranslationsListResponse> list(core.List<core.String> q, core.String target, {core.String model, core.String source, core.List<core.String> cid, core.String format}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -243,6 +243,9 @@ class TranslationsResourceApi {
       throw new core.ArgumentError("Parameter target is required.");
     }
     _queryParams["target"] = [target];
+    if (model != null) {
+      _queryParams["model"] = [model];
+    }
     if (source != null) {
       _queryParams["source"] = [source];
     }
@@ -251,9 +254,6 @@ class TranslationsResourceApi {
     }
     if (format != null) {
       _queryParams["format"] = [format];
-    }
-    if (model != null) {
-      _queryParams["model"] = [model];
     }
 
     _url = 'v2';

@@ -514,13 +514,12 @@ $ dart bin/generate.dart run_config generate
 * Run the tests.
 
 ```
-$ pub global activate test_runner
 $ pushd generated/googleapis
 $ pub get
-$ pub global run test_runner
+$ pub run test
 $ cd ../googleapis_beta
 $ pub get
-$ pub global run test_runner
+$ pub run test
 $ popd
 ```
 

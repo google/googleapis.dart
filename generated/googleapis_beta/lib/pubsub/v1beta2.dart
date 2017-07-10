@@ -1090,6 +1090,7 @@ class Binding {
    * * `group:{emailid}`: An email address that represents a Google group.
    *    For example, `admins@example.com`.
    *
+   *
    * * `domain:{domain}`: A Google Apps domain name that represents all the
    *    users of that domain. For example, `google.com` or `example.com`.
    */
@@ -1361,7 +1362,6 @@ class ModifyPushConfigRequest {
 class Policy {
   /**
    * Associates a list of `members` to a `role`.
-   * Multiple `bindings` must not be specified for the same `role`.
    * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;

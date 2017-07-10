@@ -181,10 +181,10 @@ class SpreadsheetsResourceApi {
    *
    * [spreadsheetId] - The spreadsheet to request.
    *
-   * [ranges] - The ranges to retrieve from the spreadsheet.
-   *
    * [includeGridData] - True if grid data should be returned.
    * This parameter is ignored if a field mask was set in the request.
+   *
+   * [ranges] - The ranges to retrieve from the spreadsheet.
    *
    * Completes with a [Spreadsheet].
    *
@@ -194,7 +194,7 @@ class SpreadsheetsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Spreadsheet> get(core.String spreadsheetId, {core.List<core.String> ranges, core.bool includeGridData}) {
+  async.Future<Spreadsheet> get(core.String spreadsheetId, {core.bool includeGridData, core.List<core.String> ranges}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -205,11 +205,11 @@ class SpreadsheetsResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (ranges != null) {
-      _queryParams["ranges"] = ranges;
-    }
     if (includeGridData != null) {
       _queryParams["includeGridData"] = ["${includeGridData}"];
+    }
+    if (ranges != null) {
+      _queryParams["ranges"] = ranges;
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId');
@@ -317,6 +317,20 @@ class SpreadsheetsValuesResourceApi {
    * [range] - The A1 notation of a range to search for a logical table of data.
    * Values will be appended after the last row of the table.
    *
+   * [responseDateTimeRenderOption] - Determines how dates, times, and durations
+   * in the response should be
+   * rendered. This is ignored if response_value_render_option is
+   * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+   * Possible string values are:
+   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+   * - "FORMATTED_STRING" : A FORMATTED_STRING.
+   *
+   * [includeValuesInResponse] - Determines if the update response should
+   * include the values
+   * of the cells that were appended. By default, responses
+   * do not include the updated values.
+   *
    * [responseValueRenderOption] - Determines how values in the response should
    * be rendered.
    * The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -336,20 +350,6 @@ class SpreadsheetsValuesResourceApi {
    * - "RAW" : A RAW.
    * - "USER_ENTERED" : A USER_ENTERED.
    *
-   * [responseDateTimeRenderOption] - Determines how dates, times, and durations
-   * in the response should be
-   * rendered. This is ignored if response_value_render_option is
-   * FORMATTED_VALUE.
-   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-   * Possible string values are:
-   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-   * - "FORMATTED_STRING" : A FORMATTED_STRING.
-   *
-   * [includeValuesInResponse] - Determines if the update response should
-   * include the values
-   * of the cells that were appended. By default, responses
-   * do not include the updated values.
-   *
    * Completes with a [AppendValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -358,7 +358,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse}) {
+  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseDateTimeRenderOption, core.bool includeValuesInResponse, core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -375,6 +375,12 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseDateTimeRenderOption != null) {
+      _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -383,12 +389,6 @@ class SpreadsheetsValuesResourceApi {
     }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
-    }
-    if (responseDateTimeRenderOption != null) {
-      _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range') + ':append';
@@ -458,13 +458,6 @@ class SpreadsheetsValuesResourceApi {
    *
    * [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
    *
-   * [valueRenderOption] - How values should be represented in the output.
-   * The default render option is ValueRenderOption.FORMATTED_VALUE.
-   * Possible string values are:
-   * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-   * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-   * - "FORMULA" : A FORMULA.
-   *
    * [dateTimeRenderOption] - How dates, times, and durations should be
    * represented in the output.
    * This is ignored if value_render_option is
@@ -474,7 +467,12 @@ class SpreadsheetsValuesResourceApi {
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
    * - "FORMATTED_STRING" : A FORMATTED_STRING.
    *
-   * [ranges] - The A1 notation of the values to retrieve.
+   * [valueRenderOption] - How values should be represented in the output.
+   * The default render option is ValueRenderOption.FORMATTED_VALUE.
+   * Possible string values are:
+   * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+   * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+   * - "FORMULA" : A FORMULA.
    *
    * [majorDimension] - The major dimension that results should use.
    *
@@ -488,6 +486,8 @@ class SpreadsheetsValuesResourceApi {
    * - "ROWS" : A ROWS.
    * - "COLUMNS" : A COLUMNS.
    *
+   * [ranges] - The A1 notation of the values to retrieve.
+   *
    * Completes with a [BatchGetValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -496,7 +496,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId, {core.String valueRenderOption, core.String dateTimeRenderOption, core.List<core.String> ranges, core.String majorDimension}) {
+  async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId, {core.String dateTimeRenderOption, core.String valueRenderOption, core.String majorDimension, core.List<core.String> ranges}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -507,17 +507,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
-    }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
-    if (ranges != null) {
-      _queryParams["ranges"] = ranges;
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
     }
     if (majorDimension != null) {
       _queryParams["majorDimension"] = [majorDimension];
+    }
+    if (ranges != null) {
+      _queryParams["ranges"] = ranges;
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values:batchGet';
@@ -641,22 +641,6 @@ class SpreadsheetsValuesResourceApi {
    *
    * [range] - The A1 notation of the values to retrieve.
    *
-   * [valueRenderOption] - How values should be represented in the output.
-   * The default render option is ValueRenderOption.FORMATTED_VALUE.
-   * Possible string values are:
-   * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-   * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-   * - "FORMULA" : A FORMULA.
-   *
-   * [dateTimeRenderOption] - How dates, times, and durations should be
-   * represented in the output.
-   * This is ignored if value_render_option is
-   * FORMATTED_VALUE.
-   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-   * Possible string values are:
-   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-   * - "FORMATTED_STRING" : A FORMATTED_STRING.
-   *
    * [majorDimension] - The major dimension that results should use.
    *
    * For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
@@ -669,6 +653,22 @@ class SpreadsheetsValuesResourceApi {
    * - "ROWS" : A ROWS.
    * - "COLUMNS" : A COLUMNS.
    *
+   * [dateTimeRenderOption] - How dates, times, and durations should be
+   * represented in the output.
+   * This is ignored if value_render_option is
+   * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+   * Possible string values are:
+   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+   * - "FORMATTED_STRING" : A FORMATTED_STRING.
+   *
+   * [valueRenderOption] - How values should be represented in the output.
+   * The default render option is ValueRenderOption.FORMATTED_VALUE.
+   * Possible string values are:
+   * - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+   * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+   * - "FORMULA" : A FORMULA.
+   *
    * Completes with a [ValueRange].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -677,7 +677,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ValueRange> get(core.String spreadsheetId, core.String range, {core.String valueRenderOption, core.String dateTimeRenderOption, core.String majorDimension}) {
+  async.Future<ValueRange> get(core.String spreadsheetId, core.String range, {core.String majorDimension, core.String dateTimeRenderOption, core.String valueRenderOption}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -691,14 +691,14 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
     }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range');
@@ -2695,8 +2695,8 @@ class CandlestickChartSpec {
   core.List<CandlestickData> data;
   /**
    * The domain data (horizontal axis) for the candlestick chart.  String data
-   * will be treated as discrete labels, other data will be treated as continous
-   * values.
+   * will be treated as discrete labels, other data will be treated as
+   * continuous values.
    */
   CandlestickDomain domain;
 
@@ -6397,6 +6397,28 @@ class ProtectedRange {
   }
 }
 
+/** Randomizes the order of the rows in a range. */
+class RandomizeRangeRequest {
+  /** The range to randomize. */
+  GridRange range;
+
+  RandomizeRangeRequest();
+
+  RandomizeRangeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("range")) {
+      range = new GridRange.fromJson(_json["range"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * Updates all cells in the range to the values in the given Cell object.
  * Only the fields listed in the fields field are updated; others are
@@ -6520,6 +6542,8 @@ class Request {
   MoveDimensionRequest moveDimension;
   /** Pastes data (HTML or delimited) into a sheet. */
   PasteDataRequest pasteData;
+  /** Randomizes the order of the rows in a range. */
+  RandomizeRangeRequest randomizeRange;
   /** Repeats a single cell across a range. */
   RepeatCellRequest repeatCell;
   /** Sets the basic filter on a sheet. */
@@ -6652,6 +6676,9 @@ class Request {
     }
     if (_json.containsKey("pasteData")) {
       pasteData = new PasteDataRequest.fromJson(_json["pasteData"]);
+    }
+    if (_json.containsKey("randomizeRange")) {
+      randomizeRange = new RandomizeRangeRequest.fromJson(_json["randomizeRange"]);
     }
     if (_json.containsKey("repeatCell")) {
       repeatCell = new RepeatCellRequest.fromJson(_json["repeatCell"]);
@@ -6803,6 +6830,9 @@ class Request {
     }
     if (pasteData != null) {
       _json["pasteData"] = (pasteData).toJson();
+    }
+    if (randomizeRange != null) {
+      _json["randomizeRange"] = (randomizeRange).toJson();
     }
     if (repeatCell != null) {
       _json["repeatCell"] = (repeatCell).toJson();

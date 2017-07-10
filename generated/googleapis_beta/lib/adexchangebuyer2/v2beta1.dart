@@ -154,16 +154,16 @@ class AccountsClientsResourceApi {
    * [accountId] - Unique numerical account ID of the sponsor buyer to list the
    * clients for.
    *
+   * [pageSize] - Requested page size. The server may return fewer clients than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
    * ListClientsResponse.nextPageToken
    * returned from the previous call to the
    * accounts.clients.list method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer clients than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListClientsResponse].
    *
@@ -173,7 +173,7 @@ class AccountsClientsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClientsResponse> list(core.String accountId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListClientsResponse> list(core.String accountId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -184,11 +184,11 @@ class AccountsClientsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/clients';
@@ -1045,16 +1045,6 @@ class AccountsCreativesDealAssociationsResourceApi {
    * [creativeId] - The creative ID to list the associations from.
    * Specify "-" to list all creatives under the above account.
    *
-   * [pageToken] - A token identifying a page of results the server should
-   * return.
-   * Typically, this is the value of
-   * ListDealAssociationsResponse.next_page_token
-   * returned from the previous call to 'ListDealAssociations' method.
-   *
-   * [pageSize] - Requested page size. Server may return fewer associations than
-   * requested.
-   * If unspecified, server will pick an appropriate default.
-   *
    * [query] - An optional query string to filter deal associations. If no
    * filter is
    * specified, all associations will be returned.
@@ -1070,6 +1060,16 @@ class AccountsCreativesDealAssociationsResourceApi {
    * </ul>
    * Example: 'dealsId=12345 AND dealsStatus:disapproved'
    *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListDealAssociationsResponse.next_page_token
+   * returned from the previous call to 'ListDealAssociations' method.
+   *
+   * [pageSize] - Requested page size. Server may return fewer associations than
+   * requested.
+   * If unspecified, server will pick an appropriate default.
+   *
    * Completes with a [ListDealAssociationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1078,7 +1078,7 @@ class AccountsCreativesDealAssociationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDealAssociationsResponse> list(core.String accountId, core.String creativeId, {core.String pageToken, core.int pageSize, core.String query}) {
+  async.Future<ListDealAssociationsResponse> list(core.String accountId, core.String creativeId, {core.String query, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1092,14 +1092,14 @@ class AccountsCreativesDealAssociationsResourceApi {
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
     }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/creatives/' + commons.Escaper.ecapeVariable('$creativeId') + '/dealAssociations';
@@ -1174,9 +1174,9 @@ class AccountsFilterSetsResourceApi {
   AccountsFilterSetsBidResponsesWithoutBidsResourceApi get bidResponsesWithoutBids => new AccountsFilterSetsBidResponsesWithoutBidsResourceApi(_requester);
   AccountsFilterSetsFilteredBidRequestsResourceApi get filteredBidRequests => new AccountsFilterSetsFilteredBidRequestsResourceApi(_requester);
   AccountsFilterSetsFilteredBidsResourceApi get filteredBids => new AccountsFilterSetsFilteredBidsResourceApi(_requester);
-  AccountsFilterSetsFilteredImpressionsResourceApi get filteredImpressions => new AccountsFilterSetsFilteredImpressionsResourceApi(_requester);
   AccountsFilterSetsImpressionMetricsResourceApi get impressionMetrics => new AccountsFilterSetsImpressionMetricsResourceApi(_requester);
   AccountsFilterSetsLosingBidsResourceApi get losingBids => new AccountsFilterSetsLosingBidsResourceApi(_requester);
+  AccountsFilterSetsNonBillableWinningBidsResourceApi get nonBillableWinningBids => new AccountsFilterSetsNonBillableWinningBidsResourceApi(_requester);
 
   AccountsFilterSetsResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -1335,10 +1335,10 @@ class AccountsFilterSetsResourceApi {
    * Typically, this is the value of
    * ListFilterSetsResponse.nextPageToken
    * returned from the previous call to the
-   * accounts.rtbBreakout.filterSets.list
+   * accounts.filterSets.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -1406,7 +1406,7 @@ class AccountsFilterSetsBidMetricsResourceApi {
    * accounts.filterSets.bidMetrics.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -1478,7 +1478,7 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
    * accounts.filterSets.bidResponseErrors.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -1550,7 +1550,7 @@ class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
    * accounts.filterSets.bidResponsesWithoutBids.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -1622,7 +1622,7 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
    * accounts.filterSets.filteredBidRequests.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -1689,6 +1689,10 @@ class AccountsFilterSetsFilteredBidsResourceApi {
    *
    * [filterSetId] - The ID of the filter set to apply.
    *
+   * [pageSize] - Requested page size. The server may return fewer results than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
@@ -1696,10 +1700,6 @@ class AccountsFilterSetsFilteredBidsResourceApi {
    * returned from the previous call to the
    * accounts.filterSets.filteredBids.list
    * method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListFilteredBidsResponse].
    *
@@ -1709,7 +1709,7 @@ class AccountsFilterSetsFilteredBidsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListFilteredBidsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListFilteredBidsResponse> list(core.String accountId, core.String filterSetId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1723,11 +1723,11 @@ class AccountsFilterSetsFilteredBidsResourceApi {
     if (filterSetId == null) {
       throw new core.ArgumentError("Parameter filterSetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBids';
@@ -1777,7 +1777,7 @@ class AccountsFilterSetsFilteredBidsCreativesResourceApi {
    * accounts.filterSets.filteredBids.creatives.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -1852,10 +1852,6 @@ class AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi {
    *
    * [creativeId] - The creative ID for which to retrieve a breakdown by detail.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
-   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
@@ -1863,6 +1859,10 @@ class AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi {
    * returned from the previous call to the
    * accounts.filterSets.filteredBids.creatives.details.list
    * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer results than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListCreativeStatusAndCreativeBreakdownByDetailResponse].
    *
@@ -1872,7 +1872,7 @@ class AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCreativeStatusAndCreativeBreakdownByDetailResponse> list(core.String accountId, core.String filterSetId, core.int creativeStatusId, core.String creativeId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListCreativeStatusAndCreativeBreakdownByDetailResponse> list(core.String accountId, core.String filterSetId, core.int creativeStatusId, core.String creativeId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1892,11 +1892,11 @@ class AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi {
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBids/' + commons.Escaper.ecapeVariable('$creativeStatusId') + '/creatives/' + commons.Escaper.ecapeVariable('$creativeId') + '/details';
@@ -1943,7 +1943,7 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
    * accounts.filterSets.filteredBids.details.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -1994,79 +1994,6 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
 }
 
 
-class AccountsFilterSetsFilteredImpressionsResourceApi {
-  final commons.ApiRequester _requester;
-
-  AccountsFilterSetsFilteredImpressionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * List all reasons that caused an impression to be filtered (i.e. not
-   * considered as an inventory match), with the number of impressions that were
-   * filtered for each reason.
-   *
-   * Request parameters:
-   *
-   * [accountId] - Account ID of the buyer.
-   *
-   * [filterSetId] - The ID of the filter set to apply.
-   *
-   * [pageToken] - A token identifying a page of results the server should
-   * return.
-   * Typically, this is the value of
-   * ListFilteredImpressionsResponse.nextPageToken
-   * returned from the previous call to the
-   * accounts.filterSets.filteredImpressions.list
-   * method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
-   *
-   * Completes with a [ListFilteredImpressionsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListFilteredImpressionsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-
-    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredImpressions';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListFilteredImpressionsResponse.fromJson(data));
-  }
-
-}
-
-
 class AccountsFilterSetsImpressionMetricsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2090,7 +2017,7 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
    * accounts.filterSets.impressionMetrics.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -2162,7 +2089,7 @@ class AccountsFilterSetsLosingBidsResourceApi {
    * accounts.filterSets.losingBids.list
    * method.
    *
-   * [pageSize] - Requested page size. The server may return fewer than
+   * [pageSize] - Requested page size. The server may return fewer results than
    * requested.
    * If unspecified, the server will pick an appropriate default.
    *
@@ -2205,6 +2132,78 @@ class AccountsFilterSetsLosingBidsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListLosingBidsResponse.fromJson(data));
+  }
+
+}
+
+
+class AccountsFilterSetsNonBillableWinningBidsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFilterSetsNonBillableWinningBidsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * List all reasons for which winning bids were not billable, with the number
+   * of bids not billed for each reason.
+   *
+   * Request parameters:
+   *
+   * [accountId] - Account ID of the buyer.
+   *
+   * [filterSetId] - The ID of the filter set to apply.
+   *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListNonBillableWinningBidsResponse.nextPageToken
+   * returned from the previous call to the
+   * accounts.filterSets.nonBillableWinningBids.list
+   * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer results than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
+   * Completes with a [ListNonBillableWinningBidsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListNonBillableWinningBidsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSetId == null) {
+      throw new core.ArgumentError("Parameter filterSetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/nonBillableWinningBids';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListNonBillableWinningBidsResponse.fromJson(data));
   }
 
 }
@@ -2336,6 +2335,11 @@ class BidMetricsRow {
   /** The number of bids that won an impression. */
   MetricValue impressionsWon;
   /**
+   * The number of bids for which the corresponding impression was measurable
+   * for viewability (as defined by Active View).
+   */
+  MetricValue measurableImpressions;
+  /**
    * The values of all dimensions associated with metric values in this row.
    */
   RowDimensions rowDimensions;
@@ -2360,6 +2364,9 @@ class BidMetricsRow {
     if (_json.containsKey("impressionsWon")) {
       impressionsWon = new MetricValue.fromJson(_json["impressionsWon"]);
     }
+    if (_json.containsKey("measurableImpressions")) {
+      measurableImpressions = new MetricValue.fromJson(_json["measurableImpressions"]);
+    }
     if (_json.containsKey("rowDimensions")) {
       rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
     }
@@ -2381,6 +2388,9 @@ class BidMetricsRow {
     }
     if (impressionsWon != null) {
       _json["impressionsWon"] = (impressionsWon).toJson();
+    }
+    if (measurableImpressions != null) {
+      _json["measurableImpressions"] = (measurableImpressions).toJson();
     }
     if (rowDimensions != null) {
       _json["rowDimensions"] = (rowDimensions).toJson();
@@ -2407,7 +2417,7 @@ class BidResponseWithoutBidsStatusRow {
    */
   RowDimensions rowDimensions;
   /**
-   * The status that caused the bid response to be considered to have no
+   * The status specifying why the bid responses were considered to have no
    * applicable bids.
    * Possible string values are:
    * - "STATUS_UNSPECIFIED" : A placeholder for an undefined status.
@@ -3957,59 +3967,6 @@ class ImpressionMetricsRow {
 }
 
 /**
- * The number of impressions with the specified dimension values that were
- * filtered due to the specified filtering status.
- */
-class ImpressionStatusRow {
-  /**
-   * The number of impressions that were filtered with the specified status.
-   */
-  MetricValue impressionCount;
-  /**
-   * The values of all dimensions associated with metric values in this row.
-   */
-  RowDimensions rowDimensions;
-  /**
-   * The status for which impressions were filtered.
-   * Possible string values are:
-   * - "STATUS_UNSPECIFIED" : A placeholder for an undefined status.
-   * This value will never be returned in responses.
-   * - "PRETARGETING_CONFIGURATIONS" : The impression was filtered because it
-   * did not match the buyer's
-   * pretargeting configurations.
-   */
-  core.String status;
-
-  ImpressionStatusRow();
-
-  ImpressionStatusRow.fromJson(core.Map _json) {
-    if (_json.containsKey("impressionCount")) {
-      impressionCount = new MetricValue.fromJson(_json["impressionCount"]);
-    }
-    if (_json.containsKey("rowDimensions")) {
-      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (impressionCount != null) {
-      _json["impressionCount"] = (impressionCount).toJson();
-    }
-    if (rowDimensions != null) {
-      _json["rowDimensions"] = (rowDimensions).toJson();
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    return _json;
-  }
-}
-
-/**
  * Response message for listing the metrics that are measured in number of bids.
  */
 class ListBidMetricsResponse {
@@ -4616,48 +4573,6 @@ class ListFilteredBidsResponse {
 }
 
 /**
- * Response message for listing all reasons that impressions were filtered (i.e.
- * not considered as an inventory match) for the buyer.
- */
-class ListFilteredImpressionsResponse {
-  /**
-   * List of rows, with counts of filtered impressions aggregated by status.
-   */
-  core.List<ImpressionStatusRow> impressionsStatusRows;
-  /**
-   * A token to retrieve the next page of results.
-   * Pass this value in the
-   * ListFilteredImpressionsRequest.pageToken
-   * field in the subsequent call to the
-   * accounts.filterSets.filteredImpressions.list
-   * method to retrieve the next page of results.
-   */
-  core.String nextPageToken;
-
-  ListFilteredImpressionsResponse();
-
-  ListFilteredImpressionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("impressionsStatusRows")) {
-      impressionsStatusRows = _json["impressionsStatusRows"].map((value) => new ImpressionStatusRow.fromJson(value)).toList();
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (impressionsStatusRows != null) {
-      _json["impressionsStatusRows"] = impressionsStatusRows.map((value) => (value).toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/**
  * Response message for listing the metrics that are measured in number of
  * impressions.
  */
@@ -4732,6 +4647,46 @@ class ListLosingBidsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Response message for listing all reasons for which a buyer was not billed for
+ * a winning bid.
+ */
+class ListNonBillableWinningBidsResponse {
+  /**
+   * A token to retrieve the next page of results.
+   * Pass this value in the
+   * ListNonBillableWinningBidsRequest.pageToken
+   * field in the subsequent call to the
+   * accounts.filterSets.nonBillableWinningBids.list
+   * method to retrieve the next page of results.
+   */
+  core.String nextPageToken;
+  /** List of rows, with counts of bids not billed aggregated by reason. */
+  core.List<NonBillableWinningBidStatusRow> nonBillableWinningBidStatusRows;
+
+  ListNonBillableWinningBidsResponse();
+
+  ListNonBillableWinningBidsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("nonBillableWinningBidStatusRows")) {
+      nonBillableWinningBidStatusRows = _json["nonBillableWinningBidStatusRows"].map((value) => new NonBillableWinningBidStatusRow.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (nonBillableWinningBidStatusRows != null) {
+      _json["nonBillableWinningBidStatusRows"] = nonBillableWinningBidStatusRows.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -4921,6 +4876,60 @@ class NativeContent {
     }
     if (videoUrl != null) {
       _json["videoUrl"] = videoUrl;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The number of winning bids with the specified dimension values for which the
+ * buyer was not billed, as described by the specified status.
+ */
+class NonBillableWinningBidStatusRow {
+  /** The number of bids with the specified status. */
+  MetricValue bidCount;
+  /**
+   * The values of all dimensions associated with metric values in this row.
+   */
+  RowDimensions rowDimensions;
+  /**
+   * The status specifying why the winning bids were not billed.
+   * Possible string values are:
+   * - "STATUS_UNSPECIFIED" : A placeholder for an undefined status.
+   * This value will never be returned in responses.
+   * - "AD_NOT_RENDERED" : The buyer was not billed because the ad was not
+   * rendered by the
+   * publisher.
+   * - "INVALID_IMPRESSION" : The buyer was not billed because the impression
+   * won by the bid was
+   * determined to be invalid.
+   */
+  core.String status;
+
+  NonBillableWinningBidStatusRow();
+
+  NonBillableWinningBidStatusRow.fromJson(core.Map _json) {
+    if (_json.containsKey("bidCount")) {
+      bidCount = new MetricValue.fromJson(_json["bidCount"]);
+    }
+    if (_json.containsKey("rowDimensions")) {
+      rowDimensions = new RowDimensions.fromJson(_json["rowDimensions"]);
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (bidCount != null) {
+      _json["bidCount"] = (bidCount).toJson();
+    }
+    if (rowDimensions != null) {
+      _json["rowDimensions"] = (rowDimensions).toJson();
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }

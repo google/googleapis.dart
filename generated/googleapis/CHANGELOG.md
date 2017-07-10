@@ -1,3 +1,12 @@
+## 0.41.0
+
+* [api-new] dataproc:v1beta2
+* [api-new] cloudtrace:v2
+* [api-new] adexperiencereport:v1
+* [api-new] cloudresourcemanager:v2beta1
+* [api-removed] cloudtrace:v1
+* [api-removed] tracing:v2
+
 ## 0.40.0
 
 * [api] appengine:v1

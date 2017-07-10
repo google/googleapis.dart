@@ -18,7 +18,7 @@
     "description": "Fetches reports for the administrators of G Suite customers about the usage, collaboration, security, and risk for their users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/reports/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-tkaOVzArVVhbxGreMOY21mRaV8\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/YvMEbSpUd5h8xmSpskCE_HPECco\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -95,7 +95,7 @@
                         "applicationName": {
                             "description": "Application name for which the events are to be retrieved.",
                             "location": "path",
-                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)",
+                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)",
                             "required": true,
                             "type": "string"
                         },
@@ -174,7 +174,7 @@
                         "applicationName": {
                             "description": "Application name for which the events are to be retrieved.",
                             "location": "path",
-                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)",
+                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)",
                             "required": true,
                             "type": "string"
                         },
@@ -290,7 +290,7 @@
                         "parameters": {
                             "description": "Represents the application name, parameter name pairs to fetch in csv as app_name1:param_name1, app_name2:param_name2.",
                             "location": "query",
-                            "pattern": "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)",
+                            "pattern": "(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)",
                             "type": "string"
                         }
                     },
@@ -370,7 +370,7 @@
             }
         }
     },
-    "revision": "20170320",
+    "revision": "20170622",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Activities": {

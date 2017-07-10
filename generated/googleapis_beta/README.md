@@ -159,6 +159,12 @@ Writes log entries and manages your Stackdriver Logging configuration.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud OS Login API - oslogin v1alpha
+
+A Google Cloud API for managing OS login configuration for Directory API users.
+
+Official API documentation: https://developers.google.com/apis-explorer/#p/oslogin/v1alpha/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Proximity Beacon API - proximitybeacon v1beta1
 
 Registers, manages, indexes, and searches beacons.
@@ -227,6 +233,12 @@ Accesses a Google App Engine Pull Task Queue over REST.
 Official API documentation: https://developers.google.com/appengine/docs/python/taskqueue/rest
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results API - toolresults v1beta3
+
+Reads and publishes results from Firebase Test Lab.
+
+Official API documentation: https://firebase.google.com/docs/test-lab/
+
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results firstparty API - toolresults v1beta3firstparty
 
 Reads and publishes results from Firebase Test Lab.
 

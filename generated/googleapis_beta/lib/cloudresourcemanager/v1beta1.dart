@@ -624,6 +624,18 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
+   * [pageToken] - A pagination token returned from a previous call to
+   * ListProjects
+   * that indicates from where listing should continue.
+   *
+   * Optional.
+   *
+   * [pageSize] - The maximum number of Projects to return in the response.
+   * The server can return fewer Projects than requested.
+   * If unspecified, server picks an appropriate default.
+   *
+   * Optional.
+   *
    * [filter] - An expression for filtering the results of the request.  Filter
    * rules are
    * case insensitive. The fields eligible for filtering are:
@@ -645,17 +657,14 @@ class ProjectsResourceApi {
    * |labels.color:red&nbsp;labels.size:big|The project's label `color` has the
    * value `red` and its label `size` has the value `big`.
    *
-   * Optional.
-   *
-   * [pageToken] - A pagination token returned from a previous call to
-   * ListProjects
-   * that indicates from where listing should continue.
-   *
-   * Optional.
-   *
-   * [pageSize] - The maximum number of Projects to return in the response.
-   * The server can return fewer Projects than requested.
-   * If unspecified, server picks an appropriate default.
+   * If you specify a filter that has both `parent.type` and `parent.id`, then
+   * the `resourcemanager.projects.list` permission is checked on the parent.
+   * If the user has this permission, all projects under the parent will be
+   * returned after remaining filters have been applied. If the user lacks this
+   * permission, then all projects for which the user has the
+   * `resourcemanager.projects.get` permission will be returned after remaining
+   * filters have been applied. If no filter is specified, the call will return
+   * projects for which the user has `resourcemanager.projects.get` permissions.
    *
    * Optional.
    *
@@ -667,7 +676,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListProjectsResponse> list({core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListProjectsResponse> list({core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -675,14 +684,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/projects';

@@ -39,16 +39,6 @@ class EntitiesResourceApi {
    *
    * Request parameters:
    *
-   * [types] - Restricts returned entities with these types, e.g. Person
-   * (as defined in http://schema.org/Person). If multiple types are specified,
-   * returned entities will contain one or more of these types.
-   *
-   * [indent] - Enables indenting of json results.
-   *
-   * [languages] - The list of language codes (defined in ISO 693) to run the
-   * query with,
-   * e.g. 'en'.
-   *
    * [ids] - The list of entity id to be used for search instead of query
    * string.
    * To specify multiple ids in the HTTP request, repeat the parameter in the
@@ -60,6 +50,16 @@ class EntitiesResourceApi {
    *
    * [query] - The literal query string for search.
    *
+   * [types] - Restricts returned entities with these types, e.g. Person
+   * (as defined in http://schema.org/Person). If multiple types are specified,
+   * returned entities will contain one or more of these types.
+   *
+   * [indent] - Enables indenting of json results.
+   *
+   * [languages] - The list of language codes (defined in ISO 693) to run the
+   * query with,
+   * e.g. 'en'.
+   *
    * Completes with a [SearchResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -68,7 +68,7 @@ class EntitiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SearchResponse> search({core.List<core.String> types, core.bool indent, core.List<core.String> languages, core.List<core.String> ids, core.int limit, core.bool prefix, core.String query}) {
+  async.Future<SearchResponse> search({core.List<core.String> ids, core.int limit, core.bool prefix, core.String query, core.List<core.String> types, core.bool indent, core.List<core.String> languages}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -76,15 +76,6 @@ class EntitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (types != null) {
-      _queryParams["types"] = types;
-    }
-    if (indent != null) {
-      _queryParams["indent"] = ["${indent}"];
-    }
-    if (languages != null) {
-      _queryParams["languages"] = languages;
-    }
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
@@ -96,6 +87,15 @@ class EntitiesResourceApi {
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if (types != null) {
+      _queryParams["types"] = types;
+    }
+    if (indent != null) {
+      _queryParams["indent"] = ["${indent}"];
+    }
+    if (languages != null) {
+      _queryParams["languages"] = languages;
     }
 
     _url = 'v1/entities:search';

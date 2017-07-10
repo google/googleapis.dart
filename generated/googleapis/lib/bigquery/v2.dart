@@ -5050,6 +5050,8 @@ class TableListTables {
   core.Map<core.String, core.String> labels;
   /** A reference uniquely identifying the table. */
   TableReference tableReference;
+  /** [Experimental] The time-based partitioning for this table. */
+  TimePartitioning timePartitioning;
   /** The type of table. Possible values are: TABLE, VIEW. */
   core.String type;
   /** Additional details for a view. */
@@ -5072,6 +5074,9 @@ class TableListTables {
     }
     if (_json.containsKey("tableReference")) {
       tableReference = new TableReference.fromJson(_json["tableReference"]);
+    }
+    if (_json.containsKey("timePartitioning")) {
+      timePartitioning = new TimePartitioning.fromJson(_json["timePartitioning"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -5097,6 +5102,9 @@ class TableListTables {
     }
     if (tableReference != null) {
       _json["tableReference"] = (tableReference).toJson();
+    }
+    if (timePartitioning != null) {
+      _json["timePartitioning"] = (timePartitioning).toJson();
     }
     if (type != null) {
       _json["type"] = type;

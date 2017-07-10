@@ -1363,14 +1363,14 @@ class OrganizationsSinksResourceApi {
    *
    * Value must have pattern "^organizations/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -1380,7 +1380,7 @@ class OrganizationsSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListSinksResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListSinksResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1391,11 +1391,11 @@ class OrganizationsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -1762,14 +1762,14 @@ class ProjectsMetricsResourceApi {
    *
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
+   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
-   *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogMetricsResponse].
    *
@@ -1779,7 +1779,7 @@ class ProjectsMetricsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogMetricsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListLogMetricsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1790,11 +1790,11 @@ class ProjectsMetricsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';

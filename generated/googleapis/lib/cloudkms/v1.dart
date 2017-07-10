@@ -98,11 +98,11 @@ class ProjectsLocationsResourceApi {
    * [name] - The resource that owns the locations collection, if applicable.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - The standard list page size.
-   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListLocationsResponse].
    *
@@ -112,7 +112,7 @@ class ProjectsLocationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLocationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListLocationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,14 +123,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
@@ -710,13 +710,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * `projects / * /locations / * /keyRings / * `.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
    *
+   * [pageToken] - Optional pagination token, returned earlier via
+   * ListCryptoKeysResponse.next_page_token.
+   *
    * [pageSize] - Optional limit on the number of CryptoKeys to include in the
    * response.  Further CryptoKeys can subsequently be obtained by
    * including the ListCryptoKeysResponse.next_page_token in a subsequent
    * request.  If unspecified, the server will pick an appropriate default.
-   *
-   * [pageToken] - Optional pagination token, returned earlier via
-   * ListCryptoKeysResponse.next_page_token.
    *
    * Completes with a [ListCryptoKeysResponse].
    *
@@ -726,7 +726,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListCryptoKeysResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -737,11 +737,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/cryptoKeys';
@@ -2082,7 +2082,7 @@ class Expr {
   core.String description;
   /**
    * Textual representation of an expression in
-   * [Common Expression Language](http://go/api-expr) syntax.
+   * Common Expression Language syntax.
    *
    * The application context of the containing message determines which
    * well-known feature set of CEL is supported.
@@ -2384,7 +2384,31 @@ class Location {
   }
 }
 
-/** Specifies what kind of log the caller must write */
+/**
+ * Specifies what kind of log the caller must write
+ * Increment a streamz counter with the specified metric and field names.
+ *
+ * Metric names should start with a '/', generally be lowercase-only,
+ * and end in "_count". Field names should not contain an initial slash.
+ * The actual exported metric names will have "/iam/policy" prepended.
+ *
+ * Field names correspond to IAM request parameters and field values are
+ * their respective values.
+ *
+ * At present the only supported field names are
+ *    - "iam_principal", corresponding to IAMContext.principal;
+ *    - "" (empty string), resulting in one aggretated counter with no field.
+ *
+ * Examples:
+ *   counter { metric: "/debug_access_count"  field: "iam_principal" }
+ *   ==> increment counter /iam/policy/backend_debug_access_count
+ *                         {iam_principal=[value of IAMContext.principal]}
+ *
+ * At this time we do not support:
+ * * multiple field names (though this may be supported in the future)
+ * * decrementing the counter
+ * * incrementing it by anything other than 1
+ */
 class LogConfig {
   /** Cloud audit options. */
   CloudAuditOptions cloudAudit;

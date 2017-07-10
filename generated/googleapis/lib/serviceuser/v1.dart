@@ -4583,6 +4583,11 @@ class UsageRule {
    * Refer to selector for syntax details.
    */
   core.String selector;
+  /**
+   * True, if the method should skip service control. If so, no control plane
+   * feature (like quota and billing) will be enabled.
+   */
+  core.bool skipServiceControl;
 
   UsageRule();
 
@@ -4593,6 +4598,9 @@ class UsageRule {
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
+    if (_json.containsKey("skipServiceControl")) {
+      skipServiceControl = _json["skipServiceControl"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4602,6 +4610,9 @@ class UsageRule {
     }
     if (selector != null) {
       _json["selector"] = selector;
+    }
+    if (skipServiceControl != null) {
+      _json["skipServiceControl"] = skipServiceControl;
     }
     return _json;
   }

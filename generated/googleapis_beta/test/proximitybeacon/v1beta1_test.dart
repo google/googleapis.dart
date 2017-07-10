@@ -93,14 +93,14 @@ checkAttachmentInfo(api.AttachmentInfo o) {
   buildCounterAttachmentInfo--;
 }
 
-buildUnnamed3302() {
+buildUnnamed3430() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3302(core.Map<core.String, core.String> o) {
+checkUnnamed3430(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -119,7 +119,7 @@ buildBeacon() {
     o.indoorLevel = buildIndoorLevel();
     o.latLng = buildLatLng();
     o.placeId = "foo";
-    o.properties = buildUnnamed3302();
+    o.properties = buildUnnamed3430();
     o.provisioningKey = "foo";
     o.status = "foo";
   }
@@ -138,7 +138,7 @@ checkBeacon(api.Beacon o) {
     checkIndoorLevel(o.indoorLevel);
     checkLatLng(o.latLng);
     unittest.expect(o.placeId, unittest.equals('foo'));
-    checkUnnamed3302(o.properties);
+    checkUnnamed3430(o.properties);
     unittest.expect(o.provisioningKey, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
   }
@@ -170,14 +170,14 @@ checkBeaconAttachment(api.BeaconAttachment o) {
   buildCounterBeaconAttachment--;
 }
 
-buildUnnamed3303() {
+buildUnnamed3431() {
   var o = new core.List<api.AttachmentInfo>();
   o.add(buildAttachmentInfo());
   o.add(buildAttachmentInfo());
   return o;
 }
 
-checkUnnamed3303(core.List<api.AttachmentInfo> o) {
+checkUnnamed3431(core.List<api.AttachmentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachmentInfo(o[0]);
   checkAttachmentInfo(o[1]);
@@ -189,7 +189,7 @@ buildBeaconInfo() {
   buildCounterBeaconInfo++;
   if (buildCounterBeaconInfo < 3) {
     o.advertisedId = buildAdvertisedId();
-    o.attachments = buildUnnamed3303();
+    o.attachments = buildUnnamed3431();
     o.beaconName = "foo";
   }
   buildCounterBeaconInfo--;
@@ -200,7 +200,7 @@ checkBeaconInfo(api.BeaconInfo o) {
   buildCounterBeaconInfo++;
   if (buildCounterBeaconInfo < 3) {
     checkAdvertisedId(o.advertisedId);
-    checkUnnamed3303(o.attachments);
+    checkUnnamed3431(o.attachments);
     unittest.expect(o.beaconName, unittest.equals('foo'));
   }
   buildCounterBeaconInfo--;
@@ -248,14 +248,14 @@ checkDeleteAttachmentsResponse(api.DeleteAttachmentsResponse o) {
   buildCounterDeleteAttachmentsResponse--;
 }
 
-buildUnnamed3304() {
+buildUnnamed3432() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3304(core.List<core.String> o) {
+checkUnnamed3432(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -266,7 +266,7 @@ buildDiagnostics() {
   var o = new api.Diagnostics();
   buildCounterDiagnostics++;
   if (buildCounterDiagnostics < 3) {
-    o.alerts = buildUnnamed3304();
+    o.alerts = buildUnnamed3432();
     o.beaconName = "foo";
     o.estimatedLowBatteryDate = buildDate();
   }
@@ -277,7 +277,7 @@ buildDiagnostics() {
 checkDiagnostics(api.Diagnostics o) {
   buildCounterDiagnostics++;
   if (buildCounterDiagnostics < 3) {
-    checkUnnamed3304(o.alerts);
+    checkUnnamed3432(o.alerts);
     unittest.expect(o.beaconName, unittest.equals('foo'));
     checkDate(o.estimatedLowBatteryDate);
   }
@@ -353,27 +353,27 @@ checkEphemeralIdRegistrationParams(api.EphemeralIdRegistrationParams o) {
   buildCounterEphemeralIdRegistrationParams--;
 }
 
-buildUnnamed3305() {
+buildUnnamed3433() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3305(core.List<core.String> o) {
+checkUnnamed3433(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3306() {
+buildUnnamed3434() {
   var o = new core.List<api.Observation>();
   o.add(buildObservation());
   o.add(buildObservation());
   return o;
 }
 
-checkUnnamed3306(core.List<api.Observation> o) {
+checkUnnamed3434(core.List<api.Observation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObservation(o[0]);
   checkObservation(o[1]);
@@ -384,8 +384,8 @@ buildGetInfoForObservedBeaconsRequest() {
   var o = new api.GetInfoForObservedBeaconsRequest();
   buildCounterGetInfoForObservedBeaconsRequest++;
   if (buildCounterGetInfoForObservedBeaconsRequest < 3) {
-    o.namespacedTypes = buildUnnamed3305();
-    o.observations = buildUnnamed3306();
+    o.namespacedTypes = buildUnnamed3433();
+    o.observations = buildUnnamed3434();
   }
   buildCounterGetInfoForObservedBeaconsRequest--;
   return o;
@@ -394,20 +394,20 @@ buildGetInfoForObservedBeaconsRequest() {
 checkGetInfoForObservedBeaconsRequest(api.GetInfoForObservedBeaconsRequest o) {
   buildCounterGetInfoForObservedBeaconsRequest++;
   if (buildCounterGetInfoForObservedBeaconsRequest < 3) {
-    checkUnnamed3305(o.namespacedTypes);
-    checkUnnamed3306(o.observations);
+    checkUnnamed3433(o.namespacedTypes);
+    checkUnnamed3434(o.observations);
   }
   buildCounterGetInfoForObservedBeaconsRequest--;
 }
 
-buildUnnamed3307() {
+buildUnnamed3435() {
   var o = new core.List<api.BeaconInfo>();
   o.add(buildBeaconInfo());
   o.add(buildBeaconInfo());
   return o;
 }
 
-checkUnnamed3307(core.List<api.BeaconInfo> o) {
+checkUnnamed3435(core.List<api.BeaconInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeaconInfo(o[0]);
   checkBeaconInfo(o[1]);
@@ -418,7 +418,7 @@ buildGetInfoForObservedBeaconsResponse() {
   var o = new api.GetInfoForObservedBeaconsResponse();
   buildCounterGetInfoForObservedBeaconsResponse++;
   if (buildCounterGetInfoForObservedBeaconsResponse < 3) {
-    o.beacons = buildUnnamed3307();
+    o.beacons = buildUnnamed3435();
   }
   buildCounterGetInfoForObservedBeaconsResponse--;
   return o;
@@ -427,7 +427,7 @@ buildGetInfoForObservedBeaconsResponse() {
 checkGetInfoForObservedBeaconsResponse(api.GetInfoForObservedBeaconsResponse o) {
   buildCounterGetInfoForObservedBeaconsResponse++;
   if (buildCounterGetInfoForObservedBeaconsResponse < 3) {
-    checkUnnamed3307(o.beacons);
+    checkUnnamed3435(o.beacons);
   }
   buildCounterGetInfoForObservedBeaconsResponse--;
 }
@@ -472,14 +472,14 @@ checkLatLng(api.LatLng o) {
   buildCounterLatLng--;
 }
 
-buildUnnamed3308() {
+buildUnnamed3436() {
   var o = new core.List<api.BeaconAttachment>();
   o.add(buildBeaconAttachment());
   o.add(buildBeaconAttachment());
   return o;
 }
 
-checkUnnamed3308(core.List<api.BeaconAttachment> o) {
+checkUnnamed3436(core.List<api.BeaconAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeaconAttachment(o[0]);
   checkBeaconAttachment(o[1]);
@@ -490,7 +490,7 @@ buildListBeaconAttachmentsResponse() {
   var o = new api.ListBeaconAttachmentsResponse();
   buildCounterListBeaconAttachmentsResponse++;
   if (buildCounterListBeaconAttachmentsResponse < 3) {
-    o.attachments = buildUnnamed3308();
+    o.attachments = buildUnnamed3436();
   }
   buildCounterListBeaconAttachmentsResponse--;
   return o;
@@ -499,19 +499,19 @@ buildListBeaconAttachmentsResponse() {
 checkListBeaconAttachmentsResponse(api.ListBeaconAttachmentsResponse o) {
   buildCounterListBeaconAttachmentsResponse++;
   if (buildCounterListBeaconAttachmentsResponse < 3) {
-    checkUnnamed3308(o.attachments);
+    checkUnnamed3436(o.attachments);
   }
   buildCounterListBeaconAttachmentsResponse--;
 }
 
-buildUnnamed3309() {
+buildUnnamed3437() {
   var o = new core.List<api.Beacon>();
   o.add(buildBeacon());
   o.add(buildBeacon());
   return o;
 }
 
-checkUnnamed3309(core.List<api.Beacon> o) {
+checkUnnamed3437(core.List<api.Beacon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBeacon(o[0]);
   checkBeacon(o[1]);
@@ -522,7 +522,7 @@ buildListBeaconsResponse() {
   var o = new api.ListBeaconsResponse();
   buildCounterListBeaconsResponse++;
   if (buildCounterListBeaconsResponse < 3) {
-    o.beacons = buildUnnamed3309();
+    o.beacons = buildUnnamed3437();
     o.nextPageToken = "foo";
     o.totalCount = "foo";
   }
@@ -533,21 +533,21 @@ buildListBeaconsResponse() {
 checkListBeaconsResponse(api.ListBeaconsResponse o) {
   buildCounterListBeaconsResponse++;
   if (buildCounterListBeaconsResponse < 3) {
-    checkUnnamed3309(o.beacons);
+    checkUnnamed3437(o.beacons);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalCount, unittest.equals('foo'));
   }
   buildCounterListBeaconsResponse--;
 }
 
-buildUnnamed3310() {
+buildUnnamed3438() {
   var o = new core.List<api.Diagnostics>();
   o.add(buildDiagnostics());
   o.add(buildDiagnostics());
   return o;
 }
 
-checkUnnamed3310(core.List<api.Diagnostics> o) {
+checkUnnamed3438(core.List<api.Diagnostics> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDiagnostics(o[0]);
   checkDiagnostics(o[1]);
@@ -558,7 +558,7 @@ buildListDiagnosticsResponse() {
   var o = new api.ListDiagnosticsResponse();
   buildCounterListDiagnosticsResponse++;
   if (buildCounterListDiagnosticsResponse < 3) {
-    o.diagnostics = buildUnnamed3310();
+    o.diagnostics = buildUnnamed3438();
     o.nextPageToken = "foo";
   }
   buildCounterListDiagnosticsResponse--;
@@ -568,20 +568,20 @@ buildListDiagnosticsResponse() {
 checkListDiagnosticsResponse(api.ListDiagnosticsResponse o) {
   buildCounterListDiagnosticsResponse++;
   if (buildCounterListDiagnosticsResponse < 3) {
-    checkUnnamed3310(o.diagnostics);
+    checkUnnamed3438(o.diagnostics);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDiagnosticsResponse--;
 }
 
-buildUnnamed3311() {
+buildUnnamed3439() {
   var o = new core.List<api.Namespace>();
   o.add(buildNamespace());
   o.add(buildNamespace());
   return o;
 }
 
-checkUnnamed3311(core.List<api.Namespace> o) {
+checkUnnamed3439(core.List<api.Namespace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamespace(o[0]);
   checkNamespace(o[1]);
@@ -592,7 +592,7 @@ buildListNamespacesResponse() {
   var o = new api.ListNamespacesResponse();
   buildCounterListNamespacesResponse++;
   if (buildCounterListNamespacesResponse < 3) {
-    o.namespaces = buildUnnamed3311();
+    o.namespaces = buildUnnamed3439();
   }
   buildCounterListNamespacesResponse--;
   return o;
@@ -601,7 +601,7 @@ buildListNamespacesResponse() {
 checkListNamespacesResponse(api.ListNamespacesResponse o) {
   buildCounterListNamespacesResponse++;
   if (buildCounterListNamespacesResponse < 3) {
-    checkUnnamed3311(o.namespaces);
+    checkUnnamed3439(o.namespaces);
   }
   buildCounterListNamespacesResponse--;
 }
@@ -1133,8 +1133,8 @@ main() {
       var mock = new HttpServerMock();
       api.BeaconsResourceApi res = new api.ProximitybeaconApi(mock).beacons;
       var arg_pageToken = "foo";
-      var arg_q = "foo";
       var arg_pageSize = 42;
+      var arg_q = "foo";
       var arg_projectId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1163,8 +1163,8 @@ main() {
           }
         }
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
@@ -1174,7 +1174,7 @@ main() {
         var resp = convert.JSON.encode(buildListBeaconsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageToken: arg_pageToken, q: arg_q, pageSize: arg_pageSize, projectId: arg_projectId).then(unittest.expectAsync1(((api.ListBeaconsResponse response) {
+      res.list(pageToken: arg_pageToken, pageSize: arg_pageSize, q: arg_q, projectId: arg_projectId).then(unittest.expectAsync1(((api.ListBeaconsResponse response) {
         checkListBeaconsResponse(response);
       })));
     });
@@ -1489,8 +1489,8 @@ main() {
       api.BeaconsDiagnosticsResourceApi res = new api.ProximitybeaconApi(mock).beacons.diagnostics;
       var arg_beaconName = "foo";
       var arg_pageToken = "foo";
-      var arg_pageSize = 42;
       var arg_alertFilter = "foo";
+      var arg_pageSize = 42;
       var arg_projectId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1520,8 +1520,8 @@ main() {
           }
         }
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["alertFilter"].first, unittest.equals(arg_alertFilter));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["projectId"].first, unittest.equals(arg_projectId));
 
 
@@ -1531,7 +1531,7 @@ main() {
         var resp = convert.JSON.encode(buildListDiagnosticsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_beaconName, pageToken: arg_pageToken, pageSize: arg_pageSize, alertFilter: arg_alertFilter, projectId: arg_projectId).then(unittest.expectAsync1(((api.ListDiagnosticsResponse response) {
+      res.list(arg_beaconName, pageToken: arg_pageToken, alertFilter: arg_alertFilter, pageSize: arg_pageSize, projectId: arg_projectId).then(unittest.expectAsync1(((api.ListDiagnosticsResponse response) {
         checkListDiagnosticsResponse(response);
       })));
     });

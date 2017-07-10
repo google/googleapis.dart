@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed99() {
+buildUnnamed178() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed99(core.Map<core.String, core.Object> o) {
+checkUnnamed178(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
@@ -69,7 +69,7 @@ buildOperationMetadataV1Beta2() {
   var o = new api.OperationMetadataV1Beta2();
   buildCounterOperationMetadataV1Beta2++;
   if (buildCounterOperationMetadataV1Beta2 < 3) {
-    o.request = buildUnnamed99();
+    o.request = buildUnnamed178();
     o.target = "foo";
     o.type = "foo";
   }
@@ -80,7 +80,7 @@ buildOperationMetadataV1Beta2() {
 checkOperationMetadataV1Beta2(api.OperationMetadataV1Beta2 o) {
   buildCounterOperationMetadataV1Beta2++;
   if (buildCounterOperationMetadataV1Beta2 < 3) {
-    checkUnnamed99(o.request);
+    checkUnnamed178(o.request);
     unittest.expect(o.target, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }

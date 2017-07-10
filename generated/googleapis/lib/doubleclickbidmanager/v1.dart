@@ -487,8 +487,8 @@ class DownloadLineItemsRequest {
 /** Download line items response. */
 class DownloadLineItemsResponse {
   /**
-   * Retrieved line items in CSV format. Refer to  Entity Write File Format or
-   * Structured Data File Format for more information on file formats.
+   * Retrieved line items in CSV format. For more information about file
+   * formats, see  Entity Write File Format.
    */
   core.String lineItems;
 

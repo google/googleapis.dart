@@ -51,1444 +51,1634 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-core.int buildCounterCancelOperationRequest = 0;
-buildCancelOperationRequest() {
-  var o = new api.CancelOperationRequest();
-  buildCounterCancelOperationRequest++;
-  if (buildCounterCancelOperationRequest < 3) {
+core.int buildCounterGoogleLongrunningCancelOperationRequest = 0;
+buildGoogleLongrunningCancelOperationRequest() {
+  var o = new api.GoogleLongrunningCancelOperationRequest();
+  buildCounterGoogleLongrunningCancelOperationRequest++;
+  if (buildCounterGoogleLongrunningCancelOperationRequest < 3) {
   }
-  buildCounterCancelOperationRequest--;
+  buildCounterGoogleLongrunningCancelOperationRequest--;
   return o;
 }
 
-checkCancelOperationRequest(api.CancelOperationRequest o) {
-  buildCounterCancelOperationRequest++;
-  if (buildCounterCancelOperationRequest < 3) {
+checkGoogleLongrunningCancelOperationRequest(api.GoogleLongrunningCancelOperationRequest o) {
+  buildCounterGoogleLongrunningCancelOperationRequest++;
+  if (buildCounterGoogleLongrunningCancelOperationRequest < 3) {
   }
-  buildCounterCancelOperationRequest--;
+  buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.int buildCounterCategoryDescription = 0;
-buildCategoryDescription() {
-  var o = new api.CategoryDescription();
-  buildCounterCategoryDescription++;
-  if (buildCounterCategoryDescription < 3) {
-    o.displayName = "foo";
-    o.name = "foo";
-  }
-  buildCounterCategoryDescription--;
+buildUnnamed3287() {
+  var o = new core.List<api.GoogleLongrunningOperation>();
+  o.add(buildGoogleLongrunningOperation());
+  o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-checkCategoryDescription(api.CategoryDescription o) {
-  buildCounterCategoryDescription++;
-  if (buildCounterCategoryDescription < 3) {
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-  }
-  buildCounterCategoryDescription--;
-}
-
-core.int buildCounterCloudStorageKey = 0;
-buildCloudStorageKey() {
-  var o = new api.CloudStorageKey();
-  buildCounterCloudStorageKey++;
-  if (buildCounterCloudStorageKey < 3) {
-    o.filePath = "foo";
-    o.startOffset = "foo";
-  }
-  buildCounterCloudStorageKey--;
-  return o;
-}
-
-checkCloudStorageKey(api.CloudStorageKey o) {
-  buildCounterCloudStorageKey++;
-  if (buildCounterCloudStorageKey < 3) {
-    unittest.expect(o.filePath, unittest.equals('foo'));
-    unittest.expect(o.startOffset, unittest.equals('foo'));
-  }
-  buildCounterCloudStorageKey--;
-}
-
-core.int buildCounterCloudStorageOptions = 0;
-buildCloudStorageOptions() {
-  var o = new api.CloudStorageOptions();
-  buildCounterCloudStorageOptions++;
-  if (buildCounterCloudStorageOptions < 3) {
-    o.fileSet = buildFileSet();
-  }
-  buildCounterCloudStorageOptions--;
-  return o;
-}
-
-checkCloudStorageOptions(api.CloudStorageOptions o) {
-  buildCounterCloudStorageOptions++;
-  if (buildCounterCloudStorageOptions < 3) {
-    checkFileSet(o.fileSet);
-  }
-  buildCounterCloudStorageOptions--;
-}
-
-core.int buildCounterCloudStoragePath = 0;
-buildCloudStoragePath() {
-  var o = new api.CloudStoragePath();
-  buildCounterCloudStoragePath++;
-  if (buildCounterCloudStoragePath < 3) {
-    o.path = "foo";
-  }
-  buildCounterCloudStoragePath--;
-  return o;
-}
-
-checkCloudStoragePath(api.CloudStoragePath o) {
-  buildCounterCloudStoragePath++;
-  if (buildCounterCloudStoragePath < 3) {
-    unittest.expect(o.path, unittest.equals('foo'));
-  }
-  buildCounterCloudStoragePath--;
-}
-
-core.int buildCounterContentItem = 0;
-buildContentItem() {
-  var o = new api.ContentItem();
-  buildCounterContentItem++;
-  if (buildCounterContentItem < 3) {
-    o.data = "foo";
-    o.type = "foo";
-    o.value = "foo";
-  }
-  buildCounterContentItem--;
-  return o;
-}
-
-checkContentItem(api.ContentItem o) {
-  buildCounterContentItem++;
-  if (buildCounterContentItem < 3) {
-    unittest.expect(o.data, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
-  }
-  buildCounterContentItem--;
-}
-
-core.int buildCounterCreateInspectOperationRequest = 0;
-buildCreateInspectOperationRequest() {
-  var o = new api.CreateInspectOperationRequest();
-  buildCounterCreateInspectOperationRequest++;
-  if (buildCounterCreateInspectOperationRequest < 3) {
-    o.inspectConfig = buildInspectConfig();
-    o.outputConfig = buildOutputStorageConfig();
-    o.storageConfig = buildStorageConfig();
-  }
-  buildCounterCreateInspectOperationRequest--;
-  return o;
-}
-
-checkCreateInspectOperationRequest(api.CreateInspectOperationRequest o) {
-  buildCounterCreateInspectOperationRequest++;
-  if (buildCounterCreateInspectOperationRequest < 3) {
-    checkInspectConfig(o.inspectConfig);
-    checkOutputStorageConfig(o.outputConfig);
-    checkStorageConfig(o.storageConfig);
-  }
-  buildCounterCreateInspectOperationRequest--;
-}
-
-core.int buildCounterDatastoreKey = 0;
-buildDatastoreKey() {
-  var o = new api.DatastoreKey();
-  buildCounterDatastoreKey++;
-  if (buildCounterDatastoreKey < 3) {
-    o.entityKey = buildKey();
-  }
-  buildCounterDatastoreKey--;
-  return o;
-}
-
-checkDatastoreKey(api.DatastoreKey o) {
-  buildCounterDatastoreKey++;
-  if (buildCounterDatastoreKey < 3) {
-    checkKey(o.entityKey);
-  }
-  buildCounterDatastoreKey--;
-}
-
-buildUnnamed3169() {
-  var o = new core.List<api.Projection>();
-  o.add(buildProjection());
-  o.add(buildProjection());
-  return o;
-}
-
-checkUnnamed3169(core.List<api.Projection> o) {
+checkUnnamed3287(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProjection(o[0]);
-  checkProjection(o[1]);
+  checkGoogleLongrunningOperation(o[0]);
+  checkGoogleLongrunningOperation(o[1]);
 }
 
-core.int buildCounterDatastoreOptions = 0;
-buildDatastoreOptions() {
-  var o = new api.DatastoreOptions();
-  buildCounterDatastoreOptions++;
-  if (buildCounterDatastoreOptions < 3) {
-    o.kind = buildKindExpression();
-    o.partitionId = buildPartitionId();
-    o.projection = buildUnnamed3169();
-  }
-  buildCounterDatastoreOptions--;
-  return o;
-}
-
-checkDatastoreOptions(api.DatastoreOptions o) {
-  buildCounterDatastoreOptions++;
-  if (buildCounterDatastoreOptions < 3) {
-    checkKindExpression(o.kind);
-    checkPartitionId(o.partitionId);
-    checkUnnamed3169(o.projection);
-  }
-  buildCounterDatastoreOptions--;
-}
-
-core.int buildCounterEmpty = 0;
-buildEmpty() {
-  var o = new api.Empty();
-  buildCounterEmpty++;
-  if (buildCounterEmpty < 3) {
-  }
-  buildCounterEmpty--;
-  return o;
-}
-
-checkEmpty(api.Empty o) {
-  buildCounterEmpty++;
-  if (buildCounterEmpty < 3) {
-  }
-  buildCounterEmpty--;
-}
-
-core.int buildCounterFieldId = 0;
-buildFieldId() {
-  var o = new api.FieldId();
-  buildCounterFieldId++;
-  if (buildCounterFieldId < 3) {
-    o.columnName = "foo";
-  }
-  buildCounterFieldId--;
-  return o;
-}
-
-checkFieldId(api.FieldId o) {
-  buildCounterFieldId++;
-  if (buildCounterFieldId < 3) {
-    unittest.expect(o.columnName, unittest.equals('foo'));
-  }
-  buildCounterFieldId--;
-}
-
-core.int buildCounterFileSet = 0;
-buildFileSet() {
-  var o = new api.FileSet();
-  buildCounterFileSet++;
-  if (buildCounterFileSet < 3) {
-    o.url = "foo";
-  }
-  buildCounterFileSet--;
-  return o;
-}
-
-checkFileSet(api.FileSet o) {
-  buildCounterFileSet++;
-  if (buildCounterFileSet < 3) {
-    unittest.expect(o.url, unittest.equals('foo'));
-  }
-  buildCounterFileSet--;
-}
-
-core.int buildCounterFinding = 0;
-buildFinding() {
-  var o = new api.Finding();
-  buildCounterFinding++;
-  if (buildCounterFinding < 3) {
-    o.createTime = "foo";
-    o.infoType = buildInfoType();
-    o.likelihood = "foo";
-    o.location = buildLocation();
-    o.quote = "foo";
-  }
-  buildCounterFinding--;
-  return o;
-}
-
-checkFinding(api.Finding o) {
-  buildCounterFinding++;
-  if (buildCounterFinding < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    checkInfoType(o.infoType);
-    unittest.expect(o.likelihood, unittest.equals('foo'));
-    checkLocation(o.location);
-    unittest.expect(o.quote, unittest.equals('foo'));
-  }
-  buildCounterFinding--;
-}
-
-core.int buildCounterImageLocation = 0;
-buildImageLocation() {
-  var o = new api.ImageLocation();
-  buildCounterImageLocation++;
-  if (buildCounterImageLocation < 3) {
-    o.height = 42;
-    o.left = 42;
-    o.top = 42;
-    o.width = 42;
-  }
-  buildCounterImageLocation--;
-  return o;
-}
-
-checkImageLocation(api.ImageLocation o) {
-  buildCounterImageLocation++;
-  if (buildCounterImageLocation < 3) {
-    unittest.expect(o.height, unittest.equals(42));
-    unittest.expect(o.left, unittest.equals(42));
-    unittest.expect(o.top, unittest.equals(42));
-    unittest.expect(o.width, unittest.equals(42));
-  }
-  buildCounterImageLocation--;
-}
-
-core.int buildCounterInfoType = 0;
-buildInfoType() {
-  var o = new api.InfoType();
-  buildCounterInfoType++;
-  if (buildCounterInfoType < 3) {
-    o.name = "foo";
-  }
-  buildCounterInfoType--;
-  return o;
-}
-
-checkInfoType(api.InfoType o) {
-  buildCounterInfoType++;
-  if (buildCounterInfoType < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-  }
-  buildCounterInfoType--;
-}
-
-buildUnnamed3170() {
-  var o = new core.List<api.CategoryDescription>();
-  o.add(buildCategoryDescription());
-  o.add(buildCategoryDescription());
-  return o;
-}
-
-checkUnnamed3170(core.List<api.CategoryDescription> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkCategoryDescription(o[0]);
-  checkCategoryDescription(o[1]);
-}
-
-core.int buildCounterInfoTypeDescription = 0;
-buildInfoTypeDescription() {
-  var o = new api.InfoTypeDescription();
-  buildCounterInfoTypeDescription++;
-  if (buildCounterInfoTypeDescription < 3) {
-    o.categories = buildUnnamed3170();
-    o.displayName = "foo";
-    o.name = "foo";
-  }
-  buildCounterInfoTypeDescription--;
-  return o;
-}
-
-checkInfoTypeDescription(api.InfoTypeDescription o) {
-  buildCounterInfoTypeDescription++;
-  if (buildCounterInfoTypeDescription < 3) {
-    checkUnnamed3170(o.categories);
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-  }
-  buildCounterInfoTypeDescription--;
-}
-
-buildUnnamed3171() {
-  var o = new core.List<api.InfoType>();
-  o.add(buildInfoType());
-  o.add(buildInfoType());
-  return o;
-}
-
-checkUnnamed3171(core.List<api.InfoType> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkInfoType(o[0]);
-  checkInfoType(o[1]);
-}
-
-core.int buildCounterInspectConfig = 0;
-buildInspectConfig() {
-  var o = new api.InspectConfig();
-  buildCounterInspectConfig++;
-  if (buildCounterInspectConfig < 3) {
-    o.excludeTypes = true;
-    o.includeQuote = true;
-    o.infoTypes = buildUnnamed3171();
-    o.maxFindings = 42;
-    o.minLikelihood = "foo";
-  }
-  buildCounterInspectConfig--;
-  return o;
-}
-
-checkInspectConfig(api.InspectConfig o) {
-  buildCounterInspectConfig++;
-  if (buildCounterInspectConfig < 3) {
-    unittest.expect(o.excludeTypes, unittest.isTrue);
-    unittest.expect(o.includeQuote, unittest.isTrue);
-    checkUnnamed3171(o.infoTypes);
-    unittest.expect(o.maxFindings, unittest.equals(42));
-    unittest.expect(o.minLikelihood, unittest.equals('foo'));
-  }
-  buildCounterInspectConfig--;
-}
-
-buildUnnamed3172() {
-  var o = new core.List<api.ContentItem>();
-  o.add(buildContentItem());
-  o.add(buildContentItem());
-  return o;
-}
-
-checkUnnamed3172(core.List<api.ContentItem> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkContentItem(o[0]);
-  checkContentItem(o[1]);
-}
-
-core.int buildCounterInspectContentRequest = 0;
-buildInspectContentRequest() {
-  var o = new api.InspectContentRequest();
-  buildCounterInspectContentRequest++;
-  if (buildCounterInspectContentRequest < 3) {
-    o.inspectConfig = buildInspectConfig();
-    o.items = buildUnnamed3172();
-  }
-  buildCounterInspectContentRequest--;
-  return o;
-}
-
-checkInspectContentRequest(api.InspectContentRequest o) {
-  buildCounterInspectContentRequest++;
-  if (buildCounterInspectContentRequest < 3) {
-    checkInspectConfig(o.inspectConfig);
-    checkUnnamed3172(o.items);
-  }
-  buildCounterInspectContentRequest--;
-}
-
-buildUnnamed3173() {
-  var o = new core.List<api.InspectResult>();
-  o.add(buildInspectResult());
-  o.add(buildInspectResult());
-  return o;
-}
-
-checkUnnamed3173(core.List<api.InspectResult> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkInspectResult(o[0]);
-  checkInspectResult(o[1]);
-}
-
-core.int buildCounterInspectContentResponse = 0;
-buildInspectContentResponse() {
-  var o = new api.InspectContentResponse();
-  buildCounterInspectContentResponse++;
-  if (buildCounterInspectContentResponse < 3) {
-    o.results = buildUnnamed3173();
-  }
-  buildCounterInspectContentResponse--;
-  return o;
-}
-
-checkInspectContentResponse(api.InspectContentResponse o) {
-  buildCounterInspectContentResponse++;
-  if (buildCounterInspectContentResponse < 3) {
-    checkUnnamed3173(o.results);
-  }
-  buildCounterInspectContentResponse--;
-}
-
-buildUnnamed3174() {
-  var o = new core.List<api.Finding>();
-  o.add(buildFinding());
-  o.add(buildFinding());
-  return o;
-}
-
-checkUnnamed3174(core.List<api.Finding> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkFinding(o[0]);
-  checkFinding(o[1]);
-}
-
-core.int buildCounterInspectResult = 0;
-buildInspectResult() {
-  var o = new api.InspectResult();
-  buildCounterInspectResult++;
-  if (buildCounterInspectResult < 3) {
-    o.findings = buildUnnamed3174();
-    o.findingsTruncated = true;
-  }
-  buildCounterInspectResult--;
-  return o;
-}
-
-checkInspectResult(api.InspectResult o) {
-  buildCounterInspectResult++;
-  if (buildCounterInspectResult < 3) {
-    checkUnnamed3174(o.findings);
-    unittest.expect(o.findingsTruncated, unittest.isTrue);
-  }
-  buildCounterInspectResult--;
-}
-
-buildUnnamed3175() {
-  var o = new core.List<api.PathElement>();
-  o.add(buildPathElement());
-  o.add(buildPathElement());
-  return o;
-}
-
-checkUnnamed3175(core.List<api.PathElement> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkPathElement(o[0]);
-  checkPathElement(o[1]);
-}
-
-core.int buildCounterKey = 0;
-buildKey() {
-  var o = new api.Key();
-  buildCounterKey++;
-  if (buildCounterKey < 3) {
-    o.partitionId = buildPartitionId();
-    o.path = buildUnnamed3175();
-  }
-  buildCounterKey--;
-  return o;
-}
-
-checkKey(api.Key o) {
-  buildCounterKey++;
-  if (buildCounterKey < 3) {
-    checkPartitionId(o.partitionId);
-    checkUnnamed3175(o.path);
-  }
-  buildCounterKey--;
-}
-
-core.int buildCounterKindExpression = 0;
-buildKindExpression() {
-  var o = new api.KindExpression();
-  buildCounterKindExpression++;
-  if (buildCounterKindExpression < 3) {
-    o.name = "foo";
-  }
-  buildCounterKindExpression--;
-  return o;
-}
-
-checkKindExpression(api.KindExpression o) {
-  buildCounterKindExpression++;
-  if (buildCounterKindExpression < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-  }
-  buildCounterKindExpression--;
-}
-
-buildUnnamed3176() {
-  var o = new core.List<api.InfoTypeDescription>();
-  o.add(buildInfoTypeDescription());
-  o.add(buildInfoTypeDescription());
-  return o;
-}
-
-checkUnnamed3176(core.List<api.InfoTypeDescription> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkInfoTypeDescription(o[0]);
-  checkInfoTypeDescription(o[1]);
-}
-
-core.int buildCounterListInfoTypesResponse = 0;
-buildListInfoTypesResponse() {
-  var o = new api.ListInfoTypesResponse();
-  buildCounterListInfoTypesResponse++;
-  if (buildCounterListInfoTypesResponse < 3) {
-    o.infoTypes = buildUnnamed3176();
-  }
-  buildCounterListInfoTypesResponse--;
-  return o;
-}
-
-checkListInfoTypesResponse(api.ListInfoTypesResponse o) {
-  buildCounterListInfoTypesResponse++;
-  if (buildCounterListInfoTypesResponse < 3) {
-    checkUnnamed3176(o.infoTypes);
-  }
-  buildCounterListInfoTypesResponse--;
-}
-
-core.int buildCounterListInspectFindingsResponse = 0;
-buildListInspectFindingsResponse() {
-  var o = new api.ListInspectFindingsResponse();
-  buildCounterListInspectFindingsResponse++;
-  if (buildCounterListInspectFindingsResponse < 3) {
+core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
+buildGoogleLongrunningListOperationsResponse() {
+  var o = new api.GoogleLongrunningListOperationsResponse();
+  buildCounterGoogleLongrunningListOperationsResponse++;
+  if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.result = buildInspectResult();
+    o.operations = buildUnnamed3287();
   }
-  buildCounterListInspectFindingsResponse--;
+  buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
 }
 
-checkListInspectFindingsResponse(api.ListInspectFindingsResponse o) {
-  buildCounterListInspectFindingsResponse++;
-  if (buildCounterListInspectFindingsResponse < 3) {
+checkGoogleLongrunningListOperationsResponse(api.GoogleLongrunningListOperationsResponse o) {
+  buildCounterGoogleLongrunningListOperationsResponse++;
+  if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkInspectResult(o.result);
+    checkUnnamed3287(o.operations);
   }
-  buildCounterListInspectFindingsResponse--;
+  buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-buildUnnamed3177() {
-  var o = new core.List<api.Operation>();
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
-
-checkUnnamed3177(core.List<api.Operation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
-}
-
-core.int buildCounterListOperationsResponse = 0;
-buildListOperationsResponse() {
-  var o = new api.ListOperationsResponse();
-  buildCounterListOperationsResponse++;
-  if (buildCounterListOperationsResponse < 3) {
-    o.nextPageToken = "foo";
-    o.operations = buildUnnamed3177();
-  }
-  buildCounterListOperationsResponse--;
-  return o;
-}
-
-checkListOperationsResponse(api.ListOperationsResponse o) {
-  buildCounterListOperationsResponse++;
-  if (buildCounterListOperationsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3177(o.operations);
-  }
-  buildCounterListOperationsResponse--;
-}
-
-buildUnnamed3178() {
-  var o = new core.List<api.CategoryDescription>();
-  o.add(buildCategoryDescription());
-  o.add(buildCategoryDescription());
-  return o;
-}
-
-checkUnnamed3178(core.List<api.CategoryDescription> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkCategoryDescription(o[0]);
-  checkCategoryDescription(o[1]);
-}
-
-core.int buildCounterListRootCategoriesResponse = 0;
-buildListRootCategoriesResponse() {
-  var o = new api.ListRootCategoriesResponse();
-  buildCounterListRootCategoriesResponse++;
-  if (buildCounterListRootCategoriesResponse < 3) {
-    o.categories = buildUnnamed3178();
-  }
-  buildCounterListRootCategoriesResponse--;
-  return o;
-}
-
-checkListRootCategoriesResponse(api.ListRootCategoriesResponse o) {
-  buildCounterListRootCategoriesResponse++;
-  if (buildCounterListRootCategoriesResponse < 3) {
-    checkUnnamed3178(o.categories);
-  }
-  buildCounterListRootCategoriesResponse--;
-}
-
-buildUnnamed3179() {
-  var o = new core.List<api.ImageLocation>();
-  o.add(buildImageLocation());
-  o.add(buildImageLocation());
-  return o;
-}
-
-checkUnnamed3179(core.List<api.ImageLocation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkImageLocation(o[0]);
-  checkImageLocation(o[1]);
-}
-
-core.int buildCounterLocation = 0;
-buildLocation() {
-  var o = new api.Location();
-  buildCounterLocation++;
-  if (buildCounterLocation < 3) {
-    o.byteRange = buildRange();
-    o.codepointRange = buildRange();
-    o.fieldId = buildFieldId();
-    o.imageBoxes = buildUnnamed3179();
-    o.recordKey = buildRecordKey();
-  }
-  buildCounterLocation--;
-  return o;
-}
-
-checkLocation(api.Location o) {
-  buildCounterLocation++;
-  if (buildCounterLocation < 3) {
-    checkRange(o.byteRange);
-    checkRange(o.codepointRange);
-    checkFieldId(o.fieldId);
-    checkUnnamed3179(o.imageBoxes);
-    checkRecordKey(o.recordKey);
-  }
-  buildCounterLocation--;
-}
-
-buildUnnamed3180() {
+buildUnnamed3288() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3180(core.Map<core.String, core.Object> o) {
+checkUnnamed3288(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
   var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed3181() {
+buildUnnamed3289() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3181(core.Map<core.String, core.Object> o) {
+checkUnnamed3289(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
   var casted4 = (o["y"]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
 }
 
-core.int buildCounterOperation = 0;
-buildOperation() {
-  var o = new api.Operation();
-  buildCounterOperation++;
-  if (buildCounterOperation < 3) {
+core.int buildCounterGoogleLongrunningOperation = 0;
+buildGoogleLongrunningOperation() {
+  var o = new api.GoogleLongrunningOperation();
+  buildCounterGoogleLongrunningOperation++;
+  if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
-    o.error = buildStatus();
-    o.metadata = buildUnnamed3180();
+    o.error = buildGoogleRpcStatus();
+    o.metadata = buildUnnamed3288();
     o.name = "foo";
-    o.response = buildUnnamed3181();
+    o.response = buildUnnamed3289();
   }
-  buildCounterOperation--;
+  buildCounterGoogleLongrunningOperation--;
   return o;
 }
 
-checkOperation(api.Operation o) {
-  buildCounterOperation++;
-  if (buildCounterOperation < 3) {
+checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
+  buildCounterGoogleLongrunningOperation++;
+  if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
-    checkUnnamed3180(o.metadata);
+    checkGoogleRpcStatus(o.error);
+    checkUnnamed3288(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3181(o.response);
+    checkUnnamed3289(o.response);
   }
-  buildCounterOperation--;
+  buildCounterGoogleLongrunningOperation--;
 }
 
-core.int buildCounterOutputStorageConfig = 0;
-buildOutputStorageConfig() {
-  var o = new api.OutputStorageConfig();
-  buildCounterOutputStorageConfig++;
-  if (buildCounterOutputStorageConfig < 3) {
-    o.storagePath = buildCloudStoragePath();
+core.int buildCounterGooglePrivacyDlpV2beta1CategoryDescription = 0;
+buildGooglePrivacyDlpV2beta1CategoryDescription() {
+  var o = new api.GooglePrivacyDlpV2beta1CategoryDescription();
+  buildCounterGooglePrivacyDlpV2beta1CategoryDescription++;
+  if (buildCounterGooglePrivacyDlpV2beta1CategoryDescription < 3) {
+    o.displayName = "foo";
+    o.name = "foo";
   }
-  buildCounterOutputStorageConfig--;
+  buildCounterGooglePrivacyDlpV2beta1CategoryDescription--;
   return o;
 }
 
-checkOutputStorageConfig(api.OutputStorageConfig o) {
-  buildCounterOutputStorageConfig++;
-  if (buildCounterOutputStorageConfig < 3) {
-    checkCloudStoragePath(o.storagePath);
+checkGooglePrivacyDlpV2beta1CategoryDescription(api.GooglePrivacyDlpV2beta1CategoryDescription o) {
+  buildCounterGooglePrivacyDlpV2beta1CategoryDescription++;
+  if (buildCounterGooglePrivacyDlpV2beta1CategoryDescription < 3) {
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
   }
-  buildCounterOutputStorageConfig--;
+  buildCounterGooglePrivacyDlpV2beta1CategoryDescription--;
 }
 
-core.int buildCounterPartitionId = 0;
-buildPartitionId() {
-  var o = new api.PartitionId();
-  buildCounterPartitionId++;
-  if (buildCounterPartitionId < 3) {
+core.int buildCounterGooglePrivacyDlpV2beta1CloudStorageKey = 0;
+buildGooglePrivacyDlpV2beta1CloudStorageKey() {
+  var o = new api.GooglePrivacyDlpV2beta1CloudStorageKey();
+  buildCounterGooglePrivacyDlpV2beta1CloudStorageKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1CloudStorageKey < 3) {
+    o.filePath = "foo";
+    o.startOffset = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1CloudStorageKey--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CloudStorageKey(api.GooglePrivacyDlpV2beta1CloudStorageKey o) {
+  buildCounterGooglePrivacyDlpV2beta1CloudStorageKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1CloudStorageKey < 3) {
+    unittest.expect(o.filePath, unittest.equals('foo'));
+    unittest.expect(o.startOffset, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1CloudStorageKey--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CloudStorageOptions = 0;
+buildGooglePrivacyDlpV2beta1CloudStorageOptions() {
+  var o = new api.GooglePrivacyDlpV2beta1CloudStorageOptions();
+  buildCounterGooglePrivacyDlpV2beta1CloudStorageOptions++;
+  if (buildCounterGooglePrivacyDlpV2beta1CloudStorageOptions < 3) {
+    o.fileSet = buildGooglePrivacyDlpV2beta1FileSet();
+  }
+  buildCounterGooglePrivacyDlpV2beta1CloudStorageOptions--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CloudStorageOptions(api.GooglePrivacyDlpV2beta1CloudStorageOptions o) {
+  buildCounterGooglePrivacyDlpV2beta1CloudStorageOptions++;
+  if (buildCounterGooglePrivacyDlpV2beta1CloudStorageOptions < 3) {
+    checkGooglePrivacyDlpV2beta1FileSet(o.fileSet);
+  }
+  buildCounterGooglePrivacyDlpV2beta1CloudStorageOptions--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CloudStoragePath = 0;
+buildGooglePrivacyDlpV2beta1CloudStoragePath() {
+  var o = new api.GooglePrivacyDlpV2beta1CloudStoragePath();
+  buildCounterGooglePrivacyDlpV2beta1CloudStoragePath++;
+  if (buildCounterGooglePrivacyDlpV2beta1CloudStoragePath < 3) {
+    o.path = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1CloudStoragePath--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CloudStoragePath(api.GooglePrivacyDlpV2beta1CloudStoragePath o) {
+  buildCounterGooglePrivacyDlpV2beta1CloudStoragePath++;
+  if (buildCounterGooglePrivacyDlpV2beta1CloudStoragePath < 3) {
+    unittest.expect(o.path, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1CloudStoragePath--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1Color = 0;
+buildGooglePrivacyDlpV2beta1Color() {
+  var o = new api.GooglePrivacyDlpV2beta1Color();
+  buildCounterGooglePrivacyDlpV2beta1Color++;
+  if (buildCounterGooglePrivacyDlpV2beta1Color < 3) {
+    o.blue = 42.0;
+    o.green = 42.0;
+    o.red = 42.0;
+  }
+  buildCounterGooglePrivacyDlpV2beta1Color--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1Color(api.GooglePrivacyDlpV2beta1Color o) {
+  buildCounterGooglePrivacyDlpV2beta1Color++;
+  if (buildCounterGooglePrivacyDlpV2beta1Color < 3) {
+    unittest.expect(o.blue, unittest.equals(42.0));
+    unittest.expect(o.green, unittest.equals(42.0));
+    unittest.expect(o.red, unittest.equals(42.0));
+  }
+  buildCounterGooglePrivacyDlpV2beta1Color--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1ContentItem = 0;
+buildGooglePrivacyDlpV2beta1ContentItem() {
+  var o = new api.GooglePrivacyDlpV2beta1ContentItem();
+  buildCounterGooglePrivacyDlpV2beta1ContentItem++;
+  if (buildCounterGooglePrivacyDlpV2beta1ContentItem < 3) {
+    o.data = "foo";
+    o.type = "foo";
+    o.value = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1ContentItem--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ContentItem(api.GooglePrivacyDlpV2beta1ContentItem o) {
+  buildCounterGooglePrivacyDlpV2beta1ContentItem++;
+  if (buildCounterGooglePrivacyDlpV2beta1ContentItem < 3) {
+    unittest.expect(o.data, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(o.value, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1ContentItem--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CreateInspectOperationRequest = 0;
+buildGooglePrivacyDlpV2beta1CreateInspectOperationRequest() {
+  var o = new api.GooglePrivacyDlpV2beta1CreateInspectOperationRequest();
+  buildCounterGooglePrivacyDlpV2beta1CreateInspectOperationRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1CreateInspectOperationRequest < 3) {
+    o.inspectConfig = buildGooglePrivacyDlpV2beta1InspectConfig();
+    o.outputConfig = buildGooglePrivacyDlpV2beta1OutputStorageConfig();
+    o.storageConfig = buildGooglePrivacyDlpV2beta1StorageConfig();
+  }
+  buildCounterGooglePrivacyDlpV2beta1CreateInspectOperationRequest--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CreateInspectOperationRequest(api.GooglePrivacyDlpV2beta1CreateInspectOperationRequest o) {
+  buildCounterGooglePrivacyDlpV2beta1CreateInspectOperationRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1CreateInspectOperationRequest < 3) {
+    checkGooglePrivacyDlpV2beta1InspectConfig(o.inspectConfig);
+    checkGooglePrivacyDlpV2beta1OutputStorageConfig(o.outputConfig);
+    checkGooglePrivacyDlpV2beta1StorageConfig(o.storageConfig);
+  }
+  buildCounterGooglePrivacyDlpV2beta1CreateInspectOperationRequest--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1DatastoreKey = 0;
+buildGooglePrivacyDlpV2beta1DatastoreKey() {
+  var o = new api.GooglePrivacyDlpV2beta1DatastoreKey();
+  buildCounterGooglePrivacyDlpV2beta1DatastoreKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1DatastoreKey < 3) {
+    o.entityKey = buildGooglePrivacyDlpV2beta1Key();
+  }
+  buildCounterGooglePrivacyDlpV2beta1DatastoreKey--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1DatastoreKey(api.GooglePrivacyDlpV2beta1DatastoreKey o) {
+  buildCounterGooglePrivacyDlpV2beta1DatastoreKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1DatastoreKey < 3) {
+    checkGooglePrivacyDlpV2beta1Key(o.entityKey);
+  }
+  buildCounterGooglePrivacyDlpV2beta1DatastoreKey--;
+}
+
+buildUnnamed3290() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1Projection>();
+  o.add(buildGooglePrivacyDlpV2beta1Projection());
+  o.add(buildGooglePrivacyDlpV2beta1Projection());
+  return o;
+}
+
+checkUnnamed3290(core.List<api.GooglePrivacyDlpV2beta1Projection> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1Projection(o[0]);
+  checkGooglePrivacyDlpV2beta1Projection(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1DatastoreOptions = 0;
+buildGooglePrivacyDlpV2beta1DatastoreOptions() {
+  var o = new api.GooglePrivacyDlpV2beta1DatastoreOptions();
+  buildCounterGooglePrivacyDlpV2beta1DatastoreOptions++;
+  if (buildCounterGooglePrivacyDlpV2beta1DatastoreOptions < 3) {
+    o.kind = buildGooglePrivacyDlpV2beta1KindExpression();
+    o.partitionId = buildGooglePrivacyDlpV2beta1PartitionId();
+    o.projection = buildUnnamed3290();
+  }
+  buildCounterGooglePrivacyDlpV2beta1DatastoreOptions--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1DatastoreOptions(api.GooglePrivacyDlpV2beta1DatastoreOptions o) {
+  buildCounterGooglePrivacyDlpV2beta1DatastoreOptions++;
+  if (buildCounterGooglePrivacyDlpV2beta1DatastoreOptions < 3) {
+    checkGooglePrivacyDlpV2beta1KindExpression(o.kind);
+    checkGooglePrivacyDlpV2beta1PartitionId(o.partitionId);
+    checkUnnamed3290(o.projection);
+  }
+  buildCounterGooglePrivacyDlpV2beta1DatastoreOptions--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1FieldId = 0;
+buildGooglePrivacyDlpV2beta1FieldId() {
+  var o = new api.GooglePrivacyDlpV2beta1FieldId();
+  buildCounterGooglePrivacyDlpV2beta1FieldId++;
+  if (buildCounterGooglePrivacyDlpV2beta1FieldId < 3) {
+    o.columnName = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1FieldId--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1FieldId(api.GooglePrivacyDlpV2beta1FieldId o) {
+  buildCounterGooglePrivacyDlpV2beta1FieldId++;
+  if (buildCounterGooglePrivacyDlpV2beta1FieldId < 3) {
+    unittest.expect(o.columnName, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1FieldId--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1FileSet = 0;
+buildGooglePrivacyDlpV2beta1FileSet() {
+  var o = new api.GooglePrivacyDlpV2beta1FileSet();
+  buildCounterGooglePrivacyDlpV2beta1FileSet++;
+  if (buildCounterGooglePrivacyDlpV2beta1FileSet < 3) {
+    o.url = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1FileSet--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1FileSet(api.GooglePrivacyDlpV2beta1FileSet o) {
+  buildCounterGooglePrivacyDlpV2beta1FileSet++;
+  if (buildCounterGooglePrivacyDlpV2beta1FileSet < 3) {
+    unittest.expect(o.url, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1FileSet--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1Finding = 0;
+buildGooglePrivacyDlpV2beta1Finding() {
+  var o = new api.GooglePrivacyDlpV2beta1Finding();
+  buildCounterGooglePrivacyDlpV2beta1Finding++;
+  if (buildCounterGooglePrivacyDlpV2beta1Finding < 3) {
+    o.createTime = "foo";
+    o.infoType = buildGooglePrivacyDlpV2beta1InfoType();
+    o.likelihood = "foo";
+    o.location = buildGooglePrivacyDlpV2beta1Location();
+    o.quote = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1Finding--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1Finding(api.GooglePrivacyDlpV2beta1Finding o) {
+  buildCounterGooglePrivacyDlpV2beta1Finding++;
+  if (buildCounterGooglePrivacyDlpV2beta1Finding < 3) {
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1InfoType(o.infoType);
+    unittest.expect(o.likelihood, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1Location(o.location);
+    unittest.expect(o.quote, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1Finding--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1ImageLocation = 0;
+buildGooglePrivacyDlpV2beta1ImageLocation() {
+  var o = new api.GooglePrivacyDlpV2beta1ImageLocation();
+  buildCounterGooglePrivacyDlpV2beta1ImageLocation++;
+  if (buildCounterGooglePrivacyDlpV2beta1ImageLocation < 3) {
+    o.height = 42;
+    o.left = 42;
+    o.top = 42;
+    o.width = 42;
+  }
+  buildCounterGooglePrivacyDlpV2beta1ImageLocation--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ImageLocation(api.GooglePrivacyDlpV2beta1ImageLocation o) {
+  buildCounterGooglePrivacyDlpV2beta1ImageLocation++;
+  if (buildCounterGooglePrivacyDlpV2beta1ImageLocation < 3) {
+    unittest.expect(o.height, unittest.equals(42));
+    unittest.expect(o.left, unittest.equals(42));
+    unittest.expect(o.top, unittest.equals(42));
+    unittest.expect(o.width, unittest.equals(42));
+  }
+  buildCounterGooglePrivacyDlpV2beta1ImageLocation--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1ImageRedactionConfig = 0;
+buildGooglePrivacyDlpV2beta1ImageRedactionConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1ImageRedactionConfig();
+  buildCounterGooglePrivacyDlpV2beta1ImageRedactionConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1ImageRedactionConfig < 3) {
+    o.infoType = buildGooglePrivacyDlpV2beta1InfoType();
+    o.redactAllText = true;
+    o.redactionColor = buildGooglePrivacyDlpV2beta1Color();
+  }
+  buildCounterGooglePrivacyDlpV2beta1ImageRedactionConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ImageRedactionConfig(api.GooglePrivacyDlpV2beta1ImageRedactionConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1ImageRedactionConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1ImageRedactionConfig < 3) {
+    checkGooglePrivacyDlpV2beta1InfoType(o.infoType);
+    unittest.expect(o.redactAllText, unittest.isTrue);
+    checkGooglePrivacyDlpV2beta1Color(o.redactionColor);
+  }
+  buildCounterGooglePrivacyDlpV2beta1ImageRedactionConfig--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InfoType = 0;
+buildGooglePrivacyDlpV2beta1InfoType() {
+  var o = new api.GooglePrivacyDlpV2beta1InfoType();
+  buildCounterGooglePrivacyDlpV2beta1InfoType++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoType < 3) {
+    o.name = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoType--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InfoType(api.GooglePrivacyDlpV2beta1InfoType o) {
+  buildCounterGooglePrivacyDlpV2beta1InfoType++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoType < 3) {
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoType--;
+}
+
+buildUnnamed3291() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1CategoryDescription>();
+  o.add(buildGooglePrivacyDlpV2beta1CategoryDescription());
+  o.add(buildGooglePrivacyDlpV2beta1CategoryDescription());
+  return o;
+}
+
+checkUnnamed3291(core.List<api.GooglePrivacyDlpV2beta1CategoryDescription> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1CategoryDescription(o[0]);
+  checkGooglePrivacyDlpV2beta1CategoryDescription(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription = 0;
+buildGooglePrivacyDlpV2beta1InfoTypeDescription() {
+  var o = new api.GooglePrivacyDlpV2beta1InfoTypeDescription();
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription < 3) {
+    o.categories = buildUnnamed3291();
+    o.displayName = "foo";
+    o.name = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InfoTypeDescription(api.GooglePrivacyDlpV2beta1InfoTypeDescription o) {
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription < 3) {
+    checkUnnamed3291(o.categories);
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InfoTypeStatistics = 0;
+buildGooglePrivacyDlpV2beta1InfoTypeStatistics() {
+  var o = new api.GooglePrivacyDlpV2beta1InfoTypeStatistics();
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeStatistics++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoTypeStatistics < 3) {
+    o.count = "foo";
+    o.infoType = buildGooglePrivacyDlpV2beta1InfoType();
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeStatistics--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InfoTypeStatistics(api.GooglePrivacyDlpV2beta1InfoTypeStatistics o) {
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeStatistics++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoTypeStatistics < 3) {
+    unittest.expect(o.count, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1InfoType(o.infoType);
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeStatistics--;
+}
+
+buildUnnamed3292() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1InfoType>();
+  o.add(buildGooglePrivacyDlpV2beta1InfoType());
+  o.add(buildGooglePrivacyDlpV2beta1InfoType());
+  return o;
+}
+
+checkUnnamed3292(core.List<api.GooglePrivacyDlpV2beta1InfoType> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1InfoType(o[0]);
+  checkGooglePrivacyDlpV2beta1InfoType(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InspectConfig = 0;
+buildGooglePrivacyDlpV2beta1InspectConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1InspectConfig();
+  buildCounterGooglePrivacyDlpV2beta1InspectConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectConfig < 3) {
+    o.excludeTypes = true;
+    o.includeQuote = true;
+    o.infoTypes = buildUnnamed3292();
+    o.maxFindings = 42;
+    o.minLikelihood = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InspectConfig(api.GooglePrivacyDlpV2beta1InspectConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1InspectConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectConfig < 3) {
+    unittest.expect(o.excludeTypes, unittest.isTrue);
+    unittest.expect(o.includeQuote, unittest.isTrue);
+    checkUnnamed3292(o.infoTypes);
+    unittest.expect(o.maxFindings, unittest.equals(42));
+    unittest.expect(o.minLikelihood, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectConfig--;
+}
+
+buildUnnamed3293() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ContentItem>();
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  return o;
+}
+
+checkUnnamed3293(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1ContentItem(o[0]);
+  checkGooglePrivacyDlpV2beta1ContentItem(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InspectContentRequest = 0;
+buildGooglePrivacyDlpV2beta1InspectContentRequest() {
+  var o = new api.GooglePrivacyDlpV2beta1InspectContentRequest();
+  buildCounterGooglePrivacyDlpV2beta1InspectContentRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectContentRequest < 3) {
+    o.inspectConfig = buildGooglePrivacyDlpV2beta1InspectConfig();
+    o.items = buildUnnamed3293();
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectContentRequest--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InspectContentRequest(api.GooglePrivacyDlpV2beta1InspectContentRequest o) {
+  buildCounterGooglePrivacyDlpV2beta1InspectContentRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectContentRequest < 3) {
+    checkGooglePrivacyDlpV2beta1InspectConfig(o.inspectConfig);
+    checkUnnamed3293(o.items);
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectContentRequest--;
+}
+
+buildUnnamed3294() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1InspectResult>();
+  o.add(buildGooglePrivacyDlpV2beta1InspectResult());
+  o.add(buildGooglePrivacyDlpV2beta1InspectResult());
+  return o;
+}
+
+checkUnnamed3294(core.List<api.GooglePrivacyDlpV2beta1InspectResult> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1InspectResult(o[0]);
+  checkGooglePrivacyDlpV2beta1InspectResult(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InspectContentResponse = 0;
+buildGooglePrivacyDlpV2beta1InspectContentResponse() {
+  var o = new api.GooglePrivacyDlpV2beta1InspectContentResponse();
+  buildCounterGooglePrivacyDlpV2beta1InspectContentResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectContentResponse < 3) {
+    o.results = buildUnnamed3294();
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectContentResponse--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InspectContentResponse(api.GooglePrivacyDlpV2beta1InspectContentResponse o) {
+  buildCounterGooglePrivacyDlpV2beta1InspectContentResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectContentResponse < 3) {
+    checkUnnamed3294(o.results);
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectContentResponse--;
+}
+
+buildUnnamed3295() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1InfoTypeStatistics>();
+  o.add(buildGooglePrivacyDlpV2beta1InfoTypeStatistics());
+  o.add(buildGooglePrivacyDlpV2beta1InfoTypeStatistics());
+  return o;
+}
+
+checkUnnamed3295(core.List<api.GooglePrivacyDlpV2beta1InfoTypeStatistics> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1InfoTypeStatistics(o[0]);
+  checkGooglePrivacyDlpV2beta1InfoTypeStatistics(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata = 0;
+buildGooglePrivacyDlpV2beta1InspectOperationMetadata() {
+  var o = new api.GooglePrivacyDlpV2beta1InspectOperationMetadata();
+  buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata < 3) {
+    o.createTime = "foo";
+    o.infoTypeStats = buildUnnamed3295();
+    o.processedBytes = "foo";
+    o.requestInspectConfig = buildGooglePrivacyDlpV2beta1InspectConfig();
+    o.requestOutputConfig = buildGooglePrivacyDlpV2beta1OutputStorageConfig();
+    o.requestStorageConfig = buildGooglePrivacyDlpV2beta1StorageConfig();
+    o.totalEstimatedBytes = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InspectOperationMetadata(api.GooglePrivacyDlpV2beta1InspectOperationMetadata o) {
+  buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata < 3) {
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    checkUnnamed3295(o.infoTypeStats);
+    unittest.expect(o.processedBytes, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1InspectConfig(o.requestInspectConfig);
+    checkGooglePrivacyDlpV2beta1OutputStorageConfig(o.requestOutputConfig);
+    checkGooglePrivacyDlpV2beta1StorageConfig(o.requestStorageConfig);
+    unittest.expect(o.totalEstimatedBytes, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InspectOperationResult = 0;
+buildGooglePrivacyDlpV2beta1InspectOperationResult() {
+  var o = new api.GooglePrivacyDlpV2beta1InspectOperationResult();
+  buildCounterGooglePrivacyDlpV2beta1InspectOperationResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectOperationResult < 3) {
+    o.name = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectOperationResult--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InspectOperationResult(api.GooglePrivacyDlpV2beta1InspectOperationResult o) {
+  buildCounterGooglePrivacyDlpV2beta1InspectOperationResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectOperationResult < 3) {
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectOperationResult--;
+}
+
+buildUnnamed3296() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1Finding>();
+  o.add(buildGooglePrivacyDlpV2beta1Finding());
+  o.add(buildGooglePrivacyDlpV2beta1Finding());
+  return o;
+}
+
+checkUnnamed3296(core.List<api.GooglePrivacyDlpV2beta1Finding> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1Finding(o[0]);
+  checkGooglePrivacyDlpV2beta1Finding(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InspectResult = 0;
+buildGooglePrivacyDlpV2beta1InspectResult() {
+  var o = new api.GooglePrivacyDlpV2beta1InspectResult();
+  buildCounterGooglePrivacyDlpV2beta1InspectResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectResult < 3) {
+    o.findings = buildUnnamed3296();
+    o.findingsTruncated = true;
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectResult--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InspectResult(api.GooglePrivacyDlpV2beta1InspectResult o) {
+  buildCounterGooglePrivacyDlpV2beta1InspectResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1InspectResult < 3) {
+    checkUnnamed3296(o.findings);
+    unittest.expect(o.findingsTruncated, unittest.isTrue);
+  }
+  buildCounterGooglePrivacyDlpV2beta1InspectResult--;
+}
+
+buildUnnamed3297() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1PathElement>();
+  o.add(buildGooglePrivacyDlpV2beta1PathElement());
+  o.add(buildGooglePrivacyDlpV2beta1PathElement());
+  return o;
+}
+
+checkUnnamed3297(core.List<api.GooglePrivacyDlpV2beta1PathElement> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1PathElement(o[0]);
+  checkGooglePrivacyDlpV2beta1PathElement(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1Key = 0;
+buildGooglePrivacyDlpV2beta1Key() {
+  var o = new api.GooglePrivacyDlpV2beta1Key();
+  buildCounterGooglePrivacyDlpV2beta1Key++;
+  if (buildCounterGooglePrivacyDlpV2beta1Key < 3) {
+    o.partitionId = buildGooglePrivacyDlpV2beta1PartitionId();
+    o.path = buildUnnamed3297();
+  }
+  buildCounterGooglePrivacyDlpV2beta1Key--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1Key(api.GooglePrivacyDlpV2beta1Key o) {
+  buildCounterGooglePrivacyDlpV2beta1Key++;
+  if (buildCounterGooglePrivacyDlpV2beta1Key < 3) {
+    checkGooglePrivacyDlpV2beta1PartitionId(o.partitionId);
+    checkUnnamed3297(o.path);
+  }
+  buildCounterGooglePrivacyDlpV2beta1Key--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1KindExpression = 0;
+buildGooglePrivacyDlpV2beta1KindExpression() {
+  var o = new api.GooglePrivacyDlpV2beta1KindExpression();
+  buildCounterGooglePrivacyDlpV2beta1KindExpression++;
+  if (buildCounterGooglePrivacyDlpV2beta1KindExpression < 3) {
+    o.name = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1KindExpression--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1KindExpression(api.GooglePrivacyDlpV2beta1KindExpression o) {
+  buildCounterGooglePrivacyDlpV2beta1KindExpression++;
+  if (buildCounterGooglePrivacyDlpV2beta1KindExpression < 3) {
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1KindExpression--;
+}
+
+buildUnnamed3298() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1InfoTypeDescription>();
+  o.add(buildGooglePrivacyDlpV2beta1InfoTypeDescription());
+  o.add(buildGooglePrivacyDlpV2beta1InfoTypeDescription());
+  return o;
+}
+
+checkUnnamed3298(core.List<api.GooglePrivacyDlpV2beta1InfoTypeDescription> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1InfoTypeDescription(o[0]);
+  checkGooglePrivacyDlpV2beta1InfoTypeDescription(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse = 0;
+buildGooglePrivacyDlpV2beta1ListInfoTypesResponse() {
+  var o = new api.GooglePrivacyDlpV2beta1ListInfoTypesResponse();
+  buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse < 3) {
+    o.infoTypes = buildUnnamed3298();
+  }
+  buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ListInfoTypesResponse(api.GooglePrivacyDlpV2beta1ListInfoTypesResponse o) {
+  buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse < 3) {
+    checkUnnamed3298(o.infoTypes);
+  }
+  buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1ListInspectFindingsResponse = 0;
+buildGooglePrivacyDlpV2beta1ListInspectFindingsResponse() {
+  var o = new api.GooglePrivacyDlpV2beta1ListInspectFindingsResponse();
+  buildCounterGooglePrivacyDlpV2beta1ListInspectFindingsResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1ListInspectFindingsResponse < 3) {
+    o.nextPageToken = "foo";
+    o.result = buildGooglePrivacyDlpV2beta1InspectResult();
+  }
+  buildCounterGooglePrivacyDlpV2beta1ListInspectFindingsResponse--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ListInspectFindingsResponse(api.GooglePrivacyDlpV2beta1ListInspectFindingsResponse o) {
+  buildCounterGooglePrivacyDlpV2beta1ListInspectFindingsResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1ListInspectFindingsResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1InspectResult(o.result);
+  }
+  buildCounterGooglePrivacyDlpV2beta1ListInspectFindingsResponse--;
+}
+
+buildUnnamed3299() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1CategoryDescription>();
+  o.add(buildGooglePrivacyDlpV2beta1CategoryDescription());
+  o.add(buildGooglePrivacyDlpV2beta1CategoryDescription());
+  return o;
+}
+
+checkUnnamed3299(core.List<api.GooglePrivacyDlpV2beta1CategoryDescription> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1CategoryDescription(o[0]);
+  checkGooglePrivacyDlpV2beta1CategoryDescription(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse = 0;
+buildGooglePrivacyDlpV2beta1ListRootCategoriesResponse() {
+  var o = new api.GooglePrivacyDlpV2beta1ListRootCategoriesResponse();
+  buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse < 3) {
+    o.categories = buildUnnamed3299();
+  }
+  buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ListRootCategoriesResponse(api.GooglePrivacyDlpV2beta1ListRootCategoriesResponse o) {
+  buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse < 3) {
+    checkUnnamed3299(o.categories);
+  }
+  buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse--;
+}
+
+buildUnnamed3300() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ImageLocation>();
+  o.add(buildGooglePrivacyDlpV2beta1ImageLocation());
+  o.add(buildGooglePrivacyDlpV2beta1ImageLocation());
+  return o;
+}
+
+checkUnnamed3300(core.List<api.GooglePrivacyDlpV2beta1ImageLocation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1ImageLocation(o[0]);
+  checkGooglePrivacyDlpV2beta1ImageLocation(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1Location = 0;
+buildGooglePrivacyDlpV2beta1Location() {
+  var o = new api.GooglePrivacyDlpV2beta1Location();
+  buildCounterGooglePrivacyDlpV2beta1Location++;
+  if (buildCounterGooglePrivacyDlpV2beta1Location < 3) {
+    o.byteRange = buildGooglePrivacyDlpV2beta1Range();
+    o.codepointRange = buildGooglePrivacyDlpV2beta1Range();
+    o.fieldId = buildGooglePrivacyDlpV2beta1FieldId();
+    o.imageBoxes = buildUnnamed3300();
+    o.recordKey = buildGooglePrivacyDlpV2beta1RecordKey();
+  }
+  buildCounterGooglePrivacyDlpV2beta1Location--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1Location(api.GooglePrivacyDlpV2beta1Location o) {
+  buildCounterGooglePrivacyDlpV2beta1Location++;
+  if (buildCounterGooglePrivacyDlpV2beta1Location < 3) {
+    checkGooglePrivacyDlpV2beta1Range(o.byteRange);
+    checkGooglePrivacyDlpV2beta1Range(o.codepointRange);
+    checkGooglePrivacyDlpV2beta1FieldId(o.fieldId);
+    checkUnnamed3300(o.imageBoxes);
+    checkGooglePrivacyDlpV2beta1RecordKey(o.recordKey);
+  }
+  buildCounterGooglePrivacyDlpV2beta1Location--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1OutputStorageConfig = 0;
+buildGooglePrivacyDlpV2beta1OutputStorageConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1OutputStorageConfig();
+  buildCounterGooglePrivacyDlpV2beta1OutputStorageConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1OutputStorageConfig < 3) {
+    o.storagePath = buildGooglePrivacyDlpV2beta1CloudStoragePath();
+  }
+  buildCounterGooglePrivacyDlpV2beta1OutputStorageConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1OutputStorageConfig(api.GooglePrivacyDlpV2beta1OutputStorageConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1OutputStorageConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1OutputStorageConfig < 3) {
+    checkGooglePrivacyDlpV2beta1CloudStoragePath(o.storagePath);
+  }
+  buildCounterGooglePrivacyDlpV2beta1OutputStorageConfig--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1PartitionId = 0;
+buildGooglePrivacyDlpV2beta1PartitionId() {
+  var o = new api.GooglePrivacyDlpV2beta1PartitionId();
+  buildCounterGooglePrivacyDlpV2beta1PartitionId++;
+  if (buildCounterGooglePrivacyDlpV2beta1PartitionId < 3) {
     o.namespaceId = "foo";
     o.projectId = "foo";
   }
-  buildCounterPartitionId--;
+  buildCounterGooglePrivacyDlpV2beta1PartitionId--;
   return o;
 }
 
-checkPartitionId(api.PartitionId o) {
-  buildCounterPartitionId++;
-  if (buildCounterPartitionId < 3) {
+checkGooglePrivacyDlpV2beta1PartitionId(api.GooglePrivacyDlpV2beta1PartitionId o) {
+  buildCounterGooglePrivacyDlpV2beta1PartitionId++;
+  if (buildCounterGooglePrivacyDlpV2beta1PartitionId < 3) {
     unittest.expect(o.namespaceId, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
   }
-  buildCounterPartitionId--;
+  buildCounterGooglePrivacyDlpV2beta1PartitionId--;
 }
 
-core.int buildCounterPathElement = 0;
-buildPathElement() {
-  var o = new api.PathElement();
-  buildCounterPathElement++;
-  if (buildCounterPathElement < 3) {
+core.int buildCounterGooglePrivacyDlpV2beta1PathElement = 0;
+buildGooglePrivacyDlpV2beta1PathElement() {
+  var o = new api.GooglePrivacyDlpV2beta1PathElement();
+  buildCounterGooglePrivacyDlpV2beta1PathElement++;
+  if (buildCounterGooglePrivacyDlpV2beta1PathElement < 3) {
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
   }
-  buildCounterPathElement--;
+  buildCounterGooglePrivacyDlpV2beta1PathElement--;
   return o;
 }
 
-checkPathElement(api.PathElement o) {
-  buildCounterPathElement++;
-  if (buildCounterPathElement < 3) {
+checkGooglePrivacyDlpV2beta1PathElement(api.GooglePrivacyDlpV2beta1PathElement o) {
+  buildCounterGooglePrivacyDlpV2beta1PathElement++;
+  if (buildCounterGooglePrivacyDlpV2beta1PathElement < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
-  buildCounterPathElement--;
+  buildCounterGooglePrivacyDlpV2beta1PathElement--;
 }
 
-core.int buildCounterProjection = 0;
-buildProjection() {
-  var o = new api.Projection();
-  buildCounterProjection++;
-  if (buildCounterProjection < 3) {
-    o.property = buildPropertyReference();
+core.int buildCounterGooglePrivacyDlpV2beta1Projection = 0;
+buildGooglePrivacyDlpV2beta1Projection() {
+  var o = new api.GooglePrivacyDlpV2beta1Projection();
+  buildCounterGooglePrivacyDlpV2beta1Projection++;
+  if (buildCounterGooglePrivacyDlpV2beta1Projection < 3) {
+    o.property = buildGooglePrivacyDlpV2beta1PropertyReference();
   }
-  buildCounterProjection--;
+  buildCounterGooglePrivacyDlpV2beta1Projection--;
   return o;
 }
 
-checkProjection(api.Projection o) {
-  buildCounterProjection++;
-  if (buildCounterProjection < 3) {
-    checkPropertyReference(o.property);
+checkGooglePrivacyDlpV2beta1Projection(api.GooglePrivacyDlpV2beta1Projection o) {
+  buildCounterGooglePrivacyDlpV2beta1Projection++;
+  if (buildCounterGooglePrivacyDlpV2beta1Projection < 3) {
+    checkGooglePrivacyDlpV2beta1PropertyReference(o.property);
   }
-  buildCounterProjection--;
+  buildCounterGooglePrivacyDlpV2beta1Projection--;
 }
 
-core.int buildCounterPropertyReference = 0;
-buildPropertyReference() {
-  var o = new api.PropertyReference();
-  buildCounterPropertyReference++;
-  if (buildCounterPropertyReference < 3) {
+core.int buildCounterGooglePrivacyDlpV2beta1PropertyReference = 0;
+buildGooglePrivacyDlpV2beta1PropertyReference() {
+  var o = new api.GooglePrivacyDlpV2beta1PropertyReference();
+  buildCounterGooglePrivacyDlpV2beta1PropertyReference++;
+  if (buildCounterGooglePrivacyDlpV2beta1PropertyReference < 3) {
     o.name = "foo";
   }
-  buildCounterPropertyReference--;
+  buildCounterGooglePrivacyDlpV2beta1PropertyReference--;
   return o;
 }
 
-checkPropertyReference(api.PropertyReference o) {
-  buildCounterPropertyReference++;
-  if (buildCounterPropertyReference < 3) {
+checkGooglePrivacyDlpV2beta1PropertyReference(api.GooglePrivacyDlpV2beta1PropertyReference o) {
+  buildCounterGooglePrivacyDlpV2beta1PropertyReference++;
+  if (buildCounterGooglePrivacyDlpV2beta1PropertyReference < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
   }
-  buildCounterPropertyReference--;
+  buildCounterGooglePrivacyDlpV2beta1PropertyReference--;
 }
 
-core.int buildCounterRange = 0;
-buildRange() {
-  var o = new api.Range();
-  buildCounterRange++;
-  if (buildCounterRange < 3) {
+core.int buildCounterGooglePrivacyDlpV2beta1Range = 0;
+buildGooglePrivacyDlpV2beta1Range() {
+  var o = new api.GooglePrivacyDlpV2beta1Range();
+  buildCounterGooglePrivacyDlpV2beta1Range++;
+  if (buildCounterGooglePrivacyDlpV2beta1Range < 3) {
     o.end = "foo";
     o.start = "foo";
   }
-  buildCounterRange--;
+  buildCounterGooglePrivacyDlpV2beta1Range--;
   return o;
 }
 
-checkRange(api.Range o) {
-  buildCounterRange++;
-  if (buildCounterRange < 3) {
+checkGooglePrivacyDlpV2beta1Range(api.GooglePrivacyDlpV2beta1Range o) {
+  buildCounterGooglePrivacyDlpV2beta1Range++;
+  if (buildCounterGooglePrivacyDlpV2beta1Range < 3) {
     unittest.expect(o.end, unittest.equals('foo'));
     unittest.expect(o.start, unittest.equals('foo'));
   }
-  buildCounterRange--;
+  buildCounterGooglePrivacyDlpV2beta1Range--;
 }
 
-core.int buildCounterRecordKey = 0;
-buildRecordKey() {
-  var o = new api.RecordKey();
-  buildCounterRecordKey++;
-  if (buildCounterRecordKey < 3) {
-    o.cloudStorageKey = buildCloudStorageKey();
-    o.datastoreKey = buildDatastoreKey();
+core.int buildCounterGooglePrivacyDlpV2beta1RecordKey = 0;
+buildGooglePrivacyDlpV2beta1RecordKey() {
+  var o = new api.GooglePrivacyDlpV2beta1RecordKey();
+  buildCounterGooglePrivacyDlpV2beta1RecordKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1RecordKey < 3) {
+    o.cloudStorageKey = buildGooglePrivacyDlpV2beta1CloudStorageKey();
+    o.datastoreKey = buildGooglePrivacyDlpV2beta1DatastoreKey();
   }
-  buildCounterRecordKey--;
+  buildCounterGooglePrivacyDlpV2beta1RecordKey--;
   return o;
 }
 
-checkRecordKey(api.RecordKey o) {
-  buildCounterRecordKey++;
-  if (buildCounterRecordKey < 3) {
-    checkCloudStorageKey(o.cloudStorageKey);
-    checkDatastoreKey(o.datastoreKey);
+checkGooglePrivacyDlpV2beta1RecordKey(api.GooglePrivacyDlpV2beta1RecordKey o) {
+  buildCounterGooglePrivacyDlpV2beta1RecordKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1RecordKey < 3) {
+    checkGooglePrivacyDlpV2beta1CloudStorageKey(o.cloudStorageKey);
+    checkGooglePrivacyDlpV2beta1DatastoreKey(o.datastoreKey);
   }
-  buildCounterRecordKey--;
+  buildCounterGooglePrivacyDlpV2beta1RecordKey--;
 }
 
-buildUnnamed3182() {
-  var o = new core.List<api.ContentItem>();
-  o.add(buildContentItem());
-  o.add(buildContentItem());
+buildUnnamed3301() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ImageRedactionConfig>();
+  o.add(buildGooglePrivacyDlpV2beta1ImageRedactionConfig());
+  o.add(buildGooglePrivacyDlpV2beta1ImageRedactionConfig());
   return o;
 }
 
-checkUnnamed3182(core.List<api.ContentItem> o) {
+checkUnnamed3301(core.List<api.GooglePrivacyDlpV2beta1ImageRedactionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContentItem(o[0]);
-  checkContentItem(o[1]);
+  checkGooglePrivacyDlpV2beta1ImageRedactionConfig(o[0]);
+  checkGooglePrivacyDlpV2beta1ImageRedactionConfig(o[1]);
 }
 
-buildUnnamed3183() {
-  var o = new core.List<api.ReplaceConfig>();
-  o.add(buildReplaceConfig());
-  o.add(buildReplaceConfig());
+buildUnnamed3302() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ContentItem>();
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
   return o;
 }
 
-checkUnnamed3183(core.List<api.ReplaceConfig> o) {
+checkUnnamed3302(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReplaceConfig(o[0]);
-  checkReplaceConfig(o[1]);
+  checkGooglePrivacyDlpV2beta1ContentItem(o[0]);
+  checkGooglePrivacyDlpV2beta1ContentItem(o[1]);
 }
 
-core.int buildCounterRedactContentRequest = 0;
-buildRedactContentRequest() {
-  var o = new api.RedactContentRequest();
-  buildCounterRedactContentRequest++;
-  if (buildCounterRedactContentRequest < 3) {
-    o.inspectConfig = buildInspectConfig();
-    o.items = buildUnnamed3182();
-    o.replaceConfigs = buildUnnamed3183();
-  }
-  buildCounterRedactContentRequest--;
+buildUnnamed3303() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ReplaceConfig>();
+  o.add(buildGooglePrivacyDlpV2beta1ReplaceConfig());
+  o.add(buildGooglePrivacyDlpV2beta1ReplaceConfig());
   return o;
 }
 
-checkRedactContentRequest(api.RedactContentRequest o) {
-  buildCounterRedactContentRequest++;
-  if (buildCounterRedactContentRequest < 3) {
-    checkInspectConfig(o.inspectConfig);
-    checkUnnamed3182(o.items);
-    checkUnnamed3183(o.replaceConfigs);
-  }
-  buildCounterRedactContentRequest--;
-}
-
-buildUnnamed3184() {
-  var o = new core.List<api.ContentItem>();
-  o.add(buildContentItem());
-  o.add(buildContentItem());
-  return o;
-}
-
-checkUnnamed3184(core.List<api.ContentItem> o) {
+checkUnnamed3303(core.List<api.GooglePrivacyDlpV2beta1ReplaceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContentItem(o[0]);
-  checkContentItem(o[1]);
+  checkGooglePrivacyDlpV2beta1ReplaceConfig(o[0]);
+  checkGooglePrivacyDlpV2beta1ReplaceConfig(o[1]);
 }
 
-core.int buildCounterRedactContentResponse = 0;
-buildRedactContentResponse() {
-  var o = new api.RedactContentResponse();
-  buildCounterRedactContentResponse++;
-  if (buildCounterRedactContentResponse < 3) {
-    o.items = buildUnnamed3184();
+core.int buildCounterGooglePrivacyDlpV2beta1RedactContentRequest = 0;
+buildGooglePrivacyDlpV2beta1RedactContentRequest() {
+  var o = new api.GooglePrivacyDlpV2beta1RedactContentRequest();
+  buildCounterGooglePrivacyDlpV2beta1RedactContentRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1RedactContentRequest < 3) {
+    o.imageRedactionConfigs = buildUnnamed3301();
+    o.inspectConfig = buildGooglePrivacyDlpV2beta1InspectConfig();
+    o.items = buildUnnamed3302();
+    o.replaceConfigs = buildUnnamed3303();
   }
-  buildCounterRedactContentResponse--;
+  buildCounterGooglePrivacyDlpV2beta1RedactContentRequest--;
   return o;
 }
 
-checkRedactContentResponse(api.RedactContentResponse o) {
-  buildCounterRedactContentResponse++;
-  if (buildCounterRedactContentResponse < 3) {
-    checkUnnamed3184(o.items);
+checkGooglePrivacyDlpV2beta1RedactContentRequest(api.GooglePrivacyDlpV2beta1RedactContentRequest o) {
+  buildCounterGooglePrivacyDlpV2beta1RedactContentRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1RedactContentRequest < 3) {
+    checkUnnamed3301(o.imageRedactionConfigs);
+    checkGooglePrivacyDlpV2beta1InspectConfig(o.inspectConfig);
+    checkUnnamed3302(o.items);
+    checkUnnamed3303(o.replaceConfigs);
   }
-  buildCounterRedactContentResponse--;
+  buildCounterGooglePrivacyDlpV2beta1RedactContentRequest--;
 }
 
-core.int buildCounterReplaceConfig = 0;
-buildReplaceConfig() {
-  var o = new api.ReplaceConfig();
-  buildCounterReplaceConfig++;
-  if (buildCounterReplaceConfig < 3) {
-    o.infoType = buildInfoType();
+buildUnnamed3304() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ContentItem>();
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  return o;
+}
+
+checkUnnamed3304(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1ContentItem(o[0]);
+  checkGooglePrivacyDlpV2beta1ContentItem(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1RedactContentResponse = 0;
+buildGooglePrivacyDlpV2beta1RedactContentResponse() {
+  var o = new api.GooglePrivacyDlpV2beta1RedactContentResponse();
+  buildCounterGooglePrivacyDlpV2beta1RedactContentResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1RedactContentResponse < 3) {
+    o.items = buildUnnamed3304();
+  }
+  buildCounterGooglePrivacyDlpV2beta1RedactContentResponse--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1RedactContentResponse(api.GooglePrivacyDlpV2beta1RedactContentResponse o) {
+  buildCounterGooglePrivacyDlpV2beta1RedactContentResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1RedactContentResponse < 3) {
+    checkUnnamed3304(o.items);
+  }
+  buildCounterGooglePrivacyDlpV2beta1RedactContentResponse--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1ReplaceConfig = 0;
+buildGooglePrivacyDlpV2beta1ReplaceConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1ReplaceConfig();
+  buildCounterGooglePrivacyDlpV2beta1ReplaceConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1ReplaceConfig < 3) {
+    o.infoType = buildGooglePrivacyDlpV2beta1InfoType();
     o.replaceWith = "foo";
   }
-  buildCounterReplaceConfig--;
+  buildCounterGooglePrivacyDlpV2beta1ReplaceConfig--;
   return o;
 }
 
-checkReplaceConfig(api.ReplaceConfig o) {
-  buildCounterReplaceConfig++;
-  if (buildCounterReplaceConfig < 3) {
-    checkInfoType(o.infoType);
+checkGooglePrivacyDlpV2beta1ReplaceConfig(api.GooglePrivacyDlpV2beta1ReplaceConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1ReplaceConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1ReplaceConfig < 3) {
+    checkGooglePrivacyDlpV2beta1InfoType(o.infoType);
     unittest.expect(o.replaceWith, unittest.equals('foo'));
   }
-  buildCounterReplaceConfig--;
+  buildCounterGooglePrivacyDlpV2beta1ReplaceConfig--;
 }
 
-buildUnnamed3185() {
+core.int buildCounterGooglePrivacyDlpV2beta1StorageConfig = 0;
+buildGooglePrivacyDlpV2beta1StorageConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1StorageConfig();
+  buildCounterGooglePrivacyDlpV2beta1StorageConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1StorageConfig < 3) {
+    o.cloudStorageOptions = buildGooglePrivacyDlpV2beta1CloudStorageOptions();
+    o.datastoreOptions = buildGooglePrivacyDlpV2beta1DatastoreOptions();
+  }
+  buildCounterGooglePrivacyDlpV2beta1StorageConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1StorageConfig(api.GooglePrivacyDlpV2beta1StorageConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1StorageConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1StorageConfig < 3) {
+    checkGooglePrivacyDlpV2beta1CloudStorageOptions(o.cloudStorageOptions);
+    checkGooglePrivacyDlpV2beta1DatastoreOptions(o.datastoreOptions);
+  }
+  buildCounterGooglePrivacyDlpV2beta1StorageConfig--;
+}
+
+core.int buildCounterGoogleProtobufEmpty = 0;
+buildGoogleProtobufEmpty() {
+  var o = new api.GoogleProtobufEmpty();
+  buildCounterGoogleProtobufEmpty++;
+  if (buildCounterGoogleProtobufEmpty < 3) {
+  }
+  buildCounterGoogleProtobufEmpty--;
+  return o;
+}
+
+checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
+  buildCounterGoogleProtobufEmpty++;
+  if (buildCounterGoogleProtobufEmpty < 3) {
+  }
+  buildCounterGoogleProtobufEmpty--;
+}
+
+buildUnnamed3305() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
   return o;
 }
 
-checkUnnamed3185(core.Map<core.String, core.Object> o) {
+checkUnnamed3305(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
   var casted6 = (o["y"]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
 }
 
-buildUnnamed3186() {
+buildUnnamed3306() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3185());
-  o.add(buildUnnamed3185());
+  o.add(buildUnnamed3305());
+  o.add(buildUnnamed3305());
   return o;
 }
 
-checkUnnamed3186(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3306(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3185(o[0]);
-  checkUnnamed3185(o[1]);
+  checkUnnamed3305(o[0]);
+  checkUnnamed3305(o[1]);
 }
 
-core.int buildCounterStatus = 0;
-buildStatus() {
-  var o = new api.Status();
-  buildCounterStatus++;
-  if (buildCounterStatus < 3) {
+core.int buildCounterGoogleRpcStatus = 0;
+buildGoogleRpcStatus() {
+  var o = new api.GoogleRpcStatus();
+  buildCounterGoogleRpcStatus++;
+  if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3186();
+    o.details = buildUnnamed3306();
     o.message = "foo";
   }
-  buildCounterStatus--;
+  buildCounterGoogleRpcStatus--;
   return o;
 }
 
-checkStatus(api.Status o) {
-  buildCounterStatus++;
-  if (buildCounterStatus < 3) {
+checkGoogleRpcStatus(api.GoogleRpcStatus o) {
+  buildCounterGoogleRpcStatus++;
+  if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3186(o.details);
+    checkUnnamed3306(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
-  buildCounterStatus--;
-}
-
-core.int buildCounterStorageConfig = 0;
-buildStorageConfig() {
-  var o = new api.StorageConfig();
-  buildCounterStorageConfig++;
-  if (buildCounterStorageConfig < 3) {
-    o.cloudStorageOptions = buildCloudStorageOptions();
-    o.datastoreOptions = buildDatastoreOptions();
-  }
-  buildCounterStorageConfig--;
-  return o;
-}
-
-checkStorageConfig(api.StorageConfig o) {
-  buildCounterStorageConfig++;
-  if (buildCounterStorageConfig < 3) {
-    checkCloudStorageOptions(o.cloudStorageOptions);
-    checkDatastoreOptions(o.datastoreOptions);
-  }
-  buildCounterStorageConfig--;
+  buildCounterGoogleRpcStatus--;
 }
 
 
 main() {
-  unittest.group("obj-schema-CancelOperationRequest", () {
+  unittest.group("obj-schema-GoogleLongrunningCancelOperationRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildCancelOperationRequest();
-      var od = new api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      var o = buildGoogleLongrunningCancelOperationRequest();
+      var od = new api.GoogleLongrunningCancelOperationRequest.fromJson(o.toJson());
+      checkGoogleLongrunningCancelOperationRequest(od);
     });
   });
 
 
-  unittest.group("obj-schema-CategoryDescription", () {
+  unittest.group("obj-schema-GoogleLongrunningListOperationsResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildCategoryDescription();
-      var od = new api.CategoryDescription.fromJson(o.toJson());
-      checkCategoryDescription(od);
+      var o = buildGoogleLongrunningListOperationsResponse();
+      var od = new api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      checkGoogleLongrunningListOperationsResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-CloudStorageKey", () {
+  unittest.group("obj-schema-GoogleLongrunningOperation", () {
     unittest.test("to-json--from-json", () {
-      var o = buildCloudStorageKey();
-      var od = new api.CloudStorageKey.fromJson(o.toJson());
-      checkCloudStorageKey(od);
+      var o = buildGoogleLongrunningOperation();
+      var od = new api.GoogleLongrunningOperation.fromJson(o.toJson());
+      checkGoogleLongrunningOperation(od);
     });
   });
 
 
-  unittest.group("obj-schema-CloudStorageOptions", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CategoryDescription", () {
     unittest.test("to-json--from-json", () {
-      var o = buildCloudStorageOptions();
-      var od = new api.CloudStorageOptions.fromJson(o.toJson());
-      checkCloudStorageOptions(od);
+      var o = buildGooglePrivacyDlpV2beta1CategoryDescription();
+      var od = new api.GooglePrivacyDlpV2beta1CategoryDescription.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1CategoryDescription(od);
     });
   });
 
 
-  unittest.group("obj-schema-CloudStoragePath", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CloudStorageKey", () {
     unittest.test("to-json--from-json", () {
-      var o = buildCloudStoragePath();
-      var od = new api.CloudStoragePath.fromJson(o.toJson());
-      checkCloudStoragePath(od);
+      var o = buildGooglePrivacyDlpV2beta1CloudStorageKey();
+      var od = new api.GooglePrivacyDlpV2beta1CloudStorageKey.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1CloudStorageKey(od);
     });
   });
 
 
-  unittest.group("obj-schema-ContentItem", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CloudStorageOptions", () {
     unittest.test("to-json--from-json", () {
-      var o = buildContentItem();
-      var od = new api.ContentItem.fromJson(o.toJson());
-      checkContentItem(od);
+      var o = buildGooglePrivacyDlpV2beta1CloudStorageOptions();
+      var od = new api.GooglePrivacyDlpV2beta1CloudStorageOptions.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1CloudStorageOptions(od);
     });
   });
 
 
-  unittest.group("obj-schema-CreateInspectOperationRequest", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CloudStoragePath", () {
     unittest.test("to-json--from-json", () {
-      var o = buildCreateInspectOperationRequest();
-      var od = new api.CreateInspectOperationRequest.fromJson(o.toJson());
-      checkCreateInspectOperationRequest(od);
+      var o = buildGooglePrivacyDlpV2beta1CloudStoragePath();
+      var od = new api.GooglePrivacyDlpV2beta1CloudStoragePath.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1CloudStoragePath(od);
     });
   });
 
 
-  unittest.group("obj-schema-DatastoreKey", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Color", () {
     unittest.test("to-json--from-json", () {
-      var o = buildDatastoreKey();
-      var od = new api.DatastoreKey.fromJson(o.toJson());
-      checkDatastoreKey(od);
+      var o = buildGooglePrivacyDlpV2beta1Color();
+      var od = new api.GooglePrivacyDlpV2beta1Color.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Color(od);
     });
   });
 
 
-  unittest.group("obj-schema-DatastoreOptions", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ContentItem", () {
     unittest.test("to-json--from-json", () {
-      var o = buildDatastoreOptions();
-      var od = new api.DatastoreOptions.fromJson(o.toJson());
-      checkDatastoreOptions(od);
+      var o = buildGooglePrivacyDlpV2beta1ContentItem();
+      var od = new api.GooglePrivacyDlpV2beta1ContentItem.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1ContentItem(od);
     });
   });
 
 
-  unittest.group("obj-schema-Empty", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CreateInspectOperationRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildEmpty();
-      var od = new api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      var o = buildGooglePrivacyDlpV2beta1CreateInspectOperationRequest();
+      var od = new api.GooglePrivacyDlpV2beta1CreateInspectOperationRequest.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1CreateInspectOperationRequest(od);
     });
   });
 
 
-  unittest.group("obj-schema-FieldId", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1DatastoreKey", () {
     unittest.test("to-json--from-json", () {
-      var o = buildFieldId();
-      var od = new api.FieldId.fromJson(o.toJson());
-      checkFieldId(od);
+      var o = buildGooglePrivacyDlpV2beta1DatastoreKey();
+      var od = new api.GooglePrivacyDlpV2beta1DatastoreKey.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1DatastoreKey(od);
     });
   });
 
 
-  unittest.group("obj-schema-FileSet", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1DatastoreOptions", () {
     unittest.test("to-json--from-json", () {
-      var o = buildFileSet();
-      var od = new api.FileSet.fromJson(o.toJson());
-      checkFileSet(od);
+      var o = buildGooglePrivacyDlpV2beta1DatastoreOptions();
+      var od = new api.GooglePrivacyDlpV2beta1DatastoreOptions.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1DatastoreOptions(od);
     });
   });
 
 
-  unittest.group("obj-schema-Finding", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1FieldId", () {
     unittest.test("to-json--from-json", () {
-      var o = buildFinding();
-      var od = new api.Finding.fromJson(o.toJson());
-      checkFinding(od);
+      var o = buildGooglePrivacyDlpV2beta1FieldId();
+      var od = new api.GooglePrivacyDlpV2beta1FieldId.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1FieldId(od);
     });
   });
 
 
-  unittest.group("obj-schema-ImageLocation", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1FileSet", () {
     unittest.test("to-json--from-json", () {
-      var o = buildImageLocation();
-      var od = new api.ImageLocation.fromJson(o.toJson());
-      checkImageLocation(od);
+      var o = buildGooglePrivacyDlpV2beta1FileSet();
+      var od = new api.GooglePrivacyDlpV2beta1FileSet.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1FileSet(od);
     });
   });
 
 
-  unittest.group("obj-schema-InfoType", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Finding", () {
     unittest.test("to-json--from-json", () {
-      var o = buildInfoType();
-      var od = new api.InfoType.fromJson(o.toJson());
-      checkInfoType(od);
+      var o = buildGooglePrivacyDlpV2beta1Finding();
+      var od = new api.GooglePrivacyDlpV2beta1Finding.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Finding(od);
     });
   });
 
 
-  unittest.group("obj-schema-InfoTypeDescription", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ImageLocation", () {
     unittest.test("to-json--from-json", () {
-      var o = buildInfoTypeDescription();
-      var od = new api.InfoTypeDescription.fromJson(o.toJson());
-      checkInfoTypeDescription(od);
+      var o = buildGooglePrivacyDlpV2beta1ImageLocation();
+      var od = new api.GooglePrivacyDlpV2beta1ImageLocation.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1ImageLocation(od);
     });
   });
 
 
-  unittest.group("obj-schema-InspectConfig", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ImageRedactionConfig", () {
     unittest.test("to-json--from-json", () {
-      var o = buildInspectConfig();
-      var od = new api.InspectConfig.fromJson(o.toJson());
-      checkInspectConfig(od);
+      var o = buildGooglePrivacyDlpV2beta1ImageRedactionConfig();
+      var od = new api.GooglePrivacyDlpV2beta1ImageRedactionConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1ImageRedactionConfig(od);
     });
   });
 
 
-  unittest.group("obj-schema-InspectContentRequest", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InfoType", () {
     unittest.test("to-json--from-json", () {
-      var o = buildInspectContentRequest();
-      var od = new api.InspectContentRequest.fromJson(o.toJson());
-      checkInspectContentRequest(od);
+      var o = buildGooglePrivacyDlpV2beta1InfoType();
+      var od = new api.GooglePrivacyDlpV2beta1InfoType.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InfoType(od);
     });
   });
 
 
-  unittest.group("obj-schema-InspectContentResponse", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InfoTypeDescription", () {
     unittest.test("to-json--from-json", () {
-      var o = buildInspectContentResponse();
-      var od = new api.InspectContentResponse.fromJson(o.toJson());
-      checkInspectContentResponse(od);
+      var o = buildGooglePrivacyDlpV2beta1InfoTypeDescription();
+      var od = new api.GooglePrivacyDlpV2beta1InfoTypeDescription.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InfoTypeDescription(od);
     });
   });
 
 
-  unittest.group("obj-schema-InspectResult", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InfoTypeStatistics", () {
     unittest.test("to-json--from-json", () {
-      var o = buildInspectResult();
-      var od = new api.InspectResult.fromJson(o.toJson());
-      checkInspectResult(od);
+      var o = buildGooglePrivacyDlpV2beta1InfoTypeStatistics();
+      var od = new api.GooglePrivacyDlpV2beta1InfoTypeStatistics.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InfoTypeStatistics(od);
     });
   });
 
 
-  unittest.group("obj-schema-Key", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InspectConfig", () {
     unittest.test("to-json--from-json", () {
-      var o = buildKey();
-      var od = new api.Key.fromJson(o.toJson());
-      checkKey(od);
+      var o = buildGooglePrivacyDlpV2beta1InspectConfig();
+      var od = new api.GooglePrivacyDlpV2beta1InspectConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InspectConfig(od);
     });
   });
 
 
-  unittest.group("obj-schema-KindExpression", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InspectContentRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildKindExpression();
-      var od = new api.KindExpression.fromJson(o.toJson());
-      checkKindExpression(od);
+      var o = buildGooglePrivacyDlpV2beta1InspectContentRequest();
+      var od = new api.GooglePrivacyDlpV2beta1InspectContentRequest.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InspectContentRequest(od);
     });
   });
 
 
-  unittest.group("obj-schema-ListInfoTypesResponse", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InspectContentResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildListInfoTypesResponse();
-      var od = new api.ListInfoTypesResponse.fromJson(o.toJson());
-      checkListInfoTypesResponse(od);
+      var o = buildGooglePrivacyDlpV2beta1InspectContentResponse();
+      var od = new api.GooglePrivacyDlpV2beta1InspectContentResponse.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InspectContentResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-ListInspectFindingsResponse", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InspectOperationMetadata", () {
     unittest.test("to-json--from-json", () {
-      var o = buildListInspectFindingsResponse();
-      var od = new api.ListInspectFindingsResponse.fromJson(o.toJson());
-      checkListInspectFindingsResponse(od);
+      var o = buildGooglePrivacyDlpV2beta1InspectOperationMetadata();
+      var od = new api.GooglePrivacyDlpV2beta1InspectOperationMetadata.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InspectOperationMetadata(od);
     });
   });
 
 
-  unittest.group("obj-schema-ListOperationsResponse", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InspectOperationResult", () {
     unittest.test("to-json--from-json", () {
-      var o = buildListOperationsResponse();
-      var od = new api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      var o = buildGooglePrivacyDlpV2beta1InspectOperationResult();
+      var od = new api.GooglePrivacyDlpV2beta1InspectOperationResult.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InspectOperationResult(od);
     });
   });
 
 
-  unittest.group("obj-schema-ListRootCategoriesResponse", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InspectResult", () {
     unittest.test("to-json--from-json", () {
-      var o = buildListRootCategoriesResponse();
-      var od = new api.ListRootCategoriesResponse.fromJson(o.toJson());
-      checkListRootCategoriesResponse(od);
+      var o = buildGooglePrivacyDlpV2beta1InspectResult();
+      var od = new api.GooglePrivacyDlpV2beta1InspectResult.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1InspectResult(od);
     });
   });
 
 
-  unittest.group("obj-schema-Location", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Key", () {
     unittest.test("to-json--from-json", () {
-      var o = buildLocation();
-      var od = new api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      var o = buildGooglePrivacyDlpV2beta1Key();
+      var od = new api.GooglePrivacyDlpV2beta1Key.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Key(od);
     });
   });
 
 
-  unittest.group("obj-schema-Operation", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1KindExpression", () {
     unittest.test("to-json--from-json", () {
-      var o = buildOperation();
-      var od = new api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      var o = buildGooglePrivacyDlpV2beta1KindExpression();
+      var od = new api.GooglePrivacyDlpV2beta1KindExpression.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1KindExpression(od);
     });
   });
 
 
-  unittest.group("obj-schema-OutputStorageConfig", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ListInfoTypesResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildOutputStorageConfig();
-      var od = new api.OutputStorageConfig.fromJson(o.toJson());
-      checkOutputStorageConfig(od);
+      var o = buildGooglePrivacyDlpV2beta1ListInfoTypesResponse();
+      var od = new api.GooglePrivacyDlpV2beta1ListInfoTypesResponse.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1ListInfoTypesResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-PartitionId", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ListInspectFindingsResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildPartitionId();
-      var od = new api.PartitionId.fromJson(o.toJson());
-      checkPartitionId(od);
+      var o = buildGooglePrivacyDlpV2beta1ListInspectFindingsResponse();
+      var od = new api.GooglePrivacyDlpV2beta1ListInspectFindingsResponse.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1ListInspectFindingsResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-PathElement", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ListRootCategoriesResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildPathElement();
-      var od = new api.PathElement.fromJson(o.toJson());
-      checkPathElement(od);
+      var o = buildGooglePrivacyDlpV2beta1ListRootCategoriesResponse();
+      var od = new api.GooglePrivacyDlpV2beta1ListRootCategoriesResponse.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1ListRootCategoriesResponse(od);
     });
   });
 
 
-  unittest.group("obj-schema-Projection", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Location", () {
     unittest.test("to-json--from-json", () {
-      var o = buildProjection();
-      var od = new api.Projection.fromJson(o.toJson());
-      checkProjection(od);
+      var o = buildGooglePrivacyDlpV2beta1Location();
+      var od = new api.GooglePrivacyDlpV2beta1Location.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Location(od);
     });
   });
 
 
-  unittest.group("obj-schema-PropertyReference", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1OutputStorageConfig", () {
     unittest.test("to-json--from-json", () {
-      var o = buildPropertyReference();
-      var od = new api.PropertyReference.fromJson(o.toJson());
-      checkPropertyReference(od);
+      var o = buildGooglePrivacyDlpV2beta1OutputStorageConfig();
+      var od = new api.GooglePrivacyDlpV2beta1OutputStorageConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1OutputStorageConfig(od);
     });
   });
 
 
-  unittest.group("obj-schema-Range", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1PartitionId", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRange();
-      var od = new api.Range.fromJson(o.toJson());
-      checkRange(od);
+      var o = buildGooglePrivacyDlpV2beta1PartitionId();
+      var od = new api.GooglePrivacyDlpV2beta1PartitionId.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1PartitionId(od);
     });
   });
 
 
-  unittest.group("obj-schema-RecordKey", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1PathElement", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRecordKey();
-      var od = new api.RecordKey.fromJson(o.toJson());
-      checkRecordKey(od);
+      var o = buildGooglePrivacyDlpV2beta1PathElement();
+      var od = new api.GooglePrivacyDlpV2beta1PathElement.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1PathElement(od);
     });
   });
 
 
-  unittest.group("obj-schema-RedactContentRequest", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Projection", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRedactContentRequest();
-      var od = new api.RedactContentRequest.fromJson(o.toJson());
-      checkRedactContentRequest(od);
+      var o = buildGooglePrivacyDlpV2beta1Projection();
+      var od = new api.GooglePrivacyDlpV2beta1Projection.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Projection(od);
     });
   });
 
 
-  unittest.group("obj-schema-RedactContentResponse", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1PropertyReference", () {
     unittest.test("to-json--from-json", () {
-      var o = buildRedactContentResponse();
-      var od = new api.RedactContentResponse.fromJson(o.toJson());
-      checkRedactContentResponse(od);
+      var o = buildGooglePrivacyDlpV2beta1PropertyReference();
+      var od = new api.GooglePrivacyDlpV2beta1PropertyReference.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1PropertyReference(od);
     });
   });
 
 
-  unittest.group("obj-schema-ReplaceConfig", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Range", () {
     unittest.test("to-json--from-json", () {
-      var o = buildReplaceConfig();
-      var od = new api.ReplaceConfig.fromJson(o.toJson());
-      checkReplaceConfig(od);
+      var o = buildGooglePrivacyDlpV2beta1Range();
+      var od = new api.GooglePrivacyDlpV2beta1Range.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Range(od);
     });
   });
 
 
-  unittest.group("obj-schema-Status", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1RecordKey", () {
     unittest.test("to-json--from-json", () {
-      var o = buildStatus();
-      var od = new api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      var o = buildGooglePrivacyDlpV2beta1RecordKey();
+      var od = new api.GooglePrivacyDlpV2beta1RecordKey.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1RecordKey(od);
     });
   });
 
 
-  unittest.group("obj-schema-StorageConfig", () {
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1RedactContentRequest", () {
     unittest.test("to-json--from-json", () {
-      var o = buildStorageConfig();
-      var od = new api.StorageConfig.fromJson(o.toJson());
-      checkStorageConfig(od);
+      var o = buildGooglePrivacyDlpV2beta1RedactContentRequest();
+      var od = new api.GooglePrivacyDlpV2beta1RedactContentRequest.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1RedactContentRequest(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1RedactContentResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1RedactContentResponse();
+      var od = new api.GooglePrivacyDlpV2beta1RedactContentResponse.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1RedactContentResponse(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ReplaceConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1ReplaceConfig();
+      var od = new api.GooglePrivacyDlpV2beta1ReplaceConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1ReplaceConfig(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1StorageConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1StorageConfig();
+      var od = new api.GooglePrivacyDlpV2beta1StorageConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1StorageConfig(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GoogleProtobufEmpty", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleProtobufEmpty();
+      var od = new api.GoogleProtobufEmpty.fromJson(o.toJson());
+      checkGoogleProtobufEmpty(od);
+    });
+  });
+
+
+  unittest.group("obj-schema-GoogleRpcStatus", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleRpcStatus();
+      var od = new api.GoogleRpcStatus.fromJson(o.toJson());
+      checkGoogleRpcStatus(od);
     });
   });
 
@@ -1498,10 +1688,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.ContentResourceApi res = new api.DlpApi(mock).content;
-      var arg_request = buildInspectContentRequest();
+      var arg_request = buildGooglePrivacyDlpV2beta1InspectContentRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.InspectContentRequest.fromJson(json);
-        checkInspectContentRequest(obj);
+        var obj = new api.GooglePrivacyDlpV2beta1InspectContentRequest.fromJson(json);
+        checkGooglePrivacyDlpV2beta1InspectContentRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1533,11 +1723,11 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildInspectContentResponse());
+        var resp = convert.JSON.encode(buildGooglePrivacyDlpV2beta1InspectContentResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.inspect(arg_request).then(unittest.expectAsync1(((api.InspectContentResponse response) {
-        checkInspectContentResponse(response);
+      res.inspect(arg_request).then(unittest.expectAsync1(((api.GooglePrivacyDlpV2beta1InspectContentResponse response) {
+        checkGooglePrivacyDlpV2beta1InspectContentResponse(response);
       })));
     });
 
@@ -1545,10 +1735,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.ContentResourceApi res = new api.DlpApi(mock).content;
-      var arg_request = buildRedactContentRequest();
+      var arg_request = buildGooglePrivacyDlpV2beta1RedactContentRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.RedactContentRequest.fromJson(json);
-        checkRedactContentRequest(obj);
+        var obj = new api.GooglePrivacyDlpV2beta1RedactContentRequest.fromJson(json);
+        checkGooglePrivacyDlpV2beta1RedactContentRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1580,11 +1770,11 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildRedactContentResponse());
+        var resp = convert.JSON.encode(buildGooglePrivacyDlpV2beta1RedactContentResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.redact(arg_request).then(unittest.expectAsync1(((api.RedactContentResponse response) {
-        checkRedactContentResponse(response);
+      res.redact(arg_request).then(unittest.expectAsync1(((api.GooglePrivacyDlpV2beta1RedactContentResponse response) {
+        checkGooglePrivacyDlpV2beta1RedactContentResponse(response);
       })));
     });
 
@@ -1596,11 +1786,11 @@ main() {
 
       var mock = new HttpServerMock();
       api.InspectOperationsResourceApi res = new api.DlpApi(mock).inspect.operations;
-      var arg_request = buildCancelOperationRequest();
+      var arg_request = buildGoogleLongrunningCancelOperationRequest();
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = new api.GoogleLongrunningCancelOperationRequest.fromJson(json);
+        checkGoogleLongrunningCancelOperationRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1633,11 +1823,11 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEmpty());
+        var resp = convert.JSON.encode(buildGoogleProtobufEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.cancel(arg_request, arg_name).then(unittest.expectAsync1(((api.Empty response) {
-        checkEmpty(response);
+      res.cancel(arg_request, arg_name).then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
+        checkGoogleProtobufEmpty(response);
       })));
     });
 
@@ -1645,10 +1835,10 @@ main() {
 
       var mock = new HttpServerMock();
       api.InspectOperationsResourceApi res = new api.DlpApi(mock).inspect.operations;
-      var arg_request = buildCreateInspectOperationRequest();
+      var arg_request = buildGooglePrivacyDlpV2beta1CreateInspectOperationRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.CreateInspectOperationRequest.fromJson(json);
-        checkCreateInspectOperationRequest(obj);
+        var obj = new api.GooglePrivacyDlpV2beta1CreateInspectOperationRequest.fromJson(json);
+        checkGooglePrivacyDlpV2beta1CreateInspectOperationRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1680,11 +1870,11 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildOperation());
+        var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request).then(unittest.expectAsync1(((api.Operation response) {
-        checkOperation(response);
+      res.create(arg_request).then(unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+        checkGoogleLongrunningOperation(response);
       })));
     });
 
@@ -1725,11 +1915,11 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEmpty());
+        var resp = convert.JSON.encode(buildGoogleProtobufEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(unittest.expectAsync1(((api.Empty response) {
-        checkEmpty(response);
+      res.delete(arg_name).then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
+        checkGoogleProtobufEmpty(response);
       })));
     });
 
@@ -1770,11 +1960,11 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildOperation());
+        var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.Operation response) {
-        checkOperation(response);
+      res.get(arg_name).then(unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+        checkGoogleLongrunningOperation(response);
       })));
     });
 
@@ -1783,9 +1973,9 @@ main() {
       var mock = new HttpServerMock();
       api.InspectOperationsResourceApi res = new api.DlpApi(mock).inspect.operations;
       var arg_name = "foo";
-      var arg_pageSize = 42;
       var arg_filter = "foo";
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1813,19 +2003,19 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListOperationsResponse());
+        var resp = convert.JSON.encode(buildGoogleLongrunningListOperationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageSize: arg_pageSize, filter: arg_filter, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListOperationsResponse response) {
-        checkListOperationsResponse(response);
+      res.list(arg_name, filter: arg_filter, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.GoogleLongrunningListOperationsResponse response) {
+        checkGoogleLongrunningListOperationsResponse(response);
       })));
     });
 
@@ -1838,9 +2028,9 @@ main() {
       var mock = new HttpServerMock();
       api.InspectResultsFindingsResourceApi res = new api.DlpApi(mock).inspect.results.findings;
       var arg_name = "foo";
-      var arg_pageSize = 42;
       var arg_filter = "foo";
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1868,19 +2058,19 @@ main() {
             addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
 
 
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListInspectFindingsResponse());
+        var resp = convert.JSON.encode(buildGooglePrivacyDlpV2beta1ListInspectFindingsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageSize: arg_pageSize, filter: arg_filter, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListInspectFindingsResponse response) {
-        checkListInspectFindingsResponse(response);
+      res.list(arg_name, filter: arg_filter, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.GooglePrivacyDlpV2beta1ListInspectFindingsResponse response) {
+        checkGooglePrivacyDlpV2beta1ListInspectFindingsResponse(response);
       })));
     });
 
@@ -1925,11 +2115,11 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListRootCategoriesResponse());
+        var resp = convert.JSON.encode(buildGooglePrivacyDlpV2beta1ListRootCategoriesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(languageCode: arg_languageCode).then(unittest.expectAsync1(((api.ListRootCategoriesResponse response) {
-        checkListRootCategoriesResponse(response);
+      res.list(languageCode: arg_languageCode).then(unittest.expectAsync1(((api.GooglePrivacyDlpV2beta1ListRootCategoriesResponse response) {
+        checkGooglePrivacyDlpV2beta1ListRootCategoriesResponse(response);
       })));
     });
 
@@ -1976,11 +2166,11 @@ main() {
         var h = {
           "content-type" : "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildListInfoTypesResponse());
+        var resp = convert.JSON.encode(buildGooglePrivacyDlpV2beta1ListInfoTypesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_category, languageCode: arg_languageCode).then(unittest.expectAsync1(((api.ListInfoTypesResponse response) {
-        checkListInfoTypesResponse(response);
+      res.list(arg_category, languageCode: arg_languageCode).then(unittest.expectAsync1(((api.GooglePrivacyDlpV2beta1ListInfoTypesResponse response) {
+        checkGooglePrivacyDlpV2beta1ListInfoTypesResponse(response);
       })));
     });
 

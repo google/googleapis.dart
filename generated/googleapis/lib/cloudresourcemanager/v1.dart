@@ -434,14 +434,14 @@ class LiensResourceApi {
    *
    * Request parameters:
    *
-   * [pageToken] - The `next_page_token` value returned from a previous List
-   * request, if any.
-   *
    * [pageSize] - The maximum number of items to return. This is a suggestion
    * for the server.
    *
    * [parent] - The name of the resource to list all attached Liens.
    * For example, `projects/1234`.
+   *
+   * [pageToken] - The `next_page_token` value returned from a previous List
+   * request, if any.
    *
    * Completes with a [ListLiensResponse].
    *
@@ -451,7 +451,7 @@ class LiensResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLiensResponse> list({core.String pageToken, core.int pageSize, core.String parent}) {
+  async.Future<ListLiensResponse> list({core.int pageSize, core.String parent, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -459,14 +459,14 @@ class LiensResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/liens';
@@ -680,6 +680,9 @@ class OrganizationsResourceApi {
    * if no such policy or resource exists. The `resource` field should be the
    * organization's resource name, e.g. "organizations/123".
    *
+   * Authorization requires the Google IAM permission
+   * `resourcemanager.organizations.getIamPolicy` on the specified organization
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -870,6 +873,9 @@ class OrganizationsResourceApi {
    * order. New Organizations do not necessarily appear at the end of the
    * results.
    *
+   * Search will only return organizations on which the user has the permission
+   * `resourcemanager.organizations.get`
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -910,6 +916,9 @@ class OrganizationsResourceApi {
    * Sets the access control policy on an Organization resource. Replaces any
    * existing policy. The `resource` field should be the organization's resource
    * name, e.g. "organizations/123".
+   *
+   * Authorization requires the Google IAM permission
+   * `resourcemanager.organizations.setIamPolicy` on the specified organization
    *
    * [request] - The metadata request object.
    *
@@ -1008,6 +1017,8 @@ class OrganizationsResourceApi {
    * Returns permissions that a caller has on the specified Organization.
    * The `resource` field should be the organization's resource name,
    * e.g. "organizations/123".
+   *
+   * There are no permissions required for making this API call.
    *
    * [request] - The metadata request object.
    *
@@ -1116,6 +1127,10 @@ class ProjectsResourceApi {
    * percentile. As of 2016-08-29, we are observing 6 seconds 50th percentile
    * latency. 95th percentile latency is around 11 seconds. We recommend
    * polling at the 5th second with an exponential backoff.
+   *
+   * Authorization requires the Google IAM permission
+   * `resourcemanager.projects.create` on the specified parent for the new
+   * project.
    *
    * [request] - The metadata request object.
    *
@@ -1362,6 +1377,9 @@ class ProjectsResourceApi {
    * Returns the IAM access control policy for the specified Project.
    * Permission is denied if the policy or the resource does not exist.
    *
+   * Authorization requires the Google IAM permission
+   * `resourcemanager.projects.getIamPolicy` on the project
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -1462,12 +1480,6 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
-   * [pageToken] - A pagination token returned from a previous call to
-   * ListProjects
-   * that indicates from where listing should continue.
-   *
-   * Optional.
-   *
    * [pageSize] - The maximum number of Projects to return in the response.
    * The server can return fewer Projects than requested.
    * If unspecified, server picks an appropriate default.
@@ -1495,6 +1507,21 @@ class ProjectsResourceApi {
    * |labels.color:red&nbsp;labels.size:big|The project's label `color` has the
    * value `red` and its label `size` has the value `big`.
    *
+   * If you specify a filter that has both `parent.type` and `parent.id`, then
+   * the `resourcemanager.projects.list` permission is checked on the parent.
+   * If the user has this permission, all projects under the parent will be
+   * returned after remaining filters have been applied. If the user lacks this
+   * permission, then all projects for which the user has the
+   * `resourcemanager.projects.get` permission will be returned after remaining
+   * filters have been applied. If no filter is specified, the call will return
+   * projects for which the user has `resourcemanager.projects.get` permissions.
+   *
+   * Optional.
+   *
+   * [pageToken] - A pagination token returned from a previous call to
+   * ListProjects
+   * that indicates from where listing should continue.
+   *
    * Optional.
    *
    * Completes with a [ListProjectsResponse].
@@ -1505,7 +1532,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListProjectsResponse> list({core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListProjectsResponse> list({core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1513,14 +1540,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/projects';
@@ -1666,6 +1693,9 @@ class ProjectsResourceApi {
    * how the service account is being used before removing or updating its
    * roles.
    *
+   * Authorization requires the Google IAM permission
+   * `resourcemanager.projects.setIamPolicy` on the project
+   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -1760,6 +1790,8 @@ class ProjectsResourceApi {
 
   /**
    * Returns permissions that a caller has on the specified Project.
+   *
+   * There are no permissions required for making this API call.
    *
    * [request] - The metadata request object.
    *

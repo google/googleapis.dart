@@ -23,6 +23,9 @@ class VisionApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /** Apply machine learning models to understand and label images */
+  static const CloudVisionScope = "https://www.googleapis.com/auth/cloud-vision";
+
 
   final commons.ApiRequester _requester;
 

@@ -278,6 +278,10 @@ class ProjectsRegionsClustersResourceApi {
    * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
+   * [pageToken] - Optional. The standard List page token.
+   *
+   * [pageSize] - Optional. The standard List page size.
+   *
    * [filter] - Optional. A filter constraining the clusters to list. Filters
    * are case-sensitive and have the following syntax:field = value AND field =
    * value ...where field is one of status.state, clusterName, or labels.[KEY],
@@ -290,10 +294,6 @@ class ProjectsRegionsClustersResourceApi {
    * implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
    * = mycluster AND labels.env = staging AND labels.starred = *
    *
-   * [pageToken] - Optional. The standard List page token.
-   *
-   * [pageSize] - Optional. The standard List page size.
-   *
    * Completes with a [ListClustersResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -302,7 +302,7 @@ class ProjectsRegionsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListClustersResponse> list(core.String projectId, core.String region, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,14 +316,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/clusters';
@@ -609,6 +609,11 @@ class ProjectsRegionsJobsResourceApi {
    * [region] - Required. The Cloud Dataproc region in which to handle the
    * request.
    *
+   * [pageSize] - Optional. The number of results to return in each response.
+   *
+   * [clusterName] - Optional. If set, the returned jobs list includes only jobs
+   * that were submitted to the named cluster.
+   *
    * [filter] - Optional. A filter constraining the jobs to list. Filters are
    * case-sensitive and have the following syntax:field = value AND field =
    * value ...where field is status.state or labels.[KEY], and [KEY] is a label
@@ -628,11 +633,6 @@ class ProjectsRegionsJobsResourceApi {
    * [pageToken] - Optional. The page token, returned by a previous call, to
    * request the next page of results.
    *
-   * [pageSize] - Optional. The number of results to return in each response.
-   *
-   * [clusterName] - Optional. If set, the returned jobs list includes only jobs
-   * that were submitted to the named cluster.
-   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -641,7 +641,7 @@ class ProjectsRegionsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, core.String region, {core.String filter, core.String jobStateMatcher, core.String pageToken, core.int pageSize, core.String clusterName}) {
+  async.Future<ListJobsResponse> list(core.String projectId, core.String region, {core.int pageSize, core.String clusterName, core.String filter, core.String jobStateMatcher, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -655,6 +655,12 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (clusterName != null) {
+      _queryParams["clusterName"] = [clusterName];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -663,12 +669,6 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (clusterName != null) {
-      _queryParams["clusterName"] = [clusterName];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/jobs';
@@ -958,11 +958,11 @@ class ProjectsRegionsOperationsResourceApi {
    * [name] - The name of the operation's parent resource.
    * Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
    *
+   * [filter] - The standard list filter.
+   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -972,7 +972,7 @@ class ProjectsRegionsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -983,14 +983,14 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1019,9 +1019,12 @@ class AcceleratorConfig {
    */
   core.int acceleratorCount;
   /**
-   * Full or partial URI of the accelerator type resource to expose to this
-   * instance. See Google Compute Engine AcceleratorTypes(
-   * /compute/docs/reference/beta/acceleratorTypes)
+   * Full URL, partial URI, or short name of the accelerator type resource to
+   * expose to this instance. See Google Compute Engine AcceleratorTypes(
+   * /compute/docs/reference/beta/acceleratorTypes)Examples *
+   * https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
+   * * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
+   * * nvidia-tesla-k80
    */
   core.String acceleratorTypeUri;
 
@@ -1621,8 +1624,11 @@ class GceClusterConfig {
    * communications. Cannot be specified with subnetwork_uri. If neither
    * network_uri nor subnetwork_uri is specified, the "default" network of the
    * project is used, if it exists. Cannot be a "Custom Subnet Network" (see
-   * Using Subnetworks for more information). Example:
-   * https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default.
+   * Using Subnetworks for more information).A full URL, partial URI, or short
+   * name are valid. Examples:
+   * https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
+   * projects/[project_id]/regions/global/default
+   * default
    */
   core.String networkUri;
   /**
@@ -1652,8 +1658,11 @@ class GceClusterConfig {
   core.List<core.String> serviceAccountScopes;
   /**
    * Optional. The Google Compute Engine subnetwork to be used for machine
-   * communications. Cannot be specified with network_uri. Example:
-   * https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0.
+   * communications. Cannot be specified with network_uri.A full URL, partial
+   * URI, or short name are valid. Examples:
+   * https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0
+   * projects/[project_id]/regions/us-east1/sub0
+   * sub0
    */
   core.String subnetworkUri;
   /**
@@ -1662,9 +1671,14 @@ class GceClusterConfig {
    */
   core.List<core.String> tags;
   /**
-   * Required. The zone where the Google Compute Engine cluster will be located.
-   * Example:
-   * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone].
+   * Optional. The zone where the Google Compute Engine cluster will be located.
+   * On a create request, it is required in the "global" region. If omitted in a
+   * non-global Cloud Dataproc region, the service will pick a zone in the
+   * corresponding GCE region. On a get request, zone will always be present.A
+   * full URL, partial URI, or short name are valid. Examples:
+   * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
+   * projects/[project_id]/zones/[zone]
+   * us-central1-f
    */
   core.String zoneUri;
 
@@ -1948,9 +1962,11 @@ class InstanceGroupConfig {
    */
   core.bool isPreemptible;
   /**
-   * Required. The Google Compute Engine machine type used for cluster
-   * instances. Example:
-   * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2.
+   * Optional. The Google Compute Engine machine type used for cluster
+   * instances.A full URL, partial URI, or short name are valid. Examples:
+   * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
+   * projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
+   * n1-standard-2
    */
   core.String machineTypeUri;
   /**
@@ -1959,7 +1975,7 @@ class InstanceGroupConfig {
    */
   ManagedGroupConfig managedGroupConfig;
   /**
-   * Required. The number of VM instances in the instance group. For master
+   * Optional. The number of VM instances in the instance group. For master
    * instance groups, must be set to 1.
    */
   core.int numInstances;

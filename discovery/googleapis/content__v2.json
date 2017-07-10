@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/fm1Ebpn2uSmJ0EpVKtApoUWYOV4\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/_xdoFNtmWVQrpSYjYrHA3E12xJI\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -87,7 +87,7 @@
                     ]
                 },
                 "claimwebsite": {
-                    "description": "Claims the website of a Merchant Center sub-account. This method can only be called for multi-client accounts.",
+                    "description": "Claims the website of a Merchant Center sub-account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
                     "httpMethod": "POST",
                     "id": "content.accounts.claimwebsite",
                     "parameterOrder": [
@@ -2018,7 +2018,7 @@
             }
         }
     },
-    "revision": "20170531",
+    "revision": "20170627",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

@@ -37,6 +37,7 @@ class ComputeApi {
 
   final commons.ApiRequester _requester;
 
+  AcceleratorTypesResourceApi get acceleratorTypes => new AcceleratorTypesResourceApi(_requester);
   AddressesResourceApi get addresses => new AddressesResourceApi(_requester);
   AutoscalersResourceApi get autoscalers => new AutoscalersResourceApi(_requester);
   BackendBucketsResourceApi get backendBuckets => new BackendBucketsResourceApi(_requester);
@@ -62,6 +63,7 @@ class ComputeApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   RegionAutoscalersResourceApi get regionAutoscalers => new RegionAutoscalersResourceApi(_requester);
   RegionBackendServicesResourceApi get regionBackendServices => new RegionBackendServicesResourceApi(_requester);
+  RegionCommitmentsResourceApi get regionCommitments => new RegionCommitmentsResourceApi(_requester);
   RegionInstanceGroupManagersResourceApi get regionInstanceGroupManagers => new RegionInstanceGroupManagersResourceApi(_requester);
   RegionInstanceGroupsResourceApi get regionInstanceGroups => new RegionInstanceGroupsResourceApi(_requester);
   RegionOperationsResourceApi get regionOperations => new RegionOperationsResourceApi(_requester);
@@ -85,6 +87,273 @@ class ComputeApi {
 
   ComputeApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "compute/v1/projects/"}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+
+class AcceleratorTypesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AcceleratorTypesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves an aggregated list of accelerator types.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [AcceleratorTypeAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AcceleratorTypeAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/acceleratorTypes';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AcceleratorTypeAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Returns the specified accelerator type. Get a list of available accelerator
+   * types by making a list() request.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [acceleratorType] - Name of the accelerator type to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [AcceleratorType].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AcceleratorType> get(core.String project, core.String zone, core.String acceleratorType) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (acceleratorType == null) {
+      throw new core.ArgumentError("Parameter acceleratorType is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/acceleratorTypes/' + commons.Escaper.ecapeVariable('$acceleratorType');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AcceleratorType.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of accelerator types available to the specified project.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [AcceleratorTypeList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AcceleratorTypeList> list(core.String project, core.String zone, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/acceleratorTypes';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AcceleratorTypeList.fromJson(data));
+  }
+
 }
 
 
@@ -832,7 +1101,8 @@ class AutoscalersResourceApi {
 
   /**
    * Updates an autoscaler in the specified project using the data included in
-   * the request. This method supports patch semantics.
+   * the request. This method supports PATCH semantics and uses the JSON merge
+   * patch format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -1201,7 +1471,8 @@ class BackendBucketsResourceApi {
 
   /**
    * Updates the specified BackendBucket resource with the data included in the
-   * request. This method supports patch semantics.
+   * request. This method supports PATCH semantics and uses the JSON merge patch
+   * format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -1715,7 +1986,8 @@ class BackendServicesResourceApi {
    * Patches the specified BackendService resource with the data included in the
    * request. There are several restrictions and guidelines to keep in mind when
    * updating a backend service. Read  Restrictions and Guidelines for more
-   * information. This method supports patch semantics.
+   * information. This method supports PATCH semantics and uses the JSON merge
+   * patch format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -4553,7 +4825,8 @@ class HealthChecksResourceApi {
 
   /**
    * Updates a HealthCheck resource in the specified project using the data
-   * included in the request. This method supports patch semantics.
+   * included in the request. This method supports PATCH semantics and uses the
+   * JSON merge patch format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -4910,7 +5183,8 @@ class HttpHealthChecksResourceApi {
 
   /**
    * Updates a HttpHealthCheck resource in the specified project using the data
-   * included in the request. This method supports patch semantics.
+   * included in the request. This method supports PATCH semantics and uses the
+   * JSON merge patch format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -5267,7 +5541,8 @@ class HttpsHealthChecksResourceApi {
 
   /**
    * Updates a HttpsHealthCheck resource in the specified project using the data
-   * included in the request. This method supports patch semantics.
+   * included in the request. This method supports PATCH semantics and uses the
+   * JSON merge patch format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -5589,6 +5864,8 @@ class ImagesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [forceCreate] - Force image creation if true.
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5597,7 +5874,7 @@ class ImagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Image request, core.String project) {
+  async.Future<Operation> insert(Image request, core.String project, {core.bool forceCreate}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5610,6 +5887,9 @@ class ImagesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (forceCreate != null) {
+      _queryParams["forceCreate"] = ["${forceCreate}"];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
@@ -8417,6 +8697,65 @@ class InstancesResourceApi {
   }
 
   /**
+   * Changes the number and/or type of accelerator for a stopped instance to the
+   * values specified in the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [zone] - The name of the zone for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [instance] - Name of the instance scoping this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> setMachineResources(InstancesSetMachineResourcesRequest request, core.String project, core.String zone, core.String instance) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setMachineResources';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
    * Changes the machine type for a stopped instance to the machine type
    * specified in the request.
    *
@@ -8890,8 +9229,7 @@ class LicensesResourceApi {
       _requester = client;
 
   /**
-   * Returns the specified License resource. Get a list of available licenses by
-   * making a list() request.
+   * Returns the specified License resource.
    *
    * Request parameters:
    *
@@ -10463,7 +10801,8 @@ class RegionAutoscalersResourceApi {
 
   /**
    * Updates an autoscaler in the specified project using the data included in
-   * the request. This method supports patch semantics.
+   * the request. This method supports PATCH semantics and uses the JSON merge
+   * patch format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -10918,7 +11257,8 @@ class RegionBackendServicesResourceApi {
    * Updates the specified regional BackendService resource with the data
    * included in the request. There are several restrictions and guidelines to
    * keep in mind when updating a backend service. Read  Restrictions and
-   * Guidelines for more information. This method supports patch semantics.
+   * Guidelines for more information. This method supports PATCH semantics and
+   * uses the JSON merge patch format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -11034,6 +11374,326 @@ class RegionBackendServicesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+
+}
+
+
+class RegionCommitmentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionCommitmentsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Retrieves an aggregated list of commitments.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [CommitmentAggregatedList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CommitmentAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/commitments';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CommitmentAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Returns the specified commitment resource. Get a list of available
+   * commitments by making a list() request.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [commitment] - Name of the commitment to return.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Commitment].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Commitment> get(core.String project, core.String region, core.String commitment) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (commitment == null) {
+      throw new core.ArgumentError("Parameter commitment is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/commitments/' + commons.Escaper.ecapeVariable('$commitment');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Commitment.fromJson(data));
+  }
+
+  /**
+   * Creates a commitment in the specified project using the data included in
+   * the request.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * Completes with a [Operation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Operation> insert(Commitment request, core.String project, core.String region) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/commitments';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of commitments contained within the specified region.
+   *
+   * Request parameters:
+   *
+   * [project] - Project ID for this request.
+   * Value must have pattern
+   * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+   *
+   * [region] - Name of the region for this request.
+   * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [filter] - Sets a filter {expression} for filtering listed resources. Your
+   * {expression} must be in the format: field_name comparison_string
+   * literal_string.
+   *
+   * The field_name is the name of the field you want to compare. Only atomic
+   * field types are supported (string, number, boolean). The comparison_string
+   * must be either eq (equals) or ne (not equals). The literal_string is the
+   * string value to filter to. The literal value must be valid for the type of
+   * field you are filtering by (string, number, boolean). For string fields,
+   * the literal value is interpreted as a regular expression using RE2 syntax.
+   * The literal value must match the entire field.
+   *
+   * For example, to filter for instances that do not have a name of
+   * example-instance, you would use name ne example-instance.
+   *
+   * You can filter on nested fields. For example, you could filter on instances
+   * that have set the scheduling.automaticRestart field to true. Use filtering
+   * on nested fields to take advantage of labels to organize and search for
+   * results based on label values.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+   * us-central1-f). Multiple expressions are treated as AND expressions,
+   * meaning that resources must match all expressions to pass the filters.
+   *
+   * [maxResults] - The maximum number of results per page that should be
+   * returned. If the number of available results is larger than maxResults,
+   * Compute Engine returns a nextPageToken that can be used to get the next
+   * page of results in subsequent list requests. Acceptable values are 0 to
+   * 500, inclusive. (Default: 500)
+   *
+   * [orderBy] - Sorts list results by a certain order. By default, results are
+   * returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation
+   * timestamp using orderBy="creationTimestamp desc". This sorts results based
+   * on the creationTimestamp field in reverse chronological order (newest
+   * result first). Use this to sort resources like operations so that the
+   * newest operation is returned first.
+   *
+   * Currently, only sorting by name or creationTimestamp desc is supported.
+   *
+   * [pageToken] - Specifies a page token to use. Set pageToken to the
+   * nextPageToken returned by a previous list request to get the next page of
+   * results.
+   *
+   * Completes with a [CommitmentList].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<CommitmentList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String orderBy, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/commitments';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new CommitmentList.fromJson(data));
   }
 
 }
@@ -17552,7 +18212,8 @@ class UrlMapsResourceApi {
 
   /**
    * Patches the specified UrlMap resource with the data included in the
-   * request. This method supports patch semantics.
+   * request. This method supports PATCH semantics and uses the JSON merge patch
+   * format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -18466,6 +19127,399 @@ class ZonesResourceApi {
 
 
 /**
+ * A specification of the type and number of accelerator cards attached to the
+ * instance.
+ */
+class AcceleratorConfig {
+  /** The number of the guest accelerator cards exposed to this instance. */
+  core.int acceleratorCount;
+  /**
+   * Full or partial URL of the accelerator type resource to expose to this
+   * instance.
+   */
+  core.String acceleratorType;
+
+  AcceleratorConfig();
+
+  AcceleratorConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorCount")) {
+      acceleratorCount = _json["acceleratorCount"];
+    }
+    if (_json.containsKey("acceleratorType")) {
+      acceleratorType = _json["acceleratorType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (acceleratorCount != null) {
+      _json["acceleratorCount"] = acceleratorCount;
+    }
+    if (acceleratorType != null) {
+      _json["acceleratorType"] = acceleratorType;
+    }
+    return _json;
+  }
+}
+
+/** An Accelerator Type resource. */
+class AcceleratorType {
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * [Output Only] The deprecation status associated with this accelerator type.
+   */
+  DeprecationStatus deprecated;
+  /** [Output Only] An optional textual description of the resource. */
+  core.String description;
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /**
+   * [Output Only] The type of the resource. Always compute#acceleratorType for
+   * accelerator types.
+   */
+  core.String kind;
+  /** [Output Only] Maximum accelerator cards allowed per instance. */
+  core.int maximumCardsPerInstance;
+  /** [Output Only] Name of the resource. */
+  core.String name;
+  /** [Output Only] Server-defined fully-qualified URL for this resource. */
+  core.String selfLink;
+  /**
+   * [Output Only] The name of the zone where the accelerator type resides, such
+   * as us-central1-a.
+   */
+  core.String zone;
+
+  AcceleratorType();
+
+  AcceleratorType.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("deprecated")) {
+      deprecated = new DeprecationStatus.fromJson(_json["deprecated"]);
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("maximumCardsPerInstance")) {
+      maximumCardsPerInstance = _json["maximumCardsPerInstance"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (deprecated != null) {
+      _json["deprecated"] = (deprecated).toJson();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (maximumCardsPerInstance != null) {
+      _json["maximumCardsPerInstance"] = maximumCardsPerInstance;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+class AcceleratorTypeAggregatedList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** [Output Only] A map of scoped accelerator type lists. */
+  core.Map<core.String, AcceleratorTypesScopedList> items;
+  /**
+   * [Output Only] Type of resource. Always
+   * compute#acceleratorTypeAggregatedList for aggregated lists of accelerator
+   * types.
+   */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  AcceleratorTypeAggregatedList();
+
+  AcceleratorTypeAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map<core.String, core.Object>, AcceleratorTypesScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new AcceleratorTypesScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap<AcceleratorTypesScopedList, core.Map<core.String, core.Object>>(items, (AcceleratorTypesScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of accelerator types. */
+class AcceleratorTypeList {
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
+  core.String id;
+  /** A list of AcceleratorType resources. */
+  core.List<AcceleratorType> items;
+  /**
+   * [Output Only] Type of resource. Always compute#acceleratorTypeList for
+   * lists of accelerator types.
+   */
+  core.String kind;
+  /** [Output Only] A token used to continue a truncated list request. */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  AcceleratorTypeList();
+
+  AcceleratorTypeList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new AcceleratorType.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class AcceleratorTypesScopedListWarningData {
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
+   */
+  core.String key;
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+  AcceleratorTypesScopedListWarningData();
+
+  AcceleratorTypesScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * [Output Only] An informational warning that appears when the accelerator
+ * types list is empty.
+ */
+class AcceleratorTypesScopedListWarning {
+  /**
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
+   * Possible string values are:
+   * - "CLEANUP_FAILED"
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
+  core.List<AcceleratorTypesScopedListWarningData> data;
+  /** [Output Only] A human-readable description of the warning code. */
+  core.String message;
+
+  AcceleratorTypesScopedListWarning();
+
+  AcceleratorTypesScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new AcceleratorTypesScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class AcceleratorTypesScopedList {
+  /** [Output Only] List of accelerator types contained in this scope. */
+  core.List<AcceleratorType> acceleratorTypes;
+  /**
+   * [Output Only] An informational warning that appears when the accelerator
+   * types list is empty.
+   */
+  AcceleratorTypesScopedListWarning warning;
+
+  AcceleratorTypesScopedList();
+
+  AcceleratorTypesScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorTypes")) {
+      acceleratorTypes = _json["acceleratorTypes"].map((value) => new AcceleratorType.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new AcceleratorTypesScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (acceleratorTypes != null) {
+      _json["acceleratorTypes"] = acceleratorTypes.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
  * An access configuration attached to an instance's network interface. Only one
  * access config per instance is supported.
  */
@@ -19283,6 +20337,21 @@ class Autoscaler {
   core.String region;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
+  /**
+   * [Output Only] The status of the autoscaler configuration.
+   * Possible string values are:
+   * - "ACTIVE"
+   * - "DELETING"
+   * - "ERROR"
+   * - "PENDING"
+   */
+  core.String status;
+  /**
+   * [Output Only] Human-readable details about the current state of the
+   * autoscaler. Read the documentation for Commonly returned status messages
+   * for examples of status messages you might encounter.
+   */
+  core.List<AutoscalerStatusDetails> statusDetails;
   /** URL of the managed instance group that this autoscaler will scale. */
   core.String target;
   /**
@@ -19318,6 +20387,12 @@ class Autoscaler {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("statusDetails")) {
+      statusDetails = _json["statusDetails"].map((value) => new AutoscalerStatusDetails.fromJson(value)).toList();
+    }
     if (_json.containsKey("target")) {
       target = _json["target"];
     }
@@ -19351,6 +20426,12 @@ class Autoscaler {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (statusDetails != null) {
+      _json["statusDetails"] = statusDetails.map((value) => (value).toJson()).toList();
     }
     if (target != null) {
       _json["target"] = target;
@@ -19488,6 +20569,53 @@ class AutoscalerList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class AutoscalerStatusDetails {
+  /** The status message. */
+  core.String message;
+  /**
+   * The type of error returned.
+   * Possible string values are:
+   * - "ALL_INSTANCES_UNHEALTHY"
+   * - "BACKEND_SERVICE_DOES_NOT_EXIST"
+   * - "CAPPED_AT_MAX_NUM_REPLICAS"
+   * - "CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE"
+   * - "CUSTOM_METRIC_INVALID"
+   * - "MIN_EQUALS_MAX"
+   * - "MISSING_CUSTOM_METRIC_DATA_POINTS"
+   * - "MISSING_LOAD_BALANCING_DATA_POINTS"
+   * - "MORE_THAN_ONE_BACKEND_SERVICE"
+   * - "NOT_ENOUGH_QUOTA_AVAILABLE"
+   * - "REGION_RESOURCE_STOCKOUT"
+   * - "SCALING_TARGET_DOES_NOT_EXIST"
+   * - "UNKNOWN"
+   * - "UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION"
+   * - "ZONE_RESOURCE_STOCKOUT"
+   */
+  core.String type;
+
+  AutoscalerStatusDetails();
+
+  AutoscalerStatusDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -20178,7 +21306,9 @@ class BackendService {
   /**
    * The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
    * health checking this BackendService. Currently at most one health check can
-   * be specified, and a health check is required.
+   * be specified, and a health check is required for GCE backend services. A
+   * health check must not be specified for GAE app backend and Cloud Function
+   * backend.
    *
    * For internal load balancing, a URL to a HealthCheck resource must be
    * specified instead.
@@ -20863,6 +21993,438 @@ class CacheKeyPolicy {
     }
     if (queryStringWhitelist != null) {
       _json["queryStringWhitelist"] = queryStringWhitelist;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents a Commitment resource. Creating a Commitment resource means that
+ * you are purchasing a committed use contract with an explicit start and end
+ * time. You can create commitments based on vCPUs and memory usage and receive
+ * discounted rates. For full details, read Signing Up for Committed Use
+ * Discounts.
+ *
+ * Committed use discounts are subject to Google Cloud Platform's Service
+ * Specific Terms. By purchasing a committed use discount, you agree to these
+ * terms. Committed use discounts will not renew, so you must purchase a new
+ * commitment to continue receiving discounts.
+ */
+class Commitment {
+  /** [Output Only] Creation timestamp in RFC3339 text format. */
+  core.String creationTimestamp;
+  /**
+   * An optional description of this resource. Provide this property when you
+   * create the resource.
+   */
+  core.String description;
+  /** [Output Only] Commitment end time in RFC3339 text format. */
+  core.String endTimestamp;
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /**
+   * [Output Only] Type of the resource. Always compute#commitment for
+   * commitments.
+   */
+  core.String kind;
+  /**
+   * Name of the resource. Provided by the client when the resource is created.
+   * The name must be 1-63 characters long, and comply with RFC1035.
+   * Specifically, the name must be 1-63 characters long and match the regular
+   * expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+   * be a lowercase letter, and all following characters must be a dash,
+   * lowercase letter, or digit, except the last character, which cannot be a
+   * dash.
+   */
+  core.String name;
+  /**
+   * The plan for this commitment, which determines duration and discount rate.
+   * The currently supported plans are TWELVE_MONTH (1 year), and
+   * THIRTY_SIX_MONTH (3 years).
+   * Possible string values are:
+   * - "INVALID"
+   * - "THIRTY_SIX_MONTH"
+   * - "TWELVE_MONTH"
+   */
+  core.String plan;
+  /** [Output Only] URL of the region where this commitment may be used. */
+  core.String region;
+  /**
+   * List of commitment amounts for particular resources. Note that VCPU and
+   * MEMORY resource commitments must occur together.
+   */
+  core.List<ResourceCommitment> resources;
+  /** [Output Only] Server-defined URL for the resource. */
+  core.String selfLink;
+  /** [Output Only] Commitment start time in RFC3339 text format. */
+  core.String startTimestamp;
+  /**
+   * [Output Only] Status of the commitment with regards to eventual expiration
+   * (each commitment has an end date defined). One of the following values:
+   * NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+   * Possible string values are:
+   * - "ACTIVE"
+   * - "CREATING"
+   * - "EXPIRED"
+   * - "NOT_YET_ACTIVE"
+   */
+  core.String status;
+  /** [Output Only] An optional, human-readable explanation of the status. */
+  core.String statusMessage;
+
+  Commitment();
+
+  Commitment.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("endTimestamp")) {
+      endTimestamp = _json["endTimestamp"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("plan")) {
+      plan = _json["plan"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("resources")) {
+      resources = _json["resources"].map((value) => new ResourceCommitment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("startTimestamp")) {
+      startTimestamp = _json["startTimestamp"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("statusMessage")) {
+      statusMessage = _json["statusMessage"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (endTimestamp != null) {
+      _json["endTimestamp"] = endTimestamp;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (plan != null) {
+      _json["plan"] = plan;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (startTimestamp != null) {
+      _json["startTimestamp"] = startTimestamp;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (statusMessage != null) {
+      _json["statusMessage"] = statusMessage;
+    }
+    return _json;
+  }
+}
+
+class CommitmentAggregatedList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** Commitments by scope. */
+  core.Map<core.String, CommitmentsScopedList> items;
+  /**
+   * [Output Only] Type of resource. Always compute#commitmentAggregatedList for
+   * aggregated lists of commitments.
+   */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  CommitmentAggregatedList();
+
+  CommitmentAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map<core.String, core.Object>, CommitmentsScopedList>(_json["items"], (core.Map<core.String, core.Object> item) => new CommitmentsScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap<CommitmentsScopedList, core.Map<core.String, core.Object>>(items, (CommitmentsScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Contains a list of Commitment resources. */
+class CommitmentList {
+  /**
+   * [Output Only] The unique identifier for the resource. This identifier is
+   * defined by the server.
+   */
+  core.String id;
+  /** A list of Commitment resources. */
+  core.List<Commitment> items;
+  /**
+   * [Output Only] Type of resource. Always compute#commitmentList for lists of
+   * commitments.
+   */
+  core.String kind;
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
+  core.String selfLink;
+
+  CommitmentList();
+
+  CommitmentList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"].map((value) => new Commitment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class CommitmentsScopedListWarningData {
+  /**
+   * [Output Only] A key that provides more detail on the warning being
+   * returned. For example, for warnings where there are no results in a list
+   * request for a particular zone, this key might be scope and the key value
+   * might be the zone name. Other examples might be a key indicating a
+   * deprecated resource and a suggested replacement, or a warning about invalid
+   * network settings (for example, if an instance attempts to perform IP
+   * forwarding but is not enabled for IP forwarding).
+   */
+  core.String key;
+  /** [Output Only] A warning data value corresponding to the key. */
+  core.String value;
+
+  CommitmentsScopedListWarningData();
+
+  CommitmentsScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/**
+ * [Output Only] Informational warning which replaces the list of commitments
+ * when the list is empty.
+ */
+class CommitmentsScopedListWarning {
+  /**
+   * [Output Only] A warning code, if applicable. For example, Compute Engine
+   * returns NO_RESULTS_ON_PAGE if there are no results in the response.
+   * Possible string values are:
+   * - "CLEANUP_FAILED"
+   * - "DEPRECATED_RESOURCE_USED"
+   * - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+   * - "FIELD_VALUE_OVERRIDEN"
+   * - "INJECTED_KERNELS_DEPRECATED"
+   * - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+   * - "NEXT_HOP_CANNOT_IP_FORWARD"
+   * - "NEXT_HOP_INSTANCE_NOT_FOUND"
+   * - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+   * - "NEXT_HOP_NOT_RUNNING"
+   * - "NOT_CRITICAL_ERROR"
+   * - "NO_RESULTS_ON_PAGE"
+   * - "REQUIRED_TOS_AGREEMENT"
+   * - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+   * - "RESOURCE_NOT_DELETED"
+   * - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+   * - "UNREACHABLE"
+   */
+  core.String code;
+  /**
+   * [Output Only] Metadata about this warning in key: value format. For
+   * example:
+   * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+   */
+  core.List<CommitmentsScopedListWarningData> data;
+  /** [Output Only] A human-readable description of the warning code. */
+  core.String message;
+
+  CommitmentsScopedListWarning();
+
+  CommitmentsScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"].map((value) => new CommitmentsScopedListWarningData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class CommitmentsScopedList {
+  /** [Output Only] List of commitments contained in this scope. */
+  core.List<Commitment> commitments;
+  /**
+   * [Output Only] Informational warning which replaces the list of commitments
+   * when the list is empty.
+   */
+  CommitmentsScopedListWarning warning;
+
+  CommitmentsScopedList();
+
+  CommitmentsScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("commitments")) {
+      commitments = _json["commitments"].map((value) => new Commitment.fromJson(value)).toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new CommitmentsScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (commitments != null) {
+      _json["commitments"] = commitments.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -22906,7 +24468,7 @@ class GlobalSetLabelsRequest {
 /** Guest OS features. */
 class GuestOsFeature {
   /**
-   * The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is
+   * The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
    * supported. For newer Windows images, the server might also populate this
    * property with the value WINDOWS to indicate that this is a Windows image.
    * This value is purely informational and does not enable or disable any
@@ -24294,6 +25856,10 @@ class Instance {
    */
   core.List<AttachedDisk> disks;
   /**
+   * List of the type and count of accelerator cards attached to the instance.
+   */
+  core.List<AcceleratorConfig> guestAccelerators;
+  /**
    * [Output Only] The unique identifier for the resource. This identifier is
    * defined by the server.
    */
@@ -24430,6 +25996,9 @@ class Instance {
     if (_json.containsKey("disks")) {
       disks = _json["disks"].map((value) => new AttachedDisk.fromJson(value)).toList();
     }
+    if (_json.containsKey("guestAccelerators")) {
+      guestAccelerators = _json["guestAccelerators"].map((value) => new AcceleratorConfig.fromJson(value)).toList();
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -24496,6 +26065,9 @@ class Instance {
     }
     if (disks != null) {
       _json["disks"] = disks.map((value) => (value).toJson()).toList();
+    }
+    if (guestAccelerators != null) {
+      _json["guestAccelerators"] = guestAccelerators.map((value) => (value).toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -26117,6 +27689,11 @@ class InstanceProperties {
    * from this template.
    */
   core.List<AttachedDisk> disks;
+  /**
+   * A list of guest accelerator cards' type and count to use for instances
+   * created from the instance template.
+   */
+  core.List<AcceleratorConfig> guestAccelerators;
   /** Labels to apply to instances that are created from this template. */
   core.Map<core.String, core.String> labels;
   /**
@@ -26163,6 +27740,9 @@ class InstanceProperties {
     if (_json.containsKey("disks")) {
       disks = _json["disks"].map((value) => new AttachedDisk.fromJson(value)).toList();
     }
+    if (_json.containsKey("guestAccelerators")) {
+      guestAccelerators = _json["guestAccelerators"].map((value) => new AcceleratorConfig.fromJson(value)).toList();
+    }
     if (_json.containsKey("labels")) {
       labels = _json["labels"];
     }
@@ -26196,6 +27776,9 @@ class InstanceProperties {
     }
     if (disks != null) {
       _json["disks"] = disks.map((value) => (value).toJson()).toList();
+    }
+    if (guestAccelerators != null) {
+      _json["guestAccelerators"] = guestAccelerators.map((value) => (value).toJson()).toList();
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -26622,6 +28205,29 @@ class InstancesSetLabelsRequest {
     }
     if (labels != null) {
       _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
+class InstancesSetMachineResourcesRequest {
+  /**
+   * List of the type and count of accelerator cards attached to the instance.
+   */
+  core.List<AcceleratorConfig> guestAccelerators;
+
+  InstancesSetMachineResourcesRequest();
+
+  InstancesSetMachineResourcesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("guestAccelerators")) {
+      guestAccelerators = _json["guestAccelerators"].map((value) => new AcceleratorConfig.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (guestAccelerators != null) {
+      _json["guestAccelerators"] = guestAccelerators.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -29037,6 +30643,7 @@ class Quota {
    * - "AUTOSCALERS"
    * - "BACKEND_BUCKETS"
    * - "BACKEND_SERVICES"
+   * - "COMMITMENTS"
    * - "CPUS"
    * - "CPUS_ALL_REGIONS"
    * - "DISKS_TOTAL_GB"
@@ -29764,6 +31371,51 @@ class RegionList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Commitment for a particular resource (a Commitment is composed of one or more
+ * of these).
+ */
+class ResourceCommitment {
+  /**
+   * The amount of the resource purchased (in a type-dependent unit, such as
+   * bytes). For vCPUs, this can just be an integer. For memory, this must be
+   * provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of
+   * memory per every vCPU.
+   */
+  core.String amount;
+  /**
+   * Type of resource for which this commitment applies. Possible values are
+   * VCPU and MEMORY
+   * Possible string values are:
+   * - "MEMORY"
+   * - "UNSPECIFIED"
+   * - "VCPU"
+   */
+  core.String type;
+
+  ResourceCommitment();
+
+  ResourceCommitment.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = _json["amount"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (amount != null) {
+      _json["amount"] = amount;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }

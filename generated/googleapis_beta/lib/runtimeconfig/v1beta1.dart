@@ -749,6 +749,10 @@ class ProjectsConfigsVariablesResourceApi {
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
+   * [filter] - Filters variables by matching the specified filter. For example:
+   *
+   * `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+   *
    * [pageToken] - Specifies a page token to use. Set `pageToken` to a
    * `nextPageToken`
    * returned by a previous list request to get the next page of results.
@@ -762,10 +766,6 @@ class ProjectsConfigsVariablesResourceApi {
    * are fewer
    * elements than the specified number, returns all elements.
    *
-   * [filter] - Filters variables by matching the specified filter. For example:
-   *
-   * `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
-   *
    * Completes with a [ListVariablesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -774,7 +774,7 @@ class ProjectsConfigsVariablesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVariablesResponse> list(core.String parent, {core.String pageToken, core.bool returnValues, core.int pageSize, core.String filter}) {
+  async.Future<ListVariablesResponse> list(core.String parent, {core.String filter, core.String pageToken, core.bool returnValues, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -785,6 +785,9 @@ class ProjectsConfigsVariablesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -793,9 +796,6 @@ class ProjectsConfigsVariablesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/variables';
@@ -1641,7 +1641,6 @@ class Operation {
 class Policy {
   /**
    * Associates a list of `members` to a `role`.
-   * Multiple `bindings` must not be specified for the same `role`.
    * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;

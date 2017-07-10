@@ -29,7 +29,7 @@
     "description": "Creates and runs virtual machines on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/iZLqx-CyTfetKLdnjFUOaf5SZvE\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/pqOvnHFN7sP-wPh4KHehXBGM-3c\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -86,6 +86,158 @@
     },
     "protocol": "rest",
     "resources": {
+        "acceleratorTypes": {
+            "methods": {
+                "aggregatedList": {
+                    "description": "Retrieves an aggregated list of accelerator types.",
+                    "httpMethod": "GET",
+                    "id": "compute.acceleratorTypes.aggregatedList",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/aggregated/acceleratorTypes",
+                    "response": {
+                        "$ref": "AcceleratorTypeAggregatedList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified accelerator type. Get a list of available accelerator types by making a list() request.",
+                    "httpMethod": "GET",
+                    "id": "compute.acceleratorTypes.get",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "acceleratorType"
+                    ],
+                    "parameters": {
+                        "acceleratorType": {
+                            "description": "Name of the accelerator type to return.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The name of the zone for this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/acceleratorTypes/{acceleratorType}",
+                    "response": {
+                        "$ref": "AcceleratorType"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves a list of accelerator types available to the specified project.",
+                    "httpMethod": "GET",
+                    "id": "compute.acceleratorTypes.list",
+                    "parameterOrder": [
+                        "project",
+                        "zone"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The name of the zone for this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/acceleratorTypes",
+                    "response": {
+                        "$ref": "AcceleratorTypeList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
+        },
         "addresses": {
             "methods": {
                 "aggregatedList": {
@@ -543,7 +695,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates an autoscaler in the specified project using the data included in the request. This method supports patch semantics.",
+                    "description": "Updates an autoscaler in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.autoscalers.patch",
                     "parameterOrder": [
@@ -776,7 +928,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates the specified BackendBucket resource with the data included in the request. This method supports patch semantics.",
+                    "description": "Updates the specified BackendBucket resource with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.backendBuckets.patch",
                     "parameterOrder": [
@@ -1082,7 +1234,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Patches the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information. This method supports patch semantics.",
+                    "description": "Patches the specified BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.backendServices.patch",
                     "parameterOrder": [
@@ -2815,7 +2967,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a HealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.",
+                    "description": "Updates a HealthCheck resource in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.healthChecks.patch",
                     "parameterOrder": [
@@ -3036,7 +3188,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.",
+                    "description": "Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.httpHealthChecks.patch",
                     "parameterOrder": [
@@ -3257,7 +3409,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates a HttpsHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.",
+                    "description": "Updates a HttpsHealthCheck resource in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.httpsHealthChecks.patch",
                     "parameterOrder": [
@@ -3478,6 +3630,11 @@
                         "project"
                     ],
                     "parameters": {
+                        "forceCreate": {
+                            "description": "Force image creation if true.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "project": {
                             "description": "Project ID for this request.",
                             "location": "path",
@@ -5313,6 +5470,50 @@
                         "https://www.googleapis.com/auth/compute"
                     ]
                 },
+                "setMachineResources": {
+                    "description": "Changes the number and/or type of accelerator for a stopped instance to the values specified in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.instances.setMachineResources",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Name of the instance scoping this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "description": "The name of the zone for this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instances/{instance}/setMachineResources",
+                    "request": {
+                        "$ref": "InstancesSetMachineResourcesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
                 "setMachineType": {
                     "description": "Changes the machine type for a stopped instance to the machine type specified in the request.",
                     "httpMethod": "POST",
@@ -5664,7 +5865,7 @@
         "licenses": {
             "methods": {
                 "get": {
-                    "description": "Returns the specified License resource. Get a list of available licenses by making a list() request.",
+                    "description": "Returns the specified License resource.",
                     "httpMethod": "GET",
                     "id": "compute.licenses.get",
                     "parameterOrder": [
@@ -6260,8 +6461,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly"
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 },
                 "getXpnResources": {
@@ -6305,8 +6505,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly"
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 },
                 "listXpnHosts": {
@@ -6353,8 +6552,7 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly"
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 },
                 "moveDisk": {
@@ -6653,7 +6851,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates an autoscaler in the specified project using the data included in the request. This method supports patch semantics.",
+                    "description": "Updates an autoscaler in the specified project using the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.regionAutoscalers.patch",
                     "parameterOrder": [
@@ -6962,7 +7160,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates the specified regional BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information. This method supports patch semantics.",
+                    "description": "Updates the specified regional BackendService resource with the data included in the request. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.regionBackendServices.patch",
                     "parameterOrder": [
@@ -7048,6 +7246,194 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute"
+                    ]
+                }
+            }
+        },
+        "regionCommitments": {
+            "methods": {
+                "aggregatedList": {
+                    "description": "Retrieves an aggregated list of commitments.",
+                    "httpMethod": "GET",
+                    "id": "compute.regionCommitments.aggregatedList",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/aggregated/commitments",
+                    "response": {
+                        "$ref": "CommitmentAggregatedList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "get": {
+                    "description": "Returns the specified commitment resource. Get a list of available commitments by making a list() request.",
+                    "httpMethod": "GET",
+                    "id": "compute.regionCommitments.get",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "commitment"
+                    ],
+                    "parameters": {
+                        "commitment": {
+                            "description": "Name of the commitment to return.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Name of the region for this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/commitments/{commitment}",
+                    "response": {
+                        "$ref": "Commitment"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "description": "Creates a commitment in the specified project using the data included in the request.",
+                    "httpMethod": "POST",
+                    "id": "compute.regionCommitments.insert",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Name of the region for this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/commitments",
+                    "request": {
+                        "$ref": "Commitment"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "description": "Retrieves a list of commitments contained within the specified region.",
+                    "httpMethod": "GET",
+                    "id": "compute.regionCommitments.list",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Sets a filter {expression} for filtering listed resources. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID for this request.",
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Name of the region for this request.",
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/commitments",
+                    "response": {
+                        "$ref": "CommitmentList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
                     ]
                 }
             }
@@ -11174,7 +11560,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Patches the specified UrlMap resource with the data included in the request. This method supports patch semantics.",
+                    "description": "Patches the specified UrlMap resource with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
                     "httpMethod": "PATCH",
                     "id": "compute.urlMaps.patch",
                     "parameterOrder": [
@@ -11742,9 +12128,216 @@
             }
         }
     },
-    "revision": "20170530",
+    "revision": "20170612",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
+        "AcceleratorConfig": {
+            "description": "A specification of the type and number of accelerator cards attached to the instance.",
+            "id": "AcceleratorConfig",
+            "properties": {
+                "acceleratorCount": {
+                    "description": "The number of the guest accelerator cards exposed to this instance.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "acceleratorType": {
+                    "description": "Full or partial URL of the accelerator type resource to expose to this instance.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AcceleratorType": {
+            "description": "An Accelerator Type resource.",
+            "id": "AcceleratorType",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "deprecated": {
+                    "$ref": "DeprecationStatus",
+                    "description": "[Output Only] The deprecation status associated with this accelerator type."
+                },
+                "description": {
+                    "description": "[Output Only] An optional textual description of the resource.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#acceleratorType",
+                    "description": "[Output Only] The type of the resource. Always compute#acceleratorType for accelerator types.",
+                    "type": "string"
+                },
+                "maximumCardsPerInstance": {
+                    "description": "[Output Only] Maximum accelerator cards allowed per instance.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "[Output Only] Name of the resource.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined fully-qualified URL for this resource.",
+                    "type": "string"
+                },
+                "zone": {
+                    "description": "[Output Only] The name of the zone where the accelerator type resides, such as us-central1-a.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AcceleratorTypeAggregatedList": {
+            "id": "AcceleratorTypeAggregatedList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "additionalProperties": {
+                        "$ref": "AcceleratorTypesScopedList",
+                        "description": "[Output Only] Name of the scope containing this set of accelerator types."
+                    },
+                    "description": "[Output Only] A map of scoped accelerator type lists.",
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "compute#acceleratorTypeAggregatedList",
+                    "description": "[Output Only] Type of resource. Always compute#acceleratorTypeAggregatedList for aggregated lists of accelerator types.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AcceleratorTypeList": {
+            "description": "Contains a list of accelerator types.",
+            "id": "AcceleratorTypeList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A list of AcceleratorType resources.",
+                    "items": {
+                        "$ref": "AcceleratorType"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#acceleratorTypeList",
+                    "description": "[Output Only] Type of resource. Always compute#acceleratorTypeList for lists of accelerator types.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] A token used to continue a truncated list request.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AcceleratorTypesScopedList": {
+            "id": "AcceleratorTypesScopedList",
+            "properties": {
+                "acceleratorTypes": {
+                    "description": "[Output Only] List of accelerator types contained in this scope.",
+                    "items": {
+                        "$ref": "AcceleratorType"
+                    },
+                    "type": "array"
+                },
+                "warning": {
+                    "description": "[Output Only] An informational warning that appears when the accelerator types list is empty.",
+                    "properties": {
+                        "code": {
+                            "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+                            "enum": [
+                                "CLEANUP_FAILED",
+                                "DEPRECATED_RESOURCE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                                "RESOURCE_NOT_DELETED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNREACHABLE"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "[Output Only] A warning data value corresponding to the key.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "description": "[Output Only] A human-readable description of the warning code.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AccessConfig": {
             "description": "An access configuration attached to an instance's network interface. Only one access config per instance is supported.",
             "id": "AccessConfig",
@@ -12156,6 +12749,29 @@
                     "description": "[Output Only] Server-defined URL for the resource.",
                     "type": "string"
                 },
+                "status": {
+                    "description": "[Output Only] The status of the autoscaler configuration.",
+                    "enum": [
+                        "ACTIVE",
+                        "DELETING",
+                        "ERROR",
+                        "PENDING"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "statusDetails": {
+                    "description": "[Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.",
+                    "items": {
+                        "$ref": "AutoscalerStatusDetails"
+                    },
+                    "type": "array"
+                },
                 "target": {
                     "description": "URL of the managed instance group that this autoscaler will scale.",
                     "type": "string"
@@ -12224,6 +12840,54 @@
                 },
                 "selfLink": {
                     "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalerStatusDetails": {
+            "id": "AutoscalerStatusDetails",
+            "properties": {
+                "message": {
+                    "description": "The status message.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of error returned.",
+                    "enum": [
+                        "ALL_INSTANCES_UNHEALTHY",
+                        "BACKEND_SERVICE_DOES_NOT_EXIST",
+                        "CAPPED_AT_MAX_NUM_REPLICAS",
+                        "CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE",
+                        "CUSTOM_METRIC_INVALID",
+                        "MIN_EQUALS_MAX",
+                        "MISSING_CUSTOM_METRIC_DATA_POINTS",
+                        "MISSING_LOAD_BALANCING_DATA_POINTS",
+                        "MORE_THAN_ONE_BACKEND_SERVICE",
+                        "NOT_ENOUGH_QUOTA_AVAILABLE",
+                        "REGION_RESOURCE_STOCKOUT",
+                        "SCALING_TARGET_DOES_NOT_EXIST",
+                        "UNKNOWN",
+                        "UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION",
+                        "ZONE_RESOURCE_STOCKOUT"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
                     "type": "string"
                 }
             },
@@ -12575,7 +13239,7 @@
                     "type": "string"
                 },
                 "healthChecks": {
-                    "description": "The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required.\n\nFor internal load balancing, a URL to a HealthCheck resource must be specified instead.",
+                    "description": "The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required for GCE backend services. A health check must not be specified for GAE app backend and Cloud Function backend.\n\nFor internal load balancing, a URL to a HealthCheck resource must be specified instead.",
                     "items": {
                         "type": "string"
                     },
@@ -12908,6 +13572,237 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Commitment": {
+            "description": "Represents a Commitment resource. Creating a Commitment resource means that you are purchasing a committed use contract with an explicit start and end time. You can create commitments based on vCPUs and memory usage and receive discounted rates. For full details, read Signing Up for Committed Use Discounts.\n\nCommitted use discounts are subject to Google Cloud Platform's Service Specific Terms. By purchasing a committed use discount, you agree to these terms. Committed use discounts will not renew, so you must purchase a new commitment to continue receiving discounts.",
+            "id": "Commitment",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional description of this resource. Provide this property when you create the resource.",
+                    "type": "string"
+                },
+                "endTimestamp": {
+                    "description": "[Output Only] Commitment end time in RFC3339 text format.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#commitment",
+                    "description": "[Output Only] Type of the resource. Always compute#commitment for commitments.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "plan": {
+                    "description": "The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).",
+                    "enum": [
+                        "INVALID",
+                        "THIRTY_SIX_MONTH",
+                        "TWELVE_MONTH"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "region": {
+                    "description": "[Output Only] URL of the region where this commitment may be used.",
+                    "type": "string"
+                },
+                "resources": {
+                    "description": "List of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.",
+                    "items": {
+                        "$ref": "ResourceCommitment"
+                    },
+                    "type": "array"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for the resource.",
+                    "type": "string"
+                },
+                "startTimestamp": {
+                    "description": "[Output Only] Commitment start time in RFC3339 text format.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "[Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.",
+                    "enum": [
+                        "ACTIVE",
+                        "CREATING",
+                        "EXPIRED",
+                        "NOT_YET_ACTIVE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "statusMessage": {
+                    "description": "[Output Only] An optional, human-readable explanation of the status.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommitmentAggregatedList": {
+            "id": "CommitmentAggregatedList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "additionalProperties": {
+                        "$ref": "CommitmentsScopedList",
+                        "description": "[Output Only] Name of the scope containing this set of commitments."
+                    },
+                    "description": "Commitments by scope.",
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "compute#commitmentAggregatedList",
+                    "description": "[Output Only] Type of resource. Always compute#commitmentAggregatedList for aggregated lists of commitments.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommitmentList": {
+            "description": "Contains a list of Commitment resources.",
+            "id": "CommitmentList",
+            "properties": {
+                "id": {
+                    "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+                    "type": "string"
+                },
+                "items": {
+                    "description": "A list of Commitment resources.",
+                    "items": {
+                        "$ref": "Commitment"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#commitmentList",
+                    "description": "[Output Only] Type of resource. Always compute#commitmentList for lists of commitments.",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommitmentsScopedList": {
+            "id": "CommitmentsScopedList",
+            "properties": {
+                "commitments": {
+                    "description": "[Output Only] List of commitments contained in this scope.",
+                    "items": {
+                        "$ref": "Commitment"
+                    },
+                    "type": "array"
+                },
+                "warning": {
+                    "description": "[Output Only] Informational warning which replaces the list of commitments when the list is empty.",
+                    "properties": {
+                        "code": {
+                            "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+                            "enum": [
+                                "CLEANUP_FAILED",
+                                "DEPRECATED_RESOURCE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "FIELD_VALUE_OVERRIDEN",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                                "RESOURCE_NOT_DELETED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNREACHABLE"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "[Output Only] A warning data value corresponding to the key.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "description": "[Output Only] A human-readable description of the warning code.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -13888,7 +14783,7 @@
             "id": "GuestOsFeature",
             "properties": {
                 "type": {
-                    "description": "The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is supported. For newer Windows images, the server might also populate this property with the value WINDOWS to indicate that this is a Windows image. This value is purely informational and does not enable or disable any features.",
+                    "description": "The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is supported. For newer Windows images, the server might also populate this property with the value WINDOWS to indicate that this is a Windows image. This value is purely informational and does not enable or disable any features.",
                     "enum": [
                         "FEATURE_TYPE_UNSPECIFIED",
                         "VIRTIO_SCSI_MULTIQUEUE",
@@ -14557,6 +15452,13 @@
                     "description": "Array of disks associated with this instance. Persistent disks must be created before you can assign them.",
                     "items": {
                         "$ref": "AttachedDisk"
+                    },
+                    "type": "array"
+                },
+                "guestAccelerators": {
+                    "description": "List of the type and count of accelerator cards attached to the instance.",
+                    "items": {
+                        "$ref": "AcceleratorConfig"
                     },
                     "type": "array"
                 },
@@ -15440,6 +16342,13 @@
                     },
                     "type": "array"
                 },
+                "guestAccelerators": {
+                    "description": "A list of guest accelerator cards' type and count to use for instances created from the instance template.",
+                    "items": {
+                        "$ref": "AcceleratorConfig"
+                    },
+                    "type": "array"
+                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -15705,6 +16614,19 @@
                         "type": "string"
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InstancesSetMachineResourcesRequest": {
+            "id": "InstancesSetMachineResourcesRequest",
+            "properties": {
+                "guestAccelerators": {
+                    "description": "List of the type and count of accelerator cards attached to the instance.",
+                    "items": {
+                        "$ref": "AcceleratorConfig"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -16898,6 +17820,7 @@
                         "AUTOSCALERS",
                         "BACKEND_BUCKETS",
                         "BACKEND_SERVICES",
+                        "COMMITMENTS",
                         "CPUS",
                         "CPUS_ALL_REGIONS",
                         "DISKS_TOTAL_GB",
@@ -16933,6 +17856,7 @@
                         "VPN_TUNNELS"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -17313,6 +18237,32 @@
                 },
                 "selfLink": {
                     "description": "[Output Only] Server-defined URL for this resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResourceCommitment": {
+            "description": "Commitment for a particular resource (a Commitment is composed of one or more of these).",
+            "id": "ResourceCommitment",
+            "properties": {
+                "amount": {
+                    "description": "The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of resource for which this commitment applies. Possible values are VCPU and MEMORY",
+                    "enum": [
+                        "MEMORY",
+                        "UNSPECIFIED",
+                        "VCPU"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
                     "type": "string"
                 }
             },

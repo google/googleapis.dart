@@ -1734,6 +1734,44 @@ class Any {
   }
 }
 
+class AppStartTime {
+  /**
+   * Optional. The time from app start to reaching the developer-reported "fully
+   * drawn" time. This is only stored if the app includes a call to
+   * Activity.reportFullyDrawn(). See
+   * https://developer.android.com/topic/performance/launch-time.html#time-full
+   */
+  Duration fullyDrawnTime;
+  /**
+   * The time from app start to the first displayed activity being drawn, as
+   * reported in Logcat. See
+   * https://developer.android.com/topic/performance/launch-time.html#time-initial
+   */
+  Duration initialDisplayTime;
+
+  AppStartTime();
+
+  AppStartTime.fromJson(core.Map _json) {
+    if (_json.containsKey("fullyDrawnTime")) {
+      fullyDrawnTime = new Duration.fromJson(_json["fullyDrawnTime"]);
+    }
+    if (_json.containsKey("initialDisplayTime")) {
+      initialDisplayTime = new Duration.fromJson(_json["initialDisplayTime"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (fullyDrawnTime != null) {
+      _json["fullyDrawnTime"] = (fullyDrawnTime).toJson();
+    }
+    if (initialDisplayTime != null) {
+      _json["initialDisplayTime"] = (initialDisplayTime).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * Encapsulates the metadata for basic sample series represented by a line chart
  */
@@ -2708,6 +2746,7 @@ class PerfEnvironment {
 
 /** A summary of perf metrics collected and performance environment info */
 class PerfMetricsSummary {
+  AppStartTime appStartTime;
   /** A tool results execution ID. */
   core.String executionId;
   /** A tool results history ID. */
@@ -2726,6 +2765,9 @@ class PerfMetricsSummary {
   PerfMetricsSummary();
 
   PerfMetricsSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("appStartTime")) {
+      appStartTime = new AppStartTime.fromJson(_json["appStartTime"]);
+    }
     if (_json.containsKey("executionId")) {
       executionId = _json["executionId"];
     }
@@ -2748,6 +2790,9 @@ class PerfMetricsSummary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (appStartTime != null) {
+      _json["appStartTime"] = (appStartTime).toJson();
+    }
     if (executionId != null) {
       _json["executionId"] = executionId;
     }
@@ -3055,8 +3100,8 @@ class Status {
   /** The status code, which should be an enum value of [google.rpc.Code][]. */
   core.int code;
   /**
-   * A list of messages that carry the error details. There will be a common set
-   * of message types for APIs to use.
+   * A list of messages that carry the error details. There is a common set of
+   * message types for APIs to use.
    */
   core.List<Any> details;
   /**

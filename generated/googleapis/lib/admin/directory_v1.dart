@@ -445,6 +445,8 @@ class ChromeosdevicesResourceApi {
    * - "status" : Chromebook status.
    * - "supportEndDate" : Chromebook support end date.
    *
+   * [orgUnitPath] - Full path of the organization unit or its Id
+   *
    * [pageToken] - Token to specify next page in the list
    *
    * [projection] - Restrict information returned to a set of selected fields.
@@ -470,7 +472,7 @@ class ChromeosdevicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ChromeOsDevices> list(core.String customerId, {core.int maxResults, core.String orderBy, core.String pageToken, core.String projection, core.String query, core.String sortOrder}) {
+  async.Future<ChromeOsDevices> list(core.String customerId, {core.int maxResults, core.String orderBy, core.String orgUnitPath, core.String pageToken, core.String projection, core.String query, core.String sortOrder}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -486,6 +488,9 @@ class ChromeosdevicesResourceApi {
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if (orgUnitPath != null) {
+      _queryParams["orgUnitPath"] = [orgUnitPath];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -8001,6 +8006,13 @@ class User {
   core.bool isMailboxSetup;
   /** Kind of resource this is. */
   core.String kind;
+  /**
+   *
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object languages;
   /** User's last login time. (Read-only) */
   core.DateTime lastLoginTime;
   /**
@@ -8147,6 +8159,9 @@ class User {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("languages")) {
+      languages = _json["languages"];
+    }
     if (_json.containsKey("lastLoginTime")) {
       lastLoginTime = core.DateTime.parse(_json["lastLoginTime"]);
     }
@@ -8270,6 +8285,9 @@ class User {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (languages != null) {
+      _json["languages"] = languages;
     }
     if (lastLoginTime != null) {
       _json["lastLoginTime"] = (lastLoginTime).toIso8601String();
@@ -8698,11 +8716,48 @@ class UserIm {
   }
 }
 
+/** JSON template for a language entry. */
+class UserLanguage {
+  /**
+   * Other language. User can provide own language name if there is no
+   * corresponding Google III language code. If this is set LanguageCode can't
+   * be set
+   */
+  core.String customLanguage;
+  /**
+   * Language Code. Should be used for storing Google III LanguageCode string
+   * representation for language. Illegal values cause SchemaException.
+   */
+  core.String languageCode;
+
+  UserLanguage();
+
+  UserLanguage.fromJson(core.Map _json) {
+    if (_json.containsKey("customLanguage")) {
+      customLanguage = _json["customLanguage"];
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (customLanguage != null) {
+      _json["customLanguage"] = customLanguage;
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    return _json;
+  }
+}
+
 /** JSON template for a location entry. */
 class UserLocation {
   /**
    * Textual location. This is most useful for display purposes to concisely
-   * describe the location. E.g. "Mountain View, CA", "Near Seattle",
+   * describe the location. For example, "Mountain View, CA", "Near Seattle",
    * "US-NYC-9TH 9A209A".
    */
   core.String area;
@@ -8715,9 +8770,9 @@ class UserLocation {
   /** Floor name/number. */
   core.String floorName;
   /**
-   * Floor Section. More specific location within the floor. E.g. if a floor is
-   * divided into sections "A", "B", and "C", this field would identify one of
-   * those values.
+   * Floor section. More specific location within the floor. For example, if a
+   * floor is divided into sections "A", "B", and "C", this field would identify
+   * one of those values.
    */
   core.String floorSection;
   /**
@@ -8857,6 +8912,10 @@ class UserOrganization {
   /** The domain to which the organization belongs to. */
   core.String domain;
   /**
+   * The full-time equivalent percent within the organization (100000 = 100%).
+   */
+  core.int fullTimeEquivalent;
+  /**
    * Location of the organization. This need not be fully qualified address.
    */
   core.String location;
@@ -8895,6 +8954,9 @@ class UserOrganization {
     if (_json.containsKey("domain")) {
       domain = _json["domain"];
     }
+    if (_json.containsKey("fullTimeEquivalent")) {
+      fullTimeEquivalent = _json["fullTimeEquivalent"];
+    }
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
@@ -8931,6 +8993,9 @@ class UserOrganization {
     }
     if (domain != null) {
       _json["domain"] = domain;
+    }
+    if (fullTimeEquivalent != null) {
+      _json["fullTimeEquivalent"] = fullTimeEquivalent;
     }
     if (location != null) {
       _json["location"] = location;

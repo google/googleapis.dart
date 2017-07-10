@@ -22,6 +22,12 @@ class SpannerApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
+  /** Administer your Spanner databases */
+  static const SpannerAdminScope = "https://www.googleapis.com/auth/spanner.admin";
+
+  /** View and manage the contents of your Spanner databases */
+  static const SpannerDataScope = "https://www.googleapis.com/auth/spanner.data";
+
 
   final commons.ApiRequester _requester;
 
@@ -1262,20 +1268,25 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns `UNIMPLEMENTED`.
    *
-   * NOTE: the `name` binding below allows API services to override the binding
-   * to use different resource name schemes, such as `users / * /operations`.
+   * NOTE: the `name` binding allows API services to override the binding
+   * to use different resource name schemes, such as `users / * /operations`. To
+   * override the binding, API services can add a binding such as
+   * `"/v1/{name=users / * }/operations"` to their service configuration.
+   * For backwards compatibility, the default name includes the operations
+   * collection id, however overriding users must ensure the name binding
+   * is the parent resource, without the operations collection id.
    *
    * Request parameters:
    *
-   * [name] - The name of the operation collection.
+   * [name] - The name of the operation's parent resource.
    * Value must have pattern
    * "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$".
-   *
-   * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -1285,7 +1296,7 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1296,14 +1307,14 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1992,19 +2003,24 @@ class ProjectsInstancesOperationsResourceApi {
    * Lists operations that match the specified filter in the request. If the
    * server doesn't support this method, it returns `UNIMPLEMENTED`.
    *
-   * NOTE: the `name` binding below allows API services to override the binding
-   * to use different resource name schemes, such as `users / * /operations`.
+   * NOTE: the `name` binding allows API services to override the binding
+   * to use different resource name schemes, such as `users / * /operations`. To
+   * override the binding, API services can add a binding such as
+   * `"/v1/{name=users / * }/operations"` to their service configuration.
+   * For backwards compatibility, the default name includes the operations
+   * collection id, however overriding users must ensure the name binding
+   * is the parent resource, without the operations collection id.
    *
    * Request parameters:
    *
-   * [name] - The name of the operation collection.
+   * [name] - The name of the operation's parent resource.
    * Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
-   *
-   * [pageSize] - The standard list page size.
    *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -2014,7 +2030,7 @@ class ProjectsInstancesOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2025,14 +2041,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2233,6 +2249,14 @@ class BeginTransactionRequest {
 /** Associates `members` with a `role`. */
 class Binding {
   /**
+   * The condition that is associated with this binding.
+   * NOTE: an unsatisfied condition will not allow user access via current
+   * binding. Different bindings, including their conditions, are examined
+   * independently.
+   * This field is GOOGLE_INTERNAL.
+   */
+  Expr condition;
+  /**
    * Specifies the identities requesting access for a Cloud Platform resource.
    * `members` can have the following values:
    *
@@ -2252,6 +2276,7 @@ class Binding {
    * * `group:{emailid}`: An email address that represents a Google group.
    *    For example, `admins@example.com`.
    *
+   *
    * * `domain:{domain}`: A Google Apps domain name that represents all the
    *    users of that domain. For example, `google.com` or `example.com`.
    */
@@ -2266,6 +2291,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = _json["members"];
     }
@@ -2276,6 +2304,9 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
@@ -2343,14 +2374,28 @@ class ChildLink {
 
 /** Write a Cloud Audit log */
 class CloudAuditOptions {
+  /**
+   * The log_name to populate in the Cloud Audit Record.
+   * Possible string values are:
+   * - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
+   * - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
+   * - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
+   */
+  core.String logName;
 
   CloudAuditOptions();
 
   CloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logName")) {
+      logName = _json["logName"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (logName != null) {
+      _json["logName"] = logName;
+    }
     return _json;
   }
 }
@@ -2461,7 +2506,6 @@ class Condition {
    * member of the specified group. Approvers can only grant additional
    * access, and are thus only used in a strictly positive context
    * (e.g. ALLOW/IN or DENY/NOT_IN).
-   * See: go/rpc-security-policy-dynamicauth.
    * - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
    * with this request.
    * String values should match enum names from tech.iam.JustificationType,
@@ -2972,6 +3016,74 @@ class ExecuteSqlRequest {
     }
     if (transaction != null) {
       _json["transaction"] = (transaction).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents an expression text. Example:
+ *
+ *     title: "User account presence"
+ *     description: "Determines whether the request has a user account"
+ *     expression: "size(request.user) > 0"
+ */
+class Expr {
+  /**
+   * An optional description of the expression. This is a longer text which
+   * describes the expression, e.g. when hovered over it in a UI.
+   */
+  core.String description;
+  /**
+   * Textual representation of an expression in
+   * [Common Expression Language](http://go/api-expr) syntax.
+   *
+   * The application context of the containing message determines which
+   * well-known feature set of CEL is supported.
+   */
+  core.String expression;
+  /**
+   * An optional string indicating the location of the expression for error
+   * reporting, e.g. a file name and a position in the file.
+   */
+  core.String location;
+  /**
+   * An optional title for the expression, i.e. a short string describing
+   * its purpose. This can be used e.g. in UIs which allow to enter the
+   * expression.
+   */
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }
@@ -4060,7 +4172,6 @@ class Policy {
   core.List<AuditConfig> auditConfigs;
   /**
    * Associates a list of `members` to a `role`.
-   * Multiple `bindings` must not be specified for the same `role`.
    * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;
@@ -4173,7 +4284,7 @@ class QueryPlan {
   }
 }
 
-/** Options for read-only transactions. */
+/** Message type to initiate a read-only transaction. */
 class ReadOnly {
   /**
    * Executes all reads at a timestamp that is `exact_staleness`
@@ -4396,7 +4507,10 @@ class ReadRequest {
   }
 }
 
-/** Options for read-write transactions. */
+/**
+ * Message type to initiate a read-write transaction. Currently this
+ * transaction type has no options.
+ */
 class ReadWrite {
 
   ReadWrite();
@@ -4799,7 +4913,7 @@ class ShortRepresentation {
  * error message is needed, put the localized message in the error details or
  * localize it in the client. The optional error details may contain arbitrary
  * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` which can be used for common error conditions.
+ * in the package `google.rpc` that can be used for common error conditions.
  *
  * # Language mapping
  *
@@ -4822,7 +4936,7 @@ class ShortRepresentation {
  *     errors.
  *
  * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting purpose.
+ *     have a `Status` message for error reporting.
  *
  * - Batch operations. If a client uses batch request and batch response, the
  *     `Status` message should be used directly inside batch response, one for

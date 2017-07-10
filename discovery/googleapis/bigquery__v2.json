@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/xfev3idTZInfGXDI1oj7ZvFNmzU\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/PuNtnNg1WyrTVM4-fWu4Qm0QKgM\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -946,7 +946,7 @@
             }
         }
     },
-    "revision": "20170604",
+    "revision": "20170622",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -2654,6 +2654,10 @@
                             "tableReference": {
                                 "$ref": "TableReference",
                                 "description": "A reference uniquely identifying the table."
+                            },
+                            "timePartitioning": {
+                                "$ref": "TimePartitioning",
+                                "description": "[Experimental] The time-based partitioning for this table."
                             },
                             "type": {
                                 "description": "The type of table. Possible values are: TABLE, VIEW.",

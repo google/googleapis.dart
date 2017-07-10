@@ -443,13 +443,13 @@ class ProjectsClustersResourceApi {
    * [projectId] - Required The ID of the Google Cloud Platform project that the
    * cluster belongs to.
    *
-   * [filter] - Optional A filter constraining which clusters to list. Valid
-   * filters contain label terms such as: labels.key1 = val1 AND (-labels.k2 =
-   * val2 OR labels.k3 = val3)
-   *
    * [pageToken] - The standard List page token.
    *
    * [pageSize] - The standard List page size.
+   *
+   * [filter] - Optional A filter constraining which clusters to list. Valid
+   * filters contain label terms such as: labels.key1 = val1 AND (-labels.k2 =
+   * val2 OR labels.k3 = val3)
    *
    * Completes with a [ListClustersResponse].
    *
@@ -459,7 +459,7 @@ class ProjectsClustersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClustersResponse> list(core.String projectId, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListClustersResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -470,14 +470,14 @@ class ProjectsClustersResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/clusters';
@@ -733,6 +733,9 @@ class ProjectsJobsResourceApi {
    * [projectId] - Required The ID of the Google Cloud Platform project that the
    * job belongs to.
    *
+   * [clusterName] - Optional If set, the returned jobs list includes only jobs
+   * that were submitted to the named cluster.
+   *
    * [filter] - Optional A filter constraining which jobs to list. Valid filters
    * contain job state and label terms such as: labels.key1 = val1 AND
    * (labels.k2 = val2 OR labels.k3 = val3)
@@ -749,9 +752,6 @@ class ProjectsJobsResourceApi {
    *
    * [pageSize] - Optional The number of results to return in each response.
    *
-   * [clusterName] - Optional If set, the returned jobs list includes only jobs
-   * that were submitted to the named cluster.
-   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -760,7 +760,7 @@ class ProjectsJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list(core.String projectId, {core.String filter, core.String jobStateMatcher, core.String pageToken, core.int pageSize, core.String clusterName}) {
+  async.Future<ListJobsResponse> list(core.String projectId, {core.String clusterName, core.String filter, core.String jobStateMatcher, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -770,6 +770,9 @@ class ProjectsJobsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (clusterName != null) {
+      _queryParams["clusterName"] = [clusterName];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -782,9 +785,6 @@ class ProjectsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (clusterName != null) {
-      _queryParams["clusterName"] = [clusterName];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';

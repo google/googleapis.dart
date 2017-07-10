@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.40.0
+    version: 0.41.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -12,6 +12,7 @@ packages:
     - adexchangebuyer:v1.4  # https://developers.google.com/ad-exchange/buyer-rest/
     - adexchangeseller:v1.1  # https://developers.google.com/ad-exchange/seller-rest/
     - adexchangeseller:v2.0  # https://developers.google.com/ad-exchange/seller-rest/
+    - adexperiencereport:v1
     - admin:datatransfer_v1 # https://developers.google.com/admin-sdk/data-transfer/
     - admin:directory_v1  # https://developers.google.com/admin-sdk/directory/
     - admin:reports_v1  # https://developers.google.com/admin-sdk/reports/
@@ -37,14 +38,16 @@ packages:
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudkms:v1 # https://cloud.google.com/kms/docs/
     - cloudresourcemanager:v1  # https://cloud.google.com/resource-manager/
-    - cloudtrace:v1 # https://cloud.google.com/cloud-trace/
+    - cloudresourcemanager:v2beta1  # https://cloud.google.com/resource-manager/
+    - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - compute:v1  # https://developers.google.com/compute/
     - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
     - container:v1
     - content:v2  # https://developers.google.com/shopping-content/
     - content:v2sandbox
     - customsearch:v1  # https://developers.google.com/custom-search/
-    - dataproc:v1 # https://cloud.google.com/dataproc/
+    - dataproc:v1  # https://cloud.google.com/dataproc/
+    - dataproc:v1beta2  # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2
     - dfareporting:v2.8  # https://developers.google.com/doubleclick-advertisers/reporting/
@@ -103,11 +106,11 @@ packages:
     - speech:v1  # https://cloud.google.com/speech/
     - storagetransfer:v1  # https://cloud.google.com/storage/transfer/
     - storage:v1  # https://developers.google.com/storage/
+    - streetviewpublish:v1  # https://developers.google.com/streetview/publish/
     - surveys:v2  #
     - tagmanager:v1  # https://developers.google.com/tag-manager/
     - tagmanager:v2  # https://developers.google.com/tag-manager/
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
-    - tracing:v2  # https://cloud.google.com/trace/api/
     - translate:v2  # https://developers.google.com/translate/
     - urlshortener:v1  # https://developers.google.com/url-shortener/
     - vision:v1  # https://cloud.google.com/vision/reference/rest/
@@ -118,7 +121,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.38.0
+    version: 0.38.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -140,6 +143,7 @@ packages:
     - language:v1beta1  # https://cloud.google.com/natural-language/
     - language:v1beta2  # https://cloud.google.com/natural-language/
     - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
+    - oslogin:v1alpha  # https://developers.google.com/apis-explorer/#p/oslogin/v1alpha/
     - proximitybeacon:v1beta1  # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2  # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapoolupdater:v1beta1  # https://cloud.google.com/compute/docs/instance-groups/manager/
@@ -152,6 +156,7 @@ packages:
     - sqladmin:v1beta4  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
     - toolresults:v1beta3  # https://developers.google.com/cloud-test-lab/
+    - toolresults:v1beta3firstparty  # https://developers.google.com/cloud-test-lab/
     - videointelligence:v1beta1  # https://cloud.google.com/video-intelligence/
 
 skipped_apis:
@@ -170,6 +175,7 @@ skipped_apis:
 - compute:alpha # v1 included
 - compute:beta # v1 included
 - datastore:v1beta3  # v1 included
+- dfareporting:v2.7 # v2.8 included
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included
 - genomics:v1alpha2 # v1 included

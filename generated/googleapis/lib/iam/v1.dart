@@ -1162,7 +1162,6 @@ class ListServiceAccountsResponse {
 class Policy {
   /**
    * Associates a list of `members` to a `role`.
-   * Multiple `bindings` must not be specified for the same `role`.
    * `bindings` with no members will result in an error.
    */
   core.List<Binding> bindings;
@@ -1515,7 +1514,8 @@ class ServiceAccountKey {
   core.String name;
   /**
    * The private key data. Only provided in `CreateServiceAccountKey`
-   * responses.
+   * responses. Make sure to keep the private key data secure because it
+   * allows for the assertion of the service account identity.
    */
   core.String privateKeyData;
   core.List<core.int> get privateKeyDataAsBytes {

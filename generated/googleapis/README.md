@@ -99,6 +99,12 @@ Accesses the inventory of Ad Exchange seller users and generates reports.
 
 Official API documentation: https://developers.google.com/ad-exchange/seller-rest/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Ad Experience Report API - adexperiencereport v1
+
+View Ad Experience Report data, and get a list of sites that have a significant number of annoying ads.
+
+Official API documentation: https://developers.google.com/ad-experience-report/
+
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Admin Data Transfer API - admin datatransfer_v1
 
 Transfers user data from one user to another.
@@ -251,7 +257,13 @@ The Google Cloud Resource Manager API provides methods for creating, reading, an
 
 Official API documentation: https://cloud.google.com/resource-manager
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Trace API - cloudtrace v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v2beta1
+
+The Google Cloud Resource Manager API provides methods for creating, reading, and updating project metadata.
+
+Official API documentation: https://cloud.google.com/resource-manager
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Trace API - cloudtrace v2
 
 Send and retrieve trace data from Stackdriver Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Stackdriver Trace for display, reporting, and analysis.
 
@@ -293,6 +305,12 @@ Searches over a website or collection of websites
 Official API documentation: https://developers.google.com/custom-search/v1/using_rest
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1
+
+Manages Hadoop-based clusters and jobs on Google Cloud Platform.
+
+Official API documentation: https://cloud.google.com/dataproc/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1beta2
 
 Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
@@ -649,6 +667,13 @@ Transfers data from external data sources to a Google Cloud Storage bucket or be
 
 Official API documentation: https://cloud.google.com/storage/transfer
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Street View Publish API - streetviewpublish v1
+
+The Street View Publish API allows your application to publish 360 photos to Google Maps, along with image metadata that specifies the position, orientation, and connectivity of each photo. With this API, any app can offer an interface for positioning, connecting, and uploading user-generated Street View images.
+
+
+Official API documentation: https://developers.google.com/streetview/publish/
+
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Surveys API - surveys v2
 
 Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.
@@ -670,13 +695,6 @@ Official API documentation: https://developers.google.com/tag-manager/api/v2/
 Lets you manage your tasks and task lists.
 
 Official API documentation: https://developers.google.com/google-apps/tasks/firstapp
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Tracing API - tracing v2
-
-Send and retrieve trace data from Google Stackdriver Trace.
-
-
-Official API documentation: https://cloud.google.com/trace
 
 #### ![Logo](https://www.google.com/images/icons/product/translate-16.png) Google Cloud Translation API - translate v2
 

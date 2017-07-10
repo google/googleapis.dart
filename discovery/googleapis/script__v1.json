@@ -54,37 +54,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -106,11 +75,6 @@
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -121,6 +85,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -137,6 +106,37 @@
                 "Media download with context-dependent Content-Type",
                 "Responses with Content-Type of application/x-protobuf"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         }
@@ -184,13 +184,22 @@
             }
         }
     },
-    "revision": "20170605",
+    "revision": "20170705",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
         "Status": {
             "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's `error` field will contain this `Status` object.",
             "id": "Status",
             "properties": {
+                "code": {
+                    "description": "The status code. For this API, this value will always be 3, corresponding to an INVALID_ARGUMENT error.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
+                    "type": "string"
+                },
                 "details": {
                     "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
                     "items": {
@@ -201,15 +210,6 @@
                         "type": "object"
                     },
                     "type": "array"
-                },
-                "code": {
-                    "description": "The status code. For this API, this value will always be 3, corresponding to an INVALID_ARGUMENT error.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -222,13 +222,13 @@
                     "description": "For Android add-ons only. An ID that represents the user's current session\nin the Android app for Google Docs or Sheets, included as extra data in the\n[`Intent`](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound) script &mdash;\nthat is, it can access information like the user's current cursor position\n(in Docs) or selected cell (in Sheets). To retrieve the state, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional.",
                     "type": "string"
                 },
-                "function": {
-                    "description": "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters.",
-                    "type": "string"
-                },
                 "devMode": {
                     "description": "If `true` and the user is an owner of the script, the script runs at the\nmost recently saved version rather than the version deployed for use with\nthe Execution API. Optional; default is `false`.",
                     "type": "boolean"
+                },
+                "function": {
+                    "description": "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters.",
+                    "type": "string"
                 },
                 "parameters": {
                     "description": "The parameters to be passed to the function being executed. The object type\nfor each parameter should match the expected type in Apps Script.\nParameters cannot be Apps Script-specific object types (such as a\n`Document` or a `Calendar`); they can only be primitive types such as\n`string`, `number`, `array`, `object`, or `boolean`. Optional.",
@@ -244,6 +244,11 @@
             "description": "A request to retrieve the results from a collection of requests,\nspecified by the operation resource names.",
             "id": "JoinAsyncRequest",
             "properties": {
+                "timeout": {
+                    "description": "Timeout for information retrieval in milliseconds.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
                 "scriptId": {
                     "description": "The script id which specifies the script which all processes in the names\nfield must be from.",
                     "type": "string"
@@ -254,11 +259,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "timeout": {
-                    "description": "Timeout for information retrieval in milliseconds.",
-                    "format": "google-duration",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -270,6 +270,41 @@
                 "result": {
                     "description": "The return value of the script function. The type matches the object type\nreturned in Apps Script. Functions called through the Execution API cannot\nreturn Apps Script-specific objects (such as a `Document` or a `Calendar`);\nthey can only return primitive types such as a `string`, `number`, `array`,\n`object`, or `boolean`.",
                     "type": "any"
+                }
+            },
+            "type": "object"
+        },
+        "Operation": {
+            "description": "The response will not arrive until the function finishes executing. The maximum runtime is listed in the guide to [limitations in Apps Script](https://developers.google.com/apps-script/guides/services/quotas#current_limitations).\n<p>If the script function returns successfully, the `response` field will contain an `ExecutionResponse` object with the function's return value in the object's `result` field.</p>\n<p>If the script function (or Apps Script itself) throws an exception, the `error` field will contain a `Status` object. The `Status` object's `details` field will contain an array with a single `ExecutionError` object that provides information about the nature of the error.</p>\n<p>If the `run` call itself fails (for example, because of a malformed request or an authorization error), the method will return an HTTP response code in the 4XX range with a different format for the response body. Client libraries will automatically convert a 4XX response into an exception class.</p>",
+            "id": "Operation",
+            "properties": {
+                "done": {
+                    "description": "This field is not used.",
+                    "type": "boolean"
+                },
+                "response": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "If the script function returns successfully, this field will contain an `ExecutionResponse` object with the function's return value as the object's `result` field.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "This field is not used.",
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "Status",
+                    "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this field will contain a `Status` object. The `Status` object's `details` field will contain an array with a single `ExecutionError` object that provides information about the nature of the error."
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "This field is not used.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -288,53 +323,18 @@
             },
             "type": "object"
         },
-        "Operation": {
-            "description": "The response will not arrive until the function finishes executing. The maximum runtime is listed in the guide to [limitations in Apps Script](https://developers.google.com/apps-script/guides/services/quotas#current_limitations).\n<p>If the script function returns successfully, the `response` field will contain an `ExecutionResponse` object with the function's return value in the object's `result` field.</p>\n<p>If the script function (or Apps Script itself) throws an exception, the `error` field will contain a `Status` object. The `Status` object's `details` field will contain an array with a single `ExecutionError` object that provides information about the nature of the error.</p>\n<p>If the `run` call itself fails (for example, because of a malformed request or an authorization error), the method will return an HTTP response code in the 4XX range with a different format for the response body. Client libraries will automatically convert a 4XX response into an exception class.</p>",
-            "id": "Operation",
-            "properties": {
-                "error": {
-                    "$ref": "Status",
-                    "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this field will contain a `Status` object. The `Status` object's `details` field will contain an array with a single `ExecutionError` object that provides information about the nature of the error."
-                },
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "This field is not used.",
-                    "type": "object"
-                },
-                "done": {
-                    "description": "This field is not used.",
-                    "type": "boolean"
-                },
-                "response": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "If the script function returns successfully, this field will contain an `ExecutionResponse` object with the function's return value as the object's `result` field.",
-                    "type": "object"
-                },
-                "name": {
-                    "description": "This field is not used.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ScriptStackTraceElement": {
             "description": "A stack trace through the script that shows where the execution failed.",
             "id": "ScriptStackTraceElement",
             "properties": {
-                "function": {
-                    "description": "The name of the function that failed.",
-                    "type": "string"
-                },
                 "lineNumber": {
                     "description": "The line number where the script failed.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "function": {
+                    "description": "The name of the function that failed.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -343,6 +343,13 @@
             "description": "An object that provides information about the nature of an error in the Apps\nScript Execution API. If an\n`run` call succeeds but the\nscript function (or Apps Script itself) throws an exception, the response\nbody's `error` field contains a\n`Status` object. The `Status` object's `details` field\ncontains an array with a single one of these `ExecutionError` objects.",
             "id": "ExecutionError",
             "properties": {
+                "scriptStackTraceElements": {
+                    "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
+                    "items": {
+                        "$ref": "ScriptStackTraceElement"
+                    },
+                    "type": "array"
+                },
                 "errorType": {
                     "description": "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included.",
                     "type": "string"
@@ -350,13 +357,6 @@
                 "errorMessage": {
                     "description": "The error message thrown by Apps Script, usually localized into the user's\nlanguage.",
                     "type": "string"
-                },
-                "scriptStackTraceElements": {
-                    "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
-                    "items": {
-                        "$ref": "ScriptStackTraceElement"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

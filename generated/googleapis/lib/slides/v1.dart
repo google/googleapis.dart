@@ -260,13 +260,6 @@ class PresentationsPagesResourceApi {
    *
    * [pageObjectId] - The object ID of the page whose thumbnail to retrieve.
    *
-   * [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
-   * image.
-   *
-   * If you don't specify the mime type, the default mime type will be PNG.
-   * Possible string values are:
-   * - "PNG" : A PNG.
-   *
    * [thumbnailProperties_thumbnailSize] - The optional thumbnail image size.
    *
    * If you don't specify the size, the server chooses a default size of the
@@ -274,6 +267,13 @@ class PresentationsPagesResourceApi {
    * Possible string values are:
    * - "THUMBNAIL_SIZE_UNSPECIFIED" : A THUMBNAIL_SIZE_UNSPECIFIED.
    * - "LARGE" : A LARGE.
+   *
+   * [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
+   * image.
+   *
+   * If you don't specify the mime type, the default mime type will be PNG.
+   * Possible string values are:
+   * - "PNG" : A PNG.
    *
    * Completes with a [Thumbnail].
    *
@@ -283,7 +283,7 @@ class PresentationsPagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Thumbnail> getThumbnail(core.String presentationId, core.String pageObjectId, {core.String thumbnailProperties_mimeType, core.String thumbnailProperties_thumbnailSize}) {
+  async.Future<Thumbnail> getThumbnail(core.String presentationId, core.String pageObjectId, {core.String thumbnailProperties_thumbnailSize, core.String thumbnailProperties_mimeType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -297,11 +297,11 @@ class PresentationsPagesResourceApi {
     if (pageObjectId == null) {
       throw new core.ArgumentError("Parameter pageObjectId is required.");
     }
-    if (thumbnailProperties_mimeType != null) {
-      _queryParams["thumbnailProperties.mimeType"] = [thumbnailProperties_mimeType];
-    }
     if (thumbnailProperties_thumbnailSize != null) {
       _queryParams["thumbnailProperties.thumbnailSize"] = [thumbnailProperties_thumbnailSize];
+    }
+    if (thumbnailProperties_mimeType != null) {
+      _queryParams["thumbnailProperties.mimeType"] = [thumbnailProperties_mimeType];
     }
 
     _url = 'v1/presentations/' + commons.Escaper.ecapeVariable('$presentationId') + '/pages/' + commons.Escaper.ecapeVariable('$pageObjectId') + '/thumbnail';
@@ -2524,7 +2524,7 @@ class LayoutPlaceholderIdMapping {
  * relevant for pages with page_type LAYOUT.
  */
 class LayoutProperties {
-  /** The human readable name of the layout in the presentation's locale. */
+  /** The human-readable name of the layout. */
   core.String displayName;
   /** The object ID of the master that this layout is based on. */
   core.String masterObjectId;

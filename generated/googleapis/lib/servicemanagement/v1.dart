@@ -96,9 +96,9 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [name] - Not used.
-   *
    * [pageToken] - The standard list page token.
+   *
+   * [name] - Not used.
    *
    * [pageSize] - The maximum number of operations to return. If unspecified,
    * defaults to
@@ -134,7 +134,7 @@ class OperationsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.String name, core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list({core.String pageToken, core.String name, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -142,11 +142,11 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (name != null) {
-      _queryParams["name"] = [name];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -469,14 +469,14 @@ class ServicesResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
-   * [configId] - The id of the service configuration resource.
-   *
    * [view] - Specifies which parts of the Service Config should be returned in
    * the
    * response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
+   *
+   * [configId] - The id of the service configuration resource.
    *
    * Completes with a [Service].
    *
@@ -486,7 +486,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<Service> getConfig(core.String serviceName, {core.String configId, core.String view}) {
+  async.Future<Service> getConfig(core.String serviceName, {core.String view, core.String configId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -497,11 +497,11 @@ class ServicesResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (configId != null) {
-      _queryParams["configId"] = [configId];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (configId != null) {
+      _queryParams["configId"] = [configId];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/config';
@@ -3320,7 +3320,7 @@ class Expr {
   core.String description;
   /**
    * Textual representation of an expression in
-   * [Common Expression Language](http://go/api-expr) syntax.
+   * Common Expression Language syntax.
    *
    * The application context of the containing message determines which
    * well-known feature set of CEL is supported.
@@ -4325,7 +4325,31 @@ class ListServicesResponse {
   }
 }
 
-/** Specifies what kind of log the caller must write */
+/**
+ * Specifies what kind of log the caller must write
+ * Increment a streamz counter with the specified metric and field names.
+ *
+ * Metric names should start with a '/', generally be lowercase-only,
+ * and end in "_count". Field names should not contain an initial slash.
+ * The actual exported metric names will have "/iam/policy" prepended.
+ *
+ * Field names correspond to IAM request parameters and field values are
+ * their respective values.
+ *
+ * At present the only supported field names are
+ *    - "iam_principal", corresponding to IAMContext.principal;
+ *    - "" (empty string), resulting in one aggretated counter with no field.
+ *
+ * Examples:
+ *   counter { metric: "/debug_access_count"  field: "iam_principal" }
+ *   ==> increment counter /iam/policy/backend_debug_access_count
+ *                         {iam_principal=[value of IAMContext.principal]}
+ *
+ * At this time we do not support:
+ * * multiple field names (though this may be supported in the future)
+ * * decrementing the counter
+ * * incrementing it by anything other than 1
+ */
 class LogConfig {
   /** Cloud audit options. */
   CloudAuditOptions cloudAudit;
@@ -7333,6 +7357,11 @@ class UsageRule {
    * Refer to selector for syntax details.
    */
   core.String selector;
+  /**
+   * True, if the method should skip service control. If so, no control plane
+   * feature (like quota and billing) will be enabled.
+   */
+  core.bool skipServiceControl;
 
   UsageRule();
 
@@ -7343,6 +7372,9 @@ class UsageRule {
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
+    if (_json.containsKey("skipServiceControl")) {
+      skipServiceControl = _json["skipServiceControl"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -7352,6 +7384,9 @@ class UsageRule {
     }
     if (selector != null) {
       _json["selector"] = selector;
+    }
+    if (skipServiceControl != null) {
+      _json["skipServiceControl"] = skipServiceControl;
     }
     return _json;
   }
