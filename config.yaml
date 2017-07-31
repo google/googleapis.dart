@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.41.0
+    version: 0.42.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -22,6 +22,8 @@ packages:
     - analytics:v3  # https://developers.google.com/analytics/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidpublisher:v2  # https://developers.google.com/android-publisher/
+    - androiddeviceprovisioning:v1  # https://developers.google.com/zero-touch/
+    - androidmanagement:v1  # https://developers.google.com/android/management
     - appengine:v1  # https://cloud.google.com/appengine/docs/admin-api/
     - appsactivity:v1  # https://developers.google.com/google-apps/activity/
     - appstate:v1  # https://developers.google.com/games/services/web/api/states
@@ -39,6 +41,7 @@ packages:
     - cloudkms:v1 # https://cloud.google.com/kms/docs/
     - cloudresourcemanager:v1  # https://cloud.google.com/resource-manager/
     - cloudresourcemanager:v2beta1  # https://cloud.google.com/resource-manager/
+    - cloudtrace:v1 # v2 included
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - compute:v1  # https://developers.google.com/compute/
     - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
@@ -47,7 +50,6 @@ packages:
     - content:v2sandbox
     - customsearch:v1  # https://developers.google.com/custom-search/
     - dataproc:v1  # https://cloud.google.com/dataproc/
-    - dataproc:v1beta2  # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2
     - dfareporting:v2.8  # https://developers.google.com/doubleclick-advertisers/reporting/
@@ -84,6 +86,7 @@ packages:
     - pagespeedonline:v2  # https://developers.google.com/speed/docs/insights/about
     - partners:v2  # https://developers.google.com/partners/
     - people:v1 # https://developers.google.com/people/
+    - playcustomapp:v1  # https://developers.google.com/android/work/play/custom-app-api
     - playmoviespartner:v1
     - plusDomains:v1  # https://developers.google.com/+/domains/
     - plus:v1  # https://developers.google.com/+/api/
@@ -113,6 +116,7 @@ packages:
     - tasks:v1  # https://developers.google.com/google-apps/tasks/
     - translate:v2  # https://developers.google.com/translate/
     - urlshortener:v1  # https://developers.google.com/url-shortener/
+    - vault:v1  # https://apps.google.com/products/vault/
     - vision:v1  # https://cloud.google.com/vision/reference/rest/
     - webfonts:v1  # https://developers.google.com/fonts/docs/developer_api
     - webmasters:v3  # https://developers.google.com/webmaster-tools/
@@ -121,7 +125,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.38.1
+    version: 0.38.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -137,7 +141,6 @@ packages:
     - cloudresourcemanager:v1beta1
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
-    - dataproc:v1beta1 # https://cloud.google.com/dataproc/
     - dlp:v2beta1 # https://cloud.google.com/dlp/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
     - language:v1beta1  # https://cloud.google.com/natural-language/
@@ -175,6 +178,7 @@ skipped_apis:
 - compute:alpha # v1 included
 - compute:beta # v1 included
 - datastore:v1beta3  # v1 included
+- dataproc:v1beta1  # v1 included
 - dfareporting:v2.7 # v2.8 included
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included

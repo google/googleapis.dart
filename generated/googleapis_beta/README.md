@@ -123,12 +123,6 @@ Manages Google Cloud Dataflow projects on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataflow
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1beta1
-
-Manages Hadoop-based clusters and jobs on Google Cloud Platform.
-
-Official API documentation: https://cloud.google.com/dataproc/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DLP API - dlp v2beta1
 
 The Google Data Loss Prevention API provides methods for detection of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.
@@ -161,9 +155,9 @@ Official API documentation: https://cloud.google.com/logging/docs/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud OS Login API - oslogin v1alpha
 
-A Google Cloud API for managing OS login configuration for Directory API users.
+Manages OS login configuration for Directory API users.
 
-Official API documentation: https://developers.google.com/apis-explorer/#p/oslogin/v1alpha/
+Official API documentation: https://cloud.google.com/compute/docs/oslogin/rest/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Proximity Beacon API - proximitybeacon v1beta1
 

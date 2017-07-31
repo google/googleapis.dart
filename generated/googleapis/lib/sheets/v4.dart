@@ -317,20 +317,6 @@ class SpreadsheetsValuesResourceApi {
    * [range] - The A1 notation of a range to search for a logical table of data.
    * Values will be appended after the last row of the table.
    *
-   * [responseDateTimeRenderOption] - Determines how dates, times, and durations
-   * in the response should be
-   * rendered. This is ignored if response_value_render_option is
-   * FORMATTED_VALUE.
-   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-   * Possible string values are:
-   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-   * - "FORMATTED_STRING" : A FORMATTED_STRING.
-   *
-   * [includeValuesInResponse] - Determines if the update response should
-   * include the values
-   * of the cells that were appended. By default, responses
-   * do not include the updated values.
-   *
    * [responseValueRenderOption] - Determines how values in the response should
    * be rendered.
    * The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -350,6 +336,20 @@ class SpreadsheetsValuesResourceApi {
    * - "RAW" : A RAW.
    * - "USER_ENTERED" : A USER_ENTERED.
    *
+   * [responseDateTimeRenderOption] - Determines how dates, times, and durations
+   * in the response should be
+   * rendered. This is ignored if response_value_render_option is
+   * FORMATTED_VALUE.
+   * The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+   * Possible string values are:
+   * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+   * - "FORMATTED_STRING" : A FORMATTED_STRING.
+   *
+   * [includeValuesInResponse] - Determines if the update response should
+   * include the values
+   * of the cells that were appended. By default, responses
+   * do not include the updated values.
+   *
    * Completes with a [AppendValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -358,7 +358,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseDateTimeRenderOption, core.bool includeValuesInResponse, core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption}) {
+  async.Future<AppendValuesResponse> append(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseValueRenderOption, core.String insertDataOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -375,12 +375,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (responseDateTimeRenderOption != null) {
-      _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -389,6 +383,12 @@ class SpreadsheetsValuesResourceApi {
     }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
+    }
+    if (responseDateTimeRenderOption != null) {
+      _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range') + ':append';
@@ -641,18 +641,6 @@ class SpreadsheetsValuesResourceApi {
    *
    * [range] - The A1 notation of the values to retrieve.
    *
-   * [majorDimension] - The major dimension that results should use.
-   *
-   * For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-   * then requesting `range=A1:B2,majorDimension=ROWS` will return
-   * `[[1,2],[3,4]]`,
-   * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-   * `[[1,3],[2,4]]`.
-   * Possible string values are:
-   * - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-   * - "ROWS" : A ROWS.
-   * - "COLUMNS" : A COLUMNS.
-   *
    * [dateTimeRenderOption] - How dates, times, and durations should be
    * represented in the output.
    * This is ignored if value_render_option is
@@ -669,6 +657,18 @@ class SpreadsheetsValuesResourceApi {
    * - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
    * - "FORMULA" : A FORMULA.
    *
+   * [majorDimension] - The major dimension that results should use.
+   *
+   * For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+   * then requesting `range=A1:B2,majorDimension=ROWS` will return
+   * `[[1,2],[3,4]]`,
+   * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+   * `[[1,3],[2,4]]`.
+   * Possible string values are:
+   * - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+   * - "ROWS" : A ROWS.
+   * - "COLUMNS" : A COLUMNS.
+   *
    * Completes with a [ValueRange].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -677,7 +677,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ValueRange> get(core.String spreadsheetId, core.String range, {core.String majorDimension, core.String dateTimeRenderOption, core.String valueRenderOption}) {
+  async.Future<ValueRange> get(core.String spreadsheetId, core.String range, {core.String dateTimeRenderOption, core.String valueRenderOption, core.String majorDimension}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -691,14 +691,14 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
-    }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
     if (valueRenderOption != null) {
       _queryParams["valueRenderOption"] = [valueRenderOption];
+    }
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range');
@@ -726,14 +726,6 @@ class SpreadsheetsValuesResourceApi {
    *
    * [range] - The A1 notation of the values to update.
    *
-   * [includeValuesInResponse] - Determines if the update response should
-   * include the values
-   * of the cells that were updated. By default, responses
-   * do not include the updated values.
-   * If the range to write was larger than than the range actually written,
-   * the response will include all values in the requested range (excluding
-   * trailing empty rows and columns).
-   *
    * [responseValueRenderOption] - Determines how values in the response should
    * be rendered.
    * The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -757,6 +749,14 @@ class SpreadsheetsValuesResourceApi {
    * - "SERIAL_NUMBER" : A SERIAL_NUMBER.
    * - "FORMATTED_STRING" : A FORMATTED_STRING.
    *
+   * [includeValuesInResponse] - Determines if the update response should
+   * include the values
+   * of the cells that were updated. By default, responses
+   * do not include the updated values.
+   * If the range to write was larger than than the range actually written,
+   * the response will include all values in the requested range (excluding
+   * trailing empty rows and columns).
+   *
    * Completes with a [UpdateValuesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -765,7 +765,7 @@ class SpreadsheetsValuesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<UpdateValuesResponse> update(ValueRange request, core.String spreadsheetId, core.String range, {core.bool includeValuesInResponse, core.String responseValueRenderOption, core.String valueInputOption, core.String responseDateTimeRenderOption}) {
+  async.Future<UpdateValuesResponse> update(ValueRange request, core.String spreadsheetId, core.String range, {core.String responseValueRenderOption, core.String valueInputOption, core.String responseDateTimeRenderOption, core.bool includeValuesInResponse}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -782,9 +782,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -793,6 +790,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (responseDateTimeRenderOption != null) {
       _queryParams["responseDateTimeRenderOption"] = [responseDateTimeRenderOption];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId') + '/values/' + commons.Escaper.ecapeVariable('$range');
@@ -1549,11 +1549,7 @@ class BasicChartDomain {
    * this is the data representing the dates.
    */
   ChartData domain;
-  /**
-   * True to reverse the order of the domain values (horizontal axis).
-   * Not applicable to Gauge, Geo, Histogram, Org, Pie, Radar, and Treemap
-   * charts.
-   */
+  /** True to reverse the order of the domain values (horizontal axis). */
   core.bool reversed;
 
   BasicChartDomain();
@@ -2790,6 +2786,8 @@ class CandlestickData {
 class CandlestickDomain {
   /** The data of the CandlestickDomain. */
   ChartData data;
+  /** True to reverse the order of the domain values (horizontal axis). */
+  core.bool reversed;
 
   CandlestickDomain();
 
@@ -2797,12 +2795,18 @@ class CandlestickDomain {
     if (_json.containsKey("data")) {
       data = new ChartData.fromJson(_json["data"]);
     }
+    if (_json.containsKey("reversed")) {
+      reversed = _json["reversed"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (data != null) {
       _json["data"] = (data).toJson();
+    }
+    if (reversed != null) {
+      _json["reversed"] = reversed;
     }
     return _json;
   }
@@ -3215,6 +3219,11 @@ class ChartSourceRange {
 /** The specifications of a chart. */
 class ChartSpec {
   /**
+   * The alternative text that describes the chart.  This is often used
+   * for accessibility.
+   */
+  core.String altText;
+  /**
    * The background color of the entire chart.
    * Not applicable to Org charts.
    */
@@ -3270,6 +3279,9 @@ class ChartSpec {
   ChartSpec();
 
   ChartSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("altText")) {
+      altText = _json["altText"];
+    }
     if (_json.containsKey("backgroundColor")) {
       backgroundColor = new Color.fromJson(_json["backgroundColor"]);
     }
@@ -3310,6 +3322,9 @@ class ChartSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (altText != null) {
+      _json["altText"] = altText;
+    }
     if (backgroundColor != null) {
       _json["backgroundColor"] = (backgroundColor).toJson();
     }

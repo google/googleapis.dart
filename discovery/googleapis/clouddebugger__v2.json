@@ -2,11 +2,11 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
-                },
                 "https://www.googleapis.com/auth/cloud_debugger": {
                     "description": "Manage cloud debugger"
+                },
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
                 }
             }
         }
@@ -28,16 +28,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -49,18 +39,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -74,6 +59,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -93,13 +83,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -113,6 +103,16 @@
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -127,11 +127,6 @@
                             "id": "clouddebugger.debugger.debuggees.list",
                             "parameterOrder": [],
                             "parameters": {
-                                "clientVersion": {
-                                    "description": "The client version making the call.\nFollowing: `domain/type/version` (e.g., `google.com/intellij/v1`).",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "includeInactive": {
                                     "description": "When set to `true`, the result includes all debuggees. Otherwise, the\nresult includes only debuggees that are active.",
                                     "location": "query",
@@ -139,6 +134,11 @@
                                 },
                                 "project": {
                                     "description": "Project number of a Google Cloud project whose debuggees to list.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "clientVersion": {
+                                    "description": "The client version making the call.\nFollowing: `domain/type/version` (e.g., `google.com/intellij/v1`).",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -232,11 +232,6 @@
                                         "debuggeeId"
                                     ],
                                     "parameters": {
-                                        "stripResults": {
-                                            "description": "This field is deprecated. The following fields are always stripped out of\nthe result: `stack_frames`, `evaluated_expressions` and `variable_table`.",
-                                            "location": "query",
-                                            "type": "boolean"
-                                        },
                                         "debuggeeId": {
                                             "description": "ID of the debuggee whose breakpoints to list.",
                                             "location": "path",
@@ -262,13 +257,18 @@
                                             "location": "query",
                                             "type": "string"
                                         },
+                                        "includeInactive": {
+                                            "description": "When set to `true`, the response includes active and inactive\nbreakpoints. Otherwise, it includes only active breakpoints.",
+                                            "location": "query",
+                                            "type": "boolean"
+                                        },
                                         "includeAllUsers": {
                                             "description": "When set to `true`, the response includes the list of breakpoints set by\nany user. Otherwise, it includes only breakpoints set by the caller.",
                                             "location": "query",
                                             "type": "boolean"
                                         },
-                                        "includeInactive": {
-                                            "description": "When set to `true`, the response includes active and inactive\nbreakpoints. Otherwise, it includes only active breakpoints.",
+                                        "stripResults": {
+                                            "description": "This field is deprecated. The following fields are always stripped out of\nthe result: `stack_frames`, `evaluated_expressions` and `variable_table`.",
                                             "location": "query",
                                             "type": "boolean"
                                         }
@@ -291,11 +291,6 @@
                                         "breakpointId"
                                     ],
                                     "parameters": {
-                                        "clientVersion": {
-                                            "description": "The client version making the call.\nFollowing: `domain/type/version` (e.g., `google.com/intellij/v1`).",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
                                         "breakpointId": {
                                             "description": "ID of the breakpoint to get.",
                                             "location": "path",
@@ -306,6 +301,11 @@
                                             "description": "ID of the debuggee whose breakpoint to get.",
                                             "location": "path",
                                             "required": true,
+                                            "type": "string"
+                                        },
+                                        "clientVersion": {
+                                            "description": "The client version making the call.\nFollowing: `domain/type/version` (e.g., `google.com/intellij/v1`).",
+                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
@@ -350,42 +350,8 @@
                     "resources": {
                         "breakpoints": {
                             "methods": {
-                                "update": {
-                                    "description": "Updates the breakpoint state or mutable fields.\nThe entire Breakpoint message must be sent back to the controller\nservice.\n\nUpdates to active breakpoint fields are only allowed if the new value\ndoes not change the breakpoint specification. Updates to the `location`,\n`condition` and `expression` fields should not alter the breakpoint\nsemantics. These may only make changes such as canonicalizing a value\nor snapping the location to the correct line of code.",
-                                    "httpMethod": "PUT",
-                                    "id": "clouddebugger.controller.debuggees.breakpoints.update",
-                                    "parameterOrder": [
-                                        "debuggeeId",
-                                        "id"
-                                    ],
-                                    "parameters": {
-                                        "debuggeeId": {
-                                            "description": "Identifies the debuggee being debugged.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "id": {
-                                            "description": "Breakpoint identifier, unique in the scope of the debuggee.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v2/controller/debuggees/{debuggeeId}/breakpoints/{id}",
-                                    "request": {
-                                        "$ref": "UpdateActiveBreakpointRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "UpdateActiveBreakpointResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform",
-                                        "https://www.googleapis.com/auth/cloud_debugger"
-                                    ]
-                                },
                                 "list": {
-                                    "description": "Returns the list of all active breakpoints for the debuggee.\n\nThe breakpoint specification (location, condition, and expression\nfields) is semantically immutable, although the field values may\nchange. For example, an agent may update the location line number\nto reflect the actual line where the breakpoint was set, but this\ndoesn't change the breakpoint semantics.\n\nThis means that an agent does not need to check if a breakpoint has changed\nwhen it encounters the same breakpoint on a successive call.\nMoreover, an agent should remember the breakpoints that are completed\nuntil the controller removes them from the active list to avoid\nsetting those breakpoints again.",
+                                    "description": "Returns the list of all active breakpoints for the debuggee.\n\nThe breakpoint specification (`location`, `condition`, and `expressions`\nfields) is semantically immutable, although the field values may\nchange. For example, an agent may update the location line number\nto reflect the actual line where the breakpoint was set, but this\ndoesn't change the breakpoint semantics.\n\nThis means that an agent does not need to check if a breakpoint has changed\nwhen it encounters the same breakpoint on a successive call.\nMoreover, an agent should remember the breakpoints that are completed\nuntil the controller removes them from the active list to avoid\nsetting those breakpoints again.",
                                     "httpMethod": "GET",
                                     "id": "clouddebugger.controller.debuggees.breakpoints.list",
                                     "parameterOrder": [
@@ -417,6 +383,40 @@
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/cloud_debugger"
                                     ]
+                                },
+                                "update": {
+                                    "description": "Updates the breakpoint state or mutable fields.\nThe entire Breakpoint message must be sent back to the controller\nservice.\n\nUpdates to active breakpoint fields are only allowed if the new value\ndoes not change the breakpoint specification. Updates to the `location`,\n`condition` and `expressions` fields should not alter the breakpoint\nsemantics. These may only make changes such as canonicalizing a value\nor snapping the location to the correct line of code.",
+                                    "httpMethod": "PUT",
+                                    "id": "clouddebugger.controller.debuggees.breakpoints.update",
+                                    "parameterOrder": [
+                                        "debuggeeId",
+                                        "id"
+                                    ],
+                                    "parameters": {
+                                        "id": {
+                                            "description": "Breakpoint identifier, unique in the scope of the debuggee.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "debuggeeId": {
+                                            "description": "Identifies the debuggee being debugged.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/controller/debuggees/{debuggeeId}/breakpoints/{id}",
+                                    "request": {
+                                        "$ref": "UpdateActiveBreakpointRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "UpdateActiveBreakpointResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud_debugger"
+                                    ]
                                 }
                             }
                         }
@@ -425,163 +425,13 @@
             }
         }
     },
-    "revision": "20170621",
+    "revision": "20170710",
     "rootUrl": "https://clouddebugger.googleapis.com/",
     "schemas": {
-        "ListBreakpointsResponse": {
-            "description": "Response for listing breakpoints.",
-            "id": "ListBreakpointsResponse",
-            "properties": {
-                "nextWaitToken": {
-                    "description": "A wait token that can be used in the next call to `list` (REST) or\n`ListBreakpoints` (RPC) to block until the list of breakpoints has changes.",
-                    "type": "string"
-                },
-                "breakpoints": {
-                    "description": "List of breakpoints matching the request.\nThe fields `id` and `location` are guaranteed to be set on each breakpoint.\nThe fields: `stack_frames`, `evaluated_expressions` and `variable_table`\nare cleared on each breakpoint regardless of it's status.",
-                    "items": {
-                        "$ref": "Breakpoint"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Breakpoint": {
-            "description": "Represents the breakpoint specification, status and results.",
-            "id": "Breakpoint",
-            "properties": {
-                "id": {
-                    "description": "Breakpoint identifier, unique in the scope of the debuggee.",
-                    "type": "string"
-                },
-                "location": {
-                    "$ref": "SourceLocation",
-                    "description": "Breakpoint source location."
-                },
-                "finalTime": {
-                    "description": "Time this breakpoint was finalized as seen by the server in seconds\nresolution.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "variableTable": {
-                    "description": "The `variable_table` exists to aid with computation, memory and network\ntraffic optimization.  It enables storing a variable once and reference\nit from multiple variables, including variables stored in the\n`variable_table` itself.\nFor example, the same `this` object, which may appear at many levels of\nthe stack, can have all of its data stored once in this table.  The\nstack frame variables then would hold only a reference to it.\n\nThe variable `var_table_index` field is an index into this repeated field.\nThe stored objects are nameless and get their name from the referencing\nvariable. The effective variable is a merge of the referencing variable\nand the referenced variable.",
-                    "items": {
-                        "$ref": "Variable"
-                    },
-                    "type": "array"
-                },
-                "createTime": {
-                    "description": "Time this breakpoint was created by the server in seconds resolution.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "logMessageFormat": {
-                    "description": "Only relevant when action is `LOG`. Defines the message to log when\nthe breakpoint hits. The message may include parameter placeholders `$0`,\n`$1`, etc. These placeholders are replaced with the evaluated value\nof the appropriate expression. Expressions not referenced in\n`log_message_format` are not logged.\n\nExample: `Message received, id = $0, count = $1` with\n`expressions` = `[ message.id, message.count ]`.",
-                    "type": "string"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "A set of custom breakpoint properties, populated by the agent, to be\ndisplayed to the user.",
-                    "type": "object"
-                },
-                "expressions": {
-                    "description": "List of read-only expressions to evaluate at the breakpoint location.\nThe expressions are composed using expressions in the programming language\nat the source location. If the breakpoint action is `LOG`, the evaluated\nexpressions are included in log statements.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "evaluatedExpressions": {
-                    "description": "Values of evaluated expressions at breakpoint time.\nThe evaluated expressions appear in exactly the same order they\nare listed in the `expressions` field.\nThe `name` field holds the original expression text, the `value` or\n`members` field holds the result of the evaluated expression.\nIf the expression cannot be evaluated, the `status` inside the `Variable`\nwill indicate an error and contain the error text.",
-                    "items": {
-                        "$ref": "Variable"
-                    },
-                    "type": "array"
-                },
-                "isFinalState": {
-                    "description": "When true, indicates that this is a final result and the\nbreakpoint state will not change from here on.",
-                    "type": "boolean"
-                },
-                "stackFrames": {
-                    "description": "The stack at breakpoint time.",
-                    "items": {
-                        "$ref": "StackFrame"
-                    },
-                    "type": "array"
-                },
-                "condition": {
-                    "description": "Condition that triggers the breakpoint.\nThe condition is a compound boolean expression composed using expressions\nin a programming language at the source location.",
-                    "type": "string"
-                },
-                "status": {
-                    "$ref": "StatusMessage",
-                    "description": "Breakpoint status.\n\nThe status includes an error flag and a human readable message.\nThis field is usually unset. The message can be either\ninformational or an error message. Regardless, clients should always\ndisplay the text message back to the user.\n\nError status indicates complete failure of the breakpoint.\n\nExample (non-final state): `Still loading symbols...`\n\nExamples (final state):\n\n*   `Invalid line number` referring to location\n*   `Field f not found in class C` referring to condition"
-                },
-                "userEmail": {
-                    "description": "E-mail address of the user that created this breakpoint",
-                    "type": "string"
-                },
-                "action": {
-                    "description": "Action that the agent should perform when the code at the\nbreakpoint location is hit.",
-                    "enum": [
-                        "CAPTURE",
-                        "LOG"
-                    ],
-                    "enumDescriptions": [
-                        "Capture stack frame and variables and update the breakpoint.\nThe data is only captured once. After that the breakpoint is set\nin a final state.",
-                        "Log each breakpoint hit. The breakpoint remains active until\ndeleted or expired."
-                    ],
-                    "type": "string"
-                },
-                "logLevel": {
-                    "description": "Indicates the severity of the log. Only relevant when action is `LOG`.",
-                    "enum": [
-                        "INFO",
-                        "WARNING",
-                        "ERROR"
-                    ],
-                    "enumDescriptions": [
-                        "Information log message.",
-                        "Warning log message.",
-                        "Error log message."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "SetBreakpointResponse": {
-            "description": "Response for setting a breakpoint.",
-            "id": "SetBreakpointResponse",
-            "properties": {
-                "breakpoint": {
-                    "$ref": "Breakpoint",
-                    "description": "Breakpoint resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fileds)."
-                }
-            },
-            "type": "object"
-        },
-        "UpdateActiveBreakpointRequest": {
-            "description": "Request to update an active breakpoint.",
-            "id": "UpdateActiveBreakpointRequest",
-            "properties": {
-                "breakpoint": {
-                    "$ref": "Breakpoint",
-                    "description": "Updated breakpoint information.\nThe field 'id' must be set."
-                }
-            },
-            "type": "object"
-        },
         "SourceContext": {
             "description": "A SourceContext is a reference to a tree of files. A SourceContext together\nwith a path point to a unique revision of a single file or directory.",
             "id": "SourceContext",
             "properties": {
-                "git": {
-                    "$ref": "GitSourceContext",
-                    "description": "A SourceContext referring to any third party Git repo (e.g. GitHub)."
-                },
                 "gerrit": {
                     "$ref": "GerritSourceContext",
                     "description": "A SourceContext referring to a Gerrit project."
@@ -593,6 +443,10 @@
                 "cloudRepo": {
                     "$ref": "CloudRepoSourceContext",
                     "description": "A SourceContext referring to a revision in a cloud repo."
+                },
+                "git": {
+                    "$ref": "GitSourceContext",
+                    "description": "A SourceContext referring to any third party Git repo (e.g. GitHub)."
                 }
             },
             "type": "object"
@@ -709,22 +563,14 @@
             "description": "Represents a variable or an argument possibly of a compound object type.\nNote how the following variables are represented:\n\n1) A simple variable:\n\n    int x = 5\n\n    { name: \"x\", value: \"5\", type: \"int\" }  // Captured variable\n\n2) A compound object:\n\n    struct T {\n        int m1;\n        int m2;\n    };\n    T x = { 3, 7 };\n\n    {  // Captured variable\n        name: \"x\",\n        type: \"T\",\n        members { name: \"m1\", value: \"3\", type: \"int\" },\n        members { name: \"m2\", value: \"7\", type: \"int\" }\n    }\n\n3) A pointer where the pointee was captured:\n\n    T x = { 3, 7 };\n    T* p = &x;\n\n    {   // Captured variable\n        name: \"p\",\n        type: \"T*\",\n        value: \"0x00500500\",\n        members { name: \"m1\", value: \"3\", type: \"int\" },\n        members { name: \"m2\", value: \"7\", type: \"int\" }\n    }\n\n4) A pointer where the pointee was not captured:\n\n    T* p = new T;\n\n    {   // Captured variable\n        name: \"p\",\n        type: \"T*\",\n        value: \"0x00400400\"\n        status { is_error: true, description { format: \"unavailable\" } }\n    }\n\nThe status should describe the reason for the missing value,\nsuch as `<optimized out>`, `<inaccessible>`, `<pointers limit reached>`.\n\nNote that a null pointer should not have members.\n\n5) An unnamed value:\n\n    int* p = new int(7);\n\n    {   // Captured variable\n        name: \"p\",\n        value: \"0x00500500\",\n        type: \"int*\",\n        members { value: \"7\", type: \"int\" } }\n\n6) An unnamed pointer where the pointee was not captured:\n\n    int* p = new int(7);\n    int** pp = &p;\n\n    {  // Captured variable\n        name: \"pp\",\n        value: \"0x00500500\",\n        type: \"int**\",\n        members {\n            value: \"0x00400400\",\n            type: \"int*\"\n            status {\n                is_error: true,\n                description: { format: \"unavailable\" } }\n            }\n        }\n    }\n\nTo optimize computation, memory and network traffic, variables that\nrepeat in the output multiple times can be stored once in a shared\nvariable table and be referenced using the `var_table_index` field.  The\nvariables stored in the shared table are nameless and are essentially\na partition of the complete variable. To reconstruct the complete\nvariable, merge the referencing variable with the referenced variable.\n\nWhen using the shared variable table, the following variables:\n\n    T x = { 3, 7 };\n    T* p = &x;\n    T& r = x;\n\n    { name: \"x\", var_table_index: 3, type: \"T\" }  // Captured variables\n    { name: \"p\", value \"0x00500500\", type=\"T*\", var_table_index: 3 }\n    { name: \"r\", type=\"T&\", var_table_index: 3 }\n\n    {  // Shared variable table entry #3:\n        members { name: \"m1\", value: \"3\", type: \"int\" },\n        members { name: \"m2\", value: \"7\", type: \"int\" }\n    }\n\nNote that the pointer address is stored with the referencing variable\nand not with the referenced variable. This allows the referenced variable\nto be shared between pointers and references.\n\nThe type field is optional. The debugger agent may or may not support it.",
             "id": "Variable",
             "properties": {
-                "name": {
-                    "description": "Name of the variable, if any.",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "Variable type (e.g. `MyClass`). If the variable is split with\n`var_table_index`, `type` goes next to `value`. The interpretation of\na type is agent specific. It is recommended to include the dynamic type\nrather than a static type of an object.",
-                    "type": "string"
-                },
-                "value": {
-                    "description": "Simple value of the variable.",
-                    "type": "string"
-                },
                 "varTableIndex": {
                     "description": "Reference to a variable in the shared variable table. More than\none variable can reference the same variable in the table. The\n`var_table_index` field is an index into `variable_table` in Breakpoint.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "value": {
+                    "description": "Simple value of the variable.",
+                    "type": "string"
                 },
                 "members": {
                     "description": "Members contained or pointed to by the variable.",
@@ -736,6 +582,14 @@
                 "status": {
                     "$ref": "StatusMessage",
                     "description": "Status associated with the variable. This field will usually stay\nunset. A status of a single variable only applies to that variable or\nexpression. The rest of breakpoint data still remains valid. Variables\nmight be reported in error state even when breakpoint is not in final\nstate.\n\nThe message may refer to variable name with `refers_to` set to\n`VARIABLE_NAME`. Alternatively `refers_to` will be set to `VARIABLE_VALUE`.\nIn either case variable value and members will be unset.\n\nExample of error message applied to name: `Invalid expression syntax`.\n\nExample of information message applied to value: `Not captured`.\n\nExamples of error message applied to value:\n\n*   `Malformed string`,\n*   `Field f not found in class C`\n*   `Null pointer dereference`"
+                },
+                "name": {
+                    "description": "Name of the variable, if any.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Variable type (e.g. `MyClass`). If the variable is split with\n`var_table_index`, `type` goes next to `value`. The interpretation of\na type is agent specific. It is recommended to include the dynamic type\nrather than a static type of an object.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -744,13 +598,6 @@
             "description": "Represents a stack frame context.",
             "id": "StackFrame",
             "properties": {
-                "arguments": {
-                    "description": "Set of arguments passed to this function.\nNote that this might not be populated for all stack frames.",
-                    "items": {
-                        "$ref": "Variable"
-                    },
-                    "type": "array"
-                },
                 "locals": {
                     "description": "Set of local variables at the stack frame location.\nNote that this might not be populated for all stack frames.",
                     "items": {
@@ -765,6 +612,13 @@
                 "function": {
                     "description": "Demangled function name at the call site.",
                     "type": "string"
+                },
+                "arguments": {
+                    "description": "Set of arguments passed to this function.\nNote that this might not be populated for all stack frames.",
+                    "items": {
+                        "$ref": "Variable"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -871,14 +725,14 @@
             "description": "Represents a location in the source code.",
             "id": "SourceLocation",
             "properties": {
+                "path": {
+                    "description": "Path to the source file within the source context of the target binary.",
+                    "type": "string"
+                },
                 "line": {
                     "description": "Line inside the file. The first line in the file has the value `1`.",
                     "format": "int32",
                     "type": "integer"
-                },
-                "path": {
-                    "description": "Path to the source file within the source context of the target binary.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -887,21 +741,6 @@
             "description": "Represents the application to debug. The application may include one or more\nreplicated processes executing the same code. Each of these processes is\nattached with a debugger agent, carrying out the debugging commands.\nThe agents attached to the same debuggee are identified by using exactly the\nsame field values when registering.",
             "id": "Debuggee",
             "properties": {
-                "uniquifier": {
-                    "description": "Debuggee uniquifier within the project.\nAny string that identifies the application within the project can be used.\nIncluding environment and version or build IDs is recommended.",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "Human readable description of the debuggee.\nIncluding a human-readable project name, environment name and version\ninformation is recommended.",
-                    "type": "string"
-                },
-                "sourceContexts": {
-                    "description": "References to the locations and revisions of the source code used in the\ndeployed application.\n\nNOTE: This field is deprecated. Consumers should use\n`ext_source_contexts` if it is not empty. Debug agents should populate\nboth this field and `ext_source_contexts`.",
-                    "items": {
-                        "$ref": "SourceContext"
-                    },
-                    "type": "array"
-                },
                 "extSourceContexts": {
                     "description": "References to the locations and revisions of the source code used in the\ndeployed application.\n\nContexts describing a remote repo related to the source code\nhave a `category` label of `remote_repo`. Source snapshot source\ncontexts have a `category` of `snapshot`.",
                     "items": {
@@ -916,29 +755,44 @@
                     "description": "A set of custom debuggee properties, populated by the agent, to be\ndisplayed to the user.",
                     "type": "object"
                 },
-                "isInactive": {
-                    "description": "If set to `true`, indicates that the debuggee is considered as inactive by\nthe Controller service.",
-                    "type": "boolean"
-                },
                 "status": {
                     "$ref": "StatusMessage",
                     "description": "Human readable message to be displayed to the user about this debuggee.\nAbsence of this field indicates no status. The message can be either\ninformational or an error status."
                 },
+                "isInactive": {
+                    "description": "If set to `true`, indicates that the debuggee is considered as inactive by\nthe Controller service.",
+                    "type": "boolean"
+                },
                 "project": {
                     "description": "Project the debuggee is associated with.\nUse the project number when registering a Google Cloud Platform project.",
+                    "type": "string"
+                },
+                "isDisabled": {
+                    "description": "If set to `true`, indicates that the agent should disable itself and\ndetach from the debuggee.",
+                    "type": "boolean"
+                },
+                "agentVersion": {
+                    "description": "Version ID of the agent release. The version ID is structured as\nfollowing: `domain/type/vmajor.minor` (for example\n`google.com/gcp-java/v1.1`).",
                     "type": "string"
                 },
                 "id": {
                     "description": "Unique identifier for the debuggee generated by the controller service.",
                     "type": "string"
                 },
-                "agentVersion": {
-                    "description": "Version ID of the agent release. The version ID is structured as\nfollowing: `domain/type/vmajor.minor` (for example\n`google.com/gcp-java/v1.1`).",
+                "description": {
+                    "description": "Human readable description of the debuggee.\nIncluding a human-readable project name, environment name and version\ninformation is recommended.",
                     "type": "string"
                 },
-                "isDisabled": {
-                    "description": "If set to `true`, indicates that the agent should disable itself and\ndetach from the debuggee.",
-                    "type": "boolean"
+                "uniquifier": {
+                    "description": "Debuggee uniquifier within the project.\nAny string that identifies the application within the project can be used.\nIncluding environment and version or build IDs is recommended.",
+                    "type": "string"
+                },
+                "sourceContexts": {
+                    "description": "References to the locations and revisions of the source code used in the\ndeployed application.\n\nNOTE: This field is deprecated. Consumers should use\n`ext_source_contexts` if it is not empty. Debug agents should populate\nboth this field and `ext_source_contexts`.",
+                    "items": {
+                        "$ref": "SourceContext"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -995,18 +849,16 @@
             },
             "type": "object"
         },
+        "UpdateActiveBreakpointResponse": {
+            "description": "Response for updating an active breakpoint.\nThe message is defined to allow future extensions.",
+            "id": "UpdateActiveBreakpointResponse",
+            "properties": {},
+            "type": "object"
+        },
         "GerritSourceContext": {
             "description": "A SourceContext referring to a Gerrit project.",
             "id": "GerritSourceContext",
             "properties": {
-                "revisionId": {
-                    "description": "A revision (commit) ID.",
-                    "type": "string"
-                },
-                "hostUri": {
-                    "description": "The URI of a running Gerrit instance.",
-                    "type": "string"
-                },
                 "aliasName": {
                     "description": "The name of an alias (branch, tag, etc.).",
                     "type": "string"
@@ -1018,27 +870,175 @@
                 "gerritProject": {
                     "description": "The full project name within the host. Projects may be nested, so\n\"project/subproject\" is a valid project name.\nThe \"repo name\" is hostURI/project.",
                     "type": "string"
+                },
+                "revisionId": {
+                    "description": "A revision (commit) ID.",
+                    "type": "string"
+                },
+                "hostUri": {
+                    "description": "The URI of a running Gerrit instance.",
+                    "type": "string"
                 }
             },
-            "type": "object"
-        },
-        "UpdateActiveBreakpointResponse": {
-            "description": "Response for updating an active breakpoint.\nThe message is defined to allow future extensions.",
-            "id": "UpdateActiveBreakpointResponse",
-            "properties": {},
             "type": "object"
         },
         "CloudWorkspaceId": {
             "description": "A CloudWorkspaceId is a unique identifier for a cloud workspace.\nA cloud workspace is a place associated with a repo where modified files\ncan be stored before they are committed.",
             "id": "CloudWorkspaceId",
             "properties": {
-                "repoId": {
-                    "$ref": "RepoId",
-                    "description": "The ID of the repo containing the workspace."
-                },
                 "name": {
                     "description": "The unique name of the workspace within the repo.  This is the name\nchosen by the client in the Source API's CreateWorkspace method.",
                     "type": "string"
+                },
+                "repoId": {
+                    "$ref": "RepoId",
+                    "description": "The ID of the repo containing the workspace."
+                }
+            },
+            "type": "object"
+        },
+        "ListBreakpointsResponse": {
+            "description": "Response for listing breakpoints.",
+            "id": "ListBreakpointsResponse",
+            "properties": {
+                "breakpoints": {
+                    "description": "List of breakpoints matching the request.\nThe fields `id` and `location` are guaranteed to be set on each breakpoint.\nThe fields: `stack_frames`, `evaluated_expressions` and `variable_table`\nare cleared on each breakpoint regardless of its status.",
+                    "items": {
+                        "$ref": "Breakpoint"
+                    },
+                    "type": "array"
+                },
+                "nextWaitToken": {
+                    "description": "A wait token that can be used in the next call to `list` (REST) or\n`ListBreakpoints` (RPC) to block until the list of breakpoints has changes.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Breakpoint": {
+            "description": "Represents the breakpoint specification, status and results.",
+            "id": "Breakpoint",
+            "properties": {
+                "expressions": {
+                    "description": "List of read-only expressions to evaluate at the breakpoint location.\nThe expressions are composed using expressions in the programming language\nat the source location. If the breakpoint action is `LOG`, the evaluated\nexpressions are included in log statements.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "evaluatedExpressions": {
+                    "description": "Values of evaluated expressions at breakpoint time.\nThe evaluated expressions appear in exactly the same order they\nare listed in the `expressions` field.\nThe `name` field holds the original expression text, the `value` or\n`members` field holds the result of the evaluated expression.\nIf the expression cannot be evaluated, the `status` inside the `Variable`\nwill indicate an error and contain the error text.",
+                    "items": {
+                        "$ref": "Variable"
+                    },
+                    "type": "array"
+                },
+                "isFinalState": {
+                    "description": "When true, indicates that this is a final result and the\nbreakpoint state will not change from here on.",
+                    "type": "boolean"
+                },
+                "stackFrames": {
+                    "description": "The stack at breakpoint time.",
+                    "items": {
+                        "$ref": "StackFrame"
+                    },
+                    "type": "array"
+                },
+                "condition": {
+                    "description": "Condition that triggers the breakpoint.\nThe condition is a compound boolean expression composed using expressions\nin a programming language at the source location.",
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "StatusMessage",
+                    "description": "Breakpoint status.\n\nThe status includes an error flag and a human readable message.\nThis field is usually unset. The message can be either\ninformational or an error message. Regardless, clients should always\ndisplay the text message back to the user.\n\nError status indicates complete failure of the breakpoint.\n\nExample (non-final state): `Still loading symbols...`\n\nExamples (final state):\n\n*   `Invalid line number` referring to location\n*   `Field f not found in class C` referring to condition"
+                },
+                "userEmail": {
+                    "description": "E-mail address of the user that created this breakpoint",
+                    "type": "string"
+                },
+                "action": {
+                    "description": "Action that the agent should perform when the code at the\nbreakpoint location is hit.",
+                    "enum": [
+                        "CAPTURE",
+                        "LOG"
+                    ],
+                    "enumDescriptions": [
+                        "Capture stack frame and variables and update the breakpoint.\nThe data is only captured once. After that the breakpoint is set\nin a final state.",
+                        "Log each breakpoint hit. The breakpoint remains active until\ndeleted or expired."
+                    ],
+                    "type": "string"
+                },
+                "logLevel": {
+                    "description": "Indicates the severity of the log. Only relevant when action is `LOG`.",
+                    "enum": [
+                        "INFO",
+                        "WARNING",
+                        "ERROR"
+                    ],
+                    "enumDescriptions": [
+                        "Information log message.",
+                        "Warning log message.",
+                        "Error log message."
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Breakpoint identifier, unique in the scope of the debuggee.",
+                    "type": "string"
+                },
+                "location": {
+                    "$ref": "SourceLocation",
+                    "description": "Breakpoint source location."
+                },
+                "finalTime": {
+                    "description": "Time this breakpoint was finalized as seen by the server in seconds\nresolution.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "variableTable": {
+                    "description": "The `variable_table` exists to aid with computation, memory and network\ntraffic optimization.  It enables storing a variable once and reference\nit from multiple variables, including variables stored in the\n`variable_table` itself.\nFor example, the same `this` object, which may appear at many levels of\nthe stack, can have all of its data stored once in this table.  The\nstack frame variables then would hold only a reference to it.\n\nThe variable `var_table_index` field is an index into this repeated field.\nThe stored objects are nameless and get their name from the referencing\nvariable. The effective variable is a merge of the referencing variable\nand the referenced variable.",
+                    "items": {
+                        "$ref": "Variable"
+                    },
+                    "type": "array"
+                },
+                "createTime": {
+                    "description": "Time this breakpoint was created by the server in seconds resolution.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "logMessageFormat": {
+                    "description": "Only relevant when action is `LOG`. Defines the message to log when\nthe breakpoint hits. The message may include parameter placeholders `$0`,\n`$1`, etc. These placeholders are replaced with the evaluated value\nof the appropriate expression. Expressions not referenced in\n`log_message_format` are not logged.\n\nExample: `Message received, id = $0, count = $1` with\n`expressions` = `[ message.id, message.count ]`.",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A set of custom breakpoint properties, populated by the agent, to be\ndisplayed to the user.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SetBreakpointResponse": {
+            "description": "Response for setting a breakpoint.",
+            "id": "SetBreakpointResponse",
+            "properties": {
+                "breakpoint": {
+                    "$ref": "Breakpoint",
+                    "description": "Breakpoint resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fileds)."
+                }
+            },
+            "type": "object"
+        },
+        "UpdateActiveBreakpointRequest": {
+            "description": "Request to update an active breakpoint.",
+            "id": "UpdateActiveBreakpointRequest",
+            "properties": {
+                "breakpoint": {
+                    "$ref": "Breakpoint",
+                    "description": "Updated breakpoint information.\nThe field `id` must be set."
                 }
             },
             "type": "object"

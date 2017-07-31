@@ -1730,6 +1730,39 @@ class ProjectsZonesOperationsResourceApi {
 
 
 
+/** AcceleratorConfig represents a Hardware Accelerator request. */
+class AcceleratorConfig {
+  /** The number of the accelerator cards exposed to an instance. */
+  core.String acceleratorCount;
+  /**
+   * The accelerator type resource name. List of supported accelerators
+   * [here](/compute/docs/gpus/#Introduction)
+   */
+  core.String acceleratorType;
+
+  AcceleratorConfig();
+
+  AcceleratorConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorCount")) {
+      acceleratorCount = _json["acceleratorCount"];
+    }
+    if (_json.containsKey("acceleratorType")) {
+      acceleratorType = _json["acceleratorType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (acceleratorCount != null) {
+      _json["acceleratorCount"] = acceleratorCount;
+    }
+    if (acceleratorType != null) {
+      _json["acceleratorType"] = acceleratorType;
+    }
+    return _json;
+  }
+}
+
 /**
  * Configuration for the addons that can be automatically spun up in the
  * cluster, enabling additional functionality.
@@ -1746,6 +1779,8 @@ class AddonsConfig {
    * makes it easy to set up HTTP load balancers for services in a cluster.
    */
   HttpLoadBalancing httpLoadBalancing;
+  /** Configuration for the Kubernetes Dashboard. */
+  KubernetesDashboard kubernetesDashboard;
 
   AddonsConfig();
 
@@ -1756,6 +1791,9 @@ class AddonsConfig {
     if (_json.containsKey("httpLoadBalancing")) {
       httpLoadBalancing = new HttpLoadBalancing.fromJson(_json["httpLoadBalancing"]);
     }
+    if (_json.containsKey("kubernetesDashboard")) {
+      kubernetesDashboard = new KubernetesDashboard.fromJson(_json["kubernetesDashboard"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1765,6 +1803,9 @@ class AddonsConfig {
     }
     if (httpLoadBalancing != null) {
       _json["httpLoadBalancing"] = (httpLoadBalancing).toJson();
+    }
+    if (kubernetesDashboard != null) {
+      _json["kubernetesDashboard"] = (kubernetesDashboard).toJson();
     }
     return _json;
   }
@@ -1820,6 +1861,36 @@ class CancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/** CidrBlock contains an optional name and one CIDR block. */
+class CidrBlock {
+  /** cidr_block must be specified in CIDR notation. */
+  core.String cidrBlock;
+  /** display_name is an optional field for users to identify CIDR blocks. */
+  core.String displayName;
+
+  CidrBlock();
+
+  CidrBlock.fromJson(core.Map _json) {
+    if (_json.containsKey("cidrBlock")) {
+      cidrBlock = _json["cidrBlock"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (cidrBlock != null) {
+      _json["cidrBlock"] = cidrBlock;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     return _json;
   }
 }
@@ -1944,6 +2015,11 @@ class Cluster {
   core.String loggingService;
   /** The authentication information for accessing the master endpoint. */
   MasterAuth masterAuth;
+  /**
+   * Master authorized networks is a Beta feature.
+   * The configuration options for master authorized networks feature.
+   */
+  MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
   /**
    * The monitoring service the cluster should use to write metrics.
    * Currently available options:
@@ -2107,6 +2183,9 @@ class Cluster {
     if (_json.containsKey("masterAuth")) {
       masterAuth = new MasterAuth.fromJson(_json["masterAuth"]);
     }
+    if (_json.containsKey("masterAuthorizedNetworksConfig")) {
+      masterAuthorizedNetworksConfig = new MasterAuthorizedNetworksConfig.fromJson(_json["masterAuthorizedNetworksConfig"]);
+    }
     if (_json.containsKey("monitoringService")) {
       monitoringService = _json["monitoringService"];
     }
@@ -2210,6 +2289,9 @@ class Cluster {
     if (masterAuth != null) {
       _json["masterAuth"] = (masterAuth).toJson();
     }
+    if (masterAuthorizedNetworksConfig != null) {
+      _json["masterAuthorizedNetworksConfig"] = (masterAuthorizedNetworksConfig).toJson();
+    }
     if (monitoringService != null) {
       _json["monitoringService"] = monitoringService;
     }
@@ -2280,6 +2362,11 @@ class ClusterUpdate {
    */
   core.List<core.String> desiredLocations;
   /**
+   * Master authorized networks is a Beta feature.
+   * The desired configuration options for master authorized networks feature.
+   */
+  MasterAuthorizedNetworksConfig desiredMasterAuthorizedNetworksConfig;
+  /**
    * The Kubernetes version to change the master to. The only valid value is the
    * latest supported version. Use "-" to have the server automatically select
    * the latest version.
@@ -2326,6 +2413,9 @@ class ClusterUpdate {
     if (_json.containsKey("desiredLocations")) {
       desiredLocations = _json["desiredLocations"];
     }
+    if (_json.containsKey("desiredMasterAuthorizedNetworksConfig")) {
+      desiredMasterAuthorizedNetworksConfig = new MasterAuthorizedNetworksConfig.fromJson(_json["desiredMasterAuthorizedNetworksConfig"]);
+    }
     if (_json.containsKey("desiredMasterVersion")) {
       desiredMasterVersion = _json["desiredMasterVersion"];
     }
@@ -2353,6 +2443,9 @@ class ClusterUpdate {
     }
     if (desiredLocations != null) {
       _json["desiredLocations"] = desiredLocations;
+    }
+    if (desiredMasterAuthorizedNetworksConfig != null) {
+      _json["desiredMasterAuthorizedNetworksConfig"] = (desiredMasterAuthorizedNetworksConfig).toJson();
     }
     if (desiredMasterVersion != null) {
       _json["desiredMasterVersion"] = desiredMasterVersion;
@@ -2636,6 +2729,28 @@ class IPAllocationPolicy {
   }
 }
 
+/** Configuration for the Kubernetes Dashboard. */
+class KubernetesDashboard {
+  /** Whether the Kubernetes Dashboard is enabled for this cluster. */
+  core.bool disabled;
+
+  KubernetesDashboard();
+
+  KubernetesDashboard.fromJson(core.Map _json) {
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
+    return _json;
+  }
+}
+
 /**
  * Configuration for the legacy Attribute Based Access Control authorization
  * mode.
@@ -2845,6 +2960,45 @@ class MasterAuth {
 }
 
 /**
+ * Master authorized networks is a Beta feature.
+ * Configuration options for the master authorized networks feature. Enabled
+ * master authorized networks will disallow all external traffic to access
+ * Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+ * Google Compute Engine Public IPs and Google Prod IPs.
+ */
+class MasterAuthorizedNetworksConfig {
+  /**
+   * cidr_blocks define up to 10 external networks that could access
+   * Kubernetes master through HTTPS.
+   */
+  core.List<CidrBlock> cidrBlocks;
+  /** Whether or not master authorized networks is enabled. */
+  core.bool enabled;
+
+  MasterAuthorizedNetworksConfig();
+
+  MasterAuthorizedNetworksConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cidrBlocks")) {
+      cidrBlocks = _json["cidrBlocks"].map((value) => new CidrBlock.fromJson(value)).toList();
+    }
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (cidrBlocks != null) {
+      _json["cidrBlocks"] = cidrBlocks.map((value) => (value).toJson()).toList();
+    }
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    return _json;
+  }
+}
+
+/**
  * Configuration options for the NetworkPolicy feature.
  * https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
  */
@@ -2854,7 +3008,7 @@ class NetworkPolicy {
   /**
    * The selected network policy provider.
    * Possible string values are:
-   * - "UNKNOWN" : Not set
+   * - "PROVIDER_UNSPECIFIED" : Not set
    * - "CALICO" : Tigera (Calico Felix).
    */
   core.String provider;
@@ -2884,6 +3038,12 @@ class NetworkPolicy {
 
 /** Parameters that describe the nodes in a cluster. */
 class NodeConfig {
+  /**
+   * A list of hardware accelerators to be attached to each node.
+   * See https://cloud.google.com/compute/docs/gpus for more information about
+   * support for GPUs.
+   */
+  core.List<AcceleratorConfig> accelerators;
   /**
    * Size of the disk attached to each node, specified in GB.
    * The smallest allowed disk size is 10GB.
@@ -2980,6 +3140,9 @@ class NodeConfig {
   NodeConfig();
 
   NodeConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("accelerators")) {
+      accelerators = _json["accelerators"].map((value) => new AcceleratorConfig.fromJson(value)).toList();
+    }
     if (_json.containsKey("diskSizeGb")) {
       diskSizeGb = _json["diskSizeGb"];
     }
@@ -3014,6 +3177,9 @@ class NodeConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (accelerators != null) {
+      _json["accelerators"] = accelerators.map((value) => (value).toJson()).toList();
+    }
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
     }

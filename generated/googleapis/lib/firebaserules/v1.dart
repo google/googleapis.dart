@@ -292,6 +292,14 @@ class ProjectsReleasesResourceApi {
    * Format: `projects/{project_id}`
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - Next page token for the next batch of `Release` instances.
+   *
+   * [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
+   * Note: `page_size` is just a hint and the service may choose to load fewer
+   * than `page_size` results due to the size of the output. To traverse all of
+   * the releases, the caller should iterate until the `page_token` on the
+   * response is empty.
+   *
    * [filter] - `Release` filter. The list method supports filters with
    * restrictions on the
    * `Release.name`, `Release.ruleset_name`, and `Release.test_suite_name`.
@@ -318,14 +326,6 @@ class ProjectsReleasesResourceApi {
    * relative to the project. Fully qualified prefixed may also be used. e.g.
    * `test_suite_name=projects/foo/testsuites/uuid1`
    *
-   * [pageToken] - Next page token for the next batch of `Release` instances.
-   *
-   * [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
-   * Note: `page_size` is just a hint and the service may choose to load fewer
-   * than `page_size` results due to the size of the output. To traverse all of
-   * the releases, the caller should iterate until the `page_token` on the
-   * response is empty.
-   *
    * Completes with a [ListReleasesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -334,7 +334,7 @@ class ProjectsReleasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReleasesResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListReleasesResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -345,14 +345,14 @@ class ProjectsReleasesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';

@@ -25,13 +25,29 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
             "location": "query",
             "type": "string"
         },
         "access_token": {
             "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -46,13 +62,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -77,11 +93,6 @@
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -95,19 +106,8 @@
             "location": "query",
             "type": "string"
         },
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         }
@@ -152,16 +152,6 @@
                                 "projectName"
                             ],
                             "parameters": {
-                                "pageToken": {
-                                    "description": "[Optional] A `next_page_token` provided by a previous response.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "serviceFilter.service": {
-                                    "description": "[Optional] The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "pageSize": {
                                     "description": "[Optional] The maximum number of results to return per response.",
                                     "format": "int32",
@@ -200,6 +190,16 @@
                                 },
                                 "groupId": {
                                     "description": "[Required] The group for which events shall be returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "serviceFilter.service": {
+                                    "description": "[Optional] The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "[Optional] A `next_page_token` provided by a previous response.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -251,6 +251,35 @@
                                 "projectName"
                             ],
                             "parameters": {
+                                "timeRange.period": {
+                                    "description": "Restricts the query to the specified time range.",
+                                    "enum": [
+                                        "PERIOD_UNSPECIFIED",
+                                        "PERIOD_1_HOUR",
+                                        "PERIOD_6_HOURS",
+                                        "PERIOD_1_DAY",
+                                        "PERIOD_1_WEEK",
+                                        "PERIOD_30_DAYS"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "alignment": {
+                                    "description": "[Optional] The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`.",
+                                    "enum": [
+                                        "ERROR_COUNT_ALIGNMENT_UNSPECIFIED",
+                                        "ALIGNMENT_EQUAL_ROUNDED",
+                                        "ALIGNMENT_EQUAL_AT_END"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "groupId": {
+                                    "description": "[Optional] List all <code>ErrorGroupStats</code> with these IDs.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "serviceFilter.service": {
                                     "description": "[Optional] The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).",
                                     "location": "query",
@@ -262,6 +291,11 @@
                                     "location": "query",
                                     "type": "integer"
                                 },
+                                "serviceFilter.version": {
+                                    "description": "[Optional] The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "order": {
                                     "description": "[Optional] The sort order in which the results are returned.\nDefault is `COUNT_DESC`.",
                                     "enum": [
@@ -271,11 +305,6 @@
                                         "CREATED_DESC",
                                         "AFFECTED_USERS_DESC"
                                     ],
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "serviceFilter.version": {
-                                    "description": "[Optional] The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -307,35 +336,6 @@
                                     "description": "[Optional] A `next_page_token` provided by a previous response. To view\nadditional results, pass this token along with the identical query\nparameters as the first request.",
                                     "location": "query",
                                     "type": "string"
-                                },
-                                "timeRange.period": {
-                                    "description": "Restricts the query to the specified time range.",
-                                    "enum": [
-                                        "PERIOD_UNSPECIFIED",
-                                        "PERIOD_1_HOUR",
-                                        "PERIOD_6_HOURS",
-                                        "PERIOD_1_DAY",
-                                        "PERIOD_1_WEEK",
-                                        "PERIOD_30_DAYS"
-                                    ],
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "alignment": {
-                                    "description": "[Optional] The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`.",
-                                    "enum": [
-                                        "ERROR_COUNT_ALIGNMENT_UNSPECIFIED",
-                                        "ALIGNMENT_EQUAL_ROUNDED",
-                                        "ALIGNMENT_EQUAL_AT_END"
-                                    ],
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "groupId": {
-                                    "description": "[Optional] List all <code>ErrorGroupStats</code> with these IDs.",
-                                    "location": "query",
-                                    "repeated": true,
-                                    "type": "string"
                                 }
                             },
                             "path": "v1beta1/{+projectName}/groupStats",
@@ -350,30 +350,6 @@
                 },
                 "groups": {
                     "methods": {
-                        "get": {
-                            "description": "Get the specified group.",
-                            "httpMethod": "GET",
-                            "id": "clouderrorreporting.projects.groups.get",
-                            "parameterOrder": [
-                                "groupName"
-                            ],
-                            "parameters": {
-                                "groupName": {
-                                    "description": "[Required] The group resource name. Written as\n<code>projects/<var>projectID</var>/groups/<var>group_name</var></code>.\nCall\n<a href=\"/error-reporting/reference/rest/v1beta1/projects.groupStats/list\">\n<code>groupStats.list</code></a> to return a list of groups belonging to\nthis project.\n\nExample: <code>projects/my-project-123/groups/my-group</code>",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/groups/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1beta1/{+groupName}",
-                            "response": {
-                                "$ref": "ErrorGroup"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
-                            ]
-                        },
                         "update": {
                             "description": "Replace the data for the specified group.\nFails if the group does not exist.",
                             "httpMethod": "PUT",
@@ -400,23 +376,285 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
+                        },
+                        "get": {
+                            "description": "Get the specified group.",
+                            "httpMethod": "GET",
+                            "id": "clouderrorreporting.projects.groups.get",
+                            "parameterOrder": [
+                                "groupName"
+                            ],
+                            "parameters": {
+                                "groupName": {
+                                    "description": "[Required] The group resource name. Written as\n<code>projects/<var>projectID</var>/groups/<var>group_name</var></code>.\nCall\n<a href=\"/error-reporting/reference/rest/v1beta1/projects.groupStats/list\">\n<code>groupStats.list</code></a> to return a list of groups belonging to\nthis project.\n\nExample: <code>projects/my-project-123/groups/my-group</code>",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/groups/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+groupName}",
+                            "response": {
+                                "$ref": "ErrorGroup"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20170618",
+    "revision": "20170721",
     "rootUrl": "https://clouderrorreporting.googleapis.com/",
     "schemas": {
+        "ErrorGroupStats": {
+            "description": "Data extracted for a specific group based on certain filter criteria,\nsuch as a given time period and/or service filter.",
+            "id": "ErrorGroupStats",
+            "properties": {
+                "representative": {
+                    "$ref": "ErrorEvent",
+                    "description": "An arbitrary event that is chosen as representative for the whole group.\nThe representative event is intended to be used as a quick preview for\nthe whole group. Events in the group are usually sufficiently similar\nto each other such that showing an arbitrary representative provides\ninsight into the characteristics of the group as a whole."
+                },
+                "timedCounts": {
+                    "description": "Approximate number of occurrences over time.\nTimed counts returned by ListGroups are guaranteed to be:\n\n- Inside the requested time interval\n- Non-overlapping, and\n- Ordered by ascending time.",
+                    "items": {
+                        "$ref": "TimedCount"
+                    },
+                    "type": "array"
+                },
+                "group": {
+                    "$ref": "ErrorGroup",
+                    "description": "Group data that is independent of the filter criteria."
+                },
+                "firstSeenTime": {
+                    "description": "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "count": {
+                    "description": "Approximate total number of events in the given group that match\nthe filter criteria.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "lastSeenTime": {
+                    "description": "Approximate last occurrence that was ever seen for this group and\nwhich matches the given filter criteria, ignoring the time_range\nthat was specified in the request.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "affectedUsersCount": {
+                    "description": "Approximate number of affected users in the given group that\nmatch the filter criteria.\nUsers are distinguished by data in the `ErrorContext` of the\nindividual error events, such as their login name or their remote\nIP address in case of HTTP requests.\nThe number of affected users can be zero even if the number of\nerrors is non-zero if no data was provided from which the\naffected user could be deduced.\nUsers are counted based on data in the request\ncontext that was provided in the error report. If more users are\nimplicitly affected, such as due to a crash of the whole service,\nthis is not reflected here.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "affectedServices": {
+                    "description": "Service contexts with a non-zero error count for the given filter\ncriteria. This list can be truncated if multiple services are affected.\nRefer to `num_affected_services` for the total count.",
+                    "items": {
+                        "$ref": "ServiceContext"
+                    },
+                    "type": "array"
+                },
+                "numAffectedServices": {
+                    "description": "The total number of services with a non-zero error count for the given\nfilter criteria.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ListEventsResponse": {
+            "description": "Contains a set of requested error events.",
+            "id": "ListEventsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results.",
+                    "type": "string"
+                },
+                "timeRangeBegin": {
+                    "description": "The timestamp specifies the start time to which the request was restricted.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "errorEvents": {
+                    "description": "The error events which match the given request.",
+                    "items": {
+                        "$ref": "ErrorEvent"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TimedCount": {
+            "description": "The number of errors in a given time period.\nAll numbers are approximate since the error events are sampled\nbefore counting them.",
+            "id": "TimedCount",
+            "properties": {
+                "endTime": {
+                    "description": "End of the time period to which `count` refers (excluded).",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Start of the time period to which `count` refers (included).",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "count": {
+                    "description": "Approximate number of occurrences in the given time period.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ErrorGroup": {
+            "description": "Description of a group of similar error events.",
+            "id": "ErrorGroup",
+            "properties": {
+                "trackingIssues": {
+                    "description": "Associated tracking issues.",
+                    "items": {
+                        "$ref": "TrackingIssue"
+                    },
+                    "type": "array"
+                },
+                "groupId": {
+                    "description": "Group IDs are unique for a given project. If the same kind of error\noccurs in different service contexts, it will receive the same group ID.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The group resource name.\nExample: <code>projects/my-project-123/groups/my-groupid</code>",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SourceLocation": {
+            "description": "Indicates a location in the source code of the service for which errors are\nreported. `functionName` must be provided by the application when reporting\nan error, unless the error report contains a `message` with a supported\nexception stack trace. All fields are optional for the later case.",
+            "id": "SourceLocation",
+            "properties": {
+                "functionName": {
+                    "description": "Human-readable name of a function or method.\nThe value can include optional context like the class or package name.\nFor example, `my.package.MyClass.method` in case of Java.",
+                    "type": "string"
+                },
+                "filePath": {
+                    "description": "The source code filename, which can include a truncated relative\npath, or a full path from a production machine.",
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "description": "1-based. 0 indicates that the line number is unknown.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ServiceContext": {
+            "description": "Describes a running service that sends errors.\nIts version changes over time and multiple versions can run in parallel.",
+            "id": "ServiceContext",
+            "properties": {
+                "version": {
+                    "description": "Represents the source code version that the developer provided,\nwhich could represent a version label or a Git SHA-1 hash, for example.\nFor App Engine standard environment, the version is set to the version of\nthe app.",
+                    "type": "string"
+                },
+                "service": {
+                    "description": "An identifier of the service, such as the name of the\nexecutable, job, or Google App Engine service name. This field is expected\nto have a low number of values that are relatively stable over time, as\nopposed to `version`, which can be changed whenever new code is deployed.\n\nContains the service name for error reports extracted from Google\nApp Engine logs or `default` if the App Engine default service is used.",
+                    "type": "string"
+                },
+                "resourceType": {
+                    "description": "Type of the MonitoredResource. List of possible values:\nhttps://cloud.google.com/monitoring/api/resources\n\nValue is set automatically for incoming errors and must not be set when\nreporting errors.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReportErrorEventResponse": {
+            "description": "Response for reporting an individual error event.\nData may be added to this message in the future.",
+            "id": "ReportErrorEventResponse",
+            "properties": {},
+            "type": "object"
+        },
+        "HttpRequestContext": {
+            "description": "HTTP request data that is related to a reported error.\nThis data should be provided by the application when reporting an error,\nunless the\nerror report has been generated automatically from Google App Engine logs.",
+            "id": "HttpRequestContext",
+            "properties": {
+                "remoteIp": {
+                    "description": "The IP address from which the request originated.\nThis can be IPv4, IPv6, or a token which is derived from the\nIP address, depending on the data that has been provided\nin the error report.",
+                    "type": "string"
+                },
+                "referrer": {
+                    "description": "The referrer information that is provided with the request.",
+                    "type": "string"
+                },
+                "userAgent": {
+                    "description": "The user agent information that is provided with the request.",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "The URL of the request.",
+                    "type": "string"
+                },
+                "responseStatusCode": {
+                    "description": "The HTTP response status code for the request.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "method": {
+                    "description": "The type of HTTP request, such as `GET`, `POST`, etc.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListGroupStatsResponse": {
+            "description": "Contains a set of requested error group stats.",
+            "id": "ListGroupStatsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results.",
+                    "type": "string"
+                },
+                "timeRangeBegin": {
+                    "description": "The timestamp specifies the start time to which the request was restricted.\nThe start time is set based on the requested time range. It may be adjusted\nto a later time if a project has exceeded the storage quota and older data\nhas been deleted.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "errorGroupStats": {
+                    "description": "The error group stats which match the given request.",
+                    "items": {
+                        "$ref": "ErrorGroupStats"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SourceReference": {
+            "description": "A reference to a particular snapshot of the source tree used to build and\ndeploy an application.",
+            "id": "SourceReference",
+            "properties": {
+                "revisionId": {
+                    "description": "The canonical and persistent identifier of the deployed revision.\nExample (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\"",
+                    "type": "string"
+                },
+                "repository": {
+                    "description": "Optional. A URI string identifying the repository.\nExample: \"https://github.com/GoogleCloudPlatform/kubernetes.git\"",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeleteEventsResponse": {
+            "description": "Response message for deleting error events.",
+            "id": "DeleteEventsResponse",
+            "properties": {},
+            "type": "object"
+        },
         "ErrorEvent": {
             "description": "An error event which is returned by the Error Reporting system.",
             "id": "ErrorEvent",
             "properties": {
-                "message": {
-                    "description": "The stack trace that was reported or logged by the service.",
-                    "type": "string"
-                },
                 "serviceContext": {
                     "$ref": "ServiceContext",
                     "description": "The `ServiceContext` for which this error was reported."
@@ -429,6 +667,10 @@
                 "context": {
                     "$ref": "ErrorContext",
                     "description": "Data about the context in which the error occurred."
+                },
+                "message": {
+                    "description": "The stack trace that was reported or logged by the service.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -478,7 +720,7 @@
                 },
                 "reportLocation": {
                     "$ref": "SourceLocation",
-                    "description": "The location in the source code where the decision was made to\nreport the error, usually the place where it was logged.\nFor a logged exception this would be the source line where the\nexception is logged, usually close to the place where it was\ncaught. This value is in contrast to `Exception.cause_location`,\nwhich describes the source line where the exception was thrown."
+                    "description": "The location in the source code where the decision was made to\nreport the error, usually the place where it was logged.\nFor a logged exception this would be the source line where the\nexception is logged, usually close to the place where it was\ncaught."
                 }
             },
             "type": "object"
@@ -492,248 +734,6 @@
                     "type": "string"
                 }
             },
-            "type": "object"
-        },
-        "ErrorGroupStats": {
-            "description": "Data extracted for a specific group based on certain filter criteria,\nsuch as a given time period and/or service filter.",
-            "id": "ErrorGroupStats",
-            "properties": {
-                "count": {
-                    "description": "Approximate total number of events in the given group that match\nthe filter criteria.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "affectedUsersCount": {
-                    "description": "Approximate number of affected users in the given group that\nmatch the filter criteria.\nUsers are distinguished by data in the `ErrorContext` of the\nindividual error events, such as their login name or their remote\nIP address in case of HTTP requests.\nThe number of affected users can be zero even if the number of\nerrors is non-zero if no data was provided from which the\naffected user could be deduced.\nUsers are counted based on data in the request\ncontext that was provided in the error report. If more users are\nimplicitly affected, such as due to a crash of the whole service,\nthis is not reflected here.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "lastSeenTime": {
-                    "description": "Approximate last occurrence that was ever seen for this group and\nwhich matches the given filter criteria, ignoring the time_range\nthat was specified in the request.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "affectedServices": {
-                    "description": "Service contexts with a non-zero error count for the given filter\ncriteria. This list can be truncated if multiple services are affected.\nRefer to `num_affected_services` for the total count.",
-                    "items": {
-                        "$ref": "ServiceContext"
-                    },
-                    "type": "array"
-                },
-                "numAffectedServices": {
-                    "description": "The total number of services with a non-zero error count for the given\nfilter criteria.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "representative": {
-                    "$ref": "ErrorEvent",
-                    "description": "An arbitrary event that is chosen as representative for the whole group.\nThe representative event is intended to be used as a quick preview for\nthe whole group. Events in the group are usually sufficiently similar\nto each other such that showing an arbitrary representative provides\ninsight into the characteristics of the group as a whole."
-                },
-                "timedCounts": {
-                    "description": "Approximate number of occurrences over time.\nTimed counts returned by ListGroups are guaranteed to be:\n\n- Inside the requested time interval\n- Non-overlapping, and\n- Ordered by ascending time.",
-                    "items": {
-                        "$ref": "TimedCount"
-                    },
-                    "type": "array"
-                },
-                "group": {
-                    "$ref": "ErrorGroup",
-                    "description": "Group data that is independent of the filter criteria."
-                },
-                "firstSeenTime": {
-                    "description": "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request.",
-                    "format": "google-datetime",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListEventsResponse": {
-            "description": "Contains a set of requested error events.",
-            "id": "ListEventsResponse",
-            "properties": {
-                "errorEvents": {
-                    "description": "The error events which match the given request.",
-                    "items": {
-                        "$ref": "ErrorEvent"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results.",
-                    "type": "string"
-                },
-                "timeRangeBegin": {
-                    "description": "The timestamp specifies the start time to which the request was restricted.",
-                    "format": "google-datetime",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TimedCount": {
-            "description": "The number of errors in a given time period.\nAll numbers are approximate since the error events are sampled\nbefore counting them.",
-            "id": "TimedCount",
-            "properties": {
-                "endTime": {
-                    "description": "End of the time period to which `count` refers (excluded).",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "startTime": {
-                    "description": "Start of the time period to which `count` refers (included).",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "count": {
-                    "description": "Approximate number of occurrences in the given time period.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ErrorGroup": {
-            "description": "Description of a group of similar error events.",
-            "id": "ErrorGroup",
-            "properties": {
-                "name": {
-                    "description": "The group resource name.\nExample: <code>projects/my-project-123/groups/my-groupid</code>",
-                    "type": "string"
-                },
-                "trackingIssues": {
-                    "description": "Associated tracking issues.",
-                    "items": {
-                        "$ref": "TrackingIssue"
-                    },
-                    "type": "array"
-                },
-                "groupId": {
-                    "description": "Group IDs are unique for a given project. If the same kind of error\noccurs in different service contexts, it will receive the same group ID.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ServiceContext": {
-            "description": "Describes a running service that sends errors.\nIts version changes over time and multiple versions can run in parallel.",
-            "id": "ServiceContext",
-            "properties": {
-                "version": {
-                    "description": "Represents the source code version that the developer provided,\nwhich could represent a version label or a Git SHA-1 hash, for example.\nFor App Engine standard environment, the version is set to the version of\nthe app.",
-                    "type": "string"
-                },
-                "service": {
-                    "description": "An identifier of the service, such as the name of the\nexecutable, job, or Google App Engine service name. This field is expected\nto have a low number of values that are relatively stable over time, as\nopposed to `version`, which can be changed whenever new code is deployed.\n\nContains the service name for error reports extracted from Google\nApp Engine logs or `default` if the App Engine default service is used.",
-                    "type": "string"
-                },
-                "resourceType": {
-                    "description": "Type of the MonitoredResource. List of possible values:\nhttps://cloud.google.com/monitoring/api/resources\n\nValue is set automatically for incoming errors and must not be set when\nreporting errors.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "SourceLocation": {
-            "description": "Indicates a location in the source code of the service for which errors are\nreported. `functionName` must be provided by the application when reporting\nan error, unless the error report contains a `message` with a supported\nexception stack trace. All fields are optional for the later case.",
-            "id": "SourceLocation",
-            "properties": {
-                "filePath": {
-                    "description": "The source code filename, which can include a truncated relative\npath, or a full path from a production machine.",
-                    "type": "string"
-                },
-                "lineNumber": {
-                    "description": "1-based. 0 indicates that the line number is unknown.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "functionName": {
-                    "description": "Human-readable name of a function or method.\nThe value can include optional context like the class or package name.\nFor example, `my.package.MyClass.method` in case of Java.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ReportErrorEventResponse": {
-            "description": "Response for reporting an individual error event.\nData may be added to this message in the future.",
-            "id": "ReportErrorEventResponse",
-            "properties": {},
-            "type": "object"
-        },
-        "HttpRequestContext": {
-            "description": "HTTP request data that is related to a reported error.\nThis data should be provided by the application when reporting an error,\nunless the\nerror report has been generated automatically from Google App Engine logs.",
-            "id": "HttpRequestContext",
-            "properties": {
-                "method": {
-                    "description": "The type of HTTP request, such as `GET`, `POST`, etc.",
-                    "type": "string"
-                },
-                "remoteIp": {
-                    "description": "The IP address from which the request originated.\nThis can be IPv4, IPv6, or a token which is derived from the\nIP address, depending on the data that has been provided\nin the error report.",
-                    "type": "string"
-                },
-                "referrer": {
-                    "description": "The referrer information that is provided with the request.",
-                    "type": "string"
-                },
-                "userAgent": {
-                    "description": "The user agent information that is provided with the request.",
-                    "type": "string"
-                },
-                "url": {
-                    "description": "The URL of the request.",
-                    "type": "string"
-                },
-                "responseStatusCode": {
-                    "description": "The HTTP response status code for the request.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "ListGroupStatsResponse": {
-            "description": "Contains a set of requested error group stats.",
-            "id": "ListGroupStatsResponse",
-            "properties": {
-                "timeRangeBegin": {
-                    "description": "The timestamp specifies the start time to which the request was restricted.\nThe start time is set based on the requested time range. It may be adjusted\nto a later time if a project has exceeded the storage quota and older data\nhas been deleted.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "errorGroupStats": {
-                    "description": "The error group stats which match the given request.",
-                    "items": {
-                        "$ref": "ErrorGroupStats"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "SourceReference": {
-            "description": "A reference to a particular snapshot of the source tree used to build and\ndeploy an application.",
-            "id": "SourceReference",
-            "properties": {
-                "revisionId": {
-                    "description": "The canonical and persistent identifier of the deployed revision.\nExample (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\"",
-                    "type": "string"
-                },
-                "repository": {
-                    "description": "Optional. A URI string identifying the repository.\nExample: \"https://github.com/GoogleCloudPlatform/kubernetes.git\"",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DeleteEventsResponse": {
-            "description": "Response message for deleting error events.",
-            "id": "DeleteEventsResponse",
-            "properties": {},
             "type": "object"
         }
     },

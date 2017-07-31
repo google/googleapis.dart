@@ -753,14 +753,14 @@ class ProjectsConfigsVariablesResourceApi {
    *
    * `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
    *
-   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
-   * `nextPageToken`
-   * returned by a previous list request to get the next page of results.
-   *
    * [returnValues] - The flag indicates whether the user wants to return values
    * of variables.
    * If true, then only those variables that user has IAM GetVariable permission
    * will be returned along with their values.
+   *
+   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
+   * `nextPageToken`
+   * returned by a previous list request to get the next page of results.
    *
    * [pageSize] - Specifies the number of results to return per page. If there
    * are fewer
@@ -774,7 +774,7 @@ class ProjectsConfigsVariablesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVariablesResponse> list(core.String parent, {core.String filter, core.String pageToken, core.bool returnValues, core.int pageSize}) {
+  async.Future<ListVariablesResponse> list(core.String parent, {core.String filter, core.bool returnValues, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -788,11 +788,11 @@ class ProjectsConfigsVariablesResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (returnValues != null) {
       _queryParams["returnValues"] = ["${returnValues}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];

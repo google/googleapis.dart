@@ -1553,8 +1553,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

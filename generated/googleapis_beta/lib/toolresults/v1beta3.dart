@@ -2082,7 +2082,7 @@ class Execution {
    */
   core.String state;
   /**
-   * TestExecution Matrix ID that the Test Service uses.
+   * TestExecution Matrix ID that the TestExecutionService uses.
    *
    * - In response: present if set by create - In create: optional - In update:
    * never set
@@ -3018,25 +3018,41 @@ class SkippedDetail {
 
 /** A stacktrace. */
 class StackTrace {
+  /** Exception cluster ID */
+  core.String clusterId;
   /**
    * The stack trace message.
    *
    * Required
    */
   core.String exception;
+  /** Exception report ID */
+  core.String reportId;
 
   StackTrace();
 
   StackTrace.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
     if (_json.containsKey("exception")) {
       exception = _json["exception"];
+    }
+    if (_json.containsKey("reportId")) {
+      reportId = _json["reportId"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
     if (exception != null) {
       _json["exception"] = exception;
+    }
+    if (reportId != null) {
+      _json["reportId"] = reportId;
     }
     return _json;
   }

@@ -110,12 +110,6 @@ class ProjectsEventsResourceApi {
    * Example: `projects/my-project-123`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response.
-   *
-   * [serviceFilter_service] - [Optional] The exact value to match against
-   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
-   *
    * [pageSize] - [Optional] The maximum number of results to return per
    * response.
    *
@@ -136,6 +130,12 @@ class ProjectsEventsResourceApi {
    *
    * [groupId] - [Required] The group for which events shall be returned.
    *
+   * [serviceFilter_service] - [Optional] The exact value to match against
+   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+   *
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response.
+   *
    * Completes with a [ListEventsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -144,7 +144,7 @@ class ProjectsEventsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListEventsResponse> list(core.String projectName, {core.String pageToken, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId}) {
+  async.Future<ListEventsResponse> list(core.String projectName, {core.int pageSize, core.String serviceFilter_version, core.String serviceFilter_resourceType, core.String timeRange_period, core.String groupId, core.String serviceFilter_service, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,12 +154,6 @@ class ProjectsEventsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (serviceFilter_service != null) {
-      _queryParams["serviceFilter.service"] = [serviceFilter_service];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -175,6 +169,12 @@ class ProjectsEventsResourceApi {
     }
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
+    }
+    if (serviceFilter_service != null) {
+      _queryParams["serviceFilter.service"] = [serviceFilter_service];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/events';
@@ -270,41 +270,6 @@ class ProjectsGroupStatsResourceApi {
    * Example: <code>projects/my-project-123</code>.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [serviceFilter_service] - [Optional] The exact value to match against
-   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
-   *
-   * [pageSize] - [Optional] The maximum number of results to return per
-   * response.
-   * Default is 20.
-   *
-   * [order] - [Optional] The sort order in which the results are returned.
-   * Default is `COUNT_DESC`.
-   * Possible string values are:
-   * - "GROUP_ORDER_UNSPECIFIED" : A GROUP_ORDER_UNSPECIFIED.
-   * - "COUNT_DESC" : A COUNT_DESC.
-   * - "LAST_SEEN_DESC" : A LAST_SEEN_DESC.
-   * - "CREATED_DESC" : A CREATED_DESC.
-   * - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
-   *
-   * [serviceFilter_version] - [Optional] The exact value to match against
-   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-   *
-   * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
-   * if rounded
-   * alignment is chosen. Default is 00:00 UTC.
-   *
-   * [serviceFilter_resourceType] - [Optional] The exact value to match against
-   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
-   *
-   * [timedCountDuration] - [Optional] The preferred duration for a single
-   * returned `TimedCount`.
-   * If not set, no timed counts are returned.
-   *
-   * [pageToken] - [Optional] A `next_page_token` provided by a previous
-   * response. To view
-   * additional results, pass this token along with the identical query
-   * parameters as the first request.
-   *
    * [timeRange_period] - Restricts the query to the specified time range.
    * Possible string values are:
    * - "PERIOD_UNSPECIFIED" : A PERIOD_UNSPECIFIED.
@@ -325,6 +290,41 @@ class ProjectsGroupStatsResourceApi {
    * [groupId] - [Optional] List all <code>ErrorGroupStats</code> with these
    * IDs.
    *
+   * [serviceFilter_service] - [Optional] The exact value to match against
+   * [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+   *
+   * [pageSize] - [Optional] The maximum number of results to return per
+   * response.
+   * Default is 20.
+   *
+   * [serviceFilter_version] - [Optional] The exact value to match against
+   * [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+   *
+   * [order] - [Optional] The sort order in which the results are returned.
+   * Default is `COUNT_DESC`.
+   * Possible string values are:
+   * - "GROUP_ORDER_UNSPECIFIED" : A GROUP_ORDER_UNSPECIFIED.
+   * - "COUNT_DESC" : A COUNT_DESC.
+   * - "LAST_SEEN_DESC" : A LAST_SEEN_DESC.
+   * - "CREATED_DESC" : A CREATED_DESC.
+   * - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
+   *
+   * [alignmentTime] - [Optional] Time where the timed counts shall be aligned
+   * if rounded
+   * alignment is chosen. Default is 00:00 UTC.
+   *
+   * [serviceFilter_resourceType] - [Optional] The exact value to match against
+   * [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+   *
+   * [timedCountDuration] - [Optional] The preferred duration for a single
+   * returned `TimedCount`.
+   * If not set, no timed counts are returned.
+   *
+   * [pageToken] - [Optional] A `next_page_token` provided by a previous
+   * response. To view
+   * additional results, pass this token along with the identical query
+   * parameters as the first request.
+   *
    * Completes with a [ListGroupStatsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -333,7 +333,7 @@ class ProjectsGroupStatsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String serviceFilter_service, core.int pageSize, core.String order, core.String serviceFilter_version, core.String alignmentTime, core.String serviceFilter_resourceType, core.String timedCountDuration, core.String pageToken, core.String timeRange_period, core.String alignment, core.List<core.String> groupId}) {
+  async.Future<ListGroupStatsResponse> list(core.String projectName, {core.String timeRange_period, core.String alignment, core.List<core.String> groupId, core.String serviceFilter_service, core.int pageSize, core.String serviceFilter_version, core.String order, core.String alignmentTime, core.String serviceFilter_resourceType, core.String timedCountDuration, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,17 +344,26 @@ class ProjectsGroupStatsResourceApi {
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
     }
+    if (timeRange_period != null) {
+      _queryParams["timeRange.period"] = [timeRange_period];
+    }
+    if (alignment != null) {
+      _queryParams["alignment"] = [alignment];
+    }
+    if (groupId != null) {
+      _queryParams["groupId"] = groupId;
+    }
     if (serviceFilter_service != null) {
       _queryParams["serviceFilter.service"] = [serviceFilter_service];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (order != null) {
-      _queryParams["order"] = [order];
-    }
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
+    }
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (alignmentTime != null) {
       _queryParams["alignmentTime"] = [alignmentTime];
@@ -367,15 +376,6 @@ class ProjectsGroupStatsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (timeRange_period != null) {
-      _queryParams["timeRange.period"] = [timeRange_period];
-    }
-    if (alignment != null) {
-      _queryParams["alignment"] = [alignment];
-    }
-    if (groupId != null) {
-      _queryParams["groupId"] = groupId;
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$projectName') + '/groupStats';
@@ -528,8 +528,7 @@ class ErrorContext {
    * report the error, usually the place where it was logged.
    * For a logged exception this would be the source line where the
    * exception is logged, usually close to the place where it was
-   * caught. This value is in contrast to `Exception.cause_location`,
-   * which describes the source line where the exception was thrown.
+   * caught.
    */
   SourceLocation reportLocation;
   /**

@@ -176,11 +176,11 @@ class AccountsProductsResourceApi {
    * `account_id` - The ID of the Manufacturer Center account.
    * Value must have pattern "^accounts/[^/]+$".
    *
-   * [pageToken] - The token returned by the previous request.
-   *
    * [pageSize] - Maximum number of product statuses to return in the response,
    * used for
    * paging.
+   *
+   * [pageToken] - The token returned by the previous request.
    *
    * Completes with a [ListProductsResponse].
    *
@@ -190,7 +190,7 @@ class AccountsProductsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListProductsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListProductsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -201,11 +201,11 @@ class AccountsProductsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';

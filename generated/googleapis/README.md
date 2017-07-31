@@ -70,7 +70,7 @@ package.
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Accelerated Mobile Pages (AMP) URL API - acceleratedmobilepageurl v1
 
-Retrieves the list of AMP URL (and equivalent AMP Cache URL) for a given list of public URL(s).
+Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).
 
 
 Official API documentation: https://developers.google.com/amp/cache/
@@ -147,11 +147,23 @@ Accesses Analytics report data.
 
 Official API documentation: https://developers.google.com/analytics/devguides/reporting/core/v4/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Android Device Provisioning Partner API - androiddeviceprovisioning v1
+
+Android Device Provisioning Partner API
+
+Official API documentation: https://developers.google.com/zero-touch/
+
 #### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play EMM API - androidenterprise v1
 
 Manages the deployment of apps to Android for Work users.
 
 Official API documentation: https://developers.google.com/android/work/play/emm-api
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Android Management API - androidmanagement v1
+
+The Android Management API provides remote enterprise management of Android devices and apps.
+
+Official API documentation: https://developers.google.com/android/management
 
 #### ![Logo](https://www.google.com/images/icons/product/android-16.png) Google Play Developer API - androidpublisher v2
 
@@ -263,6 +275,13 @@ The Google Cloud Resource Manager API provides methods for creating, reading, an
 
 Official API documentation: https://cloud.google.com/resource-manager
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Trace API - cloudtrace v1
+
+Send and retrieve trace data from Stackdriver Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Stackdriver Trace for display, reporting, and analysis.
+
+
+Official API documentation: https://cloud.google.com/trace
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Trace API - cloudtrace v2
 
 Send and retrieve trace data from Stackdriver Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Stackdriver Trace for display, reporting, and analysis.
@@ -305,12 +324,6 @@ Searches over a website or collection of websites
 Official API documentation: https://developers.google.com/custom-search/v1/using_rest
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1
-
-Manages Hadoop-based clusters and jobs on Google Cloud Platform.
-
-Official API documentation: https://cloud.google.com/dataproc/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Dataproc API - dataproc v1beta2
 
 Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
@@ -534,6 +547,12 @@ Provides access to information about profiles and contacts.
 
 Official API documentation: https://developers.google.com/people/
 
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Play Custom App Publishing API - playcustomapp v1
+
+An API to publish custom Android apps.
+
+Official API documentation: https://developers.google.com/android/work/play/custom-app-api
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Movies Partner API - playmoviespartner v1
 
 Gets the delivery status of titles for Google Play Movies Partners.
@@ -669,7 +688,7 @@ Official API documentation: https://cloud.google.com/storage/transfer
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Street View Publish API - streetviewpublish v1
 
-The Street View Publish API allows your application to publish 360 photos to Google Maps, along with image metadata that specifies the position, orientation, and connectivity of each photo. With this API, any app can offer an interface for positioning, connecting, and uploading user-generated Street View images.
+Publishes 360 photos to Google Maps, along with position, orientation, and connectivity metadata. Apps can offer an interface for positioning, connecting, and uploading user-generated Street View images.
 
 
 Official API documentation: https://developers.google.com/streetview/publish/
@@ -708,6 +727,12 @@ Official API documentation: https://code.google.com/apis/language/translate/v2/g
 Lets you create, inspect, and manage goo.gl short URLs
 
 Official API documentation: https://developers.google.com/url-shortener/v1/getting_started
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Vault API - vault v1
+
+
+
+Official API documentation: https://apps.google.com/products/vault/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Vision API - vision v1
 

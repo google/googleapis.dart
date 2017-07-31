@@ -93,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/976YNPTJkb16sYg_Lp8esJdwsGQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-1ksPYZjVYMttk_-QKwkN92i-2U\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -426,6 +426,36 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/admin.directory.device.chromeos",
                         "https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly"
+                    ]
+                },
+                "moveDevicesToOu": {
+                    "description": "Move or insert multiple Chrome OS Devices to Organization Unit",
+                    "httpMethod": "POST",
+                    "id": "directory.chromeosdevices.moveDevicesToOu",
+                    "parameterOrder": [
+                        "customerId",
+                        "orgUnitPath"
+                    ],
+                    "parameters": {
+                        "customerId": {
+                            "description": "Immutable ID of the G Suite account",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "orgUnitPath": {
+                            "description": "Full path of the target organization unit or its Id",
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "customer/{customerId}/devices/chromeos/moveDevicesToOu",
+                    "request": {
+                        "$ref": "ChromeOsMoveDevicesToOu"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/admin.directory.device.chromeos"
                     ]
                 },
                 "patch": {
@@ -3428,7 +3458,7 @@
             }
         }
     },
-    "revision": "20170530",
+    "revision": "20170712",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -3850,6 +3880,25 @@
                 "nextPageToken": {
                     "description": "Token used to access next page of this result.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ChromeOsMoveDevicesToOu": {
+            "description": "JSON request template for moving ChromeOs Device to given OU in Directory Devices API.",
+            "id": "ChromeOsMoveDevicesToOu",
+            "properties": {
+                "deviceIds": {
+                    "annotations": {
+                        "required": [
+                            "directory.chromeosdevices.moveDevicesToOu"
+                        ]
+                    },
+                    "description": "ChromeOs Devices to be moved to OU",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5142,6 +5191,9 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
+                "keywords": {
+                    "type": "any"
+                },
                 "kind": {
                     "default": "admin#directory#user",
                     "description": "Kind of resource this is.",
@@ -5392,6 +5444,25 @@
                 },
                 "type": {
                     "description": "Each entry can have a type which indicates standard types of that entry. For example instant messengers could be of home, work etc. In addition to the standard type, an entry can have a custom type and can take any value. Such types should have the CUSTOM value as type and also have a customType value.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserKeyword": {
+            "description": "JSON template for a keyword entry.",
+            "id": "UserKeyword",
+            "properties": {
+                "customType": {
+                    "description": "Custom Type.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Each entry can have a type which indicates standard type of that entry. For example, keyword could be of type occupation or outlook. In addition to the standard type, an entry can have a custom type and can give it any name. Such types should have the CUSTOM value as type and also have a customType value.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Keyword.",
                     "type": "string"
                 }
             },

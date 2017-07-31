@@ -518,6 +518,56 @@ class ChromeosdevicesResourceApi {
   }
 
   /**
+   * Move or insert multiple Chrome OS Devices to Organization Unit
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [customerId] - Immutable ID of the G Suite account
+   *
+   * [orgUnitPath] - Full path of the target organization unit or its Id
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future moveDevicesToOu(ChromeOsMoveDevicesToOu request, core.String customerId, core.String orgUnitPath) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (customerId == null) {
+      throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if (orgUnitPath == null) {
+      throw new core.ArgumentError("Parameter orgUnitPath is required.");
+    }
+    _queryParams["orgUnitPath"] = [orgUnitPath];
+
+    _downloadOptions = null;
+
+    _url = 'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/devices/chromeos/moveDevicesToOu';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /**
    * Update Chrome OS Device. This method supports patch semantics.
    *
    * [request] - The metadata request object.
@@ -5801,6 +5851,31 @@ class ChromeOsDevices {
   }
 }
 
+/**
+ * JSON request template for moving ChromeOs Device to given OU in Directory
+ * Devices API.
+ */
+class ChromeOsMoveDevicesToOu {
+  /** ChromeOs Devices to be moved to OU */
+  core.List<core.String> deviceIds;
+
+  ChromeOsMoveDevicesToOu();
+
+  ChromeOsMoveDevicesToOu.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceIds")) {
+      deviceIds = _json["deviceIds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (deviceIds != null) {
+      _json["deviceIds"] = deviceIds;
+    }
+    return _json;
+  }
+}
+
 /** JSON template for Customer Resource object in Directory API. */
 class Customer {
   /**
@@ -8004,6 +8079,13 @@ class User {
   core.bool isEnrolledIn2Sv;
   /** Is mailbox setup (Read-only) */
   core.bool isMailboxSetup;
+  /**
+   *
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Object keywords;
   /** Kind of resource this is. */
   core.String kind;
   /**
@@ -8156,6 +8238,9 @@ class User {
     if (_json.containsKey("isMailboxSetup")) {
       isMailboxSetup = _json["isMailboxSetup"];
     }
+    if (_json.containsKey("keywords")) {
+      keywords = _json["keywords"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -8282,6 +8367,9 @@ class User {
     }
     if (isMailboxSetup != null) {
       _json["isMailboxSetup"] = isMailboxSetup;
+    }
+    if (keywords != null) {
+      _json["keywords"] = keywords;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -8711,6 +8799,50 @@ class UserIm {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/** JSON template for a keyword entry. */
+class UserKeyword {
+  /** Custom Type. */
+  core.String customType;
+  /**
+   * Each entry can have a type which indicates standard type of that entry. For
+   * example, keyword could be of type occupation or outlook. In addition to the
+   * standard type, an entry can have a custom type and can give it any name.
+   * Such types should have the CUSTOM value as type and also have a customType
+   * value.
+   */
+  core.String type;
+  /** Keyword. */
+  core.String value;
+
+  UserKeyword();
+
+  UserKeyword.fromJson(core.Map _json) {
+    if (_json.containsKey("customType")) {
+      customType = _json["customType"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (customType != null) {
+      _json["customType"] = customType;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }

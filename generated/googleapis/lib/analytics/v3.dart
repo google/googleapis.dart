@@ -9306,7 +9306,10 @@ class LinkedForeignAccount {
   core.String remarketingAudienceId;
   /** The status of this foreign account link. */
   core.String status;
-  /** The type of the foreign account. For example `ADWORDS_LINKS`. */
+  /**
+   * The type of the foreign account. For example, `ADWORDS_LINKS`, `DBM_LINKS`,
+   * `MCC_LINKS` or `OPTIMIZE`.
+   */
   core.String type;
   /**
    * Web property ID of the form UA-XXXXX-YY to which this linked foreign

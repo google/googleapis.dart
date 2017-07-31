@@ -15,8 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client acceleratedmobilepageurl/v1';
 
 /**
- * Retrieves the list of AMP URL (and equivalent AMP Cache URL) for a given list
- * of public URL(s).
+ * Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given
+ * list of public URL(s).
  */
 class AcceleratedmobilepageurlApi {
 

@@ -747,9 +747,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * should be returned: `projects/{project_id}`.
    * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
    *
-   * [dataSourceIds] - When specified, only configurations of requested data
-   * sources are returned.
-   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransfersRequest` list results. For multiple-page
@@ -760,6 +757,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * [pageSize] - Page size. The default page size is the maximum value of 1000
    * results.
    *
+   * [dataSourceIds] - When specified, only configurations of requested data
+   * sources are returned.
+   *
    * Completes with a [ListTransferConfigsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -768,7 +768,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.List<core.String> dataSourceIds, core.String pageToken, core.int pageSize}) {
+  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> dataSourceIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -779,14 +779,14 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferConfigs';
@@ -817,6 +817,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
    *
+   * [updateMask] - Required list of fields to be updated in this request.
+   *
    * [authorizationCode] - Optional OAuth2 authorization code to use with this
    * transfer configuration.
    * If it is provided, the transfer configuration will be associated with the
@@ -835,8 +837,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
    *   returned in the title bar of the browser, with the page text prompting
    *   the user to copy the code and paste it in the application.
    *
-   * [updateMask] - Required list of fields to be updated in this request.
-   *
    * Completes with a [TransferConfig].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -845,7 +845,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TransferConfig> patch(TransferConfig request, core.String name, {core.String authorizationCode, core.String updateMask}) {
+  async.Future<TransferConfig> patch(TransferConfig request, core.String name, {core.String updateMask, core.String authorizationCode}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -859,11 +859,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (authorizationCode != null) {
-      _queryParams["authorizationCode"] = [authorizationCode];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1118,6 +1118,9 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
    *
+   * [pageSize] - Page size. The default page size is the maximum value of 1000
+   * results.
+   *
    * [messageTypes] - Message types to return. If not populated - INFO, WARNING
    * and ERROR
    * messages are returned.
@@ -1129,9 +1132,6 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
    * a `next_page` token, which can be used as the
    * `page_token` value to request the next page of list results.
    *
-   * [pageSize] - Page size. The default page size is the maximum value of 1000
-   * results.
-   *
    * Completes with a [ListTransferLogsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1140,7 +1140,7 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferLogsResponse> list(core.String parent, {core.List<core.String> messageTypes, core.String pageToken, core.int pageSize}) {
+  async.Future<ListTransferLogsResponse> list(core.String parent, {core.int pageSize, core.List<core.String> messageTypes, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1151,14 +1151,14 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (messageTypes != null) {
       _queryParams["messageTypes"] = messageTypes;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferLogs';
@@ -1350,6 +1350,9 @@ class ProjectsTransferConfigsResourceApi {
    * should be returned: `projects/{project_id}`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageSize] - Page size. The default page size is the maximum value of 1000
+   * results.
+   *
    * [dataSourceIds] - When specified, only configurations of requested data
    * sources are returned.
    *
@@ -1360,9 +1363,6 @@ class ProjectsTransferConfigsResourceApi {
    * a `next_page` token, which can be used as the
    * `page_token` value to request the next page of list results.
    *
-   * [pageSize] - Page size. The default page size is the maximum value of 1000
-   * results.
-   *
    * Completes with a [ListTransferConfigsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1371,7 +1371,7 @@ class ProjectsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.List<core.String> dataSourceIds, core.String pageToken, core.int pageSize}) {
+  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.int pageSize, core.List<core.String> dataSourceIds, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1382,14 +1382,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (dataSourceIds != null) {
       _queryParams["dataSourceIds"] = dataSourceIds;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferConfigs';
@@ -1637,11 +1637,6 @@ class ProjectsTransferConfigsRunsResourceApi {
    * `projects/{project_id}/transferConfigs/{config_id}`.
    * Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
    *
-   * [runAttempt] - Indicates how run attempts are to be pulled.
-   * Possible string values are:
-   * - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
-   * - "LATEST" : A LATEST.
-   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransferRunsRequest` list results. For multiple-page
@@ -1655,6 +1650,11 @@ class ProjectsTransferConfigsRunsResourceApi {
    * [statuses] - When specified, only transfer runs with requested statuses are
    * returned.
    *
+   * [runAttempt] - Indicates how run attempts are to be pulled.
+   * Possible string values are:
+   * - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
+   * - "LATEST" : A LATEST.
+   *
    * Completes with a [ListTransferRunsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1663,7 +1663,7 @@ class ProjectsTransferConfigsRunsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferRunsResponse> list(core.String parent, {core.String runAttempt, core.String pageToken, core.int pageSize, core.List<core.String> statuses}) {
+  async.Future<ListTransferRunsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> statuses, core.String runAttempt}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1674,9 +1674,6 @@ class ProjectsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (runAttempt != null) {
-      _queryParams["runAttempt"] = [runAttempt];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1685,6 +1682,9 @@ class ProjectsTransferConfigsRunsResourceApi {
     }
     if (statuses != null) {
       _queryParams["statuses"] = statuses;
+    }
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';

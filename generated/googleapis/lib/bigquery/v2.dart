@@ -2888,9 +2888,14 @@ class JobConfigurationLoad {
    */
   core.String sourceFormat;
   /**
-   * [Required] The fully-qualified URIs that point to your data in Google Cloud
-   * Storage. Each URI can contain one '*' wildcard character and it must come
-   * after the 'bucket' name.
+   * [Required] The fully-qualified URIs that point to your data in Google
+   * Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard
+   * character and it must come after the 'bucket' name. Size limits related to
+   * load jobs apply to external data sources. For Google Cloud Bigtable URIs:
+   * Exactly one URI can be specified and it has be a fully specified and valid
+   * HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore
+   * backups: Exactly one URI can be specified, and it must end with
+   * '.backup_info'. Also, the '*' wildcard character is not allowed.
    */
   core.List<core.String> sourceUris;
   /**
@@ -3129,9 +3134,8 @@ class JobConfigurationQuery {
    * Specifies whether to use BigQuery's legacy SQL dialect for this query. The
    * default value is true. If set to false, the query will use BigQuery's
    * standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
-   * useLegacySql is set to false, the values of allowLargeResults and
-   * flattenResults are ignored; query will be run as if allowLargeResults is
-   * true and flattenResults is false.
+   * useLegacySql is set to false, the value of flattenResults is ignored; query
+   * will be run as if flattenResults is false.
    */
   core.bool useLegacySql;
   /**
@@ -3147,13 +3151,14 @@ class JobConfigurationQuery {
   /**
    * [Optional] Specifies the action that occurs if the destination table
    * already exists. The following values are supported: WRITE_TRUNCATE: If the
-   * table already exists, BigQuery overwrites the table data. WRITE_APPEND: If
-   * the table already exists, BigQuery appends the data to the table.
-   * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate'
-   * error is returned in the job result. The default value is WRITE_EMPTY. Each
-   * action is atomic and only occurs if BigQuery is able to complete the job
-   * successfully. Creation, truncation and append actions occur as one atomic
-   * update upon job completion.
+   * table already exists, BigQuery overwrites the table data and uses the
+   * schema from the query result. WRITE_APPEND: If the table already exists,
+   * BigQuery appends the data to the table. WRITE_EMPTY: If the table already
+   * exists and contains data, a 'duplicate' error is returned in the job
+   * result. The default value is WRITE_EMPTY. Each action is atomic and only
+   * occurs if BigQuery is able to complete the job successfully. Creation,
+   * truncation and append actions occur as one atomic update upon job
+   * completion.
    */
   core.String writeDisposition;
 
@@ -3705,6 +3710,13 @@ class JobStatistics2 {
 }
 
 class JobStatistics3 {
+  /**
+   * [Output-only] The number of bad records encountered. Note that if the job
+   * has failed because of more bad records encountered than the maximum allowed
+   * in the load job configuration, then this number can be less than the total
+   * number of bad records present in the input data.
+   */
+  core.String badRecords;
   /** [Output-only] Number of bytes of source data in a load job. */
   core.String inputFileBytes;
   /** [Output-only] Number of source files in a load job. */
@@ -3723,6 +3735,9 @@ class JobStatistics3 {
   JobStatistics3();
 
   JobStatistics3.fromJson(core.Map _json) {
+    if (_json.containsKey("badRecords")) {
+      badRecords = _json["badRecords"];
+    }
     if (_json.containsKey("inputFileBytes")) {
       inputFileBytes = _json["inputFileBytes"];
     }
@@ -3739,6 +3754,9 @@ class JobStatistics3 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (badRecords != null) {
+      _json["badRecords"] = badRecords;
+    }
     if (inputFileBytes != null) {
       _json["inputFileBytes"] = inputFileBytes;
     }
@@ -4202,9 +4220,8 @@ class QueryRequest {
    * Specifies whether to use BigQuery's legacy SQL dialect for this query. The
    * default value is true. If set to false, the query will use BigQuery's
    * standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
-   * useLegacySql is set to false, the values of allowLargeResults and
-   * flattenResults are ignored; query will be run as if allowLargeResults is
-   * true and flattenResults is false.
+   * useLegacySql is set to false, the value of flattenResults is ignored; query
+   * will be run as if flattenResults is false.
    */
   core.bool useLegacySql;
   /**

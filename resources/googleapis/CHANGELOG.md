@@ -1,3 +1,13 @@
+## 0.42.0
+
+* [api-new] androiddeviceprovisioning:v1
+* [api-new] streetviewpublish:v1
+* [api-new] playcustomapp:v1
+* [api-new] vault:v1
+* [api-new] androidmanagement:v1
+* [api-removed] dataproc:v1beta2
+* [api-removed] tracing:v2
+
 ## 0.41.0
 
 * [api-new] dataproc:v1beta2

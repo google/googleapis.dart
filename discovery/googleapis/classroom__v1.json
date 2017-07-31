@@ -2,26 +2,20 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/classroom.rosters.readonly": {
-                    "description": "View your Google Classroom class rosters"
-                },
-                "https://www.googleapis.com/auth/classroom.profile.photos": {
-                    "description": "View the profile photos of people in your classes"
-                },
                 "https://www.googleapis.com/auth/classroom.guardianlinks.students": {
                     "description": "View and manage guardians for students in your Google Classroom classes"
                 },
                 "https://www.googleapis.com/auth/classroom.student-submissions.me.readonly": {
                     "description": "View your course work and grades in Google Classroom"
                 },
+                "https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly": {
+                    "description": "View your Google Classroom guardians"
+                },
                 "https://www.googleapis.com/auth/classroom.coursework.students": {
                     "description": "Manage course work and grades for students in the Google Classroom classes you teach and view the course work and grades for classes you administer"
                 },
                 "https://www.googleapis.com/auth/classroom.coursework.students.readonly": {
                     "description": "View course work and grades for students in the Google Classroom classes you teach or administer"
-                },
-                "https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly": {
-                    "description": "View your Google Classroom guardians"
                 },
                 "https://www.googleapis.com/auth/classroom.coursework.me.readonly": {
                     "description": "View your course work and grades in Google Classroom"
@@ -46,6 +40,12 @@
                 },
                 "https://www.googleapis.com/auth/classroom.courses.readonly": {
                     "description": "View your Google Classroom classes"
+                },
+                "https://www.googleapis.com/auth/classroom.profile.photos": {
+                    "description": "View the profile photos of people in your classes"
+                },
+                "https://www.googleapis.com/auth/classroom.rosters.readonly": {
+                    "description": "View your Google Classroom class rosters"
                 }
             }
         }
@@ -66,13 +66,24 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -110,13 +121,13 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -131,158 +142,19 @@
             "location": "query",
             "type": "boolean"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
         "oauth_token": {
             "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
         }
     },
     "protocol": "rest",
     "resources": {
-        "invitations": {
-            "methods": {
-                "accept": {
-                    "description": "Accepts an invitation, removing it and adding the invited user to the\nteachers or students (as appropriate) of the specified course. Only the\ninvited user may accept an invitation.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to accept the\nrequested invitation or for access errors.\n* `FAILED_PRECONDITION` for the following request errors:\n    * CourseMemberLimitReached\n    * CourseNotModifiable\n    * CourseTeacherLimitReached\n    * UserGroupsMembershipLimitReached\n* `NOT_FOUND` if no invitation exists with the requested ID.",
-                    "httpMethod": "POST",
-                    "id": "classroom.invitations.accept",
-                    "parameterOrder": [
-                        "id"
-                    ],
-                    "parameters": {
-                        "id": {
-                            "description": "Identifier of the invitation to accept.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/invitations/{id}:accept",
-                    "response": {
-                        "$ref": "Empty"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/classroom.rosters"
-                    ]
-                },
-                "delete": {
-                    "description": "Deletes an invitation.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to delete the\nrequested invitation or for access errors.\n* `NOT_FOUND` if no invitation exists with the requested ID.",
-                    "httpMethod": "DELETE",
-                    "id": "classroom.invitations.delete",
-                    "parameterOrder": [
-                        "id"
-                    ],
-                    "parameters": {
-                        "id": {
-                            "description": "Identifier of the invitation to delete.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/invitations/{id}",
-                    "response": {
-                        "$ref": "Empty"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/classroom.rosters"
-                    ]
-                },
-                "list": {
-                    "description": "Returns a list of invitations that the requesting user is permitted to\nview, restricted to those that match the list request.\n\n*Note:* At least one of `user_id` or `course_id` must be supplied. Both\nfields can be supplied.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` for access errors.",
-                    "httpMethod": "GET",
-                    "id": "classroom.invitations.list",
-                    "parameterOrder": [],
-                    "parameters": {
-                        "pageToken": {
-                            "description": "nextPageToken\nvalue returned from a previous\nlist call, indicating\nthat the subsequent page of results should be returned.\n\nThe list request must be\notherwise identical to the one that resulted in this token.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "userId": {
-                            "description": "Restricts returned invitations to those for a specific user. The identifier\ncan be one of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "pageSize": {
-                            "description": "Maximum number of items to return. Zero means no maximum.\n\nThe server may return fewer than the specified number of results.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
-                        "courseId": {
-                            "description": "Restricts returned invitations to those for a course with the specified\nidentifier.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/invitations",
-                    "response": {
-                        "$ref": "ListInvitationsResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/classroom.rosters",
-                        "https://www.googleapis.com/auth/classroom.rosters.readonly"
-                    ]
-                },
-                "get": {
-                    "description": "Returns an invitation.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to view the\nrequested invitation or for access errors.\n* `NOT_FOUND` if no invitation exists with the requested ID.",
-                    "httpMethod": "GET",
-                    "id": "classroom.invitations.get",
-                    "parameterOrder": [
-                        "id"
-                    ],
-                    "parameters": {
-                        "id": {
-                            "description": "Identifier of the invitation to return.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/invitations/{id}",
-                    "response": {
-                        "$ref": "Invitation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/classroom.rosters",
-                        "https://www.googleapis.com/auth/classroom.rosters.readonly"
-                    ]
-                },
-                "create": {
-                    "description": "Creates an invitation. Only one invitation for a user and course may exist\nat a time. Delete and re-create an invitation to make changes.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to create\ninvitations for this course or for access errors.\n* `NOT_FOUND` if the course or the user does not exist.\n* `FAILED_PRECONDITION` if the requested user's account is disabled or if\nthe user already has this role or a role with greater permissions.\n* `ALREADY_EXISTS` if an invitation for the specified user and course\nalready exists.",
-                    "httpMethod": "POST",
-                    "id": "classroom.invitations.create",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/invitations",
-                    "request": {
-                        "$ref": "Invitation"
-                    },
-                    "response": {
-                        "$ref": "Invitation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/classroom.rosters"
-                    ]
-                }
-            }
-        },
         "userProfiles": {
             "methods": {
                 "get": {
@@ -575,30 +447,6 @@
         },
         "courses": {
             "methods": {
-                "get": {
-                    "description": "Returns a course.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to access the\nrequested course or for access errors.\n* `NOT_FOUND` if no course exists with the requested ID.",
-                    "httpMethod": "GET",
-                    "id": "classroom.courses.get",
-                    "parameterOrder": [
-                        "id"
-                    ],
-                    "parameters": {
-                        "id": {
-                            "description": "Identifier of the course to return.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/courses/{id}",
-                    "response": {
-                        "$ref": "Course"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/classroom.courses",
-                        "https://www.googleapis.com/auth/classroom.courses.readonly"
-                    ]
-                },
                 "patch": {
                     "description": "Updates one or more fields in a course.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to modify the\nrequested course or for access errors.\n* `NOT_FOUND` if no course exists with the requested ID.\n* `INVALID_ARGUMENT` if invalid fields are specified in the update mask or\nif no update mask is supplied.\n* `FAILED_PRECONDITION` for the following request errors:\n    * CourseNotModifiable",
                     "httpMethod": "PATCH",
@@ -629,6 +477,30 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/classroom.courses"
+                    ]
+                },
+                "get": {
+                    "description": "Returns a course.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to access the\nrequested course or for access errors.\n* `NOT_FOUND` if no course exists with the requested ID.",
+                    "httpMethod": "GET",
+                    "id": "classroom.courses.get",
+                    "parameterOrder": [
+                        "id"
+                    ],
+                    "parameters": {
+                        "id": {
+                            "description": "Identifier of the course to return.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/courses/{id}",
+                    "response": {
+                        "$ref": "Course"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/classroom.courses",
+                        "https://www.googleapis.com/auth/classroom.courses.readonly"
                     ]
                 },
                 "update": {
@@ -752,32 +624,6 @@
             "resources": {
                 "aliases": {
                     "methods": {
-                        "create": {
-                            "description": "Creates an alias for a course.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to create the\nalias or for access errors.\n* `NOT_FOUND` if the course does not exist.\n* `ALREADY_EXISTS` if the alias already exists.\n* `FAILED_PRECONDITION` if the alias requested does not make sense for the\n  requesting user or course (for example, if a user not in a domain\n  attempts to access a domain-scoped alias).",
-                            "httpMethod": "POST",
-                            "id": "classroom.courses.aliases.create",
-                            "parameterOrder": [
-                                "courseId"
-                            ],
-                            "parameters": {
-                                "courseId": {
-                                    "description": "Identifier of the course to alias.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/courses/{courseId}/aliases",
-                            "request": {
-                                "$ref": "CourseAlias"
-                            },
-                            "response": {
-                                "$ref": "CourseAlias"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/classroom.courses"
-                            ]
-                        },
                         "delete": {
                             "description": "Deletes an alias of a course.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to remove the\nalias or for access errors.\n* `NOT_FOUND` if the alias does not exist.\n* `FAILED_PRECONDITION` if the alias requested does not make sense for the\n  requesting user or course (for example, if a user not in a domain\n  attempts to delete a domain-scoped alias).",
                             "httpMethod": "DELETE",
@@ -842,11 +688,67 @@
                                 "https://www.googleapis.com/auth/classroom.courses",
                                 "https://www.googleapis.com/auth/classroom.courses.readonly"
                             ]
+                        },
+                        "create": {
+                            "description": "Creates an alias for a course.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to create the\nalias or for access errors.\n* `NOT_FOUND` if the course does not exist.\n* `ALREADY_EXISTS` if the alias already exists.\n* `FAILED_PRECONDITION` if the alias requested does not make sense for the\n  requesting user or course (for example, if a user not in a domain\n  attempts to access a domain-scoped alias).",
+                            "httpMethod": "POST",
+                            "id": "classroom.courses.aliases.create",
+                            "parameterOrder": [
+                                "courseId"
+                            ],
+                            "parameters": {
+                                "courseId": {
+                                    "description": "Identifier of the course to alias.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/courses/{courseId}/aliases",
+                            "request": {
+                                "$ref": "CourseAlias"
+                            },
+                            "response": {
+                                "$ref": "CourseAlias"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/classroom.courses"
+                            ]
                         }
                     }
                 },
                 "students": {
                     "methods": {
+                        "delete": {
+                            "description": "Deletes a student of a course.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to delete\nstudents of this course or for access errors.\n* `NOT_FOUND` if no student of this course has the requested ID or if the\ncourse does not exist.",
+                            "httpMethod": "DELETE",
+                            "id": "classroom.courses.students.delete",
+                            "parameterOrder": [
+                                "courseId",
+                                "userId"
+                            ],
+                            "parameters": {
+                                "userId": {
+                                    "description": "Identifier of the student to delete. The identifier can be one of the\nfollowing:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "courseId": {
+                                    "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/courses/{courseId}/students/{userId}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/classroom.rosters"
+                            ]
+                        },
                         "list": {
                             "description": "Returns a list of students of this course that the requester\nis permitted to view.\n\nThis method returns the following error codes:\n\n* `NOT_FOUND` if the course does not exist.\n* `PERMISSION_DENIED` for access errors.",
                             "httpMethod": "GET",
@@ -855,11 +757,6 @@
                                 "courseId"
                             ],
                             "parameters": {
-                                "pageToken": {
-                                    "description": "nextPageToken\nvalue returned from a previous\nlist call, indicating that\nthe subsequent page of results should be returned.\n\nThe list request must be\notherwise identical to the one that resulted in this token.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "pageSize": {
                                     "description": "Maximum number of items to return. Zero means no maximum.\n\nThe server may return fewer than the specified number of results.",
                                     "format": "int32",
@@ -870,6 +767,11 @@
                                     "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                     "location": "path",
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "nextPageToken\nvalue returned from a previous\nlist call, indicating that\nthe subsequent page of results should be returned.\n\nThe list request must be\notherwise identical to the one that resulted in this token.",
+                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -925,15 +827,15 @@
                                 "courseId"
                             ],
                             "parameters": {
+                                "enrollmentCode": {
+                                    "description": "Enrollment code of the course to create the student in.\nThis code is required if userId\ncorresponds to the requesting user; it may be omitted if the requesting\nuser has administrative permissions to create students for any user.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "courseId": {
                                     "description": "Identifier of the course to create the student in.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                     "location": "path",
                                     "required": true,
-                                    "type": "string"
-                                },
-                                "enrollmentCode": {
-                                    "description": "Enrollment code of the course to create the student in.\nThis code is required if userId\ncorresponds to the requesting user; it may be omitted if the requesting\nuser has administrative permissions to create students for any user.",
-                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -947,36 +849,6 @@
                             "scopes": [
                                 "https://www.googleapis.com/auth/classroom.profile.emails",
                                 "https://www.googleapis.com/auth/classroom.profile.photos",
-                                "https://www.googleapis.com/auth/classroom.rosters"
-                            ]
-                        },
-                        "delete": {
-                            "description": "Deletes a student of a course.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to delete\nstudents of this course or for access errors.\n* `NOT_FOUND` if no student of this course has the requested ID or if the\ncourse does not exist.",
-                            "httpMethod": "DELETE",
-                            "id": "classroom.courses.students.delete",
-                            "parameterOrder": [
-                                "courseId",
-                                "userId"
-                            ],
-                            "parameters": {
-                                "userId": {
-                                    "description": "Identifier of the student to delete. The identifier can be one of the\nfollowing:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "courseId": {
-                                    "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/courses/{courseId}/students/{userId}",
-                            "response": {
-                                "$ref": "Empty"
-                            },
-                            "scopes": [
                                 "https://www.googleapis.com/auth/classroom.rosters"
                             ]
                         }
@@ -1022,16 +894,6 @@
                                 "courseId"
                             ],
                             "parameters": {
-                                "pageToken": {
-                                    "description": "nextPageToken\nvalue returned from a previous\nlist call,\nindicating that the subsequent page of results should be returned.\n\nThe list request\nmust be otherwise identical to the one that resulted in this token.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "orderBy": {
-                                    "description": "Optional sort ordering for results. A comma-separated list of fields with\nan optional sort direction keyword. Supported fields are `updateTime`\nand `dueDate`. Supported direction keywords are `asc` and `desc`.\nIf not specified, `updateTime desc` is the default behavior.\nExamples: `dueDate asc,updateTime desc`, `updateTime,dueDate desc`",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "pageSize": {
                                     "description": "Maximum number of items to return. Zero or unspecified indicates that the\nserver may assign a maximum.\n\nThe server may return fewer than the specified number of results.",
                                     "format": "int32",
@@ -1054,6 +916,16 @@
                                     "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                     "location": "path",
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "nextPageToken\nvalue returned from a previous\nlist call,\nindicating that the subsequent page of results should be returned.\n\nThe list request\nmust be otherwise identical to the one that resulted in this token.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Optional sort ordering for results. A comma-separated list of fields with\nan optional sort direction keyword. Supported fields are `updateTime`\nand `dueDate`. Supported direction keywords are `asc` and `desc`.\nIf not specified, `updateTime desc` is the default behavior.\nExamples: `dueDate asc,updateTime desc`, `updateTime,dueDate desc`",
+                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -1110,6 +982,12 @@
                                 "id"
                             ],
                             "parameters": {
+                                "updateMask": {
+                                    "description": "Mask that identifies which fields on the course work to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. If a field supports empty values, it can be cleared\nby specifying it in the update mask and not in the CourseWork object. If a\nfield that does not support empty values is included in the update mask and\nnot set in the CourseWork object, an `INVALID_ARGUMENT` error will be\nreturned.\n\nThe following fields may be specified by teachers:\n* `title`\n* `description`\n* `state`\n* `due_date`\n* `due_time`\n* `max_points`\n* `scheduled_time`\n* `submission_modification_mode`",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "courseId": {
                                     "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                     "location": "path",
@@ -1120,12 +998,6 @@
                                     "description": "Identifier of the course work.",
                                     "location": "path",
                                     "required": true,
-                                    "type": "string"
-                                },
-                                "updateMask": {
-                                    "description": "Mask that identifies which fields on the course work to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. If a field supports empty values, it can be cleared\nby specifying it in the update mask and not in the CourseWork object. If a\nfield that does not support empty values is included in the update mask and\nnot set in the CourseWork object, an `INVALID_ARGUMENT` error will be\nreturned.\n\nThe following fields may be specified by teachers:\n* `title`\n* `description`\n* `state`\n* `due_date`\n* `due_time`\n* `max_points`\n* `scheduled_time`\n* `submission_modification_mode`",
-                                    "format": "google-fieldmask",
-                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -1222,6 +1094,12 @@
                                         "id"
                                     ],
                                     "parameters": {
+                                        "updateMask": {
+                                            "description": "Mask that identifies which fields on the student submission to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified.\n\nThe following fields may be specified by teachers:\n* `draft_grade`\n* `assigned_grade`",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "courseWorkId": {
                                             "description": "Identifier of the course work.",
                                             "location": "path",
@@ -1238,12 +1116,6 @@
                                             "description": "Identifier of the student submission.",
                                             "location": "path",
                                             "required": true,
-                                            "type": "string"
-                                        },
-                                        "updateMask": {
-                                            "description": "Mask that identifies which fields on the student submission to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified.\n\nThe following fields may be specified by teachers:\n* `draft_grade`\n* `assigned_grade`",
-                                            "format": "google-fieldmask",
-                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
@@ -1309,6 +1181,12 @@
                                         "id"
                                     ],
                                     "parameters": {
+                                        "courseWorkId": {
+                                            "description": "Identifier of the course work.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
                                         "courseId": {
                                             "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                             "location": "path",
@@ -1317,12 +1195,6 @@
                                         },
                                         "id": {
                                             "description": "Identifier of the student submission.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "courseWorkId": {
-                                            "description": "Identifier of the course work.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -1349,6 +1221,12 @@
                                         "id"
                                     ],
                                     "parameters": {
+                                        "courseWorkId": {
+                                            "description": "Identifier of the course work.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
                                         "courseId": {
                                             "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                             "location": "path",
@@ -1357,12 +1235,6 @@
                                         },
                                         "id": {
                                             "description": "Identifier of the student submission.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "courseWorkId": {
-                                            "description": "Identifier of the course work.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -1429,16 +1301,20 @@
                                         "courseWorkId"
                                     ],
                                     "parameters": {
+                                        "late": {
+                                            "description": "Requested lateness value. If specified, returned student submissions are\nrestricted by the requested value.\nIf unspecified, submissions are returned regardless of `late` value.",
+                                            "enum": [
+                                                "LATE_VALUES_UNSPECIFIED",
+                                                "LATE_ONLY",
+                                                "NOT_LATE_ONLY"
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "pageToken": {
                                             "description": "nextPageToken\nvalue returned from a previous\nlist call,\nindicating that the subsequent page of results should be returned.\n\nThe list request\nmust be otherwise identical to the one that resulted in this token.",
                                             "location": "query",
                                             "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Maximum number of items to return. Zero or unspecified indicates that the\nserver may assign a maximum.\n\nThe server may return fewer than the specified number of results.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
                                         },
                                         "states": {
                                             "description": "Requested submission states. If specified, returned student submissions\nmatch one of the specified submission states.",
@@ -1453,6 +1329,12 @@
                                             "location": "query",
                                             "repeated": true,
                                             "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Maximum number of items to return. Zero or unspecified indicates that the\nserver may assign a maximum.\n\nThe server may return fewer than the specified number of results.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
                                         },
                                         "userId": {
                                             "description": "Optional argument to restrict returned student work to those owned by the\nstudent with the specified identifier. The identifier can be one of the\nfollowing:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
@@ -1469,16 +1351,6 @@
                                             "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                             "location": "path",
                                             "required": true,
-                                            "type": "string"
-                                        },
-                                        "late": {
-                                            "description": "Requested lateness value. If specified, returned student submissions are\nrestricted by the requested value.\nIf unspecified, submissions are returned regardless of `late` value.",
-                                            "enum": [
-                                                "LATE_VALUES_UNSPECIFIED",
-                                                "LATE_ONLY",
-                                                "NOT_LATE_ONLY"
-                                            ],
-                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
@@ -1510,14 +1382,14 @@
                                 "userId"
                             ],
                             "parameters": {
-                                "userId": {
-                                    "description": "Identifier of the teacher to delete. The identifier can be one of the\nfollowing:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
+                                "courseId": {
+                                    "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
-                                "courseId": {
-                                    "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
+                                "userId": {
+                                    "description": "Identifier of the teacher to delete. The identifier can be one of the\nfollowing:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -1539,12 +1411,6 @@
                                 "courseId"
                             ],
                             "parameters": {
-                                "courseId": {
-                                    "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
                                 "pageToken": {
                                     "description": "nextPageToken\nvalue returned from a previous\nlist call, indicating that\nthe subsequent page of results should be returned.\n\nThe list request must be\notherwise identical to the one that resulted in this token.",
                                     "location": "query",
@@ -1555,6 +1421,12 @@
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
+                                },
+                                "courseId": {
+                                    "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
                                 }
                             },
                             "path": "v1/courses/{courseId}/teachers",
@@ -1577,14 +1449,14 @@
                                 "userId"
                             ],
                             "parameters": {
-                                "userId": {
-                                    "description": "Identifier of the teacher to return. The identifier can be one of the\nfollowing:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
+                                "courseId": {
+                                    "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
                                 },
-                                "courseId": {
-                                    "description": "Identifier of the course.\nThis identifier can be either the Classroom-assigned identifier or an\nalias.",
+                                "userId": {
+                                    "description": "Identifier of the teacher to return. The identifier can be one of the\nfollowing:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -1632,25 +1504,321 @@
                     }
                 }
             }
+        },
+        "invitations": {
+            "methods": {
+                "list": {
+                    "description": "Returns a list of invitations that the requesting user is permitted to\nview, restricted to those that match the list request.\n\n*Note:* At least one of `user_id` or `course_id` must be supplied. Both\nfields can be supplied.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` for access errors.",
+                    "httpMethod": "GET",
+                    "id": "classroom.invitations.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "pageToken": {
+                            "description": "nextPageToken\nvalue returned from a previous\nlist call, indicating\nthat the subsequent page of results should be returned.\n\nThe list request must be\notherwise identical to the one that resulted in this token.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "userId": {
+                            "description": "Restricts returned invitations to those for a specific user. The identifier\ncan be one of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "Maximum number of items to return. Zero means no maximum.\n\nThe server may return fewer than the specified number of results.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "courseId": {
+                            "description": "Restricts returned invitations to those for a course with the specified\nidentifier.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/invitations",
+                    "response": {
+                        "$ref": "ListInvitationsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/classroom.rosters",
+                        "https://www.googleapis.com/auth/classroom.rosters.readonly"
+                    ]
+                },
+                "get": {
+                    "description": "Returns an invitation.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to view the\nrequested invitation or for access errors.\n* `NOT_FOUND` if no invitation exists with the requested ID.",
+                    "httpMethod": "GET",
+                    "id": "classroom.invitations.get",
+                    "parameterOrder": [
+                        "id"
+                    ],
+                    "parameters": {
+                        "id": {
+                            "description": "Identifier of the invitation to return.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/invitations/{id}",
+                    "response": {
+                        "$ref": "Invitation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/classroom.rosters",
+                        "https://www.googleapis.com/auth/classroom.rosters.readonly"
+                    ]
+                },
+                "create": {
+                    "description": "Creates an invitation. Only one invitation for a user and course may exist\nat a time. Delete and re-create an invitation to make changes.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to create\ninvitations for this course or for access errors.\n* `NOT_FOUND` if the course or the user does not exist.\n* `FAILED_PRECONDITION` if the requested user's account is disabled or if\nthe user already has this role or a role with greater permissions.\n* `ALREADY_EXISTS` if an invitation for the specified user and course\nalready exists.",
+                    "httpMethod": "POST",
+                    "id": "classroom.invitations.create",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/invitations",
+                    "request": {
+                        "$ref": "Invitation"
+                    },
+                    "response": {
+                        "$ref": "Invitation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/classroom.rosters"
+                    ]
+                },
+                "accept": {
+                    "description": "Accepts an invitation, removing it and adding the invited user to the\nteachers or students (as appropriate) of the specified course. Only the\ninvited user may accept an invitation.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to accept the\nrequested invitation or for access errors.\n* `FAILED_PRECONDITION` for the following request errors:\n    * CourseMemberLimitReached\n    * CourseNotModifiable\n    * CourseTeacherLimitReached\n    * UserGroupsMembershipLimitReached\n* `NOT_FOUND` if no invitation exists with the requested ID.",
+                    "httpMethod": "POST",
+                    "id": "classroom.invitations.accept",
+                    "parameterOrder": [
+                        "id"
+                    ],
+                    "parameters": {
+                        "id": {
+                            "description": "Identifier of the invitation to accept.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/invitations/{id}:accept",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/classroom.rosters"
+                    ]
+                },
+                "delete": {
+                    "description": "Deletes an invitation.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if the requesting user is not permitted to delete the\nrequested invitation or for access errors.\n* `NOT_FOUND` if no invitation exists with the requested ID.",
+                    "httpMethod": "DELETE",
+                    "id": "classroom.invitations.delete",
+                    "parameterOrder": [
+                        "id"
+                    ],
+                    "parameters": {
+                        "id": {
+                            "description": "Identifier of the invitation to delete.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/invitations/{id}",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/classroom.rosters"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20170705",
+    "revision": "20170727",
     "rootUrl": "https://classroom.googleapis.com/",
     "schemas": {
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "MultipleChoiceQuestion": {
+            "description": "Additional details for multiple-choice questions.",
+            "id": "MultipleChoiceQuestion",
+            "properties": {
+                "choices": {
+                    "description": "Possible choices.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Course": {
+            "description": "A Course in Classroom.",
+            "id": "Course",
+            "properties": {
+                "teacherFolder": {
+                    "$ref": "DriveFolder",
+                    "description": "Information about a Drive Folder that is shared with all teachers of the\ncourse.\n\nThis field will only be set for teachers of the course and domain administrators.\n\nRead-only."
+                },
+                "name": {
+                    "description": "Name of the course.\nFor example, \"10th Grade Biology\".\nThe name is required. It must be between 1 and 750 characters and a valid\nUTF-8 string.",
+                    "type": "string"
+                },
+                "section": {
+                    "description": "Section of the course.\nFor example, \"Period 2\".\nIf set, this field must be a valid UTF-8 string and no longer than 2800\ncharacters.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Identifier for this course assigned by Classroom.\n\nWhen\ncreating a course,\nyou may optionally set this identifier to an\nalias string in the\nrequest to create a corresponding alias. The `id` is still assigned by\nClassroom and cannot be updated after the course is created.\n\nSpecifying this field in a course update mask results in an error.",
+                    "type": "string"
+                },
+                "room": {
+                    "description": "Optional room location.\nFor example, \"301\".\nIf set, this field must be a valid UTF-8 string and no longer than 650\ncharacters.",
+                    "type": "string"
+                },
+                "courseGroupEmail": {
+                    "description": "The email address of a Google group containing all members of the course.\nThis group does not accept email and can only be used for permissions.\n\nRead-only.",
+                    "type": "string"
+                },
+                "enrollmentCode": {
+                    "description": "Enrollment code to use when joining this course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only.",
+                    "type": "string"
+                },
+                "courseMaterialSets": {
+                    "description": "Sets of materials that appear on the \"about\" page of this course.\n\nRead-only.",
+                    "items": {
+                        "$ref": "CourseMaterialSet"
+                    },
+                    "type": "array"
+                },
+                "descriptionHeading": {
+                    "description": "Optional heading for the description.\nFor example, \"Welcome to 10th Grade Biology.\"\nIf set, this field must be a valid UTF-8 string and no longer than 3600\ncharacters.",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Time of the most recent update to this course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "calendarId": {
+                    "description": "The Calendar ID for a calendar that all course members can see, to which\nClassroom adds events for course work and announcements in the course.\n\nRead-only.",
+                    "type": "string"
+                },
+                "alternateLink": {
+                    "description": "Absolute link to this course in the Classroom web UI.\n\nRead-only.",
+                    "type": "string"
+                },
+                "guardiansEnabled": {
+                    "description": "Whether or not guardian notifications are enabled for this course.\n\nRead-only.",
+                    "type": "boolean"
+                },
+                "courseState": {
+                    "description": "State of the course.\nIf unspecified, the default state is `PROVISIONED`.",
+                    "enum": [
+                        "COURSE_STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "ARCHIVED",
+                        "PROVISIONED",
+                        "DECLINED",
+                        "SUSPENDED"
+                    ],
+                    "enumDescriptions": [
+                        "No course state. No returned Course message will use this value.",
+                        "The course is active.",
+                        "The course has been archived. You cannot modify it except to change it\nto a different state.",
+                        "The course has been created, but not yet activated. It is accessible by\nthe primary teacher and domain administrators, who may modify it or\nchange it to the `ACTIVE` or `DECLINED` states.\nA course may only be changed to `PROVISIONED` if it is in the `DECLINED`\nstate.",
+                        "The course has been created, but declined. It is accessible by the\ncourse owner and domain administrators, though it will not be\ndisplayed in the web UI. You cannot modify the course except to change it\nto the `PROVISIONED` state.\nA course may only be changed to `DECLINED` if it is in the `PROVISIONED`\nstate.",
+                        "The course has been suspended. You cannot modify the course, and only the\nuser identified by the `owner_id` can view the course.\nA course may be placed in this state if it potentially violates the\nTerms of Service."
+                    ],
+                    "type": "string"
+                },
+                "ownerId": {
+                    "description": "The identifier of the owner of a course.\n\nWhen specified as a parameter of a\ncreate course request, this\nfield is required.\nThe identifier can be one of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user\n\nThis must be set in a create request. Specifying this field in a course\nupdate mask results in an `INVALID_ARGUMENT` error.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Optional description.\nFor example, \"We'll be learning about the structure of living\ncreatures from a combination of textbooks, guest lectures, and lab work.\nExpect to be excited!\"\nIf set, this field must be a valid UTF-8 string and no longer than 30,000\ncharacters.",
+                    "type": "string"
+                },
+                "teacherGroupEmail": {
+                    "description": "The email address of a Google group containing all teachers of the course.\nThis group does not accept email and can only be used for permissions.\n\nRead-only.",
+                    "type": "string"
+                },
+                "creationTime": {
+                    "description": "Creation time of the course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DriveFile": {
+            "description": "Representation of a Google Drive file.",
+            "id": "DriveFile",
+            "properties": {
+                "title": {
+                    "description": "Title of the Drive item.\n\nRead-only.",
+                    "type": "string"
+                },
+                "alternateLink": {
+                    "description": "URL that can be used to access the Drive item.\n\nRead-only.",
+                    "type": "string"
+                },
+                "thumbnailUrl": {
+                    "description": "URL of a thumbnail image of the Drive item.\n\nRead-only.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Drive API resource ID.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GlobalPermission": {
+            "description": "Global user permission description.",
+            "id": "GlobalPermission",
+            "properties": {
+                "permission": {
+                    "description": "Permission value.",
+                    "enum": [
+                        "PERMISSION_UNSPECIFIED",
+                        "CREATE_COURSE"
+                    ],
+                    "enumDescriptions": [
+                        "No permission is specified. This is not returned and is not a\nvalid value.",
+                        "User is permitted to create a course."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReturnStudentSubmissionRequest": {
+            "description": "Request to return a student submission.",
+            "id": "ReturnStudentSubmissionRequest",
+            "properties": {},
+            "type": "object"
+        },
         "Teacher": {
             "description": "Teacher of a course.",
             "id": "Teacher",
             "properties": {
+                "courseId": {
+                    "description": "Identifier of the course.\n\nRead-only.",
+                    "type": "string"
+                },
                 "profile": {
                     "$ref": "UserProfile",
                     "description": "Global user information for the teacher.\n\nRead-only."
                 },
                 "userId": {
                     "description": "Identifier of the user.\n\nWhen specified as a parameter of a request, this identifier can be one of\nthe following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
-                    "type": "string"
-                },
-                "courseId": {
-                    "description": "Identifier of the course.\n\nRead-only.",
                     "type": "string"
                 }
             },
@@ -1703,6 +1871,26 @@
             "description": "Course work created by a teacher for students of the course.",
             "id": "CourseWork",
             "properties": {
+                "associatedWithDeveloper": {
+                    "description": "Whether this course work item is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only.",
+                    "type": "boolean"
+                },
+                "materials": {
+                    "description": "Additional materials.\n\nCourseWork must have no more than 20 material items.",
+                    "items": {
+                        "$ref": "Material"
+                    },
+                    "type": "array"
+                },
+                "updateTime": {
+                    "description": "Timestamp of the most recent change to this course work.\n\nRead-only.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "alternateLink": {
+                    "description": "Absolute link to this course work in the Classroom web UI.\nThis is only populated if `state` is `PUBLISHED`.\n\nRead-only.",
+                    "type": "string"
+                },
                 "maxPoints": {
                     "description": "Maximum grade for this course work.\nIf zero or unspecified, this assignment is considered ungraded.\nThis must be a non-negative integer value.",
                     "format": "double",
@@ -1711,6 +1899,10 @@
                 "multipleChoiceQuestion": {
                     "$ref": "MultipleChoiceQuestion",
                     "description": "Multiple choice question details.\nFor read operations, this field is populated only when `work_type` is\n`MULTIPLE_CHOICE_QUESTION`.\nFor write operations, this field must be specified when creating course\nwork with a `work_type` of `MULTIPLE_CHOICE_QUESTION`, and it must not be\nset otherwise."
+                },
+                "assignment": {
+                    "$ref": "Assignment",
+                    "description": "Assignment details.\nThis is populated only when `work_type` is `ASSIGNMENT`.\n\nRead-only."
                 },
                 "workType": {
                     "description": "Type of this course work.\n\nThe type is set when the course work is created and cannot be changed.",
@@ -1728,17 +1920,13 @@
                     ],
                     "type": "string"
                 },
-                "assignment": {
-                    "$ref": "Assignment",
-                    "description": "Assignment details.\nThis is populated only when `work_type` is `ASSIGNMENT`.\n\nRead-only."
+                "description": {
+                    "description": "Optional description of this course work.\nIf set, the description must be a valid UTF-8 string containing no more\nthan 30,000 characters.",
+                    "type": "string"
                 },
                 "scheduledTime": {
                     "description": "Optional timestamp when this course work is scheduled to be published.",
                     "format": "google-datetime",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "Optional description of this course work.\nIf set, the description must be a valid UTF-8 string containing no more\nthan 30,000 characters.",
                     "type": "string"
                 },
                 "creationTime": {
@@ -1795,26 +1983,6 @@
                 "title": {
                     "description": "Title of this course work.\nThe title must be a valid UTF-8 string containing between 1 and 3000\ncharacters.",
                     "type": "string"
-                },
-                "associatedWithDeveloper": {
-                    "description": "Whether this course work item is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only.",
-                    "type": "boolean"
-                },
-                "materials": {
-                    "description": "Additional materials.\n\nCourseWork must have no more than 20 material items.",
-                    "items": {
-                        "$ref": "Material"
-                    },
-                    "type": "array"
-                },
-                "updateTime": {
-                    "description": "Timestamp of the most recent change to this course work.\n\nRead-only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "alternateLink": {
-                    "description": "Absolute link to this course work in the Classroom web UI.\nThis is only populated if `state` is `PUBLISHED`.\n\nRead-only.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1838,24 +2006,6 @@
                 "guardianProfile": {
                     "$ref": "UserProfile",
                     "description": "User profile for the guardian."
-                }
-            },
-            "type": "object"
-        },
-        "ListStudentsResponse": {
-            "description": "Response when listing students.",
-            "id": "ListStudentsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
-                    "type": "string"
-                },
-                "students": {
-                    "description": "Students who match the list request.",
-                    "items": {
-                        "$ref": "Student"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -1894,14 +2044,28 @@
             },
             "type": "object"
         },
+        "ListStudentsResponse": {
+            "description": "Response when listing students.",
+            "id": "ListStudentsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
+                    "type": "string"
+                },
+                "students": {
+                    "description": "Students who match the list request.",
+                    "items": {
+                        "$ref": "Student"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Student": {
             "description": "Student in a course.",
             "id": "Student",
             "properties": {
-                "userId": {
-                    "description": "Identifier of the user.\n\nWhen specified as a parameter of a request, this identifier can be one of\nthe following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
-                    "type": "string"
-                },
                 "courseId": {
                     "description": "Identifier of the course.\n\nRead-only.",
                     "type": "string"
@@ -1913,6 +2077,10 @@
                 "profile": {
                     "$ref": "UserProfile",
                     "description": "Global user information for the student.\n\nRead-only."
+                },
+                "userId": {
+                    "description": "Identifier of the user.\n\nWhen specified as a parameter of a request, this identifier can be one of\nthe following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1921,6 +2089,14 @@
             "description": "An invitation to join a course.",
             "id": "Invitation",
             "properties": {
+                "courseId": {
+                    "description": "Identifier of the course to invite the user to.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Identifier assigned by Classroom.\n\nRead-only.",
+                    "type": "string"
+                },
                 "role": {
                     "description": "Role to invite the user to have.\nMust not be `COURSE_ROLE_UNSPECIFIED`.",
                     "enum": [
@@ -1938,14 +2114,6 @@
                 "userId": {
                     "description": "Identifier of the invited user.\n\nWhen specified as a parameter of a request, this identifier can be set to\none of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user",
                     "type": "string"
-                },
-                "courseId": {
-                    "description": "Identifier of the course to invite the user to.",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "Identifier assigned by Classroom.\n\nRead-only.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1954,16 +2122,16 @@
             "description": "Representation of a Google Drive folder.",
             "id": "DriveFolder",
             "properties": {
-                "id": {
-                    "description": "Drive API resource ID.",
-                    "type": "string"
-                },
                 "title": {
                     "description": "Title of the Drive folder.\n\nRead-only.",
                     "type": "string"
                 },
                 "alternateLink": {
                     "description": "URL that can be used to access the Drive folder.\n\nRead-only.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Drive API resource ID.",
                     "type": "string"
                 }
             },
@@ -1980,94 +2148,10 @@
             },
             "type": "object"
         },
-        "TurnInStudentSubmissionRequest": {
-            "description": "Request to turn in a student submission.",
-            "id": "TurnInStudentSubmissionRequest",
-            "properties": {},
-            "type": "object"
-        },
-        "ListStudentSubmissionsResponse": {
-            "description": "Response when listing student submissions.",
-            "id": "ListStudentSubmissionsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
-                    "type": "string"
-                },
-                "studentSubmissions": {
-                    "description": "Student work that matches the request.",
-                    "items": {
-                        "$ref": "StudentSubmission"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "StudentSubmission": {
             "description": "Student submission for course work.\n\nStudentSubmission items are generated when a CourseWork item is created.\n\nStudentSubmissions that have never been accessed (i.e. with `state` = NEW)\nmay not have a creation time or update time.",
             "id": "StudentSubmission",
             "properties": {
-                "assignedGrade": {
-                    "description": "Optional grade. If unset, no grade was set.\nThis must be a non-negative integer value.\n\nThis may be modified only by course teachers.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "multipleChoiceSubmission": {
-                    "$ref": "MultipleChoiceSubmission",
-                    "description": "Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION."
-                },
-                "assignmentSubmission": {
-                    "$ref": "AssignmentSubmission",
-                    "description": "Submission content when course_work_type is ASSIGNMENT ."
-                },
-                "shortAnswerSubmission": {
-                    "$ref": "ShortAnswerSubmission",
-                    "description": "Submission content when course_work_type is SHORT_ANSWER_QUESTION."
-                },
-                "associatedWithDeveloper": {
-                    "description": "Whether this student submission is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only.",
-                    "type": "boolean"
-                },
-                "updateTime": {
-                    "description": "Last update time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "alternateLink": {
-                    "description": "Absolute link to the submission in the Classroom web UI.\n\nRead-only.",
-                    "type": "string"
-                },
-                "late": {
-                    "description": "Whether this submission is late.\n\nRead-only.",
-                    "type": "boolean"
-                },
-                "draftGrade": {
-                    "description": "Optional pending grade. If unset, no grade was set.\nThis must be a non-negative integer value.\n\nThis is only visible to and modifiable by course teachers.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "courseWorkType": {
-                    "description": "Type of course work this submission is for.\n\nRead-only.",
-                    "enum": [
-                        "COURSE_WORK_TYPE_UNSPECIFIED",
-                        "ASSIGNMENT",
-                        "SHORT_ANSWER_QUESTION",
-                        "MULTIPLE_CHOICE_QUESTION"
-                    ],
-                    "enumDescriptions": [
-                        "No work type specified. This is never returned.",
-                        "An assignment.",
-                        "A short answer question.",
-                        "A multiple-choice question."
-                    ],
-                    "type": "string"
-                },
-                "creationTime": {
-                    "description": "Creation time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
                 "state": {
                     "description": "State of this submission.\n\nRead-only.",
                     "enum": [
@@ -2103,22 +2187,92 @@
                 "id": {
                     "description": "Classroom-assigned Identifier for the student submission.\nThis is unique among submissions for the relevant course work.\n\nRead-only.",
                     "type": "string"
+                },
+                "assignedGrade": {
+                    "description": "Optional grade. If unset, no grade was set.\nThis must be a non-negative integer value.\n\nThis may be modified only by course teachers.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "multipleChoiceSubmission": {
+                    "$ref": "MultipleChoiceSubmission",
+                    "description": "Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION."
+                },
+                "assignmentSubmission": {
+                    "$ref": "AssignmentSubmission",
+                    "description": "Submission content when course_work_type is ASSIGNMENT ."
+                },
+                "associatedWithDeveloper": {
+                    "description": "Whether this student submission is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only.",
+                    "type": "boolean"
+                },
+                "shortAnswerSubmission": {
+                    "$ref": "ShortAnswerSubmission",
+                    "description": "Submission content when course_work_type is SHORT_ANSWER_QUESTION."
+                },
+                "updateTime": {
+                    "description": "Last update time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "alternateLink": {
+                    "description": "Absolute link to the submission in the Classroom web UI.\n\nRead-only.",
+                    "type": "string"
+                },
+                "draftGrade": {
+                    "description": "Optional pending grade. If unset, no grade was set.\nThis must be a non-negative integer value.\n\nThis is only visible to and modifiable by course teachers.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "late": {
+                    "description": "Whether this submission is late.\n\nRead-only.",
+                    "type": "boolean"
+                },
+                "courseWorkType": {
+                    "description": "Type of course work this submission is for.\n\nRead-only.",
+                    "enum": [
+                        "COURSE_WORK_TYPE_UNSPECIFIED",
+                        "ASSIGNMENT",
+                        "SHORT_ANSWER_QUESTION",
+                        "MULTIPLE_CHOICE_QUESTION"
+                    ],
+                    "enumDescriptions": [
+                        "No work type specified. This is never returned.",
+                        "An assignment.",
+                        "A short answer question.",
+                        "A multiple-choice question."
+                    ],
+                    "type": "string"
+                },
+                "creationTime": {
+                    "description": "Creation time of this submission.\nThis may be unset if the student has not accessed this item.\n\nRead-only.",
+                    "format": "google-datetime",
+                    "type": "string"
                 }
             },
             "type": "object"
         },
-        "ModifyAttachmentsRequest": {
-            "description": "Request to modify the attachments of a student submission.",
-            "id": "ModifyAttachmentsRequest",
+        "ListStudentSubmissionsResponse": {
+            "description": "Response when listing student submissions.",
+            "id": "ListStudentSubmissionsResponse",
             "properties": {
-                "addAttachments": {
-                    "description": "Attachments to add.\nA student submission may not have more than 20 attachments.\n\nForm attachments are not supported.",
+                "nextPageToken": {
+                    "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
+                    "type": "string"
+                },
+                "studentSubmissions": {
+                    "description": "Student work that matches the request.",
                     "items": {
-                        "$ref": "Attachment"
+                        "$ref": "StudentSubmission"
                     },
                     "type": "array"
                 }
             },
+            "type": "object"
+        },
+        "TurnInStudentSubmissionRequest": {
+            "description": "Request to turn in a student submission.",
+            "id": "TurnInStudentSubmissionRequest",
+            "properties": {},
             "type": "object"
         },
         "ListCourseWorkResponse": {
@@ -2139,14 +2293,24 @@
             },
             "type": "object"
         },
+        "ModifyAttachmentsRequest": {
+            "description": "Request to modify the attachments of a student submission.",
+            "id": "ModifyAttachmentsRequest",
+            "properties": {
+                "addAttachments": {
+                    "description": "Attachments to add.\nA student submission may not have more than 20 attachments.\n\nForm attachments are not supported.",
+                    "items": {
+                        "$ref": "Attachment"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "YouTubeVideo": {
             "description": "YouTube video item.",
             "id": "YouTubeVideo",
             "properties": {
-                "id": {
-                    "description": "YouTube API resource ID.",
-                    "type": "string"
-                },
                 "title": {
                     "description": "Title of the YouTube video.\n\nRead-only.",
                     "type": "string"
@@ -2157,6 +2321,10 @@
                 },
                 "thumbnailUrl": {
                     "description": "URL of a thumbnail image of the YouTube video.\n\nRead-only.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "YouTube API resource ID.",
                     "type": "string"
                 }
             },
@@ -2184,6 +2352,15 @@
             "description": "An invitation to become the guardian of a specified user, sent to a specified\nemail address.",
             "id": "GuardianInvitation",
             "properties": {
+                "invitedEmailAddress": {
+                    "description": "Email address that the invitation was sent to.\nThis field is only visible to domain administrators.",
+                    "type": "string"
+                },
+                "creationTime": {
+                    "description": "The time that this invitation was created.\n\nRead-only.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "invitationId": {
                     "description": "Unique identifier for this invitation.\n\nRead-only.",
                     "type": "string"
@@ -2205,15 +2382,6 @@
                 "studentId": {
                     "description": "ID of the student (in standard format)",
                     "type": "string"
-                },
-                "invitedEmailAddress": {
-                    "description": "Email address that the invitation was sent to.\nThis field is only visible to domain administrators.",
-                    "type": "string"
-                },
-                "creationTime": {
-                    "description": "The time that this invitation was created.\n\nRead-only.",
-                    "format": "google-datetime",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2222,10 +2390,6 @@
             "description": "Attachment added to student assignment work.\n\nWhen creating attachments, setting the `form` field is not supported.",
             "id": "Attachment",
             "properties": {
-                "link": {
-                    "$ref": "Link",
-                    "description": "Link attachment."
-                },
                 "youTubeVideo": {
                     "$ref": "YouTubeVideo",
                     "description": "Youtube video attachment."
@@ -2237,6 +2401,10 @@
                 "form": {
                     "$ref": "Form",
                     "description": "Google Forms attachment."
+                },
+                "link": {
+                    "$ref": "Link",
+                    "description": "Link attachment."
                 }
             },
             "type": "object"
@@ -2263,16 +2431,6 @@
             "description": "Represents a time of day. The date and time zone are either not significant\nor are specified elsewhere. An API may choose to allow leap seconds. Related\ntypes are google.type.Date and `google.protobuf.Timestamp`.",
             "id": "TimeOfDay",
             "properties": {
-                "minutes": {
-                    "description": "Minutes of hour of day. Must be from 0 to 59.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "hours": {
-                    "description": "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "nanos": {
                     "description": "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.",
                     "format": "int32",
@@ -2280,6 +2438,16 @@
                 },
                 "seconds": {
                     "description": "Seconds of minutes of the time. Must normally be from 0 to 59. An API may\nallow the value 60 if it allows leap-seconds.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minutes": {
+                    "description": "Minutes of hour of day. Must be from 0 to 59.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "hours": {
+                    "description": "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -2290,16 +2458,16 @@
             "description": "Response when listing courses.",
             "id": "ListCoursesResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
-                    "type": "string"
-                },
                 "courses": {
                     "description": "Courses that match the list request.",
                     "items": {
                         "$ref": "Course"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2308,6 +2476,10 @@
             "description": "Google Forms item.",
             "id": "Form",
             "properties": {
+                "thumbnailUrl": {
+                    "description": "URL of a thumbnail image of the Form.\n\nRead-only.",
+                    "type": "string"
+                },
                 "responseUrl": {
                     "description": "URL of the form responses document.\nOnly set if respsonses have been recorded and only when the\nrequesting user is an editor of the form.\n\nRead-only.",
                     "type": "string"
@@ -2318,10 +2490,6 @@
                 },
                 "title": {
                     "description": "Title of the Form.\n\nRead-only.",
-                    "type": "string"
-                },
-                "thumbnailUrl": {
-                    "description": "URL of a thumbnail image of the Form.\n\nRead-only.",
                     "type": "string"
                 }
             },
@@ -2349,16 +2517,16 @@
             "description": "URL item.",
             "id": "Link",
             "properties": {
+                "title": {
+                    "description": "Title of the target of the URL.\n\nRead-only.",
+                    "type": "string"
+                },
                 "thumbnailUrl": {
                     "description": "URL of a thumbnail image of the target URL.\n\nRead-only.",
                     "type": "string"
                 },
                 "url": {
                     "description": "URL to link to.\nThis must be a valid UTF-8 string containing between 1 and 2024 characters.",
-                    "type": "string"
-                },
-                "title": {
-                    "description": "Title of the target of the URL.\n\nRead-only.",
                     "type": "string"
                 }
             },
@@ -2368,44 +2536,15 @@
             "description": "Response when listing guardians.",
             "id": "ListGuardiansResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
-                    "type": "string"
-                },
                 "guardians": {
                     "description": "Guardians on this page of results that met the criteria specified in\nthe request.",
                     "items": {
                         "$ref": "Guardian"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ListGuardianInvitationsResponse": {
-            "description": "Response when listing guardian invitations.",
-            "id": "ListGuardianInvitationsResponse",
-            "properties": {
+                },
                 "nextPageToken": {
                     "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
-                    "type": "string"
-                },
-                "guardianInvitations": {
-                    "description": "Guardian invitations that matched the list request.",
-                    "items": {
-                        "$ref": "GuardianInvitation"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "CourseAlias": {
-            "description": "Alternative identifier for a course.\n\nAn alias uniquely identifies a course. It must be unique within one of the\nfollowing scopes:\n\n* domain: A domain-scoped alias is visible to all users within the alias\ncreator's domain and can be created only by a domain admin. A domain-scoped\nalias is often used when a course has an identifier external to Classroom.\n\n* project: A project-scoped alias is visible to any request from an\napplication using the Developer Console project ID that created the alias\nand can be created by any project. A project-scoped alias is often used when\nan application has alternative identifiers. A random value can also be used\nto avoid duplicate courses in the event of transmission failures, as retrying\na request will return `ALREADY_EXISTS` if a previous one has succeeded.",
-            "id": "CourseAlias",
-            "properties": {
-                "alias": {
-                    "description": "Alias string. The format of the string indicates the desired alias scoping.\n\n* `d:<name>` indicates a domain-scoped alias.\n  Example: `d:math_101`\n* `p:<name>` indicates a project-scoped alias.\n  Example: `p:abc123`\n\nThis field has a maximum length of 256 characters.",
                     "type": "string"
                 }
             },
@@ -2424,6 +2563,35 @@
                 },
                 "nextPageToken": {
                     "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListGuardianInvitationsResponse": {
+            "description": "Response when listing guardian invitations.",
+            "id": "ListGuardianInvitationsResponse",
+            "properties": {
+                "guardianInvitations": {
+                    "description": "Guardian invitations that matched the list request.",
+                    "items": {
+                        "$ref": "GuardianInvitation"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Token identifying the next page of results to return. If empty, no further\nresults are available.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CourseAlias": {
+            "description": "Alternative identifier for a course.\n\nAn alias uniquely identifies a course. It must be unique within one of the\nfollowing scopes:\n\n* domain: A domain-scoped alias is visible to all users within the alias\ncreator's domain and can be created only by a domain admin. A domain-scoped\nalias is often used when a course has an identifier external to Classroom.\n\n* project: A project-scoped alias is visible to any request from an\napplication using the Developer Console project ID that created the alias\nand can be created by any project. A project-scoped alias is often used when\nan application has alternative identifiers. A random value can also be used\nto avoid duplicate courses in the event of transmission failures, as retrying\na request will return `ALREADY_EXISTS` if a previous one has succeeded.",
+            "id": "CourseAlias",
+            "properties": {
+                "alias": {
+                    "description": "Alias string. The format of the string indicates the desired alias scoping.\n\n* `d:<name>` indicates a domain-scoped alias.\n  Example: `d:math_101`\n* `p:<name>` indicates a project-scoped alias.\n  Example: `p:abc123`\n\nThis field has a maximum length of 256 characters.",
                     "type": "string"
                 }
             },
@@ -2462,29 +2630,6 @@
             },
             "type": "object"
         },
-        "CourseMaterial": {
-            "description": "A material attached to a course as part of a material set.",
-            "id": "CourseMaterial",
-            "properties": {
-                "form": {
-                    "$ref": "Form",
-                    "description": "Google Forms attachment."
-                },
-                "link": {
-                    "$ref": "Link",
-                    "description": "Link atatchment."
-                },
-                "youTubeVideo": {
-                    "$ref": "YouTubeVideo",
-                    "description": "Youtube video attachment."
-                },
-                "driveFile": {
-                    "$ref": "DriveFile",
-                    "description": "Google Drive file attachment."
-                }
-            },
-            "type": "object"
-        },
         "Name": {
             "description": "Details of the user's name.",
             "id": "Name",
@@ -2504,13 +2649,36 @@
             },
             "type": "object"
         },
+        "CourseMaterial": {
+            "description": "A material attached to a course as part of a material set.",
+            "id": "CourseMaterial",
+            "properties": {
+                "youTubeVideo": {
+                    "$ref": "YouTubeVideo",
+                    "description": "Youtube video attachment."
+                },
+                "driveFile": {
+                    "$ref": "DriveFile",
+                    "description": "Google Drive file attachment."
+                },
+                "form": {
+                    "$ref": "Form",
+                    "description": "Google Forms attachment."
+                },
+                "link": {
+                    "$ref": "Link",
+                    "description": "Link atatchment."
+                }
+            },
+            "type": "object"
+        },
         "Assignment": {
             "description": "Additional details for assignments.",
             "id": "Assignment",
             "properties": {
                 "studentWorkFolder": {
                     "$ref": "DriveFolder",
-                    "description": "Drive folder where attachments from student submissions are placed.\nThis is only populated for course teachers."
+                    "description": "Drive folder where attachments from student submissions are placed.\nThis is only populated for course teachers and administrators."
                 }
             },
             "type": "object"
@@ -2538,174 +2706,6 @@
                 "driveFile": {
                     "$ref": "DriveFile",
                     "description": "Drive file details."
-                }
-            },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
-            "type": "object"
-        },
-        "MultipleChoiceQuestion": {
-            "description": "Additional details for multiple-choice questions.",
-            "id": "MultipleChoiceQuestion",
-            "properties": {
-                "choices": {
-                    "description": "Possible choices.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Course": {
-            "description": "A Course in Classroom.",
-            "id": "Course",
-            "properties": {
-                "updateTime": {
-                    "description": "Time of the most recent update to this course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "calendarId": {
-                    "description": "The Calendar ID for a calendar that all course members can see, to which\nClassroom adds events for course work and announcements in the course.\n\nRead-only.",
-                    "type": "string"
-                },
-                "alternateLink": {
-                    "description": "Absolute link to this course in the Classroom web UI.\n\nRead-only.",
-                    "type": "string"
-                },
-                "guardiansEnabled": {
-                    "description": "Whether or not guardian notifications are enabled for this course.\n\nRead-only.",
-                    "type": "boolean"
-                },
-                "ownerId": {
-                    "description": "The identifier of the owner of a course.\n\nWhen specified as a parameter of a\ncreate course request, this\nfield is required.\nThe identifier can be one of the following:\n\n* the numeric identifier for the user\n* the email address of the user\n* the string literal `\"me\"`, indicating the requesting user\n\nThis must be set in a create request. Specifying this field in a course\nupdate mask results in an `INVALID_ARGUMENT` error.",
-                    "type": "string"
-                },
-                "courseState": {
-                    "description": "State of the course.\nIf unspecified, the default state is `PROVISIONED`.",
-                    "enum": [
-                        "COURSE_STATE_UNSPECIFIED",
-                        "ACTIVE",
-                        "ARCHIVED",
-                        "PROVISIONED",
-                        "DECLINED",
-                        "SUSPENDED"
-                    ],
-                    "enumDescriptions": [
-                        "No course state. No returned Course message will use this value.",
-                        "The course is active.",
-                        "The course has been archived. You cannot modify it except to change it\nto a different state.",
-                        "The course has been created, but not yet activated. It is accessible by\nthe primary teacher and domain administrators, who may modify it or\nchange it to the `ACTIVE` or `DECLINED` states.\nA course may only be changed to `PROVISIONED` if it is in the `DECLINED`\nstate.",
-                        "The course has been created, but declined. It is accessible by the\ncourse owner and domain administrators, though it will not be\ndisplayed in the web UI. You cannot modify the course except to change it\nto the `PROVISIONED` state.\nA course may only be changed to `DECLINED` if it is in the `PROVISIONED`\nstate.",
-                        "The course has been suspended. You cannot modify the course, and only the\nuser identified by the `owner_id` can view the course.\nA course may be placed in this state if it potentially violates the\nTerms of Service."
-                    ],
-                    "type": "string"
-                },
-                "description": {
-                    "description": "Optional description.\nFor example, \"We'll be learning about the structure of living\ncreatures from a combination of textbooks, guest lectures, and lab work.\nExpect to be excited!\"\nIf set, this field must be a valid UTF-8 string and no longer than 30,000\ncharacters.",
-                    "type": "string"
-                },
-                "teacherGroupEmail": {
-                    "description": "The email address of a Google group containing all teachers of the course.\nThis group does not accept email and can only be used for permissions.\n\nRead-only.",
-                    "type": "string"
-                },
-                "creationTime": {
-                    "description": "Creation time of the course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "teacherFolder": {
-                    "$ref": "DriveFolder",
-                    "description": "Information about a Drive Folder that is shared with all teachers of the\ncourse.\n\nThis field will only be set for teachers of the course and domain administrators.\n\nRead-only."
-                },
-                "name": {
-                    "description": "Name of the course.\nFor example, \"10th Grade Biology\".\nThe name is required. It must be between 1 and 750 characters and a valid\nUTF-8 string.",
-                    "type": "string"
-                },
-                "section": {
-                    "description": "Section of the course.\nFor example, \"Period 2\".\nIf set, this field must be a valid UTF-8 string and no longer than 2800\ncharacters.",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "Identifier for this course assigned by Classroom.\n\nWhen\ncreating a course,\nyou may optionally set this identifier to an\nalias string in the\nrequest to create a corresponding alias. The `id` is still assigned by\nClassroom and cannot be updated after the course is created.\n\nSpecifying this field in a course update mask results in an error.",
-                    "type": "string"
-                },
-                "room": {
-                    "description": "Optional room location.\nFor example, \"301\".\nIf set, this field must be a valid UTF-8 string and no longer than 650\ncharacters.",
-                    "type": "string"
-                },
-                "courseGroupEmail": {
-                    "description": "The email address of a Google group containing all members of the course.\nThis group does not accept email and can only be used for permissions.\n\nRead-only.",
-                    "type": "string"
-                },
-                "courseMaterialSets": {
-                    "description": "Sets of materials that appear on the \"about\" page of this course.\n\nRead-only.",
-                    "items": {
-                        "$ref": "CourseMaterialSet"
-                    },
-                    "type": "array"
-                },
-                "enrollmentCode": {
-                    "description": "Enrollment code to use when joining this course.\nSpecifying this field in a course update mask results in an error.\n\nRead-only.",
-                    "type": "string"
-                },
-                "descriptionHeading": {
-                    "description": "Optional heading for the description.\nFor example, \"Welcome to 10th Grade Biology.\"\nIf set, this field must be a valid UTF-8 string and no longer than 3600\ncharacters.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DriveFile": {
-            "description": "Representation of a Google Drive file.",
-            "id": "DriveFile",
-            "properties": {
-                "id": {
-                    "description": "Drive API resource ID.",
-                    "type": "string"
-                },
-                "title": {
-                    "description": "Title of the Drive item.\n\nRead-only.",
-                    "type": "string"
-                },
-                "alternateLink": {
-                    "description": "URL that can be used to access the Drive item.\n\nRead-only.",
-                    "type": "string"
-                },
-                "thumbnailUrl": {
-                    "description": "URL of a thumbnail image of the Drive item.\n\nRead-only.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ReturnStudentSubmissionRequest": {
-            "description": "Request to return a student submission.",
-            "id": "ReturnStudentSubmissionRequest",
-            "properties": {},
-            "type": "object"
-        },
-        "GlobalPermission": {
-            "description": "Global user permission description.",
-            "id": "GlobalPermission",
-            "properties": {
-                "permission": {
-                    "description": "Permission value.",
-                    "enum": [
-                        "PERMISSION_UNSPECIFIED",
-                        "CREATE_COURSE"
-                    ],
-                    "enumDescriptions": [
-                        "No permission is specified. This is not returned and is not a\nvalid value.",
-                        "User is permitted to create a course."
-                    ],
-                    "type": "string"
                 }
             },
             "type": "object"

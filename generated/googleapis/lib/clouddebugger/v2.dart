@@ -114,7 +114,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
   /**
    * Returns the list of all active breakpoints for the debuggee.
    *
-   * The breakpoint specification (location, condition, and expression
+   * The breakpoint specification (`location`, `condition`, and `expressions`
    * fields) is semantically immutable, although the field values may
    * change. For example, an agent may update the location line number
    * to reflect the actual line where the breakpoint was set, but this
@@ -188,7 +188,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
    *
    * Updates to active breakpoint fields are only allowed if the new value
    * does not change the breakpoint specification. Updates to the `location`,
-   * `condition` and `expression` fields should not alter the breakpoint
+   * `condition` and `expressions` fields should not alter the breakpoint
    * semantics. These may only make changes such as canonicalizing a value
    * or snapping the location to the correct line of code.
    *
@@ -264,15 +264,15 @@ class DebuggerDebuggeesResourceApi {
    *
    * Request parameters:
    *
-   * [clientVersion] - The client version making the call.
-   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
-   *
    * [includeInactive] - When set to `true`, the result includes all debuggees.
    * Otherwise, the
    * result includes only debuggees that are active.
    *
    * [project] - Project number of a Google Cloud project whose debuggees to
    * list.
+   *
+   * [clientVersion] - The client version making the call.
+   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * Completes with a [ListDebuggeesResponse].
    *
@@ -282,7 +282,7 @@ class DebuggerDebuggeesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDebuggeesResponse> list({core.String clientVersion, core.bool includeInactive, core.String project}) {
+  async.Future<ListDebuggeesResponse> list({core.bool includeInactive, core.String project, core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -290,14 +290,14 @@ class DebuggerDebuggeesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
     if (project != null) {
       _queryParams["project"] = [project];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v2/debugger/debuggees';
@@ -428,10 +428,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    *
    * [debuggeeId] - ID of the debuggee whose breakpoints to list.
    *
-   * [stripResults] - This field is deprecated. The following fields are always
-   * stripped out of
-   * the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
-   *
    * [waitToken] - A wait token that, if specified, blocks the call until the
    * breakpoints
    * list has changed, or a server selected timeout has expired.  The value
@@ -448,13 +444,17 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * - "CAPTURE" : A CAPTURE.
    * - "LOG" : A LOG.
    *
+   * [includeInactive] - When set to `true`, the response includes active and
+   * inactive
+   * breakpoints. Otherwise, it includes only active breakpoints.
+   *
    * [includeAllUsers] - When set to `true`, the response includes the list of
    * breakpoints set by
    * any user. Otherwise, it includes only breakpoints set by the caller.
    *
-   * [includeInactive] - When set to `true`, the response includes active and
-   * inactive
-   * breakpoints. Otherwise, it includes only active breakpoints.
+   * [stripResults] - This field is deprecated. The following fields are always
+   * stripped out of
+   * the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
    *
    * Completes with a [ListBreakpointsResponse].
    *
@@ -464,7 +464,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.bool stripResults, core.String waitToken, core.String clientVersion, core.String action_value, core.bool includeAllUsers, core.bool includeInactive}) {
+  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.String waitToken, core.String clientVersion, core.String action_value, core.bool includeInactive, core.bool includeAllUsers, core.bool stripResults}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -475,9 +475,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
-    if (stripResults != null) {
-      _queryParams["stripResults"] = ["${stripResults}"];
-    }
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
     }
@@ -487,11 +484,14 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
     }
+    if (includeInactive != null) {
+      _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
     if (includeAllUsers != null) {
       _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
     }
-    if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
+    if (stripResults != null) {
+      _queryParams["stripResults"] = ["${stripResults}"];
     }
 
     _url = 'v2/debugger/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints';
@@ -1363,7 +1363,7 @@ class ListBreakpointsResponse {
    * List of breakpoints matching the request.
    * The fields `id` and `location` are guaranteed to be set on each breakpoint.
    * The fields: `stack_frames`, `evaluated_expressions` and `variable_table`
-   * are cleared on each breakpoint regardless of it's status.
+   * are cleared on each breakpoint regardless of its status.
    */
   core.List<Breakpoint> breakpoints;
   /**
@@ -1758,7 +1758,7 @@ class StatusMessage {
 class UpdateActiveBreakpointRequest {
   /**
    * Updated breakpoint information.
-   * The field 'id' must be set.
+   * The field `id` must be set.
    */
   Breakpoint breakpoint;
 

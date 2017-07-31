@@ -68,10 +68,10 @@ class ContactGroupsResourceApi {
    *
    * Request parameters:
    *
+   * [resourceNames] - The resource names of the contact groups to get.
+   *
    * [maxMembers] - Specifies the maximum number of members to return for each
    * group.
-   *
-   * [resourceNames] - The resource names of the contact groups to get.
    *
    * Completes with a [BatchGetContactGroupsResponse].
    *
@@ -81,7 +81,7 @@ class ContactGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BatchGetContactGroupsResponse> batchGet({core.int maxMembers, core.List<core.String> resourceNames}) {
+  async.Future<BatchGetContactGroupsResponse> batchGet({core.List<core.String> resourceNames, core.int maxMembers}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -89,11 +89,11 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (maxMembers != null) {
-      _queryParams["maxMembers"] = ["${maxMembers}"];
-    }
     if (resourceNames != null) {
       _queryParams["resourceNames"] = resourceNames;
+    }
+    if (maxMembers != null) {
+      _queryParams["maxMembers"] = ["${maxMembers}"];
     }
 
     _url = 'v1/contactGroups:batchGet';
@@ -246,6 +246,8 @@ class ContactGroupsResourceApi {
    *
    * Request parameters:
    *
+   * [pageSize] - The maximum number of resources to return.
+   *
    * [syncToken] - A sync token, returned by a previous call to
    * `contactgroups.list`.
    * Only resources changed since the sync token was created will be returned.
@@ -253,8 +255,6 @@ class ContactGroupsResourceApi {
    * [pageToken] - The next_page_token value returned from a previous call to
    * [ListContactGroups](/people/api/rest/v1/contactgroups/list).
    * Requests the next page of resources.
-   *
-   * [pageSize] - The maximum number of resources to return.
    *
    * Completes with a [ListContactGroupsResponse].
    *
@@ -264,7 +264,7 @@ class ContactGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListContactGroupsResponse> list({core.String syncToken, core.String pageToken, core.int pageSize}) {
+  async.Future<ListContactGroupsResponse> list({core.int pageSize, core.String syncToken, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -272,14 +272,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/contactGroups';
@@ -304,7 +304,7 @@ class ContactGroupsResourceApi {
    *
    * [resourceName] - The resource name for the contact group, assigned by the
    * server. An ASCII
-   * string, in the form of `contactGroups/<contact_group_id>`.
+   * string, in the form of `contactGroups/`<var>contact_group_id</var>.
    * Value must have pattern "^contactGroups/[^/]+$".
    *
    * Completes with a [ContactGroup].
@@ -503,7 +503,8 @@ class PeopleResourceApi {
    * about.
    *
    * - To get information about the authenticated user, specify `people/me`.
-   * - To get information about a google account, specify `people/<account_id>`.
+   * - To get information about a google account, specify
+   *  `people/`<var>account_id</var>.
    * - To get information about a contact, specify the resource name that
    *   identifies the contact as returned by
    * [`people.connections.list`](/people/api/rest/v1/people.connections/list).
@@ -593,16 +594,6 @@ class PeopleResourceApi {
    *
    * Request parameters:
    *
-   * [requestMask_includeField] - **Required.** Comma-separated list of person
-   * fields to be included in the
-   * response. Each path should start with `person.`: for example,
-   * `person.names` or `person.photos`.
-   *
-   * [resourceNames] - The resource name, such as one returned by
-   * [`people.connections.list`](/people/api/rest/v1/people.connections/list),
-   * of one of the people to provide information about. You can include this
-   * parameter up to 50 times in one request.
-   *
    * [personFields] - **Required.** A field mask to restrict which fields on
    * each person are
    * returned. Valid values are:
@@ -635,6 +626,23 @@ class PeopleResourceApi {
    * * taglines
    * * urls
    *
+   * [requestMask_includeField] - **Required.** Comma-separated list of person
+   * fields to be included in the
+   * response. Each path should start with `person.`: for example,
+   * `person.names` or `person.photos`.
+   *
+   * [resourceNames] - The resource names of the people to provide information
+   * about.
+   *
+   * - To get information about the authenticated user, specify `people/me`.
+   * - To get information about a google account, specify
+   *   `people/`<var>account_id</var>.
+   * - To get information about a contact, specify the resource name that
+   *   identifies the contact as returned by
+   * [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+   *
+   * You can include up to 50 resource names in one request.
+   *
    * Completes with a [GetPeopleResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -643,7 +651,7 @@ class PeopleResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetPeopleResponse> getBatchGet({core.String requestMask_includeField, core.List<core.String> resourceNames, core.String personFields}) {
+  async.Future<GetPeopleResponse> getBatchGet({core.String personFields, core.String requestMask_includeField, core.List<core.String> resourceNames}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -651,14 +659,14 @@ class PeopleResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
+    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
     if (resourceNames != null) {
       _queryParams["resourceNames"] = resourceNames;
-    }
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
     }
 
     _url = 'v1/people:batchGet';
@@ -693,7 +701,8 @@ class PeopleResourceApi {
    *
    * [resourceName] - The resource name for the person, assigned by the server.
    * An ASCII string
-   * with a max length of 27 characters, in the form of `people/<person_id>`.
+   * with a max length of 27 characters, in the form of
+   * `people/`<var>person_id</var>.
    * Value must have pattern "^people/[^/]+$".
    *
    * [updatePersonFields] - **Required.** A field mask to restrict which fields
@@ -779,10 +788,6 @@ class PeopleConnectionsResourceApi {
    * `people/me` is valid.
    * Value must have pattern "^people/[^/]+$".
    *
-   * [syncToken] - A sync token, returned by a previous call to
-   * `people.connections.list`.
-   * Only resources changed since the sync token was created will be returned.
-   *
    * [personFields] - **Required.** A field mask to restrict which fields on
    * each person are
    * returned. Valid values are:
@@ -838,6 +843,10 @@ class PeopleConnectionsResourceApi {
    * response. Each path should start with `person.`: for example,
    * `person.names` or `person.photos`.
    *
+   * [syncToken] - A sync token, returned by a previous call to
+   * `people.connections.list`.
+   * Only resources changed since the sync token was created will be returned.
+   *
    * Completes with a [ListConnectionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -846,7 +855,7 @@ class PeopleConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String syncToken, core.String personFields, core.String sortOrder, core.bool requestSyncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField}) {
+  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String personFields, core.String sortOrder, core.bool requestSyncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField, core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -856,9 +865,6 @@ class PeopleConnectionsResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
-    }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
     }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
@@ -877,6 +883,9 @@ class PeopleConnectionsResourceApi {
     }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName') + '/connections';
@@ -1243,7 +1252,7 @@ class ContactGroup {
   core.String name;
   /**
    * The resource name for the contact group, assigned by the server. An ASCII
-   * string, in the form of `contactGroups/<contact_group_id>`.
+   * string, in the form of `contactGroups/`<var>contact_group_id</var>.
    */
   core.String resourceName;
 
@@ -2106,12 +2115,12 @@ class Membership {
 class ModifyContactGroupMembersRequest {
   /**
    * The resource names of the contact people to add in the form of in the form
-   * `people/<person_id>`.
+   * `people/`<var>person_id</var>.
    */
   core.List<core.String> resourceNamesToAdd;
   /**
    * The resource names of the contact people to remove in the form of in the
-   * form of `people/<person_id>`.
+   * form of `people/`<var>person_id</var>.
    */
   core.List<core.String> resourceNamesToRemove;
 
@@ -2164,13 +2173,13 @@ class ModifyContactGroupMembersResponse {
 class Name {
   /**
    * The read-only display name formatted according to the locale specified by
-   * the viewer's account or the <code>Accept-Language</code> HTTP header.
+   * the viewer's account or the `Accept-Language` HTTP header.
    */
   core.String displayName;
   /**
    * The read-only display name with the last name first formatted according to
    * the locale specified by the viewer's account or the
-   * <code>Accept-Language</code> HTTP header.
+   * `Accept-Language` HTTP header.
    */
   core.String displayNameLastFirst;
   /** The family name. */
@@ -2594,7 +2603,8 @@ class Person {
   core.List<Residence> residences;
   /**
    * The resource name for the person, assigned by the server. An ASCII string
-   * with a max length of 27 characters, in the form of `people/<person_id>`.
+   * with a max length of 27 characters, in the form of
+   * `people/`<var>person_id</var>.
    */
   core.String resourceName;
   /** The person's skills. */
@@ -3014,7 +3024,7 @@ class Photo {
   FieldMetadata metadata;
   /**
    * The URL of the photo. You can change the desired size by appending a query
-   * parameter `sz=<size>` at the end of the url. Example:
+   * parameter `sz=`<var>size</var> at the end of the url. Example:
    * `https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50`
    */
   core.String url;
@@ -3325,14 +3335,19 @@ class Skill {
 /** The source of a field. */
 class Source {
   /**
+   * **Only populated in `person.metadata.sources`.**
+   *
    * The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
-   * source. Used for web cache validation. Only populated in
-   * person.metadata.sources.
+   * source. Used for web cache validation.
    */
   core.String etag;
   /** The unique identifier within the source type generated by the server. */
   core.String id;
-  /** Metadata about a source of type PROFILE. */
+  /**
+   * **Only populated in `person.metadata.sources`.**
+   *
+   * Metadata about a source of type PROFILE.
+   */
   ProfileMetadata profileMetadata;
   /**
    * The source type.
@@ -3351,7 +3366,11 @@ class Source {
    * is the source id.
    */
   core.String type;
-  /** Last update timestamp of this source. */
+  /**
+   * **Only populated in `person.metadata.sources`.**
+   *
+   * Last update timestamp of this source.
+   */
   core.String updateTime;
 
   Source();

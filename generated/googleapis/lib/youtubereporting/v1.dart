@@ -324,15 +324,15 @@ class JobsReportsResourceApi {
    * [createdAfter] - If set, only reports created after the specified date/time
    * are returned.
    *
-   * [startTimeAtOrAfter] - If set, only reports whose start time is greater
-   * than or equal the
-   * specified date/time are returned.
-   *
    * [pageToken] - A token identifying a page of results the server should
    * return. Typically,
    * this is the value of
    * ListReportsResponse.next_page_token
    * returned in response to the previous call to the `ListReports` method.
+   *
+   * [startTimeAtOrAfter] - If set, only reports whose start time is greater
+   * than or equal the
+   * specified date/time are returned.
    *
    * [pageSize] - Requested page size. Server may return fewer report types than
    * requested.
@@ -354,7 +354,7 @@ class JobsReportsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReportsResponse> list(core.String jobId, {core.String createdAfter, core.String startTimeAtOrAfter, core.String pageToken, core.int pageSize, core.String onBehalfOfContentOwner, core.String startTimeBefore}) {
+  async.Future<ListReportsResponse> list(core.String jobId, {core.String createdAfter, core.String pageToken, core.String startTimeAtOrAfter, core.int pageSize, core.String onBehalfOfContentOwner, core.String startTimeBefore}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -368,11 +368,11 @@ class JobsReportsResourceApi {
     if (createdAfter != null) {
       _queryParams["createdAfter"] = [createdAfter];
     }
-    if (startTimeAtOrAfter != null) {
-      _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTimeAtOrAfter != null) {
+      _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -476,6 +476,10 @@ class ReportTypesResourceApi {
    *
    * Request parameters:
    *
+   * [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+   * the user is acting on. If
+   * not set, the user is acting for himself (his own channel).
+   *
    * [includeSystemManaged] - If set to true, also system-managed report types
    * will be returned;
    * otherwise only the report types that can be used to create new reporting
@@ -491,10 +495,6 @@ class ReportTypesResourceApi {
    * requested.
    * If unspecified, server will pick an appropriate default.
    *
-   * [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-   * the user is acting on. If
-   * not set, the user is acting for himself (his own channel).
-   *
    * Completes with a [ListReportTypesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -503,7 +503,7 @@ class ReportTypesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListReportTypesResponse> list({core.bool includeSystemManaged, core.String pageToken, core.int pageSize, core.String onBehalfOfContentOwner}) {
+  async.Future<ListReportTypesResponse> list({core.String onBehalfOfContentOwner, core.bool includeSystemManaged, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -511,6 +511,9 @@ class ReportTypesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if (includeSystemManaged != null) {
       _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
     }
@@ -519,9 +522,6 @@ class ReportTypesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
 
     _url = 'v1/reportTypes';

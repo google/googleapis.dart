@@ -1667,12 +1667,14 @@ class EventsResourceApi {
    * [timeMax] - Upper bound (exclusive) for an event's start time to filter by.
    * Optional. The default is not to filter by start time. Must be an RFC3339
    * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
-   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.
+   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored. If
+   * timeMin is set, timeMax must be greater than timeMin.
    *
    * [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
    * Optional. The default is not to filter by end time. Must be an RFC3339
    * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
-   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.
+   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored. If
+   * timeMax is set, timeMin must be smaller than timeMax.
    *
    * [timeZone] - Time zone used in the response. Optional. The default is the
    * time zone of the calendar.
@@ -2131,12 +2133,14 @@ class EventsResourceApi {
    * [timeMax] - Upper bound (exclusive) for an event's start time to filter by.
    * Optional. The default is not to filter by start time. Must be an RFC3339
    * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
-   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.
+   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored. If
+   * timeMin is set, timeMax must be greater than timeMin.
    *
    * [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
    * Optional. The default is not to filter by end time. Must be an RFC3339
    * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
-   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored.
+   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored. If
+   * timeMax is set, timeMin must be smaller than timeMax.
    *
    * [timeZone] - Time zone used in the response. Optional. The default is the
    * time zone of the calendar.
@@ -3218,81 +3222,6 @@ class Colors {
   }
 }
 
-class DeepLinkData {
-  core.List<Link> links;
-  core.String url;
-
-  DeepLinkData();
-
-  DeepLinkData.fromJson(core.Map _json) {
-    if (_json.containsKey("links")) {
-      links = _json["links"].map((value) => new Link.fromJson(value)).toList();
-    }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (links != null) {
-      _json["links"] = links.map((value) => (value).toJson()).toList();
-    }
-    if (url != null) {
-      _json["url"] = url;
-    }
-    return _json;
-  }
-}
-
-class DisplayInfo {
-  core.String appIconUrl;
-  core.String appShortTitle;
-  core.String appTitle;
-  core.String linkShortTitle;
-  core.String linkTitle;
-
-  DisplayInfo();
-
-  DisplayInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("appIconUrl")) {
-      appIconUrl = _json["appIconUrl"];
-    }
-    if (_json.containsKey("appShortTitle")) {
-      appShortTitle = _json["appShortTitle"];
-    }
-    if (_json.containsKey("appTitle")) {
-      appTitle = _json["appTitle"];
-    }
-    if (_json.containsKey("linkShortTitle")) {
-      linkShortTitle = _json["linkShortTitle"];
-    }
-    if (_json.containsKey("linkTitle")) {
-      linkTitle = _json["linkTitle"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (appIconUrl != null) {
-      _json["appIconUrl"] = appIconUrl;
-    }
-    if (appShortTitle != null) {
-      _json["appShortTitle"] = appShortTitle;
-    }
-    if (appTitle != null) {
-      _json["appTitle"] = appTitle;
-    }
-    if (linkShortTitle != null) {
-      _json["linkShortTitle"] = linkShortTitle;
-    }
-    if (linkTitle != null) {
-      _json["linkTitle"] = linkTitle;
-    }
-    return _json;
-  }
-}
-
 class Error {
   /** Domain, or broad category, of the error. */
   core.String domain;
@@ -3817,9 +3746,10 @@ class Event {
   /**
    * Whether the event blocks time on the calendar. Optional. Possible values
    * are:
-   * - "opaque" - The event blocks time on the calendar. This is the default
-   * value.
-   * - "transparent" - The event does not block time on the calendar.
+   * - "opaque" - Default value. The event does block time on the calendar. This
+   * is equivalent to setting Show me as to Busy in the Calendar UI.
+   * - "transparent" - The event does not block time on the calendar. This is
+   * equivalent to setting Show me as to Available in the Calendar UI.
    */
   core.String transparency;
   /**
@@ -4291,35 +4221,6 @@ class EventDateTime {
   }
 }
 
-class EventHabitInstance {
-  /** Metadata specific to this instance. */
-  HabitInstanceData data;
-  /** Id of the habit this instance belongs to. */
-  core.String parentId;
-
-  EventHabitInstance();
-
-  EventHabitInstance.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = new HabitInstanceData.fromJson(_json["data"]);
-    }
-    if (_json.containsKey("parentId")) {
-      parentId = _json["parentId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (data != null) {
-      _json["data"] = (data).toJson();
-    }
-    if (parentId != null) {
-      _json["parentId"] = parentId;
-    }
-    return _json;
-  }
-}
-
 class EventReminder {
   /**
    * The method used by this reminder. Possible values are:
@@ -4682,129 +4583,6 @@ class FreeBusyResponse {
     }
     if (timeMin != null) {
       _json["timeMin"] = (timeMin).toIso8601String();
-    }
-    return _json;
-  }
-}
-
-class HabitInstanceData {
-  core.String status;
-  core.bool statusInferred;
-  core.String type;
-
-  HabitInstanceData();
-
-  HabitInstanceData.fromJson(core.Map _json) {
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-    if (_json.containsKey("statusInferred")) {
-      statusInferred = _json["statusInferred"];
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (status != null) {
-      _json["status"] = status;
-    }
-    if (statusInferred != null) {
-      _json["statusInferred"] = statusInferred;
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-class LaunchInfo {
-  core.String appId;
-  core.String installUrl;
-  core.String intentAction;
-  core.String uri;
-
-  LaunchInfo();
-
-  LaunchInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("appId")) {
-      appId = _json["appId"];
-    }
-    if (_json.containsKey("installUrl")) {
-      installUrl = _json["installUrl"];
-    }
-    if (_json.containsKey("intentAction")) {
-      intentAction = _json["intentAction"];
-    }
-    if (_json.containsKey("uri")) {
-      uri = _json["uri"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (appId != null) {
-      _json["appId"] = appId;
-    }
-    if (installUrl != null) {
-      _json["installUrl"] = installUrl;
-    }
-    if (intentAction != null) {
-      _json["intentAction"] = intentAction;
-    }
-    if (uri != null) {
-      _json["uri"] = uri;
-    }
-    return _json;
-  }
-}
-
-class Link {
-  core.String applinkingSource;
-  DisplayInfo displayInfo;
-  LaunchInfo launchInfo;
-  core.String platform;
-  core.String url;
-
-  Link();
-
-  Link.fromJson(core.Map _json) {
-    if (_json.containsKey("applinkingSource")) {
-      applinkingSource = _json["applinkingSource"];
-    }
-    if (_json.containsKey("displayInfo")) {
-      displayInfo = new DisplayInfo.fromJson(_json["displayInfo"]);
-    }
-    if (_json.containsKey("launchInfo")) {
-      launchInfo = new LaunchInfo.fromJson(_json["launchInfo"]);
-    }
-    if (_json.containsKey("platform")) {
-      platform = _json["platform"];
-    }
-    if (_json.containsKey("url")) {
-      url = _json["url"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (applinkingSource != null) {
-      _json["applinkingSource"] = applinkingSource;
-    }
-    if (displayInfo != null) {
-      _json["displayInfo"] = (displayInfo).toJson();
-    }
-    if (launchInfo != null) {
-      _json["launchInfo"] = (launchInfo).toJson();
-    }
-    if (platform != null) {
-      _json["platform"] = platform;
-    }
-    if (url != null) {
-      _json["url"] = url;
     }
     return _json;
   }

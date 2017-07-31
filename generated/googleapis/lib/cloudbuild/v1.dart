@@ -370,11 +370,11 @@ class ProjectsBuildsResourceApi {
    *
    * [projectId] - ID of the project.
    *
-   * [pageToken] - Token to provide to skip to a particular spot in the list.
-   *
    * [pageSize] - Number of results to return in the list.
    *
    * [filter] - The raw filter text to constrain the results.
+   *
+   * [pageToken] - Token to provide to skip to a particular spot in the list.
    *
    * Completes with a [ListBuildsResponse].
    *
@@ -384,7 +384,7 @@ class ProjectsBuildsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBuildsResponse> list(core.String projectId, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListBuildsResponse> list(core.String projectId, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -395,14 +395,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + '/builds';
@@ -739,6 +739,8 @@ class Build {
    * @OutputOnly
    */
   Results results;
+  /** Secrets to decrypt using Cloud KMS. */
+  core.List<Secret> secrets;
   /** Describes where to find the source files to build. */
   Source source;
   /**
@@ -818,6 +820,9 @@ class Build {
     if (_json.containsKey("results")) {
       results = new Results.fromJson(_json["results"]);
     }
+    if (_json.containsKey("secrets")) {
+      secrets = _json["secrets"].map((value) => new Secret.fromJson(value)).toList();
+    }
     if (_json.containsKey("source")) {
       source = new Source.fromJson(_json["source"]);
     }
@@ -878,6 +883,9 @@ class Build {
     }
     if (results != null) {
       _json["results"] = (results).toJson();
+    }
+    if (secrets != null) {
+      _json["secrets"] = secrets.map((value) => (value).toJson()).toList();
     }
     if (source != null) {
       _json["source"] = (source).toJson();
@@ -1035,6 +1043,22 @@ class BuildStep {
    */
   core.String name;
   /**
+   * A list of environment variables which are encrypted using a Cloud KMS
+   * crypto key. These values must be specified in the build's secrets.
+   */
+  core.List<core.String> secretEnv;
+  /**
+   * List of volumes to mount into the build step.
+   *
+   * Each volume will be created as an empty volume prior to execution of the
+   * build step. Upon completion of the build, volumes and their contents will
+   * be discarded.
+   *
+   * Using a named volume in only one step is not valid as it is indicative
+   * of a mis-configured build request.
+   */
+  core.List<Volume> volumes;
+  /**
    * The ID(s) of the step(s) that this build step depends on.
    * This build step will not start until all the build steps in wait_for
    * have completed successfully. If wait_for is empty, this build step will
@@ -1064,6 +1088,12 @@ class BuildStep {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("secretEnv")) {
+      secretEnv = _json["secretEnv"];
+    }
+    if (_json.containsKey("volumes")) {
+      volumes = _json["volumes"].map((value) => new Volume.fromJson(value)).toList();
+    }
     if (_json.containsKey("waitFor")) {
       waitFor = _json["waitFor"];
     }
@@ -1088,6 +1118,12 @@ class BuildStep {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (secretEnv != null) {
+      _json["secretEnv"] = secretEnv;
+    }
+    if (volumes != null) {
+      _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
     }
     if (waitFor != null) {
       _json["waitFor"] = waitFor;
@@ -1606,6 +1642,46 @@ class Results {
 }
 
 /**
+ * Secret pairs a set of secret environment variables containing encrypted
+ * values with the Cloud KMS key to use to decrypt the value.
+ */
+class Secret {
+  /** Cloud KMS key name to use to decrypt these envs. */
+  core.String kmsKeyName;
+  /**
+   * Map of environment variable name to its encrypted value.
+   *
+   * Secret environment variables must be unique across all of a build's
+   * secrets, and must be used by at least one build step. Values can be at most
+   * 1 KB in size. There can be at most ten secret values across all of a
+   * build's secrets.
+   */
+  core.Map<core.String, core.String> secretEnv;
+
+  Secret();
+
+  Secret.fromJson(core.Map _json) {
+    if (_json.containsKey("kmsKeyName")) {
+      kmsKeyName = _json["kmsKeyName"];
+    }
+    if (_json.containsKey("secretEnv")) {
+      secretEnv = _json["secretEnv"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (kmsKeyName != null) {
+      _json["kmsKeyName"] = kmsKeyName;
+    }
+    if (secretEnv != null) {
+      _json["secretEnv"] = secretEnv;
+    }
+    return _json;
+  }
+}
+
+/**
  * Source describes the location of the source in a supported storage
  * service.
  */
@@ -1850,6 +1926,49 @@ class StorageSource {
     }
     if (object != null) {
       _json["object"] = object;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Volume describes a Docker container volume which is mounted into build steps
+ * in order to persist files across build step execution.
+ */
+class Volume {
+  /**
+   * Name of the volume to mount.
+   *
+   * Volume names must be unique per build step and must be valid names for
+   * Docker volumes. Each named volume must be used by at least two build steps.
+   */
+  core.String name;
+  /**
+   * Path at which to mount the volume.
+   *
+   * Paths must be absolute and cannot conflict with other volume paths on the
+   * same build step or with certain reserved volume paths.
+   */
+  core.String path;
+
+  Volume();
+
+  Volume.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (path != null) {
+      _json["path"] = path;
     }
     return _json;
   }

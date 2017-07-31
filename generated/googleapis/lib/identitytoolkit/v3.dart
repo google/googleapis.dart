@@ -1282,6 +1282,8 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   core.String idToken;
   /** The list of local ID's of the users to inquiry. */
   core.List<core.String> localId;
+  /** Privileged caller can query users by specified phone number. */
+  core.List<core.String> phoneNumber;
 
   IdentitytoolkitRelyingpartyGetAccountInfoRequest();
 
@@ -1298,6 +1300,9 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
     if (_json.containsKey("localId")) {
       localId = _json["localId"];
     }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1313,6 +1318,9 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
     }
     if (localId != null) {
       _json["localId"] = localId;
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
     }
     return _json;
   }
@@ -1547,6 +1555,8 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   core.String oobCode;
   /** The new password of the user. */
   core.String password;
+  /** Privileged caller can update user with specified phone number. */
+  core.String phoneNumber;
   /** The photo url of the user. */
   core.String photoUrl;
   /** The associated IDPs of the user. */
@@ -1608,6 +1618,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (_json.containsKey("password")) {
       password = _json["password"];
+    }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
     }
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
@@ -1675,6 +1688,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
     if (password != null) {
       _json["password"] = password;
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;
@@ -1900,6 +1916,8 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   core.String localId;
   /** The new password of the user. */
   core.String password;
+  /** Privileged caller can create user with specified phone number. */
+  core.String phoneNumber;
   /** The photo url of the user. */
   core.String photoUrl;
 
@@ -1935,6 +1953,9 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
     if (_json.containsKey("password")) {
       password = _json["password"];
+    }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
     }
     if (_json.containsKey("photoUrl")) {
       photoUrl = _json["photoUrl"];
@@ -1972,6 +1993,9 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
     if (password != null) {
       _json["password"] = password;
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
     }
     if (photoUrl != null) {
       _json["photoUrl"] = photoUrl;

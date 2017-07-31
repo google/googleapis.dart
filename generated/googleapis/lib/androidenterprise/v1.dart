@@ -570,6 +570,45 @@ class EnterprisesResourceApi {
   }
 
   /**
+   * Returns the Android Device Policy config resource.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [AndroidDevicePolicyConfig].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AndroidDevicePolicyConfig> getAndroidDevicePolicyConfig(core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/androidDevicePolicyConfig';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AndroidDevicePolicyConfig.fromJson(data));
+  }
+
+  /**
    * Returns a service account and credentials. The service account can be bound
    * to the enterprise by calling setAccount. The service account is unique to
    * this enterprise and EMM, and will be deleted if the enterprise is unbound.
@@ -907,6 +946,52 @@ class EnterprisesResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new EnterpriseAccount.fromJson(data));
+  }
+
+  /**
+   * Sets the Android Device Policy config resource. EMM may use this API to
+   * enable or disable Android Device Policy support for the specified
+   * enterprise.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [enterpriseId] - The ID of the enterprise.
+   *
+   * Completes with a [AndroidDevicePolicyConfig].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<AndroidDevicePolicyConfig> setAndroidDevicePolicyConfig(AndroidDevicePolicyConfig request, core.String enterpriseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+
+    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId') + '/androidDevicePolicyConfig';
+
+    var _response = _requester.request(_url,
+                                       "PUT",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new AndroidDevicePolicyConfig.fromJson(data));
   }
 
   /**
@@ -4109,6 +4194,43 @@ class AdministratorWebTokenSpec {
     }
     if (permission != null) {
       _json["permission"] = permission;
+    }
+    return _json;
+  }
+}
+
+/** The Android Device Policy configuration of an enterprise. */
+class AndroidDevicePolicyConfig {
+  /**
+   * Identifies what kind of resource this is. Value: the fixed string
+   * "androidenterprise#androidDevicePolicyConfig".
+   */
+  core.String kind;
+  /**
+   * The state of Android Device Policy. "enabled" indicates that Android Device
+   * Policy is enabled for the enterprise and the EMM is allowed to manage
+   * devices with Android Device Policy, while "disabled" means that it cannot.
+   */
+  core.String state;
+
+  AndroidDevicePolicyConfig();
+
+  AndroidDevicePolicyConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }

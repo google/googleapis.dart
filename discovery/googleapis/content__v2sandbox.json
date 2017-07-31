@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Ij4QieiY3g7F1WyWNBqPuIcKsE4\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/YiRd2f0RyyNaCRGqBGhBWAX4QSQ\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -622,7 +622,7 @@
             }
         }
     },
-    "revision": "20170627",
+    "revision": "20170725",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Error": {
@@ -727,7 +727,7 @@
                     "type": "string"
                 },
                 "promotions": {
-                    "description": "The details of the merchant provided promotions applied to the order. More details about the program are  here.",
+                    "description": "The details of the merchant provided promotions applied to the order. More details about the program are here.",
                     "items": {
                         "$ref": "OrderPromotion"
                     },
@@ -2023,7 +2023,7 @@
                     "type": "string"
                 },
                 "promotions": {
-                    "description": "The details of the merchant provided promotions applied to the order. More details about the program are  here.",
+                    "description": "The details of the merchant provided promotions applied to the order. More details about the program are here.",
                     "items": {
                         "$ref": "OrderPromotion"
                     },

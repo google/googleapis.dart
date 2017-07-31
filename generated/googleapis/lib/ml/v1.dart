@@ -1294,7 +1294,7 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
 }
 
 /** Options for automatically scaling a model. */
-class GoogleCloudMlV1AutomaticScaling {
+class GoogleCloudMlV1AutoScaling {
   /**
    * Optional. The minimum number of nodes to allocate for this model. These
    * nodes are always up, starting from the time the model is deployed, so the
@@ -1317,9 +1317,9 @@ class GoogleCloudMlV1AutomaticScaling {
    */
   core.int minNodes;
 
-  GoogleCloudMlV1AutomaticScaling();
+  GoogleCloudMlV1AutoScaling();
 
-  GoogleCloudMlV1AutomaticScaling.fromJson(core.Map _json) {
+  GoogleCloudMlV1AutoScaling.fromJson(core.Map _json) {
     if (_json.containsKey("minNodes")) {
       minNodes = _json["minNodes"];
     }
@@ -2736,7 +2736,7 @@ class GoogleCloudMlV1Version {
    * taken to ramp up traffic according to the model's ability to scale
    * or you will start seeing increases in latency and 429 response codes.
    */
-  GoogleCloudMlV1AutomaticScaling automaticScaling;
+  GoogleCloudMlV1AutoScaling autoScaling;
   /** Output only. The time the version was created. */
   core.String createTime;
   /**
@@ -2744,7 +2744,7 @@ class GoogleCloudMlV1Version {
    * create the version. See the
    * [overview of model
    * deployment](/ml-engine/docs/concepts/deployment-overview) for more
-   * informaiton.
+   * information.
    *
    * When passing Version to
    * [projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create)
@@ -2772,7 +2772,7 @@ class GoogleCloudMlV1Version {
   core.String lastUseTime;
   /**
    * Manually select the number of nodes to use for serving the
-   * model. You should generally use `automatic_scaling` with an appropriate
+   * model. You should generally use `auto_scaling` with an appropriate
    * `min_nodes` instead, but this option is available if you want more
    * predictable billing. Beware that latency and error rates will increase
    * if the traffic exceeds that capability of the system to serve it based
@@ -2804,8 +2804,8 @@ class GoogleCloudMlV1Version {
   GoogleCloudMlV1Version();
 
   GoogleCloudMlV1Version.fromJson(core.Map _json) {
-    if (_json.containsKey("automaticScaling")) {
-      automaticScaling = new GoogleCloudMlV1AutomaticScaling.fromJson(_json["automaticScaling"]);
+    if (_json.containsKey("autoScaling")) {
+      autoScaling = new GoogleCloudMlV1AutoScaling.fromJson(_json["autoScaling"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -2841,8 +2841,8 @@ class GoogleCloudMlV1Version {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (automaticScaling != null) {
-      _json["automaticScaling"] = (automaticScaling).toJson();
+    if (autoScaling != null) {
+      _json["autoScaling"] = (autoScaling).toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -2879,7 +2879,7 @@ class GoogleCloudMlV1Version {
 }
 
 /** Options for automatically scaling a model. */
-class GoogleCloudMlV1beta1AutomaticScaling {
+class GoogleCloudMlV1beta1AutoScaling {
   /**
    * Optional. The minimum number of nodes to allocate for this model. These
    * nodes are always up, starting from the time the model is deployed, so the
@@ -2902,9 +2902,9 @@ class GoogleCloudMlV1beta1AutomaticScaling {
    */
   core.int minNodes;
 
-  GoogleCloudMlV1beta1AutomaticScaling();
+  GoogleCloudMlV1beta1AutoScaling();
 
-  GoogleCloudMlV1beta1AutomaticScaling.fromJson(core.Map _json) {
+  GoogleCloudMlV1beta1AutoScaling.fromJson(core.Map _json) {
     if (_json.containsKey("minNodes")) {
       minNodes = _json["minNodes"];
     }
@@ -2925,7 +2925,7 @@ class GoogleCloudMlV1beta1ManualScaling {
    * The number of nodes to allocate for this model. These nodes are always up,
    * starting from the time the model is deployed, so the cost of operating
    * this model will be proportional to `nodes` * number of hours since
-   * last billing cycle.
+   * last billing cycle plus the cost for each prediction performed.
    */
   core.int nodes;
 
@@ -3038,7 +3038,7 @@ class GoogleCloudMlV1beta1Version {
    * taken to ramp up traffic according to the model's ability to scale
    * or you will start seeing increases in latency and 429 response codes.
    */
-  GoogleCloudMlV1beta1AutomaticScaling automaticScaling;
+  GoogleCloudMlV1beta1AutoScaling autoScaling;
   /** Output only. The time the version was created. */
   core.String createTime;
   /**
@@ -3046,7 +3046,7 @@ class GoogleCloudMlV1beta1Version {
    * create the version. See the
    * [overview of model
    * deployment](/ml-engine/docs/concepts/deployment-overview) for more
-   * informaiton.
+   * information.
    *
    * When passing Version to
    * [projects.models.versions.create](/ml-engine/reference/rest/v1beta1/projects.models.versions/create)
@@ -3074,11 +3074,11 @@ class GoogleCloudMlV1beta1Version {
   core.String lastUseTime;
   /**
    * Manually select the number of nodes to use for serving the
-   * model. You should generally use `automatic_scaling` with an appropriate
-   * `min_nodes` instead, but this option is available if you want predictable
-   * billing. Beware that latency and error rates will increase if the
-   * traffic exceeds that capability of the system to serve it based on
-   * the selected number of nodes.
+   * model. You should generally use `auto_scaling` with an appropriate
+   * `min_nodes` instead, but this option is available if you want more
+   * predictable billing. Beware that latency and error rates will increase
+   * if the traffic exceeds that capability of the system to serve it based
+   * on the selected number of nodes.
    */
   GoogleCloudMlV1beta1ManualScaling manualScaling;
   /**
@@ -3095,7 +3095,7 @@ class GoogleCloudMlV1beta1Version {
   /**
    * Output only. The state of a version.
    * Possible string values are:
-   * - "UNKNOWN" : / The version state is unspecified.
+   * - "UNKNOWN" : The version state is unspecified.
    * - "READY" : The version is ready for prediction.
    * - "CREATING" : The version is still in the process of creation.
    * - "FAILED" : The version failed to be created, possibly cancelled.
@@ -3106,8 +3106,8 @@ class GoogleCloudMlV1beta1Version {
   GoogleCloudMlV1beta1Version();
 
   GoogleCloudMlV1beta1Version.fromJson(core.Map _json) {
-    if (_json.containsKey("automaticScaling")) {
-      automaticScaling = new GoogleCloudMlV1beta1AutomaticScaling.fromJson(_json["automaticScaling"]);
+    if (_json.containsKey("autoScaling")) {
+      autoScaling = new GoogleCloudMlV1beta1AutoScaling.fromJson(_json["autoScaling"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -3143,8 +3143,8 @@ class GoogleCloudMlV1beta1Version {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (automaticScaling != null) {
-      _json["automaticScaling"] = (automaticScaling).toJson();
+    if (autoScaling != null) {
+      _json["autoScaling"] = (autoScaling).toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -4165,8 +4165,8 @@ class GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

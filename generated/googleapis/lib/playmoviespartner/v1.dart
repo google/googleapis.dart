@@ -103,13 +103,6 @@ class AccountsAvailsResourceApi {
    * [accountId] - REQUIRED. See _General rules_ for more information about this
    * field.
    *
-   * [altId] - Filter Avails that match a case-insensitive, partner-specific
-   * custom id.
-   * NOTE: this field is deprecated and will be removed on V2; `alt_ids`
-   * should be used instead.
-   *
-   * [studioNames] - See _List methods rules_ for info about this field.
-   *
    * [territories] - Filter Avails that match (case-insensitive) any of the
    * given country codes,
    * using the "ISO 3166-1 alpha-2" format (examples: "US", "us", "Us").
@@ -119,9 +112,9 @@ class AccountsAvailsResourceApi {
    * or `episode_title_internal_alias` that contains the given
    * case-insensitive title.
    *
-   * [pageToken] - See _List methods rules_ for info about this field.
-   *
    * [videoIds] - Filter Avails that match any of the given `video_id`s.
+   *
+   * [pageToken] - See _List methods rules_ for info about this field.
    *
    * [pageSize] - See _List methods rules_ for info about this field.
    *
@@ -129,6 +122,13 @@ class AccountsAvailsResourceApi {
    * partner-specific custom ids.
    *
    * [pphNames] - See _List methods rules_ for info about this field.
+   *
+   * [altId] - Filter Avails that match a case-insensitive, partner-specific
+   * custom id.
+   * NOTE: this field is deprecated and will be removed on V2; `alt_ids`
+   * should be used instead.
+   *
+   * [studioNames] - See _List methods rules_ for info about this field.
    *
    * Completes with a [ListAvailsResponse].
    *
@@ -138,7 +138,7 @@ class AccountsAvailsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListAvailsResponse> list(core.String accountId, {core.String altId, core.List<core.String> studioNames, core.List<core.String> territories, core.String title, core.String pageToken, core.List<core.String> videoIds, core.int pageSize, core.List<core.String> altIds, core.List<core.String> pphNames}) {
+  async.Future<ListAvailsResponse> list(core.String accountId, {core.List<core.String> territories, core.String title, core.List<core.String> videoIds, core.String pageToken, core.int pageSize, core.List<core.String> altIds, core.List<core.String> pphNames, core.String altId, core.List<core.String> studioNames}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -149,23 +149,17 @@ class AccountsAvailsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (altId != null) {
-      _queryParams["altId"] = [altId];
-    }
-    if (studioNames != null) {
-      _queryParams["studioNames"] = studioNames;
-    }
     if (territories != null) {
       _queryParams["territories"] = territories;
     }
     if (title != null) {
       _queryParams["title"] = [title];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (videoIds != null) {
       _queryParams["videoIds"] = videoIds;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -175,6 +169,12 @@ class AccountsAvailsResourceApi {
     }
     if (pphNames != null) {
       _queryParams["pphNames"] = pphNames;
+    }
+    if (altId != null) {
+      _queryParams["altId"] = [altId];
+    }
+    if (studioNames != null) {
+      _queryParams["studioNames"] = studioNames;
     }
 
     _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/avails';
@@ -257,6 +257,8 @@ class AccountsOrdersResourceApi {
    * [accountId] - REQUIRED. See _General rules_ for more information about this
    * field.
    *
+   * [pageSize] - See _List methods rules_ for info about this field.
+   *
    * [pphNames] - See _List methods rules_ for info about this field.
    *
    * [status] - Filter Orders that match one of the given status.
@@ -274,8 +276,6 @@ class AccountsOrdersResourceApi {
    *
    * [pageToken] - See _List methods rules_ for info about this field.
    *
-   * [pageSize] - See _List methods rules_ for info about this field.
-   *
    * Completes with a [ListOrdersResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -284,7 +284,7 @@ class AccountsOrdersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOrdersResponse> list(core.String accountId, {core.List<core.String> pphNames, core.List<core.String> status, core.String name, core.List<core.String> studioNames, core.List<core.String> videoIds, core.String customId, core.String pageToken, core.int pageSize}) {
+  async.Future<ListOrdersResponse> list(core.String accountId, {core.int pageSize, core.List<core.String> pphNames, core.List<core.String> status, core.String name, core.List<core.String> studioNames, core.List<core.String> videoIds, core.String customId, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -294,6 +294,9 @@ class AccountsOrdersResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pphNames != null) {
       _queryParams["pphNames"] = pphNames;
@@ -315,9 +318,6 @@ class AccountsOrdersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/orders';
@@ -354,11 +354,6 @@ class AccountsStoreInfosResourceApi {
    * [accountId] - REQUIRED. See _General rules_ for more information about this
    * field.
    *
-   * [studioNames] - See _List methods rules_ for info about this field.
-   *
-   * [name] - Filter that matches StoreInfos with a `name` or `show_name`
-   * that contains the given case-insensitive name.
-   *
    * [seasonIds] - Filter StoreInfos that match any of the given `season_id`s.
    *
    * [pageToken] - See _List methods rules_ for info about this field.
@@ -379,6 +374,11 @@ class AccountsStoreInfosResourceApi {
    * given country
    * codes, using the "ISO 3166-1 alpha-2" format (examples: "US", "us", "Us").
    *
+   * [studioNames] - See _List methods rules_ for info about this field.
+   *
+   * [name] - Filter that matches StoreInfos with a `name` or `show_name`
+   * that contains the given case-insensitive name.
+   *
    * Completes with a [ListStoreInfosResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -387,7 +387,7 @@ class AccountsStoreInfosResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListStoreInfosResponse> list(core.String accountId, {core.List<core.String> studioNames, core.String name, core.List<core.String> seasonIds, core.String pageToken, core.String videoId, core.List<core.String> videoIds, core.int pageSize, core.List<core.String> mids, core.List<core.String> pphNames, core.List<core.String> countries}) {
+  async.Future<ListStoreInfosResponse> list(core.String accountId, {core.List<core.String> seasonIds, core.String pageToken, core.String videoId, core.List<core.String> videoIds, core.int pageSize, core.List<core.String> mids, core.List<core.String> pphNames, core.List<core.String> countries, core.List<core.String> studioNames, core.String name}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -397,12 +397,6 @@ class AccountsStoreInfosResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (studioNames != null) {
-      _queryParams["studioNames"] = studioNames;
-    }
-    if (name != null) {
-      _queryParams["name"] = [name];
     }
     if (seasonIds != null) {
       _queryParams["seasonIds"] = seasonIds;
@@ -427,6 +421,12 @@ class AccountsStoreInfosResourceApi {
     }
     if (countries != null) {
       _queryParams["countries"] = countries;
+    }
+    if (studioNames != null) {
+      _queryParams["studioNames"] = studioNames;
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
 
     _url = 'v1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/storeInfos';

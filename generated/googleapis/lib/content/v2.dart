@@ -84,8 +84,8 @@ class AccountsResourceApi {
   /**
    * Claims the website of a Merchant Center sub-account. This method can only
    * be called for accounts to which the managing account has access: either the
-   * managing account itself or sub-accounts if the managing account is a
-   * multi-client account.
+   * managing account itself for any Merchant Center account, or any sub-account
+   * when the managing account is a multi-client account.
    *
    * Request parameters:
    *
@@ -232,8 +232,8 @@ class AccountsResourceApi {
   /**
    * Retrieves a Merchant Center account. This method can only be called for
    * accounts to which the managing account has access: either the managing
-   * account itself or sub-accounts if the managing account is a multi-client
-   * account.
+   * account itself for any Merchant Center account, or any sub-account when the
+   * managing account is a multi-client account.
    *
    * Request parameters:
    *
@@ -380,8 +380,9 @@ class AccountsResourceApi {
   /**
    * Updates a Merchant Center account. This method can only be called for
    * accounts to which the managing account has access: either the managing
-   * account itself or sub-accounts if the managing account is a multi-client
-   * account. This method supports patch semantics.
+   * account itself for any Merchant Center account, or any sub-account when the
+   * managing account is a multi-client account. This method supports patch
+   * semantics.
    *
    * [request] - The metadata request object.
    *
@@ -437,8 +438,8 @@ class AccountsResourceApi {
   /**
    * Updates a Merchant Center account. This method can only be called for
    * accounts to which the managing account has access: either the managing
-   * account itself or sub-accounts if the managing account is a multi-client
-   * account.
+   * account itself for any Merchant Center account, or any sub-account when the
+   * managing account is a multi-client account.
    *
    * [request] - The metadata request object.
    *
@@ -540,8 +541,8 @@ class AccountstatusesResourceApi {
   /**
    * Retrieves the status of a Merchant Center account. This method can only be
    * called for accounts to which the managing account has access: either the
-   * managing account itself or sub-accounts if the managing account is a
-   * multi-client account.
+   * managing account itself for any Merchant Center account, or any sub-account
+   * when the managing account is a multi-client account.
    *
    * Request parameters:
    *
@@ -692,8 +693,8 @@ class AccounttaxResourceApi {
   /**
    * Retrieves the tax settings of the account. This method can only be called
    * for accounts to which the managing account has access: either the managing
-   * account itself or sub-accounts if the managing account is a multi-client
-   * account.
+   * account itself for any Merchant Center account, or any sub-account when the
+   * managing account is a multi-client account.
    *
    * Request parameters:
    *
@@ -791,8 +792,9 @@ class AccounttaxResourceApi {
   /**
    * Updates the tax settings of the account. This method can only be called for
    * accounts to which the managing account has access: either the managing
-   * account itself or sub-accounts if the managing account is a multi-client
-   * account. This method supports patch semantics.
+   * account itself for any Merchant Center account, or any sub-account when the
+   * managing account is a multi-client account. This method supports patch
+   * semantics.
    *
    * [request] - The metadata request object.
    *
@@ -849,8 +851,8 @@ class AccounttaxResourceApi {
   /**
    * Updates the tax settings of the account. This method can only be called for
    * accounts to which the managing account has access: either the managing
-   * account itself or sub-accounts if the managing account is a multi-client
-   * account.
+   * account itself for any Merchant Center account, or any sub-account when the
+   * managing account is a multi-client account.
    *
    * [request] - The metadata request object.
    *
@@ -2787,8 +2789,8 @@ class ShippingsettingsResourceApi {
   /**
    * Retrieves the shipping settings of the account. This method can only be
    * called for accounts to which the managing account has access: either the
-   * managing account itself or sub-accounts if the managing account is a
-   * multi-client account.
+   * managing account itself for any Merchant Center account, or any sub-account
+   * when the managing account is a multi-client account.
    *
    * Request parameters:
    *
@@ -2926,8 +2928,9 @@ class ShippingsettingsResourceApi {
   /**
    * Updates the shipping settings of the account. This method can only be
    * called for accounts to which the managing account has access: either the
-   * managing account itself or sub-accounts if the managing account is a
-   * multi-client account. This method supports patch semantics.
+   * managing account itself for any Merchant Center account, or any sub-account
+   * when the managing account is a multi-client account. This method supports
+   * patch semantics.
    *
    * [request] - The metadata request object.
    *
@@ -2984,8 +2987,8 @@ class ShippingsettingsResourceApi {
   /**
    * Updates the shipping settings of the account. This method can only be
    * called for accounts to which the managing account has access: either the
-   * managing account itself or sub-accounts if the managing account is a
-   * multi-client account.
+   * managing account itself for any Merchant Center account, or any sub-account
+   * when the managing account is a multi-client account.
    *
    * [request] - The metadata request object.
    *
@@ -4463,6 +4466,8 @@ class DatafeedFetchSchedule {
   core.int minuteOfHour;
   /** An optional password for fetch_url. */
   core.String password;
+  /** Whether the scheduled fetch is paused or not. */
+  core.bool paused;
   /**
    * Time zone used for schedule. UTC by default. E.g., "America/Los_Angeles".
    */
@@ -4489,6 +4494,9 @@ class DatafeedFetchSchedule {
     }
     if (_json.containsKey("password")) {
       password = _json["password"];
+    }
+    if (_json.containsKey("paused")) {
+      paused = _json["paused"];
     }
     if (_json.containsKey("timeZone")) {
       timeZone = _json["timeZone"];
@@ -4517,6 +4525,9 @@ class DatafeedFetchSchedule {
     }
     if (password != null) {
       _json["password"] = password;
+    }
+    if (paused != null) {
+      _json["paused"] = paused;
     }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
@@ -5866,7 +5877,7 @@ class Order {
   core.String placedDate;
   /**
    * The details of the merchant provided promotions applied to the order. More
-   * details about the program are  here.
+   * details about the program are here.
    */
   core.List<OrderPromotion> promotions;
   /** Refunds for the order. */
@@ -9305,9 +9316,7 @@ class ProductShipping {
   core.String postalCode;
   /** Fixed shipping price, represented as a number. */
   Price price;
-  /**
-   * The geographic region to which a shipping rate applies (e.g. zip code).
-   */
+  /** The geographic region to which a shipping rate applies. */
   core.String region;
   /** A free-form description of the service class or delivery speed. */
   core.String service;
@@ -9456,6 +9465,8 @@ class ProductStatus {
   core.String lastUpdateDate;
   /** The link to the product. */
   core.String link;
+  /** Product data after applying all the join inputs. */
+  Product product;
   /** The id of the product for which status is reported. */
   core.String productId;
   /** The title of the product. */
@@ -9484,6 +9495,9 @@ class ProductStatus {
     }
     if (_json.containsKey("link")) {
       link = _json["link"];
+    }
+    if (_json.containsKey("product")) {
+      product = new Product.fromJson(_json["product"]);
     }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
@@ -9515,6 +9529,9 @@ class ProductStatus {
     }
     if (link != null) {
       _json["link"] = link;
+    }
+    if (product != null) {
+      _json["product"] = (product).toJson();
     }
     if (productId != null) {
       _json["productId"] = productId;
@@ -9998,6 +10015,7 @@ class ProductstatusesCustomBatchRequest {
 class ProductstatusesCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   core.int batchId;
+  core.bool includeAttributes;
   /** The ID of the managing account. */
   core.String merchantId;
   core.String method;
@@ -10009,6 +10027,9 @@ class ProductstatusesCustomBatchRequestEntry {
   ProductstatusesCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey("batchId")) {
       batchId = _json["batchId"];
+    }
+    if (_json.containsKey("includeAttributes")) {
+      includeAttributes = _json["includeAttributes"];
     }
     if (_json.containsKey("merchantId")) {
       merchantId = _json["merchantId"];
@@ -10025,6 +10046,9 @@ class ProductstatusesCustomBatchRequestEntry {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (batchId != null) {
       _json["batchId"] = batchId;
+    }
+    if (includeAttributes != null) {
+      _json["includeAttributes"] = includeAttributes;
     }
     if (merchantId != null) {
       _json["merchantId"] = merchantId;
@@ -10678,7 +10702,7 @@ class TestOrder {
   core.String predefinedDeliveryAddress;
   /**
    * The details of the merchant provided promotions applied to the order. More
-   * details about the program are  here.
+   * details about the program are here.
    */
   core.List<OrderPromotion> promotions;
   /** The total cost of shipping for all items. */

@@ -26,6 +26,8 @@ class IamApi {
 
   final commons.ApiRequester _requester;
 
+  OrganizationsResourceApi get organizations => new OrganizationsResourceApi(_requester);
+  PermissionsResourceApi get permissions => new PermissionsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   RolesResourceApi get roles => new RolesResourceApi(_requester);
 
@@ -34,13 +36,717 @@ class IamApi {
 }
 
 
+class OrganizationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsRolesResourceApi get roles => new OrganizationsRolesResourceApi(_requester);
+
+  OrganizationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+}
+
+
+class OrganizationsRolesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsRolesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a new Role.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [parent] - The resource name of the parent resource in one of the following
+   * formats:
+   * `organizations/{ORGANIZATION_ID}`
+   * `projects/{PROJECT_ID}`
+   * Value must have pattern "^organizations/[^/]+$".
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> create(CreateRoleRequest request, core.String parent) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Soft deletes a role. The role is suspended and cannot be used to create new
+   * IAM Policy Bindings.
+   * The Role will not be included in `ListRoles()` unless `show_deleted` is set
+   * in the `ListRolesRequest`. The Role contains the deleted boolean set.
+   * Existing Bindings remains, but are inactive. The Role can be undeleted
+   * within 7 days. After 7 days the Role is deleted and all Bindings associated
+   * with the role are removed.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+   *
+   * [etag] - Used to perform a consistent read-modify-write.
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> delete(core.String name, {core.String etag}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (etag != null) {
+      _queryParams["etag"] = [etag];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Gets a Role definition.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `roles/{ROLE_NAME}`
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Lists the Roles defined on a resource.
+   *
+   * Request parameters:
+   *
+   * [parent] - The resource name of the parent resource in one of the following
+   * formats:
+   * `` (empty string) -- this refers to curated roles.
+   * `organizations/{ORGANIZATION_ID}`
+   * `projects/{PROJECT_ID}`
+   * Value must have pattern "^organizations/[^/]+$".
+   *
+   * [pageToken] - Optional pagination token returned in an earlier
+   * ListRolesResponse.
+   *
+   * [pageSize] - Optional limit on the number of roles to include in the
+   * response.
+   *
+   * [view] - Optional view for the returned Role objects.
+   * Possible string values are:
+   * - "BASIC" : A BASIC.
+   * - "FULL" : A FULL.
+   *
+   * [showDeleted] - Include Roles that have been deleted.
+   *
+   * Completes with a [ListRolesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListRolesResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String view, core.bool showDeleted}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListRolesResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a Role definition.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `roles/{ROLE_NAME}`
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+   *
+   * [updateMask] - A mask describing which fields in the Role have changed.
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> patch(Role request, core.String name, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Undelete a Role, bringing it back in its previous state.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> undelete(UndeleteRoleRequest request, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+}
+
+
+class PermissionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  PermissionsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists the permissions testable on a resource.
+   * A permission is testable if it can be tested for an identity on a resource.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [QueryTestablePermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<QueryTestablePermissionsResponse> queryTestablePermissions(QueryTestablePermissionsRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/permissions:queryTestablePermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new QueryTestablePermissionsResponse.fromJson(data));
+  }
+
+}
+
+
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsRolesResourceApi get roles => new ProjectsRolesResourceApi(_requester);
   ProjectsServiceAccountsResourceApi get serviceAccounts => new ProjectsServiceAccountsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
+}
+
+
+class ProjectsRolesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsRolesResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Creates a new Role.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [parent] - The resource name of the parent resource in one of the following
+   * formats:
+   * `organizations/{ORGANIZATION_ID}`
+   * `projects/{PROJECT_ID}`
+   * Value must have pattern "^projects/[^/]+$".
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> create(CreateRoleRequest request, core.String parent) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Soft deletes a role. The role is suspended and cannot be used to create new
+   * IAM Policy Bindings.
+   * The Role will not be included in `ListRoles()` unless `show_deleted` is set
+   * in the `ListRolesRequest`. The Role contains the deleted boolean set.
+   * Existing Bindings remains, but are inactive. The Role can be undeleted
+   * within 7 days. After 7 days the Role is deleted and all Bindings associated
+   * with the role are removed.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+   *
+   * [etag] - Used to perform a consistent read-modify-write.
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> delete(core.String name, {core.String etag}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (etag != null) {
+      _queryParams["etag"] = [etag];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Gets a Role definition.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `roles/{ROLE_NAME}`
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Lists the Roles defined on a resource.
+   *
+   * Request parameters:
+   *
+   * [parent] - The resource name of the parent resource in one of the following
+   * formats:
+   * `` (empty string) -- this refers to curated roles.
+   * `organizations/{ORGANIZATION_ID}`
+   * `projects/{PROJECT_ID}`
+   * Value must have pattern "^projects/[^/]+$".
+   *
+   * [showDeleted] - Include Roles that have been deleted.
+   *
+   * [pageToken] - Optional pagination token returned in an earlier
+   * ListRolesResponse.
+   *
+   * [pageSize] - Optional limit on the number of roles to include in the
+   * response.
+   *
+   * [view] - Optional view for the returned Role objects.
+   * Possible string values are:
+   * - "BASIC" : A BASIC.
+   * - "FULL" : A FULL.
+   *
+   * Completes with a [ListRolesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListRolesResponse> list(core.String parent, {core.bool showDeleted, core.String pageToken, core.int pageSize, core.String view}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListRolesResponse.fromJson(data));
+  }
+
+  /**
+   * Updates a Role definition.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `roles/{ROLE_NAME}`
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+   *
+   * [updateMask] - A mask describing which fields in the Role have changed.
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> patch(Role request, core.String name, {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Undelete a Role, bringing it back in its previous state.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> undelete(UndeleteRoleRequest request, core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
 }
 
 
@@ -769,6 +1475,117 @@ class RolesResourceApi {
       _requester = client;
 
   /**
+   * Gets a Role definition.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource name of the role in one of the following formats:
+   * `roles/{ROLE_NAME}`
+   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+   * Value must have pattern "^roles/[^/]+$".
+   *
+   * Completes with a [Role].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Role> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Role.fromJson(data));
+  }
+
+  /**
+   * Lists the Roles defined on a resource.
+   *
+   * Request parameters:
+   *
+   * [pageToken] - Optional pagination token returned in an earlier
+   * ListRolesResponse.
+   *
+   * [pageSize] - Optional limit on the number of roles to include in the
+   * response.
+   *
+   * [view] - Optional view for the returned Role objects.
+   * Possible string values are:
+   * - "BASIC" : A BASIC.
+   * - "FULL" : A FULL.
+   *
+   * [parent] - The resource name of the parent resource in one of the following
+   * formats:
+   * `` (empty string) -- this refers to curated roles.
+   * `organizations/{ORGANIZATION_ID}`
+   * `projects/{PROJECT_ID}`
+   *
+   * [showDeleted] - Include Roles that have been deleted.
+   *
+   * Completes with a [ListRolesResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListRolesResponse> list({core.String pageToken, core.int pageSize, core.String view, core.String parent, core.bool showDeleted}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+
+    _url = 'v1/roles';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListRolesResponse.fromJson(data));
+  }
+
+  /**
    * Queries roles that can be granted on a particular resource.
    * A role is grantable if it can be used as the role in a binding for a policy
    * for that resource.
@@ -911,6 +1728,13 @@ class BindingDelta {
    */
   core.String action;
   /**
+   * The condition that is associated with this binding.
+   * This field is GOOGLE_INTERNAL.
+   * This field is not logged in IAM side because it's only for audit logging.
+   * Optional
+   */
+  Expr condition;
+  /**
    * A single identity requesting access for a Cloud Platform resource.
    * Follows the same format of Binding.members.
    * Required
@@ -929,6 +1753,9 @@ class BindingDelta {
     if (_json.containsKey("action")) {
       action = _json["action"];
     }
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("member")) {
       member = _json["member"];
     }
@@ -942,11 +1769,44 @@ class BindingDelta {
     if (action != null) {
       _json["action"] = action;
     }
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (member != null) {
       _json["member"] = member;
     }
     if (role != null) {
       _json["role"] = role;
+    }
+    return _json;
+  }
+}
+
+/** The request to create a new role. */
+class CreateRoleRequest {
+  /** The Role resource to create. */
+  Role role;
+  /** The role id to use for this role. */
+  core.String roleId;
+
+  CreateRoleRequest();
+
+  CreateRoleRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("role")) {
+      role = new Role.fromJson(_json["role"]);
+    }
+    if (_json.containsKey("roleId")) {
+      roleId = _json["roleId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (role != null) {
+      _json["role"] = (role).toJson();
+    }
+    if (roleId != null) {
+      _json["roleId"] = roleId;
     }
     return _json;
   }
@@ -1070,6 +1930,107 @@ class Empty {
   }
 }
 
+/**
+ * Represents an expression text. Example:
+ *
+ *     title: "User account presence"
+ *     description: "Determines whether the request has a user account"
+ *     expression: "size(request.user) > 0"
+ */
+class Expr {
+  /**
+   * An optional description of the expression. This is a longer text which
+   * describes the expression, e.g. when hovered over it in a UI.
+   */
+  core.String description;
+  /**
+   * Textual representation of an expression in
+   * Common Expression Language syntax.
+   *
+   * The application context of the containing message determines which
+   * well-known feature set of CEL is supported.
+   */
+  core.String expression;
+  /**
+   * An optional string indicating the location of the expression for error
+   * reporting, e.g. a file name and a position in the file.
+   */
+  core.String location;
+  /**
+   * An optional title for the expression, i.e. a short string describing
+   * its purpose. This can be used e.g. in UIs which allow to enter the
+   * expression.
+   */
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/** The response containing the roles defined under a resource. */
+class ListRolesResponse {
+  /**
+   * To retrieve the next page of results, set
+   * `ListRolesRequest.page_token` to this value.
+   */
+  core.String nextPageToken;
+  /** The Roles defined on this resource. */
+  core.List<Role> roles;
+
+  ListRolesResponse();
+
+  ListRolesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("roles")) {
+      roles = _json["roles"].map((value) => new Role.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (roles != null) {
+      _json["roles"] = roles.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** The service account keys list response. */
 class ListServiceAccountKeysResponse {
   /** The public keys for the service account. */
@@ -1121,6 +2082,82 @@ class ListServiceAccountsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/** A permission which can be included by a role. */
+class Permission {
+  /**
+   * The current custom role support level.
+   * Possible string values are:
+   * - "SUPPORTED" : Permission is fully supported for custom role use.
+   * - "TESTING" : Permission is being tested to check custom role
+   * compatibility.
+   * - "NOT_SUPPORTED" : Permission is not supported for custom role use.
+   */
+  core.String customRolesSupportLevel;
+  /** A brief description of what this Permission is used for. */
+  core.String description;
+  /** The name of this Permission. */
+  core.String name;
+  /** This permission can ONLY be used in predefined roles. */
+  core.bool onlyInPredefinedRoles;
+  /**
+   * The current launch stage of the permission.
+   * Possible string values are:
+   * - "ALPHA" : The permission is currently in an alpha phase.
+   * - "BETA" : The permission is currently in a beta phase.
+   * - "GA" : The permission is generally available.
+   * - "DEPRECATED" : The permission is being deprecated.
+   */
+  core.String stage;
+  /** The title of this Permission. */
+  core.String title;
+
+  Permission();
+
+  Permission.fromJson(core.Map _json) {
+    if (_json.containsKey("customRolesSupportLevel")) {
+      customRolesSupportLevel = _json["customRolesSupportLevel"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("onlyInPredefinedRoles")) {
+      onlyInPredefinedRoles = _json["onlyInPredefinedRoles"];
+    }
+    if (_json.containsKey("stage")) {
+      stage = _json["stage"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (customRolesSupportLevel != null) {
+      _json["customRolesSupportLevel"] = customRolesSupportLevel;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (onlyInPredefinedRoles != null) {
+      _json["onlyInPredefinedRoles"] = onlyInPredefinedRoles;
+    }
+    if (stage != null) {
+      _json["stage"] = stage;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }
@@ -1256,6 +2293,14 @@ class QueryGrantableRolesRequest {
    * QueryGrantableRolesResponse.
    */
   core.String pageToken;
+  /**
+   *
+   * Possible string values are:
+   * - "BASIC" : Omits the `included_permissions` field.
+   * This is the default value.
+   * - "FULL" : Returns all fields.
+   */
+  core.String view;
 
   QueryGrantableRolesRequest();
 
@@ -1269,6 +2314,9 @@ class QueryGrantableRolesRequest {
     if (_json.containsKey("pageToken")) {
       pageToken = _json["pageToken"];
     }
+    if (_json.containsKey("view")) {
+      view = _json["view"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1281,6 +2329,9 @@ class QueryGrantableRolesRequest {
     }
     if (pageToken != null) {
       _json["pageToken"] = pageToken;
+    }
+    if (view != null) {
+      _json["view"] = view;
     }
     return _json;
   }
@@ -1319,10 +2370,111 @@ class QueryGrantableRolesResponse {
   }
 }
 
+/** A request to get permissions which can be tested on a resource. */
+class QueryTestablePermissionsRequest {
+  /**
+   * Required. The full resource name to query from the list of testable
+   * permissions.
+   *
+   * The name follows the Google Cloud Platform resource format.
+   * For example, a Cloud Platform project with id `my-project` will be named
+   * `//cloudresourcemanager.googleapis.com/projects/my-project`.
+   */
+  core.String fullResourceName;
+  /**
+   * Optional limit on the number of permissions to include in the response.
+   */
+  core.int pageSize;
+  /**
+   * Optional pagination token returned in an earlier
+   * QueryTestablePermissionsRequest.
+   */
+  core.String pageToken;
+
+  QueryTestablePermissionsRequest();
+
+  QueryTestablePermissionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fullResourceName")) {
+      fullResourceName = _json["fullResourceName"];
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("pageToken")) {
+      pageToken = _json["pageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (fullResourceName != null) {
+      _json["fullResourceName"] = fullResourceName;
+    }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (pageToken != null) {
+      _json["pageToken"] = pageToken;
+    }
+    return _json;
+  }
+}
+
+/** The response containing permissions which can be tested on a resource. */
+class QueryTestablePermissionsResponse {
+  /**
+   * To retrieve the next page of results, set
+   * `QueryTestableRolesRequest.page_token` to this value.
+   */
+  core.String nextPageToken;
+  /** The Permissions testable on the requested resource. */
+  core.List<Permission> permissions;
+
+  QueryTestablePermissionsResponse();
+
+  QueryTestablePermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"].map((value) => new Permission.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (permissions != null) {
+      _json["permissions"] = permissions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** A role in the Identity and Access Management API. */
 class Role {
+  /**
+   * The current deleted state of the role. This field is read only.
+   * It will be ignored in calls to CreateRole and UpdateRole.
+   */
+  core.bool deleted;
   /** Optional.  A human-readable description for the role. */
   core.String description;
+  /** Used to perform a consistent read-modify-write. */
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.BASE64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+  /**
+   * The names of the permissions this role grants when bound in an IAM policy.
+   */
+  core.List<core.String> includedPermissions;
   /**
    * The name of the role.
    *
@@ -1334,6 +2486,20 @@ class Role {
    */
   core.String name;
   /**
+   * The current launch stage of the role.
+   * Possible string values are:
+   * - "ALPHA" : The user has indicated this role is currently in an alpha
+   * phase.
+   * - "BETA" : The user has indicated this role is currently in a beta phase.
+   * - "GA" : The user has indicated this role is generally available.
+   * - "DEPRECATED" : The user has indicated this role is being deprecated.
+   * - "DISABLED" : This role is disabled and will not contribute permissions to
+   * any members
+   * it is granted to in policies.
+   * - "EAP" : The user has indicated this role is currently in an eap phase.
+   */
+  core.String stage;
+  /**
    * Optional.  A human-readable title for the role.  Typically this
    * is limited to 100 UTF-8 bytes.
    */
@@ -1342,11 +2508,23 @@ class Role {
   Role();
 
   Role.fromJson(core.Map _json) {
+    if (_json.containsKey("deleted")) {
+      deleted = _json["deleted"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("includedPermissions")) {
+      includedPermissions = _json["includedPermissions"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("stage")) {
+      stage = _json["stage"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -1355,11 +2533,23 @@ class Role {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (deleted != null) {
+      _json["deleted"] = deleted;
+    }
     if (description != null) {
       _json["description"] = description;
     }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (includedPermissions != null) {
+      _json["includedPermissions"] = includedPermissions;
+    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (stage != null) {
+      _json["stage"] = stage;
     }
     if (title != null) {
       _json["title"] = title;
@@ -1516,6 +2706,10 @@ class ServiceAccountKey {
    * The private key data. Only provided in `CreateServiceAccountKey`
    * responses. Make sure to keep the private key data secure because it
    * allows for the assertion of the service account identity.
+   * When decoded, the private key data can be used to authenticate with
+   * Google API client libraries and with
+   * <a href="/sdk/gcloud/reference/auth/activate-service-account">gcloud
+   * auth activate-service-account</a>.
    */
   core.String privateKeyData;
   core.List<core.int> get privateKeyDataAsBytes {
@@ -1802,6 +2996,35 @@ class TestIamPermissionsResponse {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+/** The request to undelete an existing role. */
+class UndeleteRoleRequest {
+  /** Used to perform a consistent read-modify-write. */
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.BASE64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  UndeleteRoleRequest();
+
+  UndeleteRoleRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
     }
     return _json;
   }

@@ -96,14 +96,6 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [pageToken] - The standard list page token.
-   *
-   * [name] - Not used.
-   *
-   * [pageSize] - The maximum number of operations to return. If unspecified,
-   * defaults to
-   * 50. The maximum value is 100.
-   *
    * [filter] - A string for filtering Operations.
    *   The following filter fields are supported&#58;
    *
@@ -126,6 +118,14 @@ class OperationsResourceApi {
    * * `serviceName={some-service}.googleapis.com AND (status=done OR
    * startTime>="2017-02-01")`
    *
+   * [pageToken] - The standard list page token.
+   *
+   * [name] - Not used.
+   *
+   * [pageSize] - The maximum number of operations to return. If unspecified,
+   * defaults to
+   * 50. The maximum value is 100.
+   *
    * Completes with a [ListOperationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -134,7 +134,7 @@ class OperationsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.String pageToken, core.String name, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list({core.String filter, core.String pageToken, core.String name, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -142,6 +142,9 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -150,9 +153,6 @@ class OperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/operations';
@@ -469,14 +469,14 @@ class ServicesResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
+   * [configId] - The id of the service configuration resource.
+   *
    * [view] - Specifies which parts of the Service Config should be returned in
    * the
    * response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
-   *
-   * [configId] - The id of the service configuration resource.
    *
    * Completes with a [Service].
    *
@@ -486,7 +486,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<Service> getConfig(core.String serviceName, {core.String view, core.String configId}) {
+  async.Future<Service> getConfig(core.String serviceName, {core.String configId, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -497,11 +497,11 @@ class ServicesResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (configId != null) {
       _queryParams["configId"] = [configId];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/config';
@@ -1279,10 +1279,6 @@ class ServicesRolloutsResourceApi {
    * [overview](/service-management/overview)
    * for naming requirements.  For example: `example.googleapis.com`.
    *
-   * [pageToken] - The token of the page to retrieve.
-   *
-   * [pageSize] - The max number of items to include in the response list.
-   *
    * [filter] - Use `filter` to return subset of rollouts.
    * The following filters are supported:
    *   -- To limit the results to only those in
@@ -1292,6 +1288,10 @@ class ServicesRolloutsResourceApi {
    *      [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED'
    *      or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
    *
+   * [pageToken] - The token of the page to retrieve.
+   *
+   * [pageSize] - The max number of items to include in the response list.
+   *
    * Completes with a [ListServiceRolloutsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1300,7 +1300,7 @@ class ServicesRolloutsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServiceRolloutsResponse> list(core.String serviceName, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListServiceRolloutsResponse> list(core.String serviceName, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1311,14 +1311,14 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName') + '/rollouts';
@@ -2119,6 +2119,8 @@ class ChangeReport {
 
 /** Write a Cloud Audit log */
 class CloudAuditOptions {
+  /** True if the log is for a permission of type DATA_READ or ADMIN_READ. */
+  core.bool isReadPermissionType;
   /**
    * The log_name to populate in the Cloud Audit Record.
    * Possible string values are:
@@ -2131,6 +2133,9 @@ class CloudAuditOptions {
   CloudAuditOptions();
 
   CloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("isReadPermissionType")) {
+      isReadPermissionType = _json["isReadPermissionType"];
+    }
     if (_json.containsKey("logName")) {
       logName = _json["logName"];
     }
@@ -2138,6 +2143,9 @@ class CloudAuditOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (isReadPermissionType != null) {
+      _json["isReadPermissionType"] = isReadPermissionType;
+    }
     if (logName != null) {
       _json["logName"] = logName;
     }
@@ -6774,8 +6782,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

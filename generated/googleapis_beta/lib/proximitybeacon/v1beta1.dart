@@ -706,18 +706,18 @@ class BeaconsAttachmentsResourceApi {
    * Required.
    * Value must have pattern "^beacons/[^/]+$".
    *
-   * [namespacedType] - Specifies the namespace and type of attachments to
-   * delete in
-   * `namespace/type` format. Accepts `* / * ` to specify
-   * "all types in all namespaces".
-   * Optional.
-   *
    * [projectId] - The project id to delete beacon attachments under. This field
    * can be
    * used when "*" is specified to mean all attachment namespaces. Projects
    * may have multiple attachments with multiple namespaces. If "*" is
    * specified and the projectId string is empty, then the project
    * making the request is used.
+   * Optional.
+   *
+   * [namespacedType] - Specifies the namespace and type of attachments to
+   * delete in
+   * `namespace/type` format. Accepts `* / * ` to specify
+   * "all types in all namespaces".
    * Optional.
    *
    * Completes with a [DeleteAttachmentsResponse].
@@ -728,7 +728,7 @@ class BeaconsAttachmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<DeleteAttachmentsResponse> batchDelete(core.String beaconName, {core.String namespacedType, core.String projectId}) {
+  async.Future<DeleteAttachmentsResponse> batchDelete(core.String beaconName, {core.String projectId, core.String namespacedType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -739,11 +739,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (namespacedType != null) {
-      _queryParams["namespacedType"] = [namespacedType];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (namespacedType != null) {
+      _queryParams["namespacedType"] = [namespacedType];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/attachments:batchDelete';
@@ -923,6 +923,11 @@ class BeaconsAttachmentsResourceApi {
    * Required.
    * Value must have pattern "^beacons/[^/]+$".
    *
+   * [namespacedType] - Specifies the namespace and type of attachment to
+   * include in response in
+   * <var>namespace/type</var> format. Accepts `* / * ` to specify
+   * "all types in all namespaces".
+   *
    * [projectId] - The project id to list beacon attachments under. This field
    * can be
    * used when "*" is specified to mean all attachment namespaces. Projects
@@ -930,11 +935,6 @@ class BeaconsAttachmentsResourceApi {
    * specified and the projectId string is empty, then the project
    * making the request is used.
    * Optional.
-   *
-   * [namespacedType] - Specifies the namespace and type of attachment to
-   * include in response in
-   * <var>namespace/type</var> format. Accepts `* / * ` to specify
-   * "all types in all namespaces".
    *
    * Completes with a [ListBeaconAttachmentsResponse].
    *
@@ -944,7 +944,7 @@ class BeaconsAttachmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName, {core.String projectId, core.String namespacedType}) {
+  async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName, {core.String namespacedType, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -955,11 +955,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (namespacedType != null) {
       _queryParams["namespacedType"] = [namespacedType];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/attachments';

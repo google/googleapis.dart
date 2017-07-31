@@ -184,13 +184,13 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
-   * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
-   *
    * [pageToken] - The standard list page token.
    *
    * [name] - The name of the operation's parent resource.
+   *
+   * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -200,7 +200,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.int pageSize, core.String filter, core.String pageToken, core.String name}) {
+  async.Future<ListOperationsResponse> list({core.String pageToken, core.String name, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -208,17 +208,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (name != null) {
       _queryParams["name"] = [name];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/operations';
@@ -827,8 +827,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

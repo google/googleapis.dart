@@ -6,7 +6,7 @@
     "description": "Reads and publishes results from Firebase Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://firebase.google.com/docs/test-lab/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/xxCMFllvdY9r3Y6cCpyoM0GPdao\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/iLYoOHQx5r8GDcLi8XjG6IPdi_0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1007,7 +1007,7 @@
             }
         }
     },
-    "revision": "20170707",
+    "revision": "20170727",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Any": {
@@ -1216,7 +1216,7 @@
                     "type": "string"
                 },
                 "testExecutionMatrixId": {
-                    "description": "TestExecution Matrix ID that the Test Service uses.\n\n- In response: present if set by create - In create: optional - In update: never set",
+                    "description": "TestExecution Matrix ID that the TestExecutionService uses.\n\n- In response: present if set by create - In create: optional - In update: never set",
                     "type": "string"
                 }
             },
@@ -1636,8 +1636,16 @@
             "description": "A stacktrace.",
             "id": "StackTrace",
             "properties": {
+                "clusterId": {
+                    "description": "Exception cluster ID",
+                    "type": "string"
+                },
                 "exception": {
                     "description": "The stack trace message.\n\nRequired",
+                    "type": "string"
+                },
+                "reportId": {
+                    "description": "Exception report ID",
                     "type": "string"
                 }
             },

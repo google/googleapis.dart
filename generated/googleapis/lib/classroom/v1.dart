@@ -854,6 +854,17 @@ class CoursesCourseWorkResourceApi {
    * This identifier can be either the Classroom-assigned identifier or an
    * alias.
    *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the
+   * server may assign a maximum.
+   *
+   * The server may return fewer than the specified number of results.
+   *
+   * [courseWorkStates] - Restriction on the work status to return. Only
+   * courseWork that matches
+   * is returned. If unspecified, items with a work status of `PUBLISHED`
+   * is returned.
+   *
    * [pageToken] - nextPageToken
    * value returned from a previous
    * list call,
@@ -869,17 +880,6 @@ class CoursesCourseWorkResourceApi {
    * If not specified, `updateTime desc` is the default behavior.
    * Examples: `dueDate asc,updateTime desc`, `updateTime,dueDate desc`
    *
-   * [pageSize] - Maximum number of items to return. Zero or unspecified
-   * indicates that the
-   * server may assign a maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
-   * [courseWorkStates] - Restriction on the work status to return. Only
-   * courseWork that matches
-   * is returned. If unspecified, items with a work status of `PUBLISHED`
-   * is returned.
-   *
    * Completes with a [ListCourseWorkResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -888,7 +888,7 @@ class CoursesCourseWorkResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCourseWorkResponse> list(core.String courseId, {core.String pageToken, core.String orderBy, core.int pageSize, core.List<core.String> courseWorkStates}) {
+  async.Future<ListCourseWorkResponse> list(core.String courseId, {core.int pageSize, core.List<core.String> courseWorkStates, core.String pageToken, core.String orderBy}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -899,17 +899,17 @@ class CoursesCourseWorkResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (courseWorkStates != null) {
       _queryParams["courseWorkStates"] = courseWorkStates;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/courseWork';
@@ -1109,6 +1109,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * This may be set to the string literal `"-"` to request student work for
    * all course work in the specified course.
    *
+   * [late] - Requested lateness value. If specified, returned student
+   * submissions are
+   * restricted by the requested value.
+   * If unspecified, submissions are returned regardless of `late` value.
+   * Possible string values are:
+   * - "LATE_VALUES_UNSPECIFIED" : A LATE_VALUES_UNSPECIFIED.
+   * - "LATE_ONLY" : A LATE_ONLY.
+   * - "NOT_LATE_ONLY" : A NOT_LATE_ONLY.
+   *
    * [pageToken] - nextPageToken
    * value returned from a previous
    * list call,
@@ -1117,15 +1126,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * The list request
    * must be otherwise identical to the one that resulted in this token.
    *
+   * [states] - Requested submission states. If specified, returned student
+   * submissions
+   * match one of the specified submission states.
+   *
    * [pageSize] - Maximum number of items to return. Zero or unspecified
    * indicates that the
    * server may assign a maximum.
    *
    * The server may return fewer than the specified number of results.
-   *
-   * [states] - Requested submission states. If specified, returned student
-   * submissions
-   * match one of the specified submission states.
    *
    * [userId] - Optional argument to restrict returned student work to those
    * owned by the
@@ -1136,15 +1145,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * * the email address of the user
    * * the string literal `"me"`, indicating the requesting user
    *
-   * [late] - Requested lateness value. If specified, returned student
-   * submissions are
-   * restricted by the requested value.
-   * If unspecified, submissions are returned regardless of `late` value.
-   * Possible string values are:
-   * - "LATE_VALUES_UNSPECIFIED" : A LATE_VALUES_UNSPECIFIED.
-   * - "LATE_ONLY" : A LATE_ONLY.
-   * - "NOT_LATE_ONLY" : A NOT_LATE_ONLY.
-   *
    * Completes with a [ListStudentSubmissionsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1153,7 +1153,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListStudentSubmissionsResponse> list(core.String courseId, core.String courseWorkId, {core.String pageToken, core.int pageSize, core.List<core.String> states, core.String userId, core.String late}) {
+  async.Future<ListStudentSubmissionsResponse> list(core.String courseId, core.String courseWorkId, {core.String late, core.String pageToken, core.List<core.String> states, core.int pageSize, core.String userId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1167,20 +1167,20 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
+    if (late != null) {
+      _queryParams["late"] = [late];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (states != null) {
       _queryParams["states"] = states;
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (userId != null) {
       _queryParams["userId"] = [userId];
-    }
-    if (late != null) {
-      _queryParams["late"] = [late];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/courseWork/' + commons.Escaper.ecapeVariable('$courseWorkId') + '/studentSubmissions';
@@ -1790,6 +1790,10 @@ class CoursesStudentsResourceApi {
    * This identifier can be either the Classroom-assigned identifier or an
    * alias.
    *
+   * [pageSize] - Maximum number of items to return. Zero means no maximum.
+   *
+   * The server may return fewer than the specified number of results.
+   *
    * [pageToken] - nextPageToken
    * value returned from a previous
    * list call, indicating that
@@ -1797,10 +1801,6 @@ class CoursesStudentsResourceApi {
    *
    * The list request must be
    * otherwise identical to the one that resulted in this token.
-   *
-   * [pageSize] - Maximum number of items to return. Zero means no maximum.
-   *
-   * The server may return fewer than the specified number of results.
    *
    * Completes with a [ListStudentsResponse].
    *
@@ -1810,7 +1810,7 @@ class CoursesStudentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListStudentsResponse> list(core.String courseId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListStudentsResponse> list(core.String courseId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1821,11 +1821,11 @@ class CoursesStudentsResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/students';
@@ -2993,7 +2993,7 @@ class UserProfilesGuardiansResourceApi {
 class Assignment {
   /**
    * Drive folder where attachments from student submissions are placed.
-   * This is only populated for course teachers.
+   * This is only populated for course teachers and administrators.
    */
   DriveFolder studentWorkFolder;
 

@@ -15,7 +15,7 @@
     "description": "Manages the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/emm-api",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/H9duqVdKTSndf2JIlZN75jlKC_0\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Ivm64IXDz4phaRjFyOAAO1c8CT4\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -376,6 +376,29 @@
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
+                "getAndroidDevicePolicyConfig": {
+                    "description": "Returns the Android Device Policy config resource.",
+                    "httpMethod": "GET",
+                    "id": "androidenterprise.enterprises.getAndroidDevicePolicyConfig",
+                    "parameterOrder": [
+                        "enterpriseId"
+                    ],
+                    "parameters": {
+                        "enterpriseId": {
+                            "description": "The ID of the enterprise.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "enterprises/{enterpriseId}/androidDevicePolicyConfig",
+                    "response": {
+                        "$ref": "AndroidDevicePolicyConfig"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidenterprise"
+                    ]
+                },
                 "getServiceAccount": {
                     "description": "Returns a service account and credentials. The service account can be bound to the enterprise by calling setAccount. The service account is unique to this enterprise and EMM, and will be deleted if the enterprise is unbound. The credentials contain private key data and are not stored server-side.\n\nThis method can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before Enterprises.SetAccount; at other times it will return an error.\n\nSubsequent calls after the first will generate a new, unique set of credentials, and invalidate the previously generated credentials.\n\nOnce the service account is bound to the enterprise, it can be managed using the serviceAccountKeys resource.",
                     "httpMethod": "GET",
@@ -555,6 +578,32 @@
                     },
                     "response": {
                         "$ref": "EnterpriseAccount"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidenterprise"
+                    ]
+                },
+                "setAndroidDevicePolicyConfig": {
+                    "description": "Sets the Android Device Policy config resource. EMM may use this API to enable or disable Android Device Policy support for the specified enterprise.",
+                    "httpMethod": "PUT",
+                    "id": "androidenterprise.enterprises.setAndroidDevicePolicyConfig",
+                    "parameterOrder": [
+                        "enterpriseId"
+                    ],
+                    "parameters": {
+                        "enterpriseId": {
+                            "description": "The ID of the enterprise.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "enterprises/{enterpriseId}/androidDevicePolicyConfig",
+                    "request": {
+                        "$ref": "AndroidDevicePolicyConfig"
+                    },
+                    "response": {
+                        "$ref": "AndroidDevicePolicyConfig"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
@@ -2604,7 +2653,7 @@
             }
         }
     },
-    "revision": "20170706",
+    "revision": "20170719",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Administrator": {
@@ -2653,6 +2702,22 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AndroidDevicePolicyConfig": {
+            "description": "The Android Device Policy configuration of an enterprise.",
+            "id": "AndroidDevicePolicyConfig",
+            "properties": {
+                "kind": {
+                    "default": "androidenterprise#androidDevicePolicyConfig",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#androidDevicePolicyConfig\".",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "The state of Android Device Policy. \"enabled\" indicates that Android Device Policy is enabled for the enterprise and the EMM is allowed to manage devices with Android Device Policy, while \"disabled\" means that it cannot.",
+                    "type": "string"
                 }
             },
             "type": "object"

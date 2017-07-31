@@ -624,18 +624,6 @@ class ProjectsResourceApi {
    *
    * Request parameters:
    *
-   * [pageToken] - A pagination token returned from a previous call to
-   * ListProjects
-   * that indicates from where listing should continue.
-   *
-   * Optional.
-   *
-   * [pageSize] - The maximum number of Projects to return in the response.
-   * The server can return fewer Projects than requested.
-   * If unspecified, server picks an appropriate default.
-   *
-   * Optional.
-   *
    * [filter] - An expression for filtering the results of the request.  Filter
    * rules are
    * case insensitive. The fields eligible for filtering are:
@@ -668,6 +656,18 @@ class ProjectsResourceApi {
    *
    * Optional.
    *
+   * [pageToken] - A pagination token returned from a previous call to
+   * ListProjects
+   * that indicates from where listing should continue.
+   *
+   * Optional.
+   *
+   * [pageSize] - The maximum number of Projects to return in the response.
+   * The server can return fewer Projects than requested.
+   * If unspecified, server picks an appropriate default.
+   *
+   * Optional.
+   *
    * Completes with a [ListProjectsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -676,7 +676,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListProjectsResponse> list({core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListProjectsResponse> list({core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -684,14 +684,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/projects';

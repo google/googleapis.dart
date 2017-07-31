@@ -20,6 +20,11 @@ const core.String USER_AGENT = 'dart-api-client language/v1beta2';
  * and text annotations.
  */
 class LanguageApi {
+  /**
+   * Apply machine learning models to reveal the structure and meaning of text
+   */
+  static const CloudLanguageScope = "https://www.googleapis.com/auth/cloud-language";
+
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
 
@@ -1482,8 +1487,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

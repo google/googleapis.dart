@@ -9953,7 +9953,7 @@ class ProjectsResourceApi {
       _requester = client;
 
   /**
-   * Disable this project as an XPN host project.
+   * Disable this project as a shared VPC host project.
    *
    * Request parameters:
    *
@@ -9994,7 +9994,8 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Disable an XPN resource associated with this host project.
+   * Disable a serivce resource (a.k.a service project) associated with this
+   * host project.
    *
    * [request] - The metadata request object.
    *
@@ -10040,7 +10041,7 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Enable this project as an XPN host project.
+   * Enable this project as a shared VPC host project.
    *
    * Request parameters:
    *
@@ -10081,9 +10082,9 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Enable XPN resource (a.k.a service project or service folder in the future)
-   * for a host project, so that subnetworks in the host project can be used by
-   * instances in the service project or folder.
+   * Enable service resource (a.k.a service project) for a host project, so that
+   * subnets in the host project can be used by instances in the service
+   * project.
    *
    * [request] - The metadata request object.
    *
@@ -10170,8 +10171,8 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Get the XPN host project that this project links to. May be empty if no
-   * link exists.
+   * Get the shared VPC host project that this project links to. May be empty if
+   * no link exists.
    *
    * Request parameters:
    *
@@ -10212,7 +10213,8 @@ class ProjectsResourceApi {
   }
 
   /**
-   * Get XPN resources associated with this host project.
+   * Get service resources (a.k.a service project) associated with this host
+   * project.
    *
    * Request parameters:
    *
@@ -10273,7 +10275,7 @@ class ProjectsResourceApi {
   }
 
   /**
-   * List all XPN host projects visible to the user in an organization.
+   * List all shared VPC host projects visible to the user in an organization.
    *
    * [request] - The metadata request object.
    *
@@ -13574,7 +13576,8 @@ class RoutersResourceApi {
 
   /**
    * Patches the specified Router resource with the data included in the
-   * request. This method supports patch semantics.
+   * request. This method supports PATCH semantics and uses JSON merge patch
+   * format and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -19261,11 +19264,10 @@ class AcceleratorType {
 
 class AcceleratorTypeAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of scoped accelerator type lists. */
+  /** A list of AcceleratorTypesScopedList resources. */
   core.Map<core.String, AcceleratorTypesScopedList> items;
   /**
    * [Output Only] Type of resource. Always
@@ -19338,7 +19340,13 @@ class AcceleratorTypeList {
    * lists of accelerator types.
    */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -19726,7 +19734,7 @@ class AddressAggregatedList {
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of scoped address lists. */
+  /** A list of AddressesScopedList resources. */
   core.Map<core.String, AddressesScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#addressAggregatedList for
@@ -19788,11 +19796,10 @@ class AddressAggregatedList {
 /** Contains a list of addresses. */
 class AddressList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of addresses. */
+  /** A list of Address resources. */
   core.List<Address> items;
   /**
    * [Output Only] Type of resource. Always compute#addressList for lists of
@@ -19807,7 +19814,7 @@ class AddressList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for the resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   AddressList();
@@ -19981,6 +19988,46 @@ class AddressesScopedList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/** An alias IP range attached to an instance's network interface. */
+class AliasIpRange {
+  /**
+   * The IP CIDR range represented by this alias IP range. This IP CIDR range
+   * must belong to the specified subnetwork and cannot contain IP addresses
+   * reserved by system or used by other network interfaces. This range may be a
+   * single IP address (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format
+   * string (e.g. 10.1.2.0/24).
+   */
+  core.String ipCidrRange;
+  /**
+   * Optional subnetwork secondary range name specifying the secondary range
+   * from which to allocate the IP CIDR range for this alias IP range. If left
+   * unspecified, the primary range of the subnetwork will be used.
+   */
+  core.String subnetworkRangeName;
+
+  AliasIpRange();
+
+  AliasIpRange.fromJson(core.Map _json) {
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+    if (_json.containsKey("subnetworkRangeName")) {
+      subnetworkRangeName = _json["subnetworkRangeName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    if (subnetworkRangeName != null) {
+      _json["subnetworkRangeName"] = subnetworkRangeName;
     }
     return _json;
   }
@@ -20445,11 +20492,10 @@ class Autoscaler {
 
 class AutoscalerAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A map of scoped autoscaler lists. */
+  /** A list of AutoscalersScopedList resources. */
   core.Map<core.String, AutoscalersScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#autoscalerAggregatedList for
@@ -20511,8 +20557,7 @@ class AutoscalerAggregatedList {
 /** Contains a list of Autoscaler resources. */
 class AutoscalerList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of Autoscaler resources. */
@@ -20989,17 +21034,17 @@ class Backend {
    */
   core.String description;
   /**
-   * The fully-qualified URL of a zonal Instance Group resource. This instance
-   * group defines the list of instances that serve traffic. Member virtual
-   * machine instances from each instance group must live in the same zone as
-   * the instance group itself. No two backends in a backend service are allowed
-   * to use same Instance Group resource.
+   * The fully-qualified URL of a Instance Group resource. This instance group
+   * defines the list of instances that serve traffic. Member virtual machine
+   * instances from each instance group must live in the same zone as the
+   * instance group itself. No two backends in a backend service are allowed to
+   * use same Instance Group resource.
    *
    * Note that you must specify an Instance Group resource using the
    * fully-qualified URL, rather than a partial URL.
    *
    * When the BackendService has load balancing scheme INTERNAL, the instance
-   * group must be in a zone within the same region as the BackendService.
+   * group must be within the same region as the BackendService.
    */
   core.String group;
   /**
@@ -21211,7 +21256,13 @@ class BackendBucketList {
   core.List<BackendBucket> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -21547,11 +21598,17 @@ class BackendServiceAggregatedList {
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A map of scoped BackendService lists. */
+  /** A list of BackendServicesScopedList resources. */
   core.Map<core.String, BackendServicesScopedList> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -22166,11 +22223,10 @@ class Commitment {
 
 class CommitmentAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** Commitments by scope. */
+  /** A list of CommitmentsScopedList resources. */
   core.Map<core.String, CommitmentsScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#commitmentAggregatedList for
@@ -22232,8 +22288,7 @@ class CommitmentAggregatedList {
 /** Contains a list of Commitment resources. */
 class CommitmentList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of Commitment resources. */
@@ -22930,11 +22985,10 @@ class Disk {
 
 class DiskAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of scoped disk lists. */
+  /** A list of DisksScopedList resources. */
   core.Map<core.String, DisksScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#diskAggregatedList for
@@ -22946,8 +23000,7 @@ class DiskAggregatedList {
    * list requests. If the number of results is larger than maxResults, use the
    * nextPageToken as a value for the query parameter pageToken in the next list
    * request. Subsequent list requests will have their own nextPageToken to
-   * continue paging through the results. Acceptable values are 0 to 500,
-   * inclusive. (Default: 500)
+   * continue paging through the results.
    */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
@@ -23007,11 +23060,11 @@ class DiskList {
    */
   core.String kind;
   /**
-   * This token allows you to get the next page of results for list requests. If
-   * the number of results is larger than maxResults, use the nextPageToken as a
-   * value for the query parameter pageToken in the next list request.
-   * Subsequent list requests will have their own nextPageToken to continue
-   * paging through the results.
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
    */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
@@ -23204,11 +23257,10 @@ class DiskType {
 
 class DiskTypeAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of scoped disk type lists. */
+  /** A list of DiskTypesScopedList resources. */
   core.Map<core.String, DiskTypesScopedList> items;
   /** [Output Only] Type of resource. Always compute#diskTypeAggregatedList. */
   core.String kind;
@@ -23267,11 +23319,10 @@ class DiskTypeAggregatedList {
 /** Contains a list of disk types. */
 class DiskTypeList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Disk Type resources. */
+  /** A list of DiskType resources. */
   core.List<DiskType> items;
   /**
    * [Output Only] Type of resource. Always compute#diskTypeList for disk types.
@@ -23720,15 +23771,16 @@ class Firewall {
    */
   core.List<core.String> sourceRanges;
   /**
-   * If source tags are specified, the firewall will apply only to traffic with
-   * source IP that belongs to a tag listed in source tags. Source tags cannot
-   * be used to control traffic to an instance's external IP address. Because
-   * tags are associated with an instance, not an IP address. One or both of
-   * sourceRanges and sourceTags may be set. If both properties are set, the
-   * firewall will apply to traffic that has source IP address within
-   * sourceRanges OR the source IP that belongs to a tag listed in the
-   * sourceTags property. The connection does not need to match both properties
-   * for the firewall to apply.
+   * If source tags are specified, the firewall will apply only to traffic from
+   * VM instances in the same virtual network with a tag listed in the source
+   * tags. Source tags cannot be used to control traffic to an instance's
+   * external IP address, it only applies to traffic between instances in the
+   * same virtual network. Because tags are associated with instances, not IP
+   * addresses. One or both of sourceRanges and sourceTags may be set. If both
+   * properties are set, the firewall will apply to traffic that has source IP
+   * address within sourceRanges OR the source IP that belongs to a tag listed
+   * in the sourceTags property. The connection does not need to match both
+   * properties for the firewall to apply.
    */
   core.List<core.String> sourceTags;
   /**
@@ -23819,11 +23871,10 @@ class Firewall {
 /** Contains a list of firewalls. */
 class FirewallList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Firewall resources. */
+  /** A list of Firewall resources. */
   core.List<Firewall> items;
   /**
    * [Output Only] Type of resource. Always compute#firewallList for lists of
@@ -23995,8 +24046,8 @@ class ForwardingRule {
    * Some types of forwarding target have constraints on the acceptable ports:
    * - TargetHttpProxy: 80, 8080
    * - TargetHttpsProxy: 443
-   * - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995
-   * - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995
+   * - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222
+   * - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222
    * - TargetVpnGateway: 500, 4500
    * -
    */
@@ -24157,11 +24208,10 @@ class ForwardingRule {
 
 class ForwardingRuleAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A map of scoped forwarding rule lists. */
+  /** A list of ForwardingRulesScopedList resources. */
   core.Map<core.String, ForwardingRulesScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#forwardingRuleAggregatedList
@@ -24222,7 +24272,9 @@ class ForwardingRuleAggregatedList {
 
 /** Contains a list of ForwardingRule resources. */
 class ForwardingRuleList {
-  /** [Output Only] Unique identifier for the resource. Set by the server. */
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
   core.String id;
   /** A list of ForwardingRule resources. */
   core.List<ForwardingRule> items;
@@ -24813,8 +24865,7 @@ class HealthCheck {
 /** Contains a list of HealthCheck resources. */
 class HealthCheckList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of HealthCheck resources. */
@@ -25165,7 +25216,7 @@ class HttpHealthCheck {
 /** Contains a list of HttpHealthCheck resources. */
 class HttpHealthCheckList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of HttpHealthCheck resources. */
@@ -25772,11 +25823,10 @@ class Image {
 /** Contains a list of images. */
 class ImageList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Image resources. */
+  /** A list of Image resources. */
   core.List<Image> items;
   /** Type of resource. */
   core.String kind;
@@ -26123,11 +26173,10 @@ class Instance {
 
 class InstanceAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of scoped instance lists. */
+  /** A list of InstancesScopedList resources. */
   core.Map<core.String, InstancesScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#instanceAggregatedList for
@@ -26353,11 +26402,10 @@ class InstanceGroup {
 
 class InstanceGroupAggregatedList {
   /**
-   * [Output Only] A unique identifier for this aggregated list of instance
-   * groups. The server generates this identifier.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A map of scoped instance group lists. */
+  /** A list of InstanceGroupsScopedList resources. */
   core.Map<core.String, InstanceGroupsScopedList> items;
   /**
    * [Output Only] The resource type, which is always
@@ -26373,10 +26421,7 @@ class InstanceGroupAggregatedList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /**
-   * [Output Only] The URL for this resource type. The server generates this
-   * URL.
-   */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceGroupAggregatedList();
@@ -26423,11 +26468,10 @@ class InstanceGroupAggregatedList {
 /** A list of InstanceGroup resources. */
 class InstanceGroupList {
   /**
-   * [Output Only] A unique identifier for this list of instance groups. The
-   * server generates this identifier.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A list of instance groups. */
+  /** A list of InstanceGroup resources. */
   core.List<InstanceGroup> items;
   /**
    * [Output Only] The resource type, which is always compute#instanceGroupList
@@ -26442,10 +26486,7 @@ class InstanceGroupList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /**
-   * [Output Only] The URL for this resource type. The server generates this
-   * URL.
-   */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceGroupList();
@@ -26803,11 +26844,10 @@ class InstanceGroupManagerActionsSummary {
 
 class InstanceGroupManagerAggregatedList {
   /**
-   * [Output Only] A unique identifier for this aggregated list of managed
-   * instance groups. The server generates this identifier.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of filtered managed instance group lists. */
+  /** A list of InstanceGroupManagersScopedList resources. */
   core.Map<core.String, InstanceGroupManagersScopedList> items;
   /**
    * [Output Only] The resource type, which is always
@@ -26823,10 +26863,7 @@ class InstanceGroupManagerAggregatedList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /**
-   * [Output Only] The URL for this resource type. The server generates this
-   * URL.
-   */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceGroupManagerAggregatedList();
@@ -26873,11 +26910,10 @@ class InstanceGroupManagerAggregatedList {
 /** [Output Only] A list of managed instance groups. */
 class InstanceGroupManagerList {
   /**
-   * [Output Only] A unique identifier for this resource type. The server
-   * generates this identifier.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of managed instance groups. */
+  /** A list of InstanceGroupManager resources. */
   core.List<InstanceGroupManager> items;
   /**
    * [Output Only] The resource type, which is always
@@ -27262,14 +27298,10 @@ class InstanceGroupsAddInstancesRequest {
 
 class InstanceGroupsListInstances {
   /**
-   * [Output Only] A unique identifier for this list of instances in the
-   * specified instance group. The server generates this identifier.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /**
-   * [Output Only] A list of instances and any named ports that are assigned to
-   * those instances.
-   */
+  /** A list of InstanceWithNamedPorts resources. */
   core.List<InstanceWithNamedPorts> items;
   /**
    * [Output Only] The resource type, which is always
@@ -27285,10 +27317,7 @@ class InstanceGroupsListInstances {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /**
-   * [Output Only] The URL for this list of instances in the specified instance
-   * groups. The server generates this URL.
-   */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceGroupsListInstances();
@@ -27564,11 +27593,10 @@ class InstanceGroupsSetNamedPortsRequest {
 /** Contains a list of instances. */
 class InstanceList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of instances. */
+  /** A list of Instance resources. */
   core.List<Instance> items;
   /**
    * [Output Only] Type of resource. Always compute#instanceList for lists of
@@ -27922,11 +27950,10 @@ class InstanceTemplate {
 /** A list of instance templates. */
 class InstanceTemplateList {
   /**
-   * [Output Only] A unique identifier for this instance template. The server
-   * defines this identifier.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] list of InstanceTemplate resources. */
+  /** A list of InstanceTemplate resources. */
   core.List<InstanceTemplate> items;
   /**
    * [Output Only] The resource type, which is always
@@ -27941,10 +27968,7 @@ class InstanceTemplateList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /**
-   * [Output Only] The URL for this instance template list. The server defines
-   * this URL.
-   */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   InstanceTemplateList();
@@ -28549,11 +28573,10 @@ class MachineType {
 
 class MachineTypeAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of scoped machine type lists. */
+  /** A list of MachineTypesScopedList resources. */
   core.Map<core.String, MachineTypesScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#machineTypeAggregatedList
@@ -28615,11 +28638,10 @@ class MachineTypeAggregatedList {
 /** Contains a list of machine types. */
 class MachineTypeList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Machine Type resources. */
+  /** A list of MachineType resources. */
   core.List<MachineType> items;
   /**
    * [Output Only] Type of resource. Always compute#machineTypeList for lists of
@@ -29022,7 +29044,7 @@ class MetadataItems {
    * Value for the metadata entry. These are free-form strings, and only have
    * meaning as interpreted by the image running in the instance. The only
    * restriction placed on values is that their size must be less than or equal
-   * to 32768 bytes.
+   * to 262144 bytes (256 KiB).
    */
   core.String value;
 
@@ -29285,6 +29307,11 @@ class NetworkInterface {
    */
   core.List<AccessConfig> accessConfigs;
   /**
+   * An array of alias IP ranges for this network interface. Can only be
+   * specified for network interfaces on subnet-mode networks.
+   */
+  core.List<AliasIpRange> aliasIpRanges;
+  /**
    * [Output Only] Type of the resource. Always compute#networkInterface for
    * network interfaces.
    */
@@ -29337,6 +29364,9 @@ class NetworkInterface {
     if (_json.containsKey("accessConfigs")) {
       accessConfigs = _json["accessConfigs"].map((value) => new AccessConfig.fromJson(value)).toList();
     }
+    if (_json.containsKey("aliasIpRanges")) {
+      aliasIpRanges = _json["aliasIpRanges"].map((value) => new AliasIpRange.fromJson(value)).toList();
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -29358,6 +29388,9 @@ class NetworkInterface {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (accessConfigs != null) {
       _json["accessConfigs"] = accessConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (aliasIpRanges != null) {
+      _json["aliasIpRanges"] = aliasIpRanges.map((value) => (value).toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -29381,11 +29414,10 @@ class NetworkInterface {
 /** Contains a list of networks. */
 class NetworkList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Network resources. */
+  /** A list of Network resources. */
   core.List<Network> items;
   /**
    * [Output Only] Type of resource. Always compute#networkList for lists of
@@ -30429,8 +30461,8 @@ class Project {
    */
   UsageExportLocation usageExportLocation;
   /**
-   * [Output Only] The role this project has in a Cross Project Network (XPN)
-   * configuration. Currently only HOST projects are differentiated.
+   * [Output Only] The role this project has in a shared VPC configuration.
+   * Currently only HOST projects are differentiated.
    * Possible string values are:
    * - "HOST"
    * - "UNSPECIFIED_XPN_PROJECT_STATUS"
@@ -30521,7 +30553,7 @@ class Project {
 }
 
 class ProjectsDisableXpnResourceRequest {
-  /** XPN resource ID. */
+  /** Service resource (a.k.a service project) ID. */
   XpnResourceId xpnResource;
 
   ProjectsDisableXpnResourceRequest();
@@ -30542,7 +30574,7 @@ class ProjectsDisableXpnResourceRequest {
 }
 
 class ProjectsEnableXpnResourceRequest {
-  /** XPN resource ID. */
+  /** Service resource (a.k.a service project) ID. */
   XpnResourceId xpnResource;
 
   ProjectsEnableXpnResourceRequest();
@@ -30565,7 +30597,7 @@ class ProjectsEnableXpnResourceRequest {
 class ProjectsGetXpnResources {
   /**
    * [Output Only] Type of resource. Always compute#projectsGetXpnResources for
-   * lists of XPN resources.
+   * lists of service resources (a.k.a service projects)
    */
   core.String kind;
   /**
@@ -30576,7 +30608,10 @@ class ProjectsGetXpnResources {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /** XPN resources attached to this project as their XPN host. */
+  /**
+   * Serive resources (a.k.a service projects) attached to this project as their
+   * shared VPC host.
+   */
   core.List<XpnResourceId> resources;
 
   ProjectsGetXpnResources();
@@ -30611,8 +30646,8 @@ class ProjectsGetXpnResources {
 class ProjectsListXpnHostsRequest {
   /**
    * Optional organization ID managed by Cloud Resource Manager, for which to
-   * list XPN host projects. If not specified, the organization will be inferred
-   * from the project.
+   * list shared VPC host projects. If not specified, the organization will be
+   * inferred from the project.
    */
   core.String organization;
 
@@ -30660,6 +30695,7 @@ class Quota {
    * - "NETWORKS"
    * - "NVIDIA_K80_GPUS"
    * - "PREEMPTIBLE_CPUS"
+   * - "PREEMPTIBLE_LOCAL_SSD_GB"
    * - "REGIONAL_AUTOSCALERS"
    * - "REGIONAL_INSTANCE_GROUP_MANAGERS"
    * - "ROUTERS"
@@ -30819,15 +30855,20 @@ class Region {
 /** Contains a list of autoscalers. */
 class RegionAutoscalerList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A list of autoscalers. */
+  /** A list of Autoscaler resources. */
   core.List<Autoscaler> items;
   /** Type of resource. */
   core.String kind;
-  /** [Output Only] A token used to continue a truncated list request. */
+  /**
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
+   */
   core.String nextPageToken;
   /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
@@ -30876,8 +30917,7 @@ class RegionAutoscalerList {
 /** Contains a list of InstanceGroup resources. */
 class RegionInstanceGroupList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of InstanceGroup resources. */
@@ -30892,10 +30932,7 @@ class RegionInstanceGroupList {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /**
-   * [Output Only] The URL for this resource type. The server generates this
-   * URL.
-   */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   RegionInstanceGroupList();
@@ -30942,11 +30979,10 @@ class RegionInstanceGroupList {
 /** Contains a list of managed instance groups. */
 class RegionInstanceGroupManagerList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A list of managed instance groups. */
+  /** A list of InstanceGroupManager resources. */
   core.List<InstanceGroupManager> items;
   /**
    * [Output Only] The resource type, which is always
@@ -30954,12 +30990,15 @@ class RegionInstanceGroupManagerList {
    * exist in th regional scope.
    */
   core.String kind;
-  /** [Output only] A token used to continue a truncated list request. */
-  core.String nextPageToken;
   /**
-   * [Output only] The URL for this resource type. The server generates this
-   * URL.
+   * [Output Only] This token allows you to get the next page of results for
+   * list requests. If the number of results is larger than maxResults, use the
+   * nextPageToken as a value for the query parameter pageToken in the next list
+   * request. Subsequent list requests will have their own nextPageToken to
+   * continue paging through the results.
    */
+  core.String nextPageToken;
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   RegionInstanceGroupManagerList();
@@ -31166,13 +31205,10 @@ class RegionInstanceGroupManagersSetTemplateRequest {
 
 class RegionInstanceGroupsListInstances {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /**
-   * A list of instances and any named ports that are assigned to those
-   * instances.
-   */
+  /** A list of InstanceWithNamedPorts resources. */
   core.List<InstanceWithNamedPorts> items;
   /** The resource type. */
   core.String kind;
@@ -31184,7 +31220,7 @@ class RegionInstanceGroupsListInstances {
    * continue paging through the results.
    */
   core.String nextPageToken;
-  /** [Output Only] Server-defined URL for the resource. */
+  /** [Output Only] Server-defined URL for this resource. */
   core.String selfLink;
 
   RegionInstanceGroupsListInstances();
@@ -31313,11 +31349,10 @@ class RegionInstanceGroupsSetNamedPortsRequest {
 /** Contains a list of region resources. */
 class RegionList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Region resources. */
+  /** A list of Region resources. */
   core.List<Region> items;
   /**
    * [Output Only] Type of resource. Always compute#regionList for lists of
@@ -31755,10 +31790,10 @@ class Route {
 /** Contains a list of Route resources. */
 class RouteList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Route resources. */
+  /** A list of Route resources. */
   core.List<Route> items;
   /** Type of resource. */
   core.String kind;
@@ -31941,11 +31976,10 @@ class Router {
 /** Contains a list of routers. */
 class RouterAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A map of scoped router lists. */
+  /** A list of Router resources. */
   core.Map<core.String, RoutersScopedList> items;
   /** Type of resource. */
   core.String kind;
@@ -32155,8 +32189,7 @@ class RouterInterface {
 /** Contains a list of Router resources. */
 class RouterList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of Router resources. */
@@ -33006,11 +33039,10 @@ class Snapshot {
 /** Contains a list of Snapshot resources. */
 class SnapshotList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Snapshot resources. */
+  /** A list of Snapshot resources. */
   core.List<Snapshot> items;
   /** Type of resource. */
   core.String kind;
@@ -33175,7 +33207,7 @@ class SslCertificate {
 /** Contains a list of SslCertificate resources. */
 class SslCertificateList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of SslCertificate resources. */
@@ -33295,6 +33327,13 @@ class Subnetwork {
    * at resource creation time.
    */
   core.String region;
+  /**
+   * An array of configurations for secondary IP ranges for VM instances
+   * contained in this subnetwork. The primary IP of such VM must belong to the
+   * primary ipCidrRange of the subnetwork. The alias IPs may belong to either
+   * primary or secondary ranges.
+   */
+  core.List<SubnetworkSecondaryRange> secondaryIpRanges;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
 
@@ -33330,6 +33369,9 @@ class Subnetwork {
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
+    }
+    if (_json.containsKey("secondaryIpRanges")) {
+      secondaryIpRanges = _json["secondaryIpRanges"].map((value) => new SubnetworkSecondaryRange.fromJson(value)).toList();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -33368,6 +33410,9 @@ class Subnetwork {
     if (region != null) {
       _json["region"] = region;
     }
+    if (secondaryIpRanges != null) {
+      _json["secondaryIpRanges"] = secondaryIpRanges.map((value) => (value).toJson()).toList();
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -33377,11 +33422,10 @@ class Subnetwork {
 
 class SubnetworkAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output] A map of scoped Subnetwork lists. */
+  /** A list of SubnetworksScopedList resources. */
   core.Map<core.String, SubnetworksScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#subnetworkAggregatedList for
@@ -33443,11 +33487,10 @@ class SubnetworkAggregatedList {
 /** Contains a list of Subnetwork resources. */
 class SubnetworkList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** The Subnetwork resources. */
+  /** A list of Subnetwork resources. */
   core.List<Subnetwork> items;
   /**
    * [Output Only] Type of resource. Always compute#subnetworkList for lists of
@@ -33501,6 +33544,45 @@ class SubnetworkList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/** Represents a secondary IP range of a subnetwork. */
+class SubnetworkSecondaryRange {
+  /**
+   * The range of IP addresses belonging to this subnetwork secondary range.
+   * Provide this property when you create the subnetwork. Ranges must be unique
+   * and non-overlapping with all primary and secondary IP ranges within a
+   * network. Only IPv4 is supported.
+   */
+  core.String ipCidrRange;
+  /**
+   * The name associated with this subnetwork secondary range, used when adding
+   * an alias IP range to a VM instance. The name must be 1-63 characters long,
+   * and comply with RFC1035. The name must be unique within the subnetwork.
+   */
+  core.String rangeName;
+
+  SubnetworkSecondaryRange();
+
+  SubnetworkSecondaryRange.fromJson(core.Map _json) {
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+    if (_json.containsKey("rangeName")) {
+      rangeName = _json["rangeName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    if (rangeName != null) {
+      _json["rangeName"] = rangeName;
     }
     return _json;
   }
@@ -33900,8 +33982,7 @@ class TargetHttpProxy {
 /** A list of TargetHttpProxy resources. */
 class TargetHttpProxyList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of TargetHttpProxy resources. */
@@ -34096,8 +34177,7 @@ class TargetHttpsProxy {
 /** Contains a list of TargetHttpsProxy resources. */
 class TargetHttpsProxyList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of TargetHttpsProxy resources. */
@@ -34284,7 +34364,7 @@ class TargetInstanceAggregatedList {
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A map of scoped target instance lists. */
+  /** A list of TargetInstance resources. */
   core.Map<core.String, TargetInstancesScopedList> items;
   /** Type of resource. */
   core.String kind;
@@ -34343,8 +34423,7 @@ class TargetInstanceAggregatedList {
 /** Contains a list of TargetInstance resources. */
 class TargetInstanceList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of TargetInstance resources. */
@@ -34722,10 +34801,10 @@ class TargetPool {
 
 class TargetPoolAggregatedList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of scoped target pool lists. */
+  /** A list of TargetPool resources. */
   core.Map<core.String, TargetPoolsScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#targetPoolAggregatedList for
@@ -34818,7 +34897,7 @@ class TargetPoolInstanceHealth {
 /** Contains a list of TargetPool resources. */
 class TargetPoolList {
   /**
-   * [Output Only] Unique identifier for the resource. Defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of TargetPool resources. */
@@ -35320,8 +35399,7 @@ class TargetSslProxy {
 /** Contains a list of TargetSslProxy resources. */
 class TargetSslProxyList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of TargetSslProxy resources. */
@@ -35532,8 +35610,7 @@ class TargetTcpProxy {
 /** Contains a list of TargetTcpProxy resources. */
 class TargetTcpProxyList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
   /** A list of TargetTcpProxy resources. */
@@ -35730,11 +35807,10 @@ class TargetVpnGateway {
 
 class TargetVpnGatewayAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** A map of scoped target vpn gateway lists. */
+  /** A list of TargetVpnGateway resources. */
   core.Map<core.String, TargetVpnGatewaysScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#targetVpnGateway for target
@@ -35796,11 +35872,10 @@ class TargetVpnGatewayAggregatedList {
 /** Contains a list of TargetVpnGateway resources. */
 class TargetVpnGatewayList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of TargetVpnGateway resources. */
+  /** A list of TargetVpnGateway resources. */
   core.List<TargetVpnGateway> items;
   /**
    * [Output Only] Type of resource. Always compute#targetVpnGateway for target
@@ -36174,7 +36249,9 @@ class UrlMap {
 
 /** Contains a list of UrlMap resources. */
 class UrlMapList {
-  /** [Output Only] Unique identifier for the resource. Set by the server. */
+  /**
+   * [Output Only] Unique identifier for the resource; defined by the server.
+   */
   core.String id;
   /** A list of UrlMap resources. */
   core.List<UrlMap> items;
@@ -36634,11 +36711,10 @@ class VpnTunnel {
 
 class VpnTunnelAggregatedList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A map of scoped vpn tunnel lists. */
+  /** A list of VpnTunnelsScopedList resources. */
   core.Map<core.String, VpnTunnelsScopedList> items;
   /**
    * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
@@ -36699,11 +36775,10 @@ class VpnTunnelAggregatedList {
 /** Contains a list of VpnTunnel resources. */
 class VpnTunnelList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of VpnTunnel resources. */
+  /** A list of VpnTunnel resources. */
   core.List<VpnTunnel> items;
   /**
    * [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
@@ -36898,15 +36973,14 @@ class VpnTunnelsScopedList {
 
 class XpnHostList {
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is
-   * defined by the server.
+   * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of XPN host project URLs. */
+  /** [Output Only] A list of shared VPC host project URLs. */
   core.List<Project> items;
   /**
-   * [Output Only] Type of resource. Always compute#xpnHostList for lists of XPN
-   * hosts.
+   * [Output Only] Type of resource. Always compute#xpnHostList for lists of
+   * shared VPC hosts.
    */
   core.String kind;
   /**
@@ -36961,15 +37035,15 @@ class XpnHostList {
   }
 }
 
-/** XpnResourceId */
+/** Service resource (a.k.a service project) ID. */
 class XpnResourceId {
   /**
-   * The ID of the XPN resource. In the case of projects, this field matches the
-   * project's name, not the canonical ID.
+   * The ID of the service resource. In the case of projects, this field matches
+   * the project ID (e.g., my-project), not the project number (e.g., 12345678).
    */
   core.String id;
   /**
-   * The type of the XPN resource.
+   * The type of the service resource.
    * Possible string values are:
    * - "PROJECT"
    * - "XPN_RESOURCE_TYPE_UNSPECIFIED"
@@ -37099,7 +37173,7 @@ class ZoneList {
    * [Output Only] Unique identifier for the resource; defined by the server.
    */
   core.String id;
-  /** [Output Only] A list of Zone resources. */
+  /** A list of Zone resources. */
   core.List<Zone> items;
   /** Type of resource. */
   core.String kind;

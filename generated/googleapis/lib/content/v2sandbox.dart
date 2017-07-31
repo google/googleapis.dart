@@ -922,7 +922,7 @@ class Order {
   core.String placedDate;
   /**
    * The details of the merchant provided promotions applied to the order. More
-   * details about the program are  here.
+   * details about the program are here.
    */
   core.List<OrderPromotion> promotions;
   /** Refunds for the order. */
@@ -3473,7 +3473,7 @@ class TestOrder {
   core.String predefinedDeliveryAddress;
   /**
    * The details of the merchant provided promotions applied to the order. More
-   * details about the program are  here.
+   * details about the program are here.
    */
   core.List<OrderPromotion> promotions;
   /** The total cost of shipping for all items. */

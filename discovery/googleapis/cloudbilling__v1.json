@@ -11,6 +11,7 @@
     "basePath": "",
     "baseUrl": "https://cloudbilling.googleapis.com/",
     "batchPath": "batch",
+    "canonicalName": "Cloudbilling",
     "description": "Allows developers to manage billing for their Google Cloud Platform projects\n    programmatically.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/billing/",
@@ -264,7 +265,7 @@
             }
         }
     },
-    "revision": "20170524",
+    "revision": "20170711",
     "rootUrl": "https://cloudbilling.googleapis.com/",
     "schemas": {
         "ProjectBillingInfo": {

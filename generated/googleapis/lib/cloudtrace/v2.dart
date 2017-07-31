@@ -118,12 +118,6 @@ class ProjectsTracesResourceApi {
    * is `projects/PROJECT_ID`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request.
-   * Non-positive values are ignored. The presence of `next_page_token` in the
-   * response indicates that more results might be available, even if fewer than
-   * the maximum number of results is returned by this request.
-   *
    * [orderBy] - Optional. A single field used to sort the returned traces.
    * Only the following field names can be used:
    *
@@ -145,14 +139,20 @@ class ProjectsTracesResourceApi {
    * [endTime] - Optional. Do not return traces whose start time is later than
    * this time.
    *
+   * [startTime] - Optional. Do not return traces whose end time is earlier than
+   * this time.
+   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the
    * preceding call to this method.  `page_token` must be the value of
    * `next_page_token` from the previous response.  The values of other method
    * parameters should be identical to those in the previous call.
    *
-   * [startTime] - Optional. Do not return traces whose end time is earlier than
-   * this time.
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request.
+   * Non-positive values are ignored. The presence of `next_page_token` in the
+   * response indicates that more results might be available, even if fewer than
+   * the maximum number of results is returned by this request.
    *
    * Completes with a [ListTracesResponse].
    *
@@ -162,7 +162,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTracesResponse> list(core.String parent, {core.int pageSize, core.String orderBy, core.String filter, core.String endTime, core.String pageToken, core.String startTime}) {
+  async.Future<ListTracesResponse> list(core.String parent, {core.String orderBy, core.String filter, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -173,9 +173,6 @@ class ProjectsTracesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -185,11 +182,14 @@ class ProjectsTracesResourceApi {
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces';
@@ -1119,8 +1119,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

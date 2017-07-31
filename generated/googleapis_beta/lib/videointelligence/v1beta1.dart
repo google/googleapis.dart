@@ -650,6 +650,120 @@ class GoogleCloudVideointelligenceV1beta1LabelLocation {
   }
 }
 
+/**
+ * Safe search annotation (based on per-frame visual signals only).
+ * If no unsafe content has been detected in a frame, no annotations
+ * are present for that frame. If only some types of unsafe content
+ * have been detected in a frame, the likelihood is set to `UNKNOWN`
+ * for all other types of unsafe content.
+ */
+class GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation {
+  /**
+   * Likelihood of adult content.
+   * Possible string values are:
+   * - "UNKNOWN" : Unknown likelihood.
+   * - "VERY_UNLIKELY" : Very unlikely.
+   * - "UNLIKELY" : Unlikely.
+   * - "POSSIBLE" : Possible.
+   * - "LIKELY" : Likely.
+   * - "VERY_LIKELY" : Very likely.
+   */
+  core.String adult;
+  /**
+   * Likelihood of medical content.
+   * Possible string values are:
+   * - "UNKNOWN" : Unknown likelihood.
+   * - "VERY_UNLIKELY" : Very unlikely.
+   * - "UNLIKELY" : Unlikely.
+   * - "POSSIBLE" : Possible.
+   * - "LIKELY" : Likely.
+   * - "VERY_LIKELY" : Very likely.
+   */
+  core.String medical;
+  /**
+   * Likelihood of racy content.
+   * Possible string values are:
+   * - "UNKNOWN" : Unknown likelihood.
+   * - "VERY_UNLIKELY" : Very unlikely.
+   * - "UNLIKELY" : Unlikely.
+   * - "POSSIBLE" : Possible.
+   * - "LIKELY" : Likely.
+   * - "VERY_LIKELY" : Very likely.
+   */
+  core.String racy;
+  /**
+   * Likelihood that an obvious modification was made to the original
+   * version to make it appear funny or offensive.
+   * Possible string values are:
+   * - "UNKNOWN" : Unknown likelihood.
+   * - "VERY_UNLIKELY" : Very unlikely.
+   * - "UNLIKELY" : Unlikely.
+   * - "POSSIBLE" : Possible.
+   * - "LIKELY" : Likely.
+   * - "VERY_LIKELY" : Very likely.
+   */
+  core.String spoof;
+  /** Video time offset in microseconds. */
+  core.String timeOffset;
+  /**
+   * Likelihood of violent content.
+   * Possible string values are:
+   * - "UNKNOWN" : Unknown likelihood.
+   * - "VERY_UNLIKELY" : Very unlikely.
+   * - "UNLIKELY" : Unlikely.
+   * - "POSSIBLE" : Possible.
+   * - "LIKELY" : Likely.
+   * - "VERY_LIKELY" : Very likely.
+   */
+  core.String violent;
+
+  GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation();
+
+  GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("adult")) {
+      adult = _json["adult"];
+    }
+    if (_json.containsKey("medical")) {
+      medical = _json["medical"];
+    }
+    if (_json.containsKey("racy")) {
+      racy = _json["racy"];
+    }
+    if (_json.containsKey("spoof")) {
+      spoof = _json["spoof"];
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+    if (_json.containsKey("violent")) {
+      violent = _json["violent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (adult != null) {
+      _json["adult"] = adult;
+    }
+    if (medical != null) {
+      _json["medical"] = medical;
+    }
+    if (racy != null) {
+      _json["racy"] = racy;
+    }
+    if (spoof != null) {
+      _json["spoof"] = spoof;
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    if (violent != null) {
+      _json["violent"] = violent;
+    }
+    return _json;
+  }
+}
+
 /** Annotation progress for a single video. */
 class GoogleCloudVideointelligenceV1beta1VideoAnnotationProgress {
   /**
@@ -716,6 +830,8 @@ class GoogleCloudVideointelligenceV1beta1VideoAnnotationResults {
   core.String inputUri;
   /** Label annotations. There is exactly one element for each unique label. */
   core.List<GoogleCloudVideointelligenceV1beta1LabelAnnotation> labelAnnotations;
+  /** Safe search annotations. */
+  core.List<GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation> safeSearchAnnotations;
   /** Shot annotations. Each shot is represented as a video segment. */
   core.List<GoogleCloudVideointelligenceV1beta1VideoSegment> shotAnnotations;
 
@@ -730,6 +846,9 @@ class GoogleCloudVideointelligenceV1beta1VideoAnnotationResults {
     }
     if (_json.containsKey("labelAnnotations")) {
       labelAnnotations = _json["labelAnnotations"].map((value) => new GoogleCloudVideointelligenceV1beta1LabelAnnotation.fromJson(value)).toList();
+    }
+    if (_json.containsKey("safeSearchAnnotations")) {
+      safeSearchAnnotations = _json["safeSearchAnnotations"].map((value) => new GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation.fromJson(value)).toList();
     }
     if (_json.containsKey("shotAnnotations")) {
       shotAnnotations = _json["shotAnnotations"].map((value) => new GoogleCloudVideointelligenceV1beta1VideoSegment.fromJson(value)).toList();
@@ -746,6 +865,9 @@ class GoogleCloudVideointelligenceV1beta1VideoAnnotationResults {
     }
     if (labelAnnotations != null) {
       _json["labelAnnotations"] = labelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (safeSearchAnnotations != null) {
+      _json["safeSearchAnnotations"] = safeSearchAnnotations.map((value) => (value).toJson()).toList();
     }
     if (shotAnnotations != null) {
       _json["shotAnnotations"] = shotAnnotations.map((value) => (value).toJson()).toList();
@@ -773,6 +895,11 @@ class GoogleCloudVideointelligenceV1beta1VideoContext {
    */
   core.String labelDetectionModel;
   /**
+   * Model to use for safe search detection.
+   * Supported values: "latest" and "stable" (the default).
+   */
+  core.String safeSearchDetectionModel;
+  /**
    * Video segments to annotate. The segments may overlap and are not required
    * to be contiguous or span the whole video. If unspecified, each video
    * is treated as a single segment.
@@ -783,6 +910,11 @@ class GoogleCloudVideointelligenceV1beta1VideoContext {
    * Supported values: "latest" and "stable" (the default).
    */
   core.String shotChangeDetectionModel;
+  /**
+   * Whether the video has been shot from a stationary (i.e. non-moving) camera.
+   * When set to true, might improve detection accuracy for moving objects.
+   */
+  core.bool stationaryCamera;
 
   GoogleCloudVideointelligenceV1beta1VideoContext();
 
@@ -793,11 +925,17 @@ class GoogleCloudVideointelligenceV1beta1VideoContext {
     if (_json.containsKey("labelDetectionModel")) {
       labelDetectionModel = _json["labelDetectionModel"];
     }
+    if (_json.containsKey("safeSearchDetectionModel")) {
+      safeSearchDetectionModel = _json["safeSearchDetectionModel"];
+    }
     if (_json.containsKey("segments")) {
       segments = _json["segments"].map((value) => new GoogleCloudVideointelligenceV1beta1VideoSegment.fromJson(value)).toList();
     }
     if (_json.containsKey("shotChangeDetectionModel")) {
       shotChangeDetectionModel = _json["shotChangeDetectionModel"];
+    }
+    if (_json.containsKey("stationaryCamera")) {
+      stationaryCamera = _json["stationaryCamera"];
     }
   }
 
@@ -809,11 +947,17 @@ class GoogleCloudVideointelligenceV1beta1VideoContext {
     if (labelDetectionModel != null) {
       _json["labelDetectionModel"] = labelDetectionModel;
     }
+    if (safeSearchDetectionModel != null) {
+      _json["safeSearchDetectionModel"] = safeSearchDetectionModel;
+    }
     if (segments != null) {
       _json["segments"] = segments.map((value) => (value).toJson()).toList();
     }
     if (shotChangeDetectionModel != null) {
       _json["shotChangeDetectionModel"] = shotChangeDetectionModel;
+    }
+    if (stationaryCamera != null) {
+      _json["stationaryCamera"] = stationaryCamera;
     }
     return _json;
   }
@@ -994,8 +1138,8 @@ class GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

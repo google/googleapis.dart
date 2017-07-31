@@ -154,16 +154,16 @@ class AccountsClientsResourceApi {
    * [accountId] - Unique numerical account ID of the sponsor buyer to list the
    * clients for.
    *
-   * [pageSize] - Requested page size. The server may return fewer clients than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
-   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
    * ListClientsResponse.nextPageToken
    * returned from the previous call to the
    * accounts.clients.list method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer clients than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListClientsResponse].
    *
@@ -173,7 +173,7 @@ class AccountsClientsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClientsResponse> list(core.String accountId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListClientsResponse> list(core.String accountId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -184,11 +184,11 @@ class AccountsClientsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/clients';
@@ -1045,6 +1045,16 @@ class AccountsCreativesDealAssociationsResourceApi {
    * [creativeId] - The creative ID to list the associations from.
    * Specify "-" to list all creatives under the above account.
    *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListDealAssociationsResponse.next_page_token
+   * returned from the previous call to 'ListDealAssociations' method.
+   *
+   * [pageSize] - Requested page size. Server may return fewer associations than
+   * requested.
+   * If unspecified, server will pick an appropriate default.
+   *
    * [query] - An optional query string to filter deal associations. If no
    * filter is
    * specified, all associations will be returned.
@@ -1060,16 +1070,6 @@ class AccountsCreativesDealAssociationsResourceApi {
    * </ul>
    * Example: 'dealsId=12345 AND dealsStatus:disapproved'
    *
-   * [pageToken] - A token identifying a page of results the server should
-   * return.
-   * Typically, this is the value of
-   * ListDealAssociationsResponse.next_page_token
-   * returned from the previous call to 'ListDealAssociations' method.
-   *
-   * [pageSize] - Requested page size. Server may return fewer associations than
-   * requested.
-   * If unspecified, server will pick an appropriate default.
-   *
    * Completes with a [ListDealAssociationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1078,7 +1078,7 @@ class AccountsCreativesDealAssociationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDealAssociationsResponse> list(core.String accountId, core.String creativeId, {core.String query, core.String pageToken, core.int pageSize}) {
+  async.Future<ListDealAssociationsResponse> list(core.String accountId, core.String creativeId, {core.String pageToken, core.int pageSize, core.String query}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1092,14 +1092,14 @@ class AccountsCreativesDealAssociationsResourceApi {
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/creatives/' + commons.Escaper.ecapeVariable('$creativeId') + '/dealAssociations';
@@ -1689,10 +1689,6 @@ class AccountsFilterSetsFilteredBidsResourceApi {
    *
    * [filterSetId] - The ID of the filter set to apply.
    *
-   * [pageSize] - Requested page size. The server may return fewer results than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
-   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
@@ -1700,6 +1696,10 @@ class AccountsFilterSetsFilteredBidsResourceApi {
    * returned from the previous call to the
    * accounts.filterSets.filteredBids.list
    * method.
+   *
+   * [pageSize] - Requested page size. The server may return fewer results than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListFilteredBidsResponse].
    *
@@ -1709,7 +1709,7 @@ class AccountsFilterSetsFilteredBidsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListFilteredBidsResponse> list(core.String accountId, core.String filterSetId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListFilteredBidsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1723,11 +1723,11 @@ class AccountsFilterSetsFilteredBidsResourceApi {
     if (filterSetId == null) {
       throw new core.ArgumentError("Parameter filterSetId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBids';
@@ -1747,8 +1747,6 @@ class AccountsFilterSetsFilteredBidsResourceApi {
 
 class AccountsFilterSetsFilteredBidsCreativesResourceApi {
   final commons.ApiRequester _requester;
-
-  AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi get details => new AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi(_requester);
 
   AccountsFilterSetsFilteredBidsCreativesResourceApi(commons.ApiRequester client) : 
       _requester = client;
@@ -1828,92 +1826,6 @@ class AccountsFilterSetsFilteredBidsCreativesResourceApi {
 }
 
 
-class AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi {
-  final commons.ApiRequester _requester;
-
-  AccountsFilterSetsFilteredBidsCreativesDetailsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
-
-  /**
-   * List all details associated with a specific reason for which bids were
-   * filtered and a specific creative that was filtered for that reason, with
-   * the number of bids filtered for each detail.
-   *
-   * Request parameters:
-   *
-   * [accountId] - Account ID of the buyer.
-   *
-   * [filterSetId] - The ID of the filter set to apply.
-   *
-   * [creativeStatusId] - The ID of the creative status for which to retrieve a
-   * breakdown by detail.
-   * See
-   * [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
-   *
-   * [creativeId] - The creative ID for which to retrieve a breakdown by detail.
-   *
-   * [pageToken] - A token identifying a page of results the server should
-   * return.
-   * Typically, this is the value of
-   * ListCreativeStatusAndCreativeBreakdownByDetailResponse.nextPageToken
-   * returned from the previous call to the
-   * accounts.filterSets.filteredBids.creatives.details.list
-   * method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer results than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
-   *
-   * Completes with a [ListCreativeStatusAndCreativeBreakdownByDetailResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListCreativeStatusAndCreativeBreakdownByDetailResponse> list(core.String accountId, core.String filterSetId, core.int creativeStatusId, core.String creativeId, {core.String pageToken, core.int pageSize}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
-    }
-    if (creativeStatusId == null) {
-      throw new core.ArgumentError("Parameter creativeStatusId is required.");
-    }
-    if (creativeId == null) {
-      throw new core.ArgumentError("Parameter creativeId is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-
-    _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBids/' + commons.Escaper.ecapeVariable('$creativeStatusId') + '/creatives/' + commons.Escaper.ecapeVariable('$creativeId') + '/details';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListCreativeStatusAndCreativeBreakdownByDetailResponse.fromJson(data));
-  }
-
-}
-
-
 class AccountsFilterSetsFilteredBidsDetailsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1934,6 +1846,7 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
    * breakdown by detail.
    * See
    * [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+   * Details are only available for statuses 14, 15, 17, 18, 19, 86, and 87.
    *
    * [pageToken] - A token identifying a page of results the server should
    * return.
@@ -3580,8 +3493,8 @@ class FilterSet {
    * The granularity of time intervals if a time series breakdown is desired;
    * optional.
    * Possible string values are:
-   * - "INTERVAL_UNSPECIFIED" : A placeholder for an unspecified interval; no
-   * time series is applied.
+   * - "TIME_SERIES_GRANULARITY_UNSPECIFIED" : A placeholder for an unspecified
+   * interval; no time series is applied.
    * All rows in response will contain data for the entire requested time range.
    * - "HOURLY" : Indicates that data will be broken down by the hour.
    * - "DAILY" : Indicates that data will be broken down by the day.
@@ -4201,73 +4114,6 @@ class ListClientsResponse {
 }
 
 /**
- * Response message for listing all details associated with a given filtered bid
- * reason and a given creative.
- */
-class ListCreativeStatusAndCreativeBreakdownByDetailResponse {
-  /**
-   * The type of detail that the detail IDs represent.
-   * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : A placeholder for an undefined status.
-   * This value will never be returned in responses.
-   * - "CREATIVE_ATTRIBUTE" : Indicates that the detail ID refers to a creative
-   * attribute; see
-   * [publisher-excludable-creative-attributes](https://developers.google.com/ad-exchange/rtb/downloads/publisher-excludable-creative-attributes).
-   * - "VENDOR" : Indicates that the detail ID refers to a vendor; see
-   * [vendors](https://developers.google.com/ad-exchange/rtb/downloads/vendors).
-   * - "SENSITIVE_CATEGORY" : Indicates that the detail ID refers to a sensitive
-   * category; see
-   * [ad-sensitive-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-sensitive-categories).
-   * - "PRODUCT_CATEGORY" : Indicates that the detail ID refers to a product
-   * category; see
-   * [ad-product-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-product-categories).
-   */
-  core.String detailType;
-  /**
-   * List of rows, with counts of bids with a given creative status and
-   * creative, aggregated by detail.
-   */
-  core.List<FilteredBidDetailRow> filteredBidDetailRows;
-  /**
-   * A token to retrieve the next page of results.
-   * Pass this value in the
-   * ListCreativeStatusAndCreativeBreakdownByDetailRequest.pageToken
-   * field in the subsequent call to the
-   * accounts.filterSets.filteredBids.creatives.details.list
-   * method to retrieve the next page of results.
-   */
-  core.String nextPageToken;
-
-  ListCreativeStatusAndCreativeBreakdownByDetailResponse();
-
-  ListCreativeStatusAndCreativeBreakdownByDetailResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("detailType")) {
-      detailType = _json["detailType"];
-    }
-    if (_json.containsKey("filteredBidDetailRows")) {
-      filteredBidDetailRows = _json["filteredBidDetailRows"].map((value) => new FilteredBidDetailRow.fromJson(value)).toList();
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (detailType != null) {
-      _json["detailType"] = detailType;
-    }
-    if (filteredBidDetailRows != null) {
-      _json["filteredBidDetailRows"] = filteredBidDetailRows.map((value) => (value).toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/**
  * Response message for listing all creatives associated with a given filtered
  * bid reason.
  */
@@ -4318,7 +4164,7 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /**
    * The type of detail that the detail IDs represent.
    * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : A placeholder for an undefined status.
+   * - "DETAIL_TYPE_UNSPECIFIED" : A placeholder for an undefined status.
    * This value will never be returned in responses.
    * - "CREATIVE_ATTRIBUTE" : Indicates that the detail ID refers to a creative
    * attribute; see

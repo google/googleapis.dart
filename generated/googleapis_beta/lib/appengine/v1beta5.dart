@@ -376,11 +376,11 @@ class AppsOperationsResourceApi {
    *
    * [appsId] - Part of `name`. The name of the operation's parent resource.
    *
-   * [pageSize] - The standard list page size.
-   *
    * [filter] - The standard list filter.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -390,7 +390,7 @@ class AppsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String appsId, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String appsId, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -401,14 +401,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta5/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
@@ -532,9 +532,9 @@ class AppsServicesResourceApi {
    * [appsId] - Part of `name`. Name of the resource requested. Example:
    * apps/myapp.
    *
-   * [pageToken] - Continuation token for fetching the next page of results.
-   *
    * [pageSize] - Maximum results to return per page.
+   *
+   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListServicesResponse].
    *
@@ -544,7 +544,7 @@ class AppsServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list(core.String appsId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListServicesResponse> list(core.String appsId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -555,11 +555,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta5/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
@@ -3516,8 +3516,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details. There will be a common set
-   * of message types for APIs to use.
+   * A list of messages that carry the error details. There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

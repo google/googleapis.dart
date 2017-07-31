@@ -14,10 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client oslogin/v1alpha';
 
-/**
- * A Google Cloud API for managing OS login configuration for Directory API
- * users.
- */
+/** Manages OS login configuration for Directory API users. */
 class OsloginApi {
   /** View and manage your data across Google Cloud Platform services */
   static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";

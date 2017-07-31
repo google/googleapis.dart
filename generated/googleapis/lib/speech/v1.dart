@@ -581,6 +581,12 @@ class RecognitionAudio {
  */
 class RecognitionConfig {
   /**
+   * *Optional* If `true`, a list of `words` are returned in the top result,
+   * containing the start and end timestamps for those words. The default value,
+   * 'false' does not return any word-level timing information.
+   */
+  core.bool enableWordTimeOffsets;
+  /**
    * *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
    * Possible string values are:
    * - "ENCODING_UNSPECIFIED" : Not specified. Will return result
@@ -659,6 +665,9 @@ class RecognitionConfig {
   RecognitionConfig();
 
   RecognitionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableWordTimeOffsets")) {
+      enableWordTimeOffsets = _json["enableWordTimeOffsets"];
+    }
     if (_json.containsKey("encoding")) {
       encoding = _json["encoding"];
     }
@@ -681,6 +690,9 @@ class RecognitionConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (enableWordTimeOffsets != null) {
+      _json["enableWordTimeOffsets"] = enableWordTimeOffsets;
+    }
     if (encoding != null) {
       _json["encoding"] = encoding;
     }
@@ -812,6 +824,10 @@ class SpeechRecognitionAlternative {
    * *Output-only* Transcript text representing the words that the user spoke.
    */
   core.String transcript;
+  /**
+   * *Output-only* List of word-specific information for each recognized word.
+   */
+  core.List<WordInfo> words;
 
   SpeechRecognitionAlternative();
 
@@ -822,6 +838,9 @@ class SpeechRecognitionAlternative {
     if (_json.containsKey("transcript")) {
       transcript = _json["transcript"];
     }
+    if (_json.containsKey("words")) {
+      words = _json["words"].map((value) => new WordInfo.fromJson(value)).toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -831,6 +850,9 @@ class SpeechRecognitionAlternative {
     }
     if (transcript != null) {
       _json["transcript"] = transcript;
+    }
+    if (words != null) {
+      _json["words"] = words.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -923,8 +945,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -961,6 +983,61 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Word-specific information detected along with speech recognition when certain
+ * request parameters are set.
+ */
+class WordInfo {
+  /**
+   * *Output-only* Time offset relative to the beginning of the audio,
+   * and corresponding to the end of the spoken word.
+   * This field is only set if `enable_word_time_offsets=true` and only
+   * in the top hypothesis.
+   * This is an experimental feature and the accuracy of the time offset can
+   * vary.
+   */
+  core.String endTime;
+  /**
+   * *Output-only* Time offset relative to the beginning of the audio,
+   * and corresponding to the start of the spoken word.
+   * This field is only set if `enable_word_time_offsets=true` and only
+   * in the top hypothesis.
+   * This is an experimental feature and the accuracy of the time offset can
+   * vary.
+   */
+  core.String startTime;
+  /** *Output-only* The word corresponding to this set of information. */
+  core.String word;
+
+  WordInfo();
+
+  WordInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("word")) {
+      word = _json["word"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (word != null) {
+      _json["word"] = word;
     }
     return _json;
   }

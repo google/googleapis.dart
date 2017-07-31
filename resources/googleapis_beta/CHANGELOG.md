@@ -1,3 +1,7 @@
+## 0.39.0
+
+* [api-removed] dataproc:v1beta1
+
 ## 0.38.1
 
 * [api-new] oslogin:v1alpha

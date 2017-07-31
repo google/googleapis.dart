@@ -317,13 +317,13 @@ class InspectOperationsResourceApi {
    * [name] - The name of the operation's parent resource.
    * Value must have pattern "^inspect/operations$".
    *
+   * [pageSize] - The list page size. The max allowed value is 256 and default
+   * is 100.
+   *
    * [filter] - This parameter supports filtering by done, ie done=true or
    * done=false.
    *
    * [pageToken] - The standard list page token.
-   *
-   * [pageSize] - The list page size. The max allowed value is 256 and default
-   * is 100.
    *
    * Completes with a [GoogleLongrunningListOperationsResponse].
    *
@@ -333,7 +333,7 @@ class InspectOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,14 +344,14 @@ class InspectOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -392,8 +392,11 @@ class InspectResultsFindingsResourceApi {
    *
    * [name] - Identifier of the results set returned as metadata of
    * the longrunning operation created by a call to CreateInspectOperation.
-   * Should be in the format of `inspect/results/{id}.
+   * Should be in the format of `inspect/results/{id}`.
    * Value must have pattern "^inspect/results/[^/]+$".
+   *
+   * [pageSize] - Maximum number of results to return.
+   * If 0, the implementation selects a reasonable value.
    *
    * [filter] - Restricts findings to items that match. Supports info_type and
    * likelihood.
@@ -409,9 +412,6 @@ class InspectResultsFindingsResourceApi {
    * that this is a continuation of a prior `ListInspectFindings` call, and that
    * the system should return the next page of data.
    *
-   * [pageSize] - Maximum number of results to return.
-   * If 0, the implementation selects a reasonable value.
-   *
    * Completes with a [GooglePrivacyDlpV2beta1ListInspectFindingsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -420,7 +420,7 @@ class InspectResultsFindingsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GooglePrivacyDlpV2beta1ListInspectFindingsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<GooglePrivacyDlpV2beta1ListInspectFindingsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -431,14 +431,14 @@ class InspectResultsFindingsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/findings';
@@ -1003,7 +1003,7 @@ class GooglePrivacyDlpV2beta1DatastoreOptions {
 
 /** General identifier of a data field in a storage service. */
 class GooglePrivacyDlpV2beta1FieldId {
-  /** Column name describing the field. */
+  /** Name describing the field. */
   core.String columnName;
 
   GooglePrivacyDlpV2beta1FieldId();
@@ -1211,12 +1211,7 @@ class GooglePrivacyDlpV2beta1ImageRedactionConfig {
 
 /** Type of information detected by the API. */
 class GooglePrivacyDlpV2beta1InfoType {
-  /**
-   * Name of the information type. For built-in info types, this is provided by
-   * the API call ListInfoTypes. For user-defined info types, this is
-   * provided by the user. All user-defined info types must have unique names,
-   * and cannot conflict with built-in info type names.
-   */
+  /** Name of the information type. */
   core.String name;
 
   GooglePrivacyDlpV2beta1InfoType();
@@ -2220,8 +2215,8 @@ class GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

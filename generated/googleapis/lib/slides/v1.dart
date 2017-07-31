@@ -2926,6 +2926,31 @@ class List {
 }
 
 /**
+ * The properties of Page that are only
+ * relevant for pages with page_type MASTER.
+ */
+class MasterProperties {
+  /** The human-readable name of the master. */
+  core.String displayName;
+
+  MasterProperties();
+
+  MasterProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    return _json;
+  }
+}
+
+/**
  * Contains properties describing the look and feel of a list bullet at a given
  * level of nesting.
  */
@@ -3184,6 +3209,8 @@ class OutlineFill {
 class Page {
   /** Layout specific properties. Only set if page_type = LAYOUT. */
   LayoutProperties layoutProperties;
+  /** Master specific properties. Only set if page_type = MASTER. */
+  MasterProperties masterProperties;
   /** Notes specific properties. Only set if page_type = NOTES. */
   NotesProperties notesProperties;
   /**
@@ -3230,6 +3257,9 @@ class Page {
     if (_json.containsKey("layoutProperties")) {
       layoutProperties = new LayoutProperties.fromJson(_json["layoutProperties"]);
     }
+    if (_json.containsKey("masterProperties")) {
+      masterProperties = new MasterProperties.fromJson(_json["masterProperties"]);
+    }
     if (_json.containsKey("notesProperties")) {
       notesProperties = new NotesProperties.fromJson(_json["notesProperties"]);
     }
@@ -3257,6 +3287,9 @@ class Page {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (layoutProperties != null) {
       _json["layoutProperties"] = (layoutProperties).toJson();
+    }
+    if (masterProperties != null) {
+      _json["masterProperties"] = (masterProperties).toJson();
     }
     if (notesProperties != null) {
       _json["notesProperties"] = (notesProperties).toJson();

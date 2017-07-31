@@ -413,11 +413,11 @@ class AppsOperationsResourceApi {
    *
    * [appsId] - Part of `name`. The name of the operation's parent resource.
    *
+   * [pageToken] - The standard list page token.
+   *
    * [pageSize] - The standard list page size.
    *
    * [filter] - The standard list filter.
-   *
-   * [pageToken] - The standard list page token.
    *
    * Completes with a [ListOperationsResponse].
    *
@@ -427,7 +427,7 @@ class AppsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String appsId, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListOperationsResponse> list(core.String appsId, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -438,14 +438,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
@@ -623,6 +623,8 @@ class AppsServicesResourceApi {
    *
    * [servicesId] - Part of `name`. See documentation of `appsId`.
    *
+   * [updateMask] - Standard field mask for the set of fields to be updated.
+   *
    * [migrateTraffic] - Set to true to gradually shift traffic to one or more
    * versions that you specify. By default, traffic is shifted immediately. For
    * gradual traffic migration, the target versions must be located within
@@ -637,8 +639,6 @@ class AppsServicesResourceApi {
    * Splitting Traffic
    * (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
    *
-   * [updateMask] - Standard field mask for the set of fields to be updated.
-   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -647,7 +647,7 @@ class AppsServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Service request, core.String appsId, core.String servicesId, {core.bool migrateTraffic, core.String updateMask}) {
+  async.Future<Operation> patch(Service request, core.String appsId, core.String servicesId, {core.String updateMask, core.bool migrateTraffic}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -664,11 +664,11 @@ class AppsServicesResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (migrateTraffic != null) {
-      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (migrateTraffic != null) {
+      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId');
@@ -863,14 +863,14 @@ class AppsServicesVersionsResourceApi {
    *
    * [servicesId] - Part of `parent`. See documentation of `appsId`.
    *
+   * [pageToken] - Continuation token for fetching the next page of results.
+   *
    * [pageSize] - Maximum results to return per page.
    *
    * [view] - Controls the set of fields returned in the List response.
    * Possible string values are:
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
-   *
-   * [pageToken] - Continuation token for fetching the next page of results.
    *
    * Completes with a [ListVersionsResponse].
    *
@@ -880,7 +880,7 @@ class AppsServicesVersionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.int pageSize, core.String view, core.String pageToken}) {
+  async.Future<ListVersionsResponse> list(core.String appsId, core.String servicesId, {core.String pageToken, core.int pageSize, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -894,14 +894,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services/' + commons.Escaper.ecapeVariable('$servicesId') + '/versions';
@@ -1362,7 +1362,7 @@ class ApiEndpointHandler {
 
 /**
  * An Application resource contains the top-level configuration of an App Engine
- * application. Next tag: 19
+ * application. Next tag: 20
  */
 class Application {
   /**
@@ -3336,6 +3336,12 @@ class OperationMetadataV1Beta5 {
  * removed from traffic rotation.
  */
 class ReadinessCheck {
+  /**
+   * A maximum time limit on application initialization, measured from moment
+   * the application successfully replies to a healthcheck until it is ready to
+   * serve traffic.
+   */
+  core.String appStartTimeout;
   /** Interval between health checks. */
   core.String checkInterval;
   /** Number of consecutive failed checks required before removing traffic. */
@@ -3357,6 +3363,9 @@ class ReadinessCheck {
   ReadinessCheck();
 
   ReadinessCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("appStartTimeout")) {
+      appStartTimeout = _json["appStartTimeout"];
+    }
     if (_json.containsKey("checkInterval")) {
       checkInterval = _json["checkInterval"];
     }
@@ -3379,6 +3388,9 @@ class ReadinessCheck {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (appStartTimeout != null) {
+      _json["appStartTimeout"] = appStartTimeout;
+    }
     if (checkInterval != null) {
       _json["checkInterval"] = checkInterval;
     }
@@ -3705,8 +3717,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details. There will be a common set
-   * of message types for APIs to use.
+   * A list of messages that carry the error details. There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

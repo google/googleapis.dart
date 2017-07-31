@@ -1410,12 +1410,6 @@ class OperationsResourceApi {
    * [name] - The name of the operation's parent resource.
    * Value must have pattern "^operations$".
    *
-   * [pageToken] - The standard list page token.
-   *
-   * [pageSize] - The maximum number of results to return. If unspecified,
-   * defaults to
-   * 256. The maximum value is 2048.
-   *
    * [filter] - A string for filtering Operations.
    * The following filter fields are supported&#58;
    *
@@ -1436,6 +1430,12 @@ class OperationsResourceApi {
    * * `projectId = my-project AND labels.color = *`
    * * `projectId = my-project AND labels.color = red`
    *
+   * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The maximum number of results to return. If unspecified,
+   * defaults to
+   * 256. The maximum value is 2048.
+   *
    * Completes with a [ListOperationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1444,7 +1444,7 @@ class OperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1455,14 +1455,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1826,6 +1826,15 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * [readGroupSetId] - Required. The ID of the read group set over which
    * coverage is requested.
    *
+   * [targetBucketWidth] - The desired width of each reported coverage bucket in
+   * base pairs. This
+   * will be rounded down to the nearest precomputed bucket width; the value
+   * of which is returned as `bucketWidth` in the response. Defaults
+   * to infinity (each bucket spans an entire reference sequence) or the length
+   * of the target range, if specified. The smallest precomputed
+   * `bucketWidth` is currently 2048 base pairs; this is subject to
+   * change.
+   *
    * [referenceName] - The name of the reference to query, within the reference
    * set associated
    * with this query. Optional.
@@ -1848,15 +1857,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * inclusive. If
    * specified, `referenceName` must also be specified. Defaults to 0.
    *
-   * [targetBucketWidth] - The desired width of each reported coverage bucket in
-   * base pairs. This
-   * will be rounded down to the nearest precomputed bucket width; the value
-   * of which is returned as `bucketWidth` in the response. Defaults
-   * to infinity (each bucket spans an entire reference sequence) or the length
-   * of the target range, if specified. The smallest precomputed
-   * `bucketWidth` is currently 2048 base pairs; this is subject to
-   * change.
-   *
    * Completes with a [ListCoverageBucketsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1865,7 +1865,7 @@ class ReadgroupsetsCoveragebucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.String referenceName, core.String end, core.String pageToken, core.int pageSize, core.String start, core.String targetBucketWidth}) {
+  async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId, {core.String targetBucketWidth, core.String referenceName, core.String end, core.String pageToken, core.int pageSize, core.String start}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1875,6 +1875,9 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
+    }
+    if (targetBucketWidth != null) {
+      _queryParams["targetBucketWidth"] = [targetBucketWidth];
     }
     if (referenceName != null) {
       _queryParams["referenceName"] = [referenceName];
@@ -1890,9 +1893,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (start != null) {
       _queryParams["start"] = [start];
-    }
-    if (targetBucketWidth != null) {
-      _queryParams["targetBucketWidth"] = [targetBucketWidth];
     }
 
     _url = 'v1/readgroupsets/' + commons.Escaper.ecapeVariable('$readGroupSetId') + '/coveragebuckets';
@@ -2104,6 +2104,10 @@ class ReferencesBasesResourceApi {
    *
    * [referenceId] - The ID of the reference.
    *
+   * [end] - The end position (0-based, exclusive) of this query. Defaults to
+   * the length
+   * of this reference.
+   *
    * [pageToken] - The continuation token, which is used to page through large
    * result sets.
    * To get the next page of results, set this parameter to the value of
@@ -2116,10 +2120,6 @@ class ReferencesBasesResourceApi {
    *
    * [start] - The start position (0-based) of this query. Defaults to 0.
    *
-   * [end] - The end position (0-based, exclusive) of this query. Defaults to
-   * the length
-   * of this reference.
-   *
    * Completes with a [ListBasesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2128,7 +2128,7 @@ class ReferencesBasesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBasesResponse> list(core.String referenceId, {core.String pageToken, core.int pageSize, core.String start, core.String end}) {
+  async.Future<ListBasesResponse> list(core.String referenceId, {core.String end, core.String pageToken, core.int pageSize, core.String start}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2139,6 +2139,9 @@ class ReferencesBasesResourceApi {
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
     }
+    if (end != null) {
+      _queryParams["end"] = [end];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -2147,9 +2150,6 @@ class ReferencesBasesResourceApi {
     }
     if (start != null) {
       _queryParams["start"] = [start];
-    }
-    if (end != null) {
-      _queryParams["end"] = [end];
     }
 
     _url = 'v1/references/' + commons.Escaper.ecapeVariable('$referenceId') + '/bases';

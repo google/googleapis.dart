@@ -2149,9 +2149,8 @@ class LogSink {
    */
   core.String name;
   /**
-   * Optional. The log entry format to use for this sink's exported log entries.
-   * The v2 format is used by default. The v1 format is deprecated and should be
-   * used only as part of a migration effort to v2. See Migration to the v2 API.
+   * Deprecated. The log entry format to use for this sink's exported log
+   * entries. The v2 format is used by default and cannot be changed.
    * Possible string values are:
    * - "VERSION_FORMAT_UNSPECIFIED" : An unspecified format version that will
    * default to V2.

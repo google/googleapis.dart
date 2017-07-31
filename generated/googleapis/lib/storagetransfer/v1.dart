@@ -190,6 +190,8 @@ class TransferJobsResourceApi {
    *
    * Request parameters:
    *
+   * [pageToken] - The list page token.
+   *
    * [pageSize] - The list page size. The max allowed value is 256.
    *
    * [filter] - A list of query parameters specified as JSON text in the form of
@@ -202,8 +204,6 @@ class TransferJobsResourceApi {
    * and `job_statuses` are optional.  The valid values for `job_statuses` are
    * case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
    *
-   * [pageToken] - The list page token.
-   *
    * Completes with a [ListTransferJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -212,7 +212,7 @@ class TransferJobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferJobsResponse> list({core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<ListTransferJobsResponse> list({core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -220,14 +220,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/transferJobs';
@@ -1466,8 +1466,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

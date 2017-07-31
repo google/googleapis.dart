@@ -741,7 +741,7 @@ class AuthorizationInfo {
   /**
    * The resource being accessed, as a REST-style string. For example:
    *
-   *     bigquery.googlapis.com/projects/PROJECTID/datasets/DATASETID
+   *     bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
    */
   core.String resource;
 
@@ -872,6 +872,8 @@ class CheckError {
 }
 
 class CheckInfo {
+  /** Consumer info of this check. */
+  ConsumerInfo consumerInfo;
   /**
    * A list of fields and label keys that are ignored by the server.
    * The client doesn't need to send them for following requests to improve
@@ -882,6 +884,9 @@ class CheckInfo {
   CheckInfo();
 
   CheckInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerInfo")) {
+      consumerInfo = new ConsumerInfo.fromJson(_json["consumerInfo"]);
+    }
     if (_json.containsKey("unusedArguments")) {
       unusedArguments = _json["unusedArguments"];
     }
@@ -889,6 +894,9 @@ class CheckInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (consumerInfo != null) {
+      _json["consumerInfo"] = (consumerInfo).toJson();
+    }
     if (unusedArguments != null) {
       _json["unusedArguments"] = unusedArguments;
     }
@@ -1013,6 +1021,31 @@ class CheckResponse {
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
+    }
+    return _json;
+  }
+}
+
+/** `ConsumerInfo` provides information about the consumer project. */
+class ConsumerInfo {
+  /**
+   * The Google cloud project number, e.g. 1234567890. A value of 0 indicates
+   * no project number is found.
+   */
+  core.String projectNumber;
+
+  ConsumerInfo();
+
+  ConsumerInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("projectNumber")) {
+      projectNumber = _json["projectNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (projectNumber != null) {
+      _json["projectNumber"] = projectNumber;
     }
     return _json;
   }
@@ -1869,6 +1902,14 @@ class QuotaError {
    * - "UNSPECIFIED" : This is never used.
    * - "RESOURCE_EXHAUSTED" : Quota allocation failed.
    * Same as google.rpc.Code.RESOURCE_EXHAUSTED.
+   * - "OUT_OF_RANGE" : Quota release failed.  This error is ONLY returned on a
+   * NORMAL release.
+   * More formally:  if a user requests a release of 10 tokens, but only
+   * 5 tokens were previously allocated, in a BEST_EFFORT release, this will
+   * be considered a success, 5 tokens will be released, and the result will
+   * be "Ok".  If this is done in NORMAL mode, no tokens will be released,
+   * and an OUT_OF_RANGE error will be returned.
+   * Same as google.rpc.Code.OUT_OF_RANGE.
    * - "BILLING_NOT_ACTIVE" : Consumer cannot access the service because the
    * service requires active
    * billing.
@@ -2448,7 +2489,16 @@ class ReportResponse {
 
 /** Metadata about the request. */
 class RequestMetadata {
-  /** The IP address of the caller. */
+  /**
+   * The IP address of the caller.
+   * For caller from internet, this will be public IPv4 or IPv6 address.
+   * For caller from GCE VM with external IP address, this will be the VM's
+   * external IP address. For caller from GCE VM without external IP address, if
+   * the VM is in the same GCP organization (or project) as the accessed
+   * resource, `caller_ip` will be the GCE VM's internal IPv4 address, otherwise
+   * it will be redacted to "gce-internal-ip".
+   * See https://cloud.google.com/compute/docs/vpc/ for more information.
+   */
   core.String callerIp;
   /**
    * The user agent of the caller.
@@ -2462,7 +2512,6 @@ class RequestMetadata {
    * +   `AppEngine-Google; (+http://code.google.com/appengine; appid:
    * s~my-project`:
    *     The request was made from the `my-project` App Engine app.
-   *
    * NOLINT
    */
   core.String callerSuppliedUserAgent;
@@ -2642,8 +2691,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

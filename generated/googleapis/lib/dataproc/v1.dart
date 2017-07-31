@@ -1674,8 +1674,8 @@ class GceClusterConfig {
    * Optional. The zone where the Google Compute Engine cluster will be located.
    * On a create request, it is required in the "global" region. If omitted in a
    * non-global Cloud Dataproc region, the service will pick a zone in the
-   * corresponding GCE region. On a get request, zone will always be present.A
-   * full URL, partial URI, or short name are valid. Examples:
+   * corresponding Compute Engine region. On a get request, zone will always be
+   * present.A full URL, partial URI, or short name are valid. Examples:
    * https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
    * projects/[project_id]/zones/[zone]
    * us-central1-f
@@ -3154,8 +3154,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details. There will be a common set
-   * of message types for APIs to use.
+   * A list of messages that carry the error details. There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
