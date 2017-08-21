@@ -68,10 +68,10 @@ class ContactGroupsResourceApi {
    *
    * Request parameters:
    *
-   * [resourceNames] - The resource names of the contact groups to get.
-   *
    * [maxMembers] - Specifies the maximum number of members to return for each
    * group.
+   *
+   * [resourceNames] - The resource names of the contact groups to get.
    *
    * Completes with a [BatchGetContactGroupsResponse].
    *
@@ -81,7 +81,7 @@ class ContactGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<BatchGetContactGroupsResponse> batchGet({core.List<core.String> resourceNames, core.int maxMembers}) {
+  async.Future<BatchGetContactGroupsResponse> batchGet({core.int maxMembers, core.List<core.String> resourceNames}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -89,11 +89,11 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (resourceNames != null) {
-      _queryParams["resourceNames"] = resourceNames;
-    }
     if (maxMembers != null) {
       _queryParams["maxMembers"] = ["${maxMembers}"];
+    }
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
     }
 
     _url = 'v1/contactGroups:batchGet';
@@ -246,15 +246,15 @@ class ContactGroupsResourceApi {
    *
    * Request parameters:
    *
+   * [pageToken] - The next_page_token value returned from a previous call to
+   * [ListContactGroups](/people/api/rest/v1/contactgroups/list).
+   * Requests the next page of resources.
+   *
    * [pageSize] - The maximum number of resources to return.
    *
    * [syncToken] - A sync token, returned by a previous call to
    * `contactgroups.list`.
    * Only resources changed since the sync token was created will be returned.
-   *
-   * [pageToken] - The next_page_token value returned from a previous call to
-   * [ListContactGroups](/people/api/rest/v1/contactgroups/list).
-   * Requests the next page of resources.
    *
    * Completes with a [ListContactGroupsResponse].
    *
@@ -264,7 +264,7 @@ class ContactGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListContactGroupsResponse> list({core.int pageSize, core.String syncToken, core.String pageToken}) {
+  async.Future<ListContactGroupsResponse> list({core.String pageToken, core.int pageSize, core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -272,14 +272,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/contactGroups';
@@ -510,6 +510,11 @@ class PeopleResourceApi {
    * [`people.connections.list`](/people/api/rest/v1/people.connections/list).
    * Value must have pattern "^people/[^/]+$".
    *
+   * [requestMask_includeField] - **Required.** Comma-separated list of person
+   * fields to be included in the
+   * response. Each path should start with `person.`: for example,
+   * `person.names` or `person.photos`.
+   *
    * [personFields] - **Required.** A field mask to restrict which fields on the
    * person are
    * returned. Valid values are:
@@ -542,11 +547,6 @@ class PeopleResourceApi {
    * * taglines
    * * urls
    *
-   * [requestMask_includeField] - **Required.** Comma-separated list of person
-   * fields to be included in the
-   * response. Each path should start with `person.`: for example,
-   * `person.names` or `person.photos`.
-   *
    * Completes with a [Person].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -555,7 +555,7 @@ class PeopleResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Person> get(core.String resourceName, {core.String personFields, core.String requestMask_includeField}) {
+  async.Future<Person> get(core.String resourceName, {core.String requestMask_includeField, core.String personFields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -566,11 +566,11 @@ class PeopleResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
@@ -593,6 +593,23 @@ class PeopleResourceApi {
    * The request throws a 400 error if 'personFields' is not specified.
    *
    * Request parameters:
+   *
+   * [requestMask_includeField] - **Required.** Comma-separated list of person
+   * fields to be included in the
+   * response. Each path should start with `person.`: for example,
+   * `person.names` or `person.photos`.
+   *
+   * [resourceNames] - The resource names of the people to provide information
+   * about.
+   *
+   * - To get information about the authenticated user, specify `people/me`.
+   * - To get information about a google account, specify
+   *   `people/`<var>account_id</var>.
+   * - To get information about a contact, specify the resource name that
+   *   identifies the contact as returned by
+   * [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+   *
+   * You can include up to 50 resource names in one request.
    *
    * [personFields] - **Required.** A field mask to restrict which fields on
    * each person are
@@ -626,23 +643,6 @@ class PeopleResourceApi {
    * * taglines
    * * urls
    *
-   * [requestMask_includeField] - **Required.** Comma-separated list of person
-   * fields to be included in the
-   * response. Each path should start with `person.`: for example,
-   * `person.names` or `person.photos`.
-   *
-   * [resourceNames] - The resource names of the people to provide information
-   * about.
-   *
-   * - To get information about the authenticated user, specify `people/me`.
-   * - To get information about a google account, specify
-   *   `people/`<var>account_id</var>.
-   * - To get information about a contact, specify the resource name that
-   *   identifies the contact as returned by
-   * [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-   *
-   * You can include up to 50 resource names in one request.
-   *
    * Completes with a [GetPeopleResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -651,7 +651,7 @@ class PeopleResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GetPeopleResponse> getBatchGet({core.String personFields, core.String requestMask_includeField, core.List<core.String> resourceNames}) {
+  async.Future<GetPeopleResponse> getBatchGet({core.String requestMask_includeField, core.List<core.String> resourceNames, core.String personFields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -659,14 +659,14 @@ class PeopleResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
     }
     if (resourceNames != null) {
       _queryParams["resourceNames"] = resourceNames;
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
     }
 
     _url = 'v1/people:batchGet';
@@ -834,14 +834,14 @@ class PeopleConnectionsResourceApi {
    *
    * [pageToken] - The token of the page to be returned.
    *
-   * [pageSize] - The number of connections to include in the response. Valid
-   * values are
-   * between 1 and 2000, inclusive. Defaults to 100.
-   *
    * [requestMask_includeField] - **Required.** Comma-separated list of person
    * fields to be included in the
    * response. Each path should start with `person.`: for example,
    * `person.names` or `person.photos`.
+   *
+   * [pageSize] - The number of connections to include in the response. Valid
+   * values are
+   * between 1 and 2000, inclusive. Defaults to 100.
    *
    * [syncToken] - A sync token, returned by a previous call to
    * `people.connections.list`.
@@ -855,7 +855,7 @@ class PeopleConnectionsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String personFields, core.String sortOrder, core.bool requestSyncToken, core.String pageToken, core.int pageSize, core.String requestMask_includeField, core.String syncToken}) {
+  async.Future<ListConnectionsResponse> list(core.String resourceName, {core.String personFields, core.String sortOrder, core.bool requestSyncToken, core.String pageToken, core.String requestMask_includeField, core.int pageSize, core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -878,11 +878,11 @@ class PeopleConnectionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];

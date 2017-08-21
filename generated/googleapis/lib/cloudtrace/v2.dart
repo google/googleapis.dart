@@ -118,19 +118,6 @@ class ProjectsTracesResourceApi {
    * is `projects/PROJECT_ID`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [orderBy] - Optional. A single field used to sort the returned traces.
-   * Only the following field names can be used:
-   *
-   * *   `trace_id`: the trace's ID field
-   * *   `name`:  the root span's resource name
-   * *   `duration`: the difference between the root span's start time and end
-   * time
-   * *   `start`:  the start time of the root span
-   *
-   * Sorting is in ascending order unless `desc` is appended to the sort field
-   * name.
-   * Example: `"name desc"`).
-   *
    * [filter] - Opional. Return only traces that match this
    * [trace filter](/trace/docs/trace-filters). Example:
    *
@@ -154,6 +141,19 @@ class ProjectsTracesResourceApi {
    * response indicates that more results might be available, even if fewer than
    * the maximum number of results is returned by this request.
    *
+   * [orderBy] - Optional. A single field used to sort the returned traces.
+   * Only the following field names can be used:
+   *
+   * *   `trace_id`: the trace's ID field
+   * *   `name`:  the root span's resource name
+   * *   `duration`: the difference between the root span's start time and end
+   * time
+   * *   `start`:  the start time of the root span
+   *
+   * Sorting is in ascending order unless `desc` is appended to the sort field
+   * name.
+   * Example: `"name desc"`).
+   *
    * Completes with a [ListTracesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -162,7 +162,7 @@ class ProjectsTracesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTracesResponse> list(core.String parent, {core.String orderBy, core.String filter, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize}) {
+  async.Future<ListTracesResponse> list(core.String parent, {core.String filter, core.String endTime, core.String startTime, core.String pageToken, core.int pageSize, core.String orderBy}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -172,9 +172,6 @@ class ProjectsTracesResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -190,6 +187,9 @@ class ProjectsTracesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces';

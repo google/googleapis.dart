@@ -2646,10 +2646,7 @@ class IpConfiguration {
   core.bool enabled;
   /** This is always sql#ipConfiguration. */
   core.String kind;
-  /**
-   * Whether the mysqld should default to 'REQUIRE X509' for users connecting
-   * over IP.
-   */
+  /** Whether SSL connections over IP should be enforced or not. */
   core.bool requireSsl;
 
   IpConfiguration();

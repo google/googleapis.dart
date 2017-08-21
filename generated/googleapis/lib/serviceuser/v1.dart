@@ -281,18 +281,28 @@ class ServicesResourceApi {
 
 
 
-/** Api is a light-weight descriptor for a protocol buffer service. */
+/**
+ * Api is a light-weight descriptor for an API Interface.
+ *
+ * Interfaces are also described as "protocol buffer services" in some contexts,
+ * such as by the "service" keyword in a .proto file, but they are different
+ * from API Services, which represent a concrete implementation of an interface
+ * as opposed to simply a description of methods and bindings. They are also
+ * sometimes simply referred to as "APIs" in other contexts, such as the name of
+ * this message itself. See https://cloud.google.com/apis/design/glossary for
+ * detailed terminology.
+ */
 class Api {
-  /** The methods of this api, in unspecified order. */
+  /** The methods of this interface, in unspecified order. */
   core.List<Method> methods;
-  /** Included APIs. See Mixin. */
+  /** Included interfaces. See Mixin. */
   core.List<Mixin> mixins;
   /**
-   * The fully qualified name of this api, including package name
-   * followed by the api's simple name.
+   * The fully qualified name of this interface, including package name
+   * followed by the interface's simple name.
    */
   core.String name;
-  /** Any metadata attached to the API. */
+  /** Any metadata attached to the interface. */
   core.List<Option> options;
   /**
    * Source context for the protocol buffer service represented by this
@@ -307,13 +317,12 @@ class Api {
    */
   core.String syntax;
   /**
-   * A version string for this api. If specified, must have the form
-   * `major-version.minor-version`, as in `1.10`. If the minor version
-   * is omitted, it defaults to zero. If the entire version field is
-   * empty, the major version is derived from the package name, as
-   * outlined below. If the field is not empty, the version in the
-   * package name will be verified to be consistent with what is
-   * provided here.
+   * A version string for this interface. If specified, must have the form
+   * `major-version.minor-version`, as in `1.10`. If the minor version is
+   * omitted, it defaults to zero. If the entire version field is empty, the
+   * major version is derived from the package name, as outlined below. If the
+   * field is not empty, the version in the package name will be verified to be
+   * consistent with what is provided here.
    *
    * The versioning schema uses [semantic
    * versioning](http://semver.org) where the major version number
@@ -323,10 +332,10 @@ class Api {
    * chosen based on the product plan.
    *
    * The major version is also reflected in the package name of the
-   * API, which must end in `v<major-version>`, as in
+   * interface, which must end in `v<major-version>`, as in
    * `google.feature.v1`. For major versions 0 and 1, the suffix can
    * be omitted. Zero major versions must only be used for
-   * experimental, none-GA apis.
+   * experimental, non-GA interfaces.
    */
   core.String version;
 
@@ -406,6 +415,11 @@ class AuthProvider {
    */
   core.String audiences;
   /**
+   * Redirect URL if JWT token is required but no present or is expired.
+   * Implement authorizationUrl of securityDefinitions in OpenAPI spec.
+   */
+  core.String authorizationUrl;
+  /**
    * The unique identifier of the auth provider. It will be referred to by
    * `AuthRequirement.provider_id`.
    *
@@ -443,6 +457,9 @@ class AuthProvider {
     if (_json.containsKey("audiences")) {
       audiences = _json["audiences"];
     }
+    if (_json.containsKey("authorizationUrl")) {
+      authorizationUrl = _json["authorizationUrl"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -458,6 +475,9 @@ class AuthProvider {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (audiences != null) {
       _json["audiences"] = audiences;
+    }
+    if (authorizationUrl != null) {
+      _json["authorizationUrl"] = authorizationUrl;
     }
     if (id != null) {
       _json["id"] = id;
@@ -685,6 +705,66 @@ class AuthorizationConfig {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (provider != null) {
       _json["provider"] = provider;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Authorization rule for API services.
+ *
+ * It specifies the permission(s) required for an API element for the overall
+ * API request to succeed. It is typically used to mark request message fields
+ * that contain the name of the resource and indicates the permissions that
+ * will be checked on that resource.
+ *
+ * For example:
+ *
+ *     package google.storage.v1;
+ *
+ *     message CopyObjectRequest {
+ *       string source = 1 [
+ *         (google.api.authz).permissions = "storage.objects.get"];
+ *
+ *       string destination = 2 [
+ *         (google.api.authz).permissions =
+ *             "storage.objects.create,storage.objects.update"];
+ *     }
+ */
+class AuthorizationRule {
+  /**
+   * The required permissions. The acceptable values vary depend on the
+   * authorization system used. For Google APIs, it should be a comma-separated
+   * Google IAM permission values. When multiple permissions are listed, the
+   * semantics is not defined by the system. Additional documentation must
+   * be provided manually.
+   */
+  core.String permissions;
+  /**
+   * Selects the API elements to which this rule applies.
+   *
+   * Refer to selector for syntax details.
+   */
+  core.String selector;
+
+  AuthorizationRule();
+
+  AuthorizationRule.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = _json["permissions"];
+    }
+    if (_json.containsKey("selector")) {
+      selector = _json["selector"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    if (selector != null) {
+      _json["selector"] = selector;
     }
     return _json;
   }
@@ -1874,6 +1954,13 @@ class HttpRule {
    */
   core.List<HttpRule> additionalBindings;
   /**
+   * Specifies the permission(s) required for an API element for the overall
+   * API request to succeed. It is typically used to mark request message fields
+   * that contain the name of the resource and indicates the permissions that
+   * will be checked on that resource.
+   */
+  core.List<AuthorizationRule> authorizations;
+  /**
    * The name of the request field whose value is mapped to the HTTP body, or
    * `*` for mapping all fields not captured by the path pattern to the HTTP
    * body. NOTE: the referred field must not be a repeated field and must be
@@ -1919,6 +2006,8 @@ class HttpRule {
    */
   core.String responseBody;
   /**
+   * DO NOT USE. This is an experimental field.
+   *
    * Optional. The REST collection name is by default derived from the URL
    * pattern. If specified, this field overrides the default collection name.
    * Example:
@@ -1938,6 +2027,8 @@ class HttpRule {
    */
   core.String restCollection;
   /**
+   * DO NOT USE. This is an experimental field.
+   *
    * Optional. The rest method name is by default derived from the URL
    * pattern. If specified, this field overrides the default method name.
    * Example:
@@ -1951,8 +2042,9 @@ class HttpRule {
    *       };
    *     }
    *
-   * This method has the automatically derived rest method name "create", but
-   *  for backwards compatability with apiary, it is specified as insert.
+   * This method has the automatically derived rest method name
+   * "create", but for backwards compatibility with apiary, it is specified as
+   * insert.
    */
   core.String restMethodName;
   /**
@@ -1967,6 +2059,9 @@ class HttpRule {
   HttpRule.fromJson(core.Map _json) {
     if (_json.containsKey("additionalBindings")) {
       additionalBindings = _json["additionalBindings"].map((value) => new HttpRule.fromJson(value)).toList();
+    }
+    if (_json.containsKey("authorizations")) {
+      authorizations = _json["authorizations"].map((value) => new AuthorizationRule.fromJson(value)).toList();
     }
     if (_json.containsKey("body")) {
       body = _json["body"];
@@ -2013,6 +2108,9 @@ class HttpRule {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (additionalBindings != null) {
       _json["additionalBindings"] = additionalBindings.map((value) => (value).toJson()).toList();
+    }
+    if (authorizations != null) {
+      _json["authorizations"] = authorizations.map((value) => (value).toJson()).toList();
     }
     if (body != null) {
       _json["body"] = body;
@@ -2494,7 +2592,7 @@ class MediaUpload {
   }
 }
 
-/** Method represents a method of an api. */
+/** Method represents a method of an API interface. */
 class Method {
   /** The simple name of this method. */
   core.String name;
@@ -2815,9 +2913,9 @@ class MetricRule {
 }
 
 /**
- * Declares an API to be included in this API. The including API must
- * redeclare all the methods from the included API, but documentation
- * and options are inherited as follows:
+ * Declares an API Interface to be included in this interface. The including
+ * interface must redeclare all the methods from the included interface, but
+ * documentation and options are inherited as follows:
  *
  * - If after comment and whitespace stripping, the documentation
  *   string of the redeclared method is empty, it will be inherited
@@ -2829,7 +2927,8 @@ class MetricRule {
  *
  * - If an http annotation is inherited, the path pattern will be
  *   modified as follows. Any version prefix will be replaced by the
- *   version of the including API plus the root path if specified.
+ *   version of the including interface plus the root path if
+ *   specified.
  *
  * Example of a simple mixin:
  *
@@ -2894,7 +2993,7 @@ class MetricRule {
  *     }
  */
 class Mixin {
-  /** The fully qualified name of the API which is included. */
+  /** The fully qualified name of the interface which is included. */
   core.String name;
   /**
    * If non-empty specifies a path under which inherited HTTP paths
@@ -3799,10 +3898,10 @@ class Service {
   /** API backend configuration. */
   Backend backend;
   /**
-   * The version of the service configuration. The config version may
-   * influence interpretation of the configuration, for example, to
-   * determine defaults. This is documented together with applicable
-   * options. The current default for the config version itself is `3`.
+   * The semantic version of the service configuration. The config version
+   * affects the interpretation of the service configuration. For example,
+   * certain features are enabled by default for certain config versions.
+   * The latest config version is `3`.
    */
   core.int configVersion;
   /** Context configuration. */

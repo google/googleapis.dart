@@ -125,14 +125,14 @@ class BillingAccountsLogsResourceApi {
    *
    * Value must have pattern "^billingAccounts/[^/]+$".
    *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
+   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
-   *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogsResponse].
    *
@@ -142,7 +142,7 @@ class BillingAccountsLogsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListLogsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -153,11 +153,11 @@ class BillingAccountsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -275,14 +275,14 @@ class MonitoredResourceDescriptorsResourceApi {
    *
    * Request parameters:
    *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
+   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
-   *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
    *
    * Completes with a [ListMonitoredResourceDescriptorsResponse].
    *
@@ -292,7 +292,7 @@ class MonitoredResourceDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListMonitoredResourceDescriptorsResponse> list({core.String pageToken, core.int pageSize}) {
+  async.Future<ListMonitoredResourceDescriptorsResponse> list({core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -300,11 +300,11 @@ class MonitoredResourceDescriptorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/monitoredResourceDescriptors';
@@ -534,14 +534,14 @@ class ProjectsLogsResourceApi {
    *
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
+   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
-   *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogsResponse].
    *
@@ -551,7 +551,7 @@ class ProjectsLogsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListLogsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -562,11 +562,11 @@ class ProjectsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -1009,14 +1009,14 @@ class ProjectsSinksResourceApi {
    *
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
+   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
-   *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -1026,7 +1026,7 @@ class ProjectsSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListSinksResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListSinksResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1037,11 +1037,11 @@ class ProjectsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -1057,12 +1057,10 @@ class ProjectsSinksResourceApi {
   }
 
   /**
-   * Updates a sink. If the named sink doesn't exist, then this method is
-   * identical to sinks.create. If the named sink does exist, then this method
-   * replaces the following fields in the existing sink with values from the new
-   * sink: destination, filter, output_version_format, start_time, and end_time.
-   * The updated filter might also have a new writer_identity; see the
-   * unique_writer_identity field.
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
    *
    * [request] - The metadata request object.
    *
@@ -1182,6 +1180,10 @@ class HttpRequest {
    */
   core.String latency;
   /**
+   * Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"
+   */
+  core.String protocol;
+  /**
    * The referer URL of the request, as defined in HTTP/1.1 Header Field
    * Definitions (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
    */
@@ -1242,6 +1244,9 @@ class HttpRequest {
     if (_json.containsKey("latency")) {
       latency = _json["latency"];
     }
+    if (_json.containsKey("protocol")) {
+      protocol = _json["protocol"];
+    }
     if (_json.containsKey("referer")) {
       referer = _json["referer"];
     }
@@ -1287,6 +1292,9 @@ class HttpRequest {
     }
     if (latency != null) {
       _json["latency"] = latency;
+    }
+    if (protocol != null) {
+      _json["protocol"] = protocol;
     }
     if (referer != null) {
       _json["referer"] = referer;
@@ -2048,9 +2056,8 @@ class LogMetric {
    */
   core.String name;
   /**
-   * Output only. The API version that created or updated this metric. The
-   * version also dictates the syntax of the filter expression. When a value for
-   * this field is missing, the default value of V2 should be assumed.
+   * Output only. The API version that created or updated this metric. This
+   * value is currently always set to V2.
    * Possible string values are:
    * - "V2" : Stackdriver Logging API v2.
    * - "V1" : Stackdriver Logging API v1.

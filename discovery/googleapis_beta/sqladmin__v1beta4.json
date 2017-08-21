@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/XsY4JGYlYgyTyxbJioMS7bSip2s\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/odbYGRT1izLWfRhfVNwcTacV8sM\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1490,7 +1490,7 @@
             }
         }
     },
-    "revision": "20170606",
+    "revision": "20170807",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -1755,7 +1755,7 @@
                     "type": "string"
                 },
                 "databaseVersion": {
-                    "description": "The database engine type and version. The databaseVersion can not be changed after instance creation. Can be MYSQL_5_5, MYSQL_5_6 or MYSQL_5_7. Defaults to MYSQL_5_6. MYSQL_5_7 is applicable only to Second Generation instances.",
+                    "description": "The database engine type and version. The databaseVersion field can not be changed after instance creation. MySQL Second Generation instances: MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6 MySQL First Generation instances: MYSQL_5_6 (default) or MYSQL_5_5",
                     "type": "string"
                 },
                 "etag": {
@@ -1775,6 +1775,10 @@
                         }
                     },
                     "type": "object"
+                },
+                "gceZone": {
+                    "description": "The GCE zone that the instance is serving from. In case when the instance is failed over to standby zone, this value may be different with what user specified in the settings.",
+                    "type": "string"
                 },
                 "instanceType": {
                     "description": "The instance type. This can be one of the following.\nCLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a master.\nON_PREMISES_INSTANCE: An instance running on the customer's premises.\nREAD_REPLICA_INSTANCE: A Cloud SQL instance configured as a read-replica.",
@@ -2060,7 +2064,7 @@
                     "type": "string"
                 },
                 "importUser": {
-                    "description": "The PostgreSQL user to use for this import operation. Defaults to cloudsqlsuperuser. Does not apply to MySQL instances.",
+                    "description": "The PostgreSQL user for this import operation. Defaults to cloudsqlsuperuser. Used only for PostgreSQL instances.",
                     "type": "string"
                 },
                 "kind": {
@@ -2180,7 +2184,7 @@
                     "type": "boolean"
                 },
                 "requireSsl": {
-                    "description": "Whether the mysqld should default to 'REQUIRE X509' for users connecting over IP.",
+                    "description": "Whether SSL connections over IP should be enforced or not.",
                     "type": "boolean"
                 }
             },

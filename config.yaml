@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.42.0
+    version: 0.43.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -125,7 +125,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.38.0
+    version: 0.39.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -165,7 +165,6 @@ packages:
 skipped_apis:
 - adexchangebuyer:v1.2  # v1.3 included
 - adexchangeseller:v1  # v1.1 included
-- adsense:v1.3  # v1.4 included
 - analytics:v2.4  # v3 included
 - androidpublisher:v1.1  # v2 included
 - androidpublisher:v1  # v2 included
@@ -178,7 +177,7 @@ skipped_apis:
 - compute:alpha # v1 included
 - compute:beta # v1 included
 - datastore:v1beta3  # v1 included
-- dataproc:v1beta1  # v1 included
+- dataproc:v1beta2  # v1 included
 - dfareporting:v2.7 # v2.8 included
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included

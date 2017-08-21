@@ -317,13 +317,13 @@ class InspectOperationsResourceApi {
    * [name] - The name of the operation's parent resource.
    * Value must have pattern "^inspect/operations$".
    *
-   * [pageSize] - The list page size. The max allowed value is 256 and default
-   * is 100.
-   *
    * [filter] - This parameter supports filtering by done, ie done=true or
    * done=false.
    *
    * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The list page size. The max allowed value is 256 and default
+   * is 100.
    *
    * Completes with a [GoogleLongrunningListOperationsResponse].
    *
@@ -333,7 +333,7 @@ class InspectOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,14 +344,14 @@ class InspectOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -395,6 +395,11 @@ class InspectResultsFindingsResourceApi {
    * Should be in the format of `inspect/results/{id}`.
    * Value must have pattern "^inspect/results/[^/]+$".
    *
+   * [pageToken] - The value returned by the last `ListInspectFindingsResponse`;
+   * indicates
+   * that this is a continuation of a prior `ListInspectFindings` call, and that
+   * the system should return the next page of data.
+   *
    * [pageSize] - Maximum number of results to return.
    * If 0, the implementation selects a reasonable value.
    *
@@ -407,11 +412,6 @@ class InspectResultsFindingsResourceApi {
    * <li>likelihood=VERY_LIKELY,LIKELY
    * <li>info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY
    *
-   * [pageToken] - The value returned by the last `ListInspectFindingsResponse`;
-   * indicates
-   * that this is a continuation of a prior `ListInspectFindings` call, and that
-   * the system should return the next page of data.
-   *
    * Completes with a [GooglePrivacyDlpV2beta1ListInspectFindingsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -420,7 +420,7 @@ class InspectResultsFindingsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GooglePrivacyDlpV2beta1ListInspectFindingsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  async.Future<GooglePrivacyDlpV2beta1ListInspectFindingsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -431,14 +431,14 @@ class InspectResultsFindingsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/findings';
@@ -686,6 +686,86 @@ class GoogleLongrunningOperation {
   }
 }
 
+/** Options defining BigQuery table and row identifiers. */
+class GooglePrivacyDlpV2beta1BigQueryOptions {
+  /**
+   * References to fields uniquely identifying rows within the table.
+   * Nested fields in the format, like `person.birthdate.year`, are allowed.
+   */
+  core.List<GooglePrivacyDlpV2beta1FieldId> identifyingFields;
+  /** Complete BigQuery table reference. */
+  GooglePrivacyDlpV2beta1BigQueryTable tableReference;
+
+  GooglePrivacyDlpV2beta1BigQueryOptions();
+
+  GooglePrivacyDlpV2beta1BigQueryOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("identifyingFields")) {
+      identifyingFields = _json["identifyingFields"].map((value) => new GooglePrivacyDlpV2beta1FieldId.fromJson(value)).toList();
+    }
+    if (_json.containsKey("tableReference")) {
+      tableReference = new GooglePrivacyDlpV2beta1BigQueryTable.fromJson(_json["tableReference"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (identifyingFields != null) {
+      _json["identifyingFields"] = identifyingFields.map((value) => (value).toJson()).toList();
+    }
+    if (tableReference != null) {
+      _json["tableReference"] = (tableReference).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Message defining the location of a BigQuery table. A table is uniquely
+ * identified  by its project_id, dataset_id, and table_name. Within a query
+ * a table is often referenced with a string in the format of:
+ * `<project_id>:<dataset_id>.<table_id>` or
+ * `<project_id>.<dataset_id>.<table_id>`.
+ */
+class GooglePrivacyDlpV2beta1BigQueryTable {
+  /** Dataset ID of the table. */
+  core.String datasetId;
+  /**
+   * The Google Cloud Platform project ID of the project containing the table.
+   * If omitted, project ID is inferred from the API call.
+   */
+  core.String projectId;
+  /** Name of the table. */
+  core.String tableId;
+
+  GooglePrivacyDlpV2beta1BigQueryTable();
+
+  GooglePrivacyDlpV2beta1BigQueryTable.fromJson(core.Map _json) {
+    if (_json.containsKey("datasetId")) {
+      datasetId = _json["datasetId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("tableId")) {
+      tableId = _json["tableId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (datasetId != null) {
+      _json["datasetId"] = datasetId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (tableId != null) {
+      _json["tableId"] = tableId;
+    }
+    return _json;
+  }
+}
+
 /** Info Type Category description. */
 class GooglePrivacyDlpV2beta1CategoryDescription {
   /** Human readable form of the category name. */
@@ -841,6 +921,8 @@ class GooglePrivacyDlpV2beta1ContentItem {
   void set dataAsBytes(core.List<core.int> _bytes) {
     data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
+  /** Structured content for inspection. */
+  GooglePrivacyDlpV2beta1Table table;
   /**
    * Type of the content, as defined in Content-Type HTTP header.
    * Supported types are: all "text" types, octet streams, PNG images,
@@ -856,6 +938,9 @@ class GooglePrivacyDlpV2beta1ContentItem {
     if (_json.containsKey("data")) {
       data = _json["data"];
     }
+    if (_json.containsKey("table")) {
+      table = new GooglePrivacyDlpV2beta1Table.fromJson(_json["table"]);
+    }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
@@ -868,6 +953,9 @@ class GooglePrivacyDlpV2beta1ContentItem {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (data != null) {
       _json["data"] = data;
+    }
+    if (table != null) {
+      _json["table"] = (table).toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -886,6 +974,8 @@ class GooglePrivacyDlpV2beta1ContentItem {
 class GooglePrivacyDlpV2beta1CreateInspectOperationRequest {
   /** Configuration for the inspector. */
   GooglePrivacyDlpV2beta1InspectConfig inspectConfig;
+  /** Additional configuration settings for long running operations. */
+  GooglePrivacyDlpV2beta1OperationConfig operationConfig;
   /**
    * Optional location to store findings. The bucket must already exist and
    * the Google APIs service account for DLP must have write permission to
@@ -896,11 +986,13 @@ class GooglePrivacyDlpV2beta1CreateInspectOperationRequest {
    * identifier for the Operation, and the `count` is a counter used for
    * tracking the number of files written. <p>The CSV file(s) contain the
    * following columns regardless of storage type scanned: <li>id <li>info_type
-   * <li>likelihood <li>byte size of finding <li>quote <li>time_stamp<br/>
+   * <li>likelihood <li>byte size of finding <li>quote <li>timestamp<br/>
    * <p>For Cloud Storage the next columns are: <li>file_path
    * <li>start_offset<br/>
    * <p>For Cloud Datastore the next columns are: <li>project_id
-   * <li>namespace_id <li>path <li>column_name <li>offset
+   * <li>namespace_id <li>path <li>column_name <li>offset<br/>
+   * <p>For BigQuery the next columns are: <li>row_number <li>project_id
+   * <li>dataset_id <li>table_id
    */
   GooglePrivacyDlpV2beta1OutputStorageConfig outputConfig;
   /** Specification of the data set to process. */
@@ -911,6 +1003,9 @@ class GooglePrivacyDlpV2beta1CreateInspectOperationRequest {
   GooglePrivacyDlpV2beta1CreateInspectOperationRequest.fromJson(core.Map _json) {
     if (_json.containsKey("inspectConfig")) {
       inspectConfig = new GooglePrivacyDlpV2beta1InspectConfig.fromJson(_json["inspectConfig"]);
+    }
+    if (_json.containsKey("operationConfig")) {
+      operationConfig = new GooglePrivacyDlpV2beta1OperationConfig.fromJson(_json["operationConfig"]);
     }
     if (_json.containsKey("outputConfig")) {
       outputConfig = new GooglePrivacyDlpV2beta1OutputStorageConfig.fromJson(_json["outputConfig"]);
@@ -924,6 +1019,9 @@ class GooglePrivacyDlpV2beta1CreateInspectOperationRequest {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (inspectConfig != null) {
       _json["inspectConfig"] = (inspectConfig).toJson();
+    }
+    if (operationConfig != null) {
+      _json["operationConfig"] = (operationConfig).toJson();
     }
     if (outputConfig != null) {
       _json["outputConfig"] = (outputConfig).toJson();
@@ -1164,13 +1262,13 @@ class GooglePrivacyDlpV2beta1ImageLocation {
 class GooglePrivacyDlpV2beta1ImageRedactionConfig {
   /**
    * Only one per info_type should be provided per request. If not
-   * specified, and redact_all_text is false, the DLP API will redacts all
+   * specified, and redact_all_text is false, the DLP API will redact all
    * text that it matches against all info_types that are found, but not
    * specified in another ImageRedactionConfig.
    */
   GooglePrivacyDlpV2beta1InfoType infoType;
   /**
-   * If true, all text found in the image, regardless if it matches an
+   * If true, all text found in the image, regardless whether it matches an
    * info_type, is redacted.
    */
   core.bool redactAllText;
@@ -1269,6 +1367,44 @@ class GooglePrivacyDlpV2beta1InfoTypeDescription {
   }
 }
 
+/**
+ * Max findings configuration per info type, per content item or long running
+ * operation.
+ */
+class GooglePrivacyDlpV2beta1InfoTypeLimit {
+  /**
+   * Type of information the findings limit applies to. Only one limit per
+   * info_type should be provided. If InfoTypeLimit does not have an
+   * info_type, the DLP API applies the limit against all info_types that are
+   * found but not specified in another InfoTypeLimit.
+   */
+  GooglePrivacyDlpV2beta1InfoType infoType;
+  /** Max findings limit for the given info type. */
+  core.int maxFindings;
+
+  GooglePrivacyDlpV2beta1InfoTypeLimit();
+
+  GooglePrivacyDlpV2beta1InfoTypeLimit.fromJson(core.Map _json) {
+    if (_json.containsKey("infoType")) {
+      infoType = new GooglePrivacyDlpV2beta1InfoType.fromJson(_json["infoType"]);
+    }
+    if (_json.containsKey("maxFindings")) {
+      maxFindings = _json["maxFindings"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (infoType != null) {
+      _json["infoType"] = (infoType).toJson();
+    }
+    if (maxFindings != null) {
+      _json["maxFindings"] = maxFindings;
+    }
+    return _json;
+  }
+}
+
 /** Statistics regarding a specific InfoType. */
 class GooglePrivacyDlpV2beta1InfoTypeStatistics {
   /** Number of findings for this info type. */
@@ -1312,6 +1448,8 @@ class GooglePrivacyDlpV2beta1InspectConfig {
    * included in the response; see Finding.quote.
    */
   core.bool includeQuote;
+  /** Configuration of findings limit given for specified info types. */
+  core.List<GooglePrivacyDlpV2beta1InfoTypeLimit> infoTypeLimits;
   /**
    * Restricts what info_types to look for. The values must correspond to
    * InfoType values returned by ListInfoTypes or found in documentation.
@@ -1344,6 +1482,9 @@ class GooglePrivacyDlpV2beta1InspectConfig {
     if (_json.containsKey("includeQuote")) {
       includeQuote = _json["includeQuote"];
     }
+    if (_json.containsKey("infoTypeLimits")) {
+      infoTypeLimits = _json["infoTypeLimits"].map((value) => new GooglePrivacyDlpV2beta1InfoTypeLimit.fromJson(value)).toList();
+    }
     if (_json.containsKey("infoTypes")) {
       infoTypes = _json["infoTypes"].map((value) => new GooglePrivacyDlpV2beta1InfoType.fromJson(value)).toList();
     }
@@ -1362,6 +1503,9 @@ class GooglePrivacyDlpV2beta1InspectConfig {
     }
     if (includeQuote != null) {
       _json["includeQuote"] = includeQuote;
+    }
+    if (infoTypeLimits != null) {
+      _json["infoTypeLimits"] = infoTypeLimits.map((value) => (value).toJson()).toList();
     }
     if (infoTypes != null) {
       _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
@@ -1730,6 +1874,8 @@ class GooglePrivacyDlpV2beta1Location {
   core.List<GooglePrivacyDlpV2beta1ImageLocation> imageBoxes;
   /** Key of the finding. */
   GooglePrivacyDlpV2beta1RecordKey recordKey;
+  /** Location within a `ContentItem.Table`. */
+  GooglePrivacyDlpV2beta1TableLocation tableLocation;
 
   GooglePrivacyDlpV2beta1Location();
 
@@ -1748,6 +1894,9 @@ class GooglePrivacyDlpV2beta1Location {
     }
     if (_json.containsKey("recordKey")) {
       recordKey = new GooglePrivacyDlpV2beta1RecordKey.fromJson(_json["recordKey"]);
+    }
+    if (_json.containsKey("tableLocation")) {
+      tableLocation = new GooglePrivacyDlpV2beta1TableLocation.fromJson(_json["tableLocation"]);
     }
   }
 
@@ -1768,6 +1917,31 @@ class GooglePrivacyDlpV2beta1Location {
     if (recordKey != null) {
       _json["recordKey"] = (recordKey).toJson();
     }
+    if (tableLocation != null) {
+      _json["tableLocation"] = (tableLocation).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Additional configuration for inspect long running operations. */
+class GooglePrivacyDlpV2beta1OperationConfig {
+  /** Max number of findings per file, Datastore entity or database row. */
+  core.String maxItemFindings;
+
+  GooglePrivacyDlpV2beta1OperationConfig();
+
+  GooglePrivacyDlpV2beta1OperationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("maxItemFindings")) {
+      maxItemFindings = _json["maxItemFindings"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (maxItemFindings != null) {
+      _json["maxItemFindings"] = maxItemFindings;
+    }
     return _json;
   }
 }
@@ -1776,6 +1950,8 @@ class GooglePrivacyDlpV2beta1Location {
 class GooglePrivacyDlpV2beta1OutputStorageConfig {
   /** The path to a Google Cloud Storage location to store output. */
   GooglePrivacyDlpV2beta1CloudStoragePath storagePath;
+  /** Store findings in a new table in the dataset. */
+  GooglePrivacyDlpV2beta1BigQueryTable table;
 
   GooglePrivacyDlpV2beta1OutputStorageConfig();
 
@@ -1783,12 +1959,18 @@ class GooglePrivacyDlpV2beta1OutputStorageConfig {
     if (_json.containsKey("storagePath")) {
       storagePath = new GooglePrivacyDlpV2beta1CloudStoragePath.fromJson(_json["storagePath"]);
     }
+    if (_json.containsKey("table")) {
+      table = new GooglePrivacyDlpV2beta1BigQueryTable.fromJson(_json["table"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (storagePath != null) {
       _json["storagePath"] = (storagePath).toJson();
+    }
+    if (table != null) {
+      _json["table"] = (table).toJson();
     }
     return _json;
   }
@@ -2101,8 +2283,30 @@ class GooglePrivacyDlpV2beta1ReplaceConfig {
   }
 }
 
+class GooglePrivacyDlpV2beta1Row {
+  core.List<GooglePrivacyDlpV2beta1Value> values;
+
+  GooglePrivacyDlpV2beta1Row();
+
+  GooglePrivacyDlpV2beta1Row.fromJson(core.Map _json) {
+    if (_json.containsKey("values")) {
+      values = _json["values"].map((value) => new GooglePrivacyDlpV2beta1Value.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (values != null) {
+      _json["values"] = values.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /** Shared message indicating Cloud storage type. */
 class GooglePrivacyDlpV2beta1StorageConfig {
+  /** BigQuery options specification. */
+  GooglePrivacyDlpV2beta1BigQueryOptions bigQueryOptions;
   /** Google Cloud Storage options specification. */
   GooglePrivacyDlpV2beta1CloudStorageOptions cloudStorageOptions;
   /** Google Cloud Datastore options specification. */
@@ -2111,6 +2315,9 @@ class GooglePrivacyDlpV2beta1StorageConfig {
   GooglePrivacyDlpV2beta1StorageConfig();
 
   GooglePrivacyDlpV2beta1StorageConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("bigQueryOptions")) {
+      bigQueryOptions = new GooglePrivacyDlpV2beta1BigQueryOptions.fromJson(_json["bigQueryOptions"]);
+    }
     if (_json.containsKey("cloudStorageOptions")) {
       cloudStorageOptions = new GooglePrivacyDlpV2beta1CloudStorageOptions.fromJson(_json["cloudStorageOptions"]);
     }
@@ -2121,11 +2328,129 @@ class GooglePrivacyDlpV2beta1StorageConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (bigQueryOptions != null) {
+      _json["bigQueryOptions"] = (bigQueryOptions).toJson();
+    }
     if (cloudStorageOptions != null) {
       _json["cloudStorageOptions"] = (cloudStorageOptions).toJson();
     }
     if (datastoreOptions != null) {
       _json["datastoreOptions"] = (datastoreOptions).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * Structured content to inspect. Up to 50,000 `Value`s per request allowed.
+ */
+class GooglePrivacyDlpV2beta1Table {
+  core.List<GooglePrivacyDlpV2beta1FieldId> headers;
+  core.List<GooglePrivacyDlpV2beta1Row> rows;
+
+  GooglePrivacyDlpV2beta1Table();
+
+  GooglePrivacyDlpV2beta1Table.fromJson(core.Map _json) {
+    if (_json.containsKey("headers")) {
+      headers = _json["headers"].map((value) => new GooglePrivacyDlpV2beta1FieldId.fromJson(value)).toList();
+    }
+    if (_json.containsKey("rows")) {
+      rows = _json["rows"].map((value) => new GooglePrivacyDlpV2beta1Row.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (headers != null) {
+      _json["headers"] = headers.map((value) => (value).toJson()).toList();
+    }
+    if (rows != null) {
+      _json["rows"] = rows.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** Location of a finding within a `ContentItem.Table`. */
+class GooglePrivacyDlpV2beta1TableLocation {
+  /** The zero-based index of the row where the finding is located. */
+  core.String rowIndex;
+
+  GooglePrivacyDlpV2beta1TableLocation();
+
+  GooglePrivacyDlpV2beta1TableLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("rowIndex")) {
+      rowIndex = _json["rowIndex"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (rowIndex != null) {
+      _json["rowIndex"] = rowIndex;
+    }
+    return _json;
+  }
+}
+
+/** Set of primitive values supported by the system. */
+class GooglePrivacyDlpV2beta1Value {
+  core.bool booleanValue;
+  GoogleTypeDate dateValue;
+  core.double floatValue;
+  core.String integerValue;
+  core.String stringValue;
+  GoogleTypeTimeOfDay timeValue;
+  core.String timestampValue;
+
+  GooglePrivacyDlpV2beta1Value();
+
+  GooglePrivacyDlpV2beta1Value.fromJson(core.Map _json) {
+    if (_json.containsKey("booleanValue")) {
+      booleanValue = _json["booleanValue"];
+    }
+    if (_json.containsKey("dateValue")) {
+      dateValue = new GoogleTypeDate.fromJson(_json["dateValue"]);
+    }
+    if (_json.containsKey("floatValue")) {
+      floatValue = _json["floatValue"];
+    }
+    if (_json.containsKey("integerValue")) {
+      integerValue = _json["integerValue"];
+    }
+    if (_json.containsKey("stringValue")) {
+      stringValue = _json["stringValue"];
+    }
+    if (_json.containsKey("timeValue")) {
+      timeValue = new GoogleTypeTimeOfDay.fromJson(_json["timeValue"]);
+    }
+    if (_json.containsKey("timestampValue")) {
+      timestampValue = _json["timestampValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (booleanValue != null) {
+      _json["booleanValue"] = booleanValue;
+    }
+    if (dateValue != null) {
+      _json["dateValue"] = (dateValue).toJson();
+    }
+    if (floatValue != null) {
+      _json["floatValue"] = floatValue;
+    }
+    if (integerValue != null) {
+      _json["integerValue"] = integerValue;
+    }
+    if (stringValue != null) {
+      _json["stringValue"] = stringValue;
+    }
+    if (timeValue != null) {
+      _json["timeValue"] = (timeValue).toJson();
+    }
+    if (timestampValue != null) {
+      _json["timestampValue"] = timestampValue;
     }
     return _json;
   }
@@ -2253,6 +2578,114 @@ class GoogleRpcStatus {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents a whole calendar date, e.g. date of birth. The time of day and
+ * time zone are either specified elsewhere or are not significant. The date
+ * is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+ * represent a year and month where the day is not significant, e.g. credit card
+ * expiration date. The year may be 0 to represent a month and day independent
+ * of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+ * and `google.protobuf.Timestamp`.
+ */
+class GoogleTypeDate {
+  /**
+   * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
+   * if specifying a year/month where the day is not significant.
+   */
+  core.int day;
+  /** Month of year. Must be from 1 to 12. */
+  core.int month;
+  /**
+   * Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+   * a year.
+   */
+  core.int year;
+
+  GoogleTypeDate();
+
+  GoogleTypeDate.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("month")) {
+      month = _json["month"];
+    }
+    if (_json.containsKey("year")) {
+      year = _json["year"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (month != null) {
+      _json["month"] = month;
+    }
+    if (year != null) {
+      _json["year"] = year;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Represents a time of day. The date and time zone are either not significant
+ * or are specified elsewhere. An API may choose to allow leap seconds. Related
+ * types are google.type.Date and `google.protobuf.Timestamp`.
+ */
+class GoogleTypeTimeOfDay {
+  /**
+   * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
+   * to allow the value "24:00:00" for scenarios like business closing time.
+   */
+  core.int hours;
+  /** Minutes of hour of day. Must be from 0 to 59. */
+  core.int minutes;
+  /** Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999. */
+  core.int nanos;
+  /**
+   * Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+   * allow the value 60 if it allows leap-seconds.
+   */
+  core.int seconds;
+
+  GoogleTypeTimeOfDay();
+
+  GoogleTypeTimeOfDay.fromJson(core.Map _json) {
+    if (_json.containsKey("hours")) {
+      hours = _json["hours"];
+    }
+    if (_json.containsKey("minutes")) {
+      minutes = _json["minutes"];
+    }
+    if (_json.containsKey("nanos")) {
+      nanos = _json["nanos"];
+    }
+    if (_json.containsKey("seconds")) {
+      seconds = _json["seconds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (hours != null) {
+      _json["hours"] = hours;
+    }
+    if (minutes != null) {
+      _json["minutes"] = minutes;
+    }
+    if (nanos != null) {
+      _json["nanos"] = nanos;
+    }
+    if (seconds != null) {
+      _json["seconds"] = seconds;
     }
     return _json;
   }

@@ -40,14 +40,18 @@ class SitesResourceApi {
       _requester = client;
 
   /**
-   * Gets a summary of the ads rating of a site.
+   * Gets a summary of the ad experience rating of a site.
    *
    * Request parameters:
    *
-   * [name] - The required site name. It should be a site property registered in
-   * Search
-   * Console. The server will return an error of BAD_REQUEST if this field is
-   * not filled in.
+   * [name] - The required site name. It should be the site property whose ad
+   * experiences
+   * may have been reviewed, and it should be URL-encoded. For example,
+   * sites/https%3A%2F%2Fwww.google.com. The server will return an error of
+   * BAD_REQUEST if this field is not filled in. Note that if the site property
+   * is not yet verified in Search Console, the reportUrl field returned by the
+   * API will lead to the verification page, prompting the user to go through
+   * that process before they can gain access to the Ad Experience Report.
    * Value must have pattern "^sites/[^/]+$".
    *
    * Completes with a [SiteSummaryResponse].
@@ -129,8 +133,16 @@ class ViolatingSitesResourceApi {
 
 
 
-/** Summary of the ads rating of a site for a specific platform. */
+/** Summary of the ad experience rating of a site for a specific platform. */
 class PlatformSummary {
+  /**
+   * The status of the site reviewed for abusive ads.
+   * Possible string values are:
+   * - "UNKNOWN" : Not reviewed.
+   * - "PASSING" : Passing.
+   * - "FAILING" : Failing.
+   */
+  core.String abusiveStatus;
   /**
    * The status of the site reviewed for the Better Ads Standards.
    * Possible string values are:
@@ -140,14 +152,6 @@ class PlatformSummary {
    * - "FAILING" : Failing.
    */
   core.String betterAdsStatus;
-  /**
-   * The status of the site reviewed for egregious ads.
-   * Possible string values are:
-   * - "UNKNOWN" : Not reviewed.
-   * - "PASSING" : Passing.
-   * - "FAILING" : Failing.
-   */
-  core.String egregiousStatus;
   /** The date on which ad filtering begins. */
   core.String enforcementTime;
   /**
@@ -172,11 +176,11 @@ class PlatformSummary {
   PlatformSummary();
 
   PlatformSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("abusiveStatus")) {
+      abusiveStatus = _json["abusiveStatus"];
+    }
     if (_json.containsKey("betterAdsStatus")) {
       betterAdsStatus = _json["betterAdsStatus"];
-    }
-    if (_json.containsKey("egregiousStatus")) {
-      egregiousStatus = _json["egregiousStatus"];
     }
     if (_json.containsKey("enforcementTime")) {
       enforcementTime = _json["enforcementTime"];
@@ -200,11 +204,11 @@ class PlatformSummary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (abusiveStatus != null) {
+      _json["abusiveStatus"] = abusiveStatus;
+    }
     if (betterAdsStatus != null) {
       _json["betterAdsStatus"] = betterAdsStatus;
-    }
-    if (egregiousStatus != null) {
-      _json["egregiousStatus"] = egregiousStatus;
     }
     if (enforcementTime != null) {
       _json["enforcementTime"] = enforcementTime;

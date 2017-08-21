@@ -3224,6 +3224,8 @@ class AccountIdentifier {
 class AccountStatus {
   /** The ID of the account for which the status is reported. */
   core.String accountId;
+  /** A list of account level issues. */
+  core.List<AccountStatusAccountLevelIssue> accountLevelIssues;
   /** A list of data quality issues. */
   core.List<AccountStatusDataQualityIssue> dataQualityIssues;
   /**
@@ -3239,6 +3241,9 @@ class AccountStatus {
   AccountStatus.fromJson(core.Map _json) {
     if (_json.containsKey("accountId")) {
       accountId = _json["accountId"];
+    }
+    if (_json.containsKey("accountLevelIssues")) {
+      accountLevelIssues = _json["accountLevelIssues"].map((value) => new AccountStatusAccountLevelIssue.fromJson(value)).toList();
     }
     if (_json.containsKey("dataQualityIssues")) {
       dataQualityIssues = _json["dataQualityIssues"].map((value) => new AccountStatusDataQualityIssue.fromJson(value)).toList();
@@ -3256,6 +3261,9 @@ class AccountStatus {
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
+    if (accountLevelIssues != null) {
+      _json["accountLevelIssues"] = accountLevelIssues.map((value) => (value).toJson()).toList();
+    }
     if (dataQualityIssues != null) {
       _json["dataQualityIssues"] = dataQualityIssues.map((value) => (value).toJson()).toList();
     }
@@ -3264,6 +3272,59 @@ class AccountStatus {
     }
     if (websiteClaimed != null) {
       _json["websiteClaimed"] = websiteClaimed;
+    }
+    return _json;
+  }
+}
+
+class AccountStatusAccountLevelIssue {
+  /** Country for which this issue is reported. */
+  core.String country;
+  /** Additional details about the issue. */
+  core.String detail;
+  /** Issue identifier. */
+  core.String id;
+  /** Severity of the issue. */
+  core.String severity;
+  /** Short description of the issue. */
+  core.String title;
+
+  AccountStatusAccountLevelIssue();
+
+  AccountStatusAccountLevelIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("detail")) {
+      detail = _json["detail"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("severity")) {
+      severity = _json["severity"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (detail != null) {
+      _json["detail"] = detail;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (severity != null) {
+      _json["severity"] = severity;
+    }
+    if (title != null) {
+      _json["title"] = title;
     }
     return _json;
   }

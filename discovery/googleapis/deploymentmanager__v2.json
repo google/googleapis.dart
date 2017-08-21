@@ -24,7 +24,7 @@
     "description": "Declares, configures, and deploys complex solutions on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/deployment-manager/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/D9oyxr4DnVbupMt9dSmNXQp4YGQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/eM7CIlPIGQ4hwjtk5wTBsMjDIYI\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -220,7 +220,7 @@
                         "resource": {
                             "description": "Name of the resource for this request.",
                             "location": "path",
-                            "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                            "pattern": "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                             "required": true,
                             "type": "string"
                         }
@@ -406,7 +406,7 @@
                         "resource": {
                             "description": "Name of the resource for this request.",
                             "location": "path",
-                            "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                            "pattern": "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                             "required": true,
                             "type": "string"
                         }
@@ -478,7 +478,7 @@
                         "resource": {
                             "description": "Name of the resource for this request.",
                             "location": "path",
-                            "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                            "pattern": "(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                             "required": true,
                             "type": "string"
                         }
@@ -919,7 +919,7 @@
             }
         }
     },
-    "revision": "20170615",
+    "revision": "20170810",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -960,6 +960,17 @@
                 },
                 "logType": {
                     "description": "The log type that this config enables.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuthorizationLoggingOptions": {
+            "description": "Authorization-related information used by Cloud Audit Logging.",
+            "id": "AuthorizationLoggingOptions",
+            "properties": {
+                "permissionType": {
+                    "description": "The type of the permission that was checked.",
                     "type": "string"
                 }
             },
@@ -1225,6 +1236,10 @@
                 "counter": {
                     "$ref": "LogConfigCounterOptions",
                     "description": "Counter options."
+                },
+                "dataAccess": {
+                    "$ref": "LogConfigDataAccessOptions",
+                    "description": "Data access options."
                 }
             },
             "type": "object"
@@ -1233,6 +1248,10 @@
             "description": "Write a Cloud Audit log",
             "id": "LogConfigCloudAuditOptions",
             "properties": {
+                "authorizationLoggingOptions": {
+                    "$ref": "AuthorizationLoggingOptions",
+                    "description": "Information used by the Cloud Audit Logging pipeline."
+                },
                 "logName": {
                     "description": "The log_name to populate in the Cloud Audit Record.",
                     "type": "string"
@@ -1241,7 +1260,7 @@
             "type": "object"
         },
         "LogConfigCounterOptions": {
-            "description": "Options for counters",
+            "description": "Increment a streamz counter with the specified metric and field names.\n\nMetric names should start with a '/', generally be lowercase-only, and end in \"_count\". Field names should not contain an initial slash. The actual exported metric names will have \"/iam/policy\" prepended.\n\nField names correspond to IAM request parameters and field values are their respective values.\n\nAt present the only supported field names are - \"iam_principal\", corresponding to IAMContext.principal; - \"\" (empty string), resulting in one aggretated counter with no field.\n\nExamples: counter { metric: \"/debug_access_count\" field: \"iam_principal\" } ==> increment counter /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}\n\nAt this time we do not support: * multiple field names (though this may be supported in the future) * decrementing the counter * incrementing it by anything other than 1",
             "id": "LogConfigCounterOptions",
             "properties": {
                 "field": {
@@ -1250,6 +1269,17 @@
                 },
                 "metric": {
                     "description": "The metric to update.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LogConfigDataAccessOptions": {
+            "description": "Write a Data Access (Gin) log",
+            "id": "LogConfigDataAccessOptions",
+            "properties": {
+                "logMode": {
+                    "description": "Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in the LocalIAM implementation, for now.",
                     "type": "string"
                 }
             },

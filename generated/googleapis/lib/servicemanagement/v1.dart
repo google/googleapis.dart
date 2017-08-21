@@ -96,6 +96,10 @@ class OperationsResourceApi {
    *
    * Request parameters:
    *
+   * [pageSize] - The maximum number of operations to return. If unspecified,
+   * defaults to
+   * 50. The maximum value is 100.
+   *
    * [filter] - A string for filtering Operations.
    *   The following filter fields are supported&#58;
    *
@@ -122,10 +126,6 @@ class OperationsResourceApi {
    *
    * [name] - Not used.
    *
-   * [pageSize] - The maximum number of operations to return. If unspecified,
-   * defaults to
-   * 50. The maximum value is 100.
-   *
    * Completes with a [ListOperationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -134,7 +134,7 @@ class OperationsResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListOperationsResponse> list({core.String filter, core.String pageToken, core.String name, core.int pageSize}) {
+  async.Future<ListOperationsResponse> list({core.int pageSize, core.String filter, core.String pageToken, core.String name}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -142,6 +142,9 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -150,9 +153,6 @@ class OperationsResourceApi {
     }
     if (name != null) {
       _queryParams["name"] = [name];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/operations';
@@ -578,6 +578,10 @@ class ServicesResourceApi {
    *
    * Request parameters:
    *
+   * [pageSize] - Requested size of the next page of data.
+   *
+   * [producerProjectId] - Include services produced by the specified project.
+   *
    * [consumerId] - Include services consumed by the specified consumer.
    *
    * The Google Service Management implementation accepts the following
@@ -588,10 +592,6 @@ class ServicesResourceApi {
    * previous list
    * call.
    *
-   * [pageSize] - Requested size of the next page of data.
-   *
-   * [producerProjectId] - Include services produced by the specified project.
-   *
    * Completes with a [ListServicesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -600,7 +600,7 @@ class ServicesResourceApi {
    * If the used [http_1.Client] completes with an error when making a REST
    * call, this method will complete with the same error.
    */
-  async.Future<ListServicesResponse> list({core.String consumerId, core.String pageToken, core.int pageSize, core.String producerProjectId}) {
+  async.Future<ListServicesResponse> list({core.int pageSize, core.String producerProjectId, core.String consumerId, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -608,17 +608,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consumerId != null) {
-      _queryParams["consumerId"] = [consumerId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (producerProjectId != null) {
       _queryParams["producerProjectId"] = [producerProjectId];
+    }
+    if (consumerId != null) {
+      _queryParams["consumerId"] = [consumerId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/services';
@@ -1365,18 +1365,28 @@ class Advice {
   }
 }
 
-/** Api is a light-weight descriptor for a protocol buffer service. */
+/**
+ * Api is a light-weight descriptor for an API Interface.
+ *
+ * Interfaces are also described as "protocol buffer services" in some contexts,
+ * such as by the "service" keyword in a .proto file, but they are different
+ * from API Services, which represent a concrete implementation of an interface
+ * as opposed to simply a description of methods and bindings. They are also
+ * sometimes simply referred to as "APIs" in other contexts, such as the name of
+ * this message itself. See https://cloud.google.com/apis/design/glossary for
+ * detailed terminology.
+ */
 class Api {
-  /** The methods of this api, in unspecified order. */
+  /** The methods of this interface, in unspecified order. */
   core.List<Method> methods;
-  /** Included APIs. See Mixin. */
+  /** Included interfaces. See Mixin. */
   core.List<Mixin> mixins;
   /**
-   * The fully qualified name of this api, including package name
-   * followed by the api's simple name.
+   * The fully qualified name of this interface, including package name
+   * followed by the interface's simple name.
    */
   core.String name;
-  /** Any metadata attached to the API. */
+  /** Any metadata attached to the interface. */
   core.List<Option> options;
   /**
    * Source context for the protocol buffer service represented by this
@@ -1391,13 +1401,12 @@ class Api {
    */
   core.String syntax;
   /**
-   * A version string for this api. If specified, must have the form
-   * `major-version.minor-version`, as in `1.10`. If the minor version
-   * is omitted, it defaults to zero. If the entire version field is
-   * empty, the major version is derived from the package name, as
-   * outlined below. If the field is not empty, the version in the
-   * package name will be verified to be consistent with what is
-   * provided here.
+   * A version string for this interface. If specified, must have the form
+   * `major-version.minor-version`, as in `1.10`. If the minor version is
+   * omitted, it defaults to zero. If the entire version field is empty, the
+   * major version is derived from the package name, as outlined below. If the
+   * field is not empty, the version in the package name will be verified to be
+   * consistent with what is provided here.
    *
    * The versioning schema uses [semantic
    * versioning](http://semver.org) where the major version number
@@ -1407,10 +1416,10 @@ class Api {
    * chosen based on the product plan.
    *
    * The major version is also reflected in the package name of the
-   * API, which must end in `v<major-version>`, as in
+   * interface, which must end in `v<major-version>`, as in
    * `google.feature.v1`. For major versions 0 and 1, the suffix can
    * be omitted. Zero major versions must only be used for
-   * experimental, none-GA apis.
+   * experimental, non-GA interfaces.
    */
   core.String version;
 
@@ -1647,6 +1656,11 @@ class AuthProvider {
    */
   core.String audiences;
   /**
+   * Redirect URL if JWT token is required but no present or is expired.
+   * Implement authorizationUrl of securityDefinitions in OpenAPI spec.
+   */
+  core.String authorizationUrl;
+  /**
    * The unique identifier of the auth provider. It will be referred to by
    * `AuthRequirement.provider_id`.
    *
@@ -1684,6 +1698,9 @@ class AuthProvider {
     if (_json.containsKey("audiences")) {
       audiences = _json["audiences"];
     }
+    if (_json.containsKey("authorizationUrl")) {
+      authorizationUrl = _json["authorizationUrl"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -1699,6 +1716,9 @@ class AuthProvider {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (audiences != null) {
       _json["audiences"] = audiences;
+    }
+    if (authorizationUrl != null) {
+      _json["authorizationUrl"] = authorizationUrl;
     }
     if (id != null) {
       _json["id"] = id;
@@ -2119,8 +2139,6 @@ class ChangeReport {
 
 /** Write a Cloud Audit log */
 class CloudAuditOptions {
-  /** True if the log is for a permission of type DATA_READ or ADMIN_READ. */
-  core.bool isReadPermissionType;
   /**
    * The log_name to populate in the Cloud Audit Record.
    * Possible string values are:
@@ -2133,9 +2151,6 @@ class CloudAuditOptions {
   CloudAuditOptions();
 
   CloudAuditOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("isReadPermissionType")) {
-      isReadPermissionType = _json["isReadPermissionType"];
-    }
     if (_json.containsKey("logName")) {
       logName = _json["logName"];
     }
@@ -2143,9 +2158,6 @@ class CloudAuditOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (isReadPermissionType != null) {
-      _json["isReadPermissionType"] = isReadPermissionType;
-    }
     if (logName != null) {
       _json["logName"] = logName;
     }
@@ -2598,7 +2610,30 @@ class Control {
   }
 }
 
-/** Options for counters */
+/**
+ * Increment a streamz counter with the specified metric and field names.
+ *
+ * Metric names should start with a '/', generally be lowercase-only,
+ * and end in "_count". Field names should not contain an initial slash.
+ * The actual exported metric names will have "/iam/policy" prepended.
+ *
+ * Field names correspond to IAM request parameters and field values are
+ * their respective values.
+ *
+ * At present the only supported field names are
+ *    - "iam_principal", corresponding to IAMContext.principal;
+ *    - "" (empty string), resulting in one aggretated counter with no field.
+ *
+ * Examples:
+ *   counter { metric: "/debug_access_count"  field: "iam_principal" }
+ *   ==> increment counter /iam/policy/backend_debug_access_count
+ *                         {iam_principal=[value of IAMContext.principal]}
+ *
+ * At this time we do not support:
+ * * multiple field names (though this may be supported in the future)
+ * * decrementing the counter
+ * * incrementing it by anything other than 1
+ */
 class CounterOptions {
   /** The field value to attribute. */
   core.String field;
@@ -2770,14 +2805,41 @@ class CustomHttpPattern {
 
 /** Write a Data Access (Gin) log */
 class DataAccessOptions {
+  /**
+   * Whether Gin logging should happen in a fail-closed manner at the caller.
+   * This is relevant only in the LocalIAM implementation, for now.
+   * Possible string values are:
+   * - "LOG_MODE_UNSPECIFIED" : Client is not required to write a partial Gin
+   * log immediately after
+   * the authorization check. If client chooses to write one and it fails,
+   * client may either fail open (allow the operation to continue) or
+   * fail closed (handle as a DENY outcome).
+   * - "LOG_FAIL_CLOSED" : The application's operation in the context of which
+   * this authorization
+   * check is being made may only be performed if it is successfully logged
+   * to Gin. For instance, the authorization library may satisfy this
+   * obligation by emitting a partial log entry at authorization check time
+   * and only returning ALLOW to the application if it succeeds.
+   *
+   * If a matching Rule has this directive, but the client has not indicated
+   * that it will honor such requirements, then the IAM check will result in
+   * authorization failure by setting CheckPolicyResponse.success=false.
+   */
+  core.String logMode;
 
   DataAccessOptions();
 
   DataAccessOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logMode")) {
+      logMode = _json["logMode"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (logMode != null) {
+      _json["logMode"] = logMode;
+    }
     return _json;
   }
 }
@@ -4029,43 +4091,6 @@ class HttpRule {
    */
   core.String responseBody;
   /**
-   * Optional. The REST collection name is by default derived from the URL
-   * pattern. If specified, this field overrides the default collection name.
-   * Example:
-   *
-   *     rpc AddressesAggregatedList(AddressesAggregatedListRequest)
-   *         returns (AddressesAggregatedListResponse) {
-   *       option (google.api.http) = {
-   *         get: "/v1/projects/{project_id}/aggregated/addresses"
-   *         rest_collection: "projects.addresses"
-   *       };
-   *     }
-   *
-   * This method has the automatically derived collection name
-   * "projects.aggregated". Because, semantically, this rpc is actually an
-   * operation on the "projects.addresses" collection, the `rest_collection`
-   * field is configured to override the derived collection name.
-   */
-  core.String restCollection;
-  /**
-   * Optional. The rest method name is by default derived from the URL
-   * pattern. If specified, this field overrides the default method name.
-   * Example:
-   *
-   *     rpc CreateResource(CreateResourceRequest)
-   *         returns (CreateResourceResponse) {
-   *       option (google.api.http) = {
-   *         post: "/v1/resources",
-   *         body: "resource",
-   *         rest_method_name: "insert"
-   *       };
-   *     }
-   *
-   * This method has the automatically derived rest method name "create", but
-   *  for backwards compatability with apiary, it is specified as insert.
-   */
-  core.String restMethodName;
-  /**
    * Selects methods to which this rule applies.
    *
    * Refer to selector for syntax details.
@@ -4108,12 +4133,6 @@ class HttpRule {
     if (_json.containsKey("responseBody")) {
       responseBody = _json["responseBody"];
     }
-    if (_json.containsKey("restCollection")) {
-      restCollection = _json["restCollection"];
-    }
-    if (_json.containsKey("restMethodName")) {
-      restMethodName = _json["restMethodName"];
-    }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
@@ -4153,12 +4172,6 @@ class HttpRule {
     }
     if (responseBody != null) {
       _json["responseBody"] = responseBody;
-    }
-    if (restCollection != null) {
-      _json["restCollection"] = restCollection;
-    }
-    if (restMethodName != null) {
-      _json["restMethodName"] = restMethodName;
     }
     if (selector != null) {
       _json["selector"] = selector;
@@ -4333,31 +4346,7 @@ class ListServicesResponse {
   }
 }
 
-/**
- * Specifies what kind of log the caller must write
- * Increment a streamz counter with the specified metric and field names.
- *
- * Metric names should start with a '/', generally be lowercase-only,
- * and end in "_count". Field names should not contain an initial slash.
- * The actual exported metric names will have "/iam/policy" prepended.
- *
- * Field names correspond to IAM request parameters and field values are
- * their respective values.
- *
- * At present the only supported field names are
- *    - "iam_principal", corresponding to IAMContext.principal;
- *    - "" (empty string), resulting in one aggretated counter with no field.
- *
- * Examples:
- *   counter { metric: "/debug_access_count"  field: "iam_principal" }
- *   ==> increment counter /iam/policy/backend_debug_access_count
- *                         {iam_principal=[value of IAMContext.principal]}
- *
- * At this time we do not support:
- * * multiple field names (though this may be supported in the future)
- * * decrementing the counter
- * * incrementing it by anything other than 1
- */
+/** Specifies what kind of log the caller must write */
 class LogConfig {
   /** Cloud audit options. */
   CloudAuditOptions cloudAudit;
@@ -4791,7 +4780,7 @@ class MediaUpload {
   }
 }
 
-/** Method represents a method of an api. */
+/** Method represents a method of an API interface. */
 class Method {
   /** The simple name of this method. */
   core.String name;
@@ -5112,9 +5101,9 @@ class MetricRule {
 }
 
 /**
- * Declares an API to be included in this API. The including API must
- * redeclare all the methods from the included API, but documentation
- * and options are inherited as follows:
+ * Declares an API Interface to be included in this interface. The including
+ * interface must redeclare all the methods from the included interface, but
+ * documentation and options are inherited as follows:
  *
  * - If after comment and whitespace stripping, the documentation
  *   string of the redeclared method is empty, it will be inherited
@@ -5126,7 +5115,8 @@ class MetricRule {
  *
  * - If an http annotation is inherited, the path pattern will be
  *   modified as follows. Any version prefix will be replaced by the
- *   version of the including API plus the root path if specified.
+ *   version of the including interface plus the root path if
+ *   specified.
  *
  * Example of a simple mixin:
  *
@@ -5191,7 +5181,7 @@ class MetricRule {
  *     }
  */
 class Mixin {
-  /** The fully qualified name of the API which is included. */
+  /** The fully qualified name of the interface which is included. */
   core.String name;
   /**
    * If non-empty specifies a path under which inherited HTTP paths
@@ -6353,10 +6343,10 @@ class Service {
   /** API backend configuration. */
   Backend backend;
   /**
-   * The version of the service configuration. The config version may
-   * influence interpretation of the configuration, for example, to
-   * determine defaults. This is documented together with applicable
-   * options. The current default for the config version itself is `3`.
+   * The semantic version of the service configuration. The config version
+   * affects the interpretation of the service configuration. For example,
+   * certain features are enabled by default for certain config versions.
+   * The latest config version is `3`.
    */
   core.int configVersion;
   /** Context configuration. */

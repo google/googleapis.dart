@@ -1,3 +1,31 @@
+## 0.43.0
+* [api] adexperiencereport:v1
+* [api] analytics:v3
+* [api] androidmanagement:v1
+* [api] androidpublisher:v2
+* [api] bigquerydatatransfer:v1
+* [api] bigquery:v2
+* [api] classroom:v1
+* [api] cloudbilling:v1
+* [api] cloudkms:v1
+* [api] compute:v1
+* [api] content:v2
+* [api] datastore:v1
+* [api] deploymentmanager:v2
+* [api] firebasedynamiclinks:v1
+* [api] logging:v2
+* [api] manufacturers:v1
+* [api] ml:v1
+* [api] servicemanagement:v1
+* [api] serviceuser:v1
+* [api] spanner:v1
+* [api-breaking] adexperiencereport:v1
+* [api-breaking] androiddeviceprovisioning:v1
+* [api-breaking] iam:v1
+* [api-breaking] monitoring:v3
+* [api-breaking] script:v1
+* [api-breaking] servicemanagement:v1
+
 ## 0.42.0
 
 * [api-new] androiddeviceprovisioning:v1

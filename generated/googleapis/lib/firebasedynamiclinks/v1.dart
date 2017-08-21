@@ -25,7 +25,7 @@ class FirebasedynamiclinksApi {
   ShortLinksResourceApi get shortLinks => new ShortLinksResourceApi(_requester);
   V1ResourceApi get v1 => new V1ResourceApi(_requester);
 
-  FirebasedynamiclinksApi(http.Client client, {core.String rootUrl: "https://firebasedynamiclinks.googleapis.com/", core.String servicePath: ""}) :
+  FirebasedynamiclinksApi(http.Client client, {core.String rootUrl: "https://firebasedynamiclinks-ipv6.googleapis.com/", core.String servicePath: ""}) :
       _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
@@ -541,6 +541,8 @@ class DynamicLinkWarning {
    * match with the given iOS store ID.
    */
   core.String warningCode;
+  /** The document describing the warning, and helps resolve. */
+  core.String warningDocumentLink;
   /** The warning message to help developers improve their requests. */
   core.String warningMessage;
 
@@ -549,6 +551,9 @@ class DynamicLinkWarning {
   DynamicLinkWarning.fromJson(core.Map _json) {
     if (_json.containsKey("warningCode")) {
       warningCode = _json["warningCode"];
+    }
+    if (_json.containsKey("warningDocumentLink")) {
+      warningDocumentLink = _json["warningDocumentLink"];
     }
     if (_json.containsKey("warningMessage")) {
       warningMessage = _json["warningMessage"];
@@ -559,6 +564,9 @@ class DynamicLinkWarning {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (warningCode != null) {
       _json["warningCode"] = warningCode;
+    }
+    if (warningDocumentLink != null) {
+      _json["warningDocumentLink"] = warningDocumentLink;
     }
     if (warningMessage != null) {
       _json["warningMessage"] = warningMessage;

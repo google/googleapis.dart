@@ -271,6 +271,50 @@ class ProjectsJobsResourceApi {
   }
 
   /**
+   * Gets the access control policy for a resource.
+   * Returns an empty policy if the resource exists and does not have a policy
+   * set.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * requested.
+   * See the operation documentation for the appropriate value for this field.
+   * Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+   *
+   * Completes with a [GoogleIamV1Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+  }
+
+  /**
    * Lists the jobs in the project.
    *
    * Request parameters:
@@ -331,6 +375,107 @@ class ProjectsJobsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new GoogleCloudMlV1ListJobsResponse.fromJson(data));
+  }
+
+  /**
+   * Sets the access control policy on the specified resource. Replaces any
+   * existing policy.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy is being
+   * specified.
+   * See the operation documentation for the appropriate value for this field.
+   * Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+   *
+   * Completes with a [GoogleIamV1Policy].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GoogleIamV1Policy> setIamPolicy(GoogleIamV1SetIamPolicyRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+  }
+
+  /**
+   * Returns permissions that a caller has on the specified resource.
+   * If the resource does not exist, this will return an empty set of
+   * permissions, not a NOT_FOUND error.
+   *
+   * Note: This operation is designed to be used for building permission-aware
+   * UIs and command-line tools, not for authorization checking. This operation
+   * may "fail open" without warning.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [resource] - REQUIRED: The resource for which the policy detail is being
+   * requested.
+   * See the operation documentation for the appropriate value for this field.
+   * Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+   *
+   * Completes with a [GoogleIamV1TestIamPermissionsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(GoogleIamV1TestIamPermissionsRequest request, core.String resource) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleIamV1TestIamPermissionsResponse.fromJson(data));
   }
 
 }
@@ -920,9 +1065,6 @@ class ProjectsModelsVersionsResourceApi {
    * model. You
    * can get the names of all the versions of a model by calling
    * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
-   *
-   * Authorization: `ml.models.update` permission is required on the parent
-   * model.
    * Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
    *
    * Completes with a [GoogleCloudMlV1Version].
@@ -1120,11 +1262,11 @@ class ProjectsOperationsResourceApi {
    * [name] - The name of the operation's parent resource.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - The standard list filter.
-   *
    * [pageToken] - The standard list page token.
    *
    * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
    *
    * Completes with a [GoogleLongrunningListOperationsResponse].
    *
@@ -1134,7 +1276,7 @@ class ProjectsOperationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1145,14 +1287,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
@@ -1514,7 +1656,11 @@ class GoogleCloudMlV1HyperparameterSpec {
   }
 }
 
-/** Represents a training or prediction job. */
+/**
+ * Represents a training or prediction job.
+ *
+ * Next ID: 16
+ */
 class GoogleCloudMlV1Job {
   /** Output only. When the job was created. */
   core.String createTime;
@@ -1755,6 +1901,8 @@ class GoogleCloudMlV1ManualScaling {
  * A model can have multiple versions, each of which is a deployed, trained
  * model ready to receive prediction requests. The model itself is just a
  * container.
+ *
+ * Next ID: 8
  */
 class GoogleCloudMlV1Model {
   /**
@@ -1832,7 +1980,11 @@ class GoogleCloudMlV1Model {
   }
 }
 
-/** Represents the metadata of the long-running operation. */
+/**
+ * Represents the metadata of the long-running operation.
+ *
+ * Next ID: 9
+ */
 class GoogleCloudMlV1OperationMetadata {
   /** The time the operation was submitted. */
   core.String createTime;
@@ -1849,6 +2001,8 @@ class GoogleCloudMlV1OperationMetadata {
    * - "CREATE_VERSION" : An operation to create a new version.
    * - "DELETE_VERSION" : An operation to delete an existing version.
    * - "DELETE_MODEL" : An operation to delete an existing model.
+   * - "UPDATE_MODEL" : An operation to update an existing model.
+   * - "UPDATE_VERSION" : An operation to update an existing version.
    */
   core.String operationType;
   /** The time operation processing started. */
@@ -2242,6 +2396,13 @@ class GoogleCloudMlV1PredictRequest {
 /** Represents input parameters for a prediction job. */
 class GoogleCloudMlV1PredictionInput {
   /**
+   * Optional. Number of records per batch, defaults to 64.
+   * The service will buffer batch_size number of records in memory before
+   * invoking one Tensorflow prediction call internally. So take the record
+   * size and memory available into consideration when setting this parameter.
+   */
+  core.String batchSize;
+  /**
    * Required. The format of the input data files.
    * Possible string values are:
    * - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
@@ -2299,6 +2460,9 @@ class GoogleCloudMlV1PredictionInput {
   GoogleCloudMlV1PredictionInput();
 
   GoogleCloudMlV1PredictionInput.fromJson(core.Map _json) {
+    if (_json.containsKey("batchSize")) {
+      batchSize = _json["batchSize"];
+    }
     if (_json.containsKey("dataFormat")) {
       dataFormat = _json["dataFormat"];
     }
@@ -2330,6 +2494,9 @@ class GoogleCloudMlV1PredictionInput {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (batchSize != null) {
+      _json["batchSize"] = batchSize;
+    }
     if (dataFormat != null) {
       _json["dataFormat"] = dataFormat;
     }
@@ -2728,6 +2895,8 @@ class GoogleCloudMlV1TrainingOutput {
  * prediction requests. A model can have multiple versions. You can get
  * information about all of the versions of a given model by calling
  * [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
+ *
+ * Next ID: 18
  */
 class GoogleCloudMlV1Version {
   /**
@@ -2795,9 +2964,10 @@ class GoogleCloudMlV1Version {
    * Possible string values are:
    * - "UNKNOWN" : The version state is unspecified.
    * - "READY" : The version is ready for prediction.
-   * - "CREATING" : The version is still in the process of creation.
+   * - "CREATING" : The version is in the process of creation.
    * - "FAILED" : The version failed to be created, possibly cancelled.
    * `error_message` should contain the details of the failure.
+   * - "DELETING" : The version is in the process of deletion.
    */
   core.String state;
 
@@ -2946,7 +3116,11 @@ class GoogleCloudMlV1beta1ManualScaling {
   }
 }
 
-/** Represents the metadata of the long-running operation. */
+/**
+ * Represents the metadata of the long-running operation.
+ *
+ * Next ID: 9
+ */
 class GoogleCloudMlV1beta1OperationMetadata {
   /** The time the operation was submitted. */
   core.String createTime;
@@ -2963,6 +3137,8 @@ class GoogleCloudMlV1beta1OperationMetadata {
    * - "CREATE_VERSION" : An operation to create a new version.
    * - "DELETE_VERSION" : An operation to delete an existing version.
    * - "DELETE_MODEL" : An operation to delete an existing model.
+   * - "UPDATE_MODEL" : An operation to update an existing model.
+   * - "UPDATE_VERSION" : An operation to update an existing version.
    */
   core.String operationType;
   /** The time operation processing started. */
@@ -3030,6 +3206,8 @@ class GoogleCloudMlV1beta1OperationMetadata {
  * prediction requests. A model can have multiple versions. You can get
  * information about all of the versions of a given model by calling
  * [projects.models.versions.list](/ml-engine/reference/rest/v1beta1/projects.models.versions/list).
+ *
+ * Next ID: 18
  */
 class GoogleCloudMlV1beta1Version {
   /**
@@ -3097,9 +3275,10 @@ class GoogleCloudMlV1beta1Version {
    * Possible string values are:
    * - "UNKNOWN" : The version state is unspecified.
    * - "READY" : The version is ready for prediction.
-   * - "CREATING" : The version is still in the process of creation.
+   * - "CREATING" : The version is in the process of creation.
    * - "FAILED" : The version failed to be created, possibly cancelled.
    * `error_message` should contain the details of the failure.
+   * - "DELETING" : The version is in the process of deletion.
    */
   core.String state;
 
@@ -3208,7 +3387,30 @@ class GoogleIamV1LogConfigCloudAuditOptions {
   }
 }
 
-/** Options for counters */
+/**
+ * Increment a streamz counter with the specified metric and field names.
+ *
+ * Metric names should start with a '/', generally be lowercase-only,
+ * and end in "_count". Field names should not contain an initial slash.
+ * The actual exported metric names will have "/iam/policy" prepended.
+ *
+ * Field names correspond to IAM request parameters and field values are
+ * their respective values.
+ *
+ * At present the only supported field names are
+ *    - "iam_principal", corresponding to IAMContext.principal;
+ *    - "" (empty string), resulting in one aggretated counter with no field.
+ *
+ * Examples:
+ *   counter { metric: "/debug_access_count"  field: "iam_principal" }
+ *   ==> increment counter /iam/policy/backend_debug_access_count
+ *                         {iam_principal=[value of IAMContext.principal]}
+ *
+ * At this time we do not support:
+ * * multiple field names (though this may be supported in the future)
+ * * decrementing the counter
+ * * incrementing it by anything other than 1
+ */
 class GoogleIamV1LogConfigCounterOptions {
   /** The field value to attribute. */
   core.String field;
@@ -3240,14 +3442,41 @@ class GoogleIamV1LogConfigCounterOptions {
 
 /** Write a Data Access (Gin) log */
 class GoogleIamV1LogConfigDataAccessOptions {
+  /**
+   * Whether Gin logging should happen in a fail-closed manner at the caller.
+   * This is relevant only in the LocalIAM implementation, for now.
+   * Possible string values are:
+   * - "LOG_MODE_UNSPECIFIED" : Client is not required to write a partial Gin
+   * log immediately after
+   * the authorization check. If client chooses to write one and it fails,
+   * client may either fail open (allow the operation to continue) or
+   * fail closed (handle as a DENY outcome).
+   * - "LOG_FAIL_CLOSED" : The application's operation in the context of which
+   * this authorization
+   * check is being made may only be performed if it is successfully logged
+   * to Gin. For instance, the authorization library may satisfy this
+   * obligation by emitting a partial log entry at authorization check time
+   * and only returning ALLOW to the application if it succeeds.
+   *
+   * If a matching Rule has this directive, but the client has not indicated
+   * that it will honor such requirements, then the IAM check will result in
+   * authorization failure by setting CheckPolicyResponse.success=false.
+   */
+  core.String logMode;
 
   GoogleIamV1LogConfigDataAccessOptions();
 
   GoogleIamV1LogConfigDataAccessOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logMode")) {
+      logMode = _json["logMode"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (logMode != null) {
+      _json["logMode"] = logMode;
+    }
     return _json;
   }
 }
@@ -3589,31 +3818,7 @@ class GoogleIamV1Condition {
   }
 }
 
-/**
- * Specifies what kind of log the caller must write
- * Increment a streamz counter with the specified metric and field names.
- *
- * Metric names should start with a '/', generally be lowercase-only,
- * and end in "_count". Field names should not contain an initial slash.
- * The actual exported metric names will have "/iam/policy" prepended.
- *
- * Field names correspond to IAM request parameters and field values are
- * their respective values.
- *
- * At present the only supported field names are
- *    - "iam_principal", corresponding to IAMContext.principal;
- *    - "" (empty string), resulting in one aggretated counter with no field.
- *
- * Examples:
- *   counter { metric: "/debug_access_count"  field: "iam_principal" }
- *   ==> increment counter /iam/policy/backend_debug_access_count
- *                         {iam_principal=[value of IAMContext.principal]}
- *
- * At this time we do not support:
- * * multiple field names (though this may be supported in the future)
- * * decrementing the counter
- * * incrementing it by anything other than 1
- */
+/** Specifies what kind of log the caller must write */
 class GoogleIamV1LogConfig {
   /** Cloud audit options. */
   GoogleIamV1LogConfigCloudAuditOptions cloudAudit;

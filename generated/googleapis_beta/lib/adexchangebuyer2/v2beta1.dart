@@ -154,16 +154,16 @@ class AccountsClientsResourceApi {
    * [accountId] - Unique numerical account ID of the sponsor buyer to list the
    * clients for.
    *
+   * [pageSize] - Requested page size. The server may return fewer clients than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
    * ListClientsResponse.nextPageToken
    * returned from the previous call to the
    * accounts.clients.list method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer clients than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListClientsResponse].
    *
@@ -173,7 +173,7 @@ class AccountsClientsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClientsResponse> list(core.String accountId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListClientsResponse> list(core.String accountId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -184,11 +184,11 @@ class AccountsClientsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/clients';
@@ -516,16 +516,16 @@ class AccountsClientsUsersResourceApi {
    * to list all the client users for all the clients
    * of a given sponsor buyer.
    *
+   * [pageSize] - Requested page size. The server may return fewer clients than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
    * ListClientUsersResponse.nextPageToken
    * returned from the previous call to the
    * accounts.clients.users.list method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer clients than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListClientUsersResponse].
    *
@@ -535,7 +535,7 @@ class AccountsClientsUsersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListClientUsersResponse> list(core.String accountId, core.String clientAccountId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListClientUsersResponse> list(core.String accountId, core.String clientAccountId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -549,11 +549,11 @@ class AccountsClientsUsersResourceApi {
     if (clientAccountId == null) {
       throw new core.ArgumentError("Parameter clientAccountId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/clients/' + commons.Escaper.ecapeVariable('$clientAccountId') + '/users';
@@ -1045,12 +1045,6 @@ class AccountsCreativesDealAssociationsResourceApi {
    * [creativeId] - The creative ID to list the associations from.
    * Specify "-" to list all creatives under the above account.
    *
-   * [pageToken] - A token identifying a page of results the server should
-   * return.
-   * Typically, this is the value of
-   * ListDealAssociationsResponse.next_page_token
-   * returned from the previous call to 'ListDealAssociations' method.
-   *
    * [pageSize] - Requested page size. Server may return fewer associations than
    * requested.
    * If unspecified, server will pick an appropriate default.
@@ -1070,6 +1064,12 @@ class AccountsCreativesDealAssociationsResourceApi {
    * </ul>
    * Example: 'dealsId=12345 AND dealsStatus:disapproved'
    *
+   * [pageToken] - A token identifying a page of results the server should
+   * return.
+   * Typically, this is the value of
+   * ListDealAssociationsResponse.next_page_token
+   * returned from the previous call to 'ListDealAssociations' method.
+   *
    * Completes with a [ListDealAssociationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1078,7 +1078,7 @@ class AccountsCreativesDealAssociationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDealAssociationsResponse> list(core.String accountId, core.String creativeId, {core.String pageToken, core.int pageSize, core.String query}) {
+  async.Future<ListDealAssociationsResponse> list(core.String accountId, core.String creativeId, {core.int pageSize, core.String query, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1092,14 +1092,14 @@ class AccountsCreativesDealAssociationsResourceApi {
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/creatives/' + commons.Escaper.ecapeVariable('$creativeId') + '/dealAssociations';
@@ -1398,6 +1398,10 @@ class AccountsFilterSetsBidMetricsResourceApi {
    *
    * [filterSetId] - The ID of the filter set to apply.
    *
+   * [pageSize] - Requested page size. The server may return fewer results than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
@@ -1405,10 +1409,6 @@ class AccountsFilterSetsBidMetricsResourceApi {
    * returned from the previous call to the
    * accounts.filterSets.bidMetrics.list
    * method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer results than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListBidMetricsResponse].
    *
@@ -1418,7 +1418,7 @@ class AccountsFilterSetsBidMetricsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBidMetricsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListBidMetricsResponse> list(core.String accountId, core.String filterSetId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1432,11 +1432,11 @@ class AccountsFilterSetsBidMetricsResourceApi {
     if (filterSetId == null) {
       throw new core.ArgumentError("Parameter filterSetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/bidMetrics';
@@ -1470,6 +1470,10 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
    *
    * [filterSetId] - The ID of the filter set to apply.
    *
+   * [pageSize] - Requested page size. The server may return fewer results than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
@@ -1477,10 +1481,6 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
    * returned from the previous call to the
    * accounts.filterSets.bidResponseErrors.list
    * method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer results than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListBidResponseErrorsResponse].
    *
@@ -1490,7 +1490,7 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBidResponseErrorsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListBidResponseErrorsResponse> list(core.String accountId, core.String filterSetId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1504,11 +1504,11 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
     if (filterSetId == null) {
       throw new core.ArgumentError("Parameter filterSetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/bidResponseErrors';
@@ -1614,6 +1614,10 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
    *
    * [filterSetId] - The ID of the filter set to apply.
    *
+   * [pageSize] - Requested page size. The server may return fewer results than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
@@ -1621,10 +1625,6 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
    * returned from the previous call to the
    * accounts.filterSets.filteredBidRequests.list
    * method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer results than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListFilteredBidRequestsResponse].
    *
@@ -1634,7 +1634,7 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListFilteredBidRequestsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListFilteredBidRequestsResponse> list(core.String accountId, core.String filterSetId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1648,11 +1648,11 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
     if (filterSetId == null) {
       throw new core.ArgumentError("Parameter filterSetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/filteredBidRequests';
@@ -1846,7 +1846,7 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
    * breakdown by detail.
    * See
    * [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
-   * Details are only available for statuses 14, 15, 17, 18, 19, 86, and 87.
+   * Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
    *
    * [pageToken] - A token identifying a page of results the server should
    * return.
@@ -1994,6 +1994,10 @@ class AccountsFilterSetsLosingBidsResourceApi {
    *
    * [filterSetId] - The ID of the filter set to apply.
    *
+   * [pageSize] - Requested page size. The server may return fewer results than
+   * requested.
+   * If unspecified, the server will pick an appropriate default.
+   *
    * [pageToken] - A token identifying a page of results the server should
    * return.
    * Typically, this is the value of
@@ -2001,10 +2005,6 @@ class AccountsFilterSetsLosingBidsResourceApi {
    * returned from the previous call to the
    * accounts.filterSets.losingBids.list
    * method.
-   *
-   * [pageSize] - Requested page size. The server may return fewer results than
-   * requested.
-   * If unspecified, the server will pick an appropriate default.
    *
    * Completes with a [ListLosingBidsResponse].
    *
@@ -2014,7 +2014,7 @@ class AccountsFilterSetsLosingBidsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLosingBidsResponse> list(core.String accountId, core.String filterSetId, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListLosingBidsResponse> list(core.String accountId, core.String filterSetId, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2028,11 +2028,11 @@ class AccountsFilterSetsLosingBidsResourceApi {
     if (filterSetId == null) {
       throw new core.ArgumentError("Parameter filterSetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/filterSets/' + commons.Escaper.ecapeVariable('$filterSetId') + '/losingBids';
@@ -4177,6 +4177,10 @@ class ListCreativeStatusBreakdownByDetailResponse {
    * - "PRODUCT_CATEGORY" : Indicates that the detail ID refers to a product
    * category; see
    * [ad-product-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-product-categories).
+   * - "DISAPPROVAL_REASON" : Indicates that the detail ID refers to a
+   * disapproval reason; see
+   * DisapprovalReason enum in
+   * [snippet-status-report-proto](https://developers.google.com/ad-exchange/rtb/downloads/snippet-status-report-proto).
    */
   core.String detailType;
   /**

@@ -6019,7 +6019,7 @@ class Proposal {
 }
 
 class PublisherProfileApiProto {
-  /** The account id of the seller. */
+  /** Deprecated: use the seller.account_id. The account id of the seller. */
   core.String accountId;
   /** Publisher provided info on its audience. */
   core.String audience;

@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Firebase Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://firebase.google.com/docs/test-lab/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/ZyI2MKAoJf8XY5sH6nCuoCwniOY\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/TdjAcGRUDskRBNNbXs3PGqnucOE\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -391,6 +391,44 @@
                                 }
                             },
                             "resources": {
+                                "clusters": {
+                                    "methods": {
+                                        "list": {
+                                            "description": "Lists Screenshot Clusters\n\nReturns the list of screenshot clusters corresponding to an execution. Screenshot clusters are created after the execution is finished. Clusters are created from a set of screenshots. Between any two screenshots, a matching score is calculated based off their metadata that determines how similar they are. Screenshots are placed in the cluster that has screens which have the highest matching scores.",
+                                            "httpMethod": "GET",
+                                            "id": "toolresults.projects.histories.executions.clusters.list",
+                                            "parameterOrder": [
+                                                "projectId",
+                                                "historyId",
+                                                "executionId"
+                                            ],
+                                            "parameters": {
+                                                "executionId": {
+                                                    "description": "An Execution id.\n\nRequired.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "historyId": {
+                                                    "description": "A History id.\n\nRequired.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "projectId": {
+                                                    "description": "A Project id.\n\nRequired.",
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "{projectId}/histories/{historyId}/executions/{executionId}/clusters",
+                                            "response": {
+                                                "$ref": "ListScreenshotClustersResponse"
+                                            }
+                                        }
+                                    }
+                                },
                                 "steps": {
                                     "methods": {
                                         "create": {
@@ -1082,9 +1120,110 @@
             }
         }
     },
-    "revision": "20170727",
+    "revision": "20170818",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
+        "AndroidAppInfo": {
+            "description": "Android app information.",
+            "id": "AndroidAppInfo",
+            "properties": {
+                "name": {
+                    "description": "The name of the app. Optional",
+                    "type": "string"
+                },
+                "packageName": {
+                    "description": "The package name of the app. Required.",
+                    "type": "string"
+                },
+                "versionCode": {
+                    "description": "The internal version code of the app. Optional.",
+                    "type": "string"
+                },
+                "versionName": {
+                    "description": "The version name of the app. Optional.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AndroidInstrumentationTest": {
+            "description": "A test of an Android application that can control an Android component independently of its normal lifecycle.\n\nSee  for more information on types of Android tests.",
+            "id": "AndroidInstrumentationTest",
+            "properties": {
+                "testPackageId": {
+                    "description": "The java package for the test to be executed. Required",
+                    "type": "string"
+                },
+                "testRunnerClass": {
+                    "description": "The InstrumentationTestRunner class. Required",
+                    "type": "string"
+                },
+                "testTargets": {
+                    "description": "Each target must be fully qualified with the package name or class name, in one of these formats: - \"package package_name\" - \"class package_name.class_name\" - \"class package_name.class_name#method_name\"\n\nIf empty, all targets in the module will be run.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "useOrchestrator": {
+                    "description": "The flag indicates whether Android Test Orchestrator will be used to run test or not. Test orchestrator is used if either: - orchestrator_option field is USE_ORCHESTRATOR, and test runner is compatible with orchestrator. Or - orchestrator_option field is unspecified or ORCHESTRATOR_OPTION_UNSPECIFIED, and test runner is compatible with orchestrator.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "AndroidRoboTest": {
+            "description": "A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes.",
+            "id": "AndroidRoboTest",
+            "properties": {
+                "appInitialActivity": {
+                    "description": "The initial activity that should be used to start the app. Optional",
+                    "type": "string"
+                },
+                "bootstrapPackageId": {
+                    "description": "The java package for the bootstrap. Optional",
+                    "type": "string"
+                },
+                "bootstrapRunnerClass": {
+                    "description": "The runner class for the bootstrap. Optional",
+                    "type": "string"
+                },
+                "maxDepth": {
+                    "description": "The max depth of the traversal stack Robo can explore. Optional",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "maxSteps": {
+                    "description": "The max number of steps/actions Robo can execute. Default is no limit (0). Optional",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "AndroidTest": {
+            "description": "An Android mobile test specification.",
+            "id": "AndroidTest",
+            "properties": {
+                "androidAppInfo": {
+                    "$ref": "AndroidAppInfo",
+                    "description": "Infomation about the application under test."
+                },
+                "androidInstrumentationTest": {
+                    "$ref": "AndroidInstrumentationTest",
+                    "description": "An Android instrumentation test."
+                },
+                "androidRoboTest": {
+                    "$ref": "AndroidRoboTest",
+                    "description": "An Android robo test."
+                },
+                "testTimeout": {
+                    "$ref": "Duration",
+                    "description": "Max time a test is allowed to run before it is automatically cancelled."
+                }
+            },
+            "type": "object"
+        },
         "Any": {
             "description": "`Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\nFoo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... }\n\nExample 2: Pack and unpack a message in Java.\n\nFoo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); }\n\nExample 3: Pack and unpack a message in Python.\n\nfoo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ...\n\nExample 4: Pack and unpack a message in Go\n\nfoo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... }\n\nThe pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example \"foo.bar.com/x/y.z\" will yield type name \"y.z\".\n\n\n\nJSON ==== The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example:\n\npackage google.profile; message Person { string first_name = 1; string last_name = 2; }\n\n{ \"@type\": \"type.googleapis.com/google.profile.Person\", \"firstName\": , \"lastName\":  }\n\nIf the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message [google.protobuf.Duration][]):\n\n{ \"@type\": \"type.googleapis.com/google.protobuf.Duration\", \"value\": \"1.212s\" }",
             "id": "Any",
@@ -1274,6 +1413,10 @@
                     "$ref": "Outcome",
                     "description": "Classify the result, for example into SUCCESS or FAILURE\n\n- In response: present if set by create/update request - In create/update request: optional"
                 },
+                "specification": {
+                    "$ref": "Specification",
+                    "description": "Lightweight information about execution request.\n\n- In response: present if set by create - In create: optional - In update: optional"
+                },
                 "state": {
                     "description": "The initial state is IN_PROGRESS.\n\nThe only legal state transitions is from IN_PROGRESS to COMPLETE.\n\nA PRECONDITION_FAILED will be returned if an invalid transition is requested.\n\nThe state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times.\n\nIf the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE.\n\n- In response always set - In create/update request: optional",
                     "enum": [
@@ -1448,6 +1591,19 @@
                 "perfSamples": {
                     "items": {
                         "$ref": "PerfSample"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListScreenshotClustersResponse": {
+            "id": "ListScreenshotClustersResponse",
+            "properties": {
+                "clusters": {
+                    "description": "The set of clustres associated with an execution Always set",
+                    "items": {
+                        "$ref": "ScreenshotCluster"
                     },
                     "type": "array"
                 }
@@ -1689,6 +1845,53 @@
             },
             "type": "object"
         },
+        "Screen": {
+            "id": "Screen",
+            "properties": {
+                "fileReference": {
+                    "description": "File reference of the png file. Required.",
+                    "type": "string"
+                },
+                "locale": {
+                    "description": "Locale of the device that the screenshot was taken on. Required.",
+                    "type": "string"
+                },
+                "model": {
+                    "description": "Model of the device that the screenshot was taken on. Required.",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "OS version of the device that the screenshot was taken on. Required.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ScreenshotCluster": {
+            "id": "ScreenshotCluster",
+            "properties": {
+                "activity": {
+                    "description": "A string that describes the activity of every screen in the cluster.",
+                    "type": "string"
+                },
+                "clusterId": {
+                    "description": "A unique identifier for the cluster.",
+                    "type": "string"
+                },
+                "keyScreen": {
+                    "$ref": "Screen",
+                    "description": "A singular screen that represents the cluster as a whole. This screen will act as the \"cover\" of the entire cluster. When users look at the clusters, only the key screen from each cluster will be shown. Which screen is the key screen is determined by the ClusteringAlgorithm"
+                },
+                "screens": {
+                    "description": "Full list of screens.",
+                    "items": {
+                        "$ref": "Screen"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "SkippedDetail": {
             "id": "SkippedDetail",
             "properties": {
@@ -1703,6 +1906,17 @@
                 "incompatibleDevice": {
                     "description": "If the requested OS version doesn't run on the specific device model.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Specification": {
+            "description": "The details about how to run the execution.",
+            "id": "Specification",
+            "properties": {
+                "androidTest": {
+                    "$ref": "AndroidTest",
+                    "description": "An Android mobile test execution specification."
                 }
             },
             "type": "object"
@@ -1913,16 +2127,52 @@
             "type": "object"
         },
         "TestIssue": {
-            "description": "An abnormal event observed during the test execution.",
+            "description": "An issue detected occurring during a test execution.",
             "id": "TestIssue",
             "properties": {
                 "errorMessage": {
-                    "description": "A brief human-readable message describing the abnormal event.\n\nRequired.",
+                    "description": "A brief human-readable message describing the issue. Required.",
+                    "type": "string"
+                },
+                "severity": {
+                    "description": "Severity of issue. Required.",
+                    "enum": [
+                        "info",
+                        "severe",
+                        "unspecifiedSeverity",
+                        "warning"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
                     "type": "string"
                 },
                 "stackTrace": {
                     "$ref": "StackTrace",
-                    "description": "Optional."
+                    "description": "Deprecated in favor of stack trace fields inside specific warnings."
+                },
+                "type": {
+                    "description": "Type of issue. Required.",
+                    "enum": [
+                        "anr",
+                        "fatalException",
+                        "nativeCrash",
+                        "unspecifiedType"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "warning": {
+                    "$ref": "Any",
+                    "description": "Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings Required."
                 }
             },
             "type": "object"

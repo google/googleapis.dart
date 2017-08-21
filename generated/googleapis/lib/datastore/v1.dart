@@ -38,6 +38,8 @@ class DatastoreApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsOperationsResourceApi get operations => new ProjectsOperationsResourceApi(_requester);
+
   ProjectsResourceApi(commons.ApiRequester client) : 
       _requester = client;
 
@@ -310,6 +312,213 @@ class ProjectsResourceApi {
 }
 
 
+class ProjectsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsOperationsResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Starts asynchronous cancellation on a long-running operation.  The server
+   * makes a best effort to cancel the operation, but success is not
+   * guaranteed.  If the server doesn't support this method, it returns
+   * `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+   * Operations.GetOperation or
+   * other methods to check whether the cancellation succeeded or whether the
+   * operation completed despite cancellation. On successful cancellation,
+   * the operation is not deleted; instead, it becomes an operation with
+   * an Operation.error value with a google.rpc.Status.code of 1,
+   * corresponding to `Code.CANCELLED`.
+   *
+   * Request parameters:
+   *
+   * [name] - The name of the operation resource to be cancelled.
+   * Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> cancel(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Deletes a long-running operation. This method indicates that the client is
+   * no longer interested in the operation result. It does not cancel the
+   * operation. If the server doesn't support this method, it returns
+   * `google.rpc.Code.UNIMPLEMENTED`.
+   *
+   * Request parameters:
+   *
+   * [name] - The name of the operation resource to be deleted.
+   * Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+   *
+   * Completes with a [Empty].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Empty> delete(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /**
+   * Gets the latest state of a long-running operation.  Clients can use this
+   * method to poll the operation result at intervals as recommended by the API
+   * service.
+   *
+   * Request parameters:
+   *
+   * [name] - The name of the operation resource.
+   * Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+   *
+   * Completes with a [GoogleLongrunningOperation].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GoogleLongrunningOperation> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /**
+   * Lists operations that match the specified filter in the request. If the
+   * server doesn't support this method, it returns `UNIMPLEMENTED`.
+   *
+   * NOTE: the `name` binding allows API services to override the binding
+   * to use different resource name schemes, such as `users / * /operations`. To
+   * override the binding, API services can add a binding such as
+   * `"/v1/{name=users / * }/operations"` to their service configuration.
+   * For backwards compatibility, the default name includes the operations
+   * collection id, however overriding users must ensure the name binding
+   * is the parent resource, without the operations collection id.
+   *
+   * Request parameters:
+   *
+   * [name] - The name of the operation's parent resource.
+   * Value must have pattern "^projects/[^/]+$".
+   *
+   * [pageSize] - The standard list page size.
+   *
+   * [filter] - The standard list filter.
+   *
+   * [pageToken] - The standard list page token.
+   *
+   * Completes with a [GoogleLongrunningListOperationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleLongrunningListOperationsResponse.fromJson(data));
+  }
+
+}
+
+
 
 /** The request for Datastore.AllocateIds. */
 class AllocateIdsRequest {
@@ -389,14 +598,22 @@ class ArrayValue {
 
 /** The request for Datastore.BeginTransaction. */
 class BeginTransactionRequest {
+  /** Options for a new transaction. */
+  TransactionOptions transactionOptions;
 
   BeginTransactionRequest();
 
   BeginTransactionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("transactionOptions")) {
+      transactionOptions = new TransactionOptions.fromJson(_json["transactionOptions"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (transactionOptions != null) {
+      _json["transactionOptions"] = (transactionOptions).toJson();
+    }
     return _json;
   }
 }
@@ -578,6 +795,30 @@ class CompositeFilter {
 }
 
 /**
+ * A generic empty message that you can re-use to avoid defining duplicated
+ * empty messages in your APIs. A typical example is to use it as the request
+ * or the response type of an API method. For instance:
+ *
+ *     service Foo {
+ *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ *     }
+ *
+ * The JSON representation for `Empty` is empty JSON object `{}`.
+ */
+class Empty {
+
+  Empty();
+
+  Empty.fromJson(core.Map _json) {
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/**
  * A Datastore data object.
  *
  * An entity is limited to 1 megabyte when stored. That _roughly_
@@ -710,6 +951,442 @@ class Filter {
     }
     if (propertyFilter != null) {
       _json["propertyFilter"] = (propertyFilter).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Metadata common to all Datastore Admin operations. */
+class GoogleDatastoreAdminV1beta1CommonMetadata {
+  /** The time the operation ended, either successfully or otherwise. */
+  core.String endTime;
+  /**
+   * The client-assigned labels which were provided when the operation was
+   * created.  May also include additional labels.
+   */
+  core.Map<core.String, core.String> labels;
+  /**
+   * The type of the operation.  Can be used as a filter in
+   * ListOperationsRequest.
+   * Possible string values are:
+   * - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
+   * - "EXPORT_ENTITIES" : ExportEntities.
+   * - "IMPORT_ENTITIES" : ImportEntities.
+   * - "BUILD_INDEX" : Build an index.
+   * - "CLEAR_INDEX" : Clear an index.
+   */
+  core.String operationType;
+  /** The time that work began on the operation. */
+  core.String startTime;
+  /**
+   * The current state of the Operation.
+   * Possible string values are:
+   * - "STATE_UNSPECIFIED" : Unspecified.
+   * - "INITIALIZING" : Request is being prepared for processing.
+   * - "PROCESSING" : Request is actively being processed.
+   * - "CANCELLING" : Request is in the process of being cancelled after user
+   * called
+   * longrunning.Operations.CancelOperation on the operation.
+   * - "FINALIZING" : Request has been processed and is in its finalization
+   * stage.
+   * - "SUCCESSFUL" : Request has completed successfully.
+   * - "FAILED" : Request has finished being processed, but encountered an
+   * error.
+   * - "CANCELLED" : Request has finished being cancelled after user called
+   * longrunning.Operations.CancelOperation.
+   */
+  core.String state;
+
+  GoogleDatastoreAdminV1beta1CommonMetadata();
+
+  GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Identifies a subset of entities in a project.  This is specified as
+ * combinations of kind + namespace (either or both of which may be all, as
+ * described in the following examples).
+ * Example usage:
+ *
+ * Entire project:
+ *   kinds=[], namespace_ids=[]
+ *
+ * Kinds Foo and Bar in all namespaces:
+ *   kinds=['Foo', 'Bar'], namespace_ids=[]
+ *
+ * Kinds Foo and Bar only in the default namespace:
+ *   kinds=['Foo', 'Bar'], namespace_ids=['']
+ *
+ * Kinds Foo and Bar in both the default and Baz namespaces:
+ *   kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
+ *
+ * The entire Baz namespace:
+ *   kinds=[], namespace_ids=['Baz']
+ */
+class GoogleDatastoreAdminV1beta1EntityFilter {
+  /** If empty, then this represents all kinds. */
+  core.List<core.String> kinds;
+  /**
+   * An empty list represents all namespaces.  This is the preferred
+   * usage for projects that don't use namespaces.
+   *
+   * An empty string element represents the default namespace.  This should be
+   * used if the project has data in non-default namespaces, but doesn't want to
+   * include them.
+   * Each namespace in this list must be unique.
+   */
+  core.List<core.String> namespaceIds;
+
+  GoogleDatastoreAdminV1beta1EntityFilter();
+
+  GoogleDatastoreAdminV1beta1EntityFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("kinds")) {
+      kinds = _json["kinds"];
+    }
+    if (_json.containsKey("namespaceIds")) {
+      namespaceIds = _json["namespaceIds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (kinds != null) {
+      _json["kinds"] = kinds;
+    }
+    if (namespaceIds != null) {
+      _json["namespaceIds"] = namespaceIds;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for ExportEntities operations. */
+class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
+  /** Metadata common to all Datastore Admin operations. */
+  GoogleDatastoreAdminV1beta1CommonMetadata common;
+  /** Description of which entities are being exported. */
+  GoogleDatastoreAdminV1beta1EntityFilter entityFilter;
+  /**
+   * Location for the export metadata and data files. This will be the same
+   * value as the
+   * google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
+   * field. The final output location is provided in
+   * google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.
+   */
+  core.String outputUrlPrefix;
+  /** An estimate of the number of bytes processed. */
+  GoogleDatastoreAdminV1beta1Progress progressBytes;
+  /** An estimate of the number of entities processed. */
+  GoogleDatastoreAdminV1beta1Progress progressEntities;
+
+  GoogleDatastoreAdminV1beta1ExportEntitiesMetadata();
+
+  GoogleDatastoreAdminV1beta1ExportEntitiesMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("common")) {
+      common = new GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(_json["common"]);
+    }
+    if (_json.containsKey("entityFilter")) {
+      entityFilter = new GoogleDatastoreAdminV1beta1EntityFilter.fromJson(_json["entityFilter"]);
+    }
+    if (_json.containsKey("outputUrlPrefix")) {
+      outputUrlPrefix = _json["outputUrlPrefix"];
+    }
+    if (_json.containsKey("progressBytes")) {
+      progressBytes = new GoogleDatastoreAdminV1beta1Progress.fromJson(_json["progressBytes"]);
+    }
+    if (_json.containsKey("progressEntities")) {
+      progressEntities = new GoogleDatastoreAdminV1beta1Progress.fromJson(_json["progressEntities"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (common != null) {
+      _json["common"] = (common).toJson();
+    }
+    if (entityFilter != null) {
+      _json["entityFilter"] = (entityFilter).toJson();
+    }
+    if (outputUrlPrefix != null) {
+      _json["outputUrlPrefix"] = outputUrlPrefix;
+    }
+    if (progressBytes != null) {
+      _json["progressBytes"] = (progressBytes).toJson();
+    }
+    if (progressEntities != null) {
+      _json["progressEntities"] = (progressEntities).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * The response for
+ * google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
+ */
+class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
+  /**
+   * Location of the output metadata file. This can be used to begin an import
+   * into Cloud Datastore (this project or another project). See
+   * google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.
+   * Only present if the operation completed successfully.
+   */
+  core.String outputUrl;
+
+  GoogleDatastoreAdminV1beta1ExportEntitiesResponse();
+
+  GoogleDatastoreAdminV1beta1ExportEntitiesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("outputUrl")) {
+      outputUrl = _json["outputUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (outputUrl != null) {
+      _json["outputUrl"] = outputUrl;
+    }
+    return _json;
+  }
+}
+
+/** Metadata for ImportEntities operations. */
+class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
+  /** Metadata common to all Datastore Admin operations. */
+  GoogleDatastoreAdminV1beta1CommonMetadata common;
+  /** Description of which entities are being imported. */
+  GoogleDatastoreAdminV1beta1EntityFilter entityFilter;
+  /**
+   * The location of the import metadata file. This will be the same value as
+   * the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url
+   * field.
+   */
+  core.String inputUrl;
+  /** An estimate of the number of bytes processed. */
+  GoogleDatastoreAdminV1beta1Progress progressBytes;
+  /** An estimate of the number of entities processed. */
+  GoogleDatastoreAdminV1beta1Progress progressEntities;
+
+  GoogleDatastoreAdminV1beta1ImportEntitiesMetadata();
+
+  GoogleDatastoreAdminV1beta1ImportEntitiesMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("common")) {
+      common = new GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(_json["common"]);
+    }
+    if (_json.containsKey("entityFilter")) {
+      entityFilter = new GoogleDatastoreAdminV1beta1EntityFilter.fromJson(_json["entityFilter"]);
+    }
+    if (_json.containsKey("inputUrl")) {
+      inputUrl = _json["inputUrl"];
+    }
+    if (_json.containsKey("progressBytes")) {
+      progressBytes = new GoogleDatastoreAdminV1beta1Progress.fromJson(_json["progressBytes"]);
+    }
+    if (_json.containsKey("progressEntities")) {
+      progressEntities = new GoogleDatastoreAdminV1beta1Progress.fromJson(_json["progressEntities"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (common != null) {
+      _json["common"] = (common).toJson();
+    }
+    if (entityFilter != null) {
+      _json["entityFilter"] = (entityFilter).toJson();
+    }
+    if (inputUrl != null) {
+      _json["inputUrl"] = inputUrl;
+    }
+    if (progressBytes != null) {
+      _json["progressBytes"] = (progressBytes).toJson();
+    }
+    if (progressEntities != null) {
+      _json["progressEntities"] = (progressEntities).toJson();
+    }
+    return _json;
+  }
+}
+
+/** Measures the progress of a particular metric. */
+class GoogleDatastoreAdminV1beta1Progress {
+  /** Note that this may be greater than work_estimated. */
+  core.String workCompleted;
+  /**
+   * An estimate of how much work needs to be performed.  May be zero if the
+   * work estimate is unavailable.
+   */
+  core.String workEstimated;
+
+  GoogleDatastoreAdminV1beta1Progress();
+
+  GoogleDatastoreAdminV1beta1Progress.fromJson(core.Map _json) {
+    if (_json.containsKey("workCompleted")) {
+      workCompleted = _json["workCompleted"];
+    }
+    if (_json.containsKey("workEstimated")) {
+      workEstimated = _json["workEstimated"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (workCompleted != null) {
+      _json["workCompleted"] = workCompleted;
+    }
+    if (workEstimated != null) {
+      _json["workEstimated"] = workEstimated;
+    }
+    return _json;
+  }
+}
+
+/** The response message for Operations.ListOperations. */
+class GoogleLongrunningListOperationsResponse {
+  /** The standard List next-page token. */
+  core.String nextPageToken;
+  /** A list of operations that matches the specified filter in the request. */
+  core.List<GoogleLongrunningOperation> operations;
+
+  GoogleLongrunningListOperationsResponse();
+
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("operations")) {
+      operations = _json["operations"].map((value) => new GoogleLongrunningOperation.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (operations != null) {
+      _json["operations"] = operations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/**
+ * This resource represents a long-running operation that is the result of a
+ * network API call.
+ */
+class GoogleLongrunningOperation {
+  /**
+   * If the value is `false`, it means the operation is still in progress.
+   * If true, the operation is completed, and either `error` or `response` is
+   * available.
+   */
+  core.bool done;
+  /** The error result of the operation in case of failure or cancellation. */
+  Status error;
+  /**
+   * Service-specific metadata associated with the operation.  It typically
+   * contains progress information and common metadata such as create time.
+   * Some services might not provide such metadata.  Any method that returns a
+   * long-running operation should document the metadata type, if any.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> metadata;
+  /**
+   * The server-assigned name, which is only unique within the same service that
+   * originally returns it. If you use the default HTTP mapping, the
+   * `name` should have the format of `operations/some/unique/name`.
+   */
+  core.String name;
+  /**
+   * The normal response of the operation in case of success.  If the original
+   * method returns no data on success, such as `Delete`, the response is
+   * `google.protobuf.Empty`.  If the original method is standard
+   * `Get`/`Create`/`Update`, the response should be the resource.  For other
+   * methods, the response should have the type `XxxResponse`, where `Xxx`
+   * is the original method name.  For example, if the original method name
+   * is `TakeSnapshot()`, the inferred response type is
+   * `TakeSnapshotResponse`.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> response;
+
+  GoogleLongrunningOperation();
+
+  GoogleLongrunningOperation.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
+    if (_json.containsKey("error")) {
+      error = new Status.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("response")) {
+      response = _json["response"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (done != null) {
+      _json["done"] = done;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (response != null) {
+      _json["response"] = response;
     }
     return _json;
   }
@@ -1656,6 +2333,20 @@ class QueryResultBatch {
   }
 }
 
+/** Options specific to read-only transactions. */
+class ReadOnly {
+
+  ReadOnly();
+
+  ReadOnly.fromJson(core.Map _json) {
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /** The options shared by read requests. */
 class ReadOptions {
   /**
@@ -1700,6 +2391,35 @@ class ReadOptions {
     }
     if (transaction != null) {
       _json["transaction"] = transaction;
+    }
+    return _json;
+  }
+}
+
+/** Options specific to read / write transactions. */
+class ReadWrite {
+  /** The transaction identifier of the transaction being retried. */
+  core.String previousTransaction;
+  core.List<core.int> get previousTransactionAsBytes {
+    return convert.BASE64.decode(previousTransaction);
+  }
+
+  void set previousTransactionAsBytes(core.List<core.int> _bytes) {
+    previousTransaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  ReadWrite();
+
+  ReadWrite.fromJson(core.Map _json) {
+    if (_json.containsKey("previousTransaction")) {
+      previousTransaction = _json["previousTransaction"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (previousTransaction != null) {
+      _json["previousTransaction"] = previousTransaction;
     }
     return _json;
   }
@@ -1830,6 +2550,145 @@ class RunQueryResponse {
     }
     if (query != null) {
       _json["query"] = (query).toJson();
+    }
+    return _json;
+  }
+}
+
+/**
+ * The `Status` type defines a logical error model that is suitable for
+ * different
+ * programming environments, including REST APIs and RPC APIs. It is used by
+ * [gRPC](https://github.com/grpc). The error model is designed to be:
+ *
+ * - Simple to use and understand for most users
+ * - Flexible enough to meet unexpected needs
+ *
+ * # Overview
+ *
+ * The `Status` message contains three pieces of data: error code, error
+ * message,
+ * and error details. The error code should be an enum value of
+ * google.rpc.Code, but it may accept additional error codes if needed.  The
+ * error message should be a developer-facing English message that helps
+ * developers *understand* and *resolve* the error. If a localized user-facing
+ * error message is needed, put the localized message in the error details or
+ * localize it in the client. The optional error details may contain arbitrary
+ * information about the error. There is a predefined set of error detail types
+ * in the package `google.rpc` that can be used for common error conditions.
+ *
+ * # Language mapping
+ *
+ * The `Status` message is the logical representation of the error model, but it
+ * is not necessarily the actual wire format. When the `Status` message is
+ * exposed in different client libraries and different wire protocols, it can be
+ * mapped differently. For example, it will likely be mapped to some exceptions
+ * in Java, but more likely mapped to some error codes in C.
+ *
+ * # Other uses
+ *
+ * The error model and the `Status` message can be used in a variety of
+ * environments, either with or without APIs, to provide a
+ * consistent developer experience across different environments.
+ *
+ * Example uses of this error model include:
+ *
+ * - Partial errors. If a service needs to return partial errors to the client,
+ *     it may embed the `Status` in the normal response to indicate the partial
+ *     errors.
+ *
+ * - Workflow errors. A typical workflow has multiple steps. Each step may
+ *     have a `Status` message for error reporting.
+ *
+ * - Batch operations. If a client uses batch request and batch response, the
+ *     `Status` message should be used directly inside batch response, one for
+ *     each error sub-response.
+ *
+ * - Asynchronous operations. If an API call embeds asynchronous operation
+ *     results in its response, the status of those operations should be
+ *     represented directly using the `Status` message.
+ *
+ * - Logging. If some API errors are stored in logs, the message `Status` could
+ * be used directly after any stripping needed for security/privacy reasons.
+ */
+class Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  core.int code;
+  /**
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.List<core.Map<core.String, core.Object>> details;
+  /**
+   * A developer-facing error message, which should be in English. Any
+   * user-facing error message should be localized and sent in the
+   * google.rpc.Status.details field, or localized by the client.
+   */
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/**
+ * Options for beginning a new transaction.
+ *
+ * Transactions can be created explicitly with calls to
+ * Datastore.BeginTransaction or implicitly by setting
+ * ReadOptions.new_transaction in read requests.
+ */
+class TransactionOptions {
+  /** The transaction should only allow reads. */
+  ReadOnly readOnly;
+  /** The transaction should allow both reads and writes. */
+  ReadWrite readWrite;
+
+  TransactionOptions();
+
+  TransactionOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("readOnly")) {
+      readOnly = new ReadOnly.fromJson(_json["readOnly"]);
+    }
+    if (_json.containsKey("readWrite")) {
+      readWrite = new ReadWrite.fromJson(_json["readWrite"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (readOnly != null) {
+      _json["readOnly"] = (readOnly).toJson();
+    }
+    if (readWrite != null) {
+      _json["readWrite"] = (readWrite).toJson();
     }
     return _json;
   }

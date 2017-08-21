@@ -193,10 +193,6 @@ class JobsResourceApi {
    *
    * Request parameters:
    *
-   * [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-   * the user is acting on. If
-   * not set, the user is acting for himself (his own channel).
-   *
    * [includeSystemManaged] - If set to true, also system-managed jobs will be
    * returned; otherwise only
    * user-created jobs will be returned. System-managed jobs can neither be
@@ -212,6 +208,10 @@ class JobsResourceApi {
    * requested.
    * If unspecified, server will pick an appropriate default.
    *
+   * [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+   * the user is acting on. If
+   * not set, the user is acting for himself (his own channel).
+   *
    * Completes with a [ListJobsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -220,7 +220,7 @@ class JobsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListJobsResponse> list({core.String onBehalfOfContentOwner, core.bool includeSystemManaged, core.String pageToken, core.int pageSize}) {
+  async.Future<ListJobsResponse> list({core.bool includeSystemManaged, core.String pageToken, core.int pageSize, core.String onBehalfOfContentOwner}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -228,9 +228,6 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (includeSystemManaged != null) {
       _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
     }
@@ -239,6 +236,9 @@ class JobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
 
     _url = 'v1/jobs';

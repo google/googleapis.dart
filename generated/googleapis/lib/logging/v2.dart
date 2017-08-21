@@ -127,14 +127,14 @@ class BillingAccountsLogsResourceApi {
    *
    * Value must have pattern "^billingAccounts/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogsResponse].
    *
@@ -144,7 +144,7 @@ class BillingAccountsLogsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListLogsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -155,11 +155,11 @@ class BillingAccountsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -356,14 +356,14 @@ class BillingAccountsSinksResourceApi {
    *
    * Value must have pattern "^billingAccounts/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -373,7 +373,7 @@ class BillingAccountsSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListSinksResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListSinksResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -384,11 +384,11 @@ class BillingAccountsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -404,12 +404,78 @@ class BillingAccountsSinksResourceApi {
   }
 
   /**
-   * Updates a sink. If the named sink doesn't exist, then this method is
-   * identical to sinks.create. If the named sink does exist, then this method
-   * replaces the following fields in the existing sink with values from the new
-   * sink: destination, filter, output_version_format, start_time, and end_time.
-   * The updated filter might also have a new writer_identity; see the
-   * unique_writer_identity field.
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [sinkName] - Required. The full resource name of the sink to update,
+   * including the parent resource and the sink identifier:
+   * "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+   * "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+   * "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+   * Example: "projects/my-project-id/sinks/my-sink-id".
+   * Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
+   *
+   * [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+   * this field. When updating a sink, the effect of this field on the value of
+   * writer_identity in the updated sink depends on both the old and new values
+   * of this field:
+   * If the old and new values of this field are both false or both true, then
+   * there is no change to the sink's writer_identity.
+   * If the old value is false and the new value is true, then writer_identity
+   * is changed to a unique service account.
+   * It is an error if the old value is true and the new value is set to false
+   * or defaulted to false.
+   *
+   * Completes with a [LogSink].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LogSink> patch(LogSink request, core.String sinkName, {core.bool uniqueWriterIdentity}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (sinkName == null) {
+      throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogSink.fromJson(data));
+  }
+
+  /**
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
    *
    * [request] - The metadata request object.
    *
@@ -874,14 +940,14 @@ class FoldersSinksResourceApi {
    *
    * Value must have pattern "^folders/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListSinksResponse].
    *
@@ -891,7 +957,7 @@ class FoldersSinksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListSinksResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListSinksResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -902,11 +968,11 @@ class FoldersSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -922,12 +988,78 @@ class FoldersSinksResourceApi {
   }
 
   /**
-   * Updates a sink. If the named sink doesn't exist, then this method is
-   * identical to sinks.create. If the named sink does exist, then this method
-   * replaces the following fields in the existing sink with values from the new
-   * sink: destination, filter, output_version_format, start_time, and end_time.
-   * The updated filter might also have a new writer_identity; see the
-   * unique_writer_identity field.
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [sinkName] - Required. The full resource name of the sink to update,
+   * including the parent resource and the sink identifier:
+   * "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+   * "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+   * "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+   * Example: "projects/my-project-id/sinks/my-sink-id".
+   * Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
+   *
+   * [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+   * this field. When updating a sink, the effect of this field on the value of
+   * writer_identity in the updated sink depends on both the old and new values
+   * of this field:
+   * If the old and new values of this field are both false or both true, then
+   * there is no change to the sink's writer_identity.
+   * If the old value is false and the new value is true, then writer_identity
+   * is changed to a unique service account.
+   * It is an error if the old value is true and the new value is set to false
+   * or defaulted to false.
+   *
+   * Completes with a [LogSink].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LogSink> patch(LogSink request, core.String sinkName, {core.bool uniqueWriterIdentity}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (sinkName == null) {
+      throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogSink.fromJson(data));
+  }
+
+  /**
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
    *
    * [request] - The metadata request object.
    *
@@ -1006,14 +1138,14 @@ class MonitoredResourceDescriptorsResourceApi {
    *
    * Request parameters:
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListMonitoredResourceDescriptorsResponse].
    *
@@ -1023,7 +1155,7 @@ class MonitoredResourceDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListMonitoredResourceDescriptorsResponse> list({core.int pageSize, core.String pageToken}) {
+  async.Future<ListMonitoredResourceDescriptorsResponse> list({core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1031,11 +1163,11 @@ class MonitoredResourceDescriptorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2/monitoredResourceDescriptors';
@@ -1411,12 +1543,78 @@ class OrganizationsSinksResourceApi {
   }
 
   /**
-   * Updates a sink. If the named sink doesn't exist, then this method is
-   * identical to sinks.create. If the named sink does exist, then this method
-   * replaces the following fields in the existing sink with values from the new
-   * sink: destination, filter, output_version_format, start_time, and end_time.
-   * The updated filter might also have a new writer_identity; see the
-   * unique_writer_identity field.
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [sinkName] - Required. The full resource name of the sink to update,
+   * including the parent resource and the sink identifier:
+   * "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+   * "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+   * "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+   * Example: "projects/my-project-id/sinks/my-sink-id".
+   * Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
+   *
+   * [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+   * this field. When updating a sink, the effect of this field on the value of
+   * writer_identity in the updated sink depends on both the old and new values
+   * of this field:
+   * If the old and new values of this field are both false or both true, then
+   * there is no change to the sink's writer_identity.
+   * If the old value is false and the new value is true, then writer_identity
+   * is changed to a unique service account.
+   * It is an error if the old value is true and the new value is set to false
+   * or defaulted to false.
+   *
+   * Completes with a [LogSink].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LogSink> patch(LogSink request, core.String sinkName, {core.bool uniqueWriterIdentity}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (sinkName == null) {
+      throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogSink.fromJson(data));
+  }
+
+  /**
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
    *
    * [request] - The metadata request object.
    *
@@ -1762,14 +1960,14 @@ class ProjectsMetricsResourceApi {
    *
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Optional. The maximum number of results to return from this
-   * request. Non-positive values are ignored. The presence of nextPageToken in
-   * the response indicates that more results might be available.
-   *
    * [pageToken] - Optional. If present, then retrieve the next batch of results
    * from the preceding call to this method. pageToken must be the value of
    * nextPageToken from the previous response. The values of other method
    * parameters should be identical to those in the previous call.
+   *
+   * [pageSize] - Optional. The maximum number of results to return from this
+   * request. Non-positive values are ignored. The presence of nextPageToken in
+   * the response indicates that more results might be available.
    *
    * Completes with a [ListLogMetricsResponse].
    *
@@ -1779,7 +1977,7 @@ class ProjectsMetricsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListLogMetricsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListLogMetricsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1790,11 +1988,11 @@ class ProjectsMetricsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';
@@ -2088,12 +2286,78 @@ class ProjectsSinksResourceApi {
   }
 
   /**
-   * Updates a sink. If the named sink doesn't exist, then this method is
-   * identical to sinks.create. If the named sink does exist, then this method
-   * replaces the following fields in the existing sink with values from the new
-   * sink: destination, filter, output_version_format, start_time, and end_time.
-   * The updated filter might also have a new writer_identity; see the
-   * unique_writer_identity field.
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
+   *
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * [sinkName] - Required. The full resource name of the sink to update,
+   * including the parent resource and the sink identifier:
+   * "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+   * "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+   * "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+   * "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+   * Example: "projects/my-project-id/sinks/my-sink-id".
+   * Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
+   *
+   * [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+   * this field. When updating a sink, the effect of this field on the value of
+   * writer_identity in the updated sink depends on both the old and new values
+   * of this field:
+   * If the old and new values of this field are both false or both true, then
+   * there is no change to the sink's writer_identity.
+   * If the old value is false and the new value is true, then writer_identity
+   * is changed to a unique service account.
+   * It is an error if the old value is true and the new value is set to false
+   * or defaulted to false.
+   *
+   * Completes with a [LogSink].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<LogSink> patch(LogSink request, core.String sinkName, {core.bool uniqueWriterIdentity}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (sinkName == null) {
+      throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
+
+    var _response = _requester.request(_url,
+                                       "PATCH",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogSink.fromJson(data));
+  }
+
+  /**
+   * Updates a sink. This method replaces the following fields in the existing
+   * sink with values from the new sink: destination, filter,
+   * output_version_format, start_time, and end_time. The updated sink might
+   * also have a new writer_identity; see the unique_writer_identity field.
    *
    * [request] - The metadata request object.
    *
@@ -2213,6 +2477,10 @@ class HttpRequest {
    */
   core.String latency;
   /**
+   * Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"
+   */
+  core.String protocol;
+  /**
    * The referer URL of the request, as defined in HTTP/1.1 Header Field
    * Definitions (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
    */
@@ -2273,6 +2541,9 @@ class HttpRequest {
     if (_json.containsKey("latency")) {
       latency = _json["latency"];
     }
+    if (_json.containsKey("protocol")) {
+      protocol = _json["protocol"];
+    }
     if (_json.containsKey("referer")) {
       referer = _json["referer"];
     }
@@ -2318,6 +2589,9 @@ class HttpRequest {
     }
     if (latency != null) {
       _json["latency"] = latency;
+    }
+    if (protocol != null) {
+      _json["protocol"] = protocol;
     }
     if (referer != null) {
       _json["referer"] = referer;
@@ -3079,9 +3353,8 @@ class LogMetric {
    */
   core.String name;
   /**
-   * Output only. The API version that created or updated this metric. The
-   * version also dictates the syntax of the filter expression. When a value for
-   * this field is missing, the default value of V2 should be assumed.
+   * Output only. The API version that created or updated this metric. This
+   * value is currently always set to V2.
    * Possible string values are:
    * - "V2" : Stackdriver Logging API v2.
    * - "V1" : Stackdriver Logging API v1.

@@ -72,7 +72,7 @@ package.
 
 Accesses the latest features for managing Ad Exchange accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.
 
-Official API documentation: https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
+Official API documentation: https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google App Engine Admin API - appengine v1beta
 

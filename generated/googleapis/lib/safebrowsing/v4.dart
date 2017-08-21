@@ -15,10 +15,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 const core.String USER_AGENT = 'dart-api-client safebrowsing/v4';
 
 /**
- * The Safe Browsing API is an experimental API that allows client applications
- * to check URLs against Google's constantly-updated blacklists of suspected
- * phishing and malware pages. Your client application can use the API to
- * download an encrypted table for local, client-side lookups of URLs.
+ * Enables client applications to check web resources (most commonly URLs)
+ * against Google-generated lists of unsafe web resources.
  */
 class SafebrowsingApi {
 
@@ -47,11 +45,11 @@ class EncodedFullHashesResourceApi {
    *
    * [encodedRequest] - A serialized FindFullHashesRequest proto.
    *
-   * [clientVersion] - The version of the client implementation.
-   *
    * [clientId] - A client ID that (hopefully) uniquely identifies the client
    * implementation
    * of the Safe Browsing API.
+   *
+   * [clientVersion] - The version of the client implementation.
    *
    * Completes with a [FindFullHashesResponse].
    *
@@ -61,7 +59,7 @@ class EncodedFullHashesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FindFullHashesResponse> get(core.String encodedRequest, {core.String clientVersion, core.String clientId}) {
+  async.Future<FindFullHashesResponse> get(core.String encodedRequest, {core.String clientId, core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -72,11 +70,11 @@ class EncodedFullHashesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
     if (clientId != null) {
       _queryParams["clientId"] = [clientId];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v4/encodedFullHashes/' + commons.Escaper.ecapeVariable('$encodedRequest');
@@ -105,11 +103,11 @@ class EncodedUpdatesResourceApi {
    *
    * [encodedRequest] - A serialized FetchThreatListUpdatesRequest proto.
    *
-   * [clientVersion] - The version of the client implementation.
-   *
    * [clientId] - A client ID that uniquely identifies the client implementation
    * of the Safe
    * Browsing API.
+   *
+   * [clientVersion] - The version of the client implementation.
    *
    * Completes with a [FetchThreatListUpdatesResponse].
    *
@@ -119,7 +117,7 @@ class EncodedUpdatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest, {core.String clientVersion, core.String clientId}) {
+  async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest, {core.String clientId, core.String clientVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -130,11 +128,11 @@ class EncodedUpdatesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
     if (clientId != null) {
       _queryParams["clientId"] = [clientId];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');
@@ -747,7 +745,21 @@ class ListUpdateRequest {
    * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
    * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
    * threat type.
+   * - "SOCIAL_ENGINEERING_INTERNAL" : Social engineering threat type for
+   * internal use.
+   * - "API_ABUSE" : API abuse threat type.
    * - "MALICIOUS_BINARY" : Malicious binary threat type.
+   * - "CSD_WHITELIST" : Client side detection whitelist threat type.
+   * - "CSD_DOWNLOAD_WHITELIST" : Client side download detection whitelist
+   * threat type.
+   * - "CLIENT_INCIDENT" : Client incident threat type.
+   * - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
+   * incident threats.
+   * This enum was never launched and should be re-used for the next list.
+   * - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
+   * - "SUBRESOURCE_FILTER" : Patterns to be used for activating the subresource
+   * filter. Interstitial
+   * will not be shown for patterns from this list.
    */
   core.String threatType;
 
@@ -869,7 +881,21 @@ class ListUpdateResponse {
    * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
    * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
    * threat type.
+   * - "SOCIAL_ENGINEERING_INTERNAL" : Social engineering threat type for
+   * internal use.
+   * - "API_ABUSE" : API abuse threat type.
    * - "MALICIOUS_BINARY" : Malicious binary threat type.
+   * - "CSD_WHITELIST" : Client side detection whitelist threat type.
+   * - "CSD_DOWNLOAD_WHITELIST" : Client side download detection whitelist
+   * threat type.
+   * - "CLIENT_INCIDENT" : Client incident threat type.
+   * - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
+   * incident threats.
+   * This enum was never launched and should be re-used for the next list.
+   * - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
+   * - "SUBRESOURCE_FILTER" : Patterns to be used for activating the subresource
+   * filter. Interstitial
+   * will not be shown for patterns from this list.
    */
   core.String threatType;
 
@@ -1367,7 +1393,21 @@ class ThreatListDescriptor {
    * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
    * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
    * threat type.
+   * - "SOCIAL_ENGINEERING_INTERNAL" : Social engineering threat type for
+   * internal use.
+   * - "API_ABUSE" : API abuse threat type.
    * - "MALICIOUS_BINARY" : Malicious binary threat type.
+   * - "CSD_WHITELIST" : Client side detection whitelist threat type.
+   * - "CSD_DOWNLOAD_WHITELIST" : Client side download detection whitelist
+   * threat type.
+   * - "CLIENT_INCIDENT" : Client incident threat type.
+   * - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
+   * incident threats.
+   * This enum was never launched and should be re-used for the next list.
+   * - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
+   * - "SUBRESOURCE_FILTER" : Patterns to be used for activating the subresource
+   * filter. Interstitial
+   * will not be shown for patterns from this list.
    */
   core.String threatType;
 
@@ -1446,7 +1486,21 @@ class ThreatMatch {
    * - "UNWANTED_SOFTWARE" : Unwanted software threat type.
    * - "POTENTIALLY_HARMFUL_APPLICATION" : Potentially harmful application
    * threat type.
+   * - "SOCIAL_ENGINEERING_INTERNAL" : Social engineering threat type for
+   * internal use.
+   * - "API_ABUSE" : API abuse threat type.
    * - "MALICIOUS_BINARY" : Malicious binary threat type.
+   * - "CSD_WHITELIST" : Client side detection whitelist threat type.
+   * - "CSD_DOWNLOAD_WHITELIST" : Client side download detection whitelist
+   * threat type.
+   * - "CLIENT_INCIDENT" : Client incident threat type.
+   * - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
+   * incident threats.
+   * This enum was never launched and should be re-used for the next list.
+   * - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
+   * - "SUBRESOURCE_FILTER" : Patterns to be used for activating the subresource
+   * filter. Interstitial
+   * will not be shown for patterns from this list.
    */
   core.String threatType;
 

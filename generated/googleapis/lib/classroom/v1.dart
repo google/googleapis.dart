@@ -244,7 +244,8 @@ class CoursesResourceApi {
 
   /**
    * Returns a list of courses that the requesting user is permitted to view,
-   * restricted to those that match the request.
+   * restricted to those that match the request. Returned courses are ordered by
+   * creation time, with the most recently created coming first.
    *
    * This method returns the following error codes:
    *
@@ -253,12 +254,6 @@ class CoursesResourceApi {
    * * `NOT_FOUND` if any users specified in the query arguments do not exist.
    *
    * Request parameters:
-   *
-   * [pageSize] - Maximum number of items to return. Zero or unspecified
-   * indicates that the
-   * server may assign a maximum.
-   *
-   * The server may return fewer than the specified number of results.
    *
    * [courseStates] - Restricts returned courses to those in one of the
    * specified states
@@ -288,6 +283,12 @@ class CoursesResourceApi {
    * The list request must be
    * otherwise identical to the one that resulted in this token.
    *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the
+   * server may assign a maximum.
+   *
+   * The server may return fewer than the specified number of results.
+   *
    * Completes with a [ListCoursesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -296,7 +297,7 @@ class CoursesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCoursesResponse> list({core.int pageSize, core.List<core.String> courseStates, core.String teacherId, core.String studentId, core.String pageToken}) {
+  async.Future<ListCoursesResponse> list({core.List<core.String> courseStates, core.String teacherId, core.String studentId, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -304,9 +305,6 @@ class CoursesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (courseStates != null) {
       _queryParams["courseStates"] = courseStates;
     }
@@ -318,6 +316,9 @@ class CoursesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/courses';
@@ -363,6 +364,11 @@ class CoursesResourceApi {
    * * `description`
    * * `room`
    * * `courseState`
+   * * `ownerId`
+   *
+   * Note: patches to ownerId are treated as being effective immediately, but in
+   * practice it may take some time for the ownership transfer of all affected
+   * resources to complete.
    *
    * When set in a query parameter, this field should be specified as
    *
@@ -854,17 +860,6 @@ class CoursesCourseWorkResourceApi {
    * This identifier can be either the Classroom-assigned identifier or an
    * alias.
    *
-   * [pageSize] - Maximum number of items to return. Zero or unspecified
-   * indicates that the
-   * server may assign a maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
-   * [courseWorkStates] - Restriction on the work status to return. Only
-   * courseWork that matches
-   * is returned. If unspecified, items with a work status of `PUBLISHED`
-   * is returned.
-   *
    * [pageToken] - nextPageToken
    * value returned from a previous
    * list call,
@@ -880,6 +875,17 @@ class CoursesCourseWorkResourceApi {
    * If not specified, `updateTime desc` is the default behavior.
    * Examples: `dueDate asc,updateTime desc`, `updateTime,dueDate desc`
    *
+   * [pageSize] - Maximum number of items to return. Zero or unspecified
+   * indicates that the
+   * server may assign a maximum.
+   *
+   * The server may return fewer than the specified number of results.
+   *
+   * [courseWorkStates] - Restriction on the work status to return. Only
+   * courseWork that matches
+   * is returned. If unspecified, items with a work status of `PUBLISHED`
+   * is returned.
+   *
    * Completes with a [ListCourseWorkResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -888,7 +894,7 @@ class CoursesCourseWorkResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListCourseWorkResponse> list(core.String courseId, {core.int pageSize, core.List<core.String> courseWorkStates, core.String pageToken, core.String orderBy}) {
+  async.Future<ListCourseWorkResponse> list(core.String courseId, {core.String pageToken, core.String orderBy, core.int pageSize, core.List<core.String> courseWorkStates}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -899,17 +905,17 @@ class CoursesCourseWorkResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (courseWorkStates != null) {
-      _queryParams["courseWorkStates"] = courseWorkStates;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (courseWorkStates != null) {
+      _queryParams["courseWorkStates"] = courseWorkStates;
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/courseWork';
@@ -1105,7 +1111,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
    * This identifier can be either the Classroom-assigned identifier or an
    * alias.
    *
-   * [courseWorkId] - Identifer of the student work to request.
+   * [courseWorkId] - Identifier of the student work to request.
    * This may be set to the string literal `"-"` to request student work for
    * all course work in the specified course.
    *
@@ -1790,10 +1796,6 @@ class CoursesStudentsResourceApi {
    * This identifier can be either the Classroom-assigned identifier or an
    * alias.
    *
-   * [pageSize] - Maximum number of items to return. Zero means no maximum.
-   *
-   * The server may return fewer than the specified number of results.
-   *
    * [pageToken] - nextPageToken
    * value returned from a previous
    * list call, indicating that
@@ -1801,6 +1803,10 @@ class CoursesStudentsResourceApi {
    *
    * The list request must be
    * otherwise identical to the one that resulted in this token.
+   *
+   * [pageSize] - Maximum number of items to return. Zero means no maximum.
+   *
+   * The server may return fewer than the specified number of results.
    *
    * Completes with a [ListStudentsResponse].
    *
@@ -1810,7 +1816,7 @@ class CoursesStudentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListStudentsResponse> list(core.String courseId, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListStudentsResponse> list(core.String courseId, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1821,11 +1827,11 @@ class CoursesStudentsResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/students';
@@ -2608,14 +2614,6 @@ class UserProfilesGuardianInvitationsResourceApi {
    *   all students that the requesting user is permitted to view guardian
    *   invitations.
    *
-   * [pageToken] - nextPageToken
-   * value returned from a previous
-   * list call,
-   * indicating that the subsequent page of results should be returned.
-   *
-   * The list request
-   * must be otherwise identical to the one that resulted in this token.
-   *
    * [pageSize] - Maximum number of items to return. Zero or unspecified
    * indicates that the
    * server may assign a maximum.
@@ -2630,6 +2628,14 @@ class UserProfilesGuardianInvitationsResourceApi {
    * `invited_email_address`
    * will be returned.
    *
+   * [pageToken] - nextPageToken
+   * value returned from a previous
+   * list call,
+   * indicating that the subsequent page of results should be returned.
+   *
+   * The list request
+   * must be otherwise identical to the one that resulted in this token.
+   *
    * Completes with a [ListGuardianInvitationsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2638,7 +2644,7 @@ class UserProfilesGuardianInvitationsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGuardianInvitationsResponse> list(core.String studentId, {core.String pageToken, core.int pageSize, core.List<core.String> states, core.String invitedEmailAddress}) {
+  async.Future<ListGuardianInvitationsResponse> list(core.String studentId, {core.int pageSize, core.List<core.String> states, core.String invitedEmailAddress, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2649,9 +2655,6 @@ class UserProfilesGuardianInvitationsResourceApi {
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -2660,6 +2663,9 @@ class UserProfilesGuardianInvitationsResourceApi {
     }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$studentId') + '/guardianInvitations';
@@ -3221,8 +3227,9 @@ class Course {
    * * the email address of the user
    * * the string literal `"me"`, indicating the requesting user
    *
-   * This must be set in a create request. Specifying this field in a course
-   * update mask results in an `INVALID_ARGUMENT` error.
+   * This must be set in a create request. Admins can also specify this field
+   * in a patch course request to
+   * transfer ownership. In other contexts, it is read-only.
    */
   core.String ownerId;
   /**
@@ -4035,6 +4042,75 @@ class GlobalPermission {
   }
 }
 
+/** The history of each grade on this submission. */
+class GradeHistory {
+  /** The teacher who made the grade change. */
+  core.String actorUserId;
+  /**
+   * The type of grade change at this time in the submission grade history.
+   * Possible string values are:
+   * - "UNKNOWN_GRADE_CHANGE_TYPE" : No grade change type specified. This should
+   * never be returned.
+   * - "DRAFT_GRADE_POINTS_EARNED_CHANGE" : A change in the numerator of the
+   * draft grade.
+   * - "ASSIGNED_GRADE_POINTS_EARNED_CHANGE" : A change in the numerator of the
+   * assigned grade.
+   * - "MAX_POINTS_CHANGE" : A change in the denominator of the grade.
+   */
+  core.String gradeChangeType;
+  /** When the grade of the submission was changed. */
+  core.String gradeTimestamp;
+  /**
+   * The denominator of the grade at this time in the submission grade
+   * history.
+   */
+  core.double maxPoints;
+  /**
+   * The numerator of the grade at this time in the submission grade history.
+   */
+  core.double pointsEarned;
+
+  GradeHistory();
+
+  GradeHistory.fromJson(core.Map _json) {
+    if (_json.containsKey("actorUserId")) {
+      actorUserId = _json["actorUserId"];
+    }
+    if (_json.containsKey("gradeChangeType")) {
+      gradeChangeType = _json["gradeChangeType"];
+    }
+    if (_json.containsKey("gradeTimestamp")) {
+      gradeTimestamp = _json["gradeTimestamp"];
+    }
+    if (_json.containsKey("maxPoints")) {
+      maxPoints = _json["maxPoints"];
+    }
+    if (_json.containsKey("pointsEarned")) {
+      pointsEarned = _json["pointsEarned"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (actorUserId != null) {
+      _json["actorUserId"] = actorUserId;
+    }
+    if (gradeChangeType != null) {
+      _json["gradeChangeType"] = gradeChangeType;
+    }
+    if (gradeTimestamp != null) {
+      _json["gradeTimestamp"] = gradeTimestamp;
+    }
+    if (maxPoints != null) {
+      _json["maxPoints"] = maxPoints;
+    }
+    if (pointsEarned != null) {
+      _json["pointsEarned"] = pointsEarned;
+    }
+    return _json;
+  }
+}
+
 /**
  * Association between a student and a guardian of that student. The guardian
  * may receive information about the student's course work.
@@ -4180,6 +4256,7 @@ class Invitation {
    * - "COURSE_ROLE_UNSPECIFIED" : No course role.
    * - "STUDENT" : Student in the course.
    * - "TEACHER" : Teacher of the course.
+   * - "OWNER" : Owner of the course.
    */
   core.String role;
   /**
@@ -4841,6 +4918,61 @@ class ShortAnswerSubmission {
   }
 }
 
+/** The history of each state this submission has been in. */
+class StateHistory {
+  /** The teacher or student who made the change */
+  core.String actorUserId;
+  /**
+   * The workflow pipeline stage.
+   * Possible string values are:
+   * - "STATE_UNSPECIFIED" : No state specified. This should never be returned.
+   * - "CREATED" : The Submission has been created.
+   * - "TURNED_IN" : The student has turned in an assigned document, which may
+   * or may not be
+   * a template.
+   * - "RETURNED" : The teacher has returned the assigned document to the
+   * student.
+   * - "RECLAIMED_BY_STUDENT" : The student turned in the assigned document, and
+   * then chose to
+   * "unsubmit" the assignment, giving the student control again as the
+   * owner.
+   * - "STUDENT_EDITED_AFTER_TURN_IN" : The student edited their submission
+   * after turning it in. Currently,
+   * only used by Questions, when the student edits their answer.
+   */
+  core.String state;
+  /** When the submission entered this state. */
+  core.String stateTimestamp;
+
+  StateHistory();
+
+  StateHistory.fromJson(core.Map _json) {
+    if (_json.containsKey("actorUserId")) {
+      actorUserId = _json["actorUserId"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("stateTimestamp")) {
+      stateTimestamp = _json["stateTimestamp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (actorUserId != null) {
+      _json["actorUserId"] = actorUserId;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (stateTimestamp != null) {
+      _json["stateTimestamp"] = stateTimestamp;
+    }
+    return _json;
+  }
+}
+
 /** Student in a course. */
 class Student {
   /**
@@ -4926,7 +5058,8 @@ class StudentSubmission {
   core.String alternateLink;
   /**
    * Optional grade. If unset, no grade was set.
-   * This must be a non-negative integer value.
+   * This value must be non-negative. Decimal (i.e. non-integer) values are
+   * allowed, but will be rounded to two decimal places.
    *
    * This may be modified only by course teachers.
    */
@@ -4976,7 +5109,8 @@ class StudentSubmission {
   core.String creationTime;
   /**
    * Optional pending grade. If unset, no grade was set.
-   * This must be a non-negative integer value.
+   * This value must be non-negative. Decimal (i.e. non-integer) values are
+   * allowed, but will be rounded to two decimal places.
    *
    * This is only visible to and modifiable by course teachers.
    */
@@ -5014,6 +5148,12 @@ class StudentSubmission {
    * - "RECLAIMED_BY_STUDENT" : Student chose to "unsubmit" the assignment.
    */
   core.String state;
+  /**
+   * The history of the submission (includes state and grade histories).
+   *
+   * Read-only.
+   */
+  core.List<SubmissionHistory> submissionHistory;
   /**
    * Last update time of this submission.
    * This may be unset if the student has not accessed this item.
@@ -5073,6 +5213,9 @@ class StudentSubmission {
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
+    if (_json.containsKey("submissionHistory")) {
+      submissionHistory = _json["submissionHistory"].map((value) => new SubmissionHistory.fromJson(value)).toList();
+    }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
@@ -5125,11 +5268,47 @@ class StudentSubmission {
     if (state != null) {
       _json["state"] = state;
     }
+    if (submissionHistory != null) {
+      _json["submissionHistory"] = submissionHistory.map((value) => (value).toJson()).toList();
+    }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
     }
     if (userId != null) {
       _json["userId"] = userId;
+    }
+    return _json;
+  }
+}
+
+/**
+ * The history of the submission. This currently includes state and grade
+ * histories.
+ */
+class SubmissionHistory {
+  /** The grade history information of the submission, if present. */
+  GradeHistory gradeHistory;
+  /** The state history information of the submission, if present. */
+  StateHistory stateHistory;
+
+  SubmissionHistory();
+
+  SubmissionHistory.fromJson(core.Map _json) {
+    if (_json.containsKey("gradeHistory")) {
+      gradeHistory = new GradeHistory.fromJson(_json["gradeHistory"]);
+    }
+    if (_json.containsKey("stateHistory")) {
+      stateHistory = new StateHistory.fromJson(_json["stateHistory"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (gradeHistory != null) {
+      _json["gradeHistory"] = (gradeHistory).toJson();
+    }
+    if (stateHistory != null) {
+      _json["stateHistory"] = (stateHistory).toJson();
     }
     return _json;
   }

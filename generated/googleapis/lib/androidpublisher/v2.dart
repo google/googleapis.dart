@@ -3142,7 +3142,9 @@ class PurchasesVoidedpurchasesResourceApi {
    * [endTime] - The time, in milliseconds since the Epoch, of the newest voided
    * in-app product purchase that you want to see in the response. The value of
    * this parameter cannot be greater than the current time and is ignored if a
-   * pagination token is set. Default value is current time.
+   * pagination token is set. Default value is current time. Note: This filter
+   * is applied on the time at which the record is seen as voided by our systems
+   * and not the actual voided time returned in the response.
    *
    * [maxResults] - null
    *
@@ -3151,7 +3153,9 @@ class PurchasesVoidedpurchasesResourceApi {
    * [startTime] - The time, in milliseconds since the Epoch, of the oldest
    * voided in-app product purchase that you want to see in the response. The
    * value of this parameter cannot be older than 30 days and is ignored if a
-   * pagination token is set. Default value is current time minus 30 days.
+   * pagination token is set. Default value is current time minus 30 days. Note:
+   * This filter is applied on the time at which the record is seen as voided by
+   * our systems and not the actual voided time returned in the response.
    *
    * [token] - null
    *
@@ -3411,6 +3415,11 @@ class ApkBinary {
    * output of the sha1sum command.
    */
   core.String sha1;
+  /**
+   * A sha256 hash of the APK payload, encoded as a hex string and matching the
+   * output of the sha256sum command.
+   */
+  core.String sha256;
 
   ApkBinary();
 
@@ -3418,12 +3427,18 @@ class ApkBinary {
     if (_json.containsKey("sha1")) {
       sha1 = _json["sha1"];
     }
+    if (_json.containsKey("sha256")) {
+      sha256 = _json["sha256"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
     if (sha1 != null) {
       _json["sha1"] = sha1;
+    }
+    if (sha256 != null) {
+      _json["sha256"] = sha256;
     }
     return _json;
   }
@@ -4872,6 +4887,8 @@ class ProductPurchase {
    * service.
    */
   core.String kind;
+  /** The order id associated with the purchase of the inapp product. */
+  core.String orderId;
   /**
    * The purchase state of the order. Possible values are:
    * - Purchased
@@ -4896,6 +4913,9 @@ class ProductPurchase {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("orderId")) {
+      orderId = _json["orderId"];
+    }
     if (_json.containsKey("purchaseState")) {
       purchaseState = _json["purchaseState"];
     }
@@ -4914,6 +4934,9 @@ class ProductPurchase {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (orderId != null) {
+      _json["orderId"] = orderId;
     }
     if (purchaseState != null) {
       _json["purchaseState"] = purchaseState;
@@ -5225,9 +5248,15 @@ class SubscriptionPurchase {
    */
   core.String kind;
   /**
+   * The order id of the latest recurring order associated with the purchase of
+   * the subscription.
+   */
+  core.String orderId;
+  /**
    * The payment state of the subscription. Possible values are:
    * - Payment pending
    * - Payment received
+   * - Free trial
    */
   core.int paymentState;
   /**
@@ -5275,6 +5304,9 @@ class SubscriptionPurchase {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("orderId")) {
+      orderId = _json["orderId"];
+    }
     if (_json.containsKey("paymentState")) {
       paymentState = _json["paymentState"];
     }
@@ -5311,6 +5343,9 @@ class SubscriptionPurchase {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (orderId != null) {
+      _json["orderId"] = orderId;
     }
     if (paymentState != null) {
       _json["paymentState"] = paymentState;

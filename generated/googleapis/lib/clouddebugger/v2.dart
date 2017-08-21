@@ -57,14 +57,14 @@ class ControllerDebuggeesResourceApi {
   /**
    * Registers the debuggee with the controller service.
    *
-   * All agents attached to the same application should call this method with
-   * the same request content to get back the same stable `debuggee_id`. Agents
-   * should call this method again whenever `google.rpc.Code.NOT_FOUND` is
-   * returned from any controller method.
+   * All agents attached to the same application must call this method with
+   * exactly the same request content to get back the same stable `debuggee_id`.
+   * Agents should call this method again whenever `google.rpc.Code.NOT_FOUND`
+   * is returned from any controller method.
    *
-   * This allows the controller service to disable the agent or recover from any
-   * data loss. If the debuggee is disabled by the server, the response will
-   * have `is_disabled` set to `true`.
+   * This protocol allows the controller service to disable debuggees, recover
+   * from data loss, or change the `debuggee_id` format. Agents must handle
+   * `debuggee_id` value changing upon re-registration.
    *
    * [request] - The metadata request object.
    *
@@ -130,18 +130,19 @@ class ControllerDebuggeesBreakpointsResourceApi {
    *
    * [debuggeeId] - Identifies the debuggee.
    *
-   * [successOnTimeout] - If set to `true`, returns `google.rpc.Code.OK` status
-   * and sets the
-   * `wait_expired` response field to `true` when the server-selected timeout
-   * has expired (recommended).
+   * [successOnTimeout] - If set to `true` (recommended), returns
+   * `google.rpc.Code.OK` status and
+   * sets the `wait_expired` response field to `true` when the server-selected
+   * timeout has expired.
    *
-   * If set to `false`, returns `google.rpc.Code.ABORTED` status when the
-   * server-selected timeout has expired (deprecated).
+   * If set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status
+   * when the server-selected timeout has expired.
    *
-   * [waitToken] - A wait token that, if specified, blocks the method call until
-   * the list
-   * of active breakpoints has changed, or a server selected timeout has
-   * expired.  The value should be set from the last returned response.
+   * [waitToken] - A token that, if specified, blocks the method call until the
+   * list
+   * of active breakpoints has changed, or a server-selected timeout has
+   * expired. The value should be set from the `next_wait_token` field in
+   * the last response. The initial value should be set to `"init"`.
    *
    * Completes with a [ListActiveBreakpointsResponse].
    *
@@ -183,8 +184,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
 
   /**
    * Updates the breakpoint state or mutable fields.
-   * The entire Breakpoint message must be sent back to the controller
-   * service.
+   * The entire Breakpoint message must be sent back to the controller service.
    *
    * Updates to active breakpoint fields are only allowed if the new value
    * does not change the breakpoint specification. Updates to the `location`,
@@ -260,9 +260,12 @@ class DebuggerDebuggeesResourceApi {
       _requester = client;
 
   /**
-   * Lists all the debuggees that the user can set breakpoints to.
+   * Lists all the debuggees that the user has access to.
    *
    * Request parameters:
+   *
+   * [clientVersion] - The client version making the call.
+   * Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * [includeInactive] - When set to `true`, the result includes all debuggees.
    * Otherwise, the
@@ -270,9 +273,6 @@ class DebuggerDebuggeesResourceApi {
    *
    * [project] - Project number of a Google Cloud project whose debuggees to
    * list.
-   *
-   * [clientVersion] - The client version making the call.
-   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * Completes with a [ListDebuggeesResponse].
    *
@@ -282,7 +282,7 @@ class DebuggerDebuggeesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDebuggeesResponse> list({core.bool includeInactive, core.String project, core.String clientVersion}) {
+  async.Future<ListDebuggeesResponse> list({core.String clientVersion, core.bool includeInactive, core.String project}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -290,14 +290,14 @@ class DebuggerDebuggeesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
+    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
     if (project != null) {
       _queryParams["project"] = [project];
-    }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
     }
 
     _url = 'v2/debugger/debuggees';
@@ -331,7 +331,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * [breakpointId] - ID of the breakpoint to delete.
    *
    * [clientVersion] - The client version making the call.
-   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
+   * Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * Completes with a [Empty].
    *
@@ -381,7 +381,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * [breakpointId] - ID of the breakpoint to get.
    *
    * [clientVersion] - The client version making the call.
-   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
+   * Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * Completes with a [GetBreakpointResponse].
    *
@@ -428,6 +428,10 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    *
    * [debuggeeId] - ID of the debuggee whose breakpoints to list.
    *
+   * [stripResults] - This field is deprecated. The following fields are always
+   * stripped out of
+   * the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
+   *
    * [waitToken] - A wait token that, if specified, blocks the call until the
    * breakpoints
    * list has changed, or a server selected timeout has expired.  The value
@@ -436,7 +440,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * should be called again with the same `wait_token`.
    *
    * [clientVersion] - The client version making the call.
-   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
+   * Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * [action_value] - Only breakpoints with the specified action will pass the
    * filter.
@@ -452,10 +456,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * breakpoints set by
    * any user. Otherwise, it includes only breakpoints set by the caller.
    *
-   * [stripResults] - This field is deprecated. The following fields are always
-   * stripped out of
-   * the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
-   *
    * Completes with a [ListBreakpointsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -464,7 +464,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.String waitToken, core.String clientVersion, core.String action_value, core.bool includeInactive, core.bool includeAllUsers, core.bool stripResults}) {
+  async.Future<ListBreakpointsResponse> list(core.String debuggeeId, {core.bool stripResults, core.String waitToken, core.String clientVersion, core.String action_value, core.bool includeInactive, core.bool includeAllUsers}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -474,6 +474,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
+    }
+    if (stripResults != null) {
+      _queryParams["stripResults"] = ["${stripResults}"];
     }
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
@@ -489,9 +492,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (includeAllUsers != null) {
       _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
-    }
-    if (stripResults != null) {
-      _queryParams["stripResults"] = ["${stripResults}"];
     }
 
     _url = 'v2/debugger/debuggees/' + commons.Escaper.ecapeVariable('$debuggeeId') + '/breakpoints';
@@ -516,7 +516,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
    * [debuggeeId] - ID of the debuggee where the breakpoint is to be set.
    *
    * [clientVersion] - The client version making the call.
-   * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
+   * Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
    *
    * Completes with a [SetBreakpointResponse].
    *
@@ -943,17 +943,17 @@ class CloudWorkspaceSourceContext {
 }
 
 /**
- * Represents the application to debug. The application may include one or more
+ * Represents the debugged application. The application may include one or more
  * replicated processes executing the same code. Each of these processes is
  * attached with a debugger agent, carrying out the debugging commands.
- * The agents attached to the same debuggee are identified by using exactly the
- * same field values when registering.
+ * Agents attached to the same debuggee identify themselves as such by using
+ * exactly the same Debuggee message value when registering.
  */
 class Debuggee {
   /**
-   * Version ID of the agent release. The version ID is structured as
-   * following: `domain/type/vmajor.minor` (for example
-   * `google.com/gcp-java/v1.1`).
+   * Version ID of the agent.
+   * Schema: `domain/language-platform/vmajor.minor` (for example
+   * `google.com/java-gcp/v1.1`).
    */
   core.String agentVersion;
   /**
@@ -966,9 +966,7 @@ class Debuggee {
    * References to the locations and revisions of the source code used in the
    * deployed application.
    *
-   * Contexts describing a remote repo related to the source code
-   * have a `category` label of `remote_repo`. Source snapshot source
-   * contexts have a `category` of `snapshot`.
+   * NOTE: this field is experimental and can be ignored.
    */
   core.List<ExtendedSourceContext> extSourceContexts;
   /**
@@ -981,8 +979,8 @@ class Debuggee {
    */
   core.bool isDisabled;
   /**
-   * If set to `true`, indicates that the debuggee is considered as inactive by
-   * the Controller service.
+   * If set to `true`, indicates that Controller service does not detect any
+   * activity from the debuggee agents and the application is possibly stopped.
    */
   core.bool isInactive;
   /**
@@ -992,16 +990,12 @@ class Debuggee {
   core.Map<core.String, core.String> labels;
   /**
    * Project the debuggee is associated with.
-   * Use the project number when registering a Google Cloud Platform project.
+   * Use project number or id when registering a Google Cloud Platform project.
    */
   core.String project;
   /**
    * References to the locations and revisions of the source code used in the
    * deployed application.
-   *
-   * NOTE: This field is deprecated. Consumers should use
-   * `ext_source_contexts` if it is not empty. Debug agents should populate
-   * both this field and `ext_source_contexts`.
    */
   core.List<SourceContext> sourceContexts;
   /**
@@ -1011,9 +1005,12 @@ class Debuggee {
    */
   StatusMessage status;
   /**
-   * Debuggee uniquifier within the project.
-   * Any string that identifies the application within the project can be used.
-   * Including environment and version or build IDs is recommended.
+   * Uniquifier to further distiguish the application.
+   * It is possible that different applications might have identical values in
+   * the debuggee message, thus, incorrectly identified as a single application
+   * by the Controller service. This field adds salt to further distiguish the
+   * application. Agents should consider seeding this field with value that
+   * identifies the code, binary, configuration and environment.
    */
   core.String uniquifier;
 
@@ -1318,13 +1315,14 @@ class ListActiveBreakpointsResponse {
    */
   core.List<Breakpoint> breakpoints;
   /**
-   * A wait token that can be used in the next method call to block until
+   * A token that can be used in the next method call to block until
    * the list of breakpoints changes.
    */
   core.String nextWaitToken;
   /**
-   * The `wait_expired` field is set to true by the server when the
-   * request times out and the field `success_on_timeout` is set to true.
+   * If set to `true`, indicates that there is no change to the
+   * list of active breakpoints and the server-selected timeout has expired.
+   * The `breakpoints` field would be empty and should be ignored.
    */
   core.bool waitExpired;
 
@@ -1399,10 +1397,9 @@ class ListBreakpointsResponse {
 class ListDebuggeesResponse {
   /**
    * List of debuggees accessible to the calling user.
-   * Note that the `description` field is the only human readable field
-   * that should be displayed to the user.
-   * The fields `debuggee.id` and  `description` fields are guaranteed to be
-   * set on each debuggee.
+   * The fields `debuggee.id` and `description` are guaranteed to be set.
+   * The `description` field is a human readable field provided by agents and
+   * can be displayed to users.
    */
   core.List<Debuggee> debuggees;
 
@@ -1487,6 +1484,9 @@ class RegisterDebuggeeResponse {
   /**
    * Debuggee resource.
    * The field `id` is guranteed to be set (in addition to the echoed fields).
+   * If the field `is_disabled` is set to `true`, the agent should disable
+   * itself by removing all breakpoints and detaching from the application.
+   * It should however continue to poll `RegisterDebuggee` until reenabled.
    */
   Debuggee debuggee;
 
@@ -1759,6 +1759,7 @@ class UpdateActiveBreakpointRequest {
   /**
    * Updated breakpoint information.
    * The field `id` must be set.
+   * The agent must echo all Breakpoint specification fields in the update.
    */
   Breakpoint breakpoint;
 

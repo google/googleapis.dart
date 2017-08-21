@@ -477,6 +477,19 @@ class AddressesResourceApi {
    * [address] - Name of the address resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -485,7 +498,7 @@ class AddressesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String address) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String address, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -501,6 +514,9 @@ class AddressesResourceApi {
     }
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses/' + commons.Escaper.ecapeVariable('$address');
@@ -583,6 +599,19 @@ class AddressesResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -591,7 +620,7 @@ class AddressesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Address request, core.String project, core.String region) {
+  async.Future<Operation> insert(Address request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -607,6 +636,9 @@ class AddressesResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/addresses';
@@ -849,6 +881,19 @@ class AutoscalersResourceApi {
    * [autoscaler] - Name of the autoscaler to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -857,7 +902,7 @@ class AutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String zone, core.String autoscaler) {
+  async.Future<Operation> delete(core.String project, core.String zone, core.String autoscaler, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -873,6 +918,9 @@ class AutoscalersResourceApi {
     }
     if (autoscaler == null) {
       throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
@@ -956,6 +1004,19 @@ class AutoscalersResourceApi {
    * [zone] - Name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -964,7 +1025,7 @@ class AutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Autoscaler request, core.String project, core.String zone) {
+  async.Future<Operation> insert(Autoscaler request, core.String project, core.String zone, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -980,6 +1041,9 @@ class AutoscalersResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
@@ -1118,6 +1182,19 @@ class AutoscalersResourceApi {
    * [autoscaler] - Name of the autoscaler to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1126,7 +1203,7 @@ class AutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Autoscaler request, core.String project, core.String zone, {core.String autoscaler}) {
+  async.Future<Operation> patch(Autoscaler request, core.String project, core.String zone, {core.String autoscaler, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1145,6 +1222,9 @@ class AutoscalersResourceApi {
     }
     if (autoscaler != null) {
       _queryParams["autoscaler"] = [autoscaler];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
@@ -1177,6 +1257,19 @@ class AutoscalersResourceApi {
    * [autoscaler] - Name of the autoscaler to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1185,7 +1278,7 @@ class AutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(Autoscaler request, core.String project, core.String zone, {core.String autoscaler}) {
+  async.Future<Operation> update(Autoscaler request, core.String project, core.String zone, {core.String autoscaler, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1204,6 +1297,9 @@ class AutoscalersResourceApi {
     }
     if (autoscaler != null) {
       _queryParams["autoscaler"] = [autoscaler];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/autoscalers';
@@ -1239,6 +1335,19 @@ class BackendBucketsResourceApi {
    * [backendBucket] - Name of the BackendBucket resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1247,7 +1356,7 @@ class BackendBucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String backendBucket) {
+  async.Future<Operation> delete(core.String project, core.String backendBucket, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1260,6 +1369,9 @@ class BackendBucketsResourceApi {
     }
     if (backendBucket == null) {
       throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets/' + commons.Escaper.ecapeVariable('$backendBucket');
@@ -1334,6 +1446,19 @@ class BackendBucketsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1342,7 +1467,7 @@ class BackendBucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(BackendBucket request, core.String project) {
+  async.Future<Operation> insert(BackendBucket request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1355,6 +1480,9 @@ class BackendBucketsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
@@ -1485,6 +1613,19 @@ class BackendBucketsResourceApi {
    * [backendBucket] - Name of the BackendBucket resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1493,7 +1634,7 @@ class BackendBucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(BackendBucket request, core.String project, core.String backendBucket) {
+  async.Future<Operation> patch(BackendBucket request, core.String project, core.String backendBucket, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1509,6 +1650,9 @@ class BackendBucketsResourceApi {
     }
     if (backendBucket == null) {
       throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets/' + commons.Escaper.ecapeVariable('$backendBucket');
@@ -1538,6 +1682,19 @@ class BackendBucketsResourceApi {
    * [backendBucket] - Name of the BackendBucket resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1546,7 +1703,7 @@ class BackendBucketsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(BackendBucket request, core.String project, core.String backendBucket) {
+  async.Future<Operation> update(BackendBucket request, core.String project, core.String backendBucket, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1562,6 +1719,9 @@ class BackendBucketsResourceApi {
     }
     if (backendBucket == null) {
       throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets/' + commons.Escaper.ecapeVariable('$backendBucket');
@@ -1697,6 +1857,19 @@ class BackendServicesResourceApi {
    * [backendService] - Name of the BackendService resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1705,7 +1878,7 @@ class BackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String backendService) {
+  async.Future<Operation> delete(core.String project, core.String backendService, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1718,6 +1891,9 @@ class BackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
@@ -1847,6 +2023,19 @@ class BackendServicesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1855,7 +2044,7 @@ class BackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(BackendService request, core.String project) {
+  async.Future<Operation> insert(BackendService request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1868,6 +2057,9 @@ class BackendServicesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
@@ -2000,6 +2192,19 @@ class BackendServicesResourceApi {
    * [backendService] - Name of the BackendService resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2008,7 +2213,7 @@ class BackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(BackendService request, core.String project, core.String backendService) {
+  async.Future<Operation> patch(BackendService request, core.String project, core.String backendService, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2024,6 +2229,9 @@ class BackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
@@ -2055,6 +2263,19 @@ class BackendServicesResourceApi {
    * [backendService] - Name of the BackendService resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2063,7 +2284,7 @@ class BackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(BackendService request, core.String project, core.String backendService) {
+  async.Future<Operation> update(BackendService request, core.String project, core.String backendService, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2079,6 +2300,9 @@ class BackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
@@ -2487,6 +2711,19 @@ class DisksResourceApi {
    *
    * [guestFlush] - null
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2495,7 +2732,7 @@ class DisksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> createSnapshot(Snapshot request, core.String project, core.String zone, core.String disk, {core.bool guestFlush}) {
+  async.Future<Operation> createSnapshot(Snapshot request, core.String project, core.String zone, core.String disk, {core.bool guestFlush, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2517,6 +2754,9 @@ class DisksResourceApi {
     }
     if (guestFlush != null) {
       _queryParams["guestFlush"] = ["${guestFlush}"];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk') + '/createSnapshot';
@@ -2548,6 +2788,19 @@ class DisksResourceApi {
    *
    * [disk] - Name of the persistent disk to delete.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2556,7 +2809,7 @@ class DisksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String zone, core.String disk) {
+  async.Future<Operation> delete(core.String project, core.String zone, core.String disk, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2572,6 +2825,9 @@ class DisksResourceApi {
     }
     if (disk == null) {
       throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk');
@@ -2658,6 +2914,19 @@ class DisksResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * [sourceImage] - Optional. Source image to restore onto a disk.
    *
    * Completes with a [Operation].
@@ -2668,7 +2937,7 @@ class DisksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Disk request, core.String project, core.String zone, {core.String sourceImage}) {
+  async.Future<Operation> insert(Disk request, core.String project, core.String zone, {core.String requestId, core.String sourceImage}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2684,6 +2953,9 @@ class DisksResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
     if (sourceImage != null) {
       _queryParams["sourceImage"] = [sourceImage];
@@ -2823,6 +3095,19 @@ class DisksResourceApi {
    * [disk] - The name of the persistent disk.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2831,7 +3116,7 @@ class DisksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> resize(DisksResizeRequest request, core.String project, core.String zone, core.String disk) {
+  async.Future<Operation> resize(DisksResizeRequest request, core.String project, core.String zone, core.String disk, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2850,6 +3135,9 @@ class DisksResourceApi {
     }
     if (disk == null) {
       throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$disk') + '/resize';
@@ -2882,6 +3170,19 @@ class DisksResourceApi {
    * [resource] - Name of the resource for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2890,7 +3191,7 @@ class DisksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setLabels(ZoneSetLabelsRequest request, core.String project, core.String zone, core.String resource) {
+  async.Future<Operation> setLabels(ZoneSetLabelsRequest request, core.String project, core.String zone, core.String resource, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2909,6 +3210,9 @@ class DisksResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/disks/' + commons.Escaper.ecapeVariable('$resource') + '/setLabels';
@@ -2944,6 +3248,19 @@ class FirewallsResourceApi {
    * [firewall] - Name of the firewall rule to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2952,7 +3269,7 @@ class FirewallsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String firewall) {
+  async.Future<Operation> delete(core.String project, core.String firewall, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2965,6 +3282,9 @@ class FirewallsResourceApi {
     }
     if (firewall == null) {
       throw new core.ArgumentError("Parameter firewall is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
@@ -3038,6 +3358,19 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3046,7 +3379,7 @@ class FirewallsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Firewall request, core.String project) {
+  async.Future<Operation> insert(Firewall request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3059,6 +3392,9 @@ class FirewallsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
@@ -3174,9 +3510,8 @@ class FirewallsResourceApi {
 
   /**
    * Updates the specified firewall rule with the data included in the request.
-   * Using PUT method, can only update following fields of firewall rule:
-   * allowed, description, sourceRanges, sourceTags, targetTags. This method
-   * supports patch semantics.
+   * This method supports PATCH semantics and uses the JSON merge patch format
+   * and processing rules.
    *
    * [request] - The metadata request object.
    *
@@ -3186,8 +3521,21 @@ class FirewallsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
-   * [firewall] - Name of the firewall rule to update.
+   * [firewall] - Name of the firewall rule to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+   *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
    *
    * Completes with a [Operation].
    *
@@ -3197,7 +3545,7 @@ class FirewallsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Firewall request, core.String project, core.String firewall) {
+  async.Future<Operation> patch(Firewall request, core.String project, core.String firewall, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3213,6 +3561,9 @@ class FirewallsResourceApi {
     }
     if (firewall == null) {
       throw new core.ArgumentError("Parameter firewall is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
@@ -3243,6 +3594,19 @@ class FirewallsResourceApi {
    * [firewall] - Name of the firewall rule to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3251,7 +3615,7 @@ class FirewallsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(Firewall request, core.String project, core.String firewall) {
+  async.Future<Operation> update(Firewall request, core.String project, core.String firewall, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3267,6 +3631,9 @@ class FirewallsResourceApi {
     }
     if (firewall == null) {
       throw new core.ArgumentError("Parameter firewall is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls/' + commons.Escaper.ecapeVariable('$firewall');
@@ -3404,6 +3771,19 @@ class ForwardingRulesResourceApi {
    * [forwardingRule] - Name of the ForwardingRule resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3412,7 +3792,7 @@ class ForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String forwardingRule) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String forwardingRule, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3428,6 +3808,9 @@ class ForwardingRulesResourceApi {
     }
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
@@ -3510,6 +3893,19 @@ class ForwardingRulesResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3518,7 +3914,7 @@ class ForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(ForwardingRule request, core.String project, core.String region) {
+  async.Future<Operation> insert(ForwardingRule request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3534,6 +3930,9 @@ class ForwardingRulesResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules';
@@ -3673,6 +4072,19 @@ class ForwardingRulesResourceApi {
    * to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3681,7 +4093,7 @@ class ForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setTarget(TargetReference request, core.String project, core.String region, core.String forwardingRule) {
+  async.Future<Operation> setTarget(TargetReference request, core.String project, core.String region, core.String forwardingRule, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3700,6 +4112,9 @@ class ForwardingRulesResourceApi {
     }
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule') + '/setTarget';
@@ -3735,6 +4150,19 @@ class GlobalAddressesResourceApi {
    * [address] - Name of the address resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3743,7 +4171,7 @@ class GlobalAddressesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String address) {
+  async.Future<Operation> delete(core.String project, core.String address, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3756,6 +4184,9 @@ class GlobalAddressesResourceApi {
     }
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses/' + commons.Escaper.ecapeVariable('$address');
@@ -3830,6 +4261,19 @@ class GlobalAddressesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3838,7 +4282,7 @@ class GlobalAddressesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Address request, core.String project) {
+  async.Future<Operation> insert(Address request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3851,6 +4295,9 @@ class GlobalAddressesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
@@ -3985,6 +4432,19 @@ class GlobalForwardingRulesResourceApi {
    * [forwardingRule] - Name of the ForwardingRule resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3993,7 +4453,7 @@ class GlobalForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String forwardingRule) {
+  async.Future<Operation> delete(core.String project, core.String forwardingRule, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4006,6 +4466,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule');
@@ -4080,6 +4543,19 @@ class GlobalForwardingRulesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4088,7 +4564,7 @@ class GlobalForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(ForwardingRule request, core.String project) {
+  async.Future<Operation> insert(ForwardingRule request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4101,6 +4577,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
@@ -4231,6 +4710,19 @@ class GlobalForwardingRulesResourceApi {
    * to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4239,7 +4731,7 @@ class GlobalForwardingRulesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setTarget(TargetReference request, core.String project, core.String forwardingRule) {
+  async.Future<Operation> setTarget(TargetReference request, core.String project, core.String forwardingRule, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4255,6 +4747,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules/' + commons.Escaper.ecapeVariable('$forwardingRule') + '/setTarget';
@@ -4593,6 +5088,19 @@ class HealthChecksResourceApi {
    * [healthCheck] - Name of the HealthCheck resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4601,7 +5109,7 @@ class HealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String healthCheck) {
+  async.Future<Operation> delete(core.String project, core.String healthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4614,6 +5122,9 @@ class HealthChecksResourceApi {
     }
     if (healthCheck == null) {
       throw new core.ArgumentError("Parameter healthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks/' + commons.Escaper.ecapeVariable('$healthCheck');
@@ -4688,6 +5199,19 @@ class HealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4696,7 +5220,7 @@ class HealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(HealthCheck request, core.String project) {
+  async.Future<Operation> insert(HealthCheck request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4709,6 +5233,9 @@ class HealthChecksResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
@@ -4839,6 +5366,19 @@ class HealthChecksResourceApi {
    * [healthCheck] - Name of the HealthCheck resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4847,7 +5387,7 @@ class HealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(HealthCheck request, core.String project, core.String healthCheck) {
+  async.Future<Operation> patch(HealthCheck request, core.String project, core.String healthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4863,6 +5403,9 @@ class HealthChecksResourceApi {
     }
     if (healthCheck == null) {
       throw new core.ArgumentError("Parameter healthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks/' + commons.Escaper.ecapeVariable('$healthCheck');
@@ -4892,6 +5435,19 @@ class HealthChecksResourceApi {
    * [healthCheck] - Name of the HealthCheck resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4900,7 +5456,7 @@ class HealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(HealthCheck request, core.String project, core.String healthCheck) {
+  async.Future<Operation> update(HealthCheck request, core.String project, core.String healthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4916,6 +5472,9 @@ class HealthChecksResourceApi {
     }
     if (healthCheck == null) {
       throw new core.ArgumentError("Parameter healthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks/' + commons.Escaper.ecapeVariable('$healthCheck');
@@ -4951,6 +5510,19 @@ class HttpHealthChecksResourceApi {
    * [httpHealthCheck] - Name of the HttpHealthCheck resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4959,7 +5531,7 @@ class HttpHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String httpHealthCheck) {
+  async.Future<Operation> delete(core.String project, core.String httpHealthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4972,6 +5544,9 @@ class HttpHealthChecksResourceApi {
     }
     if (httpHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpHealthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
@@ -5046,6 +5621,19 @@ class HttpHealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5054,7 +5642,7 @@ class HttpHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(HttpHealthCheck request, core.String project) {
+  async.Future<Operation> insert(HttpHealthCheck request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5067,6 +5655,9 @@ class HttpHealthChecksResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
@@ -5197,6 +5788,19 @@ class HttpHealthChecksResourceApi {
    * [httpHealthCheck] - Name of the HttpHealthCheck resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5205,7 +5809,7 @@ class HttpHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(HttpHealthCheck request, core.String project, core.String httpHealthCheck) {
+  async.Future<Operation> patch(HttpHealthCheck request, core.String project, core.String httpHealthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5221,6 +5825,9 @@ class HttpHealthChecksResourceApi {
     }
     if (httpHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpHealthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
@@ -5250,6 +5857,19 @@ class HttpHealthChecksResourceApi {
    * [httpHealthCheck] - Name of the HttpHealthCheck resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5258,7 +5878,7 @@ class HttpHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(HttpHealthCheck request, core.String project, core.String httpHealthCheck) {
+  async.Future<Operation> update(HttpHealthCheck request, core.String project, core.String httpHealthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5274,6 +5894,9 @@ class HttpHealthChecksResourceApi {
     }
     if (httpHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpHealthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks/' + commons.Escaper.ecapeVariable('$httpHealthCheck');
@@ -5309,6 +5932,19 @@ class HttpsHealthChecksResourceApi {
    * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5317,7 +5953,7 @@ class HttpsHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String httpsHealthCheck) {
+  async.Future<Operation> delete(core.String project, core.String httpsHealthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5330,6 +5966,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (httpsHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpsHealthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks/' + commons.Escaper.ecapeVariable('$httpsHealthCheck');
@@ -5404,6 +6043,19 @@ class HttpsHealthChecksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5412,7 +6064,7 @@ class HttpsHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(HttpsHealthCheck request, core.String project) {
+  async.Future<Operation> insert(HttpsHealthCheck request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5425,6 +6077,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks';
@@ -5555,6 +6210,19 @@ class HttpsHealthChecksResourceApi {
    * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5563,7 +6231,7 @@ class HttpsHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(HttpsHealthCheck request, core.String project, core.String httpsHealthCheck) {
+  async.Future<Operation> patch(HttpsHealthCheck request, core.String project, core.String httpsHealthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5579,6 +6247,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (httpsHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpsHealthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks/' + commons.Escaper.ecapeVariable('$httpsHealthCheck');
@@ -5608,6 +6279,19 @@ class HttpsHealthChecksResourceApi {
    * [httpsHealthCheck] - Name of the HttpsHealthCheck resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5616,7 +6300,7 @@ class HttpsHealthChecksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(HttpsHealthCheck request, core.String project, core.String httpsHealthCheck) {
+  async.Future<Operation> update(HttpsHealthCheck request, core.String project, core.String httpsHealthCheck, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5632,6 +6316,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (httpsHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpsHealthCheck is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks/' + commons.Escaper.ecapeVariable('$httpsHealthCheck');
@@ -5667,6 +6354,19 @@ class ImagesResourceApi {
    * [image] - Name of the image resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5675,7 +6375,7 @@ class ImagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String image) {
+  async.Future<Operation> delete(core.String project, core.String image, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5688,6 +6388,9 @@ class ImagesResourceApi {
     }
     if (image == null) {
       throw new core.ArgumentError("Parameter image is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$image');
@@ -5718,6 +6421,19 @@ class ImagesResourceApi {
    * [image] - Image name.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5726,7 +6442,7 @@ class ImagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> deprecate(DeprecationStatus request, core.String project, core.String image) {
+  async.Future<Operation> deprecate(DeprecationStatus request, core.String project, core.String image, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5742,6 +6458,9 @@ class ImagesResourceApi {
     }
     if (image == null) {
       throw new core.ArgumentError("Parameter image is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images/' + commons.Escaper.ecapeVariable('$image') + '/deprecate';
@@ -5866,6 +6585,19 @@ class ImagesResourceApi {
    *
    * [forceCreate] - Force image creation if true.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5874,7 +6606,7 @@ class ImagesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Image request, core.String project, {core.bool forceCreate}) {
+  async.Future<Operation> insert(Image request, core.String project, {core.bool forceCreate, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5890,6 +6622,9 @@ class ImagesResourceApi {
     }
     if (forceCreate != null) {
       _queryParams["forceCreate"] = ["${forceCreate}"];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
@@ -6098,6 +6833,19 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6106,7 +6854,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> abandonInstances(InstanceGroupManagersAbandonInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+  async.Future<Operation> abandonInstances(InstanceGroupManagersAbandonInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6125,6 +6873,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/abandonInstances';
@@ -6253,6 +7004,19 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group to delete.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6261,7 +7025,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String zone, core.String instanceGroupManager) {
+  async.Future<Operation> delete(core.String project, core.String zone, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6277,6 +7041,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
@@ -6318,6 +7085,19 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6326,7 +7106,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> deleteInstances(InstanceGroupManagersDeleteInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+  async.Future<Operation> deleteInstances(InstanceGroupManagersDeleteInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6345,6 +7125,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/deleteInstances';
@@ -6433,6 +7216,19 @@ class InstanceGroupManagersResourceApi {
    * [zone] - The name of the zone where you want to create the managed instance
    * group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6441,7 +7237,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(InstanceGroupManager request, core.String project, core.String zone) {
+  async.Future<Operation> insert(InstanceGroupManager request, core.String project, core.String zone, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6457,6 +7253,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers';
@@ -6677,6 +7476,19 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6685,7 +7497,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> recreateInstances(InstanceGroupManagersRecreateInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+  async.Future<Operation> recreateInstances(InstanceGroupManagersRecreateInstancesRequest request, core.String project, core.String zone, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6704,6 +7516,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/recreateInstances';
@@ -6744,6 +7559,19 @@ class InstanceGroupManagersResourceApi {
    * should maintain at any given time. The group automatically adds or removes
    * instances to maintain the number of instances specified by this parameter.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6752,7 +7580,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> resize(core.String project, core.String zone, core.String instanceGroupManager, core.int size) {
+  async.Future<Operation> resize(core.String project, core.String zone, core.String instanceGroupManager, core.int size, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6773,6 +7601,9 @@ class InstanceGroupManagersResourceApi {
       throw new core.ArgumentError("Parameter size is required.");
     }
     _queryParams["size"] = ["${size}"];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/resize';
 
@@ -6803,6 +7634,19 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6811,7 +7655,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setInstanceTemplate(InstanceGroupManagersSetInstanceTemplateRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+  async.Future<Operation> setInstanceTemplate(InstanceGroupManagersSetInstanceTemplateRequest request, core.String project, core.String zone, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6830,6 +7674,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setInstanceTemplate';
@@ -6864,6 +7711,19 @@ class InstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6872,7 +7732,7 @@ class InstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setTargetPools(InstanceGroupManagersSetTargetPoolsRequest request, core.String project, core.String zone, core.String instanceGroupManager) {
+  async.Future<Operation> setTargetPools(InstanceGroupManagersSetTargetPoolsRequest request, core.String project, core.String zone, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6891,6 +7751,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setTargetPools';
@@ -6932,6 +7795,19 @@ class InstanceGroupsResourceApi {
    * [instanceGroup] - The name of the instance group where you are adding
    * instances.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6940,7 +7816,7 @@ class InstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> addInstances(InstanceGroupsAddInstancesRequest request, core.String project, core.String zone, core.String instanceGroup) {
+  async.Future<Operation> addInstances(InstanceGroupsAddInstancesRequest request, core.String project, core.String zone, core.String instanceGroup, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6959,6 +7835,9 @@ class InstanceGroupsResourceApi {
     }
     if (instanceGroup == null) {
       throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/addInstances';
@@ -7087,6 +7966,19 @@ class InstanceGroupsResourceApi {
    *
    * [instanceGroup] - The name of the instance group to delete.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7095,7 +7987,7 @@ class InstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String zone, core.String instanceGroup) {
+  async.Future<Operation> delete(core.String project, core.String zone, core.String instanceGroup, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7111,6 +8003,9 @@ class InstanceGroupsResourceApi {
     }
     if (instanceGroup == null) {
       throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup');
@@ -7191,6 +8086,19 @@ class InstanceGroupsResourceApi {
    *
    * [zone] - The name of the zone where you want to create the instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7199,7 +8107,7 @@ class InstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(InstanceGroup request, core.String project, core.String zone) {
+  async.Future<Operation> insert(InstanceGroup request, core.String project, core.String zone, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7215,6 +8123,9 @@ class InstanceGroupsResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups';
@@ -7470,6 +8381,19 @@ class InstanceGroupsResourceApi {
    * [instanceGroup] - The name of the instance group where the specified
    * instances will be removed.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7478,7 +8402,7 @@ class InstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> removeInstances(InstanceGroupsRemoveInstancesRequest request, core.String project, core.String zone, core.String instanceGroup) {
+  async.Future<Operation> removeInstances(InstanceGroupsRemoveInstancesRequest request, core.String project, core.String zone, core.String instanceGroup, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7497,6 +8421,9 @@ class InstanceGroupsResourceApi {
     }
     if (instanceGroup == null) {
       throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/removeInstances';
@@ -7527,6 +8454,19 @@ class InstanceGroupsResourceApi {
    * [instanceGroup] - The name of the instance group where the named ports are
    * updated.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7535,7 +8475,7 @@ class InstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setNamedPorts(InstanceGroupsSetNamedPortsRequest request, core.String project, core.String zone, core.String instanceGroup) {
+  async.Future<Operation> setNamedPorts(InstanceGroupsSetNamedPortsRequest request, core.String project, core.String zone, core.String instanceGroup, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7554,6 +8494,9 @@ class InstanceGroupsResourceApi {
     }
     if (instanceGroup == null) {
       throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/setNamedPorts';
@@ -7592,6 +8535,19 @@ class InstanceTemplatesResourceApi {
    * [instanceTemplate] - The name of the instance template to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7600,7 +8556,7 @@ class InstanceTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String instanceTemplate) {
+  async.Future<Operation> delete(core.String project, core.String instanceTemplate, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7613,6 +8569,9 @@ class InstanceTemplatesResourceApi {
     }
     if (instanceTemplate == null) {
       throw new core.ArgumentError("Parameter instanceTemplate is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates/' + commons.Escaper.ecapeVariable('$instanceTemplate');
@@ -7689,6 +8648,19 @@ class InstanceTemplatesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7697,7 +8669,7 @@ class InstanceTemplatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(InstanceTemplate request, core.String project) {
+  async.Future<Operation> insert(InstanceTemplate request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7710,6 +8682,9 @@ class InstanceTemplatesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
@@ -7853,6 +8828,19 @@ class InstancesResourceApi {
    * [networkInterface] - The name of the network interface to add to this
    * instance.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7861,7 +8849,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> addAccessConfig(AccessConfig request, core.String project, core.String zone, core.String instance, core.String networkInterface) {
+  async.Future<Operation> addAccessConfig(AccessConfig request, core.String project, core.String zone, core.String instance, core.String networkInterface, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7885,6 +8873,9 @@ class InstancesResourceApi {
       throw new core.ArgumentError("Parameter networkInterface is required.");
     }
     _queryParams["networkInterface"] = [networkInterface];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/addAccessConfig';
 
@@ -8017,6 +9008,19 @@ class InstancesResourceApi {
    * [instance] - The instance name for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8025,7 +9029,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> attachDisk(AttachedDisk request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> attachDisk(AttachedDisk request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8044,6 +9048,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/attachDisk';
@@ -8074,6 +9081,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8082,7 +9102,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> delete(core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8098,6 +9118,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance');
@@ -8131,6 +9154,19 @@ class InstancesResourceApi {
    *
    * [networkInterface] - The name of the network interface.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8139,7 +9175,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> deleteAccessConfig(core.String project, core.String zone, core.String instance, core.String accessConfig, core.String networkInterface) {
+  async.Future<Operation> deleteAccessConfig(core.String project, core.String zone, core.String instance, core.String accessConfig, core.String networkInterface, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8164,6 +9200,9 @@ class InstancesResourceApi {
       throw new core.ArgumentError("Parameter networkInterface is required.");
     }
     _queryParams["networkInterface"] = [networkInterface];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/deleteAccessConfig';
 
@@ -8194,6 +9233,19 @@ class InstancesResourceApi {
    *
    * [deviceName] - Disk device name to detach.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8202,7 +9254,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> detachDisk(core.String project, core.String zone, core.String instance, core.String deviceName) {
+  async.Future<Operation> detachDisk(core.String project, core.String zone, core.String instance, core.String deviceName, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8223,6 +9275,9 @@ class InstancesResourceApi {
       throw new core.ArgumentError("Parameter deviceName is required.");
     }
     _queryParams["deviceName"] = [deviceName];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/detachDisk';
 
@@ -8373,6 +9428,19 @@ class InstancesResourceApi {
    * [zone] - The name of the zone for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8381,7 +9449,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Instance request, core.String project, core.String zone) {
+  async.Future<Operation> insert(Instance request, core.String project, core.String zone, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8397,6 +9465,9 @@ class InstancesResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances';
@@ -8532,6 +9603,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8540,7 +9624,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> reset(core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> reset(core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8556,6 +9640,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/reset';
@@ -8591,6 +9678,19 @@ class InstancesResourceApi {
    * [deviceName] - The device name of the disk to modify.
    * Value must have pattern "\w[\w.-]{0,254}".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8599,7 +9699,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setDiskAutoDelete(core.String project, core.String zone, core.String instance, core.bool autoDelete, core.String deviceName) {
+  async.Future<Operation> setDiskAutoDelete(core.String project, core.String zone, core.String instance, core.bool autoDelete, core.String deviceName, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8624,6 +9724,9 @@ class InstancesResourceApi {
       throw new core.ArgumentError("Parameter deviceName is required.");
     }
     _queryParams["deviceName"] = [deviceName];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setDiskAutoDelete';
 
@@ -8655,6 +9758,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8663,7 +9779,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setLabels(InstancesSetLabelsRequest request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> setLabels(InstancesSetLabelsRequest request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8682,6 +9798,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setLabels';
@@ -8714,6 +9833,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8722,7 +9854,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setMachineResources(InstancesSetMachineResourcesRequest request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> setMachineResources(InstancesSetMachineResourcesRequest request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8741,6 +9873,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setMachineResources';
@@ -8773,6 +9908,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8781,7 +9929,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setMachineType(InstancesSetMachineTypeRequest request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> setMachineType(InstancesSetMachineTypeRequest request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8800,6 +9948,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setMachineType';
@@ -8832,6 +9983,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8840,7 +10004,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setMetadata(Metadata request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> setMetadata(Metadata request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8859,6 +10023,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setMetadata';
@@ -8890,6 +10057,19 @@ class InstancesResourceApi {
    * [instance] - Instance name.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8898,7 +10078,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setScheduling(Scheduling request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> setScheduling(Scheduling request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8917,6 +10097,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setScheduling';
@@ -8949,6 +10132,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance resource to start.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8957,7 +10153,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setServiceAccount(InstancesSetServiceAccountRequest request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> setServiceAccount(InstancesSetServiceAccountRequest request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8976,6 +10172,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setServiceAccount';
@@ -9007,6 +10206,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9015,7 +10227,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setTags(Tags request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> setTags(Tags request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9034,6 +10246,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/setTags';
@@ -9064,6 +10279,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance resource to start.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9072,7 +10300,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> start(core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> start(core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9088,6 +10316,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/start';
@@ -9120,6 +10351,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance resource to start.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9128,7 +10372,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> startWithEncryptionKey(InstancesStartWithEncryptionKeyRequest request, core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> startWithEncryptionKey(InstancesStartWithEncryptionKeyRequest request, core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9147,6 +10391,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/startWithEncryptionKey';
@@ -9181,6 +10428,19 @@ class InstancesResourceApi {
    * [instance] - Name of the instance resource to stop.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9189,7 +10449,7 @@ class InstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> stop(core.String project, core.String zone, core.String instance) {
+  async.Future<Operation> stop(core.String project, core.String zone, core.String instance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9205,6 +10465,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/instances/' + commons.Escaper.ecapeVariable('$instance') + '/stop';
@@ -9565,6 +10828,19 @@ class NetworksResourceApi {
    * [network] - Name of the network resource to add peering to.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9573,7 +10849,7 @@ class NetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> addPeering(NetworksAddPeeringRequest request, core.String project, core.String network) {
+  async.Future<Operation> addPeering(NetworksAddPeeringRequest request, core.String project, core.String network, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9589,6 +10865,9 @@ class NetworksResourceApi {
     }
     if (network == null) {
       throw new core.ArgumentError("Parameter network is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network') + '/addPeering';
@@ -9615,6 +10894,19 @@ class NetworksResourceApi {
    * [network] - Name of the network to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9623,7 +10915,7 @@ class NetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String network) {
+  async.Future<Operation> delete(core.String project, core.String network, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9636,6 +10928,9 @@ class NetworksResourceApi {
     }
     if (network == null) {
       throw new core.ArgumentError("Parameter network is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network');
@@ -9710,6 +11005,19 @@ class NetworksResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9718,7 +11026,7 @@ class NetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Network request, core.String project) {
+  async.Future<Operation> insert(Network request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9731,6 +11039,9 @@ class NetworksResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
@@ -9858,6 +11169,19 @@ class NetworksResourceApi {
    * [network] - Name of the network resource to remove peering from.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9866,7 +11190,7 @@ class NetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> removePeering(NetworksRemovePeeringRequest request, core.String project, core.String network) {
+  async.Future<Operation> removePeering(NetworksRemovePeeringRequest request, core.String project, core.String network, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9882,6 +11206,9 @@ class NetworksResourceApi {
     }
     if (network == null) {
       throw new core.ArgumentError("Parameter network is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network') + '/removePeering';
@@ -9908,6 +11235,19 @@ class NetworksResourceApi {
    * [network] - Name of the network to be updated.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9916,7 +11256,7 @@ class NetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> switchToCustomMode(core.String project, core.String network) {
+  async.Future<Operation> switchToCustomMode(core.String project, core.String network, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9929,6 +11269,9 @@ class NetworksResourceApi {
     }
     if (network == null) {
       throw new core.ArgumentError("Parameter network is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks/' + commons.Escaper.ecapeVariable('$network') + '/switchToCustomMode';
@@ -9961,6 +11304,19 @@ class ProjectsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9969,7 +11325,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> disableXpnHost(core.String project) {
+  async.Future<Operation> disableXpnHost(core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9979,6 +11335,9 @@ class ProjectsResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnHost';
@@ -10005,6 +11364,19 @@ class ProjectsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10013,7 +11385,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> disableXpnResource(ProjectsDisableXpnResourceRequest request, core.String project) {
+  async.Future<Operation> disableXpnResource(ProjectsDisableXpnResourceRequest request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10026,6 +11398,9 @@ class ProjectsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnResource';
@@ -10049,6 +11424,19 @@ class ProjectsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10057,7 +11445,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> enableXpnHost(core.String project) {
+  async.Future<Operation> enableXpnHost(core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10067,6 +11455,9 @@ class ProjectsResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnHost';
@@ -10094,6 +11485,19 @@ class ProjectsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10102,7 +11506,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> enableXpnResource(ProjectsEnableXpnResourceRequest request, core.String project) {
+  async.Future<Operation> enableXpnResource(ProjectsEnableXpnResourceRequest request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10115,6 +11519,9 @@ class ProjectsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnResource';
@@ -10351,6 +11758,19 @@ class ProjectsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10359,7 +11779,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> moveDisk(DiskMoveRequest request, core.String project) {
+  async.Future<Operation> moveDisk(DiskMoveRequest request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10372,6 +11792,9 @@ class ProjectsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/moveDisk';
@@ -10398,6 +11821,19 @@ class ProjectsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10406,7 +11842,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> moveInstance(InstanceMoveRequest request, core.String project) {
+  async.Future<Operation> moveInstance(InstanceMoveRequest request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10419,6 +11855,9 @@ class ProjectsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/moveInstance';
@@ -10445,6 +11884,19 @@ class ProjectsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10453,7 +11905,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setCommonInstanceMetadata(Metadata request, core.String project) {
+  async.Future<Operation> setCommonInstanceMetadata(Metadata request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10466,6 +11918,9 @@ class ProjectsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/setCommonInstanceMetadata';
@@ -10493,6 +11948,19 @@ class ProjectsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10501,7 +11969,7 @@ class ProjectsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setUsageExportBucket(UsageExportLocation request, core.String project) {
+  async.Future<Operation> setUsageExportBucket(UsageExportLocation request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10514,6 +11982,9 @@ class ProjectsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/setUsageExportBucket';
@@ -10552,6 +12023,19 @@ class RegionAutoscalersResourceApi {
    * [autoscaler] - Name of the autoscaler to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10560,7 +12044,7 @@ class RegionAutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String autoscaler) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String autoscaler, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10576,6 +12060,9 @@ class RegionAutoscalersResourceApi {
     }
     if (autoscaler == null) {
       throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers/' + commons.Escaper.ecapeVariable('$autoscaler');
@@ -10658,6 +12145,19 @@ class RegionAutoscalersResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10666,7 +12166,7 @@ class RegionAutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Autoscaler request, core.String project, core.String region) {
+  async.Future<Operation> insert(Autoscaler request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10682,6 +12182,9 @@ class RegionAutoscalersResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers';
@@ -10820,6 +12323,19 @@ class RegionAutoscalersResourceApi {
    * [autoscaler] - Name of the autoscaler to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10828,7 +12344,7 @@ class RegionAutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Autoscaler request, core.String project, core.String region, {core.String autoscaler}) {
+  async.Future<Operation> patch(Autoscaler request, core.String project, core.String region, {core.String autoscaler, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10847,6 +12363,9 @@ class RegionAutoscalersResourceApi {
     }
     if (autoscaler != null) {
       _queryParams["autoscaler"] = [autoscaler];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers';
@@ -10879,6 +12398,19 @@ class RegionAutoscalersResourceApi {
    * [autoscaler] - Name of the autoscaler to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10887,7 +12419,7 @@ class RegionAutoscalersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(Autoscaler request, core.String project, core.String region, {core.String autoscaler}) {
+  async.Future<Operation> update(Autoscaler request, core.String project, core.String region, {core.String autoscaler, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10906,6 +12438,9 @@ class RegionAutoscalersResourceApi {
     }
     if (autoscaler != null) {
       _queryParams["autoscaler"] = [autoscaler];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/autoscalers';
@@ -10944,6 +12479,19 @@ class RegionBackendServicesResourceApi {
    * [backendService] - Name of the BackendService resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10952,7 +12500,7 @@ class RegionBackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String backendService) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String backendService, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10968,6 +12516,9 @@ class RegionBackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
@@ -11111,6 +12662,19 @@ class RegionBackendServicesResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11119,7 +12683,7 @@ class RegionBackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(BackendService request, core.String project, core.String region) {
+  async.Future<Operation> insert(BackendService request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11135,6 +12699,9 @@ class RegionBackendServicesResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices';
@@ -11276,6 +12843,19 @@ class RegionBackendServicesResourceApi {
    * [backendService] - Name of the BackendService resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11284,7 +12864,7 @@ class RegionBackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(BackendService request, core.String project, core.String region, core.String backendService) {
+  async.Future<Operation> patch(BackendService request, core.String project, core.String region, core.String backendService, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11303,6 +12883,9 @@ class RegionBackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
@@ -11337,6 +12920,19 @@ class RegionBackendServicesResourceApi {
    * [backendService] - Name of the BackendService resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11345,7 +12941,7 @@ class RegionBackendServicesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(BackendService request, core.String project, core.String region, core.String backendService) {
+  async.Future<Operation> update(BackendService request, core.String project, core.String region, core.String backendService, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11364,6 +12960,9 @@ class RegionBackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/backendServices/' + commons.Escaper.ecapeVariable('$backendService');
@@ -11555,6 +13154,19 @@ class RegionCommitmentsResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11563,7 +13175,7 @@ class RegionCommitmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Commitment request, core.String project, core.String region) {
+  async.Future<Operation> insert(Commitment request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11579,6 +13191,9 @@ class RegionCommitmentsResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/commitments';
@@ -11735,6 +13350,19 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - Name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11743,7 +13371,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> abandonInstances(RegionInstanceGroupManagersAbandonInstancesRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+  async.Future<Operation> abandonInstances(RegionInstanceGroupManagersAbandonInstancesRequest request, core.String project, core.String region, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11762,6 +13390,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/abandonInstances';
@@ -11790,6 +13421,19 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - Name of the managed instance group to delete.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11798,7 +13442,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String instanceGroupManager) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11814,6 +13458,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager');
@@ -11855,6 +13502,19 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - Name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11863,7 +13523,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> deleteInstances(RegionInstanceGroupManagersDeleteInstancesRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+  async.Future<Operation> deleteInstances(RegionInstanceGroupManagersDeleteInstancesRequest request, core.String project, core.String region, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11882,6 +13542,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/deleteInstances';
@@ -11967,6 +13630,19 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [region] - Name of the region scoping this request.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11975,7 +13651,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(InstanceGroupManager request, core.String project, core.String region) {
+  async.Future<Operation> insert(InstanceGroupManager request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11991,6 +13667,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers';
@@ -12209,6 +13888,19 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - Name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12217,7 +13909,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> recreateInstances(RegionInstanceGroupManagersRecreateRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+  async.Future<Operation> recreateInstances(RegionInstanceGroupManagersRecreateRequest request, core.String project, core.String region, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12236,6 +13928,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/recreateInstances';
@@ -12276,6 +13971,19 @@ class RegionInstanceGroupManagersResourceApi {
    * [size] - Number of instances that should exist in this instance group
    * manager.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12284,7 +13992,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> resize(core.String project, core.String region, core.String instanceGroupManager, core.int size) {
+  async.Future<Operation> resize(core.String project, core.String region, core.String instanceGroupManager, core.int size, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12305,6 +14013,9 @@ class RegionInstanceGroupManagersResourceApi {
       throw new core.ArgumentError("Parameter size is required.");
     }
     _queryParams["size"] = ["${size}"];
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/resize';
 
@@ -12334,6 +14045,19 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - The name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12342,7 +14066,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setInstanceTemplate(RegionInstanceGroupManagersSetTemplateRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+  async.Future<Operation> setInstanceTemplate(RegionInstanceGroupManagersSetTemplateRequest request, core.String project, core.String region, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12361,6 +14085,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setInstanceTemplate';
@@ -12391,6 +14118,19 @@ class RegionInstanceGroupManagersResourceApi {
    *
    * [instanceGroupManager] - Name of the managed instance group.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12399,7 +14139,7 @@ class RegionInstanceGroupManagersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setTargetPools(RegionInstanceGroupManagersSetTargetPoolsRequest request, core.String project, core.String region, core.String instanceGroupManager) {
+  async.Future<Operation> setTargetPools(RegionInstanceGroupManagersSetTargetPoolsRequest request, core.String project, core.String region, core.String instanceGroupManager, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12418,6 +14158,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (instanceGroupManager == null) {
       throw new core.ArgumentError("Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroupManagers/' + commons.Escaper.ecapeVariable('$instanceGroupManager') + '/setTargetPools';
@@ -12730,6 +14473,19 @@ class RegionInstanceGroupsResourceApi {
    * [instanceGroup] - The name of the regional instance group where the named
    * ports are updated.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12738,7 +14494,7 @@ class RegionInstanceGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setNamedPorts(RegionInstanceGroupsSetNamedPortsRequest request, core.String project, core.String region, core.String instanceGroup) {
+  async.Future<Operation> setNamedPorts(RegionInstanceGroupsSetNamedPortsRequest request, core.String project, core.String region, core.String instanceGroup, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12757,6 +14513,9 @@ class RegionInstanceGroupsResourceApi {
     }
     if (instanceGroup == null) {
       throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/instanceGroups/' + commons.Escaper.ecapeVariable('$instanceGroup') + '/setNamedPorts';
@@ -13271,6 +15030,19 @@ class RoutersResourceApi {
    * [router] - Name of the Router resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13279,7 +15051,7 @@ class RoutersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String router) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String router, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13295,6 +15067,9 @@ class RoutersResourceApi {
     }
     if (router == null) {
       throw new core.ArgumentError("Parameter router is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers/' + commons.Escaper.ecapeVariable('$router');
@@ -13431,6 +15206,19 @@ class RoutersResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13439,7 +15227,7 @@ class RoutersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Router request, core.String project, core.String region) {
+  async.Future<Operation> insert(Router request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13455,6 +15243,9 @@ class RoutersResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers';
@@ -13593,6 +15384,19 @@ class RoutersResourceApi {
    * [router] - Name of the Router resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13601,7 +15405,7 @@ class RoutersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(Router request, core.String project, core.String region, core.String router) {
+  async.Future<Operation> patch(Router request, core.String project, core.String region, core.String router, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13620,6 +15424,9 @@ class RoutersResourceApi {
     }
     if (router == null) {
       throw new core.ArgumentError("Parameter router is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers/' + commons.Escaper.ecapeVariable('$router');
@@ -13711,6 +15518,19 @@ class RoutersResourceApi {
    * [router] - Name of the Router resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13719,7 +15539,7 @@ class RoutersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(Router request, core.String project, core.String region, core.String router) {
+  async.Future<Operation> update(Router request, core.String project, core.String region, core.String router, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13738,6 +15558,9 @@ class RoutersResourceApi {
     }
     if (router == null) {
       throw new core.ArgumentError("Parameter router is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/routers/' + commons.Escaper.ecapeVariable('$router');
@@ -13773,6 +15596,19 @@ class RoutesResourceApi {
    * [route] - Name of the Route resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13781,7 +15617,7 @@ class RoutesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String route) {
+  async.Future<Operation> delete(core.String project, core.String route, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13794,6 +15630,9 @@ class RoutesResourceApi {
     }
     if (route == null) {
       throw new core.ArgumentError("Parameter route is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/routes/' + commons.Escaper.ecapeVariable('$route');
@@ -13868,6 +15707,19 @@ class RoutesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13876,7 +15728,7 @@ class RoutesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Route request, core.String project) {
+  async.Future<Operation> insert(Route request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13889,6 +15741,9 @@ class RoutesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
@@ -14029,6 +15884,19 @@ class SnapshotsResourceApi {
    * [snapshot] - Name of the Snapshot resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14037,7 +15905,7 @@ class SnapshotsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String snapshot) {
+  async.Future<Operation> delete(core.String project, core.String snapshot, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14050,6 +15918,9 @@ class SnapshotsResourceApi {
     }
     if (snapshot == null) {
       throw new core.ArgumentError("Parameter snapshot is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots/' + commons.Escaper.ecapeVariable('$snapshot');
@@ -14286,6 +16157,19 @@ class SslCertificatesResourceApi {
    * [sslCertificate] - Name of the SslCertificate resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14294,7 +16178,7 @@ class SslCertificatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String sslCertificate) {
+  async.Future<Operation> delete(core.String project, core.String sslCertificate, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14307,6 +16191,9 @@ class SslCertificatesResourceApi {
     }
     if (sslCertificate == null) {
       throw new core.ArgumentError("Parameter sslCertificate is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates/' + commons.Escaper.ecapeVariable('$sslCertificate');
@@ -14381,6 +16268,19 @@ class SslCertificatesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14389,7 +16289,7 @@ class SslCertificatesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(SslCertificate request, core.String project) {
+  async.Future<Operation> insert(SslCertificate request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14402,6 +16302,9 @@ class SslCertificatesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates';
@@ -14639,6 +16542,19 @@ class SubnetworksResourceApi {
    * [subnetwork] - Name of the Subnetwork resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14647,7 +16563,7 @@ class SubnetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String subnetwork) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String subnetwork, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14663,6 +16579,9 @@ class SubnetworksResourceApi {
     }
     if (subnetwork == null) {
       throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks/' + commons.Escaper.ecapeVariable('$subnetwork');
@@ -14694,6 +16613,19 @@ class SubnetworksResourceApi {
    * [subnetwork] - Name of the Subnetwork resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14702,7 +16634,7 @@ class SubnetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> expandIpCidrRange(SubnetworksExpandIpCidrRangeRequest request, core.String project, core.String region, core.String subnetwork) {
+  async.Future<Operation> expandIpCidrRange(SubnetworksExpandIpCidrRangeRequest request, core.String project, core.String region, core.String subnetwork, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14721,6 +16653,9 @@ class SubnetworksResourceApi {
     }
     if (subnetwork == null) {
       throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks/' + commons.Escaper.ecapeVariable('$subnetwork') + '/expandIpCidrRange';
@@ -14804,6 +16739,19 @@ class SubnetworksResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14812,7 +16760,7 @@ class SubnetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(Subnetwork request, core.String project, core.String region) {
+  async.Future<Operation> insert(Subnetwork request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14828,6 +16776,9 @@ class SubnetworksResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks';
@@ -14965,6 +16916,19 @@ class SubnetworksResourceApi {
    * [subnetwork] - Name of the Subnetwork resource.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14973,7 +16937,7 @@ class SubnetworksResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setPrivateIpGoogleAccess(SubnetworksSetPrivateIpGoogleAccessRequest request, core.String project, core.String region, core.String subnetwork) {
+  async.Future<Operation> setPrivateIpGoogleAccess(SubnetworksSetPrivateIpGoogleAccessRequest request, core.String project, core.String region, core.String subnetwork, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14992,6 +16956,9 @@ class SubnetworksResourceApi {
     }
     if (subnetwork == null) {
       throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/subnetworks/' + commons.Escaper.ecapeVariable('$subnetwork') + '/setPrivateIpGoogleAccess';
@@ -15027,6 +16994,19 @@ class TargetHttpProxiesResourceApi {
    * [targetHttpProxy] - Name of the TargetHttpProxy resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15035,7 +17015,7 @@ class TargetHttpProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String targetHttpProxy) {
+  async.Future<Operation> delete(core.String project, core.String targetHttpProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15048,6 +17028,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (targetHttpProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy');
@@ -15122,6 +17105,19 @@ class TargetHttpProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15130,7 +17126,7 @@ class TargetHttpProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(TargetHttpProxy request, core.String project) {
+  async.Future<Operation> insert(TargetHttpProxy request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15143,6 +17139,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
@@ -15271,6 +17270,19 @@ class TargetHttpProxiesResourceApi {
    * [targetHttpProxy] - Name of the TargetHttpProxy to set a URL map for.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15279,7 +17291,7 @@ class TargetHttpProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setUrlMap(UrlMapReference request, core.String project, core.String targetHttpProxy) {
+  async.Future<Operation> setUrlMap(UrlMapReference request, core.String project, core.String targetHttpProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15295,6 +17307,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (targetHttpProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/targetHttpProxies/' + commons.Escaper.ecapeVariable('$targetHttpProxy') + '/setUrlMap';
@@ -15330,6 +17345,19 @@ class TargetHttpsProxiesResourceApi {
    * [targetHttpsProxy] - Name of the TargetHttpsProxy resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15338,7 +17366,7 @@ class TargetHttpsProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String targetHttpsProxy) {
+  async.Future<Operation> delete(core.String project, core.String targetHttpsProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15351,6 +17379,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (targetHttpsProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpsProxies/' + commons.Escaper.ecapeVariable('$targetHttpsProxy');
@@ -15425,6 +17456,19 @@ class TargetHttpsProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15433,7 +17477,7 @@ class TargetHttpsProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(TargetHttpsProxy request, core.String project) {
+  async.Future<Operation> insert(TargetHttpsProxy request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15446,6 +17490,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetHttpsProxies';
@@ -15575,6 +17622,19 @@ class TargetHttpsProxiesResourceApi {
    * SslCertificates resource for.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15583,7 +17643,7 @@ class TargetHttpsProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setSslCertificates(TargetHttpsProxiesSetSslCertificatesRequest request, core.String project, core.String targetHttpsProxy) {
+  async.Future<Operation> setSslCertificates(TargetHttpsProxiesSetSslCertificatesRequest request, core.String project, core.String targetHttpsProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15599,6 +17659,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (targetHttpsProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/targetHttpsProxies/' + commons.Escaper.ecapeVariable('$targetHttpsProxy') + '/setSslCertificates';
@@ -15628,6 +17691,19 @@ class TargetHttpsProxiesResourceApi {
    * to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15636,7 +17712,7 @@ class TargetHttpsProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setUrlMap(UrlMapReference request, core.String project, core.String targetHttpsProxy) {
+  async.Future<Operation> setUrlMap(UrlMapReference request, core.String project, core.String targetHttpsProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15652,6 +17728,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (targetHttpsProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/targetHttpsProxies/' + commons.Escaper.ecapeVariable('$targetHttpsProxy') + '/setUrlMap';
@@ -15789,6 +17868,19 @@ class TargetInstancesResourceApi {
    * [targetInstance] - Name of the TargetInstance resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15797,7 +17889,7 @@ class TargetInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String zone, core.String targetInstance) {
+  async.Future<Operation> delete(core.String project, core.String zone, core.String targetInstance, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15813,6 +17905,9 @@ class TargetInstancesResourceApi {
     }
     if (targetInstance == null) {
       throw new core.ArgumentError("Parameter targetInstance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances/' + commons.Escaper.ecapeVariable('$targetInstance');
@@ -15896,6 +17991,19 @@ class TargetInstancesResourceApi {
    * [zone] - Name of the zone scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15904,7 +18012,7 @@ class TargetInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(TargetInstance request, core.String project, core.String zone) {
+  async.Future<Operation> insert(TargetInstance request, core.String project, core.String zone, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15920,6 +18028,9 @@ class TargetInstancesResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones/' + commons.Escaper.ecapeVariable('$zone') + '/targetInstances';
@@ -16066,6 +18177,19 @@ class TargetPoolsResourceApi {
    * [targetPool] - Name of the target pool to add a health check to.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16074,7 +18198,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> addHealthCheck(TargetPoolsAddHealthCheckRequest request, core.String project, core.String region, core.String targetPool) {
+  async.Future<Operation> addHealthCheck(TargetPoolsAddHealthCheckRequest request, core.String project, core.String region, core.String targetPool, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16093,6 +18217,9 @@ class TargetPoolsResourceApi {
     }
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/addHealthCheck';
@@ -16124,6 +18251,19 @@ class TargetPoolsResourceApi {
    * [targetPool] - Name of the TargetPool resource to add instances to.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16132,7 +18272,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> addInstance(TargetPoolsAddInstanceRequest request, core.String project, core.String region, core.String targetPool) {
+  async.Future<Operation> addInstance(TargetPoolsAddInstanceRequest request, core.String project, core.String region, core.String targetPool, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16151,6 +18291,9 @@ class TargetPoolsResourceApi {
     }
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/addInstance';
@@ -16279,6 +18422,19 @@ class TargetPoolsResourceApi {
    * [targetPool] - Name of the TargetPool resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16287,7 +18443,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String targetPool) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String targetPool, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16303,6 +18459,9 @@ class TargetPoolsResourceApi {
     }
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool');
@@ -16446,6 +18605,19 @@ class TargetPoolsResourceApi {
    * [region] - Name of the region scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16454,7 +18626,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(TargetPool request, core.String project, core.String region) {
+  async.Future<Operation> insert(TargetPool request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16470,6 +18642,9 @@ class TargetPoolsResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools';
@@ -16607,6 +18782,19 @@ class TargetPoolsResourceApi {
    * [targetPool] - Name of the target pool to remove health checks from.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16615,7 +18803,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> removeHealthCheck(TargetPoolsRemoveHealthCheckRequest request, core.String project, core.String region, core.String targetPool) {
+  async.Future<Operation> removeHealthCheck(TargetPoolsRemoveHealthCheckRequest request, core.String project, core.String region, core.String targetPool, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16634,6 +18822,9 @@ class TargetPoolsResourceApi {
     }
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/removeHealthCheck';
@@ -16665,6 +18856,19 @@ class TargetPoolsResourceApi {
    * [targetPool] - Name of the TargetPool resource to remove instances from.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16673,7 +18877,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> removeInstance(TargetPoolsRemoveInstanceRequest request, core.String project, core.String region, core.String targetPool) {
+  async.Future<Operation> removeInstance(TargetPoolsRemoveInstanceRequest request, core.String project, core.String region, core.String targetPool, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16692,6 +18896,9 @@ class TargetPoolsResourceApi {
     }
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/removeInstance';
@@ -16725,6 +18932,19 @@ class TargetPoolsResourceApi {
    *
    * [failoverRatio] - New failoverRatio value for the target pool.
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16733,7 +18953,7 @@ class TargetPoolsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setBackup(TargetReference request, core.String project, core.String region, core.String targetPool, {core.double failoverRatio}) {
+  async.Future<Operation> setBackup(TargetReference request, core.String project, core.String region, core.String targetPool, {core.double failoverRatio, core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16755,6 +18975,9 @@ class TargetPoolsResourceApi {
     }
     if (failoverRatio != null) {
       _queryParams["failoverRatio"] = ["${failoverRatio}"];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetPools/' + commons.Escaper.ecapeVariable('$targetPool') + '/setBackup';
@@ -16790,6 +19013,19 @@ class TargetSslProxiesResourceApi {
    * [targetSslProxy] - Name of the TargetSslProxy resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16798,7 +19034,7 @@ class TargetSslProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String targetSslProxy) {
+  async.Future<Operation> delete(core.String project, core.String targetSslProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16811,6 +19047,9 @@ class TargetSslProxiesResourceApi {
     }
     if (targetSslProxy == null) {
       throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy');
@@ -16885,6 +19124,19 @@ class TargetSslProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16893,7 +19145,7 @@ class TargetSslProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(TargetSslProxy request, core.String project) {
+  async.Future<Operation> insert(TargetSslProxy request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16906,6 +19158,9 @@ class TargetSslProxiesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies';
@@ -17035,6 +19290,19 @@ class TargetSslProxiesResourceApi {
    * resource is to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17043,7 +19311,7 @@ class TargetSslProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setBackendService(TargetSslProxiesSetBackendServiceRequest request, core.String project, core.String targetSslProxy) {
+  async.Future<Operation> setBackendService(TargetSslProxiesSetBackendServiceRequest request, core.String project, core.String targetSslProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17059,6 +19327,9 @@ class TargetSslProxiesResourceApi {
     }
     if (targetSslProxy == null) {
       throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy') + '/setBackendService';
@@ -17088,6 +19359,19 @@ class TargetSslProxiesResourceApi {
    * to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17096,7 +19380,7 @@ class TargetSslProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setProxyHeader(TargetSslProxiesSetProxyHeaderRequest request, core.String project, core.String targetSslProxy) {
+  async.Future<Operation> setProxyHeader(TargetSslProxiesSetProxyHeaderRequest request, core.String project, core.String targetSslProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17112,6 +19396,9 @@ class TargetSslProxiesResourceApi {
     }
     if (targetSslProxy == null) {
       throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy') + '/setProxyHeader';
@@ -17141,6 +19428,19 @@ class TargetSslProxiesResourceApi {
    * resource is to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17149,7 +19449,7 @@ class TargetSslProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setSslCertificates(TargetSslProxiesSetSslCertificatesRequest request, core.String project, core.String targetSslProxy) {
+  async.Future<Operation> setSslCertificates(TargetSslProxiesSetSslCertificatesRequest request, core.String project, core.String targetSslProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17165,6 +19465,9 @@ class TargetSslProxiesResourceApi {
     }
     if (targetSslProxy == null) {
       throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies/' + commons.Escaper.ecapeVariable('$targetSslProxy') + '/setSslCertificates';
@@ -17200,6 +19503,19 @@ class TargetTcpProxiesResourceApi {
    * [targetTcpProxy] - Name of the TargetTcpProxy resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17208,7 +19524,7 @@ class TargetTcpProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String targetTcpProxy) {
+  async.Future<Operation> delete(core.String project, core.String targetTcpProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17221,6 +19537,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (targetTcpProxy == null) {
       throw new core.ArgumentError("Parameter targetTcpProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies/' + commons.Escaper.ecapeVariable('$targetTcpProxy');
@@ -17295,6 +19614,19 @@ class TargetTcpProxiesResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17303,7 +19635,7 @@ class TargetTcpProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(TargetTcpProxy request, core.String project) {
+  async.Future<Operation> insert(TargetTcpProxy request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17316,6 +19648,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies';
@@ -17445,6 +19780,19 @@ class TargetTcpProxiesResourceApi {
    * resource is to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17453,7 +19801,7 @@ class TargetTcpProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setBackendService(TargetTcpProxiesSetBackendServiceRequest request, core.String project, core.String targetTcpProxy) {
+  async.Future<Operation> setBackendService(TargetTcpProxiesSetBackendServiceRequest request, core.String project, core.String targetTcpProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17469,6 +19817,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (targetTcpProxy == null) {
       throw new core.ArgumentError("Parameter targetTcpProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies/' + commons.Escaper.ecapeVariable('$targetTcpProxy') + '/setBackendService';
@@ -17498,6 +19849,19 @@ class TargetTcpProxiesResourceApi {
    * to be set.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17506,7 +19870,7 @@ class TargetTcpProxiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> setProxyHeader(TargetTcpProxiesSetProxyHeaderRequest request, core.String project, core.String targetTcpProxy) {
+  async.Future<Operation> setProxyHeader(TargetTcpProxiesSetProxyHeaderRequest request, core.String project, core.String targetTcpProxy, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17522,6 +19886,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (targetTcpProxy == null) {
       throw new core.ArgumentError("Parameter targetTcpProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies/' + commons.Escaper.ecapeVariable('$targetTcpProxy') + '/setProxyHeader';
@@ -17659,6 +20026,19 @@ class TargetVpnGatewaysResourceApi {
    * [targetVpnGateway] - Name of the target VPN gateway to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17667,7 +20047,7 @@ class TargetVpnGatewaysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String targetVpnGateway) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String targetVpnGateway, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17683,6 +20063,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (targetVpnGateway == null) {
       throw new core.ArgumentError("Parameter targetVpnGateway is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways/' + commons.Escaper.ecapeVariable('$targetVpnGateway');
@@ -17766,6 +20149,19 @@ class TargetVpnGatewaysResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17774,7 +20170,7 @@ class TargetVpnGatewaysResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(TargetVpnGateway request, core.String project, core.String region) {
+  async.Future<Operation> insert(TargetVpnGateway request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17790,6 +20186,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/targetVpnGateways';
@@ -17931,6 +20330,19 @@ class UrlMapsResourceApi {
    * [urlMap] - Name of the UrlMap resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17939,7 +20351,7 @@ class UrlMapsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String urlMap) {
+  async.Future<Operation> delete(core.String project, core.String urlMap, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17952,6 +20364,9 @@ class UrlMapsResourceApi {
     }
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
@@ -18026,6 +20441,19 @@ class UrlMapsResourceApi {
    * Value must have pattern
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18034,7 +20462,7 @@ class UrlMapsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(UrlMap request, core.String project) {
+  async.Future<Operation> insert(UrlMap request, core.String project, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18047,6 +20475,9 @@ class UrlMapsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
@@ -18076,6 +20507,19 @@ class UrlMapsResourceApi {
    * [urlMap] - Name of the UrlMap scoping this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18084,7 +20528,7 @@ class UrlMapsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> invalidateCache(CacheInvalidationRule request, core.String project, core.String urlMap) {
+  async.Future<Operation> invalidateCache(CacheInvalidationRule request, core.String project, core.String urlMap, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18100,6 +20544,9 @@ class UrlMapsResourceApi {
     }
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap') + '/invalidateCache';
@@ -18229,6 +20676,19 @@ class UrlMapsResourceApi {
    * [urlMap] - Name of the UrlMap resource to patch.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18237,7 +20697,7 @@ class UrlMapsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> patch(UrlMap request, core.String project, core.String urlMap) {
+  async.Future<Operation> patch(UrlMap request, core.String project, core.String urlMap, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18253,6 +20713,9 @@ class UrlMapsResourceApi {
     }
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
@@ -18282,6 +20745,19 @@ class UrlMapsResourceApi {
    * [urlMap] - Name of the UrlMap resource to update.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18290,7 +20766,7 @@ class UrlMapsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> update(UrlMap request, core.String project, core.String urlMap) {
+  async.Future<Operation> update(UrlMap request, core.String project, core.String urlMap, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18306,6 +20782,9 @@ class UrlMapsResourceApi {
     }
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps/' + commons.Escaper.ecapeVariable('$urlMap');
@@ -18497,6 +20976,19 @@ class VpnTunnelsResourceApi {
    * [vpnTunnel] - Name of the VpnTunnel resource to delete.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18505,7 +20997,7 @@ class VpnTunnelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> delete(core.String project, core.String region, core.String vpnTunnel) {
+  async.Future<Operation> delete(core.String project, core.String region, core.String vpnTunnel, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18521,6 +21013,9 @@ class VpnTunnelsResourceApi {
     }
     if (vpnTunnel == null) {
       throw new core.ArgumentError("Parameter vpnTunnel is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels/' + commons.Escaper.ecapeVariable('$vpnTunnel');
@@ -18604,6 +21099,19 @@ class VpnTunnelsResourceApi {
    * [region] - Name of the region for this request.
    * Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
    *
+   * [requestId] - An optional request ID to identify requests. Specify a unique
+   * request ID so that if you must retry your request, the server will know to
+   * ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is
+   * not supported (00000000-0000-0000-0000-000000000000).
+   *
    * Completes with a [Operation].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18612,7 +21120,7 @@ class VpnTunnelsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<Operation> insert(VpnTunnel request, core.String project, core.String region) {
+  async.Future<Operation> insert(VpnTunnel request, core.String project, core.String region, {core.String requestId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18628,6 +21136,9 @@ class VpnTunnelsResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions/' + commons.Escaper.ecapeVariable('$region') + '/vpnTunnels';
@@ -21011,7 +23522,8 @@ class Backend {
    * TCP/SSL load balancing, the default is UTILIZATION. Valid values are
    * UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
    *
-   * This cannot be used for internal load balancing.
+   * For Internal Load Balancing, the default and only supported mode is
+   * CONNECTION.
    * Possible string values are:
    * - "CONNECTION"
    * - "RATE"
@@ -21357,9 +23869,9 @@ class BackendService {
   /**
    * The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
    * health checking this BackendService. Currently at most one health check can
-   * be specified, and a health check is required for GCE backend services. A
-   * health check must not be specified for GAE app backend and Cloud Function
-   * backend.
+   * be specified, and a health check is required for Compute Engine backend
+   * services. A health check must not be specified for App Engine backend and
+   * Cloud Function backend.
    *
    * For internal load balancing, a URL to a HealthCheck resource must be
    * specified instead.
@@ -21377,7 +23889,10 @@ class BackendService {
    */
   core.String kind;
   /**
-   *
+   * Indicates whether the backend service will be used with internal or
+   * external load balancing. A backend service created for one type of load
+   * balancing cannot be used with the other. Possible values are INTERNAL and
+   * EXTERNAL.
    * Possible string values are:
    * - "EXTERNAL"
    * - "INTERNAL"
@@ -22741,7 +25256,7 @@ class Disk {
    *
    * If you specify this field along with sourceImage or sourceSnapshot, the
    * value of sizeGb must not be less than the size of the sourceImage or the
-   * size of the snapshot.
+   * size of the snapshot. Acceptable values are 1 to 65536, inclusive.
    */
   core.String sizeGb;
   /**
@@ -23675,8 +26190,8 @@ class FirewallAllowed {
   /**
    * The IP protocol to which this rule applies. The protocol type is required
    * when creating a firewall rule. This value can either be one of the
-   * following well known protocol strings (tcp, udp, icmp, esp, ah, sctp), or
-   * the IP protocol number.
+   * following well known protocol strings (tcp, udp, icmp, esp, ah, ipip,
+   * sctp), or the IP protocol number.
    */
   core.String IPProtocol;
   /**
@@ -23712,6 +26227,47 @@ class FirewallAllowed {
   }
 }
 
+class FirewallDenied {
+  /**
+   * The IP protocol to which this rule applies. The protocol type is required
+   * when creating a firewall rule. This value can either be one of the
+   * following well known protocol strings (tcp, udp, icmp, esp, ah, ipip,
+   * sctp), or the IP protocol number.
+   */
+  core.String IPProtocol;
+  /**
+   * An optional list of ports to which this rule applies. This field is only
+   * applicable for UDP or TCP protocol. Each entry must be either an integer or
+   * a range. If not specified, this rule applies to connections through any
+   * port.
+   *
+   * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+   */
+  core.List<core.String> ports;
+
+  FirewallDenied();
+
+  FirewallDenied.fromJson(core.Map _json) {
+    if (_json.containsKey("IPProtocol")) {
+      IPProtocol = _json["IPProtocol"];
+    }
+    if (_json.containsKey("ports")) {
+      ports = _json["ports"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (IPProtocol != null) {
+      _json["IPProtocol"] = IPProtocol;
+    }
+    if (ports != null) {
+      _json["ports"] = ports;
+    }
+    return _json;
+  }
+}
+
 /** Represents a Firewall resource. */
 class Firewall {
   /**
@@ -23722,10 +26278,31 @@ class Firewall {
   /** [Output Only] Creation timestamp in RFC3339 text format. */
   core.String creationTimestamp;
   /**
+   * The list of DENY rules specified by this firewall. Each rule specifies a
+   * protocol and port-range tuple that describes a permitted connection.
+   */
+  core.List<FirewallDenied> denied;
+  /**
    * An optional description of this resource. Provide this property when you
    * create the resource.
    */
   core.String description;
+  /**
+   * If destination ranges are specified, the firewall will apply only to
+   * traffic that has destination IP address in these ranges. These ranges must
+   * be expressed in CIDR format. Only IPv4 is supported.
+   */
+  core.List<core.String> destinationRanges;
+  /**
+   * Direction of traffic to which this firewall applies; default is INGRESS.
+   * Note: For INGRESS traffic, it is NOT supported to specify
+   * destinationRanges; For EGRESS traffic, it is NOT supported to specify
+   * sourceRanges OR sourceTags.
+   * Possible string values are:
+   * - "EGRESS"
+   * - "INGRESS"
+   */
+  core.String direction;
   /**
    * [Output Only] The unique identifier for the resource. This identifier is
    * defined by the server.
@@ -23758,6 +26335,15 @@ class Firewall {
    * - global/networks/default
    */
   core.String network;
+  /**
+   * Priority for this rule. This is an integer between 0 and 65535, both
+   * inclusive. When not specified, the value assumed is 1000. Relative
+   * priorities determine precedence of conflicting rules. Lower value of
+   * priority implies higher precedence (eg, a rule with priority 0 has higher
+   * precedence than a rule with priority 1). DENY rules take precedence over
+   * ALLOW rules having equal priority.
+   */
+  core.int priority;
   /** [Output Only] Server-defined URL for the resource. */
   core.String selfLink;
   /**
@@ -23771,16 +26357,17 @@ class Firewall {
    */
   core.List<core.String> sourceRanges;
   /**
-   * If source tags are specified, the firewall will apply only to traffic from
-   * VM instances in the same virtual network with a tag listed in the source
-   * tags. Source tags cannot be used to control traffic to an instance's
-   * external IP address, it only applies to traffic between instances in the
-   * same virtual network. Because tags are associated with instances, not IP
-   * addresses. One or both of sourceRanges and sourceTags may be set. If both
-   * properties are set, the firewall will apply to traffic that has source IP
-   * address within sourceRanges OR the source IP that belongs to a tag listed
-   * in the sourceTags property. The connection does not need to match both
-   * properties for the firewall to apply.
+   * If source tags are specified, the firewall rule applies only to traffic
+   * with source IPs that match the primary network interfaces of VM instances
+   * that have the tag and are in the same VPC network. Source tags cannot be
+   * used to control traffic to an instance's external IP address, it only
+   * applies to traffic between instances in the same virtual network. Because
+   * tags are associated with instances, not IP addresses. One or both of
+   * sourceRanges and sourceTags may be set. If both properties are set, the
+   * firewall will apply to traffic that has source IP address within
+   * sourceRanges OR the source IP that belongs to a tag listed in the
+   * sourceTags property. The connection does not need to match both properties
+   * for the firewall to apply.
    */
   core.List<core.String> sourceTags;
   /**
@@ -23800,8 +26387,17 @@ class Firewall {
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
+    if (_json.containsKey("denied")) {
+      denied = _json["denied"].map((value) => new FirewallDenied.fromJson(value)).toList();
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("destinationRanges")) {
+      destinationRanges = _json["destinationRanges"];
+    }
+    if (_json.containsKey("direction")) {
+      direction = _json["direction"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -23814,6 +26410,9 @@ class Firewall {
     }
     if (_json.containsKey("network")) {
       network = _json["network"];
+    }
+    if (_json.containsKey("priority")) {
+      priority = _json["priority"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -23837,8 +26436,17 @@ class Firewall {
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
+    if (denied != null) {
+      _json["denied"] = denied.map((value) => (value).toJson()).toList();
+    }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (destinationRanges != null) {
+      _json["destinationRanges"] = destinationRanges;
+    }
+    if (direction != null) {
+      _json["direction"] = direction;
     }
     if (id != null) {
       _json["id"] = id;
@@ -23851,6 +26459,9 @@ class Firewall {
     }
     if (network != null) {
       _json["network"] = network;
+    }
+    if (priority != null) {
+      _json["priority"] = priority;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -24046,8 +26657,10 @@ class ForwardingRule {
    * Some types of forwarding target have constraints on the acceptable ports:
    * - TargetHttpProxy: 80, 8080
    * - TargetHttpsProxy: 443
-   * - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222
-   * - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222
+   * - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
+   * 1883, 5222
+   * - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
+   * 1883, 5222
    * - TargetVpnGateway: 500, 4500
    * -
    */
@@ -25978,9 +28591,9 @@ class Instance {
    */
   core.String name;
   /**
-   * An array of configurations for this interface. This specifies how this
-   * interface is configured to interact with other network services, such as
-   * connecting to the internet. Only one interface is supported per instance.
+   * An array of network configurations for this instance. These specify how
+   * interfaces are configured to interact with other network services, such as
+   * connecting to the internet. Multiple interfaces are supported per instance.
    */
   core.List<NetworkInterface> networkInterfaces;
   /** Sets the scheduling options for this instance. */
@@ -26003,8 +28616,8 @@ class Instance {
   core.bool startRestricted;
   /**
    * [Output Only] The status of the instance. One of the following values:
-   * PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
-   * TERMINATED.
+   * PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED,
+   * and TERMINATED.
    * Possible string values are:
    * - "PROVISIONING"
    * - "RUNNING"
@@ -30700,6 +33313,8 @@ class Quota {
    * - "REGIONAL_INSTANCE_GROUP_MANAGERS"
    * - "ROUTERS"
    * - "ROUTES"
+   * - "SECURITY_POLICIES"
+   * - "SECURITY_POLICY_RULES"
    * - "SNAPSHOTS"
    * - "SSD_TOTAL_GB"
    * - "SSL_CERTIFICATES"

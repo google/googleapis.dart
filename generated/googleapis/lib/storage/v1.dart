@@ -1566,7 +1566,7 @@ class NotificationsResourceApi {
    *
    * Request parameters:
    *
-   * [bucket] - Name of a GCS bucket.
+   * [bucket] - Name of a Google Cloud Storage bucket.
    *
    * [userProject] - The project to be billed for this request, for Requester
    * Pays buckets.
@@ -2040,7 +2040,8 @@ class ObjectsResourceApi {
    * access.
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
-   * object's current generation matches the given value.
+   * object's current generation matches the given value. Setting to 0 makes the
+   * operation succeed only if there are no live versions of the object.
    *
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * object's current metageneration matches the given value.
@@ -2159,10 +2160,14 @@ class ObjectsResourceApi {
    * access.
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
-   * destination object's current generation matches the given value.
+   * destination object's current generation matches the given value. Setting to
+   * 0 makes the operation succeed only if there are no live versions of the
+   * object.
    *
    * [ifGenerationNotMatch] - Makes the operation conditional on whether the
-   * destination object's current generation does not match the given value.
+   * destination object's current generation does not match the given value. If
+   * no live object exists, the precondition fails. Setting to 0 makes the
+   * operation succeed only if there is a live version of the object.
    *
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * destination object's current metageneration matches the given value.
@@ -2171,10 +2176,10 @@ class ObjectsResourceApi {
    * destination object's current metageneration does not match the given value.
    *
    * [ifSourceGenerationMatch] - Makes the operation conditional on whether the
-   * source object's generation matches the given value.
+   * source object's current generation matches the given value.
    *
    * [ifSourceGenerationNotMatch] - Makes the operation conditional on whether
-   * the source object's generation does not match the given value.
+   * the source object's current generation does not match the given value.
    *
    * [ifSourceMetagenerationMatch] - Makes the operation conditional on whether
    * the source object's current metageneration matches the given value.
@@ -2305,10 +2310,13 @@ class ObjectsResourceApi {
    * object (as opposed to the latest version, the default).
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
-   * object's current generation matches the given value.
+   * object's current generation matches the given value. Setting to 0 makes the
+   * operation succeed only if there are no live versions of the object.
    *
    * [ifGenerationNotMatch] - Makes the operation conditional on whether the
-   * object's current generation does not match the given value.
+   * object's current generation does not match the given value. If no live
+   * object exists, the precondition fails. Setting to 0 makes the operation
+   * succeed only if there is a live version of the object.
    *
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * object's current metageneration matches the given value.
@@ -2386,10 +2394,13 @@ class ObjectsResourceApi {
    * opposed to the latest version, the default).
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
-   * object's generation matches the given value.
+   * object's current generation matches the given value. Setting to 0 makes the
+   * operation succeed only if there are no live versions of the object.
    *
    * [ifGenerationNotMatch] - Makes the operation conditional on whether the
-   * object's generation does not match the given value.
+   * object's current generation does not match the given value. If no live
+   * object exists, the precondition fails. Setting to 0 makes the operation
+   * succeed only if there is a live version of the object.
    *
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * object's current metageneration matches the given value.
@@ -2550,10 +2561,13 @@ class ObjectsResourceApi {
    * uploaded.
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
-   * object's current generation matches the given value.
+   * object's current generation matches the given value. Setting to 0 makes the
+   * operation succeed only if there are no live versions of the object.
    *
    * [ifGenerationNotMatch] - Makes the operation conditional on whether the
-   * object's current generation does not match the given value.
+   * object's current generation does not match the given value. If no live
+   * object exists, the precondition fails. Setting to 0 makes the operation
+   * succeed only if there is a live version of the object.
    *
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * object's current metageneration matches the given value.
@@ -2792,10 +2806,13 @@ class ObjectsResourceApi {
    * opposed to the latest version, the default).
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
-   * object's current generation matches the given value.
+   * object's current generation matches the given value. Setting to 0 makes the
+   * operation succeed only if there are no live versions of the object.
    *
    * [ifGenerationNotMatch] - Makes the operation conditional on whether the
-   * object's current generation does not match the given value.
+   * object's current generation does not match the given value. If no live
+   * object exists, the precondition fails. Setting to 0 makes the operation
+   * succeed only if there is a live version of the object.
    *
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * object's current metageneration matches the given value.
@@ -2929,10 +2946,13 @@ class ObjectsResourceApi {
    * access.
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
-   * destination object's current generation matches the given value.
+   * object's current generation matches the given value. Setting to 0 makes the
+   * operation succeed only if there are no live versions of the object.
    *
    * [ifGenerationNotMatch] - Makes the operation conditional on whether the
-   * destination object's current generation does not match the given value.
+   * object's current generation does not match the given value. If no live
+   * object exists, the precondition fails. Setting to 0 makes the operation
+   * succeed only if there is a live version of the object.
    *
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * destination object's current metageneration matches the given value.
@@ -2941,10 +2961,10 @@ class ObjectsResourceApi {
    * destination object's current metageneration does not match the given value.
    *
    * [ifSourceGenerationMatch] - Makes the operation conditional on whether the
-   * source object's generation matches the given value.
+   * source object's current generation matches the given value.
    *
    * [ifSourceGenerationNotMatch] - Makes the operation conditional on whether
-   * the source object's generation does not match the given value.
+   * the source object's current generation does not match the given value.
    *
    * [ifSourceMetagenerationMatch] - Makes the operation conditional on whether
    * the source object's current metageneration matches the given value.
@@ -3210,10 +3230,13 @@ class ObjectsResourceApi {
    * opposed to the latest version, the default).
    *
    * [ifGenerationMatch] - Makes the operation conditional on whether the
-   * object's current generation matches the given value.
+   * object's current generation matches the given value. Setting to 0 makes the
+   * operation succeed only if there are no live versions of the object.
    *
    * [ifGenerationNotMatch] - Makes the operation conditional on whether the
-   * object's current generation does not match the given value.
+   * object's current generation does not match the given value. If no live
+   * object exists, the precondition fails. Setting to 0 makes the operation
+   * succeed only if there is a live version of the object.
    *
    * [ifMetagenerationMatch] - Makes the operation conditional on whether the
    * object's current metageneration matches the given value.
@@ -3432,7 +3455,8 @@ class ProjectsServiceAccountResourceApi {
       _requester = client;
 
   /**
-   * Get the email address of this project's GCS service account.
+   * Get the email address of this project's Google Cloud Storage service
+   * account.
    *
    * Request parameters:
    *
@@ -4755,8 +4779,8 @@ class Object {
   /** Content-Language of the object data. */
   core.String contentLanguage;
   /**
-   * Content-Type of the object data. If contentType is not specified, object
-   * downloads will be served as application/octet-stream.
+   * Content-Type of the object data. If an object is stored without a
+   * Content-Type, it is served as application/octet-stream.
    */
   core.String contentType;
   /**
@@ -5362,10 +5386,11 @@ class Policy {
   core.String kind;
   /**
    * The ID of the resource to which this policy belongs. Will be of the form
-   * buckets/bucket for buckets, and buckets/bucket/objects/object for objects.
-   * A specific generation may be specified by appending #generationNumber to
-   * the end of the object name, e.g. buckets/my-bucket/objects/data.txt#17. The
-   * current generation can be denoted with #0. This field is ignored on input.
+   * projects/_/buckets/bucket for buckets, and
+   * projects/_/buckets/bucket/objects/object for objects. A specific generation
+   * may be specified by appending #generationNumber to the end of the object
+   * name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current
+   * generation can be denoted with #0. This field is ignored on input.
    */
   core.String resourceId;
 

@@ -107,9 +107,10 @@ class AccountsProductsResourceApi {
    * Gets the product from a Manufacturer Center account, including product
    * issues.
    *
-   * A recently updated product takes some time to be processed before any
-   * changes are visible. While some issues may be available once the product
-   * has been processed, other issues may take days to appear.
+   * A recently updated product takes around 15 minutes to process. Changes are
+   * only visible after it has been processed. While some issues may be
+   * available once the product has been processed, other issues may take days
+   * to appear.
    *
    * Request parameters:
    *
@@ -176,11 +177,11 @@ class AccountsProductsResourceApi {
    * `account_id` - The ID of the Manufacturer Center account.
    * Value must have pattern "^accounts/[^/]+$".
    *
+   * [pageToken] - The token returned by the previous request.
+   *
    * [pageSize] - Maximum number of product statuses to return in the response,
    * used for
    * paging.
-   *
-   * [pageToken] - The token returned by the previous request.
    *
    * Completes with a [ListProductsResponse].
    *
@@ -190,7 +191,7 @@ class AccountsProductsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListProductsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
+  async.Future<ListProductsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -201,11 +202,11 @@ class AccountsProductsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
@@ -450,6 +451,11 @@ class Attributes {
    */
   Price suggestedRetailPrice;
   /**
+   * The target account id. Should only be used in the accounts of the data
+   * partners.
+   */
+  core.String targetAccountId;
+  /**
    * The theme of the product. For more information, see
    * https://support.google.com/manufacturers/answer/6124116#theme.
    */
@@ -555,6 +561,9 @@ class Attributes {
     if (_json.containsKey("suggestedRetailPrice")) {
       suggestedRetailPrice = new Price.fromJson(_json["suggestedRetailPrice"]);
     }
+    if (_json.containsKey("targetAccountId")) {
+      targetAccountId = _json["targetAccountId"];
+    }
     if (_json.containsKey("theme")) {
       theme = _json["theme"];
     }
@@ -654,6 +663,9 @@ class Attributes {
     }
     if (suggestedRetailPrice != null) {
       _json["suggestedRetailPrice"] = (suggestedRetailPrice).toJson();
+    }
+    if (targetAccountId != null) {
+      _json["targetAccountId"] = targetAccountId;
     }
     if (theme != null) {
       _json["theme"] = theme;

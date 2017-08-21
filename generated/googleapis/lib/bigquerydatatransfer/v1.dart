@@ -314,6 +314,46 @@ class ProjectsLocationsResourceApi {
       _requester = client;
 
   /**
+   * Get information about a location.
+   *
+   * Request parameters:
+   *
+   * [name] - Resource name for the location.
+   * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+   *
+   * Completes with a [Location].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<Location> get(core.String name) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /**
    * Returns true if data transfer is enabled for a project.
    *
    * [request] - The metadata request object.
@@ -357,6 +397,61 @@ class ProjectsLocationsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new IsEnabledResponse.fromJson(data));
+  }
+
+  /**
+   * Lists information about the supported locations for this service.
+   *
+   * Request parameters:
+   *
+   * [name] - The resource that owns the locations collection, if applicable.
+   * Value must have pattern "^projects/[^/]+$".
+   *
+   * [filter] - The standard list filter.
+   *
+   * [pageToken] - The standard list page token.
+   *
+   * [pageSize] - The standard list page size.
+   *
+   * Completes with a [ListLocationsResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListLocationsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
   }
 
   /**
@@ -520,15 +615,15 @@ class ProjectsLocationsDataSourcesResourceApi {
    * Must be in the form: `projects/{project_id}`
    * Value must have pattern "^projects/[^/]+/locations/[^/]+$".
    *
+   * [pageSize] - Page size. The default page size is the maximum value of 1000
+   * results.
+   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListDataSourcesRequest` list results. For multiple-page
    * results, `ListDataSourcesResponse` outputs
    * a `next_page` token, which can be used as the
    * `page_token` value to request the next page of list results.
-   *
-   * [pageSize] - Page size. The default page size is the maximum value of 1000
-   * results.
    *
    * Completes with a [ListDataSourcesResponse].
    *
@@ -538,7 +633,7 @@ class ProjectsLocationsDataSourcesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDataSourcesResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListDataSourcesResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -549,11 +644,11 @@ class ProjectsLocationsDataSourcesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dataSources';
@@ -817,8 +912,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * Value must have pattern
    * "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
    *
-   * [updateMask] - Required list of fields to be updated in this request.
-   *
    * [authorizationCode] - Optional OAuth2 authorization code to use with this
    * transfer configuration.
    * If it is provided, the transfer configuration will be associated with the
@@ -837,6 +930,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
    *   returned in the title bar of the browser, with the page text prompting
    *   the user to copy the code and paste it in the application.
    *
+   * [updateMask] - Required list of fields to be updated in this request.
+   *
    * Completes with a [TransferConfig].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -845,7 +940,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<TransferConfig> patch(TransferConfig request, core.String name, {core.String updateMask, core.String authorizationCode}) {
+  async.Future<TransferConfig> patch(TransferConfig request, core.String name, {core.String authorizationCode, core.String updateMask}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -859,11 +954,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1350,18 +1445,18 @@ class ProjectsTransferConfigsResourceApi {
    * should be returned: `projects/{project_id}`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageSize] - Page size. The default page size is the maximum value of 1000
-   * results.
-   *
-   * [dataSourceIds] - When specified, only configurations of requested data
-   * sources are returned.
-   *
    * [pageToken] - Pagination token, which can be used to request a specific
    * page
    * of `ListTransfersRequest` list results. For multiple-page
    * results, `ListTransfersResponse` outputs
    * a `next_page` token, which can be used as the
    * `page_token` value to request the next page of list results.
+   *
+   * [pageSize] - Page size. The default page size is the maximum value of 1000
+   * results.
+   *
+   * [dataSourceIds] - When specified, only configurations of requested data
+   * sources are returned.
    *
    * Completes with a [ListTransferConfigsResponse].
    *
@@ -1371,7 +1466,7 @@ class ProjectsTransferConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.int pageSize, core.List<core.String> dataSourceIds, core.String pageToken}) {
+  async.Future<ListTransferConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.List<core.String> dataSourceIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1382,14 +1477,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (dataSourceIds != null) {
       _queryParams["dataSourceIds"] = dataSourceIds;
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/transferConfigs';
@@ -2294,6 +2389,36 @@ class ListDataSourcesResponse {
   }
 }
 
+/** The response message for Locations.ListLocations. */
+class ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  core.List<Location> locations;
+  /** The standard List next-page token. */
+  core.String nextPageToken;
+
+  ListLocationsResponse();
+
+  ListLocationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("locations")) {
+      locations = _json["locations"].map((value) => new Location.fromJson(value)).toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /** The returned list of pipelines in the project. */
 class ListTransferConfigsResponse {
   /**
@@ -2406,6 +2531,65 @@ class ListTransferRunsResponse {
     }
     if (transferRuns != null) {
       _json["transferRuns"] = transferRuns.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/** A resource that represents Google Cloud Platform location. */
+class Location {
+  /**
+   * Cross-service attributes for the location. For example
+   *
+   *     {"cloud.googleapis.com/region": "us-east1"}
+   */
+  core.Map<core.String, core.String> labels;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  core.String locationId;
+  /**
+   * Service-specific metadata. For example the available capacity at the given
+   * location.
+   *
+   * The values for Object must be JSON objects. It can consist of `num`,
+   * `String`, `bool` and `null` as well as `Map` and `List` values.
+   */
+  core.Map<core.String, core.Object> metadata;
+  /**
+   * Resource name for the location, which may vary between implementations.
+   * For example: `"projects/example-project/locations/us-east1"`
+   */
+  core.String name;
+
+  Location();
+
+  Location.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -2544,15 +2728,18 @@ class TransferConfig {
    */
   core.Map<core.String, core.Object> params;
   /**
-   * Data transfer schedule in GROC format.
+   * Data transfer schedule.
    * If the data source does not support a custom schedule, this should be
    * empty. If it is empty, the default value for the data source will be
    * used.
    * The specified times are in UTC.
-   * Examples of valid GROC include:
+   * Examples of valid format:
    * `1st,3rd monday of month 15:30`,
    * `every wed,fri of jan,jun 13:15`, and
    * `first sunday of quarter 00:00`.
+   * See more explanation about the format here:
+   * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+   * NOTE: the granularity should be at least 8 hours, or less frequent.
    */
   core.String schedule;
   /**

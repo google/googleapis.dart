@@ -31,17 +31,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
         "bearer_token": {
             "description": "OAuth bearer token.",
             "location": "query",
@@ -73,11 +62,6 @@
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -88,6 +72,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -107,15 +96,26 @@
             "location": "query",
             "type": "string"
         },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
         "access_token": {
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -192,11 +192,6 @@
                                 "projectId"
                             ],
                             "parameters": {
-                                "orderBy": {
-                                    "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "projectId": {
                                     "description": "ID of the Cloud project where the trace data is stored.",
                                     "location": "path",
@@ -241,6 +236,11 @@
                                     ],
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
+                                    "location": "query",
+                                    "type": "string"
                                 }
                             },
                             "path": "v1/projects/{projectId}/traces",
@@ -257,45 +257,9 @@
             }
         }
     },
-    "revision": "20170718",
+    "revision": "20170802",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
-        "Trace": {
-            "description": "A trace describes how long it takes for an application to perform an\noperation. It consists of a set of spans, each of which represent a single\ntimed event within the operation.",
-            "id": "Trace",
-            "properties": {
-                "spans": {
-                    "description": "Collection of spans in the trace.",
-                    "items": {
-                        "$ref": "TraceSpan"
-                    },
-                    "type": "array"
-                },
-                "projectId": {
-                    "description": "Project ID of the Cloud project where the trace data is stored.",
-                    "type": "string"
-                },
-                "traceId": {
-                    "description": "Globally unique identifier for the trace. This identifier is a 128-bit\nnumeric value formatted as a 32-byte hex string.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Traces": {
-            "description": "List of new or updated traces.",
-            "id": "Traces",
-            "properties": {
-                "traces": {
-                    "description": "List of traces.",
-                    "items": {
-                        "$ref": "Trace"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "TraceSpan": {
             "description": "A span represents a single timed event within a trace. Spans can be nested\nand form a trace tree. Often, a trace contains a root span that describes the\nend-to-end latency of an operation and, optionally, one or more subspans for\nits suboperations. Spans do not need to be contiguous. There may be gaps\nbetween spans in a trace.",
             "id": "TraceSpan",
@@ -364,6 +328,42 @@
                 },
                 "traces": {
                     "description": "List of trace records returned.",
+                    "items": {
+                        "$ref": "Trace"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Trace": {
+            "description": "A trace describes how long it takes for an application to perform an\noperation. It consists of a set of spans, each of which represent a single\ntimed event within the operation.",
+            "id": "Trace",
+            "properties": {
+                "spans": {
+                    "description": "Collection of spans in the trace.",
+                    "items": {
+                        "$ref": "TraceSpan"
+                    },
+                    "type": "array"
+                },
+                "projectId": {
+                    "description": "Project ID of the Cloud project where the trace data is stored.",
+                    "type": "string"
+                },
+                "traceId": {
+                    "description": "Globally unique identifier for the trace. This identifier is a 128-bit\nnumeric value formatted as a 32-byte hex string.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Traces": {
+            "description": "List of new or updated traces.",
+            "id": "Traces",
+            "properties": {
+                "traces": {
+                    "description": "List of traces.",
                     "items": {
                         "$ref": "Trace"
                     },

@@ -839,8 +839,8 @@ class MattersHoldsAccountsResourceApi {
 
   /**
    * Lists HeldAccounts for a hold. This will only list individually specified
-   * held accounts. If the hold is on an OU, then use the
-   * <ahref="https://developers.google.com/admin-sdk/">Admin SDK</a>
+   * held accounts. If the hold is on an OU, then use
+   * <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>
    * to enumerate its members.
    *
    * Request parameters:
@@ -1041,8 +1041,8 @@ class Empty {
  */
 class HeldAccount {
   /**
-   * The account's ID as provided by the <a
-   * href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
+   * The account's ID as provided by the
+   * <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
    */
   core.String accountId;
   /** When the account was put on hold. */

@@ -217,7 +217,6 @@ buildDeviceIdentifier() {
     o.imei = "foo";
     o.manufacturer = "foo";
     o.meid = "foo";
-    o.model = "foo";
     o.serialNumber = "foo";
   }
   buildCounterDeviceIdentifier--;
@@ -230,7 +229,6 @@ checkDeviceIdentifier(api.DeviceIdentifier o) {
     unittest.expect(o.imei, unittest.equals('foo'));
     unittest.expect(o.manufacturer, unittest.equals('foo'));
     unittest.expect(o.meid, unittest.equals('foo'));
-    unittest.expect(o.model, unittest.equals('foo'));
     unittest.expect(o.serialNumber, unittest.equals('foo'));
   }
   buildCounterDeviceIdentifier--;

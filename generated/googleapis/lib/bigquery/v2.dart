@@ -2007,6 +2007,10 @@ class ErrorProto {
 }
 
 class ExplainQueryStage {
+  /** Milliseconds the average shard spent on CPU-bound tasks. */
+  core.String computeMsAvg;
+  /** Milliseconds the slowest shard spent on CPU-bound tasks. */
+  core.String computeMsMax;
   /** Relative amount of time the average shard spent on CPU-bound tasks. */
   core.double computeRatioAvg;
   /** Relative amount of time the slowest shard spent on CPU-bound tasks. */
@@ -2015,6 +2019,10 @@ class ExplainQueryStage {
   core.String id;
   /** Human-readable name for stage. */
   core.String name;
+  /** Milliseconds the average shard spent reading input. */
+  core.String readMsAvg;
+  /** Milliseconds the slowest shard spent reading input. */
+  core.String readMsMax;
   /** Relative amount of time the average shard spent reading input. */
   core.double readRatioAvg;
   /** Relative amount of time the slowest shard spent reading input. */
@@ -2023,6 +2031,10 @@ class ExplainQueryStage {
   core.String recordsRead;
   /** Number of records written by the stage. */
   core.String recordsWritten;
+  /** Total number of bytes written to shuffle. */
+  core.String shuffleOutputBytes;
+  /** Total number of bytes written to shuffle and spilled to disk. */
+  core.String shuffleOutputBytesSpilled;
   /** Current status for the stage. */
   core.String status;
   /**
@@ -2030,6 +2042,10 @@ class ExplainQueryStage {
    * chronological).
    */
   core.List<ExplainQueryStep> steps;
+  /** Milliseconds the average shard spent waiting to be scheduled. */
+  core.String waitMsAvg;
+  /** Milliseconds the slowest shard spent waiting to be scheduled. */
+  core.String waitMsMax;
   /**
    * Relative amount of time the average shard spent waiting to be scheduled.
    */
@@ -2038,6 +2054,10 @@ class ExplainQueryStage {
    * Relative amount of time the slowest shard spent waiting to be scheduled.
    */
   core.double waitRatioMax;
+  /** Milliseconds the average shard spent on writing output. */
+  core.String writeMsAvg;
+  /** Milliseconds the slowest shard spent on writing output. */
+  core.String writeMsMax;
   /** Relative amount of time the average shard spent on writing output. */
   core.double writeRatioAvg;
   /** Relative amount of time the slowest shard spent on writing output. */
@@ -2046,6 +2066,12 @@ class ExplainQueryStage {
   ExplainQueryStage();
 
   ExplainQueryStage.fromJson(core.Map _json) {
+    if (_json.containsKey("computeMsAvg")) {
+      computeMsAvg = _json["computeMsAvg"];
+    }
+    if (_json.containsKey("computeMsMax")) {
+      computeMsMax = _json["computeMsMax"];
+    }
     if (_json.containsKey("computeRatioAvg")) {
       computeRatioAvg = _json["computeRatioAvg"];
     }
@@ -2057,6 +2083,12 @@ class ExplainQueryStage {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("readMsAvg")) {
+      readMsAvg = _json["readMsAvg"];
+    }
+    if (_json.containsKey("readMsMax")) {
+      readMsMax = _json["readMsMax"];
     }
     if (_json.containsKey("readRatioAvg")) {
       readRatioAvg = _json["readRatioAvg"];
@@ -2070,17 +2102,35 @@ class ExplainQueryStage {
     if (_json.containsKey("recordsWritten")) {
       recordsWritten = _json["recordsWritten"];
     }
+    if (_json.containsKey("shuffleOutputBytes")) {
+      shuffleOutputBytes = _json["shuffleOutputBytes"];
+    }
+    if (_json.containsKey("shuffleOutputBytesSpilled")) {
+      shuffleOutputBytesSpilled = _json["shuffleOutputBytesSpilled"];
+    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
     if (_json.containsKey("steps")) {
       steps = _json["steps"].map((value) => new ExplainQueryStep.fromJson(value)).toList();
     }
+    if (_json.containsKey("waitMsAvg")) {
+      waitMsAvg = _json["waitMsAvg"];
+    }
+    if (_json.containsKey("waitMsMax")) {
+      waitMsMax = _json["waitMsMax"];
+    }
     if (_json.containsKey("waitRatioAvg")) {
       waitRatioAvg = _json["waitRatioAvg"];
     }
     if (_json.containsKey("waitRatioMax")) {
       waitRatioMax = _json["waitRatioMax"];
+    }
+    if (_json.containsKey("writeMsAvg")) {
+      writeMsAvg = _json["writeMsAvg"];
+    }
+    if (_json.containsKey("writeMsMax")) {
+      writeMsMax = _json["writeMsMax"];
     }
     if (_json.containsKey("writeRatioAvg")) {
       writeRatioAvg = _json["writeRatioAvg"];
@@ -2092,6 +2142,12 @@ class ExplainQueryStage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (computeMsAvg != null) {
+      _json["computeMsAvg"] = computeMsAvg;
+    }
+    if (computeMsMax != null) {
+      _json["computeMsMax"] = computeMsMax;
+    }
     if (computeRatioAvg != null) {
       _json["computeRatioAvg"] = computeRatioAvg;
     }
@@ -2103,6 +2159,12 @@ class ExplainQueryStage {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (readMsAvg != null) {
+      _json["readMsAvg"] = readMsAvg;
+    }
+    if (readMsMax != null) {
+      _json["readMsMax"] = readMsMax;
     }
     if (readRatioAvg != null) {
       _json["readRatioAvg"] = readRatioAvg;
@@ -2116,17 +2178,35 @@ class ExplainQueryStage {
     if (recordsWritten != null) {
       _json["recordsWritten"] = recordsWritten;
     }
+    if (shuffleOutputBytes != null) {
+      _json["shuffleOutputBytes"] = shuffleOutputBytes;
+    }
+    if (shuffleOutputBytesSpilled != null) {
+      _json["shuffleOutputBytesSpilled"] = shuffleOutputBytesSpilled;
+    }
     if (status != null) {
       _json["status"] = status;
     }
     if (steps != null) {
       _json["steps"] = steps.map((value) => (value).toJson()).toList();
     }
+    if (waitMsAvg != null) {
+      _json["waitMsAvg"] = waitMsAvg;
+    }
+    if (waitMsMax != null) {
+      _json["waitMsMax"] = waitMsMax;
+    }
     if (waitRatioAvg != null) {
       _json["waitRatioAvg"] = waitRatioAvg;
     }
     if (waitRatioMax != null) {
       _json["waitRatioMax"] = waitRatioMax;
+    }
+    if (writeMsAvg != null) {
+      _json["writeMsAvg"] = writeMsAvg;
+    }
+    if (writeMsMax != null) {
+      _json["writeMsMax"] = writeMsMax;
     }
     if (writeRatioAvg != null) {
       _json["writeRatioAvg"] = writeRatioAvg;
@@ -2226,8 +2306,8 @@ class ExternalDataConfiguration {
    * load jobs apply to external data sources. For Google Cloud Bigtable URIs:
    * Exactly one URI can be specified and it has be a fully specified and valid
    * HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore
-   * backups, exactly one URI can be specified, and it must end with
-   * '.backup_info'. Also, the '*' wildcard character is not allowed.
+   * backups, exactly one URI can be specified. Also, the '*' wildcard character
+   * is not allowed.
    */
   core.List<core.String> sourceUris;
 
@@ -2864,8 +2944,9 @@ class JobConfigurationLoad {
   core.String schemaInlineFormat;
   /**
    * [Experimental] Allows the schema of the desitination table to be updated as
-   * a side effect of the load job. Schema update options are supported in two
-   * cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
+   * a side effect of the load job if a schema is autodetected or supplied in
+   * the job configuration. Schema update options are supported in two cases:
+   * when writeDisposition is WRITE_APPEND; when writeDisposition is
    * WRITE_TRUNCATE and the destination table is a partition of a table,
    * specified by partition decorators. For normal tables, WRITE_TRUNCATE will
    * always overwrite the schema. One or more of the following values are
@@ -2894,10 +2975,15 @@ class JobConfigurationLoad {
    * load jobs apply to external data sources. For Google Cloud Bigtable URIs:
    * Exactly one URI can be specified and it has be a fully specified and valid
    * HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore
-   * backups: Exactly one URI can be specified, and it must end with
-   * '.backup_info'. Also, the '*' wildcard character is not allowed.
+   * backups: Exactly one URI can be specified. Also, the '*' wildcard character
+   * is not allowed.
    */
   core.List<core.String> sourceUris;
+  /**
+   * [Experimental] If specified, configures time-based partitioning for the
+   * destination table.
+   */
+  TimePartitioning timePartitioning;
   /**
    * [Optional] Specifies the action that occurs if the destination table
    * already exists. The following values are supported: WRITE_TRUNCATE: If the
@@ -2971,6 +3057,9 @@ class JobConfigurationLoad {
     if (_json.containsKey("sourceUris")) {
       sourceUris = _json["sourceUris"];
     }
+    if (_json.containsKey("timePartitioning")) {
+      timePartitioning = new TimePartitioning.fromJson(_json["timePartitioning"]);
+    }
     if (_json.containsKey("writeDisposition")) {
       writeDisposition = _json["writeDisposition"];
     }
@@ -3034,6 +3123,9 @@ class JobConfigurationLoad {
     }
     if (sourceUris != null) {
       _json["sourceUris"] = sourceUris;
+    }
+    if (timePartitioning != null) {
+      _json["timePartitioning"] = (timePartitioning).toJson();
     }
     if (writeDisposition != null) {
       _json["writeDisposition"] = writeDisposition;
@@ -3131,6 +3223,11 @@ class JobConfigurationQuery {
    */
   core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
   /**
+   * [Experimental] If specified, configures time-based partitioning for the
+   * destination table.
+   */
+  TimePartitioning timePartitioning;
+  /**
    * Specifies whether to use BigQuery's legacy SQL dialect for this query. The
    * default value is true. If set to false, the query will use BigQuery's
    * standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
@@ -3207,6 +3304,9 @@ class JobConfigurationQuery {
     if (_json.containsKey("tableDefinitions")) {
       tableDefinitions = commons.mapMap<core.Map<core.String, core.Object>, ExternalDataConfiguration>(_json["tableDefinitions"], (core.Map<core.String, core.Object> item) => new ExternalDataConfiguration.fromJson(item));
     }
+    if (_json.containsKey("timePartitioning")) {
+      timePartitioning = new TimePartitioning.fromJson(_json["timePartitioning"]);
+    }
     if (_json.containsKey("useLegacySql")) {
       useLegacySql = _json["useLegacySql"];
     }
@@ -3264,6 +3364,9 @@ class JobConfigurationQuery {
     }
     if (tableDefinitions != null) {
       _json["tableDefinitions"] = commons.mapMap<ExternalDataConfiguration, core.Map<core.String, core.Object>>(tableDefinitions, (ExternalDataConfiguration item) => (item).toJson());
+    }
+    if (timePartitioning != null) {
+      _json["timePartitioning"] = (timePartitioning).toJson();
     }
     if (useLegacySql != null) {
       _json["useLegacySql"] = useLegacySql;

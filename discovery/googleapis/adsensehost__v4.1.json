@@ -15,7 +15,7 @@
     "description": "Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/host/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/mp-qfEOuknuXmZ3R6FmksxvQe5E\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/6PBskXS0FDap7pWG0YLeW91uNl8\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1072,7 +1072,7 @@
             }
         }
     },
-    "revision": "20170726",
+    "revision": "20170816",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

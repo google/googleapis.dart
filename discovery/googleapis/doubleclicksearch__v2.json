@@ -14,7 +14,7 @@
     "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/doubleclick-search/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/m3Rwo33iHCWpnK7aCmqZL5h8-oE\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/SROuxXJRULMQPBJms5HlYowmR3g\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -430,7 +430,7 @@
             }
         }
     },
-    "revision": "20170725",
+    "revision": "20170808",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Availability": {

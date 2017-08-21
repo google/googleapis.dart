@@ -424,6 +424,11 @@ class BeaconsResourceApi {
    *
    * Request parameters:
    *
+   * [projectId] - The project id to list beacons under. If not present then the
+   * project
+   * credential that made the request is used as the project.
+   * Optional.
+   *
    * [pageToken] - A pagination token obtained from a previous request to list
    * beacons.
    *
@@ -500,11 +505,6 @@ class BeaconsResourceApi {
    * `GET
    * /v1beta1/beacons?q=status:active%20lat:51.123%20lng:-1.095%20radius:1000`
    *
-   * [projectId] - The project id to list beacons under. If not present then the
-   * project
-   * credential that made the request is used as the project.
-   * Optional.
-   *
    * Completes with a [ListBeaconsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -513,7 +513,7 @@ class BeaconsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBeaconsResponse> list({core.String pageToken, core.int pageSize, core.String q, core.String projectId}) {
+  async.Future<ListBeaconsResponse> list({core.String projectId, core.String pageToken, core.int pageSize, core.String q}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -521,6 +521,9 @@ class BeaconsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -529,9 +532,6 @@ class BeaconsResourceApi {
     }
     if (q != null) {
       _queryParams["q"] = [q];
-    }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/beacons';
@@ -923,11 +923,6 @@ class BeaconsAttachmentsResourceApi {
    * Required.
    * Value must have pattern "^beacons/[^/]+$".
    *
-   * [namespacedType] - Specifies the namespace and type of attachment to
-   * include in response in
-   * <var>namespace/type</var> format. Accepts `* / * ` to specify
-   * "all types in all namespaces".
-   *
    * [projectId] - The project id to list beacon attachments under. This field
    * can be
    * used when "*" is specified to mean all attachment namespaces. Projects
@@ -935,6 +930,11 @@ class BeaconsAttachmentsResourceApi {
    * specified and the projectId string is empty, then the project
    * making the request is used.
    * Optional.
+   *
+   * [namespacedType] - Specifies the namespace and type of attachment to
+   * include in response in
+   * <var>namespace/type</var> format. Accepts `* / * ` to specify
+   * "all types in all namespaces".
    *
    * Completes with a [ListBeaconAttachmentsResponse].
    *
@@ -944,7 +944,7 @@ class BeaconsAttachmentsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName, {core.String namespacedType, core.String projectId}) {
+  async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName, {core.String projectId, core.String namespacedType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -955,11 +955,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (namespacedType != null) {
-      _queryParams["namespacedType"] = [namespacedType];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (namespacedType != null) {
+      _queryParams["namespacedType"] = [namespacedType];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/attachments';
@@ -998,10 +998,6 @@ class BeaconsDiagnosticsResourceApi {
    * [beaconName] - Beacon that the diagnostics are for.
    * Value must have pattern "^beacons/[^/]+$".
    *
-   * [pageToken] - Requests results that occur after the `page_token`, obtained
-   * from the
-   * response to a previous request. Optional.
-   *
    * [alertFilter] - Requests only beacons that have the given alert. For
    * example, to find
    * beacons that have low batteries use `alert_filter=LOW_BATTERY`.
@@ -1018,6 +1014,10 @@ class BeaconsDiagnosticsResourceApi {
    * then the project making the request will be used for looking up
    * diagnostic records. Optional.
    *
+   * [pageToken] - Requests results that occur after the `page_token`, obtained
+   * from the
+   * response to a previous request. Optional.
+   *
    * Completes with a [ListDiagnosticsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1026,7 +1026,7 @@ class BeaconsDiagnosticsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListDiagnosticsResponse> list(core.String beaconName, {core.String pageToken, core.String alertFilter, core.int pageSize, core.String projectId}) {
+  async.Future<ListDiagnosticsResponse> list(core.String beaconName, {core.String alertFilter, core.int pageSize, core.String projectId, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1037,9 +1037,6 @@ class BeaconsDiagnosticsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (alertFilter != null) {
       _queryParams["alertFilter"] = [alertFilter];
     }
@@ -1048,6 +1045,9 @@ class BeaconsDiagnosticsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName') + '/diagnostics';

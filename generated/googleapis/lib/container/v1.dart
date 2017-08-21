@@ -2675,7 +2675,7 @@ class IPAllocationPolicy {
   core.String servicesIpv4Cidr;
   /**
    * A custom subnetwork name to be used if `create_subnetwork` is true.  If
-   * this field is empty, then an automatic name will choosen for the new
+   * this field is empty, then an automatic name will be chosen for the new
    * subnetwork.
    */
   core.String subnetworkName;

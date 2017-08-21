@@ -402,6 +402,14 @@ class ProjectsInstancesResourceApi {
    * requested. Values are of the form `projects/<project>`.
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [pageToken] - If non-empty, `page_token` should contain a
+   * next_page_token from a
+   * previous ListInstancesResponse.
+   *
+   * [pageSize] - Number of instances to be returned in the response. If 0 or
+   * less, defaults
+   * to the server's maximum allowed page size.
+   *
    * [filter] - An expression for filtering the results of the request. Filter
    * rules are
    * case insensitive. The fields eligible for filtering are:
@@ -423,14 +431,6 @@ class ProjectsInstancesResourceApi {
    *                                  it has the label "env" with its value
    *                                  containing "dev".
    *
-   * [pageToken] - If non-empty, `page_token` should contain a
-   * next_page_token from a
-   * previous ListInstancesResponse.
-   *
-   * [pageSize] - Number of instances to be returned in the response. If 0 or
-   * less, defaults
-   * to the server's maximum allowed page size.
-   *
    * Completes with a [ListInstancesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -439,7 +439,7 @@ class ProjectsInstancesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListInstancesResponse> list(core.String parent, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListInstancesResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -450,14 +450,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instances';
@@ -2224,6 +2224,36 @@ class AuditLogConfig {
   }
 }
 
+/** Authorization-related information used by Cloud Audit Logging. */
+class AuthorizationLoggingOptions {
+  /**
+   * The type of the permission that was checked.
+   * Possible string values are:
+   * - "PERMISSION_TYPE_UNSPECIFIED" : Default. Should not be used.
+   * - "ADMIN_READ" : A read of admin (meta) data.
+   * - "ADMIN_WRITE" : A write of admin (meta) data.
+   * - "DATA_READ" : A read of standard data.
+   * - "DATA_WRITE" : A write of standard data.
+   */
+  core.String permissionType;
+
+  AuthorizationLoggingOptions();
+
+  AuthorizationLoggingOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("permissionType")) {
+      permissionType = _json["permissionType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (permissionType != null) {
+      _json["permissionType"] = permissionType;
+    }
+    return _json;
+  }
+}
+
 /** The request for BeginTransaction. */
 class BeginTransactionRequest {
   /** Required. Options for the new transaction. */
@@ -2374,6 +2404,8 @@ class ChildLink {
 
 /** Write a Cloud Audit log */
 class CloudAuditOptions {
+  /** Information used by the Cloud Audit Logging pipeline. */
+  AuthorizationLoggingOptions authorizationLoggingOptions;
   /**
    * The log_name to populate in the Cloud Audit Record.
    * Possible string values are:
@@ -2386,6 +2418,9 @@ class CloudAuditOptions {
   CloudAuditOptions();
 
   CloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("authorizationLoggingOptions")) {
+      authorizationLoggingOptions = new AuthorizationLoggingOptions.fromJson(_json["authorizationLoggingOptions"]);
+    }
     if (_json.containsKey("logName")) {
       logName = _json["logName"];
     }
@@ -2393,6 +2428,9 @@ class CloudAuditOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (authorizationLoggingOptions != null) {
+      _json["authorizationLoggingOptions"] = (authorizationLoggingOptions).toJson();
+    }
     if (logName != null) {
       _json["logName"] = logName;
     }
@@ -3036,7 +3074,7 @@ class Expr {
   core.String description;
   /**
    * Textual representation of an expression in
-   * [Common Expression Language](http://go/api-expr) syntax.
+   * Common Expression Language syntax.
    *
    * The application context of the containing message determines which
    * well-known feature set of CEL is supported.
@@ -3216,6 +3254,21 @@ class Instance {
   /**
    * Required. The number of nodes allocated to this instance. This may be zero
    * in API responses for instances that are not yet in state `READY`.
+   *
+   * Each Spanner node can provide up to 10,000 QPS of reads or 2000 QPS of
+   * writes (writing single rows at 1KB data per row), and 2 TiB storage.
+   *
+   * For optimal performance, we recommend provisioning enough nodes to keep
+   * overall CPU utilization under 75%.
+   *
+   * A minimum of 3 nodes is recommended for production environments.  This
+   * minimum is required for SLAs to apply to your instance.
+   *
+   * Note that Cloud Spanner performance is highly dependent on workload, schema
+   * design, and dataset characteristics. The performance numbers above are
+   * estimates, and assume [best
+   * practices](https://cloud.google.com/spanner/docs/bulk-loading)
+   * are followed.
    */
   core.int nodeCount;
   /**
@@ -3668,7 +3721,31 @@ class ListOperationsResponse {
   }
 }
 
-/** Specifies what kind of log the caller must write */
+/**
+ * Specifies what kind of log the caller must write
+ * Increment a streamz counter with the specified metric and field names.
+ *
+ * Metric names should start with a '/', generally be lowercase-only,
+ * and end in "_count". Field names should not contain an initial slash.
+ * The actual exported metric names will have "/iam/policy" prepended.
+ *
+ * Field names correspond to IAM request parameters and field values are
+ * their respective values.
+ *
+ * At present the only supported field names are
+ *    - "iam_principal", corresponding to IAMContext.principal;
+ *    - "" (empty string), resulting in one aggretated counter with no field.
+ *
+ * Examples:
+ *   counter { metric: "/debug_access_count"  field: "iam_principal" }
+ *   ==> increment counter /iam/policy/backend_debug_access_count
+ *                         {iam_principal=[value of IAMContext.principal]}
+ *
+ * At this time we do not support:
+ * * multiple field names (though this may be supported in the future)
+ * * decrementing the counter
+ * * incrementing it by anything other than 1
+ */
 class LogConfig {
   /** Cloud audit options. */
   CloudAuditOptions cloudAudit;
@@ -4953,8 +5030,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

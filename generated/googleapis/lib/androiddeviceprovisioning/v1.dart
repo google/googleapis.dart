@@ -14,7 +14,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client androiddeviceprovisioning/v1';
 
-/** Android Device Provisioning Partner API */
+/**
+ * Automates reseller integration into Zero Touch Provisioning by assigning
+ * devices to customers and creating device reports.
+ */
 class AndroiddeviceprovisioningApi {
 
   final commons.ApiRequester _requester;
@@ -776,12 +779,14 @@ class DeviceClaim {
 class DeviceIdentifier {
   /** IMEI (either IMEI or MEID is required). */
   core.String imei;
-  /** Manufacturer to match android.os.Build.MANUFACTURER (required). */
+  /**
+   * Manufacturer name to match `android.os.Build.MANUFACTURER` (required).
+   * Allowed values listed in
+   * [manufacturer names](/zero-touch/resources/manufacturer-names).
+   */
   core.String manufacturer;
   /** MEID */
   core.String meid;
-  /** Model to match android.os.Build.MODEL (required). */
-  core.String model;
   /** Serial number (optional) */
   core.String serialNumber;
 
@@ -796,9 +801,6 @@ class DeviceIdentifier {
     }
     if (_json.containsKey("meid")) {
       meid = _json["meid"];
-    }
-    if (_json.containsKey("model")) {
-      model = _json["model"];
     }
     if (_json.containsKey("serialNumber")) {
       serialNumber = _json["serialNumber"];
@@ -815,9 +817,6 @@ class DeviceIdentifier {
     }
     if (meid != null) {
       _json["meid"] = meid;
-    }
-    if (model != null) {
-      _json["model"] = model;
     }
     if (serialNumber != null) {
       _json["serialNumber"] = serialNumber;

@@ -1471,7 +1471,7 @@ class DataSource {
    * number:device.manufacturer:device.model:device.uid:dataStreamName
    *
    * When any of the optional fields that comprise of the data stream ID are
-   * blank, they will be omitted from the data stream ID. The minnimum viable
+   * blank, they will be omitted from the data stream ID. The minimum viable
    * data stream ID would be: type:dataType.name:developer project number
    *
    * Finally, the developer project number is obfuscated when read by any REST

@@ -19,6 +19,9 @@ const core.String USER_AGENT = 'dart-api-client androidmanagement/v1';
  * devices and apps.
  */
 class AndroidmanagementApi {
+  /** Manage Android devices and apps for your customers */
+  static const AndroidmanagementScope = "https://www.googleapis.com/auth/androidmanagement";
+
 
   final commons.ApiRequester _requester;
 
@@ -49,9 +52,8 @@ class EnterprisesResourceApi {
    *
    * Request parameters:
    *
-   * [signupUrlName] - The name of the
-   * [`SignupUrl`](/android/management/reference/rest/v1/signupUrls#SignupUrl)
-   * used to sign up for the enterprise.
+   * [signupUrlName] - The name of the SignupUrl used to sign up for the
+   * enterprise.
    *
    * [enterpriseToken] - The enterprise token appended to the callback URL.
    *
@@ -104,8 +106,7 @@ class EnterprisesResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the enterprise in the form
-   * `enterprises/{enterpriseId}`
+   * [name] - The name of the enterprise in the form enterprises/{enterpriseId}
    * Value must have pattern "^enterprises/[^/]+$".
    *
    * Completes with a [Enterprise].
@@ -147,12 +148,11 @@ class EnterprisesResourceApi {
    *
    * Request parameters:
    *
-   * [name] - The name of the enterprise in the form
-   * `enterprises/{enterpriseId}`
+   * [name] - The name of the enterprise in the form enterprises/{enterpriseId}
    * Value must have pattern "^enterprises/[^/]+$".
    *
-   * [updateMask] - The field mask indicating the fields to update.
-   * If not set, all modifiable fields will be modified.
+   * [updateMask] - The field mask indicating the fields to update. If not set,
+   * all modifiable fields will be modified.
    *
    * Completes with a [Enterprise].
    *
@@ -207,13 +207,12 @@ class EnterprisesApplicationsResourceApi {
    * Request parameters:
    *
    * [name] - The name of the application in the form
-   * `enterprises/{enterpriseId}/applications/{package_name}`
+   * enterprises/{enterpriseId}/applications/{package_name}
    * Value must have pattern "^enterprises/[^/]+/applications/[^/]+$".
    *
    * [languageCode] - The preferred language for localized application info, as
-   * a BCP47 tag
-   * (e.g. "en-US", "de"). If not specified the default language of the
-   * application will be used.
+   * a BCP47 tag (e.g. "en-US", "de"). If not specified the default language of
+   * the application will be used.
    *
    * Completes with a [Application].
    *
@@ -267,7 +266,7 @@ class EnterprisesDevicesResourceApi {
    * Request parameters:
    *
    * [name] - The name of the device in the form
-   * `enterprises/{enterpriseId}/devices/{deviceId}`
+   * enterprises/{enterpriseId}/devices/{deviceId}
    * Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
    *
    * Completes with a [Empty].
@@ -308,7 +307,7 @@ class EnterprisesDevicesResourceApi {
    * Request parameters:
    *
    * [name] - The name of the device in the form
-   * `enterprises/{enterpriseId}/devices/{deviceId}`
+   * enterprises/{enterpriseId}/devices/{deviceId}
    * Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
    *
    * Completes with a [Device].
@@ -344,22 +343,16 @@ class EnterprisesDevicesResourceApi {
   }
 
   /**
-   * Issues a command to a device. The
-   * [`Operation`](/android/management/reference/rest/v1/enterprises.devices.operations#Operation)
-   * resource returned contains a
-   * [`Command`](/android/management/reference/rest/v1/enterprises.devices/issueCommand#Command)
-   * in its `metadata` field.
-   * Use the
-   * [get operation
-   * method](/android/management/reference/rest/v1/enterprises.devices.operations/get)
-   * to get the status of the command.
+   * Issues a command to a device. The Operation resource returned contains a
+   * Command in its metadata field. Use the get operation method to get the
+   * status of the command.
    *
    * [request] - The metadata request object.
    *
    * Request parameters:
    *
    * [name] - The name of the device in the form
-   * `enterprises/{enterpriseId}/devices/{deviceId}`
+   * enterprises/{enterpriseId}/devices/{deviceId}
    * Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
    *
    * Completes with a [Operation].
@@ -403,12 +396,11 @@ class EnterprisesDevicesResourceApi {
    * Request parameters:
    *
    * [parent] - The name of the enterprise in the form
-   * `enterprises/{enterpriseId}`
+   * enterprises/{enterpriseId}
    * Value must have pattern "^enterprises/[^/]+$".
    *
    * [pageSize] - The requested page size. The actual page size may be fixed to
-   * a min or max
-   * value.
+   * a min or max value.
    *
    * [pageToken] - A token identifying a page of results the server should
    * return.
@@ -459,11 +451,11 @@ class EnterprisesDevicesResourceApi {
    * Request parameters:
    *
    * [name] - The name of the device in the form
-   * `enterprises/{enterpriseId}/devices/{deviceId}`
+   * enterprises/{enterpriseId}/devices/{deviceId}
    * Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
    *
-   * [updateMask] - The field mask indicating the fields to update.
-   * If not set, all modifiable fields will be modified.
+   * [updateMask] - The field mask indicating the fields to update. If not set,
+   * all modifiable fields will be modified.
    *
    * Completes with a [Device].
    *
@@ -513,16 +505,15 @@ class EnterprisesDevicesOperationsResourceApi {
       _requester = client;
 
   /**
-   * Starts asynchronous cancellation on a long-running operation.  The server
-   * makes a best effort to cancel the operation, but success is not
-   * guaranteed.  If the server doesn't support this method, it returns
-   * `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-   * Operations.GetOperation or
+   * Starts asynchronous cancellation on a long-running operation. The server
+   * makes a best effort to cancel the operation, but success is not guaranteed.
+   * If the server doesn't support this method, it returns
+   * google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
    * other methods to check whether the cancellation succeeded or whether the
-   * operation completed despite cancellation. On successful cancellation,
-   * the operation is not deleted; instead, it becomes an operation with
-   * an Operation.error value with a google.rpc.Status.code of 1,
-   * corresponding to `Code.CANCELLED`.
+   * operation completed despite cancellation. On successful cancellation, the
+   * operation is not deleted; instead, it becomes an operation with an
+   * Operation.error value with a google.rpc.Status.code of 1, corresponding to
+   * Code.CANCELLED.
    *
    * Request parameters:
    *
@@ -566,7 +557,7 @@ class EnterprisesDevicesOperationsResourceApi {
    * Deletes a long-running operation. This method indicates that the client is
    * no longer interested in the operation result. It does not cancel the
    * operation. If the server doesn't support this method, it returns
-   * `google.rpc.Code.UNIMPLEMENTED`.
+   * google.rpc.Code.UNIMPLEMENTED.
    *
    * Request parameters:
    *
@@ -607,7 +598,7 @@ class EnterprisesDevicesOperationsResourceApi {
   }
 
   /**
-   * Gets the latest state of a long-running operation.  Clients can use this
+   * Gets the latest state of a long-running operation. Clients can use this
    * method to poll the operation result at intervals as recommended by the API
    * service.
    *
@@ -651,15 +642,14 @@ class EnterprisesDevicesOperationsResourceApi {
 
   /**
    * Lists operations that match the specified filter in the request. If the
-   * server doesn't support this method, it returns `UNIMPLEMENTED`.
-   *
-   * NOTE: the `name` binding allows API services to override the binding
-   * to use different resource name schemes, such as `users / * /operations`. To
-   * override the binding, API services can add a binding such as
-   * `"/v1/{name=users / * }/operations"` to their service configuration.
-   * For backwards compatibility, the default name includes the operations
-   * collection id, however overriding users must ensure the name binding
-   * is the parent resource, without the operations collection id.
+   * server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
+   * binding allows API services to override the binding to use different
+   * resource name schemes, such as users / * /operations. To override the
+   * binding, API services can add a binding such as "/v1/{name=users / *
+   * }/operations" to their service configuration. For backwards compatibility,
+   * the default name includes the operations collection id, however overriding
+   * users must ensure the name binding is the parent resource, without the
+   * operations collection id.
    *
    * Request parameters:
    *
@@ -730,7 +720,7 @@ class EnterprisesEnrollmentTokensResourceApi {
    * Request parameters:
    *
    * [parent] - The name of the enterprise in the form
-   * `enterprises/{enterpriseId}`
+   * enterprises/{enterpriseId}
    * Value must have pattern "^enterprises/[^/]+$".
    *
    * Completes with a [EnrollmentToken].
@@ -774,7 +764,7 @@ class EnterprisesEnrollmentTokensResourceApi {
    * Request parameters:
    *
    * [name] - The name of the enrollment token in the form
-   * `enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}`
+   * enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}
    * Value must have pattern "^enterprises/[^/]+/enrollmentTokens/[^/]+$".
    *
    * Completes with a [Empty].
@@ -825,7 +815,7 @@ class EnterprisesPoliciesResourceApi {
    * Request parameters:
    *
    * [name] - The name of the policy in the form
-   * `enterprises/{enterpriseId}/policies/{policyId}`
+   * enterprises/{enterpriseId}/policies/{policyId}
    * Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
    *
    * Completes with a [Empty].
@@ -866,7 +856,7 @@ class EnterprisesPoliciesResourceApi {
    * Request parameters:
    *
    * [name] - The name of the policy in the form
-   * `enterprises/{enterpriseId}/policies/{policyId}`
+   * enterprises/{enterpriseId}/policies/{policyId}
    * Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
    *
    * Completes with a [Policy].
@@ -907,12 +897,11 @@ class EnterprisesPoliciesResourceApi {
    * Request parameters:
    *
    * [parent] - The name of the enterprise in the form
-   * `enterprises/{enterpriseId}`
+   * enterprises/{enterpriseId}
    * Value must have pattern "^enterprises/[^/]+$".
    *
    * [pageSize] - The requested page size. The actual page size may be fixed to
-   * a min or max
-   * value.
+   * a min or max value.
    *
    * [pageToken] - A token identifying a page of results the server should
    * return.
@@ -963,11 +952,11 @@ class EnterprisesPoliciesResourceApi {
    * Request parameters:
    *
    * [name] - The name of the policy in the form
-   * `enterprises/{enterpriseId}/policies/{policyId}`
+   * enterprises/{enterpriseId}/policies/{policyId}
    * Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
    *
-   * [updateMask] - The field mask indicating the fields to update.
-   * If not set, all modifiable fields will be modified.
+   * [updateMask] - The field mask indicating the fields to update. If not set,
+   * all modifiable fields will be modified.
    *
    * Completes with a [Policy].
    *
@@ -1025,7 +1014,7 @@ class EnterprisesWebTokensResourceApi {
    * Request parameters:
    *
    * [parent] - The name of the enterprise in the form
-   * `enterprises/{enterpriseId}`
+   * enterprises/{enterpriseId}
    * Value must have pattern "^enterprises/[^/]+$".
    *
    * Completes with a [WebToken].
@@ -1078,14 +1067,11 @@ class SignupUrlsResourceApi {
    * Request parameters:
    *
    * [callbackUrl] - The callback URL to which the admin will be redirected
-   * after successfully
-   * creating an enterprise. Before redirecting there the system will add a
-   * query parameter to this URL named `enterpriseToken` which will
-   * contain an opaque token to be used for the
-   * [create
-   * enterprise](/android/management/reference/rest/v1/enterprises/create)
-   * request. The URL will be parsed then reformatted in order to add the
-   * `enterpriseToken` parameter, so there may be some minor formatting changes.
+   * after successfully creating an enterprise. Before redirecting there the
+   * system will add a query parameter to this URL named enterpriseToken which
+   * will contain an opaque token to be used for the create enterprise request.
+   * The URL will be parsed then reformatted in order to add the enterpriseToken
+   * parameter, so there may be some minor formatting changes.
    *
    * [projectId] - The id of the Google Cloud Platform project which will own
    * the enterprise.
@@ -1168,7 +1154,7 @@ class Application {
   core.List<ManagedProperty> managedProperties;
   /**
    * The name of the application in the form
-   * `enterprises/{enterpriseId}/applications/{package_name}`
+   * enterprises/{enterpriseId}/applications/{package_name}
    */
   core.String name;
   /** The permissions required by the app. */
@@ -1214,8 +1200,8 @@ class Application {
 /** Application permission. */
 class ApplicationPermission {
   /**
-   * A longer description of the permission, giving more details of
-   * what it affects. Localized.
+   * A longer description of the permission, giving more details of what it
+   * affects. Localized.
    */
   core.String description;
   /** The name of the permission. Localized. */
@@ -1256,12 +1242,12 @@ class ApplicationPermission {
 class ApplicationPolicy {
   /**
    * The default policy for all permissions requested by the app. If specified,
-   * this overrides the policy-level `default_permission_policy` which applies
-   * to all apps.
+   * this overrides the policy-level default_permission_policy which applies to
+   * all apps.
    * Possible string values are:
    * - "PERMISSION_POLICY_UNSPECIFIED" : Policy not specified. If no policy is
-   * specified for a permission at any
-   * level, then the `PROMPT` behavior is used by default.
+   * specified for a permission at any level, then the PROMPT behavior is used
+   * by default.
    * - "PROMPT" : Prompt the user to grant a permission.
    * - "GRANT" : Automatically grant a permission.
    * - "DENY" : Automatically deny a permission.
@@ -1271,48 +1257,40 @@ class ApplicationPolicy {
    * The type of installation to perform.
    * Possible string values are:
    * - "INSTALL_TYPE_UNSPECIFIED" : No automatic installation is performed. Any
-   * other app policies will be
-   * applied if the user installs the app.
+   * other app policies will be applied if the user installs the app.
    * - "PREINSTALLED" : The application is automatically installed and can be
-   * removed by the
-   * user.
+   * removed by the user.
    * - "FORCE_INSTALLED" : The application is automatically installed and cannot
-   * be removed by the
-   * user.
+   * be removed by the user.
    */
   core.String installType;
   /** Whether the application is allowed to lock itself in full-screen mode. */
   core.bool lockTaskAllowed;
   /**
    * Managed configuration applied to the app. The format for the configuration
-   * is dictated by the
-   * [`ManagedProperty`](/android/management/reference/rest/v1/enterprises.applications#ManagedProperty)
-   * values supported by the app. Each field name in the managed configuration
-   * must match the `key` field of the `ManagedProperty`. The field value must
-   * be compatible with the `type` of the `ManagedProperty`:
-   * <table>
-   * <tr><td><i>type</i></td><td><i>JSON value</i></td></tr>
-   * <tr><td>`BOOL`</td><td>`true` or `false`</td></tr>
-   * <tr><td>`STRING`</td><td>string</td></tr>
-   * <tr><td>`INTEGER`</td><td>number</td></tr>
-   * <tr><td>`CHOICE`</td><td>string</td></tr>
-   * <tr><td>`MULTISELECT`</td><td>array of strings</td></tr>
-   * <tr><td>`HIDDEN`</td><td>string</td></tr>
-   * <tr><td>`BUNDLE_ARRAY`</td><td>array of objects</td></tr>
-   * </table>
+   * is dictated by the ManagedProperty values supported by the app. Each field
+   * name in the managed configuration must match the key field of the
+   * ManagedProperty. The field value must be compatible with the type of the
+   * ManagedProperty: <table> <tr><td><i>type</i></td><td><i>JSON
+   * value</i></td></tr> <tr><td>BOOL</td><td>true or false</td></tr>
+   * <tr><td>STRING</td><td>string</td></tr>
+   * <tr><td>INTEGER</td><td>number</td></tr>
+   * <tr><td>CHOICE</td><td>string</td></tr> <tr><td>MULTISELECT</td><td>array
+   * of strings</td></tr> <tr><td>HIDDEN</td><td>string</td></tr>
+   * <tr><td>BUNDLE_ARRAY</td><td>array of objects</td></tr> </table>
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> managedConfiguration;
   /**
-   * The package name of the app, e.g. `com.google.android.youtube` for the
+   * The package name of the app, e.g. com.google.android.youtube for the
    * YouTube app.
    */
   core.String packageName;
   /**
    * Explicit permission grants or denials for the app. These values override
-   * the `default_permission_policy`.
+   * the default_permission_policy.
    */
   core.List<PermissionGrant> permissionGrants;
 
@@ -1372,16 +1350,15 @@ class Command {
   core.String createTime;
   /**
    * The duration for which the command is valid. The command will expire if not
-   * executed by the device during this time.  The default duration if
+   * executed by the device during this time. The default duration if
    * unspecified is ten minutes. There is no maximum duration.
    */
   core.String duration;
   /**
-   * For commands of type `RESET_PASSWORD`, optionally specifies the new
-   * password.
+   * For commands of type RESET_PASSWORD, optionally specifies the new password.
    */
   core.String newPassword;
-  /** For commands of type `RESET_PASSWORD`, optionally specifies flags. */
+  /** For commands of type RESET_PASSWORD, optionally specifies flags. */
   core.List<core.String> resetPasswordFlags;
   /**
    * The type of the command.
@@ -1437,11 +1414,10 @@ class Command {
 /**
  * A rule declaring which mitigating actions to take when a device is not
  * compliant with its policy. For every rule, there is always an implicit
- * mitigating action to set `policy_compliant` to false for the
- * [`Device`](/android/management/reference/rest/v1/enterprises.devices#Device)
- * resource, and display a message on the device indicating that the device is
- * not compliant with its policy. Other mitigating actions may optionally be
- * taken as well, depending on the field values in the rule.
+ * mitigating action to set policy_compliant to false for the Device resource,
+ * and display a message on the device indicating that the device is not
+ * compliant with its policy. Other mitigating actions may optionally be taken
+ * as well, depending on the field values in the rule.
  */
 class ComplianceRule {
   /**
@@ -1458,9 +1434,8 @@ class ComplianceRule {
    */
   core.bool disableApps;
   /**
-   * A condition which is satisfied if there exists *any* matching
-   * [`NonComplianceDetail`](/android/management/reference/rest/v1/enterprises.devices#NonComplianceDetail)
-   * for the device.
+   * A condition which is satisfied if there exists any matching
+   * NonComplianceDetail for the device.
    */
   NonComplianceDetailCondition nonComplianceDetailCondition;
 
@@ -1494,9 +1469,8 @@ class ComplianceRule {
 }
 
 /**
- * A device owned by an enterprise.
- * Unless otherwise noted, all fields are read-only and cannot be modified by
- * an update device request.
+ * A device owned by an enterprise. Unless otherwise noted, all fields are
+ * read-only and cannot be modified by an update device request.
  */
 class Device {
   /** The API level of the Android platform version running on the device. */
@@ -1512,23 +1486,21 @@ class Device {
    * - "ACTIVE" : The device is active.
    * - "DISABLED" : The device is disabled.
    * - "DELETED" : The device was deleted. This state will never be returned by
-   * an API call,
-   * but will be used in the final policy compliance report published to Cloud
-   * Pub/Sub when the device acknowledges the deletion.
+   * an API call, but will be used in the final policy compliance report
+   * published to Cloud Pub/Sub when the device acknowledges the deletion.
    * - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
-   * will be in this
-   * state until they have applied policy.
+   * will be in this state until they have applied policy.
    */
   core.String appliedState;
   /**
-   * If the device state is `DISABLED`, an optional message that is displayed on
+   * If the device state is DISABLED, an optional message that is displayed on
    * the device indicating the reason the device is disabled. This field may be
    * modified by an update request.
    */
   UserFacingMessage disabledReason;
   /**
    * Displays on the device. This information is only available when
-   * `displayInfoEnabled` is true in the device's policy.
+   * displayInfoEnabled is true in the device's policy.
    */
   core.List<Display> displays;
   /** The time of device enrollment. */
@@ -1547,7 +1519,7 @@ class Device {
   HardwareInfo hardwareInfo;
   /**
    * Hardware status samples in chronological order. This information is only
-   * available when `hardwareStatusEnabled` is true in the device's policy.
+   * available when hardwareStatusEnabled is true in the device's policy.
    */
   core.List<HardwareStatus> hardwareStatusSamples;
   /** The last time the device sent a policy compliance report. */
@@ -1558,23 +1530,23 @@ class Device {
   core.String lastStatusReportTime;
   /**
    * Events related to memory and storage measurements in chronological order.
-   * This information is only available when `memoryInfoEnabled` is true in the
+   * This information is only available when memoryInfoEnabled is true in the
    * device's policy.
    */
   core.List<MemoryEvent> memoryEvents;
   /**
    * Memory information. This information is only available when
-   * `memoryInfoEnabled` is true in the device's policy.
+   * memoryInfoEnabled is true in the device's policy.
    */
   MemoryInfo memoryInfo;
   /**
    * The name of the device in the form
-   * `enterprises/{enterpriseId}/devices/{deviceId}`
+   * enterprises/{enterpriseId}/devices/{deviceId}
    */
   core.String name;
   /**
    * Device network information. This information is only available when
-   * `networkInfoEnabled` is true in the device's policy.
+   * networkInfoEnabled is true in the device's policy.
    */
   NetworkInfo networkInfo;
   /**
@@ -1585,19 +1557,18 @@ class Device {
   core.bool policyCompliant;
   /**
    * The name of the policy that is intended to be applied to the device. If
-   * empty, the policy with id `default` is applied.
-   * This field may be modified by an update request.
-   * The name of the policy is in the form
-   * `enterprises/{enterpriseId}/policies/{policyId}`.
-   * It is also permissible to only specify the `policyId` when updating this
-   * field as long as the `policyId` contains no slashes since the rest of the
-   * policy name can be inferred from context.
+   * empty, the policy with id default is applied. This field may be modified by
+   * an update request. The name of the policy is in the form
+   * enterprises/{enterpriseId}/policies/{policyId}. It is also permissible to
+   * only specify the policyId when updating this field as long as the policyId
+   * contains no slashes since the rest of the policy name can be inferred from
+   * context.
    */
   core.String policyName;
   /**
    * Power management events on the device in chronological order. This
-   * information is only available when `powerManagementEventsEnabled` is true
-   * in the device's policy.
+   * information is only available when powerManagementEventsEnabled is true in
+   * the device's policy.
    */
   core.List<PowerManagementEvent> powerManagementEvents;
   /**
@@ -1609,34 +1580,29 @@ class Device {
   core.List<core.String> previousDeviceNames;
   /**
    * Detailed information about the device software. This information is only
-   * available when `softwareInfoEnabled` is true in the device's policy.
+   * available when softwareInfoEnabled is true in the device's policy.
    */
   SoftwareInfo softwareInfo;
   /**
    * The state that is intended to be applied to the device. This field may be
-   * modified by an update request.
-   * Note that UpdateDevice only handles toggling between `ACTIVE` and
-   * `DISABLED` states. Use the
-   * [delete device
-   * method](/android/management/reference/rest/v1/enterprises.devices/delete)
-   * to cause the device to enter the `DELETED` state.
+   * modified by an update request. Note that UpdateDevice only handles toggling
+   * between ACTIVE and DISABLED states. Use the delete device method to cause
+   * the device to enter the DELETED state.
    * Possible string values are:
    * - "DEVICE_STATE_UNSPECIFIED" : This value is disallowed.
    * - "ACTIVE" : The device is active.
    * - "DISABLED" : The device is disabled.
    * - "DELETED" : The device was deleted. This state will never be returned by
-   * an API call,
-   * but will be used in the final policy compliance report published to Cloud
-   * Pub/Sub when the device acknowledges the deletion.
+   * an API call, but will be used in the final policy compliance report
+   * published to Cloud Pub/Sub when the device acknowledges the deletion.
    * - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
-   * will be in this
-   * state until they have applied policy.
+   * will be in this state until they have applied policy.
    */
   core.String state;
   /**
    * The resource name of the user of the device in the form
-   * `enterprises/{enterpriseId}/users/{userId}`. This is the name of the
-   * device account automatically created for this device.
+   * enterprises/{enterpriseId}/users/{userId}. This is the name of the device
+   * account automatically created for this device.
    */
   core.String userName;
 
@@ -1887,14 +1853,12 @@ class Display {
 
 /**
  * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request
- * or the response type of an API method. For instance:
- *
- *     service Foo {
- *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
- *     }
- *
- * The JSON representation for `Empty` is empty JSON object `{}`.
+ * empty messages in your APIs. A typical example is to use it as the request or
+ * the response type of an API method. For instance:
+ * service Foo {
+ *   rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+ * }
+ * The JSON representation for Empty is empty JSON object {}.
  */
 class Empty {
 
@@ -1912,14 +1876,11 @@ class Empty {
 /** An enrollment token. */
 class EnrollmentToken {
   /**
-   * Optional, arbitrary data associated with the enrollment token.
-   * This could contain, for example, the id of an org unit to which the device
-   * is assigned after enrollment.
-   * After a device enrolls with the token, this data will be exposed in the
-   * `enrollment_token_data` field of the
-   * [`Device`](/android/management/reference/rest/v1/enterprises.devices#Device)
-   * resource. The data must be 1024 characters or less; otherwise, the creation
-   * request will fail.
+   * Optional, arbitrary data associated with the enrollment token. This could
+   * contain, for example, the id of an org unit to which the device is assigned
+   * after enrollment. After a device enrolls with the token, this data will be
+   * exposed in the enrollment_token_data field of the Device resource. The data
+   * must be 1024 characters or less; otherwise, the creation request will fail.
    */
   core.String additionalData;
   /**
@@ -1935,22 +1896,22 @@ class EnrollmentToken {
   /**
    * The name of the enrollment token, which is generated by the server during
    * creation, in the form
-   * `enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}`
+   * enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}
    */
   core.String name;
   /**
    * The name of the policy that will be initially applied to the enrolled
-   * device in the form `enterprises/{enterpriseId}/policies/{policyId}`.
-   * If not specified, the policy with id `default` is applied.
-   * It is permissible to only specify the `policyId` when updating this
-   * field as long as the `policyId` contains no slashes since the rest of the
-   * policy name can be inferred from context.
+   * device in the form enterprises/{enterpriseId}/policies/{policyId}. If not
+   * specified, the policy with id default is applied. It is permissible to only
+   * specify the policyId when updating this field as long as the policyId
+   * contains no slashes since the rest of the policy name can be inferred from
+   * context.
    */
   core.String policyName;
   /**
    * A JSON string whose UTF-8 representation can be used to generate a QR code
    * to enroll a device with this enrollment token. To enroll a device using
-   * NFC, the NFC record must contain a serialized `java.util.Properties`
+   * NFC, the NFC record must contain a serialized java.util.Properties
    * representation of the properties in the JSON.
    */
   core.String qrCode;
@@ -2035,21 +1996,20 @@ class Enterprise {
   ExternalData logo;
   /**
    * The name of the enterprise which is generated by the server during
-   * creation, in the form
-   * `enterprises/{enterpriseId}`
+   * creation, in the form enterprises/{enterpriseId}
    */
   core.String name;
   /**
    * A color in RGB format indicating the predominant color to display in the
-   * device management app UI. The color components are stored as follows:
-   * `(red << 16) | (green << 8) | blue`, where each component may take a value
-   * between 0 and 255 inclusive.
+   * device management app UI. The color components are stored as follows: (red
+   * << 16) | (green << 8) | blue, where each component may take a value between
+   * 0 and 255 inclusive.
    */
   core.int primaryColor;
   /**
    * When Cloud Pub/Sub notifications are enabled, this field is required to
    * indicate the topic to which the notifications will be published. The format
-   * of this field is `projects/{project}/topics/{topic}`. You must have granted
+   * of this field is projects/{project}/topics/{topic}. You must have granted
    * the publish permission on this topic to
    * android-cloud-policy@system.gserviceaccount.com
    */
@@ -2167,7 +2127,7 @@ class HardwareInfo {
    * the device.
    */
   core.List<core.double> batteryThrottlingTemperatures;
-  /** Brand of the device, e.g. `Google`. */
+  /** Brand of the device, e.g. Google. */
   core.String brand;
   /**
    * CPU shutdown temperature thresholds in Celsius for each CPU on the device.
@@ -2178,7 +2138,7 @@ class HardwareInfo {
    * device.
    */
   core.List<core.double> cpuThrottlingTemperatures;
-  /** Baseband version, e.g. `MDM9625_104662.22.05.34p`. */
+  /** Baseband version, e.g. MDM9625_104662.22.05.34p. */
   core.String deviceBasebandVersion;
   /**
    * GPU shutdown temperature thresholds in Celsius for each GPU on the device.
@@ -2189,11 +2149,11 @@ class HardwareInfo {
    * device.
    */
   core.List<core.double> gpuThrottlingTemperatures;
-  /** Name of the hardware, e.g. `Angler`. */
+  /** Name of the hardware, e.g. Angler. */
   core.String hardware;
-  /** Manufacturer, e.g. `Motorola`. */
+  /** Manufacturer, e.g. Motorola. */
   core.String manufacturer;
-  /** The model of the device, e.g. `Asus Nexus 7`. */
+  /** The model of the device, e.g. Asus Nexus 7. */
   core.String model;
   /** The device serial number. */
   core.String serialNumber;
@@ -2299,7 +2259,7 @@ class HardwareInfo {
 
 /**
  * Hardware status. Temperatures may be compared to the temperature thresholds
- * available in `hardwareInfo` to determine hardware health.
+ * available in hardwareInfo to determine hardware health.
  */
 class HardwareStatus {
   /**
@@ -2309,9 +2269,9 @@ class HardwareStatus {
   /** Current CPU temperatures in Celsius for each CPU on the device. */
   core.List<core.double> cpuTemperatures;
   /**
-   * CPU usages in percentage for each core available on the device.
-   * Usage is 0 for each unplugged core. Empty array implies that CPU usage
-   * is not supported in the system.
+   * CPU usages in percentage for each core available on the device. Usage is 0
+   * for each unplugged core. Empty array implies that CPU usage is not
+   * supported in the system.
    */
   core.List<core.double> cpuUsages;
   /** The time the measurements were taken. */
@@ -2472,8 +2432,8 @@ class ListPoliciesResponse {
 /** Managed property. */
 class ManagedProperty {
   /**
-   * The default value of the properties. `BUNDLE_ARRAY` properties
-   * never have a default value.
+   * The default value of the properties. BUNDLE_ARRAY properties never have a
+   * default value.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2484,19 +2444,16 @@ class ManagedProperty {
    * affects. Localized.
    */
   core.String description;
-  /**
-   * For `CHOICE` or `MULTISELECT` properties, the list
-   * of possible entries.
-   */
+  /** For CHOICE or MULTISELECT properties, the list of possible entries. */
   core.List<ManagedPropertyEntry> entries;
   /**
-   * The unique key that the application uses to identify the property,
-   * e.g. "com.google.android.gm.fieldname".
+   * The unique key that the application uses to identify the property, e.g.
+   * "com.google.android.gm.fieldname".
    */
   core.String key;
   /**
-   * For `BUNDLE_ARRAY` properties, the list of nested properties. A
-   * `BUNDLE_ARRAY` property is at most two levels deep.
+   * For BUNDLE_ARRAY properties, the list of nested properties. A BUNDLE_ARRAY
+   * property is at most two levels deep.
    */
   core.List<ManagedProperty> nestedProperties;
   /** The name of the property. Localized. */
@@ -2511,8 +2468,7 @@ class ManagedProperty {
    * - "CHOICE" : A choice of one item from a set.
    * - "MULTISELECT" : A choice of multiple items from a set.
    * - "HIDDEN" : A hidden restriction of string type (the default value can be
-   * used
-   * to pass along information that cannot be modified, such as a version
+   * used to pass along information that cannot be modified, such as a version
    * code).
    * - "BUNDLE_ARRAY" : An array of property bundles.
    */
@@ -2607,7 +2563,7 @@ class ManagedPropertyEntry {
 /** An event related to memory and storage measurements. */
 class MemoryEvent {
   /**
-   * The number of free bytes in the medium, or for `EXTERNAL_STORAGE_DETECTED`,
+   * The number of free bytes in the medium, or for EXTERNAL_STORAGE_DETECTED,
    * the total capacity in bytes of the storage medium.
    */
   core.String byteCount;
@@ -2621,8 +2577,7 @@ class MemoryEvent {
    * - "INTERNAL_STORAGE_MEASURED" : Free space in internal storage was
    * measured.
    * - "EXTERNAL_STORAGE_DETECTED" : A new external storage medium was detected.
-   * The reported byte count is
-   * the total capacity of the storage medium.
+   * The reported byte count is the total capacity of the storage medium.
    * - "EXTERNAL_STORAGE_REMOVED" : An external storage medium was removed. The
    * reported byte count is zero.
    * - "EXTERNAL_STORAGE_MEASURED" : Free space in an external storage medium
@@ -2691,11 +2646,11 @@ class MemoryInfo {
 
 /** Device network info. */
 class NetworkInfo {
-  /** IMEI number of the GSM device, e.g. `A1000031212`. */
+  /** IMEI number of the GSM device, e.g. A1000031212. */
   core.String imei;
-  /** MEID number of the CDMA device, e.g. `A00000292788E1`. */
+  /** MEID number of the CDMA device, e.g. A00000292788E1. */
   core.String meid;
-  /** WiFi MAC address of the device, e.g. `7c:11:11:11:11:11`. */
+  /** WiFi MAC address of the device, e.g. 7c:11:11:11:11:11. */
   core.String wifiMacAddress;
 
   NetworkInfo();
@@ -2741,26 +2696,23 @@ class NonComplianceDetail {
    * For settings with nested fields, if a particular nested field is out of
    * compliance, this specifies the full path to the offending field. The path
    * is formatted in the same way the policy JSON field would be referenced in
-   * JavaScript, that is:
-   * 1) For object-typed fields, the field name is followed by a dot then by a
-   *    subfield name.
-   * 2) For array-typed fields, the field name is followed by the array index
-   *    enclosed in brackets.
-   * For example, to indicate a problem with the `url` field in the
-   * `externalData` field in the 3rd application, the path would be
-   * `applications[2].externalData.url`
+   * JavaScript, that is: 1) For object-typed fields, the field name is followed
+   * by a dot then by a  subfield name. 2) For array-typed fields, the field
+   * name is followed by the array index  enclosed in brackets. For example, to
+   * indicate a problem with the url field in the externalData field in the 3rd
+   * application, the path would be applications[2].externalData.url
    */
   core.String fieldPath;
   /**
-   * If `package_name` is set and the non-compliance reason is
-   * `APP_NOT_INSTALLED`, the detailed reason the app cannot be installed.
+   * If package_name is set and the non-compliance reason is APP_NOT_INSTALLED,
+   * the detailed reason the app cannot be installed.
    * Possible string values are:
    * - "INSTALLATION_FAILURE_REASON_UNSPECIFIED" : This value is disallowed.
    * - "INSTALLATION_FAILURE_REASON_UNKNOWN" : An unknown condition is
-   * preventing the app from being installed. Some
-   * potential reaons are that the device does not have enough storage, the
-   * device network connection is unreliable, or the installation is taking
-   * longer than expected. The installation will be retried automatically.
+   * preventing the app from being installed. Some potential reaons are that the
+   * device does not have enough storage, the device network connection is
+   * unreliable, or the installation is taking longer than expected. The
+   * installation will be retried automatically.
    * - "IN_PROGRESS" : The installation is still in progress.
    * - "NOT_FOUND" : The app was not found in Play.
    * - "NOT_COMPATIBLE_WITH_DEVICE" : The app is incompatible with the device.
@@ -2772,8 +2724,9 @@ class NonComplianceDetail {
    * - "NO_LICENSES_REMAINING" : There are no more licenses to assign to the
    * user.
    * - "NOT_ENROLLED" : The enterprise is no longer enrolled with Play for Work
-   * or Android Device
-   * Policy is not enabled for the enterprise.
+   * or Android Device Policy is not enabled for the enterprise.
+   * - "USER_INVALID" : The user is no longer valid. The user may have been
+   * deleted or disabled.
    */
   core.String installationFailureReason;
   /**
@@ -2781,26 +2734,21 @@ class NonComplianceDetail {
    * Possible string values are:
    * - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is disallowed.
    * - "API_LEVEL" : The setting is not supported in the API level of Android OS
-   * version the
-   * device is running.
+   * version the device is running.
    * - "ADMIN_TYPE" : The admin type (profile owner, device owner, etc.) does
-   * not support the
-   * setting.
+   * not support the setting.
    * - "USER_ACTION" : The user has not taken required action to comply with the
    * setting.
    * - "INVALID_VALUE" : The setting has an invalid value.
    * - "APP_NOT_INSTALLED" : The application required to implement the policy is
    * not installed.
    * - "UNSUPPORTED" : The policy is not supported by the version of Android
-   * Device Policy on
-   * the device.
+   * Device Policy on the device.
    * - "APP_INSTALLED" : A blocked application is installed.
    * - "PENDING" : The setting was not applied yet at the time of the report,
-   * but is
-   * expected to be applied shortly.
+   * but is expected to be applied shortly.
    * - "APP_INCOMPATIBLE" : The setting cannot be applied to the application
-   * because its target SDK
-   * version is not high enough.
+   * because its target SDK version is not high enough.
    */
   core.String nonComplianceReason;
   /**
@@ -2810,8 +2758,7 @@ class NonComplianceDetail {
   core.String packageName;
   /**
    * The name of the policy setting. This is the JSON field name of a top-level
-   * [`Policy`](/android/management/reference/rest/v1/enterprises.policies#Policy)
-   *  field.
+   * Policy  field.
    */
   core.String settingName;
 
@@ -2863,12 +2810,10 @@ class NonComplianceDetail {
 }
 
 /**
- * A compliance rule condition which is satisfied if there exists *any*
- * matching
- * [`NonComplianceDetail`](/android/management/reference/rest/v1/enterprises.devices#NonComplianceDetail)
- * for the device. A `NonComplianceDetail` matches a
- * `NonComplianceDetailCondition` if *all* the fields which are set within the
- * `NonComplianceDetailCondition` match the corresponding `NonComplianceDetail`
+ * A compliance rule condition which is satisfied if there exists any matching
+ * NonComplianceDetail for the device. A NonComplianceDetail matches a
+ * NonComplianceDetailCondition if all the fields which are set within the
+ * NonComplianceDetailCondition match the corresponding NonComplianceDetail
  * fields.
  */
 class NonComplianceDetailCondition {
@@ -2878,39 +2823,33 @@ class NonComplianceDetailCondition {
    * Possible string values are:
    * - "NON_COMPLIANCE_REASON_UNSPECIFIED" : This value is disallowed.
    * - "API_LEVEL" : The setting is not supported in the API level of Android OS
-   * version the
-   * device is running.
+   * version the device is running.
    * - "ADMIN_TYPE" : The admin type (profile owner, device owner, etc.) does
-   * not support the
-   * setting.
+   * not support the setting.
    * - "USER_ACTION" : The user has not taken required action to comply with the
    * setting.
    * - "INVALID_VALUE" : The setting has an invalid value.
    * - "APP_NOT_INSTALLED" : The application required to implement the policy is
    * not installed.
    * - "UNSUPPORTED" : The policy is not supported by the version of Android
-   * Device Policy on
-   * the device.
+   * Device Policy on the device.
    * - "APP_INSTALLED" : A blocked application is installed.
    * - "PENDING" : The setting was not applied yet at the time of the report,
-   * but is
-   * expected to be applied shortly.
+   * but is expected to be applied shortly.
    * - "APP_INCOMPATIBLE" : The setting cannot be applied to the application
-   * because its target SDK
-   * version is not high enough.
+   * because its target SDK version is not high enough.
    */
   core.String nonComplianceReason;
   /**
    * The package name indicating which application is out of compliance. If not
    * set, then this condition matches any package name. If this field is set,
-   * then `setting_name` must be unset or set to `applications`; otherwise, the
+   * then setting_name must be unset or set to applications; otherwise, the
    * condition would never be satisfied.
    */
   core.String packageName;
   /**
    * The name of the policy setting. This is the JSON field name of a top-level
-   * [`Policy`](/android/management/reference/rest/v1/enterprises.policies#Policy)
-   * field. If not set, then this condition matches any setting name.
+   * Policy field. If not set, then this condition matches any setting name.
    */
   core.String settingName;
 
@@ -2949,17 +2888,17 @@ class NonComplianceDetailCondition {
  */
 class Operation {
   /**
-   * If the value is `false`, it means the operation is still in progress.
-   * If true, the operation is completed, and either `error` or `response` is
+   * If the value is false, it means the operation is still in progress. If
+   * true, the operation is completed, and either error or response is
    * available.
    */
   core.bool done;
   /** The error result of the operation in case of failure or cancellation. */
   Status error;
   /**
-   * Service-specific metadata associated with the operation.  It typically
-   * contains progress information and common metadata such as create time.
-   * Some services might not provide such metadata.  Any method that returns a
+   * Service-specific metadata associated with the operation. It typically
+   * contains progress information and common metadata such as create time. Some
+   * services might not provide such metadata. Any method that returns a
    * long-running operation should document the metadata type, if any.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
@@ -2968,19 +2907,18 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
   /**
    * The server-assigned name, which is only unique within the same service that
-   * originally returns it. If you use the default HTTP mapping, the
-   * `name` should have the format of `operations/some/unique/name`.
+   * originally returns it. If you use the default HTTP mapping, the name should
+   * have the format of operations/some/unique/name.
    */
   core.String name;
   /**
-   * The normal response of the operation in case of success.  If the original
-   * method returns no data on success, such as `Delete`, the response is
-   * `google.protobuf.Empty`.  If the original method is standard
-   * `Get`/`Create`/`Update`, the response should be the resource.  For other
-   * methods, the response should have the type `XxxResponse`, where `Xxx`
-   * is the original method name.  For example, if the original method name
-   * is `TakeSnapshot()`, the inferred response type is
-   * `TakeSnapshotResponse`.
+   * The normal response of the operation in case of success. If the original
+   * method returns no data on success, such as Delete, the response is
+   * google.protobuf.Empty. If the original method is standard
+   * Get/Create/Update, the response should be the resource. For other methods,
+   * the response should have the type XxxResponse, where Xxx is the original
+   * method name. For example, if the original method name is TakeSnapshot(),
+   * the inferred response type is TakeSnapshotResponse.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3038,47 +2976,45 @@ class PasswordRequirements {
   /** Password expiration timeout. */
   core.String passwordExpirationTimeout;
   /**
-   * The length of the password history. After setting this, the user will
-   * not be able to enter a new password that is the same as any password in
-   * the history. A value of 0 means there is no restriction.
+   * The length of the password history. After setting this, the user will not
+   * be able to enter a new password that is the same as any password in the
+   * history. A value of 0 means there is no restriction.
    */
   core.int passwordHistoryLength;
   /**
    * The minimum allowed password length. A value of 0 means there is no
-   * restriction.
-   * Only enforced when `password_quality` is `NUMERIC`, `NUMERIC_COMPLEX`,
-   * `ALPHABETIC`, `ALPHANUMERIC`, or `COMPLEX`.
+   * restriction. Only enforced when password_quality is NUMERIC,
+   * NUMERIC_COMPLEX, ALPHABETIC, ALPHANUMERIC, or COMPLEX.
    */
   core.int passwordMinimumLength;
   /**
-   * Minimum number of letters required in the password.
-   * Only enforced when `password_quality` is `COMPLEX`.
+   * Minimum number of letters required in the password. Only enforced when
+   * password_quality is COMPLEX.
    */
   core.int passwordMinimumLetters;
   /**
-   * Minimum number of lower case letters required in the password.
-   * Only enforced when `password_quality` is `COMPLEX`.
+   * Minimum number of lower case letters required in the password. Only
+   * enforced when password_quality is COMPLEX.
    */
   core.int passwordMinimumLowerCase;
   /**
    * Minimum number of non-letter characters (numerical digits or symbols)
-   * required in the password.
-   * Only enforced when `password_quality` is `COMPLEX`.
+   * required in the password. Only enforced when password_quality is COMPLEX.
    */
   core.int passwordMinimumNonLetter;
   /**
-   * Minimum number of numerical digits required in the password.
-   * Only enforced when `password_quality` is `COMPLEX`.
+   * Minimum number of numerical digits required in the password. Only enforced
+   * when password_quality is COMPLEX.
    */
   core.int passwordMinimumNumeric;
   /**
-   * Minimum number of symbols required in the password.
-   * Only enforced when `password_quality` is `COMPLEX`.
+   * Minimum number of symbols required in the password. Only enforced when
+   * password_quality is COMPLEX.
    */
   core.int passwordMinimumSymbols;
   /**
-   * Minimum number of upper case letters required in the password.
-   * Only enforced when `password_quality` is `COMPLEX`.
+   * Minimum number of upper case letters required in the password. Only
+   * enforced when password_quality is COMPLEX.
    */
   core.int passwordMinimumUpperCase;
   /**
@@ -3087,21 +3023,17 @@ class PasswordRequirements {
    * - "PASSWORD_QUALITY_UNSPECIFIED" : There are no requirements for the
    * password.
    * - "SOMETHING" : There must be a password, but there are no restrictions on
-   * its
-   * characters.
+   * its characters.
    * - "NUMERIC" : The password must contain numeric characters.
    * - "NUMERIC_COMPLEX" : The password must contain numeric characters with no
-   * repeating (4444) or
-   * ordered (1234, 4321, 2468) sequences.
+   * repeating (4444) or ordered (1234, 4321, 2468) sequences.
    * - "ALPHABETIC" : The password must contain alphabetic (or symbol)
    * characters.
    * - "ALPHANUMERIC" : The password must contain at both numeric and alphabetic
-   * (or symbol)
-   * characters.
+   * (or symbol) characters.
    * - "COMPLEX" : The password must contain at least a letter, a numerical
-   * digit and a
-   * special symbol. Other password constraints, for example,
-   * `password_minimum_letters` are enforced.
+   * digit and a special symbol. Other password constraints, for example,
+   * password_minimum_letters are enforced.
    */
   core.String passwordQuality;
 
@@ -3184,14 +3116,14 @@ class PasswordRequirements {
 
 /** Configuration for an Android permission and its grant state. */
 class PermissionGrant {
-  /** The android permission, e.g. `android.permission.READ_CALENDAR`. */
+  /** The android permission, e.g. android.permission.READ_CALENDAR. */
   core.String permission;
   /**
    * The policy for granting the permission.
    * Possible string values are:
    * - "PERMISSION_POLICY_UNSPECIFIED" : Policy not specified. If no policy is
-   * specified for a permission at any
-   * level, then the `PROMPT` behavior is used by default.
+   * specified for a permission at any level, then the PROMPT behavior is used
+   * by default.
    * - "PROMPT" : Prompt the user to grant a permission.
    * - "GRANT" : Automatically grant a permission.
    * - "DENY" : Automatically deny a permission.
@@ -3227,13 +3159,13 @@ class PermissionGrant {
  */
 class PersistentPreferredActivity {
   /**
-   * The intent actions to match in the filter.  If any actions are included in
+   * The intent actions to match in the filter. If any actions are included in
    * the filter, then an intent's action must be one of those values for it to
    * match. If no actions are included, the intent action is ignored.
    */
   core.List<core.String> actions;
   /**
-   * The intent categories to match in the filter.  An intent includes the
+   * The intent categories to match in the filter. An intent includes the
    * categories that it requires, all of which must be included in the filter in
    * order to match. In other words, adding a category to the filter has no
    * impact on matching unless that category is specified in the intent.
@@ -3241,7 +3173,7 @@ class PersistentPreferredActivity {
   core.List<core.String> categories;
   /**
    * The activity that should be the default intent handler. This should be an
-   * Android component name, e.g. `com.android.enterprise.app/.MainActivity`.
+   * Android component name, e.g. com.android.enterprise.app/.MainActivity.
    * Alternatively, the value may be the package name of an app, which causes
    * Android Device Policy to choose an appropriate activity from the app to
    * handle the intent.
@@ -3286,9 +3218,9 @@ class Policy {
   /** Policy applied to apps. */
   core.List<ApplicationPolicy> applications;
   /**
-   * Whether applications other than the ones configured in `applications` are
-   * blocked from being installed. When set, applications that were
-   * installed under a previous policy but no longer appear in the policy are
+   * Whether applications other than the ones configured in applications are
+   * blocked from being installed. When set, applications that were installed
+   * under a previous policy but no longer appear in the policy are
    * automatically uninstalled.
    */
   core.bool blockApplicationsEnabled;
@@ -3307,8 +3239,8 @@ class Policy {
    * The default permission policy for requests for runtime permissions.
    * Possible string values are:
    * - "PERMISSION_POLICY_UNSPECIFIED" : Policy not specified. If no policy is
-   * specified for a permission at any
-   * level, then the `PROMPT` behavior is used by default.
+   * specified for a permission at any level, then the PROMPT behavior is used
+   * by default.
    * - "PROMPT" : Prompt the user to grant a permission.
    * - "GRANT" : Automatically grant a permission.
    * - "DENY" : Automatically deny a permission.
@@ -3317,16 +3249,20 @@ class Policy {
   /** Whether factory resetting from settings is disabled. */
   core.bool factoryResetDisabled;
   /**
-   * Email addresses of device administrators for factory reset protection.
-   * When the device is factory reset, it will require one of these admins to
-   * log in with the Google account email and password to unlock the device.
-   * If no admins are specified, the device will not provide factory reset
-   * protection.
+   * Email addresses of device administrators for factory reset protection. When
+   * the device is factory reset, it will require one of these admins to log in
+   * with the Google account email and password to unlock the device. If no
+   * admins are specified, the device will not provide factory reset protection.
    */
   core.List<core.String> frpAdminEmails;
   /**
-   * Whether the user is allowed to enable the "Unknown Sources" setting,
-   * which allows installation of apps from unknown sources.
+   * Whether the user is allowed to have fun. Controls whether the Easter egg
+   * game in Settings is disabled.
+   */
+  core.bool funDisabled;
+  /**
+   * Whether the user is allowed to enable the "Unknown Sources" setting, which
+   * allows installation of apps from unknown sources.
    */
   core.bool installUnknownSourcesAllowed;
   /** Whether the keyguard is disabled. */
@@ -3340,7 +3276,7 @@ class Policy {
   core.bool modifyAccountsDisabled;
   /**
    * The name of the policy in the form
-   * `enterprises/{enterpriseId}/policies/{policyId}`
+   * enterprises/{enterpriseId}/policies/{policyId}
    */
   core.String name;
   /**
@@ -3353,9 +3289,8 @@ class Policy {
    */
   core.bool networkEscapeHatchEnabled;
   /**
-   * Network configuration for the device. See
-   * [configure networks](/android/management/configure-networks)
-   * for more information.
+   * Network configuration for the device. See configure networks for more
+   * information.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3380,13 +3315,13 @@ class Policy {
   StatusReportingSettings statusReportingSettings;
   /**
    * The battery plugged in modes for which the device stays on. When using this
-   * setting, it is recommended to clear `maximum_time_to_lock` so that the
-   * device doesn't lock itself while it stays on.
+   * setting, it is recommended to clear maximum_time_to_lock so that the device
+   * doesn't lock itself while it stays on.
    */
   core.List<core.String> stayOnPluggedModes;
   /**
    * The system update policy, which controls how OS updates are applied. If the
-   * update type is `WINDOWED` and the device has a device account, the update
+   * update type is WINDOWED and the device has a device account, the update
    * window will automatically apply to Play app updates as well.
    */
   SystemUpdate systemUpdate;
@@ -3433,6 +3368,9 @@ class Policy {
     }
     if (_json.containsKey("frpAdminEmails")) {
       frpAdminEmails = _json["frpAdminEmails"];
+    }
+    if (_json.containsKey("funDisabled")) {
+      funDisabled = _json["funDisabled"];
     }
     if (_json.containsKey("installUnknownSourcesAllowed")) {
       installUnknownSourcesAllowed = _json["installUnknownSourcesAllowed"];
@@ -3522,6 +3460,9 @@ class Policy {
     if (frpAdminEmails != null) {
       _json["frpAdminEmails"] = frpAdminEmails;
     }
+    if (funDisabled != null) {
+      _json["funDisabled"] = funDisabled;
+    }
     if (installUnknownSourcesAllowed != null) {
       _json["installUnknownSourcesAllowed"] = installUnknownSourcesAllowed;
     }
@@ -3582,9 +3523,7 @@ class Policy {
 
 /** A power management event. */
 class PowerManagementEvent {
-  /**
-   * For `BATTERY_LEVEL_COLLECTED` events, the battery level as a percentage.
-   */
+  /** For BATTERY_LEVEL_COLLECTED events, the battery level as a percentage. */
   core.double batteryLevel;
   /** The creation time of the event. */
   core.String createTime;
@@ -3635,15 +3574,13 @@ class PowerManagementEvent {
 /** An enterprise signup URL. */
 class SignupUrl {
   /**
-   * The name of the resource. This must be included in the
-   * [create
-   * enterprise](/android/management/reference/rest/v1/enterprises/create)
+   * The name of the resource. This must be included in the create enterprise
    * request at the end of the signup flow.
    */
   core.String name;
   /**
-   * A URL under which the Admin can sign up for an enterprise.
-   * The page pointed to cannot be rendered in an iframe.
+   * A URL under which the Admin can sign up for an enterprise. The page pointed
+   * to cannot be rendered in an iframe.
    */
   core.String url;
 
@@ -3673,19 +3610,19 @@ class SignupUrl {
 /** Information about device software. */
 class SoftwareInfo {
   /**
-   * Android build Id string meant for displaying to the user,
-   * e.g. `shamu-userdebug 6.0.1 MOB30I 2756745 dev-keys`.
+   * Android build Id string meant for displaying to the user, e.g.
+   * shamu-userdebug 6.0.1 MOB30I 2756745 dev-keys.
    */
   core.String androidBuildNumber;
   /** Build time. */
   core.String androidBuildTime;
-  /** The user visible Android version string, e.g. `6.0.1`. */
+  /** The user visible Android version string, e.g. 6.0.1. */
   core.String androidVersion;
-  /** The system bootloader version number, e.g. `0.6.7`. */
+  /** The system bootloader version number, e.g. 0.6.7. */
   core.String bootloaderVersion;
-  /** Kernel version, e.g. `2.6.32.9-g103d848`. */
+  /** Kernel version, e.g. 2.6.32.9-g103d848. */
   core.String deviceKernelVersion;
-  /** Security patch level, e.g. `2016-05-01`. */
+  /** Security patch level, e.g. 2016-05-01. */
   core.String securityPatchLevel;
 
   SoftwareInfo();
@@ -3736,66 +3673,46 @@ class SoftwareInfo {
 }
 
 /**
- * The `Status` type defines a logical error model that is suitable for
- * different
+ * The Status type defines a logical error model that is suitable for different
  * programming environments, including REST APIs and RPC APIs. It is used by
- * [gRPC](https://github.com/grpc). The error model is designed to be:
- *
- * - Simple to use and understand for most users
- * - Flexible enough to meet unexpected needs
- *
- * # Overview
- *
- * The `Status` message contains three pieces of data: error code, error
- * message,
- * and error details. The error code should be an enum value of
- * google.rpc.Code, but it may accept additional error codes if needed.  The
- * error message should be a developer-facing English message that helps
- * developers *understand* and *resolve* the error. If a localized user-facing
- * error message is needed, put the localized message in the error details or
- * localize it in the client. The optional error details may contain arbitrary
- * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` that can be used for common error conditions.
- *
- * # Language mapping
- *
- * The `Status` message is the logical representation of the error model, but it
- * is not necessarily the actual wire format. When the `Status` message is
- * exposed in different client libraries and different wire protocols, it can be
- * mapped differently. For example, it will likely be mapped to some exceptions
- * in Java, but more likely mapped to some error codes in C.
- *
- * # Other uses
- *
- * The error model and the `Status` message can be used in a variety of
- * environments, either with or without APIs, to provide a
- * consistent developer experience across different environments.
- *
- * Example uses of this error model include:
- *
- * - Partial errors. If a service needs to return partial errors to the client,
- *     it may embed the `Status` in the normal response to indicate the partial
- *     errors.
- *
- * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting.
- *
- * - Batch operations. If a client uses batch request and batch response, the
- *     `Status` message should be used directly inside batch response, one for
- *     each error sub-response.
- *
- * - Asynchronous operations. If an API call embeds asynchronous operation
- *     results in its response, the status of those operations should be
- *     represented directly using the `Status` message.
- *
- * - Logging. If some API errors are stored in logs, the message `Status` could
- * be used directly after any stripping needed for security/privacy reasons.
+ * gRPC (https://github.com/grpc). The error model is designed to be:
+ * Simple to use and understand for most users
+ * Flexible enough to meet unexpected needsOverviewThe Status message contains
+ * three pieces of data: error code, error message, and error details. The error
+ * code should be an enum value of google.rpc.Code, but it may accept additional
+ * error codes if needed. The error message should be a developer-facing English
+ * message that helps developers understand and resolve the error. If a
+ * localized user-facing error message is needed, put the localized message in
+ * the error details or localize it in the client. The optional error details
+ * may contain arbitrary information about the error. There is a predefined set
+ * of error detail types in the package google.rpc that can be used for common
+ * error conditions.Language mappingThe Status message is the logical
+ * representation of the error model, but it is not necessarily the actual wire
+ * format. When the Status message is exposed in different client libraries and
+ * different wire protocols, it can be mapped differently. For example, it will
+ * likely be mapped to some exceptions in Java, but more likely mapped to some
+ * error codes in C.Other usesThe error model and the Status message can be used
+ * in a variety of environments, either with or without APIs, to provide a
+ * consistent developer experience across different environments.Example uses of
+ * this error model include:
+ * Partial errors. If a service needs to return partial errors to the client, it
+ * may embed the Status in the normal response to indicate the partial errors.
+ * Workflow errors. A typical workflow has multiple steps. Each step may have a
+ * Status message for error reporting.
+ * Batch operations. If a client uses batch request and batch response, the
+ * Status message should be used directly inside batch response, one for each
+ * error sub-response.
+ * Asynchronous operations. If an API call embeds asynchronous operation results
+ * in its response, the status of those operations should be represented
+ * directly using the Status message.
+ * Logging. If some API errors are stored in logs, the message Status could be
+ * used directly after any stripping needed for security/privacy reasons.
  */
 class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There is a common set of
+   * A list of messages that carry the error details. There is a common set of
    * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
@@ -3903,16 +3820,16 @@ class StatusReportingSettings {
 /** Configuration for managing system updates */
 class SystemUpdate {
   /**
-   * If the type is `WINDOWED`, the end of the maintenance window, measured as
-   * the number of minutes after midnight in device local time. This value must
-   * be between 0 and 1439, inclusive. If this value is less than
-   * `start_minutes`, then the maintenance window spans midnight. If the
-   * maintenance window specified is smaller than 30 minutes, the actual window
-   * is extended to 30 minutes beyond the start time.
+   * If the type is WINDOWED, the end of the maintenance window, measured as the
+   * number of minutes after midnight in device local time. This value must be
+   * between 0 and 1439, inclusive. If this value is less than start_minutes,
+   * then the maintenance window spans midnight. If the maintenance window
+   * specified is smaller than 30 minutes, the actual window is extended to 30
+   * minutes beyond the start time.
    */
   core.int endMinutes;
   /**
-   * If the type is `WINDOWED`, the start of the maintenance window, measured as
+   * If the type is WINDOWED, the start of the maintenance window, measured as
    * the number of minutes after midnight in device local time. This value must
    * be between 0 and 1439, inclusive.
    */
@@ -3921,15 +3838,13 @@ class SystemUpdate {
    * The type of system update to configure.
    * Possible string values are:
    * - "SYSTEM_UPDATE_TYPE_UNSPECIFIED" : Follow the default update behavior for
-   * the device, which typically
-   * requires the user to accept system updates.
+   * the device, which typically requires the user to accept system updates.
    * - "AUTOMATIC" : Install automatically as soon as an update is available.
    * - "WINDOWED" : Install automatically within a daily maintenance window. If
-   * the device
-   * has a device account, this also configures Play apps to be updated within
-   * the window. This is strongly recommended for kiosk devices because this
-   * is the only way apps persistently pinned to the foreground can be updated
-   * by Play.
+   * the device has a device account, this also configures Play apps to be
+   * updated within the window. This is strongly recommended for kiosk devices
+   * because this is the only way apps persistently pinned to the foreground can
+   * be updated by Play.
    * - "POSTPONE" : Postpone automatic install up to a maximum of 30 days.
    */
   core.String type;
@@ -3976,8 +3891,8 @@ class UserFacingMessage {
    */
   core.String defaultMessage;
   /**
-   * A map which contains <locale, message> pairs.
-   * The locale is a BCP 47 language code, e.g. en-US, es-ES, fr.
+   * A map which contains <locale, message> pairs. The locale is a BCP 47
+   * language code, e.g. en-US, es-ES, fr.
    */
   core.Map<core.String, core.String> localizedMessages;
 
@@ -4008,8 +3923,7 @@ class UserFacingMessage {
 class WebToken {
   /**
    * The name of the web token, which is generated by the server during
-   * creation, in the form
-   * `enterprises/{enterpriseId}/webTokens/{webTokenId}`.
+   * creation, in the form enterprises/{enterpriseId}/webTokens/{webTokenId}.
    */
   core.String name;
   /**

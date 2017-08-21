@@ -39,6 +39,8 @@ class EntitiesResourceApi {
    *
    * Request parameters:
    *
+   * [limit] - Limits the number of entities to be returned.
+   *
    * [prefix] - Enables prefix match against names and aliases of entities
    *
    * [query] - The literal query string for search.
@@ -58,8 +60,6 @@ class EntitiesResourceApi {
    * To specify multiple ids in the HTTP request, repeat the parameter in the
    * URL as in ...?ids=A&ids=B
    *
-   * [limit] - Limits the number of entities to be returned.
-   *
    * Completes with a [SearchResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -68,7 +68,7 @@ class EntitiesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<SearchResponse> search({core.bool prefix, core.String query, core.List<core.String> types, core.bool indent, core.List<core.String> languages, core.List<core.String> ids, core.int limit}) {
+  async.Future<SearchResponse> search({core.int limit, core.bool prefix, core.String query, core.List<core.String> types, core.bool indent, core.List<core.String> languages, core.List<core.String> ids}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -76,6 +76,9 @@ class EntitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (limit != null) {
+      _queryParams["limit"] = ["${limit}"];
+    }
     if (prefix != null) {
       _queryParams["prefix"] = ["${prefix}"];
     }
@@ -93,9 +96,6 @@ class EntitiesResourceApi {
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
-    }
-    if (limit != null) {
-      _queryParams["limit"] = ["${limit}"];
     }
 
     _url = 'v1/entities:search';

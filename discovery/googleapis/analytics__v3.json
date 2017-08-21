@@ -29,7 +29,7 @@
     "description": "Views and manages your Google Analytics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-SiQlGIRBbnzY0JcLS-jmuPpVII\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/DSG2TEF18bxTdYooKf_C2-FmmME\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/analytics-16.png",
         "x32": "https://www.google.com/images/icons/product/analytics-32.png"
@@ -3744,7 +3744,7 @@
             }
         }
     },
-    "revision": "20170726",
+    "revision": "20170807",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -4160,6 +4160,13 @@
                     },
                     "type": "array"
                 },
+                "schema": {
+                    "description": "Collection of schema headers of the custom data source.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "selfLink": {
                     "description": "Link for this Analytics custom data source.",
                     "type": "string"
@@ -4174,6 +4181,7 @@
                     "type": "string"
                 },
                 "uploadType": {
+                    "description": "Upload type of the custom data source.",
                     "type": "string"
                 },
                 "webPropertyId": {
@@ -6907,6 +6915,11 @@
                 },
                 "status": {
                     "description": "Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED.",
+                    "type": "string"
+                },
+                "uploadTime": {
+                    "description": "Time this file is uploaded.",
+                    "format": "date-time",
                     "type": "string"
                 }
             },

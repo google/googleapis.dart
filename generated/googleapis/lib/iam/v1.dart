@@ -208,6 +208,8 @@ class OrganizationsRolesResourceApi {
    * `projects/{PROJECT_ID}`
    * Value must have pattern "^organizations/[^/]+$".
    *
+   * [showDeleted] - Include Roles that have been deleted.
+   *
    * [pageToken] - Optional pagination token returned in an earlier
    * ListRolesResponse.
    *
@@ -219,8 +221,6 @@ class OrganizationsRolesResourceApi {
    * - "BASIC" : A BASIC.
    * - "FULL" : A FULL.
    *
-   * [showDeleted] - Include Roles that have been deleted.
-   *
    * Completes with a [ListRolesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -229,7 +229,7 @@ class OrganizationsRolesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListRolesResponse> list(core.String parent, {core.String pageToken, core.int pageSize, core.String view, core.bool showDeleted}) {
+  async.Future<ListRolesResponse> list(core.String parent, {core.bool showDeleted, core.String pageToken, core.int pageSize, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -240,6 +240,9 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -248,9 +251,6 @@ class OrganizationsRolesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
@@ -1522,12 +1522,6 @@ class RolesResourceApi {
    *
    * Request parameters:
    *
-   * [pageToken] - Optional pagination token returned in an earlier
-   * ListRolesResponse.
-   *
-   * [pageSize] - Optional limit on the number of roles to include in the
-   * response.
-   *
    * [view] - Optional view for the returned Role objects.
    * Possible string values are:
    * - "BASIC" : A BASIC.
@@ -1541,6 +1535,12 @@ class RolesResourceApi {
    *
    * [showDeleted] - Include Roles that have been deleted.
    *
+   * [pageToken] - Optional pagination token returned in an earlier
+   * ListRolesResponse.
+   *
+   * [pageSize] - Optional limit on the number of roles to include in the
+   * response.
+   *
    * Completes with a [ListRolesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1549,7 +1549,7 @@ class RolesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListRolesResponse> list({core.String pageToken, core.int pageSize, core.String view, core.String parent, core.bool showDeleted}) {
+  async.Future<ListRolesResponse> list({core.String view, core.String parent, core.bool showDeleted, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1557,12 +1557,6 @@ class RolesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
@@ -1571,6 +1565,12 @@ class RolesResourceApi {
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/roles';
@@ -1814,7 +1814,6 @@ class CreateRoleRequest {
 
 /** The service account key create request. */
 class CreateServiceAccountKeyRequest {
-  core.bool includePublicKeyData;
   /**
    * Which type of key and algorithm to use for the key.
    * The default is currently a 2K RSA key.  However this may change in the
@@ -1841,9 +1840,6 @@ class CreateServiceAccountKeyRequest {
   CreateServiceAccountKeyRequest();
 
   CreateServiceAccountKeyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("includePublicKeyData")) {
-      includePublicKeyData = _json["includePublicKeyData"];
-    }
     if (_json.containsKey("keyAlgorithm")) {
       keyAlgorithm = _json["keyAlgorithm"];
     }
@@ -1854,9 +1850,6 @@ class CreateServiceAccountKeyRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (includePublicKeyData != null) {
-      _json["includePublicKeyData"] = includePublicKeyData;
-    }
     if (keyAlgorithm != null) {
       _json["keyAlgorithm"] = keyAlgorithm;
     }

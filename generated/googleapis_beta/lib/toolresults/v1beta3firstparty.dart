@@ -353,6 +353,7 @@ class ProjectsHistoriesResourceApi {
 class ProjectsHistoriesExecutionsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsHistoriesExecutionsClustersResourceApi get clusters => new ProjectsHistoriesExecutionsClustersResourceApi(_requester);
   ProjectsHistoriesExecutionsStepsResourceApi get steps => new ProjectsHistoriesExecutionsStepsResourceApi(_requester);
 
   ProjectsHistoriesExecutionsResourceApi(commons.ApiRequester client) : 
@@ -630,6 +631,77 @@ class ProjectsHistoriesExecutionsResourceApi {
                                        uploadMedia: _uploadMedia,
                                        downloadOptions: _downloadOptions);
     return _response.then((data) => new Execution.fromJson(data));
+  }
+
+}
+
+
+class ProjectsHistoriesExecutionsClustersResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsHistoriesExecutionsClustersResourceApi(commons.ApiRequester client) : 
+      _requester = client;
+
+  /**
+   * Lists Screenshot Clusters
+   *
+   * Returns the list of screenshot clusters corresponding to an execution.
+   * Screenshot clusters are created after the execution is finished. Clusters
+   * are created from a set of screenshots. Between any two screenshots, a
+   * matching score is calculated based off their metadata that determines how
+   * similar they are. Screenshots are placed in the cluster that has screens
+   * which have the highest matching scores.
+   *
+   * Request parameters:
+   *
+   * [projectId] - A Project id.
+   *
+   * Required.
+   *
+   * [historyId] - A History id.
+   *
+   * Required.
+   *
+   * [executionId] - An Execution id.
+   *
+   * Required.
+   *
+   * Completes with a [ListScreenshotClustersResponse].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method will complete with the same error.
+   */
+  async.Future<ListScreenshotClustersResponse> list(core.String projectId, core.String historyId, core.String executionId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories/' + commons.Escaper.ecapeVariable('$historyId') + '/executions/' + commons.Escaper.ecapeVariable('$executionId') + '/clusters';
+
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListScreenshotClustersResponse.fromJson(data));
   }
 
 }
@@ -1622,6 +1694,224 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
 
 
 
+/** Android app information. */
+class AndroidAppInfo {
+  /** The name of the app. Optional */
+  core.String name;
+  /** The package name of the app. Required. */
+  core.String packageName;
+  /** The internal version code of the app. Optional. */
+  core.String versionCode;
+  /** The version name of the app. Optional. */
+  core.String versionName;
+
+  AndroidAppInfo();
+
+  AndroidAppInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+    if (_json.containsKey("versionCode")) {
+      versionCode = _json["versionCode"];
+    }
+    if (_json.containsKey("versionName")) {
+      versionName = _json["versionName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
+    }
+    if (versionCode != null) {
+      _json["versionCode"] = versionCode;
+    }
+    if (versionName != null) {
+      _json["versionName"] = versionName;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A test of an Android application that can control an Android component
+ * independently of its normal lifecycle.
+ *
+ * See  for more information on types of Android tests.
+ */
+class AndroidInstrumentationTest {
+  /** The java package for the test to be executed. Required */
+  core.String testPackageId;
+  /** The InstrumentationTestRunner class. Required */
+  core.String testRunnerClass;
+  /**
+   * Each target must be fully qualified with the package name or class name, in
+   * one of these formats: - "package package_name" - "class
+   * package_name.class_name" - "class package_name.class_name#method_name"
+   *
+   * If empty, all targets in the module will be run.
+   */
+  core.List<core.String> testTargets;
+  /**
+   * The flag indicates whether Android Test Orchestrator will be used to run
+   * test or not. Test orchestrator is used if either: - orchestrator_option
+   * field is USE_ORCHESTRATOR, and test runner is compatible with orchestrator.
+   * Or - orchestrator_option field is unspecified or
+   * ORCHESTRATOR_OPTION_UNSPECIFIED, and test runner is compatible with
+   * orchestrator.
+   */
+  core.bool useOrchestrator;
+
+  AndroidInstrumentationTest();
+
+  AndroidInstrumentationTest.fromJson(core.Map _json) {
+    if (_json.containsKey("testPackageId")) {
+      testPackageId = _json["testPackageId"];
+    }
+    if (_json.containsKey("testRunnerClass")) {
+      testRunnerClass = _json["testRunnerClass"];
+    }
+    if (_json.containsKey("testTargets")) {
+      testTargets = _json["testTargets"];
+    }
+    if (_json.containsKey("useOrchestrator")) {
+      useOrchestrator = _json["useOrchestrator"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (testPackageId != null) {
+      _json["testPackageId"] = testPackageId;
+    }
+    if (testRunnerClass != null) {
+      _json["testRunnerClass"] = testRunnerClass;
+    }
+    if (testTargets != null) {
+      _json["testTargets"] = testTargets;
+    }
+    if (useOrchestrator != null) {
+      _json["useOrchestrator"] = useOrchestrator;
+    }
+    return _json;
+  }
+}
+
+/**
+ * A test of an android application that explores the application on a virtual
+ * or physical Android device, finding culprits and crashes as it goes.
+ */
+class AndroidRoboTest {
+  /** The initial activity that should be used to start the app. Optional */
+  core.String appInitialActivity;
+  /** The java package for the bootstrap. Optional */
+  core.String bootstrapPackageId;
+  /** The runner class for the bootstrap. Optional */
+  core.String bootstrapRunnerClass;
+  /** The max depth of the traversal stack Robo can explore. Optional */
+  core.int maxDepth;
+  /**
+   * The max number of steps/actions Robo can execute. Default is no limit (0).
+   * Optional
+   */
+  core.int maxSteps;
+
+  AndroidRoboTest();
+
+  AndroidRoboTest.fromJson(core.Map _json) {
+    if (_json.containsKey("appInitialActivity")) {
+      appInitialActivity = _json["appInitialActivity"];
+    }
+    if (_json.containsKey("bootstrapPackageId")) {
+      bootstrapPackageId = _json["bootstrapPackageId"];
+    }
+    if (_json.containsKey("bootstrapRunnerClass")) {
+      bootstrapRunnerClass = _json["bootstrapRunnerClass"];
+    }
+    if (_json.containsKey("maxDepth")) {
+      maxDepth = _json["maxDepth"];
+    }
+    if (_json.containsKey("maxSteps")) {
+      maxSteps = _json["maxSteps"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (appInitialActivity != null) {
+      _json["appInitialActivity"] = appInitialActivity;
+    }
+    if (bootstrapPackageId != null) {
+      _json["bootstrapPackageId"] = bootstrapPackageId;
+    }
+    if (bootstrapRunnerClass != null) {
+      _json["bootstrapRunnerClass"] = bootstrapRunnerClass;
+    }
+    if (maxDepth != null) {
+      _json["maxDepth"] = maxDepth;
+    }
+    if (maxSteps != null) {
+      _json["maxSteps"] = maxSteps;
+    }
+    return _json;
+  }
+}
+
+/** An Android mobile test specification. */
+class AndroidTest {
+  /** Infomation about the application under test. */
+  AndroidAppInfo androidAppInfo;
+  /** An Android instrumentation test. */
+  AndroidInstrumentationTest androidInstrumentationTest;
+  /** An Android robo test. */
+  AndroidRoboTest androidRoboTest;
+  /**
+   * Max time a test is allowed to run before it is automatically cancelled.
+   */
+  Duration testTimeout;
+
+  AndroidTest();
+
+  AndroidTest.fromJson(core.Map _json) {
+    if (_json.containsKey("androidAppInfo")) {
+      androidAppInfo = new AndroidAppInfo.fromJson(_json["androidAppInfo"]);
+    }
+    if (_json.containsKey("androidInstrumentationTest")) {
+      androidInstrumentationTest = new AndroidInstrumentationTest.fromJson(_json["androidInstrumentationTest"]);
+    }
+    if (_json.containsKey("androidRoboTest")) {
+      androidRoboTest = new AndroidRoboTest.fromJson(_json["androidRoboTest"]);
+    }
+    if (_json.containsKey("testTimeout")) {
+      testTimeout = new Duration.fromJson(_json["testTimeout"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (androidAppInfo != null) {
+      _json["androidAppInfo"] = (androidAppInfo).toJson();
+    }
+    if (androidInstrumentationTest != null) {
+      _json["androidInstrumentationTest"] = (androidInstrumentationTest).toJson();
+    }
+    if (androidRoboTest != null) {
+      _json["androidRoboTest"] = (androidRoboTest).toJson();
+    }
+    if (testTimeout != null) {
+      _json["testTimeout"] = (testTimeout).toJson();
+    }
+    return _json;
+  }
+}
+
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a
  * URL that describes the type of the serialized message.
@@ -2056,6 +2346,13 @@ class Execution {
    */
   Outcome outcome;
   /**
+   * Lightweight information about execution request.
+   *
+   * - In response: present if set by create - In create: optional - In update:
+   * optional
+   */
+  Specification specification;
+  /**
    * The initial state is IN_PROGRESS.
    *
    * The only legal state transitions is from IN_PROGRESS to COMPLETE.
@@ -2101,6 +2398,9 @@ class Execution {
     if (_json.containsKey("outcome")) {
       outcome = new Outcome.fromJson(_json["outcome"]);
     }
+    if (_json.containsKey("specification")) {
+      specification = new Specification.fromJson(_json["specification"]);
+    }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
@@ -2122,6 +2422,9 @@ class Execution {
     }
     if (outcome != null) {
       _json["outcome"] = (outcome).toJson();
+    }
+    if (specification != null) {
+      _json["specification"] = (specification).toJson();
     }
     if (state != null) {
       _json["state"] = state;
@@ -2506,6 +2809,27 @@ class ListPerfSamplesResponse {
     }
     if (perfSamples != null) {
       _json["perfSamples"] = perfSamples.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ListScreenshotClustersResponse {
+  /** The set of clustres associated with an execution Always set */
+  core.List<ScreenshotCluster> clusters;
+
+  ListScreenshotClustersResponse();
+
+  ListScreenshotClustersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("clusters")) {
+      clusters = _json["clusters"].map((value) => new ScreenshotCluster.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (clusters != null) {
+      _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2976,6 +3300,101 @@ class PublishXunitXmlFilesRequest {
   }
 }
 
+class Screen {
+  /** File reference of the png file. Required. */
+  core.String fileReference;
+  /** Locale of the device that the screenshot was taken on. Required. */
+  core.String locale;
+  /** Model of the device that the screenshot was taken on. Required. */
+  core.String model;
+  /** OS version of the device that the screenshot was taken on. Required. */
+  core.String version;
+
+  Screen();
+
+  Screen.fromJson(core.Map _json) {
+    if (_json.containsKey("fileReference")) {
+      fileReference = _json["fileReference"];
+    }
+    if (_json.containsKey("locale")) {
+      locale = _json["locale"];
+    }
+    if (_json.containsKey("model")) {
+      model = _json["model"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (fileReference != null) {
+      _json["fileReference"] = fileReference;
+    }
+    if (locale != null) {
+      _json["locale"] = locale;
+    }
+    if (model != null) {
+      _json["model"] = model;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+class ScreenshotCluster {
+  /** A string that describes the activity of every screen in the cluster. */
+  core.String activity;
+  /** A unique identifier for the cluster. */
+  core.String clusterId;
+  /**
+   * A singular screen that represents the cluster as a whole. This screen will
+   * act as the "cover" of the entire cluster. When users look at the clusters,
+   * only the key screen from each cluster will be shown. Which screen is the
+   * key screen is determined by the ClusteringAlgorithm
+   */
+  Screen keyScreen;
+  /** Full list of screens. */
+  core.List<Screen> screens;
+
+  ScreenshotCluster();
+
+  ScreenshotCluster.fromJson(core.Map _json) {
+    if (_json.containsKey("activity")) {
+      activity = _json["activity"];
+    }
+    if (_json.containsKey("clusterId")) {
+      clusterId = _json["clusterId"];
+    }
+    if (_json.containsKey("keyScreen")) {
+      keyScreen = new Screen.fromJson(_json["keyScreen"]);
+    }
+    if (_json.containsKey("screens")) {
+      screens = _json["screens"].map((value) => new Screen.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (activity != null) {
+      _json["activity"] = activity;
+    }
+    if (clusterId != null) {
+      _json["clusterId"] = clusterId;
+    }
+    if (keyScreen != null) {
+      _json["keyScreen"] = (keyScreen).toJson();
+    }
+    if (screens != null) {
+      _json["screens"] = screens.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class SkippedDetail {
   /** If the App doesn't support the specific API level. */
   core.bool incompatibleAppVersion;
@@ -3008,6 +3427,28 @@ class SkippedDetail {
     }
     if (incompatibleDevice != null) {
       _json["incompatibleDevice"] = incompatibleDevice;
+    }
+    return _json;
+  }
+}
+
+/** The details about how to run the execution. */
+class Specification {
+  /** An Android mobile test execution specification. */
+  AndroidTest androidTest;
+
+  Specification();
+
+  Specification.fromJson(core.Map _json) {
+    if (_json.containsKey("androidTest")) {
+      androidTest = new AndroidTest.fromJson(_json["androidTest"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (androidTest != null) {
+      _json["androidTest"] = (androidTest).toJson();
     }
     return _json;
   }
@@ -3634,16 +4075,35 @@ class TestExecutionStep {
   }
 }
 
-/** An abnormal event observed during the test execution. */
+/** An issue detected occurring during a test execution. */
 class TestIssue {
-  /**
-   * A brief human-readable message describing the abnormal event.
-   *
-   * Required.
-   */
+  /** A brief human-readable message describing the issue. Required. */
   core.String errorMessage;
-  /** Optional. */
+  /**
+   * Severity of issue. Required.
+   * Possible string values are:
+   * - "info"
+   * - "severe"
+   * - "unspecifiedSeverity"
+   * - "warning"
+   */
+  core.String severity;
+  /** Deprecated in favor of stack trace fields inside specific warnings. */
   StackTrace stackTrace;
+  /**
+   * Type of issue. Required.
+   * Possible string values are:
+   * - "anr"
+   * - "fatalException"
+   * - "nativeCrash"
+   * - "unspecifiedType"
+   */
+  core.String type;
+  /**
+   * Warning message with additional details of the issue. Should always be a
+   * message from com.google.devtools.toolresults.v1.warnings Required.
+   */
+  Any warning;
 
   TestIssue();
 
@@ -3651,8 +4111,17 @@ class TestIssue {
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
+    if (_json.containsKey("severity")) {
+      severity = _json["severity"];
+    }
     if (_json.containsKey("stackTrace")) {
       stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new Any.fromJson(_json["warning"]);
     }
   }
 
@@ -3661,8 +4130,17 @@ class TestIssue {
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
+    if (severity != null) {
+      _json["severity"] = severity;
+    }
     if (stackTrace != null) {
       _json["stackTrace"] = (stackTrace).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }

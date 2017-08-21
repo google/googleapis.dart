@@ -1,3 +1,12 @@
+## 0.39.1
+
+* [api] dataflow:v1b3
+* [api] dlp:v2beta1
+* [api] logging:v2beta1
+* [api] sqladmin:v1beta4
+* [api] toolresults:v1beta3firstparty
+* [api] toolresults:v1beta3
+
 ## 0.39.0
 
 * [api-removed] dataproc:v1beta1

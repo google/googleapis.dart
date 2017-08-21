@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const core.String USER_AGENT = 'dart-api-client script/v1';
 
-/** Executes Google Apps Script projects. */
+/** Executes functions in Google Apps Script projects. */
 class ScriptApi {
   /** Read, send, delete, and manage your email */
   static const MailGoogleComScope = "https://mail.google.com/";
@@ -80,8 +80,8 @@ class ScriptsResourceApi {
    *
    * Request parameters:
    *
-   * [scriptId] - The project key of the script to be executed. To find the
-   * project key, open
+   * [scriptId] - The script ID of the script to be executed. To find the script
+   * ID, open
    * the project in the script editor and select **File > Project properties**.
    *
    * Completes with a [Operation].
@@ -295,79 +295,6 @@ class ExecutionResponse {
 }
 
 /**
- * A request to retrieve the results from a collection of requests,
- * specified by the operation resource names.
- */
-class JoinAsyncRequest {
-  /**
-   * List of operation resource names that we want to join,
-   * as returned from a call to RunAsync.
-   */
-  core.List<core.String> names;
-  /**
-   * The script id which specifies the script which all processes in the names
-   * field must be from.
-   */
-  core.String scriptId;
-  /** Timeout for information retrieval in milliseconds. */
-  core.String timeout;
-
-  JoinAsyncRequest();
-
-  JoinAsyncRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("names")) {
-      names = _json["names"];
-    }
-    if (_json.containsKey("scriptId")) {
-      scriptId = _json["scriptId"];
-    }
-    if (_json.containsKey("timeout")) {
-      timeout = _json["timeout"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (names != null) {
-      _json["names"] = names;
-    }
-    if (scriptId != null) {
-      _json["scriptId"] = scriptId;
-    }
-    if (timeout != null) {
-      _json["timeout"] = timeout;
-    }
-    return _json;
-  }
-}
-
-/** An object that provides the return value for the JoinAsync method. */
-class JoinAsyncResponse {
-  /**
-   * The return values for each script function, in a map of operation resource
-   * names to the Operation containing the result of the process. The response
-   * will contain either an error or the result of the script function.
-   */
-  core.Map<core.String, Operation> results;
-
-  JoinAsyncResponse();
-
-  JoinAsyncResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("results")) {
-      results = commons.mapMap<core.Map<core.String, core.Object>, Operation>(_json["results"], (core.Map<core.String, core.Object> item) => new Operation.fromJson(item));
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
-    if (results != null) {
-      _json["results"] = commons.mapMap<Operation, core.Map<core.String, core.Object>>(results, (Operation item) => (item).toJson());
-    }
-    return _json;
-  }
-}
-
-/**
  * The response will not arrive until the function finishes executing. The
  * maximum runtime is listed in the guide to [limitations in Apps
  * Script](https://developers.google.com/apps-script/guides/services/quotas#current_limitations).
@@ -385,7 +312,12 @@ class JoinAsyncResponse {
  * class.</p>
  */
 class Operation {
-  /** This field is not used. */
+  /**
+   * This field is only used with asynchronous executions and indicates whether
+   * or not the script execution has completed. A completed execution has a
+   * populated response field containing the `ExecutionResponse` from function
+   * that was executed.
+   */
   core.bool done;
   /**
    * If a `run` call succeeds but the script function (or Apps Script itself)
@@ -402,7 +334,11 @@ class Operation {
    * `String`, `bool` and `null` as well as `Map` and `List` values.
    */
   core.Map<core.String, core.Object> metadata;
-  /** This field is not used. */
+  /**
+   * This field is only used with asynchronous executions and contains a unique
+   * identifier that can be used to subsequently invoke a `get` `cancel` or
+   * `join` on the asynchronous script execution identified by this name.
+   */
   core.String name;
   /**
    * If the script function returns successfully, this field will contain an
@@ -493,7 +429,7 @@ class ScriptStackTraceElement {
 class Status {
   /**
    * The status code. For this API, this value will always be 3, corresponding
-   * to an INVALID_ARGUMENT error.
+   * to an <code>INVALID_ARGUMENT</code> error.
    */
   core.int code;
   /**

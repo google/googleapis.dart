@@ -269,6 +269,11 @@ class ProjectsGroupsResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [childrenOfGroup] - A group name:
+   * "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+   * parentName field contains the group name. If no groups have this parent,
+   * the results are empty.
+   *
    * [descendantsOfGroup] - A group name:
    * "projects/{project_id_or_number}/groups/{group_id}". Returns the
    * descendants of the specified group. This is a superset of the results
@@ -290,11 +295,6 @@ class ProjectsGroupsResourceApi {
    * ancestor. If the specified group has no immediate parent, the results are
    * empty.
    *
-   * [childrenOfGroup] - A group name:
-   * "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-   * parentName field contains the group name. If no groups have this parent,
-   * the results are empty.
-   *
    * Completes with a [ListGroupsResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -303,7 +303,7 @@ class ProjectsGroupsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupsResponse> list(core.String name, {core.String descendantsOfGroup, core.String pageToken, core.int pageSize, core.String ancestorsOfGroup, core.String childrenOfGroup}) {
+  async.Future<ListGroupsResponse> list(core.String name, {core.String childrenOfGroup, core.String descendantsOfGroup, core.String pageToken, core.int pageSize, core.String ancestorsOfGroup}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -313,6 +313,9 @@ class ProjectsGroupsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (childrenOfGroup != null) {
+      _queryParams["childrenOfGroup"] = [childrenOfGroup];
     }
     if (descendantsOfGroup != null) {
       _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
@@ -325,9 +328,6 @@ class ProjectsGroupsResourceApi {
     }
     if (ancestorsOfGroup != null) {
       _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
-    }
-    if (childrenOfGroup != null) {
-      _queryParams["childrenOfGroup"] = [childrenOfGroup];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/groups';
@@ -428,12 +428,12 @@ class ProjectsGroupsMembersResourceApi {
    * field causes the method to return additional results from the previous
    * method call.
    *
+   * [pageSize] - A positive number that is the maximum number of results to
+   * return.
+   *
    * [interval_startTime] - Optional. The beginning of the time interval. The
    * default value for the start time is the end time. The start time must not
    * be later than the end time.
-   *
-   * [pageSize] - A positive number that is the maximum number of results to
-   * return.
    *
    * Completes with a [ListGroupMembersResponse].
    *
@@ -443,7 +443,7 @@ class ProjectsGroupsMembersResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListGroupMembersResponse> list(core.String name, {core.String interval_endTime, core.String filter, core.String pageToken, core.String interval_startTime, core.int pageSize}) {
+  async.Future<ListGroupMembersResponse> list(core.String name, {core.String interval_endTime, core.String filter, core.String pageToken, core.int pageSize, core.String interval_startTime}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -463,11 +463,11 @@ class ProjectsGroupsMembersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/members';
@@ -635,12 +635,6 @@ class ProjectsMetricDescriptorsResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [filter] - If this field is empty, all custom and system-defined metric
-   * descriptors are returned. Otherwise, the filter specifies which metric
-   * descriptors are to be returned. For example, the following filter matches
-   * all custom metrics:
-   * metric.type = starts_with("custom.googleapis.com/")
-   *
    * [pageToken] - If this field is not empty then it must contain the
    * nextPageToken value returned by a previous call to this method. Using this
    * field causes the method to return additional results from the previous
@@ -648,6 +642,12 @@ class ProjectsMetricDescriptorsResourceApi {
    *
    * [pageSize] - A positive number that is the maximum number of results to
    * return.
+   *
+   * [filter] - If this field is empty, all custom and system-defined metric
+   * descriptors are returned. Otherwise, the filter specifies which metric
+   * descriptors are to be returned. For example, the following filter matches
+   * all custom metrics:
+   * metric.type = starts_with("custom.googleapis.com/")
    *
    * Completes with a [ListMetricDescriptorsResponse].
    *
@@ -657,7 +657,7 @@ class ProjectsMetricDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListMetricDescriptorsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
+  async.Future<ListMetricDescriptorsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -668,14 +668,14 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/metricDescriptors';
@@ -753,6 +753,12 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
+   * [filter] - An optional filter describing the descriptors to be returned.
+   * The filter can reference the descriptor's type and labels. For example, the
+   * following filter returns only Google Compute Engine descriptors that have
+   * an id label:
+   * resource.type = starts_with("gce_") AND resource.label:id
+   *
    * [pageToken] - If this field is not empty then it must contain the
    * nextPageToken value returned by a previous call to this method. Using this
    * field causes the method to return additional results from the previous
@@ -760,12 +766,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
    *
    * [pageSize] - A positive number that is the maximum number of results to
    * return.
-   *
-   * [filter] - An optional filter describing the descriptors to be returned.
-   * The filter can reference the descriptor's type and labels. For example, the
-   * following filter returns only Google Compute Engine descriptors that have
-   * an id label:
-   * resource.type = starts_with("gce_") AND resource.label:id
    *
    * Completes with a [ListMonitoredResourceDescriptorsResponse].
    *
@@ -775,7 +775,7 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name, {core.String pageToken, core.int pageSize, core.String filter}) {
+  async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name, {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -786,14 +786,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/monitoredResourceDescriptors';
@@ -876,40 +876,6 @@ class ProjectsTimeSeriesResourceApi {
    * "projects/{project_id_or_number}".
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [orderBy] - Specifies the order in which the points of the time series
-   * should be returned. By default, results are not ordered. Currently, this
-   * field must be left blank.
-   *
-   * [aggregation_crossSeriesReducer] - The approach to be used to combine time
-   * series. Not all reducer functions may be applied to all time series,
-   * depending on the metric type and the value type of the original time
-   * series. Reduction may change the metric type of value type of the time
-   * series.Time series data must be aligned in order to perform cross-time
-   * series reduction. If crossSeriesReducer is specified, then perSeriesAligner
-   * must be specified and not equal ALIGN_NONE and alignmentPeriod must be
-   * specified; otherwise, an error is returned.
-   * Possible string values are:
-   * - "REDUCE_NONE" : A REDUCE_NONE.
-   * - "REDUCE_MEAN" : A REDUCE_MEAN.
-   * - "REDUCE_MIN" : A REDUCE_MIN.
-   * - "REDUCE_MAX" : A REDUCE_MAX.
-   * - "REDUCE_SUM" : A REDUCE_SUM.
-   * - "REDUCE_STDDEV" : A REDUCE_STDDEV.
-   * - "REDUCE_COUNT" : A REDUCE_COUNT.
-   * - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
-   * - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
-   * - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
-   * - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
-   * - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
-   * - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
-   * - "REDUCE_FRACTION_LESS_THAN" : A REDUCE_FRACTION_LESS_THAN.
-   *
-   * [filter] - A monitoring filter that specifies which time series should be
-   * returned. The filter must specify a single metric type, and can
-   * additionally specify metric labels and other information. For example:
-   * metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-   *     metric.label.instance_name = "my-instance-name"
-   *
    * [pageToken] - If this field is not empty then it must contain the
    * nextPageToken value returned by a previous call to this method. Using this
    * field causes the method to return additional results from the previous
@@ -941,7 +907,6 @@ class ProjectsTimeSeriesResourceApi {
    * - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
    * - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
    * - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
-   * - "ALIGN_MAKE_DISTRIBUTION" : A ALIGN_MAKE_DISTRIBUTION.
    *
    * [interval_startTime] - Optional. The beginning of the time interval. The
    * default value for the start time is the end time. The start time must not
@@ -951,9 +916,6 @@ class ProjectsTimeSeriesResourceApi {
    * Possible string values are:
    * - "FULL" : A FULL.
    * - "HEADERS" : A HEADERS.
-   *
-   * [aggregation_reduceFractionLessThanParams_threshold] - The threshold used
-   * by the REDUCE_FRACTION_LESS_THAN cross-series reducer.
    *
    * [aggregation_groupByFields] - The set of fields to preserve when
    * crossSeriesReducer is specified. The groupByFields determine how the time
@@ -983,10 +945,38 @@ class ProjectsTimeSeriesResourceApi {
    * will return; if view field is HEADERS, it limits the number of TimeSeries
    * server will return.
    *
-   * [outputPeriod] - If outputPeriod is specified, the data in the response
-   * will have the given period. Must be equal to or longer than
-   * alignmentPeriod. Must not be used when view is HEADERS. Only used when
-   * interval describes an interval longer than a single point.
+   * [orderBy] - Specifies the order in which the points of the time series
+   * should be returned. By default, results are not ordered. Currently, this
+   * field must be left blank.
+   *
+   * [aggregation_crossSeriesReducer] - The approach to be used to combine time
+   * series. Not all reducer functions may be applied to all time series,
+   * depending on the metric type and the value type of the original time
+   * series. Reduction may change the metric type of value type of the time
+   * series.Time series data must be aligned in order to perform cross-time
+   * series reduction. If crossSeriesReducer is specified, then perSeriesAligner
+   * must be specified and not equal ALIGN_NONE and alignmentPeriod must be
+   * specified; otherwise, an error is returned.
+   * Possible string values are:
+   * - "REDUCE_NONE" : A REDUCE_NONE.
+   * - "REDUCE_MEAN" : A REDUCE_MEAN.
+   * - "REDUCE_MIN" : A REDUCE_MIN.
+   * - "REDUCE_MAX" : A REDUCE_MAX.
+   * - "REDUCE_SUM" : A REDUCE_SUM.
+   * - "REDUCE_STDDEV" : A REDUCE_STDDEV.
+   * - "REDUCE_COUNT" : A REDUCE_COUNT.
+   * - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
+   * - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
+   * - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
+   * - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
+   * - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
+   * - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
+   *
+   * [filter] - A monitoring filter that specifies which time series should be
+   * returned. The filter must specify a single metric type, and can
+   * additionally specify metric labels and other information. For example:
+   * metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+   *     metric.label.instance_name = "my-instance-name"
    *
    * Completes with a [ListTimeSeriesResponse].
    *
@@ -996,7 +986,7 @@ class ProjectsTimeSeriesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListTimeSeriesResponse> list(core.String name, {core.String orderBy, core.String aggregation_crossSeriesReducer, core.String filter, core.String pageToken, core.String aggregation_perSeriesAligner, core.String interval_startTime, core.String view, core.double aggregation_reduceFractionLessThanParams_threshold, core.List<core.String> aggregation_groupByFields, core.String interval_endTime, core.String aggregation_alignmentPeriod, core.int pageSize, core.String outputPeriod}) {
+  async.Future<ListTimeSeriesResponse> list(core.String name, {core.String pageToken, core.String aggregation_perSeriesAligner, core.String interval_startTime, core.String view, core.List<core.String> aggregation_groupByFields, core.String interval_endTime, core.String aggregation_alignmentPeriod, core.int pageSize, core.String orderBy, core.String aggregation_crossSeriesReducer, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1006,15 +996,6 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (aggregation_crossSeriesReducer != null) {
-      _queryParams["aggregation.crossSeriesReducer"] = [aggregation_crossSeriesReducer];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1028,9 +1009,6 @@ class ProjectsTimeSeriesResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-    if (aggregation_reduceFractionLessThanParams_threshold != null) {
-      _queryParams["aggregation.reduceFractionLessThanParams.threshold"] = ["${aggregation_reduceFractionLessThanParams_threshold}"];
-    }
     if (aggregation_groupByFields != null) {
       _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
     }
@@ -1043,8 +1021,14 @@ class ProjectsTimeSeriesResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (outputPeriod != null) {
-      _queryParams["outputPeriod"] = [outputPeriod];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (aggregation_crossSeriesReducer != null) {
+      _queryParams["aggregation.crossSeriesReducer"] = [aggregation_crossSeriesReducer];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/timeSeries';

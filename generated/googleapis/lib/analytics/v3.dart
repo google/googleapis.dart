@@ -5810,12 +5810,15 @@ class CustomDataSource {
   CustomDataSourceParentLink parentLink;
   /** IDs of views (profiles) linked to the custom data source. */
   core.List<core.String> profilesLinked;
+  /** Collection of schema headers of the custom data source. */
+  core.List<core.String> schema;
   /** Link for this Analytics custom data source. */
   core.String selfLink;
   /** Type of the custom data source. */
   core.String type;
   /** Time this custom data source was last modified. */
   core.DateTime updated;
+  /** Upload type of the custom data source. */
   core.String uploadType;
   /**
    * Web property ID of the form UA-XXXXX-YY to which this custom data source
@@ -5855,6 +5858,9 @@ class CustomDataSource {
     }
     if (_json.containsKey("profilesLinked")) {
       profilesLinked = _json["profilesLinked"];
+    }
+    if (_json.containsKey("schema")) {
+      schema = _json["schema"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -5904,6 +5910,9 @@ class CustomDataSource {
     }
     if (profilesLinked != null) {
       _json["profilesLinked"] = profilesLinked;
+    }
+    if (schema != null) {
+      _json["schema"] = schema;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -11672,6 +11681,8 @@ class Upload {
    * DELETED.
    */
   core.String status;
+  /** Time this file is uploaded. */
+  core.DateTime uploadTime;
 
   Upload();
 
@@ -11694,6 +11705,9 @@ class Upload {
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
+    if (_json.containsKey("uploadTime")) {
+      uploadTime = core.DateTime.parse(_json["uploadTime"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -11715,6 +11729,9 @@ class Upload {
     }
     if (status != null) {
       _json["status"] = status;
+    }
+    if (uploadTime != null) {
+      _json["uploadTime"] = (uploadTime).toIso8601String();
     }
     return _json;
   }

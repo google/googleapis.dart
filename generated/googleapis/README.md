@@ -149,7 +149,7 @@ Official API documentation: https://developers.google.com/analytics/devguides/re
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Android Device Provisioning Partner API - androiddeviceprovisioning v1
 
-Android Device Provisioning Partner API
+Automates reseller integration into Zero Touch Provisioning by assigning devices to customers and creating device reports.
 
 Official API documentation: https://developers.google.com/zero-touch/
 
@@ -604,13 +604,13 @@ Official API documentation: https://cloud.google.com/deployment-manager/runtime-
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Safe Browsing API - safebrowsing v4
 
-The Safe Browsing API is an experimental API that allows client applications to check URLs against Google's constantly-updated blacklists of suspected phishing and malware pages. Your client application can use the API to download an encrypted table for local, client-side lookups of URLs.
+Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.
 
 Official API documentation: https://developers.google.com/safe-browsing/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Script Execution API - script v1
 
-Executes Google Apps Script projects.
+Executes functions in Google Apps Script projects.
 
 Official API documentation: https://developers.google.com/apps-script/execution/rest/v1/scripts/run
 

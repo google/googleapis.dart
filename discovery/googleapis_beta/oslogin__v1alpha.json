@@ -28,6 +28,37 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -39,13 +70,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -82,43 +113,37 @@
             ],
             "location": "query",
             "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
         "users": {
             "methods": {
+                "getLoginProfile": {
+                    "description": "Retrieves the profile information used for logging in to a virtual machine\non Google Compute Engine.",
+                    "httpMethod": "GET",
+                    "id": "oslogin.users.getLoginProfile",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "The unique ID for the user in format `users/{user}`.",
+                            "location": "path",
+                            "pattern": "^users/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1alpha/{+name}/loginProfile",
+                    "response": {
+                        "$ref": "LoginProfile"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                    ]
+                },
                 "importSshPublicKey": {
                     "description": "Adds an SSH public key and returns the profile information. Default POSIX\naccount information is set when no username and UID exist as part of the\nlogin profile.",
                     "httpMethod": "POST",
@@ -144,31 +169,6 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
-                "getLoginProfile": {
-                    "description": "Retrieves the profile information used for logging in to a virtual machine\non Google Compute Engine.",
-                    "httpMethod": "GET",
-                    "id": "oslogin.users.getLoginProfile",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "name": {
-                            "description": "The unique ID for the user in format `users/{user}`.",
-                            "location": "path",
-                            "pattern": "^users/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1alpha/{+name}/loginProfile",
-                    "response": {
-                        "$ref": "LoginProfile"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 }
             },
@@ -261,9 +261,64 @@
             }
         }
     },
-    "revision": "20170726",
+    "revision": "20170811",
     "rootUrl": "https://oslogin.googleapis.com/",
     "schemas": {
+        "LoginProfile": {
+            "description": "The Directory API profile information used for logging in to a virtual\nmachine on Google Compute Engine.",
+            "id": "LoginProfile",
+            "properties": {
+                "suspended": {
+                    "description": "Indicates if the user is suspended.",
+                    "type": "boolean"
+                },
+                "sshPublicKeys": {
+                    "additionalProperties": {
+                        "$ref": "SshPublicKey"
+                    },
+                    "description": "A map from SSH public key fingerprint to the associated key object.",
+                    "type": "object"
+                },
+                "posixAccounts": {
+                    "description": "The list of POSIX accounts associated with the Directory API user.",
+                    "items": {
+                        "$ref": "PosixAccount"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "A unique user ID for identifying the user.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SshPublicKey": {
+            "description": "The SSH public key information associated with a Directory API User.",
+            "id": "SshPublicKey",
+            "properties": {
+                "expirationTimeUsec": {
+                    "description": "An expiration time in microseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "description": "[Output Only] The SHA-256 fingerprint of the SSH public key.",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
         "ImportSshPublicKeyResponse": {
             "description": "A response message for importing an SSH public key.",
             "id": "ImportSshPublicKeyResponse",
@@ -285,12 +340,12 @@
                 },
                 "gid": {
                     "description": "The default group ID.",
-                    "format": "int32",
+                    "format": "uint32",
                     "type": "integer"
                 },
                 "uid": {
                     "description": "The user ID.",
-                    "format": "int32",
+                    "format": "uint32",
                     "type": "integer"
                 },
                 "username": {
@@ -314,61 +369,6 @@
                     "type": "string"
                 }
             },
-            "type": "object"
-        },
-        "LoginProfile": {
-            "description": "The Directory API profile information used for logging in to a virtual\nmachine on Google Compute Engine.",
-            "id": "LoginProfile",
-            "properties": {
-                "posixAccounts": {
-                    "description": "The list of POSIX accounts associated with the Directory API user.",
-                    "items": {
-                        "$ref": "PosixAccount"
-                    },
-                    "type": "array"
-                },
-                "name": {
-                    "description": "A unique user ID for identifying the user.",
-                    "type": "string"
-                },
-                "suspended": {
-                    "description": "Indicates if the user is suspended.",
-                    "type": "boolean"
-                },
-                "sshPublicKeys": {
-                    "additionalProperties": {
-                        "$ref": "SshPublicKey"
-                    },
-                    "description": "A map from SSH public key fingerprint to the associated key object.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "SshPublicKey": {
-            "description": "The SSH public key information associated with a Directory API User.",
-            "id": "SshPublicKey",
-            "properties": {
-                "fingerprint": {
-                    "description": "[Output Only] The SHA-256 fingerprint of the SSH public key.",
-                    "type": "string"
-                },
-                "key": {
-                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
-                    "type": "string"
-                },
-                "expirationTimeUsec": {
-                    "description": "An expiration time in microseconds since epoch.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
             "type": "object"
         }
     },

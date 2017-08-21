@@ -221,7 +221,7 @@ class DeploymentsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [resource] - Name of the resource for this request.
-   * Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+   * Value must have pattern "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?".
    *
    * Completes with a [Policy].
    *
@@ -512,7 +512,7 @@ class DeploymentsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [resource] - Name of the resource for this request.
-   * Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+   * Value must have pattern "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?".
    *
    * Completes with a [Policy].
    *
@@ -617,7 +617,7 @@ class DeploymentsResourceApi {
    * "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
    *
    * [resource] - Name of the resource for this request.
-   * Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+   * Value must have pattern "(?:[-a-z0-9_]{0,62}[a-z0-9])?".
    *
    * Completes with a [TestPermissionsResponse].
    *
@@ -1443,6 +1443,28 @@ class AuditLogConfig {
   }
 }
 
+/** Authorization-related information used by Cloud Audit Logging. */
+class AuthorizationLoggingOptions {
+  /** The type of the permission that was checked. */
+  core.String permissionType;
+
+  AuthorizationLoggingOptions();
+
+  AuthorizationLoggingOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("permissionType")) {
+      permissionType = _json["permissionType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (permissionType != null) {
+      _json["permissionType"] = permissionType;
+    }
+    return _json;
+  }
+}
+
 /** Associates `members` with a `role`. */
 class Binding {
   /**
@@ -2066,6 +2088,8 @@ class LogConfig {
   LogConfigCloudAuditOptions cloudAudit;
   /** Counter options. */
   LogConfigCounterOptions counter;
+  /** Data access options. */
+  LogConfigDataAccessOptions dataAccess;
 
   LogConfig();
 
@@ -2075,6 +2099,9 @@ class LogConfig {
     }
     if (_json.containsKey("counter")) {
       counter = new LogConfigCounterOptions.fromJson(_json["counter"]);
+    }
+    if (_json.containsKey("dataAccess")) {
+      dataAccess = new LogConfigDataAccessOptions.fromJson(_json["dataAccess"]);
     }
   }
 
@@ -2086,18 +2113,26 @@ class LogConfig {
     if (counter != null) {
       _json["counter"] = (counter).toJson();
     }
+    if (dataAccess != null) {
+      _json["dataAccess"] = (dataAccess).toJson();
+    }
     return _json;
   }
 }
 
 /** Write a Cloud Audit log */
 class LogConfigCloudAuditOptions {
+  /** Information used by the Cloud Audit Logging pipeline. */
+  AuthorizationLoggingOptions authorizationLoggingOptions;
   /** The log_name to populate in the Cloud Audit Record. */
   core.String logName;
 
   LogConfigCloudAuditOptions();
 
   LogConfigCloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("authorizationLoggingOptions")) {
+      authorizationLoggingOptions = new AuthorizationLoggingOptions.fromJson(_json["authorizationLoggingOptions"]);
+    }
     if (_json.containsKey("logName")) {
       logName = _json["logName"];
     }
@@ -2105,6 +2140,9 @@ class LogConfigCloudAuditOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (authorizationLoggingOptions != null) {
+      _json["authorizationLoggingOptions"] = (authorizationLoggingOptions).toJson();
+    }
     if (logName != null) {
       _json["logName"] = logName;
     }
@@ -2112,7 +2150,28 @@ class LogConfigCloudAuditOptions {
   }
 }
 
-/** Options for counters */
+/**
+ * Increment a streamz counter with the specified metric and field names.
+ *
+ * Metric names should start with a '/', generally be lowercase-only, and end in
+ * "_count". Field names should not contain an initial slash. The actual
+ * exported metric names will have "/iam/policy" prepended.
+ *
+ * Field names correspond to IAM request parameters and field values are their
+ * respective values.
+ *
+ * At present the only supported field names are - "iam_principal",
+ * corresponding to IAMContext.principal; - "" (empty string), resulting in one
+ * aggretated counter with no field.
+ *
+ * Examples: counter { metric: "/debug_access_count" field: "iam_principal" }
+ * ==> increment counter /iam/policy/backend_debug_access_count
+ * {iam_principal=[value of IAMContext.principal]}
+ *
+ * At this time we do not support: * multiple field names (though this may be
+ * supported in the future) * decrementing the counter * incrementing it by
+ * anything other than 1
+ */
 class LogConfigCounterOptions {
   /** The field value to attribute. */
   core.String field;
@@ -2137,6 +2196,31 @@ class LogConfigCounterOptions {
     }
     if (metric != null) {
       _json["metric"] = metric;
+    }
+    return _json;
+  }
+}
+
+/** Write a Data Access (Gin) log */
+class LogConfigDataAccessOptions {
+  /**
+   * Whether Gin logging should happen in a fail-closed manner at the caller.
+   * This is relevant only in the LocalIAM implementation, for now.
+   */
+  core.String logMode;
+
+  LogConfigDataAccessOptions();
+
+  LogConfigDataAccessOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logMode")) {
+      logMode = _json["logMode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    if (logMode != null) {
+      _json["logMode"] = logMode;
     }
     return _json;
   }

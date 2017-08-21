@@ -258,13 +258,13 @@ class ProjectsConfigsResourceApi {
    * for this request, in the format `projects/[PROJECT_ID]`.
    * Value must have pattern "^projects/[^/]+$".
    *
-   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
-   * `nextPageToken`
-   * returned by a previous list request to get the next page of results.
-   *
    * [pageSize] - Specifies the number of results to return per page. If there
    * are fewer
    * elements than the specified number, returns all elements.
+   *
+   * [pageToken] - Specifies a page token to use. Set `pageToken` to a
+   * `nextPageToken`
+   * returned by a previous list request to get the next page of results.
    *
    * Completes with a [ListConfigsResponse].
    *
@@ -274,7 +274,7 @@ class ProjectsConfigsResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListConfigsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  async.Future<ListConfigsResponse> list(core.String parent, {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -285,11 +285,11 @@ class ProjectsConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/configs';
@@ -749,6 +749,10 @@ class ProjectsConfigsVariablesResourceApi {
    * `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
    * Value must have pattern "^projects/[^/]+/configs/[^/]+$".
    *
+   * [pageSize] - Specifies the number of results to return per page. If there
+   * are fewer
+   * elements than the specified number, returns all elements.
+   *
    * [filter] - Filters variables by matching the specified filter. For example:
    *
    * `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
@@ -762,10 +766,6 @@ class ProjectsConfigsVariablesResourceApi {
    * `nextPageToken`
    * returned by a previous list request to get the next page of results.
    *
-   * [pageSize] - Specifies the number of results to return per page. If there
-   * are fewer
-   * elements than the specified number, returns all elements.
-   *
    * Completes with a [ListVariablesResponse].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -774,7 +774,7 @@ class ProjectsConfigsVariablesResourceApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method will complete with the same error.
    */
-  async.Future<ListVariablesResponse> list(core.String parent, {core.String filter, core.bool returnValues, core.String pageToken, core.int pageSize}) {
+  async.Future<ListVariablesResponse> list(core.String parent, {core.int pageSize, core.String filter, core.bool returnValues, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -785,6 +785,9 @@ class ProjectsConfigsVariablesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -793,9 +796,6 @@ class ProjectsConfigsVariablesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/variables';
@@ -1829,8 +1829,8 @@ class Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   core.int code;
   /**
-   * A list of messages that carry the error details.  There will be a
-   * common set of message types for APIs to use.
+   * A list of messages that carry the error details.  There is a common set of
+   * message types for APIs to use.
    *
    * The values for Object must be JSON objects. It can consist of `num`,
    * `String`, `bool` and `null` as well as `Map` and `List` values.

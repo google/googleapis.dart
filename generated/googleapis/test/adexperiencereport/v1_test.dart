@@ -51,14 +51,14 @@ http.StreamedResponse stringResponse(
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1757() {
+buildUnnamed1774() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1757(core.List<core.String> o) {
+checkUnnamed1774(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,12 +69,12 @@ buildPlatformSummary() {
   var o = new api.PlatformSummary();
   buildCounterPlatformSummary++;
   if (buildCounterPlatformSummary < 3) {
+    o.abusiveStatus = "foo";
     o.betterAdsStatus = "foo";
-    o.egregiousStatus = "foo";
     o.enforcementTime = "foo";
     o.filterStatus = "foo";
     o.lastChangeTime = "foo";
-    o.region = buildUnnamed1757();
+    o.region = buildUnnamed1774();
     o.reportUrl = "foo";
     o.underReview = true;
   }
@@ -85,12 +85,12 @@ buildPlatformSummary() {
 checkPlatformSummary(api.PlatformSummary o) {
   buildCounterPlatformSummary++;
   if (buildCounterPlatformSummary < 3) {
+    unittest.expect(o.abusiveStatus, unittest.equals('foo'));
     unittest.expect(o.betterAdsStatus, unittest.equals('foo'));
-    unittest.expect(o.egregiousStatus, unittest.equals('foo'));
     unittest.expect(o.enforcementTime, unittest.equals('foo'));
     unittest.expect(o.filterStatus, unittest.equals('foo'));
     unittest.expect(o.lastChangeTime, unittest.equals('foo'));
-    checkUnnamed1757(o.region);
+    checkUnnamed1774(o.region);
     unittest.expect(o.reportUrl, unittest.equals('foo'));
     unittest.expect(o.underReview, unittest.isTrue);
   }
@@ -120,14 +120,14 @@ checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-buildUnnamed1758() {
+buildUnnamed1775() {
   var o = new core.List<api.SiteSummaryResponse>();
   o.add(buildSiteSummaryResponse());
   o.add(buildSiteSummaryResponse());
   return o;
 }
 
-checkUnnamed1758(core.List<api.SiteSummaryResponse> o) {
+checkUnnamed1775(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -138,7 +138,7 @@ buildViolatingSitesResponse() {
   var o = new api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed1758();
+    o.violatingSites = buildUnnamed1775();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -147,7 +147,7 @@ buildViolatingSitesResponse() {
 checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed1758(o.violatingSites);
+    checkUnnamed1775(o.violatingSites);
   }
   buildCounterViolatingSitesResponse--;
 }

@@ -2625,10 +2625,10 @@ class DatabaseInstance {
    */
   core.String currentDiskSize;
   /**
-   * The database engine type and version. The databaseVersion can not be
-   * changed after instance creation. Can be MYSQL_5_5, MYSQL_5_6 or MYSQL_5_7.
-   * Defaults to MYSQL_5_6. MYSQL_5_7 is applicable only to Second Generation
-   * instances.
+   * The database engine type and version. The databaseVersion field can not be
+   * changed after instance creation. MySQL Second Generation instances:
+   * MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6 MySQL
+   * First Generation instances: MYSQL_5_6 (default) or MYSQL_5_5
    */
   core.String databaseVersion;
   /** HTTP 1.1 Entity tag for the resource. */
@@ -2638,6 +2638,12 @@ class DatabaseInstance {
    * only to Second Generation instances.
    */
   DatabaseInstanceFailoverReplica failoverReplica;
+  /**
+   * The GCE zone that the instance is serving from. In case when the instance
+   * is failed over to standby zone, this value may be different with what user
+   * specified in the settings.
+   */
+  core.String gceZone;
   /**
    * The instance type. This can be one of the following.
    * CLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a
@@ -2732,6 +2738,9 @@ class DatabaseInstance {
     if (_json.containsKey("failoverReplica")) {
       failoverReplica = new DatabaseInstanceFailoverReplica.fromJson(_json["failoverReplica"]);
     }
+    if (_json.containsKey("gceZone")) {
+      gceZone = _json["gceZone"];
+    }
     if (_json.containsKey("instanceType")) {
       instanceType = _json["instanceType"];
     }
@@ -2807,6 +2816,9 @@ class DatabaseInstance {
     }
     if (failoverReplica != null) {
       _json["failoverReplica"] = (failoverReplica).toJson();
+    }
+    if (gceZone != null) {
+      _json["gceZone"] = gceZone;
     }
     if (instanceType != null) {
       _json["instanceType"] = instanceType;
@@ -3233,8 +3245,8 @@ class ImportContext {
    */
   core.String fileType;
   /**
-   * The PostgreSQL user to use for this import operation. Defaults to
-   * cloudsqlsuperuser. Does not apply to MySQL instances.
+   * The PostgreSQL user for this import operation. Defaults to
+   * cloudsqlsuperuser. Used only for PostgreSQL instances.
    */
   core.String importUser;
   /** This is always sql#importContext. */
@@ -3476,10 +3488,7 @@ class IpConfiguration {
   core.List<AclEntry> authorizedNetworks;
   /** Whether the instance should be assigned an IP address or not. */
   core.bool ipv4Enabled;
-  /**
-   * Whether the mysqld should default to 'REQUIRE X509' for users connecting
-   * over IP.
-   */
+  /** Whether SSL connections over IP should be enforced or not. */
   core.bool requireSsl;
 
   IpConfiguration();

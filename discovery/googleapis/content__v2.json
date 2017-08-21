@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/mhTe-_g3m7I2eL2tJAE3C73VFrw\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Jt8A6kt1GnP24vdp0UtThptYtC0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -2018,7 +2018,7 @@
             }
         }
     },
-    "revision": "20170725",
+    "revision": "20170803",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2122,6 +2122,13 @@
                     "description": "The ID of the account for which the status is reported.",
                     "type": "string"
                 },
+                "accountLevelIssues": {
+                    "description": "A list of account level issues.",
+                    "items": {
+                        "$ref": "AccountStatusAccountLevelIssue"
+                    },
+                    "type": "array"
+                },
                 "dataQualityIssues": {
                     "description": "A list of data quality issues.",
                     "items": {
@@ -2137,6 +2144,32 @@
                 "websiteClaimed": {
                     "description": "Whether the account's website is claimed or not.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "AccountStatusAccountLevelIssue": {
+            "id": "AccountStatusAccountLevelIssue",
+            "properties": {
+                "country": {
+                    "description": "Country for which this issue is reported.",
+                    "type": "string"
+                },
+                "detail": {
+                    "description": "Additional details about the issue.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Issue identifier.",
+                    "type": "string"
+                },
+                "severity": {
+                    "description": "Severity of the issue.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Short description of the issue.",
+                    "type": "string"
                 }
             },
             "type": "object"

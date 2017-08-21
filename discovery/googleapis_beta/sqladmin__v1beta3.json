@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/49KRnzlsfCajyooOx9JRESIbzZg\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/lsRSA9rF-4KQu4xYN0id-kYxBtA\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -910,7 +910,7 @@
             }
         }
     },
-    "revision": "20170606",
+    "revision": "20170807",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BackupConfiguration": {
@@ -1614,7 +1614,7 @@
                     "type": "string"
                 },
                 "requireSsl": {
-                    "description": "Whether the mysqld should default to 'REQUIRE X509' for users connecting over IP.",
+                    "description": "Whether SSL connections over IP should be enforced or not.",
                     "type": "boolean"
                 }
             },

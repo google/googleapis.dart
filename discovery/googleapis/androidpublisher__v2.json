@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/fkMKFYhAB3V0ia83SVxm8xZB5LU\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/e4AtolObWHB9RMWbWiGGnmazpNA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2333,7 +2333,7 @@
                             ],
                             "parameters": {
                                 "endTime": {
-                                    "description": "The time, in milliseconds since the Epoch, of the newest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time.",
+                                    "description": "The time, in milliseconds since the Epoch, of the newest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
                                     "format": "int64",
                                     "location": "query",
                                     "type": "string"
@@ -2355,7 +2355,7 @@
                                     "type": "integer"
                                 },
                                 "startTime": {
-                                    "description": "The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days.",
+                                    "description": "The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
                                     "format": "int64",
                                     "location": "query",
                                     "type": "string"
@@ -2488,7 +2488,7 @@
             }
         }
     },
-    "revision": "20170504",
+    "revision": "20170815",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2512,6 +2512,10 @@
             "properties": {
                 "sha1": {
                     "description": "A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum command.",
+                    "type": "string"
+                },
+                "sha256": {
+                    "description": "A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum command.",
                     "type": "string"
                 }
             },
@@ -3243,6 +3247,10 @@
                     "description": "This kind represents an inappPurchase object in the androidpublisher service.",
                     "type": "string"
                 },
+                "orderId": {
+                    "description": "The order id associated with the purchase of the inapp product.",
+                    "type": "string"
+                },
                 "purchaseState": {
                     "description": "The purchase state of the order. Possible values are:  \n- Purchased \n- Cancelled",
                     "format": "int32",
@@ -3411,8 +3419,12 @@
                     "description": "This kind represents a subscriptionPurchase object in the androidpublisher service.",
                     "type": "string"
                 },
+                "orderId": {
+                    "description": "The order id of the latest recurring order associated with the purchase of the subscription.",
+                    "type": "string"
+                },
                 "paymentState": {
-                    "description": "The payment state of the subscription. Possible values are:  \n- Payment pending \n- Payment received",
+                    "description": "The payment state of the subscription. Possible values are:  \n- Payment pending \n- Payment received \n- Free trial",
                     "format": "int32",
                     "type": "integer"
                 },
